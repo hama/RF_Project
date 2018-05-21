@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180521 14:17:49.618" generator="Robot 3.0.4 (Python 2.7.10 on darwin)">
+<suite source="/Users/vincent/RobotFramework/project/shoplaza" id="s1" name="Shoplaza">
+<suite source="/Users/vincent/RobotFramework/project/shoplaza/headless.robot" id="s1-s1" name="Headless">
+<test id="s1-s1-t1" name="Inject Products">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>http://admin1024.shoplazza.com</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20180521 14:17:49.891" level="INFO">Opening browser 'chrome' to base url 'http://admin1024.shoplazza.com'.</msg>
+<status status="PASS" endtime="20180521 14:17:56.557" starttime="20180521 14:17:49.890"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>wait until login button is visible</arg>
+</arguments>
+<status status="PASS" endtime="20180521 14:17:56.558" starttime="20180521 14:17:56.558"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>class:logBtn___3pRgJ</arg>
+</arguments>
+<status status="PASS" endtime="20180521 14:17:56.588" starttime="20180521 14:17:56.559"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:account</arg>
+<arg>18825260804</arg>
+</arguments>
+<msg timestamp="20180521 14:17:56.589" level="INFO">Typing text '18825260804' into text field 'id:account'.</msg>
+<status status="PASS" endtime="20180521 14:17:56.871" starttime="20180521 14:17:56.589"></status>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<doc>Types the given password into text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:password</arg>
+<arg>18825260804</arg>
+</arguments>
+<msg timestamp="20180521 14:17:56.873" level="INFO">Typing password into text field 'id:password'.</msg>
+<status status="PASS" endtime="20180521 14:17:57.040" starttime="20180521 14:17:56.872"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>class:logBtn___3pRgJ</arg>
+</arguments>
+<msg timestamp="20180521 14:17:57.041" level="INFO">Clicking button 'class:logBtn___3pRgJ'.</msg>
+<status status="PASS" endtime="20180521 14:17:57.142" starttime="20180521 14:17:57.040"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>wait until domain input text element is visible</arg>
+</arguments>
+<status status="PASS" endtime="20180521 14:17:57.144" starttime="20180521 14:17:57.143"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id:username</arg>
+</arguments>
+<status status="PASS" endtime="20180521 14:17:57.389" starttime="20180521 14:17:57.144"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:username</arg>
+<arg>diu</arg>
+</arguments>
+<msg timestamp="20180521 14:17:57.390" level="INFO">Typing text 'diu' into text field 'id:username'.</msg>
+<status status="PASS" endtime="20180521 14:17:57.538" starttime="20180521 14:17:57.390"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks button identified by ``locator``.</doc>
+<arguments>
+<arg>class:logBtn___3pRgJ</arg>
+</arguments>
+<msg timestamp="20180521 14:17:57.540" level="INFO">Clicking button 'class:logBtn___3pRgJ'.</msg>
+<status status="PASS" endtime="20180521 14:17:57.683" starttime="20180521 14:17:57.539"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>/Users/vincent/RobotFramework/project/shoplaza/ajaxListener.js</arg>
+</arguments>
+<msg timestamp="20180521 14:17:57.685" html="yes" level="INFO">Reading JavaScript from file &lt;a href="file://%s"&gt;%s&lt;/a&gt;.</msg>
+<msg timestamp="20180521 14:17:57.687" level="INFO">Executing JavaScript:
+var open = window.XMLHttpRequest.prototype.open,
+    send = window.XMLHttpRequest.prototype.send,
+    onReadyStateChange;
+
+responseMap = new Map();
+
+function openReplacement(method, url, async, user, password) {
+    var syncMode = async !== false ? 'async' : 'sync';
+    console.warn(
+        'Preparing ' +
+        syncMode +
+        ' HTTP request : ' +
+        method +
+        ' ' +
+        url
+    );
+    return open.apply(this, arguments);
+}
+
+function sendReplacement(data) {
+    console.warn('Sending HTTP request data : ', data);
+
+    if(this.onreadystatechange) {
+        this._onreadystatechange = this.onreadystatechange;
+    }
+    //this.onreadystatechange = onReadyStateChangeReplacement;
+    this.onreadystatechange = test;
+
+    return send.apply(this, arguments);
+}
+
+function onReadyStateChangeReplacement() {
+    console.warn('HTTP request ready state changed : ' + this.readyState);
+    if(this._onreadystatechange) {
+        return this._onreadystatechange.apply(this, arguments);
+    }
+}
+
+function test() {
+    console.warn('HTTP request ready state changed : ' + this.readyState);
+    console.info(arguments)
+    if(this._onreadystatechange) {
+        //var event = [].slice.call(arguments)[0]
+        //console.log(event)
+	//console.log(arguments)
+        //console.log(event.currentTarget &amp;&amp; event.currentTarget.responseURL)
+	if (this.readyState === 4) {
+            var event = [].slice.call(arguments)[0]
+            console.log(event)
+	    console.log(event.currentTarget.responseURL)
+	    rawString = event.currentTarget.response
+	    replaceString = rawString.replace(new RegExp("\\\\","g"),"\\\\\\");
+	    //console.log(rawString)
+	    //console.log(replaceString)
+	    jobj = JSON.parse(replaceString);
+	    //window.tt = jobj;
+	    console.log(jobj);
+	    
+	    //var url = event.currentTarget.responseURL.split("?");
+    //var url = res[0].split("/");
+    //res1[0] = "";
+    //res1[1] = "";
+    //res1[2] = "";
+    ////res[res.length-1] = "";
+    //res2 = res1.join("_");
+    
+            responseMap.set(event.currentTarget.responseURL, jobj);
+	    console.log(responseMap);
+            //console.log(event.currentTarget.response)
+	}
+        return this._onreadystatechange.apply(this, arguments);
+    }
+}
+
+
+window.XMLHttpRequest.prototype.open = openReplacement;
+window.XMLHttpRequest.prototype.send = sendReplacement;</msg>
+<status status="PASS" endtime="20180521 14:17:57.698" starttime="20180521 14:17:57.684"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>class:icon_product___2ZYHZ</arg>
+</arguments>
+<status status="PASS" endtime="20180521 14:17:59.125" starttime="20180521 14:17:57.698"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>class:icon_product___2ZYHZ</arg>
+</arguments>
+<msg timestamp="20180521 14:17:59.127" level="INFO">Clicking element 'class:icon_product___2ZYHZ'.</msg>
+<status status="PASS" endtime="20180521 14:17:59.338" starttime="20180521 14:17:59.126"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.340" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" endtime="20180521 14:18:01.341" starttime="20180521 14:17:59.339"></status>
+</kw>
+<kw name="Check result">
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>return responseMap.get("${interface}").msg;</arg>
+</arguments>
+<assign>
+<var>${msg}</var>
+</assign>
+<msg timestamp="20180521 14:18:01.344" level="INFO">Executing JavaScript:
+return responseMap.get("http://admin1024.shoplazza.com/api/product/search?page=0&amp;limit=20").msg;</msg>
+<msg timestamp="20180521 14:18:01.354" level="INFO">${msg} = success</msg>
+<status status="PASS" endtime="20180521 14:18:01.354" starttime="20180521 14:18:01.343"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>return responseMap.get("${interface}").data.products.length;</arg>
+</arguments>
+<assign>
+<var>${dataLength}</var>
+</assign>
+<msg timestamp="20180521 14:18:01.355" level="INFO">Executing JavaScript:
+return responseMap.get("http://admin1024.shoplazza.com/api/product/search?page=0&amp;limit=20").data.products.length;</msg>
+<msg timestamp="20180521 14:18:01.361" level="INFO">${dataLength} = 2</msg>
+<status status="PASS" endtime="20180521 14:18:01.361" starttime="20180521 14:18:01.355"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${msg}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.362" level="INFO">success</msg>
+<status status="PASS" endtime="20180521 14:18:01.363" starttime="20180521 14:18:01.362"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${dataLength}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.363" level="INFO">2</msg>
+<status status="PASS" endtime="20180521 14:18:01.364" starttime="20180521 14:18:01.363"></status>
+</kw>
+<kw type="for" name="${index} IN RANGE [ ${dataLength} ]">
+<kw type="foritem" name="${index} = 0">
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>return responseMap.get("${interface}").data.products[${index}].meta_title;</arg>
+</arguments>
+<assign>
+<var>${meta_title}</var>
+</assign>
+<msg timestamp="20180521 14:18:01.365" level="INFO">Executing JavaScript:
+return responseMap.get("http://admin1024.shoplazza.com/api/product/search?page=0&amp;limit=20").data.products[0].meta_title;</msg>
+<msg timestamp="20180521 14:18:01.370" level="INFO">${meta_title} = PZOZ Earphone Case For Apple Airpods strap Soft Silicone headphone Case Earphone accessories Protective wireless bluetooth Cover</msg>
+<status status="PASS" endtime="20180521 14:18:01.370" starttime="20180521 14:18:01.365"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>return responseMap.get("${interface}").data.products[${index}].inventory_quantity.toString();</arg>
+</arguments>
+<assign>
+<var>${inventory_quantity}</var>
+</assign>
+<msg timestamp="20180521 14:18:01.371" level="INFO">Executing JavaScript:
+return responseMap.get("http://admin1024.shoplazza.com/api/product/search?page=0&amp;limit=20").data.products[0].inventory_quantity.toString();</msg>
+<msg timestamp="20180521 14:18:01.375" level="INFO">${inventory_quantity} = 255</msg>
+<status status="PASS" endtime="20180521 14:18:01.376" starttime="20180521 14:18:01.370"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>return responseMap.get("${interface}").data.products[${index}].create_time;</arg>
+</arguments>
+<assign>
+<var>${create_time}</var>
+</assign>
+<msg timestamp="20180521 14:18:01.377" level="INFO">Executing JavaScript:
+return responseMap.get("http://admin1024.shoplazza.com/api/product/search?page=0&amp;limit=20").data.products[0].create_time;</msg>
+<msg timestamp="20180521 14:18:01.382" level="INFO">${create_time} = 2018-05-19 01:58:18</msg>
+<status status="PASS" endtime="20180521 14:18:01.382" starttime="20180521 14:18:01.376"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>return responseMap.get("${interface}").data.products[${index}].image.src;</arg>
+</arguments>
+<assign>
+<var>${image_src}</var>
+</assign>
+<msg timestamp="20180521 14:18:01.383" level="INFO">Executing JavaScript:
+return responseMap.get("http://admin1024.shoplazza.com/api/product/search?page=0&amp;limit=20").data.products[0].image.src;</msg>
+<msg timestamp="20180521 14:18:01.388" level="INFO">${image_src} = //cn.cdn.shoplazza.com/76ee2ed28074e31295576132a6480beb.jpg</msg>
+<status status="PASS" endtime="20180521 14:18:01.388" starttime="20180521 14:18:01.383"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(${index}) + 2</arg>
+</arguments>
+<assign>
+<var>${rowIndex}</var>
+</assign>
+<msg timestamp="20180521 14:18:01.390" level="INFO">${rowIndex} = 2</msg>
+<status status="PASS" endtime="20180521 14:18:01.390" starttime="20180521 14:18:01.389"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${index}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.391" level="INFO">0</msg>
+<status status="PASS" endtime="20180521 14:18:01.391" starttime="20180521 14:18:01.390"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>rowIndex: ${rowIndex}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.392" level="INFO">rowIndex: 2</msg>
+<status status="PASS" endtime="20180521 14:18:01.393" starttime="20180521 14:18:01.392"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>meta_title: ${meta_title}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.394" level="INFO">meta_title: PZOZ Earphone Case For Apple Airpods strap Soft Silicone headphone Case Earphone accessories Protective wireless bluetooth Cover</msg>
+<status status="PASS" endtime="20180521 14:18:01.394" starttime="20180521 14:18:01.393"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>inventory_quantity: ${inventory_quantity}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.395" level="INFO">inventory_quantity: 255</msg>
+<status status="PASS" endtime="20180521 14:18:01.395" starttime="20180521 14:18:01.394"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>create_time: ${create_time}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.396" level="INFO">create_time: 2018-05-19 01:58:18</msg>
+<status status="PASS" endtime="20180521 14:18:01.397" starttime="20180521 14:18:01.396"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>image_srcc: ${image_src}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.398" level="INFO">image_srcc: //cn.cdn.shoplazza.com/76ee2ed28074e31295576132a6480beb.jpg</msg>
+<status status="PASS" endtime="20180521 14:18:01.398" starttime="20180521 14:18:01.397"></status>
+</kw>
+<kw name="Table Cell Should Contain" library="SeleniumLibrary">
+<doc>Verifies table cell contains text ``expected``.</doc>
+<arguments>
+<arg>tag:table</arg>
+<arg>${rowIndex}</arg>
+<arg>3</arg>
+<arg>${meta_title}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.472" level="INFO">Table cell contains 'PZOZ Earphone Case For Apple Airpods strap Soft Silicone headphone Case Earphone accessories Protective wireless bluetooth Cover'.</msg>
+<status status="PASS" endtime="20180521 14:18:01.473" starttime="20180521 14:18:01.399"></status>
+</kw>
+<kw name="Table Cell Should Contain" library="SeleniumLibrary">
+<doc>Verifies table cell contains text ``expected``.</doc>
+<arguments>
+<arg>tag:table</arg>
+<arg>${rowIndex}</arg>
+<arg>4</arg>
+<arg>${inventory_quantity}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.520" level="INFO">Table cell contains '共255件'.</msg>
+<status status="PASS" endtime="20180521 14:18:01.521" starttime="20180521 14:18:01.473"></status>
+</kw>
+<kw name="Table Cell Should Contain" library="SeleniumLibrary">
+<doc>Verifies table cell contains text ``expected``.</doc>
+<arguments>
+<arg>tag:table</arg>
+<arg>${rowIndex}</arg>
+<arg>7</arg>
+<arg>${create_time}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.592" level="INFO">Table cell contains '2018-05-19 01:58:18'.</msg>
+<status status="PASS" endtime="20180521 14:18:01.592" starttime="20180521 14:18:01.521"></status>
+</kw>
+<status status="PASS" endtime="20180521 14:18:01.593" starttime="20180521 14:18:01.364"></status>
+</kw>
+<kw type="foritem" name="${index} = 1">
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>return responseMap.get("${interface}").data.products[${index}].meta_title;</arg>
+</arguments>
+<assign>
+<var>${meta_title}</var>
+</assign>
+<msg timestamp="20180521 14:18:01.594" level="INFO">Executing JavaScript:
+return responseMap.get("http://admin1024.shoplazza.com/api/product/search?page=0&amp;limit=20").data.products[1].meta_title;</msg>
+<msg timestamp="20180521 14:18:01.600" level="INFO">${meta_title} = JewOrna Classic Vintage Original Ethnic National Dangle Earrings Exaggerated Stage Party Tassle Earring Jewelry 3 Colors JOE047</msg>
+<status status="PASS" endtime="20180521 14:18:01.600" starttime="20180521 14:18:01.594"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>return responseMap.get("${interface}").data.products[${index}].inventory_quantity.toString();</arg>
+</arguments>
+<assign>
+<var>${inventory_quantity}</var>
+</assign>
+<msg timestamp="20180521 14:18:01.602" level="INFO">Executing JavaScript:
+return responseMap.get("http://admin1024.shoplazza.com/api/product/search?page=0&amp;limit=20").data.products[1].inventory_quantity.toString();</msg>
+<msg timestamp="20180521 14:18:01.608" level="INFO">${inventory_quantity} = 195</msg>
+<status status="PASS" endtime="20180521 14:18:01.608" starttime="20180521 14:18:01.601"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>return responseMap.get("${interface}").data.products[${index}].create_time;</arg>
+</arguments>
+<assign>
+<var>${create_time}</var>
+</assign>
+<msg timestamp="20180521 14:18:01.610" level="INFO">Executing JavaScript:
+return responseMap.get("http://admin1024.shoplazza.com/api/product/search?page=0&amp;limit=20").data.products[1].create_time;</msg>
+<msg timestamp="20180521 14:18:01.616" level="INFO">${create_time} = 2018-05-19 01:57:56</msg>
+<status status="PASS" endtime="20180521 14:18:01.616" starttime="20180521 14:18:01.609"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code.</doc>
+<arguments>
+<arg>return responseMap.get("${interface}").data.products[${index}].image.src;</arg>
+</arguments>
+<assign>
+<var>${image_src}</var>
+</assign>
+<msg timestamp="20180521 14:18:01.617" level="INFO">Executing JavaScript:
+return responseMap.get("http://admin1024.shoplazza.com/api/product/search?page=0&amp;limit=20").data.products[1].image.src;</msg>
+<msg timestamp="20180521 14:18:01.625" level="INFO">${image_src} = //cn.cdn.shoplazza.com/f8f73451152a9ae1c7043f0714a89b57.jpg</msg>
+<status status="PASS" endtime="20180521 14:18:01.626" starttime="20180521 14:18:01.617"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(${index}) + 2</arg>
+</arguments>
+<assign>
+<var>${rowIndex}</var>
+</assign>
+<msg timestamp="20180521 14:18:01.628" level="INFO">${rowIndex} = 3</msg>
+<status status="PASS" endtime="20180521 14:18:01.628" starttime="20180521 14:18:01.626"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${index}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.629" level="INFO">1</msg>
+<status status="PASS" endtime="20180521 14:18:01.630" starttime="20180521 14:18:01.629"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>rowIndex: ${rowIndex}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.631" level="INFO">rowIndex: 3</msg>
+<status status="PASS" endtime="20180521 14:18:01.632" starttime="20180521 14:18:01.630"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>meta_title: ${meta_title}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.633" level="INFO">meta_title: JewOrna Classic Vintage Original Ethnic National Dangle Earrings Exaggerated Stage Party Tassle Earring Jewelry 3 Colors JOE047</msg>
+<status status="PASS" endtime="20180521 14:18:01.633" starttime="20180521 14:18:01.632"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>inventory_quantity: ${inventory_quantity}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.635" level="INFO">inventory_quantity: 195</msg>
+<status status="PASS" endtime="20180521 14:18:01.635" starttime="20180521 14:18:01.634"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>create_time: ${create_time}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.637" level="INFO">create_time: 2018-05-19 01:57:56</msg>
+<status status="PASS" endtime="20180521 14:18:01.637" starttime="20180521 14:18:01.636"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>image_srcc: ${image_src}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.639" level="INFO">image_srcc: //cn.cdn.shoplazza.com/f8f73451152a9ae1c7043f0714a89b57.jpg</msg>
+<status status="PASS" endtime="20180521 14:18:01.639" starttime="20180521 14:18:01.638"></status>
+</kw>
+<kw name="Table Cell Should Contain" library="SeleniumLibrary">
+<doc>Verifies table cell contains text ``expected``.</doc>
+<arguments>
+<arg>tag:table</arg>
+<arg>${rowIndex}</arg>
+<arg>3</arg>
+<arg>${meta_title}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.698" level="INFO">Table cell contains 'JewOrna Classic Vintage Original Ethnic National Dangle Earrings Exaggerated Stage Party Tassle Earring Jewelry 3 Colors JOE047'.</msg>
+<status status="PASS" endtime="20180521 14:18:01.698" starttime="20180521 14:18:01.640"></status>
+</kw>
+<kw name="Table Cell Should Contain" library="SeleniumLibrary">
+<doc>Verifies table cell contains text ``expected``.</doc>
+<arguments>
+<arg>tag:table</arg>
+<arg>${rowIndex}</arg>
+<arg>4</arg>
+<arg>${inventory_quantity}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.747" level="INFO">Table cell contains '共195件'.</msg>
+<status status="PASS" endtime="20180521 14:18:01.747" starttime="20180521 14:18:01.698"></status>
+</kw>
+<kw name="Table Cell Should Contain" library="SeleniumLibrary">
+<doc>Verifies table cell contains text ``expected``.</doc>
+<arguments>
+<arg>tag:table</arg>
+<arg>${rowIndex}</arg>
+<arg>7</arg>
+<arg>${create_time}</arg>
+</arguments>
+<msg timestamp="20180521 14:18:01.799" level="INFO">Table cell contains '2018-05-19 01:57:56'.</msg>
+<status status="PASS" endtime="20180521 14:18:01.799" starttime="20180521 14:18:01.748"></status>
+</kw>
+<status status="PASS" endtime="20180521 14:18:01.800" starttime="20180521 14:18:01.593"></status>
+</kw>
+<status status="PASS" endtime="20180521 14:18:01.800" starttime="20180521 14:18:01.364"></status>
+</kw>
+<status status="PASS" endtime="20180521 14:18:01.800" starttime="20180521 14:18:01.342"></status>
+</kw>
+<kw type="teardown" name="Custom Teardown">
+<kw name="Run Keyword If Test Passed" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if the test passed.</doc>
+<arguments>
+<arg>ScreenShot</arg>
+</arguments>
+<kw name="ScreenShot">
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20180521 14:18:02.413" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-40.png"&gt;&lt;img src="selenium-screenshot-40.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20180521 14:18:02.414" starttime="20180521 14:18:01.803"></status>
+</kw>
+<status status="PASS" endtime="20180521 14:18:02.415" starttime="20180521 14:18:01.802"></status>
+</kw>
+<status status="PASS" endtime="20180521 14:18:02.415" starttime="20180521 14:18:01.802"></status>
+</kw>
+<status status="PASS" endtime="20180521 14:18:02.416" starttime="20180521 14:18:01.801"></status>
+</kw>
+<status status="PASS" endtime="20180521 14:18:02.416" critical="yes" starttime="20180521 14:17:49.889"></status>
+</test>
+<status status="PASS" endtime="20180521 14:18:02.418" starttime="20180521 14:17:49.885"></status>
+</suite>
+<status status="PASS" endtime="20180521 14:18:02.424" starttime="20180521 14:17:49.640"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Shoplaza" pass="1">Shoplaza</stat>
+<stat fail="0" id="s1-s1" name="Headless" pass="1">Shoplaza.Headless</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
