@@ -21,8 +21,8 @@ class product:
         self.max_price = 9999
         self.weight = 50
         self.sku = 99
-        self.dir = "/Users/dianjiang/Downloads/tm.jpg"
-        self.config_dir = "/usr/local/lib/python2.7/site-packages/aaa.json"
+        self.dir = "./tm.jpg"
+        self.config_dir = "./conf.json"
 
     def run_test(self):
         # try:

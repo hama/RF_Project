@@ -14,10 +14,10 @@ class product:
         self.max_price = 77
         self.weight = 11
         self.sku = 7
-        self.dir = "/Users/dianjiang/Downloads/mv.jpg"
+        self.dir = "./mv.jpg"
         self.index = 1
         self.error_msg = "数据不正确"
-        self.config_dir = "/usr/local/lib/python2.7/site-packages/aaa.json"
+        self.config_dir = "./conf.json"
 
     def str_run(self):
         with open(self.config_dir,'r') as f:

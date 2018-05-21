@@ -13,7 +13,7 @@ class productList:
         self.u_id = "account"
         self.p_id = "password"
         self.error_msg = "找不到该页面元素"
-        self.config_dir = "/usr/local/lib/python2.7/site-packages/aaa.json"
+        self.config_dir = "./conf.json"
 
     #>.case
     def test(self):
