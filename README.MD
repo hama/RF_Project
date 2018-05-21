@@ -39,6 +39,25 @@
 
 
 
+### 2.1 基本概念说明
+
+```shell
+Library	              # 第三方库或者函数，如 robot 语法中执行的 py 文件
+Variables             # Python 语法写的变量定义，定义到文件中，可以避免测试代码过于冗余
+Resources             # 资源列表，具备某项功能的 keywords/variables 集合
+
+External Resources    # 应该是全局的，待验证！
+
+# 分类规则:
+不同模块间的 suite 都用到了的变量/关键字，提取到 Resource 中
+相同模块，不同 suite 之间使用的变量，放到模块的定义中(即 Directory 下的 __init__.robot)
+相同模块，相同 suite 下的 test case 使用的变量，放到 suite 定义中(即 test_xxx.robot )
+```
+
+
+
+
+
 ## 3. Robot Framework 框架安装
 
 ### 3.1 安装系统依赖 python 2.7
