@@ -23,19 +23,8 @@ Test_Tax_Page_Normal
     Page Should Contain    ${tax_page_country_price}
     Page Should Contain    ${tax_page_location}
     Page Should Contain    ${tax_page_operation}
-    sleep    1
+    sleep    2
     Check Tax Page List
-
-Test_Session_Timeout
-    Go TO    ${home_page}
-    Wait Until Element Is Visible    class:icon_setting___3OCQq
-    Click Element    class:icon_setting___3OCQq
-    # using xpath temporary(should be instead by element id)
-    Delete All Cookies
-    Click Element    class:icon_setting___3OCQq
-    sleep    3
-    Select Frame    dom:document.getElementsByTagName('iframe')[0]
-    Page Should Contain    登录我的店匠商铺
 
 *** KeyWords ***
 Check Tax Page List

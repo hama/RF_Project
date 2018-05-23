@@ -1,5 +1,5 @@
 *** Variables ***
-${tax_price_setting}    税金设置
+${tax_price_setting}    税费设置
 ${tax_shipping_setting}    前往运费设置
 ${tax_shipping_setting_title}    物流设置
 ${tax_shipping_setting_msg}    设置你的物流方案
