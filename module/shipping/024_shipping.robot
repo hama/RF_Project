@@ -13,6 +13,6 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_add_price_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     #execute javascript    return document.querySelectorAll('#name')[1].value='价格运费'
-    input text    dom:document.querySelectorAll('#name')[1]    dddd
+    input text    dom:document.querySelectorAll('#name')[1]    价格运费
     sleep    1.5
     #click button    id:test_shipping_edit_modal_sure_btn

@@ -1,6 +1,6 @@
 *** Settings ***
-Library           /usr/local/lib/python2.7/site-packages/Selenium2Library
-Library           customLibrary
+Library           Selenium2Library
+Library           ${CURDIR}/../../lib/customLibrary
 
 *** Test Cases ***
 001_shipping

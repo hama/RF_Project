@@ -1,6 +1,6 @@
 *** Settings ***
 Resource          ../../resources/shipping.robot
-Library           /usr/local/lib/python2.7/site-packages/customLibrary
+Library           ../../lib/customLibrary
 
 *** Test Cases ***
 016_shipping
