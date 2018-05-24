@@ -128,3 +128,9 @@ class keyWord(object):
             return True
         else:
             return False
+    def searchStr(self,args):
+        import re
+        str_ = str(args)
+        restr = re.search('\d',str_).group()
+        return restr
+
