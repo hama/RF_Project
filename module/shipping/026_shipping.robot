@@ -2,16 +2,18 @@
 Resource          ../../resources/shipping.robot
 
 *** Test Cases ***
-023_shipping
-    #.add    transport price    check name input (int)
+026_shipping
+    #.输入超过50个字符点击保存
     ${xpath_d}    set variable    id:test_add_btn
     #.login
     Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
     #.check button
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
     click button    id:test_shipping_add_price_btn
-    #.输入名称
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
-    input text    dom:document.querySelectorAll('#name')[1]    123
-    #${res}    execute javascript    return document.getElementsByClassName("ant-input ant-input-lg name_input___14djA")[0].value
+    #execute javascript    return document.querySelectorAll('#name')[1].value='价格运费'
+    ${str}    set variable    ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+    input text    dom:document.querySelectorAll('#name')[1]    ${str}
+    sleep    1.5
+    page should contain element    class:ant-form-explain
     close browser

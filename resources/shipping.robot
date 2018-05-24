@@ -1,5 +1,5 @@
 *** Settings ***
-Resource          ./Login.robot
+Resource          ./shoplaza_login.robot
 Library           SeleniumLibrary    # import selenium library
 
 *** Variables ***
@@ -19,5 +19,6 @@ Login With Shipping
     click element    ${xpath_b}
     Wait Until Element Is Visible    ${xpath_c}
     click element    ${xpath_c}
+    sleep    1
     Wait Until Element Is Visible    ${xpath_d}
     click link    ${xpath_d}

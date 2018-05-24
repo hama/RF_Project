@@ -1,5 +1,5 @@
 *** Settings ***
-Resource          ../../resources/Login.robot
+Resource          ../../resources/shoplaza_login.robot
 Resource          ../../resources/Shipping.robot
 
 *** Test Cases ***
