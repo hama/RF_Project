@@ -1,0 +1,19 @@
+*** Settings ***
+Resource          ../../resources/shipping.robot
+Library           /usr/local/lib/python2.7/site-packages/customLibrary
+
+*** Test Cases ***
+016_shipping
+    ${xpath_d}    set variable    id:test_add_btn
+    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    Wait Until Element Is Visible    id:test_shipping_country_add_btn
+    click button    id:test_shipping_country_add_btn
+    Wait Until Element Is Visible    id:test_shipping_country_modal_search_btn
+    #execute javascript    return document.getElementsByClassName("ant-tree-checkbox")[0].click()
+    execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0].click()
+    execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[1].click()
+    #execute javascript    return document.getElementById("test_shipping_country_modal_sure_btn").click()
+    ${count}    get text    class:country_selected___2BYCm
+    ${res}    searchStr    ${count}
+    Run keyword If    ${res}==1    run keyword    close browser
+    ...    ELSE    RUn keyword    page should contain element    sdsdsdsd

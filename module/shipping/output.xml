@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180523 17:57:34.640" generator="Robot 3.0.4 (Python 2.7.15 on darwin)">
+<suite source="/Users/dianjiang/shoplaza/shoplaza_robot/module/shipping/002_shipping.robot" id="s1" name="002 Shipping">
+<test id="s1-t1" name="002_shipping">
+<kw name="Open My Browser">
+<arguments>
+<arg>${home_page}</arg>
+</arguments>
+<msg timestamp="20180523 17:57:34.750" level="FAIL">No keyword with name 'Open My Browser' found. Did you mean:
+    SeleniumLibrary.Open Browser</msg>
+<status status="FAIL" endtime="20180523 17:57:34.750" starttime="20180523 17:57:34.750"></status>
+</kw>
+<status status="FAIL" endtime="20180523 17:57:34.750" critical="yes" starttime="20180523 17:57:34.745">No keyword with name 'Open My Browser' found. Did you mean:
+    SeleniumLibrary.Open Browser</status>
+</test>
+<status status="FAIL" endtime="20180523 17:57:34.751" starttime="20180523 17:57:34.642"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="002 Shipping" pass="0">002 Shipping</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
