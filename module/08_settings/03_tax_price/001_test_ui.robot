@@ -23,7 +23,7 @@ Test_Tax_Page_Normal
     Page Should Contain    ${tax_page_country_price}
     Page Should Contain    ${tax_page_location}
     Page Should Contain    ${tax_page_operation}
-    sleep    2
+    sleep    3
     Check Tax Page List
 
 *** KeyWords ***
@@ -36,7 +36,8 @@ Check Tax Page List
     \    ${country_name_en}=    Execute JavaScript    return responseMap.get("${tax_page_list_interface}").data.list[${index}].country_name_en;
     \    ${country_price}=    Execute JavaScript    return responseMap.get("${tax_page_list_interface}").data.list[${index}].country_price.toString();
     \    ${zone_total}=    Execute JavaScript    return responseMap.get("${tax_page_list_interface}").data.list[${index}].zone_total.toString();
+    \    ${zone_total_msg}=    Set Variable If    '${zone_total}'=='0'    ${tax_page_zone_total_all}    ${zone_total}
     \    Table Cell Should Contain    tag:table    ${rowIndex}    1    ${country_name}
     \    Table Cell Should Contain    tag:table    ${rowIndex}    1    ${country_name_en}
     \    Table Cell Should Contain    tag:table    ${rowIndex}    2    ${country_price}
-    \    Table Cell Should Contain    tag:table    ${rowIndex}    3    ${zone_total}
+    \    Table Cell Should Contain    tag:table    ${rowIndex}    3    ${zone_total_msg}
