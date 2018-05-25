@@ -14,4 +14,6 @@ Test_Session_Timeout
     Wait Until Element Is Visible    class:icon_setting___3OCQq
     Click Element    class:icon_setting___3OCQq
     Delete All Cookies
+    Sleep 2
+    Click Element    class:icon_setting___3OCQq
     Wait Until Page Contains    登录我的店匠商铺
