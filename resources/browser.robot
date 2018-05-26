@@ -3,6 +3,7 @@ Documentation     Define startup and tear down action for test cases.
 
 *** Variables ***
 ${home_page}      http://admin1024.shoplazza.com    # feature test enviroment
+${is_headless}    false    # whether should use headless chrome
 
 *** Keywords ***
 Test Suite Custom Teardown
