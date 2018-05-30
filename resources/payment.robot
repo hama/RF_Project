@@ -1,7 +1,7 @@
 *** Settings ***
 Resource          ./shoplaza_login.robot
-Library           SeleniumLibrary
 Resource          ./browser.robot
+Library           SeleniumLibrary
 
 *** Variables ***
 ${home_page}      http://admin1024.shoplazza.com    # feature test enviroment
@@ -9,10 +9,10 @@ ${is_headless}    false    # whether should use headless chrome
 # default user, has everything
 ${xpath_a}        //*[@id="root"]/div/div/div[1]/div[1]/div/div
 ${xpath_b}        //*[@id="root"]/div/div/div[1]/div[1]/div/ul/li[9]/div
-${xpath_c}        //*[@id="9$Menu"]/li[3]/a
+${xpath_c}        //*[@id="9$Menu"]/li[4]/a
 
 *** Keywords ***
-Login With Shipping
+Login With Payment
     [Arguments]    ${xpath_a}    ${xpath_b}    ${xpath_c}
     Open Headless Chrome    ${home_page}
     Login With User    ${defaultUser}    ${defaultPassword}    ${defaultDomain}

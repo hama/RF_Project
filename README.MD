@@ -106,9 +106,8 @@ https://blog.csdn.net/TZJD89/article/details/72857961
 # 设置 python 默认使用 32 位来运行 wxPython,否则失败
 defaults write com.apple.versioner.python Prefer-32-Bit -bool yes
 ```
-
-
-
+# 安装 python pymysql 库 
+pip install pymysql
 
 
 ## 4. 使用教程
