@@ -4,7 +4,6 @@ Resource          browser.robot
 
 *** Variables ***
 ${home_page}      http://admin1024.shoplazza.com    # feature test enviroment
-${is_headless}    false    # whether should use headless chrome
 # default user, has everything
 ${defaultUser}    17601298661
 ${defaultPassword}    111111
