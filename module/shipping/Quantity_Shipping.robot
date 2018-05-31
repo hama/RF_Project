@@ -5,47 +5,61 @@ Resource          ../../resources/shipping.robot
 *** Test Cases ***
 070_shipping
     #.添加数量运费
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     page should contain button    id:test_shipping_edit_modal_sure_btn
-    close browser
 
 071_shipping
     #.添加数量运费    输入数量运费 显示 数量运费
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${data}    set variable    数量运费
     input text    dom:document.querySelectorAll("#name")[1]    ${data}
     ${res}    execute javascript    return document.querySelectorAll("#name")[1].value
-    Run keyword If    '${res}'=='${data}'    Run keyword    close browser
+    Run keyword If    '${res}'=='${data}'    log    success
     ...    ELSE    Run keyword    page should contain    sd454
 
 072_shipping
     #.添加数量运费    输入1234 显示 数量运费
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${data}    set variable    1234
     input text    dom:document.querySelectorAll("#name")[1]    ${data}
     ${res}    execute javascript    return document.querySelectorAll("#name")[1].value
-    Run keyword If    '${res}'=='${data}'    Run keyword    close browser
+    Run keyword If    '${res}'=='${data}'    log    success
     ...    ELSE    Run keyword    page should contain    sd454
 
 073_shipping
     #.添加数量运费    输入 数量运费    保存    列表显示 数量运费
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -54,14 +68,18 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_edit_modal_sure_btn
     sleep    1
     ${getdata}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[0].innerText
-    Run keyword If    '${getdata}'=='${data}'    Run keyword    close browser
+    Run keyword If    '${getdata}'=='${data}'    log    success
     ...    ELSE    Run keyword    page should contain    sd454
 
 074_shipping
     #.添加数量运费    输入 输入超过50字符的内容    保存    提示错误
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -70,13 +88,16 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_edit_modal_sure_btn
     sleep    1
     page should contain element    class:ant-form-explain
-    close browser
 
 075_shipping
     #.添加数量运费    说明框输入 输入超过200字符的内容    提示错误
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -85,13 +106,16 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_edit_modal_sure_btn
     sleep    1
     page should contain element    class:ant-form-explain
-    close browser
 
 076_shipping
     #.添加数量运费    说明框输入 输入200个以内    保存成功
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -101,13 +125,16 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_edit_modal_sure_btn
     sleep    1
     page should contain element    //*[@id="dj"]/div/div[5]/div[2]/div/div/div/div/div/table/tbody/tr
-    close browser
 
 077_shipping
     #.添加数量运费    说明框输入内容    名称输入框不输入内容 提示有内容未填写
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -116,13 +143,16 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_edit_modal_sure_btn
     sleep    1
     page should contain element    class:ant-form-explain
-    close browser
 
 078_shipping
     #.添加数量运费    最小订单数量输入超过10位以上的数字
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -131,13 +161,16 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_edit_modal_sure_btn
     sleep    1
     page should contain element    class:ant-form-explain
-    close browser
 
 079_shipping
     #.添加数量运费    最大订单数量输入超过10位以上的数字
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -146,13 +179,16 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_edit_modal_sure_btn
     sleep    1
     page should contain element    class:ant-form-explain
-    close browser
 
 080_shipping
     #.添加数量运费    最小订单数量：10    最大订单数量：100
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -164,13 +200,16 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_edit_modal_sure_btn
     sleep    1
     page should contain element    //*[@id="dj"]/div/div[5]/div[2]/div/div/div/div/div/table/tbody/tr
-    close browser
 
 081_shipping
     #.添加数量运费    最大订单数量自动变化为大于最小订单数量的数字：101
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -183,14 +222,18 @@ Resource          ../../resources/shipping.robot
     ${max_data}    execute javascript    return document.querySelectorAll("input[placeholder='无限']")[0].value
     ${count}    evaluate    ${min}+1
     sleep    1
-    Run keyword If    ${count}==${max_data}    Run keyword    close browser
+    Run keyword If    ${count}==${max_data}    log    success
     ...    ELSE    Run keyword    page should contain    ssskk1
 
 082_shipping
     #.添加数量运费    最小订单数量自动变化为小于最大订单数量的数字：99
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -202,26 +245,33 @@ Resource          ../../resources/shipping.robot
     ${max_data}    get value    id:range_min
     ${count}    evaluate    ${max}-1
     sleep    1
-    Run keyword If    ${count}==${max_data}    Run keyword    close browser
+    Run keyword If    ${count}==${max_data}    log    success
     ...    ELSE    Run keyword    page should contain    ssskk1
 
 083_shipping
     #.添加数量运费    取消勾选免运费
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     #execute javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
     click element    dom:document.querySelectorAll(".ant-checkbox-input")[0]
-    close browser
 
 084_shipping
     #.添加数量运费    在运费输入框 输入 100    免运费的勾选会自动去掉
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -229,25 +279,31 @@ Resource          ../../resources/shipping.robot
     click element    dom:document.querySelectorAll(".ant-checkbox-input")[1]
     input text    id:rate_amount    100
     page should not contain    document.querySelectorAll(".ant-checkbox-checked")[0]
-    close browser
 
 085_shipping
     #.添加数量运费    在运费输入框 输入 991212313165656    提示错误
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    id:rate_amount    991212313165656
     page should not contain    class:ant-form-explain
-    close browser
 
 086_shipping
     #.添加数量运费    在运费输入框 输入 100    保存成功，数量运费列表中显示的运费为100
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -258,14 +314,18 @@ Resource          ../../resources/shipping.robot
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
     ${res}    searchStrs    ${data}
-    Run keyword If    ${res}==${cc}    Run keyword    close browser
+    Run keyword If    ${res}==${cc}    log    success
     ...    ELSE    Run keyword    page should contain    djdjjd99
 
 087_shipping
     #.添加数量运费    取消运费的勾选    保存成功，数量运费列表中显示的运费为0
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -277,14 +337,18 @@ Resource          ../../resources/shipping.robot
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
     ${res}    searchStrs    ${data}
-    Run keyword If    ${res}==0    Run keyword    close browser
+    Run keyword If    ${res}==0    log    success
     ...    ELSE    Run keyword    page should contain    djdjjd99
 
 088_shipping
     #.添加数量运费    勾选是否支持货到付款 保存 列表显示 支持
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -294,14 +358,18 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_edit_modal_sure_btn
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[2].innerText
-    Run keyword If    '${data}'=='支持'    Run keyword    close browser
+    Run keyword If    '${data}'=='支持'    log    success
     ...    ELSE    Run keyword    page should contain    djdjjd99
 
 089_shipping
     #.添加数量运费    取消勾选是否支持货到付款 保存 列表显示 不支持
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -312,27 +380,34 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_edit_modal_sure_btn
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[2].innerText
-    Run keyword If    '${data}'=='不支持'    Run keyword    close browser
+    Run keyword If    '${data}'=='不支持'    log    success
     ...    ELSE    Run keyword    page should contain    djdjjd99
 
 090_shipping
     #.直接关闭窗口，没有添加数量运费
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     #execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
     click element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
     sleep    1
     page should not contain element    //*[@id="dj"]/div/div[5]/div[2]/div/div/div/div/div/table/tbody/tr[2]
-    close browser
 
 091_shipping
     #.添加数量运费    输入内容 直接关闭窗口，再次打开窗口 没有添加数量运费
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     input text    dom:document.querySelectorAll("#name")[1]    数量运费

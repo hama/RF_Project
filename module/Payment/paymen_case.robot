@@ -1,19 +1,32 @@
 *** Settings ***
+Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
+Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Resource          ../../resources/payment.robot
+Resource          ../../resources/tax_price.robot
+Resource          ../../resources/browser.robot
 
 *** Test Cases ***
 001_payment
     #.登录后直接进入支付设设置
-    ${xpath_d}    set variable    id:test_add_btn
-    Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
+    #${xpath_d}    set variable    id:test_add_btn
+    #Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
+    #go to    ${home_page}
+    Wait Until Element Is Visible    //*[@id="root"]/div/div/div[1]/div[1]/div/ul/li[9]/div
+    click element    //*[@id="root"]/div/div/div[1]/div[1]/div/ul/li[9]/div
+    Wait Until Element Is Visible    //*[@id="9$Menu"]/li[4]/a
+    click element    //*[@id="9$Menu"]/li[4]/a
     sleep    1
     page should contain element    //*[@id="root"]/div/div/div[1]/div[2]/div[1]/div/div[1]/span
-    close browser
 
 002_payment
     #.从其他界面切换到支付设置
-    ${xpath_d}    set variable    id:test_add_btn
-    Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
+    #${xpath_d}    set variable    id:test_add_btn
+    #Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
+    go to    ${home_page}
+    Wait Until Element Is Visible    //*[@id="root"]/div/div/div[1]/div[1]/div/ul/li[9]/div
+    click element    //*[@id="root"]/div/div/div[1]/div[1]/div/ul/li[9]/div
+    Wait Until Element Is Visible    //*[@id="9$Menu"]/li[4]/a
+    click element    //*[@id="9$Menu"]/li[4]/a
     sleep    1
     click element    //*[@id="root"]/div/div/div[1]/div[1]/div/ul/li[6]/div
     sleep    1
