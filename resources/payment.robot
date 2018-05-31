@@ -14,7 +14,7 @@ ${xpath_c}        //*[@id="9$Menu"]/li[4]/a
 *** Keywords ***
 Login With Payment
     [Arguments]    ${xpath_a}    ${xpath_b}    ${xpath_c}
-    Open Headless Chrome    ${home_page}
+    Open Test Browser    ${home_page}
     Login With User    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
     Wait Until Element Is Visible    ${xpath_a}
     click element    ${xpath_b}

@@ -41,8 +41,10 @@ ${page_list_api}    http://admin1024.shoplazza.com/api/shipping/list
     Wait Until Element Is Visible    id:test_save_btn
     click button    id:test_shipping_country_add_btn
     Wait Until Element Is Visible    id:test_shipping_country_modal_sure_btn
-    execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0].click()
-    execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[1].click()
+    #execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0].click()
+    click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
+    #execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[1].click()
+    click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
     sleep    1
     click button    id:test_shipping_country_modal_sure_btn
     sleep    1
@@ -130,12 +132,15 @@ ${page_list_api}    http://admin1024.shoplazza.com/api/shipping/list
     Wait Until Element Is Visible    id:test_save_btn
     click button    id:test_shipping_country_add_btn
     Wait Until Element Is Visible    id:test_shipping_country_modal_sure_btn
-    execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2].click()
-    execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[10].click()
+    #execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2].click()
+    click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2]
+    #execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[10].click()
+    click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[10]
     sleep    1
     click button    id:test_shipping_country_modal_sure_btn
     sleep    1
-    execute javascript    return document.querySelectorAll("#test_shipping_country_edit_icon")[0].click()
+    #execute javascript    return document.querySelectorAll("#test_shipping_country_edit_icon")[0].click()
+    click element    dom:document.querySelectorAll("#test_shipping_country_edit_icon")[0]
     sleep    1
     ${count}    execute javascript    return document.querySelectorAll(".ant-modal-body ul li").length
     Run keyword If    ${count}==32    Run keyword    close browser
@@ -153,12 +158,15 @@ ${page_list_api}    http://admin1024.shoplazza.com/api/shipping/list
     Wait Until Element Is Visible    id:test_save_btn
     click button    id:test_shipping_country_add_btn
     Wait Until Element Is Visible    id:test_shipping_country_modal_sure_btn
-    execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2].click()
-    execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[10].click()
+    #execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2].click()
+    click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2]
+    #execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[10].click()
+    click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[10]
     sleep    1
     click button    id:test_shipping_country_modal_sure_btn
     sleep    1
-    execute javascript    return document.querySelectorAll("#test_shipping_country_delete_icon")[0].click()
+    #execute javascript    return document.querySelectorAll("#test_shipping_country_delete_icon")[0].click()
+    click element    dom:document.querySelectorAll("#test_shipping_country_delete_icon")[0]
     sleep    2
     page should contain element    id:test_delete_modal_sure_btn
     close browser

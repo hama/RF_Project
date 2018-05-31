@@ -213,7 +213,8 @@ Resource          ../../resources/shipping.robot
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
-    execute javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
+    #execute javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
+    click element    dom:document.querySelectorAll(".ant-checkbox-input")[0]
     close browser
 
 084_shipping
@@ -224,7 +225,8 @@ Resource          ../../resources/shipping.robot
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
-    execute javascript    return document.querySelectorAll(".ant-checkbox-input")[1].click()
+    #execute javascript    return document.querySelectorAll(".ant-checkbox-input")[1].click()
+    click element    dom:document.querySelectorAll(".ant-checkbox-input")[1]
     input text    id:rate_amount    100
     page should not contain    document.querySelectorAll(".ant-checkbox-checked")[0]
     close browser
@@ -269,7 +271,8 @@ Resource          ../../resources/shipping.robot
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${cc}    set variable    100
     input text    dom:document.querySelectorAll('#name')[1]    数量运费
-    execute javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
+    #execute javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
+    click element    dom:document.querySelectorAll(".ant-checkbox-input")[0]
     click button    id:test_shipping_edit_modal_sure_btn
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
@@ -304,7 +307,8 @@ Resource          ../../resources/shipping.robot
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${cc}    set variable    100
     input text    dom:document.querySelectorAll('#name')[1]    数量运费
-    execute javascript    return document.querySelectorAll(".ant-checkbox-input")[1].click()
+    #execute javascript    return document.querySelectorAll(".ant-checkbox-input")[1].click()
+    click element    dom:document.querySelectorAll(".ant-checkbox-input")[1]
     click button    id:test_shipping_edit_modal_sure_btn
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[2].innerText
@@ -318,7 +322,8 @@ Resource          ../../resources/shipping.robot
     Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
-    execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
+    #execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
+    click element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
     sleep    1
     page should not contain element    //*[@id="dj"]/div/div[5]/div[2]/div/div/div/div/div/table/tbody/tr[2]
     close browser
@@ -331,7 +336,8 @@ Resource          ../../resources/shipping.robot
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     input text    dom:document.querySelectorAll("#name")[1]    数量运费
-    execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
+    #execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
+    click element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn

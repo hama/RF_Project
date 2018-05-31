@@ -351,7 +351,8 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_add_weight_btn
     sleep    1
     #Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
-    execute javascript    return document.querySelectorAll(".ant-select-arrow")[0].click()
+    #execute javascript    return document.querySelectorAll(".ant-select-arrow")[0].click()
+    click element    dom:document.querySelectorAll(".ant-select-arrow")[0]
     #${res}    execute javascript    return document.querySelectorAll(“.ant-select-selection-selected-value”)[0].innerHTML
     Mouse Down    dom:document.querySelectorAll("div[role='combobox']")[0]
     Mouse Over    dom:document.querySelectorAll("div[role='combobox']")[0]
@@ -369,7 +370,8 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_add_weight_btn
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
-    execute javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
+    #execute javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
+    click element    dom:document.querySelectorAll(".ant-checkbox-input")[0]
     close browser
 
 061_shipping
@@ -384,7 +386,8 @@ Resource          ../../resources/shipping.robot
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    id:rate_amount    100
-    execute javascript    return document.querySelectorAll(".ant-checkbox-input")[1].click()
+    #execute javascript    return document.querySelectorAll(".ant-checkbox-input")[1].click()
+    click element    dom:document.querySelectorAll(".ant-checkbox-input")[1]
     #execute javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
     page should not contain element    document.querySelectorAll(".ant-checkbox-checked")[0]
     close browser
@@ -481,7 +484,8 @@ Resource          ../../resources/shipping.robot
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    重量运费
     input text    id:rate_amount    ${re}
-    execute javascript    return document.querySelectorAll(".ant-checkbox-input")[1].click()
+    #execute javascript    return document.querySelectorAll(".ant-checkbox-input")[1].click()
+    click element    dom:document.querySelectorAll(".ant-checkbox-input")[1]
     click button    id:test_shipping_edit_modal_sure_btn
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[2].innerText
@@ -497,7 +501,8 @@ Resource          ../../resources/shipping.robot
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
     click button    id:test_shipping_add_weight_btn
-    execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
+    #execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
+    click element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
     page should not contain element    //*[@id="dj"]/div/div[4]/div[2]/div/div/div/div/div/table/tbody/tr
     close browser
 
@@ -510,7 +515,8 @@ Resource          ../../resources/shipping.robot
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
     click button    id:test_shipping_add_weight_btn
-    execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
+    #execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
+    click element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
     click button    id:test_shipping_add_weight_btn
@@ -532,7 +538,8 @@ Resource          ../../resources/shipping.robot
     input text    id:range_min    10
     input text    id:range_max    100
     input text    id:rate_amount    100
-    execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
+    #execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
+    click element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
     click button    id:test_shipping_add_weight_btn

@@ -5,7 +5,6 @@ Resource          ../../resources/shipping.robot
 *** Test Cases ***
 001_add_country_shipping
     #添加国家
-    import variables    /Users/dianjiang/shoplaza/shoplaza_robot/config.py
     open browser    ${url}    google chrome
     Wait Until Element Is Visible    //*[@id="root"]/div/div/form/div[4]/button
     input text    id:account    ${uname}
@@ -21,8 +20,10 @@ Resource          ../../resources/shipping.robot
     input text    id:name    shipping1
     click button    //*[@id="dj"]/div/div[2]/div[1]/div[2]/div/button
     sleep    1.5
-    execute javascript    return document.getElementsByClassName("ant-tree-checkbox")[0].click()
-    execute javascript    return document.getElementById("test_shipping_country_modal_sure_btn").click()
+    #execute javascript    return document.getElementsByClassName("ant-tree-checkbox")[0].click()
+    click element    dom:document.getElementsByClassName("ant-tree-checkbox")[0]
+    #execute javascript    return document.getElementById("test_shipping_country_modal_sure_btn").click()
+    click button    dom:document.getElementById("test_shipping_country_modal_sure_btn")
     close browser
 
 012_shipping
@@ -87,10 +88,10 @@ Resource          ../../resources/shipping.robot
     Wait Until Element Is Visible    id:test_shipping_country_add_btn
     click button    id:test_shipping_country_add_btn
     Wait Until Element Is Visible    id:test_shipping_country_modal_search_btn
-    #execute javascript    return document.getElementsByClassName("ant-tree-checkbox")[0].click()
-    execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0].click()
-    execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[1].click()
-    #execute javascript    return document.getElementById("test_shipping_country_modal_sure_btn").click()
+    #execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0].click()
+    click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
+    click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
+    #execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[1].click()
     ${count}    get text    class:country_selected___2BYCm
     ${res}    searchStr    ${count}
     Run keyword If    ${res}==1    run keyword    close browser
@@ -104,9 +105,11 @@ Resource          ../../resources/shipping.robot
     Wait Until Element Is Visible    id:test_shipping_country_modal_search_btn
     sleep    1.5
     execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0].click()
-    execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[1].click()
+    #execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[1].click()
+    click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
     ${data}    execute javascript    return document.getElementsByClassName("info_cn___N00o6")[1].innerHTML
-    execute javascript    return document.getElementById("test_shipping_country_modal_sure_btn").click()
+    #execute javascript    return document.getElementById("test_shipping_country_modal_sure_btn").click()
+    click button    dom:document.getElementById("test_shipping_country_modal_sure_btn")
     ${res}    get text    //*[@id="dj"]/div/div[2]/div[2]/div/div/div/div/div/div/table/tbody/tr/td[1]/div/div/p[2]
     Run keyword If    '${data}'=='${res}'    Run keyword    close browser
     ...    ELSE    Run keyword    page should contain element    dsfsfdsf
@@ -118,8 +121,10 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_country_add_btn
     Wait Until Element Is Visible    id:test_shipping_country_modal_search_btn
     sleep    1.5
-    execute javascript    return document.getElementsByClassName("ant-checkbox-input")[0].click()
-    execute javascript    return document.getElementById("test_shipping_country_modal_sure_btn").click()
+    #execute javascript    return document.getElementsByClassName("ant-checkbox-input")[0].click()
+    click element    dom:document.getElementsByClassName("ant-checkbox-input")[0]
+    #execute javascript    return document.getElementById("test_shipping_country_modal_sure_btn").click()
+    click element    dom:document.getElementById("test_shipping_country_modal_sure_btn")
     ${res}    get text    //*[@id="dj"]/div/div[2]/div[2]/div/div/div/div/div/div/table/tbody/tr/td[1]/div/div/p[2]
     Run keyword If    '${res}'=='其他国家'    Run keyword    close browser
     ...    ELSE    Run keyword    page should contain element    sadhakjsd
@@ -131,10 +136,14 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_country_add_btn
     Wait Until Element Is Visible    id:test_shipping_country_modal_search_btn
     sleep    1.5
-    execute javascript    return document.getElementsByClassName("ant-checkbox-input")[0].click()
-    execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0].click()
-    execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[1].click()
-    execute javascript    return document.getElementById("test_shipping_country_modal_sure_btn").click()
+    #execute javascript    return document.getElementsByClassName("ant-checkbox-input")[0].click()
+    click element    dom:document.getElementsByClassName("ant-checkbox-input")[0]
+    #execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0].click()
+    click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
+    #execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[1].click()
+    click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
+    #execute javascript    return document.getElementById("test_shipping_country_modal_sure_btn").click()
+    click button    dom:document.getElementById("test_shipping_country_modal_sure_btn")
     ${res}    get text    //*[@id="dj"]/div/div[2]/div[2]/div/div/div/div/div/div/table/tbody/tr/td[1]/div/div/p[2]
     Run keyword If    '${res}'<>'其他国家'    Run keyword    close browser
     ...    ELSE    Run keyword    page should contain element    sdf6546
@@ -146,7 +155,8 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_country_add_btn
     Wait Until Element Is Visible    id:test_shipping_country_modal_search_btn
     sleep    1.5
-    execute javascript    return document.getElementsByClassName("ant-modal-close-x")[0].click()
+    #execute javascript    return document.getElementsByClassName("ant-modal-close-x")[0].click()
+    click element    dom:document.getElementsByClassName("ant-modal-close-x")[0]
     ${res}    get text    //*[@id="dj"]/div/div[2]/div[2]/div/div/div/div/div/div[2]/span
     #check data
     Run keyword If    '${res}'=='暂无数据'    Run keyword    close browser
