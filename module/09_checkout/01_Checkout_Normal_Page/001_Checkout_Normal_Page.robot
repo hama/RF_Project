@@ -6,6 +6,7 @@ Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Resource          ../../../resources/shoplaza_login.robot    # import login keyword
 Resource          ../../../resources/browser.robot    # import ajax listener keyword
+Resource          ../../../resources/checkout.robot    # import form list
 
 *** Test Cases ***
 Test_Checkout_Normal_page
@@ -45,12 +46,35 @@ Test_Checkout_Normal_page
     Assign id To Element    dom:document.querySelectorAll(".address_btn")[0]    address
     Wait Until Element Is Visible    address
     Page Should Contain Element    address
+    Click Element    address
+    Wait Until Element Is Visible    id:addAddressForm
+    #填写地址表单
+    #first_name
+    Input Text    ${first_name}    zc
+    #last_name
+    Input Text    ${last_name}    l
+    #选择国家
+    Select From List By Index    id:shipping_country_id    1
+    Sleep    1
+    #选择身份
+    Select From List By Index    id:shipping_zone_id    1
+    #城市
+    Input Text    ${city}    shenzhen
+    #地址
+    Input Text    ${address}    xingdong
+    #邮编
+    Input Text    ${post_code}    333000
+    #邮箱
+    Input Text    ${email}    lizhicheng@shoplazza.com
+    #电话
+    Input Text    ${phone}    15297989918
+    #公司
+    Input Text    ${company}    djkj
+    #填写好信息之后保存
+    Click Element    dom:document.querySelectorAll(".form-footer")[0]
     #买家留言
     Wait Until Element Is Visible    id:instruction_menu
     Page Should Contain Element    id:instruction_menu
-    #物流选择栏
-    Wait Until Element Is Visible    id:delivery_menu
-    Page Should Contain Element    id:delivery_menu
     #商品总价
     Assign id To Element    dom:document.querySelectorAll(".detail_total_price")[0]    total
     Wait Until Element Is Visible    total
@@ -58,3 +82,9 @@ Test_Checkout_Normal_page
     #提交按钮
     Wait Until Element Is Visible    id:submitMbPay
     Page Should Contain Element    id:submitMbPay
+    #物流选择栏
+    Wait Until Element Is Visible    id:delivery_menu
+    Page Should Contain Element    id:delivery_menu
+    Click Element    id:delivery_menu
+    Sleep    1
+    Page Should Contain Element    dom:document.querySelectorAll(".shipping_choice")[0]
