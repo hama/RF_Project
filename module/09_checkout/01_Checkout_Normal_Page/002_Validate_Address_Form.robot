@@ -9,7 +9,62 @@ Resource          ../../../resources/browser.robot    # import ajax listener key
 Resource          ../../../resources/checkout.robot    # import form list
 
 *** Test Cases ***
-save_success
+01_Save_Success
+    Login To Checkout Channel
+    #填写地址表单
+    #first_name
+    Input Text    ${first_name}    baiyuan
+    #last_name
+    Input Text    ${last_name}    l
+    #选择国家
+    Select From List By Index    id:shipping_country_id    1
+    Sleep    1
+    #选择身份
+    Select From List By Index    id:shipping_zone_id    1
+    #城市
+    Input Text    ${city}    shenzhen
+    #地址
+    Input Text    ${address}    xingdong
+    #邮编
+    Input Text    ${post_code}    333000
+    #邮箱
+    Input Text    ${email}    lizhicheng@shoplazza.com
+    #电话
+    Input Text    ${phone}    15297989918
+    #公司
+    Input Text    ${company}    djkj
+    #填写好信息之后保存
+    Click Element    dom:document.querySelectorAll(".form-footer")[0]
+
+02_Save_Failed_Without_FirstName
+    Login To Checkout Channel
+    #填写地址表单
+    #last_name
+    Input Text    ${last_name}    l
+    #选择国家
+    Select From List By Index    id:shipping_country_id    1
+    Sleep    1
+    #选择身份
+    Select From List By Index    id:shipping_zone_id    1
+    #城市
+    Input Text    ${city}    shenzhen
+    #地址
+    Input Text    ${address}    xingdong
+    #邮编
+    Input Text    ${post_code}    333000
+    #邮箱
+    Input Text    ${email}    lizhicheng@shoplazza.com
+    #电话
+    Input Text    ${phone}    15297989918
+    #公司
+    Input Text    ${company}    djkj
+    #填写好信息之后保存
+    Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    ${class_name}    Execute Javascript    return document.querySelectorAll("input[name=first_name]")[0].getAttribute('class')
+    Should Be True    '${class_name}'=='not_none'
+
+*** KeyWords ***
+Login To Checkout Channel
     Go TO    ${home_page}
     #跳转到商品管理模块
     Wait Until Element Is Visible    class:icon_product___2ZYHZ
@@ -48,27 +103,3 @@ save_success
     Page Should Contain Element    address
     Click Element    address
     Wait Until Element Is Visible    id:addAddressForm
-    #填写地址表单
-    #first_name
-    Input Text    ${first_name}    baiyuan
-    #last_name
-    Input Text    ${last_name}    l
-    #选择国家
-    Select From List By Index    id:shipping_country_id    1
-    Sleep    1
-    #选择身份
-    Select From List By Index    id:shipping_zone_id    1
-    #城市
-    Input Text    ${city}    shenzhen
-    #地址
-    Input Text    ${address}    xingdong
-    #邮编
-    Input Text    ${post_code}    333000
-    #邮箱
-    Input Text    ${email}    lizhicheng@shoplazza.com
-    #电话
-    Input Text    ${phone}    15297989918
-    #公司
-    Input Text    ${company}    djkj
-    #填写好信息之后保存
-    Click Element    dom:document.querySelectorAll(".form-footer")[0]
