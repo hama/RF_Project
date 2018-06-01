@@ -18,6 +18,12 @@
 │   ├── log.html
 │   ├── output.xml
 │   └── report.html
+├── resources                               # 资源目录，存放底层测试库
+│   ├── browser.robot						# 浏览器相关操作，打开/关闭 浏览器
+│   ├── payment.robot
+│   ├── shipping.robot
+│   ├── shoplaza_login.robot				# 登录相关操作，调用关键字完成指定用户登录
+│   └── tax_price.robot						# 税费模块
 ├── module									# 按照模块区分测试用例
 │   ├── 01_order							# 01_xx   一级菜单
 │   │   ├── 01_checkout						# 01_xx   二级菜单
@@ -53,8 +59,6 @@ External Resources    # 应该是全局的，待验证！
 相同模块，不同 suite 之间使用的变量，放到模块的定义中(即 Directory 下的 __init__.robot)
 相同模块，相同 suite 下的 test case 使用的变量，放到 suite 定义中(即 test_xxx.robot )
 ```
-
-
 
 
 
@@ -106,11 +110,42 @@ https://blog.csdn.net/TZJD89/article/details/72857961
 # 设置 python 默认使用 32 位来运行 wxPython,否则失败
 defaults write com.apple.versioner.python Prefer-32-Bit -bool yes
 ```
-# 安装 python pymysql 库 
+### 3.4 其他依赖库
+
+```bash
+# pymysql  --  连接 mysql 数据库，获取验证码需要
 pip install pymysql
+```
 
 
-## 4. 使用教程
+
+## 4. 用例规范说明
+
+### 4.1 Test Suite 设置
+
+```bash
+*** Settings ***
+Documentation     Test tax price page ui.					# 测试套件总体说明
+Suite Setup       New Test Suite Browser And Login    		# 套件初始化动作
+															#    -- 打开浏览器登录
+															#    -- 构造初始测试数据
+Suite Teardown    Close Test Suite Browser    				# 套件清理动作
+															#    -- 清除构造的数据
+															#    -- 关闭浏览器
+Test Setup        Setup Test Case							# 用例初始化动作
+															#    -- 跳转到首页开始测试
+Test Teardown     Teardown Test Case						# 用例清理动作
+															#    -- 关闭额外打开的窗口等
+Resource          ../../../resources/shoplaza_login.robot   # 导入封装的测试库关键字
+Resource          ../../../resources/browser.robot			# 导入封装的测试库关键字
+Resource          ../../../resources/tax_price.robot		# 导入封装的测试库关键字
+```
+
+
+
+
+
+## 5. 使用教程
 
 - [RF 入门教程](http://www.testclass.net/rf/)
 - [RF 中文手册](https://jmcn.gitbooks.io/robotframework-cn/content/)
@@ -118,8 +153,7 @@ pip install pymysql
 - [SeleniumLibrary 驱动说明](https://seleniumhq.github.io/selenium/docs/api/py/index.html#drivers)
 
 
-
-## 5. API 文档
+## 6. API 文档
 
 - [RF User Guide](http://robotframework.org/robotframework/2.9b2/RobotFrameworkUserGuide.html)
 - [RF API Reference](http://robot-framework.readthedocs.io/en/latest/)
