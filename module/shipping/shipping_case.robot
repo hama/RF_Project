@@ -1,40 +1,71 @@
 *** Settings ***
+Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
+Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Library           customLibrary
 Resource          ../../resources/shipping.robot
+Resource          ../../resources/browser.robot
+Resource          ../../resources/tax_price.robot
 
 *** Variables ***
 ${page_list_api}    http://admin1024.shoplazza.com/api/shipping/list
 
 *** Test Cases ***
+check_list_data
+    #.校验list接口数据
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Start Ajax Listener
+    click element    //*[@id="9$Menu"]/li[3]/a
+    Wait Until Page Contains    ${tax_shipping_tab1}
+    sleep    1
+    ${dataLength}=    Execute JavaScript    return responseMap.get("${page_list_api}").data.length;
+    : FOR    ${i}    IN RANGE    ${dataLength}
+    \    ${res_data}    Execute Javascript    return responseMap.get("${page_list_api}").data[${i}].shipping_name;
+    \    ${ul_data}    Execute Javascript    return document.querySelectorAll("#test_shipping_list_${i} li span")[0].innerHTML
+    \    Run keyword If    '${res_data}'<>'${ul_data}'    Run keyword    page should contain skjdnksjnks
+    \    ...    ELSE    log    success
+
 092_shipping
     #创建物流    没有输入 方案名 点击保存
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
     sleep    1
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     Wait Until Element Is Visible    id:test_save_btn
     click link    id:test_save_btn
     page should contain element    class:ant-form-explain
-    close browser
 
 093_shipping
     #创建物流    输入 方案名 点击保存 提示 请添加国家
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     sleep    1
     input text    id:name    方案1
     Wait Until Element Is Visible    id:test_save_btn
     click link    id:test_save_btn
     sleep    2
     page should not contain element    id:test_add_btn
-    close browser
 
 094_shipping
     #创建物流    除了价格运费不添加，其他照常添加    提示请添加价格运费
-    ${xpath_d}    set variable    id:test_add_btn
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    go to    ${home_page}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     sleep    1
     ${name}    salt
     input text    id:name    ${name}
@@ -79,16 +110,20 @@ ${page_list_api}    http://admin1024.shoplazza.com/api/shipping/list
     click link    id:test_save_btn
     sleep    2
     page should contain element    id:test_add_btn
-    close browser
 
 095_shipping
     #创建物流    只添加数量运费，重量和价格运费不添加，其他照常添加
+    go to    ${home_page}
     ${xpath_d}    set variable    id:test_add_btn
     ${range_min}    set variable    10
     ${range_max}    set variable    100
     ${rate_amount}    set variable    9
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     sleep    1
     ${name}    salt
     input text    id:name    ${name}
@@ -120,12 +155,17 @@ ${page_list_api}    http://admin1024.shoplazza.com/api/shipping/list
 
 096_shipping
     #创建物流    添加中国    > 点击后显示弹窗，显示中国的所有省份并全部处于勾选状态
+    go to    ${home_page}
     ${xpath_d}    set variable    id:test_add_btn
     ${range_min}    set variable    10
     ${range_max}    set variable    100
     ${rate_amount}    set variable    9
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     sleep    1
     ${name}    salt
     input text    id:name    ${name}
@@ -148,12 +188,17 @@ ${page_list_api}    http://admin1024.shoplazza.com/api/shipping/list
 
 097_shipping
     #创建物流    添加中国    弹出删除窗口
+    go to    ${home_page}
     ${xpath_d}    set variable    id:test_add_btn
     ${range_min}    set variable    10
     ${range_max}    set variable    100
     ${rate_amount}    set variable    9
-    #.login
-    Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}    ${xpath_d}
+    Wait Until Element Is Visible    ${navigation_setting}
+    click element    ${navigation_setting}
+    Wait Until Element Is Visible    ${navigation_shipping}
+    click element    ${navigation_shipping}
+    Wait Until Element Is Visible    ${add_shipping_btn}
+    click element    ${add_shipping_btn}
     sleep    1
     Wait Until Element Is Visible    id:test_save_btn
     click button    id:test_shipping_country_add_btn
