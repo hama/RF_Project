@@ -3,6 +3,7 @@ import pymysql
 import random
 import json
 import sys
+import re
 reload(sys)
 sys.setdefaultencoding('utf-8')
 class keyWord(object):
@@ -60,7 +61,6 @@ class keyWord(object):
     #     print True
 
     def selectCode(self):
-
         phone = self.save_str
         try:
             conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8", port=self.port)
@@ -129,8 +129,12 @@ class keyWord(object):
         else:
             return False
     def searchStr(self,args):
-        import re
         str_ = str(args)
         restr = re.search('\d',str_).group()
         return restr
+    def searchStrs(self,args):
+        str_ = str(args)
+        restr = re.search('\d+',str_).group()
+        return restr
+
 
