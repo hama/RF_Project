@@ -6,7 +6,7 @@ Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Resource          ../../../resources/shoplaza_login.robot    # import login keyword
 Resource          ../../../resources/browser.robot    # import ajax listener keyword
-Library           /usr/local/lib/python2.7/site-packages/customLibrary
+Library           customLibrary
 
 *** Test Cases ***
 Test_Tax_Page_Normal

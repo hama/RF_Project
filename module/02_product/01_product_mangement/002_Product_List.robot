@@ -6,7 +6,7 @@ Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Resource          ../../../resources/shoplaza_login.robot    # import login keyword
 Resource          ../../../resources/browser.robot    # import ajax listener keyword
-Library           /usr/local/lib/python2.7/site-packages/customLibrary
+Library           customLibrary
 
 *** Test Cases ***
 Product_Total
@@ -57,3 +57,46 @@ Validate_All_Tab
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-radio-button-wrapper")[0]
     ${class}    Execute Javascript    return document.querySelectorAll(".ant-radio-button-wrapper")[0].getAttribute('class')
     Should Be Equal As Strings    ${class_should_be}    ${class}
+
+Validate_Table
+    #验证表头显示
+    Go TO    ${home_page}
+    #进入商品模块
+    Wait Until Element Is Visible    class:icon_product___2ZYHZ
+    Click Element    class:icon_product___2ZYHZ
+    Sleep    1
+    Assign Id To Element    dom:document.querySelectorAll(".editBtn___2yB79")[1]    btn1
+    Wait Until Element Is Visible    btn1
+    Click Element    btn1
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-body")[0]
+    #点击已经选中的，将他们全部取消选中
+    ${count}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox-checked").length
+    : FOR    ${index}    IN RANGE    ${count}
+    \    Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox-checked")[0]
+    Sleep    1
+    #再将所有复选框选中
+    ${cancel}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox").length
+    : FOR    ${i}    IN RANGE    ${cancel}
+    \    Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox")[${i}]
+    #点击确定按钮
+    Click Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
+    #添加完所有表头之后再进行表头信息的检验
+    Page Should Contain Element    dom:document.querySelectorAll(".ant-table-thead tr th input")[0]
+    Page Should Contain    商品图片
+    Page Should Contain    商品名称
+    Page Should Contain    库存
+    Page Should Contain    SKU
+    Page Should Contain    浏览量
+    Page Should Contain    销量
+    Page Should Contain    上架
+    Page Should Contain    操作
+    Page Should Contain    创建时间
+    Page Should Contain Element    dom:document.querySelectorAll(".preview___37DtU")[0]
+    Page Should Contain Element    dom:document.querySelectorAll(".delete___2xfx-")[0]
+    #图片
+    Page Should Contain Element    dom:document.querySelectorAll(".center___1nHSZ")[0]
+    #库存
+    ${should_quantity}    getFirstProductQuantity
+    ${show_quantity}    Get Text    dom:document.querySelectorAll(".ant-table-tbody tr")[0].getElementsByTagName("td")[3]
+    ${show_quantity}    searchStr    ${show_quantity}
+    Should Be True    ${show_quantity}==${should_quantity}
