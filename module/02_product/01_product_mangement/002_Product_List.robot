@@ -38,7 +38,7 @@ Up_And_Down_Product
     #进入商品模块
     Wait Until Element Is Visible    class:icon_product___2ZYHZ
     Click Element    class:icon_product___2ZYHZ
-    Wait Until Element Is Visible    document.getElementsByClassName("ant-switch")
+    Wait Until Element Is Visible    dom:document.getElementsByClassName("ant-switch")[0]
     #获取商品总数，包含上下架商品
     ${all_count}    Execute Javascript    return document.getElementsByClassName("ant-switch").length
     #获取上架商品数量
@@ -96,7 +96,20 @@ Validate_Table
     #图片
     Page Should Contain Element    dom:document.querySelectorAll(".center___1nHSZ")[0]
     #库存
+    #在这里修改情况，验证第一个商品是否有库存
     ${should_quantity}    getFirstProductQuantity
     ${show_quantity}    Get Text    dom:document.querySelectorAll(".ant-table-tbody tr")[0].getElementsByTagName("td")[3]
+    #如果库存为0
+    Run Keyword If    ${should_quantity}==0    compare_quantity    ${show_quantity}
+    Run Keyword If    ${should_quantity}>0    compare_quantity2    ${show_quantity}    ${should_quantity}
+    #验证上下架按钮变化
+
+*** Keywords ***
+compare_quantity
+    [Arguments]    ${show_quantity}
+    Should Be Equal As Strings    ${show_quantity}    N/A
+
+compare_quantity2
+    [Arguments]    ${show_quantity}    ${should_quantity}
     ${show_quantity}    searchStr    ${show_quantity}
     Should Be True    ${show_quantity}==${should_quantity}
