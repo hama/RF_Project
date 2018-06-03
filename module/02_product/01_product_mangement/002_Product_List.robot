@@ -102,7 +102,21 @@ Validate_Table
     #如果库存为0
     Run Keyword If    ${should_quantity}==0    compare_quantity    ${show_quantity}
     Run Keyword If    ${should_quantity}>0    compare_quantity2    ${show_quantity}    ${should_quantity}
-    #验证上下架按钮变化
+
+Validate_Product_Status
+    #验证表头显示
+    Go TO    ${home_page}
+    #进入商品模块
+    Wait Until Element Is Visible    class:icon_product___2ZYHZ
+    Click Element    class:icon_product___2ZYHZ
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-tbody .ant-table-row")[0]
+    #获取当前页展示的商品数量
+    ${count}    Execute Javascript    return document.querySelectorAll(".ant-table-tbody .ant-table-row").length
+    #判断当前页所有商品状态
+    : FOR    ${i}    IN RANGE    ${count}
+    \    ${status}    getProductStatus    ${i}
+    \    Run Keyword If    ${status}==0    should_be_down    ${i}
+    \    Run Keyword If    ${status}==1    should_be_up    ${i}
 
 *** Keywords ***
 compare_quantity
@@ -113,3 +127,15 @@ compare_quantity2
     [Arguments]    ${show_quantity}    ${should_quantity}
     ${show_quantity}    searchStr    ${show_quantity}
     Should Be True    ${show_quantity}==${should_quantity}
+
+should_be_down
+    [Arguments]    ${i}
+    #获取按钮类名
+    ${class_name}    Execute Javascript    return document.getElementsByClassName("ant-switch")[${i}].getAttribute("class")
+    Should Be Equal As Strings    ${class_name}    ant-switch
+
+should_be_up
+    [Arguments]    ${i}
+    #获取按钮类名
+    ${class_name}    Execute Javascript    return document.getElementsByClassName("ant-switch")[${i}].getAttribute("class")
+    Should Be Equal As Strings    ${class_name}    ant-switch ant-switch-checked
