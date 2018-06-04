@@ -191,3 +191,28 @@ class keyWord(object):
 
         arg = int(arg)
         return res_list[arg]
+
+    def getProductSku(self, arg):
+        import requests
+
+        x_url = "http://admin1024.shoplazza.com/api/user/login"
+        p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
+        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        res = requests.post(url=x_url, headers={}, data=datas)
+        if res is None or res.status_code != 200:
+            return res.status_code
+        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+        uid = json.loads(res.content)['data']['id'] or None
+        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
+        res_data = json.loads(sub_list.content)['data']['products']
+        res_list = []
+        for i in res_data:
+            res_list.append(i['variants'][0]['sku'])
+
+        arg = int(arg)
+
+        if res_list[arg] is None:
+            return -1
+
+        return res_list[arg]
+    

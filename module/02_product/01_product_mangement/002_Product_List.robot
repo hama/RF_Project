@@ -118,6 +118,22 @@ Validate_Product_Status
     \    Run Keyword If    ${status}==0    should_be_down    ${i}
     \    Run Keyword If    ${status}==1    should_be_up    ${i}
 
+Validate_Product_Sku
+    #验证表头显示
+    Go TO    ${home_page}
+    #进入商品模块
+    Wait Until Element Is Visible    class:icon_product___2ZYHZ
+    Click Element    class:icon_product___2ZYHZ
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-tbody .ant-table-row")[0]
+    #获取当前页展示的商品数量
+    ${count}    Execute Javascript    return document.querySelectorAll(".ant-table-tbody .ant-table-row").length
+    #判断当前页所有商品状态
+    : FOR    ${i}    IN RANGE    ${count}
+    \    ${should_sku}    getProductSku    ${i}
+    \    ${sku}    Get Text    dom:document.querySelectorAll(".ant-table-tbody tr")[${i}].querySelectorAll("td")[4].querySelectorAll("span")[0]
+    \    Run Keyword If    ${should_sku}==-1    Should Be True    '${sku}'==''
+    \    Run Keyword If    ${should_sku}!=-1    Should Be Equal As Strings    ${should_sku}    ${sku}
+
 *** Keywords ***
 compare_quantity
     [Arguments]    ${show_quantity}
