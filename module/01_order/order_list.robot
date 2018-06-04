@@ -28,26 +28,15 @@ order_all_list_page
     sleep    2
     page should contain element    //*[@id="dj"]/div/div[4]
 
-order_alerady_paymen_page
-    #.点击已支付
-    go to    ${home_page}
-    sleep    1
-    Wait Until Element Is Visible    ${order_list_btn}
-    Click Element    ${order_list_btn}
-    Wait Until Element Is Visible    ${order_already_pay_btn}
-    Click Element    ${order_already_pay_btn}
-    sleep    2
-    page should contain element    //*[@id="dj"]/div/div[4]
-
-order_alerady_enter_page
-    #.点击已确认
+order_be_delivered_page
+    #.点击待发货
     go to    ${home_page}
     sleep    1
     Wait Until Element Is Visible    ${order_list_btn}
     Click Element    ${order_list_btn}
     sleep    2s
     Wait Until Element Is Visible    //*[@id="dj"]/div
-    Click Element    ${order_alerady_enter}
+    Click Element    ${order_delivered_btn}
     page should contain element    //*[@id="dj"]/div/div[4]
 
 order_alerady_send_page
@@ -92,6 +81,17 @@ order_alerady_cencel_page
     sleep    2s
     Wait Until Element Is Visible    //*[@id="dj"]/div
     Click Element    ${order_alerady_cencel_btn}
+    page should contain element    //*[@id="dj"]/div/div[4]
+
+order_alerady_refund_page
+    #.点击已退款
+    go to    ${home_page}
+    Sleep    1
+    Wait Until Element Is Visible    ${order_list_btn}
+    Click Element    ${order_list_btn}
+    sleep    2s
+    Wait Until Element Is Visible    //*[@id="dj"]/div
+    Click Element    ${order_alerady_refund_btn}
     page should contain element    //*[@id="dj"]/div/div[4]
 
 order_detail
@@ -154,19 +154,19 @@ order_list_all_check
     ${count}    evaluate    len(${dataLength})
     Run keyword If    ${count}<>20    Run keyword    Page Should Contain    djdjdj
 
-order_list_already_pay_check
-    #.选中已支付栏，订单列表展示已支付订单
+order_list_already_refund_check
+    #.选中已退款栏，订单列表展示已退款订单
     Go To    ${home_page}
     Wait Until Element Is Visible    ${order_list_btn}
     click element    ${order_list_btn}
-    Wait Until Element Is Visible    ${order_already_pay_btn}
-    Click Element    ${order_already_pay_btn}
+    Wait Until Element Is Visible    ${order_alerady_refund_btn}
+    Click Element    ${order_alerady_refund_btn}
     sleep    1
     ${count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length
     : FOR    ${i}    IN RANGE    ${count}
     \    ${x}    Evaluate    ${i}+1
-    \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[4].innerText
-    \    Run keyword If    '${data}'<>'支付成功'    Run keyword    Page Should Contain    ijijij
+    \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[3].innerText
+    \    Run keyword If    '${data}'<>'已退款'    Fail    ${error_msg}
 
 order_list_already_send_check
     #.选中已发货，订单列表展示已发货订单
@@ -180,20 +180,21 @@ order_list_already_send_check
     : FOR    ${i}    IN RANGE    ${count}
     \    ${x}    Evaluate    ${i}+1
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[5].innerText
-    \    Run keyword If    '${data}'<>'全部发货' and '${data}'<>'部分发货'    Run keyword    Page Should Contain    ijijij
-    #order_list_already_mission_check
+    \    Run keyword If    '${data}'<>'全部发货' and '${data}'<>'部分发货'    Fail    ${error_msg}
+
+order_list_already_mission_check
     #.选中已完成,订单列表展示已完成订单
-    #Go To    ${home_page}
-    #Wait Until Element Is Visible    ${order_list_btn}
-    #Click Element    ${order_list_btn}
-    #Wait Until Element Is Visible    ${order_alerady_mission_btn}
-    #Click Element    ${order_alerady_mission_btn}
-    #sleep    1
-    #${count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length
-    #: FOR    ${i}    IN RANGE    ${count}
-    #\    ${x}    Evaluate    ${i}+1
-    #\    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[5].innerText
-    #\    Run keyword If    '${data}'<>'已完成'    Run keyword    Page Should Contain    ijijij
+    Go To    ${home_page}
+    Wait Until Element Is Visible    ${order_list_btn}
+    Click Element    ${order_list_btn}
+    Wait Until Element Is Visible    ${order_alerady_mission_btn}
+    Click Element    ${order_alerady_mission_btn}
+    sleep    1
+    ${count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length
+    : FOR    ${i}    IN RANGE    ${count}
+    \    ${x}    Evaluate    ${i}+1
+    \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[5].innerText
+    \    Run keyword If    '${data}'<>'已完成'    Fail    ${error_msg}
 
 order_list_not_payment_check
     #.选中未支付，订单列表展示未支付订单
@@ -207,7 +208,7 @@ order_list_not_payment_check
     : FOR    ${i}    IN RANGE    ${count}
     \    ${x}    Evaluate    ${i}+1
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[4].innerText
-    \    Run keyword If    '${data}'<>'未支付'    Run keyword    Page Should Contain    ijijij
+    \    Run keyword If    '${data}'<>'未支付'    Fail    ${error_msg}
 
 order_list_already_cancel_check
     #.选中未支付，订单列表展示未支付订单
@@ -221,7 +222,7 @@ order_list_already_cancel_check
     : FOR    ${i}    IN RANGE    ${count}
     \    ${x}    Evaluate    ${i}+1
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[5].innerText
-    \    Run keyword If    '${data}'<>'已取消'    Run keyword    Page Should Contain    ijijij
+    \    Run keyword If    '${data}'<>'已取消'    Fail    ${error_msg}
 
 order_list_search_id
     #.订单ID输入框中输入已有订单的订单编号,列表只展示搜索的订单
@@ -238,7 +239,7 @@ order_list_search_id
     ${order_ids}    Execute JavaScript    return document.querySelectorAll("table tbody tr td")[1].innerText    #,在获取tr第一个订单号
     ${ord_ids}    searchStrs    ${order_ids}
     sleep    1.5
-    Run keyword If    '${order_id}'<>'${order_ids}'    Run keyword    Page Should Contain    ijijij
+    Run keyword If    '${order_id}'<>'${order_ids}'    Fail    ${error_msg}
 
 order_list_search_error
     #.订单搜索输入错误id
@@ -266,7 +267,7 @@ order_list_search_name
     : FOR    ${i}    IN RANGE    ${order_count}
     \    ${x}    Evaluate    ${i}+1
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td p")[1].innerText
-    \    Run keyword If    '${order_name}'<>'${data}'    Run keyword    Page Should Contain    djdjdj
+    \    Run keyword If    '${order_name}'<>'${data}'    Fail    ${error_msg}
 
 order_list_search_name_error
     #.订单搜索姓名输入 张三    错误
@@ -298,7 +299,7 @@ order_list_search_price
     \    ${x}    Evaluate    ${i}+1
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td p")[2].innerText
     \    ${res_data}    searchStrs    ${data}
-    \    Run keyword If    '${price}'<>'${res_data}'    Run keyword    Page Should Contain    djdjdj
+    \    Run keyword If    '${price}'<>'${res_data}'    Fail    ${error_msg}
 
 order_list_search_price_interval
     #.订单搜索最低价输入 10 最高价输入20    列表出现10 ～ 20价格的订单
@@ -318,7 +319,7 @@ order_list_search_price_interval
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td p")[2].innerText
     \    ${res_data}    searchStrs    ${data}
     \    Run keyword If    ${min_price}<'${res_data}'>${max_price}    log    success
-    \    ...    ELSE    Run keyword    Page Should Contain    djdjdjjd
+    \    ...    ELSE    Run keyword    Fail    ${error_msg}
 
 order_list_search_price_error
     #.订单搜索最低价输入 10 最高价输入8 提示错误
@@ -333,7 +334,7 @@ order_list_search_price_error
     Click Element    ${order_list_search}    #.搜索按钮
     ${msg}    Get Value    dom:document.querySelectorAll("input[placeholder='最高金额']")[0]
     Run keyword If    '${msg}'=='${Empty}'    log    success
-    ...    ELSE    Page Should Contain    dkfkgl
+    ...    ELSE    Fail    ${error_msg}
 
 order_list_search_price_errors
     #.订单搜索最大价输入10 最小价格输入30 提示错误
@@ -348,4 +349,4 @@ order_list_search_price_errors
     Click Element    ${order_list_search}    #.搜索按钮
     ${msg}    Get Value    dom:document.querySelectorAll("input[placeholder='最高金额']")[0]
     Run keyword If    '${msg}'=='${Empty}'    log    success
-    ...    ELSE    Page Should Contain    dkfkgl
+    ...    ELSE    Fail    ${error_msg}
