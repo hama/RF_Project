@@ -134,6 +134,41 @@ Validate_Product_Sku
     \    Run Keyword If    ${should_sku}==-1    Should Be True    '${sku}'==''
     \    Run Keyword If    ${should_sku}!=-1    Should Be Equal As Strings    ${should_sku}    ${sku}
 
+Validate_Upload_Alert
+    #验证商品上传弹窗
+    Go TO    ${home_page}
+    #进入商品模块
+    Wait Until Element Is Visible    class:icon_product___2ZYHZ
+    Click Element    class:icon_product___2ZYHZ
+    Wait Until Element Is Visible    class:import___3EkG3
+    Click Element    dom:document.querySelectorAll(".import___3EkG3")[0]
+    Assign id To Element    dom:document.querySelectorAll(".ant-modal-content")[0]    btn1
+    Wait Until Element Is Visible    btn1
+    Page Should Contain Element    btn1
+
+Validate_Delete_Product
+    #删除商品
+    Go TO    ${home_page}
+    #进入商品模块
+    Wait Until Element Is Visible    class:icon_product___2ZYHZ
+    Click Element    class:icon_product___2ZYHZ
+    #获取要删除的商品名称
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
+    ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
+    Assign id To Element    dom:document.querySelectorAll(".delete___2xfx-")[0]    del
+    Wait Until Element Is Visible    del
+    #点击删除按钮
+    Click Element    del
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Page Should Contain    确定删除吗？
+    #确定
+    Wait Until Element Is Visible    id:test_delete_modal_sure_btn
+    Click Element    id:test_delete_modal_sure_btn
+    #等待页面刷新数据
+    Sleep    1
+    #页面不应该包含该商品名称
+    Page Should Not Contain    ${name}
+
 *** Keywords ***
 compare_quantity
     [Arguments]    ${show_quantity}
