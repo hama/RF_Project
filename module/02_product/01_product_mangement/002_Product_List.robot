@@ -169,6 +169,27 @@ Validate_Delete_Product
     #页面不应该包含该商品名称
     Page Should Not Contain    ${name}
 
+Validate_Cancel_Delete_Product
+    #取消删除商品
+    Go TO    ${home_page}
+    #进入商品模块
+    Wait Until Element Is Visible    class:icon_product___2ZYHZ
+    Click Element    class:icon_product___2ZYHZ
+    #获取要删除的商品名称
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
+    ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
+    Assign id To Element    dom:document.querySelectorAll(".delete___2xfx-")[0]    del
+    Wait Until Element Is Visible    del
+    #点击删除按钮
+    Click Element    del
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Page Should Contain    确定删除吗？
+    #取消
+    Wait Until Element Is Visible    id:test_delete_modal_cancel_btn
+    Click Element    id:test_delete_modal_cancel_btn
+    #数据无变化
+    Page Should Contain    ${name}
+
 *** Keywords ***
 compare_quantity
     [Arguments]    ${show_quantity}
