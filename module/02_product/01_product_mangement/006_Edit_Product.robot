@@ -136,15 +136,37 @@ Edit_Product_Without_Save
     #进入商品模块
     Wait Until Element Is Visible    class:icon_product___2ZYHZ
     Click Element    class:icon_product___2ZYHZ
-    #点击第一个商品进行编辑
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-row")[0]
     Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-table-row")[0]
+    #先获取原来的库存
+    ${inventory_quantity}    Get Text    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[3]
+    #点击第一个商品进行编辑
     Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
-    #修改库存
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-input-number-input")[3]
-    #Mouse Over    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[9]
-    #Double Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[9]
+    #修改库存
     Input Text    dom:document.querySelectorAll(".ant-input-number-input")[3]    ${input_inventory_quantity}
     #未保存就点击返回按钮
     Click Element    dom:document.querySelectorAll(".arrow___1QM0w")[0]
     Alert Should Be Present    页面上有未保存内容，是否确定退出?
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[3]
+    #获取现在的库存
+    ${now_inventory_quantity}    Get Text    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[3]
+    Should Be Equal As Strings    ${inventory_quantity}    ${now_inventory_quantity}
+
+Edit_Product_Without_Save_Dismmis_Alert
+    #取消退出保存
+    Go TO    ${home_page}
+    ${input_inventory_quantity}=    Set Variable    50
+    #进入商品模块
+    Wait Until Element Is Visible    class:icon_product___2ZYHZ
+    Click Element    class:icon_product___2ZYHZ
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-row")[0]
+    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-table-row")[0]
+    #点击第一个商品进行编辑
+    Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-input-number-input")[3]
+    #修改库存
+    Input Text    dom:document.querySelectorAll(".ant-input-number-input")[3]    ${input_inventory_quantity}
+    #未保存就点击返回按钮
+    Click Element    dom:document.querySelectorAll(".arrow___1QM0w")[0]
+    Dismiss Alert    False
