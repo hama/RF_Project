@@ -241,3 +241,27 @@ class keyWord(object):
             res_list.append(i['title'])
 
         return len(res_list)
+
+    def getProductTagsLength(self, arg):
+        import requests
+
+        x_url = "http://admin1024.shoplazza.com/api/user/login"
+        p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
+        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        res = requests.post(url=x_url, headers={}, data=datas)
+        if res is None or res.status_code != 200:
+            return res.status_code
+        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+        uid = json.loads(res.content)['data']['id'] or None
+        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
+        res_data = json.loads(sub_list.content)['data']['products']
+        res_list = []
+
+        t = -1
+        for i in res_data:
+            t = t + 1
+            res_list.append(len(i['tags']))
+
+        arg = int(arg)
+        return res_list[arg]
+
