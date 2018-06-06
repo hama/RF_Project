@@ -31,7 +31,8 @@ order_list_time_sort
     Page Should Contain Element    dom:document.querySelectorAll("table tbody tr")[0]
     ${time}    Execute JavaScript    return document.querySelectorAll("table tbody tr td p")[0].innerHTML
     ${res}    order_list_str    ${time}    #.转换字符串比较
-    Run keyword If    '${res}'=="${false}"    Run keyword    Fail    ${error_msg}
+    #Run keyword If    '${res}'=="${false}"    Run keyword    Fail    ${error_msg}
+    Should Be True    '${res}'=="${false}"
 
 order_list_time_default
     #.取消日期筛选，默认显示为近三个月的订单
@@ -47,4 +48,5 @@ order_list_time_default
     ${count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length    #.获取tr数量
     ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${count}) td p")[0].innerHTML
     ${result}    order list maxmonth check    ${time}    ${data}
-    Run keyword If    '${result}'=="${False}"    Fail    ${error_msg}
+    #Run keyword If    '${result}'=="${False}"
+    Should Be True    '${result}'=='${True}'

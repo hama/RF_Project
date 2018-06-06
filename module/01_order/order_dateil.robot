@@ -43,7 +43,6 @@ order_detail_update_send_not
     Run keyword If    '${res}'=='未发货'    Run keyword    Input Text    dom:document.querySelectorAll("#shipping_code")[0]    ${input}
     Run keyword If    '${res}'=='未发货'    Run keyword    click element    dom:document.querySelectorAll('button')[3]
     Run keyword If    '${res}'=='未发货'    Run keyword    page should contain element    dom:document.querySelectorAll(".shipping_code___3Gh0j")[0]
-    …
     ...    ELSE    Fail    ${error_msg}
 
 order_detail_click_cancel
