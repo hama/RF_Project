@@ -1,7 +1,10 @@
 *** Variables ***
 ${home_page}      http://admin1024.shoplazza.com
-${main_user}      18826557090    #.没有资账户的账号
-${main_pwd}       147258    #.没有资账户的密码
+${main_user}      18826557090    #.没有子账户的账号
+${main_pwd}       147258    #.没有子账户的密码
+${recover_user}    15220581724    #.找回密码的账号
+${recover_password}    123456    #.找回密码的密码
+${recover_domain}    chen    #.找回密码的域名
 ${defaultUser}    17601298661
 ${defaultPassword}    111111
 ${defaultDomain}    baiyuan
@@ -46,3 +49,5 @@ ${order_list_api}    http://admin1024.shoplazza.com/api/order/list?start_create_
 ${order_list_export}    //*[@id="dj"]/div/div[1]/a    #.订单列表 导出按钮
 ${error_msg}      出错啦！    #.自定义错误提示
 ${login_btn}      class:logBtn___3pRgJ    #.登陆按钮
+${recover_pwd_btn}    //*[@id="root"]/div/div/form/div[4]/div/div/a[1]    #.忘记密码按钮
+${register_btn}    //*[@id="root"]/div/div/form/div[4]/div/a    #.注册按钮
