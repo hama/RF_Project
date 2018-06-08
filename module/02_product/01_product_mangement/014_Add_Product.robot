@@ -215,4 +215,72 @@ Add_Product_With_Description
     Should Be Equal As Strings    123321    ${now_title}
 
 Add_Product_With_Status
-    #验证商品上架
+    #添加商品上架
+    ${image}    Set Variable    /Users/lizhicheng/dianjiang/shoplaza_robot/module/02_product/tm.jpg
+    ${title}    Set Variable    ceshi
+    #填写必要和非必要参数以添加商品
+    Go TO    ${home_page}
+    #进入商品模块
+    Wait Until Element Is Visible    class:icon_product___2ZYHZ
+    Click Element    class:icon_product___2ZYHZ
+    #点击添加商品按钮
+    Wait Until Page Contains Element    id:test_add_btn
+    Click Element    id:test_add_btn
+    #标题
+    Wait Until Page Contains Element    id:__title
+    Input Text    id:__title    ${title}
+    #上架
+    Wait Until Page Contains Element    id:status
+    Click Element    id:status
+    #售价
+    Wait Until Page Contains Element    id:price
+    Input Text    id:price    100
+    #原价
+    Wait Until Page Contains Element    id:compare_at_price
+    Input Text    id:compare_at_price    110
+    #上传图片
+    Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
+    Wait Until Element Is Visible    id:test_upload_btn
+    Choose File    dom:document.querySelectorAll("input[type='file']")[0]    ${image}
+    Sleep    1
+    #点击保存
+    Click Element    id:test_save_btn
+    Sleep    2
+    #保存之后检测该商品是否上架
+    ${status}    Execute Javascript    return document.getElementById("status").getAttribute("class")
+    Should Be Equal As Strings    ant-switch ant-switch-checked    ${status}
+
+Add_Product_With_Category
+    #添加商品分类
+    ${title}    Set Variable    ceshi
+    #填写必要和非必要参数以添加商品
+    Go TO    ${home_page}
+    #进入商品模块
+    Wait Until Element Is Visible    class:icon_product___2ZYHZ
+    Click Element    class:icon_product___2ZYHZ
+    #点击添加商品按钮
+    Wait Until Page Contains Element    id:test_add_btn
+    Click Element    id:test_add_btn
+    #标题
+    Wait Until Page Contains Element    id:__title
+    Input Text    id:__title    ${title}
+    #分类
+    Wait Until Page Contains Element    id:product_type_cascade
+    Click Element    id:product_type_cascade
+    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]
+    #记录分类名
+    ${ca_name}    Get Text    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]
+    Click Element    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]
+    #售价
+    Wait Until Page Contains Element    id:price
+    Input Text    id:price    100
+    #原价
+    Wait Until Page Contains Element    id:compare_at_price
+    Input Text    id:compare_at_price    110
+    #点击保存
+    Click Element    id:test_save_btn
+    Sleep    2
+    #保存之后检测该商品是否包含该分类
+    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-cascader-picker-label")[0]
+    ${now_ca_name}    Get Text    dom:document.querySelectorAll(".ant-cascader-picker-label")[0]
+    Should Be Equal As Strings    ${now_ca_name}    ${ca_name}
