@@ -89,7 +89,7 @@ class keyWord(object):
 
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
-        datas = {"contact": "18826557090", "password": "147258"}
+        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
         res = requests.post(url=x_url,headers={},data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -132,7 +132,7 @@ class keyWord(object):
     def searchStr(self,args):
         import re
         str_ = str(args)
-        restr = re.search('\d',str_).group()
+        restr = re.search('\d+',str_).group()
         return restr
 
     def time(self, args):
@@ -170,6 +170,26 @@ class keyWord(object):
         res_list = []
         for i in res_data:
             res_list.append(i['inventory_quantity'])
+        return res_list[0]
+
+    def getFirstProductTitle(self):
+        import requests
+
+        x_url = "http://admin1024.shoplazza.com/api/user/login"
+        p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
+        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        res = requests.post(url=x_url, headers={}, data=datas)
+        if res is None or res.status_code != 200:
+            return res.status_code
+        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+
+        uid = json.loads(res.content)['data']['id'] or None
+
+        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
+        res_data = json.loads(sub_list.content)['data']['products']
+        res_list = []
+        for i in res_data:
+            res_list.append(i['title'])
         return res_list[0]
 
     def getProductStatus(self, arg):
@@ -264,4 +284,52 @@ class keyWord(object):
 
         arg = int(arg)
         return res_list[arg]
+
+    def getAllProductCount(self):
+        import requests
+
+        x_url = "http://admin1024.shoplazza.com/api/user/login"
+        p_url = "http://admin1024.shoplazza.com/api/product/search"
+        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        res = requests.post(url=x_url,headers={},data=datas)
+        if res is None or res.status_code != 200:
+            return res.status_code
+        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+
+        sub_list = requests.get(url=p_url,headers={"cookie": cookiesx})
+        total = json.loads(sub_list.content)['data']['total']
+
+        return total
+
+    def pageCount(self, total, size):
+        total = int(total)
+        size = int(size)
+
+        if total % size == 0:
+            page = total / size
+        else:
+            page = (total / size) + 1
+
+        return page
+
+    def validateProductByPageAndSize(self, page, size):
+        import requests
+
+        x_url = "http://admin1024.shoplazza.com/api/user/login"
+        p_url = "http://admin1024.shoplazza.com/api/product/search?page=" + str(page) + "&limit=" + str(size)
+        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        res = requests.post(url=x_url,headers={},data=datas)
+        if res is None or res.status_code != 200:
+            return res.status_code
+        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+
+        uid = json.loads(res.content)['data']['id'] or None
+
+        sub_list = requests.get(url=p_url,headers={"cookie": cookiesx})
+        res_data = json.loads(sub_list.content)['data']['products']
+        res_list = []
+        for i in res_data:
+            res_list.append(str(i['title']))
+        return res_list
+
 
