@@ -136,5 +136,26 @@ class keyWord(object):
         str_ = str(args)
         restr = re.search('\d+',str_).group()
         return restr
+    def order_list_str(self,args):
+        str_ = str(args)
 
+        restr = re.findall('\d+',str_)
+        timelist = ['05','31']
+        for i in timelist:
+            if i in restr:
+                return True
+            else:
+                return False
 
+    def order_list_maxmonth_check(self,max,min):
+        if max is None or min is None:
+            return False
+        maxstr_ = str(max)
+        minstr_ = str(min)
+        re_max = re.findall(r'-(\d+)',maxstr_)
+        re_min = re.findall(r'-(\d+)',minstr_)
+
+        if int(re_max[0]) - int(re_min[0]) > 3:
+            return False
+        else:
+            return True
