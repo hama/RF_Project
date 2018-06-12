@@ -50,39 +50,30 @@ class keyWord(object):
         emails = "%s@%s.com" % (salt, em)
         self.save_str = emails
         return emails
-    # def CreateFile(self):
-    #     str = """
-    #     #! /usr/bin/env python
-    #     # -*- coding: utf-8 -*-
-    #     import json
-    #     """
-    #     with open("/usr/local/lib/python2.7/site-packages/customLibrary/testes.py","w+") as f:
-    #         f.write(json.dumps(str))
-    #     print True
 
-    def selectCode(self):
-        phone = self.save_str
+    def selectCode(self,args):
         try:
             conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8", port=self.port)
             curs = conn.cursor()
-            sql = "SELECT code FROM user_validate WHERE `contact` = '%s' " % (phone)
+            sql = "SELECT code FROM user_validate WHERE `contact` = '%s' " % (args)
             curs.execute(sql)
             res = curs.fetchone()[0]
             return res
         except Exception as e:
             print e
 
-    def selectCodesPwd(self):
+    def selectCodesPwd(self,args):
         try:
             conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8", port=self.port)
             curs = conn.cursor()
-            sql = "SELECT code FROM user_validate WHERE `contact` = '%s' AND `usage` = '%s'" % (self.rec_email, self.rec_keywork)
+            sql = "SELECT code FROM user_validate WHERE `contact` = '%s' AND `usage` = '%s'" % (args, self.rec_keywork)
 
             curs.execute(sql)
             res = curs.fetchone()[0]
             return res
         except Exception as e:
             print e
+            exit()
 
     def selectProduct(self):
         import requests
@@ -355,4 +346,25 @@ class keyWord(object):
         for i in res_data:
             res_list.append(str(i['title']))
         return res_list
+    def remove_user(self,args):
+        if args is None:return False
+        try:
+            conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8", port=self.port)
+            curs = conn.cursor()
+            select = "SELECT id FROM `USER` WHERE `cell`= '%s'" % (args)
+            sql = "DELETE  FROM user_validate WHERE `contact` = '%s'" % (args)
+            sql_ = "DELETE  FROM user WHERE `cell` = '%s'" % (args)
+            curs.execute(sql)
+            curs.execute(sql_)
+            conn.commit()
 
+            #.删除domain
+            curs.execute(select)
+            for k in curs.fetchall():
+                sql_data = "DELETE FROM `user_domain` WHERE userid = %s" %(k['id'])
+                curs.execute(sql_data)
+                conn.commit()
+            return True
+        except Exception as e:
+            print e
+            exit()
