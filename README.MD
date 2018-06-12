@@ -119,6 +119,43 @@ pip install pymysql
 
 
 
+### 3.5 Linux 下使用 Selenium + Headless Chrome
+
+```shell
+# 下载包并安装，若存在依赖问题，则先安装依赖即可
+sudo apt-get install libxss1 libappindicator1 libindicator7
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome*.deb  # Might show "errors", fixed by next line
+sudo apt-get install -f
+
+# 测试是否可以运行
+google-chrome --headless --remote-debugging-port=9222 https://chromium.org --disable-gpu
+
+# 下载 chromedriver , 即 操作 chrome 的 api
+wget https://chromedriver.storage.googleapis.com/2.31/chromedriver_linux64.zip
+unzip chromedriver_linux64.zip
+mv chromedriver /usr/local/bin
+```
+
+#### 3.5.1 linux 下截图显示方块的问题
+
+> 现象：截图中，中文字体部分显示为方块
+>
+> 原因：没有安装中文字体导致，使用如下方法来检查和安装中文字体
+
+```shell
+# 安装字体检查工具，查看已安装的字体
+apt-get -y install fontconfig xfonts-utils
+
+# 查看系统中文字体
+fc-list :lang=zh
+
+# 安装中文字体
+apt-get install fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei fonts-arphic-ukai fonts-arphic-uming
+```
+
+
+
 ## 4. 用例规范说明
 
 ### 4.1 Test Suite 设置
@@ -143,9 +180,43 @@ Resource          ../../../resources/tax_price.robot		# 导入封装的测试库
 
 
 
+## 5. 命令行运行测试用例
+
+```shell
+# 基本命令如下
+robot test.robot
+
+# 参数说明
+# 1. 环境变量参数
+ROBOT_OPTIONS					# 默认配置的 list
+ROBOT_SYSLOG_FILE				# 系统日志文件
+ROBOT_SYSLOG_LEVEL				# 系统日志级别
+ROBOT_INTERNAL_TRACES			# 非空时，错误堆栈将包含方法调用
+
+# 2. 命令行参数
+-s								# 指定 suite name
+-t								# 指定 test name
+-v --variable					# 指定用例变量 -v str:hello  => ${str} = `hello`
+-V --variablefile				# 指定变量文件 PATH
+-d								# output dir
+-o								# xml output file
+-l								# log file
+-r								# report file
+-L								# log lever
+-X								# 失败就停止
+-P --pythonpath					# 指定 pythonpath，加载自定义的第三方包
+--console 						# 结果输出格式
+		 						# dotted: .表示成功 f表示一般用例失败 F表示重要用例失败
+		 						# quiet:   除错误外，不输除任何东西
+		 						# none:    不输出任何东西
+
+```
 
 
-## 5. 使用教程
+
+
+
+## 6. 使用教程
 
 - [RF 入门教程](http://www.testclass.net/rf/)
 - [RF 中文手册](https://jmcn.gitbooks.io/robotframework-cn/content/)
@@ -153,7 +224,7 @@ Resource          ../../../resources/tax_price.robot		# 导入封装的测试库
 - [SeleniumLibrary 驱动说明](https://seleniumhq.github.io/selenium/docs/api/py/index.html#drivers)
 
 
-## 6. API 文档
+## 7. API 文档
 
 - [RF User Guide](http://robotframework.org/robotframework/2.9b2/RobotFrameworkUserGuide.html)
 - [RF API Reference](http://robot-framework.readthedocs.io/en/latest/)
