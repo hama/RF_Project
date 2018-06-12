@@ -110,11 +110,20 @@ https://blog.csdn.net/TZJD89/article/details/72857961
 # 设置 python 默认使用 32 位来运行 wxPython,否则失败
 defaults write com.apple.versioner.python Prefer-32-Bit -bool yes
 ```
+
+
 ### 3.4 其他依赖库
 
 ```bash
 # pymysql  --  连接 mysql 数据库，获取验证码需要
 pip install pymysql
+```
+
+#### 3.4.1 VIM 语法高亮插件
+
+```shell
+git clone git://github.com/mfukar/robotframework-vim.git
+cp robotframework-vim/* ~/.vim/
 ```
 
 
