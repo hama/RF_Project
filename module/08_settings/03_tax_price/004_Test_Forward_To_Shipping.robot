@@ -4,6 +4,7 @@ Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaul
 Suite Teardown    Close Test Suite Browser
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
+Force Tags        tax
 Resource          ../../../resources/shoplaza_login.robot
 Resource          ../../../resources/browser.robot
 Resource          ../../../resources/tax_price.robot
@@ -11,6 +12,7 @@ Resource          ../../../resources/tax_price.robot
 *** Test Cases ***
 Test_Forward_To_Shipping
     [Documentation]    测试: 从税费页面点击物流设置跳转到物流页面
+    [Tags]    P0
     Go TO    ${home_page}
     Wait Until Element Is Visible    class:icon_setting___3OCQq
     Click Element    class:icon_setting___3OCQq

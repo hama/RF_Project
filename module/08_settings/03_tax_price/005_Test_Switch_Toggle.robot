@@ -4,6 +4,7 @@ Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaul
 Suite Teardown    Close Test Suite Browser
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
+Force Tags        tax
 Resource          ../../../resources/shoplaza_login.robot
 Resource          ../../../resources/browser.robot
 Resource          ../../../resources/tax_price.robot
@@ -15,6 +16,7 @@ ${tax_page_list_api}    http://admin1024.shoplazza.com/api/tax/list
 *** Test Cases ***
 Test Toggle Tax Switch
     [Documentation]    测试税费开关
+    [Tags]    P0
     Go TO    ${home_page}
     Wait Until Element Is Visible    class:icon_setting___3OCQq
     Click Element    class:icon_setting___3OCQq
