@@ -10,7 +10,7 @@ Resource          ../../../resources/tax_price.robot    # import ajax listener k
 
 *** Test Cases ***
 Test_Tax_Empty
-    Comment    税费界面应该不包含实际设置，仅提示前往设置物流
+    [Documentation]    税费界面应该不包含实际设置，仅提示前往设置物流
     Go TO    ${home_page}
     Wait Until Element Is Visible    class:icon_setting___3OCQq
     Click Element    class:icon_setting___3OCQq
