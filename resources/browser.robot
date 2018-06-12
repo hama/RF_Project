@@ -1,16 +1,17 @@
 *** Settings ***
-Documentation     Define startup and tear down action for test cases.
+Documentation     定义跟浏览器操作相关的关键字，如 打开浏览器、关闭浏览器
 
 *** Variables ***
-${home_page}      http://admin1024.shoplazza.com    # feature test enviroment
-${is_headless}    false    # whether should use headless chrome
+${home_page}      http://admin1024.shoplazza.com    # 提取主页变量，可通过启动参数 -v 更改为实际测试环境 
+${is_headless}    False                             # 定义是否采用 headless  (Case Sensitive for True/False)
 
 *** Keywords ***
 Test Suite Custom Teardown
-    Run Keyword If Test Passed    Capture Page Screenshot
+    [Documentation]    用例执行失败时，进行截图
     Run Keyword If Test Failed    Capture Page Screenshot
 
 New Test Suite Browser And Login
+    [Documentation]    创建浏览器对象并执行登录
     [Arguments]    ${username}    ${password}    ${domain}
     Comment    new browser for test suite
     log    ===========================================================================================================================================================
@@ -18,18 +19,20 @@ New Test Suite Browser And Login
     log    ===========================================================================================================================================================
     Run Keyword If    '${is_headless}'=='${true}'    Open Headless Chrome    ${home_page}
     ...    ELSE    Open Browser    ${home_page}    chrome
-    Set Window Size    1920    1080
-    Set Window Position    0    0
+    #Set Window Size    1920    1080
+    #Set Window Position    0    0
     Login With User    ${username}    ${password}    ${domain}
 
 Close Test Suite Browser
+    [Documentation]    Suite 执行完毕，关闭浏览器
     Comment    close the browser opened for this test suite.
     log    ===========================================================================================================================================================
     log    ====================================================== Test Suite End, Close Browser For Test Suite. ======================================================
     log    ===========================================================================================================================================================
-    #Close Browser
+    Close Browser
 
 Setup Test Case
+    [Documentation]    开始一个新的 Test case
     Comment    start a new test case.
     log    *******************************************************************************************************
     log    ******************************************* Test Case Start *******************************************

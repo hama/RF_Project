@@ -13,10 +13,10 @@ ${nothingUserPassword}    18825260804
 ${nothingUserDomain}    diu
 ${tax_price_setting}    税费设置
 ${tax_shipping_setting}    前往运费设置
-${tax_shipping_setting_title}    物流设置
+${tax_shipping_setting_title}    物流
 ${tax_shipping_setting_msg}    设置你的物流方案
-${tax_shipping_tab1}    物流方案设置
-${tax_shipping_tab2}    物流商设置
+${tax_shipping_tab1}    物流方案
+${tax_shipping_tab2}    物流商
 ${tax_page_country}    国家
 ${tax_page_country_price}    国家税率
 ${tax_page_location}    分地区
