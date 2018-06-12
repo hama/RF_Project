@@ -19,7 +19,7 @@ Test_Forward_To_Shipping
     Wait Until Element Is Visible    id:tax_price_btn
     Click Element    id:tax_price_btn
     Wait Until Page Contains    ${tax_price_setting}
-    sleep    2
+    Sleep    2
     log    测试页面基本内容
     Page Should Contain    ${tax_page_country}
     Page Should Contain    ${tax_page_country_price}
@@ -29,5 +29,6 @@ Test_Forward_To_Shipping
     log    点击设置按钮，跳转到物流设置
     Click Button    tag:button
     Wait Until Page Contains    ${tax_shipping_setting_title}
+    Sleep    2
     Page Should Contain    ${tax_shipping_tab1}
     Page Should Contain    ${tax_shipping_tab1}
