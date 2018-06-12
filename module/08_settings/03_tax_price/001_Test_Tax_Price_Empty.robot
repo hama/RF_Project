@@ -18,8 +18,7 @@ Test_Tax_Empty
     Assign Id To Element    xpath://ul[@id="9$Menu"]//li[4]    tax_price_btn
     Wait Until Element Is Visible    id:tax_price_btn
     Click Element    id:tax_price_btn
-    Wait Until Page Contains    ${tax_price_setting}
-    Page Should Contain    ${tax_shipping_setting}
+    Wait Until Page Contains    ${tax_shipping_setting}
     # 跳转到物流设置页面
     Click Button    ${tax_shipping_setting}
     Wait Until Page Contains    ${tax_shipping_setting_msg}
