@@ -223,9 +223,27 @@ ROBOT_INTERNAL_TRACES			# 非空时，错误堆栈将包含方法调用
 
 
 
+## 6. 自动化测试集成 CI
+
+> 对应到 flowci 中的流程为 RobotFramework
+>
+> 主要测试命令为: 
+
+```shell
+robot --outputdir logs \
+      --pythonpath ./lib \
+      --console dotted \
+      -v is_headless:True \
+      module/08_settings/03_tax_price
+```
+
+**评论效果如下图所示**
+
+![comment](images/comment.jpg)
 
 
-## 6. 使用教程
+
+## 7. 使用教程
 
 - [RF 入门教程](http://www.testclass.net/rf/)
 - [RF 中文手册](https://jmcn.gitbooks.io/robotframework-cn/content/)
@@ -233,7 +251,7 @@ ROBOT_INTERNAL_TRACES			# 非空时，错误堆栈将包含方法调用
 - [SeleniumLibrary 驱动说明](https://seleniumhq.github.io/selenium/docs/api/py/index.html#drivers)
 
 
-## 7. API 文档
+## 8. API 文档
 
 - [RF User Guide](http://robotframework.org/robotframework/2.9b2/RobotFrameworkUserGuide.html)
 - [RF API Reference](http://robot-framework.readthedocs.io/en/latest/)

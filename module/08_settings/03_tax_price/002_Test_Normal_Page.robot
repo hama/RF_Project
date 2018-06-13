@@ -4,6 +4,7 @@ Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaul
 Suite Teardown    Close Test Suite Browser
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
+Force Tags        tax
 Resource          ../../../resources/shoplaza_login.robot
 Resource          ../../../resources/browser.robot
 Resource          ../../../resources/tax_price.robot
@@ -11,6 +12,7 @@ Resource          ../../../resources/tax_price.robot
 *** Test Cases ***
 Test_Tax_Page_Normal
     [Documentation]    测试税费页面基本组件
+    [Tags]    P0
     Go TO    ${home_page}
     Wait Until Element Is Visible    class:icon_setting___3OCQq
     Click Element    class:icon_setting___3OCQq
@@ -37,6 +39,7 @@ Test_Tax_Page_Normal
 
 Test_Set_Tax_Price
     [Documentation]    测试: 税费设置
+    [Tags]    P0
     # click setting btn
     Click Element    dom:document.querySelectorAll('.card-col-Setting')[0];
     Wait Until Page Contains    保 存
