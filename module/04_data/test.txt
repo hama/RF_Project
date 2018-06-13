@@ -1,0 +1,8 @@
+*** Settings ***
+Library           customLibrary
+
+*** Test Cases ***
+testx
+    ${x}    Set Variable    {1:2,3:4}
+    ${data}    Dict Test    ss=${x}
+    log    ${data}
