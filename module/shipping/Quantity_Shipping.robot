@@ -1,6 +1,10 @@
 *** Settings ***
-Library           customLibrary
+Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
+Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Resource          ../../resources/shipping.robot
+Library           customLibrary
+Resource          ../../resources/tax_price.robot
+Resource          ../../resources/browser.robot
 
 *** Test Cases ***
 070_shipping
@@ -30,8 +34,7 @@ Resource          ../../resources/shipping.robot
     ${data}    set variable    数量运费
     input text    dom:document.querySelectorAll("#name")[1]    ${data}
     ${res}    execute javascript    return document.querySelectorAll("#name")[1].value
-    Run keyword If    '${res}'=='${data}'    log    success
-    ...    ELSE    Run keyword    page should contain    sd454
+    Should Be True    '${res}'=='${data}'
 
 072_shipping
     #.添加数量运费    输入1234 显示 数量运费
@@ -48,8 +51,7 @@ Resource          ../../resources/shipping.robot
     ${data}    set variable    1234
     input text    dom:document.querySelectorAll("#name")[1]    ${data}
     ${res}    execute javascript    return document.querySelectorAll("#name")[1].value
-    Run keyword If    '${res}'=='${data}'    log    success
-    ...    ELSE    Run keyword    page should contain    sd454
+    Should Be True    '${res}'=='${data}'
 
 073_shipping
     #.添加数量运费    输入 数量运费    保存    列表显示 数量运费
@@ -68,8 +70,7 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_edit_modal_sure_btn
     sleep    1
     ${getdata}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[0].innerText
-    Run keyword If    '${getdata}'=='${data}'    log    success
-    ...    ELSE    Run keyword    page should contain    sd454
+    Should Be True    '${getdata}'=='${data}'
 
 074_shipping
     #.添加数量运费    输入 输入超过50字符的内容    保存    提示错误
@@ -222,8 +223,7 @@ Resource          ../../resources/shipping.robot
     ${max_data}    execute javascript    return document.querySelectorAll("input[placeholder='无限']")[0].value
     ${count}    evaluate    ${min}+1
     sleep    1
-    Run keyword If    ${count}==${max_data}    log    success
-    ...    ELSE    Run keyword    page should contain    ssskk1
+    Should Be True    ${count}==${max_data}
 
 082_shipping
     #.添加数量运费    最小订单数量自动变化为小于最大订单数量的数字：99
@@ -245,8 +245,7 @@ Resource          ../../resources/shipping.robot
     ${max_data}    get value    id:range_min
     ${count}    evaluate    ${max}-1
     sleep    1
-    Run keyword If    ${count}==${max_data}    log    success
-    ...    ELSE    Run keyword    page should contain    ssskk1
+    Should Be True    ${count}==${max_data}
 
 083_shipping
     #.添加数量运费    取消勾选免运费
@@ -314,8 +313,7 @@ Resource          ../../resources/shipping.robot
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
     ${res}    searchStrs    ${data}
-    Run keyword If    ${res}==${cc}    log    success
-    ...    ELSE    Run keyword    page should contain    djdjjd99
+    Should Be True    ${res}==${cc}
 
 087_shipping
     #.添加数量运费    取消运费的勾选    保存成功，数量运费列表中显示的运费为0
@@ -337,8 +335,7 @@ Resource          ../../resources/shipping.robot
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
     ${res}    searchStrs    ${data}
-    Run keyword If    ${res}==0    log    success
-    ...    ELSE    Run keyword    page should contain    djdjjd99
+    Should Be True    ${res}==0
 
 088_shipping
     #.添加数量运费    勾选是否支持货到付款 保存 列表显示 支持
@@ -358,8 +355,7 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_edit_modal_sure_btn
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[2].innerText
-    Run keyword If    '${data}'=='支持'    log    success
-    ...    ELSE    Run keyword    page should contain    djdjjd99
+    Should Be True    '${data}'=='支持'
 
 089_shipping
     #.添加数量运费    取消勾选是否支持货到付款 保存 列表显示 不支持
@@ -380,8 +376,7 @@ Resource          ../../resources/shipping.robot
     click button    id:test_shipping_edit_modal_sure_btn
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[2].innerText
-    Run keyword If    '${data}'=='不支持'    log    success
-    ...    ELSE    Run keyword    page should contain    djdjjd99
+    Should Be True    '${data}'=='不支持'
 
 090_shipping
     #.直接关闭窗口，没有添加数量运费
@@ -417,4 +412,3 @@ Resource          ../../resources/shipping.robot
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     page should not contain element    dom:document.querySelectorAll("#name")[1].value
-    close browser

@@ -30,7 +30,8 @@ ${tax_page_zone_total_all}    全部
 ${navigation_setting}    //*[@id="root"]/div/div/div[1]/div[1]/div/ul/li[9]/div    #.导航栏-设置 按钮
 ${navigation_shipping}    //*[@id="9$Menu"]/li[3]/a    #.导航栏-物流 按钮
 ${navagation_payment}    //*[@id="9$Menu"]/li[4]/a    #.导航栏-支付设置 按钮
-${add_shipping_btn}    test_add_btn    #.添加物流按钮
+${shipping_add_country}    test_shipping_country_add_btn    #.设置物流-添加国家按钮
+${add_shipping_btn}    //*[@id="dj"]/div/div/div[2]/div[1]/div/div[4]/button    #.添加物流按钮
 ${order_list_btn}    //*[@id="root"]/div/div/div[1]/div[1]/div/ul/li[2]/a    #.导航栏-订单 按钮
 ${order_all_btn}    //*[@id="dj"]/div/div[2]/div[1]/div/label[1]/span[2]    #.订单-全部 按钮
 ${order_already_pay_btn}    //*[@id="dj"]/div/div[2]/div[1]/div/label[2]/span[2]    #.订单-已支付 按钮

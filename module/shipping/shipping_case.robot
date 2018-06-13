@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
-Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
+Suite Teardown    #Close Test Suite Browser    # close the browser opened for this test suite
 Library           customLibrary
 Resource          ../../resources/shipping.robot
 Resource          ../../resources/browser.robot
@@ -24,13 +24,11 @@ check_list_data
     : FOR    ${i}    IN RANGE    ${dataLength}
     \    ${res_data}    Execute Javascript    return responseMap.get("${page_list_api}").data[${i}].shipping_name;
     \    ${ul_data}    Execute Javascript    return document.querySelectorAll("#test_shipping_list_${i} li span")[0].innerHTML
-    \    Run keyword If    '${res_data}'<>'${ul_data}'    Run keyword    page should contain skjdnksjnks
-    \    ...    ELSE    log    success
+    \    Should Be True    '${res_data}'=='${ul_data}'
 
 092_shipping
     #创建物流    没有输入 方案名 点击保存
     go to    ${home_page}
-    sleep    1
     Wait Until Element Is Visible    ${navigation_setting}
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
@@ -72,9 +70,7 @@ check_list_data
     Wait Until Element Is Visible    id:test_save_btn
     click button    id:test_shipping_country_add_btn
     Wait Until Element Is Visible    id:test_shipping_country_modal_sure_btn
-    #execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0].click()
     click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
-    #execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[1].click()
     click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
     sleep    1
     click button    id:test_shipping_country_modal_sure_btn
@@ -172,19 +168,15 @@ check_list_data
     Wait Until Element Is Visible    id:test_save_btn
     click button    id:test_shipping_country_add_btn
     Wait Until Element Is Visible    id:test_shipping_country_modal_sure_btn
-    #execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2].click()
-    click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2]
-    #execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[10].click()
-    click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[10]
+    Execute JavaScript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2].click()
+    Execute JavaScript    return document.getElementsByClassName("ant-tree-checkbox-inner")[10].click()
     sleep    1
     click button    id:test_shipping_country_modal_sure_btn
     sleep    1
-    #execute javascript    return document.querySelectorAll("#test_shipping_country_edit_icon")[0].click()
     click element    dom:document.querySelectorAll("#test_shipping_country_edit_icon")[0]
     sleep    1
     ${count}    execute javascript    return document.querySelectorAll(".ant-modal-body ul li").length
-    Run keyword If    ${count}==32    Run keyword    close browser
-    ...    ELSE    Run keyword    page should contain    dddss
+    Should Be True    ${count}==32
 
 097_shipping
     #创建物流    添加中国    弹出删除窗口
@@ -203,15 +195,12 @@ check_list_data
     Wait Until Element Is Visible    id:test_save_btn
     click button    id:test_shipping_country_add_btn
     Wait Until Element Is Visible    id:test_shipping_country_modal_sure_btn
-    #execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2].click()
     click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2]
-    #execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[10].click()
+    Sleep    1
     click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[10]
     sleep    1
     click button    id:test_shipping_country_modal_sure_btn
     sleep    1
-    #execute javascript    return document.querySelectorAll("#test_shipping_country_delete_icon")[0].click()
-    click element    dom:document.querySelectorAll("#test_shipping_country_delete_icon")[0]
+    Execute JavaScript    return document.querySelectorAll("#test_shipping_country_delete_icon")[0].click()
     sleep    2
     page should contain element    id:test_delete_modal_sure_btn
-    close browser
