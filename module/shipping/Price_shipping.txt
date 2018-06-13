@@ -56,7 +56,6 @@ Resource          ../../resources/browser.robot
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    123
     #${res}    execute javascript    return document.getElementsByClassName("ant-input ant-input-lg name_input___14djA")[0].value
-    close browser
 
 024_shipping
     #.add    transport price    check
@@ -244,8 +243,7 @@ Resource          ../../resources/browser.robot
     sleep    1.5
     ${data}    get value    id:range_max
     ${new_max}    evaluate    ${min}+1
-    Run keyword If    ${data}==${new_max}    log    success
-    ...    ELSE    Run keyword    page should contain element    sdfsd5
+    Should Be True    ${data}==${new_max}
 
 033_shipping
     #.最大单价输入100    最小单价输入200    最小单价变为99
@@ -272,8 +270,7 @@ Resource          ../../resources/browser.robot
     sleep    1.5
     ${data}    get value    id:range_min
     ${new_min}    evaluate    ${max}-1
-    Run keyword If    ${data}==${new_min}    log    success
-    ...    ELSE    Run keyword    page should contain element    sdfsd5
+    Should Be True    ${data}==${new_min}
 
 034_shipping
     #.在运费价格框输入值    免运费的勾选离开框取消勾选
@@ -355,8 +352,7 @@ Resource          ../../resources/browser.robot
     Wait Until Element Is Visible    //*[@id="dj"]/div/div[3]/div[2]/div/div/div/div/div/table/tbody/tr
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
     ${res}    searchStrs    ${data}
-    Run keyword If    ${res}==${ship}    log    success
-    ...    ELSE    Run keyword    page should contain element    dfs5f51s6
+    Should Be True    ${res}==${ship}
 
 037_shipping
     #.运费价格框数字 保存成功 在列表显示刚添加的运费
@@ -386,8 +382,7 @@ Resource          ../../resources/browser.robot
     Wait Until Element Is Visible    //*[@id="dj"]/div/div[3]/div[2]/div/div/div/div/div/table/tbody/tr
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
     ${res}    searchStrs    ${data}
-    Run keyword If    ${res}==0    log    success
-    ...    ELSE    Run keyword    page should contain element    dfs5f51s6
+    Should Be True    ${res}==0
 
 038_shipping
     #.勾选是否支持货到付款    列表显示支持
@@ -416,8 +411,7 @@ Resource          ../../resources/browser.robot
     sleep    2
     Wait Until Element Is Visible    //*[@id="dj"]/div/div[3]/div[2]/div/div/div/div/div/table/tbody/tr
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[2].innerText
-    Run keyword If    '${data}'=='支持'    log    success
-    ...    ELSE    Run keyword    page should contain element    dfs5f51s6
+    Should Be True    '${data}'=='支持'
 
 039_shipping
     #.不勾选是否支持货到付款    列表显示不支持
@@ -446,5 +440,4 @@ Resource          ../../resources/browser.robot
     sleep    2
     Wait Until Element Is Visible    //*[@id="dj"]/div/div[3]/div[2]/div/div/div/div/div/table/tbody/tr
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[2].innerText
-    Run keyword If    '${data}'=='不支持'    log    success
-    ...    ELSE    Run keyword    page should contain element    dfs5f51s6
+    Should Be True    '${data}'=='不支持'
