@@ -55,5 +55,6 @@ ${register_btn}    //*[@id="root"]/div/div/form/div[4]/div/a    #.注册按钮
 ${shipping_name}    物流1    #>.物流名称
 ${shipping_first_element}    dom:document.querySelectorAll("#test_shipping_list_0 li")[0]    #.物流列表第一个元素
 ${del_shipp_btn}    id:test_shipping_delete_btn    #.删除物流按钮
+${add_products_btn}    id:test_product    #.添加商品按钮
 ${add_products_title}    ceshi1    #.添加商品的标题
 ${add_products_img}    ./tm.jpg    #.添加商品的图片
