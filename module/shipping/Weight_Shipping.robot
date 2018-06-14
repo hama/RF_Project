@@ -1,7 +1,6 @@
 *** Settings ***
 Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
 Library           customLibrary
-Resource          ../../resources/shipping.robot
 
 *** Test Cases ***
 040_shipping

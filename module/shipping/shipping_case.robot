@@ -2,7 +2,6 @@
 Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
 Suite Teardown    #Close Test Suite Browser    # close the browser opened for this test suite
 Library           customLibrary
-Resource          ../../resources/shipping.robot
 Resource          ../../resources/browser.robot
 Resource          ../../resources/tax_price.robot
 
