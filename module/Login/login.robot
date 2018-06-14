@@ -1,6 +1,6 @@
 *** Settings ***
-Resource          ../../resources/browser.robot
-Resource          ../../resources/tax_price.robot
+Resource          ../../resources/kw_browser.robot
+Resource          ../../resources/var_tax_price.robot
 Library           SeleniumLibrary
 Library           customLibrary
 

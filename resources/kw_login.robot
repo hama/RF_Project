@@ -1,6 +1,6 @@
 *** Settings ***
 Library           SeleniumLibrary    # import selenium library
-Resource          browser.robot
+Resource          kw_browser.robot
 
 *** Variables ***
 ${home_page}      http://admin1024.shoplazza.com    # feature test enviroment

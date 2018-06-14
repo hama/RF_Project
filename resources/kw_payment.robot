@@ -1,6 +1,6 @@
 *** Settings ***
-Resource          ./shoplaza_login.robot
-Resource          ./browser.robot
+Resource          ./kw_login.robot
+Resource          ./kw_browser.robot
 Library           SeleniumLibrary
 
 *** Variables ***

@@ -56,4 +56,5 @@ ${shipping_name}    物流1    #>.物流名称
 ${shipping_first_element}    dom:document.querySelectorAll("#test_shipping_list_0 li")[0]    #.物流列表第一个元素
 ${del_shipp_btn}    id:test_shipping_delete_btn    #.删除物流按钮
 ${add_products_title}    ceshi1    #.添加商品的标题
-${add_products_img}    ./tm.jpg    #.添加商品的图片
+${add_products_img}    ./images/tm.jpg    #.添加商品的图片
+${register_btn}    link:免费注册    #.注册按钮

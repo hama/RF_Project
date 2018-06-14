@@ -1,9 +1,9 @@
 *** Settings ***
 Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
-Resource          ../../resources/payment.robot
-Resource          ../../resources/tax_price.robot
-Resource          ../../resources/browser.robot
+Resource          ../../resources/kw_payment.robot
+Resource          ../../resources/var_tax_price.robot
+Resource          ../../resources/kw_browser.robot
 
 *** Test Cases ***
 001_payment

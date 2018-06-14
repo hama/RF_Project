@@ -1,8 +1,8 @@
 *** Settings ***
-Resource          ../../resources/shoplaza_login.robot
+Resource          ../../resources/kw_login.robot
 Library           /usr/local/lib/python2.7/site-packages/customLibrary
 Library           Selenium2Library
-Resource          ../../resources/tax_price.robot
+Resource          ../../resources/var_tax_price.robot
 
 *** Variables ***
 ${xpath_a}        //*[@id=“root”]/div/div/div[1]/div[1]/div/div

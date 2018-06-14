@@ -2,9 +2,9 @@
 Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Library           customLibrary
-Resource          ../../resources/tax_price.robot
-Resource          ../../resources/browser.robot
-Resource          ../../resources/products.robot
+Resource          ../../resources/var_tax_price.robot
+Resource          ../../resources/kw_browser.robot
+Resource          ../../resources/kw_products.robot
 
 *** Test Cases ***
 001_add_country_shipping

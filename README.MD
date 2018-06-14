@@ -19,11 +19,11 @@
 │   ├── output.xml
 │   └── report.html
 ├── resources                               # 资源目录，存放底层测试库
-│   ├── browser.robot						# 浏览器相关操作，打开/关闭 浏览器
+│   ├── kw_kw_browser.robot						# 浏览器相关操作，打开/关闭 浏览器
 │   ├── payment.robot
 │   ├── shipping.robot
-│   ├── shoplaza_login.robot				# 登录相关操作，调用关键字完成指定用户登录
-│   └── tax_price.robot						# 税费模块
+│   ├── kw_login.robot				# 登录相关操作，调用关键字完成指定用户登录
+│   └── var_var_tax_price.robot						# 税费模块
 ├── module									# 按照模块区分测试用例
 │   ├── 01_order							# 01_xx   一级菜单
 │   │   ├── 01_checkout						# 01_xx   二级菜单
@@ -182,9 +182,9 @@ Test Setup        Setup Test Case							# 用例初始化动作
 															#    -- 跳转到首页开始测试
 Test Teardown     Teardown Test Case						# 用例清理动作
 															#    -- 关闭额外打开的窗口等
-Resource          ../../../resources/shoplaza_login.robot   # 导入封装的测试库关键字
-Resource          ../../../resources/browser.robot			# 导入封装的测试库关键字
-Resource          ../../../resources/tax_price.robot		# 导入封装的测试库关键字
+Resource          ../../../resources/kw_login.robot   # 导入封装的测试库关键字
+Resource          ../../../resources/kw_kw_browser.robot			# 导入封装的测试库关键字
+Resource          ../../../resources/var_var_tax_price.robot		# 导入封装的测试库关键字
 ```
 
 
