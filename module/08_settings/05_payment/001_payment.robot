@@ -1,9 +1,14 @@
 *** Settings ***
 Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
-Resource          ../../resources/kw_payment.robot
-Resource          ../../resources/var_tax_price.robot
-Resource          ../../resources/kw_browser.robot
+Resource          ../../../resources/kw_payment.robot
+Resource          ../../../resources/var_tax_price.robot
+Resource          ../../../resources/kw_browser.robot
+
+*** Variables ***
+${xpath_a}        //*[@id=“root”]/div/div/div[1]/div[1]/div/div
+${xpath_b}        //*[@id="root"]/div/div/div[1]/div[1]/div/ul/li[9]/div
+${xpath_c}        //*[@id="9$Menu"]/li[4]/a
 
 *** Test Cases ***
 001_payment

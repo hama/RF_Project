@@ -1,8 +1,8 @@
 *** Settings ***
-Resource          ../../resources/kw_browser.robot
-Resource          ../../resources/var_tax_price.robot
+Resource          ../../../resources/kw_browser.robot
+Resource          ../../../resources/var_tax_price.robot
 Library           SeleniumLibrary
-Library           customLibrary
+Library           ../../../lib/customLibrary
 
 *** Test Cases ***
 remove_user

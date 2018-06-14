@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
-Library           customLibrary
+Library           ../../../lib/customLibrary
 
 *** Test Cases ***
 040_shipping
