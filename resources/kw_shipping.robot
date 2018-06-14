@@ -2,9 +2,9 @@
 Documentation     添加物流
 Library           SeleniumLibrary
 Library           customLibrary
-Resource          browser.robot
-Resource          shoplaza_login.robot
-Resource          tax_price.robot
+Resource          kw_browser.robot
+Resource          kw_login.robot
+Resource          var_tax_price.robot
 
 *** keyword ***
 add_shipping

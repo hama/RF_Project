@@ -1,10 +1,10 @@
 *** Settings ***
 Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
-Library           customLibrary
-Resource          ../../resources/tax_price.robot
-Resource          ../../resources/browser.robot
-Resource          ../../resources/products.robot
+Library           ../../../lib/customLibrary
+Resource          ../../../resources/var_tax_price.robot
+Resource          ../../../resources/kw_browser.robot
+Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
 001_add_country_shipping
@@ -115,7 +115,7 @@ Resource          ../../resources/products.robot
     click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
     ${data}    execute javascript    return document.getElementsByClassName("info_cn___N00o6")[1].innerHTML
     click button    dom:document.getElementById("test_shipping_country_modal_sure_btn")
-    ${res}    get text    //*[@id="dj"]/div/div[2]/div[2]/div/div/div/div/div/div/table/tbody/tr/td[1]/div/div/p[2]
+    ${res}    get text    //*[@id="dj"]/div/div[2]/div[2]/div/div/div/div/div/div/table/tbo../../../td[1]/div/div/p[2]
     Should Be True    '${data}'=='${res}'
 
 018_shipping
@@ -131,7 +131,7 @@ Resource          ../../resources/products.robot
     sleep    1.5
     click element    dom:document.getElementsByClassName("ant-checkbox-input")[0]
     click element    dom:document.getElementById("test_shipping_country_modal_sure_btn")
-    ${res}    get text    //*[@id="dj"]/div/div[2]/div[2]/div/div/div/div/div/div/table/tbody/tr/td[1]/div/div/p[2]
+    ${res}    get text    //*[@id="dj"]/div/div[2]/div[2]/div/div/div/div/div/div/table/tbo../../../td[1]/div/div/p[2]
     Should Be True    '${res}'=='其他国家'
 
 019_shipping
@@ -149,7 +149,7 @@ Resource          ../../resources/products.robot
     click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
     click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
     click button    dom:document.getElementById("test_shipping_country_modal_sure_btn")
-    ${res}    get text    //*[@id="dj"]/div/div[2]/div[2]/div/div/div/div/div/div/table/tbody/tr/td[1]/div/div/p[2]
+    ${res}    get text    //*[@id="dj"]/div/div[2]/div[2]/div/div/div/div/div/div/table/tbo../../../td[1]/div/div/p[2]
     Should Be True    '${res}'<>'其他国家'
 
 020_shipping

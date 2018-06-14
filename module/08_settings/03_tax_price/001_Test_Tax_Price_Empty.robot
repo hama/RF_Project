@@ -5,9 +5,9 @@ Suite Teardown    Close Test Suite Browser
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Force Tags        tax    # tag for tax price case
-Resource          ../../../resources/shoplaza_login.robot
-Resource          ../../../resources/browser.robot
-Resource          ../../../resources/tax_price.robot
+Resource          ../../../resources/kw_login.robot
+Resource          ../../../resources/kw_browser.robot
+Resource          ../../../resources/var_tax_price.robot
 
 *** Test Cases ***
 Test_Tax_Empty

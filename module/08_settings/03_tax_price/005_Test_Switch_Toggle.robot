@@ -5,9 +5,9 @@ Suite Teardown    Close Test Suite Browser
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Force Tags        tax
-Resource          ../../../resources/shoplaza_login.robot
-Resource          ../../../resources/browser.robot
-Resource          ../../../resources/tax_price.robot
+Resource          ../../../resources/kw_login.robot
+Resource          ../../../resources/kw_browser.robot
+Resource          ../../../resources/var_tax_price.robot
 
 *** Variables ***
 ${tax_page_toggle_switch_api}    http://admin1024.shoplazza.com/api/tax/toggle

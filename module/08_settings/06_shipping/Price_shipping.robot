@@ -1,9 +1,9 @@
 *** Settings ***
 Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
-Library           customLibrary
-Resource          ../../resources/tax_price.robot
-Resource          ../../resources/browser.robot
+Library           ../../../lib/customLibrary
+Resource          ../../../resources/var_tax_price.robot
+Resource          ../../../resources/kw_browser.robot
 
 *** Test Cases ***
 021_shipping
@@ -73,7 +73,7 @@ Resource          ../../resources/browser.robot
     input text    dom:document.querySelectorAll('#name')[1]    价格运费
     sleep    1.5
     click button    id:test_shipping_edit_modal_sure_btn
-    page should contain element    //*[@id="dj"]/div/div[3]/div[2]/div/div/div/div/div/table/tbody/tr/td[1]
+    page should contain element    //*[@id="dj"]/div/div[3]/div[2]/div/div/div/div/div/table/tbo../../../td[1]
 
 025_shipping
     #.输入50个字符点击保存
@@ -93,7 +93,7 @@ Resource          ../../resources/browser.robot
     input text    dom:document.querySelectorAll('#name')[1]    ${str}
     sleep    1.5
     click button    id:test_shipping_edit_modal_sure_btn
-    page should contain element    //*[@id="dj"]/div/div[3]/div[2]/div/div/div/div/div/table/tbody/tr/td[1]
+    page should contain element    //*[@id="dj"]/div/div[3]/div[2]/div/div/div/div/div/table/tbo../../../td[1]
 
 026_shipping
     #.输入超过50个字符点击保存
@@ -150,7 +150,7 @@ Resource          ../../resources/browser.robot
     input text    dom:document.querySelectorAll('#desc')[0]    sssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
     click button    id:test_shipping_edit_modal_sure_btn
-    page should contain element    //*[@id="dj"]/div/div[3]/div[2]/div/div/div/div/div/table/tbody/tr/td[1]
+    page should contain element    //*[@id="dj"]/div/div[3]/div[2]/div/div/div/div/div/table/tbo../../../td[1]
 
 029_shipping
     #.最小订单价输入超过10位以上的数字
@@ -215,7 +215,7 @@ Resource          ../../resources/browser.robot
     input text    id:range_min    10
     input text    id:range_max    100
     click button    id:test_shipping_edit_modal_sure_btn
-    page should contain element    //*[@id="dj"]/div/div[3]/div[2]/div/div/div/div/div/table/tbody/tr/td[1]
+    page should contain element    //*[@id="dj"]/div/div[3]/div[2]/div/div/div/div/div/table/tbo../../../td[1]
 
 032_shipping
     #.最小单价输入100    最大单价输入10    最大单价变为101

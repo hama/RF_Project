@@ -57,4 +57,5 @@ ${shipping_first_element}    dom:document.querySelectorAll("#test_shipping_list_
 ${del_shipp_btn}    id:test_shipping_delete_btn    #.删除物流按钮
 ${add_products_btn}    id:test_product    #.添加商品按钮
 ${add_products_title}    ceshi1    #.添加商品的标题
-${add_products_img}    ./tm.jpg    #.添加商品的图片
+${add_products_img}    ./images/tm.jpg    #.添加商品的图片
+${register_btn}    link:免费注册    #.注册按钮
