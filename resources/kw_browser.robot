@@ -2,13 +2,13 @@
 Documentation     定义跟浏览器操作相关的关键字，如 打开浏览器、关闭浏览器
 
 *** Variables ***
-${home_page}      http://admin1024.shoplazza.com    # 提取主页变量，可通过启动参数 -v 更改为实际测试环境 
-${is_headless}    False                             # 定义是否采用 headless  (Case Sensitive for True/False)
+${home_page}      http://admin1024.shoplazza.com    # 提取主页变量，可通过启动参数 -v 更改为实际测试环境
+${is_headless}    False    # 定义是否采用 headless    (Case Sensitive for True/False)
 
 *** Keywords ***
 New Test Suite Browser And Login
-    [Documentation]    创建浏览器对象并执行登录
     [Arguments]    ${username}    ${password}    ${domain}
+    [Documentation]    创建浏览器对象并执行登录
     log    ===========================================================================================================================================================
     log    ===================================================== Test Suite Start, New Browser For Test Suite ========================================================
     log    ===========================================================================================================================================================
@@ -32,23 +32,22 @@ Setup Test Case
     log    *******************************************************************************************************
 
 Teardown Test Case
-    [Documentation]    测试用例清理动作
-    # 用例失败时进行截图
+    [Documentation]    测试用例执行失败进行截图
     Run Keyword If Test Failed    Capture Page Screenshot
     log    *******************************************************************************************************
     log    ******************************************** Test Case End ********************************************
     log    *******************************************************************************************************
 
 Open Test Browser
-    [Documentation]    仅打开浏览器，不登录，用于验证 注册/找回密码模块
     [Arguments]    ${url}
+    [Documentation]    仅打开浏览器，不登录，用于验证 注册/找回密码模块
     log    Begin Open Browser Window
     Run Keyword If    '${is_headless}'=='${true}'    Open Headless Chrome    ${url}
     ...    ELSE    Open Browser    ${url}    chrome
 
 Open Headless Chrome
-    [Documentation]    打开 Headless 浏览器
     [Arguments]    ${url}
+    [Documentation]    打开 Headless 浏览器
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument    headless
     Call Method    ${chrome_options}    add_argument    disable-gpu

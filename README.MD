@@ -256,3 +256,26 @@ robot --outputdir logs \
 - [RF User Guide](http://robotframework.org/robotframework/2.9b2/RobotFrameworkUserGuide.html)
 - [RF API Reference](http://robot-framework.readthedocs.io/en/latest/)
 - [SeleniumLibrary API](http://robotframework.org/Selenium2Library/Selenium2Library.html)
+
+## 9. 用例模块负责人
+
+| 模块                         | 主要负责人  |
+| ---------------------------- | ----------- |
+| module                       |             |
+| \|—— 01_order     订单       | 俊成        |
+| \|—— 02_product 商品         | 志成        |
+| \|—— 03_customer  顾客       |             |
+| \|—— 04_data    数据         |             |
+| \|—— 05_marketing  营销      |             |
+| \|—— 06_store    店铺        |             |
+| \|—— 07_tools    工具        |             |
+| \|—— 08_settings  设置       |             |
+| \|—— 03_tax_price  税费      | 吴文雄      |
+| \|—— 04_payment 支付         |             |
+| \|—— 05_payment 支付         | 俊成        |
+| \|—— 06_shipping 物流        | 俊成        |
+| \|—— 09_checkout             | 俊成/吴文雄 |
+| \|—— 10_account 账户登录注册 |             |
+| \|—— 001 register  注册      |             |
+| \|—— 002 login 登录          |             |
+

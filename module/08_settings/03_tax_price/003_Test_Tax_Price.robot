@@ -1,46 +1,41 @@
 *** Settings ***
-Documentation     测试税费页面基本功能: 帮助提示、设置按钮提示、界面基本内容展示
-Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
-Suite Teardown    Close Test Suite Browser
-Test Setup        Setup Test Case
-Test Teardown     Teardown Test Case
+Documentation     税费正常功能测试
+Suite Setup       Tax Price Suite Setup
+Suite Teardown    Tax Price Suite Teardown
 Force Tags        tax
+Library           SeleniumLibrary
 Resource          ../../../resources/kw_login.robot
 Resource          ../../../resources/kw_browser.robot
+Resource          ../../../resources/kw_shipping.robot
 Resource          ../../../resources/var_tax_price.robot
 
+*** Variables ***
+${tax_page}       http://admin1024.shoplazza.com/taxPrice    # 税费页面URL
+
 *** Test Cases ***
-Test_Tax_Page_Normal
-    [Documentation]    测试税费页面基本组件
+002 Test Tax Page Normal
+    [Documentation]    [测试内容]: 页面基本组件正常 [预期结果]: 税费页面基本组件正常 [前置条件]: 添加一条物流
     [Tags]    P0
-    Go TO    ${home_page}
-    Wait Until Element Is Visible    class:icon_setting___3OCQq
-    Click Element    class:icon_setting___3OCQq
-    Start Ajax Listener
-    log    测试: 点击税费设置，页面加载数据并展示，判断页面展示内容是否同接口获取的数据一致.
-    Assign Id To Element    xpath://ul[@id="9$Menu"]//li[4]    tax_price_btn
-    Wait Until Element Is Visible    id:tax_price_btn
-    Click Element    id:tax_price_btn
-    Wait Until Page Contains    ${tax_price_setting}
-    sleep    1
+    Go To Tax Price Page
+    Sleep    1
     Page Should Contain    ${tax_page_country}
     Page Should Contain    ${tax_page_country_price}
     Page Should Contain    ${tax_page_location}
     Page Should Contain    ${tax_page_operation}
     Page Should Contain    ${tax_page_tips}
-    log    测试: 检查列表数据是否同接口返回的一致
+    Log    测试: 检查列表数据是否同接口返回的一致
     Check Tax Page List
-    log    测试: 鼠标移动到税费计算方式的帮助问号上
+    Log    测试: 鼠标移动到税费计算方式的帮助问号上
     Mouse Over    dom:document.querySelectorAll('.hd-line-help')[1];
     Wait Until Page Contains    ${tax_page_count_tips}
-    log    测试: 鼠标移动到设置按钮上
+    Log    测试: 鼠标移动到设置按钮上
     Mouse Over    dom:document.querySelectorAll('.card-col-Setting')[0];
     Wait Until Page Contains    ${tax_page_setting_hover_tips}
 
-Test_Set_Tax_Price
+003 Test Tax Price Setting
     [Documentation]    测试: 税费设置
     [Tags]    P0
-    # click setting btn
+    Go To Tax Price Page
     Click Element    dom:document.querySelectorAll('.card-col-Setting')[0];
     Wait Until Page Contains    保 存
     Sleep    2
@@ -54,7 +49,55 @@ Test_Set_Tax_Price
     Check City Data
     Click Element    class:ant-modal-close-x
 
+004 Test Toggle Tax Switch
+    [Documentation]    测试税费开关
+    [Tags]    P0
+    Start Ajax Listener
+    Go To Tax Price Page
+    sleep    2
+    Assign Id To Element    dom:document.querySelectorAll('.ant-table-tbody .ant-switch')[0];    switch_1
+    ${dataLength}=    Execute JavaScript    return responseMap.get("${tax_page_list_api}").data.list.length;
+    log    列表应该不为空，有数据存在
+    Should Be True    ${dataLength}>=1
+    # 获取原始开关值
+    ${rawSwitch}=    Execute JavaScript    return responseMap.get("${tax_page_list_api}").data.list[0].is_enable;
+    Click Element    id:switch_1
+    sleep    2
+    Page Should Contain    ${tax_page_setting_ok}
+    Check response status
+    # 获取设置后开关值
+    ${newSwitch}=    Execute JavaScript    return responseMap.get("${tax_page_list_api}").data.list[0].is_enable;
+    Should Not Be True    '${rawSwitch}'=='${newSwitch}'
+
+005 Test Forward To Shipping Page
+    [Documentation]    测试: 从税费页面点击物流设置跳转到物流页面
+    [Tags]    P0
+    Go To Tax Price Page
+    Sleep    2
+    log    测试页面基本内容
+    Page Should Contain    ${tax_page_country}
+    Page Should Contain    ${tax_page_country_price}
+    Page Should Contain    ${tax_page_location}
+    Page Should Contain    ${tax_page_operation}
+    Page Should Contain    ${tax_page_tips}
+    log    点击设置按钮，跳转到物流设置
+    Click Button    tag:button
+    Wait Until Page Contains    ${tax_shipping_setting_title}
+    Sleep    2
+    Page Should Contain    ${tax_shipping_tab1}
+    Page Should Contain    ${tax_shipping_tab1}
+
 *** KeyWords ***
+Tax Price Suite Setup
+    New Test Suite Browser And Login    ${testUser1}    ${testUser1Password}    ${testUser1Domain}
+    Go To Shipping Page
+    Add Shipping
+
+Tax Price Suite Teardown
+    Go To Shipping Page
+    Delete Shipping
+    Close Test Suite Browser
+
 Check Tax Page List
     log    获取指定接口的数据，使用 Table should countains 关键字判断是否包含
     ${dataLength}=    Execute JavaScript    return responseMap.get("${tax_page_list_interface}").data.list.length;
@@ -93,3 +136,9 @@ Check City Data
     \    Table Cell Should Contain    id:zone_table    ${rowIndex}    1    ${zone_name}
     \    #Table Cell Should Contain    id:zone_table    ${rowIndex}    2    ${zone_price_show}
     \    Textfield Value Should Be    dom:document.querySelectorAll('.ant-modal-body input')[${inputIndex}]    ${zone_price_show}
+
+Check response status
+    ${state}=    Execute JavaScript    return responseMap.get("${tax_page_toggle_switch_api}").state;
+    ${msg}=    Execute JavaScript    return responseMap.get("${tax_page_toggle_switch_api}").msg;
+    Should Be Equal As Strings    ${state}    0
+    Should Be Equal As Strings    ${msg}    请求成功
