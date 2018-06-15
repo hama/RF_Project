@@ -3,15 +3,15 @@ Library           SeleniumLibrary    # import selenium library
 Resource          kw_browser.robot
 
 *** Variables ***
-${home_page}      http://admin1024.shoplazza.com    # feature test enviroment
+${home_page}      http://admin1024.shoplazza.com/
 # default user, has everything
 ${defaultUser}    17601298661
 ${defaultPassword}    111111
 ${defaultDomain}    baiyuan
-# the user has nothing
-${nothingUser}    18825260804
-${nothingUserPassword}    18825260804
-${nothingUserDomain}    diu
+
+${testUser1}    18825260804
+${testUser1Password}    18825260804
+${testUser1Domain}    diu
 
 *** Keywords ***
 Login With User
@@ -25,9 +25,14 @@ Login With User
     Input Password    id:password    ${password}
     Click Button    class:logBtn___3pRgJ
     Comment    wait until domain input text element is visible
-    Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${domain}
-    Click Button    class:logBtn___3pRgJ
+    Sleep    1
+    ${has_login}=    Execute JavaScript    return window.location.href === "${home_page}"
+    Run Keyword Unless    ${has_login}    Input Domain
     Wait Until Element Is Visible    class:icon_setting___3OCQq
     log    Login Success
     log    ===============================================================
+
+Input Domain
+    [Arguments]    ${domain}
+    Input Text    id:username    ${domain}
+    Click Button    class:logBtn___3pRgJ
