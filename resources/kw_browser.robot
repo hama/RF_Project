@@ -1,10 +1,6 @@
 *** Settings ***
 Documentation     定义跟浏览器操作相关的关键字，如 打开浏览器、关闭浏览器
 
-*** Variables ***
-${home_page}      http://admin1024.shoplazza.com    # 提取主页变量，可通过启动参数 -v 更改为实际测试环境
-${is_headless}    False    # 定义是否采用 headless    (Case Sensitive for True/False)
-
 *** Keywords ***
 New Test Suite Browser And Login
     [Arguments]    ${username}    ${password}    ${domain}
@@ -14,8 +10,8 @@ New Test Suite Browser And Login
     log    ===========================================================================================================================================================
     Run Keyword If    '${is_headless}'=='${true}'    Open Headless Chrome    ${home_page}
     ...    ELSE    Open Browser    ${home_page}    chrome
-    #Set Window Size    1920    1080
-    #Set Window Position    0    0
+    Set Window Position    0    0
+    Set Window Size    1920    1080
     Login With User    ${username}    ${password}    ${domain}
 
 Close Test Suite Browser

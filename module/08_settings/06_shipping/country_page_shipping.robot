@@ -14,8 +14,8 @@ Resource          ../../../resources/kw_products.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    ${shipping_add_country}
     Click Element    ${shipping_add_country}
     Sleep    1
@@ -31,8 +31,8 @@ Resource          ../../../resources/kw_products.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     sleep    1.5
     page should contain link    id:test_save_btn
     click button    id:test_shipping_country_add_btn
@@ -45,8 +45,8 @@ Resource          ../../../resources/kw_products.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_save_btn
     sleep    1
     Input Text    dom:document.querySelectorAll('#name')[0]    中国
@@ -61,8 +61,8 @@ Resource          ../../../resources/kw_products.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_save_btn
     sleep    1
     input text    dom:document.querySelectorAll('#name')[0]    中
@@ -75,8 +75,8 @@ Resource          ../../../resources/kw_products.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_save_btn
     sleep    1
     input text    dom:document.querySelectorAll('#name')[0]    @#￥
@@ -89,8 +89,8 @@ Resource          ../../../resources/kw_products.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    ${shipping_add_country}
     Click Element    ${shipping_add_country}
     click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
@@ -106,8 +106,8 @@ Resource          ../../../resources/kw_products.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    ${shipping_add_country}
     Click Element    ${shipping_add_country}
     sleep    1.5
@@ -124,8 +124,8 @@ Resource          ../../../resources/kw_products.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    ${shipping_add_country}
     Click Element    ${shipping_add_country}
     sleep    1.5
@@ -140,8 +140,8 @@ Resource          ../../../resources/kw_products.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    ${shipping_add_country}
     Click Element    ${shipping_add_country}
     sleep    1.5
@@ -158,8 +158,8 @@ Resource          ../../../resources/kw_products.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    ${shipping_add_country}
     Click Element    ${shipping_add_country}
     sleep    1.5

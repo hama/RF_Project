@@ -9,8 +9,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
     click button    id:test_shipping_add_price_btn
@@ -26,8 +26,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
     click button    id:test_shipping_add_price_btn
@@ -44,8 +44,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -68,8 +68,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -84,8 +84,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -104,8 +104,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -124,8 +124,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -143,8 +143,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -163,8 +163,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -183,8 +183,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -204,8 +204,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -227,8 +227,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -250,8 +250,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -271,8 +271,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -292,8 +292,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -313,8 +313,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -337,8 +337,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -362,8 +362,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -387,8 +387,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -406,8 +406,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -428,8 +428,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -446,8 +446,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -467,8 +467,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -486,8 +486,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -511,8 +511,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -536,8 +536,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -560,8 +560,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -586,8 +586,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -603,8 +603,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
@@ -623,8 +623,8 @@ Library           ../../../lib/customLibrary
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn

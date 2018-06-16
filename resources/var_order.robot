@@ -2,7 +2,7 @@
 ${order_list_btn}    //*[@id="root"]/div/div/div[1]/div[1]/div/ul/li[2]/a    #.导航栏-订单 按钮
 ${order_all_btn}    //*[@id="dj"]/div/div[2]/div[1]/div/label[1]/span[2]    #.订单-全部 按钮
 ${order_already_pay_btn}    //*[@id="dj"]/div/div[2]/div[1]/div/label[2]/span[2]    #.订单-已支付 按钮
-${order_delivered_btn}    //*[@id="dj"]/div/div[2]/div[1]/div/label[3]/span[2]    #. 订单-待发货 按钮
+${order_delivered_btn}    //*[@id="dj"]/div/div[2]/div[1]/div/label[3]/span[2]    #.订单-待发货 按钮
 ${order_alerady_send_btn}    //*[@id="dj"]/div/div[2]/div[1]/div/label[4]/span[2]    #.订单-已发货 按钮
 ${order_alerady_mission_btn}    //*[@id="dj"]/div/div[2]/div[1]/div/label[5]/span[2]    #.订单-已完成 按钮
 ${order_not_payment_btn}    //*[@id="dj"]/div/div[2]/div[1]/div/label[6]/span[2]    #.订单-未支付 按钮

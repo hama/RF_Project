@@ -21,7 +21,7 @@ check_list_data
     sleep    1
     ${dataLength}=    Execute JavaScript    return responseMap.get("${page_list_api}").data.length;
     : FOR    ${i}    IN RANGE    ${dataLength}
-    \    ${res_data}    Execute Javascript    return responseMap.get("${page_list_api}").data[${i}].shipping_name;
+    \    ${res_data}    Execute Javascript    return responseMap.get("${page_list_api}").data[${i}].content_shipping_name;
     \    ${ul_data}    Execute Javascript    return document.querySelectorAll("#test_shipping_list_${i} li span")[0].innerHTML
     \    Should Be True    '${res_data}'=='${ul_data}'
 
@@ -32,8 +32,8 @@ check_list_data
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_save_btn
     click link    id:test_save_btn
     page should contain element    class:ant-form-explain
@@ -45,8 +45,8 @@ check_list_data
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     sleep    1
     input text    id:name    方案1
     Wait Until Element Is Visible    id:test_save_btn
@@ -61,8 +61,8 @@ check_list_data
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     sleep    1
     ${name}    salt
     input text    id:name    ${name}
@@ -117,8 +117,8 @@ check_list_data
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     sleep    1
     ${name}    salt
     input text    id:name    ${name}
@@ -159,8 +159,8 @@ check_list_data
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     sleep    1
     ${name}    salt
     input text    id:name    ${name}
@@ -188,8 +188,8 @@ check_list_data
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_save_btn
     click button    id:test_shipping_country_add_btn

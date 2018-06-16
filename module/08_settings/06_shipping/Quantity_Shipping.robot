@@ -12,8 +12,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     page should contain button    id:test_shipping_edit_modal_sure_btn
@@ -25,8 +25,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -42,8 +42,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -59,8 +59,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -78,8 +78,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -96,8 +96,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -114,8 +114,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -133,8 +133,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -151,8 +151,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -169,8 +169,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -187,8 +187,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -208,8 +208,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -231,8 +231,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -253,8 +253,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -268,8 +268,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -285,8 +285,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -300,8 +300,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -321,8 +321,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -343,8 +343,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -363,8 +363,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -384,8 +384,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     #execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
@@ -400,8 +400,8 @@ Resource          ../../../resources/kw_browser.robot
     click element    ${navigation_setting}
     Wait Until Element Is Visible    ${navigation_shipping}
     click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${add_shipping_btn}
-    click element    ${add_shipping_btn}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
     input text    dom:document.querySelectorAll("#name")[1]    数量运费

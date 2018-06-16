@@ -1,18 +1,17 @@
 *** Settings ***
 Documentation     税费正常功能测试
-Suite Setup       New Test Suite Browser And Login    ${testUser1}    ${testUser1Password}    ${testUser1Domain}
+Suite Setup       New Test Suite Browser And Login    ${user_default_name}    ${user_default_pwd}    ${user_default_domain}
 Suite Teardown    Close Test Suite Browser
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Force Tags        tax
 Library           SeleniumLibrary
+Resource          ../../../resources/var_common.robot
+Resource          ../../../resources/var_tax_price.robot
+Resource          ../../../resources/var_shipping.robot
 Resource          ../../../resources/kw_login.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_shipping.robot
-Resource          ../../../resources/var_tax_price.robot
-
-*** Variables ***
-${tax_page}       http://admin1024.shoplazza.com/taxPrice    # 税费页面URL
 
 *** Test Cases ***
 001 Test No Shipping
@@ -20,6 +19,7 @@ ${tax_page}       http://admin1024.shoplazza.com/taxPrice    # 税费页面URL
     [Tags]    P0
     Go To Tax Price Page
     Comment    跳转到物流设置页面
-    Click Button    ${tax_shipping_setting}
-    Wait Until Page Contains    ${tax_shipping_setting_msg}
-    Page Should Contain    ${tax_shipping_setting_title}
+    Sleep    1
+    Click Button    ${locator_tax_goto_shipping}
+    Wait Until Page Contains    ${content_shipping_tab1}
+    Page Should Contain    ${content_shipping_tab2}
