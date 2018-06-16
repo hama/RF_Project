@@ -19,13 +19,15 @@ ${desc_a}         数量运费说明
 Add Shipping
     Go To Shipping Page
     Wait Until Element Is Visible    ${add_shipping_btn}
+    Sleep    1
     click element    ${add_shipping_btn}
-    sleep    1
+    Sleep    1
     input text    id:name    ${shipping_name}    #.物流名称
     Wait Until Element Is Visible    id:test_save_btn
     click button    id:test_shipping_country_add_btn
     Wait Until Element Is Visible    id:test_shipping_country_modal_sure_btn
     click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
+    Wait Until Page Contains    Algeria
     click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
     sleep    1
     click button    id:test_shipping_country_modal_sure_btn
@@ -65,5 +67,8 @@ Delete Shipping
     Execute JavaScript    return document.getElementById("dj").scrollTo(0,10000)
     Click Button    ${del_shipp_btn}
     Wait Until Element Is Visible    id:test_delete_modal_sure_btn
+    Sleep    1
     Click Button    id:test_delete_modal_sure_btn
+    Sleep    1
     Page Should Not Contain Element    ${shipping_first_element}
+    Location Should Be    ${shipping_url}

@@ -47,21 +47,27 @@ Go To Setting Page
 Go To Tax Price Page
     [Documentation]    跳转到税费页面
     Wait Until Element Is Visible    id:test_setting
-    Click Element    id:test_setting
-    Wait Until Element Is Visible    id:test_setting
+    # 若设置按钮没展开，则展开设置按钮
+    ${unvisible}=    Execute Javascript    return document.querySelectorAll('a[href="/taxPrice"]')[0]===undefined
+    Run Keyword If    ${unvisible}    Click Element    id:test_setting
+    Wait Until Element Is Visible    dom:document.querySelectorAll('a[href="/taxPrice"]')[0]
     Assign Id To Element    dom:document.querySelectorAll('a[href="/taxPrice"]')[0]    tax_price_btn
     Wait Until Element Is Visible    id:tax_price_btn
     Click Element    id:tax_price_btn
     Wait Until Page Contains    ${tax_price_setting}
-    Location Should Be    ${tax_price_url}
+    Sleep    1
+    #Location Should Be    ${tax_price_url}
 
 Go To Shipping Page
     [Documentation]    跳转到物流页面
     Wait Until Element Is Visible    id:test_setting
-    Click Element    id:test_setting
-    Wait Until Element Is Visible    id:test_setting
+    # 若设置按钮没展开，则展开设置按钮
+    ${unvisible}=    Execute Javascript    return document.querySelectorAll('a[href="/shipping"]')[0]===undefined
+    Run Keyword If    ${unvisible}    Click Element    id:test_setting
+    Wait Until Element Is Visible    dom:document.querySelectorAll('a[href="/shipping"]')[0]
     Assign Id To Element    dom:document.querySelectorAll('a[href="/shipping"]')[0]    shipping_btn
     Wait Until Element Is Visible    id:shipping_btn
     Click Element    id:shipping_btn
     Wait Until Page Contains    ${tax_shipping_tab1}
+    Sleep    1
     Location Should Be    ${shipping_url}

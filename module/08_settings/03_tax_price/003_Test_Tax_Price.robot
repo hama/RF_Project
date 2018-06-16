@@ -46,27 +46,27 @@ ${tax_page}       http://admin1024.shoplazza.com/taxPrice    # 税费页面URL
     log    检查: 税费设置是否生效
     Click Element    dom:document.querySelectorAll('.card-col-Setting')[0];
     Wait Until Page Contains    保 存
+    Sleep    2
     Check City Data
     Click Element    class:ant-modal-close-x
 
 004 Test Toggle Tax Switch
     [Documentation]    测试税费开关
     [Tags]    P0
-    Start Ajax Listener
     Go To Tax Price Page
     sleep    2
     Assign Id To Element    dom:document.querySelectorAll('.ant-table-tbody .ant-switch')[0];    switch_1
-    ${dataLength}=    Execute JavaScript    return responseMap.get("${tax_page_list_api}").data.list.length;
+    ${dataLength}=    Execute JavaScript    return responseMap.get("${tax_page_list_interface}").data.list.length;
     log    列表应该不为空，有数据存在
     Should Be True    ${dataLength}>=1
     # 获取原始开关值
-    ${rawSwitch}=    Execute JavaScript    return responseMap.get("${tax_page_list_api}").data.list[0].is_enable;
+    ${rawSwitch}=    Execute JavaScript    return responseMap.get("${tax_page_list_interface}").data.list[0].is_enable;
     Click Element    id:switch_1
     sleep    2
     Page Should Contain    ${tax_page_setting_ok}
     Check response status
     # 获取设置后开关值
-    ${newSwitch}=    Execute JavaScript    return responseMap.get("${tax_page_list_api}").data.list[0].is_enable;
+    ${newSwitch}=    Execute JavaScript    return responseMap.get("${tax_page_list_interface}").data.list[0].is_enable;
     Should Not Be True    '${rawSwitch}'=='${newSwitch}'
 
 005 Test Forward To Shipping Page
@@ -90,11 +90,10 @@ ${tax_page}       http://admin1024.shoplazza.com/taxPrice    # 税费页面URL
 *** KeyWords ***
 Tax Price Suite Setup
     New Test Suite Browser And Login    ${testUser1}    ${testUser1Password}    ${testUser1Domain}
-    Go To Shipping Page
     Add Shipping
+    Start Ajax Listener
 
 Tax Price Suite Teardown
-    Go To Shipping Page
     Delete Shipping
     Close Test Suite Browser
 

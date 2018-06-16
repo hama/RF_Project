@@ -15,4 +15,5 @@ Resource          ../../../resources/kw_browser.robot
     [Tags]    P1
     Go To Tax Price Page
     Delete All Cookies
+    Click Element    id:test_setting
     Wait Until Page Contains    登录我的店匠商铺
