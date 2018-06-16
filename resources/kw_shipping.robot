@@ -29,6 +29,7 @@ Add Shipping
     Wait Until Element Is Visible    id:test_shipping_country_modal_sure_btn
     click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
     Wait Until Page Contains    Algeria
+    Sleep    1
     click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
     sleep    1
     click button    id:test_shipping_country_modal_sure_btn
@@ -75,3 +76,8 @@ Delete Shipping
     Sleep    1
     Page Should Not Contain Element    ${locator_shipping_first_element}
     Location Should Be    ${url_shipping}
+
+Quit Adding Shipping
+    Wait Until Element is Visible    ${locator_setting_shipping}
+    Click Element    ${locator_setting_shipping}
+    Alert Should Be Present

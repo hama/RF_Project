@@ -1,51 +1,32 @@
 *** Settings ***
-Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
-Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
-Library           ../../../lib/customLibrary
-Resource          ../../../resources/var_tax_price.robot
+Suite Setup       New Test Suite Browser And Login    ${user_default_name}    ${user_default_pwd}    ${user_default_domain}
+Suite Teardown    Close Test Suite Browser
+Library           ${CURDIR}/../../../lib/customLibrary
+Resource          ../../../resources/var_common.robot
+Resource          ../../../resources/var_shipping.robot
 Resource          ../../../resources/kw_browser.robot
-Resource          ../../../resources/kw_products.robot
+Resource          ../../../resources/kw_login.robot
+Resource          ../../../resources/kw_shipping.robot
 
 *** Test Cases ***
 001_add_country_shipping
     #添加国家
-    #open browser    ${url}    google chrome
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
-    Wait Until Element Is Visible    ${shipping_add_country}
-    Click Element    ${shipping_add_country}
+    Wait Until Element Is Visible    ${locator_shipping_add_country}
     Sleep    1
-    #execute javascript    return document.getElementsByClassName("ant-tree-checkbox")[0].click()
-    click element    dom:document.getElementsByClassName("ant-tree-checkbox")[0]
-    #execute javascript    return document.getElementById("test_shipping_country_modal_sure_btn").click()
-    click button    dom:document.getElementById("test_shipping_country_modal_sure_btn")
-
-012_shipping
-    # tax price page should be normal atfer login
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
-    click element    ${locator_shipping_add_shipping}
-    sleep    1.5
-    page should contain link    id:test_save_btn
-    click button    id:test_shipping_country_add_btn
+    Click Element    ${locator_shipping_add_country}
+    Sleep    1
     page should contain element    //*[@id="rcDialogTitle0"]/div
+    click element    dom:document.getElementsByClassName("ant-tree-checkbox")[0]
+    Sleep    1
+    click button    dom:document.getElementById("test_shipping_country_modal_sure_btn")
+    Sleep    1
+    Quit Adding Shipping
 
 013_shipping
     # tax price page should be normal atfer login
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_save_btn
     sleep    1
@@ -54,46 +35,37 @@ Resource          ../../../resources/kw_products.robot
     Click Element    id:test_save_btn
     Sleep    1
     Page Should Not Contain Element    //*[@id="dj"]/div/div/div[1]/div/div/div/div/div[2]/div
+    Quit Adding Shipping
 
 014_shipping
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_save_btn
     sleep    1
     input text    dom:document.querySelectorAll('#name')[0]    中
     Click Element    id:test_save_btn
     Page Should Not Contain Element    //*[@id="dj"]/div/div/div[1]/div/div/div/div/div[2]/div
+    Quit Adding Shipping
 
 015_shipping
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_save_btn
     sleep    1
     input text    dom:document.querySelectorAll('#name')[0]    @#￥
     Click Element    id:test_save_btn
     Page Should Not Contain Element    //*[@id="dj"]/div/div/div[1]/div/div/div/div/div[2]/div
+    Quit Adding Shipping
 
 016_shipping
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
-    Wait Until Element Is Visible    ${shipping_add_country}
-    Click Element    ${shipping_add_country}
+    Wait Until Element Is Visible    ${locator_shipping_add_country}
+    Sleep    1
+    Click Element    ${locator_shipping_add_country}
+    Sleep    1
     click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
+    Sleep    1
     click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
     ${count}    get text    class:country_selected___2BYCm
     ${res}    searchStr    ${count}
@@ -101,15 +73,11 @@ Resource          ../../../resources/kw_products.robot
     Should Be True    ${res}==1
 
 017_shipping
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
-    Wait Until Element Is Visible    ${shipping_add_country}
-    Click Element    ${shipping_add_country}
+    Wait Until Element Is Visible    ${locator_shipping_add_country}
+    Sleep    1
+    Click Element    ${locator_shipping_add_country}
     sleep    1.5
     execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0].click()
     click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
@@ -119,15 +87,10 @@ Resource          ../../../resources/kw_products.robot
     Should Be True    '${data}'=='${res}'
 
 018_shipping
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
-    Wait Until Element Is Visible    ${shipping_add_country}
-    Click Element    ${shipping_add_country}
+    Wait Until Element Is Visible    ${locator_shipping_add_country}
+    Click Element    ${locator_shipping_add_country}
     sleep    1.5
     click element    dom:document.getElementsByClassName("ant-checkbox-input")[0]
     click element    dom:document.getElementById("test_shipping_country_modal_sure_btn")
@@ -135,15 +98,10 @@ Resource          ../../../resources/kw_products.robot
     Should Be True    '${res}'=='其他国家'
 
 019_shipping
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
-    Wait Until Element Is Visible    ${shipping_add_country}
-    Click Element    ${shipping_add_country}
+    Wait Until Element Is Visible    ${locator_shipping_add_country}
+    Click Element    ${locator_shipping_add_country}
     sleep    1.5
     click element    dom:document.getElementsByClassName("ant-checkbox-input")[0]
     click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
@@ -153,15 +111,12 @@ Resource          ../../../resources/kw_products.robot
     Should Be True    '${res}'<>'其他国家'
 
 020_shipping
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
+    Sleep    1
     click element    ${locator_shipping_add_shipping}
-    Wait Until Element Is Visible    ${shipping_add_country}
-    Click Element    ${shipping_add_country}
+    Wait Until Element Is Visible    ${locator_shipping_add_country}
+    Sleep    1
+    Click Element    ${locator_shipping_add_country}
     sleep    1.5
     click element    dom:document.getElementsByClassName("ant-modal-close-x")[0]
     ${res}    get text    //*[@id="dj"]/div/div[2]/div[2]/div/div/div/div/div/div[2]/span
@@ -169,5 +124,11 @@ Resource          ../../../resources/kw_products.robot
     Should Be True    '${res}'=='暂无数据'
 
 jsjjd
-    go to    ${home_page}
+    Go To Setting Page
     del_products
+
+*** Keywords ***
+Quit Adding Shipping
+    Wait Until Element is Visible    ${locator_setting_shipping}
+    Click Element    ${locator_setting_shipping}
+    Alert Should Be Present

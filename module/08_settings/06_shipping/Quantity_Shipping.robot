@@ -1,18 +1,17 @@
 *** Settings ***
-Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
-Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
-Library           ../../../lib/customLibrary
-Resource          ../../../resources/var_tax_price.robot
+Suite Setup       New Test Suite Browser And Login    ${user_default_name}    ${user_default_pwd}    ${user_default_domain}
+Suite Teardown    Close Test Suite Browser
+Library           ${CURDIR}/../../../lib/customLibrary
+Resource          ../../../resources/var_common.robot
+Resource          ../../../resources/var_shipping.robot
 Resource          ../../../resources/kw_browser.robot
+Resource          ../../../resources/kw_login.robot
+Resource          ../../../resources/kw_shipping.robot
 
 *** Test Cases ***
 070_shipping
     #.添加数量运费
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -20,12 +19,7 @@ Resource          ../../../resources/kw_browser.robot
 
 071_shipping
     #.添加数量运费    输入数量运费 显示 数量运费
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -37,12 +31,7 @@ Resource          ../../../resources/kw_browser.robot
 
 072_shipping
     #.添加数量运费    输入1234 显示 数量运费
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -54,12 +43,7 @@ Resource          ../../../resources/kw_browser.robot
 
 073_shipping
     #.添加数量运费    输入 数量运费    保存    列表显示 数量运费
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -73,12 +57,7 @@ Resource          ../../../resources/kw_browser.robot
 
 074_shipping
     #.添加数量运费    输入 输入超过50字符的内容    保存    提示错误
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -91,12 +70,7 @@ Resource          ../../../resources/kw_browser.robot
 
 075_shipping
     #.添加数量运费    说明框输入 输入超过200字符的内容    提示错误
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -109,12 +83,7 @@ Resource          ../../../resources/kw_browser.robot
 
 076_shipping
     #.添加数量运费    说明框输入 输入200个以内    保存成功
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -128,12 +97,7 @@ Resource          ../../../resources/kw_browser.robot
 
 077_shipping
     #.添加数量运费    说明框输入内容    名称输入框不输入内容 提示有内容未填写
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -146,12 +110,7 @@ Resource          ../../../resources/kw_browser.robot
 
 078_shipping
     #.添加数量运费    最小订单数量输入超过10位以上的数字
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -164,12 +123,7 @@ Resource          ../../../resources/kw_browser.robot
 
 079_shipping
     #.添加数量运费    最大订单数量输入超过10位以上的数字
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -182,12 +136,7 @@ Resource          ../../../resources/kw_browser.robot
 
 080_shipping
     #.添加数量运费    最小订单数量：10    最大订单数量：100
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -203,12 +152,7 @@ Resource          ../../../resources/kw_browser.robot
 
 081_shipping
     #.添加数量运费    最大订单数量自动变化为大于最小订单数量的数字：101
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -226,12 +170,7 @@ Resource          ../../../resources/kw_browser.robot
 
 082_shipping
     #.添加数量运费    最小订单数量自动变化为小于最大订单数量的数字：99
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -248,12 +187,7 @@ Resource          ../../../resources/kw_browser.robot
 
 083_shipping
     #.添加数量运费    取消勾选免运费
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -263,12 +197,7 @@ Resource          ../../../resources/kw_browser.robot
 
 084_shipping
     #.添加数量运费    在运费输入框 输入 100    免运费的勾选会自动去掉
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -280,12 +209,7 @@ Resource          ../../../resources/kw_browser.robot
 
 085_shipping
     #.添加数量运费    在运费输入框 输入 991212313165656    提示错误
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -295,12 +219,7 @@ Resource          ../../../resources/kw_browser.robot
 
 086_shipping
     #.添加数量运费    在运费输入框 输入 100    保存成功，数量运费列表中显示的运费为100
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -316,12 +235,7 @@ Resource          ../../../resources/kw_browser.robot
 
 087_shipping
     #.添加数量运费    取消运费的勾选    保存成功，数量运费列表中显示的运费为0
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -338,12 +252,7 @@ Resource          ../../../resources/kw_browser.robot
 
 088_shipping
     #.添加数量运费    勾选是否支持货到付款 保存 列表显示 支持
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -358,12 +267,7 @@ Resource          ../../../resources/kw_browser.robot
 
 089_shipping
     #.添加数量运费    取消勾选是否支持货到付款 保存 列表显示 不支持
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -379,12 +283,7 @@ Resource          ../../../resources/kw_browser.robot
 
 090_shipping
     #.直接关闭窗口，没有添加数量运费
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn
@@ -395,12 +294,7 @@ Resource          ../../../resources/kw_browser.robot
 
 091_shipping
     #.添加数量运费    输入内容 直接关闭窗口，再次打开窗口 没有添加数量运费
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     click button    id:test_shipping_add_quantity_btn

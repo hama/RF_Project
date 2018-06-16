@@ -1,12 +1,15 @@
 *** Settings ***
 Documentation     Ckeckout Page Check
-Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
-Suite Teardown    #Close Test Suite Browser    # close the browser opened for this test suite
+Suite Setup       New Test Suite Browser And Login    ${user_default_name}    ${user_default_pwd}    ${user_default_domain}
+Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
-Resource          ../../../resources/kw_login.robot    # import login keyword
-Resource          ../../../resources/kw_browser.robot    # import ajax listener keyword
 Resource          ../../../resources/var_tax_price.robot
+Resource          ../../../resources/var_product.robot
+Resource          ../../../resources/var_common.robot
+Resource          ../../../resources/kw_login.robot
+Resource          ../../../resources/kw_browser.robot
+Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
 checkout_addcard_check

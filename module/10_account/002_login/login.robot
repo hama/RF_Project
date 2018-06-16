@@ -1,8 +1,12 @@
 *** Settings ***
-Resource          ../../../resources/kw_browser.robot
-Resource          ../../../resources/var_tax_price.robot
 Library           SeleniumLibrary
-Library           ../../../lib/customLibrary
+Library           ${CURDIR}../../../lib/customLibrary
+Resource          ../../../resources/var_tax_price.robot
+Resource          ../../../resources/var_product.robot
+Resource          ../../../resources/var_common.robot
+Resource          ../../../resources/kw_login.robot
+Resource          ../../../resources/kw_browser.robot
+Resource          ../../../resources/kw_products.robot
 
 *** Variable ***
 ${uname}          98989898

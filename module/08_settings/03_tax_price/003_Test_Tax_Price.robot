@@ -2,6 +2,7 @@
 Documentation     税费正常功能测试
 Suite Setup       Tax Price Suite Setup
 Suite Teardown    Tax Price Suite Teardown
+Test Setup        Tax Price Test Cases Setup
 Force Tags        tax
 Library           SeleniumLibrary
 Resource          ../../../resources/var_common.robot
@@ -15,8 +16,6 @@ Resource          ../../../resources/kw_shipping.robot
 001 Test Forward To Shipping Page
     [Documentation]    测试: 从税费页面点击物流设置跳转到物流页面
     [Tags]    P0
-    Go To Tax Price Page
-    Sleep    2
     log    测试页面基本内容
     Page Should Contain    ${content_tax_head_country}
     Page Should Contain    ${content_tax_head_taxPrice}
@@ -28,13 +27,11 @@ Resource          ../../../resources/kw_shipping.robot
     Wait Until Page Contains    ${content_tax_setting}
     Sleep    2
     Page Should Contain    ${content_shipping_tab1}
-    Page Should Contain    ${content_shipping_tab1}
+    Page Should Contain    ${content_shipping_tab2}
 
 002 Test Tax Page Normal
     [Documentation]    [测试内容]: 页面基本组件正常 [预期结果]: 税费页面基本组件正常 [前置条件]: 添加一条物流
     [Tags]    P0
-    Go To Tax Price Page
-    Sleep    1
     Page Should Contain    ${content_tax_head_country}
     Page Should Contain    ${content_tax_head_taxPrice}
     Page Should Contain    ${content_tax_head_location}
@@ -53,8 +50,6 @@ Resource          ../../../resources/kw_shipping.robot
 003 Test Tax Price Setting
     [Documentation]    测试: 税费设置
     [Tags]    P0
-    Go To Tax Price Page
-    Sleep    2
     Click Element    ${locator_tax_setting}
     Wait Until Page Contains    保 存
     Sleep    2
@@ -72,8 +67,6 @@ Resource          ../../../resources/kw_shipping.robot
 004 Test Toggle Tax Switch
     [Documentation]    测试税费开关
     [Tags]    P0
-    Go To Tax Price Page
-    sleep    2
     Assign Id To Element    dom:document.querySelectorAll('.ant-table-tbody .ant-switch')[0];    switch_1
     ${dataLength}=    Execute JavaScript    return responseMap.get("${api_tax_list}").data.list.length;
     log    列表应该不为空，有数据存在
@@ -97,6 +90,10 @@ Tax Price Suite Setup
 Tax Price Suite Teardown
     Delete Shipping
     Close Test Suite Browser
+
+Tax Price Test Cases Setup
+    Go To Tax Price Page
+    Sleep    1
 
 Check Tax Page List
     log    获取指定接口的数据，使用 Table should countains 关键字判断是否包含

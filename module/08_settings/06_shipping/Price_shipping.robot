@@ -1,9 +1,12 @@
 *** Settings ***
-Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
-Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
-Library           ../../../lib/customLibrary
-Resource          ../../../resources/var_tax_price.robot
+Suite Setup       New Test Suite Browser And Login    ${user_default_name}    ${user_default_pwd}    ${user_default_domain}
+Suite Teardown    Close Test Suite Browser
+Library           ${CURDIR}/../../../lib/customLibrary
+Resource          ../../../resources/var_common.robot
+Resource          ../../../resources/var_shipping.robot
 Resource          ../../../resources/kw_browser.robot
+Resource          ../../../resources/kw_login.robot
+Resource          ../../../resources/kw_shipping.robot
 
 *** Test Cases ***
 021_shipping
@@ -12,11 +15,7 @@ Resource          ../../../resources/kw_browser.robot
     #.login
     #Login With Shipping    ${xpath_a}    ${xpath_b}    ${xpath_c}
     #.check button
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
     click button    id:test_shipping_add_price_btn
@@ -24,12 +23,7 @@ Resource          ../../../resources/kw_browser.robot
 
 022_shipping
     #.add    transport price    check name input (str)
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -41,12 +35,7 @@ Resource          ../../../resources/kw_browser.robot
 
 023_shipping
     #.add    transport price    check name input (int)
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -59,12 +48,7 @@ Resource          ../../../resources/kw_browser.robot
 024_shipping
     #.add    transport price    check
     #.保存成功，关闭弹窗，价格运费列表中显示 价格运费的信息
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
     click button    id:test_shipping_add_price_btn
@@ -77,12 +61,7 @@ Resource          ../../../resources/kw_browser.robot
 
 025_shipping
     #.输入50个字符点击保存
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -97,12 +76,7 @@ Resource          ../../../resources/kw_browser.robot
 
 026_shipping
     #.输入超过50个字符点击保存
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
     click button    id:test_shipping_add_price_btn
@@ -115,12 +89,7 @@ Resource          ../../../resources/kw_browser.robot
 
 027_shipping
     #.说明框输入超过200个字符点击保存
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -134,12 +103,7 @@ Resource          ../../../resources/kw_browser.robot
 
 028_shipping
     #.说明框输入正常字符点击保存
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -154,12 +118,7 @@ Resource          ../../../resources/kw_browser.robot
 
 029_shipping
     #.最小订单价输入超过10位以上的数字
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -175,12 +134,7 @@ Resource          ../../../resources/kw_browser.robot
 
 030_shipping
     #.最大订单价输入超过10位以上的数字
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -196,12 +150,7 @@ Resource          ../../../resources/kw_browser.robot
 
 031_shipping
     #.正常输入最小价格，最大价格 保存成功
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -219,12 +168,7 @@ Resource          ../../../resources/kw_browser.robot
 
 032_shipping
     #.最小单价输入100    最大单价输入10    最大单价变为101
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -246,12 +190,7 @@ Resource          ../../../resources/kw_browser.robot
 
 033_shipping
     #.最大单价输入100    最小单价输入200    最小单价变为99
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -273,12 +212,7 @@ Resource          ../../../resources/kw_browser.robot
 
 034_shipping
     #.在运费价格框输入值    免运费的勾选离开框取消勾选
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -298,12 +232,7 @@ Resource          ../../../resources/kw_browser.robot
 
 035_shipping
     #.运费价格框输入超过长度的数字 提示错误
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -324,12 +253,7 @@ Resource          ../../../resources/kw_browser.robot
 
 036_shipping
     #.运费价格框数字 保存成功 在列表显示刚添加的运费
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -355,12 +279,7 @@ Resource          ../../../resources/kw_browser.robot
 
 037_shipping
     #.运费价格框数字 保存成功 在列表显示刚添加的运费
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -385,12 +304,7 @@ Resource          ../../../resources/kw_browser.robot
 
 038_shipping
     #.勾选是否支持货到付款    列表显示支持
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -414,12 +328,7 @@ Resource          ../../../resources/kw_browser.robot
 
 039_shipping
     #.不勾选是否支持货到付款    列表显示不支持
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn

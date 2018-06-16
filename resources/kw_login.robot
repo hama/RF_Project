@@ -18,7 +18,7 @@ Login With User
     Input Password    id:password    ${password}
     Click Button    class:logBtn___3pRgJ
     Comment    wait until domain input text element is visible
-    Sleep    3
+    Sleep    2
     ${href}=    Execute JavaScript    return window.location.href
     ${has_login}=    Execute JavaScript    return '${href}'==='${url_home_page}'
     Run Keyword Unless    ${has_login}    Input Domain    ${domain}
@@ -56,8 +56,10 @@ Go To Shipping Page
     ${unvisible}=    Execute Javascript    return document.querySelectorAll('a[href="/shipping"]')[0]===undefined
     Run Keyword If    ${unvisible}    Click Element    ${locator_setting}
     Wait Until Element Is Visible    ${locator_setting_shipping}
+    Sleep    1
     Click Element    ${locator_setting_shipping}
     Sleep    1
-    Wait Until Page Contains    ${content_shipping_tab1}
-    Wait Until Page Contains    ${content_shipping_tab2}
+    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Page Should Contain    ${content_shipping_tab1}
+    Page Should Contain    ${content_shipping_tab2}
     Location Should Be    ${url_shipping}

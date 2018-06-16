@@ -1,15 +1,17 @@
 *** Settings ***
-Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
-Library           ../../../lib/customLibrary
+Suite Setup       New Test Suite Browser And Login    ${user_default_name}    ${user_default_pwd}    ${user_default_domain}
+Suite Teardown    Close Test Suite Browser
+Library           ${CURDIR}/../../../lib/customLibrary
+Resource          ../../../resources/var_common.robot
+Resource          ../../../resources/var_shipping.robot
+Resource          ../../../resources/kw_browser.robot
+Resource          ../../../resources/kw_login.robot
+Resource          ../../../resources/kw_shipping.robot
 
 *** Test Cases ***
 040_shipping
     #.添加运费窗口直接关闭 列表不存在数据
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -21,12 +23,7 @@ Library           ../../../lib/customLibrary
 
 041_shipping
     #.添加运费窗口输入内容后直接关闭 列表不存在数据
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_add_price_btn
@@ -39,12 +36,7 @@ Library           ../../../lib/customLibrary
 
 042_shipping
     #.添加运费窗口输入内容后直接关闭 再次点击添加按钮 后的编辑窗口里没有数据
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -63,12 +55,7 @@ Library           ../../../lib/customLibrary
 
 043_shipping
     #.点击添加重量运费按钮出现编辑窗口
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -79,12 +66,7 @@ Library           ../../../lib/customLibrary
 
 044_shipping
     #.添加运费 在名称输入 重量运费 后    对应框里显示 重量运费
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -99,12 +81,7 @@ Library           ../../../lib/customLibrary
 
 045_shipping
     #.添加运费 在名称输入 123 后    对应框里显示 123
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -119,12 +96,7 @@ Library           ../../../lib/customLibrary
 
 046_shipping
     #.添加运费 在名称输入 123 后    保存 列表里显示 123对应信息
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -138,12 +110,7 @@ Library           ../../../lib/customLibrary
 
 047_shipping
     #.添加运费 在名称输入超过50个字符 提示错误
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -158,12 +125,7 @@ Library           ../../../lib/customLibrary
 
 048_shipping
     #.添加运费 在名称输入正常字符 保存 提示其他信息未填写错误
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -178,12 +140,7 @@ Library           ../../../lib/customLibrary
 
 049_shipping
     #.添加运费 在名称输入正常字符 保存成功
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -199,12 +156,7 @@ Library           ../../../lib/customLibrary
 
 050_shipping
     #.添加运费 在说明框里输入超过200个字符 提示错误
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -222,12 +174,7 @@ Library           ../../../lib/customLibrary
 
 051_shipping
     #.添加运费 在说明框里输入 200个以内的字符 保存成功
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -245,12 +192,7 @@ Library           ../../../lib/customLibrary
 
 052_shipping
     #.添加重量运费 在说明框里输入字符 保存提示 其他信息未填写
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -266,12 +208,7 @@ Library           ../../../lib/customLibrary
 
 053_shipping
     #.添加重量运费 最小单价输入 454544454454545 提示输入10位数以内的数字
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -287,12 +224,7 @@ Library           ../../../lib/customLibrary
 
 054_shipping
     #.添加重量运费 最大单价输入 454544454454545 提示输入10位数以内的数字
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -308,12 +240,7 @@ Library           ../../../lib/customLibrary
 
 055_shipping
     #.添加运费 输入正常最小最大运费 保存成功
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -332,12 +259,7 @@ Library           ../../../lib/customLibrary
 
 056_shipping
     #.添加运费    最小订单重量输入：100    最大订单重量输入： 10 提示错误
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -357,12 +279,7 @@ Library           ../../../lib/customLibrary
 
 057_shipping
     #.添加运费    最小订单重量输入：200    最大订单重量输入： 100 提示错误
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -382,12 +299,7 @@ Library           ../../../lib/customLibrary
 
 058_shipping
     #.添加重量运费 默认单位是克
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -401,12 +313,7 @@ Library           ../../../lib/customLibrary
 
 059_shipping
     #.添加运费重量    克。千克，磅
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -423,12 +330,7 @@ Library           ../../../lib/customLibrary
 
 060_shipping
     #.添加重量运费 取消勾选 免运费
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -441,12 +343,7 @@ Library           ../../../lib/customLibrary
 
 061_shipping
     #.添加重量运费 输入 运费    免运费的选中状态取消
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -462,12 +359,7 @@ Library           ../../../lib/customLibrary
 
 062_shipping
     #.添加重量运费    运费价格输入框输入超过10位以上的数字 提示错误
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -481,12 +373,7 @@ Library           ../../../lib/customLibrary
 
 063_shipping
     #.添加重量运费    运费价格输入框输入100 保存成功 列表出现该运费
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -506,12 +393,7 @@ Library           ../../../lib/customLibrary
 
 064_shipping
     #.添加重量运费    运费价格输入框输入0 保存成功 列表出现该运费为0
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -531,12 +413,7 @@ Library           ../../../lib/customLibrary
 
 065_shipping
     #.添加重量运费    勾选是否支持货到付款    列表出先支持
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -555,12 +432,7 @@ Library           ../../../lib/customLibrary
 
 066_shipping
     #.添加重量运费    不勾选是否支持货到付款    列表出先不支持
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -581,12 +453,7 @@ Library           ../../../lib/customLibrary
 
 067_shipping
     #.添加重量运费    直接关掉窗口 列表不存在运费信息
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -598,12 +465,7 @@ Library           ../../../lib/customLibrary
 
 068_shipping
     #.添加重量运费    直接关掉窗口 列表不存在运费信息
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
@@ -618,12 +480,7 @@ Library           ../../../lib/customLibrary
 
 069_shipping
     #.添加重量运费    输入内容后 直接关掉窗口 列表不存在运费信息
-    go to    ${home_page}
-    Wait Until Element Is Visible    ${navigation_setting}
-    click element    ${navigation_setting}
-    Wait Until Element Is Visible    ${navigation_shipping}
-    click element    ${navigation_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
+    Go To Shipping Page
     click element    ${locator_shipping_add_shipping}
     #.check button
     sleep    1
