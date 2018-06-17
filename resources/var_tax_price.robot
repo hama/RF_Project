@@ -3,7 +3,7 @@
 ${api_tax_list}    http://admin1024.shoplazza.com/api/tax/list    # 税费数据列表接口
 ${api_tax_toggle}    http://admin1024.shoplazza.com/api/tax/toggle    # 税费开关接口
 # locator
-${locator_tax_goto_shipping}    前往运费设置
+${locator_tax_goto_shipping}    tag:button    # 页面只有一个 button
 ${locator_tax_help}    dom:document.querySelectorAll('.hd-line-help')[1]
 ${locator_tax_setting}    dom:document.querySelectorAll('.card-col-Setting')[0]
 ${locator_tax_close}    class:ant-modal-close-x

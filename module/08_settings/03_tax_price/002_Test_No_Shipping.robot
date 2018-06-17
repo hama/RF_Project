@@ -20,5 +20,5 @@ Resource          ../../../resources/kw_shipping.robot
     Go To Tax Price Page
     Comment    跳转到物流设置页面
     Wait And Click Button    ${locator_tax_goto_shipping}
-    Wait Until Page Contains    ${content_shipping_tab1}
-    Page Should Contain    ${content_shipping_tab2}
+    Wait Until Page Contains    ${content_shipping_tab2}
+    Page Should Contain    ${content_shipping_tab1}

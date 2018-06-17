@@ -74,7 +74,6 @@ Resource          ../../../resources/kw_shipping.robot
     # 获取原始开关值
     ${rawSwitch}=    Execute JavaScript    return responseMap.get("${api_tax_list}").data.list[0].is_enable;
     Wait And Click Element    id:switch_1
-    sleep    1
     Page Should Contain    ${content_tax_tips_setting}
     Check response status
     # 获取设置后开关值

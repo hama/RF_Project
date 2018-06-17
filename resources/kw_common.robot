@@ -24,8 +24,8 @@ Login With User
 
 Input Domain
     [Arguments]    ${domain}
-    Input Text    id:username    ${domain}
-    Click Button    class:logBtn___3pRgJ
+    Wait And Input Text    id:username    ${domain}
+    Wait And Click Button    class:logBtn___3pRgJ
 
 Go To Setting Page
     [Documentation]    跳转到设置页面
@@ -53,32 +53,35 @@ Go To Shipping Page
     Page Should Contain    ${content_shipping_tab2}
     Location Should Be    ${url_shipping}
 
-Wait And Input
+Wait And Input Text
     [Arguments]    ${element_locator}    ${text}
     [Documentation]    封装的输入方法，等待元素可被输入时，再输入
     Wait Until Element Is Visible    ${element_locator}
-    Wait Until Keyword Succeeds    3x    1s    Input Text    ${text}
+    Wait Until Keyword Succeeds    3x    1s    Input Text    ${element_locator}    ${text}
 
 Wait And Input Password
     [Arguments]    ${element_locator}    ${pwd}
     [Documentation]    封装的输入方法，等待元素可被输入时，再输入
     Wait Until Element Is Visible    ${element_locator}
-    Wait Until Keyword Succeeds    3x    1s    Input Password    ${pwd}
+    Wait Until Keyword Succeeds    3x    1s    Input Password    ${element_locator}    ${pwd}
 
 Wait And Click Element
     [Arguments]    ${element_locator}
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Visible    ${element_locator}
     Wait Until Keyword Succeeds    3x    1s    Click Element    ${element_locator}
+    Sleep    1
 
 Wait And Click Button
     [Arguments]    ${button_locator}
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Visible    ${button_locator}
     Wait Until Keyword Succeeds    3x    1s    Click Button    ${button_locator}
+    Sleep    1
 
 Wait And Click Link
     [Arguments]    ${link_locator}
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Visible    ${link_locator}
     Wait Until Keyword Succeeds    3x    1s    Click Link    ${link_locator}
+    Sleep    1
