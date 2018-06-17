@@ -1,6 +1,6 @@
 *** Settings ***
 Library           SeleniumLibrary
-Library           ${CURDIR}../../../lib/customLibrary
+Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_tax_price.robot
 Resource          ../../../resources/var_product.robot
 Resource          ../../../resources/var_common.robot

@@ -92,7 +92,6 @@ Tax Price Suite Teardown
 
 Tax Price Test Cases Setup
     Go To Tax Price Page
-    Sleep    1
 
 Check Tax Page List
     log    获取指定接口的数据，使用 Table should countains 关键字判断是否包含

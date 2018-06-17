@@ -5,6 +5,7 @@ ${main_pwd}       147258    #.没有子账户的密码
 ${recover_user}    15220581724    #.找回密码的账号
 ${recover_password}    123456    #.找回密码的密码
 ${recover_domain}    chen    #.找回密码的域名
+${recover_pwd_btn}    dom:document.querySelectorAll('a')[1]
 ${defaultUser}    17601298661
 ${defaultPassword}    111111
 ${defaultDomain}    baiyuan
