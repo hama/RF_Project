@@ -9,7 +9,7 @@ Library           SeleniumLibrary
 Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/var_tax_price.robot
 Resource          ../../../resources/var_shipping.robot
-Resource          ../../../resources/kw_login.robot
+Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_shipping.robot
 
@@ -19,7 +19,6 @@ Resource          ../../../resources/kw_shipping.robot
     [Tags]    P0
     Go To Tax Price Page
     Comment    跳转到物流设置页面
-    Sleep    1
-    Click Button    ${locator_tax_goto_shipping}
+    Wait And Click Button    ${locator_tax_goto_shipping}
     Wait Until Page Contains    ${content_shipping_tab1}
     Page Should Contain    ${content_shipping_tab2}

@@ -1,5 +1,5 @@
 *** Settings ***
-Resource          ./kw_login.robot
+Resource          ./kw_common.robot
 Resource          ./kw_browser.robot
 Library           SeleniumLibrary
 

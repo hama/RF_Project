@@ -1,6 +1,9 @@
 *** Settings ***
 Documentation     定义跟浏览器操作相关的关键字，如 打开浏览器、关闭浏览器
 
+*** Variables ***
+${is_headless}    False    # 定义是否采用 headless    (Case Sensitive for True/False)
+
 *** Keywords ***
 New Test Suite Browser And Login
     [Arguments]    ${username}    ${password}    ${domain}

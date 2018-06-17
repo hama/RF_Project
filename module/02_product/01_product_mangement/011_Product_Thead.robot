@@ -4,7 +4,7 @@ Suite Setup       New Test Suite Browser And Login    ${nothingUser}    ${nothin
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
-Resource          ../../../resources/kw_login.robot    
+Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot    # import ajax listener keyword
 Library           customLibrary
 

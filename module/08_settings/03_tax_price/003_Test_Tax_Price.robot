@@ -8,7 +8,7 @@ Library           SeleniumLibrary
 Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/var_tax_price.robot
 Resource          ../../../resources/var_shipping.robot
-Resource          ../../../resources/kw_login.robot
+Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_shipping.robot
 
@@ -23,7 +23,7 @@ Resource          ../../../resources/kw_shipping.robot
     Page Should Contain    ${content_tax_head_operation}
     Page Should Contain    ${content_tax_tips_list}
     log    点击设置按钮，跳转到物流设置
-    Click Button    tag:button
+    Wait And Click Button    tag:button
     Wait Until Page Contains    ${content_tax_setting}
     Sleep    2
     Page Should Contain    ${content_shipping_tab1}
@@ -50,7 +50,7 @@ Resource          ../../../resources/kw_shipping.robot
 003 Test Tax Price Setting
     [Documentation]    测试: 税费设置
     [Tags]    P0
-    Click Element    ${locator_tax_setting}
+    Wait And Click Element    ${locator_tax_setting}
     Wait Until Page Contains    保 存
     Sleep    2
     log    测试: 随机设置税费值，看是否设置成功
@@ -73,8 +73,8 @@ Resource          ../../../resources/kw_shipping.robot
     Should Be True    ${dataLength}>=1
     # 获取原始开关值
     ${rawSwitch}=    Execute JavaScript    return responseMap.get("${api_tax_list}").data.list[0].is_enable;
-    Click Element    id:switch_1
-    sleep    2
+    Wait And Click Element    id:switch_1
+    sleep    1
     Page Should Contain    ${content_tax_tips_setting}
     Check response status
     # 获取设置后开关值

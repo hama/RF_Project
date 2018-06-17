@@ -8,7 +8,7 @@ Force Tags        tax
 Library           SeleniumLibrary
 Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/var_tax_price.robot
-Resource          ../../../resources/kw_login.robot
+Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
 
 *** Test Cases ***
@@ -17,5 +17,5 @@ Resource          ../../../resources/kw_browser.robot
     [Tags]    P1
     Go To Tax Price Page
     Delete All Cookies
-    Click Element    ${locator_setting}
-    Wait Until Page Contains    登录我的店匠商铺
+    Wait And Click Element    ${locator_setting}
+    Page Should Contain    登录我的店匠商铺

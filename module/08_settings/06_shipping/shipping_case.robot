@@ -5,7 +5,7 @@ Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/var_shipping.robot
 Resource          ../../../resources/kw_browser.robot
-Resource          ../../../resources/kw_login.robot
+Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_shipping.robot
 
 *** Variables ***

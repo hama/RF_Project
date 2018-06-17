@@ -5,7 +5,7 @@ Library           ${CURDIR}/../lib/customLibrary
 Resource          var_common.robot
 Resource          var_shipping.robot
 Resource          kw_browser.robot
-Resource          kw_login.robot
+Resource          kw_common.robot
 
 *** Variable ***
 ${input}          重量运费

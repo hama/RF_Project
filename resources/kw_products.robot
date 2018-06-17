@@ -3,7 +3,7 @@ Documentation     添加商品
 Library           SeleniumLibrary
 Library           customLibrary
 Resource          kw_browser.robot
-Resource          kw_login.robot
+Resource          kw_common.robot
 Resource          var_tax_price.robot
 
 *** keyword ***

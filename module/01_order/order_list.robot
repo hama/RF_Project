@@ -2,7 +2,7 @@
 Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
 Resource          ../../resources/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Resource          ../../resources/var_tax_price.robot
-Resource          ../../resources/kw_login.robot
+Resource          ../../resources/kw_common.robot
 Library           SeleniumLibrary
 Library           customLibrary
 
