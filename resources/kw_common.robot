@@ -60,7 +60,7 @@ Go To Shipping Page
     Wait Until Element Is Visible    ${locator_setting}
     # 若设置按钮没展开，则展开设置按钮
     ${unvisible}=    Execute Javascript    return document.querySelectorAll('a[href="/shipping"]')[0]===undefined
-    Run Keyword If    ${unvisible}    Click Element    ${locator_setting}
+    Run Keyword If    ${unvisible}    Wait And Click Element    ${locator_setting}
     Wait And Click Element    ${locator_setting_shipping}
     Wait Until Element Is Visible    ${locator_shipping_add_shipping}
     Page Should Contain    ${content_shipping_tab1}
