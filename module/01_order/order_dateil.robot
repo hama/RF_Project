@@ -9,7 +9,7 @@ Library           SeleniumLibrary
 *** Test Cases ***
 order_detail_update_send
     #.运单号输入时，物流商会匹配对应的内容，点击保存后，运单号更新成功
-    add_order    #.调用生成订单
+    Add Order    #.调用生成订单
     go to    ${home_page}
     sleep    1
     Wait Until Element Is Visible    ${order_list_btn}
@@ -81,7 +81,7 @@ order_detail_save_pass
 
 order_detail_cancel_send
     #.点击取消本次发货,弹出二次确认弹窗提示用户确定取消发货
-    add_order    #.重生成订单
+    Add Order    #.重生成订单
     go to    ${home_page}
     sleep    1
     Wait Until Element Is Visible    ${order_list_btn}

@@ -1,13 +1,14 @@
 *** Settings ***
 Documentation     生成订单
 Library           SeleniumLibrary
-Library           customLibrary
+Library           ${CURDIR}/../lib/customLibrary
 Resource          kw_browser.robot
 Resource          kw_common.robot
-Resource          var_tax_price.robot
+Resource          var_order.robot
+Resource          var_common.robot
 
 *** Keywords ***
-add_order
+Add Order
     #.add order
     #C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     #.click products btn

@@ -9,7 +9,6 @@ Resource          var_tax_price.robot
 *** keyword ***
 add_products
     #.添加商品
-    #${image}    Set Variable    /Users/lizhicheng/dianjiang/shoplaza_robot/module/02_product/images/tm.jpg
     ${sssss}    Set Variable    ${CURDIR}/images/tm.jpg
     #只填写必要参数以添加商品
     Go TO    ${home_page}

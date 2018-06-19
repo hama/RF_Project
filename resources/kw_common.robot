@@ -4,6 +4,9 @@ Resource          var_common.robot
 Resource          kw_browser.robot
 
 *** Keywords ***
+Login With Default User
+    New Test Suite Browser And Login    ${user_default_name}    ${user_default_pwd}    ${user_default_domain}
+
 Login With User
     [Arguments]    ${username}    ${password}    ${domain}
     # login with specify user and domain
@@ -14,7 +17,6 @@ Login With User
     Wait And Input Password    id:password    ${password}
     Wait And Click Button    class:logBtn___3pRgJ
     Comment    wait until domain input text element is visible
-    Sleep    1
     ${href}=    Execute JavaScript    return window.location.href
     ${has_login}=    Execute JavaScript    return '${href}'==='${url_home_page}'
     Run Keyword Unless    ${has_login}    Input Domain    ${domain}
@@ -30,6 +32,18 @@ Input Domain
 Go To Setting Page
     [Documentation]    跳转到设置页面
     Wait And Click Element    ${locator_setting}
+
+Go To Products Page
+    [Documentation]    跳转到订单页面
+    Wait And Click Element    ${locator_products}
+    Wait Until Page Contains    ${content_products_title}
+    Location Should Be    ${url_products}
+
+Go To Order Page
+    [Documentation]    跳转到订单页面
+    Wait And Click Element    ${locator_order}
+    Wait Until Page Contains    ${content_order_title}
+    Location Should Be    ${url_order}
 
 Go To Tax Price Page
     [Documentation]    跳转到税费页面

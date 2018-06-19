@@ -1,19 +1,18 @@
 *** Settings ***
 Documentation     Test tax price page ui.
-Suite Setup       New Test Suite Browser And Login    ${nothingUser}    ${nothingUserPassword}    ${nothingUserDomain}
-Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
+Suite Setup       Login With Default User
+Suite Teardown    Close Test Suite Browser
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
+Resource          ../../../resources/var_common.robot
+Resource          ../../../resources/var_product.robot
 Resource          ../../../resources/kw_common.robot
-Resource          ../../../resources/kw_browser.robot    # import ajax listener keyword
-Library           customLibrary
+Resource          ../../../resources/kw_browser.robot
+Library           ${CURDIR}/../../../lib/customLibrary
 
 *** Test Cases ***
 Test_Tax_Page_Normal
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
+    Go To Products Page
     Assign id To Element    dom:document.querySelectorAll(".ant-pagination-total-text")[0]    btn1
     Wait Until Element Is Visible    btn1
     #获取商品记录总数
