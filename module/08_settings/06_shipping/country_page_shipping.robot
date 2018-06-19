@@ -15,11 +15,8 @@ Library           customLibrary
     [Tags]    P0
     Go To Shipping Page
     Add Shipping Setp
-    Sleep    1
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-checkbox")[0]
-    Sleep    1
     Wait And Click Element    dom:document.getElementById("test_shipping_country_modal_sure_btn")
-    Sleep    1
     Page Should Contain Element    class:ant-table-body
     Quit Adding Shipping
 
@@ -32,8 +29,7 @@ Library           customLibrary
     sleep    1
     Input Text    dom:document.querySelectorAll('#name')[0]    中国
     Sleep    1
-    Click Element    id:test_save_btn
-    Sleep    1
+    Wait And Click Element    id:test_save_btn
     Page Should Not Contain Element    class:title___29mch
     Quit Adding Shipping
 
@@ -45,7 +41,7 @@ Library           customLibrary
     Wait Until Element Is Visible    id:test_save_btn
     sleep    1
     input text    dom:document.querySelectorAll('#name')[0]    中
-    Click Element    id:test_save_btn
+    Wait And Click Element    id:test_save_btn
     Page Should Not Contain Element    class:title___29mch
     Quit Adding Shipping
 
@@ -57,7 +53,7 @@ Library           customLibrary
     Wait Until Element Is Visible    id:test_save_btn
     sleep    1
     input text    dom:document.querySelectorAll('#name')[0]    @#￥
-    Click Element    id:test_save_btn
+    Wait And Click Element    id:test_save_btn
     Page Should Not Contain Element    class:title___29mch
     Quit Adding Shipping
 
@@ -93,8 +89,8 @@ Library           customLibrary
     [Tags]    P0
     Go To Shipping Page
     Add Shipping Setp
-    sleep    1
-    Click Element    dom:document.querySelectorAll(".ant-checkbox-input")[0]
+    Wait And Click ELement    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".ant-checkbox-input")[1]
     Wait And Click Element    dom:document.getElementById("test_shipping_country_modal_sure_btn")
     ${res}    get text    dom:document.querySelectorAll(".name_wrapper___Kkqpr p")[1]
     Should Be True    '${res}'=='其他国家'
@@ -122,10 +118,8 @@ Library           customLibrary
     click element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    ${locator_shipping_add_country}
     Sleep    1
-    Click Element    ${locator_shipping_add_country}
-    sleep    1
+    Wait And Click Element    ${locator_shipping_add_country}
     Wait And Click Element    dom:document.getElementsByClassName("ant-modal-close-x")[0]
-    Sleep    1.5
     ${res}    Execute JavaScript    return document.querySelectorAll(".ant-table-placeholder span")[0].innerText
     #check data
     Should Be True    '${res}'=='暂无数据'
@@ -137,7 +131,6 @@ Quit Adding Shipping
     Alert Should Be Present
 
 Add Shipping Setp
-    click element    ${locator_shipping_add_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_country}
+    Wait And click element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locator_shipping_add_country}
     Sleep    1
-    Click Element    ${locator_shipping_add_country}
