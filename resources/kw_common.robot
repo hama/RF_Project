@@ -9,8 +9,6 @@ Login With Default User
 
 Login With User
     [Arguments]    ${username}    ${password}    ${domain}
-    # login with specify user and domain
-    log    ===============================================================
     log    Login with ${username}
     Comment    wait until login button is visible
     Wait And Input Text    id:account    ${username}
@@ -22,7 +20,6 @@ Login With User
     Run Keyword Unless    ${has_login}    Input Domain    ${domain}
     Wait Until Element Is Visible    ${locator_setting}
     log    Login Success
-    log    ===============================================================
 
 Input Domain
     [Arguments]    ${domain}
@@ -36,7 +33,7 @@ Go To Setting Page
 Go To Products Page
     [Documentation]    跳转到订单页面
     Wait And Click Element    ${locator_products}
-    Wait Until Page Contains    ${content_products_title}
+    Wait Until Page Contains    ${content_products_all}
     Location Should Be    ${url_products}
 
 Go To Order Page
@@ -50,7 +47,7 @@ Go To Tax Price Page
     Wait Until Element Is Visible    ${locator_setting}
     # 若设置按钮没展开，则展开设置按钮
     ${unvisible}=    Execute Javascript    return document.querySelectorAll('a[href="/taxPrice"]')[0]===undefined
-    Run Keyword If    ${unvisible}    Click Element    ${locator_setting}
+    Run Keyword If    ${unvisible}    Wait And Click Element    ${locator_setting}
     Wait And Click Element    ${locator_setting_taxPrice}
     Wait Until Page Contains    ${content_tax_setting}
     Location Should Be    ${url_tax_price}

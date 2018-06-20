@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     测试税费页面登录超时
-Suite Setup       New Test Suite Browser And Login    ${user_default_name}    ${user_default_pwd}    ${user_default_domain}
+Suite Setup       Login With Default User
 Suite Teardown    Close Test Suite Browser
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case

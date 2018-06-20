@@ -33,3 +33,5 @@ ${url_shipping}    http://admin1024.shoplazza.com/shipping    # shipping
 ${user_default_name}    18825260804    # 默认使用的用户信息，用于跑大部分用例
 ${user_default_pwd}    18825260804
 ${user_default_domain}    diu
+### keybord_key
+${keybord_enter}    \\13
