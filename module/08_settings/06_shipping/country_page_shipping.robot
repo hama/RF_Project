@@ -8,17 +8,18 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_shipping.robot
 Library           customLibrary
+Resource          ./common.robot
 
 *** Test Cases ***
 001_add_country_shipping
     [Documentation]    添加国家
     [Tags]    P0
     Go To Shipping Page
-    Add Shipping Setp
+    Quantity All Setp
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-checkbox")[0]
     Wait And Click Element    dom:document.getElementById("test_shipping_country_modal_sure_btn")
     Page Should Contain Element    class:ant-table-body
-    Quit Adding Shipping
+    Quit All Shipping
 
 013_shipping
     [Documentation]    tax price page should be normal atfer login
@@ -31,7 +32,7 @@ Library           customLibrary
     Sleep    1
     Wait And Click Element    id:test_save_btn
     Page Should Not Contain Element    class:title___29mch
-    Quit Adding Shipping
+    Quit All Shipping
 
 014_shipping
     [Documentation]    物流方案输入中
@@ -43,7 +44,7 @@ Library           customLibrary
     input text    dom:document.querySelectorAll('#name')[0]    中
     Wait And Click Element    id:test_save_btn
     Page Should Not Contain Element    class:title___29mch
-    Quit Adding Shipping
+    Quit All Shipping
 
 015_shipping
     [Documentation]    物流方案输入 特殊字符
@@ -55,13 +56,13 @@ Library           customLibrary
     input text    dom:document.querySelectorAll('#name')[0]    @#￥
     Wait And Click Element    id:test_save_btn
     Page Should Not Contain Element    class:title___29mch
-    Quit Adding Shipping
+    Quit All Shipping
 
 016_shipping
     [Documentation]    选择国家后 列表选中国家出现1
     [Tags]    P0
     Go To Shipping Page
-    Add Shipping Setp
+    Quantity All Setp
     Sleep    1
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
@@ -74,7 +75,7 @@ Library           customLibrary
     [Documentation]    选择国家后 列表出现对应的国家
     [Tags]    P0
     Go To Shipping Page
-    Add Shipping Setp
+    Quantity All Setp
     sleep    1
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
@@ -82,25 +83,25 @@ Library           customLibrary
     Wait And Click Element    dom:document.getElementById("test_shipping_country_modal_sure_btn")
     ${res}    get text    dom:document.querySelectorAll(".name_wrapper___Kkqpr p")[1]
     Should Be True    '${data}'=='${res}'
-    Quit Adding Shipping
+    Quit All Shipping
 
 018_shipping
     [Documentation]    选择国家的`其他国家` 列表出现其他国家
     [Tags]    P0
     Go To Shipping Page
-    Add Shipping Setp
+    Quantity All Setp
     Wait And Click ELement    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
     Wait And Click Element    dom:document.querySelectorAll(".ant-checkbox-input")[1]
     Wait And Click Element    dom:document.getElementById("test_shipping_country_modal_sure_btn")
     ${res}    get text    dom:document.querySelectorAll(".name_wrapper___Kkqpr p")[1]
     Should Be True    '${res}'=='其他国家'
-    Quit Adding Shipping
+    Quit All Shipping
 
 019_shipping
     [Documentation]    选择国家的随意一个国家 列表不会出现`其他国家`
     [Tags]    P0
     Go To Shipping Page
-    Add Shipping Setp
+    Quantity All Setp
     sleep    1.5
     Click Element    dom:document.getElementsByClassName("ant-checkbox-input")[0]
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
@@ -108,7 +109,7 @@ Library           customLibrary
     Wait And Click Element    dom:document.getElementById("test_shipping_country_modal_sure_btn")
     ${res}    get text    dom:document.querySelectorAll(".name_wrapper___Kkqpr p")[1]
     Should Be True    '${res}'<>'其他国家'
-    Quit Adding Shipping
+    Quit All Shipping
 
 020_shipping
     [Documentation]    选择国家不选国家 列表提示暂无数据
@@ -123,14 +124,3 @@ Library           customLibrary
     ${res}    Execute JavaScript    return document.querySelectorAll(".ant-table-placeholder span")[0].innerText
     #check data
     Should Be True    '${res}'=='暂无数据'
-
-*** Keywords ***
-Quit Adding Shipping
-    Wait Until Element is Visible    ${locator_setting_shipping}
-    Click Element    ${locator_setting_shipping}
-    Alert Should Be Present
-
-Add Shipping Setp
-    Wait And click element    ${locator_shipping_add_shipping}
-    Wait And Click Element    ${locator_shipping_add_country}
-    Sleep    1
