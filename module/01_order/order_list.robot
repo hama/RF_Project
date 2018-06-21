@@ -8,6 +8,7 @@ Library           SeleniumLibrary
 Library           customLibrary
 Resource          ./common.robot
 Resource          ../../resources/var_order.robot
+Library           DateTime
 
 *** Test Cases ***
 order_list_page
@@ -129,11 +130,13 @@ order_list_search
 order_list_all_check
     [Documentation]    订单列表点击全部 显示所有订单
     [Tags]    P1
+    ${time}    getTimeData
+    ${order_list_apis}=    Set Variable    http://admin1024.shoplazza.com/api/order/list?start_create_time=${start_time}&end_create_time=${end_time}&page=0&size=20
     Start Ajax Listener
     Go To Order Page
     sleep    1
     Wait And Click Element    ${order_list_btn}
-    ${dataLength}    Execute JavaScript    return responseMap.get("${order_list_api}").data.list
+    ${dataLength}=    Execute JavaScript    return responseMap.get("${order_list_apis}").data.list
     ${count}    evaluate    len(${dataLength})
     Should Be True    ${count}==20
 

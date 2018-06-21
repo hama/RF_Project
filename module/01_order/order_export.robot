@@ -10,7 +10,8 @@ Resource          ../../resources/var_order.robot
 
 *** Test Cases ***
 order_export
-    #.已完成订单 点击导出
+    [Documentation]    已完成订单 点击导出
+    [Tags]    P0d
     Order Export Setp
     Sleep    1
     Page Should Contain Element    class:ant-modal-body
@@ -18,7 +19,8 @@ order_export
     Quit Order Setp
 
 order_export_email_not_empty
-    #.已完成订单 点击导出    不输入邮箱 提示错误
+    [Documentation]    已完成订单 点击导出 不输入邮箱 提示错误
+    [Tags]    P0
     Order Export Setp
     Sleep    1
     Page Should Contain Element    class:ant-modal-body
@@ -28,7 +30,8 @@ order_export_email_not_empty
     Quit Order Setp
 
 order_export_format_error
-    #.已完成订单 点击导出    输入非邮箱 提示错误
+    [Documentation]    已完成订单 点击导出 输入非邮箱 提示错误
+    [Tags]    P1
     Order Export Setp
     Wait Until Element Is Visible    dom:document.querySelectorAll("#email")[0]
     Input Text    dom:document.querySelectorAll("#email")[0]    123456
