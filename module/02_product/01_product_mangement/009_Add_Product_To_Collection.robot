@@ -4,12 +4,15 @@ Suite Setup       New Test Suite Browser And Login    ${nothingUser}    ${nothin
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
+Force Tags        Products
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot    # import ajax listener keyword
 Library           customLibrary
 
 *** Test Cases ***
 Validate_Normal_Page
+    [Documentation]    验证商品批量添加专辑显示正常
+    [Tags]    P0
     #验证添加到商品专辑排版正确
     Go TO    ${home_page}
     #进入商品模块
@@ -40,6 +43,8 @@ Validate_Normal_Page
     Page Should Contain Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
 
 Add_Product_To_Collection
+    [Documentation]    验证商品批量添加专辑
+    [Tags]    P0
     #添加商品到专辑
     #选中第几个专辑
     ${which}=    Set Variable    0
@@ -77,6 +82,8 @@ Add_Product_To_Collection
     Page Should Contain    ${name}
 
 Search_Collection
+    [Documentation]    验证商品批量添加专辑弹窗中，专辑搜索功能显示正常
+    [Tags]    P0
     #验证商品专辑搜索
     #选择搜索第几个专辑的名称
     ${which}=    Set Variable    0
@@ -105,6 +112,8 @@ Search_Collection
     Element Should Contain    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0].querySelectorAll("td")[1]    ${collection_name}
 
 Add_Product_To_Search_Collection
+    [Documentation]    商品批量添加到搜索出来的专辑
+    [Tags]    P0
     #验证搜索出来的专辑可正常添加商品
     #选中第几个专辑
     ${which}=    Set Variable    0
@@ -149,6 +158,8 @@ Add_Product_To_Search_Collection
     Page Should Contain    ${name}
 
 Add_Product_To_Search_Collection_By_Id
+    [Documentation]    验证商品成功批量添加到通过专辑编号搜索出来的专辑中
+    [Tags]    P0
     #通过专辑编号搜索专辑
     #选中第几个专辑
     ${which}=    Set Variable    0
@@ -191,6 +202,8 @@ Add_Product_To_Search_Collection_By_Id
     Page Should Contain    ${name}
 
 No_Select_Collection
+    [Documentation]    验证商品批量添加专辑时未选择专辑
+    [Tags]    P0
     #未选择商品专辑
     Go TO    ${home_page}
     #进入商品模块
@@ -213,6 +226,8 @@ No_Select_Collection
     Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
 
 Cancel_Add_Product_To_Collection
+    [Documentation]    验证商品批量取消添加专辑
+    [Tags]    P0
     #取消将商品加入专辑
     Go TO    ${home_page}
     #进入商品模块
@@ -235,6 +250,8 @@ Cancel_Add_Product_To_Collection
     Click Element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
 
 Validate_No_Collection
+    [Documentation]    验证商品批量添加专辑时，无专辑数据
+    [Tags]    P0
     #验证无专辑数据时
     Go TO    ${home_page}
     #进入商品模块

@@ -4,12 +4,15 @@ Suite Setup       New Test Suite Browser And Login    ${nothingUser}    ${nothin
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
+Force Tags        Products
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot    # import ajax listener keyword
 Library           customLibrary
 
 *** Test Cases ***
 Validate_Normal_Page
+    [Documentation]    验证商品批量添加标签时是否显示正常
+    [Tags]    P0
     #验证添加标签页面
     Go TO    ${home_page}
     #进入商品模块
@@ -32,6 +35,8 @@ Validate_Normal_Page
     Page Should Contain Element    dom:document.querySelectorAll(".ant-select-selection__rendered")[3]
 
 Add_Tag
+    [Documentation]    商品批量添加标签
+    [Tags]    P0
     #添加商品标签
     Go TO    ${home_page}
     ${input_tag}=    Set Variable    bbb
@@ -73,6 +78,8 @@ Add_Tag
 
 Add_Already_Tag
     #-----------------------------------------------------有问题-----------------------------------------------------#
+    [Documentation]    商品批量添加现已有的标签
+    [Tags]    P0
     #验证添加已有的标签
     Go TO    ${home_page}
     #进入商品模块
@@ -104,6 +111,8 @@ Add_Already_Tag
     Page Should Contain    ${tag}
 
 Add_New_And_Already_Tag
+    [Documentation]    商品批量添加现已有的标签和新的标签
+    [Tags]    P0
     #添加现有的和新的标签
     Go TO    ${home_page}
     ${input_tag}=    Set Variable    ccc
@@ -151,6 +160,8 @@ Add_New_And_Already_Tag
     Page Should Contain    ${already_tag}
 
 Cancel_Add_Tag
+    [Documentation]    商品批量取消添加标签
+    [Tags]    P0
     #取消添加标签
     Go TO    ${home_page}
     #进入商品模块
@@ -175,6 +186,8 @@ Cancel_Add_Tag
     Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
 
 Remove_Tag_Page
+    [Documentation]    验证商品批量移除标签是否显示正常
+    [Tags]    P0
     #验证移除标签显示正确
     Go TO    ${home_page}
     #进入商品模块
@@ -199,6 +212,8 @@ Remove_Tag_Page
     Should Be True    ${should_count}==${count}
 
 Remove_Tag
+    [Documentation]    商品批量移除标签
+    [Tags]    P0
     #移除标签
     Go TO    ${home_page}
     #进入商品模块

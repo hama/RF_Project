@@ -4,6 +4,7 @@ Suite Setup       New Test Suite Browser And Login    ${nothingUser}    ${nothin
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
+Force Tags        Products
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot    # import ajax listener keyword
 Library           customLibrary
@@ -18,6 +19,8 @@ Edit_Normal_Page_Without_Check_Product
     Page Should Contain    ${content_products_tips_select_products}
 
 Validate_Batch_Opreation
+    [Documentation]    验证商品批量操作菜单栏正确显示
+    [Tags]    P0
     #验证批量操作菜单栏正确
     Go TO    ${home_page}
     #进入商品模块
@@ -35,6 +38,8 @@ Validate_Batch_Opreation
     Page Should Contain    从专辑移除
 
 Validate_Batch_Product_Without_Product
+    [Documentation]    验证商品批量操作时不选中一个商品
+    [Tags]    P0
     #验证不勾选商品点击批量操作菜单
     Go TO    ${home_page}
     #进入商品模块
@@ -50,6 +55,8 @@ Validate_Batch_Product_Without_Product
     Page Should Contain    请至少选择一个商品
 
 Product_Up
+    [Documentation]    商品上架
+    [Tags]    P0
     #上架一个商品
     Go TO    ${home_page}
     #进入商品模块
@@ -76,6 +83,8 @@ Product_Up
     Should Be Equal As Strings    ${class}    ant-switch ant-switch-checked
 
 Product_Up_Cancel
+    [Documentation]    商品取消上架
+    [Tags]    P0
     #取消上架一个商品
     Go TO    ${home_page}
     #进入商品模块
@@ -104,6 +113,8 @@ Product_Up_Cancel
     Should Be Equal As Strings    ${class}    ${should_class}
 
 Product_Down
+    [Documentation]    商品下架
+    [Tags]    P0
     #下架一个商品
     Go TO    ${home_page}
     #进入商品模块
@@ -130,6 +141,8 @@ Product_Down
     Should Be Equal As Strings    ${class}    ant-switch
 
 Product_Down_Cancel
+    [Documentation]    取消商品下架
+    [Tags]    P0
     #取消下架一个商品
     Go TO    ${home_page}
     #进入商品模块
@@ -158,6 +171,8 @@ Product_Down_Cancel
     Should Be Equal As Strings    ${class}    ${should_class}
 
 Product_Delete
+    [Documentation]    删除商品
+    [Tags]    P0
     #商品删除
     Go TO    ${home_page}
     #进入商品模块
@@ -186,6 +201,8 @@ Product_Delete
     Page Should Not Contain    ${name}
 
 Product_Delete_Cancel
+    [Documentation]    取消删除商品
+    [Tags]    P0
     #取消商品删除
     Go TO    ${home_page}
     #进入商品模块
@@ -213,6 +230,8 @@ Product_Delete_Cancel
     Page Should Contain    ${name}
 
 Product_List
+    [Documentation]    删除完所有商品后，商品列表应该显示暂无数据
+    [Tags]    P0
     Go TO    ${home_page}    #    列表为空
     #进入商品模块
     Wait Until Element Is Visible    class:icon_product___2ZYHZ

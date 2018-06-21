@@ -14,6 +14,8 @@ Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
 Product_Search
+    [Documentation]    验证商品搜索结果
+    [Tags]    P0
     #商品搜索
     Go TO    ${home_page}
     #进入商品模块
@@ -33,6 +35,8 @@ Product_Search
     Element Should Contain    dom:document.querySelectorAll(".ant-table-tbody")[0]    ${name}
 
 Cancel_Product_Search
+    [Documentation]    验证取消商品搜索
+    [Tags]    P0
     #取消商品搜索
     Go TO    ${home_page}
     #进入商品模块

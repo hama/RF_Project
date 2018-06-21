@@ -4,12 +4,15 @@ Suite Setup       New Test Suite Browser And Login    ${nothingUser}    ${nothin
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
+Force Tags        Products
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot    # import ajax listener keyword
 Library           customLibrary
 
 *** Test Cases ***
 Remove_Products_From_Collections
+    [Documentation]    验证商品批量移除专辑
+    [Tags]    P0
     #将两个商品一次性从两个专辑中移除
     Go TO    ${home_page}
     #进入商品模块
@@ -58,6 +61,8 @@ Remove_Products_From_Collections
     Page Should Not Contain    ${name2}
 
 Remove_Product_From_Collections
+    [Documentation]    验证一个商品从两个专辑中批量移除
+    [Tags]    P0
     #将一个商品从两个专辑中移除
     Go TO    ${home_page}
     #进入商品模块
@@ -103,6 +108,8 @@ Remove_Product_From_Collections
     Page Should Not Contain    ${name}
 
 Remove_Product_From_Collection_Without_Product
+    [Documentation]    验证商品批量移除专辑时，未选择商品
+    [Tags]    P0
     #未选择商品，提示请勾选一个商品
     Go TO    ${home_page}
     #进入商品模块

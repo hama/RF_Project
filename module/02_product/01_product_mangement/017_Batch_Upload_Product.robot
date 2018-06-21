@@ -4,12 +4,15 @@ Suite Setup       New Test Suite Browser And Login    ${nothingUser}    ${nothin
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
+Force Tags        Products
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot    # import ajax listener keyword
 Library           customLibrary
 
 *** Test Cases ***
 Upload_Success
+    [Documentation]    上传商品成功
+    [Tags]    P0
     #上传商品成功
     #模版文件
     ${file}    Set Variable    /Users/lizhicheng/dianjiang/shoplaza_robot/module/02_product/product_template.xlsx
@@ -35,6 +38,8 @@ Upload_Success
     Should Be Equal As Strings    ${tip}    您已成功导入1条商品，0条商品导入失败。
 
 Upload_Wrong
+    [Documentation]    上传商品失败
+    [Tags]    P0
     #上传商品失败
     #模版文件
     ${file}    Set Variable    /Users/lizhicheng/dianjiang/shoplaza_robot/module/02_product/wrong_format.xlsx
@@ -56,6 +61,8 @@ Upload_Wrong
     Should Be Equal As Strings    ${title}    忽略错误,开始导入
 
 Upload_Success_Without_Same
+    [Documentation]    上传重复的商品
+    [Tags]    P0
     #上传重复的商品
     #模版文件
     ${file}    Set Variable    /Users/lizhicheng/dianjiang/shoplaza_robot/module/02_product/product_template.xlsx

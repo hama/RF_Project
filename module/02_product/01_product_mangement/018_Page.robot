@@ -4,12 +4,15 @@ Suite Setup       New Test Suite Browser And Login    ${nothingUser}    ${nothin
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
+Force Tags        Products
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot    # import ajax listener keyword
 Library           customLibrary
 
 *** Test Cases ***
 Test_Normal_Page
+    [Documentation]    验证商品列表翻页，并且显示成功的数据
+    [Tags]    P0
     #翻页正常
     #运行环境需要已有多个商品
     Go TO    ${home_page}
@@ -55,6 +58,8 @@ Test_Normal_Page
     \    ${i}    Set Variable    ${i}+1
 
 Validate_Location_Page
+    [Documentation]    验证商品点击分页，进入商品详情后，再点击退出，能够返回到之前正确的页数
+    [Tags]    P0
     #验证点击翻页后，点进商品详情页，再退出，会返回到正确到页数
     #运行环境需要已有多个商品
     Go TO    ${home_page}

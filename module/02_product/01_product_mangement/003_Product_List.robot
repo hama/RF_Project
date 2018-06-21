@@ -41,6 +41,8 @@ Test_Products_List_Data
     \    Run Keyword If    ${status}==1    Should Be Checked    ${index}
 
 Up_And_Down_Product
+    [Documentation]    上下架商品
+    [Tags]    P0
     Go TO    ${home_page}
     #进入商品模块
     Wait Until Element Is Visible    class:icon_product___2ZYHZ
@@ -56,6 +58,8 @@ Up_And_Down_Product
     Should Be True    ${up_product}<${all_count}
 
 Validate_Tab
+    [Documentation]    验证商品模块标签
+    [Tags]    P0
     Go TO    ${home_page}
     #进入商品模块
     Wait Until Element Is Visible    class:icon_product___2ZYHZ
@@ -66,6 +70,8 @@ Validate_Tab
     Should Be Equal As Strings    ${class_should_be}    ${class}
 
 Validate_Table_Head
+    [Documentation]    验证商品管理表头的信息显示
+    [Tags]    P0
     #验证表头显示
     Go TO    ${home_page}
     #进入商品模块
@@ -111,6 +117,8 @@ Validate_Table_Head
     Run Keyword If    ${should_quantity}>0    compare_quantity2    ${show_quantity}    ${should_quantity}
 
 Validate_Product_Status
+    [Documentation]    验证显示的所有商品状态是否显示正确
+    [Tags]    P0
     #验证表头显示
     Go TO    ${home_page}
     #进入商品模块
@@ -126,6 +134,8 @@ Validate_Product_Status
     \    Run Keyword If    ${status}==1    should_be_up    ${i}
 
 Validate_Product_Sku
+    [Documentation]    验证显示的所有商品的sku是否显示正确
+    [Tags]    P0
     #验证表头显示
     Go TO    ${home_page}
     #进入商品模块
@@ -142,6 +152,8 @@ Validate_Product_Sku
     \    Run Keyword If    ${should_sku}!=-1    Should Be Equal As Strings    ${should_sku}    ${sku}
 
 Validate_Upload_Alert
+    [Documentation]    验证商品上传弹窗
+    [Tags]    P0
     #验证商品上传弹窗
     Go TO    ${home_page}
     #进入商品模块
@@ -154,6 +166,8 @@ Validate_Upload_Alert
     Page Should Contain Element    btn1
 
 Validate_Delete_Product
+    [Documentation]    验证删除商品
+    [Tags]    P0
     #删除商品
     Go TO    ${home_page}
     #进入商品模块
@@ -177,6 +191,8 @@ Validate_Delete_Product
     Page Should Not Contain    ${name}
 
 Validate_Cancel_Delete_Product
+    [Documentation]    取消删除商品
+    [Tags]    P0
     #取消删除商品
     Go TO    ${home_page}
     #进入商品模块

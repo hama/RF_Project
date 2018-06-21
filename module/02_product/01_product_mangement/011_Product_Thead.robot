@@ -4,12 +4,15 @@ Suite Setup       New Test Suite Browser And Login    ${nothingUser}    ${nothin
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
+Force Tags        Products
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot    # import ajax listener keyword
 Library           customLibrary
 
 *** Test Cases ***
 Validate_Thead_Page
+    [Documentation]    验证自定义商品列表排版
+    [Tags]    P0
     #验证自定义商品列表排版
     Go TO    ${home_page}
     #进入商品模块
@@ -34,6 +37,8 @@ Validate_Thead_Page
     Page Should Contain Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
 
 Validate_Cancel_All
+    [Documentation]    验证商品列表取消所有的表头复选框之后的显示情况
+    [Tags]    P0
     #验证取消所有选中的复选框
     Go TO    ${home_page}
     #进入商品模块
@@ -55,6 +60,8 @@ Validate_Cancel_All
     Element Should Not Contain    dom:document.querySelectorAll(".ant-table-thead")[0]    浏览量
 
 Validate_Cancel_Part
+    [Documentation]    验证商品列表取消部分的表头复选框之后的显示情况
+    [Tags]    P0
     #验证取消部分
     Go TO    ${home_page}
     #进入商品模块
@@ -75,6 +82,8 @@ Validate_Cancel_Part
     Element Should Not Contain    dom:document.querySelectorAll(".ant-table-thead")[0]    创建时间
 
 Click_Cancel_Button
+    [Documentation]    验证商品列表修改表头复选框之后点击取消按钮的显示情况
+    [Tags]    P0
     #验证点击取消按钮的状态
     Go TO    ${home_page}
     #进入商品模块

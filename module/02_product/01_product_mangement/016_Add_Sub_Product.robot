@@ -4,12 +4,15 @@ Suite Setup       New Test Suite Browser And Login    ${nothingUser}    ${nothin
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
+Force Tags        Products
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot    # import ajax listener keyword
 Library           customLibrary
 
 *** Test Cases ***
 Add_Already_Option
+    [Documentation]    添加子商品已有的选项
+    [Tags]    P0
     #添加一个已有的选项
     ${title}    Set Variable    ceshi1
     #只填写必要参数以添加商品
@@ -35,6 +38,8 @@ Add_Already_Option
 
 Add_Already_Self_Option
     #-------------------------暂未成功！！！--------------------------------
+    [Documentation]    添加子商品自定义的选项
+    [Tags]    P0
     #添加一个自定义的选项
     ${title}    Set Variable    ceshi1
     #只填写必要参数以添加商品
@@ -68,6 +73,8 @@ Add_Already_Self_Option
     Click Element    id:test_save_btn
 
 Add_Already_Seo
+    [Documentation]    添加商品时，添加商品seo信息
+    [Tags]    P0
     #编辑seo
     ${title}    Set Variable    ceshi1
     #只填写必要参数以添加商品
@@ -105,6 +112,8 @@ Add_Already_Seo
     Click Element    id:test_save_btn
 
 Validate_SEO_Close
+    [Documentation]    验证添加商品时，隐藏seo编辑区域
+    [Tags]    P0
     #验证隐藏seo编辑
     ${title}    Set Variable    ceshi1
     #只填写必要参数以添加商品
