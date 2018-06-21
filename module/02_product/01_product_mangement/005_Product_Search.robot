@@ -1,12 +1,16 @@
 *** Settings ***
-Documentation     Test tax price page ui.
-Suite Setup       New Test Suite Browser And Login    ${nothingUser}    ${nothingUserPassword}    ${nothingUserDomain}
-Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
-Test Setup        Setup Test Case
-Test Teardown     Teardown Test Case
+Documentation     测试商品搜索
+Suite Setup       Products Suite Setup
+Suite Teardown    Products Suite Teardown
+Test Setup        Products Test Case Setup
+Test Teardown     Products Test Case Teardown
+Force Tags        Products
+Library           ${CURDIR}/../../../lib/customLibrary
+Resource          ../../../resources/var_common.robot
+Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/kw_common.robot
-Resource          ../../../resources/kw_browser.robot    # import ajax listener keyword
-Library           customLibrary
+Resource          ../../../resources/kw_browser.robot
+Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
 Product_Search

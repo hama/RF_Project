@@ -9,6 +9,14 @@ Resource          ../../../resources/kw_browser.robot    # import ajax listener 
 Library           customLibrary
 
 *** Test Cases ***
+Edit_Normal_Page_Without_Check_Product
+    [Documentation]    不选择商品，直接操作，提示请选择至少一个商品
+    [Tags]    P0
+    # 进行任意批量操作
+    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__rendered")[1]
+    Wait And Click Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[1]
+    Page Should Contain    ${content_products_tips_select_products}
+
 Validate_Batch_Opreation
     #验证批量操作菜单栏正确
     Go TO    ${home_page}
@@ -203,3 +211,11 @@ Product_Delete_Cancel
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
     #验证当前页面应该含有该商品名称
     Page Should Contain    ${name}
+
+Product_List
+    Go TO    ${home_page}    #    列表为空
+    #进入商品模块
+    Wait Until Element Is Visible    class:icon_product___2ZYHZ
+    Click Element    class:icon_product___2ZYHZ
+    Wait Until Element Is Visible    class:table_null_p___1yzjh
+    Page Should Contain    暂无数据

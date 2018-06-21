@@ -5,7 +5,7 @@ Suite Teardown    Close Test Suite Browser    # close the browser opened for thi
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Resource          ../../../resources/var_tax_price.robot
-Resource          ../../../resources/var_product.robot
+Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot

@@ -1,36 +1,44 @@
 *** Settings ***
-Documentation     Test tax price page ui.
-Suite Setup       Login With Default User
-Suite Teardown    Close Test Suite Browser
-Test Setup        Setup Test Case
-Test Teardown     Teardown Test Case
+Documentation     测试商品列表
+Suite Setup       Products Suite Setup
+Suite Teardown    Products Suite Teardown
+Test Setup        Products Test Case Setup
+Test Teardown     Products Test Case Teardown
+Force Tags        Products
+Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_common.robot
-Resource          ../../../resources/var_product.robot
+Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
-Library           ${CURDIR}/../../../lib/customLibrary
+Resource          ../../../resources/kw_products.robot
+
+*** Variables ***
+${locator_page_total_record}    dom:document.querySelectorAll(".ant-pagination-total-text")[0]
 
 *** Test Cases ***
-Product_Total
-    Go To Products Page
-    #查询数据库中商品总数
-    ${should_be}    getProductCount
-    #查询页面上显示的商品记录总数
-    Assign id To Element    dom:document.querySelectorAll(".ant-pagination-total-text")[0]    btn1
-    Wait Until Element Is Visible    btn1
-    ${count}    Get Text    btn1
-    ${count}    searchStr    ${count}
-    #比较商品总数
-    Should Be True    ${should_be}==${count}
-    #获取商品总数
-    ${all_count}    Execute Javascript    return document.getElementsByClassName("ant-switch").length
-    Assign id To Element    dom:document.querySelectorAll(".ant-select-selection-selected-value")[1]    btn2
-    Wait Until Element Is Visible    btn2
-    ${size}    Get Text    btn2
-    ${size}    searchStr    ${size}
-    Log    ${size}
-    Run Keyword If    ${should_be}<=${size}    Should Be True    ${should_be}==${all_count}
-    Run Keyword If    ${should_be}>${size}    Should Be True    ${all_count}==${size}
+Test_Products_List_Data
+    [Documentation]    测试商品列表的展示（数量/标题/库存/SKU/浏览量/销量/上架状态/创建时间）
+    [Tags]    P0
+    # 接口返回的数量==页面展示的总条数
+    ${total_record}=    Execute Javascript    return responseMap.get("${api_products_list}").data.total;
+    ${total_record_str}=    Convert To String    ${total_record}
+    Element Should Contain    ${locator_page_total_record}    ${total_record_str}
+    # 然后遍历校验列表数据是否一致
+    :FOR    ${index}    IN RANGE    ${total_record}
+    \    ${table_row}=    Evaluate    int(${index}) + 2
+    \    ${title}=    Execute JavaScript    return responseMap.get("${api_products_list}").data.products[${index}].title;
+    \    ${sku}=    Execute JavaScript    return responseMap.get("${api_products_list}").data.products[${index}].variants[0].sku;
+    \    ${incoming}=    Execute JavaScript    return responseMap.get("${api_products_list}").data.products[${index}].variants[0].incoming.toString();
+    \    ${sales}=    Execute JavaScript    return responseMap.get("${api_products_list}").data.products[${index}].variants[0].sales.toString();
+    \    ${status}=    Execute JavaScript    return responseMap.get("${api_products_list}").data.products[${index}].status;
+    \    ${create_time}=    Execute JavaScript    return responseMap.get("${api_products_list}").data.products[${index}].create_time;
+    \    Table Cell Should Contain    tag:table    ${table_row}    3    ${title}
+    \    Table Cell Should Contain    tag:table    ${table_row}    5    ${sku}
+    \    Table Cell Should Contain    tag:table    ${table_row}    6    ${incoming}
+    \    Table Cell Should Contain    tag:table    ${table_row}    7    ${sales}
+    \    Table Cell Should Contain    tag:table    ${table_row}    10    ${create_time}
+    \    Run Keyword If    ${status}==0    Should Be Not Checked    ${index}
+    \    Run Keyword If    ${status}==1    Should Be Checked    ${index}
 
 Up_And_Down_Product
     Go TO    ${home_page}
@@ -47,7 +55,7 @@ Up_And_Down_Product
     #上架商品数量应该小于商品总数
     Should Be True    ${up_product}<${all_count}
 
-Validate_All_Tab
+Validate_Tab
     Go TO    ${home_page}
     #进入商品模块
     Wait Until Element Is Visible    class:icon_product___2ZYHZ
@@ -57,7 +65,7 @@ Validate_All_Tab
     ${class}    Execute Javascript    return document.querySelectorAll(".ant-radio-button-wrapper")[0].getAttribute('class')
     Should Be Equal As Strings    ${class_should_be}    ${class}
 
-Validate_Table
+Validate_Table_Head
     #验证表头显示
     Go TO    ${home_page}
     #进入商品模块
@@ -70,12 +78,12 @@ Validate_Table
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-body")[0]
     #点击已经选中的，将他们全部取消选中
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox-checked").length
-    : FOR    ${index}    IN RANGE    ${count}
+    :FOR    ${index}    IN RANGE    ${count}
     \    Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox-checked")[0]
     Sleep    1
     #再将所有复选框选中
     ${cancel}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox").length
-    : FOR    ${i}    IN RANGE    ${cancel}
+    :FOR    ${i}    IN RANGE    ${cancel}
     \    Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox")[${i}]
     #点击确定按钮
     Click Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
@@ -112,7 +120,7 @@ Validate_Product_Status
     #获取当前页展示的商品数量
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-table-tbody .ant-table-row").length
     #判断当前页所有商品状态
-    : FOR    ${i}    IN RANGE    ${count}
+    :FOR    ${i}    IN RANGE    ${count}
     \    ${status}    getProductStatus    ${i}
     \    Run Keyword If    ${status}==0    should_be_down    ${i}
     \    Run Keyword If    ${status}==1    should_be_up    ${i}
@@ -127,7 +135,7 @@ Validate_Product_Sku
     #获取当前页展示的商品数量
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-table-tbody .ant-table-row").length
     #判断当前页所有商品状态
-    : FOR    ${i}    IN RANGE    ${count}
+    :FOR    ${i}    IN RANGE    ${count}
     \    ${should_sku}    getProductSku    ${i}
     \    ${sku}    Get Text    dom:document.querySelectorAll(".ant-table-tbody tr")[${i}].querySelectorAll("td")[4].querySelectorAll("span")[0]
     \    Run Keyword If    ${should_sku}==-1    Should Be True    '${sku}'==''
@@ -199,14 +207,31 @@ compare_quantity2
     ${show_quantity}    searchStr    ${show_quantity}
     Should Be True    ${show_quantity}==${should_quantity}
 
-should_be_down
+Should Be Not Checked
     [Arguments]    ${i}
     #获取按钮类名
     ${class_name}    Execute Javascript    return document.getElementsByClassName("ant-switch")[${i}].getAttribute("class")
     Should Be Equal As Strings    ${class_name}    ant-switch
 
-should_be_up
+Should Be Checked
     [Arguments]    ${i}
     #获取按钮类名
     ${class_name}    Execute Javascript    return document.getElementsByClassName("ant-switch")[${i}].getAttribute("class")
     Should Be Equal As Strings    ${class_name}    ant-switch ant-switch-checked
+
+Products Suite Setup
+    [Documentation]    商品 case setup
+    Login With Default User
+    Start Ajax Listener
+    #Add Product
+    Go To Products Page
+
+Products Suite Teardown
+    [Documentation]    删除商品
+    Close Test Suite Browser
+
+Products Test Case Setup
+    Go To Products Page
+
+Products Test Case Teardown
+    Teardown Test Case

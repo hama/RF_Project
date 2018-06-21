@@ -82,7 +82,7 @@ Resource          ../../../resources/kw_shipping.robot
 
 *** KeyWords ***
 Tax Price Suite Setup
-    New Test Suite Browser And Login    ${user_default_name}    ${user_default_pwd}    ${user_default_domain}
+    Login With Default User
     Add Shipping
     Start Ajax Listener
 
@@ -96,7 +96,7 @@ Tax Price Test Cases Setup
 Check Tax Page List
     log    获取指定接口的数据，使用 Table should countains 关键字判断是否包含
     ${dataLength}=    Execute JavaScript    return responseMap.get("${api_tax_list}").data.list.length;
-    : FOR    ${index}    IN RANGE    ${dataLength}
+    :FOR    ${index}    IN RANGE    ${dataLength}
     \    ${rowIndex}=    Evaluate    int(${index}) + 2
     \    ${country_name}=    Execute JavaScript    return responseMap.get("${api_tax_list}").data.list[${index}].country_name;
     \    ${country_name_en}=    Execute JavaScript    return responseMap.get("${api_tax_list}").data.list[${index}].country_name_en;
@@ -112,7 +112,7 @@ Set Random Price
     [Documentation]    随机设置税费
     ${zone_count}=    Execute JavaScript    return responseMap.get("${api_tax_list}").data.list[0].zone_list.length;
     ${rand_value}=    Evaluate    random.randint(0, 100)    modules=random
-    : FOR    ${index}    IN RANGE    ${zone_count}
+    :FOR    ${index}    IN RANGE    ${zone_count}
     \    ${inputIndex}=    Evaluate    int(${index}) + 1
     \    Input Text    dom:document.querySelectorAll('.ant-modal-body .ant-input')[${inputIndex}]    ${rand_value}
 
@@ -122,14 +122,14 @@ Check City Data
     # find table
     Assign Id To Element    dom:document.querySelectorAll('.ant-modal-body table')[0]    zone_table
     # compare ajax result and the page result
-    : FOR    ${index}    IN RANGE    ${zone_count}
+    :FOR    ${index}    IN RANGE    ${zone_count}
     \    ${rowIndex}=    Evaluate    int(${index}) + 2
     \    ${inputIndex}=    Evaluate    int(${index}) + 1
     \    ${zone_name}=    Execute JavaScript    return responseMap.get("${api_tax_list}").data.list[0].zone_list[${index}].zone_name;
     \    ${zone_price}=    Execute JavaScript    return responseMap.get("${api_tax_list}").data.list[0].zone_list[${index}].price.toString();
     \    ${zone_price_show}=    Set Variable If    '${zone_price}'=='0.00'    ${EMPTY}    ${zone_price}
     \    Table Cell Should Contain    id:zone_table    ${rowIndex}    1    ${zone_name}
-    \    #Table Cell Should Contain    id:zone_table    ${rowIndex}    2    ${zone_price_show}
+    #\    Table Cell Should Contain    id:zone_table    ${rowIndex}    2    ${zone_price_show}
     \    Textfield Value Should Be    dom:document.querySelectorAll('.ant-modal-body input')[${inputIndex}]    ${zone_price_show}
 
 Check response status
