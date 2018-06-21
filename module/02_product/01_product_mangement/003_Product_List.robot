@@ -24,7 +24,7 @@ Test_Products_List_Data
     ${total_record_str}=    Convert To String    ${total_record}
     Element Should Contain    ${locator_page_total_record}    ${total_record_str}
     # 然后遍历校验列表数据是否一致
-    :FOR    ${index}    IN RANGE    ${total_record}
+    : FOR    ${index}    IN RANGE    ${total_record}
     \    ${table_row}=    Evaluate    int(${index}) + 2
     \    ${title}=    Execute JavaScript    return responseMap.get("${api_products_list}").data.products[${index}].title;
     \    ${sku}=    Execute JavaScript    return responseMap.get("${api_products_list}").data.products[${index}].variants[0].sku;
@@ -43,10 +43,6 @@ Test_Products_List_Data
 Up_And_Down_Product
     [Documentation]    上下架商品
     [Tags]    P0
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     Wait Until Element Is Visible    dom:document.getElementsByClassName("ant-switch")[0]
     #获取商品总数，包含上下架商品
     ${all_count}    Execute Javascript    return document.getElementsByClassName("ant-switch").length
@@ -60,10 +56,6 @@ Up_And_Down_Product
 Validate_Tab
     [Documentation]    验证商品模块标签
     [Tags]    P0
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     ${class_should_be}=    Set Variable    ant-radio-button-wrapper ant-radio-button-wrapper-checked
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-radio-button-wrapper")[0]
     ${class}    Execute Javascript    return document.querySelectorAll(".ant-radio-button-wrapper")[0].getAttribute('class')
@@ -73,26 +65,19 @@ Validate_Table_Head
     [Documentation]    验证商品管理表头的信息显示
     [Tags]    P0
     #验证表头显示
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
-    Sleep    1
-    Assign Id To Element    dom:document.querySelectorAll(".editBtn___2yB79")[1]    btn1
-    Wait Until Element Is Visible    btn1
-    Click Element    btn1
+    Wait And Click Element    ${locator_products_editTableHead}
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-body")[0]
     #点击已经选中的，将他们全部取消选中
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox-checked").length
-    :FOR    ${index}    IN RANGE    ${count}
+    : FOR    ${index}    IN RANGE    ${count}
     \    Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox-checked")[0]
     Sleep    1
     #再将所有复选框选中
     ${cancel}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox").length
-    :FOR    ${i}    IN RANGE    ${cancel}
+    : FOR    ${i}    IN RANGE    ${cancel}
     \    Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox")[${i}]
     #点击确定按钮
-    Click Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
     #添加完所有表头之后再进行表头信息的检验
     Page Should Contain Element    dom:document.querySelectorAll(".ant-table-thead tr th input")[0]
     Page Should Contain    商品图片
@@ -120,96 +105,71 @@ Validate_Product_Status
     [Documentation]    验证显示的所有商品状态是否显示正确
     [Tags]    P0
     #验证表头显示
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-tbody .ant-table-row")[0]
     #获取当前页展示的商品数量
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-table-tbody .ant-table-row").length
     #判断当前页所有商品状态
-    :FOR    ${i}    IN RANGE    ${count}
+    : FOR    ${i}    IN RANGE    ${count}
     \    ${status}    getProductStatus    ${i}
-    \    Run Keyword If    ${status}==0    should_be_down    ${i}
-    \    Run Keyword If    ${status}==1    should_be_up    ${i}
+    \    Run Keyword If    ${status}==0    Should Be Not Checked    ${i}
+    \    Run Keyword If    ${status}==1    Should Be Checked    ${i}
 
 Validate_Product_Sku
     [Documentation]    验证显示的所有商品的sku是否显示正确
     [Tags]    P0
     #验证表头显示
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-tbody .ant-table-row")[0]
     #获取当前页展示的商品数量
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-table-tbody .ant-table-row").length
     #判断当前页所有商品状态
-    :FOR    ${i}    IN RANGE    ${count}
+    : FOR    ${i}    IN RANGE    ${count}
     \    ${should_sku}    getProductSku    ${i}
     \    ${sku}    Get Text    dom:document.querySelectorAll(".ant-table-tbody tr")[${i}].querySelectorAll("td")[4].querySelectorAll("span")[0]
-    \    Run Keyword If    ${should_sku}==-1    Should Be True    '${sku}'==''
     \    Run Keyword If    ${should_sku}!=-1    Should Be Equal As Strings    ${should_sku}    ${sku}
+    \    Run Keyword If    ${should_sku}==-1    Should Be True    '${sku}'==''
 
 Validate_Upload_Alert
     [Documentation]    验证商品上传弹窗
     [Tags]    P0
     #验证商品上传弹窗
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
-    Wait Until Element Is Visible    class:import___3EkG3
-    Click Element    dom:document.querySelectorAll(".import___3EkG3")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".import___3EkG3")[0]
     Assign id To Element    dom:document.querySelectorAll(".ant-modal-content")[0]    btn1
-    Wait Until Element Is Visible    btn1
     Page Should Contain Element    btn1
+    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close")[1]
+    Go TO    ${home_page}
 
 Validate_Delete_Product
     [Documentation]    验证删除商品
     [Tags]    P0
     #删除商品
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     #获取要删除的商品名称
     Wait Until Element Is Visible    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
     ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
-    Assign id To Element    dom:document.querySelectorAll(".delete___2xfx-")[0]    del
-    Wait Until Element Is Visible    del
     #点击删除按钮
-    Click Element    del
+    Wait And Click Element    dom:document.querySelectorAll(".delete___2xfx-")[0]
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
     Page Should Contain    确定删除吗？
     #确定
-    Wait Until Element Is Visible    id:test_delete_modal_sure_btn
-    Click Element    id:test_delete_modal_sure_btn
+    Wait And Click Button    id:test_delete_modal_sure_btn
     #等待页面刷新数据
     Sleep    1
     #页面不应该包含该商品名称
-    Page Should Not Contain    ${name}
+    #存在多件商品名称相同，这里的判断失效
+    #Page Should Not Contain    ${name}
 
 Validate_Cancel_Delete_Product
     [Documentation]    取消删除商品
     [Tags]    P0
     #取消删除商品
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     #获取要删除的商品名称
     Wait Until Element Is Visible    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
     ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
-    Assign id To Element    dom:document.querySelectorAll(".delete___2xfx-")[0]    del
-    Wait Until Element Is Visible    del
     #点击删除按钮
-    Click Element    del
+    Wait And Click Element    dom:document.querySelectorAll(".delete___2xfx-")[0]
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
     Page Should Contain    确定删除吗？
     #取消
-    Wait Until Element Is Visible    id:test_delete_modal_cancel_btn
-    Click Element    id:test_delete_modal_cancel_btn
+    Wait And Click Element    id:test_delete_modal_cancel_btn
     #数据无变化
     Page Should Contain    ${name}
 

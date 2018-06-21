@@ -182,3 +182,203 @@ class keyWord(object):
     def dictTest(self,**dict_):
         print type(dict_)
         return dict_
+
+
+    def time(self, args):
+        import time
+
+        # 转换成时间数组
+        timeArray = time.strptime(args, "%Y-%m-%d %H:%M:%S")
+        # 转换成时间戳
+        timestamp = time.mktime(timeArray)
+
+        return  timestamp
+
+    def getProductCount(self):
+        arr = self.selectProduct()
+        if arr:
+            return len(arr)
+        else:
+            return 0
+
+    def getFirstProductQuantity(self):
+        import requests
+
+        x_url = "http://admin1024.shoplazza.com/api/user/login"
+        p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
+        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        res = requests.post(url=x_url, headers={}, data=datas)
+        if res is None or res.status_code != 200:
+            return res.status_code
+        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+
+        uid = json.loads(res.content)['data']['id'] or None
+
+        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
+        res_data = json.loads(sub_list.content)['data']['products']
+        res_list = []
+        for i in res_data:
+            res_list.append(i['inventory_quantity'])
+        return res_list[0]
+
+    def getFirstProductTitle(self):
+        import requests
+
+        x_url = "http://admin1024.shoplazza.com/api/user/login"
+        p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
+        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        res = requests.post(url=x_url, headers={}, data=datas)
+        if res is None or res.status_code != 200:
+            return res.status_code
+        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+
+        uid = json.loads(res.content)['data']['id'] or None
+
+        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
+        res_data = json.loads(sub_list.content)['data']['products']
+        res_list = []
+        for i in res_data:
+            res_list.append(i['title'])
+        return res_list[0]
+
+    def getProductStatus(self, arg):
+        import requests
+
+        x_url = "http://admin1024.shoplazza.com/api/user/login"
+        p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
+        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        res = requests.post(url=x_url, headers={}, data=datas)
+        if res is None or res.status_code != 200:
+            return res.status_code
+        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+        uid = json.loads(res.content)['data']['id'] or None
+        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
+        res_data = json.loads(sub_list.content)['data']['products']
+        res_list = []
+        for i in res_data:
+            res_list.append(i['status'])
+
+        arg = int(arg)
+        return res_list[arg]
+
+    def getProductSku(self, arg):
+        import requests
+
+        x_url = "http://admin1024.shoplazza.com/api/user/login"
+        p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
+        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        res = requests.post(url=x_url, headers={}, data=datas)
+        if res is None or res.status_code != 200:
+            return res.status_code
+        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+        uid = json.loads(res.content)['data']['id'] or None
+        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
+        res_data = json.loads(sub_list.content)['data']['products']
+        res_list = []
+        for i in res_data:
+            res_list.append(i['variants'][0]['sku'])
+
+        arg = int(arg)
+
+        if res_list[arg] == '':
+            return -1
+
+        return res_list[arg]
+
+    def selectProductCountByStatus(self, arg):
+        import requests
+
+        if arg:
+            arg = int(arg)
+        else:
+            return 0
+
+        x_url = "http://admin1024.shoplazza.com/api/user/login"
+        p_url = "http://admin1024.shoplazza.com/api/product/search?status=" + str(arg) + "&page=0&limit=20"
+        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        res = requests.post(url=x_url,headers={},data=datas)
+        if res is None or res.status_code != 200:
+            return res.status_code
+        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+
+        uid = json.loads(res.content)['data']['id'] or None
+
+        sub_list = requests.get(url=p_url,headers={"cookie": cookiesx})
+        res_data = json.loads(sub_list.content)['data']['products']
+        res_list = []
+        for i in res_data:
+            res_list.append(i['title'])
+
+        return len(res_list)
+
+    def getProductTagsLength(self, arg):
+        import requests
+
+        x_url = "http://admin1024.shoplazza.com/api/user/login"
+        p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
+        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        res = requests.post(url=x_url, headers={}, data=datas)
+        if res is None or res.status_code != 200:
+            return res.status_code
+        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+        uid = json.loads(res.content)['data']['id'] or None
+        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
+        res_data = json.loads(sub_list.content)['data']['products']
+        res_list = []
+
+        t = -1
+        for i in res_data:
+            t = t + 1
+            res_list.append(len(i['tags']))
+
+        arg = int(arg)
+        return res_list[arg]
+
+    def getAllProductCount(self):
+        import requests
+
+        x_url = "http://admin1024.shoplazza.com/api/user/login"
+        p_url = "http://admin1024.shoplazza.com/api/product/search"
+        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        res = requests.post(url=x_url,headers={},data=datas)
+        if res is None or res.status_code != 200:
+            return res.status_code
+        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+
+        sub_list = requests.get(url=p_url,headers={"cookie": cookiesx})
+        total = json.loads(sub_list.content)['data']['total']
+
+        return total
+
+    def pageCount(self, total, size):
+        total = int(total)
+        size = int(size)
+
+        if total % size == 0:
+            page = total / size
+        else:
+            page = (total / size) + 1
+
+        return page
+
+    def validateProductByPageAndSize(self, page, size):
+        import requests
+
+        x_url = "http://admin1024.shoplazza.com/api/user/login"
+        p_url = "http://admin1024.shoplazza.com/api/product/search?page=" + str(page) + "&limit=" + str(size)
+        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        res = requests.post(url=x_url,headers={},data=datas)
+        if res is None or res.status_code != 200:
+            return res.status_code
+        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+
+        uid = json.loads(res.content)['data']['id'] or None
+
+        sub_list = requests.get(url=p_url,headers={"cookie": cookiesx})
+        res_data = json.loads(sub_list.content)['data']['products']
+        res_list = []
+        for i in res_data:
+            res_list.append(str(i['title']))
+        return res_list
+
+

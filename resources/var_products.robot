@@ -33,6 +33,7 @@ ${locator_products_addCategoryItem}    dom:document.querySelectorAll(".ant-casca
 ${locator_products_chooseFile}    dom:document.querySelectorAll("input[type='file']")[0]    # 选择文件上传
 ${locator_products_chooseCategory}    id:product_type_cascade    # 选择商品分类
 ${locator_products_chooseCategoryItem}    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]    # 选择商品分类子项
+${locator_products_editTableHead}    dom:document.querySelectorAll(".editBtn___2yB79")[0]    #编辑表头
 # content
 ${content_products_all}    全部
 ${content_products_empty}    暂无数据
