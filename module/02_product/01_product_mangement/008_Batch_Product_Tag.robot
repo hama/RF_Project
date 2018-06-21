@@ -16,11 +16,7 @@ Resource          ../../../resources/kw_products.robot
 Validate_Normal_Page
     [Documentation]    验证商品批量添加标签时是否显示正常
     [Tags]    P0
-    #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Click_First_Product_And_Click_Batch_Menu
     #选择添加标签
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[3]    btn
     Set Focus To Element    btn
@@ -37,11 +33,7 @@ Add_Tag
     [Tags]    P0
     ${input_tag}=    Set Variable    bbb
     #添加商品标签
-    #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Click_First_Product_And_Click_Batch_Menu
     #选择添加标签
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[3]    btn
     Set Focus To Element    btn
@@ -71,11 +63,7 @@ Add_Already_Tag
     [Documentation]    商品批量添加现已有的标签
     [Tags]    P0
     #验证添加已有的标签
-    #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Click_First_Product_And_Click_Batch_Menu
     #选择添加标签
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[3]    btn
     Set Focus To Element    btn
@@ -100,11 +88,7 @@ Add_New_And_Already_Tag
     [Tags]    P0
     #添加现有的和新的标签
     ${input_tag}=    Set Variable    ccc
-    #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Click_First_Product_And_Click_Batch_Menu
     #选择添加标签
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[3]    btn
     Set Focus To Element    btn
@@ -143,11 +127,7 @@ Cancel_Add_Tag
     [Documentation]    商品批量取消添加标签
     [Tags]    P0
     #取消添加标签
-    #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Click_First_Product_And_Click_Batch_Menu
     #选择添加标签
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[3]    btn
     Set Focus To Element    btn
@@ -165,11 +145,7 @@ Remove_Tag_Page
     [Documentation]    验证商品批量移除标签是否显示正常
     [Tags]    P0
     #验证移除标签显示正确
-    #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Click_First_Product_And_Click_Batch_Menu
     #选择移除标签
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[4]    btn
     Set Focus To Element    btn
@@ -187,11 +163,7 @@ Remove_Tag
     [Documentation]    商品批量移除标签
     [Tags]    P0
     #移除标签
-    #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Click_First_Product_And_Click_Batch_Menu
     #选择移除标签
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[4]    btn
     Set Focus To Element    btn

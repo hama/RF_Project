@@ -64,3 +64,11 @@ Wait For Upload
     \    ${state}=    Execute JavaScript    return responseMap.get("${api_products_upload}").state;
     \    Should Be Equal As Strings    ${state}    0
     \    Exit For Loop
+
+Click_First_Product_And_Click_Batch_Menu
+    [Documentation]    选中第一个商品,并且点击批量操作菜单
+    #选中第一个商品
+    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
+    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
+    #点击批量操作菜单
+    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]

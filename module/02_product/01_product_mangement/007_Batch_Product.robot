@@ -53,12 +53,7 @@ Product_Up
     [Documentation]    商品上架
     [Tags]    P0
     #上架一个商品
-    #选中第一个商品
-    #此处使用Wait And Click Element会出错
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Click_First_Product_And_Click_Batch_Menu
     #选择上架
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[0]    btn
     Set Focus To Element    btn
@@ -79,13 +74,9 @@ Product_Up_Cancel
     [Documentation]    商品取消上架
     [Tags]    P0
     #取消上架一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
     #获取第一个商品class
     ${should_class}    Execute Javascript    return document.querySelectorAll(".ant-switch")[0].getAttribute("class")
-    #选中第一个商品
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Click_First_Product_And_Click_Batch_Menu
     #选择上架
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[0]    btn
     Set Focus To Element    btn
@@ -105,11 +96,7 @@ Product_Down
     [Documentation]    商品下架
     [Tags]    P0
     #下架一个商品
-    #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Click_First_Product_And_Click_Batch_Menu
     #选择下架
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[1]    btn
     Set Focus To Element    btn
@@ -130,13 +117,9 @@ Product_Down_Cancel
     [Documentation]    取消商品下架
     [Tags]    P0
     #取消下架一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
     #获取第一个商品class
     ${should_class}    Execute Javascript    return document.querySelectorAll(".ant-switch")[0].getAttribute("class")
-    #选中第一个商品
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Click_First_Product_And_Click_Batch_Menu
     #选择下架
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[1]    btn
     Set Focus To Element    btn
