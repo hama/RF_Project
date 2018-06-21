@@ -4,6 +4,7 @@ import random
 import json
 import sys
 import re
+import time
 reload(sys)
 sys.setdefaultencoding('utf-8')
 class keyWord(object):
@@ -179,6 +180,5 @@ class keyWord(object):
         except Exception as e:
             print e
             exit()
-    def dictTest(self,**dict_):
-        print type(dict_)
-        return dict_
+    def getTimeData(self):
+        return int(time.time())
