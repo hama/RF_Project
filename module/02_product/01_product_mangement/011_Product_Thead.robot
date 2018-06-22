@@ -1,26 +1,24 @@
 *** Settings ***
-Documentation     Test tax price page ui.
-Suite Setup       New Test Suite Browser And Login    ${nothingUser}    ${nothingUserPassword}    ${nothingUserDomain}
-Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
-Test Setup        Setup Test Case
-Test Teardown     Teardown Test Case
+Documentation     测试商品列表编辑表头展示
+Suite Setup       Products Suite Setup
+Suite Teardown    Products Suite Teardown
+Test Setup        Products Test Case Setup
+Test Teardown     Products Test Case Teardown
 Force Tags        Products
+Library           ${CURDIR}/../../../lib/customLibrary
+Resource          ../../../resources/var_common.robot
+Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/kw_common.robot
-Resource          ../../../resources/kw_browser.robot    # import ajax listener keyword
-Library           customLibrary
+Resource          ../../../resources/kw_browser.robot
+Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
 Validate_Thead_Page
-    [Documentation]    验证自定义商品列表排版
+    [Documentation]    验证自定义商品表头显示
     [Tags]    P0
     #验证自定义商品列表排版
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     #点击“编辑表头”
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".editBtn___2yB79")[0]
-    Click Element    dom:document.querySelectorAll(".editBtn___2yB79")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".editBtn___2yB79")[0]
     #验证弹窗中的排版信息
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
     #可选复选框个数
@@ -35,22 +33,18 @@ Validate_Thead_Page
     #确定／取消按钮
     Page Should Contain Element    dom:document.querySelectorAll(".cancel___3VskU")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
+    Go TO    ${home_page}
 
 Validate_Cancel_All
     [Documentation]    验证商品列表取消所有的表头复选框之后的显示情况
     [Tags]    P0
     #验证取消所有选中的复选框
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     #点击“编辑表头”
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".editBtn___2yB79")[0]
-    Click Element    dom:document.querySelectorAll(".editBtn___2yB79")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".editBtn___2yB79")[0]
     #取消所有
     Cancel_All
     #确定
-    Click Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
     Sleep    1
     Element Should Not Contain    dom:document.querySelectorAll(".ant-table-thead")[0]    上架
     Element Should Not Contain    dom:document.querySelectorAll(".ant-table-thead")[0]    创建时间
@@ -63,20 +57,15 @@ Validate_Cancel_Part
     [Documentation]    验证商品列表取消部分的表头复选框之后的显示情况
     [Tags]    P0
     #验证取消部分
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     #点击“编辑表头”
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".editBtn___2yB79")[0]
-    Click Element    dom:document.querySelectorAll(".editBtn___2yB79")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".editBtn___2yB79")[0]
     #选中所有
     Click_All
     #再取消上架和创建时间
-    Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox-checked")[0]
-    Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox-checked")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox-checked")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox-checked")[0]
     #确定
-    Click Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
     Sleep    1
     Element Should Not Contain    dom:document.querySelectorAll(".ant-table-thead")[0]    上架
     Element Should Not Contain    dom:document.querySelectorAll(".ant-table-thead")[0]    创建时间
@@ -85,18 +74,12 @@ Click_Cancel_Button
     [Documentation]    验证商品列表修改表头复选框之后点击取消按钮的显示情况
     [Tags]    P0
     #验证点击取消按钮的状态
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     #点击“编辑表头”
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".editBtn___2yB79")[0]
-    Sleep    1
     #记录当前的表头排列
     ${old_count}    Execute Javascript    return document.querySelectorAll(".ant-table-thead tr")[0].querySelectorAll("th").length
-    Click Element    dom:document.querySelectorAll(".editBtn___2yB79")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".editBtn___2yB79")[0]
     #取消
-    Click Element    dom:document.querySelectorAll(".cancel___3VskU")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".cancel___3VskU")[0]
     Sleep    1
     #记录现在的表头
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-table-thead tr")[0].querySelectorAll("th").length
@@ -109,12 +92,12 @@ Click_All
     #点击已经选中的，将他们全部取消选中
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox-checked").length
     : FOR    ${index}    IN RANGE    ${count}
-    \    Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox-checked")[0]
+    \    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox-checked")[0]
     Sleep    1
     #再将所有复选框选中
     ${cancel}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox").length
     : FOR    ${i}    IN RANGE    ${cancel}
-    \    Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox")[${i}]
+    \    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox")[${i}]
 
 Cancel_All
     #取消所有
@@ -122,4 +105,21 @@ Cancel_All
     #点击已经选中的，将他们全部取消选中
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox-checked").length
     : FOR    ${index}    IN RANGE    ${count}
-    \    Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox-checked")[0]
+    \    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox-checked")[0]
+
+Products Suite Setup
+    [Documentation]    商品 case setup,添加商品
+    Login With Default User
+    Start Ajax Listener
+    #Add Product
+    Go To Products Page
+
+Products Suite Teardown
+    [Documentation]    删除商品
+    Close Test Suite Browser
+
+Products Test Case Setup
+    Go To Products Page
+
+Products Test Case Teardown
+    Teardown Test Case
