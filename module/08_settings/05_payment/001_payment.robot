@@ -1,34 +1,24 @@
 *** Settings ***
 Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
-Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
+Suite Teardown    #Close Test Suite Browser    # close the browser opened for this test suite
 Resource          ../../../resources/kw_payment.robot
 Resource          ../../../resources/var_tax_price.robot
 Resource          ../../../resources/kw_browser.robot
-
-*** Variables ***
+Resource          ../../../resources/kw_common.robot
 
 *** Test Cases ***
 001_payment
-    #.登录后直接进入支付设设置
-    #${xpath_d}    set variable    id:test_add_btn
-    #Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
-    #go to    ${home_page}
-    Wait Until Element Is Visible    //*[@id="root"]/div/div/div[1]/div[1]/div/ul/li[9]/div
-    click element    //*[@id="root"]/div/div/div[1]/div[1]/div/ul/li[9]/div
-    Wait Until Element Is Visible    //*[@id="9$Menu"]/li[4]/a
-    click element    //*[@id="9$Menu"]/li[4]/a
-    sleep    1
-    page should contain element    //*[@id="root"]/div/div/div[1]/div[2]/div[1]/div/div[1]/span
+    [Documentation]    登录后直接进入支付设设置
+    [Tags]    P1
+    Wait And Click Element    ${locator_setting}
+    Wait And Click Element    ${locator_setting_payment}
+    page should contain element    dom:document.querySelectorAll('.title___3MGDq')[0]
 
 002_payment
-    #.从其他界面切换到支付设置
-    #${xpath_d}    set variable    id:test_add_btn
-    #Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
+    [Documentation]    从其他界面切换到支付设置
     go to    ${home_page}
-    Wait Until Element Is Visible    //*[@id="root"]/div/div/div[1]/div[1]/div/ul/li[9]/div
-    click element    //*[@id="root"]/div/div/div[1]/div[1]/div/ul/li[9]/div
-    Wait Until Element Is Visible    //*[@id="9$Menu"]/li[4]/a
-    click element    //*[@id="9$Menu"]/li[4]/a
+    Wait And Click Element    ${locator_setting}
+    Wait And Click Element    dom:document.querySelectorAll('a[href="/taxPrice"]')
     sleep    1
     click element    //*[@id="root"]/div/div/div[1]/div[1]/div/ul/li[6]/div
     sleep    1
@@ -40,7 +30,7 @@ Resource          ../../../resources/kw_browser.robot
     close browser
 
 003_payment
-    #.点击首款
+    [Documentation]    点击收款
     ${xpath_d}    set variable    id:test_add_btn
     Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
     sleep    1
@@ -50,7 +40,7 @@ Resource          ../../../resources/kw_browser.robot
     close browser
 
 004_payment
-    #.点击测试
+    [Documentation]    点击测试
     ${xpath_d}    set variable    id:test_add_btn
     Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
     sleep    1
@@ -60,7 +50,7 @@ Resource          ../../../resources/kw_browser.robot
     close browser
 
 005_payment
-    #.在线支付 编辑按钮
+    [Documentation]    在线支付 编辑按钮
     ${xpath_d}    set variable    id:test_add_btn
     Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
     sleep    1
@@ -71,7 +61,7 @@ Resource          ../../../resources/kw_browser.robot
     close browser
 
 006_payment
-    #.在线支付 编辑按钮 输入框限制及特殊字符限制
+    [Documentation]    在线支付 编辑按钮 输入框限制及特殊字符限制
     ${xpath_d}    set variable    id:test_add_btn
     Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
     sleep    1
@@ -84,7 +74,7 @@ Resource          ../../../resources/kw_browser.robot
     close browser
 
 007_payment
-    #.支付编辑界面保存按钮，未输入名称时点击保存
+    [Documentation]    支付编辑界面保存按钮，未输入名称时点击保存
     ${xpath_d}    set variable    id:test_add_btn
     Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
     sleep    1
@@ -97,7 +87,7 @@ Resource          ../../../resources/kw_browser.robot
     close browser
 
 008_payment
-    #.输入支付内容，其他内容不输入. 不保存
+    [Documentation]    输入支付内容，其他内容不输入. 不保存
     ${xpath_d}    set variable    id:test_add_btn
     Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
     sleep    1
@@ -109,6 +99,6 @@ Resource          ../../../resources/kw_browser.robot
     close browser
 
 009_payment
-    #.PayPal栏点击PayPal官网或PayPal管理页／新开窗口跳转至PayPal界面
+    [Documentation]    PayPal栏点击PayPal官网或PayPal管理页／新开窗口跳转至PayPal界面
     ${xpath_d}    set variable    id:test_add_btn
     Login With Patment Visible    //*[@id="online_pay"]/div[1]/button

@@ -23,6 +23,7 @@ ${locator_products}    id:test_product    # 导航栏-商品
 ${locator_setting}    id:test_setting    # 导航栏-设置
 ${locator_setting_shipping}    dom:document.querySelectorAll('a[href="/shipping"]')[0]    # 导航栏-设置-物流
 ${locator_setting_taxPrice}    dom:document.querySelectorAll('a[href="/taxPrice"]')[0]    # 导航栏-设置-税费
+${locator_setting_payment}    dom:document.querySelectorAll('a[href="/pay"]')[0]    # 导航栏-设置-收款渠道
 ### 页面模块 url
 ${url_home_page}    http://admin1024.shoplazza.com/    # home page
 ${url_order}      http://admin1024.shoplazza.com/order    # order page

@@ -1,5 +1,6 @@
 *** Variables ***
 # locator
+${locator_shipping_btn}    dom:document.querySelectorAll("button")[1]    #.开始设置物流按钮
 ${locator_shipping_first_element}    dom:document.querySelectorAll("#test_shipping_list_0 li")[0]    # 物流列表第一个元素
 ${locator_shipping_add_country}    id:test_shipping_country_add_btn    # 设置物流-添加国家按钮
 ${locator_shipping_add_shipping}    dom:document.querySelectorAll("button")[1]    # 添加物流按钮

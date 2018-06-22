@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       New Test Suite Browser And Login    ${user_default_name}    ${user_default_pwd}    ${user_default_domain}
-Suite Teardown    #Close Test Suite Browser
+Suite Teardown    Close Test Suite Browser
 Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/var_shipping.robot
@@ -44,7 +44,7 @@ Resource          ./common.robot
     Wait And Click Element    id:test_shipping_edit_modal_sure_btn
     page should contain element    class:ant-form-explain
     Wait And Click Element    class:ant-modal-close-x
-    Quit All Shipping
+    Quit All Setp
 
 043_shipping
     [Documentation]    点击添加重量运费按钮出现编辑窗口
@@ -395,6 +395,8 @@ Resource          ./common.robot
     #click element    dom:document.querySelectorAll(".ant-checkbox-input")[1]
     #execute javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
     page should not contain element    document.querySelectorAll(".ant-checkbox-checked")[0]
+    Wait And Click Element    class:ant-modal-close-x
+    Quit All Setp
 
 062_shipping
     [Documentation]    添加重量运费 运费价格输入框输入超过10位以上的数字 提示错误

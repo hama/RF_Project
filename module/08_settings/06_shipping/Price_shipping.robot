@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       New Test Suite Browser And Login    ${user_default_name}    ${user_default_pwd}    ${user_default_domain}
-Suite Teardown    #Close Test Suite Browser
+Suite Teardown    Close Test Suite Browser
 Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/var_shipping.robot
@@ -24,7 +24,7 @@ Resource          ./common.robot
     [Documentation]    add transport price check name input (str)
     [Tags]    P0
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     #.输入名称
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    价格运费
@@ -36,7 +36,7 @@ Resource          ./common.robot
     [Documentation]    add transport price check name input (int)
     [Tags]    P1
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     #.输入名称
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    123
@@ -49,11 +49,11 @@ Resource          ./common.robot
     [Tags]    P0
     #.add    transport price    check
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    价格运费
     sleep    1.5
-    click button    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
     page should contain element    dom:document.querySelectorAll(".ant-table-tbody")[1]
     Quit All Shipping
 
@@ -61,12 +61,12 @@ Resource          ./common.robot
     [Documentation]    输入50个字符点击保存
     [Tags]    P1
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${str}    set variable    sssssssssssssssssssssssssssssssssssssssssssssssss
     input text    dom:document.querySelectorAll('#name')[1]    ${str}
     sleep    1.5
-    click button    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
     page should contain element    dom:document.querySelectorAll(".ant-table-tbody")[1]
     Quit All Shipping
 
@@ -74,7 +74,7 @@ Resource          ./common.robot
     [Documentation]    输入超过50个字符点击保存
     [Tags]    P1
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${str}    set variable    ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
     input text    dom:document.querySelectorAll('#name')[1]    ${str}
@@ -87,7 +87,7 @@ Resource          ./common.robot
     [Documentation]    说明框输入超过200个字符点击保存
     [Tags]    P1
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    价格运费
@@ -101,13 +101,13 @@ Resource          ./common.robot
     [Documentation]    说明框输入正常字符点击保存
     [Tags]    P1
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    价格运费
     input text    dom:document.querySelectorAll('#desc')[0]    sssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
-    click button    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
     page should contain element    dom:document.querySelectorAll(".ant-table-tbody")[1]
     Quit All Shipping
 
@@ -115,14 +115,14 @@ Resource          ./common.robot
     [Documentation]    最小订单价输入超过10位以上的数字
     [Tags]    P1
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    价格运费
     input text    dom:document.querySelectorAll('#desc')[0]    sssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
     input text    id:range_min    123456789012
-    click button    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
     page should contain element    class:ant-form-explain
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
@@ -131,14 +131,14 @@ Resource          ./common.robot
     [Documentation]    最大订单价输入超过10位以上的数字
     [Tags]    P1
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    价格运费
     input text    dom:document.querySelectorAll('#desc')[0]    sssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
     input text    id:range_max    123456789012
-    click button    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
     page should contain element    class:ant-form-explain
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
@@ -147,7 +147,7 @@ Resource          ./common.robot
     [Documentation]    正常输入最小价格，最大价格 保存成功
     [Tags]    P0
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    价格运费
@@ -155,7 +155,7 @@ Resource          ./common.robot
     sleep    1.5
     input text    id:range_min    10
     input text    id:range_max    100
-    click button    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
     page should contain element    dom:document.querySelectorAll(".ant-table-tbody")[1]
     Quit All Shipping
 
@@ -163,7 +163,7 @@ Resource          ./common.robot
     [Documentation]    最大单价输入10 最大单价变为101
     [Tags]    P0
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    价格运费
@@ -185,7 +185,7 @@ Resource          ./common.robot
     [Documentation]    最大单价输入100 最小单价输入200 最小单价变为99
     [Tags]    P0
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    价格运费
@@ -195,7 +195,7 @@ Resource          ./common.robot
     ${max}    set variable    100
     input text    id:range_max    ${max}
     input text    id:range_min    ${min}
-    click element    class:ant-checkbox-input
+    Execute JavaScript    return document.querySelectorAll('.ant-checkbox-inner')[0].click()
     sleep    1.5
     ${data}    get value    id:range_min
     ${new_min}    evaluate    ${max}-1
@@ -207,7 +207,7 @@ Resource          ./common.robot
     [Documentation]    在运费价格框输入值 免运费的勾选离开框取消勾选
     [Tags]    P0
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    价格运费
@@ -227,7 +227,7 @@ Resource          ./common.robot
     [Documentation]    运费价格框输入超过长度的数字 提示错误
     [Tags]    P1
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    价格运费
@@ -248,7 +248,7 @@ Resource          ./common.robot
     [Documentation]    运费价格框数字 保存成功 在列表显示刚添加的运费
     [Tags]    P0
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    价格运费
@@ -261,7 +261,7 @@ Resource          ./common.robot
     input text    id:range_min    ${min}
     input text    id:rate_amount    ${ship}
     sleep    1.5
-    click button    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
     sleep    2
     Wait Until Element Is Visible    //*[@id="dj"]/div/div[3]/div[2]/div/div/div/div/div/table/tbody/tr
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
@@ -273,7 +273,7 @@ Resource          ./common.robot
     [Documentation]    运费价格框数字 保存成功 在列表显示刚添加的运费
     [Tags]    P0
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    价格运费
@@ -285,7 +285,7 @@ Resource          ./common.robot
     input text    id:range_min    ${min}
     execute javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
     sleep    1.5
-    click button    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
     sleep    2
     Wait Until Element Is Visible    //*[@id="dj"]/div/div[3]/div[2]/div/div/div/div/div/table/tbody/tr
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
@@ -297,7 +297,7 @@ Resource          ./common.robot
     [Documentation]    勾选是否支持货到付款 列表显示支持
     [Tags]    P0
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    价格运费
@@ -309,7 +309,7 @@ Resource          ./common.robot
     input text    id:range_min    ${min}
     execute javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
     sleep    1.5
-    click button    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
     sleep    2
     Wait Until Element Is Visible    //*[@id="dj"]/div/div[3]/div[2]/div/div/div/div/div/table/tbody/tr
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[2].innerText
@@ -320,7 +320,7 @@ Resource          ./common.robot
     [Documentation]    不勾选是否支持货到付款 列表显示不支持
     [Tags]    P0
     Go To Shipping Page
-    Price Shipping Setp
+    Quit Add Price Shipping
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    价格运费
@@ -332,7 +332,7 @@ Resource          ./common.robot
     input text    id:range_min    ${min}
     execute javascript    return document.querySelectorAll(".ant-checkbox-input")[1].click()
     sleep    1.5
-    click button    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
     sleep    2
     Wait Until Element Is Visible    //*[@id="dj"]/div/div[3]/div[2]/div/div/div/div/div/table/tbody/tr
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[2].innerText
