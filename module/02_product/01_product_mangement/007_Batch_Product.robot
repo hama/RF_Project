@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     测试商品列表
+Documentation     测试商品批量上下架
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup

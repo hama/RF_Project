@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     测试商品列表
+Documentation     测试商品批量添加到专辑
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup
@@ -221,6 +221,7 @@ Products Suite Setup
     Login With Default User
     Start Ajax Listener
     #Add Product
+    Go TO    ${home_page}
     #Add_Collection
     Go To Products Page
 
