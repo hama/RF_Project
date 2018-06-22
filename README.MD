@@ -189,9 +189,9 @@ Test Setup        Setup Test Case							# 用例初始化动作
 															#    -- 跳转到首页开始测试
 Test Teardown     Teardown Test Case						# 用例清理动作
 															#    -- 关闭额外打开的窗口等
-Resource          ../../../resources/kw_common.robot   # 导入封装的测试库关键字
-Resource          ../../../resources/kw_kw_browser.robot			# 导入封装的测试库关键字
-Resource          ../../../resources/var_var_tax_price.robot		# 导入封装的测试库关键字
+Resource          ../../../resources/kw_common.robot        # 导入封装的测试库关键字
+Resource          ../../../resources/kw_kw_browser.robot	# 导入封装的测试库关键字
+Resource          ../../../resources/var_tax_price.robot    # 导入封装的测试库关键字
 ```
 
 
