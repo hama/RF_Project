@@ -53,5 +53,7 @@ ${content_products_tips_save_ok}    保存成功
 ${content_products_tips_select_products}    请至少选择一个商品
 ${content_products_tips_saving}    页面有未保存内容
 # file
+${file_products_template}    ${CURDIR}/xlsx/product_template.xlsx    # 添加商品模版文件
+${file_products_wrong_template}    ${CURDIR}/xlsx/wrong_format.xlsx    # 添加错误的商品模版文件
 ${file_products_addImg}    ${CURDIR}/images/tm.jpg    # 添加商品图片
 ${file_products_addImg2}    ${CURDIR}/images/mv.jpg    # 添加商品图片

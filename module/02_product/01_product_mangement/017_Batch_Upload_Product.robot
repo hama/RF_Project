@@ -1,91 +1,88 @@
 *** Settings ***
-Documentation     Test tax price page ui.
-Suite Setup       New Test Suite Browser And Login    ${nothingUser}    ${nothingUserPassword}    ${nothingUserDomain}
-Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
-Test Setup        Setup Test Case
-Test Teardown     Teardown Test Case
+Documentation     测试商品批量从专辑移除
+Suite Setup       Products Suite Setup
+Suite Teardown    Products Suite Teardown
+Test Setup        Products Test Case Setup
+Test Teardown     Products Test Case Teardown
 Force Tags        Products
+Library           ${CURDIR}/../../../lib/customLibrary
+Resource          ../../../resources/var_common.robot
+Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/kw_common.robot
-Resource          ../../../resources/kw_browser.robot    # import ajax listener keyword
-Library           customLibrary
+Resource          ../../../resources/kw_browser.robot
+Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
 Upload_Success
     [Documentation]    上传商品成功
     [Tags]    P0
     #上传商品成功
-    #模版文件
-    ${file}    Set Variable    /Users/lizhicheng/dianjiang/shoplaza_robot/module/02_product/product_template.xlsx
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     #点击批量上传按钮
-    Sleep    3
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".import___3EkG3 i")[0]
-    Click Element    dom:document.querySelectorAll(".import___3EkG3 i")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".import___3EkG3 i")[0]
     #等待上传按钮
     Wait Until Page Contains Element    id:sheets
     #上传文件
-    Choose File    id:sheets    ${file}
+    Choose File    id:sheets    ${file_products_template}
     #点击上传
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-btn-submit")[0]
-    Click Element    dom:document.querySelectorAll(".ant-btn-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".ant-btn-submit")[0]
     #等待上传提示
-    Sleep    3
+    Sleep    5
     Wait Until Element Is Visible    dom:document.querySelectorAll(".tip___2LkVX")[0]
     ${tip}    Get Text    dom:document.querySelectorAll(".tip___2LkVX")[0]
     Should Be Equal As Strings    ${tip}    您已成功导入1条商品，0条商品导入失败。
+    Go TO    ${home_page}
 
 Upload_Wrong
     [Documentation]    上传商品失败
     [Tags]    P0
     #上传商品失败
-    #模版文件
-    ${file}    Set Variable    /Users/lizhicheng/dianjiang/shoplaza_robot/module/02_product/wrong_format.xlsx
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     #点击批量上传按钮
-    Sleep    3
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".import___3EkG3 i")[0]
-    Click Element    dom:document.querySelectorAll(".import___3EkG3 i")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".import___3EkG3 i")[0]
     #等待上传按钮
     Wait Until Page Contains Element    id:sheets
     #上传文件
-    Choose File    id:sheets    ${file}
+    Choose File    id:sheets    ${file_products_wrong_template}
     Sleep    1
     #提示上传文件有错误
     ${title}    Get Text    dom:document.querySelectorAll(".ant-btn-submit span")[0]
     Should Be Equal As Strings    ${title}    忽略错误,开始导入
+    Go TO    ${home_page}
 
 Upload_Success_Without_Same
     [Documentation]    上传重复的商品
     [Tags]    P0
     #上传重复的商品
-    #模版文件
-    ${file}    Set Variable    /Users/lizhicheng/dianjiang/shoplaza_robot/module/02_product/product_template.xlsx
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     #点击批量上传按钮
-    Sleep    3
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".import___3EkG3 i")[0]
-    Click Element    dom:document.querySelectorAll(".import___3EkG3 i")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".import___3EkG3 i")[0]
     #等待覆盖选项
     Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[0]
     Click Element    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[0]
     #等待上传按钮
     Wait Until Page Contains Element    id:sheets
     #上传文件
-    Choose File    id:sheets    ${file}
+    Choose File    id:sheets    ${file_products_template}
     #点击上传
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-btn-submit")[0]
-    Click Element    dom:document.querySelectorAll(".ant-btn-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".ant-btn-submit")[0]
     #等待上传提示
-    Sleep    3
+    Sleep    5
     Wait Until Element Is Visible    dom:document.querySelectorAll(".tip___2LkVX")[0]
     ${tip}    Get Text    dom:document.querySelectorAll(".tip___2LkVX")[0]
     Should Be Equal As Strings    ${tip}    您已成功导入1条商品，0条商品导入失败，已忽略重复商品。
+    Go TO    ${home_page}
+
+*** Keywords ***
+Products Suite Setup
+    [Documentation]    商品 case setup
+    Login With Default User
+    Start Ajax Listener
+    Go To Products Page
+
+Products Suite Teardown
+    [Documentation]    删除商品
+    Close Test Suite Browser
+
+Products Test Case Setup
+    Go To Products Page
+
+Products Test Case Teardown
+    Teardown Test Case
