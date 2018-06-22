@@ -97,12 +97,6 @@ Edit_Without_Save_Dismmis_Alert
     Wait And Click Element    ${locator_products_back}
     Alert Should Be Present
 
-Shelf Drop List Should Empty
-    [Documentation]    测试无上架下架商品时页面显示内容
-    [Tags]    P0
-    Wait And Click Element    ${locator_products_shelf}
-    Wait Until Page Contains    ${content_products_empty}
-
 Edit Shelf And Drop
     [Documentation]    测试已有商品的上架
     [Tags]    P0

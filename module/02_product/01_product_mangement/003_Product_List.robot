@@ -19,10 +19,10 @@ ${locator_page_total_record}    dom:document.querySelectorAll(".ant-pagination-t
 Test_Products_List_Data
     [Documentation]    测试商品列表的展示（数量/标题/库存/SKU/浏览量/销量/上架状态/创建时间）
     [Tags]    P0
-    # 接口返回的数量==页面展示的总条数
-    ${total_record}=    Execute Javascript    return responseMap.get("${api_products_list}").data.total;
-    ${total_record_str}=    Convert To String    ${total_record}
-    Element Should Contain    ${locator_page_total_record}    ${total_record_str}
+    #获取每页多少条数据
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection-selected-value")[1]
+    ${size}    Get Text    dom:document.querySelectorAll(".ant-select-selection-selected-value")[1]
+    ${total_record}    searchStrs    ${size}
     # 然后遍历校验列表数据是否一致
     : FOR    ${index}    IN RANGE    ${total_record}
     \    ${table_row}=    Evaluate    int(${index}) + 2

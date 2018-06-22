@@ -361,7 +361,7 @@ class keyWord(object):
         res_data = json.loads(sub_list.content)['data']['products']
         res_list = []
         for i in res_data:
-            res_list.append(str(i['title']))
+            res_list.append(i['title'])
         return res_list
 
     def getCollectionId(self, index):
