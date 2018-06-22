@@ -146,11 +146,11 @@ Validate_Delete_Product
     Wait Until Element Is Visible    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
     ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
     #点击删除按钮
-    Wait And Click Element    dom:document.querySelectorAll(".delete___2xfx-")[0]
+    Wait And Click Element    ${locator_products_deleteIcon}
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
     Page Should Contain    确定删除吗？
     #确定
-    Wait And Click Button    id:test_delete_modal_sure_btn
+    Wait And Click Button    ${locator_products_delBtn}
     #等待页面刷新数据
     Sleep    1
     #页面不应该包含该商品名称
@@ -165,11 +165,11 @@ Validate_Cancel_Delete_Product
     Wait Until Element Is Visible    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
     ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
     #点击删除按钮
-    Wait And Click Element    dom:document.querySelectorAll(".delete___2xfx-")[0]
+    Wait And Click Element    ${locator_products_deleteIcon}
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
     Page Should Contain    确定删除吗？
     #取消
-    Wait And Click Element    id:test_delete_modal_cancel_btn
+    Wait And Click Element    ${locator_products_cancelDelete}
     #数据无变化
     Page Should Contain    ${name}
 
