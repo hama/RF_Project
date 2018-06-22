@@ -69,6 +69,13 @@ External Resources    # 应该是全局的，待验证！
 ```shell
 # 安装 python 2.7
 brew install python@2
+
+# mac 下面需要先删除自带的 python
+brew uninstall python
+rm -rf /Library/Frameworks/Python.framework/Versions/2.7
+rm -rf "/Applications/Python 2.7"
+rm -rf `ls -l /usr/local/bin | grep '/Library/Frameworks/Python.framework/Versions/2.7' `
+brew prune
 ```
 
 
