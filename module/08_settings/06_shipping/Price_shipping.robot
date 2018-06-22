@@ -195,7 +195,7 @@ Resource          ./common.robot
     ${max}    set variable    100
     input text    id:range_max    ${max}
     input text    id:range_min    ${min}
-    Wait And Click Element    class:ant-checkbox-input
+    Execute JavaScript    return document.querySelectorAll('.ant-checkbox-inner')[0].click()
     sleep    1.5
     ${data}    get value    id:range_min
     ${new_min}    evaluate    ${max}-1
