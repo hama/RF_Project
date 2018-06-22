@@ -72,3 +72,37 @@ Click_First_Product_And_Click_Batch_Menu
     Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
     #点击批量操作菜单
     Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+
+Add_Collection
+    [Documentation]    添加一个商品专辑
+    #进入商品模块
+    Wait Until Element Is Visible    class:icon_product___2ZYHZ
+    Click Element    class:icon_product___2ZYHZ
+    #点击进入商品专辑界面
+    Wait And Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[2]
+    #点击新建一个商品专辑
+    Wait And Click Element    dom:document.querySelectorAll(".large_btn___3RbRK")[0]
+    #输入专辑名称
+    Wait And Input Text    id:title    ceshi
+    #输入专辑描述
+    Wait And Input Text    id:description    ceshi collection
+    #上传一张专辑封面
+    Execute JavaScript    return document.querySelectorAll(".wrapper___TgZZ3")[0].scrollIntoView()
+    Wait Until Page Contains Element    dom:document.querySelectorAll("input[type='file']")[0]
+    Choose File    dom:document.querySelectorAll("input[type='file']")[0]    ${file_products_addImg}
+    Sleep    1
+    #点击保存按钮
+    Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
+    Sleep    3
+
+Delete_Collection
+    [Documentation]    删除专辑
+    #进入商品模块
+    Wait Until Element Is Visible    class:icon_product___2ZYHZ
+    Click Element    class:icon_product___2ZYHZ
+    #点击进入商品专辑界面
+    Wait And Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[2]
+    #点击删除第一个专辑按钮
+    Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0].querySelectorAll(".card-delete")[0]
+    #点击确定
+    Wait And Click Element    id:test_delete_modal_sure_btn

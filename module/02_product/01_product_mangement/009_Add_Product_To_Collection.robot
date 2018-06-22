@@ -1,36 +1,30 @@
 *** Settings ***
-Documentation     Test tax price page ui.
-Suite Setup       New Test Suite Browser And Login    ${nothingUser}    ${nothingUserPassword}    ${nothingUserDomain}
-Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
-Test Setup        Setup Test Case
-Test Teardown     Teardown Test Case
+Documentation     测试商品列表
+Suite Setup       Products Suite Setup
+Suite Teardown    Products Suite Teardown
+Test Setup        Products Test Case Setup
+Test Teardown     Products Test Case Teardown
 Force Tags        Products
+Library           ${CURDIR}/../../../lib/customLibrary
+Resource          ../../../resources/var_common.robot
+Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/kw_common.robot
-Resource          ../../../resources/kw_browser.robot    # import ajax listener keyword
-Library           customLibrary
+Resource          ../../../resources/kw_browser.robot
+Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
 Validate_Normal_Page
     [Documentation]    验证商品批量添加专辑显示正常
     [Tags]    P0
     #验证添加到商品专辑排版正确
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
-    #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    #点击批量操作菜单
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
-    Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Click_First_Product_And_Click_Batch_Menu
     #选择添加到专辑
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]
     #搜索栏
     Page Should Contain Element    dom:document.querySelectorAll(".ant-input")[5]
     #复选框
@@ -41,6 +35,9 @@ Validate_Normal_Page
     Page Should Contain Element    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0].querySelectorAll("td")[2]
     #确定按钮
     Page Should Contain Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
+    #关闭弹出框
+    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close")[0]
+    Go TO    ${home_page}
 
 Add_Product_To_Collection
     [Documentation]    验证商品批量添加专辑
@@ -48,38 +45,32 @@ Add_Product_To_Collection
     #添加商品到专辑
     #选中第几个专辑
     ${which}=    Set Variable    0
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     #选中第一个商品
     Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
     Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
     #记录下操作的商品名称
     ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
     #点击批量操作菜单
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
-    Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
     #选择添加到专辑
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]
     #选中专辑
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
     #点击确定按钮
-    Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
     Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
     #去商品专辑模块检查
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".menu_item___3VgTh")[1].querySelectorAll("a")[0]
-    Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[1].querySelectorAll("a")[0]
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-table-row")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[2].querySelectorAll("a")[0]
     #进入专辑详情查看是否存在刚刚添加的商品
-    Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
     Wait Until Page Contains Element    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
     Page Should Contain    ${name}
+    Go TO    ${home_page}
 
 Search_Collection
     [Documentation]    验证商品批量添加专辑弹窗中，专辑搜索功能显示正常
@@ -87,29 +78,23 @@ Search_Collection
     #验证商品专辑搜索
     #选择搜索第几个专辑的名称
     ${which}=    Set Variable    0
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
-    #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    #点击批量操作菜单
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
-    Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Click_First_Product_And_Click_Batch_Menu
     #选择添加到专辑
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]
     #获取要搜索的专辑名称
     ${collection_name}    Get Text    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0].querySelectorAll("td")[1]
     #搜索框输入搜索
-    Input Text    dom:document.querySelectorAll(".ant-input")[5]    ${collection_name}
+    Wait And Input Text    dom:document.querySelectorAll(".ant-input")[5]    ${collection_name}
     Sleep    1
     Element Should Contain    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0].querySelectorAll("td")[1]    ${collection_name}
+    #关闭弹出框
+    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close")[0]
+    Go TO    ${home_page}
 
 Add_Product_To_Search_Collection
     [Documentation]    商品批量添加到搜索出来的专辑
@@ -117,18 +102,13 @@ Add_Product_To_Search_Collection
     #验证搜索出来的专辑可正常添加商品
     #选中第几个专辑
     ${which}=    Set Variable    0
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     #选中第一个商品
     Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
     Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
     #记录下操作的商品名称
     ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
     #点击批量操作菜单
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
-    Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
     #选择添加到专辑
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    btn
     Set Focus To Element    btn
@@ -140,22 +120,20 @@ Add_Product_To_Search_Collection
     #获取要搜索的专辑名称
     ${collection_name}    Get Text    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0].querySelectorAll("td")[1]
     #搜索框输入搜索
-    Input Text    dom:document.querySelectorAll(".ant-input")[5]    ${collection_name}
+    Wait And Input Text    dom:document.querySelectorAll(".ant-input")[5]    ${collection_name}
     Sleep    1
     #选中专辑
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
     #点击确定按钮
-    Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
     Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
     #去商品专辑模块检查
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".menu_item___3VgTh")[1].querySelectorAll("a")[0]
-    Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[1].querySelectorAll("a")[0]
-    Sleep    1
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-table-row")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[2].querySelectorAll("a")[0]
     #进入专辑详情查看是否存在刚刚添加的商品
-    Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
     Wait Until Page Contains Element    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
     Page Should Contain    ${name}
+    Go TO    ${home_page}
 
 Add_Product_To_Search_Collection_By_Id
     [Documentation]    验证商品成功批量添加到通过专辑编号搜索出来的专辑中
@@ -163,114 +141,96 @@ Add_Product_To_Search_Collection_By_Id
     #通过专辑编号搜索专辑
     #选中第几个专辑
     ${which}=    Set Variable    0
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
+    #获取选中的专辑编号
+    ${collection_id}    getCollectionId    ${which}
     #选中第一个商品
     Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
     Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
     #记录下操作的商品名称
     ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
     #点击批量操作菜单
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
-    Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
     #选择添加到专辑
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]
     #先搜索符合条件的专辑
     #搜索框输入专辑编号搜索
-    Input Text    dom:document.querySelectorAll(".ant-input")[5]    1
+    Wait And Input Text    dom:document.querySelectorAll(".ant-input")[5]    ${collection_id}
     Sleep    1
     #选中专辑
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
     #点击确定按钮
-    Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
     Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
     #去商品专辑模块检查
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".menu_item___3VgTh")[1].querySelectorAll("a")[0]
-    Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[1].querySelectorAll("a")[0]
-    Sleep    1
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-table-row")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[2].querySelectorAll("a")[0]
     #进入专辑详情查看是否存在刚刚添加的商品
-    Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
     Wait Until Page Contains Element    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
     Page Should Contain    ${name}
+    Go TO    ${home_page}
 
 No_Select_Collection
-    [Documentation]    验证商品批量添加专辑时未选择专辑
-    [Tags]    P0
-    #未选择商品专辑
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
-    #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    #点击批量操作菜单
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
-    Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
-    #选择添加到专辑
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    btn
-    Set Focus To Element    btn
-    Mouse Down    btn
-    Mouse Up    btn
-    #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
-    #点击确定按钮
-    Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
+    #    [Documentation]    验证商品批量添加专辑时未选择专辑
+    #    [Tags]    P0
+    #    #------------------------未选择商品，添加到专辑，点击确定按钮时，没有提示未选择专辑的功能-----------------------
+    #    #未选择商品专辑
+    #    Go TO    ${home_page}
+    #    #进入商品模块
+    #    Wait Until Element Is Visible    class:icon_product___2ZYHZ
+    #    Click Element    class:icon_product___2ZYHZ
+    #    #选中第一个商品
+    #    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
+    #    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
+    #    #点击批量操作菜单
+    #    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    #    Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    #    #选择添加到专辑
+    #    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    btn
+    #    Set Focus To Element    btn
+    #    Mouse Down    btn
+    #    Mouse Up    btn
+    #    #弹出框
+    #    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    #    #点击确定按钮
+    #    Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
 
 Cancel_Add_Product_To_Collection
     [Documentation]    验证商品批量取消添加专辑
     [Tags]    P0
     #取消将商品加入专辑
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
-    #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    #点击批量操作菜单
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
-    Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Click_First_Product_And_Click_Batch_Menu
     #选择添加到专辑
     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]
     #点击取消按钮
-    Click Element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
-
-Validate_No_Collection
-    [Documentation]    验证商品批量添加专辑时，无专辑数据
-    [Tags]    P0
-    #验证无专辑数据时
+    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
     Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
-    #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    #点击批量操作菜单
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
-    Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
-    #选择添加到专辑
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    btn
-    Set Focus To Element    btn
-    Mouse Down    btn
-    Mouse Up    btn
-    #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
-    #提示专辑暂无数据
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-table-placeholder")[0]
-    ${title}    GetText    dom:document.querySelectorAll(".ant-table-placeholder")[0]
-    Should Be Equal As Strings    ${title}    暂无数据
+
+*** Keywords ***
+Products Suite Setup
+    [Documentation]    商品 case setup,添加商品，专辑
+    Login With Default User
+    Start Ajax Listener
+    #Add Product
+    #Add_Collection
+    Go To Products Page
+
+Products Suite Teardown
+    [Documentation]    删除商品，专辑
+    #Delete_Collection
+    Close Test Suite Browser
+
+Products Test Case Setup
+    Go To Products Page
+
+Products Test Case Teardown
+    Teardown Test Case

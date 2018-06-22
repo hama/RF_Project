@@ -4,6 +4,7 @@ import random
 import json
 import sys
 import re
+import requests
 reload(sys)
 sys.setdefaultencoding('utf-8')
 class keyWord(object):
@@ -76,8 +77,6 @@ class keyWord(object):
             exit()
 
     def selectProduct(self):
-        import requests
-
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
         datas = {"contact": "18826557090", "password": "147258"}
@@ -202,8 +201,6 @@ class keyWord(object):
             return 0
 
     def getFirstProductQuantity(self):
-        import requests
-
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
         datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
@@ -222,8 +219,6 @@ class keyWord(object):
         return res_list[0]
 
     def getFirstProductTitle(self):
-        import requests
-
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
         datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
@@ -242,8 +237,6 @@ class keyWord(object):
         return res_list[0]
 
     def getProductStatus(self, arg):
-        import requests
-
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
         datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
@@ -262,8 +255,6 @@ class keyWord(object):
         return res_list[arg]
 
     def getProductSku(self, arg):
-        import requests
-
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
         datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
@@ -286,8 +277,6 @@ class keyWord(object):
         return res_list[arg]
 
     def selectProductCountByStatus(self, arg):
-        import requests
-
         if arg:
             arg = int(arg)
         else:
@@ -312,8 +301,6 @@ class keyWord(object):
         return len(res_list)
 
     def getProductTagsLength(self, arg):
-        import requests
-
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
         datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
@@ -335,8 +322,6 @@ class keyWord(object):
         return res_list[arg]
 
     def getAllProductCount(self):
-        import requests
-
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search"
         datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
@@ -362,8 +347,6 @@ class keyWord(object):
         return page
 
     def validateProductByPageAndSize(self, page, size):
-        import requests
-
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search?page=" + str(page) + "&limit=" + str(size)
         datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
@@ -381,4 +364,22 @@ class keyWord(object):
             res_list.append(str(i['title']))
         return res_list
 
+    def getCollectionId(self, index):
+        x_url = "http://admin1024.shoplazza.com/api/user/login"
+        p_url = "http://admin1024.shoplazza.com/api/collection/dropdown?page=0&limit=10&key="
+        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        res = requests.post(url=x_url, headers={}, data=datas)
+        if res is None or res.status_code != 200:
+            return res.status_code
+        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+
+        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
+        res_data = json.loads(sub_list.content)['data']['collections']
+        index = int(index)
+
+        res_list = []
+        for i in res_data:
+            res_list.append(i['collection_id'])
+
+        return res_list[index]
 
