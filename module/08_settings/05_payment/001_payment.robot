@@ -4,7 +4,7 @@ Suite Teardown    #Close Test Suite Browser    # close the browser opened for th
 Resource          ../../../resources/kw_payment.robot
 Resource          ../../../resources/var_tax_price.robot
 Resource          ../../../resources/kw_browser.robot
-Resource          ../../resources/kw_common.robot
+Resource          ../../../resources/kw_common.robot
 
 *** Test Cases ***
 001_payment

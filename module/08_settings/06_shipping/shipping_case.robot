@@ -16,11 +16,9 @@ Resource          ./common.robot
     [Documentation]    创建物流 输入 方案名 点击保存 提示 请添加国家
     [Tags]    P0
     Go To Shipping Page
-    click element    ${locator_shipping_add_shipping}
-    sleep    1
+    Wait And Click Element    ${locator_shipping_add_shipping}
     input text    id:name    方案1
-    Wait Until Element Is Visible    id:test_save_btn
-    click link    id:test_save_btn
+    Wait And Click Element    id:test_save_btn
     sleep    2
     page should not contain element    id:test_add_btn
     Quit All Shipping
@@ -33,20 +31,17 @@ Resource          ./common.robot
     ${range_min}    set variable    10
     ${range_max}    set variable    100
     ${rate_amount}    set variable    9
-    click element    ${locator_shipping_add_shipping}
-    sleep    1
+    Wait And Click Element    ${locator_shipping_add_shipping}
     ${name}    salt
     input text    id:name    ${name}
     Wait Until Element Is Visible    id:test_save_btn
-    click button    id:test_shipping_country_add_btn
+    Wait And Click Element    id:test_shipping_country_add_btn
     Wait Until Element Is Visible    id:test_shipping_country_modal_sure_btn
     Execute JavaScript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2].click()
     Execute JavaScript    return document.getElementsByClassName("ant-tree-checkbox-inner")[10].click()
     sleep    1
-    click button    id:test_shipping_country_modal_sure_btn
-    sleep    1
-    click element    dom:document.querySelectorAll("#test_shipping_country_edit_icon")[0]
-    sleep    1
+    Wait And Click Element    id:test_shipping_country_modal_sure_btn
+    Wait And Click Element    dom:document.querySelectorAll("#test_shipping_country_edit_icon")[0]
     ${count}    execute javascript    return document.querySelectorAll(".ant-modal-body ul li").length
     Should Be True    ${count}==32
     Wait And Click Element    class:ant-modal-close-x
@@ -60,17 +55,14 @@ Resource          ./common.robot
     ${range_min}    set variable    10
     ${range_max}    set variable    100
     ${rate_amount}    set variable    9
-    click element    ${locator_shipping_add_shipping}
-    sleep    1
+    Wait And Click Element    ${locator_shipping_add_shipping}
     Wait Until Element Is Visible    id:test_save_btn
-    click button    id:test_shipping_country_add_btn
+    Wait And Click Element    id:test_shipping_country_add_btn
     Wait Until Element Is Visible    id:test_shipping_country_modal_sure_btn
-    click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2]
+    Wait And Click Element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2]
     Sleep    1
-    click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[10]
-    sleep    1
-    click button    id:test_shipping_country_modal_sure_btn
-    sleep    1
+    Wait And Click Element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[10]
+    Wait And Click Element    id:test_shipping_country_modal_sure_btn
     Execute JavaScript    return document.querySelectorAll("#test_shipping_country_delete_icon")[0].click()
     sleep    2
     page should contain element    id:test_delete_modal_sure_btn
@@ -81,20 +73,17 @@ Resource          ./common.robot
     [Documentation]    创建物流 除了价格运费不添加，其他照常添加 保存成功
     [Tags]    P0
     Go To Shipping Page
-    click element    ${locator_shipping_add_shipping}
-    sleep    1
+    Wait And Click Element    ${locator_shipping_add_shipping}
     ${name}    salt
     input text    id:name    ${name}
     Wait Until Element Is Visible    id:test_save_btn
-    click button    id:test_shipping_country_add_btn
+    Wait And Click Element    id:test_shipping_country_add_btn
     Wait Until Element Is Visible    id:test_shipping_country_modal_sure_btn
-    click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
-    click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
-    sleep    1
-    click button    id:test_shipping_country_modal_sure_btn
-    sleep    1
+    Wait And Click Element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
+    Wait And Click Element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
+    Wait And Click Element    id:test_shipping_country_modal_sure_btn
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn
-    click button    id:test_shipping_add_weight_btn
+    Wait And Click Element    id:test_shipping_add_weight_btn
     ${input}    set variable    重量运费
     ${desc}    set variable    重量运费说明
     ${range_min}    set variable    10
@@ -107,9 +96,9 @@ Resource          ./common.robot
     input text    id:range_max    ${range_max}
     input text    id:rate_amount    ${rate_amount}
     sleep    1
-    click button    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
     Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
-    click button    id:test_shipping_add_quantity_btn
+    Wait And Click Element    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${input_a}    set variable    数量运费
     ${desc_a}    set variable    熟练给运费说明
@@ -119,10 +108,10 @@ Resource          ./common.robot
     input text    id:range_max    ${range_max}
     input text    id:rate_amount    ${rate_amount}
     sleep    1
-    click button    id:test_shipping_edit_modal_sure_btn
-    sleep    2
-    click link    id:test_save_btn
-    sleep    2
+    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
+    sleep    1
+    Wait And Click Element    id:test_save_btn
+    sleep    1
     page should contain element    dom:document.querySelectorAll("button")[1]
     Delete Shipping
 

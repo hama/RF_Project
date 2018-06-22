@@ -18,12 +18,26 @@ Quantity All Setp
     Sleep    1
 
 Quit All Shipping
-    Wait Until Element is Visible    ${locator_setting_shipping}
-    Click Element    ${locator_setting_shipping}
+    Wait And Click Element    ${locator_setting_shipping}
     Sleep    1
     Alert Should Be Present
 
 Quit All Setp
-    Wait Until Element is Visible    ${locator_setting_shipping}
-    Click Element    ${locator_setting_shipping}
+    Wait And Click Element    ${locator_setting_shipping}
     Sleep    1
+
+Quit Add Country
+    [Documentation]    添加国家
+    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locator_shipping_add_country}
+    Sleep    1
+
+Quit Add Price Shipping
+    [Documentation]    添加价格运费
+    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locator_shipping_add_price_btn}
+    Sleep    1
+
+Wait Setp
+    [Documentation]    等待
+    Wait Until Element Is Visible    ${locator_shipping_add_country}
