@@ -126,6 +126,8 @@ order_detail_send_detail
     click button    添加运单
     sleep    1.5
     page should contain element    dom:document.querySelectorAll("button")[4]
+    Wait And Click Element    class:ant-modal-close-x
+    Wait And Click Element    ${locator_order}
 
 order_list_search
     [Documentation]    订单列表搜索
@@ -148,6 +150,7 @@ order_list_all_check
     #${dataLength}=    Execute JavaScript    return responseMap.get("${order_list_apis}").data.list
     #${count}    evaluate    len(${dataLength})
     #Should Be True    ${count}==20
+    Wait And Click Element    ${locator_order}
 
 order_list_already_refund_check
     [Documentation]    选中已退款栏，订单列表展示已退款订单
