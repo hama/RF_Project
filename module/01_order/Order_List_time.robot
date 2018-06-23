@@ -18,8 +18,8 @@ order_list_time_sort
     Go To    ${home_page}
     sleep    1
     Wait And Click Element    ${order_list_btn}
-    sleep    1.5
-    Wait And Click Element    dom:document.querySelectorAll("input[placeholder='开始日期']")[0]
+    sleep    3
+    Click Element    dom:document.querySelectorAll("input[placeholder='开始日期']")[0]
     Wait And Click Element    dom:document.querySelectorAll(".ant-calendar-month-select")[0]
     Wait And Click Element    dom:document.querySelector(".ant-calendar-month-panel-table tr:nth-child(2) td:nth-child(3)")
     Wait And Click Element    dom:document.querySelectorAll(".ant-calendar-date")[4]

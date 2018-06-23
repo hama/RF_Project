@@ -78,7 +78,7 @@ order_detail_cancel_send
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Wait And Click Element    dom:document.querySelectorAll("button")[4]
     Execute JavaScript    return document.getElementById("dj").scrollTo(0,10000)
-    sleep    1.5
+    sleep    2.5
     Execute Javascript    return document.querySelectorAll('.icon_custom_left___GO944')[2].click()
     sleep    1
     Page Should Contain element    dom:document.querySelectorAll("button")[2]
