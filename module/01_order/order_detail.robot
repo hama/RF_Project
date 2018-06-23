@@ -74,7 +74,7 @@ order_detail_cancel_send
     go to    ${home_page}
     sleep    1
     Order Setp
-    page should contain element    ${order_detail_element}
+    Sleep    3
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Wait And Click Element    dom:document.querySelectorAll("button")[4]
     Execute JavaScript    return document.getElementById("dj").scrollTo(0,10000)
