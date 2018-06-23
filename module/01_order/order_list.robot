@@ -174,7 +174,7 @@ order_list_already_send_check
     : FOR    ${i}    IN RANGE    ${count}
     \    ${x}    Evaluate    ${i}+1
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[4].innerText
-    \    Should Be True    '${data}'=='全部发货' and '${data}'<>'部分发货'
+    \    Should Be True    '${data}'=='全部发货'
 
 order_list_already_mission_check
     [Documentation]    选中已完成,订单列表展示已完成订单

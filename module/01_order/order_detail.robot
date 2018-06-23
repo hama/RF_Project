@@ -103,6 +103,7 @@ order_detail_update_send_not
     Wait And Click Element    dom:document.querySelectorAll(".tw-Updated")[0]
     Input Text    dom:document.querySelectorAll("#shipping_code")[0]    ${input}
     Wait And Click Element    dom:document.querySelectorAll('button')[3]
+    Sleep    2
     page should contain element    dom:document.querySelectorAll(".label___oVKMA")[0]
     Quit Order Setp
 
