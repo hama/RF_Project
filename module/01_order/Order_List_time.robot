@@ -17,8 +17,7 @@ order_list_time_sort
     Add Order
     Go To    ${home_page}
     sleep    1
-    Wait Until Element Is Visible    ${order_list_btn}
-    Click Element    ${order_list_btn}
+    Wait And Click Element    ${order_list_btn}
     sleep    1.5
     Wait And Click Element    dom:document.querySelectorAll("input[placeholder='开始日期']")[0]
     Wait And Click Element    dom:document.querySelectorAll(".ant-calendar-month-select")[0]
