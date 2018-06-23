@@ -35,6 +35,7 @@ order_list_time_sort
 order_list_time_default
     [Documentation]    取消日期筛选，默认显示为近三个月的订单
     [Tags]    P0
+    Sleep    1.5
     Go To Order Page
     Wait And Click Element    ${order_list_btn}
     Wait Until Element Is Visible    dom:document.querySelectorAll("table tbody tr td")[0]
