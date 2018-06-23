@@ -17,7 +17,7 @@ Add Order
     #点击商品预览
     Sleep    3
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    dom:document.querySelectorAll("table tbody tr td span")[4]    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #点击商品预览
