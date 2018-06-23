@@ -40,5 +40,4 @@ Add Order
     Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
     Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
     Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
-    Wait Until Element Is Visible    id:submitMbPay
     Wait And Click Element    id:submitMbPay
