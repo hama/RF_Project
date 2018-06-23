@@ -12,10 +12,8 @@ Add Order
     #.add order
     #C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     #.click products btn
-    Wait Until Element Is Visible    ${add_products_btn}
-    Click Element    ${add_products_btn}
+    Go To Products Page
     #点击商品预览
-    Sleep    3
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll("table tbody tr td span")[4]    title
     Wait Until Element Is Visible    title

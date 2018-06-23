@@ -2,6 +2,7 @@
 Library           SeleniumLibrary
 Resource          var_common.robot
 Resource          kw_browser.robot
+Resource          kw_products.robot
 
 *** Keywords ***
 Login With Default User
@@ -31,10 +32,11 @@ Go To Setting Page
     Wait And Click Element    ${locator_setting}
 
 Go To Products Page
-    [Documentation]    跳转到订单页面
+    [Documentation]    跳转到商品页面
     Wait And Click Element    ${locator_products}
     Wait Until Page Contains    ${content_products_all}
     Location Should Be    ${url_products}
+    Sleep    1
 
 Go To Order Page
     [Documentation]    跳转到订单页面
