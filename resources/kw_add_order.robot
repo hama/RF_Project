@@ -25,11 +25,10 @@ Add Order
     #.第二个窗口
     Select Window    New
     Wait Until Element Is Visible    dom:document.querySelectorAll(".submit_mb span")[0]
-    Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
     Wait Until Element Is Visible    dom:document.querySelectorAll(".footer-submit")[0]
-    Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait Until Element Is Visible    id:submitMbPay
-    Click Button    id:submitMbPay
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    id:submitMbPay
     Wait Until Element Is Visible    dom:document.querySelectorAll(".form-footer")[0]
     Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
     Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
@@ -40,6 +39,6 @@ Add Order
     Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
     Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
     Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
-    Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
     Wait Until Element Is Visible    id:submitMbPay
-    Click Button    id:submitMbPay
+    Wait And Click Element    id:submitMbPay
