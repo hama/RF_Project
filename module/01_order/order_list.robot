@@ -1,5 +1,6 @@
 *** Settings ***
-Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
+Suite Setup       New Test Suite Browser And Login    ${user_default_name}    ${user_default_pwd}    ${user_default_domain}
+Suite Teardown    Close Test Suite Browser
 Resource          ../../resources/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Resource          ../../resources/var_tax_price.robot
 Resource          ../../resources/kw_common.robot
@@ -8,7 +9,6 @@ Library           SeleniumLibrary
 Library           customLibrary
 Resource          ./common.robot
 Resource          ../../resources/var_order.robot
-Library           DateTime
 
 *** Test Cases ***
 order_list_page
@@ -96,9 +96,16 @@ order_detail
     Wait And Click Element    ${order_list_first_tr}
     page should contain element    ${order_detail_element}
 
-order_dateil_send
+order_detail_send
     [Documentation]    点击订单详情查看自否发货
     [Tags]    P1
+    Add Order
+    Go To    ${home_page}
+    Wait And Click Element    ${order_list_btn}
+    Wait And Click Element    ${order_list_first_tr}
+    Wait Until Element Is Visible    dom:document.querySelectorAll('button')[1]
+    Click Button    添加运单
+    Wait And Click Element    dom:document.querySelectorAll('button')[4]
     Go To Order Page
     sleep    1
     Wait And Click Element    ${order_list_btn}
@@ -110,7 +117,8 @@ order_dateil_send
 order_detail_send_detail
     [Documentation]    点击订单详情添加运单详情 弹出框
     [Tags]    P1
-    Go To Order Page
+    Add Order
+    Go To    ${home_page}
     sleep    1
     Wait And Click Element    ${order_list_btn}
     Wait And Click Element    ${order_list_first_tr}
@@ -125,20 +133,21 @@ order_list_search
     Go To Order Page
     sleep    1
     Wait And Click Element    ${order_list_btn}
-    Page Should Contain Element    ${order_list_search}
+    Page Should Contain Element    ${order_list_searchs}
 
 order_list_all_check
     [Documentation]    订单列表点击全部 显示所有订单
     [Tags]    P1
-    ${time}    getTimeData
-    ${order_list_apis}=    Set Variable    http://admin1024.shoplazza.com/api/order/list?start_create_time=${start_time}&end_create_time=${end_time}&page=0&size=20
-    Start Ajax Listener
-    Go To Order Page
-    sleep    1
-    Wait And Click Element    ${order_list_btn}
-    ${dataLength}=    Execute JavaScript    return responseMap.get("${order_list_apis}").data.list
-    ${count}    evaluate    len(${dataLength})
-    Should Be True    ${count}==20
+    #${time}    getTimeData
+    #${order_list_apis}=    Set Variable    http://admin1024.shoplazza.com/api/order/list?start_create_time=${start_time}&end_create_time=${end_time}&page=0&size=20
+    #Go To Order Page
+    #Start Ajax Listener
+    #Sleep    1.5
+    #Wait And Click Element    ${order_list_btn}
+    #Sleep    1
+    #${dataLength}=    Execute JavaScript    return responseMap.get("${order_list_apis}").data.list
+    #${count}    evaluate    len(${dataLength})
+    #Should Be True    ${count}==20
 
 order_list_already_refund_check
     [Documentation]    选中已退款栏，订单列表展示已退款订单
@@ -173,8 +182,8 @@ order_list_already_mission_check
     ${count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length
     : FOR    ${i}    IN RANGE    ${count}
     \    ${x}    Evaluate    ${i}+1
-    \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[5].innerText
-    \    Should Be True    '${data}'=='已完成'
+    \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[4].innerText
+    \    Should Be True    '${data}'=='已到达'
 
 order_list_not_payment_check
     [Documentation]    选中未支付，订单列表展示未支付订单
@@ -185,11 +194,11 @@ order_list_not_payment_check
     ${count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length
     : FOR    ${i}    IN RANGE    ${count}
     \    ${x}    Evaluate    ${i}+1
-    \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[4].innerText
+    \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[3].innerText
     \    Should Be True    '${data}'=='未支付'
 
 order_list_already_cancel_check
-    [Documentation]    选中未支付，订单列表展示未支付订单
+    [Documentation]    选中已取消，订单列表展示已取消订单
     [Tags]    P0
     Go To Order Page
     Wait And Click Element    ${order_list_btn}

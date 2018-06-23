@@ -35,7 +35,7 @@ Add Order
     Wait Until Element Is Visible    dom:document.querySelectorAll(".form-footer")[0]
     Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
     Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
-    Select From List    id:shipping_country_id    Afghanistan
+    Select From List    id:shipping_country_id    China
     Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
     Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
     Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
