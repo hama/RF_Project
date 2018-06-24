@@ -1,6 +1,7 @@
 *** Settings ***
 Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
 Suite Teardown    #Close Test Suite Browser    # close the browser opened for this test suite
+Force Tags        payment
 Resource          ../../../resources/kw_payment.robot
 Resource          ../../../resources/var_tax_price.robot
 Resource          ../../../resources/kw_browser.robot
@@ -9,13 +10,14 @@ Resource          ../../../resources/kw_common.robot
 *** Test Cases ***
 001_payment
     [Documentation]    登录后直接进入支付设设置
-    [Tags]    P1
+    [Tags]    ignore
     Wait And Click Element    ${locator_setting}
     Wait And Click Element    ${locator_setting_payment}
     page should contain element    dom:document.querySelectorAll('.title___3MGDq')[0]
 
 002_payment
     [Documentation]    从其他界面切换到支付设置
+    [Tags]    ignore
     go to    ${home_page}
     Wait And Click Element    ${locator_setting}
     Wait And Click Element    dom:document.querySelectorAll('a[href="/taxPrice"]')
@@ -31,6 +33,7 @@ Resource          ../../../resources/kw_common.robot
 
 003_payment
     [Documentation]    点击收款
+    [Tags]    ignore
     ${xpath_d}    set variable    id:test_add_btn
     Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
     sleep    1
@@ -41,6 +44,7 @@ Resource          ../../../resources/kw_common.robot
 
 004_payment
     [Documentation]    点击测试
+    [Tags]    ignore
     ${xpath_d}    set variable    id:test_add_btn
     Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
     sleep    1
@@ -51,6 +55,7 @@ Resource          ../../../resources/kw_common.robot
 
 005_payment
     [Documentation]    在线支付 编辑按钮
+    [Tags]    ignore
     ${xpath_d}    set variable    id:test_add_btn
     Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
     sleep    1
@@ -62,6 +67,7 @@ Resource          ../../../resources/kw_common.robot
 
 006_payment
     [Documentation]    在线支付 编辑按钮 输入框限制及特殊字符限制
+    [Tags]    ignore
     ${xpath_d}    set variable    id:test_add_btn
     Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
     sleep    1
@@ -75,6 +81,7 @@ Resource          ../../../resources/kw_common.robot
 
 007_payment
     [Documentation]    支付编辑界面保存按钮，未输入名称时点击保存
+    [Tags]    ignore
     ${xpath_d}    set variable    id:test_add_btn
     Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
     sleep    1
@@ -88,6 +95,7 @@ Resource          ../../../resources/kw_common.robot
 
 008_payment
     [Documentation]    输入支付内容，其他内容不输入. 不保存
+    [Tags]    ignore
     ${xpath_d}    set variable    id:test_add_btn
     Login With Payment    ${xpath_a}    ${xpath_b}    ${xpath_c}
     sleep    1
@@ -100,5 +108,6 @@ Resource          ../../../resources/kw_common.robot
 
 009_payment
     [Documentation]    PayPal栏点击PayPal官网或PayPal管理页／新开窗口跳转至PayPal界面
+    [Tags]    ignore
     ${xpath_d}    set variable    id:test_add_btn
     Login With Patment Visible    //*[@id="online_pay"]/div[1]/button

@@ -1,12 +1,14 @@
 *** Settings ***
+Suite Teardown    Close Test Suite Browser
 Library           SeleniumLibrary
-Library           ${CURDIR}../../../lib/customLibrary
+Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_tax_price.robot
 Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
+Library           customLibrary
 
 *** Variable ***
 ${uname}          98989898
@@ -19,14 +21,14 @@ login_psss
     Comment    wait until login button is visible
     Open Test Browser    ${home_page}
     Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${defaultUser}
-    Input Password    id:password    ${defaultPassword}
+    Input Text    id:account    ${recover_user}
+    Input Password    id:password    ${recover_password}
     Wait And Click Button    ${login_btn}
     Comment    wait until domain input text element is visible
     Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${defaultDomain}
+    Input Text    id:username    ${recover_domain}
     Wait And Click Element    ${login_btn}
-    Sleep    1
+    Sleep    2
     Page Should Contain Element    ${locator_order}
     Logout
 
@@ -115,16 +117,16 @@ login_error_seven
 login_main_account_pass
     [Documentation]    登陆成功
     [Tags]    P0
-    Login Setp
+    Open Test Browser    ${home_page}
     Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${defaultUser}
-    Input Password    id:password    ${defaultPassword}
+    Input Text    id:account    ${recover_user}
+    Input Password    id:password    ${recover_password}
     Wait And Click Button    ${login_btn}
     Comment    wait until domain input text element is visible
     Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${defaultDomain}
+    Input Text    id:username    ${recover_domain}
     Wait And Click Element    ${login_btn}
-    Sleep    1
+    Sleep    2
     Page Should Contain Element    ${locator_order}
     Logout
 
