@@ -175,7 +175,7 @@ recover_password_error_ten
     ${code}    selectCodesPwd    ${recover_user}
     Input Text    id:code    ${code}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[0]
+    Sleep    1.5
     Input Password    id:password    ${Empty}
     Input Password    id:confirmpass    ${Empty}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
@@ -197,7 +197,7 @@ recover_password_error_eleven
     ${code}    selectCodesPwd    ${recover_user}
     Input Text    id:code    ${code}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[0]
+    Sleep    1.5
     Input Password    id:password    1
     Input Password    id:confirmpass    1
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
@@ -219,7 +219,7 @@ recover_password_error_twelve
     ${code}    selectCodesPwd    ${recover_user}
     Input Text    id:code    ${code}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[0]
+    Sleep    1.5
     Input Password    id:password    12312312312
     Input Password    id:confirmpass    123123123121
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
@@ -241,7 +241,7 @@ recover_password_error_thirteen
     ${code}    selectCodesPwd    ${recover_user}
     Input Text    id:code    ${code}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[0]
+    Sleep    1.5
     Input Password    id:password    12312312312
     Input Password    id:confirmpass    ${Empty}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
@@ -263,7 +263,7 @@ recover_password_error_fourteen
     ${code}    selectCodesPwd    ${recover_user}
     Input Text    id:code    ${code}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[0]
+    Sleep    1.5
     Input Password    id:password    12312312312
     Input Password    id:confirmpass    123
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
