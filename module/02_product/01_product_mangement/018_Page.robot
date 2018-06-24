@@ -84,13 +84,16 @@ Validate_Location_Page
 
 *** Keywords ***
 Products Suite Setup
-    [Documentation]    商品 case setup
+    [Documentation]    商品 case setup,添加20以上商品
     Login With Default User
     Start Ajax Listener
+    Upload_Many_Products
+    Sleep    2
     Go To Products Page
 
 Products Suite Teardown
-    [Documentation]    删除商品，专辑
+    [Documentation]    删除所有商品
+    Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup

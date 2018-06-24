@@ -383,3 +383,19 @@ class keyWord(object):
 
         return res_list[index]
 
+# def uploadManyProducts():
+#     x_url = "http://admin1024.shoplazza.com/api/user/login"
+#     p_url = "http://admin1024.shoplazza.com/api/product/add"
+#     datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+#     res = requests.post(url=x_url, headers={}, data=datas)
+#     if res is None or res.status_code != 200:
+#         return res.status_code
+#     cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+#
+#     data = {"product_type_id":0,"type":None,"vendor_id":0,"vendor":"","images":[],"seo_meta_id":4859,"url":"/products/example-t-shirt8-3-1","handle":"example-t-shirt8-3-1","meta_title":"sdf","meta_description":"fw","meta_keyword":"","update_time":"2018-06-23 20:15:22","create_time":"2018-06-23 20:15:22","published_at":"2018-06-23 20:15:22","title":"Example T-Shirt8","description":"","content":"","brief":"T-Shirt","price":19.99,"price_min":19.99,"price_max":19.99,"price_varies":False,"compare_at_price":24.99,"compare_at_price_min":24.99,"compare_at_price_max":24.99,"compare_at_price_varies":24.99,"status":1,"ex_links":[],"sales":0,"image":{"src":"","alt":""},"featured_image":{"src":"","alt":""},"tags":[],"variants":[{"id":2113,"sku":"example-shirt-s","inventory_management":True,"inventory_quantity":50,"barcode":"","requires_shipping":1,"weight":200,"weight_unit":"g","price":19.99,"compare_at_price":24.99,"off_ratio":20,"taxable":1,"fulfillment":"0","incoming":0,"inventory_policy":"deny","available":True,"url":"/products/example-t-shirt8-3-1?variant=2113","sales":0,"max_buy":50,"image":{"src":"","alt":""},"featured_image":{"src":"","alt":""},"option":[{"product_option_id":2167,"option":"Size","option_value":"S","sort_order":0},{"product_option_id":2168,"option":"Color","option_value":"Black","sort_order":1}],"title":"S/Black","options":["S","Black"],"option1":"S","option2":"Black","ratio":79.99}],"off_ratio":20,"options":["Size","Color"],"options_with_values":[{"name":"Size","values":["S"]},{"name":"Color","values":["Black"]}],"available":True,"has_only_default_variant":False,"selected_or_first_available_variant":{"id":2113,"sku":"example-shirt-s","inventory_management":True,"inventory_quantity":50,"barcode":"","requires_shipping":True,"weight":"200","weight_unit":"g","price":19.99,"compare_at_price":24.99,"off_ratio":20,"taxable":True,"fulfillment":"0","incoming":0,"inventory_policy":"deny","available":True,"url":"/products/example-t-shirt8-3-1?variant=2113","sales":0,"max_buy":50,"image":{"src":"","alt":""},"featured_image":{"src":"","alt":""},"option":[{"product_option_id":2167,"option":"Size","option_value":"S","sort_order":0},{"product_option_id":2168,"option":"Color","option_value":"Black","sort_order":1}],"title":"S/Black","options":["S","Black"],"option1":"S","option2":"Black"},"barcode":""}
+#     sub_list = requests.post(url=p_url, headers={"cookie": cookiesx}, data=data)
+#
+#     print sub_list.status_code
+#
+# uploadManyProducts()
+

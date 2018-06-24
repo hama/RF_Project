@@ -20,9 +20,9 @@ Add_Already_Option
     ${title}    Set Variable    ceshi1
     #只填写必要参数以添加商品
     #点击添加商品按钮
-    Wait And Click Element    id:test_add_btn
+    Wait And Click Element    ${locator_products_add_product}
     #标题
-    Wait And Input Text    id:__title    ${title}
+    Wait And Input Text    ${locator_products_addTitle}    ${title}
     #添加选项
     Wait And Click Element    id:test_variant_setting_btn
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-dropdown-trigger")[0]
@@ -33,8 +33,8 @@ Add_Already_Option
     #回车保存
     Press Key    id:option_values_0    \\13
     #点击保存
-    Wait And Click Element    id:test_save_btn
-    Sleep    4
+    Wait And Click Element    ${locator_products_save_product}
+    Sleep    5
     Go TO    ${home_page}
 
 Add_Already_Self_Option
@@ -44,9 +44,9 @@ Add_Already_Self_Option
     ${title}    Set Variable    ceshi1
     #只填写必要参数以添加商品
     #点击添加商品按钮
-    Wait And Click Element    id:test_add_btn
+    Wait And Click Element    ${locator_products_add_product}
     #标题
-    Wait And Input Text    id:__title    ${title}
+    Wait And Input Text    ${locator_products_addTitle}    ${title}
     #添加选项
     Wait And Click Element    id:test_variant_setting_btn
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-dropdown-trigger")[0]
@@ -61,8 +61,9 @@ Add_Already_Self_Option
     #按enter添加细节
     Press Key    id:option_values_0    \\13
     #点击保存
-    Wait And Click Element    id:test_save_btn
-    Sleep    4
+    Sleep    3
+    Wait And Click Element    ${locator_products_save_product}
+    Sleep    5
     Go TO    ${home_page}
 
 Add_Already_Seo
@@ -72,16 +73,19 @@ Add_Already_Seo
     ${title}    Set Variable    ceshi1
     #只填写必要参数以添加商品
     #点击添加商品按钮
-    Wait And Click Element    id:test_add_btn
+    Wait And Click Element    ${locator_products_add_product}
     #标题
-    Wait And Input Text    id:__title    ${title}
+    Wait And Input Text    ${locator_products_addTitle}    ${title}
     #售价
-    Wait And Input Text    id:price    100
+    Wait And Input Text    ${locator_products_addPrice}    100
     #原价
-    Wait And Input Text    id:compare_at_price    110
+    Wait And Input Text    ${locator_products_addRawPrice}    110
     #编辑商品seo
+    Sleep    2
     Execute Javascript    return document.getElementById("test_upload_btn").scrollIntoView()
-    Wait And Click Element    dom:document.querySelectorAll(".icon_custom_left___GO944")[0]
+    Sleep    2
+    Wait And Click Element    dom:document.querySelectorAll(".icon_custom_left___GO944")[3]
+    Sleep    2
     #输入seo标题
     Wait And Input Text    dom:document.querySelectorAll(".seoForm___1GRPF .autosize-input___MJu1O")[0]    test
     #输入seo描述
@@ -92,8 +96,8 @@ Add_Already_Seo
     Wait And Input Text    dom:document.querySelectorAll(".ant-select-search__field")[1]    test
     Press Key    dom:document.querySelectorAll(".ant-select-search__field")[1]    \\13
     #点击保存
-    Wait And Click Element    id:test_save_btn
-    Sleep    4
+    Wait And Click Element    ${locator_products_save_product}
+    Sleep    5
     Go TO    ${home_page}
 
 Validate_SEO_Close
@@ -103,25 +107,26 @@ Validate_SEO_Close
     ${title}    Set Variable    ceshi1
     #只填写必要参数以添加商品
     #点击添加商品按钮
-    Wait And Click Element    id:test_add_btn
+    Wait And Click Element    ${locator_products_add_product}
     #标题
-    Wait And Input Text    id:__title    ${title}
+    Wait And Input Text    ${locator_products_addTitle}    ${title}
     #售价
-    Wait And Input Text    id:price    100
+    Wait And Input Text    ${locator_products_addPrice}    100
     #原价
-    Wait And Input Text    id:compare_at_price    110
+    Wait And Input Text    ${locator_products_addRawPrice}    110
     #编辑商品seo
     Execute Javascript    return document.getElementById("test_upload_btn").scrollIntoView()
-    Wait And Click Element    dom:document.querySelectorAll(".icon_custom_left___GO944")[0]
+    Sleep    2
+    Wait And Click Element    dom:document.querySelectorAll(".icon_custom_left___GO944")[3]
     #点击隐藏seo编辑
-    Wait And Click Element    dom:document.querySelectorAll(".icon_custom_left___GO944")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".icon_custom_left___GO944")[3]
     #seo编辑页面隐藏
     Wait Until Element Is Not Visible    dom:document.querySelectorAll(".seoForm___1GRPF .autosize-input___MJu1O")[0]
-    ${title}    Execute Javascript    return document.querySelectorAll(".icon_custom_left___GO944")[0].text
+    ${title}    Execute Javascript    return document.querySelectorAll(".icon_custom_left___GO944")[3].text
     Should Be Equal As Strings    ${title}    编辑SEO
     #点击保存
-    Wait And Click Element    id:test_save_btn
-    Sleep    4
+    Wait And Click Element    ${locator_products_save_product}
+    Sleep    5
     Go TO    ${home_page}
 
 *** Keywords ***
@@ -133,6 +138,10 @@ Products Suite Setup
 
 Products Suite Teardown
     [Documentation]    删除商品
+    Delete_First_Product
+    Delete_First_Product
+    Delete_First_Product
+    Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup

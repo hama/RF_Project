@@ -20,8 +20,8 @@ Test_Products_List_Data
     [Documentation]    测试商品列表的展示（数量/标题/库存/SKU/浏览量/销量/上架状态/创建时间）
     [Tags]    P0
     #获取每页多少条数据
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection-selected-value")[1]
-    ${size}    Get Text    dom:document.querySelectorAll(".ant-select-selection-selected-value")[1]
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-pagination-total-text")[0]
+    ${size}    Get Text    dom:document.querySelectorAll(".ant-pagination-total-text")[0]
     ${total_record}    searchStrs    ${size}
     # 然后遍历校验列表数据是否一致
     : FOR    ${index}    IN RANGE    ${total_record}
@@ -40,24 +40,11 @@ Test_Products_List_Data
     \    Run Keyword If    ${status}==0    Should Be Not Checked    ${index}
     \    Run Keyword If    ${status}==1    Should Be Checked    ${index}
 
-Up_And_Down_Product
-    [Documentation]    上下架商品
-    [Tags]    P0
-    Wait Until Element Is Visible    dom:document.getElementsByClassName("ant-switch")[0]
-    #获取商品总数，包含上下架商品
-    ${all_count}    Execute Javascript    return document.getElementsByClassName("ant-switch").length
-    #获取上架商品数量
-    ${up_product}    Execute Javascript    return document.getElementsByClassName("ant-switch-checked").length
-    #上架商品数量应该大于0
-    Should Be True    ${up_product}>0
-    #上架商品数量应该小于商品总数
-    Should Be True    ${up_product}<${all_count}
-
 Validate_Tab
     [Documentation]    验证商品模块标签
     [Tags]    P0
     ${class_should_be}=    Set Variable    ant-radio-button-wrapper ant-radio-button-wrapper-checked
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-radio-button-wrapper")[0]
+    Wait Until Element Is Visible    ${locator_products_all}
     ${class}    Execute Javascript    return document.querySelectorAll(".ant-radio-button-wrapper")[0].getAttribute('class')
     Should Be Equal As Strings    ${class_should_be}    ${class}
 
@@ -65,6 +52,8 @@ Validate_Table_Head
     [Documentation]    验证商品管理表头的信息显示
     [Tags]    P0
     #验证表头显示
+    Execute Javascript    return document.querySelectorAll(".edit_head___UidlR")[0].scrollIntoView()
+    Sleep    1
     Wait And Click Element    ${locator_products_editTableHead}
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-body")[0]
     #点击已经选中的，将他们全部取消选中
@@ -90,7 +79,7 @@ Validate_Table_Head
     Page Should Contain    操作
     Page Should Contain    创建时间
     Page Should Contain Element    dom:document.querySelectorAll(".preview___37DtU")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".delete___2xfx-")[0]
+    Page Should Contain Element    ${locator_products_deleteIcon}
     #图片
     Page Should Contain Element    dom:document.querySelectorAll(".center___1nHSZ")[0]
     #库存
@@ -132,10 +121,11 @@ Validate_Upload_Alert
     [Documentation]    验证商品上传弹窗
     [Tags]    P0
     #验证商品上传弹窗
-    Wait And Click Element    dom:document.querySelectorAll(".import___3EkG3")[0]
-    Assign id To Element    dom:document.querySelectorAll(".ant-modal-content")[0]    btn1
-    Page Should Contain Element    btn1
-    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close")[1]
+    Wait And Click Element    ${locator_products_upload_product}
+    Sleep    5
+    Execute Javascript    return document.querySelectorAll(".ant-modal-close")[0].click()
+    #Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-modal-close")[0]
+    #Click Element    dom:document.querySelectorAll(".ant-modal-close")[0]
     Go TO    ${home_page}
 
 Validate_Delete_Product
@@ -199,11 +189,13 @@ Products Suite Setup
     [Documentation]    商品 case setup
     Login With Default User
     Start Ajax Listener
-    #Add Product
+    Add Product
+    Sleep    5
     Go To Products Page
 
 Products Suite Teardown
     [Documentation]    删除商品
+    Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup

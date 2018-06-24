@@ -13,8 +13,8 @@ New Test Suite Browser And Login
     log    ===========================================================================================================================================================
     Run Keyword If    '${is_headless}'=='${true}'    Open Headless Chrome    ${home_page}
     ...    ELSE    Open Browser    ${home_page}    chrome
+    #Set Window Size    960    1080
     Set Window Position    0    0
-    #Set Window Size    2000    1080
     Login With User    ${username}    ${password}    ${domain}
 
 Close Test Suite Browser

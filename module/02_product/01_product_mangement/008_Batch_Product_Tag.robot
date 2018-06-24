@@ -141,24 +141,6 @@ Cancel_Add_Tag
     Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
     Go TO    ${home_page}
 
-Remove_Tag_Page
-    [Documentation]    验证商品批量移除标签是否显示正常
-    [Tags]    P0
-    #验证移除标签显示正确
-    Click_First_Product_And_Click_Batch_Menu
-    #选择移除标签
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[4]    btn
-    Set Focus To Element    btn
-    Mouse Down    btn
-    Mouse Up    btn
-    #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
-    #验证选中的第一个商品已有的标签显示正确
-    ${should_count}    getProductTagsLength    0
-    ${count}    Execute Javascript    return document.querySelectorAll(".ant-tag-checkable").length
-    Should Be True    ${should_count}==${count}
-    Go TO    ${home_page}
-
 Remove_Tag
     [Documentation]    商品批量移除标签
     [Tags]    P0
@@ -189,11 +171,13 @@ Products Suite Setup
     [Documentation]    商品 case setup
     Login With Default User
     Start Ajax Listener
-    #Add Product
+    Add Product
+    Sleep    5
     Go To Products Page
 
 Products Suite Teardown
     [Documentation]    删除商品
+    Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup

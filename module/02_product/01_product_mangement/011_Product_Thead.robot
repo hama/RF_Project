@@ -18,7 +18,9 @@ Validate_Thead_Page
     [Tags]    P0
     #验证自定义商品列表排版
     #点击“编辑表头”
-    Wait And Click Element    dom:document.querySelectorAll(".editBtn___2yB79")[0]
+    Execute Javascript    return document.querySelectorAll(".edit_head___UidlR")[0].scrollIntoView()
+    Sleep    1
+    Wait And Click Element    ${locator_products_editTableHead}
     #验证弹窗中的排版信息
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
     #可选复选框个数
@@ -40,7 +42,9 @@ Validate_Cancel_All
     [Tags]    P0
     #验证取消所有选中的复选框
     #点击“编辑表头”
-    Wait And Click Element    dom:document.querySelectorAll(".editBtn___2yB79")[0]
+    Execute Javascript    return document.querySelectorAll(".edit_head___UidlR")[0].scrollIntoView()
+    Sleep    1
+    Wait And Click Element    ${locator_products_editTableHead}
     #取消所有
     Cancel_All
     #确定
@@ -58,7 +62,9 @@ Validate_Cancel_Part
     [Tags]    P0
     #验证取消部分
     #点击“编辑表头”
-    Wait And Click Element    dom:document.querySelectorAll(".editBtn___2yB79")[0]
+    Execute Javascript    return document.querySelectorAll(".edit_head___UidlR")[0].scrollIntoView()
+    Sleep    1
+    Wait And Click Element    ${locator_products_editTableHead}
     #选中所有
     Click_All
     #再取消上架和创建时间
@@ -75,9 +81,11 @@ Click_Cancel_Button
     [Tags]    P0
     #验证点击取消按钮的状态
     #点击“编辑表头”
+    Execute Javascript    return document.querySelectorAll(".edit_head___UidlR")[0].scrollIntoView()
+    Sleep    1
     #记录当前的表头排列
     ${old_count}    Execute Javascript    return document.querySelectorAll(".ant-table-thead tr")[0].querySelectorAll("th").length
-    Wait And Click Element    dom:document.querySelectorAll(".editBtn___2yB79")[0]
+    Wait And Click Element    ${locator_products_editTableHead}
     #取消
     Wait And Click Element    dom:document.querySelectorAll(".cancel___3VskU")[0]
     Sleep    1
@@ -111,11 +119,16 @@ Products Suite Setup
     [Documentation]    商品 case setup,添加商品
     Login With Default User
     Start Ajax Listener
-    #Add Product
+    Add Product
+    Sleep    5
     Go To Products Page
 
 Products Suite Teardown
-    [Documentation]    删除商品
+    [Documentation]    删除商品,恢复到全部选中的状态
+    Wait And Click Element    ${locator_products_editTableHead}
+    Click_All
+    Wait And Click Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
+    Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup

@@ -33,9 +33,12 @@ ${locator_products_addCategoryItem}    dom:document.querySelectorAll(".ant-casca
 ${locator_products_chooseFile}    dom:document.querySelectorAll("input[type='file']")[0]    # 选择文件上传
 ${locator_products_chooseCategory}    id:product_type_cascade    # 选择商品分类
 ${locator_products_chooseCategoryItem}    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]    # 选择商品分类子项
-${locator_products_editTableHead}    dom:document.querySelectorAll(".editBtn___2yB79")[0]    #编辑表头
+${locator_products_editTableHead}    dom:document.querySelectorAll(".edit_head___UidlR")[0]    #编辑表头
 ${locator_products_deleteIcon}    dom:document.querySelectorAll(".delete___2xfx-")[0]    #商品列表的删除icon
 ${locator_products_cancelDelete}    id:test_delete_modal_cancel_btn    #商品列表点击删除icon弹出框中的取消按钮
+${locator_products_add_product}    dom:document.querySelectorAll(".large_btn___3RbRK")[0]    #商品列表页的新增商品按钮
+${locator_products_upload_product}    dom:document.querySelectorAll(".icon_custom_left___GO944")[2]    #商品列表页的上传商品按钮
+${locator_products_save_product}    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]    #商品详情页的保存按钮
 # content
 ${content_products_all}    全部
 ${content_products_empty}    暂无数据

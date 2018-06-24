@@ -80,8 +80,8 @@ Wait And Click Element
     [Arguments]    ${element_locator}
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Visible    ${element_locator}
-    Wait Until Keyword Succeeds    3x    1s    Click Element    ${element_locator}
-    Sleep    1
+    Wait Until Keyword Succeeds    3x    5s    Click Element    ${element_locator}
+    Sleep    2
 
 Wait And Click Button
     [Arguments]    ${button_locator}

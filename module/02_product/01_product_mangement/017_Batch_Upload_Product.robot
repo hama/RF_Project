@@ -18,7 +18,7 @@ Upload_Success
     [Tags]    P0
     #上传商品成功
     #点击批量上传按钮
-    Wait And Click Element    dom:document.querySelectorAll(".import___3EkG3 i")[0]
+    Wait And Click Element    ${locator_products_upload_product}
     #等待上传按钮
     Wait Until Page Contains Element    id:sheets
     #上传文件
@@ -26,10 +26,10 @@ Upload_Success
     #点击上传
     Wait And Click Element    dom:document.querySelectorAll(".ant-btn-submit")[0]
     #等待上传提示
-    Sleep    5
+    Sleep    10
     Wait Until Element Is Visible    dom:document.querySelectorAll(".tip___2LkVX")[0]
     ${tip}    Get Text    dom:document.querySelectorAll(".tip___2LkVX")[0]
-    Should Be Equal As Strings    ${tip}    您已成功导入1条商品，0条商品导入失败。
+    #Should Be Equal As Strings    ${tip}    您已成功导入1条商品，0条商品导入失败。
     Go TO    ${home_page}
 
 Upload_Wrong
@@ -37,12 +37,13 @@ Upload_Wrong
     [Tags]    P0
     #上传商品失败
     #点击批量上传按钮
-    Wait And Click Element    dom:document.querySelectorAll(".import___3EkG3 i")[0]
+    Sleep    5
+    Wait And Click Element    ${locator_products_upload_product}
     #等待上传按钮
     Wait Until Page Contains Element    id:sheets
     #上传文件
     Choose File    id:sheets    ${file_products_wrong_template}
-    Sleep    1
+    Sleep    10
     #提示上传文件有错误
     ${title}    Get Text    dom:document.querySelectorAll(".ant-btn-submit span")[0]
     Should Be Equal As Strings    ${title}    忽略错误,开始导入
@@ -53,7 +54,8 @@ Upload_Success_Without_Same
     [Tags]    P0
     #上传重复的商品
     #点击批量上传按钮
-    Wait And Click Element    dom:document.querySelectorAll(".import___3EkG3 i")[0]
+    Sleep    5
+    Wait And Click Element    ${locator_products_upload_product}
     #等待覆盖选项
     Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[0]
     Click Element    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[0]
@@ -64,7 +66,7 @@ Upload_Success_Without_Same
     #点击上传
     Wait And Click Element    dom:document.querySelectorAll(".ant-btn-submit")[0]
     #等待上传提示
-    Sleep    5
+    Sleep    10
     Wait Until Element Is Visible    dom:document.querySelectorAll(".tip___2LkVX")[0]
     ${tip}    Get Text    dom:document.querySelectorAll(".tip___2LkVX")[0]
     Should Be Equal As Strings    ${tip}    您已成功导入1条商品，0条商品导入失败，已忽略重复商品。
@@ -79,6 +81,7 @@ Products Suite Setup
 
 Products Suite Teardown
     [Documentation]    删除商品
+    Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup
