@@ -111,7 +111,9 @@ Delete_Collection
 Delete_First_Product
     [Documentation]    删除第一个商品
     Go To Products Page
+    Sleep    5
     Wait And Click Element    dom:document.querySelectorAll(".delete___2xfx-")[0]
+    Sleep    5
     Wait And Click Element    id:test_delete_modal_sure_btn
     Go TO    ${home_page}
 
