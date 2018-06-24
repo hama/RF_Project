@@ -1,6 +1,7 @@
 *** Settings ***
 Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
 Suite Teardown    #Close Test Suite Browser    # close the browser opened for this test suite
+Force Tags        Ignore
 Resource          ../../../resources/kw_payment.robot
 Resource          ../../../resources/var_tax_price.robot
 Resource          ../../../resources/kw_browser.robot
