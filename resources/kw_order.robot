@@ -27,7 +27,7 @@ Add Order
     Select Window    New
     Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
     Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait And Click Button    id:submitMbPay
+    Wait And Click Element    id:submitMbPay
     Wait And Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
     Wait And Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
     Select From List    id:shipping_country_id    Afghanistan
