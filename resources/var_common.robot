@@ -36,3 +36,8 @@ ${user_default_pwd}    18825260804
 ${user_default_domain}    diu
 ### keybord_key
 ${keybord_enter}    \\13
+### 注册用户
+${register_user}    15297989918
+${register_domain}    cheng
+${register_pwd}    123456
+${register_code}    DJ5691    #.推荐吗
