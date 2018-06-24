@@ -2,6 +2,7 @@
 Library           SeleniumLibrary
 Resource          var_common.robot
 Resource          kw_browser.robot
+Resource          kw_products.robot
 
 *** Keywords ***
 Login With Default User
@@ -31,10 +32,11 @@ Go To Setting Page
     Wait And Click Element    ${locator_setting}
 
 Go To Products Page
-    [Documentation]    跳转到订单页面
+    [Documentation]    跳转到商品页面
     Wait And Click Element    ${locator_products}
     Wait Until Page Contains    ${content_products_all}
     Location Should Be    ${url_products}
+    Sleep    1
 
 Go To Order Page
     [Documentation]    跳转到订单页面
@@ -81,11 +83,12 @@ Wait And Click Element
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Visible    ${element_locator}
     Wait Until Keyword Succeeds    3x    1s    Click Element    ${element_locator}
-    Sleep    1
+    Sleep    2
 
 Wait And Click Button
     [Arguments]    ${button_locator}
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    Sleep    1
     Wait Until Element Is Visible    ${button_locator}
     Wait Until Keyword Succeeds    3x    1s    Click Button    ${button_locator}
     Sleep    1

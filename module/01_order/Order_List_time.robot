@@ -1,5 +1,6 @@
 *** Settings ***
-Suite Setup       New Test Suite Browser And Login    ${defaultUser}    ${defaultPassword}    ${defaultDomain}
+Suite Setup       New Test Suite Browser And Login    15220581724    123456    ${user_default_domain}
+Suite Teardown    Close Test Suite Browser
 Resource          ../../resources/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Resource          ../../resources/var_tax_price.robot
 Resource          ../../resources/kw_common.robot
@@ -16,10 +17,9 @@ order_list_time_sort
     Add Order
     Go To    ${home_page}
     sleep    1
-    Wait Until Element Is Visible    ${order_list_btn}
-    Click Element    ${order_list_btn}
-    sleep    1.5
-    Wait And Click Element    dom:document.querySelectorAll("input[placeholder='开始日期']")[0]
+    Wait And Click Element    ${order_list_btn}
+    sleep    3
+    Execute JavaScript    return document.querySelectorAll("input[placeholder='开始日期']")[0].click()
     Wait And Click Element    dom:document.querySelectorAll(".ant-calendar-month-select")[0]
     Wait And Click Element    dom:document.querySelector(".ant-calendar-month-panel-table tr:nth-child(2) td:nth-child(3)")
     Wait And Click Element    dom:document.querySelectorAll(".ant-calendar-date")[4]
@@ -34,6 +34,7 @@ order_list_time_sort
 order_list_time_default
     [Documentation]    取消日期筛选，默认显示为近三个月的订单
     [Tags]    P0
+    Sleep    1.5
     Go To Order Page
     Wait And Click Element    ${order_list_btn}
     Wait Until Element Is Visible    dom:document.querySelectorAll("table tbody tr td")[0]
