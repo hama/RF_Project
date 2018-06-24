@@ -1,7 +1,8 @@
 *** Settings ***
 Suite Teardown    Close Test Suite Browser
 Library           SeleniumLibrary
-Resource          ../../../resources/var_tax_price.robot    #Library    ${CURDIR}/../../../lib/customLibrary
+Resource          ../../../resources/var_tax_price.robot
+Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/kw_common.robot
