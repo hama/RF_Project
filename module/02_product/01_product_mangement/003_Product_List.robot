@@ -19,12 +19,12 @@ ${locator_page_total_record}    dom:document.querySelectorAll(".ant-pagination-t
 Test_Products_List_Data
     [Documentation]    测试商品列表的展示（数量/标题/库存/SKU/浏览量/销量/上架状态/创建时间）
     [Tags]    P0
-    # 接口返回的数量==页面展示的总条数
-    ${total_record}=    Execute Javascript    return responseMap.get("${api_products_list}").data.total;
-    ${total_record_str}=    Convert To String    ${total_record}
-    Element Should Contain    ${locator_page_total_record}    ${total_record_str}
+    #获取每页多少条数据
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-pagination-total-text")[0]
+    ${size}    Get Text    dom:document.querySelectorAll(".ant-pagination-total-text")[0]
+    ${total_record}    searchStrs    ${size}
     # 然后遍历校验列表数据是否一致
-    :FOR    ${index}    IN RANGE    ${total_record}
+    : FOR    ${index}    IN RANGE    ${total_record}
     \    ${table_row}=    Evaluate    int(${index}) + 2
     \    ${title}=    Execute JavaScript    return responseMap.get("${api_products_list}").data.products[${index}].title;
     \    ${sku}=    Execute JavaScript    return responseMap.get("${api_products_list}").data.products[${index}].variants[0].sku;
@@ -40,53 +40,33 @@ Test_Products_List_Data
     \    Run Keyword If    ${status}==0    Should Be Not Checked    ${index}
     \    Run Keyword If    ${status}==1    Should Be Checked    ${index}
 
-Up_And_Down_Product
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
-    Wait Until Element Is Visible    dom:document.getElementsByClassName("ant-switch")[0]
-    #获取商品总数，包含上下架商品
-    ${all_count}    Execute Javascript    return document.getElementsByClassName("ant-switch").length
-    #获取上架商品数量
-    ${up_product}    Execute Javascript    return document.getElementsByClassName("ant-switch-checked").length
-    #上架商品数量应该大于0
-    Should Be True    ${up_product}>0
-    #上架商品数量应该小于商品总数
-    Should Be True    ${up_product}<${all_count}
-
 Validate_Tab
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
+    [Documentation]    验证商品模块标签
+    [Tags]    P0
     ${class_should_be}=    Set Variable    ant-radio-button-wrapper ant-radio-button-wrapper-checked
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-radio-button-wrapper")[0]
+    Wait Until Element Is Visible    ${locator_products_all}
     ${class}    Execute Javascript    return document.querySelectorAll(".ant-radio-button-wrapper")[0].getAttribute('class')
     Should Be Equal As Strings    ${class_should_be}    ${class}
 
 Validate_Table_Head
+    [Documentation]    验证商品管理表头的信息显示
+    [Tags]    P0
     #验证表头显示
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
+    Execute Javascript    return document.querySelectorAll(".edit_head___UidlR")[0].scrollIntoView()
     Sleep    1
-    Assign Id To Element    dom:document.querySelectorAll(".editBtn___2yB79")[1]    btn1
-    Wait Until Element Is Visible    btn1
-    Click Element    btn1
+    Wait And Click Element    ${locator_products_editTableHead}
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-body")[0]
     #点击已经选中的，将他们全部取消选中
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox-checked").length
-    :FOR    ${index}    IN RANGE    ${count}
+    : FOR    ${index}    IN RANGE    ${count}
     \    Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox-checked")[0]
     Sleep    1
     #再将所有复选框选中
     ${cancel}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox").length
-    :FOR    ${i}    IN RANGE    ${cancel}
+    : FOR    ${i}    IN RANGE    ${cancel}
     \    Click Element    dom:document.querySelectorAll(".ant-modal-body .ant-checkbox")[${i}]
     #点击确定按钮
-    Click Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
     #添加完所有表头之后再进行表头信息的检验
     Page Should Contain Element    dom:document.querySelectorAll(".ant-table-thead tr th input")[0]
     Page Should Contain    商品图片
@@ -99,7 +79,7 @@ Validate_Table_Head
     Page Should Contain    操作
     Page Should Contain    创建时间
     Page Should Contain Element    dom:document.querySelectorAll(".preview___37DtU")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".delete___2xfx-")[0]
+    Page Should Contain Element    ${locator_products_deleteIcon}
     #图片
     Page Should Contain Element    dom:document.querySelectorAll(".center___1nHSZ")[0]
     #库存
@@ -111,89 +91,75 @@ Validate_Table_Head
     Run Keyword If    ${should_quantity}>0    compare_quantity2    ${show_quantity}    ${should_quantity}
 
 Validate_Product_Status
+    [Documentation]    验证显示的所有商品状态是否显示正确
+    [Tags]    P0
     #验证表头显示
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-tbody .ant-table-row")[0]
     #获取当前页展示的商品数量
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-table-tbody .ant-table-row").length
     #判断当前页所有商品状态
-    :FOR    ${i}    IN RANGE    ${count}
+    : FOR    ${i}    IN RANGE    ${count}
     \    ${status}    getProductStatus    ${i}
-    \    Run Keyword If    ${status}==0    should_be_down    ${i}
-    \    Run Keyword If    ${status}==1    should_be_up    ${i}
+    \    Run Keyword If    ${status}==0    Should Be Not Checked    ${i}
+    \    Run Keyword If    ${status}==1    Should Be Checked    ${i}
 
 Validate_Product_Sku
+    [Documentation]    验证显示的所有商品的sku是否显示正确
+    [Tags]    P0
     #验证表头显示
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-tbody .ant-table-row")[0]
     #获取当前页展示的商品数量
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-table-tbody .ant-table-row").length
     #判断当前页所有商品状态
-    :FOR    ${i}    IN RANGE    ${count}
+    : FOR    ${i}    IN RANGE    ${count}
     \    ${should_sku}    getProductSku    ${i}
     \    ${sku}    Get Text    dom:document.querySelectorAll(".ant-table-tbody tr")[${i}].querySelectorAll("td")[4].querySelectorAll("span")[0]
-    \    Run Keyword If    ${should_sku}==-1    Should Be True    '${sku}'==''
     \    Run Keyword If    ${should_sku}!=-1    Should Be Equal As Strings    ${should_sku}    ${sku}
+    \    Run Keyword If    ${should_sku}==-1    Should Be True    '${sku}'==''
 
 Validate_Upload_Alert
+    [Documentation]    验证商品上传弹窗
+    [Tags]    P0
     #验证商品上传弹窗
+    Wait And Click Element    ${locator_products_upload_product}
+    Sleep    5
+    Execute Javascript    return document.querySelectorAll(".ant-modal-close")[0].click()
+    #Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-modal-close")[0]
+    #Click Element    dom:document.querySelectorAll(".ant-modal-close")[0]
     Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
-    Wait Until Element Is Visible    class:import___3EkG3
-    Click Element    dom:document.querySelectorAll(".import___3EkG3")[0]
-    Assign id To Element    dom:document.querySelectorAll(".ant-modal-content")[0]    btn1
-    Wait Until Element Is Visible    btn1
-    Page Should Contain Element    btn1
 
 Validate_Delete_Product
+    [Documentation]    验证删除商品
+    [Tags]    P0
     #删除商品
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     #获取要删除的商品名称
     Wait Until Element Is Visible    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
     ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
-    Assign id To Element    dom:document.querySelectorAll(".delete___2xfx-")[0]    del
-    Wait Until Element Is Visible    del
     #点击删除按钮
-    Click Element    del
+    Wait And Click Element    ${locator_products_deleteIcon}
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
     Page Should Contain    确定删除吗？
     #确定
-    Wait Until Element Is Visible    id:test_delete_modal_sure_btn
-    Click Element    id:test_delete_modal_sure_btn
+    Wait And Click Button    ${locator_products_delBtn}
     #等待页面刷新数据
     Sleep    1
     #页面不应该包含该商品名称
-    Page Should Not Contain    ${name}
+    #存在多件商品名称相同，这里的判断失效
+    #Page Should Not Contain    ${name}
 
 Validate_Cancel_Delete_Product
+    [Documentation]    取消删除商品
+    [Tags]    P0
     #取消删除商品
-    Go TO    ${home_page}
-    #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
     #获取要删除的商品名称
     Wait Until Element Is Visible    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
     ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
-    Assign id To Element    dom:document.querySelectorAll(".delete___2xfx-")[0]    del
-    Wait Until Element Is Visible    del
     #点击删除按钮
-    Click Element    del
+    Wait And Click Element    ${locator_products_deleteIcon}
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
     Page Should Contain    确定删除吗？
     #取消
-    Wait Until Element Is Visible    id:test_delete_modal_cancel_btn
-    Click Element    id:test_delete_modal_cancel_btn
+    Wait And Click Element    ${locator_products_cancelDelete}
     #数据无变化
     Page Should Contain    ${name}
 
@@ -223,11 +189,17 @@ Products Suite Setup
     [Documentation]    商品 case setup
     Login With Default User
     Start Ajax Listener
-    #Add Product
+    Add Product
+    Sleep    5
+    Add Product
+    Sleep    5
+    Add Product
+    Sleep    5
     Go To Products Page
 
 Products Suite Teardown
     [Documentation]    删除商品
+    Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup
