@@ -11,6 +11,7 @@ Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
+Library           customLibrary
 
 *** Test Cases ***
 Add_Product_With_Required
