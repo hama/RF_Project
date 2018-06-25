@@ -109,37 +109,6 @@ Edit_Without_Save_Dismmis_Alert
     Sleep    5
     Alert Should Be Present
 
-Edit Shelf And Drop
-    [Documentation]    测试已有商品的上架
-    [Tags]    P0
-    # 获取第一件商品的标题
-    ${title}=    Get Text    dom:document.querySelectorAll("tr td")[2]
-    # 将第一件商品进行上架（默认添加的商品是下架的）
-    Page Should Contain Element    ${locator_products_first}
-    Wait Until Page Contains Element    ${locator_products_first_switch}
-    Execute Javascript    return document.querySelectorAll(".ant-switch")[0].click()
-    Sleep    5
-    Page Should Contain    是否上架
-    Sleep    2
-    Click Button    确 定
-    Sleep    5
-    # 切换到上架商品
-    Wait And Click Element    ${locator_products_shelf}
-    Sleep    5
-    Page Should Contain    ${title}
-    # 再把商品下架
-    Page Should Contain Element    ${locator_products_first}
-    Wait Until Page Contains Element    ${locator_products_first_switch}
-    Execute Javascript    return document.querySelectorAll(".ant-switch")[0].click()
-    Sleep    5
-    Page Should Contain    是否下架
-    Sleep    2
-    Click Button    确 定
-    # 切换到上架商品
-    Wait And Click Element    ${locator_products_drop}
-    Sleep    5
-    Page Should Contain    ${title}
-
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup
