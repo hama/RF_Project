@@ -18,9 +18,9 @@ Resource          ./common.robot
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
     input text    id:name    方案1
-    Wait And Click Element    id:test_save_btn
+    Wait And Click Button    dom:document.querySelectorAll("button")[1]
     sleep    2
-    page should not contain element    id:test_add_btn
+    page should not contain element    dom:document.querySelectorAll("button")[1]
     Quit All Shipping
 
 096_shipping
@@ -34,7 +34,7 @@ Resource          ./common.robot
     Wait And Click Element    ${locator_shipping_add_shipping}
     ${name}    salt
     input text    id:name    ${name}
-    Wait Until Element Is Visible    id:test_save_btn
+    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Wait And Click Element    id:test_shipping_country_add_btn
     Wait Until Element Is Visible    id:test_shipping_country_modal_sure_btn
     Execute JavaScript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2].click()
