@@ -6,6 +6,7 @@ Resource          var_common.robot
 Resource          var_shipping.robot
 Resource          kw_browser.robot
 Resource          kw_common.robot
+Library           customLibrary
 
 *** Variable ***
 ${input}          重量运费
@@ -18,9 +19,10 @@ ${desc_a}         数量运费说明
 
 *** keyword ***
 Add Shipping
+    ${name}    salt
     Go To Shipping Page
     Wait And click element    ${locator_shipping_add_shipping}
-    Wait And input text    id:name    ${content_shipping_name}    #.物流名称
+    Wait And input text    id:name    ${name}    #.物流名称
     Wait And click button    id:test_shipping_country_add_btn
     Wait And click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
     Wait Until Page Contains    Algeria
@@ -45,12 +47,14 @@ Add Shipping
     Location Should Be    ${url_shipping}
 
 Add Shipping China
+    ${name}    salt
     Go To Shipping Page
     Wait And click element    ${locator_shipping_add_shipping}
-    Wait And input text    id:name    ${content_shipping_name}    #.物流名称
+    Wait And input text    id:name    ${name}    #.物流名称
     Wait And click button    id:test_shipping_country_add_btn
     Wait And click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2]
-    Wait Until Page Contains    Algeria
+    Execute JavaScript    return document.getElementsByClassName("ant-tree-checkbox-inner")[10].scrollIntoView()
+    Sleep    1
     Wait And click element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[10]
     Wait And click button    id:test_shipping_country_modal_sure_btn
     Wait And click button    id:test_shipping_add_weight_btn
