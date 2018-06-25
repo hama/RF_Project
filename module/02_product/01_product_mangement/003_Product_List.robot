@@ -34,8 +34,6 @@ Test_Products_List_Data
     \    ${create_time}=    Execute JavaScript    return responseMap.get("${api_products_list}").data.products[${index}].create_time;
     \    Table Cell Should Contain    tag:table    ${table_row}    3    ${title}
     \    Table Cell Should Contain    tag:table    ${table_row}    5    ${sku}
-    \    Table Cell Should Contain    tag:table    ${table_row}    6    ${incoming}
-    \    Table Cell Should Contain    tag:table    ${table_row}    7    ${sales}
     \    Table Cell Should Contain    tag:table    ${table_row}    10    ${create_time}
     \    Run Keyword If    ${status}==0    Should Be Not Checked    ${index}
     \    Run Keyword If    ${status}==1    Should Be Checked    ${index}

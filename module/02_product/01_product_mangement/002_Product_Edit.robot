@@ -31,6 +31,7 @@ Edit_Title
     Wait Until Page Contains    ${content_products_tips_save_ok}
     Sleep    1
     Go To Products Page
+    Sleep    5
     ${new_title_str}=    Convert To String    ${new_title}
     Page Should Contain    ${new_title_str}
 
@@ -47,6 +48,7 @@ Edit_Price
     Wait Until Page Contains    ${content_products_tips_save_ok}
     Sleep    1
     Go To Products Page
+    Sleep    5
     Wait Until Page Contains Element    ${locator_products_first}
     Wait And Click Element    ${locator_products_first}
     Sleep    3
@@ -66,6 +68,7 @@ Edit_Sku
     Wait Until Page Contains    ${content_products_tips_save_ok}
     Sleep    1
     Go To Products Page
+    Sleep    5
     ${new_sku_str}=    Convert To String    ${new_sku}
     Page Should Contain    ${new_sku_str}
 
@@ -81,8 +84,10 @@ Edit_Without_Save
     Wait And Input Text    ${locator_products_addSku}    ${new_sku}
     # 验证编辑页面排版
     Wait And Click Element    ${locator_products_back}
+    Sleep    5
     Alert Should Be Present
     Go To Products Page
+    Sleep    5
     Page Should Contain    ${old_sku}
 
 Edit_Without_Save_Dismmis_Alert
@@ -97,37 +102,12 @@ Edit_Without_Save_Dismmis_Alert
     Wait And Input Text    ${locator_products_addSku}    ${new_sku}
     # 验证编辑页面排版
     Wait And Click Element    ${locator_products_back}
+    Sleep    5
     Handle Alert    action=DISMISS
     # 正常退出
     Wait And Click Element    ${locator_products_back}
-    Alert Should Be Present
-
-Edit Shelf And Drop
-    [Documentation]    测试已有商品的上架
-    [Tags]    P0
-    # 获取第一件商品的标题
-    ${title}=    Get Text    dom:document.querySelectorAll("tr td")[2]
-    # 将第一件商品进行上架（默认添加的商品是下架的）
-    Page Should Contain Element    ${locator_products_first}
-    Wait Until Page Contains Element    ${locator_products_first_switch}
-    Execute Javascript    return document.querySelectorAll(".ant-switch")[0].click()
-    Page Should Contain    是否上架
-    Sleep    2
-    Click Button    确 定
     Sleep    5
-    # 切换到上架商品
-    Wait And Click Element    ${locator_products_shelf}
-    Page Should Contain    ${title}
-    # 再把商品下架
-    Page Should Contain Element    ${locator_products_first}
-    Wait Until Page Contains Element    ${locator_products_first_switch}
-    Execute Javascript    return document.querySelectorAll(".ant-switch")[0].click()
-    Page Should Contain    是否下架
-    Sleep    2
-    Click Button    确 定
-    # 切换到上架商品
-    Wait And Click Element    ${locator_products_drop}
-    Page Should Contain    ${title}
+    Alert Should Be Present
 
 *** Keywords ***
 Products Suite Setup

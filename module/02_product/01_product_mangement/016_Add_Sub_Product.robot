@@ -51,6 +51,7 @@ Add_Already_Self_Option
     Wait And Click Element    id:test_variant_setting_btn
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-dropdown-trigger")[0]
     Mouse Over    dom:document.querySelectorAll(".ant-dropdown-trigger")[0]
+    Sleep    5
     #点击自定义选项
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-dropdown-menu-item")[0]
     Set Focus To Element    dom:document.querySelectorAll(".ant-dropdown-menu-item")[0]
