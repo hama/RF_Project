@@ -26,11 +26,11 @@ Resource          ./common.robot
     [Tags]    P0
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait Until Element Is Visible    id:test_save_btn
+    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     sleep    1
     Input Text    dom:document.querySelectorAll('#name')[0]    中国
     Sleep    1
-    Wait And Click Element    id:test_save_btn
+    Wait And Click Button    dom:document.querySelectorAll("button")[1]
     Page Should Not Contain Element    class:title___29mch
     Quit All Shipping
 
@@ -39,10 +39,10 @@ Resource          ./common.robot
     [Tags]    P1
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait Until Element Is Visible    id:test_save_btn
+    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     sleep    1
     input text    dom:document.querySelectorAll('#name')[0]    中
-    Wait And Click Element    id:test_save_btn
+    Wait And Click Button    dom:document.querySelectorAll("button")[1]
     Page Should Not Contain Element    class:title___29mch
     Quit All Shipping
 
@@ -51,10 +51,10 @@ Resource          ./common.robot
     [Tags]    P1
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait Until Element Is Visible    id:test_save_btn
+    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     sleep    1
     input text    dom:document.querySelectorAll('#name')[0]    @#￥
-    Wait And Click Element    id:test_save_btn
+    Wait And Click Button    dom:document.querySelectorAll("button")[1]
     Page Should Not Contain Element    class:title___29mch
     Quit All Shipping
 

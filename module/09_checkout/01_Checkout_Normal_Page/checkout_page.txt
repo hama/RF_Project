@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Ckeckout Page Check
-Suite Setup       New Test Suite Browser And Login    ${user_default_name}    ${user_default_pwd}    ${user_default_domain}
-Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
+Suite Setup       New Test Suite Browser And Login    15220581724    123456    chen
+Suite Teardown    #Close Test Suite Browser    # close the browser opened for this test suite
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Resource          ../../../resources/var_tax_price.robot
@@ -10,34 +10,146 @@ Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
+Resource          ../../../resources/kw_shipping.robot
 
 *** Test Cases ***
-checkout_addcard_check
-    #C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
+Checkout AddCard Check
+    [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
+    [Tags]    P0
     #.click products btn
-    Wait Until Element Is Visible    ${add_products_btn}
-    Click Element    ${add_products_btn}
-    #点击商品预览
-    Sleep    3
-    #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
-    Wait Until Element Is Visible    title
-    ${title}    Get Text    title
-    #点击商品预览
-    Assign id To Element    dom:document.querySelectorAll(".preview___37DtU")[0]    btn1
-    Wait Until Element Is Visible    btn1
-    Click Element    btn1
-    #.第二个窗口
-    #${url}    Set Variable    http://diu.preview.shoplazza.com/products/example-t-shirt-18
-    Select Window    New
+    Checkout Common Setp
     Wait Until Element Is Visible    dom:document.querySelectorAll(".submit_mb span")[0]
     Page Should Contain Image    dom:document.querySelectorAll("img")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".sales_price")[0]
 
-checkout_bynow_check
-    #.进入checkout界面 显示购买的商品，地址，
-    Wait Until Element Is Visible    ${add_products_btn}
-    Click Element    ${add_products_btn}
+Checkout Bynow Check
+    [Documentation]    进入checkout界面 显示购买的商品，地址，
+    [Tags]    P1
+    Go To Products Page    #.跳转商品主页
+    #点击商品预览
+    Checkout Common Setp
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".submit_mb span")[0]
+    Click Element    //*[@id="shoplaza-section-1523699573925"]/div/div[4]/div[2]/a[5]/i
+    Wait Until Element Is Visible    class:account_container
+    Page Should Not Contain Element    class:buy-now
+
+Checkout Should Search
+    [Documentation]    进入checkout界面 显示search按钮
+    [Tags]    P1
+    Go To Products Page    #.跳转商品主页
+    Checkout Common Setp
+    Page Should Contain Element    dom:document.querySelectorAll("a[alt='sousuo1']")[0]
+
+Checkout Click Search
+    [Documentation]    进入checkout界面 点击搜索按钮 跳转到搜索页面
+    [Tags]    P1
+    Go To Products Page    #.跳转商品主页
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll("a[alt='sousuo1']")[0]
+    Page Should Contain Element    dom:document.querySelectorAll(".search_header_txt")[0]
+
+Checkout Should Name
+    [Documentation]    进入checkout界面 顶部导航栏中间显示店铺名
+    [Tags]    P1
+    Go To Products Page    #.跳转商品主页
+    Checkout Common Setp
+    Page Should Contain Element    dom:document.querySelectorAll("div[alt='logo']")[0]
+
+Checkout Should Card Content
+    [Documentation]    进入checkout界面 点击购物车按钮 显示购物车内容
+    [Tags]    P0
+    Go To Products Page    #.跳转商品主页
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll("a[alt='bag']")[0]
+    Page Should Contain Element    dom:document.querySelectorAll(".title")[0]
+
+Checkout Should User
+    [Documentation]    进入checkout界面 点击个人中心按钮 显示个人中心内容
+    [Tags]    P0
+    Go To Products Page    #.跳转商品主页
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll("a[alt='account']")[0]
+    Page Should Contain Element    dom:document.querySelectorAll(".operal_list_item")[0]
+
+Checkout Add Address
+    [Documentation]    进入checkout界面 点击buynow 然后添加地址
+    [Tags]    P0
+    Go To Products Page    #.跳转商品主页
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
+    Page Should Contain Element    dom:document.querySelectorAll("input[name='first_name']")[0]
+
+Checkout Add Address Save Pass
+    [Documentation]    进去checkout界面 点击buynow 添加地址·输入该输入信息·保存成功
+    [Tags]    P0
+    Go To Products Page    #.跳转商品主页
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
+    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
+    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
+    Select From List    id:shipping_country_id    China
+    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
+    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
+    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
+    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
+    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
+    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Wait And Click Element    id:submitMbPay
+    Sleep Time
+    Page Should Contain Element    dom:document.querySelectorAll(".header")[0]
+
+Checkout Add Address First Name Faile
+    [Documentation]    进去checkout 界面 点击buynow 添加地址·姓名不输入 保存不成功
+    [Tags]    P1
+    Go To Products Page    #.跳转商品主页
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
+    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    ${Empty}
+    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
+    Select From List    id:shipping_country_id    China
+    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
+    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
+    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
+    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
+    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
+    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
+
+Checkout Add Address Select Country
+    [Documentation]    进去checkout 界面 点击buynow 添加地址·不选择国家 保存不成功
+    [Tags]    P1
+    Go To Products Page    #.跳转商品主页
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
+    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
+    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
+    #Select From List    id:shipping_country_id    China
+    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
+    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
+    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
+    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
+    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
+    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
+
+Checkout Add Address Country China
+    Add Shipping
+
+*** keywords ***
+Checkout Common Setp
+    [Documentation]    封装公共步骤
+    Wait And Click Element    ${add_products_btn}
     #点击商品预览
     Sleep    3
     #获取第一个商品名称
@@ -48,10 +160,11 @@ checkout_bynow_check
     Assign id To Element    dom:document.querySelectorAll(".preview___37DtU")[0]    btn1
     Wait Until Element Is Visible    btn1
     Click Element    btn1
+    Sleep Time    #.休息2s
     #.第二个窗口
-    #${url}    Set Variable    http://diu.preview.shoplazza.com/products/example-t-shirt-18
     Select Window    New
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".submit_mb span")[0]
-    Click Element    //*[@id="shoplaza-section-1523699573925"]/div/div[4]/div[2]/a[5]/i
-    Wait Until Element Is Visible    class:account_container
-    Page Should Not COntain Element    class:buy-now
+    Sleep Time
+
+Sleep Time
+    [Documentation]    睡眠时间 2s
+    Sleep    2
