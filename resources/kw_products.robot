@@ -134,3 +134,51 @@ Upload_Many_Products
     Sleep    200
     Wait Until Element Is Visible    dom:document.querySelectorAll(".tip___2LkVX")[0]
     Go TO    ${home_page}
+
+Select_Order_Page
+    [Documentation]    点击预览第一个商品，跳转到商品详情页，点击submit按钮进入订单信息页面
+    [Arguments]    ${title}
+    #点击第一个商品的预览icon
+    Wait And Click Element    dom:document.querySelectorAll(".tw-see")[0]
+    #跳转到商品详情页
+    Select Window    title=${title}
+    Sleep    1
+    #跳转到页面底部
+    Execute Javascript    return document.querySelectorAll(".buy-now")[0].scrollIntoView()
+    #点击submit
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Sleep    1
+    #进入到填写订单信息页面
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+
+Complete_Order_Message
+    [Documentation]    点击添加地址按钮，填写信息，点击保存按钮，点击进入支付页
+    Sleep    1
+    #添加地址信息
+    Wait And Click Element    id:addAddress
+    Sleep    1
+    #first name
+    Wait And Input Text    dom:document.querySelectorAll("input[name=first_name]")[0]    zc
+    #last name
+    Wait And Input Text    dom:document.querySelectorAll("input[name=last_name]")[0]    l
+    #选择国家
+    Select From List By Index    id:shipping_country_id    1
+    Sleep    2
+    #选择身份
+    Select From List By Index    id:shipping_zone_id    1
+    #city
+    Wait And Input Text    dom:document.querySelectorAll("input[name=city]")[0]    shenzhen
+    #address
+    Wait And Input Text    dom:document.querySelectorAll("input[name=address]")[0]    hhh
+    #postal code
+    Wait And Input Text    dom:document.querySelectorAll("input[name=zip]")[0]    333000
+    #email
+    Wait And Input Text    dom:document.querySelectorAll("input[name=email]")[0]    1004714019@qq.com
+    #phone
+    Wait And Input Text    dom:document.querySelectorAll("input[name=phone]")[0]    15297989918
+    #company
+    Wait And Input Text    dom:document.querySelectorAll("input[name=company]")[0]    dianjiangkeji
+    #保存填写的地址信息
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    #点击Submit按钮进入支付页
+    Wait And Click Element    id:submitMbPay
