@@ -1,6 +1,6 @@
 *** Settings ***
-Suite Setup       New Test Suite Browser And Login    15220581724    123456    ${user_default_domain}
-Suite Teardown    Close Test Suite Browser
+Suite Setup       New Test Suite Browser And Login    15220581724    123456    chen
+Suite Teardown    #Close Test Suite Browser
 Resource          ../../resources/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Resource          ../../resources/var_tax_price.robot
 Resource          ../../resources/kw_common.robot
@@ -158,6 +158,7 @@ order_list_already_refund_check
     Go To Order Page
     Wait And Click Element    ${order_list_btn}
     Wait And Click Element    ${order_alerady_refund_btn}
+    Sleep    2
     ${count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length
     : FOR    ${i}    IN RANGE    ${count}
     \    ${x}    Evaluate    ${i}+1
@@ -170,6 +171,7 @@ order_list_already_send_check
     Go To Order Page
     Wait And Click Element    ${order_list_btn}
     Wait And Click Element    ${order_alerady_send_btn}
+    Sleep    3
     ${count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length
     : FOR    ${i}    IN RANGE    ${count}
     \    ${x}    Evaluate    ${i}+1
@@ -194,6 +196,7 @@ order_list_not_payment_check
     Go To Order Page
     Wait And Click Element    ${order_list_btn}
     Wait And Click Element    ${order_not_payment_btn}
+    Sleep    3
     ${count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length
     : FOR    ${i}    IN RANGE    ${count}
     \    ${x}    Evaluate    ${i}+1
@@ -206,7 +209,7 @@ order_list_already_cancel_check
     Go To Order Page
     Wait And Click Element    ${order_list_btn}
     Wait And Click Element    ${order_alerady_cencel_btn}
-    sleep    1
+    sleep    3
     ${count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length
     : FOR    ${i}    IN RANGE    ${count}
     \    ${x}    Evaluate    ${i}+1
@@ -222,7 +225,7 @@ order_list_search_id
     ${order_id}    Execute JavaScript    return document.querySelectorAll("table tbody tr td")[0].innerText    #,获取tr第一个订单号
     log    ${order_id}
     ${odr_id}    searchStrs    ${order_id}
-    Sleep    1
+    Sleep    3
     Input Text    dom:document.querySelectorAll(".ant-input")[4]    ${odr_id}
     Sleep    1
     Wait And Click Element    ${order_list_search}    #.搜索按钮
@@ -251,7 +254,7 @@ order_list_search_name
     ${order_name}    Execute JavaScript    return document.querySelectorAll("table tbody tr td p")[1].innerText    #,获取tr第一个姓名
     Sleep    1
     Input Text    dom:document.querySelectorAll(".ant-input")[4]    ${order_name}
-    Sleep    1
+    Sleep    2
     Wait And Click Element    ${order_list_search}    #.搜索按钮
     ${order_count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length    #,在获取tr数量
     : FOR    ${i}    IN RANGE    ${order_count}
@@ -281,6 +284,7 @@ order_list_search_price
     Wait Until Element Is Visible    ${order_list_search}
     Input Text    dom:document.querySelectorAll("input[placeholder='最低金额']")[0]    ${price}
     Input Text    dom:document.querySelectorAll("input[placeholder='最高金额']")[0]    ${price}
+    Sleep    1.5
     Wait And Click Element    ${order_list_search}    #.搜索按钮
     ${order_count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length    #,在获取tr数量
     : FOR    ${i}    IN RANGE    ${order_count}
