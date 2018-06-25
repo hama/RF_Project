@@ -124,6 +124,7 @@ defaults write com.apple.versioner.python Prefer-32-Bit -bool yes
 ```bash
 # pymysql  --  连接 mysql 数据库，获取验证码需要
 pip install pymysql
+pip install requests
 ```
 
 #### 3.4.1 VIM 语法高亮插件
