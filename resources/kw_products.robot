@@ -13,6 +13,8 @@ Add Product
     Go To Products Page
     Add Product Required Content
     # add other content
+    #选择商品上架
+    Wait And Click Element    id:status
     Wait And Input Text    ${locator_products_addSubTitle}    ${content_products_addSubTitle}    # 添加副标题
     Wait And Input Text    ${locator_products_addRawPrice}    ${content_products_addRawPrice}    # 添加原价
     Wait And Input Text    ${locator_products_addWeight}    ${content_products_addWeight}    # 添加重量
