@@ -71,20 +71,26 @@ Change_Price
     #将各种价格进行汇总计算：total_price = subtotal_price - discount_amount + tax_price
     ${now_price}    Evaluate    ${subtotal_price}-${discount_amount}+${tax_price}
     Should Be True    ${total_price}==${now_price}
+    #点击pay now
+    Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
+    Sleep    5
+    #显示支付成功
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".show_success")[0]
+    Page Should Contain    Your order has been submitted successfully.
     #-------------------case跑完之后要回到商品列表页才能删除第一个商品--------------------
 
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品
-    Login With Default User
+    Login With Test Account
     Start Ajax Listener
-    #Add Product
+    Add Product
     Sleep    5
     Go To Products Page
 
 Products Suite Teardown
     [Documentation]    删除商品
-    #Delete_First_Product
+    Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup

@@ -133,7 +133,7 @@ Validate_SEO_Close
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup
-    Login With Default User
+    Login With Test Account
     Start Ajax Listener
     Go To Products Page
 

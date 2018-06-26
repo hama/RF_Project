@@ -75,7 +75,7 @@ Upload_Success_Without_Same
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup
-    Login With Default User
+    Login With Test Account
     Start Ajax Listener
     Sleep    5
     Go To Products Page

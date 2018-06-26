@@ -29,7 +29,7 @@ Delete_Product
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     Select_Order_Page    ${title}
-    #返回后台页面修改商品状态为下架
+    #返回后台页面删除该商品
     Select Window    店匠科技
     #点击删除第一件商品
     Wait And Click Element    dom:document.querySelectorAll(".delete___2xfx-")[0]
@@ -48,15 +48,14 @@ Delete_Product
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品
-    Login With Default User
+    Login With Test Account
     Start Ajax Listener
-    #Add Product
+    Add Product
     Sleep    5
     Go To Products Page
 
 Products Suite Teardown
-    [Documentation]    删除商品
-    #Delete_First_Product
+    [Documentation]    商品 case set down
     Close Test Suite Browser
 
 Products Test Case Setup

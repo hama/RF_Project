@@ -112,7 +112,7 @@ Edit_Without_Save_Dismmis_Alert
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup
-    Login With Default User
+    Login With Test Account
     Start Ajax Listener
     Add Product
     Sleep    5

@@ -9,7 +9,23 @@ Resource          kw_common.robot
 
 *** keyword ***
 Add Product
-    [Documentation]    添加商品以做测试
+    [Documentation]    添加下架商品以做测试
+    Go To Products Page
+    Add Product Required Content
+    # add other content
+    Wait And Input Text    ${locator_products_addSubTitle}    ${content_products_addSubTitle}    # 添加副标题
+    Wait And Input Text    ${locator_products_addRawPrice}    ${content_products_addRawPrice}    # 添加原价
+    Wait And Input Text    ${locator_products_addWeight}    ${content_products_addWeight}    # 添加重量
+    # add image
+    Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
+    Wait Until Element Is Visible    ${locator_products_uploadBtn}
+    log    ${CURDIR}
+    Choose File    ${locator_products_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
+    Sleep    5
+    Wait And Click Element    ${locator_products_save_product}
+
+Add Product_Up
+    [Documentation]    添加上架商品以做测试
     Go To Products Page
     Add Product Required Content
     # add other content
@@ -25,6 +41,7 @@ Add Product
     Choose File    ${locator_products_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
     Wait And Click Element    ${locator_products_save_product}
+
 
 Add Product Required Content
     Go To Products Page
@@ -136,8 +153,8 @@ Upload_Many_Products
     Go TO    ${home_page}
 
 Select_Order_Page
-    [Documentation]    点击预览第一个商品，跳转到商品详情页，点击submit按钮进入订单信息页面
     [Arguments]    ${title}
+    [Documentation]    点击预览第一个商品，跳转到商品详情页，点击submit按钮进入订单信息页面
     #点击第一个商品的预览icon
     Wait And Click Element    dom:document.querySelectorAll(".tw-see")[0]
     #跳转到商品详情页
@@ -182,3 +199,27 @@ Complete_Order_Message
     Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
     #点击Submit按钮进入支付页
     Wait And Click Element    id:submitMbPay
+
+Add_Sub_Product_With_Already_Product
+    [Documentation]    给第一个现有的无子产品的商品添加子产品
+    Sleep    2
+    Go To Products Page
+    Sleep    5
+    #点击第一件商品进入商品详情页
+    Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
+    Sleep    5
+    #划到底部
+    Execute Javascript    return document.getElementById("test_variant_setting_btn").scrollIntoView()
+    Sleep    1
+    #添加选项
+    Wait And Click Element    id:test_variant_setting_btn
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-dropdown-trigger")[0]
+    Mouse Over    dom:document.querySelectorAll(".ant-dropdown-trigger")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".ant-dropdown-menu-item")[1]
+    #添加多个种类
+    Wait And Input Text    id:option_values_0    red
+    #回车保存
+    Press Key    id:option_values_0    \\13
+    #点击保存
+    Wait And Click Element    ${locator_products_save_product}
+    Sleep    5

@@ -4,6 +4,9 @@ Resource          var_common.robot
 Resource          kw_browser.robot
 
 *** Keywords ***
+Login With Test Account
+    New Test Suite Browser And Login    1004714019@qq.com    123456    test
+
 Login With Default User
     New Test Suite Browser And Login    ${user_default_name}    ${user_default_pwd}    ${user_default_domain}
 
