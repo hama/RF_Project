@@ -28,14 +28,9 @@ Add_Sub_Product
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
-    Add_Sub_Product_With_Already_Product
-    Select_Order_Page    ${title}
-    #返回后台页面给该商品增加子产品
-    Select Window    店匠科技
     #给该商品增加子产品
     Add_Sub_Product_With_Already_Product
-    #切换到商品submit页
-    Select Window    title=${store_name}
+    Select_Order_Page_With_Sub_Product    ${title}
     Complete_Order_Message
     Sleep    5
     #点击pay now
