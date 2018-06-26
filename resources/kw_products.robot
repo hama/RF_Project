@@ -180,7 +180,9 @@ Select_Order_Page_With_Sub_Product
     Execute Javascript    return document.querySelectorAll(".buy-now")[0].scrollIntoView()
     #点击submit
     Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
-    Sleep    1
+    Sleep    3
+    #选中第一个规格属性
+    Wait And Click Element    dom:document.querySelectorAll(".attribute-item")[0]
     #进入到填写订单信息页面
     Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
 
