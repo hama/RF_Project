@@ -84,7 +84,7 @@ Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品
     Login With Test Account
     Start Ajax Listener
-    Add Product
+    Add Product_Up
     Sleep    5
     Go To Products Page
 

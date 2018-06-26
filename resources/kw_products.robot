@@ -168,6 +168,22 @@ Select_Order_Page
     #进入到填写订单信息页面
     Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
 
+Select_Order_Page_With_Sub_Product
+    [Arguments]    ${title}
+    [Documentation]    点击预览第一个商品，跳转到商品详情页，选中一个子产品后，点击submit按钮进入订单信息页面
+    #点击第一个商品的预览icon
+    Wait And Click Element    dom:document.querySelectorAll(".tw-see")[0]
+    #跳转到商品详情页
+    Select Window    title=${title}
+    Sleep    1
+    #跳转到页面底部
+    Execute Javascript    return document.querySelectorAll(".buy-now")[0].scrollIntoView()
+    #点击submit
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Sleep    1
+    #进入到填写订单信息页面
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+
 Complete_Order_Message
     [Documentation]    点击添加地址按钮，填写信息，点击保存按钮，点击进入支付页
     Sleep    1
