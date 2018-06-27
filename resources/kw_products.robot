@@ -372,3 +372,43 @@ Set_Quantity
     #点击保存
     Wait And Click Element    ${locator_products_save_product}
     Sleep    5
+
+To_Change_Image
+    [Documentation]    更换商品的图片，前提该商品已有一张图片
+    Sleep    2
+    Go To Products Page
+    Sleep    5
+    #点击第一件商品进入商品详情页
+    Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
+    Sleep    5
+    #划到底部
+    Execute Javascript    return document.querySelectorAll(".row___3Mua7")[0].scrollIntoView()
+    Sleep    5
+    #删除第一张图片
+    Mouse Over    dom:document.querySelectorAll(".center___1nHSZ")[0]
+    Sleep    1
+    Wait And Click Element    dom:document.querySelectorAll(".delete___1vipL")[0]
+    #更新另外一张图片
+    Choose File    ${locator_products_chooseFile}    ${file_products_addImg2}
+    Sleep    5
+
+Delete_All_Sub_Product_With_Already_Product
+    [Documentation]    此时第一个商品下有两个子产品，删除当前第一个商品下的所有子商品
+    Sleep    2
+    Go To Products Page
+    Sleep    5
+    #点击第一件商品进入商品详情页
+    Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
+    Sleep    5
+    #划到底部
+    Execute Javascript    return document.getElementById("test_single_variant_setting_btn").scrollIntoView()
+    Sleep    2
+    #点击单一款式按钮
+    Wait And Click Element    id:test_single_variant_setting_btn
+    Sleep    5
+    #点击确定按钮
+    Wait And Click Element    id:test_delete_modal_sure_btn
+    Sleep    2
+    #点击保存
+    Wait And Click Element    ${locator_products_save_product}
+    Sleep    5
