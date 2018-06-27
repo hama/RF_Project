@@ -382,3 +382,10 @@ class keyWord(object):
 
         return res_list[index]
 
+    def getImgName(self, img):
+        regx = r'\/(\S+)\_'
+        data = re.compile(regx)
+        img_name = data.findall(img, re.M)
+
+        return img_name[0]
+
