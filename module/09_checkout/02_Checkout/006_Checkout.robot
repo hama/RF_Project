@@ -13,8 +13,8 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Delete_Product
-    [Documentation]    点击商品预览后，进入checkout页面，在点击Submit前，在后台删除该商品，之后再点击Submit按钮，应该显示支付失败
+Delete_Other_Sub_Product_With_Already_Product
+    [Documentation]    此时第一个商品下有两个子产品，删除当前第一个商品下的第n个子商品（第一个子产品为下单时选中的子产品）
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     Sleep    2
@@ -28,21 +28,20 @@ Delete_Product
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
-    Select_Order_Page    ${title}
-    #返回后台页面删除该商品
+    #给该商品增加子产品
+    Add_Sub_Product_With_Already_Product
+    Select_Order_Page_With_Sub_Product    ${title}
     Select Window    店匠科技
-    #点击删除第一件商品
-    Wait And Click Element    dom:document.querySelectorAll(".delete___2xfx-")[0]
-    Sleep    2
-    #点击确定按钮
-    Wait And Click Element    ${locator_products_delBtn}
-    Sleep    5
-    #切换到商品submit页
+    Delete_Sub_Product_With_Already_Product    1
     Select Window    title=${store_name}
     Complete_Order_Message
     Sleep    5
-    #支付页面应该显示支付失败
-    Page Should Contain    Payment failure!
+    #点击pay now
+    Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
+    Sleep    5
+    #显示支付成功
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".show_success")[0]
+    Page Should Contain    Your order has been submitted successfully.
 
 *** Keywords ***
 Products Suite Setup
@@ -50,11 +49,14 @@ Products Suite Setup
     Login With Test Account
     Start Ajax Listener
     Add Product_Up
-    Sleep    5
+    Sleep    8
     Go To Products Page
 
 Products Suite Teardown
-    [Documentation]    商品 case set down
+    [Documentation]    删除商品
+    Select Window    店匠科技
+    Go To Products Page
+    Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup

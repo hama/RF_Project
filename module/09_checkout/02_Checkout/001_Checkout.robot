@@ -77,7 +77,6 @@ Change_Price
     #显示支付成功
     Wait Until Element Is Visible    dom:document.querySelectorAll(".show_success")[0]
     Page Should Contain    Your order has been submitted successfully.
-    #-------------------case跑完之后要回到商品列表页才能删除第一个商品--------------------
 
 *** Keywords ***
 Products Suite Setup
@@ -90,6 +89,8 @@ Products Suite Setup
 
 Products Suite Teardown
     [Documentation]    删除商品
+    Select Window    店匠科技
+    Go To Products Page
     Delete_First_Product
     Close Test Suite Browser
 

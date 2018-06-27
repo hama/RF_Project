@@ -52,6 +52,8 @@ Products Suite Setup
 
 Products Suite Teardown
     [Documentation]    删除商品
+    Select Window    店匠科技
+    Go To Products Page
     Delete_First_Product
     Close Test Suite Browser
 
