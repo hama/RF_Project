@@ -326,3 +326,49 @@ Cancel_Select_Quantity
     #点击保存
     Wait And Click Element    ${locator_products_save_product}
     Sleep    5
+
+Set_Quantity_To_0
+    [Documentation]    设置商品的库存为0
+    Sleep    2
+    Go To Products Page
+    Sleep    5
+    #点击第一件商品进入商品详情页
+    Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
+    Sleep    5
+    #划到底部
+    Execute Javascript    return document.querySelectorAll(".wrapper_row___V4M9G")[4].scrollIntoView()
+    Sleep    5
+    #点击跟踪库存
+    Select Checkbox    dom:document.querySelectorAll(".wrapper_row___V4M9G")[4].querySelectorAll(".ant-checkbox-input")[0]
+    Sleep    2
+    #输入库存数量
+    Wait And Input Text    id:inventory_quantity    0
+    Sleep    2
+    #点击保存
+    Wait And Click Element    ${locator_products_save_product}
+    Sleep    5
+    #点击确定按钮
+    Wait And Click Element    dom:document.querySelectorAll(".ant-confirm-btns .ant-btn-primary")[0]
+    Sleep    5
+
+Set_Quantity
+    [Arguments]    ${num}
+    [Documentation]    设置商品的库存
+    Sleep    2
+    Go To Products Page
+    Sleep    5
+    #点击第一件商品进入商品详情页
+    Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
+    Sleep    5
+    #划到底部
+    Execute Javascript    return document.querySelectorAll(".wrapper_row___V4M9G")[4].scrollIntoView()
+    Sleep    5
+    #点击跟踪库存
+    Select Checkbox    dom:document.querySelectorAll(".wrapper_row___V4M9G")[4].querySelectorAll(".ant-checkbox-input")[0]
+    Sleep    2
+    #输入库存数量
+    Wait And Input Text    id:inventory_quantity    ${num}
+    Sleep    2
+    #点击保存
+    Wait And Click Element    ${locator_products_save_product}
+    Sleep    5
