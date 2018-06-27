@@ -34,10 +34,18 @@ Go To Setting Page
     Wait And Click Element    ${locator_setting}
 
 Go To Products Page
-    [Documentation]    跳转到订单页面
+    [Documentation]    跳转到商品页面
     Wait And Click Element    ${locator_products}
     Wait Until Page Contains    ${content_products_all}
     Location Should Be    ${url_products}
+
+Go To Marketing Page
+    [Documentation]    跳转到营销页面
+    Wait And Click Element    ${locator_marketing}
+    Sleep    2
+    #点击满减活动
+    #Wait And Click Element    id:test_marketing_substraction
+    #Sleep    2
 
 Go To Order Page
     [Documentation]    跳转到订单页面

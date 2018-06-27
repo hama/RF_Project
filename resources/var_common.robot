@@ -20,6 +20,7 @@ ${add_products_img}    ./images/tm.jpg    #.添加商品的图片
 ### 菜单栏 locator
 ${locator_order}    dom:document.querySelectorAll('a[href="/order"]')[0]    # 导航栏-订单
 ${locator_products}    id:test_product    # 导航栏-商品
+${locator_marketing}    id:test_marketing    # 导航栏-营销
 ${locator_setting}    id:test_setting    # 导航栏-设置
 ${locator_setting_shipping}    dom:document.querySelectorAll('a[href="/shipping"]')[0]    # 导航栏-设置-物流
 ${locator_setting_taxPrice}    dom:document.querySelectorAll('a[href="/taxPrice"]')[0]    # 导航栏-设置-税费
@@ -27,6 +28,7 @@ ${locator_setting_taxPrice}    dom:document.querySelectorAll('a[href="/taxPrice"
 ${url_home_page}    http://admin1024.shoplazza.com/    # home page
 ${url_order}      http://admin1024.shoplazza.com/order    # order page
 ${url_products}    http://admin1024.shoplazza.com/products    # products page
+${url_marketing}    http://admin1024.shoplazza.com/subtraction    # marketing page
 ${url_tax_price}    http://admin1024.shoplazza.com/taxPrice    # tax price
 ${url_shipping}    http://admin1024.shoplazza.com/shipping    # shipping
 ### 测试用户

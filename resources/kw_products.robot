@@ -197,7 +197,7 @@ Complete_Order_Message
     Wait And Input Text    dom:document.querySelectorAll("input[name=last_name]")[0]    l
     #选择国家
     Select From List By Index    id:shipping_country_id    1
-    Sleep    2
+    Sleep    5
     #选择身份
     Select From List By Index    id:shipping_zone_id    1
     #city
@@ -411,4 +411,65 @@ Delete_All_Sub_Product_With_Already_Product
     Sleep    2
     #点击保存
     Wait And Click Element    ${locator_products_save_product}
+    Sleep    5
+
+Add_Full_Reduction
+    [Documentation]    添加全部商品的满减活动，适用时要先定义变量name,full,cut
+    #进入满减活动页面
+    Go To Marketing Page
+    Sleep    2
+    #点击新增活动按钮
+    Wait And Click Element    dom:document.querySelectorAll(".large_btn___3RbRK")[0]
+    Sleep    5
+    #活动名称
+    Wait And Input Text    id:name    ${name}
+    #活动开始时间
+    Wait And Click Element    dom:document.querySelectorAll(".ant-calendar-picker-input")[0]    #点击弹出时间选择器
+    Sleep    2
+    Wait And Click Element    dom:document.querySelectorAll(".ant-calendar-selected-day .ant-calendar-date")[0]    #点击选择亮起的时间
+    Sleep    2
+    Wait And Click Element    dom:document.querySelectorAll(".ant-calendar-ok-btn")[0]    #点击时间选择器中的确定按钮，起始时间为当前时间
+    Sleep    1
+    #选择“长期”
+    Select Checkbox    dom:document.querySelectorAll(".ant-checkbox-input")[0]
+    Sleep    1
+    #优惠类型,这里默认选中“满额减元”
+    #满10
+    Wait And Input Text    id:totalPrice0    ${full}
+    #点击满减checkbox
+    Select Checkbox    dom:document.querySelectorAll(".ant-checkbox-input")[2]
+    #减3
+    Wait And Input Text    id:cutPrice0    ${cut}
+    Sleep    1
+    #选择适用范围
+    Wait And Click Element    dom:document.querySelectorAll(".li___2Fxhj")[0]
+    Sleep    3
+    #点击保存按钮
+    Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
+    Sleep    5
+
+End_First_Full_Reduction
+    [Documentation]    提前结束第一个满减活动
+    #进入满减活动页面
+    Go To Marketing Page
+    Sleep    2
+    #点击第一个提前结束按钮
+    Wait And Click Element    dom:document.querySelectorAll(".stop_icon___1u6D1")[0]
+    Sleep    5
+    Wait And Click Element    id:test_delete_modal_sure_btn
+    Sleep    2
+
+Modify_First_Full_Reduction
+    [Documentation]    修改第一个满减活动的优惠内容
+    #进入满减活动页面
+    Go To Marketing Page
+    Sleep    2
+    #点击进入第一个满减活动的详情
+    Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
+    Sleep    5
+    #修改优惠的金额
+    Wait And Input Text    id:cutPrice0    ${cut2}
+    Sleep    3
+    #点击保存按钮
+    Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
     Sleep    5
