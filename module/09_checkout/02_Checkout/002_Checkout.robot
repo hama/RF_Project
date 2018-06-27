@@ -46,7 +46,6 @@ Change_Status
     Sleep    5
     #支付页面应该显示支付失败
     Page Should Contain    Payment failure!
-    #-------------------case跑完之后要回到商品列表页才能删除第一个商品--------------------
 
 *** Keywords ***
 Products Suite Setup
@@ -59,6 +58,8 @@ Products Suite Setup
 
 Products Suite Teardown
     [Documentation]    删除商品
+    Select Window    店匠科技
+    Go To Products Page
     Delete_First_Product
     Close Test Suite Browser
 
