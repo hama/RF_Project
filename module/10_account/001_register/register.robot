@@ -12,7 +12,7 @@ Resource          customLibrary
 
 *** Test Cases ***
 remove_user
-    remove user    ${register_user}
+    remove user    ${recover_user}
 
 register_pass
     [Documentation]    注册

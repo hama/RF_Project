@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Ckeckout Page Check
+Documentation     Ckeckout Price Page
 Suite Setup       New Test Suite Browser And Login    15220581724    123456    chen
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Test Setup        Setup Test Case
@@ -14,78 +14,30 @@ Resource          ../../../resources/kw_shipping.robot
 Resource          ../../../resources/kw_checkout.robot
 
 *** Test Cases ***
-Checkout AddCard Check
-    [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
+Checkout Select Submit
+    [Documentation]    checkout页面底部弹窗物流选择界面，显示物流（运费1）
     [Tags]    P0
     #.click products btn
     Checkout Common Setp
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".submit_mb span")[0]
-    Page Should Contain Image    dom:document.querySelectorAll("img")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".sales_price")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".detail")[0]
+    Page Should Contain Element    class:detail_total_price
+    Page Should Contain Element    class:detail_total_price
 
-Checkout Bynow Check
-    [Documentation]    进入checkout界面 显示购买的商品，地址，
+Checkout Not Select Shipping
+    [Documentation]    checkout 界面 不添加地址 提示 please select a shipping
     [Tags]    P1
-    Go To Products Page    #.跳转商品主页
-    #点击商品预览
-    Checkout Common Setp
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".submit_mb span")[0]
-    Click Element    //*[@id="shoplaza-section-1523699573925"]/div/div[4]/div[2]/a[5]/i
-    Wait Until Element Is Visible    class:account_container
-    Page Should Not Contain Element    class:buy-now
-
-Checkout Should Search
-    [Documentation]    进入checkout界面 显示search按钮
-    [Tags]    P1
-    Go To Products Page    #.跳转商品主页
-    Checkout Common Setp
-    Page Should Contain Element    dom:document.querySelectorAll("a[alt='sousuo1']")[0]
-
-Checkout Click Search
-    [Documentation]    进入checkout界面 点击搜索按钮 跳转到搜索页面
-    [Tags]    P1
-    Go To Products Page    #.跳转商品主页
-    Checkout Common Setp
-    Wait And Click Element    dom:document.querySelectorAll("a[alt='sousuo1']")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".search_header_txt")[0]
-
-Checkout Should Name
-    [Documentation]    进入checkout界面 顶部导航栏中间显示店铺名
-    [Tags]    P1
-    Go To Products Page    #.跳转商品主页
-    Checkout Common Setp
-    Page Should Contain Element    dom:document.querySelectorAll("div[alt='logo']")[0]
-
-Checkout Should Card Content
-    [Documentation]    进入checkout界面 点击购物车按钮 显示购物车内容
-    [Tags]    P0
-    Go To Products Page    #.跳转商品主页
-    Checkout Common Setp
-    Wait And Click Element    dom:document.querySelectorAll("a[alt='bag']")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".title")[0]
-
-Checkout Should User
-    [Documentation]    进入checkout界面 点击个人中心按钮 显示个人中心内容
-    [Tags]    P0
-    Go To Products Page    #.跳转商品主页
-    Checkout Common Setp
-    Wait And Click Element    dom:document.querySelectorAll("a[alt='account']")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".operal_list_item")[0]
-
-Checkout Add Address
-    [Documentation]    进入checkout界面 点击buynow 然后添加地址
-    [Tags]    P0
-    Go To Products Page    #.跳转商品主页
+    #,click products btn
     Checkout Common Setp
     Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
     Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
-    Page Should Contain Element    dom:document.querySelectorAll("input[name='first_name']")[0]
+    Wait And Click Element    id:submitMbPay
+    Page Should Contain Element    class:not_none
 
-Checkout Add Address Save Pass
-    [Documentation]    进去checkout界面 点击buynow 添加地址·输入该输入信息·保存成功
+Checkout Submit Pass
+    [Documentation]    checkout 界面 提交成功 进入支付方式选择界面
     [Tags]    P0
-    Go To Products Page    #.跳转商品主页
     Checkout Common Setp
     Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
     Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
@@ -102,240 +54,222 @@ Checkout Add Address Save Pass
     Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
     Wait And Click Element    id:submitMbPay
     Sleep Time
-    Page Should Contain Element    dom:document.querySelectorAll(".header")[0]
+    Page Should Contain Element    id:submitPaymentMb
 
-Checkout Add Address First Name Faile
-    [Documentation]    进去checkout 界面 点击buynow 添加地址·姓名不输入 保存不成功
-    [Tags]    P1
-    Go To Products Page    #.跳转商品主页
-    Checkout Common Setp
-    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
-    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    ${Empty}
-    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
-    Select From List    id:shipping_country_id    China
-    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
-    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
-    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
-    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
-    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
-    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
-    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
-
-Checkout Add Address Select Country
-    [Documentation]    进去checkout 界面 点击buynow 添加地址·不选择国家 保存不成功
-    [Tags]    P1
-    Go To Products Page    #.跳转商品主页
-    Checkout Common Setp
-    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
-    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
-    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
-    #Select From List    id:shipping_country_id    China
-    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
-    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
-    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
-    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
-    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
-    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
-    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
-
-Checkout Add Address Country China
-    [Documentation]    进去checkout 界面 点击buynow 添加地址·先在后台添加一个中国的国家 然后在c端显示可选的为中国
-    [Tags]    P1
-    Add Shipping China    #.添加中国的物流
-    Go To Products Page    #.跳转商品主页
-    Checkout Common Setp
-    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
-    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
-    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
-    #Select From List    id:shipping_country_id    China
-    Page Should Contain Element    dom:document.querySelectorAll("#shipping_country_id option")[2]    #.代表中国
-
-Checkout Add Address Area
-    [Documentation]    进去checkout 界面 点击buynow 添加地址·不选择地区 保存不成功
-    [Tags]    P1
-    Go To Products Page    #.跳转商品主页
-    Checkout Common Setp
-    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
-    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
-    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
-    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
-    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
-    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
-    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
-    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
-    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
-    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
-
-Checkout Add Address Area Check Quantity
-    [Documentation]    进去checkout 界面 点击buynow 添加地址·选择中国 出现中国的所有地区
-    [Tags]    P1
-    Go To Products Page    #.跳转商品主页
-    Checkout Common Setp
-    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
-    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
-    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
-    Select From List    id:shipping_country_id    China
-    Sleep Time
-    ${count}    Execute JavaScript    return document.querySelectorAll("#shipping_zone_id")[0].length
-    Should Be True    ${count}==32
-
-Checkout Add Address City
-    [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入城市 保存不成功
-    [Tags]    P1
-    Go To Products Page    #.跳转商品主页
-    Checkout Common Setp
-    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
-    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
-    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
-    Select From List    id:shipping_country_id    China
-    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
-    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
-    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
-    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
-    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
-    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
-
-Checkout Add Address Detail Area
-    [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入详细地址 保存不成功
-    [Tags]    P1
-    Go To Products Page    #.跳转商品主页
-    Checkout Common Setp
-    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
-    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
-    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
-    Select From List    id:shipping_country_id    China
-    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
-    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
-    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
-    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
-    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
-    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
-
-Checkout Add Address Ecode
-    [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入邮编 保存不成功
-    [Tags]    P1
-    Go To Products Page    #.跳转商品主页
-    Checkout Common Setp
-    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
-    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
-    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
-    Select From List    id:shipping_country_id    China
-    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
-    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
-    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
-    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
-    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
-    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
-
-Checkout Add Address Email
-    [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入邮箱 保存不成功
-    [Tags]    P1
-    Go To Products Page    #.跳转商品主页
-    Checkout Common Setp
-    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
-    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
-    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
-    Select From List    id:shipping_country_id    China
-    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
-    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
-    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
-    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
-    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
-    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
-
-Checkout Add Address Phone
-    [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入电话 保存不成功
-    [Tags]    P1
-    Go To Products Page    #.跳转商品主页
-    Checkout Common Setp
-    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
-    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
-    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
-    Select From List    id:shipping_country_id    China
-    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
-    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
-    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
-    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
-    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
-    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
-
-Checkout Add Address Save
-    [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入电话 保存不成功
-    [Tags]    P1
-    Go To Products Page    #.跳转商品主页
-    Checkout Common Setp
-    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
-    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
-    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
-    Select From List    id:shipping_country_id    China
-    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
-    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
-    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
-    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
-    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
-    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
-    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
-    Page Should Contain Element    id:submitMbPay
-
-Checkout Add Card
-    [Documentation]    进去checkout 界面 点击buynow 添加2次购物车 购物车的数量为2
+Checkout Submit Pass Select Paymethod
+    [Documentation]    chekout 界面 提交成功 选择支付方式
     [Tags]    P0
-    Go To Products Page    #.跳转商品主页
     Checkout Common Setp
-    Wait And Click Element    dom:document.querySelectorAll(".add-to-card")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
     Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".add-to-card")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
+    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
+    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
+    Select From List    id:shipping_country_id    China
+    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
+    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
+    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
+    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
+    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
+    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Wait And Click Element    id:submitMbPay
+    Sleep Time
+    Page Should Contain Element    class:pm_list_title
+
+Checkout Submit Paymethod
+    [Documentation]    checkout 界面提交成功 显示B端设置的支付方式
+    [Tags]    P0
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
     Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait And Click Element    dom:document.querySelectorAll("a[realhref='/cart']")[0]
-    ${count}    Execute JavaScript    return document.querySelectorAll(".space-between span")[2].innerText
-    Should Be True    ${count}==2
+    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
+    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
+    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
+    Select From List    id:shipping_country_id    China
+    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
+    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
+    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
+    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
+    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
+    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Wait And Click Element    id:submitMbPay
+    Sleep Time
+    Page Should Contain Element    class:ipaylinks
 
-Checkout Msg Bot
-    [Documentation]    进入checkout 界面 点击留言板，弹出窗口
+Checkout Detail
+    [Documentation]    checkout 界面提交成功 展示订单详情
     [Tags]    P1
-    Go To Products Page    #.跳转商品主页
     Checkout Common Setp
-    Execute JavaScript    return document.getElementsByClassName("review_write")[0].scrollIntoView()
-    Wait And Click Element    dom:document.querySelectorAll(".review_write")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".addli")
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
+    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
+    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
+    Select From List    id:shipping_country_id    China
+    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
+    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
+    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
+    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
+    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
+    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Wait And Click Element    id:submitMbPay
+    Sleep Time
+    Page Should Contain Element    class:pm_order_detail
 
-Checkout Msg Bot Str
-    [Documentation]    进入checkout 界面 点击留言板，弹出窗口 输入超过500个字符
+Checkout Click Detail Btn
+    [Documentation]    checkout 界面提交成功 点击收起展示订单详情按钮
     [Tags]    P1
-    ${strs}    Set Variable    aslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsa
-    Go To Products Page    #.跳转商品主页
     Checkout Common Setp
-    Execute JavaScript    return document.getElementsByClassName("review_write")[0].scrollIntoView()
-    Wait And Click Element    dom:document.querySelectorAll(".review_write")[0]
-    Input Text    id:content    ${strs}
-    Page Should Contain Element    dom:document.querySelectorAll(".addli")
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
+    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
+    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
+    Select From List    id:shipping_country_id    China
+    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
+    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
+    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
+    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
+    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
+    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Wait And Click Element    id:submitMbPay
+    Wait And Click Element    dom:document.querySelectorAll(".pm_order_header i")[0]
+    Sleep Time
+    Page Should Contain Element    class:pm_order_detail
+
+Checkout Submit Price
+    [Documentation]    checkout 界面提交成功后显示商品价格
+    [Tags]    P1
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
+    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
+    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
+    Select From List    id:shipping_country_id    China
+    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
+    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
+    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
+    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
+    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
+    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    ${res}    Get Text    class:total_price
+    ${rex}    searchStrs    ${res}
+    Wait And Click Element    id:submitMbPay
+    ${data}    Execute JavaScript    return document.querySelectorAll(".detail_total_price div span:nth-child(2)")[0].innerHTML
+    ${desc}    searchStrs    ${data}
+    Sleep Time
+    Should Be True    '${rex}'=='${desc}'
+
+Checkout Submit Display Price
+    [Documentation]    checkout 页面提交成功后 收起价格详情，只显示本次实际应该支付的价格
+    [Tags]    P1
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
+    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
+    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
+    Select From List    id:shipping_country_id    China
+    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
+    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
+    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
+    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
+    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
+    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Sleep Time
+    Page Should Contain Element    dom:document.querySelectorAll(".detail_total_price div span:nth-child(2)")[0]
+
+Checkout Submit Payment Pass
+    [Documentation]    checkout 页面提交成功后 跳转到支付成功页面
+    [Tags]    P1
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
+    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
+    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
+    Select From List    id:shipping_country_id    China
+    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
+    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
+    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
+    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
+    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
+    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Wait And Click Element    id:submitMbPay
+    Wait And Click Element    id:submitPaymentMb
+    Page Should Contain Element    class:pay_state
+
+Checkout Submit Payment Pass Display Detail
+    [Documentation]    checkout 页面提交成功后 跳转到支付成功页面显示对应商品信息
+    [Tags]    P1
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
+    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
+    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
+    Select From List    id:shipping_country_id    China
+    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
+    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
+    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
+    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
+    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
+    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Wait And Click Element    id:submitMbPay
+    Wait And Click Element    id:submitPaymentMb
+    Page Should Contain Element    class:pay_success_detail
+
+Checkout Submit Go Index
+    [Documentation]    checkout 页面提交成功后 跳转到支付成功页面点击 continue shopping 跳转主页
+    [Tags]    P1
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
+    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
+    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
+    Select From List    id:shipping_country_id    China
+    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
+    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
+    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
+    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
+    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
+    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Wait And Click Element    id:submitMbPay
+    Wait And Click Element    id:submitPaymentMb
+    Wait And Click Element    dom:document.querySelectorAll(".btn1")[1]    #.跳转主页
+    Sleep Time
+    Page Should Contain Element    class:nav-title
+
+Checkout Submit Go Order Detail
+    [Documentation]    checkout 页面提交成功后 跳转到支付成功页面 点击 view order 跳转到订单详情
+    [Tags]    P0
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
+    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
+    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
+    Select From List    id:shipping_country_id    China
+    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
+    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
+    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
+    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
+    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
+    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Wait And Click Element    id:submitMbPay
+    Wait And Click Element    id:submitPaymentMb
+    Wait And Click Element    dom:document.querySelectorAll(".btn2")[1]    #.跳转主页
+    Sleep Time
+    Page Should Contain Element    class:header
