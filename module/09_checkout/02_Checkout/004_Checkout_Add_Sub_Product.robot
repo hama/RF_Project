@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     将本次购买的子商品删除，submit之后直接显示"支付失败"
+Documentation     添加一个子商品，支付成功
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup
@@ -14,7 +14,7 @@ Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
 Add_Sub_Product
-    [Documentation]    先给第一个商品新增一个子产品，点击商品预览后,选中一个子产品，进入checkout页面，在点击Submit前，在后台删除该子商品，之后再点击Submit按钮，应该显示支付失败
+    [Documentation]    添加一个子商品，支付成功
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     Sleep    2

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     增加一个子商品，可支付成功
+Documentation     在支付界面返回后台删除本次购买的子商品，再返回支付界面点击pay now，支付失败
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup
@@ -13,10 +13,10 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Delete_Other_Sub_Product_With_Already_Product
-    [Documentation]    增加一个子商品，可支付成功
+Change_Status
+    [Documentation]    在支付界面返回后台删除本次购买的子商品，再返回支付界面点击pay now，支付失败
     [Tags]    P0
-    #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
+    #-----------------------------------------选中一个有子商品的商品，进入到支付页面------------------------------------------
     Sleep    2
     #点击个人账户按钮，展现出店铺名称
     Wait And Click Element    dom:document.querySelectorAll(".xiala-choose")[0]
@@ -31,17 +31,19 @@ Delete_Other_Sub_Product_With_Already_Product
     #给该商品增加子产品
     Add_Sub_Product_With_Already_Product
     Select_Order_Page_With_Sub_Product    ${title}
-    Select Window    店匠科技
-    Delete_Sub_Product_With_Already_Product    1
-    Select Window    title=${store_name}
+    #填写地址信息，保存并点击submit后，进入支付页面
     Complete_Order_Message
-    Sleep    5
+    #-----------------------------------------选中一个有子商品的商品，进入到支付页面------------------------------------------
+    #返回后台页面删除该商品
+    Select Window    店匠科技
+    Delete_Sub_Product_With_Already_Product    0
+    Select Window    title=${store_name}
+    Sleep    1
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     Sleep    5
-    #显示支付成功
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".show_success")[0]
-    Page Should Contain    Your order has been submitted successfully.
+    #支付失败
+    Page Should Contain    Payment failure!
 
 *** Keywords ***
 Products Suite Setup
@@ -49,7 +51,7 @@ Products Suite Setup
     Login With Test Account
     Start Ajax Listener
     Add Product_Up
-    Sleep    8
+    Sleep    5
     Go To Products Page
 
 Products Suite Teardown
