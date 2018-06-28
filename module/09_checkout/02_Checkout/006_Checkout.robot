@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     测试商品批量上下架
+Documentation     增加一个子商品，可支付成功
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup

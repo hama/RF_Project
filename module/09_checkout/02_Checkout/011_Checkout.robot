@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     测试商品批量上下架
+Documentation     点击商品预览后，点击进入checkout页面，在点击Submit前，在后台更换该商品图片，支付界面应该显示最新图片
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup

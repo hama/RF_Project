@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     修改其他国家税费金额
+Documentation     修改其他国家税费金额，支付成功
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup

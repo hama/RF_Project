@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     测试商品批量上下架
+Documentation     此时第一个商品下有两个子产品，删除当前第一个商品下的所有子商品（一共有两个子产品），支付失败
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup

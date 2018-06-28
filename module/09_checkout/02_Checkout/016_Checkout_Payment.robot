@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     关闭“货到付款”支付方式
+Documentation     开启“货到付款”支付方式，进入支付界面时可以看到"货到付款"这个支付方式
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup
