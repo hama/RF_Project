@@ -60,7 +60,6 @@ Go To Tax Price Page
     ${unvisible}=    Execute Javascript    return document.querySelectorAll('a[href="/taxPrice"]')[0]===undefined
     Run Keyword If    ${unvisible}    Wait And Click Element    ${locator_setting}
     Wait And Click Element    ${locator_setting_taxPrice}
-    Wait Until Page Contains    ${content_tax_setting}
     Location Should Be    ${url_tax_price}
 
 Go To Shipping Page

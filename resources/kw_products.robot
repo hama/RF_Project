@@ -219,6 +219,35 @@ Complete_Order_Message
     #点击Submit按钮进入支付页
     Wait And Click Element    id:submitMbPay
 
+Complete_Order_Message_Not_Submit
+    [Documentation]    点击添加地址按钮，填写信息（只需填写邮箱），点击保存按钮，不点击进入支付页
+    Sleep    1
+    #添加地址信息
+    Wait And Click Element    id:addAddress
+    Sleep    1
+    #first name
+    Wait And Input Text    dom:document.querySelectorAll("input[name=first_name]")[0]    zc
+    #last name
+    Wait And Input Text    dom:document.querySelectorAll("input[name=last_name]")[0]    l
+    #选择国家
+    Select From List By Index    id:shipping_country_id    1
+    Sleep    5
+    #选择身份
+    Select From List By Index    id:shipping_zone_id    1
+    #city
+    Wait And Input Text    dom:document.querySelectorAll("input[name=city]")[0]    shenzhen
+    #address
+    Wait And Input Text    dom:document.querySelectorAll("input[name=address]")[0]    hhh
+    #postal code
+    Wait And Input Text    dom:document.querySelectorAll("input[name=zip]")[0]    333000
+    #email
+    Wait And Input Text    dom:document.querySelectorAll("input[name=email]")[0]    1004714019@qq.com
+    #company
+    Wait And Input Text    dom:document.querySelectorAll("input[name=company]")[0]    dianjiangkeji
+    #保存填写的地址信息
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+
+
 Add_Sub_Product_With_Already_Product
     [Documentation]    给第一个现有的无子产品的商品添加两个子产品
     Sleep    2
@@ -509,3 +538,35 @@ Open_Cash
     #记录当前“货到付款”是否开启
     ${class}    Execute Javascript    return document.querySelectorAll("#cod .ant-switch")[0].getAttribute("class")
     Run Keyword If    '${class}'=='ant-switch'    Change_Cash    #开启
+
+Modify_Other_Tax_Price
+    [Documentation]    修改其他国家税费金额
+    Go TO    ${home_page}
+    Go To Tax Price Page
+    Sleep    5
+    #点击第一个税率设置操作按钮
+    Wait And Click Element    dom:document.querySelectorAll(".card-col-Setting")[0]
+    Sleep    5
+    #输入国家税率
+    Wait And Input Text    dom:document.querySelectorAll(".uniteInput___3eUiu")[0]    ${tax_price}
+    Sleep    1
+    #点击保存按钮
+    Wait And Click Element    dom:document.querySelectorAll(".save___ldv3D")[0]
+
+Modify_Set
+    [Arguments]    ${index}
+    [Documentation]    修改结账设置(0:邮箱，1:手机，2:邮箱和手机)
+    #返回后台修改结账设置
+    Sleep    1
+    Go TO    ${home_page}
+    Sleep    2
+    Go To Setting Page
+    Sleep    3
+    #进入结账设置页面
+    Execute Javascript    return document.getElementById("test_setting_checkout").scrollIntoView()
+    Execute Javascript    return document.getElementById("test_setting_checkout").click()
+    Sleep    5
+    #选择填写信息
+    Wait And Click Element    dom:document.querySelectorAll(".translatedContent1___3mue7 .grid___1j8eN")[${index}]
+    #点击保存按钮
+    Wait And Click Element    id:test_save_btn
