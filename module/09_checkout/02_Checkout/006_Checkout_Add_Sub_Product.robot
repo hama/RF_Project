@@ -14,7 +14,7 @@ Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
 Delete_Other_Sub_Product_With_Already_Product
-    [Documentation]    此时第一个商品下有两个子产品，删除当前第一个商品下的第n个子商品（第一个子产品为下单时选中的子产品）
+    [Documentation]    增加一个子商品，可支付成功
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     Sleep    2
