@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     测试商品批量上下架
+Documentation     先设置商品为跟踪库存并且库存为0时可购买,点击商品预览后，点击进入checkout页面，在点击Submit前，在后台修改该商品取消勾选库存为0时可购买，支付失败
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup

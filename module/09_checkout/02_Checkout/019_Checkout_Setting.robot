@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     修改结账设置
+Documentation     结账设置中将只填写邮箱改为只填写手机或者手机邮箱都需填写，submit后不跳转新页面，刷新当前页面，显示最新信息
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup

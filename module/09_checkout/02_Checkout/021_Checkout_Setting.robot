@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     修改结账设置
+Documentation     将邮箱和手机都需要填写改为只填写邮箱或手机，跳转到支付界面，不显示被取消掉的信息
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup

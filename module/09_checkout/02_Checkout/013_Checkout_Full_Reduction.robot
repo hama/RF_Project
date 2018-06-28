@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     测试商品批量上下架
+Documentation     先添加一个商品和一个包括全部商品的满减活动，点击商品预览，商品详情submi进入checkout页面之后，提前结束该商品参与的满减活动，还是有之前的优惠，支付成功
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup

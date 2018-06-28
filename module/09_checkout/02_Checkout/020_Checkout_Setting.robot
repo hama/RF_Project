@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     修改结账设置
+Documentation     结账设置中改变姓名填写格式，submit后不跳转新页面，刷新当前页面，显示最新信息
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup
