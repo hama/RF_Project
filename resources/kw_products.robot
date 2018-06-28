@@ -26,6 +26,8 @@ Add Product
 
 Add Product_Up
     [Documentation]    添加上架商品以做测试，这里不能添加商品标签
+    Go TO    ${home_page}
+    Sleep    2
     Go To Products Page
     Add Product Required Content
     # add other content
@@ -473,3 +475,37 @@ Modify_First_Full_Reduction
     #点击保存按钮
     Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
     Sleep    5
+
+Close_Cash
+    [Documentation]    关闭"货到付款"
+    Go TO    ${home_page}
+    Sleep    2
+    Go To Setting Page
+    Sleep    5
+    Execute Javascript    return document.getElementById("test_setting_pay").scrollIntoView()
+    #点击收款渠道
+    Execute Javascript    return document.getElementById("test_setting_pay").click()
+    Sleep    5
+    #记录当前“货到付款”是否开启
+    ${class}    Execute Javascript    return document.querySelectorAll("#cod .ant-switch")[0].getAttribute("class")
+    Run Keyword If    '${class}'=='ant-switch ant-switch-checked'    Change_Cash    #关闭
+
+Open_Cash
+    [Documentation]    开启"货到付款"
+    Go TO    ${home_page}
+    Sleep    2
+    Go To Setting Page
+    Sleep    5
+    Execute Javascript    return document.getElementById("test_setting_pay").scrollIntoView()
+    #点击收款渠道
+    Execute Javascript    return document.getElementById("test_setting_pay").click()
+    Sleep    5
+    #记录当前“货到付款”是否开启
+    ${class}    Execute Javascript    return document.querySelectorAll("#cod .ant-switch")[0].getAttribute("class")
+    Run Keyword If    '${class}'=='ant-switch'    Change_Cash    #开启
+
+Change_Cash
+    Wait And Click Element    dom:document.querySelectorAll("#cod .ant-switch")[0]
+    Sleep    5
+    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-content .middle_btn___2ExQc")[0]
+    Sleep    2
