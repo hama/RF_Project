@@ -4,6 +4,7 @@ Documentation     checkout 公共方法
 *** keywords ***
 Checkout Common Setp
     [Documentation]    封装公共步骤
+    Go To    ${home_page}
     Wait And Click Element    ${add_products_btn}
     #点击商品预览
     Sleep    3

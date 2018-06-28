@@ -11,7 +11,7 @@ Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 Resource          ../../../resources/kw_shipping.robot
-Resource          ../../../resources/kw_checkout.robot
+Resource          ../../../resources/kw_Checkout.robot
 
 *** Test Cases ***
 Checkout Select Submit
