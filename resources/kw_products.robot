@@ -476,6 +476,12 @@ Modify_First_Full_Reduction
     Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
     Sleep    5
 
+Change_Cash
+    Wait And Click Element    dom:document.querySelectorAll("#cod .ant-switch")[0]
+    Sleep    5
+    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-content .middle_btn___2ExQc")[0]
+    Sleep    2
+
 Close_Cash
     [Documentation]    关闭"货到付款"
     Go TO    ${home_page}
@@ -503,9 +509,3 @@ Open_Cash
     #记录当前“货到付款”是否开启
     ${class}    Execute Javascript    return document.querySelectorAll("#cod .ant-switch")[0].getAttribute("class")
     Run Keyword If    '${class}'=='ant-switch'    Change_Cash    #开启
-
-Change_Cash
-    Wait And Click Element    dom:document.querySelectorAll("#cod .ant-switch")[0]
-    Sleep    5
-    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-content .middle_btn___2ExQc")[0]
-    Sleep    2
