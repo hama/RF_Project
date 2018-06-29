@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Ckeckout Price Page
 Suite Setup       New Test Suite Browser And Login    15220581724    123456    chen
-Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
+Suite Teardown    #Close Test Suite Browser    # close the browser opened for this test suite
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Resource          ../../../resources/var_tax_price.robot
@@ -96,7 +96,7 @@ Checkout Submit Paymethod
     Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
     Wait And Click Element    id:submitMbPay
     Sleep Time
-    Page Should Contain Element    class:ipaylinks
+    Page Should Contain Element    class:pm_list_row
 
 Checkout Detail
     [Documentation]    checkout 界面提交成功 展示订单详情
