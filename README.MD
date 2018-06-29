@@ -114,6 +114,9 @@ http://sourceforge.net/projects/wxpython/files/wxPython/2.8.12.1/
 # 若安装过程失败，可使用如下方法手动安装
 https://blog.csdn.net/TZJD89/article/details/72857961
 
+# 安装 RIDE
+pip install robotframework
+
 # 设置 python 默认使用 32 位来运行 wxPython,否则失败
 defaults write com.apple.versioner.python Prefer-32-Bit -bool yes
 ```
