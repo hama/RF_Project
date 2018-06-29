@@ -508,7 +508,7 @@ Add_Full_Reduction
     Sleep    2
     #点击新增活动按钮
     Wait And Click Element    dom:document.querySelectorAll(".large_btn___3RbRK")[0]
-    Sleep    5
+    Sleep    8
     #活动名称
     Wait And Input Text    id:name    ${name}
     #活动开始时间
