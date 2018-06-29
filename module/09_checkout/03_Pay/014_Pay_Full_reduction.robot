@@ -4,7 +4,7 @@ Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup
 Test Teardown     Products Test Case Teardown
-Force Tags        Products
+Force Tags        Checkout
 Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/var_products.robot
