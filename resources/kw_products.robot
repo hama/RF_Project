@@ -647,3 +647,37 @@ Modify_Set_Radio
     Sleep    1
     #点击保存按钮
     Wait And Click Element    id:test_save_btn
+
+Change_Card
+    Wait And Click Element    dom:document.querySelectorAll(".payment_wrap___3m1lo")[1].querySelectorAll(" .ant-switch")[0]
+    Sleep    5
+    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-content .middle_btn___2ExQc")[0]
+    Sleep    2
+
+Open_Card
+    [Documentation]    开启银行卡支付
+    Go TO    ${home_page}
+    Sleep    2
+    Go To Setting Page
+    Sleep    5
+    Execute Javascript    return document.getElementById("test_setting_pay").scrollIntoView()
+    #点击收款渠道
+    Execute Javascript    return document.getElementById("test_setting_pay").click()
+    Sleep    5
+    #记录当前“银行卡支付”是否开启
+    ${class}    Execute Javascript    return document.querySelectorAll(".payment_wrap___3m1lo")[1].querySelectorAll(" .ant-switch")[0].getAttribute("class")
+    Run Keyword If    '${class}'=='ant-switch'    Change_Card    #开启
+
+Close_Card
+    [Documentation]    关闭银行卡支付
+    Go TO    ${home_page}
+    Sleep    2
+    Go To Setting Page
+    Sleep    5
+    Execute Javascript    return document.getElementById("test_setting_pay").scrollIntoView()
+    #点击收款渠道
+    Execute Javascript    return document.getElementById("test_setting_pay").click()
+    Sleep    5
+    #记录当前“银行卡支付”是否开启
+    ${class}    Execute Javascript    return document.querySelectorAll(".payment_wrap___3m1lo")[1].querySelectorAll(" .ant-switch")[0].getAttribute("class")
+    Run Keyword If    '${class}'=='ant-switch ant-switch-checked'    Change_Card    #关闭
