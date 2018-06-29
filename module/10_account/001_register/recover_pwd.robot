@@ -1,5 +1,6 @@
 *** Settings ***
 Suite Teardown    Close Test Suite Browser
+Force Tags        Recover Password
 Library           SeleniumLibrary
 Resource          ../../../resources/var_tax_price.robot
 Library           ${CURDIR}/../../../lib/customLibrary

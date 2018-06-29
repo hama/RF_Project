@@ -1,5 +1,6 @@
 *** Settings ***
 Suite Teardown    Close Test Suite Browser
+Force Tags        Register
 Library           SeleniumLibrary
 Library           ${CURDIR}../../../lib/customLibrary
 Resource          ../../../resources/var_tax_price.robot

@@ -1,6 +1,7 @@
 *** Settings ***
 Suite Setup       New Test Suite Browser And Login    15220581724    123456    chen
 Suite Teardown    Close Test Suite Browser
+Force Tags        Shipping
 Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/var_shipping.robot
