@@ -115,7 +115,7 @@ http://sourceforge.net/projects/wxpython/files/wxPython/2.8.12.1/
 https://blog.csdn.net/TZJD89/article/details/72857961
 
 # 安装 RIDE
-pip install robotframework
+pip install robotframework-ride
 
 # 设置 python 默认使用 32 位来运行 wxPython,否则失败
 defaults write com.apple.versioner.python Prefer-32-Bit -bool yes
