@@ -1,6 +1,7 @@
 *** Settings ***
 Suite Setup       New Test Suite Browser And Login    15220581724    123456    chen
-Suite Teardown    #Close Test Suite Browser
+Suite Teardown    Close Test Suite Browser
+Force Tags        Order
 Resource          ../../resources/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Resource          ../../resources/var_tax_price.robot
 Resource          ../../resources/kw_common.robot

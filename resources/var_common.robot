@@ -40,4 +40,4 @@ ${keybord_enter}    \\13
 ${register_user}    15297989918
 ${register_domain}    cheng
 ${register_pwd}    123456
-${register_code}    DJ5691    #.推荐吗
+${register_code}    DJ6602    #.推荐吗

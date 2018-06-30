@@ -1,5 +1,6 @@
 *** Settings ***
 Suite Teardown    Close Test Suite Browser
+Force Tags        Register
 Library           SeleniumLibrary
 Library           ${CURDIR}../../../lib/customLibrary
 Resource          ../../../resources/var_tax_price.robot
@@ -12,7 +13,7 @@ Resource          customLibrary
 
 *** Test Cases ***
 remove_user
-    remove user    ${register_user}
+    remove user    ${recover_user}
 
 register_pass
     [Documentation]    注册
