@@ -17,13 +17,10 @@ Change_Image
     [Documentation]    点击商品预览后，点击进入checkout页面，在点击Submit前，在后台更换该商品图片
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
-    Sleep    2
     #点击个人账户按钮，展现出店铺名称
     Wait And Click Element    dom:document.querySelectorAll(".xiala-choose")[0]
-    Sleep    1
     #获取店铺名称
     ${store_name}    Get Text    dom:document.querySelectorAll(".name___2AVIS")[0]
-    Sleep    2
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title
@@ -41,14 +38,12 @@ Change_Image
     #切换到商品submit页
     Select Window    title=${store_name}
     Complete_Order_Message
-    Sleep    5
     #验证图片是否为最新
     ${src2}    Execute Javascript    return document.querySelectorAll(".detail_img img")[0].src
     ${src2}    getImgName    ${src2}
     Should Be Equal As Strings    ${src}    ${src2}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
-    Sleep    5
     #显示支付成功
     Wait Until Element Is Visible    dom:document.querySelectorAll(".show_success")[0]
     Page Should Contain    Your order has been submitted successfully.
@@ -59,7 +54,7 @@ Products Suite Setup
     Login With Test Account
     Start Ajax Listener
     Add Product_Up
-    Sleep    5
+    Sleep    8
     Go To Products Page
 
 Products Suite Teardown

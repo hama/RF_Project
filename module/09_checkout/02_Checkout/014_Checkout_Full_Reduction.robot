@@ -24,13 +24,10 @@ End_Full_Reduction
     [Documentation]    先添加一个商品和一个包括全部商品的满减活动，点击商品预览，商品详情submi进入checkout页面之后，修改该商品参与的满减活动的优惠内容
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等，并且当前满减活动的优惠金额必须是最大的，否则会按照最大的来算--------------------------------------
-    Sleep    2
     #点击个人账户按钮，展现出店铺名称
     Wait And Click Element    dom:document.querySelectorAll(".xiala-choose")[0]
-    Sleep    1
     #获取店铺名称
     ${store_name}    Get Text    dom:document.querySelectorAll(".name___2AVIS")[0]
-    Sleep    2
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title
@@ -41,17 +38,13 @@ End_Full_Reduction
     Modify_First_Full_Reduction
     Select Window    title=${store_name}
     Complete_Order_Message
-    Sleep    5
     #验证优惠的金额还是之前的大小
     Wait And Click Element    dom:document.querySelectorAll(".icon-card-hd-shouhui")[0]    # 点击查看支付明细
-    Sleep    2
     ${now_cut}    Get Text    dom:document.querySelectorAll(".paydetail-line")[1].querySelectorAll(".tax_price")[0]
     ${now_cut}    searchStrs    ${now_cut}    # 现在的优惠金额
     Should Be Equal As Strings    ${cut}    ${now_cut}
-    Sleep    2
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
-    Sleep    5
     #显示支付成功
     Wait Until Element Is Visible    dom:document.querySelectorAll(".show_success")[0]
     Page Should Contain    Your order has been submitted successfully.
@@ -62,9 +55,9 @@ Products Suite Setup
     Login With Test Account
     Start Ajax Listener
     Add Product_Up
-    Sleep    5
+    Sleep    8
     Add_Full_Reduction
-    Sleep    3
+    Sleep    5
     Go To Products Page
 
 Products Suite Teardown
@@ -72,9 +65,9 @@ Products Suite Teardown
     Select Window    店匠科技
     Go To Products Page
     Delete_First_Product
-    Sleep    3
+    Sleep    5
     End_First_Full_Reduction
-    Sleep    3
+    Sleep    5
     Close Test Suite Browser
 
 Products Test Case Setup

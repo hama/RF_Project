@@ -23,13 +23,10 @@ Change_Status
     [Documentation]    先添加一个商品和一个包括全部商品的满减活动，点击商品预览，点击pay now之前，修改该商品参与的满减活动的优惠内容，还是按照之前的优惠内容计算
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
-    Sleep    2
     #点击个人账户按钮，展现出店铺名称
     Wait And Click Element    dom:document.querySelectorAll(".xiala-choose")[0]
-    Sleep    1
     #获取店铺名称
     ${store_name}    Get Text    dom:document.querySelectorAll(".name___2AVIS")[0]
-    Sleep    2
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title
@@ -38,24 +35,19 @@ Change_Status
     #填写地址信息，保存并点击submit后，进入支付页面
     Complete_Order_Message
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
-    Sleep    5
     #修改该满减活动内容
     Select Window    店匠科技
     Modify_First_Full_Reduction
     Select Window    title=${store_name}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
-    Sleep    5
     #显示支付成功
     Wait Until Element Is Visible    dom:document.querySelectorAll(".show_success")[0]
     Page Should Contain    Your order has been submitted successfully.
     #view orders
-    Sleep    1
     Wait And Click Element    dom:document.querySelectorAll(".btn2")[1]
-    Sleep    5
     #跳转到my orders页面
     Wait Until Page Contains Element    dom:document.querySelectorAll(".spec_order_item")[0]
-    Sleep    1
     #点击查看订单详细信息
     Wait And Click Element    dom:document.querySelectorAll(".order_info")[0]
     #获取当前优惠的金额
@@ -70,9 +62,9 @@ Products Suite Setup
     Login With Test Account
     Start Ajax Listener
     Add Product_Up
-    Sleep    5
+    Sleep    8
     Add_Full_Reduction
-    Sleep    3
+    Sleep    5
     Go To Products Page
 
 Products Suite Teardown
@@ -80,7 +72,7 @@ Products Suite Teardown
     Select Window    店匠科技
     Go To Products Page
     Delete_First_Product
-    Sleep    3
+    Sleep    5
     Close Test Suite Browser
 
 Products Test Case Setup
