@@ -17,12 +17,7 @@ Change_Status
     [Documentation]    结账设置中将只填写邮箱改为只填写手机或者手机邮箱都需填写，点击pay now后只显示邮箱，不显示未输入的手机号
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
-    Go TO    ${home_page}
-    #获取店铺名称
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".greeting_txt___2NI7k")[1]
-    ${store_name}    Get Text    dom:document.querySelectorAll(".greeting_txt___2NI7k")[1]
-    Go To Products Page
-    Sleep    2
+
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title
