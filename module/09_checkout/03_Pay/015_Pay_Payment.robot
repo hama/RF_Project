@@ -17,8 +17,12 @@ Change_Status
     [Documentation]    (前提环境：银行卡支付已经配置好了，处于关闭的状态)在点击pay now之前开启银行卡支付
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
+    Go TO    ${home_page}
     #获取店铺名称
+    Wait Until Page Contains Element    dom:document.querySelectorAll(".greeting_txt___2NI7k")[1]
     ${store_name}    Get Text    dom:document.querySelectorAll(".greeting_txt___2NI7k")[1]
+    Go To Products Page
+    Sleep    2
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title
