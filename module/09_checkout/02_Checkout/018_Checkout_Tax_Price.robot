@@ -20,10 +20,8 @@ Modify_Tax_Price
     [Documentation]    进入到checkout页面后，修改其他国家税费金额，再点击submit
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
-    #点击个人账户按钮，展现出店铺名称
-    Wait And Click Element    dom:document.querySelectorAll(".xiala-choose")[0]
     #获取店铺名称
-    ${store_name}    Get Text    dom:document.querySelectorAll(".name___2AVIS")[0]
+    ${store_name}    Get Text    dom:document.querySelectorAll(".greeting_txt___2NI7k")[1]
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title

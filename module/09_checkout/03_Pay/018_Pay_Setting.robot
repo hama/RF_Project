@@ -17,10 +17,8 @@ Change_Status
     [Documentation]    结账设置中将只填写邮箱改为只填写手机或者手机邮箱都需填写，点击pay now后只显示邮箱，不显示未输入的手机号
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
-    #点击个人账户按钮，展现出店铺名称
-    Wait And Click Element    dom:document.querySelectorAll(".xiala-choose")[0]
     #获取店铺名称
-    ${store_name}    Get Text    dom:document.querySelectorAll(".name___2AVIS")[0]
+    ${store_name}    Get Text    dom:document.querySelectorAll(".greeting_txt___2NI7k")[1]
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title
