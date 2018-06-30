@@ -17,12 +17,7 @@ Change_Status
     [Documentation]    此时第一个商品下有两个子产品，在点击pay now按钮之前，删除当前第一个商品下的所有子商品（一共有两个子产品），支付失败
     [Tags]    P0
     #-----------------------------------------选中一个有子商品的商品，进入到支付页面------------------------------------------
-    Go TO    ${home_page}
-    #获取店铺名称
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".greeting_txt___2NI7k")[1]
-    ${store_name}    Get Text    dom:document.querySelectorAll(".greeting_txt___2NI7k")[1]
-    Go To Products Page
-    Sleep    2
+
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title

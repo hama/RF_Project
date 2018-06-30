@@ -17,12 +17,7 @@ Modify_Pay_Setting
     [Documentation]    进入到checkout页面后，填写完地址信息后，返回后台修改结账设置修改为必填或选填，再去checkout页面点击submit，进入支付页后，点击支付成功
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
-    Go TO    ${home_page}
-    #获取店铺名称
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".greeting_txt___2NI7k")[1]
-    ${store_name}    Get Text    dom:document.querySelectorAll(".greeting_txt___2NI7k")[1]
-    Go To Products Page
-    Sleep    2
+
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title

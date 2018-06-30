@@ -20,12 +20,7 @@ Change_Status
     [Documentation]    结账设置中改变姓名填写格式，pay now后支付成功页面还是显示原来的信息（先设置成只填写姓名，再设置成都要填写）
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
-    Go TO    ${home_page}
-    #获取店铺名称
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".greeting_txt___2NI7k")[1]
-    ${store_name}    Get Text    dom:document.querySelectorAll(".greeting_txt___2NI7k")[1]
-    Go To Products Page
-    Sleep    2
+
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title

@@ -17,12 +17,7 @@ Change_Status
     [Documentation]    将手机和邮箱都需填写改成只需填写邮箱，点击pay now之后，显示的还是之前的内容
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
-    Go TO    ${home_page}
-    #获取店铺名称
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".greeting_txt___2NI7k")[1]
-    ${store_name}    Get Text    dom:document.querySelectorAll(".greeting_txt___2NI7k")[1]
-    Go To Products Page
-    Sleep    2
+
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title
