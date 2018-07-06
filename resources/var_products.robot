@@ -57,6 +57,7 @@ ${content_products_AddTags}    TagA
 ${content_products_tips_save_ok}    保存成功
 ${content_products_tips_select_products}    请至少选择一个商品
 ${content_products_tips_saving}    页面有未保存内容
+${store_name}    test
 # file
 ${file_products_template}    ${CURDIR}/xlsx/product_template.xlsx    # 添加单个商品模版文件
 ${file_products_templates}    ${CURDIR}/xlsx/products_template.xlsx    # 添加多个商品模版文件

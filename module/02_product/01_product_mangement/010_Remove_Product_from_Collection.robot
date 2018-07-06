@@ -107,7 +107,7 @@ Remove_Product_From_Collections
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup,添加商品，专辑
-    Login With Default User
+    Login With Test Account
     Start Ajax Listener
     Add Product
     Sleep    5

@@ -202,7 +202,7 @@ class keyWord(object):
     def getFirstProductQuantity(self):
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
-        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -220,7 +220,7 @@ class keyWord(object):
     def getFirstProductTitle(self):
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
-        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -238,7 +238,7 @@ class keyWord(object):
     def getProductStatus(self, arg):
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
-        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -256,7 +256,7 @@ class keyWord(object):
     def getProductSku(self, arg):
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
-        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -283,7 +283,7 @@ class keyWord(object):
 
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search?status=" + str(arg) + "&page=0&limit=20"
-        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -302,7 +302,7 @@ class keyWord(object):
     def getProductTagsLength(self, arg):
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
-        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -323,7 +323,7 @@ class keyWord(object):
     def getAllProductCount(self):
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search"
-        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -348,7 +348,7 @@ class keyWord(object):
     def validateProductByPageAndSize(self, page, size):
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/product/search?page=" + str(page) + "&limit=" + str(size)
-        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -366,7 +366,7 @@ class keyWord(object):
     def getCollectionId(self, index):
         x_url = "http://admin1024.shoplazza.com/api/user/login"
         p_url = "http://admin1024.shoplazza.com/api/collection/dropdown?page=0&limit=10&key="
-        datas = {"contact": "18825260804", "password": "18825260804", "username": "diu"}
+        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -381,4 +381,19 @@ class keyWord(object):
             res_list.append(i['collection_id'])
 
         return res_list[index]
+
+    def getImgName(self, img):
+        regx = r'\/(\S+)\_'
+        data = re.compile(regx)
+        img_name = data.findall(img, re.M)
+
+        return img_name[0]
+
+    def getImgName2(self, img):
+        regx = r'\/(\S+)\.'
+        data = re.compile(regx)
+        img_name = data.findall(img, re.M)
+
+        return img_name[0]
+
 

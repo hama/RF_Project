@@ -83,6 +83,7 @@ Validate_Table_Head
     #库存
     #在这里修改情况，验证第一个商品是否有库存
     ${should_quantity}    getFirstProductQuantity
+    Log    ${should_quantity}
     ${show_quantity}    Get Text    dom:document.querySelectorAll(".ant-table-tbody tr")[0].getElementsByTagName("td")[3]
     #如果库存为0
     Run Keyword If    ${should_quantity}==0    compare_quantity    ${show_quantity}
@@ -185,19 +186,19 @@ Should Be Checked
 
 Products Suite Setup
     [Documentation]    商品 case setup
-    Login With Default User
+    Login With Test Account
     Start Ajax Listener
-    Add Product
-    Sleep    5
-    Add Product
-    Sleep    5
-    Add Product
-    Sleep    5
+    #Add Product
+    #Sleep    5
+    #Add Product
+    #Sleep    5
+    #Add Product
+    #Sleep    5
     Go To Products Page
 
 Products Suite Teardown
     [Documentation]    删除商品
-    Delete_First_Product
+    #Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup

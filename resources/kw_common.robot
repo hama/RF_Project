@@ -5,6 +5,9 @@ Resource          kw_browser.robot
 Resource          kw_products.robot
 
 *** Keywords ***
+Login With Test Account
+    New Test Suite Browser And Login    1004714019@qq.com    123456    test
+
 Login With Default User
     New Test Suite Browser And Login    ${user_default_name}    ${user_default_pwd}    ${user_default_domain}
 
@@ -38,6 +41,22 @@ Go To Products Page
     Location Should Be    ${url_products}
     Sleep    1
 
+Go To Marketing Page
+    [Documentation]    跳转到营销页面
+    Wait And Click Element    ${locator_marketing}
+    Sleep    2
+    #点击满减活动
+    #Wait And Click Element    id:test_marketing_substraction
+    #Sleep    2
+
+Go To Marketing Page
+    [Documentation]    跳转到营销页面
+    Wait And Click Element    ${locator_marketing}
+    Sleep    2
+    #点击满减活动
+    #Wait And Click Element    id:test_marketing_substraction
+    #Sleep    2
+
 Go To Order Page
     [Documentation]    跳转到订单页面
     Wait And Click Element    ${locator_order}
@@ -51,7 +70,6 @@ Go To Tax Price Page
     ${unvisible}=    Execute Javascript    return document.querySelectorAll('a[href="/taxPrice"]')[0]===undefined
     Run Keyword If    ${unvisible}    Wait And Click Element    ${locator_setting}
     Wait And Click Element    ${locator_setting_taxPrice}
-    Wait Until Page Contains    ${content_tax_setting}
     Location Should Be    ${url_tax_price}
 
 Go To Shipping Page
