@@ -124,28 +124,6 @@ Add_Product_With_Mutiple_Images
     Wait And Click Element    ${locator_products}
     Handle Alert
 
-Add_Product_Without_Price
-    [Documentation]    不填写价格
-    [Tags]    P0
-    Go To Products Page
-    Wait And Click Element    ${locator_products_add_product}    # 点击添加商品按钮
-    Wait Until Page Contains    ${content_products_new}
-    Wait And Input Text    ${locator_products_addTitle}    ${content_products_addTitle}    # 添加标题，不添加价格
-    Wait And Click Element    ${locator_products_save_product}
-    Page Should Contain    ${content_products_input_price}
-    Wait And Click Element    ${locator_products_back}
-    Handle Alert
-
-Add_Product_And_Cancel
-    [Documentation]    取消填写，啥事都没
-    [Tags]    P0
-    ${api_raw}=    Execute Javascript    return responseMap.get("${api_products_add}")
-    Add Product Required Content
-    Wait And Click Element    ${locator_products_back}
-    Handle Alert
-    ${api_new}=    Execute Javascript    return responseMap.get("${api_products_add}")
-    Should Be Equal    ${api_raw}    ${api_new}
-
 *** KeyWords ***
 Upload_Image
     [Arguments]    ${image}

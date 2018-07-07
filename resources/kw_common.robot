@@ -49,14 +49,6 @@ Go To Marketing Page
     #Wait And Click Element    id:test_marketing_substraction
     #Sleep    2
 
-Go To Marketing Page
-    [Documentation]    跳转到营销页面
-    Wait And Click Element    ${locator_marketing}
-    Sleep    2
-    #点击满减活动
-    #Wait And Click Element    id:test_marketing_substraction
-    #Sleep    2
-
 Go To Order Page
     [Documentation]    跳转到订单页面
     Wait And Click Element    ${locator_order}
