@@ -5,6 +5,7 @@ logs/
 *.png
 *.html
 *.xml
+*.iml
 
 # 测试 keyword 专用
 resources/Test.robot
