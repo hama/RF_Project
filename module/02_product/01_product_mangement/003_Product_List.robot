@@ -16,7 +16,7 @@ Resource          ../../../resources/kw_products.robot
 ${locator_page_total_record}    dom:document.querySelectorAll(".ant-pagination-total-text")[0]
 
 *** Test Cases ***
-Test_Products_List_Data
+products001
     [Documentation]    测试商品列表的展示（数量/标题/库存/SKU/浏览量/销量/上架状态/创建时间）
     [Tags]    P0
     #获取每页多少条数据
@@ -46,7 +46,7 @@ Validate_Tab
     ${class}    Execute Javascript    return document.querySelectorAll(".ant-radio-button-wrapper")[0].getAttribute('class')
     Should Be Equal As Strings    ${class_should_be}    ${class}
 
-Validate_Table_Head
+products003
     [Documentation]    验证商品管理表头的信息显示
     [Tags]    P0
     #验证表头显示
@@ -89,7 +89,7 @@ Validate_Table_Head
     Run Keyword If    ${should_quantity}==0    compare_quantity    ${show_quantity}
     Run Keyword If    ${should_quantity}>0    compare_quantity2    ${show_quantity}    ${should_quantity}
 
-Validate_Product_Status
+products007
     [Documentation]    验证显示的所有商品状态是否显示正确
     [Tags]    P0
     #验证表头显示
@@ -102,7 +102,7 @@ Validate_Product_Status
     \    Run Keyword If    ${status}==0    Should Be Not Checked    ${i}
     \    Run Keyword If    ${status}==1    Should Be Checked    ${i}
 
-Validate_Product_Sku
+products009
     [Documentation]    验证显示的所有商品的sku是否显示正确
     [Tags]    P0
     #验证表头显示
@@ -116,7 +116,7 @@ Validate_Product_Sku
     \    Run Keyword If    ${should_sku}!=-1    Should Be Equal As Strings    ${should_sku}    ${sku}
     \    Run Keyword If    ${should_sku}==-1    Should Be True    '${sku}'==''
 
-Validate_Upload_Alert
+products015
     [Documentation]    验证商品上传弹窗
     [Tags]    P0
     #验证商品上传弹窗
@@ -127,7 +127,7 @@ Validate_Upload_Alert
     #Click Element    dom:document.querySelectorAll(".ant-modal-close")[0]
     Go TO    ${home_page}
 
-Validate_Delete_Product
+products016
     [Documentation]    验证删除商品
     [Tags]    P0
     #删除商品
@@ -146,7 +146,7 @@ Validate_Delete_Product
     #存在多件商品名称相同，这里的判断失效
     #Page Should Not Contain    ${name}
 
-Validate_Cancel_Delete_Product
+products017
     [Documentation]    取消删除商品
     [Tags]    P0
     #取消删除商品

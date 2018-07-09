@@ -16,7 +16,7 @@ Resource          ../../../resources/kw_products.robot
 ${price1}         666    # 第一次修改的售价
 
 *** Test Cases ***
-Change_Price
+checkout138
     [Documentation]    在支付界面返回后台修改本次购买的商品价格，再返回支付界面点击pay now，将以原来的价格支付成功
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------

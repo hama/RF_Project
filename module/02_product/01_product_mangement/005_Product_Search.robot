@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Product_Search
+products071
     [Documentation]    验证商品搜索结果
     [Tags]    P0
     #商品搜索
@@ -28,7 +28,7 @@ Product_Search
     Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-table-tbody")[0]
     Element Should Contain    dom:document.querySelectorAll(".ant-table-tbody")[0]    ${name}
 
-Cancel_Product_Search
+products072
     [Documentation]    验证取消商品搜索
     [Tags]    P0
     #取消商品搜索

@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Close_Cash_On_Delivery
+checkout127
     [Documentation]    关闭“货到付款”支付方式，在支付界面不显示“货到付款”的支付方式（若之前货到付款是开启的，把支持货到付款的物流方案都删除，则会自动关闭”货到付款“的支付方式）
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------

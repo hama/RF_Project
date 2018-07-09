@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Add_Already_Option
+products097
     [Documentation]    添加子商品已有的选项
     [Tags]    P0
     #添加一个已有的选项
@@ -37,7 +37,7 @@ Add_Already_Option
     Sleep    5
     Go TO    ${home_page}
 
-Add_Already_Self_Option
+products098
     [Documentation]    添加子商品自定义的选项
     [Tags]    P0
     #添加一个自定义的选项
@@ -67,7 +67,7 @@ Add_Already_Self_Option
     Sleep    5
     Go TO    ${home_page}
 
-Add_Already_Seo
+products099
     [Documentation]    添加商品时，添加商品seo信息
     [Tags]    P0
     #编辑seo
@@ -101,7 +101,7 @@ Add_Already_Seo
     Sleep    5
     Go TO    ${home_page}
 
-Validate_SEO_Close
+products100
     [Documentation]    验证添加商品时，隐藏seo编辑区域
     [Tags]    P0
     #验证隐藏seo编辑

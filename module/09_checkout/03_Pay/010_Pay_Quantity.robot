@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Change_Status
+checkout147
     [Documentation]    先设置商品为跟踪库存并且库存为5,点击商品预览后，点击进入checkout页面，在点击pay now前，在后台修改该商品库存为10，支付成功
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面-----------------------------------------

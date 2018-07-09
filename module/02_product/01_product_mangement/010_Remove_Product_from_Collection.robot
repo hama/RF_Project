@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Remove_Products_From_Collections
+products061
     [Documentation]    验证商品批量移除专辑，前提条件要存在两个或多个商品专辑
     [Tags]    P0
     #将两个商品一次性从两个专辑中移除
@@ -60,7 +60,7 @@ Remove_Products_From_Collections
     Page Should Not Contain    ${name2}
     Go TO    ${home_page}
 
-Remove_Product_From_Collections
+products060
     [Documentation]    验证一个商品从两个专辑中批量移除
     [Tags]    P0
     #将一个商品从两个专辑中移除

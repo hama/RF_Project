@@ -16,7 +16,7 @@ Resource          ../../../resources/kw_products.robot
 ${name}           Cash on Delivery222
 
 *** Test Cases ***
-Open_Cash_On_Delivery
+checkout129
     [Documentation]    开启“货到付款”支付方式，在支付界面显示“货到付款”的支付方式（若之前货到付款是开启的，把支持货到付款的物流方案都删除，则会自动关闭”货到付款“的支付方式）
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------

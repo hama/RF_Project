@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Validate_Normal_Page
+products040
     [Documentation]    验证商品批量添加标签时是否显示正常
     [Tags]    P0
     Click_First_Product_And_Click_Batch_Menu
@@ -28,7 +28,7 @@ Validate_Normal_Page
     Page Should Contain Element    dom:document.querySelectorAll(".ant-select-selection__rendered")[3]
     Go TO    ${home_page}
 
-Add_Tag
+products042
     [Documentation]    商品批量添加标签
     [Tags]    P0
     ${input_tag}=    Set Variable    bbb
@@ -59,7 +59,7 @@ Add_Tag
     Element Should Contain    dom:document.querySelectorAll(".ant-select-selection__rendered")[0]    ${input_tag}
     Go TO    ${home_page}
 
-Add_Already_Tag
+products043
     [Documentation]    商品批量添加现已有的标签
     [Tags]    P0
     #验证添加已有的标签
@@ -83,7 +83,7 @@ Add_Already_Tag
     Page Should Contain    ${tag}
     Go TO    ${home_page}
 
-Add_New_And_Already_Tag
+products044
     [Documentation]    商品批量添加现已有的标签和新的标签
     [Tags]    P0
     #添加现有的和新的标签
@@ -123,7 +123,7 @@ Add_New_And_Already_Tag
     Page Should Contain    ${already_tag}
     Go TO    ${home_page}
 
-Cancel_Add_Tag
+products047
     [Documentation]    商品批量取消添加标签
     [Tags]    P0
     #取消添加标签
@@ -141,7 +141,7 @@ Cancel_Add_Tag
     Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
     Go TO    ${home_page}
 
-Remove_Tag
+products049
     [Documentation]    商品批量移除标签
     [Tags]    P0
     #移除标签

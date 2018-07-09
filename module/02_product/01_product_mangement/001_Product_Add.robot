@@ -14,7 +14,7 @@ Resource          ../../../resources/kw_products.robot
 Library           customLibrary
 
 *** Test Cases ***
-Add_Product_With_Required
+products074
     [Documentation]    只填写必要字段
     [Tags]    P0
     Add Product Required Content
@@ -27,7 +27,7 @@ Add_Product_With_Required
     Location Should Contain    ${product_id}
     Page Should Contain    ${content_products_addTitle}
 
-Add_Product_With_Other_Content
+products076
     [Documentation]    填写必要字段+状态字段
     [Tags]    P0
     # 添加必要字段
@@ -71,7 +71,7 @@ Add_Product_With_Other_Content
     Page Should Contain    ${content_products_addTitle}
     Page Should Contain    ${sku}
 
-Add_Product_With_Mutiple_Images
+products094
     [Documentation]    添加商品时图片的增加以及编辑功能
     [Tags]    P0
     # 添加必要字段

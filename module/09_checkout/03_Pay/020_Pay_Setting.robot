@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Change_Status
+checkout170
     [Documentation]    将手机和邮箱都需填写改成只需填写邮箱，点击pay now之后，显示的还是之前的内容
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------

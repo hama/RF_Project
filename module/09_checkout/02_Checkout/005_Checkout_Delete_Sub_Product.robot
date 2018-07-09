@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Delete_Sub_Product_With_Already_Product
+checkout107
     [Documentation]    此时第一个商品下有两个子产品，删除当前第一个商品下的第1个子商品（第一个子产品为下单时选中的子产品）
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------

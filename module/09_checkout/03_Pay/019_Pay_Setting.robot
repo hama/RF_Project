@@ -16,7 +16,7 @@ Resource          ../../../resources/kw_products.robot
 ${last_name}      l    # 输入的last name
 
 *** Test Cases ***
-Change_Status
+checkout169
     [Documentation]    结账设置中改变姓名填写格式，pay now后支付成功页面还是显示原来的信息（先设置成只填写姓名，再设置成都要填写）
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------

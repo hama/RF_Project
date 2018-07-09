@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Upload_Success
+products103
     [Documentation]    上传商品成功
     [Tags]    P0
     #上传商品成功
@@ -32,7 +32,7 @@ Upload_Success
     #Should Be Equal As Strings    ${tip}    您已成功导入1条商品，0条商品导入失败。
     Go TO    ${home_page}
 
-Upload_Wrong
+products104
     [Documentation]    上传商品失败
     [Tags]    P0
     #上传商品失败
@@ -49,7 +49,7 @@ Upload_Wrong
     Should Be Equal As Strings    ${title}    忽略错误,开始导入
     Go TO    ${home_page}
 
-Upload_Success_Without_Same
+products105
     [Documentation]    上传重复的商品
     [Tags]    P0
     #上传重复的商品

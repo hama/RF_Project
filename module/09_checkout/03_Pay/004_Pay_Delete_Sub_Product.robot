@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Change_Status
+checkout141
     [Documentation]    在支付界面返回后台删除本次购买的子商品，再返回支付界面点击pay now，支付失败
     [Tags]    P0
     #-----------------------------------------选中一个有子商品的商品，进入到支付页面------------------------------------------

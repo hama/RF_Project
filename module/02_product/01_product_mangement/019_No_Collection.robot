@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Validate_No_Collection
+products058
     [Documentation]    验证商品批量添加专辑时，无专辑数据
     [Tags]    P0
     #验证无专辑数据时

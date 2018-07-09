@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Change_Status
+checkout161
     [Documentation]    (前提环境：银行卡支付已经配置好了，处于关闭的状态)在点击pay now之前开启银行卡支付
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------

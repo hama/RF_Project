@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Product_Up
+products034
     [Documentation]    商品上架,第一个商品必须要有图片
     [Tags]    P0
     #上架一个商品
@@ -34,7 +34,7 @@ Product_Up
     Should Be Equal As Strings    ${class}    ant-switch ant-switch-checked
     Go TO    ${home_page}
 
-Product_Up_Cancel
+products035
     [Documentation]    商品取消上架
     [Tags]    P0
     #取消上架一个商品
@@ -56,7 +56,7 @@ Product_Up_Cancel
     Should Be Equal As Strings    ${class}    ${should_class}
     Go TO    ${home_page}
 
-Product_Down
+products036
     [Documentation]    商品下架
     [Tags]    P0
     #下架一个商品
@@ -77,7 +77,7 @@ Product_Down
     Should Be Equal As Strings    ${class}    ant-switch
     Go TO    ${home_page}
 
-Product_Down_Cancel
+products037
     [Documentation]    取消商品下架
     [Tags]    P0
     #取消下架一个商品
@@ -99,7 +99,7 @@ Product_Down_Cancel
     Should Be Equal As Strings    ${class}    ${should_class}
     Go TO    ${home_page}
 
-Product_Delete_Cancel
+products039
     [Documentation]    取消删除商品
     [Tags]    P0
     #取消商品删除
@@ -124,7 +124,7 @@ Product_Delete_Cancel
     #Page Should Contain    ${name}
     Go TO    ${home_page}
 
-Product_Delete
+products038
     [Documentation]    删除商品
     [Tags]    P0
     #店铺中含有多个名称相同的商品，影响case运行!!!!!!!!!!!!!!!!!!!!
