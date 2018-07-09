@@ -11,13 +11,14 @@ Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
+Library           customLibrary
 
 *** Test Cases ***
 Add_Product_With_Required
     [Documentation]    只填写必要字段
     [Tags]    P0
     Add Product Required Content
-    Wait And Click Element    ${locator_products_saveBtn}
+    Wait And Click Element    ${locator_products_save_product}
     Wait For Save
     # check
     Sleep    3
@@ -34,7 +35,7 @@ Add_Product_With_Other_Content
     Wait And Input Text    ${locator_products_addRawPrice}    ${content_products_addRawPrice}    # 添加原价
     Wait And Input Text    ${locator_products_addWeight}    ${content_products_addWeight}    # 添加重量
     # 添加描述
-    Wait And Click Element    dom:document.querySelectorAll(".fr-view")[0].querySelectorAll("p")[0]
+    Wait And Click Element    ${locator_products_addDesc}
     Execute Javascript    document.querySelectorAll(".fr-view")[0].querySelectorAll("p")[0].innerText='Description'
     # 添加供应商
     Wait And Input Text    ${locator_products_addSupplier}    ${content_products_addSupplier}
@@ -61,7 +62,7 @@ Add_Product_With_Other_Content
     Choose File    ${locator_products_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Wait For Upload
     # 保存
-    Wait And Click Element    ${locator_products_saveBtn}
+    Wait And Click Element    ${locator_products_save_product}
     Wait For Save
     # 跳转到商品详情页面
     # check
@@ -77,9 +78,10 @@ Add_Product_With_Mutiple_Images
     Add Product Required Content
     #上传图片
     Upload_Image    ${file_products_addImg}
+    Sleep    2
     Upload_Image    ${file_products_addImg2}
     # 保存
-    Wait And Click Element    ${locator_products_saveBtn}
+    Wait And Click Element    ${locator_products_save_product}
     Wait For Save
     # 保存之后检测该商品包含添加的多张图片数量是否一致
     Wait Until Page Contains Element    dom:document.querySelectorAll(".wrapper___3TwjV")[0]
@@ -91,11 +93,14 @@ Add_Product_With_Mutiple_Images
     Wait Until Page Contains Element    dom:document.querySelectorAll(".center___1nHSZ")[0]
     Mouse Over    dom:document.querySelectorAll(".center___1nHSZ")[0]
     Wait And Click Element    dom:document.querySelectorAll(".preview___3lmGC")[0]
+    Sleep    10
     #展示图片大图
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-modal-content")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-modal-content")[0]
+    #Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-modal-content")[0]
+    #Sleep    2
     #关闭大图
-    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close")[0]
+    #Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
+    Execute Javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
+    Sleep    5
     #编辑替代文本
     Wait Until Page Contains Element    dom:document.querySelectorAll(".center___1nHSZ")[0]
     Mouse Over    dom:document.querySelectorAll(".center___1nHSZ")[0]
@@ -119,46 +124,26 @@ Add_Product_With_Mutiple_Images
     Wait And Click Element    ${locator_products}
     Handle Alert
 
-Add_Product_Without_Price
-    [Documentation]    不填写价格
-    [Tags]    P0
-    Go To Products Page
-    Wait And Click Element    ${locator_products_addBtn}    # 点击添加商品按钮
-    Wait Until Page Contains    ${content_products_new}
-    Wait And Input Text    ${locator_products_addTitle}    ${content_products_addTitle}    # 添加标题，不添加价格
-    Wait And Click Element    ${locator_products_saveBtn}
-    Page Should Contain    ${content_products_input_price}
-    Wait And Click Element    ${locator_products_back}
-    Handle Alert
-
-Add_Product_And_Cancel
-    [Documentation]    取消填写，啥事都没
-    [Tags]    P0
-    ${api_raw}=    Execute Javascript    return responseMap.get("${api_products_add}")
-    Add Product Required Content
-    Wait And Click Element    ${locator_products_back}
-    Handle Alert
-    ${api_new}=    Execute Javascript    return responseMap.get("${api_products_add}")
-    Should Be Equal    ${api_raw}    ${api_new}
-
 *** KeyWords ***
 Upload_Image
     [Arguments]    ${image}
     #上传一张图片
     Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
-    Wait Until Element Is Visible    id:test_upload_btn
-    Choose File    dom:document.querySelectorAll("input[type='file']")[0]    ${image}
+    Wait Until Element Is Visible    ${locator_products_uploadBtn}
+    Choose File    ${locator_products_chooseFile}    ${image}
     Sleep    3
 
 Products Suite Setup
     [Documentation]    商品 case setup
-    Login With Default User
+    Login With Test Account
     Add Default Category    # 添加默认分类
     Start Ajax Listener
 
 Products Suite Teardown
     [Documentation]    删除商品
-    #Delete All Products    # 删除所有产品
+    Delete_First_Product
+    Delete_First_Product
+    Delete_First_Product
     Delete All Category    # 删除所有分类
     Close Test Suite Browser
 
@@ -175,10 +160,10 @@ Add Category
     Wait And Input Text    dom:document.querySelectorAll("input")[1]    二级分类B
     Click Button    dom:document.querySelectorAll("button")[0]
     Wait And Input Text    dom:document.querySelectorAll("input")[2]    三级分类C
-    Wait And Click Element    id:test_save_btn
+    Wait And Click Element    ${locator_products_saveBtn}
 
 Delete All Category
     [Documentation]    删除分类
     Go To    ${api_products_addProductsType}
     Wait And Click Element    dom:document.querySelectorAll(".tw-close")[0]
-    Click Element    id:test_save_btn
+    Click Element    ${locator_products_saveBtn}

@@ -114,6 +114,9 @@ http://sourceforge.net/projects/wxpython/files/wxPython/2.8.12.1/
 # 若安装过程失败，可使用如下方法手动安装
 https://blog.csdn.net/TZJD89/article/details/72857961
 
+# 安装 RIDE
+pip install robotframework-ride
+
 # 设置 python 默认使用 32 位来运行 wxPython,否则失败
 defaults write com.apple.versioner.python Prefer-32-Bit -bool yes
 ```
@@ -124,13 +127,14 @@ defaults write com.apple.versioner.python Prefer-32-Bit -bool yes
 ```bash
 # pymysql  --  连接 mysql 数据库，获取验证码需要
 pip install pymysql
+pip install requests
 ```
 
 #### 3.4.1 VIM 语法高亮插件
 
 ```shell
 git clone git://github.com/mfukar/robotframework-vim.git
-cp robotframework-vim/* ~/.vim/
+cp -rf robotframework-vim/* ~/.vim/
 ```
 
 
@@ -145,10 +149,17 @@ sudo dpkg -i google-chrome*.deb  # Might show "errors", fixed by next line
 sudo apt-get install -f
 
 # 测试是否可以运行
-google-chrome --headless --remote-debugging-port=9222 https://chromium.org --disable-gpu
+google-chrome --headless --no-sandbox --remote-debugging-port=9222 https://chromium.org --disable-gpu
 
-# 下载 chromedriver , 即 操作 chrome 的 api
-wget https://chromedriver.storage.googleapis.com/2.31/chromedriver_linux64.zip
+# 下载 chromedriver , 即 操作 chrome 的 api, 注意需要使用 2.38 版本，其他的大多数不可用!!!!
+# 其他版本报错如下：
+Parent suite setup failed:
+WebDriverException: Message: disconnected: unable to connect to renderer
+  (Session info: headless chrome=67.0.3396.87)
+  (Driver info: chromedriver=2.32.498513 (2c63aa53b2c658de596ed550eb5267ec5967b351),platform=Linux 4.4.0-82-generic x86_64)
+
+# 安装 2.38 版本
+wget https://chromedriver.storage.googleapis.com/2.38/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
 mv chromedriver /usr/local/bin
 ```
@@ -278,11 +289,11 @@ robot --outputdir logs \
 | \|—— 07_tools    工具        |             |
 | \|—— 08_settings  设置       |             |
 | \|—— 03_tax_price  税费      | 吴文雄      |
-| \|—— 04_payment 支付         |             |
-| \|—— 05_payment 支付         | 俊成        |
+| \|—— 04_payment 支付         | 俊成/志成   |
+| \|—— 05_payment 支付         | 俊成/志成   |
 | \|—— 06_shipping 物流        | 俊成        |
 | \|—— 09_checkout             | 俊成/吴文雄 |
-| \|—— 10_account 账户登录注册 |             |
-| \|—— 001 register  注册      |             |
-| \|—— 002 login 登录          |             |
+| \|—— 10_account 账户登录注册 | 俊成        |
+| \|—— 001 register  注册      | 俊成        |
+| \|—— 002 login 登录          | 俊成        |
 

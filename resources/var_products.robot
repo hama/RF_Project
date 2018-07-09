@@ -33,6 +33,12 @@ ${locator_products_addCategoryItem}    dom:document.querySelectorAll(".ant-casca
 ${locator_products_chooseFile}    dom:document.querySelectorAll("input[type='file']")[0]    # 选择文件上传
 ${locator_products_chooseCategory}    id:product_type_cascade    # 选择商品分类
 ${locator_products_chooseCategoryItem}    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]    # 选择商品分类子项
+${locator_products_editTableHead}    dom:document.querySelectorAll(".edit_head___UidlR")[0]    #编辑表头
+${locator_products_deleteIcon}    dom:document.querySelectorAll(".delete___2xfx-")[0]    #商品列表的删除icon
+${locator_products_cancelDelete}    id:test_delete_modal_cancel_btn    #商品列表点击删除icon弹出框中的取消按钮
+${locator_products_add_product}    dom:document.querySelectorAll(".large_btn___3RbRK")[0]    #商品列表页的新增商品按钮
+${locator_products_upload_product}    dom:document.querySelectorAll(".icon_custom_left___GO944")[2]    #商品列表页的上传商品按钮
+${locator_products_save_product}    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]    #商品详情页的保存按钮
 # content
 ${content_products_all}    全部
 ${content_products_empty}    暂无数据
@@ -51,6 +57,10 @@ ${content_products_AddTags}    TagA
 ${content_products_tips_save_ok}    保存成功
 ${content_products_tips_select_products}    请至少选择一个商品
 ${content_products_tips_saving}    页面有未保存内容
+${store_name}    test
 # file
+${file_products_template}    ${CURDIR}/xlsx/product_template.xlsx    # 添加单个商品模版文件
+${file_products_templates}    ${CURDIR}/xlsx/products_template.xlsx    # 添加多个商品模版文件
+${file_products_wrong_template}    ${CURDIR}/xlsx/wrong_format.xlsx    # 添加单个的错误的商品模版文件
 ${file_products_addImg}    ${CURDIR}/images/tm.jpg    # 添加商品图片
 ${file_products_addImg2}    ${CURDIR}/images/mv.jpg    # 添加商品图片

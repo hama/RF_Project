@@ -21,30 +21,34 @@ ${content_products_tips_shelf_ok}    上架成功
 Edit_Title
     [Documentation]    测试已有商品的编辑，保存生效
     [Tags]    P0
+    Sleep    2
     Wait And Click Element    ${locator_products_first}
     # 编辑商品
     ${new_title}=    Evaluate    random.randint(0, 100)    modules=random
     Wait And Input Text    ${locator_products_addTitle}    ${new_title}
     # 验证编辑页面排版
-    Wait And Click Element    ${locator_products_saveBtn}
+    Wait And Click Element    ${locator_products_save_product}
     Wait Until Page Contains    ${content_products_tips_save_ok}
     Sleep    1
     Go To Products Page
+    Sleep    5
     ${new_title_str}=    Convert To String    ${new_title}
     Page Should Contain    ${new_title_str}
 
 Edit_Price
     [Documentation]    测试已有商品的编辑，保存生效
     [Tags]    P0
+    Sleep    2
     Wait And Click Element    ${locator_products_first}
     # 编辑商品
     ${new_price}=    Evaluate    random.randint(0, 100)    modules=random
     Wait And Input Text    ${locator_products_addPrice}    ${new_price}
     # 验证编辑页面排版
-    Wait And Click Element    ${locator_products_saveBtn}
+    Wait And Click Element    ${locator_products_save_product}
     Wait Until Page Contains    ${content_products_tips_save_ok}
     Sleep    1
     Go To Products Page
+    Sleep    5
     Wait Until Page Contains Element    ${locator_products_first}
     Wait And Click Element    ${locator_products_first}
     Sleep    3
@@ -54,21 +58,24 @@ Edit_Price
 Edit_Sku
     [Documentation]    测试已有商品的编辑，保存生效
     [Tags]    P0
+    Sleep    2
     Wait And Click Element    ${locator_products_first}
     # 编辑商品
     ${new_sku}=    Evaluate    random.randint(0, 100)    modules=random
     Wait And Input Text    ${locator_products_addSku}    ${new_sku}
     # 验证编辑页面排版
-    Wait And Click Element    ${locator_products_saveBtn}
+    Wait And Click Element    ${locator_products_save_product}
     Wait Until Page Contains    ${content_products_tips_save_ok}
     Sleep    1
     Go To Products Page
+    Sleep    5
     ${new_sku_str}=    Convert To String    ${new_sku}
     Page Should Contain    ${new_sku_str}
 
 Edit_Without_Save
     [Documentation]    测试已有商品的编辑，未保存退出，弹窗提示是否退出，选择 是
     [Tags]    P0
+    Sleep    2
     Wait And Click Element    ${locator_products_first}
     # 记录商品原始名称
     ${old_sku}    Get Text    ${locator_products_addSku}
@@ -77,13 +84,16 @@ Edit_Without_Save
     Wait And Input Text    ${locator_products_addSku}    ${new_sku}
     # 验证编辑页面排版
     Wait And Click Element    ${locator_products_back}
+    Sleep    5
     Alert Should Be Present
     Go To Products Page
+    Sleep    5
     Page Should Contain    ${old_sku}
 
 Edit_Without_Save_Dismmis_Alert
     [Documentation]    测试已有商品的编辑，未保存退出，弹窗提示是否退出，选择 否
     [Tags]    P0
+    Sleep    2
     Wait And Click Element    ${locator_products_first}
     # 记录商品原始名称
     ${old_sku}    Get Text    ${locator_products_addSku}
@@ -92,53 +102,25 @@ Edit_Without_Save_Dismmis_Alert
     Wait And Input Text    ${locator_products_addSku}    ${new_sku}
     # 验证编辑页面排版
     Wait And Click Element    ${locator_products_back}
+    Sleep    5
     Handle Alert    action=DISMISS
     # 正常退出
     Wait And Click Element    ${locator_products_back}
+    Sleep    5
     Alert Should Be Present
-
-Shelf Drop List Should Empty
-    [Documentation]    测试无上架下架商品时页面显示内容
-    [Tags]    P0
-    Wait And Click Element    ${locator_products_shelf}
-    Wait Until Page Contains    ${content_products_empty}
-
-Edit Shelf And Drop
-    [Documentation]    测试已有商品的上架
-    [Tags]    P0
-    # 获取第一件商品的标题
-    ${title}=    Get Text    dom:document.querySelectorAll("tr td")[2]
-    # 将第一件商品进行上架（默认添加的商品是下架的）
-    Page Should Contain Element    ${locator_products_first}
-    Wait And Click Element    ${locator_products_first_switch}
-    Page Should Contain    是否上架
-    Click Button    确 定
-    Wait Until Page Contains    上架成功
-    # 切换到上架商品
-    Wait And Click Element    ${locator_products_shelf}
-    Page Should Contain    ${title}
-    # 再把商品下架
-    Page Should Contain Element    ${locator_products_first}
-    Wait And Click Element    ${locator_products_first_switch}
-    Page Should Contain    是否下架
-    Click Button    确 定
-    Wait Until Page Contains    下架成功
-    # 切换到上架商品
-    Wait And Click Element    ${locator_products_drop}
-    Page Should Contain    ${title}
 
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup
-    Login With Default User
+    Login With Test Account
     Start Ajax Listener
     Add Product
+    Sleep    5
     Go To Products Page
 
 Products Suite Teardown
     [Documentation]    删除商品
-    #Delete All Products    # 删除所有产品
-    #Delete All Category    # 删除所有分类
+    Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup
