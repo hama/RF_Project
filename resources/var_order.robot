@@ -1,5 +1,4 @@
 *** Variables ***
-# api
 # content
 ${content_order_title}    全部
 # locator

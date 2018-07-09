@@ -13,7 +13,7 @@ Resource          ./common.robot
 *** Variables ***
 
 *** Test Cases ***
-093_shipping
+0132_shipping
     [Documentation]    创建物流 输入 方案名 点击保存 提示 请添加国家
     [Tags]    P0
     Go To Shipping Page
@@ -24,8 +24,8 @@ Resource          ./common.robot
     page should not contain element    dom:document.querySelectorAll("button")[1]
     Quit All Shipping
 
-096_shipping
-    [Documentation]    创建物流 添加中国 > 点击后显示弹窗，显示中国的所有省份并全部处于勾选状态
+0137_shipping
+    [Documentation]    点击后显示弹窗，显示中国的所有省份并全部处于勾选状态
     [Tags]    P0
     Go To Shipping Page
     ${xpath_d}    set variable    id:test_add_btn
@@ -70,8 +70,8 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Shipping
 
-094_shipping
-    [Documentation]    创建物流 除了价格运费不添加，其他照常添加 保存成功
+0134_shipping
+    [Documentation]    只添加价格运费，重量和数量运费不添加
     [Tags]    P0
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
@@ -116,8 +116,8 @@ Resource          ./common.robot
     page should contain element    dom:document.querySelectorAll("button")[1]
     Delete Shipping
 
-095_shipping
-    [Documentation]    创建物流 只添加数量运费，重量和价格运费不添加，保存成功
+0135_shipping
+    [Documentation]    只添加重量运费，价格和数量运费不添加
     [Tags]    P0
     Go To Shipping Page
     ${xpath_d}    set variable    id:test_add_btn
@@ -168,7 +168,7 @@ check_list_data
     \    Should Be True    '${res_data}'=='${ul_data}'
     Quit All Setp
 
-092_shipping
+0131_shipping
     [Documentation]    创建物流 没有输入 方案名 点击保存
     [Tags]    P0
     Go To Shipping Page

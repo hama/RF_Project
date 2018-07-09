@@ -2,7 +2,7 @@
 Suite Teardown    Close Test Suite Browser
 Force Tags        Register
 Library           SeleniumLibrary
-Library           ${CURDIR}../../../lib/customLibrary
+Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_tax_price.robot
 Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/var_common.robot
@@ -13,7 +13,9 @@ Resource          customLibrary
 
 *** Test Cases ***
 remove_user
-    remove user    ${recover_user}
+    [Documentation]    删除账户
+    [Tags]    common
+    remove user    ${register_user}
 
 register_pass
     [Documentation]    注册
@@ -123,7 +125,7 @@ register_error_six
     input password    id:confirmpass    12345123456783
     input text    id:account    ${register_user}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
-    Wait And Click Elementn    dom:document.querySelectorAll("button")[1]
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
     Close Browser
 
@@ -253,19 +255,19 @@ register_error_thirteen
     Close Browser
 
 logout
-    [Documentation]    登陆成功
+    [Documentation]    登陆成功,然后退出登陆
     [Tags]    P0
     Comment    wait until login button is visible
     Open Test Browser    ${home_page}
     Wait Until Element Is Visible    ${login_btn}
     Input Text    id:account    ${register_user}
     Input Password    id:password    ${register_pwd}
-    Wait And Click Button    ${login_btn}
-    Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${register_domain}
+    #Wait And Click Button    ${login_btn}
+    #Wait Until Element Is Visible    id:username
+    #Input Text    id:username    ${register_domain}
     Wait And Click Element    ${login_btn}
     Sleep    1
     Page Should Contain Element    ${locator_order}
-    Wait And Click Element    dom:document.querySelectorAll(".xiala-choose")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".logout___U0tma")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".hd-line-center")[0]
+    Execute JavaScript    return document.querySelectorAll(".account_content___18o60 a")[1].click()
     Close Browser

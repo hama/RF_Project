@@ -10,7 +10,7 @@ Resource          ../../resources/kw_add_order.robot
 Resource          ./common.robot
 
 *** Test Cases ***
-order_detail_update_send
+order_072
     [Documentation]    运单号输入时，物流商会匹配对应的内容，点击保存后，运单号更新成功
     [Tags]    P0
     Add Order    #.调用生成订单
@@ -34,8 +34,8 @@ order_detail_update_send
     page should contain element    dom:document.querySelectorAll(".shipping_code___3Gh0j")[0]
     Quit Order Setp
 
-order_detail_click_cancel
-    [Documentation]    点击发货详情中的更新运单号 ,点击取消会取消本次操作，运单号不会被更新
+order_073
+    [Documentation]    点击取消会取消本次操作，运单号不会被更新
     [Tags]    P1
     Add Order    #.调用生成订单
     Go To    ${home_page}
@@ -53,8 +53,8 @@ order_detail_click_cancel
     #Execute JavaScript    return document.getElementById("dj").scrollTo(0,10000)
     Quit Order Setp
 
-order_detail_save_pass
-    [Documentation]    点击发货详情中的更新运单号 运单号和物流商都不改变内容 保存成功，运单号不会被更新
+order_074
+    [Documentation]    保存成功，运单号不会被更新
     [Tags]    P0
     Add Order    #.调用生成订单
     Go To    ${home_page}
@@ -68,8 +68,8 @@ order_detail_save_pass
     page should not contain    dom:document.querySelectorAll(".shipping_code___3Gh0j")[0]
     Quit Order Setp
 
-order_detail_cancel_send
-    [Documentation]    点击取消本次发货,弹出二次确认弹窗提示用户确定取消发货
+order_075
+    [Documentation]    弹出二次确认弹窗提示用户确定取消发货
     [Tags]    P0
     Add Order    #.重生成订单
     go to    ${home_page}
@@ -100,7 +100,6 @@ order_detail_update_send_not
     Should Be True    '${res}'=='未发货'
     click button    添加运单
     Wait And Click Element    dom:document.querySelectorAll("button")[4]
-    page should contain element    ${order_dateil_update_send}
     Wait And Click Element    dom:document.querySelectorAll(".tw-Updated")[0]
     Input Text    dom:document.querySelectorAll("#shipping_code")[0]    ${input}
     Wait And Click Element    dom:document.querySelectorAll('button')[3]
@@ -108,7 +107,7 @@ order_detail_update_send_not
     page should contain element    dom:document.querySelectorAll(".label___oVKMA")[0]
     Quit Order Setp
 
-order_detail_cancel_pass
+order_076
     [Documentation]    取消发货成功，本次发货已被取消
     [Tags]    P0
     Add Order
@@ -130,8 +129,8 @@ order_detail_cancel_pass
     Page Should Contain Element    dom:document.querySelectorAll("button")[1]
     Quit Order Setp
 
-order_detail_cancel_send_cacel
-    [Documentation]    取消发货成功，点击取消按钮
+order_077
+    [Documentation]    取消本次操作，不会取消发货
     [Tags]    P1
     Add Order
     go to    ${home_page}

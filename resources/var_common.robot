@@ -1,15 +1,11 @@
 *** Variables ***
 ### 未分类，需要分类并清理
 ${home_page}      http://admin1024.shoplazza.com
-${main_user}      18826557090    #.没有子账户的账号
-${main_pwd}       147258    #.没有子账户的密码
 ${recover_user}    15220581724    #.找回密码的账号
 ${recover_password}    123456    #.找回密码的密码
 ${recover_domain}    chen    #.找回密码的域名
 ${recover_pwd_btn}    dom:document.querySelectorAll('a')[1]
-${defaultUser}    17601298661
-${defaultPassword}    111111
-${defaultDomain}    baiyuan
+
 ${error_msg}      出错啦！    #.自定义错误提示
 ${login_btn}      class:logBtn___3pRgJ    #.登陆按钮
 ${recover_pwd_btn}    //*[@id="root"]/div/div/form/div[4]/div/div/a[1]    #.忘记密码按钮
@@ -41,3 +37,8 @@ ${register_user}    15297989918
 ${register_domain}    cheng
 ${register_pwd}    123456
 ${register_code}    DJ6602    #.推荐吗
+
+#.订单|物流|checkout 所用的账户
+${comm_user}    15220581724
+${comm_pwd}    123456
+${comm_domain}    chen
