@@ -8,10 +8,9 @@ Resource          ../../../resources/var_shipping.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_shipping.robot
-Resource          ./common.robot
 
 *** Test Cases ***
-057_shipping
+shipping057
     [Documentation]    添加运费窗口直接关闭 列表不存在数据
     [Tags]    P0
     Go To Shipping Page
@@ -20,7 +19,7 @@ Resource          ./common.robot
     sleep    1
     page should not contain element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
 
-058_shipping
+shipping058
     [Documentation]    添加运费窗口输入内容后直接关闭 列表不存在数据
     [Tags]    P0
     Go To Shipping Page
@@ -30,7 +29,7 @@ Resource          ./common.robot
     sleep    1
     page should not contain element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
 
-042_shipping
+shipping042
     [Documentation]    添加运费窗口输入内容后直接关闭 再次点击添加按钮 后的编辑窗口里没有数据
     [Tags]    P1
     Go To Shipping Page
@@ -44,7 +43,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-061_shipping
+shipping061
     [Documentation]    点击添加重量运费按钮出现编辑窗口
     [Tags]    P1
     Go To Shipping Page
@@ -54,7 +53,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-064_shipping
+shipping064
     [Documentation]    添加运费 在名称输入 重量运费 后 对应框里显示 重量运费
     [Tags]    P1
     Go To Shipping Page
@@ -67,7 +66,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-066_shipping
+shipping066
     [Documentation]    添加运费 在名称输入 123 后 对应框里显示 123
     [Tags]    P0
     #.添加运费 在名称输入 123 后    对应框里显示 123
@@ -82,7 +81,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-067_shipping
+shipping067
     [Documentation]    添加运费 在名称输入 123 后 保存 列表里显示 123对应信息
     [Tags]    P0
     Go To Shipping Page
@@ -94,7 +93,7 @@ Resource          ./common.robot
     page should contain element    //*[@id="dj"]/div/div[4]/div[2]/div/div/div/div/div/table/tbody/tr
     Quit All Shipping
 
-068_shipping
+shipping068
     [Documentation]    添加运费 在名称输入超过50个字符 提示错误
     [Tags]    P0
     Go To Shipping Page
@@ -108,7 +107,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-071_shipping
+shipping071
     [Documentation]    添加运费 在名称输入正常字符 保存成功
     [Tags]    P0
     Go To Shipping Page
@@ -121,7 +120,7 @@ Resource          ./common.robot
     page should contain element    dom:document.querySelectorAll("table tbody tr")[0]
     Quit All Shipping
 
-069_shipping
+shipping069
     [Documentation]    添加运费 在名称输入正常字符 保存成功
     [Tags]    P0
     Go To Shipping Page
@@ -135,7 +134,7 @@ Resource          ./common.robot
     page should contain element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
     Quit All Shipping
 
-073_shipping
+shipping073
     [Documentation]    添加运费 在说明框里输入超过200个字符 提示错误
     [Tags]    P1
     Go To Shipping Page
@@ -153,7 +152,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-072_shipping
+shipping072
     [Documentation]    添加运费 在说明框里输入 200个以内的字符 保存成功
     [Tags]    P1
     Go To Shipping Page
@@ -169,7 +168,7 @@ Resource          ./common.robot
     page should contain element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
     Quit All Shipping
 
-074_shipping
+shipping074
     [Documentation]    添加重量运费 在说明框里输入字符 保存提示 其他信息未填写
     [Tags]    P1
     Go To Shipping Page
@@ -184,7 +183,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-075_shipping
+shipping075
     [Documentation]    添加重量运费 最小单价输入 454544454454545 提示输入10位数以内的数字
     [Tags]    P1
     Go To Shipping Page
@@ -199,7 +198,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-076_shipping
+shipping076
     [Documentation]    添加重量运费 最大单价输入 454544454454545 提示输入10位数以内的数字
     [Tags]    P1
     Go To Shipping Page
@@ -214,7 +213,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-078_shipping
+shipping078
     [Documentation]    "最小订单重量输入：10 最大订单重量输入： 100" 输入正常最小最大运费 保存成功
     [Tags]    P0
     Go To Shipping Page
@@ -231,7 +230,7 @@ Resource          ./common.robot
     page should contain element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
     Quit All Shipping
 
-079_shipping
+shipping079
     [Documentation]    添加运费 最小订单重量输入：100 最大订单重量输入： 10 提示错误
     [Tags]    P1
     Go To Shipping Page
@@ -249,7 +248,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-080_shipping
+shipping080
     [Documentation]    添加运费 最小订单重量输入：200 最大订单重量输入： 100 提示错误
     [Tags]    P1
     Go To Shipping Page
@@ -267,7 +266,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-081_shipping
+shipping081
     [Documentation]    添加重量运费 默认单位是克
     [Tags]    P1
     Go To Shipping Page
@@ -279,7 +278,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-082_shipping
+shipping082
     [Documentation]    添加运费重量 克。千克，磅
     [Tags]    P1
     Go To Shipping Page
@@ -295,7 +294,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-087_shipping
+shipping087
     [Documentation]    添加重量运费 取消勾选 免运费
     [Tags]    P0
     Go To Shipping Page
@@ -307,7 +306,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-089_shipping
+shipping089
     [Documentation]    添加重量运费 输入 运费 免运费的选中状态取消
     [Tags]    P0
     Go To Shipping Page
@@ -322,7 +321,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-090_shipping
+shipping090
     [Documentation]    添加重量运费 运费价格输入框输入超过10位以上的数字 提示错误
     [Tags]    P1
     Go To Shipping Page
@@ -335,7 +334,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-091_shipping
+shipping091
     [Documentation]    添加重量运费 运费价格输入框输入100 保存成功 列表出现该运费
     [Tags]    P0
     Go To Shipping Page
@@ -351,7 +350,7 @@ Resource          ./common.robot
     Should Be True    ${res}==${re}
     Quit All Shipping
 
-092_shipping
+shipping092
     [Documentation]    添加重量运费 运费价格输入框输入0 保存成功 列表出现该运费为0
     [Tags]    P0
     Go To Shipping Page
@@ -368,7 +367,7 @@ Resource          ./common.robot
     Should Be True    ${res}==${re}
     Quit All Shipping
 
-093_shipping
+shipping093
     [Documentation]    添加重量运费 勾选是否支持货到付款 列表出先支持
     [Tags]    P0
     Go To Shipping Page
@@ -383,7 +382,7 @@ Resource          ./common.robot
     Should Be True    '${data}'=='支持'
     Quit All Shipping
 
-094_shipping
+shipping094
     [Documentation]    添加重量运费 不勾选是否支持货到付款 列表出先不支持
     [Tags]    P0
     Go To Shipping Page
@@ -402,7 +401,7 @@ Resource          ./common.robot
     Should Be True    '${data}'=='不支持'
     Quit All Shipping
 
-095_shipping
+shipping095
     [Documentation]    添加重量运费 直接关掉窗口 列表不存在运费信息
     [Tags]    P0
     Go To Shipping Page
@@ -412,7 +411,7 @@ Resource          ./common.robot
     #click element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
     page should not contain element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
 
-096_shipping
+shipping096
     [Documentation]    添加重量运费 直接关掉窗口 列表不存在运费信息
     [Tags]    P0
     Go To Shipping Page
@@ -427,7 +426,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-098_shipping
+shipping098
     [Documentation]    直接关闭窗口，没有添加重量运费，再次打开窗口时，所输入的内容全部清空
     [Tags]    P1
     Go To Shipping Page

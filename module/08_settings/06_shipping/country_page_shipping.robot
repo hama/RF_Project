@@ -9,10 +9,9 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_shipping.robot
 Library           customLibrary
-Resource          ./common.robot
 
 *** Test Cases ***
-012_shipping
+shipping012
     [Documentation]    添加国家
     [Tags]    P0
     Go To Shipping Page
@@ -22,7 +21,7 @@ Resource          ./common.robot
     Page Should Contain Element    class:ant-table-body
     Quit All Shipping
 
-013_shipping
+shipping013
     [Documentation]    tax price page should be normal atfer login
     [Tags]    P0
     Go To Shipping Page
@@ -35,7 +34,7 @@ Resource          ./common.robot
     Page Should Not Contain Element    class:title___29mch
     Quit All Shipping
 
-017_shipping
+shipping017
     [Documentation]    物流方案输入中
     [Tags]    P1
     Go To Shipping Page
@@ -47,7 +46,7 @@ Resource          ./common.robot
     Page Should Not Contain Element    class:title___29mch
     Quit All Shipping
 
-018_shipping
+shipping018
     [Documentation]    物流方案输入 特殊字符
     [Tags]    P1
     Go To Shipping Page
@@ -59,7 +58,7 @@ Resource          ./common.robot
     Page Should Not Contain Element    class:title___29mch
     Quit All Shipping
 
-019_shipping
+shipping019
     [Documentation]    选择国家后 列表选中国家出现1
     [Tags]    P0
     Go To Shipping Page
@@ -72,7 +71,7 @@ Resource          ./common.robot
     Should Be True    ${res}==1
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
 
-022_shipping
+shipping022
     [Documentation]    选择国家后 列表出现对应的国家
     [Tags]    P0
     Go To Shipping Page
@@ -86,7 +85,7 @@ Resource          ./common.robot
     Should Be True    '${data}'=='${res}'
     Quit All Shipping
 
-024_shipping
+shipping024
     [Documentation]    选择国家的`其他国家` 列表出现其他国家
     [Tags]    P0
     Go To Shipping Page
@@ -98,7 +97,7 @@ Resource          ./common.robot
     Should Be True    '${res}'=='其他国家'
     Quit All Shipping
 
-025_shipping
+shipping025
     [Documentation]    选择国家的随意一个国家 列表不会出现`其他国家`
     [Tags]    P0
     Go To Shipping Page
@@ -111,7 +110,7 @@ Resource          ./common.robot
     Should Be True    '${res}'<>'其他国家'
     Quit All Shipping
 
-027_shipping
+shipping027
     [Documentation]    选择国家不选国家 列表提示暂无数据
     [Tags]    P1
     Go To Shipping Page

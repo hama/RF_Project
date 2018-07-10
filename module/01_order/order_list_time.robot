@@ -7,12 +7,12 @@ Resource          ../../resources/var_tax_price.robot
 Resource          ../../resources/kw_common.robot
 Library           SeleniumLibrary
 Library           customLibrary
-Resource          ./common.robot
+Resource          ../../resources/kw_order.robot
 Resource          ../../resources/var_order.robot
 Resource          ../../resources/kw_add_order.robot
 
 *** Test Cases ***
-order_078
+order078
     [Documentation]    选择后日期显示为2018-06-01~至今`,订单列表只显示这个时间段的订单
     [Tags]    P0
     Add Order
@@ -32,7 +32,7 @@ order_078
     ${res}    order_list_str    ${time}    #.转换字符串比较
     Should Be True    '${res}'=="${false}"
 
-order_079
+order079
     [Documentation]    取消日期筛选，默认显示为近三个月的订单
     [Tags]    P0
     Sleep    1.5

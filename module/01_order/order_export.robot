@@ -7,11 +7,11 @@ Resource          ../../resources/var_tax_price.robot
 Resource          ../../resources/kw_common.robot
 Library           SeleniumLibrary
 Library           customLibrary
-Resource          ./common.robot
+Resource          ../../resources/kw_order.robot
 Resource          ../../resources/var_order.robot
 
 *** Test Cases ***
-order_105
+order105
     [Documentation]    弹出导出订单弹窗，可选择导出本页数据，搜索出的数据和全部数据
     [Tags]    P0d
     Order Export Setp
@@ -20,7 +20,7 @@ order_105
     Wait And Click Element    class:ant-modal-close-x
     Quit Order Setp
 
-order_109
+order109
     [Documentation]    已完成订单 点击导出 不输入邮箱 提示错误
     [Tags]    P0
     Order Export Setp
@@ -31,7 +31,7 @@ order_109
     Wait And Click Element    class:ant-modal-close-x
     Quit Order Setp
 
-order_110
+order110
     [Documentation]    已完成订单 点击导出 输入非邮箱 提示错误
     [Tags]    P1
     Order Export Setp

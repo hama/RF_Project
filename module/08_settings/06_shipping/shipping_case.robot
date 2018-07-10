@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       New Test Suite Browser And Login    ${comm_user}    ${comm_pwd}    ${comm_domain}
-Suite Teardown    #Close Test Suite Browser
+Suite Teardown    Close Test Suite Browser
 Force Tags        Shipping
 Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_common.robot
@@ -8,12 +8,11 @@ Resource          ../../../resources/var_shipping.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_shipping.robot
-Resource          ./common.robot
 
 *** Variables ***
 
 *** Test Cases ***
-0132_shipping
+shipping132
     [Documentation]    创建物流 输入 方案名 点击保存 提示 请添加国家
     [Tags]    P0
     Go To Shipping Page
@@ -24,7 +23,7 @@ Resource          ./common.robot
     page should contain element    dom:document.querySelectorAll(".anticon-cross-circle")[0]
     Quit All Shipping
 
-0137_shipping
+shipping137
     [Documentation]    点击后显示弹窗，显示中国的所有省份并全部处于勾选状态
     [Tags]    P0
     Go To Shipping Page
@@ -48,7 +47,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Shipping
 
-097_shipping
+shipping97
     [Documentation]    创建物流 添加中国 弹出删除窗口
     [Tags]    P0
     Go To Shipping Page
@@ -67,7 +66,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Shipping
 
-0134_shipping
+shipping134
     [Documentation]    只添加价格运费，重量和数量运费不添加
     [Tags]    P0
     Go To Shipping Page
@@ -108,7 +107,7 @@ Resource          ./common.robot
     page should contain element    dom:document.querySelectorAll("#test_shipping_list_0 li")[0]
     Delete Shipping
 
-0135_shipping
+shipping135
     [Documentation]    只添加重量运费，价格和数量运费不添加
     [Tags]    P0
     Go To Shipping Page

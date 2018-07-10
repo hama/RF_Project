@@ -6,13 +6,13 @@ Resource          ../../resources/kw_browser.robot    #Suite Teardown    Close T
 Resource          ../../resources/var_tax_price.robot
 Resource          ../../resources/kw_common.robot
 Resource          ../../resources/kw_add_order.robot
+Resource          ../../resources/kw_order.robot
 Library           SeleniumLibrary
 Library           customLibrary
-Resource          ./common.robot
 Resource          ../../resources/var_order.robot
 
 *** Test Cases ***
-order_009
+order009
     [Documentation]    显示订单列表，分别为，全部，已支付，已确认，已发货，已完成，未支付，已取消
     [Tags]    P1
     Add Order
@@ -26,7 +26,7 @@ order_009
     Page Should Contain Element    ${order_not_payment_btn}
     Page Should Contain Element    ${order_alerady_cencel_btn}
 
-order_011
+order011
     [Documentation]    显示全部订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价
     [Tags]    P1
     Go To Order Page
@@ -34,7 +34,7 @@ order_011
     Wait And Click Element    ${order_list_btn}
     page should contain element    dom:document.querySelectorAll(".ant-radio-button-wrapper-checked")
 
-order_012
+order012
     [Documentation]    显示已支付订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价，支付状态全部显示为已支付
     [Tags]    P1
     Go To Order Page
@@ -43,7 +43,7 @@ order_012
     Wait And Click Element    ${order_delivered_btn}
     page should contain element    dom:document.querySelectorAll(".ant-radio-button-wrapper-checked")
 
-order_014
+order014
     [Documentation]    显示已发货订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价，订单状态全部显示为全部发货或部分发货
     [Tags]    P1
     Go To Order Page
@@ -52,7 +52,7 @@ order_014
     Wait And Click Element    ${order_alerady_send_btn}
     page should contain element    dom:document.querySelectorAll(".ant-radio-button-wrapper-checked")
 
-order_015
+order015
     [Documentation]    显示已完成订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价，订单状态全部显示为已完成
     [Tags]    P1
     Go To Order Page
@@ -61,7 +61,7 @@ order_015
     Wait And Click Element    ${order_alerady_mission_btn}
     page should contain element    dom:document.querySelectorAll(".ant-radio-button-wrapper-checked")
 
-order_016
+order016
     [Documentation]    显示未支付订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价，支付状态全部显示为未支付
     [Tags]    P1
     Go To Order Page
@@ -70,7 +70,7 @@ order_016
     Wait And Click Element    ${order_not_payment_btn}
     page should contain element    dom:document.querySelectorAll(".ant-radio-button-wrapper-checked")
 
-order_017
+order017
     [Documentation]    显示已取消订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价，订单状态全部显示为已取消
     [Tags]    P1
     Go To Order Page
@@ -88,7 +88,7 @@ order_013
     Wait And Click Element    ${order_alerady_refund_btn}
     page should contain element    dom:document.querySelectorAll(".ant-radio-button-wrapper-checked")
 
-order_018
+order018
     [Documentation]    进入订单详情页面，显示订单详情，分别为订单号，下单时间，订单状态，订单信息，商品总价，实际支付价格，支付状态，发货状态，收件人信息，以及发货详情
     [Tags]    P1
     Go To Order Page
@@ -97,7 +97,7 @@ order_018
     Wait And Click Element    ${order_list_first_tr}
     page should contain element    ${order_detail_element}
 
-order_070
+order070
     [Documentation]    发货成功后，订单状态下方将显示发货详情，包括商品详情，商品价格，商品数量，商品总价记忆物流信息
     [Tags]    P1
     Add Order
@@ -115,7 +115,7 @@ order_070
     ${res}    execute javascript    return document.querySelectorAll(".ant-col-3 p")[1].innerHTML
     Should Be True    '${res}'=='已发货'
 
-order_071
+order071
     [Documentation]    弹窗更新运单号弹窗
     [Tags]    P1
     Add Order
@@ -130,7 +130,7 @@ order_071
     Wait And Click Element    class:ant-modal-close-x
     Wait And Click Element    ${locator_order}
 
-order_080
+order080
     [Documentation]    订单列表跳转到搜索界面
     [Tags]    P1
     Go To Order Page
@@ -138,7 +138,7 @@ order_080
     Wait And Click Element    ${order_list_btn}
     Page Should Contain Element    ${order_list_searchs}
 
-order_082
+order082
     [Documentation]    图标选中全部栏，订单列表展示全部订单
     [Tags]    P1
     #${time}    getTimeData
@@ -166,7 +166,7 @@ order_list_already_refund_check
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[3].innerText
     \    Should Be True    '${data}'=='已退款'
 
-order_085
+order085
     [Documentation]    图标选中已发货栏，订单列表展示已发货订单
     [Tags]    P0
     Go To Order Page
@@ -179,7 +179,7 @@ order_085
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[4].innerText
     \    Should Be True    '${data}'=='全部发货'
 
-order_084
+order084
     [Documentation]    图标选中已支付栏，订单列表展示已支付订单
     [Tags]    P0
     Go To Order Page
@@ -191,7 +191,7 @@ order_084
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[4].innerText
     \    Should Be True    '${data}'=='已到达'
 
-order_090
+order090
     [Documentation]    图标选中未支付栏，订单列表展示未支付订单
     [Tags]    P0
     Go To Order Page
@@ -204,7 +204,7 @@ order_090
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[3].innerText
     \    Should Be True    '${data}'=='未支付'
 
-order_092
+order092
     [Documentation]    图标选中已取消栏，订单列表展示已取消订单
     [Tags]    P0
     Go To Order Page
@@ -217,7 +217,7 @@ order_092
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[5].innerText
     \    Should Be True    '${data}'=='已取消'
 
-order_093
+order093
     [Documentation]    订单ID输入框中输入已有订单的订单编号,列表只展示搜索的订单
     [Tags]    P0
     Go To Order Page
@@ -235,7 +235,7 @@ order_093
     sleep    1.5
     Should Be True    '${order_id}'=='${order_ids}'
 
-order_094
+order094
     [Documentation]    订单列表不显示任何内容，提示暂无数据
     [Tags]    P0
     Go To Order Page
@@ -246,7 +246,7 @@ order_094
     Sleep    1.5
     Page Should Not Contain Element    ${order_list_first_tr}
 
-order_096
+order096
     [Documentation]    订单列表中展示下单顾客为：百渊的所有订单
     [Tags]    P0
     Go To Order Page
@@ -263,7 +263,7 @@ order_096
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td p")[1].innerText
     \    Should Be True    '${order_name}'=='${data}'
 
-order_097
+order097
     [Documentation]    订单搜索姓名输入 张三 错误
     [Tags]    P1
     Go To Order Page
@@ -276,7 +276,7 @@ order_097
     Wait And Click Element    ${order_list_search}    #.搜索按钮
     Page Should Not Contain Element    ${order_list_first_tr}
 
-order_098
+order098
     [Documentation]    订单搜索最低价15 最高价15 列表出现15USD的订单
     [Tags]    P0
     Go To Order Page
@@ -294,7 +294,7 @@ order_098
     \    ${res_data}    searchStrs    ${data}
     \    Should Be True    '${price}'=='${res_data}'
 
-order_099
+order099
     [Documentation]    订单搜索最低价输入 10 最高价输入20 列表出现10 ～ 20价格的订单
     [Tags]    P0
     Go To Order Page
@@ -314,7 +314,7 @@ order_099
     \    Run keyword If    ${min_price}<'${res_data}'>${max_price}    log    success
     \    ...    ELSE    Run keyword    Fail    ${error_msg}
 
-order_101
+order101
     [Documentation]    订单搜索最低价输入 10 最高价输入8 提示错误 / 提示最大订单价应大于或等于最小订单价
     [Tags]    P0
     Go To Order Page
@@ -328,7 +328,7 @@ order_101
     ${msg}    Get Value    dom:document.querySelectorAll("input[placeholder='最高金额']")[0]
     Should Be True    '${msg}'=='${Empty}'
 
-order_102
+order102
     [Documentation]    订单搜索最大价输入10 最小价格输入30 提示错误 / 提示，最小订单价应小于或等于最大订单价
     [Tags]    P0
     Go To Order Page

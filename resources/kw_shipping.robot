@@ -19,6 +19,7 @@ ${desc_a}         数量运费说明
 
 *** keyword ***
 Add Shipping
+    [Documentation]    添加物流
     ${name}    salt
     Go To Shipping Page
     Wait And click element    ${locator_shipping_add_shipping}
@@ -47,6 +48,7 @@ Add Shipping
     Location Should Be    ${url_shipping}
 
 Add Shipping China
+    [Documentation]    添加中国的物流
     ${name}    salt
     Go To Shipping Page
     Wait And click element    ${locator_shipping_add_shipping}
@@ -76,7 +78,7 @@ Add Shipping China
     Location Should Be    ${url_shipping}
 
 Delete Shipping
-    #.删除物流
+    [Documentation]    删除物流
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_first_element}
     Wait Until Element Is Visible    ${locator_shipping_add_country}
@@ -91,3 +93,41 @@ Delete Shipping
 Quit Adding Shipping
     Wait And Click Element    ${locator_setting_shipping}
     Alert Should Be Present
+
+Common Setp
+    [Arguments]    ${element}    ${elements_}
+    Wait And Click Element    ${element}
+    Wait And Click Element    ${elements_}
+
+Quantity All Setp
+    [Documentation]    回到添加按钮页面
+    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locator_shipping_add_quantity_btn}
+    Sleep    1
+
+Quit All Shipping
+    [Documentation]    点击页面弹出的确定回到设置按钮页面
+    Wait And Click Element    ${locator_setting_shipping}
+    Sleep    1
+    Alert Should Be Present
+
+Quit All Setp
+    [Documentation]    回到设置物流按钮页面
+    Wait And Click Element    ${locator_setting_shipping}
+    Sleep    1
+
+Quit Add Country
+    [Documentation]    添加国家页面
+    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locator_shipping_add_country}
+    Sleep    1
+
+Quit Add Price Shipping
+    [Documentation]    添加价格运费页面
+    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locator_shipping_add_price_btn}
+    Sleep    1
+
+Wait Setp
+    [Documentation]    等待
+    Wait Until Element Is Visible    ${locator_shipping_add_country}
