@@ -154,7 +154,7 @@ Select_Order_Page
     [Arguments]    ${title}
     [Documentation]    点击预览第一个商品，跳转到商品详情页，点击submit按钮进入订单信息页面
     #点击第一个商品的预览icon
-    Wait And Click Element    dom:document.querySelectorAll(".tw-see")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".preview")[0]
     #跳转到商品详情页
     Select Window    title=${title}
     Sleep    1
@@ -169,7 +169,7 @@ Select_Order_Page_With_Sub_Product
     [Arguments]    ${title}
     [Documentation]    点击预览第一个商品，跳转到商品详情页，选中一个子产品后，点击submit按钮进入订单信息页面
     #点击第一个商品的预览icon
-    Wait And Click Element    dom:document.querySelectorAll(".tw-see")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".preview")[0]
     #跳转到商品详情页
     Select Window    title=${title}
     Sleep    1
@@ -211,6 +211,7 @@ Complete_Order_Message
     Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
     #点击Submit按钮进入支付页
     Wait And Click Element    id:submitMbPay
+    Sleep    2
 
 Complete_Order_Message_Not_Submit
     [Documentation]    点击添加地址按钮，填写信息，点击保存按钮，点击进入支付页
@@ -435,7 +436,7 @@ To_Change_Image
     Sleep    2
     #删除第一张图片
     Mouse Over    dom:document.querySelectorAll(".center___1nHSZ")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".delete___1vipL")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".delete")[0]
     #更新另外一张图片
     Choose File    ${locator_products_chooseFile}    ${file_products_addImg2}
     Sleep    2
