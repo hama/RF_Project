@@ -15,7 +15,7 @@ Resource          ../../../resources/kw_shipping.robot
 Resource          ../../../resources/kw_Checkout.robot
 
 *** Test Cases ***
-checkout_001
+checkout001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0
     #.click products btn
@@ -24,7 +24,7 @@ checkout_001
     Page Should Contain Image    dom:document.querySelectorAll("img")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".sales_price")[0]
 
-checkout_002
+checkout002
     [Documentation]    进入checkout界面 显示购买的商品，地址，
     [Tags]    P1
     #点击商品预览
@@ -34,40 +34,40 @@ checkout_002
     Wait Until Element Is Visible    class:account_container
     Page Should Not Contain Element    class:buy-now
 
-checkout_004
+checkout004
     [Documentation]    进入checkout界面 显示search按钮
     [Tags]    P1
     Checkout Common Setp
     Page Should Contain Element    dom:document.querySelectorAll("a[alt='sousuo1']")[0]
 
-checkout_005
+checkout005
     [Documentation]    进入checkout界面 点击搜索按钮 跳转到搜索页面
     [Tags]    P1
     Checkout Common Setp
     Wait And Click Element    dom:document.querySelectorAll("a[alt='sousuo1']")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".search_header_txt")[0]
 
-checkout_008
+checkout008
     [Documentation]    进入checkout界面 顶部导航栏中间显示店铺名
     [Tags]    P1
     Checkout Common Setp
     Page Should Contain Element    dom:document.querySelectorAll("div[alt='logo']")[0]
 
-checkout_009
+checkout009
     [Documentation]    进入checkout界面 点击购物车按钮 显示购物车内容
     [Tags]    P0
     Checkout Common Setp
     Wait And Click Element    dom:document.querySelectorAll("a[alt='bag']")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".title")[0]
 
-checkout_010
+checkout010
     [Documentation]    进入checkout界面 点击个人中心按钮 显示个人中心内容
     [Tags]    P0
     Checkout Common Setp
     Wait And Click Element    dom:document.querySelectorAll("a[alt='account']")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".operal_list_item")[0]
 
-checkout_011
+checkout011
     [Documentation]    进入checkout界面 点击buynow 然后添加地址
     [Tags]    P0
     Checkout Common Setp
@@ -76,7 +76,7 @@ checkout_011
     Wait And Click Element    dom:document.querySelectorAll(".address_btn")[0]
     Page Should Contain Element    dom:document.querySelectorAll("input[name='first_name']")[0]
 
-checkout_012
+checkout012
     [Documentation]    进去checkout界面 点击buynow 添加地址·输入该输入信息·保存成功
     [Tags]    P0
     Checkout Common Setp
@@ -97,7 +97,7 @@ checkout_012
     Sleep Time
     Page Should Contain Element    dom:document.querySelectorAll(".header")[0]
 
-checkout_013
+checkout013
     [Documentation]    进去checkout 界面 点击buynow 添加地址·姓名不输入 保存不成功
     [Tags]    P1
     Checkout Common Setp
@@ -116,7 +116,7 @@ checkout_013
     Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
 
-checkout_017
+checkout017
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不选择国家 保存不成功
     [Tags]    P1
     Checkout Common Setp
@@ -135,7 +135,7 @@ checkout_017
     Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
 
-checkout_018
+checkout018
     [Documentation]    进去checkout 界面 点击buynow 添加地址·先在后台添加一个中国的国家 然后在c端显示可选的为中国
     [Tags]    P1
     Checkout Common Setp
@@ -147,7 +147,7 @@ checkout_018
     #Select From List    id:shipping_country_id    China
     Page Should Contain Element    dom:document.querySelectorAll("#shipping_country_id option")[1]    #.代表中国
 
-checkout_022
+checkout022
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不选择地区 保存不成功
     [Tags]    P1
     Checkout Common Setp
@@ -165,7 +165,7 @@ checkout_022
     Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
 
-checkout_023
+checkout023
     [Documentation]    进去checkout 界面 点击buynow 添加地址·选择中国 出现中国的所有地区
     [Tags]    P1
     Checkout Common Setp
@@ -179,7 +179,7 @@ checkout_023
     ${count}    Execute JavaScript    return document.querySelectorAll("#shipping_zone_id")[0].length
     Should Be True    ${count}==32
 
-checkout_025
+checkout025
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入城市 保存不成功
     [Tags]    P1
     Checkout Common Setp
@@ -197,7 +197,7 @@ checkout_025
     Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
 
-checkout_026
+checkout026
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入详细地址 保存不成功
     [Tags]    P1
     Checkout Common Setp
@@ -215,7 +215,7 @@ checkout_026
     Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
 
-checkout_028
+checkout028
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入邮编 保存不成功
     [Tags]    P1
     Checkout Common Setp
@@ -233,7 +233,7 @@ checkout_028
     Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
 
-checkout_030
+checkout030
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入邮箱 保存不成功
     [Tags]    P1
     Checkout Common Setp
@@ -251,7 +251,7 @@ checkout_030
     Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
 
-checkout_032
+checkout032
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入电话 保存不成功
     [Tags]    P1
     Checkout Common Setp
@@ -269,7 +269,7 @@ checkout_032
     Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".not_none")[0]
 
-checkout_035
+checkout035
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入电话 保存不成功
     [Tags]    P1
     Checkout Common Setp
@@ -288,7 +288,7 @@ checkout_035
     Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
     Page Should Contain Element    id:submitMbPay
 
-checkout_039
+checkout039
     [Documentation]    进去checkout 界面 点击buynow 添加2次购物车 购物车的数量为2
     [Tags]    P0
     Checkout Common Setp
@@ -300,7 +300,7 @@ checkout_039
     ${count}    Execute JavaScript    return document.querySelectorAll(".space-between span")[2].innerText
     Should Be True    ${count}==2
 
-checkout_040
+checkout040
     [Documentation]    进入checkout 界面 点击留言板，弹出窗口
     [Tags]    P1
     Checkout Common Setp
@@ -308,7 +308,7 @@ checkout_040
     Wait And Click Element    dom:document.querySelectorAll(".review_write")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".addli")
 
-checkout_043
+checkout043
     [Documentation]    进入checkout 界面 点击留言板，弹出窗口 输入超过500个字符
     [Tags]    P1
     ${strs}    Set Variable    aslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsa

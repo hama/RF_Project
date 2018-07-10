@@ -8,10 +8,9 @@ Resource          ../../../resources/var_shipping.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_shipping.robot
-Resource          ./common.robot
 
 *** Test Cases ***
-029_shipping
+shipping029
     [Documentation]    add transport price >> check add transport price windows
     [Tags]    P0
     #.check button
@@ -21,7 +20,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-032_shipping
+shipping032
     [Documentation]    add transport price check name input (str)
     [Tags]    P0
     Go To Shipping Page
@@ -33,7 +32,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-033_shipping
+shipping033
     [Documentation]    add transport price check name input (int)
     [Tags]    P1
     Go To Shipping Page
@@ -45,7 +44,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-034_shipping
+shipping034
     [Documentation]    保存成功，关闭弹窗，价格运费列表中显示 价格运费的信息
     [Tags]    P0
     #.add    transport price    check
@@ -58,7 +57,7 @@ Resource          ./common.robot
     page should contain element    dom:document.querySelectorAll(".ant-table-tbody")[1]
     Quit All Shipping
 
-035_shipping
+shipping035
     [Documentation]    输入50个字符点击保存
     [Tags]    P1
     Go To Shipping Page
@@ -71,7 +70,7 @@ Resource          ./common.robot
     page should contain element    dom:document.querySelectorAll(".ant-table-tbody")[1]
     Quit All Shipping
 
-036_shipping
+shipping036
     [Documentation]    输入超过50个字符点击保存
     [Tags]    P1
     Go To Shipping Page
@@ -84,7 +83,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-040_shipping
+shipping040
     [Documentation]    说明框输入超过200个字符点击保存
     [Tags]    P1
     Go To Shipping Page
@@ -98,7 +97,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-041_shipping
+shipping041
     [Documentation]    说明框输入正常字符点击保存
     [Tags]    P1
     Go To Shipping Page
@@ -112,7 +111,7 @@ Resource          ./common.robot
     page should contain element    dom:document.querySelectorAll(".ant-table-tbody")[1]
     Quit All Shipping
 
-043_shipping
+shipping043
     [Documentation]    最小订单价输入超过10位以上的数字
     [Tags]    P1
     Go To Shipping Page
@@ -128,7 +127,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-044_shipping
+shipping044
     [Documentation]    最大订单价输入超过10位以上的数字
     [Tags]    P1
     Go To Shipping Page
@@ -144,7 +143,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-046_shipping
+shipping046
     [Documentation]    正常输入最小价格，最大价格 保存成功
     [Tags]    P0
     Go To Shipping Page
@@ -160,7 +159,7 @@ Resource          ./common.robot
     page should contain element    dom:document.querySelectorAll(".ant-table-tbody")[1]
     Quit All Shipping
 
-047_shipping
+shipping047
     [Documentation]    最大单价输入10 最大单价变为101
     [Tags]    P0
     Go To Shipping Page
@@ -182,7 +181,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-048_shipping
+shipping048
     [Documentation]    最大单价输入100 最小单价输入200 最小单价变为99
     [Tags]    P0
     Go To Shipping Page
@@ -204,7 +203,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-049_shipping
+shipping049
     [Documentation]    在运费价格框输入值 免运费的勾选离开框取消勾选
     [Tags]    P0
     Go To Shipping Page
@@ -224,7 +223,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-052_shipping
+shipping052
     [Documentation]    运费价格框输入超过长度的数字 提示错误
     [Tags]    P1
     Go To Shipping Page
@@ -245,7 +244,7 @@ Resource          ./common.robot
     Wait And Click Element    class:ant-modal-close-x
     Quit All Setp
 
-053_shipping
+shipping053
     [Documentation]    运费价格框数字 保存成功 在列表显示刚添加的运费
     [Tags]    P0
     Go To Shipping Page
@@ -270,7 +269,7 @@ Resource          ./common.robot
     Should Be True    ${res}==${ship}
     Quit All Shipping
 
-054_shipping
+shipping054
     [Documentation]    运费价格框数字 保存成功 保存成功，价格列表中显示的运费为0
     [Tags]    P0
     Go To Shipping Page
@@ -293,7 +292,7 @@ Resource          ./common.robot
     Should Be True    ${res}==0
     Quit All Shipping
 
-055_shipping
+shipping055
     [Documentation]    勾选是否支持货到付款 列表显示支持
     [Tags]    P0
     Go To Shipping Page
@@ -315,7 +314,7 @@ Resource          ./common.robot
     Should Be True    '${data}'=='支持'
     Quit All Shipping
 
-056_shipping
+shipping056
     [Documentation]    不勾选是否支持货到付款 列表显示不支持
     [Tags]    P0
     Go To Shipping Page

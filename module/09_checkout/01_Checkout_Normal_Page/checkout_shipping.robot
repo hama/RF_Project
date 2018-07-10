@@ -17,7 +17,7 @@ Resource          ../../../resources/kw_Checkout.robot
 *** Test Cases ***
 test
     Add Payment
-checkout_051
+checkout051
     [Documentation]    checkout页面底部弹窗物流选择界面，显示物流（运费1）
     [Tags]    P0
     #.click products btn
@@ -28,7 +28,7 @@ checkout_051
     Page Should Contain Element    class:detail_total_price
     Page Should Contain Element    class:detail_total_price
 
-checkout_071
+checkout071
     [Documentation]    checkout 界面 不添加地址 提示 please select a shipping
     [Tags]    P1
     #,click products btn
@@ -38,7 +38,7 @@ checkout_071
     Wait And Click Element    id:submitMbPay
     Page Should Contain Element    class:not_none
 
-checkout_072
+checkout072
     [Documentation]    checkout 界面 提交成功 进入支付方式选择界面
     [Tags]    P0
     Checkout Common Setp
@@ -59,7 +59,7 @@ checkout_072
     Sleep Time
     Page Should Contain Element    id:submitPaymentMb
 
-checkout_073
+checkout073
     [Documentation]    chekout 界面 提交成功 选择支付方式
     [Tags]    P0
     Checkout Common Setp
@@ -80,7 +80,7 @@ checkout_073
     Sleep Time
     Page Should Contain Element    class:pm_list_title
 
-checkout_074
+checkout074
     [Documentation]    checkout 界面提交成功 显示B端设置的支付方式
     [Tags]    P0
     Checkout Common Setp
@@ -101,7 +101,7 @@ checkout_074
     Sleep Time
     Page Should Contain Element    class:pm_list_row
 
-checkout_075
+checkout075
     [Documentation]    checkout 界面提交成功 展示订单详情
     [Tags]    P1
     Checkout Common Setp
@@ -122,7 +122,7 @@ checkout_075
     Sleep Time
     Page Should Contain Element    class:pm_order_detail
 
-checkout_076
+checkout076
     [Documentation]    checkout 界面提交成功 点击收起展示订单详情按钮
     [Tags]    P1
     Checkout Common Setp
@@ -144,7 +144,7 @@ checkout_076
     Sleep Time
     Page Should Contain Element    class:pm_order_detail
 
-checkout_090
+checkout090
     [Documentation]    checkout 界面提交成功后显示商品价格
     [Tags]    P1
     Checkout Common Setp
@@ -169,7 +169,7 @@ checkout_090
     Sleep Time
     Should Be True    '${rex}'=='${desc}'
 
-checkout_091
+checkout091
     [Documentation]    checkout 页面提交成功后 收起价格详情，只显示本次实际应该支付的价格
     [Tags]    P1
     Checkout Common Setp
@@ -189,7 +189,7 @@ checkout_091
     Sleep Time
     Page Should Contain Element    dom:document.querySelectorAll(".detail_total_price div span:nth-child(2)")[0]
 
-checkout_092
+checkout092
     [Documentation]    checkout 页面提交成功后 跳转到支付成功页面
     [Tags]    P1
     Checkout Common Setp
@@ -210,7 +210,7 @@ checkout_092
     Wait And Click Element    id:submitPaymentMb
     Page Should Contain Element    class:pay_state
 
-checkout_095
+checkout095
     [Documentation]    checkout 页面提交成功后 跳转到支付成功页面显示对应商品信息
     [Tags]    P1
     Checkout Common Setp
@@ -231,7 +231,7 @@ checkout_095
     Wait And Click Element    id:submitPaymentMb
     Page Should Contain Element    class:pay_success_detail
 
-checkout_096
+checkout096
     [Documentation]    checkout 页面提交成功后 跳转到支付成功页面点击 continue shopping 跳转主页
     [Tags]    P1
     Checkout Common Setp
@@ -254,7 +254,7 @@ checkout_096
     Sleep Time
     Page Should Contain Element    class:nav-title
 
-checkout_097
+checkout097
     [Documentation]    checkout 页面提交成功后 跳转到支付成功页面 点击 view order 跳转到订单详情
     [Tags]    P0
     Checkout Common Setp
