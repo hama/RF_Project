@@ -42,7 +42,7 @@ checkout139
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #支付失败
-    Page Should Contain    Payment failure!
+    Page Should Contain    ${payment_failed}
 
 *** Keywords ***
 Products Suite Setup
