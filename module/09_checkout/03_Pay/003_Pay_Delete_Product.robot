@@ -17,7 +17,6 @@ checkout140
     [Documentation]    在支付界面返回后台删除本次购买的商品，再返回支付界面点击pay now，支付失败
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
-
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title
@@ -38,7 +37,7 @@ checkout140
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #支付失败
-    Page Should Contain    Payment failure!
+    Page Should Contain    ${payment_failed}
 
 *** Keywords ***
 Products Suite Setup

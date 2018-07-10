@@ -17,7 +17,6 @@ checkout170
     [Documentation]    将手机和邮箱都需填写改成只需填写邮箱，点击pay now之后，显示的还是之前的内容
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
-
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title

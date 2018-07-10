@@ -70,6 +70,8 @@ Products Suite Teardown
     Go To Products Page
     Delete_First_Product
     Sleep    5
+    End_First_Full_Reduction
+    Sleep    5
     Close Test Suite Browser
 
 Products Test Case Setup

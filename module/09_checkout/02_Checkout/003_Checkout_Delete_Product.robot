@@ -33,7 +33,7 @@ checkout106
     Select Window    title=${store_name}
     Complete_Order_Message
     #支付页面应该显示支付失败
-    Page Should Contain    Payment failure!
+    Page Should Contain    ${payment_failed}
 
 *** Keywords ***
 Products Suite Setup
