@@ -20,7 +20,6 @@ checkout162
     [Documentation]    修改支付方式信息，支付成功后应该显示最新的支付信息(这里修改支付指示，对应的变动将会显示在支付成功页)
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
-
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title

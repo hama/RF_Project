@@ -17,7 +17,6 @@ checkout161
     [Documentation]    (前提环境：银行卡支付已经配置好了，处于关闭的状态)在点击pay now之前开启银行卡支付
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
-
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title

@@ -22,7 +22,6 @@ checkout154
     [Documentation]    先添加一个商品和一个包括全部商品的满减活动，点击商品预览，点击pay now之前，提前结束该商品参与的满减活动
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
-
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title
