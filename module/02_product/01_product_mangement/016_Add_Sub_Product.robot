@@ -139,10 +139,6 @@ Products Suite Setup
 
 Products Suite Teardown
     [Documentation]    删除商品
-    Delete_First_Product
-    Delete_First_Product
-    Delete_First_Product
-    Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup

@@ -202,9 +202,11 @@ Products Suite Setup
     [Documentation]    商品 case setup,添加商品，专辑
     Login With Test Account
     Start Ajax Listener
-    Add Product
-    Sleep    5
     Go TO    ${home_page}
+    Sleep    5
+    Add_Collection
+    Sleep    5
+    Go To Products Page
     Sleep    5
     Add_Collection
     Sleep    5
@@ -212,9 +214,6 @@ Products Suite Setup
 
 Products Suite Teardown
     [Documentation]    删除商品，专辑
-    Delete_First_Product
-    Go TO    ${home_page}
-    Delete_Collection
     Close Test Suite Browser
 
 Products Test Case Setup

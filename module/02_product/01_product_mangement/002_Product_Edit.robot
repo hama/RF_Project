@@ -116,11 +116,14 @@ Products Suite Setup
     Start Ajax Listener
     Add Product
     Sleep    5
+    Add Product
+    Sleep    5
+    Add Product
+    Sleep    5
     Go To Products Page
 
 Products Suite Teardown
     [Documentation]    删除商品
-    Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup

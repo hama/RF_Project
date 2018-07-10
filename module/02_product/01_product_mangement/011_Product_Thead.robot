@@ -119,8 +119,6 @@ Products Suite Setup
     [Documentation]    商品 case setup,添加商品
     Login With Test Account
     Start Ajax Listener
-    Add Product
-    Sleep    5
     Go To Products Page
 
 Products Suite Teardown
@@ -128,7 +126,6 @@ Products Suite Teardown
     Wait And Click Element    ${locator_products_editTableHead}
     Click_All
     Wait And Click Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
-    Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup

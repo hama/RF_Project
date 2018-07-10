@@ -92,8 +92,9 @@ products094
     #点击预览
     Wait Until Page Contains Element    dom:document.querySelectorAll(".center___1nHSZ")[0]
     Mouse Over    dom:document.querySelectorAll(".center___1nHSZ")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".preview___3lmGC")[0]
-    Sleep    10
+    Sleep    2
+    Wait And Click Element    dom:document.querySelectorAll(".preview")[1]
+    Sleep    2
     #展示图片大图
     #Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-modal-content")[0]
     #Sleep    2
@@ -104,7 +105,7 @@ products094
     #编辑替代文本
     Wait Until Page Contains Element    dom:document.querySelectorAll(".center___1nHSZ")[0]
     Mouse Over    dom:document.querySelectorAll(".center___1nHSZ")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".alt___192h2")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".altbianji")[0]
     #展现弹出框
     Wait And Input Text    dom:document.querySelectorAll(".alt_input___1RvXO")[0]    test
     #确定
@@ -112,7 +113,7 @@ products094
     #点击删除图片
     Wait Until Page Contains Element    dom:document.querySelectorAll(".center___1nHSZ")[0]
     Mouse Over    dom:document.querySelectorAll(".center___1nHSZ")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".delete___1vipL")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".delete")[0]
     ${now_count}    Execute Javascript    return document.querySelectorAll(".wrapper___3TwjV").length
     Should Be True    ${now_count}==2
     #移除所有图片
@@ -140,10 +141,7 @@ Products Suite Setup
     Start Ajax Listener
 
 Products Suite Teardown
-    [Documentation]    删除商品
-    Delete_First_Product
-    Delete_First_Product
-    Delete_First_Product
+    [Documentation]    删除分类
     Delete All Category    # 删除所有分类
     Close Test Suite Browser
 

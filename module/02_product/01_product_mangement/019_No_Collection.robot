@@ -33,14 +33,18 @@ products058
 
 *** Keywords ***
 Products Suite Setup
-    [Documentation]    商品 case setup,添加商品
+    [Documentation]    删除所有专辑
     Login With Test Account
     Start Ajax Listener
-    #Add Product
+    Delete_All_Collection
+    Sleep    5
     Go To Products Page
 
 Products Suite Teardown
-    [Documentation]    删除商品
+    [Documentation]    删除所有商品
+    Go To Products Page
+    Sleep    5
+    Delete_All_Products
     Close Test Suite Browser
 
 Products Test Case Setup
