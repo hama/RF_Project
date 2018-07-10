@@ -1,5 +1,4 @@
 *** Variables ***
-# api
 # content
 ${content_order_title}    全部
 # locator
@@ -14,7 +13,7 @@ ${order_alerady_cencel_btn}    //*[@id="dj"]/div/div[2]/div[1]/div/label[6]/span
 ${order_alerady_refund_btn}    //*[@id="dj"]/div/div[2]/div[1]/div/label[7]/span[2]    #.订单-已退款 按钮
 ${order_detail_element}    //*[@id="root"]/div/div/div[1]/div[2]/div[1]/div/div[1]    #.订单详情顶部元素
 ${order_list_first_tr}    dom:document.querySelectorAll("table tbody tr")[0]    #.订单列表table第一个tr
-${order_dateil_update_send}    class:header_left___2PRCj    #.订单详情-更新运单号
+${order_dateil_update_send}    dom:document.querySelectorAll(".header_left___2PRCj")[0]    #.订单详情-更新运单号
 ${order_dateil_cencel_send}    dom:document.querySelectorAll(".icon_cancel___miRJp")[0]    #.订单详情-取消本次发货
 ${order_list_search}    //*[@id="dj"]/div/div[3]/div/div[3]/button[1]    #.订单列表搜索按钮
 ${order_list_searchs}    dom:document.querySelectorAll("button")[0]    #.订单列表搜索按钮

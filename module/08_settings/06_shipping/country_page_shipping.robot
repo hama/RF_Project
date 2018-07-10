@@ -1,5 +1,5 @@
 *** Settings ***
-Suite Setup       New Test Suite Browser And Login    15220581724    123456    chen
+Suite Setup       New Test Suite Browser And Login    ${comm_user}    ${comm_pwd}    ${comm_domain}
 Suite Teardown    Close Test Suite Browser
 Force Tags        Shipping
 Library           ${CURDIR}/../../../lib/customLibrary
@@ -12,7 +12,7 @@ Library           customLibrary
 Resource          ./common.robot
 
 *** Test Cases ***
-001_add_country_shipping
+012_shipping
     [Documentation]    添加国家
     [Tags]    P0
     Go To Shipping Page
@@ -35,7 +35,7 @@ Resource          ./common.robot
     Page Should Not Contain Element    class:title___29mch
     Quit All Shipping
 
-014_shipping
+017_shipping
     [Documentation]    物流方案输入中
     [Tags]    P1
     Go To Shipping Page
@@ -47,7 +47,7 @@ Resource          ./common.robot
     Page Should Not Contain Element    class:title___29mch
     Quit All Shipping
 
-015_shipping
+018_shipping
     [Documentation]    物流方案输入 特殊字符
     [Tags]    P1
     Go To Shipping Page
@@ -59,7 +59,7 @@ Resource          ./common.robot
     Page Should Not Contain Element    class:title___29mch
     Quit All Shipping
 
-016_shipping
+019_shipping
     [Documentation]    选择国家后 列表选中国家出现1
     [Tags]    P0
     Go To Shipping Page
@@ -72,7 +72,7 @@ Resource          ./common.robot
     Should Be True    ${res}==1
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
 
-017_shipping
+022_shipping
     [Documentation]    选择国家后 列表出现对应的国家
     [Tags]    P0
     Go To Shipping Page
@@ -86,7 +86,7 @@ Resource          ./common.robot
     Should Be True    '${data}'=='${res}'
     Quit All Shipping
 
-018_shipping
+024_shipping
     [Documentation]    选择国家的`其他国家` 列表出现其他国家
     [Tags]    P0
     Go To Shipping Page
@@ -98,7 +98,7 @@ Resource          ./common.robot
     Should Be True    '${res}'=='其他国家'
     Quit All Shipping
 
-019_shipping
+025_shipping
     [Documentation]    选择国家的随意一个国家 列表不会出现`其他国家`
     [Tags]    P0
     Go To Shipping Page
@@ -111,7 +111,7 @@ Resource          ./common.robot
     Should Be True    '${res}'<>'其他国家'
     Quit All Shipping
 
-020_shipping
+027_shipping
     [Documentation]    选择国家不选国家 列表提示暂无数据
     [Tags]    P1
     Go To Shipping Page

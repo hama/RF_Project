@@ -1,5 +1,5 @@
 *** Settings ***
-Suite Setup       New Test Suite Browser And Login    15220581724    123456    chen
+Suite Setup       New Test Suite Browser And Login    ${comm_user}    ${comm_pwd}    ${comm_domain}
 Suite Teardown    Close Test Suite Browser
 Force Tags        Order
 Resource          ../../resources/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
@@ -12,7 +12,7 @@ Resource          ../../resources/var_order.robot
 Resource          ../../resources/kw_add_order.robot
 
 *** Test Cases ***
-order_list_time_sort
+order_078
     [Documentation]    选择后日期显示为2018-06-01~至今`,订单列表只显示这个时间段的订单
     [Tags]    P0
     Add Order
@@ -32,7 +32,7 @@ order_list_time_sort
     ${res}    order_list_str    ${time}    #.转换字符串比较
     Should Be True    '${res}'=="${false}"
 
-order_list_time_default
+order_079
     [Documentation]    取消日期筛选，默认显示为近三个月的订单
     [Tags]    P0
     Sleep    1.5

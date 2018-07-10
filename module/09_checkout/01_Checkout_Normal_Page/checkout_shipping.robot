@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     Ckeckout Price Page
-Suite Setup       New Test Suite Browser And Login    15220581724    123456    chen
+Suite Setup       New Test Suite Browser And Login    ${comm_user}    ${comm_pwd}    ${comm_domain}
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
@@ -15,7 +15,9 @@ Resource          ../../../resources/kw_shipping.robot
 Resource          ../../../resources/kw_Checkout.robot
 
 *** Test Cases ***
-Checkout Select Submit
+test
+    Add Payment
+checkout_051
     [Documentation]    checkout页面底部弹窗物流选择界面，显示物流（运费1）
     [Tags]    P0
     #.click products btn
@@ -26,7 +28,7 @@ Checkout Select Submit
     Page Should Contain Element    class:detail_total_price
     Page Should Contain Element    class:detail_total_price
 
-Checkout Not Select Shipping
+checkout_071
     [Documentation]    checkout 界面 不添加地址 提示 please select a shipping
     [Tags]    P1
     #,click products btn
@@ -36,7 +38,7 @@ Checkout Not Select Shipping
     Wait And Click Element    id:submitMbPay
     Page Should Contain Element    class:not_none
 
-Checkout Submit Pass
+checkout_072
     [Documentation]    checkout 界面 提交成功 进入支付方式选择界面
     [Tags]    P0
     Checkout Common Setp
@@ -57,7 +59,7 @@ Checkout Submit Pass
     Sleep Time
     Page Should Contain Element    id:submitPaymentMb
 
-Checkout Submit Pass Select Paymethod
+checkout_073
     [Documentation]    chekout 界面 提交成功 选择支付方式
     [Tags]    P0
     Checkout Common Setp
@@ -78,7 +80,7 @@ Checkout Submit Pass Select Paymethod
     Sleep Time
     Page Should Contain Element    class:pm_list_title
 
-Checkout Submit Paymethod
+checkout_074
     [Documentation]    checkout 界面提交成功 显示B端设置的支付方式
     [Tags]    P0
     Checkout Common Setp
@@ -99,7 +101,7 @@ Checkout Submit Paymethod
     Sleep Time
     Page Should Contain Element    class:pm_list_row
 
-Checkout Detail
+checkout_075
     [Documentation]    checkout 界面提交成功 展示订单详情
     [Tags]    P1
     Checkout Common Setp
@@ -120,7 +122,7 @@ Checkout Detail
     Sleep Time
     Page Should Contain Element    class:pm_order_detail
 
-Checkout Click Detail Btn
+checkout_076
     [Documentation]    checkout 界面提交成功 点击收起展示订单详情按钮
     [Tags]    P1
     Checkout Common Setp
@@ -142,7 +144,7 @@ Checkout Click Detail Btn
     Sleep Time
     Page Should Contain Element    class:pm_order_detail
 
-Checkout Submit Price
+checkout_090
     [Documentation]    checkout 界面提交成功后显示商品价格
     [Tags]    P1
     Checkout Common Setp
@@ -167,7 +169,7 @@ Checkout Submit Price
     Sleep Time
     Should Be True    '${rex}'=='${desc}'
 
-Checkout Submit Display Price
+checkout_091
     [Documentation]    checkout 页面提交成功后 收起价格详情，只显示本次实际应该支付的价格
     [Tags]    P1
     Checkout Common Setp
@@ -187,7 +189,7 @@ Checkout Submit Display Price
     Sleep Time
     Page Should Contain Element    dom:document.querySelectorAll(".detail_total_price div span:nth-child(2)")[0]
 
-Checkout Submit Payment Pass
+checkout_092
     [Documentation]    checkout 页面提交成功后 跳转到支付成功页面
     [Tags]    P1
     Checkout Common Setp
@@ -208,7 +210,7 @@ Checkout Submit Payment Pass
     Wait And Click Element    id:submitPaymentMb
     Page Should Contain Element    class:pay_state
 
-Checkout Submit Payment Pass Display Detail
+checkout_095
     [Documentation]    checkout 页面提交成功后 跳转到支付成功页面显示对应商品信息
     [Tags]    P1
     Checkout Common Setp
@@ -229,7 +231,7 @@ Checkout Submit Payment Pass Display Detail
     Wait And Click Element    id:submitPaymentMb
     Page Should Contain Element    class:pay_success_detail
 
-Checkout Submit Go Index
+checkout_096
     [Documentation]    checkout 页面提交成功后 跳转到支付成功页面点击 continue shopping 跳转主页
     [Tags]    P1
     Checkout Common Setp
@@ -252,7 +254,7 @@ Checkout Submit Go Index
     Sleep Time
     Page Should Contain Element    class:nav-title
 
-Checkout Submit Go Order Detail
+checkout_097
     [Documentation]    checkout 页面提交成功后 跳转到支付成功页面 点击 view order 跳转到订单详情
     [Tags]    P0
     Checkout Common Setp

@@ -1,5 +1,5 @@
 *** Settings ***
-Suite Setup       New Test Suite Browser And Login    15220581724    123456    chen
+Suite Setup       New Test Suite Browser And Login    ${comm_user}    ${comm_pwd}    ${comm_domain}
 Suite Teardown    Close Test Suite Browser
 Force Tags        Order
 Resource          ../../resources/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
@@ -12,8 +12,8 @@ Resource          ./common.robot
 Resource          ../../resources/var_order.robot
 
 *** Test Cases ***
-order_list_page
-    [Documentation]    订单列表列出所有状态按钮
+order_009
+    [Documentation]    显示订单列表，分别为，全部，已支付，已确认，已发货，已完成，未支付，已取消
     [Tags]    P1
     Add Order
     Go To    ${home_page}
@@ -26,16 +26,16 @@ order_list_page
     Page Should Contain Element    ${order_not_payment_btn}
     Page Should Contain Element    ${order_alerady_cencel_btn}
 
-order_all_list_page
-    [Documentation]    点击全部
+order_011
+    [Documentation]    显示全部订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价
     [Tags]    P1
     Go To Order Page
     sleep    1
     Wait And Click Element    ${order_list_btn}
     page should contain element    dom:document.querySelectorAll(".ant-radio-button-wrapper-checked")
 
-order_be_delivered_page
-    [Documentation]    点击待发货
+order_012
+    [Documentation]    显示已支付订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价，支付状态全部显示为已支付
     [Tags]    P1
     Go To Order Page
     sleep    1
@@ -43,8 +43,8 @@ order_be_delivered_page
     Wait And Click Element    ${order_delivered_btn}
     page should contain element    dom:document.querySelectorAll(".ant-radio-button-wrapper-checked")
 
-order_alerady_send_page
-    [Documentation]    点击已发货
+order_014
+    [Documentation]    显示已发货订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价，订单状态全部显示为全部发货或部分发货
     [Tags]    P1
     Go To Order Page
     sleep    1
@@ -52,8 +52,8 @@ order_alerady_send_page
     Wait And Click Element    ${order_alerady_send_btn}
     page should contain element    dom:document.querySelectorAll(".ant-radio-button-wrapper-checked")
 
-order_alerady_mission_page
-    [Documentation]    点击已完成
+order_015
+    [Documentation]    显示已完成订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价，订单状态全部显示为已完成
     [Tags]    P1
     Go To Order Page
     sleep    1
@@ -61,8 +61,8 @@ order_alerady_mission_page
     Wait And Click Element    ${order_alerady_mission_btn}
     page should contain element    dom:document.querySelectorAll(".ant-radio-button-wrapper-checked")
 
-order_not_payment_page
-    [Documentation]    点击未支付
+order_016
+    [Documentation]    显示未支付订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价，支付状态全部显示为未支付
     [Tags]    P1
     Go To Order Page
     sleep    1
@@ -70,8 +70,8 @@ order_not_payment_page
     Wait And Click Element    ${order_not_payment_btn}
     page should contain element    dom:document.querySelectorAll(".ant-radio-button-wrapper-checked")
 
-order_alerady_cencel_page
-    [Documentation]    点击已取消
+order_017
+    [Documentation]    显示已取消订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价，订单状态全部显示为已取消
     [Tags]    P1
     Go To Order Page
     sleep    1
@@ -79,8 +79,8 @@ order_alerady_cencel_page
     Wait And Click Element    ${order_alerady_cencel_btn}
     page should contain element    dom:document.querySelectorAll(".ant-radio-button-wrapper-checked")
 
-order_alerady_refund_page
-    [Documentation]    点击已退款
+order_013
+    [Documentation]    显示已确认订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价
     [Tags]    P1
     Go To Order Page
     Sleep    1
@@ -88,8 +88,8 @@ order_alerady_refund_page
     Wait And Click Element    ${order_alerady_refund_btn}
     page should contain element    dom:document.querySelectorAll(".ant-radio-button-wrapper-checked")
 
-order_detail
-    [Documentation]    点击订单详情
+order_018
+    [Documentation]    进入订单详情页面，显示订单详情，分别为订单号，下单时间，订单状态，订单信息，商品总价，实际支付价格，支付状态，发货状态，收件人信息，以及发货详情
     [Tags]    P1
     Go To Order Page
     sleep    1
@@ -97,8 +97,8 @@ order_detail
     Wait And Click Element    ${order_list_first_tr}
     page should contain element    ${order_detail_element}
 
-order_detail_send
-    [Documentation]    点击订单详情查看自否发货
+order_070
+    [Documentation]    发货成功后，订单状态下方将显示发货详情，包括商品详情，商品价格，商品数量，商品总价记忆物流信息
     [Tags]    P1
     Add Order
     Go To    ${home_page}
@@ -115,8 +115,8 @@ order_detail_send
     ${res}    execute javascript    return document.querySelectorAll(".ant-col-3 p")[1].innerHTML
     Should Be True    '${res}'=='已发货'
 
-order_detail_send_detail
-    [Documentation]    点击订单详情添加运单详情 弹出框
+order_071
+    [Documentation]    弹窗更新运单号弹窗
     [Tags]    P1
     Add Order
     Go To    ${home_page}
@@ -130,16 +130,16 @@ order_detail_send_detail
     Wait And Click Element    class:ant-modal-close-x
     Wait And Click Element    ${locator_order}
 
-order_list_search
-    [Documentation]    订单列表搜索
+order_080
+    [Documentation]    订单列表跳转到搜索界面
     [Tags]    P1
     Go To Order Page
     sleep    1
     Wait And Click Element    ${order_list_btn}
     Page Should Contain Element    ${order_list_searchs}
 
-order_list_all_check
-    [Documentation]    订单列表点击全部 显示所有订单
+order_082
+    [Documentation]    图标选中全部栏，订单列表展示全部订单
     [Tags]    P1
     #${time}    getTimeData
     #${order_list_apis}=    Set Variable    http://admin1024.shoplazza.com/api/order/list?start_create_time=${start_time}&end_create_time=${end_time}&page=0&size=20
@@ -166,8 +166,8 @@ order_list_already_refund_check
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[3].innerText
     \    Should Be True    '${data}'=='已退款'
 
-order_list_already_send_check
-    [Documentation]    选中已发货，订单列表展示已发货订单
+order_085
+    [Documentation]    图标选中已发货栏，订单列表展示已发货订单
     [Tags]    P0
     Go To Order Page
     Wait And Click Element    ${order_list_btn}
@@ -179,8 +179,8 @@ order_list_already_send_check
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[4].innerText
     \    Should Be True    '${data}'=='全部发货'
 
-order_list_already_mission_check
-    [Documentation]    选中已完成,订单列表展示已完成订单
+order_084
+    [Documentation]    图标选中已支付栏，订单列表展示已支付订单
     [Tags]    P0
     Go To Order Page
     Wait And Click Element    ${order_list_btn}
@@ -191,8 +191,8 @@ order_list_already_mission_check
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[4].innerText
     \    Should Be True    '${data}'=='已到达'
 
-order_list_not_payment_check
-    [Documentation]    选中未支付，订单列表展示未支付订单
+order_090
+    [Documentation]    图标选中未支付栏，订单列表展示未支付订单
     [Tags]    P0
     Go To Order Page
     Wait And Click Element    ${order_list_btn}
@@ -204,8 +204,8 @@ order_list_not_payment_check
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[3].innerText
     \    Should Be True    '${data}'=='未支付'
 
-order_list_already_cancel_check
-    [Documentation]    选中已取消，订单列表展示已取消订单
+order_092
+    [Documentation]    图标选中已取消栏，订单列表展示已取消订单
     [Tags]    P0
     Go To Order Page
     Wait And Click Element    ${order_list_btn}
@@ -217,7 +217,7 @@ order_list_already_cancel_check
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[5].innerText
     \    Should Be True    '${data}'=='已取消'
 
-order_list_search_id
+order_093
     [Documentation]    订单ID输入框中输入已有订单的订单编号,列表只展示搜索的订单
     [Tags]    P0
     Go To Order Page
@@ -235,8 +235,8 @@ order_list_search_id
     sleep    1.5
     Should Be True    '${order_id}'=='${order_ids}'
 
-order_list_search_error
-    [Documentation]    订单搜索输入错误id
+order_094
+    [Documentation]    订单列表不显示任何内容，提示暂无数据
     [Tags]    P0
     Go To Order Page
     Wait And Click Element    ${order_list_btn}
@@ -246,8 +246,8 @@ order_list_search_error
     Sleep    1.5
     Page Should Not Contain Element    ${order_list_first_tr}
 
-order_list_search_name
-    [Documentation]    订单搜索姓名输入 百渊 出现百渊的所有订单
+order_096
+    [Documentation]    订单列表中展示下单顾客为：百渊的所有订单
     [Tags]    P0
     Go To Order Page
     Wait And Click Element    ${order_list_btn}
@@ -263,7 +263,7 @@ order_list_search_name
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td p")[1].innerText
     \    Should Be True    '${order_name}'=='${data}'
 
-order_list_search_name_error
+order_097
     [Documentation]    订单搜索姓名输入 张三 错误
     [Tags]    P1
     Go To Order Page
@@ -276,7 +276,7 @@ order_list_search_name_error
     Wait And Click Element    ${order_list_search}    #.搜索按钮
     Page Should Not Contain Element    ${order_list_first_tr}
 
-order_list_search_price
+order_098
     [Documentation]    订单搜索最低价15 最高价15 列表出现15USD的订单
     [Tags]    P0
     Go To Order Page
@@ -294,7 +294,7 @@ order_list_search_price
     \    ${res_data}    searchStrs    ${data}
     \    Should Be True    '${price}'=='${res_data}'
 
-order_list_search_price_interval
+order_099
     [Documentation]    订单搜索最低价输入 10 最高价输入20 列表出现10 ～ 20价格的订单
     [Tags]    P0
     Go To Order Page
@@ -314,8 +314,8 @@ order_list_search_price_interval
     \    Run keyword If    ${min_price}<'${res_data}'>${max_price}    log    success
     \    ...    ELSE    Run keyword    Fail    ${error_msg}
 
-order_list_search_price_error
-    [Documentation]    订单搜索最低价输入 10 最高价输入8 提示错误
+order_101
+    [Documentation]    订单搜索最低价输入 10 最高价输入8 提示错误 / 提示最大订单价应大于或等于最小订单价
     [Tags]    P0
     Go To Order Page
     Wait And Click Element    ${order_list_btn}
@@ -328,8 +328,8 @@ order_list_search_price_error
     ${msg}    Get Value    dom:document.querySelectorAll("input[placeholder='最高金额']")[0]
     Should Be True    '${msg}'=='${Empty}'
 
-order_list_search_price_errors
-    [Documentation]    订单搜索最大价输入10 最小价格输入30 提示错误
+order_102
+    [Documentation]    订单搜索最大价输入10 最小价格输入30 提示错误 / 提示，最小订单价应小于或等于最大订单价
     [Tags]    P0
     Go To Order Page
     Wait Until Element Is Visible    ${order_list_btn}

@@ -1,5 +1,5 @@
 *** Settings ***
-Suite Setup       New Test Suite Browser And Login    15220581724    123456    chen
+Suite Setup       New Test Suite Browser And Login    ${comm_user}    ${comm_pwd}    ${comm_domain}
 Suite Teardown    Close Test Suite Browser
 Force Tags        Order
 Resource          ../../resources/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
@@ -11,8 +11,8 @@ Resource          ./common.robot
 Resource          ../../resources/var_order.robot
 
 *** Test Cases ***
-order_export
-    [Documentation]    已完成订单 点击导出
+order_105
+    [Documentation]    弹出导出订单弹窗，可选择导出本页数据，搜索出的数据和全部数据
     [Tags]    P0d
     Order Export Setp
     Sleep    1
@@ -20,7 +20,7 @@ order_export
     Wait And Click Element    class:ant-modal-close-x
     Quit Order Setp
 
-order_export_email_not_empty
+order_109
     [Documentation]    已完成订单 点击导出 不输入邮箱 提示错误
     [Tags]    P0
     Order Export Setp
@@ -31,7 +31,7 @@ order_export_email_not_empty
     Wait And Click Element    class:ant-modal-close-x
     Quit Order Setp
 
-order_export_format_error
+order_110
     [Documentation]    已完成订单 点击导出 输入非邮箱 提示错误
     [Tags]    P1
     Order Export Setp
