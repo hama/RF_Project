@@ -17,7 +17,7 @@ remove_user
     [Tags]    common
     remove user    ${register_user}
 
-register_pass
+register_001
     [Documentation]    注册
     [Tags]    P0
     Comment    register
@@ -37,7 +37,7 @@ register_pass
     page should contain element    //*[@id="root"]
     Close Browser
 
-register_error_one
+register_002
     [Documentation]    注册 输入已注册的账号 提示错误
     [Tags]    P0
     Comment    register
@@ -53,7 +53,7 @@ register_error_one
     Page Should Contain Element    dom:document.querySelectorAll(".ant-message-notice-content")[0]
     Close Browser
 
-register_error_two
+register_005
     [Documentation]    注册 输入格式错误的域名 提示错误
     [Tags]    P0
     Comment    register
@@ -66,7 +66,7 @@ register_error_two
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
     Close Browser
 
-register_error_three
+register_006
     [Documentation]    注册 域名为空 提示错误
     [Tags]    P1
     Comment    register
@@ -80,7 +80,7 @@ register_error_three
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
     Close Browser
 
-register_error_four
+register_007
     [Documentation]    注册 输入未注册的域名 密码为空 提示错误
     [Tags]    P1
     Comment    register
@@ -95,7 +95,7 @@ register_error_four
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
     Close Browser
 
-register_error_five
+register_008
     [Documentation]    注册 输入未注册的域名 密码5位 提示错误
     [Tags]    P1
     Comment    register
@@ -112,7 +112,7 @@ register_error_five
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
     Close Browser
 
-register_error_six
+register_009
     [Documentation]    注册 输入未注册的域名 密码13位 提示错误
     [Tags]    P1
     Comment    register
@@ -129,7 +129,7 @@ register_error_six
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
     Close Browser
 
-register_error_seven
+register_010
     [Documentation]    注册 输入未注册的域名 密码6位 确认密码为空 提示错误
     [Tags]    P1
     Comment    register
@@ -146,7 +146,7 @@ register_error_seven
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
     Close Browser
 
-register_error_eaght
+register_011
     [Documentation]    注册 输入未注册的域名 2次密码输入不一致 提示错误
     [Tags]    P1
     Comment    register
@@ -163,7 +163,7 @@ register_error_eaght
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
     Close Browser
 
-register_error_nine
+register_013
     [Documentation]    注册 输入未注册的域名-密码 错误格式账号 提示错误
     [Tags]    P1
     Comment    register
@@ -180,7 +180,7 @@ register_error_nine
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
     Close Browser
 
-register_error_ten
+register_014
     [Documentation]    注册 输入未注册的域名-密码 账号为空 提示错误
     [Tags]    P1
     Comment    register
@@ -197,7 +197,7 @@ register_error_ten
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
     Close Browser
 
-register_error_eleven
+register_015
     [Documentation]    注册 输入未注册的域名-密码 验证码错误 提示错误
     [Tags]    P1
     Comment    register
@@ -216,7 +216,7 @@ register_error_eleven
     Page Should Contain Element    dom:document.querySelectorAll(".ant-message-notice-content")[0]
     Close Browser
 
-register_error_twelve
+register_017
     [Documentation]    注册 输入未注册的域名-密码 验证码4位数 提示错误
     [Tags]    P1
     Comment    register
@@ -235,7 +235,7 @@ register_error_twelve
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
     Close Browser
 
-register_error_thirteen
+register_018
     [Documentation]    注册 输入未注册的域名-密码 验证码为空 提示错误
     [Tags]    P1
     Comment    register
@@ -254,7 +254,7 @@ register_error_thirteen
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
     Close Browser
 
-logout
+register_019
     [Documentation]    登陆成功,然后退出登陆
     [Tags]    P0
     Comment    wait until login button is visible

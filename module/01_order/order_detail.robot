@@ -1,6 +1,6 @@
 *** Settings ***
-Suite Setup       New Test Suite Browser And Login    15220581724    123456    chen
-Suite Teardown    Close Test Suite Browser
+Suite Setup       New Test Suite Browser And Login    ${comm_user}    ${comm_pwd}    ${comm_domain}
+Suite Teardown    #Close Test Suite Browser
 Force Tags        Order
 Resource          ../../resources/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Resource          ../../resources/var_tax_price.robot
@@ -19,6 +19,7 @@ order_072
     Wait Until Element Is Visible    dom:document.querySelectorAll('button')[1]
     Click Button    添加运单
     Wait And Click Element    dom:document.querySelectorAll('button')[4]
+    Sleep    1.5
     Go To Order Page
     sleep    1
     Wait Until Element Is Visible    ${order_list_btn}
@@ -28,6 +29,7 @@ order_072
     ${res}    execute javascript    return document.querySelectorAll(".ant-col-3 p")[1].innerHTML
     Sleep    1.3
     Should Be True    '${res}'=='已发货'
+    Sleep    1.5
     Wait And Click Element    ${order_dateil_update_send}
     input text    dom:document.querySelectorAll("#shipping_code")[0]    ${input}
     Wait And Click Element    dom:document.querySelectorAll('button')[3]

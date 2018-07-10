@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation     checkout 公共方法
+Resource          var_common.robot
 
 *** keywords ***
 Checkout Common Setp
@@ -33,6 +34,7 @@ Add Payment
     Wait And Click Element    dom:document.querySelectorAll("button")[2]    #.点击绑定按钮
     Wait And Click Element    class:ant-switch    #.点击开启按钮
     Wait And Click Element    dom:document.querySelectorAll("button")[6]    #.点击确定
+    Sleep Time
 
 Sleep Time
     [Documentation]    睡眠时间 2s

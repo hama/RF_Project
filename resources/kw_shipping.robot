@@ -82,8 +82,8 @@ Delete Shipping
     Wait Until Element Is Visible    ${locator_shipping_add_country}
     Sleep    1
     Execute JavaScript    return document.getElementById("dj").scrollTo(0,10000)
-    Wait And Click Button    ${locator_shipping_del_shipping}
-    Wait And Click Button    id:test_delete_modal_sure_btn
+    Wait And Click Element    ${locator_shipping_del_shipping}
+    Wait And Click Element    dom:document.querySelectorAll("button")[7]
     Sleep    1
     Page Should Not Contain Element    ${locator_shipping_first_element}
     Location Should Be    ${url_shipping}

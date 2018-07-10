@@ -1,6 +1,6 @@
 *** Settings ***
-Suite Setup       New Test Suite Browser And Login    15220581724    123456    chen
-Suite Teardown    Close Test Suite Browser
+Suite Setup       New Test Suite Browser And Login    ${comm_user}    ${comm_pwd}    ${comm_domain}
+Suite Teardown    #Close Test Suite Browser
 Force Tags        Shipping
 Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_common.robot
@@ -21,7 +21,7 @@ Resource          ./common.robot
     input text    id:name    方案1
     Wait And Click Button    dom:document.querySelectorAll("button")[1]
     sleep    2
-    page should not contain element    dom:document.querySelectorAll("button")[1]
+    page should contain element    dom:document.querySelectorAll(".anticon-cross-circle")[0]
     Quit All Shipping
 
 0137_shipping
@@ -57,16 +57,13 @@ Resource          ./common.robot
     ${range_max}    set variable    100
     ${rate_amount}    set variable    9
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait Until Element Is Visible    id:test_save_btn
     Wait And Click Element    id:test_shipping_country_add_btn
-    Wait Until Element Is Visible    id:test_shipping_country_modal_sure_btn
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2]
-    Sleep    1
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[10]
     Wait And Click Element    id:test_shipping_country_modal_sure_btn
     Execute JavaScript    return document.querySelectorAll("#test_shipping_country_delete_icon")[0].click()
     sleep    2
-    page should contain element    id:test_delete_modal_sure_btn
+    page should contain element    dom:document.querySelectorAll("button")[8]
     Wait And Click Element    class:ant-modal-close-x
     Quit All Shipping
 
@@ -77,13 +74,10 @@ Resource          ./common.robot
     Wait And Click Element    ${locator_shipping_add_shipping}
     ${name}    salt
     input text    id:name    ${name}
-    Wait Until Element Is Visible    id:test_save_btn
     Wait And Click Element    id:test_shipping_country_add_btn
-    Wait Until Element Is Visible    id:test_shipping_country_modal_sure_btn
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
     Wait And Click Element    id:test_shipping_country_modal_sure_btn
-    Wait Until Element Is Visible    id:test_shipping_add_weight_btn
     Wait And Click Element    id:test_shipping_add_weight_btn
     ${input}    set variable    重量运费
     ${desc}    set variable    重量运费说明
@@ -98,7 +92,6 @@ Resource          ./common.robot
     input text    id:rate_amount    ${rate_amount}
     sleep    1
     Wait And Click Element    id:test_shipping_edit_modal_sure_btn
-    Wait Until Element Is Visible    id:test_shipping_add_quantity_btn
     Wait And Click Element    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${input_a}    set variable    数量运费
@@ -110,10 +103,9 @@ Resource          ./common.robot
     input text    id:rate_amount    ${rate_amount}
     sleep    1
     Wait And Click Element    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
     sleep    1
-    Wait And Click Element    id:test_save_btn
-    sleep    1
-    page should contain element    dom:document.querySelectorAll("button")[1]
+    page should contain element    dom:document.querySelectorAll("#test_shipping_list_0 li")[0]
     Delete Shipping
 
 0135_shipping
@@ -128,14 +120,12 @@ Resource          ./common.robot
     sleep    1
     ${name}    salt
     input text    id:name    ${name}
-    Wait Until Element Is Visible    id:test_save_btn
     Wait And Click Element    id:test_shipping_country_add_btn
     Wait Until Element Is Visible    id:test_shipping_country_modal_sure_btn
     execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0].click()
     execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[1].click()
     sleep    1
     Wait And Click Element    id:test_shipping_country_modal_sure_btn
-    sleep    1
     Wait And Click Element    id:test_shipping_add_quantity_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${input_a}    set variable    数量运费
@@ -147,10 +137,9 @@ Resource          ./common.robot
     input text    id:rate_amount    ${rate_amount}
     sleep    1
     Wait And Click Element    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
     sleep    2
-    Wait And Click Element    id:test_save_btn
-    sleep    2
-    page should contain element    dom:document.querySelectorAll("button")[1]
+    page should contain element    dom:document.querySelectorAll("#test_shipping_list_0 li")[0]
 
 check_list_data
     [Documentation]    校验list接口数据
@@ -169,12 +158,4 @@ check_list_data
     Quit All Setp
 
 0131_shipping
-    [Documentation]    创建物流 没有输入 方案名 点击保存
-    [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait Until Element Is Visible    id:test_save_btn
-    click link    id:test_save_btn
-    page should contain element    class:ant-form-explain
-    Quit All Setp
-    Delete Shipping
