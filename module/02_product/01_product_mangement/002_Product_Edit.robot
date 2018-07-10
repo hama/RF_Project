@@ -18,7 +18,7 @@ ${content_products_tips_shelf}    是否上架
 ${content_products_tips_shelf_ok}    上架成功
 
 *** Test Cases ***
-Edit_Title
+products023
     [Documentation]    测试已有商品的编辑，保存生效
     [Tags]    P0
     Sleep    2
@@ -35,7 +35,7 @@ Edit_Title
     ${new_title_str}=    Convert To String    ${new_title}
     Page Should Contain    ${new_title_str}
 
-Edit_Price
+products025
     [Documentation]    测试已有商品的编辑，保存生效
     [Tags]    P0
     Sleep    2
@@ -55,7 +55,7 @@ Edit_Price
     ${price}=    Get Value    ${locator_products_addPrice}
     Should Be Equal As Strings    ${new_price}    ${price}
 
-Edit_Sku
+products026
     [Documentation]    测试已有商品的编辑，保存生效
     [Tags]    P0
     Sleep    2
@@ -72,7 +72,7 @@ Edit_Sku
     ${new_sku_str}=    Convert To String    ${new_sku}
     Page Should Contain    ${new_sku_str}
 
-Edit_Without_Save
+products029
     [Documentation]    测试已有商品的编辑，未保存退出，弹窗提示是否退出，选择 是
     [Tags]    P0
     Sleep    2
@@ -90,7 +90,7 @@ Edit_Without_Save
     Sleep    5
     Page Should Contain    ${old_sku}
 
-Edit_Without_Save_Dismmis_Alert
+products031
     [Documentation]    测试已有商品的编辑，未保存退出，弹窗提示是否退出，选择 否
     [Tags]    P0
     Sleep    2
@@ -116,11 +116,14 @@ Products Suite Setup
     Start Ajax Listener
     Add Product
     Sleep    5
+    Add Product
+    Sleep    5
+    Add Product
+    Sleep    5
     Go To Products Page
 
 Products Suite Teardown
     [Documentation]    删除商品
-    Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup

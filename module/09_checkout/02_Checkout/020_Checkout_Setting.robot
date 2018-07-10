@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Modify_Pay_Setting
+checkout135
     [Documentation]    进入到checkout页面后，填写完地址信息后(姓名分开填写)，返回后台修改结账设置改为（姓名），再去checkout页面点击submit，页面将会刷新，地址信息将会刷新变化
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------

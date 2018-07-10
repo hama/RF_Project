@@ -16,7 +16,7 @@ Resource          ../../../resources/kw_products.robot
 ${tax_price}      1
 
 *** Test Cases ***
-Modify_Tax_Price
+checkout133
     [Documentation]    进入到checkout页面后，修改其他国家税费金额，再点击submit
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------

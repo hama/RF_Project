@@ -16,7 +16,7 @@ Resource          ../../../resources/kw_products.robot
 ${tip}            This is payment tips!    # 支付提示
 
 *** Test Cases ***
-Change_Status
+checkout162
     [Documentation]    修改支付方式信息，支付成功后应该显示最新的支付信息(这里修改支付指示，对应的变动将会显示在支付成功页)
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------

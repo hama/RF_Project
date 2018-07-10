@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Validate_Thead_Page
+products066
     [Documentation]    验证自定义商品表头显示
     [Tags]    P0
     #验证自定义商品列表排版
@@ -37,7 +37,7 @@ Validate_Thead_Page
     Page Should Contain Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
     Go TO    ${home_page}
 
-Validate_Cancel_All
+products068
     [Documentation]    验证商品列表取消所有的表头复选框之后的显示情况
     [Tags]    P0
     #验证取消所有选中的复选框
@@ -57,7 +57,7 @@ Validate_Cancel_All
     Element Should Not Contain    dom:document.querySelectorAll(".ant-table-thead")[0]    销量
     Element Should Not Contain    dom:document.querySelectorAll(".ant-table-thead")[0]    浏览量
 
-Validate_Cancel_Part
+products069
     [Documentation]    验证商品列表取消部分的表头复选框之后的显示情况
     [Tags]    P0
     #验证取消部分
@@ -76,7 +76,7 @@ Validate_Cancel_Part
     Element Should Not Contain    dom:document.querySelectorAll(".ant-table-thead")[0]    上架
     Element Should Not Contain    dom:document.querySelectorAll(".ant-table-thead")[0]    创建时间
 
-Click_Cancel_Button
+products070
     [Documentation]    验证商品列表修改表头复选框之后点击取消按钮的显示情况
     [Tags]    P0
     #验证点击取消按钮的状态
@@ -119,8 +119,6 @@ Products Suite Setup
     [Documentation]    商品 case setup,添加商品
     Login With Test Account
     Start Ajax Listener
-    Add Product
-    Sleep    5
     Go To Products Page
 
 Products Suite Teardown
@@ -128,7 +126,6 @@ Products Suite Teardown
     Wait And Click Element    ${locator_products_editTableHead}
     Click_All
     Wait And Click Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
-    Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup

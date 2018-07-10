@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Change_Status
+checkout150
     [Documentation]    点击商品预览后，点击进入checkout页面，在点击pay now前，在后台更换该商品图片，支付界面应该显示最新图片
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------

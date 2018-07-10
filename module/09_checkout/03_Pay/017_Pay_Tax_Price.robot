@@ -16,7 +16,7 @@ Resource          ../../../resources/kw_products.robot
 ${tax_price}      1    # 修改后的税费
 
 *** Test Cases ***
-Change_Status
+checkout167
     [Documentation]    修改其他国家税费金额
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------

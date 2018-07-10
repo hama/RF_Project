@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Validate_No_Collection
+products058
     [Documentation]    验证商品批量添加专辑时，无专辑数据
     [Tags]    P0
     #验证无专辑数据时
@@ -33,14 +33,18 @@ Validate_No_Collection
 
 *** Keywords ***
 Products Suite Setup
-    [Documentation]    商品 case setup,添加商品
+    [Documentation]    删除所有专辑
     Login With Test Account
     Start Ajax Listener
-    #Add Product
+    Delete_All_Collection
+    Sleep    5
     Go To Products Page
 
 Products Suite Teardown
-    [Documentation]    删除商品
+    [Documentation]    删除所有商品
+    Go To Products Page
+    Sleep    5
+    Delete_All_Products
     Close Test Suite Browser
 
 Products Test Case Setup

@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Change_Status
+checkout168
     [Documentation]    结账设置中将只填写邮箱改为只填写手机或者手机邮箱都需填写，点击pay now后只显示邮箱，不显示未输入的手机号
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------

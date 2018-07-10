@@ -130,7 +130,8 @@ Delete_First_Product
     Sleep    5
     Wait And Click Element    dom:document.querySelectorAll(".delete___2xfx-")[0]
     Sleep    5
-    Wait And Click Element    id:test_delete_modal_sure_btn
+    #Wait And Click Element    id:test_delete_modal_sure_btn
+    Wait And Click Element    dom:document.querySelectorAll('.middle_btn___2ExQc')[0]
     Go TO    ${home_page}
 
 Upload_Many_Products
@@ -630,3 +631,38 @@ Close_Card
     #记录当前“银行卡支付”是否开启
     ${class}    Execute Javascript    return document.querySelectorAll(".payment_wrap___3m1lo")[1].querySelectorAll(" .ant-switch")[0].getAttribute("class")
     Run Keyword If    '${class}'=='ant-switch ant-switch-checked'    Change_Card    #关闭
+
+Delete_All_Products
+    [Documentation]    删除所有商品
+    [Tags]    P0
+    Sleep    5
+    #点击选中全部的商品
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
+    #Wait And Click Element    dom:document.querySelectorAll(".ant-checkbox-input")[0]
+    #点击批量操作菜单
+    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    #选择删除商品
+    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[2]    btn
+    Set Focus To Element    btn
+    Mouse Down    btn
+    Mouse Up    btn
+    #弹出框
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    #点击确定
+    Wait And Click Element    ${locator_products_delBtn}
+    Go TO    ${home_page}
+
+Delete_All_Collection
+    [Documentation]    删除所有专辑
+    #进入商品模块
+    Wait Until Element Is Visible    class:icon_product___2ZYHZ
+    Click Element    class:icon_product___2ZYHZ
+    #点击进入商品专辑界面
+    Wait And Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[2]
+    #点击选中所有专辑
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
+    #点击删除按钮
+    Wait And Click Element    dom:document.querySelectorAll(".batchSelectTable_btn___40HNR")[0]
+    #点击确定按钮
+    Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
+    Go TO    ${home_page}

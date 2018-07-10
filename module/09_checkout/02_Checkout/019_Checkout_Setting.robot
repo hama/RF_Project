@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Modify_Pay_Setting
+checkout134
     [Documentation]    进入到checkout页面后，填写完地址信息（邮箱）后，返回后台修改结账设置改为两者都需填写，再去checkout页面点击submit，页面将会刷新，地址信息将会变成两者都需填写
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------

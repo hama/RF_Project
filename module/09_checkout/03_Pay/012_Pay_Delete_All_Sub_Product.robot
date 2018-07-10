@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Change_Status
+checkout151
     [Documentation]    此时第一个商品下有两个子产品，在点击pay now按钮之前，删除当前第一个商品下的所有子商品（一共有两个子产品），支付失败
     [Tags]    P0
     #-----------------------------------------选中一个有子商品的商品，进入到支付页面------------------------------------------
