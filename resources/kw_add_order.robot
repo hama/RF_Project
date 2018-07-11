@@ -15,13 +15,15 @@ Add Order
     Go To Products Page
     #点击商品预览
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll("table tbody tr td span")[4]    title
-    Wait Until Element Is Visible    title
-    ${title}    Get Text    title
+    #Assign id To Element    dom:document.querySelectorAll("table tbody tr td span")[4]    title
+    #Wait Until Element Is Visible    title
+    #${title}    Get Text    title
     #点击商品预览
-    Assign id To Element    dom:document.querySelectorAll(".preview___37DtU")[0]    btn1
-    Wait Until Element Is Visible    btn1
-    Click Element    btn1
+    #Assign id To Element    dom:document.querySelectorAll(".preview___37DtU")[0]    btn1
+    #Wait Until Element Is Visible    btn1
+    #Click Element    btn1
+    Sleep    2
+    Wait And Click Element    dom:document.querySelectorAll(".preview___37DtU")[0]
     #.第二个窗口
     Select Window    New
     Wait Until Element Is Visible    dom:document.querySelectorAll(".submit_mb span")[0]

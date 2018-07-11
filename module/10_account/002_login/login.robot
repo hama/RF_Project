@@ -15,7 +15,7 @@ ${uname}          98989898
 ${u_format}       $93!@#
 
 *** Test Cases ***
-login_001
+login001
     [Documentation]    登陆成功
     [Tags]    P0
     Comment    wait until login button is visible
@@ -31,7 +31,7 @@ login_001
     Page Should Contain Element    ${locator_order}
     Logout
 
-login_002
+login002
     [Documentation]    输入未注册的手机号 弹出提示店铺地址或者联系方式错误
     [Tags]    P1
     Login Setp
@@ -41,7 +41,7 @@ login_002
     Wait And Click Element    ${login_btn}
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
 
-login_003
+login003
     [Documentation]    输入格式错误的账号 弹出提示店铺地址或者联系方式错误
     [Tags]    P1
     Login Setp
@@ -51,7 +51,7 @@ login_003
     Wait And Click Element    ${login_btn}
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
 
-login_004
+login004
     [Documentation]    账号为空 弹出提示店铺地址或者联系方式错误
     [Tags]    P1
     Login Setp
@@ -61,7 +61,7 @@ login_004
     Wait And Click Element    ${login_btn}
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
 
-login_005
+login005
     [Documentation]    输入正确账号，密码错误 弹出提示店铺地址或者联系方式错误
     [Tags]    P1
     Login Setp
@@ -74,7 +74,7 @@ login_005
     Wait And Click Element    ${login_btn}
     Page Should Contain Element    dom:document.querySelectorAll(".anticon-cross-circle")[0]
 
-login_006
+login006
     [Documentation]    输入正确账号，密码为空 弹出提示店铺地址或者联系方式错误误
     [Tags]    P1
     Login Setp
@@ -87,7 +87,7 @@ login_006
     Wait And Click Element    ${login_btn}
     Page Should Contain Element    dom:document.querySelectorAll(".ant-message-notice")
 
-login_010
+login010
     [Documentation]    输入正确账号，密码 域名为空 弹出提示店铺地址或者联系方式错误
     [Tags]    P1
     Login Setp
@@ -100,7 +100,7 @@ login_010
     Wait And Click Element    ${login_btn}
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
 
-login_008
+login008
     [Documentation]    输入正确账号，密码 域名错误 弹出提示店铺地址或者联系方式错误
     [Tags]    P1
     Login Setp
@@ -113,7 +113,7 @@ login_008
     Wait And Click Element    ${login_btn}
     Page Should Contain Element    dom:document.querySelectorAll(".ant-message-notice")
 
-login_007
+login007
     [Documentation]    登陆成功
     [Tags]    P0
     Wait Until Element Is Visible    ${login_btn}
@@ -128,7 +128,7 @@ login_007
     Page Should Contain Element    ${locator_order}
     Logout
 
-login_012
+login012
     [Documentation]    输入未注册的手机号 弹出提示店铺地址或者联系方式错误
     [Tags]    P1
     Login Setp
@@ -152,7 +152,7 @@ login_main_account_error_two
     Comment    wait until domain input text element is visible
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
 
-login_015
+login015
     [Documentation]    输入账号,错误密码 弹出提示店铺地址或者联系方式错误
     [Tags]    P1
     Login Setp

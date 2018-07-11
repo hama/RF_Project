@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       New Test Suite Browser And Login    ${comm_user}    ${comm_pwd}    ${comm_domain}
-Suite Teardown    Close Test Suite Browser
+Suite Teardown    #Close Test Suite Browser
 Force Tags        Order
 Resource          ../../resources/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Resource          ../../resources/var_tax_price.robot
@@ -15,7 +15,9 @@ order072
     [Documentation]    运单号输入时，物流商会匹配对应的内容，点击保存后，运单号更新成功
     [Tags]    P0
     Add Order    #.调用生成订单
+    Sleep    1
     Go To    ${home_page}
+    Sleep    1
     Order Setp
     Wait Until Element Is Visible    dom:document.querySelectorAll('button')[1]
     Click Button    添加运单
