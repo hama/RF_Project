@@ -1,5 +1,5 @@
 *** Settings ***
-Suite Setup       New Test Suite Browser And Login    ${comm_user}    ${comm_pwd}    ${comm_domain}
+Suite Setup       Login With Default User
 Suite Teardown    Close Test Suite Browser
 Force Tags        Shipping
 Library           ${CURDIR}/../../../lib/customLibrary

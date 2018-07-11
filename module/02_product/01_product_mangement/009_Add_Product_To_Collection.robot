@@ -200,7 +200,7 @@ products057
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup,添加商品，专辑
-    Login With Test Account
+    Login With Default User
     Start Ajax Listener
     Go TO    ${home_page}
     Sleep    5

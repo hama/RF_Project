@@ -1,5 +1,5 @@
 *** Settings ***
-Suite Setup       New Test Suite Browser And Login    ${comm_user}    ${comm_pwd}    ${comm_domain}
+Suite Setup       Login With Default User
 Suite Teardown    #Close Test Suite Browser
 Force Tags        Order
 Resource          ../../resources/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite

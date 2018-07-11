@@ -112,7 +112,7 @@ products031
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup
-    Login With Test Account
+    Login With Default User
     Start Ajax Listener
     Add Product
     Sleep    5

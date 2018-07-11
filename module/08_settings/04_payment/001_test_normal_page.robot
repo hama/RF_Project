@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     Test payment price page ui.
-Suite Setup       New Test Suite Browser And Login    1004714019@qq.com    123456    test
+Suite Setup       Login With Default User
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Test Teardown     Teardown Test Case
 Force Tags        payment

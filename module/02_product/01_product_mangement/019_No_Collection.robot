@@ -34,7 +34,7 @@ products058
 *** Keywords ***
 Products Suite Setup
     [Documentation]    删除所有专辑
-    Login With Test Account
+    Login With Default User
     Start Ajax Listener
     Delete_All_Collection
     Sleep    5

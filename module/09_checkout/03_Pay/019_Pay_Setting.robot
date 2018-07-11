@@ -20,7 +20,7 @@ ${last_name}      l    # 输入的last name
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品
-    Login With Test Account
+    Login With Default User
     Start Ajax Listener
     Add Product_Up
     Sleep    8

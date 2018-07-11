@@ -136,7 +136,7 @@ Upload_Image
 
 Products Suite Setup
     [Documentation]    商品 case setup
-    Login With Test Account
+    Login With Default User
     Add Default Category    # 添加默认分类
     Start Ajax Listener
 

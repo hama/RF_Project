@@ -48,7 +48,7 @@ checkout121
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品和一个包括全部商品的满减活动
-    Login With Test Account
+    Login With Default User
     Start Ajax Listener
     Add Product_Up
     Sleep    8
