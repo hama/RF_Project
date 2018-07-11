@@ -1,13 +1,14 @@
 *** Settings ***
 Test Teardown     Custom Teardown
 Library           SeleniumLibrary    #Test Setup    Open Headless Chrome    #Test Teardown    Close Browser
+Resource          ../../../resources/var_common.robot
 
 *** Variables ***
-${interface}      http://admin1024.shoplazza.com/api/product/search?page=0&limit=20
+${interface}      ${home_page}/api/product/search?page=0&limit=20
 
 *** Test Cases ***
 Inject Products
-    Open Browser    http://admin1024.shoplazza.com    chrome
+    Open Browser    ${home_page}    chrome
     # wait for login
     Comment    wait until login button is visible
     Wait Until Element Is Visible    class:logBtn___3pRgJ

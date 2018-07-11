@@ -12,4 +12,4 @@ ${content_shipping_tab1}    物流方案    # 物流页面两个基本标签页 
 ${content_shipping_tab2}    物流商    # 物流页面两个基本标签页 物流方案/物流商
 ${content_shipping_name}    物流1    # 物流名称
 ${content_shipping_setup}    设置你的物流方案    # 没有物流方案时，页面提示设置物流
-${page_list_api}    http://admin1024.shoplazza.com/api/shipping/list
+${page_list_api}    ${home_page}/api/shipping/list

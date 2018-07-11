@@ -17,7 +17,7 @@ ${order_dateil_update_send}    dom:document.querySelectorAll(".header_left___2PR
 ${order_dateil_cencel_send}    dom:document.querySelectorAll(".icon_cancel___miRJp")[0]    #.订单详情-取消本次发货
 ${order_list_search}    //*[@id="dj"]/div/div[3]/div/div[3]/button[1]    #.订单列表搜索按钮
 ${order_list_searchs}    dom:document.querySelectorAll("button")[0]    #.订单列表搜索按钮
-${order_list_api}    http://admin1024.shoplazza.com/api/order/list?start_create_time=1521561600&end_create_time=1529596799&page=0&size=20    #.订单列表api
+${order_list_api}    ${home_page}/api/order/list?start_create_time=1521561600&end_create_time=1529596799&page=0&size=20    #.订单列表api
 ${order_list_export}    //*[@id="dj"]/div/div[1]/a    #.订单列表 导出按钮
 ${start_time}     1521561600    #.开始时间
 ${end_time}       1529596799    #.结束时间

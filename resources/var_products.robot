@@ -1,12 +1,15 @@
+*** Settings ***
+Resource          var_common.robot
+
 *** Variables ***
 # api
-${api_products_add}    http://admin1024.shoplazza.com/api/product/add    # 保存商品
-${api_products_upload}    http://admin1024.shoplazza.com/api/file/upload    # 上传图片
-${api_products_addProductsType}    http://admin1024.shoplazza.com/productType    # 增加商品分类
-${api_products_list}    http://admin1024.shoplazza.com/api/product/search?page=0&limit=20    # 获取商品列表
-${api_products_list_shelf}    http://admin1024.shoplazza.com/api/product/search?status=1&page=0&limit=20    # 选择所有上架商品
-${api_products_list_drop}    http://admin1024.shoplazza.com/api/product/search?status=0&page=0&limit=20    # 选择所有下架商品
-${api_products_update_status}    http://admin1024.shoplazza.com/api/product/updatestatus    # 上架/下架 更新状态
+${api_products_add}    ${home_page}/api/product/add    # 保存商品
+${api_products_upload}    ${home_page}/api/file/upload    # 上传图片
+${api_products_addProductsType}    ${home_page}/productType    # 增加商品分类
+${api_products_list}    ${home_page}/api/product/search?page=0&limit=20    # 获取商品列表
+${api_products_list_shelf}    ${home_page}/api/product/search?status=1&page=0&limit=20    # 选择所有上架商品
+${api_products_list_drop}    ${home_page}/api/product/search?status=0&page=0&limit=20    # 选择所有下架商品
+${api_products_update_status}    ${home_page}/api/product/updatestatus    # 上架/下架 更新状态
 # locator
 ${locator_products_all}    dom:document.querySelectorAll(".ant-radio-button-wrapper")[0]    # 商品管理页面，全部商品标签
 ${locator_products_shelf}    dom:document.querySelectorAll(".ant-radio-button-wrapper")[1]    # 商品管理页面，已上架商品标签
