@@ -161,15 +161,13 @@ recover_011
 recover_013
     [Documentation]    找回密码- 正确域名 正确账号 验证码-修改密码 输入为空 提示错误
     [Tags]    P1
-    #.找回密码- 正确域名 正确账号 验证码-修改密码 输入为空 提示错误
-    Comment    recover password
     Open Test Browser    ${home_page}
     Wait And Click Element    ${recover_pwd_btn}
     Wait Until Element Is Visible    id:username
     Input Text    id:username    ${user_default_domain}
     Input Text    id:account    ${user_default_name}
-    #Sleep    60
-    #Click Button    发送验证码
+    Sleep    100
+    Click Button    发送验证码
     Sleep    2
     ${code}    selectCodesPwd    ${user_default_name}
     Input Text    id:code    ${code}
@@ -184,87 +182,86 @@ recover_013
 recover_014
     [Documentation]    找回密码- 正确域名 正确账号 验证码-修改密码 输入1位数 提示错误
     [Tags]    P1
-    #Comment    recover password
-    #Open Test Browser    ${home_page}
-    #Wait And Click Element    ${recover_pwd_btn}
-    #Wait Until Element Is Visible    id:username
-    #Input Text    id:username    ${user_default_domain}
-    #Input Text    id:account    ${user_default_name}
-    #Sleep    60s
-    #Click Button    发送验证码
-    #Sleep    2
-    #${code}    selectCodesPwd    ${user_default_name}
-    #Input Text    id:code    ${code}
-    #Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    #Sleep    4
-    #Input Password    id:password    1
-    #Input Password    id:confirmpass    1
-    #Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    #Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    #Close Browser
+    Open Test Browser    ${home_page}
+    Wait And Click Element    ${recover_pwd_btn}
+    Wait Until Element Is Visible    id:username
+    Input Text    id:username    ${user_default_domain}
+    Input Text    id:account    ${user_default_name}
+    Sleep    130s
+    Click Button    发送验证码
+    Sleep    2
+    ${code}    selectCodesPwd    ${user_default_name}
+    Input Text    id:code    ${code}
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    Sleep    4
+    Input Password    id:password    1
+    Input Password    id:confirmpass    1
+    Wait And Click Element    dom:document.querySelectorAll("button")[0]
+    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Close Browser
 
 recover_015
     [Documentation]    找回密码- 正确域名 正确账号 验证码-修改密码 输入13位数 提示错误
     [Tags]    P1
-    #Comment    recover password
-    #Open Test Browser    ${home_page}
-    #Wait And Click Element    ${recover_pwd_btn}
-    #Wait Until Element Is Visible    id:username
-    #Input Text    id:username    ${user_default_domain}
-    #Input Text    id:account    ${user_default_name}
-    #Sleep    60s
-    #Click Button    发送验证码
-    #Sleep    2
-    #${code}    selectCodesPwd    ${user_default_name}
-    #Input Text    id:code    ${code}
-    #Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    #Sleep    4
-    #Input Password    id:password    12312312312
-    #Input Password    id:confirmpass    123123123121
-    #Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    #Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    #Close Browser
+    Comment    recover password
+    Open Test Browser    ${home_page}
+    Wait And Click Element    ${recover_pwd_btn}
+    Wait Until Element Is Visible    id:username
+    Input Text    id:username    ${user_default_domain}
+    Input Text    id:account    ${user_default_name}
+    Sleep    120s
+    Click Button    发送验证码
+    Sleep    2
+    ${code}    selectCodesPwd    ${user_default_name}
+    Input Text    id:code    ${code}
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    Sleep    4
+    Input Password    id:password    12312312312
+    Input Password    id:confirmpass    123123123121
+    Wait And Click Element    dom:document.querySelectorAll("button")[0]
+    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Close Browser
 
 recover_016
     [Documentation]    找回密码- 正确域名 正确账号 验证码-修改密码 输入13位数 确认密码为空 提示错误
     [Tags]    P1
-    #Comment    recover password
-    #Open Test Browser    ${home_page}
-    #Wait And Click Element    ${recover_pwd_btn}
-    #Wait Until Element Is Visible    id:username
-    #Input Text    id:username    ${user_default_domain}
-    #Input Text    id:account    ${user_default_name}
-    #Sleep    60s
-    #Click Button    发送验证码
-    #Sleep    2
-    #${code}    selectCodesPwd    ${user_default_name}
-    #Input Text    id:code    ${code}
-    #Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    #Sleep    4
-    #Input Password    id:password    12312312312
-    #Input Password    id:confirmpass    ${Empty}
-    #Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    #Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    #Close Browser
+    Comment    recover password
+    Open Test Browser    ${home_page}
+    Wait And Click Element    ${recover_pwd_btn}
+    Wait Until Element Is Visible    id:username
+    Input Text    id:username    ${user_default_domain}
+    Input Text    id:account    ${user_default_name}
+    Sleep    120s
+    Click Button    发送验证码
+    Sleep    2
+    ${code}    selectCodesPwd    ${user_default_name}
+    Input Text    id:code    ${code}
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    Sleep    4
+    Input Password    id:password    12312312312
+    Input Password    id:confirmpass    ${Empty}
+    Wait And Click Element    dom:document.querySelectorAll("button")[0]
+    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Close Browser
 
 recover_017
     [Documentation]    找回密码- 正确域名 正确账号 验证码-修改密码 输入13位数 确认密码1-6位 2次密码不一致 提示错误
     [Tags]    P1
-    #Comment    recover password
-    #Open Test Browser    ${home_page}
-    #Wait And Click Element    ${recover_pwd_btn}
-    #Wait Until Element Is Visible    id:username
-    #Input Text    id:username    ${user_default_domain}
-    #Input Text    id:account    ${user_default_name}
-    #Sleep    60s
-    #Click Button    发送验证码
-    #Sleep    2
-    #${code}    selectCodesPwd    ${user_default_name}
-    #Input Text    id:code    ${code}
-    #Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    #Sleep    4
-    #Input Password    id:password    12312312312
-    #Input Password    id:confirmpass    123
-    #Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    #Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    #Close Browser
+    Comment    recover password
+    Open Test Browser    ${home_page}
+    Wait And Click Element    ${recover_pwd_btn}
+    Wait Until Element Is Visible    id:username
+    Input Text    id:username    ${user_default_domain}
+    Input Text    id:account    ${user_default_name}
+    Sleep    130s
+    Click Button    发送验证码
+    Sleep    2
+    ${code}    selectCodesPwd    ${user_default_name}
+    Input Text    id:code    ${code}
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    Sleep    4
+    Input Password    id:password    12312312312
+    Input Password    id:confirmpass    123
+    Wait And Click Element    dom:document.querySelectorAll("button")[0]
+    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Close Browser
