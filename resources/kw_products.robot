@@ -667,3 +667,21 @@ Delete_All_Collection
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
     Go TO    ${home_page}
+
+Add Order Products
+    [Documentation]    添加订单和checkout所需商品
+    Go To Products Page
+    Add Product Required Content
+    # add other content
+    Wait And Input Text    ${locator_products_addSubTitle}    ${content_products_addSubTitle}    # 添加副标题
+    Wait And Input Text    ${locator_products_addRawPrice}    ${content_products_addRawPrice}    # 添加原价
+    Wait And Input Text    ${locator_products_addWeight}    ${content_products_addWeight}    # 添加重量
+    Wait And Click Element    id:status
+    # add image
+    Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
+    Wait Until Element Is Visible    ${locator_products_uploadBtn}
+    log    ${CURDIR}
+    Choose File    ${locator_products_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
+    Sleep    5
+    Wait And Click Element    ${locator_products_save_product}
+    Sleep    5
