@@ -1,11 +1,10 @@
 *** Variables ***
 ### 未分类，需要分类并清理
 ${home_page}      http://admin1024.shoplazza.com
-${recover_pwd_btn}    dom:document.querySelectorAll('a')[1]
 ${error_msg}      出错啦！    #.自定义错误提示
 ${login_btn}      class:logBtn___3pRgJ    #.登陆按钮
-${recover_pwd_btn}    //*[@id="root"]/div/div/form/div[4]/div/div/a[1]    #.忘记密码按钮
-${register_btn}    //*[@id="root"]/div/div/form/div[4]/div/a    #.注册按钮
+${register_btn}    dom:document.querySelectorAll(".bottomEdit___zk0l5 a")[0]     #.注册按钮
+${recover_pwd_btn}       dom:document.querySelectorAll(".bottomEdit___zk0l5 div a")[0]     #.忘记密码按钮
 ${add_products_btn}    id:test_product    #.添加商品按钮
 ${add_products_title}    ceshi1    #.添加商品的标题
 ${add_products_img}    ${CURDIR}/../images/tm.jpg    #.添加商品的图片

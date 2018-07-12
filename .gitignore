@@ -7,6 +7,5 @@ logs/
 *.xml
 *.iml
 
-# 测试 keyword 专用
-resources/Test.robot
-
+# 开发根据环境自定义文件
+resources/var_common.robot
