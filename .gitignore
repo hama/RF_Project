@@ -9,4 +9,4 @@ logs/
 
 # 测试 keyword 专用
 resources/Test.robot
-
+resources/var_common.robot
