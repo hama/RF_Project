@@ -8,12 +8,14 @@ Resource          ../../resources/kw_common.robot
 Library           SeleniumLibrary
 Resource          ../../resources/kw_add_order.robot
 Resource          ../../resources/kw_order.robot
+Resource          ../../resources/kw_products.robot
 
 
 *** Test Cases ***
 order072
     [Documentation]    运单号输入时，物流商会匹配对应的内容，点击保存后，运单号更新成功
     [Tags]    P0
+    Add Order Products    #.调用添加商品
     Add Order    #.调用生成订单
     Sleep    1
     Go To    ${home_page}
