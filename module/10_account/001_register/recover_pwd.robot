@@ -44,7 +44,7 @@ recover_002
     Sleep    1
     Input Text    id:username    klklklklk
     Input Text    id:account    ${user_default_name}
-    Sleep    1
+    Sleep    100
     Click Button    发送验证码
     Sleep    1
     Page Should Contain Element    dom:document.querySelectorAll(".ant-message-notice-content")[0]
