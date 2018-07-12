@@ -9,15 +9,8 @@ Checkout Common Setp
     Sleep Time
     Wait And Click Element    ${add_products_btn}
     #点击商品预览
-    Sleep    3
-    #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
-    Wait Until Element Is Visible    title
-    ${title}    Get Text    title
-    #点击商品预览
-    Assign id To Element    dom:document.querySelectorAll(".preview___37DtU")[0]    btn1
-    Wait Until Element Is Visible    btn1
-    Click Element    btn1
+    Sleep Time
+    Wait And Click Element    dom:document.querySelectorAll(".preview___37DtU")[0]
     Sleep Time    #.休息2s
     #.第二个窗口
     Select Window    New

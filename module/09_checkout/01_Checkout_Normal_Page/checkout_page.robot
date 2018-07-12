@@ -13,8 +13,24 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 Resource          ../../../resources/kw_shipping.robot
 Resource          ../../../resources/kw_Checkout.robot
+Resource          ../../../resources/var_checkout.robot
 
 *** Test Cases ***
+gggg
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll("#submitMbPay")[0]
+    ${first_name}    Set Variable    123
+    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    ${first_name}
+    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
+    Wait And Click Element    dom:document.querySelectorAll(".close_icon")[1]
+    Wait And Click Element    dom:document.querySelectorAll("#submitMbPay")[0]
+    ${data}    Execute JavaScript    return document.querySelectorAll("input[name='first_name']")[0].value
+    Should Be True    '${data}'=='${first_name}'
+
+add shipping
+    Add Shipping China
 checkout001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0
@@ -294,8 +310,12 @@ checkout039
     Checkout Common Setp
     Wait And Click Element    dom:document.querySelectorAll(".add-to-card")[0]
     Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Go To    ${page}
+    Sleep    1
     Wait And Click Element    dom:document.querySelectorAll(".add-to-card")[0]
     Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Go To    ${page}
+    Sleep    1.5
     Wait And Click Element    dom:document.querySelectorAll("a[realhref='/cart']")[0]
     ${count}    Execute JavaScript    return document.querySelectorAll(".space-between span")[2].innerText
     Should Be True    ${count}==2
@@ -318,3 +338,49 @@ checkout043
     Wait And Click Element    dom:document.querySelectorAll(".review_write")[0]
     Input Text    id:content    ${strs}
     Page Should Contain Element    dom:document.querySelectorAll(".addli")
+
+checkout019
+    [Documentation]    B端添加其他国家 checkout 展开下拉框，显示所有国家
+    [Tags]    P1
+    Add Other Country
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll("#submitMbPay")[0]
+    ${count}    Execute JavaScript    return document.querySelectorAll("#shipping_country_id")[0].length
+    Should Be True    ${count}==228
+    Go To    ${home_page}
+    Delete Shipping
+checkout021
+    [Documentation]    正常添加数据，保存成功
+    [Tags]    P0
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll("#submitMbPay")[0]
+    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    123
+    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
+    ${name}    Execute JavaScript    return document.querySelectorAll("#shipping_country_id option")[1].innerText
+    Select From List    id:shipping_country_id    ${name}
+    Input Text    dom:document.querySelectorAll("input[name='city']")[0]    深圳
+    Input Text    dom:document.querySelectorAll("input[name='address']")[0]    深圳123
+    Input Text    dom:document.querySelectorAll("input[name='zip']")[0]    123456
+    Input Text    dom:document.querySelectorAll("input[name='email']")[0]    123456@zz.xx
+    Input Text    dom:document.querySelectorAll("input[name='phone']")[0]    123456789
+    Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
+    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Page Should Contain Element    id:changeaddress
+checkout038
+    [Documentation]    添加地址后关闭页面填写的信息不会被重置
+    [Tags]    P1
+    Checkout Common Setp
+    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    dom:document.querySelectorAll("#submitMbPay")[0]
+    ${first_name}    Set Variable    123
+    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    ${first_name}
+    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
+    Wait And Click Element    dom:document.querySelectorAll(".close_icon")[1]
+    Wait And Click Element    dom:document.querySelectorAll("#submitMbPay")[0]
+    ${data}    Execute JavaScript    return document.querySelectorAll("input[name='first_name']")[0].value
+    Should Be True    '${data}'=='${first_name}'

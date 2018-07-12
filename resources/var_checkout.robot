@@ -7,3 +7,4 @@ ${post_code}      //*[@id="verify_form"]/div[2]/div[6]/input
 ${email}          //*[@id="verify_form"]/div[2]/div[7]/input
 ${phone}          //*[@id="verify_form"]/div[2]/div[8]/input
 ${company}        //*[@id="verify_form"]/div[2]/div[9]/input
+${page}    https://chen.preview.shoplazza.com/products/title
