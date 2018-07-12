@@ -21,6 +21,7 @@ order072
     Order Setp
     Wait Until Element Is Visible    dom:document.querySelectorAll('button')[1]
     Click Button    添加运单
+    Sleep    2
     Wait And Click Element    dom:document.querySelectorAll('button')[4]
     Sleep    1.5
     Go To Order Page
@@ -104,6 +105,7 @@ order_detail_update_send_not
     Sleep    1.3
     Should Be True    '${res}'=='未发货'
     click button    添加运单
+    Sleep    2
     Wait And Click Element    dom:document.querySelectorAll("button")[4]
     Wait And Click Element    dom:document.querySelectorAll(".tw-Updated")[0]
     Input Text    dom:document.querySelectorAll("#shipping_code")[0]    ${input}
@@ -120,6 +122,7 @@ order076
     Order Setp
     Wait Until Element Is Visible    dom:document.querySelectorAll('button')[1]
     Click Button    添加运单
+    Sleep    2
     Wait And Click Element    dom:document.querySelectorAll('button')[4]
     Go To Order Page
     sleep    1
@@ -142,6 +145,7 @@ order077
     Order Setp
     Wait Until Element Is Visible    dom:document.querySelectorAll('button')[1]
     Click Button    添加运单
+    Sleep    2
     Wait And Click Element    dom:document.querySelectorAll('button')[4]
     Go To Order Page
     sleep    1

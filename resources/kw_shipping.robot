@@ -77,6 +77,34 @@ Add Shipping China
     Wait And click Button    dom:document.querySelectorAll("button")[1]
     Location Should Be    ${url_shipping}
 
+Add Other Country
+    [Documentation]    添加其他国家物流
+    ${name}    salt
+    Go To Shipping Page
+    Wait And click element    ${locator_shipping_add_shipping}
+    Wait And input text    id:name    ${name}    #.物流名称
+    Wait And click button    id:test_shipping_country_add_btn
+    Sleep    1
+    Wait And click element    dom:document.querySelectorAll(".ant-checkbox")[0]
+    Wait And click button    id:test_shipping_country_modal_sure_btn
+    Wait And click button    id:test_shipping_add_weight_btn
+    Wait And input text    dom:document.querySelectorAll("#name")[1]    ${input}
+    Wait And input text    dom:document.querySelectorAll("#desc")[0]    ${desc}
+    Wait And input text    id:range_min    ${range_min}
+    Wait And input text    id:range_max    ${range_max}
+    Wait And input text    id:rate_amount    ${rate_amount}
+    Wait And click button    id:test_shipping_edit_modal_sure_btn
+    Wait And click button    id:test_shipping_add_quantity_btn
+    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
+    Wait And input text    dom:document.querySelectorAll("#name")[1]    ${input_a}
+    Wait And input text    dom:document.querySelectorAll("#desc")[0]    ${desc_a}
+    Wait And input text    id:range_min    ${range_min}
+    Wait And input text    id:range_max    ${range_max}
+    Wait And input text    id:rate_amount    ${rate_amount}
+    Wait And click button    id:test_shipping_edit_modal_sure_btn
+    Wait And click Button    dom:document.querySelectorAll("button")[1]
+    Location Should Be    ${url_shipping}
+
 Delete Shipping
     [Documentation]    删除物流
     Go To Shipping Page
