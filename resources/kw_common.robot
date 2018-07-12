@@ -63,6 +63,7 @@ Go To Tax Price Page
 
 Go To Shipping Page
     [Documentation]    跳转到物流页面
+    Sleep    2.5
     Wait Until Element Is Visible    ${locator_setting}
     # 若设置按钮没展开，则展开设置按钮
     ${unvisible}=    Execute Javascript    return document.querySelectorAll('a[href="/shipping"]')[0]===undefined
