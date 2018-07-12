@@ -130,7 +130,8 @@ Delete_First_Product
     Sleep    5
     Wait And Click Element    dom:document.querySelectorAll(".delete___2xfx-")[0]
     Sleep    5
-    Wait And Click Element    id:test_delete_modal_sure_btn
+    #Wait And Click Element    id:test_delete_modal_sure_btn
+    Wait And Click Element    dom:document.querySelectorAll('.middle_btn___2ExQc')[0]
     Go TO    ${home_page}
 
 Upload_Many_Products
@@ -153,7 +154,7 @@ Select_Order_Page
     [Arguments]    ${title}
     [Documentation]    点击预览第一个商品，跳转到商品详情页，点击submit按钮进入订单信息页面
     #点击第一个商品的预览icon
-    Wait And Click Element    dom:document.querySelectorAll(".tw-see")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".preview")[0]
     #跳转到商品详情页
     Select Window    title=${title}
     Sleep    1
@@ -168,7 +169,7 @@ Select_Order_Page_With_Sub_Product
     [Arguments]    ${title}
     [Documentation]    点击预览第一个商品，跳转到商品详情页，选中一个子产品后，点击submit按钮进入订单信息页面
     #点击第一个商品的预览icon
-    Wait And Click Element    dom:document.querySelectorAll(".tw-see")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".preview")[0]
     #跳转到商品详情页
     Select Window    title=${title}
     Sleep    1
@@ -210,6 +211,7 @@ Complete_Order_Message
     Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
     #点击Submit按钮进入支付页
     Wait And Click Element    id:submitMbPay
+    Sleep    2
 
 Complete_Order_Message_Not_Submit
     [Documentation]    点击添加地址按钮，填写信息，点击保存按钮，点击进入支付页
@@ -434,7 +436,7 @@ To_Change_Image
     Sleep    2
     #删除第一张图片
     Mouse Over    dom:document.querySelectorAll(".center___1nHSZ")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".delete___1vipL")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".delete")[0]
     #更新另外一张图片
     Choose File    ${locator_products_chooseFile}    ${file_products_addImg2}
     Sleep    2
@@ -630,3 +632,38 @@ Close_Card
     #记录当前“银行卡支付”是否开启
     ${class}    Execute Javascript    return document.querySelectorAll(".payment_wrap___3m1lo")[1].querySelectorAll(" .ant-switch")[0].getAttribute("class")
     Run Keyword If    '${class}'=='ant-switch ant-switch-checked'    Change_Card    #关闭
+
+Delete_All_Products
+    [Documentation]    删除所有商品
+    [Tags]    P0
+    Sleep    5
+    #点击选中全部的商品
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
+    #Wait And Click Element    dom:document.querySelectorAll(".ant-checkbox-input")[0]
+    #点击批量操作菜单
+    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    #选择删除商品
+    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[2]    btn
+    Set Focus To Element    btn
+    Mouse Down    btn
+    Mouse Up    btn
+    #弹出框
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    #点击确定
+    Wait And Click Element    ${locator_products_delBtn}
+    Go TO    ${home_page}
+
+Delete_All_Collection
+    [Documentation]    删除所有专辑
+    #进入商品模块
+    Wait Until Element Is Visible    class:icon_product___2ZYHZ
+    Click Element    class:icon_product___2ZYHZ
+    #点击进入商品专辑界面
+    Wait And Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[2]
+    #点击选中所有专辑
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
+    #点击删除按钮
+    Wait And Click Element    dom:document.querySelectorAll(".batchSelectTable_btn___40HNR")[0]
+    #点击确定按钮
+    Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
+    Go TO    ${home_page}

@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Remove_Products_From_Collections
+products061
     [Documentation]    验证商品批量移除专辑，前提条件要存在两个或多个商品专辑
     [Tags]    P0
     #将两个商品一次性从两个专辑中移除
@@ -49,18 +49,18 @@ Remove_Products_From_Collections
     Wait And Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[2].querySelectorAll("a")[0]
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
-    Wait Until Page Contains    专辑详情
+    #Wait Until Page Contains    专辑详情
     Page Should Not Contain    ${name1}
     Sleep    2
     #点击返回商品专辑
-    Wait And Click Element    dom:document.querySelectorAll(".back1")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".back")[0]
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[1]
-    Wait Until Page Contains    专辑详情
+    #Wait Until Page Contains    专辑详情
     Page Should Not Contain    ${name2}
     Go TO    ${home_page}
 
-Remove_Product_From_Collections
+products060
     [Documentation]    验证一个商品从两个专辑中批量移除
     [Tags]    P0
     #将一个商品从两个专辑中移除
@@ -93,39 +93,26 @@ Remove_Product_From_Collections
     Wait And Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[2].querySelectorAll("a")[0]
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
-    Wait Until Page Contains    专辑详情
+    #Wait Until Page Contains    专辑详情
     Page Should Not Contain    ${name}
     Sleep    2
     #点击返回商品专辑
-    Wait And Click Element    dom:document.querySelectorAll(".back1")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".back")[0]
     #进入另一个专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
-    Wait Until Page Contains    专辑详情
+    #Wait Until Page Contains    专辑详情
     Page Should Not Contain    ${name}
     Go TO    ${home_page}
 
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup,添加商品，专辑
-    Login With Test Account
+    Login With Default User
     Start Ajax Listener
-    Add Product
-    Sleep    5
-    Add Product
-    Sleep    5
-    Go TO    ${home_page}
-    Sleep    5
-    Add_Collection
-    Sleep    5
-    Go TO    ${home_page}
-    Sleep    5
-    Add_Collection
     Go To Products Page
 
 Products Suite Teardown
     [Documentation]    删除商品，专辑
-    Delete_First_Product
-    Delete_First_Product
     Go TO    ${home_page}
     Delete_Collection
     Go TO    ${home_page}

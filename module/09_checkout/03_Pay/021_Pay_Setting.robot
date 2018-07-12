@@ -13,11 +13,10 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Change_Status
+checkout171
     [Documentation]    进入支付页后,返回后台修改结账设置修改为必填或选填,点击pay now支付成功
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
-
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title
@@ -40,7 +39,7 @@ Change_Status
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品
-    Login With Test Account
+    Login With Default User
     Start Ajax Listener
     Add Product_Up
     Sleep    8

@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Delete_Product
+checkout106
     [Documentation]    点击商品预览后，进入checkout页面，在点击Submit前，在后台删除该商品，之后再点击Submit按钮，应该显示支付失败
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
@@ -33,12 +33,12 @@ Delete_Product
     Select Window    title=${store_name}
     Complete_Order_Message
     #支付页面应该显示支付失败
-    Page Should Contain    Payment failure!
+    Page Should Contain    ${payment_failed}
 
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品
-    Login With Test Account
+    Login With Default User
     Start Ajax Listener
     Add Product_Up
     Sleep    8

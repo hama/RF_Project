@@ -16,11 +16,10 @@ Resource          ../../../resources/kw_products.robot
 ${tip}            This is payment tips!    # 支付提示
 
 *** Test Cases ***
-Change_Status
+checkout162
     [Documentation]    修改支付方式信息，支付成功后应该显示最新的支付信息(这里修改支付指示，对应的变动将会显示在支付成功页)
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
-
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title
@@ -62,7 +61,7 @@ Change_Status
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品
-    Login With Test Account
+    Login With Default User
     Start Ajax Listener
     Add Product_Up
     Sleep    8

@@ -19,7 +19,7 @@ ${cut}            3    # 减多少
 ${cut2}           5    # 修改之后减多少
 
 *** Test Cases ***
-Change_Status
+checkout155
     [Documentation]    先添加一个商品和一个包括全部商品的满减活动，点击商品预览，点击pay now之前，修改该商品参与的满减活动的优惠内容，还是按照之前的优惠内容计算
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
@@ -56,7 +56,7 @@ Change_Status
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品和一个包括全部商品的满减活动
-    Login With Test Account
+    Login With Default User
     Start Ajax Listener
     Add Product_Up
     Sleep    8
@@ -69,6 +69,8 @@ Products Suite Teardown
     Select Window    店匠科技
     Go To Products Page
     Delete_First_Product
+    Sleep    5
+    End_First_Full_Reduction
     Sleep    5
     Close Test Suite Browser
 

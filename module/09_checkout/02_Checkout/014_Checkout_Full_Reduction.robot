@@ -20,11 +20,10 @@ ${cut}            3    # 减多少
 ${cut2}           5    # 修改之后减多少
 
 *** Test Cases ***
-End_Full_Reduction
+checkout121
     [Documentation]    先添加一个商品和一个包括全部商品的满减活动，点击商品预览，商品详情submi进入checkout页面之后，修改该商品参与的满减活动的优惠内容
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等，并且当前满减活动的优惠金额必须是最大的，否则会按照最大的来算--------------------------------------
-
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title
@@ -49,7 +48,7 @@ End_Full_Reduction
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品和一个包括全部商品的满减活动
-    Login With Test Account
+    Login With Default User
     Start Ajax Listener
     Add Product_Up
     Sleep    8

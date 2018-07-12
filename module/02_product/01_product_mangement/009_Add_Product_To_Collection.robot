@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Validate_Normal_Page
+products051
     [Documentation]    验证商品批量添加专辑显示正常
     [Tags]    P0
     #验证添加到商品专辑排版正确
@@ -40,7 +40,7 @@ Validate_Normal_Page
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close")[0]
     Go TO    ${home_page}
 
-Add_Product_To_Collection
+products052
     [Documentation]    验证商品批量添加专辑
     [Tags]    P0
     #添加商品到专辑
@@ -74,7 +74,7 @@ Add_Product_To_Collection
     Page Should Contain    ${name}
     Go TO    ${home_page}
 
-Search_Collection
+products053
     [Documentation]    验证商品批量添加专辑弹窗中，专辑搜索功能显示正常
     [Tags]    P0
     #验证商品专辑搜索
@@ -99,7 +99,7 @@ Search_Collection
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close")[0]
     Go TO    ${home_page}
 
-Add_Product_To_Search_Collection
+products054
     [Documentation]    商品批量添加到搜索出来的专辑
     [Tags]    P0
     #验证搜索出来的专辑可正常添加商品
@@ -140,7 +140,7 @@ Add_Product_To_Search_Collection
     Page Should Contain    ${name}
     Go TO    ${home_page}
 
-Add_Product_To_Search_Collection_By_Id
+products055
     [Documentation]    验证商品成功批量添加到通过专辑编号搜索出来的专辑中
     [Tags]    P0
     #通过专辑编号搜索专辑
@@ -180,7 +180,7 @@ Add_Product_To_Search_Collection_By_Id
     Page Should Contain    ${name}
     Go TO    ${home_page}
 
-Cancel_Add_Product_To_Collection
+products057
     [Documentation]    验证商品批量取消添加专辑
     [Tags]    P0
     #取消将商品加入专辑
@@ -200,11 +200,13 @@ Cancel_Add_Product_To_Collection
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup,添加商品，专辑
-    Login With Test Account
+    Login With Default User
     Start Ajax Listener
-    Add Product
-    Sleep    5
     Go TO    ${home_page}
+    Sleep    5
+    Add_Collection
+    Sleep    5
+    Go To Products Page
     Sleep    5
     Add_Collection
     Sleep    5
@@ -212,9 +214,6 @@ Products Suite Setup
 
 Products Suite Teardown
     [Documentation]    删除商品，专辑
-    Delete_First_Product
-    Go TO    ${home_page}
-    Delete_Collection
     Close Test Suite Browser
 
 Products Test Case Setup

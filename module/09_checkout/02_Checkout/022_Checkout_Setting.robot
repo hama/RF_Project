@@ -13,11 +13,10 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Modify_Pay_Setting
+checkout136
     [Documentation]    进入到checkout页面后，填写完地址信息后，返回后台修改结账设置修改为必填或选填，再去checkout页面点击submit，进入支付页后，点击支付成功
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
-
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title
@@ -43,7 +42,7 @@ Modify_Pay_Setting
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品
-    Login With Test Account
+    Login With Default User
     Start Ajax Listener
     Add Product_Up
     Sleep    8

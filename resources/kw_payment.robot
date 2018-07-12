@@ -2,9 +2,9 @@
 Resource          ./kw_common.robot
 Resource          ./kw_browser.robot
 Library           SeleniumLibrary
+Resource          var_common.robot
 
 *** Variables ***
-${home_page}      http://admin1024.shoplazza.com    # feature test enviroment
 ${is_headless}    false    # whether should use headless chrome
 # default user, has everything
 ${xpath_a}        //*[@id="root"]/div/div/div[1]/div[1]/div/div

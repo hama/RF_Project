@@ -21,11 +21,11 @@ login001
     Comment    wait until login button is visible
     Open Test Browser    ${home_page}
     Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${comm_user}
-    Input Password    id:password    ${comm_pwd}
+    Input Text    id:account    ${user_default_name}
+    Input Password    id:password    ${user_default_pwd}
     Wait And Click Button    ${login_btn}
     Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${comm_domain}
+    Input Text    id:username    ${user_default_domain}
     Wait And Click Element    ${login_btn}
     Sleep    2
     Page Should Contain Element    ${locator_order}
@@ -37,7 +37,7 @@ login002
     Login Setp
     Wait Until Element Is Visible    ${login_btn}
     Input Text    id:account    ${uname}
-    Input Password    id:password    ${comm_pwd}
+    Input Password    id:password    ${user_default_pwd}
     Wait And Click Element    ${login_btn}
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
 
@@ -47,7 +47,7 @@ login003
     Login Setp
     Wait Until Element Is Visible    ${login_btn}
     Input Text    id:account    ${Empty}
-    Input Password    id:password    ${comm_pwd}
+    Input Password    id:password    ${user_default_pwd}
     Wait And Click Element    ${login_btn}
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
 
@@ -57,7 +57,7 @@ login004
     Login Setp
     Wait Until Element Is Visible    ${login_btn}
     Input Text    id:account    ${u_format}
-    Input Password    id:password    ${comm_pwd}
+    Input Password    id:password    ${user_default_pwd}
     Wait And Click Element    ${login_btn}
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
 
@@ -66,8 +66,8 @@ login005
     [Tags]    P1
     Login Setp
     Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${comm_user}
-    Input Password    id:password    ${comm_pwd}
+    Input Text    id:account    ${user_default_name}
+    Input Password    id:password    ${user_default_pwd}
     Wait And Click Element    ${login_btn}
     Wait Until Element Is Visible    id:username
     Input Text    id:username    ss
@@ -79,11 +79,11 @@ login006
     [Tags]    P1
     Login Setp
     Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${comm_user}
+    Input Text    id:account    ${user_default_name}
     Input Password    id:password    1${Empty}
     Wait And Click Element    ${login_btn}
     Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${comm_domain}
+    Input Text    id:username    ${user_default_domain}
     Wait And Click Element    ${login_btn}
     Page Should Contain Element    dom:document.querySelectorAll(".ant-message-notice")
 
@@ -92,7 +92,7 @@ login010
     [Tags]    P1
     Login Setp
     Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${comm_user}
+    Input Text    id:account    ${user_default_name}
     Input Password    id:password    1${Empty}
     Wait And Click Element    ${login_btn}
     Wait Until Element Is Visible    id:username
@@ -105,7 +105,7 @@ login008
     [Tags]    P1
     Login Setp
     Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${comm_user}
+    Input Text    id:account    ${user_default_name}
     Input Password    id:password    1${Empty}
     Wait And Click Element    ${login_btn}
     Wait Until Element Is Visible    id:username
@@ -117,12 +117,12 @@ login007
     [Documentation]    登陆成功
     [Tags]    P0
     Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${comm_user}
-    Input Password    id:password    ${comm_pwd}
+    Input Text    id:account    ${user_default_name}
+    Input Password    id:password    ${user_default_pwd}
     Wait And Click Button    ${login_btn}
     Comment    wait until domain input text element is visible
     Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${comm_domain}
+    Input Text    id:username    ${user_default_domain}
     Wait And Click Element    ${login_btn}
     Sleep    2
     Page Should Contain Element    ${locator_order}
@@ -170,7 +170,7 @@ login_main_account_error_four
     Login Setp
     Comment    wait until login button is visible
     Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${comm_user}
+    Input Text    id:account    ${user_default_name}
     Input Password    id:password    ${Empty}
     Wait And Click Element    ${login_btn}
     Comment    wait until domain input text element is visible
@@ -182,7 +182,7 @@ login_main_account_five
     Login Setp
     Comment    wait until login button is visible
     Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${comm_user}
+    Input Text    id:account    ${user_default_name}
     Input Password    id:password    ${Empty}
     Wait And Click Element    ${login_btn}
     Comment    wait until domain input text element is visible

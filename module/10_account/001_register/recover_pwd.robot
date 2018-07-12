@@ -18,17 +18,17 @@ recover_001
     Open Test Browser    ${home_page}
     Wait And Click Element    ${recover_pwd_btn}
     Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${recover_domain}
-    Input Text    id:account    ${recover_user}
+    Input Text    id:username    ${user_default_domain}
+    Input Text    id:account    ${user_default_name}
     Sleep    60
     Click Button    发送验证码
     Sleep    2
-    ${code}    selectCodesPwd    ${recover_user}
+    ${code}    selectCodesPwd    ${user_default_name}
     Input Text    id:code    ${code}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Sleep    4
-    Input Password    id:password    ${recover_password}
-    Input Password    id:confirmpass    ${recover_password}
+    Input Password    id:password    ${user_default_pwd}
+    Input Password    id:confirmpass    ${user_default_pwd}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
     Page Should Contain Element    dom:document.querySelectorAll("button")[2]
     Close Browser
@@ -43,7 +43,7 @@ recover_002
     Wait Until Element Is Visible    id:username
     Sleep    1
     Input Text    id:username    klklklklk
-    Input Text    id:account    ${recover_user}
+    Input Text    id:account    ${user_default_name}
     Sleep    1
     Click Button    发送验证码
     Sleep    1
@@ -59,7 +59,7 @@ recover_003
     Wait Until Element Is Visible    id:username
     Sleep    1
     Input Text    id:username    @#$ss
-    Input Text    id:account    ${recover_user}
+    Input Text    id:account    ${user_default_name}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
     Close Browser
@@ -72,7 +72,7 @@ recover_004
     Wait And Click Element    ${recover_pwd_btn}
     Wait Until Element Is Visible    id:username
     Input Text    id:username    ${Empty}
-    Input Text    id:account    ${recover_user}
+    Input Text    id:account    ${user_default_name}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
     Close Browser
@@ -84,7 +84,7 @@ recover_005
     Open Test Browser    ${home_page}
     Wait And Click Element    ${recover_pwd_btn}
     Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${recover_domain}
+    Input Text    id:username    ${user_default_domain}
     Input Text    id:account    1131231313210@qq.dcc
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -97,7 +97,7 @@ recover_006
     Open Test Browser    ${home_page}
     Wait And Click Element    ${recover_pwd_btn}
     Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${recover_domain}
+    Input Text    id:username    ${user_default_domain}
     Input Text    id:account    @1155
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -110,7 +110,7 @@ recover_007
     Open Test Browser    ${home_page}
     Wait And Click Element    ${recover_pwd_btn}
     Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${recover_domain}
+    Input Text    id:username    ${user_default_domain}
     Input Text    id:account    ${Empty}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -123,8 +123,8 @@ recover_008
     Open Test Browser    ${home_page}
     Wait And Click Element    ${recover_pwd_btn}
     Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${recover_domain}
-    Input Text    id:account    ${recover_user}
+    Input Text    id:username    ${user_default_domain}
+    Input Text    id:account    ${user_default_name}
     Input Text    id:code    123456
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-message-notice-content")[0]
@@ -137,8 +137,8 @@ recover_010
     Open Test Browser    ${home_page}
     Wait And Click Element    ${recover_pwd_btn}
     Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${recover_domain}
-    Input Text    id:account    ${recover_user}
+    Input Text    id:username    ${user_default_domain}
+    Input Text    id:account    ${user_default_name}
     Input Text    id:code    @#¥¥%
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -151,8 +151,8 @@ recover_011
     Open Test Browser    ${home_page}
     Wait And Click Element    ${recover_pwd_btn}
     Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${recover_domain}
-    Input Text    id:account    ${recover_user}
+    Input Text    id:username    ${user_default_domain}
+    Input Text    id:account    ${user_default_name}
     Input Text    id:code    ${Empty}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -166,12 +166,12 @@ recover_013
     Open Test Browser    ${home_page}
     Wait And Click Element    ${recover_pwd_btn}
     Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${recover_domain}
-    Input Text    id:account    ${recover_user}
+    Input Text    id:username    ${user_default_domain}
+    Input Text    id:account    ${user_default_name}
     #Sleep    60
     #Click Button    发送验证码
     Sleep    2
-    ${code}    selectCodesPwd    ${recover_user}
+    ${code}    selectCodesPwd    ${user_default_name}
     Input Text    id:code    ${code}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Sleep    4
@@ -188,12 +188,12 @@ recover_014
     #Open Test Browser    ${home_page}
     #Wait And Click Element    ${recover_pwd_btn}
     #Wait Until Element Is Visible    id:username
-    #Input Text    id:username    ${recover_domain}
-    #Input Text    id:account    ${recover_user}
+    #Input Text    id:username    ${user_default_domain}
+    #Input Text    id:account    ${user_default_name}
     #Sleep    60s
     #Click Button    发送验证码
     #Sleep    2
-    #${code}    selectCodesPwd    ${recover_user}
+    #${code}    selectCodesPwd    ${user_default_name}
     #Input Text    id:code    ${code}
     #Wait And Click Element    dom:document.querySelectorAll("button")[1]
     #Sleep    4
@@ -210,12 +210,12 @@ recover_015
     #Open Test Browser    ${home_page}
     #Wait And Click Element    ${recover_pwd_btn}
     #Wait Until Element Is Visible    id:username
-    #Input Text    id:username    ${recover_domain}
-    #Input Text    id:account    ${recover_user}
+    #Input Text    id:username    ${user_default_domain}
+    #Input Text    id:account    ${user_default_name}
     #Sleep    60s
     #Click Button    发送验证码
     #Sleep    2
-    #${code}    selectCodesPwd    ${recover_user}
+    #${code}    selectCodesPwd    ${user_default_name}
     #Input Text    id:code    ${code}
     #Wait And Click Element    dom:document.querySelectorAll("button")[1]
     #Sleep    4
@@ -232,12 +232,12 @@ recover_016
     #Open Test Browser    ${home_page}
     #Wait And Click Element    ${recover_pwd_btn}
     #Wait Until Element Is Visible    id:username
-    #Input Text    id:username    ${recover_domain}
-    #Input Text    id:account    ${recover_user}
+    #Input Text    id:username    ${user_default_domain}
+    #Input Text    id:account    ${user_default_name}
     #Sleep    60s
     #Click Button    发送验证码
     #Sleep    2
-    #${code}    selectCodesPwd    ${recover_user}
+    #${code}    selectCodesPwd    ${user_default_name}
     #Input Text    id:code    ${code}
     #Wait And Click Element    dom:document.querySelectorAll("button")[1]
     #Sleep    4
@@ -254,12 +254,12 @@ recover_017
     #Open Test Browser    ${home_page}
     #Wait And Click Element    ${recover_pwd_btn}
     #Wait Until Element Is Visible    id:username
-    #Input Text    id:username    ${recover_domain}
-    #Input Text    id:account    ${recover_user}
+    #Input Text    id:username    ${user_default_domain}
+    #Input Text    id:account    ${user_default_name}
     #Sleep    60s
     #Click Button    发送验证码
     #Sleep    2
-    #${code}    selectCodesPwd    ${recover_user}
+    #${code}    selectCodesPwd    ${user_default_name}
     #Input Text    id:code    ${code}
     #Wait And Click Element    dom:document.querySelectorAll("button")[1]
     #Sleep    4

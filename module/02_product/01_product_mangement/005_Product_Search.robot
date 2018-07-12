@@ -13,7 +13,7 @@ Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
-Product_Search
+products071
     [Documentation]    验证商品搜索结果
     [Tags]    P0
     #商品搜索
@@ -28,7 +28,7 @@ Product_Search
     Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-table-tbody")[0]
     Element Should Contain    dom:document.querySelectorAll(".ant-table-tbody")[0]    ${name}
 
-Cancel_Product_Search
+products072
     [Documentation]    验证取消商品搜索
     [Tags]    P0
     #取消商品搜索
@@ -56,15 +56,12 @@ Cancel_Product_Search
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup
-    Login With Test Account
+    Login With Default User
     Start Ajax Listener
-    Add Product
-    Sleep    5
     Go To Products Page
 
 Products Suite Teardown
     [Documentation]    删除商品
-    Delete_First_Product
     Close Test Suite Browser
 
 Products Test Case Setup

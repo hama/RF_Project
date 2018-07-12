@@ -18,11 +18,10 @@ ${full}           10    # 满多少
 ${cut}            3    # 减多少
 
 *** Test Cases ***
-Change_Status
+checkout154
     [Documentation]    先添加一个商品和一个包括全部商品的满减活动，点击商品预览，点击pay now之前，提前结束该商品参与的满减活动
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
-
     #获取第一个商品名称
     Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
     Wait Until Element Is Visible    title
@@ -55,7 +54,7 @@ Change_Status
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品和一个包括全部商品的满减活动
-    Login With Test Account
+    Login With Default User
     Start Ajax Listener
     Add Product_Up
     Sleep    8
