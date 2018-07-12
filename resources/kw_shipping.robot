@@ -115,7 +115,6 @@ Delete Shipping
     Wait And Click Element    ${locator_shipping_del_shipping}
     Wait And Click Element    dom:document.querySelectorAll("button")[7]
     Sleep    1
-    Page Should Not Contain Element    ${locator_shipping_first_element}
     Location Should Be    ${url_shipping}
 
 Quit Adding Shipping
