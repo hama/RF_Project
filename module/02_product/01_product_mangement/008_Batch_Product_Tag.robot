@@ -49,6 +49,8 @@ products042
     Press Key    dom:document.querySelectorAll(".ant-select-search__field")[1]    \\13
     #检验输入框中是否含有刚刚输入的标签
     Page Should Contain Element    dom:document.querySelectorAll(".ant-select-selection__choice__content")[0]
+    #点击空白处，取消下拉选项
+    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-title")[0]
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
     #提示添加成功
@@ -74,6 +76,8 @@ products043
     #记录下点击的标签内容
     ${tag}    Get Text    dom:document.querySelectorAll(".ant-tag")[0]
     Wait And Click Element    dom:document.querySelectorAll(".ant-tag")[0]
+    #点击空白处，取消下拉选项
+    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-title")[0]
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
     Sleep    1
@@ -111,6 +115,8 @@ products044
     Page Should Contain Element    dom:document.querySelectorAll(".ant-select-selection__choice__content")[0]
     #点击标题框以失去焦点
     Execute Javascript    document.querySelectorAll(".ant-modal-mask")[0].click()
+    #点击空白处，取消下拉选项
+    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-title")[0]
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
     #提示添加成功
