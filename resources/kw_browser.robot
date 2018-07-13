@@ -32,7 +32,7 @@ Setup Test Case
 
 Teardown Test Case
     [Documentation]    测试用例执行失败进行截图
-#   Run Keyword If Test Failed    Capture Page Screenshot
+    #Run Keyword If Test Failed    Capture Page Screenshot
     log    *******************************************************************************************************
     log    ******************************************** Test Case End ********************************************
     log    *******************************************************************************************************
