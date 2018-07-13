@@ -1,5 +1,4 @@
 *** Settings ***
-Test Teardown     Custom Teardown
 Library           SeleniumLibrary    #Test Setup    Open Headless Chrome    #Test Teardown    Close Browser
 Resource          ../../../resources/var_common.robot
 
@@ -37,13 +36,6 @@ Open Headless Chrome
     Call Method    ${chrome_options}    add_argument    disable-gpu
     Create Webdriver    Chrome    chrome_options=${chrome_options}
     Go To    ${url}
-
-Custom Teardown
-    Run Keyword If Test Passed    ScreenShot
-    Run Keyword If Test Failed    ScreenShot
-
-ScreenShot
-    Capture Page Screenshot
 
 Check result
     # 获取指定接口的数据，使用 Table should countains 关键字判断是否包含
