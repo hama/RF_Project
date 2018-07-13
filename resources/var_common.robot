@@ -7,7 +7,7 @@ ${register_btn}    dom:document.querySelectorAll(".bottomEdit___zk0l5 a")[0]    
 ${recover_pwd_btn}       dom:document.querySelectorAll(".bottomEdit___zk0l5 div a")[0]     #.忘记密码按钮
 ${add_products_btn}    id:test_product    #.添加商品按钮
 ${add_products_title}    ceshi1    #.添加商品的标题
-${add_products_img}    ./images/tm.jpg    #.添加商品的图片
+${add_products_img}    ${CURDIR}/../images/tm.jpg    #.添加商品的图片
 ### 菜单栏 locator
 ${locator_order}    dom:document.querySelectorAll('a[href="/order"]')[0]    # 导航栏-订单
 ${locator_products}    id:test_product    # 导航栏-商品

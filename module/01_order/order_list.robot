@@ -15,7 +15,7 @@ Resource          ../../resources/var_order.robot
 order009
     [Documentation]    显示订单列表，分别为，全部，已支付，已确认，已发货，已完成，未支付，已取消
     [Tags]    P1
-    Add Order
+    Add Order    #.添加订单
     Go To    ${home_page}
     sleep    1
     Wait And Click Element    ${order_list_btn}
@@ -182,6 +182,9 @@ order085
 order084
     [Documentation]    图标选中已支付栏，订单列表展示已支付订单
     [Tags]    P0
+    Add Order    #.添加订单
+    Go To    ${home_page}
+    Add Alerady Mission Order    #.添加已完成订单
     Go To Order Page
     Wait And Click Element    ${order_list_btn}
     Wait And Click Element    ${order_alerady_mission_btn}
@@ -207,6 +210,9 @@ order090
 order092
     [Documentation]    图标选中已取消栏，订单列表展示已取消订单
     [Tags]    P0
+    Add Order    #.添加订单
+    Go To    ${home_page}
+    Add Alerady Cancel Order    #.添加已取消订单
     Go To Order Page
     Wait And Click Element    ${order_list_btn}
     Wait And Click Element    ${order_alerady_cencel_btn}
@@ -214,7 +220,7 @@ order092
     ${count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length
     : FOR    ${i}    IN RANGE    ${count}
     \    ${x}    Evaluate    ${i}+1
-    \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[5].innerText
+    \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[4].innerText
     \    Should Be True    '${data}'=='已取消'
 
 order093

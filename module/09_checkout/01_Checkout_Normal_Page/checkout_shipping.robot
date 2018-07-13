@@ -276,3 +276,6 @@ checkout097
     Wait And Click Element    dom:document.querySelectorAll(".btn2")[1]    #.跳转主页
     Sleep Time
     Page Should Contain Element    class:header
+clear shipping
+    Go To    ${home_page}
+    Delete Shipping

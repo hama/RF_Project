@@ -16,19 +16,6 @@ Resource          ../../../resources/kw_Checkout.robot
 Resource          ../../../resources/var_checkout.robot
 
 *** Test Cases ***
-gggg
-    Checkout Common Setp
-    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
-    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Wait And Click Element    dom:document.querySelectorAll("#submitMbPay")[0]
-    ${first_name}    Set Variable    123
-    Input Text    dom:document.querySelectorAll("input[name='first_name']")[0]    ${first_name}
-    Input Text    dom:document.querySelectorAll("input[name='last_name']")[0]    345
-    Wait And Click Element    dom:document.querySelectorAll(".close_icon")[1]
-    Wait And Click Element    dom:document.querySelectorAll("#submitMbPay")[0]
-    ${data}    Execute JavaScript    return document.querySelectorAll("input[name='first_name']")[0].value
-    Should Be True    '${data}'=='${first_name}'
-
 add shipping
     Add Shipping China
 checkout001
@@ -310,12 +297,10 @@ checkout039
     Checkout Common Setp
     Wait And Click Element    dom:document.querySelectorAll(".add-to-card")[0]
     Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Go To    ${page}
-    Sleep    1
+    Sleep    3
     Wait And Click Element    dom:document.querySelectorAll(".add-to-card")[0]
     Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
-    Go To    ${page}
-    Sleep    1.5
+    Sleep    3
     Wait And Click Element    dom:document.querySelectorAll("a[realhref='/cart']")[0]
     ${count}    Execute JavaScript    return document.querySelectorAll(".space-between span")[2].innerText
     Should Be True    ${count}==2
@@ -384,3 +369,4 @@ checkout038
     Wait And Click Element    dom:document.querySelectorAll("#submitMbPay")[0]
     ${data}    Execute JavaScript    return document.querySelectorAll("input[name='first_name']")[0].value
     Should Be True    '${data}'=='${first_name}'
+
