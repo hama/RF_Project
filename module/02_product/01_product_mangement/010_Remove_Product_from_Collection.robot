@@ -110,6 +110,12 @@ Products Suite Setup
     Login With Default User
     Start Ajax Listener
     Go To Products Page
+    Add_Collection
+    Sleep    5
+    Go To Products Page
+    Sleep    5
+    Add_Collection
+    Go To Products Page
 
 Products Suite Teardown
     [Documentation]    删除商品，专辑

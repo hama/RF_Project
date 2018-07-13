@@ -163,5 +163,10 @@ Add Category
 Delete All Category
     [Documentation]    删除分类
     Go To    ${api_products_addProductsType}
-    Wait And Click Element    dom:document.querySelectorAll(".tw-close")[0]
+    ${length}=    Execute Javascript    return document.querySelectorAll(".djfont.remove").length
+    : FOR    ${index}    IN RANGE    ${length}
+    \    ${remove_bt}=    Execute Javascript    return document.querySelectorAll(".djfont.remove")[0]
+    \    ${length}=  	Execute Javascript     return document.querySelectorAll(".djfont.remove").length
+    \    Run Keyword If    ${length} == 0     Exit For Loop
+    \    Click Button    ${remove_bt}
     Click Element    ${locator_products_saveBtn}

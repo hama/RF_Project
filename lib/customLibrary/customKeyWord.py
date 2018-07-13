@@ -1,12 +1,15 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 import pymysql
 import random
 import json
 import sys
 import re
 import requests
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
+
+
 class keyWord(object):
     ROBOT_LIBRARY_SCOPE = "GLOBAL"
     host = "rm-wz9tz4ff2v9t95f9qao.mysql.rds.aliyuncs.com"
@@ -23,10 +26,16 @@ class keyWord(object):
     db_uname = "lansejiebo"
     db_pwd = "lansejiebo@123"
     db_name = "shop_"
+
+    home_page_url = "http://admin1024.shoplazza.com"
+    datas_contact = "15220581724"
+    datas_password = "123456"
+    datas_username = "chen"
+
     def __init__(self):
         pass
 
-    def mykeyword(self,url):
+    def mykeyword(self, url):
         return url
 
     def salt(self):
@@ -52,9 +61,10 @@ class keyWord(object):
         self.save_str = emails
         return emails
 
-    def selectCode(self,args):
+    def selectCode(self, args):
         try:
-            conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8", port=self.port)
+            conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8",
+                                   port=self.port)
             curs = conn.cursor()
             sql = "SELECT code FROM user_validate WHERE `contact` = '%s' " % (args)
             curs.execute(sql)
@@ -63,9 +73,10 @@ class keyWord(object):
         except Exception as e:
             print e
 
-    def selectCodesPwd(self,args):
+    def selectCodesPwd(self, args):
         try:
-            conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8", port=self.port)
+            conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8",
+                                   port=self.port)
             curs = conn.cursor()
             sql = "SELECT code FROM user_validate WHERE `contact` = '%s' AND `usage` = '%s'" % (args, self.rec_keywork)
 
@@ -77,17 +88,17 @@ class keyWord(object):
             exit()
 
     def selectProduct(self):
-        x_url = "http://admin1024.shoplazza.com/api/user/login"
-        p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
-        datas = {"contact": "18826557090", "password": "147258"}
-        res = requests.post(url=x_url,headers={},data=datas)
+        x_url = self.home_page_url + "/api/user/login"
+        p_url = self.home_page_url + "/api/product/search?page=0&limit=20"
+        datas = {"contact": self.datas_contact, "password": self.datas_password}
+        res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
         cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
 
         uid = json.loads(res.content)['data']['id'] or None
 
-        sub_list = requests.get(url=p_url,headers={"cookie": cookiesx})
+        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
         res_data = json.loads(sub_list.content)['data']['products']
         res_list = []
         for i in res_data:
@@ -103,7 +114,8 @@ class keyWord(object):
         # curs.execute(sql)
         # counts = curs.fetchone()
         # return counts
-    def getResult(self,args):
+
+    def getResult(self, args):
         args = args.encode('unicode-escape').decode('string_escape')
 
         data = self.selectProduct()
@@ -118,41 +130,46 @@ class keyWord(object):
             return True
         else:
             return False
-    def searchStr(self,args):
+
+    def searchStr(self, args):
         str_ = str(args)
-        restr = re.search('\d',str_).group()
+        restr = re.search('\d', str_).group()
         return restr
-    def searchStrs(self,args):
+
+    def searchStrs(self, args):
         str_ = str(args)
-        restr = re.search('\d+',str_).group()
+        restr = re.search('\d+', str_).group()
         return restr
-    def order_list_str(self,args):
+
+    def order_list_str(self, args):
         str_ = str(args)
 
-        restr = re.findall('\d+',str_)
-        timelist = ['05','31']
+        restr = re.findall('\d+', str_)
+        timelist = ['05', '31']
         for i in timelist:
             if i in restr:
                 return True
             else:
                 return False
 
-    def order_list_maxmonth_check(self,max,min):
+    def order_list_maxmonth_check(self, max, min):
         if max is None or min is None:
             return False
         maxstr_ = str(max)
         minstr_ = str(min)
-        re_max = re.findall(r'-(\d+)',maxstr_)
-        re_min = re.findall(r'-(\d+)',minstr_)
+        re_max = re.findall(r'-(\d+)', maxstr_)
+        re_min = re.findall(r'-(\d+)', minstr_)
 
         if int(re_max[0]) - int(re_min[0]) > 3:
             return False
         else:
             return True
-    def remove_user(self,args):
-        if args is None:return False
+
+    def remove_user(self, args):
+        if args is None: return False
         try:
-            conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8", port=self.port,cursorclass = pymysql.cursors.DictCursor)
+            conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8",
+                                   port=self.port, cursorclass=pymysql.cursors.DictCursor)
             curs = conn.cursor()
             select = "SELECT id FROM `USER` WHERE `cell`= '%s'" % (args)
             curs.execute(select)
@@ -161,14 +178,13 @@ class keyWord(object):
                 sql_data = "DELETE FROM `user_domain` WHERE userid = %s" % (k['id'])
                 curs.execute(sql_data)
 
-
             sql = "DELETE  FROM user_validate WHERE `contact` = '%s'" % (args)
             sql_ = "DELETE  FROM user WHERE `cell` = '%s'" % (args)
             curs.execute(sql)
             curs.execute(sql_)
             conn.commit()
 
-            #.删除domain
+            # .删除domain
             # curs.execute(select)
             # for k in curs.fetchall():
             #     sql_data = "DELETE FROM `user_domain` WHERE userid = %s" %(k['id'])
@@ -178,7 +194,8 @@ class keyWord(object):
         except Exception as e:
             print e
             exit()
-    def dictTest(self,**dict_):
+
+    def dictTest(self, **dict_):
         print type(dict_)
         return dict_
 
@@ -200,9 +217,9 @@ class keyWord(object):
             return 0
 
     def getFirstProductQuantity(self):
-        x_url = "http://admin1024.shoplazza.com/api/user/login"
-        p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
-        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
+        x_url = self.home_page_url + "/api/user/login"
+        p_url = self.home_page_url + "/api/product/search?page=0&limit=20"
+        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -218,9 +235,9 @@ class keyWord(object):
         return res_list[0]
 
     def getFirstProductTitle(self):
-        x_url = "http://admin1024.shoplazza.com/api/user/login"
-        p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
-        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
+        x_url = self.home_page_url + "/api/user/login"
+        p_url = self.home_page_url + "/api/product/search?page=0&limit=20"
+        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -236,9 +253,9 @@ class keyWord(object):
         return res_list[0]
 
     def getProductStatus(self, arg):
-        x_url = "http://admin1024.shoplazza.com/api/user/login"
-        p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
-        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
+        x_url = self.home_page_url + "/api/user/login"
+        p_url = self.home_page_url + "/api/product/search?page=0&limit=20"
+        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -254,9 +271,9 @@ class keyWord(object):
         return res_list[arg]
 
     def getProductSku(self, arg):
-        x_url = "http://admin1024.shoplazza.com/api/user/login"
-        p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
-        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
+        x_url = self.home_page_url + "/api/user/login"
+        p_url = self.home_page_url + "/api/product/search?page=0&limit=20"
+        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -281,9 +298,9 @@ class keyWord(object):
         else:
             return 0
 
-        x_url = "http://admin1024.shoplazza.com/api/user/login"
-        p_url = "http://admin1024.shoplazza.com/api/product/search?status=" + str(arg) + "&page=0&limit=20"
-        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
+        x_url = self.home_page_url + "/api/user/login"
+        p_url = self.home_page_url + "/api/product/search?status=" + str(arg) + "&page=0&limit=20"
+        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -300,9 +317,9 @@ class keyWord(object):
         return len(res_list)
 
     def getProductTagsLength(self, arg):
-        x_url = "http://admin1024.shoplazza.com/api/user/login"
-        p_url = "http://admin1024.shoplazza.com/api/product/search?page=0&limit=20"
-        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
+        x_url = self.home_page_url + "/api/user/login"
+        p_url = self.home_page_url + "/api/product/search?page=0&limit=20"
+        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -321,9 +338,9 @@ class keyWord(object):
         return res_list[arg]
 
     def getAllProductCount(self):
-        x_url = "http://admin1024.shoplazza.com/api/user/login"
-        p_url = "http://admin1024.shoplazza.com/api/product/search"
-        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
+        x_url = self.home_page_url + "/api/user/login"
+        p_url = self.home_page_url + "/api/product/search"
+        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -346,9 +363,9 @@ class keyWord(object):
         return page
 
     def validateProductByPageAndSize(self, page, size):
-        x_url = "http://admin1024.shoplazza.com/api/user/login"
-        p_url = "http://admin1024.shoplazza.com/api/product/search?page=" + str(page) + "&limit=" + str(size)
-        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
+        x_url = self.home_page_url + "/api/user/login"
+        p_url = self.home_page_url + "/api/product/search?page=" + str(page) + "&limit=" + str(size)
+        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -364,9 +381,9 @@ class keyWord(object):
         return res_list
 
     def getCollectionId(self, index):
-        x_url = "http://admin1024.shoplazza.com/api/user/login"
-        p_url = "http://admin1024.shoplazza.com/api/collection/dropdown?page=0&limit=10&key="
-        datas = {"contact": "1004714019@qq.com", "password": "123456", "username": "test"}
+        x_url = self.home_page_url + "/api/user/login"
+        p_url = self.home_page_url + "/api/collection/dropdown?page=0&limit=10&key="
+        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return res.status_code
@@ -393,7 +410,4 @@ class keyWord(object):
         regx = r'\/(\S+)\.'
         data = re.compile(regx)
         img_name = data.findall(img, re.M)
-
         return img_name[0]
-
-
