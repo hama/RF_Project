@@ -49,15 +49,43 @@ Add Product Required Content
 
 Delete Product
     [Documentation]    删除商品列表的第一个商品
+
     Go To Products Page
     Wait And Click Element    ${locator_products_first}    # 商品列表第一条数据
     Wait And Click Button    ${locator_products_delBtn}
 
 Delete All Product
-    [Documentation]    删除商品列表的第一个商品
-    Go To Products Page
-    Wait And Click Element    ${locator_products_first}    # 商品列表第一条数据
-    Wait And Click Button    ${locator_products_delBtn}
+    [Documentation]    删除全部商品
+    #判断是否存在商品，存在即删除，否则跳过
+    ${is_exist_element}    Run Keyword And Return Status    Page Should Contain    条记录
+    Run Keyword If    ${is_exist_element}==True    Delete All Product Execute
+
+Delete All Product Execute
+    [Documentation]     删除全部商品的执行办法
+    ${size}    Get Text    dom:document.querySelectorAll(".ant-pagination-total-text")[0]
+    ${total_record}    searchStrs    ${size}
+    ${page_num}    evaluate    int(math.ceil(${total_record}/20.0))    math
+    Run Keyword If    ${page_num}>1     Delete Product Loop     ${page_num}
+    ...    ELSE IF    ${page_num}==1     Delete Product Loop     1
+
+Delete Product Loop
+    [Documentation]     循环删除商品
+    [Arguments]    ${page_num}
+    : FOR    ${index}    IN RANGE    ${page_num}
+         #选中当前页面所有商品
+    \     Execute JavaScript    document.querySelectorAll(".ant-checkbox-input")[0].click()
+         #批量按钮
+    \     Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+         #选择批量删除产品
+    \     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[2]    btn
+    \     Set Focus To Element    btn
+    \     Mouse Down    btn
+    \     Mouse Up    btn
+         #弹出框
+    \     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+         #点击确定
+    \     Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
+    \     Sleep    2
 
 Wait For Save
     [Documentation]    等待商品保存成功
@@ -120,9 +148,9 @@ Delete_Collection
     #点击进入商品专辑界面
     Wait And Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[2]
     #点击删除第一个专辑按钮
-    Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0].querySelectorAll(".card-delete")[0]
+    Wait And Click Element    dom:document.querySelectorAll(".djfont.delete")[0]
     #点击确定
-    Wait And Click Element    id:test_delete_modal_sure_btn
+    Wait And Click Element    dom:document.querySelectorAll(".ant-btn.middle_btn___2ExQc")[0]
 
 Delete_First_Product
     [Documentation]    删除第一个商品
