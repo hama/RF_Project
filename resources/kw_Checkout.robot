@@ -20,8 +20,9 @@ Add Payment
     [Documentation]    添加支付方式
     Wait And Click Element    ${locator_setting}    #.点击设置按钮
     Wait And Click Element    ${locator_setting_payment}    #.点击收款渠道按钮
-    Wait And Click Element    dom:document.querySelectorAll("button")[1]    #.点击收款渠道按钮
-    Wait And Click Element    dom:document.querySelectorAll("button")[2]    #.点击绑定按钮
+    Waut And Click Element    dom:document.querySelectorAll(".title___3MGDq span")[1]    #. 点击更换收款方式
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]    #.选择paylinks
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]    #.点击编辑
     Wait And Input Text    dom:document.querySelectorAll("#client_id")[0]    123456    #.绑定账号
     Wait And Input Text    dom:document.querySelectorAll("#secret_key")[0]    123123    #.绑定密码
     Wait And Click Element    dom:document.querySelectorAll("button")[2]    #.点击绑定按钮
