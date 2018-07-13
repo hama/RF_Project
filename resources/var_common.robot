@@ -17,7 +17,7 @@ ${locator_setting_shipping}    dom:document.querySelectorAll('a[href="/shipping"
 ${locator_setting_taxPrice}    dom:document.querySelectorAll('a[href="/taxPrice"]')[0]    # 导航栏-设置-税费
 ${locator_setting_payment}    dom:document.querySelectorAll('a[href="/pay"]')[0]    # 导航栏-设置-收款渠道
 ### 页面模块 url
-${url_home_page}    ${home_page}    # home page
+${url_home_page}    ${home_page}/    # home page
 ${url_order}      ${home_page}/order    # order page
 ${url_products}    ${home_page}/products    # products page
 ${url_marketing}    ${home_page}/subtraction    # marketing page
