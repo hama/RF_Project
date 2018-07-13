@@ -103,7 +103,7 @@ shipping134
     sleep    1
     Wait And Click Element    id:test_shipping_edit_modal_sure_btn
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    sleep    1
+    sleep    2
     page should contain element    dom:document.querySelectorAll("#test_shipping_list_0 li")[0]
     Delete Shipping
 
@@ -154,6 +154,7 @@ check_list_data
     \    ${res_data}    Execute Javascript    return responseMap.get("${page_list_api}").data[${i}].shipping_name;
     \    ${ul_data}    Execute Javascript    return document.querySelectorAll("#test_shipping_list_${i} li span")[0].innerHTML
     \    Should Be True    '${res_data}'=='${ul_data}'
+    Delete Shipping
     Quit All Setp
 
 0131_shipping
