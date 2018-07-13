@@ -327,6 +327,7 @@ checkout043
 checkout019
     [Documentation]    B端添加其他国家 checkout 展开下拉框，显示所有国家
     [Tags]    P1
+    Go To    ${home_page}
     Add Other Country
     Sleep    2
     Checkout Common Setp
