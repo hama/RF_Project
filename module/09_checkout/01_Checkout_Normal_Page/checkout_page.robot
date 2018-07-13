@@ -328,6 +328,7 @@ checkout019
     [Documentation]    B端添加其他国家 checkout 展开下拉框，显示所有国家
     [Tags]    P1
     Add Other Country
+    Sleep    2
     Checkout Common Setp
     Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
     Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
@@ -336,6 +337,7 @@ checkout019
     Should Be True    ${count}==228
     Go To    ${home_page}
     Delete Shipping
+
 checkout021
     [Documentation]    正常添加数据，保存成功
     [Tags]    P0
