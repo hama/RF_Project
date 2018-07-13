@@ -74,7 +74,7 @@ products036
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
     #比较class
     ${class}    Execute Javascript    return document.querySelectorAll(".ant-switch")[0].getAttribute("class")
-    Should Be Equal As Strings    ${class}    ant-switch ant-switch-checked
+    Should Be Equal As Strings    ${class}    ant-switch
     Go TO    ${home_page}
 
 products037
