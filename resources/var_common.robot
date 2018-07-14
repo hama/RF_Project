@@ -24,9 +24,9 @@ ${url_marketing}    ${home_page}/subtraction    # marketing page
 ${url_tax_price}    ${home_page}/taxPrice    # tax price
 ${url_shipping}    ${home_page}/shipping    # shipping
 ### 测试用户
-${user_default_name}    15220581724    # 默认使用的用户信息，用于跑大部分用例
+${user_default_name}    17665076519    # 默认使用的用户信息，用于跑大部分用例
 ${user_default_pwd}    123456
-${user_default_domain}    chen
+${user_default_domain}    xx
 ### keybord_key
 ${keybord_enter}    \\13
 ### 注册用户
