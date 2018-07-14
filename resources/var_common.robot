@@ -1,6 +1,9 @@
+*** Settings ***
+Variables         ${CURDIR}/../lib/customLibrary
+
 *** Variables ***
 ### 未分类，需要分类并清理
-${home_page}      http://admin1024.shoplazza.com
+${home_page}      ${home_page_url}
 ${error_msg}      出错啦！    #.自定义错误提示
 ${login_btn}      class:logBtn___3pRgJ    #.登陆按钮
 ${register_btn}    dom:document.querySelectorAll(".bottomEdit___zk0l5 a")[0]     #.注册按钮
@@ -24,9 +27,9 @@ ${url_marketing}    ${home_page}/subtraction    # marketing page
 ${url_tax_price}    ${home_page}/taxPrice    # tax price
 ${url_shipping}    ${home_page}/shipping    # shipping
 ### 测试用户
-${user_default_name}    15220581724    # 默认使用的用户信息，用于跑大部分用例
-${user_default_pwd}    123456
-${user_default_domain}    chen
+${user_default_name}    ${datas_contact}    # 默认使用的用户信息，用于跑大部分用例
+${user_default_pwd}    ${datas_password}
+${user_default_domain}    ${datas_username}
 ### keybord_key
 ${keybord_enter}    \\13
 ### 注册用户

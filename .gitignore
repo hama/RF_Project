@@ -9,3 +9,4 @@ logs/
 
 # 开发根据环境自定义文件
 resources/var_common.robot
+module/Test.robot
