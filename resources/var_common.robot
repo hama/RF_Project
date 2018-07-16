@@ -8,17 +8,22 @@ ${error_msg}      出错啦！    #.自定义错误提示
 ${login_btn}      class:logBtn___3pRgJ    #.登陆按钮
 ${register_btn}    dom:document.querySelectorAll(".bottomEdit___zk0l5 a")[0]     #.注册按钮
 ${recover_pwd_btn}       dom:document.querySelectorAll(".bottomEdit___zk0l5 div a")[0]     #.忘记密码按钮
-${add_products_btn}    id:test_product    #.添加商品按钮
-${add_products_title}    ceshi1    #.添加商品的标题
-${add_products_img}    ${CURDIR}/../images/tm.jpg    #.添加商品的图片
 ### 菜单栏 locator
 ${locator_order}    dom:document.querySelectorAll('a[href="/order"]')[0]    # 导航栏-订单
 ${locator_products}    id:test_product    # 导航栏-商品
+${locator_product_manage}    id:test_product_manage    # 导航栏-商品管理
+${locator_product_collection}    id:test_product_colletion    # 导航栏-商品专辑
+${locator_product_review}    id:test_product_review    # 导航栏-商品评论
 ${locator_marketing}    id:test_marketing    # 导航栏-营销
 ${locator_setting}    id:test_setting    # 导航栏-设置
 ${locator_setting_shipping}    dom:document.querySelectorAll('a[href="/shipping"]')[0]    # 导航栏-设置-物流
 ${locator_setting_taxPrice}    dom:document.querySelectorAll('a[href="/taxPrice"]')[0]    # 导航栏-设置-税费
 ${locator_setting_payment}    dom:document.querySelectorAll('a[href="/pay"]')[0]    # 导航栏-设置-收款渠道
+### locator checkbox
+${locator_checkbox00}    dom:document.querySelectorAll(".ant-checkbox-input")[0]    #定位当前页面第0个checkbox
+${locator_checkbox01}    dom:document.querySelectorAll(".ant-checkbox-input")[1]
+### locator checkbox
+${locator_button_add}    dom:document.querySelectorAll(".large_btn___3RbRK")[0]        #添加按钮
 ### 页面模块 url
 ${url_home_page}    ${home_page}/    # home page
 ${url_order}      ${home_page}/order    # order page

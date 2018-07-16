@@ -12,11 +12,6 @@ Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
-*** Variables ***
-${locator_products_first_switch}    dom:document.querySelectorAll(".ant-switch")[0]    # 列表第一个商品的上架按钮
-${content_products_tips_shelf}    是否上架
-${content_products_tips_shelf_ok}    上架成功
-
 *** Test Cases ***
 products023
     [Documentation]    测试已有商品的编辑，保存生效

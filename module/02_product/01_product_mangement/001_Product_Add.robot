@@ -96,7 +96,7 @@ products094
     Wait And Click Element    dom:document.querySelectorAll(".preview")[1]
     Sleep    2
     #展示图片大图
-    #Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-modal-content")[0]
+    #Wait Until Page Contains Element    ${locator_products_popUps}
     #Sleep    2
     #关闭大图
     #Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close-x")[0]

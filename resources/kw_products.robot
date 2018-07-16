@@ -3,6 +3,7 @@ Documentation     添加商品
 Library           SeleniumLibrary
 Library           ${CURDIR}/../lib/customLibrary
 Resource          var_common.robot
+Resource          var_marketing.robot
 Resource          var_products.robot
 Resource          kw_browser.robot
 Resource          kw_common.robot
@@ -62,7 +63,7 @@ Delete All Product
 
 Delete All Product Execute
     [Documentation]     删除全部商品的执行办法
-    ${size}    Get Text    dom:document.querySelectorAll(".ant-pagination-total-text")[0]
+    ${size}    Get Text    ${locator_page_total_record}
     ${total_record}    searchStrs    ${size}
     ${page_num}    evaluate    int(math.ceil(${total_record}/20.0))    math
     Run Keyword If    ${page_num}>1     Delete Product Loop     ${page_num}
@@ -73,18 +74,18 @@ Delete Product Loop
     [Arguments]    ${page_num}
     : FOR    ${index}    IN RANGE    ${page_num}
          #选中当前页面所有商品
-    \     Execute JavaScript    document.querySelectorAll(".ant-checkbox-input")[0].click()
+    \     Select Checkbox    ${locator_products_checkbox_chooseProducets}
          #批量按钮
-    \     Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    \     Wait And Click Element    ${locator_products_selection_batchOperations}
          #选择批量删除产品
-    \     Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[2]    btn
+    \     Assign Id To Element    ${locator_products_dropdown_batchDel}    btn
     \     Set Focus To Element    btn
     \     Mouse Down    btn
     \     Mouse Up    btn
          #弹出框
-    \     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    \     Wait Until Element Is Visible    ${locator_products_popUps}
          #点击确定
-    \     Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
+    \     Wait And Click Element    ${locator_products_save_product}
     \     Sleep    2
 
 Wait For Save
@@ -112,21 +113,21 @@ Click_First_Product_And_Click_Batch_Menu
     [Documentation]    选中第一个商品,并且点击批量操作菜单
     #选中第一个商品
     Sleep    2
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Select Checkbox    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
+    Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
+    Select Checkbox    ${locator_products_checkbox_chooseFirstProducet}
     #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Wait And Click Element    ${locator_products_selection_batchOperations}
 
 Add_Collection
     [Documentation]    添加一个商品专辑
     #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
+    Wait Until Element Is Visible    ${locator_products}
+    Click Element    ${locator_products}
     #点击进入商品专辑界面
     Sleep    5
-    Wait And Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[2]
+    Wait And Click Element    ${locator_product_collection}
     #点击新建一个商品专辑
-    Wait And Click Element    dom:document.querySelectorAll(".large_btn___3RbRK")[0]
+    Wait And Click Element    ${locator_products_add_category}
     #输入专辑名称
     Wait And Input Text    id:title    ceshi
     #输入专辑描述
@@ -137,16 +138,16 @@ Add_Collection
     Choose File    dom:document.querySelectorAll("input[type='file']")[0]    ${file_products_addImg}
     Sleep    5
     #点击保存按钮
-    Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
+    Wait And Click Element    ${locator_products_save_product}
     Sleep    5
 
 Delete_Collection
     [Documentation]    删除专辑
     #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
+    Wait Until Element Is Visible    ${locator_products}
+    Click Element    ${locator_products}
     #点击进入商品专辑界面
-    Wait And Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[2]
+    Wait And Click Element    ${locator_product_collection}
     #点击删除第一个专辑按钮
     Wait And Click Element    dom:document.querySelectorAll(".djfont.delete")[0]
     #点击确定
@@ -156,7 +157,7 @@ Delete_First_Product
     [Documentation]    删除第一个商品
     Go To Products Page
     Sleep    5
-    Wait And Click Element    dom:document.querySelectorAll(".delete___2xfx-")[0]
+    Wait And Click Element    ${locator_products_deleteIcon}
     Sleep    5
     #Wait And Click Element    id:test_delete_modal_sure_btn
     Wait And Click Element    dom:document.querySelectorAll('.middle_btn___2ExQc')[0]
@@ -495,7 +496,7 @@ Add_Full_Reduction
     Go To Marketing Page
     Sleep    2
     #点击新增活动按钮
-    Wait And Click Element    dom:document.querySelectorAll(".large_btn___3RbRK")[0]
+    Wait And Click Element    ${locator_marketing_add_substraction}
     Sleep    5
     #活动名称
     Wait And Input Text    id:name    ${name}
@@ -516,7 +517,7 @@ Add_Full_Reduction
     #选择适用范围
     Wait And Click Element    dom:document.querySelectorAll(".li___2Fxhj")[0]
     #点击保存按钮
-    Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
+    Wait And Click Element    ${locator_products_save_product}
     Sleep    5
 
 End_First_Full_Reduction
@@ -542,7 +543,7 @@ Modify_First_Full_Reduction
     Wait And Input Text    id:cutPrice0    ${cut2}
     Sleep    3
     #点击保存按钮
-    Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
+    Wait And Click Element    ${locator_products_save_product}
     Sleep    5
 
 Change_Cash
@@ -669,14 +670,14 @@ Delete_All_Products
     Execute Javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
     #Wait And Click Element    dom:document.querySelectorAll(".ant-checkbox-input")[0]
     #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Wait And Click Element    ${locator_products_selection_batchOperations}
     #选择删除商品
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[2]    btn
+    Assign Id To Element    ${locator_products_dropdown_batchDel}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    ${locator_products_popUps}
     #点击确定
     Wait And Click Element    ${locator_products_delBtn}
     Go TO    ${home_page}
@@ -684,16 +685,16 @@ Delete_All_Products
 Delete_All_Collection
     [Documentation]    删除所有专辑
     #进入商品模块
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
+    Wait Until Element Is Visible    ${locator_products}
+    Click Element    ${locator_products}
     #点击进入商品专辑界面
-    Wait And Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[2]
+    Wait And Click Element    ${locator_product_collection}
     #点击选中所有专辑
     Execute Javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
     #点击删除按钮
     Wait And Click Element    dom:document.querySelectorAll(".batchSelectTable_btn___40HNR")[0]
     #点击确定按钮
-    Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
+    Wait And Click Element    ${locator_products_save_product}
     Go TO    ${home_page}
 
 Add Order Products

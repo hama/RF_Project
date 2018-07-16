@@ -19,7 +19,7 @@ products051
     #验证添加到商品专辑排版正确
     Click_First_Product_And_Click_Batch_Menu
     #选择添加到专辑
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    btn
+    Assign Id To Element    ${locator_products_dropdown_addtoCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
@@ -47,14 +47,14 @@ products052
     #选中第几个专辑
     ${which}=    Set Variable    0
     #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
+    Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
+    Click Element    ${locator_products_checkbox_chooseFirstProducet}
     #记录下操作的商品名称
-    ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
+    ${name}    Get Text    ${locator_products_first_name}
     #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Wait And Click Element    ${locator_products_selection_batchOperations}
     #选择添加到专辑
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    btn
+    Assign Id To Element    ${locator_products_dropdown_addtoCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
@@ -65,9 +65,9 @@ products052
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
+    Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
     #去商品专辑模块检查
-    Wait And Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[2].querySelectorAll("a")[0]
+    Wait And Click Element    ${locator_product_collection}.querySelectorAll("a")[0]
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
     Wait Until Page Contains Element    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
@@ -82,7 +82,7 @@ products053
     ${which}=    Set Variable    0
     Click_First_Product_And_Click_Batch_Menu
     #选择添加到专辑
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    btn
+    Assign Id To Element    ${locator_products_dropdown_addtoCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
@@ -107,19 +107,19 @@ products054
     ${which}=    Set Variable    0
     #选中第一个商品
     Sleep    2
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Select Checkbox    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
+    Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
+    Select Checkbox    ${locator_products_checkbox_chooseFirstProducet}
     #记录下操作的商品名称
-    ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
+    ${name}    Get Text    ${locator_products_first_name}
     #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Wait And Click Element    ${locator_products_selection_batchOperations}
     #选择添加到专辑
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    btn
+    Assign Id To Element    ${locator_products_dropdown_addtoCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    ${locator_products_popUps}
     Sleep    5
     #先搜索符合条件的专辑
     #获取要搜索的专辑名称
@@ -131,9 +131,9 @@ products054
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
+    Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
     #去商品专辑模块检查
-    Wait And Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[2].querySelectorAll("a")[0]
+    Wait And Click Element    ${locator_product_collection}.querySelectorAll("a")[0]
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
     Wait Until Page Contains Element    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
@@ -149,14 +149,14 @@ products055
     #获取选中的专辑编号
     ${collection_id}    getCollectionId    ${which}
     #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
+    Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
+    Click Element    ${locator_products_checkbox_chooseFirstProducet}
     #记录下操作的商品名称
-    ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
+    ${name}    Get Text    ${locator_products_first_name}
     #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Wait And Click Element    ${locator_products_selection_batchOperations}
     #选择添加到专辑
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    btn
+    Assign Id To Element    ${locator_products_dropdown_addtoCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
@@ -171,9 +171,9 @@ products055
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
+    Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
     #去商品专辑模块检查
-    Wait And Click Element    dom:document.querySelectorAll(".menu_item___3VgTh")[2].querySelectorAll("a")[0]
+    Wait And Click Element    ${locator_product_collection}.querySelectorAll("a")[0]
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
     Wait Until Page Contains Element    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
@@ -186,7 +186,7 @@ products057
     #取消将商品加入专辑
     Click_First_Product_And_Click_Batch_Menu
     #选择添加到专辑
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    btn
+    Assign Id To Element    ${locator_products_dropdown_addtoCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn

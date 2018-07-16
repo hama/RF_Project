@@ -12,16 +12,13 @@ Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
 
-*** Variables ***
-${locator_page_total_record}    dom:document.querySelectorAll(".ant-pagination-total-text")[0]
-
 *** Test Cases ***
 products001
     [Documentation]    测试商品列表的展示（数量/标题/库存/SKU/浏览量/销量/上架状态/创建时间）
     [Tags]    P0
     #获取每页多少条数据
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-pagination-total-text")[0]
-    ${size}    Get Text    dom:document.querySelectorAll(".ant-pagination-total-text")[0]
+    Wait Until Element Is Visible    ${locator_page_total_record}
+    ${size}    Get Text    ${locator_page_total_record}
     ${total_record}    searchStrs    ${size}
     # 然后遍历校验列表数据是否一致
     : FOR    ${index}    IN RANGE    ${total_record}
@@ -132,11 +129,11 @@ products016
     [Tags]    P0
     #删除商品
     #获取要删除的商品名称
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
-    ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
+    Wait Until Element Is Visible    ${locator_products_first_name}
+    ${name}    Get Text    ${locator_products_first_name}
     #点击删除按钮
     Wait And Click Element    ${locator_products_deleteIcon}
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    ${locator_products_popUps}
     Page Should Contain    确定删除吗？
     #确定
     Wait And Click Button    ${locator_products_delBtn}
@@ -151,11 +148,11 @@ products017
     [Tags]    P0
     #取消删除商品
     #获取要删除的商品名称
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
-    ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
+    Wait Until Element Is Visible    ${locator_products_first_name}
+    ${name}    Get Text    ${locator_products_first_name}
     #点击删除按钮
     Wait And Click Element    ${locator_products_deleteIcon}
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    ${locator_products_popUps}
     Page Should Contain    确定删除吗？
     #取消
     Wait And Click Element    ${locator_products_cancelDelete}

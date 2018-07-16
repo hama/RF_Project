@@ -22,7 +22,7 @@ products066
     Sleep    1
     Wait And Click Element    ${locator_products_editTableHead}
     #验证弹窗中的排版信息
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    ${locator_products_popUps}
     #可选复选框个数
     ${count}    Execute Javascript    return document.querySelectorAll(".col___39m-D").length
     Should Be True    ${count}==6
