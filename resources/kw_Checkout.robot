@@ -7,7 +7,7 @@ Checkout Common Setp
     [Documentation]    封装公共步骤
     Go To    ${home_page}
     Sleep Time
-    Wait And Click Element    ${add_products_btn}
+    Wait And Click Element    ${locator_products}
     #点击商品预览
     Sleep Time
     Wait And Click Element    dom:document.querySelectorAll(".preview___37DtU")[0]
