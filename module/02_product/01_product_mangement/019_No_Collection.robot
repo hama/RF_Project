@@ -36,7 +36,7 @@ Products Suite Setup
     [Documentation]    删除所有专辑
     Login With Default User
     Start Ajax Listener
-    Delete_All_Collection
+    Delete All Collection
     Sleep    5
     Go To Products Page
 
@@ -44,7 +44,7 @@ Products Suite Teardown
     [Documentation]    删除所有商品
     Go To Products Page
     Sleep    5
-    Delete_All_Products
+    Delete All Products
     Close Test Suite Browser
 
 Products Test Case Setup

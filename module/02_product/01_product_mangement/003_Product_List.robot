@@ -117,7 +117,7 @@ products015
     [Documentation]    验证商品上传弹窗
     [Tags]    P0
     #验证商品上传弹窗
-    Wait And Click Element    ${locator_products_upload_product}
+    Wait And Click Element    ${locator_productsMgmt_uploadProduct}
     Sleep    5
     Execute Javascript    return document.querySelectorAll(".ant-modal-close")[0].click()
     #Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-modal-close")[0]

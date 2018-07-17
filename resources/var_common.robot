@@ -22,8 +22,11 @@ ${locator_setting_payment}    dom:document.querySelectorAll('a[href="/pay"]')[0]
 ### locator checkbox
 ${locator_checkbox00}    dom:document.querySelectorAll(".ant-checkbox-input")[0]    #定位当前页面第0个checkbox
 ${locator_checkbox01}    dom:document.querySelectorAll(".ant-checkbox-input")[1]
-### locator checkbox
+### locator button
 ${locator_button_add}    dom:document.querySelectorAll(".large_btn___3RbRK")[0]        #添加按钮
+### locator popUps
+${locator_popUps_button_middle}    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]    #弹窗的中间按钮
+${locator_popUps_button_default}    dom:document.querySelectorAll(".default_btn___2wyTS")[0]    #弹窗的默认按钮
 ### 页面模块 url
 ${url_home_page}    ${home_page}/    # home page
 ${url_order}      ${home_page}/order    # order page

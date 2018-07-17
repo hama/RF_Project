@@ -17,7 +17,7 @@ ${locator_products_drop}    dom:document.querySelectorAll(".ant-radio-button-wra
 ${locator_products_first}    dom:document.querySelectorAll("tr td")[1]    # 商品列表-第一个商品
 ${locator_products_back}    class:back    # 商品编辑，后退按钮
 ${locator_products_addBtn}    id:test_add_btn    # 添加商品按钮
-${locator_products_delBtn}    dom:document.querySelectorAll('.middle_btn___2ExQc')[0]    # 删除商品按钮
+${locator_products_delBtn}    ${locator_popUps_button_middle}    # 删除商品按钮
 ${locator_products_saveBtn}    id:test_save_btn    # 保存商品按钮
 ${locator_products_uploadBtn}    id:test_upload_btn    # 上传商品图片按钮
 ${locator_products_status}    id:status    # 商品状态按钮
@@ -38,17 +38,17 @@ ${locator_products_chooseCategory}    id:product_type_cascade    # 选择商品�
 ${locator_products_chooseCategoryItem}    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]    # 选择商品分类子项
 ${locator_products_editTableHead}    dom:document.querySelectorAll(".edit_head___UidlR")[0]    #编辑表头
 ${locator_products_deleteIcon}    dom:document.querySelectorAll(".delete___2xfx-")[0]    #商品列表的删除icon
-${locator_products_cancelDelete}    dom:document.querySelectorAll(".default_btn___2wyTS")[0]    #商品列表点击删除icon弹出框中的取消按钮
+${locator_products_cancelDelete}    {locator_popUps_button_default}    #商品列表点击删除icon弹出框中的取消按钮
 ${locator_products_add_product}    ${locator_button_add}    #商品列表页的新增商品按钮
 ${locator_products_add_category}    ${locator_button_add}    #商品专辑页的新增专辑按钮
-${locator_products_upload_product}    dom:document.querySelectorAll(".icon_custom_left___GO944")[2]    #商品列表页的上传商品按钮
-${locator_products_save_product}    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]    #商品详情页的保存按钮
+${locator_products_save_product}    ${locator_popUps_button_middle}    #商品详情页的保存按钮
 ${locator_products_first_name}    dom:document.querySelectorAll(".product_name___Ul4W-")[0]     #列表第一个商品的名字
 ${locator_products_first_switch}    dom:document.querySelectorAll(".ant-switch")[0]    # 列表第一个商品的上架按钮
 ${locator_page_total_record}    dom:document.querySelectorAll(".ant-pagination-total-text")[0]
 ${locator_products_inputbox_name}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[2]
 ${locator_products_checkbox_chooseProducets}    ${locator_checkbox00}    #点击checkbox按钮，选中当前页面所有商品
 ${locator_products_checkbox_chooseFirstProducet}    ${locator_checkbox01}    #点击checkbox按钮，选中当前页面第一个商品
+${locator_products_checkbox_chooseCategories}    ${locator_checkbox00}    #点击checkbox按钮，选中当前页面所有专辑
 ${locator_products_selection_batchOperations}    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]    #批量操作下拉框
 ${locator_products_dropdown_onShelf}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[0]    #下拉框-上架
 ${locator_products_dropdown_offShelf}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[1]    #下拉框-下架
@@ -57,7 +57,15 @@ ${locator_products_dropdown_addTags}    dom:document.querySelectorAll(".ant-sele
 ${locator_products_dropdown_delTags}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[4]    #下拉框-移除标签
 ${locator_products_dropdown_addtoCategory}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    #下拉框-添加到专辑
 ${locator_products_dropdown_delfromCategory}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[6]    #下拉框-从专辑移除
-${locator_products_popUps}      dom:document.querySelectorAll(".ant-modal-content")[0]      #弹窗
+${locator_products_popUps}      dom:document.querySelectorAll(".ant-modal-content")[0]      #整个弹窗
+#locator_productsMgmt
+${locator_productsMgmt_grabProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[0]    #商品列表页的商品抓取按钮
+${locator_productsMgmt_migrateProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[1]    #商品列表页的店铺搬迁按钮
+${locator_productsMgmt_uploadProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[2]    #商品列表页的上传商品按钮
+#locator_productsCategory
+${locator_productsCategory_icon_del}    dom:document.querySelectorAll(".djfont.delete")[0]    #商品专辑的第一个删除icon
+${locator_productsCategory_button_delProducts}    dom:document.querySelectorAll(".batchSelectTable_btn___40HNR")[0]    #通过checkbox选中所有专辑之后，提供的删除button
+#locator_productsComment
 # content
 ${content_products_all}    全部
 ${content_products_empty}    暂无数据

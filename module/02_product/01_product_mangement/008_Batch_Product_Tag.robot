@@ -142,7 +142,7 @@ products047
     #弹出框
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__rendered")[3]
     #点击取消按钮
-    Wait And Click Element    dom:document.querySelectorAll(".default_btn___2wyTS")[0]
+    Wait And Click Element    {locator_popUps_button_default}
     #返回界面
     Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
     Go TO    ${home_page}
