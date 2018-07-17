@@ -34,7 +34,7 @@ products061
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]
+    Wait Until Element Is Visible    ${locator_productsCategory_popUps_firstCategory}
     #选中专辑
     Sleep    5
     Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[0]
@@ -46,7 +46,7 @@ products061
     Sleep    2
     Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
     #去商品专辑模块检查
-    Wait And Click Element    ${locator_product_collection}.querySelectorAll("a")[0]
+    Wait And Click Element    ${locator_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
     #Wait Until Page Contains    专辑详情
@@ -90,7 +90,7 @@ products060
     Sleep    2
     Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
     #去商品专辑模块检查
-    Wait And Click Element    ${locator_product_collection}.querySelectorAll("a")[0]
+    Wait And Click Element    ${locator_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
     #Wait Until Page Contains    专辑详情

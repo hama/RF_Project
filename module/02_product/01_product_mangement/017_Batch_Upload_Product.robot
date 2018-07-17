@@ -18,7 +18,7 @@ products103
     [Tags]    P0
     #上传商品成功
     #点击批量上传按钮
-    Wait And Click Element    ${locator_productsMgmt_uploadProduct}
+    Wait And Click Element    ${locator_productsMgmt_icon_uploadProduct}
     #等待上传按钮
     Wait Until Page Contains Element    id:sheets
     #上传文件
@@ -38,7 +38,7 @@ products104
     #上传商品失败
     #点击批量上传按钮
     Sleep    5
-    Wait And Click Element    ${locator_productsMgmt_uploadProduct}
+    Wait And Click Element    ${locator_productsMgmt_icon_uploadProduct}
     #等待上传按钮
     Wait Until Page Contains Element    id:sheets
     #上传文件
@@ -55,7 +55,7 @@ products105
     #上传重复的商品
     #点击批量上传按钮
     Sleep    5
-    Wait And Click Element    ${locator_productsMgmt_uploadProduct}
+    Wait And Click Element    ${locator_productsMgmt_icon_uploadProduct}
     #等待覆盖选项
     Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[0]
     Click Element    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[0]

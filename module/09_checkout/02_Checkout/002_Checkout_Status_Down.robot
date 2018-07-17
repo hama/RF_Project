@@ -35,7 +35,7 @@ checkout105
     #修改状态
     Wait And Click Element    id:status
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    5
     #切换到商品submit页
     Select Window    title=${content_store_name}
@@ -208,7 +208,7 @@ checkout116
     ${src}    Execute Javascript    return document.querySelectorAll(".center___1nHSZ")[0].src
     ${src}    getImgName    ${src}
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    5
     #切换到商品submit页
     Select Window    title=${content_store_name}

@@ -24,7 +24,7 @@ products058
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps}
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     #提示专辑暂无数据
     Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-table-placeholder")[0]
     ${title}    GetText    dom:document.querySelectorAll(".ant-table-placeholder")[0]

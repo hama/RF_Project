@@ -42,7 +42,7 @@ checkout138
     #修改售价
     Wait And Input Text    id:price    ${price1}
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    5
     #切换到支付页
     Select Window    title=${content_store_name}
@@ -82,7 +82,7 @@ checkout139
     #修改状态
     Wait And Click Element    id:status
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    5
     #切换到支付页
     Select Window    title=${content_store_name}
@@ -286,7 +286,7 @@ checkout150
     Select Window    店匠科技
     To_Change_Image
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    5
     #切换到商品submit页
     Select Window    title=${content_store_name}

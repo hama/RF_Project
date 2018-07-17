@@ -29,9 +29,9 @@ checkout140
     #返回后台页面删除该商品
     Select Window    店匠科技
     #点击删除第一件商品
-    Wait And Click Element    ${locator_products_deleteIcon}
+    Wait And Click Element    ${locator_productsMgmt_icon_delete}
     #点击确定按钮
-    Wait And Click Element    ${locator_products_delBtn}
+    Wait And Click Element    ${locator_popUps_button_middle}
     #切换到支付页
     Select Window    title=${content_store_name}
     #点击pay now

@@ -23,7 +23,7 @@ Add Product
     log    ${CURDIR}
     Choose File    ${locator_products_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
 
 Add Product_Up
     [Documentation]    添加上架商品以做测试，这里不能添加商品标签
@@ -39,7 +39,7 @@ Add Product_Up
     log    ${CURDIR}
     Choose File    ${locator_products_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
 
 Add Product Required Content
     Go To Products Page
@@ -52,7 +52,7 @@ Delete Product
     [Documentation]    删除商品列表的第一个商品
     Go To Products Page
     Wait And Click Element    ${locator_products_first}    # 商品列表第一条数据
-    Wait And Click Button    ${locator_products_delBtn}
+    Wait And Click Button    ${locator_popUps_button_middle}
 
 Delete All Products
     [Documentation]    删除全部商品
@@ -137,7 +137,7 @@ Add_Collection
     Choose File    ${locator_products_chooseFile}    ${file_products_addImg}
     Sleep    5
     #点击保存按钮
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    5
 
 Delete_Collection
@@ -156,7 +156,7 @@ Delete_First_Product
     [Documentation]    删除第一个商品
     Go To Products Page
     Sleep    5
-    Wait And Click Element    ${locator_products_deleteIcon}
+    Wait And Click Element    ${locator_productsMgmt_icon_delete}
     Sleep    5
     #Wait And Click Element    id:test_delete_modal_sure_btn
     Wait And Click Element    ${locator_popUps_button_middle}
@@ -166,7 +166,7 @@ Upload_Many_Products
     [Documentation]    批量上传多个商品，以供分页使用
     #上传商品成功
     #点击批量上传按钮
-    Wait And Click Element    ${locator_productsMgmt_uploadProduct}
+    Wait And Click Element    ${locator_productsMgmt_icon_uploadProduct}
     #等待上传按钮
     Wait Until Page Contains Element    id:sheets
     #上传文件
@@ -190,7 +190,7 @@ Delete All Collection
     #点击删除按钮
     Wait And Click Element    ${locator_productsCategory_button_delProducts}
     #点击确定按钮
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Go TO    ${home_page}
 
 Add Order Products
@@ -208,5 +208,5 @@ Add Order Products
     log    ${CURDIR}
     Choose File    ${locator_products_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    5

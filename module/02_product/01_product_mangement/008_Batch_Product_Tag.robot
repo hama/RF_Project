@@ -52,7 +52,7 @@ products042
     #点击空白处，取消下拉选项
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-title")[0]
     #点击确定按钮
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     #提示添加成功
     #Page Should Contain    添加成功
     #点击进入商品详情查看该商品是否含有该标签
@@ -72,14 +72,14 @@ products043
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Page Contains Element    ${locator_products_popUps}
+    Wait Until Page Contains Element    ${locator_products_popUps_content}
     #记录下点击的标签内容
     ${tag}    Get Text    dom:document.querySelectorAll(".ant-tag")[0]
     Wait And Click Element    dom:document.querySelectorAll(".ant-tag")[0]
     #点击空白处，取消下拉选项
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-title")[0]
     #点击确定按钮
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    1
     #点击进入商品详情查看该商品是否含有该标签
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
@@ -101,7 +101,7 @@ products044
     #弹出框
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__rendered")[3]
     #点击现有的标签
-    Wait Until Page Contains Element    ${locator_products_popUps}
+    Wait Until Page Contains Element    ${locator_products_popUps_content}
     #记录下点击的标签内容
     ${already_tag}    Get Text    dom:document.querySelectorAll(".ant-tag")[0]
     Wait And Click Element    dom:document.querySelectorAll(".ant-tag")[0]
@@ -118,7 +118,7 @@ products044
     #点击空白处，取消下拉选项
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-title")[0]
     #点击确定按钮
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     #提示添加成功
     #Page Should Contain    添加成功
     #点击进入商品详情查看该商品是否含有该标签
@@ -142,7 +142,7 @@ products047
     #弹出框
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__rendered")[3]
     #点击取消按钮
-    Wait And Click Element    {locator_popUps_button_default}
+    Wait And Click Element    ${locator_popUps_button_default}
     #返回界面
     Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
     Go TO    ${home_page}
@@ -158,14 +158,14 @@ products049
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps}
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     #包含已有的标签
     #选择要移除的标签
     Wait And Click Element    dom:document.querySelectorAll(".ant-tag-checkable")[0]
     #记录要移除的标签名称
     ${name}    Get Text    dom:document.querySelectorAll(".ant-tag-checkable")[0]
     #确定
-    Wait And Click Element    dom:document.querySelectorAll(".ant-btn-primary")[0]
+    Wait And Click Element    ${locator_productsMgmt_button_delTags}
     #点击进入商品详情查看该商品是否含有该标签
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
     Wait Until Page Contains Element    dom:document.querySelectorAll(".label___1jnO-")[2]

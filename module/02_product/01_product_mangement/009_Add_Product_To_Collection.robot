@@ -24,16 +24,16 @@ products051
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]
+    Wait Until Element Is Visible    ${locator_productsCategory_popUps_firstCategory}
     Sleep    5
     #搜索栏
     Page Should Contain Element    dom:document.querySelectorAll(".ant-input")[5]
     #复选框
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0].querySelectorAll("td")[0]
+    Page Should Contain Element    ${locator_productsCategory_popUps_firstCategory}.querySelectorAll("td")[0]
     #可搜索专辑名
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0].querySelectorAll("td")[1]
+    Page Should Contain Element    ${locator_productsCategory_popUps_firstCategory}.querySelectorAll("td")[1]
     #专辑时间
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0].querySelectorAll("td")[2]
+    Page Should Contain Element    ${locator_productsCategory_popUps_firstCategory}.querySelectorAll("td")[2]
     #确定按钮
     Page Should Contain Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
     #关闭弹出框
@@ -59,7 +59,7 @@ products052
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]
+    Wait Until Element Is Visible    ${locator_productsCategory_popUps_firstCategory}
     Sleep    5
     #选中专辑
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
@@ -67,7 +67,7 @@ products052
     Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
     Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
     #去商品专辑模块检查
-    Wait And Click Element    ${locator_product_collection}.querySelectorAll("a")[0]
+    Wait And Click Element    ${locator_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
     Wait Until Page Contains Element    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
@@ -87,14 +87,14 @@ products053
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]
+    Wait Until Element Is Visible    ${locator_productsCategory_popUps_firstCategory}
     Sleep    5
     #获取要搜索的专辑名称
-    ${collection_name}    Get Text    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0].querySelectorAll("td")[1]
+    ${collection_name}    Get Text    ${locator_productsCategory_popUps_firstCategory}.querySelectorAll("td")[1]
     #搜索框输入搜索
     Wait And Input Text    dom:document.querySelectorAll(".ant-input")[5]    ${collection_name}
     Sleep    5
-    Element Should Contain    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0].querySelectorAll("td")[1]    ${collection_name}
+    Element Should Contain    ${locator_productsCategory_popUps_firstCategory}.querySelectorAll("td")[1]    ${collection_name}
     #关闭弹出框
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close")[0]
     Go TO    ${home_page}
@@ -119,11 +119,11 @@ products054
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps}
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     Sleep    5
     #先搜索符合条件的专辑
     #获取要搜索的专辑名称
-    ${collection_name}    Get Text    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0].querySelectorAll("td")[1]
+    ${collection_name}    Get Text    ${locator_productsCategory_popUps_firstCategory}.querySelectorAll("td")[1]
     #搜索框输入搜索
     Wait And Input Text    dom:document.querySelectorAll(".ant-input")[5]    ${collection_name}
     Sleep    5
@@ -133,7 +133,7 @@ products054
     Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
     Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
     #去商品专辑模块检查
-    Wait And Click Element    ${locator_product_collection}.querySelectorAll("a")[0]
+    Wait And Click Element    ${locator_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
     Wait Until Page Contains Element    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
@@ -161,7 +161,7 @@ products055
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]
+    Wait Until Element Is Visible    ${locator_productsCategory_popUps_firstCategory}
     Sleep    5
     #先搜索符合条件的专辑
     #搜索框输入专辑编号搜索
@@ -173,7 +173,7 @@ products055
     Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
     Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
     #去商品专辑模块检查
-    Wait And Click Element    ${locator_product_collection}.querySelectorAll("a")[0]
+    Wait And Click Element    ${locator_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
     Wait Until Page Contains Element    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
@@ -191,7 +191,7 @@ products057
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]
+    Wait Until Element Is Visible    ${locator_productsCategory_popUps_firstCategory}
     Sleep    2
     #点击取消按钮
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close-x")[0]

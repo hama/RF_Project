@@ -50,7 +50,7 @@ products003
     Execute Javascript    return document.querySelectorAll(".edit_head___UidlR")[0].scrollIntoView()
     Sleep    1
     Wait And Click Element    ${locator_products_editTableHead}
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-body")[0]
+    Wait Until Element Is Visible    ${locator_products_popUps_body}
     #点击已经选中的，将他们全部取消选中
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox-checked").length
     : FOR    ${index}    IN RANGE    ${count}
@@ -73,10 +73,10 @@ products003
     Page Should Contain    上架
     Page Should Contain    操作
     Page Should Contain    创建时间
-    Page Should Contain Element    dom:document.querySelectorAll(".preview___37DtU")[0]
-    Page Should Contain Element    ${locator_products_deleteIcon}
+    Page Should Contain Element    ${locator_productsMgmt_icon_preview}
+    Page Should Contain Element    ${locator_productsMgmt_icon_delete}
     #图片
-    Page Should Contain Element    dom:document.querySelectorAll(".center___1nHSZ")[0]
+    Page Should Contain Element    ${locator_productsMgmt_image_center}
     #库存
     #在这里修改情况，验证第一个商品是否有库存
     ${should_quantity}    getFirstProductQuantity
@@ -117,7 +117,7 @@ products015
     [Documentation]    验证商品上传弹窗
     [Tags]    P0
     #验证商品上传弹窗
-    Wait And Click Element    ${locator_productsMgmt_uploadProduct}
+    Wait And Click Element    ${locator_productsMgmt_icon_uploadProduct}
     Sleep    5
     Execute Javascript    return document.querySelectorAll(".ant-modal-close")[0].click()
     #Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-modal-close")[0]
@@ -132,11 +132,11 @@ products016
     Wait Until Element Is Visible    ${locator_products_first_name}
     ${name}    Get Text    ${locator_products_first_name}
     #点击删除按钮
-    Wait And Click Element    ${locator_products_deleteIcon}
-    Wait Until Element Is Visible    ${locator_products_popUps}
+    Wait And Click Element    ${locator_productsMgmt_icon_delete}
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     Page Should Contain    确定删除吗？
     #确定
-    Wait And Click Button    ${locator_products_delBtn}
+    Wait And Click Button    ${locator_popUps_button_middle}
     #等待页面刷新数据
     Sleep    1
     #页面不应该包含该商品名称
@@ -151,8 +151,8 @@ products017
     Wait Until Element Is Visible    ${locator_products_first_name}
     ${name}    Get Text    ${locator_products_first_name}
     #点击删除按钮
-    Wait And Click Element    ${locator_products_deleteIcon}
-    Wait Until Element Is Visible    ${locator_products_popUps}
+    Wait And Click Element    ${locator_productsMgmt_icon_delete}
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     Page Should Contain    确定删除吗？
     #取消
     Wait And Click Element    ${locator_products_cancelDelete}

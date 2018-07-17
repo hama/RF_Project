@@ -18,7 +18,7 @@ products074
     [Documentation]    只填写必要字段
     [Tags]    P0
     Add Product Required Content
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Wait For Save
     # check
     Sleep    3
@@ -62,7 +62,7 @@ products076
     Choose File    ${locator_products_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Wait For Upload
     # 保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Wait For Save
     # 跳转到商品详情页面
     # check
@@ -81,7 +81,7 @@ products094
     Sleep    2
     Upload_Image    ${file_products_addImg2}
     # 保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Wait For Save
     # 保存之后检测该商品包含添加的多张图片数量是否一致
     Wait Until Page Contains Element    dom:document.querySelectorAll(".wrapper___3TwjV")[0]
@@ -90,8 +90,8 @@ products094
     #接着图片预览，编辑替代文本，删除图片
     #预览
     #点击预览
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".center___1nHSZ")[0]
-    Mouse Over    dom:document.querySelectorAll(".center___1nHSZ")[0]
+    Wait Until Page Contains Element    ${locator_productsMgmt_image_center}
+    Mouse Over    ${locator_productsMgmt_image_center}
     Sleep    2
     Wait And Click Element    dom:document.querySelectorAll(".preview")[1]
     Sleep    2
@@ -103,23 +103,23 @@ products094
     Execute Javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
     Sleep    5
     #编辑替代文本
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".center___1nHSZ")[0]
-    Mouse Over    dom:document.querySelectorAll(".center___1nHSZ")[0]
+    Wait Until Page Contains Element    ${locator_productsMgmt_image_center}
+    Mouse Over    ${locator_productsMgmt_image_center}
     Wait And Click Element    dom:document.querySelectorAll(".altbianji")[0]
     #展现弹出框
     Wait And Input Text    dom:document.querySelectorAll(".alt_input___1RvXO")[0]    test
     #确定
-    Wait And Click Element    dom:document.querySelectorAll(".ant-btn-primary")[0]
+    Wait And Click Element    ${locator_productsMgmt_button_delTags}
     #点击删除图片
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".center___1nHSZ")[0]
-    Mouse Over    dom:document.querySelectorAll(".center___1nHSZ")[0]
+    Wait Until Page Contains Element    ${locator_productsMgmt_image_center}
+    Mouse Over    ${locator_productsMgmt_image_center}
     Wait And Click Element    dom:document.querySelectorAll(".delete")[0]
     ${now_count}    Execute Javascript    return document.querySelectorAll(".wrapper___3TwjV").length
     Should Be True    ${now_count}==2
     #移除所有图片
     Wait And Click Element    dom:document.querySelectorAll(".headerExtra___3kmgB a")[0]
     #弹窗选择“是”
-    Wait And Click Element    dom:document.querySelectorAll(".ant-btn-primary")[0]
+    Wait And Click Element    ${locator_productsMgmt_button_delTags}
     ${final_count}    Execute Javascript    return document.querySelectorAll(".wrapper___3TwjV").length
     Should Be True    ${final_count}==1
     Wait And Click Element    ${locator_products}

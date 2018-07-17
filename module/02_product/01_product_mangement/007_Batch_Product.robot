@@ -24,9 +24,9 @@ products034
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps}
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     #点击确定
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    3
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
     #比较class
@@ -47,7 +47,7 @@ products035
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps}
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     #点击取消
     Click Element    dom:document.querySelectorAll(".cancel___Nh0a2")[0]
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
@@ -67,9 +67,9 @@ products036
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps}
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     #点击确定
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    3
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
     #比较class
@@ -90,7 +90,7 @@ products037
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps}
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     #点击取消
     Wait And Click Element    dom:document.querySelectorAll(".cancel___Nh0a2")[0]
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
@@ -116,7 +116,7 @@ products039
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps}
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     #点击取消
     Wait And Click Element    ${locator_products_cancelDelete}
     #Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
@@ -142,9 +142,9 @@ products038
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps}
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     #点击确定
-    Wait And Click Element    ${locator_products_delBtn}
+    Wait And Click Element    ${locator_popUps_button_middle}
     #Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
     #Sleep    3
     #验证当前页面不应该含有该商品名称

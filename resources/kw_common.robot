@@ -107,3 +107,8 @@ Wait And Click Link
     Wait Until Element Is Visible    ${link_locator}
     Wait Until Keyword Succeeds    5x    1s    Click Link    ${link_locator}
     Sleep    1
+
+JS Get Element Length
+    [Arguments]    ${element_locator}
+    [Documentation]    封装的JS方法，返回元素集长度
+    Execute Javascript    return ${element_locator}.length

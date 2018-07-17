@@ -10,7 +10,7 @@ Checkout Common Setp
     Wait And Click Element    ${locator_products}
     #点击商品预览
     Sleep Time
-    Wait And Click Element    dom:document.querySelectorAll(".preview___37DtU")[0]
+    Wait And Click Element    ${locator_products_icon_preview}
     Sleep Time    #.休息2s
     #.第二个窗口
     Select Window    New
@@ -318,7 +318,7 @@ To_Change_Image
     Execute Javascript    return document.querySelectorAll(".row___3Mua7")[0].scrollIntoView()
     Sleep    2
     #删除第一张图片
-    Mouse Over    dom:document.querySelectorAll(".center___1nHSZ")[0]
+    Mouse Over    ${locator_products_image_center}
     Wait And Click Element    dom:document.querySelectorAll(".delete")[0]
     #更新另外一张图片
     Choose File    ${locator_products_chooseFile}    ${file_products_addImg2}

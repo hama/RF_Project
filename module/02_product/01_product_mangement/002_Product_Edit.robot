@@ -22,7 +22,7 @@ products023
     ${new_title}=    Evaluate    random.randint(0, 100)    modules=random
     Wait And Input Text    ${locator_products_addTitle}    ${new_title}
     # 验证编辑页面排版
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Wait Until Page Contains    ${content_products_tips_save_ok}
     Sleep    1
     Go To Products Page
@@ -39,7 +39,7 @@ products025
     ${new_price}=    Evaluate    random.randint(0, 100)    modules=random
     Wait And Input Text    ${locator_products_addPrice}    ${new_price}
     # 验证编辑页面排版
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Wait Until Page Contains    ${content_products_tips_save_ok}
     Sleep    1
     Go To Products Page
@@ -59,7 +59,7 @@ products026
     ${new_sku}=    Evaluate    random.randint(0, 100)    modules=random
     Wait And Input Text    ${locator_products_addSku}    ${new_sku}
     # 验证编辑页面排版
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Wait Until Page Contains    ${content_products_tips_save_ok}
     Sleep    1
     Go To Products Page
