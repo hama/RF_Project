@@ -11,9 +11,9 @@ ${recover_pwd_btn}       dom:document.querySelectorAll(".bottomEdit___zk0l5 div 
 ### 菜单栏 locator
 ${locator_order}    dom:document.querySelectorAll('a[href="/order"]')[0]    # 导航栏-订单
 ${locator_products}    id:test_product    # 导航栏-商品
-${locator_product_manage}    id:test_product_manage    # 导航栏-商品管理
-${locator_product_collection}    id:test_product_colletion    # 导航栏-商品专辑
-${locator_product_review}    id:test_product_review    # 导航栏-商品评论
+${locator_product_manage}    dom:document.querySelectorAll('a[href="/products"]')[0]    # 导航栏-商品管理
+${locator_product_collection}    dom:document.querySelectorAll('a[href="/collection"]')[0]    # 导航栏-商品专辑
+${locator_product_review}    dom:document.querySelectorAll('href="/reviews"')[0]    # 导航栏-商品评论
 ${locator_marketing}    id:test_marketing    # 导航栏-营销
 ${locator_setting}    id:test_setting    # 导航栏-设置
 ${locator_setting_shipping}    dom:document.querySelectorAll('a[href="/shipping"]')[0]    # 导航栏-设置-物流
