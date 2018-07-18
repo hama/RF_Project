@@ -21,7 +21,7 @@ products071
     Wait Until Page Contains Element    ${locator_productsMgmt_text_firstProductName}
     ${name}    Get Text    ${locator_productsMgmt_text_firstProductName}
     #输入商品名称
-    Wait And Input Text    ${locator_productsMgmt_inputbox_name}    ${name}
+    Wait And Input Text    ${locator_productsMgmt_input_name}    ${name}
     #点击搜索
     Wait And Click Element    dom:document.querySelectorAll(".small_main_btn___2AyG3")[0]
     #验证搜索结果
@@ -36,7 +36,7 @@ products072
     Wait Until Page Contains Element    ${locator_productsMgmt_text_firstProductName}
     ${name}    Get Text    ${locator_productsMgmt_text_firstProductName}
     #输入商品名称
-    Wait And Input Text    ${locator_productsMgmt_inputbox_name}    ${name}
+    Wait And Input Text    ${locator_productsMgmt_input_name}    ${name}
     #点击重置
     Wait And Click Element    dom:document.querySelectorAll(".small_btn___1P-Yc")[0]
     #输入框内容应该为空

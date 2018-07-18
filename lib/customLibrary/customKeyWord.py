@@ -1,11 +1,11 @@
 # -*- coding:utf-8 -*-
-# import pymysql
+import pymysql
 import random
 import json
 import sys
 import re
 import os
-# import requests
+import requests
 import ConfigParser
 
 reload(sys)
@@ -416,3 +416,7 @@ class keyWord(object):
         data = re.compile(regx)
         img_name = data.findall(img, re.M)
         return img_name[0]
+
+# if __name__ == '__main__':
+#     aaa = keyWord()
+#     aaa.getFirstProductQuantity()

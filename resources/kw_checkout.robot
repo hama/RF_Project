@@ -350,7 +350,7 @@ Add_Full_Reduction
     Go To Marketing Page
     Sleep    2
     #点击新增活动按钮
-    Wait And Click Element    ${locator_marketing_add_substraction}
+    Wait And Click Element    ${locator_marketing_button_addSubstraction}
     Sleep    5
     #活动名称
     Wait And Input Text    id:name    ${name}

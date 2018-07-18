@@ -10,17 +10,16 @@ ${api_products_list}    ${home_page}/api/product/search?page=0&limit=20    # 获
 ${api_products_list_shelf}    ${home_page}/api/product/search?status=1&page=0&limit=20    # 选择所有上架商品
 ${api_products_list_drop}    ${home_page}/api/product/search?status=0&page=0&limit=20    # 选择所有下架商品
 ${api_products_update_status}    ${home_page}/api/product/updatestatus    # 上架/下架 更新状态
-# locator
+# locator_products
 ${locator_products_popUps_content}      dom:document.querySelectorAll(".ant-modal-content")[0]      #弹窗_content
 ${locator_products_popUps_body}    dom:document.querySelectorAll(".ant-modal-body")[0]    #弹窗_body
 ${locator_products_button_cancel}    ${locator_popUps_button_default}    #商品天窗-默认按钮
 ${locator_products_button_confirm}    ${locator_popUps_button_middle}    #商品弹窗-确定按钮
-${locator_products_chooseCategoryItem}    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]    # 选择商品分类子项
-#locator_productsMgmt
+# locator_productsMgmt
 ${locator_productsMgmt_button_editTableHead}    dom:document.querySelectorAll(".edit_head___UidlR")[0]    #编辑表头
 ${locator_productsMgmt_tabindex_firstSwitch}    dom:document.querySelectorAll(".ant-switch")[0]    # 列表第一个商品的上架按钮
 ${locator_productsMgmt_text_firstProductName}    dom:document.querySelectorAll(".product_name___Ul4W-")[0]     #列表第一个商品的名字
-${locator_productsMgmt_inputbox_name}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[2]    #"商品名称/商品SKU/标签"输入框
+${locator_productsMgmt_input_name}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[2]    #"商品名称/商品SKU/标签"输入框
 ${locator_productsMgmt_button_addProduct}    ${locator_button_add}    #商品列表页的新增商品按钮
 ${locator_productsMgmt_checkbox_chooseProducets}    ${locator_checkbox00}    #点击checkbox按钮，选中当前页面所有商品
 ${locator_productsMgmt_checkbox_chooseFirstProducet}    ${locator_checkbox01}    #点击checkbox按钮，选中当前页面第一个商品
@@ -42,9 +41,9 @@ ${locator_productsMgmt_image_center}    dom:document.querySelectorAll(".center__
 ${locator_productsMgmt_icon_preview}    dom:document.querySelectorAll(".preview___37DtU")[0]    #商品列表的预览icon
 ${locator_productsMgmt_icon_delete}    dom:document.querySelectorAll(".delete___2xfx-")[0]    #商品列表的删除icon
 ${locator_productsMgmt_button_delTags}    dom:document.querySelectorAll(".ant-btn-primary")[0]    #删除标签弹框的删除button
-#locator_productsType
+# locator_productsType
 ${locator_productType_button_saveBtn}    id:test_save_btn    # 商品分类-保存按钮
-#locator_productsNew
+# locator_productsNew
 ${locator_productsNew_button_back}    class:back    # 进入编辑页面的后退按钮
 ${locator_productsNew_button_uploadBtn}    id:test_upload_btn    # 上传商品图片按钮
 ${locator_productsNew_tabindex_status}    id:status    # 商品状态按钮
@@ -60,13 +59,14 @@ ${locator_productsNew_input_addSku}    id:sku    # 添加商品页面-Sku
 ${locator_productsNew_input_addBarcode}    id:barcode    # 添加商品页面-条形码
 ${locator_productsNew_input_addSupplier}    dom:document.querySelectorAll(".ant-input")[1]    # 添加供应商
 ${locator_productsNew_input_productType}    id:product_type_cascade    #商品专辑页的新增专辑按钮
-#locator_productsCategory
+${locator_productsNew_cascader_chooseCategoryItem}    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]    # 选择商品分类子项
+# locator_productsCategory
 ${locator_productsCategory_button_addCategory}    ${locator_button_add}    #商品专辑页的新增专辑按钮
 ${locator_productsCategory_icon_del}    dom:document.querySelectorAll(".djfont.delete")[0]    #商品专辑的第一个删除icon
 ${locator_productsCategory_button_delProducts}    dom:document.querySelectorAll(".batchSelectTable_btn___40HNR")[0]    #通过checkbox选中所有专辑之后，提供的删除button
 ${locator_productsCategory_popUps_firstCategory}    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]    #"要添加到的专辑"弹窗的第一条条目
 ${locator_productsCategory_checkbox_chooseCategories}    ${locator_checkbox00}    #点击checkbox按钮，选中当前页面所有专辑
-#locator_productsComment
+# locator_productsComment
 # content
 ${content_products_all}    全部
 ${content_products_empty}    暂无数据

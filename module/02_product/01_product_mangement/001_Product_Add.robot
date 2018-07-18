@@ -46,7 +46,7 @@ products076
     # 添加分类
     Wait And Click Element    ${locator_productsNew_input_productType}
     Wait And Input Text    ${locator_productsNew_input_productType}    三级分类C
-    Wait And Click Element    ${locator_products_chooseCategoryItem}
+    Wait And Click Element    ${locator_productsNew_cascader_chooseCategoryItem}
     # 输入标签
     Wait And Input Text    ${locator_productsNew_input_tags}    ${content_products_addTags}
     Press Key    ${locator_productsNew_input_tags}    ${keybord_enter}
