@@ -1,10 +1,12 @@
 # -*- coding:utf-8 -*-
-import pymysql
+# import pymysql
 import random
 import json
 import sys
 import re
-import requests
+import os
+# import requests
+import ConfigParser
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -27,13 +29,24 @@ class keyWord(object):
     db_pwd = "lansejiebo@123"
     db_name = "shop_"
 
+<<<<<<< HEAD
     home_page_url = "http://admin1024.shoplazza.com"
     datas_contact = "17665076519"
     datas_password = "123456"
     datas_username = "xx"
 
+=======
+>>>>>>> 02f186db50129449763ea3cce1d23daf87b22c28
     def __init__(self):
-        pass
+        config = ConfigParser.ConfigParser()
+        path = os.path.join( os.path.dirname(__file__),'../..')+ '/config/common.ini'
+        config.read(path)
+        # self.loc = locals()
+        self.home_page_url = config.get("common_url", "home_page_url")
+        print
+        self.datas_contact = config.get("common_account", "datas_contact")
+        self.datas_password = config.get("common_account", "datas_password")
+        self.datas_username = config.get("common_account", "datas_username")
 
     def mykeyword(self, url):
         return url

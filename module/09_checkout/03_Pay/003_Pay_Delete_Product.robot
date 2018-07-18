@@ -18,7 +18,7 @@ checkout140
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #选中商品，点击进入checkout页面
@@ -29,15 +29,15 @@ checkout140
     #返回后台页面删除该商品
     Select Window    店匠科技
     #点击删除第一件商品
-    Wait And Click Element    dom:document.querySelectorAll(".delete___2xfx-")[0]
+    Wait And Click Element    ${locator_productsMgmt_icon_delete}
     #点击确定按钮
-    Wait And Click Element    ${locator_products_delBtn}
+    Wait And Click Element    ${locator_popUps_button_middle}
     #切换到支付页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #支付失败
-    Page Should Contain    ${payment_failed}
+    Page Should Contain    ${content_payment_failed}
 
 *** Keywords ***
 Products Suite Setup

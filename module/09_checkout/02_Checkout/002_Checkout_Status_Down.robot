@@ -23,7 +23,7 @@ checkout105
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
 
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     Select_Order_Page    ${title}
@@ -35,13 +35,13 @@ checkout105
     #修改状态
     Wait And Click Element    id:status
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    5
     #切换到商品submit页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     Complete_Order_Message
     #支付页面应该显示支付失败
-    Page Should Contain    ${payment_failed}
+    Page Should Contain    ${content_payment_failed}
 
 checkout107
     [Documentation]    此时第一个商品下有两个子产品，删除当前第一个商品下的第1个子商品（第一个子产品为下单时选中的子产品）
@@ -49,7 +49,7 @@ checkout107
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
 
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #给该商品增加子产品
@@ -57,10 +57,10 @@ checkout107
     Select_Order_Page_With_Sub_Product    ${title}
     Select Window    店匠科技
     Delete_Sub_Product_With_Already_Product    0
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     Complete_Order_Message
     #支付页面应该显示支付失败
-    Page Should Contain    ${payment_failed}
+    Page Should Contain    ${content_payment_failed}
 
 checkout108
     [Documentation]    删除其他子商品，可支付成功
@@ -68,7 +68,7 @@ checkout108
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
 
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #给该商品增加子产品
@@ -76,7 +76,7 @@ checkout108
     Select_Order_Page_With_Sub_Product    ${title}
     Select Window    店匠科技
     Delete_Sub_Product_With_Already_Product    1
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     Complete_Order_Message
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
@@ -89,7 +89,7 @@ checkout109
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #给该商品增加子产品
@@ -108,7 +108,7 @@ checkout110
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #勾选该商品库存为0时仍可购买
@@ -119,17 +119,17 @@ checkout110
     Select Window    店匠科技
     Cancel_Select_Quantity_0
     #切换到商品submit页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     Complete_Order_Message
     #支付页面应该显示支付失败
-    Page Should Contain    ${payment_failed}
+    Page Should Contain    ${content_payment_failed}
 
 checkout111
     [Documentation]    先设置商品为跟踪库存并且库存为0时可购买,点击商品预览后，点击进入checkout页面，在点击Submit前，在后台修改该商品取消勾选库存为0时可购买,取消跟踪库存
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #勾选该商品库存为0时仍可购买
@@ -140,10 +140,10 @@ checkout111
     Select Window    店匠科技
     Cancel_Select_Quantity
     #切换到商品submit页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     Complete_Order_Message
     #支付页面应该显示支付失败
-    Page Should Contain    ${payment_failed}
+    Page Should Contain    ${content_payment_failed}
     #点击pay now
     #Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #显示支付成功
@@ -155,7 +155,7 @@ checkout112
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #设置该商品的库存为1
@@ -166,17 +166,17 @@ checkout112
     Select Window    店匠科技
     Set_Quantity_To_0
     #切换到商品submit页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     Complete_Order_Message
     #支付页面应该显示支付失败
-    Page Should Contain    ${payment_failed}
+    Page Should Contain    ${content_payment_failed}
 
 checkout113
     [Documentation]    先设置商品为跟踪库存并且库存为1,点击商品预览后，点击进入checkout页面，在点击Submit前，在后台修改该商品库存为2
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #设置该商品的库存为1
@@ -187,17 +187,17 @@ checkout113
     Select Window    店匠科技
     Set_Quantity    2
     #切换到商品submit页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     Complete_Order_Message
     #支付页面应该显示支付失败
-    Page Should Contain    ${payment_failed}
+    Page Should Contain    ${content_payment_failed}
 
 checkout116
     [Documentation]    点击商品预览后，点击进入checkout页面，在点击Submit前，在后台更换该商品图片
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     Select_Order_Page    ${title}
@@ -208,10 +208,10 @@ checkout116
     ${src}    Execute Javascript    return document.querySelectorAll(".center___1nHSZ")[0].src
     ${src}    getImgName    ${src}
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    5
     #切换到商品submit页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     Complete_Order_Message
     #验证图片是否为最新
     ${src2}    Execute Javascript    return document.querySelectorAll(".detail_img img")[0].src
@@ -229,7 +229,7 @@ checkout127
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
 
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #进入设置-收款渠道，关闭货到付款
@@ -245,7 +245,7 @@ checkout128
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #进入设置-收款渠道，开启货到付款
@@ -262,7 +262,7 @@ checkout129
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
 
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #进入设置-收款渠道，开启货到付款
@@ -290,7 +290,7 @@ checkout133
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #修改其他国家税费金额
@@ -310,7 +310,7 @@ checkout134
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #先设置成只需填写邮箱
@@ -325,7 +325,7 @@ checkout134
     Select Window    店匠科技
     Modify_Set    2
     #跳回checkout页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击submit按钮后，页面将刷新
     Wait And Click Element    id:submitMbPay
     #验证当前要填写的是不是手机和邮箱
@@ -341,7 +341,7 @@ checkout135
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #先设置成（姓名）
@@ -356,7 +356,7 @@ checkout135
     Select Window    店匠科技
     Modify_Set_Radio    1
     #跳回checkout页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击submit按钮后，页面将刷新
     Wait And Click Element    id:submitMbPay
     #验证当前要填写的是不是(姓名分开填写)

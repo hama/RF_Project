@@ -19,14 +19,14 @@ products034
     #上架一个商品
     Click_First_Product_And_Click_Batch_Menu
     #选择上架
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[0]    btn
+    Assign Id To Element    ${locator_products_dropdown_onShelf}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     #点击确定
-    Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    3
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
     #比较class
@@ -42,12 +42,12 @@ products035
     ${should_class}    Execute Javascript    return document.querySelectorAll(".ant-switch")[0].getAttribute("class")
     Click_First_Product_And_Click_Batch_Menu
     #选择上架
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[0]    btn
+    Assign Id To Element    ${locator_products_dropdown_onShelf}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     #点击取消
     Click Element    dom:document.querySelectorAll(".cancel___Nh0a2")[0]
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
@@ -62,14 +62,14 @@ products036
     #下架一个商品
     Click_First_Product_And_Click_Batch_Menu
     #选择下架
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[1]    btn
+    Assign Id To Element    ${locator_products_dropdown_offShelf}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     #点击确定
-    Wait And Click Element    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    3
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
     #比较class
@@ -85,12 +85,12 @@ products037
     ${should_class}    Execute Javascript    return document.querySelectorAll(".ant-switch")[0].getAttribute("class")
     Click_First_Product_And_Click_Batch_Menu
     #选择下架
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[1]    btn
+    Assign Id To Element    ${locator_products_dropdown_offShelf}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     #点击取消
     Wait And Click Element    dom:document.querySelectorAll(".cancel___Nh0a2")[0]
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
@@ -104,19 +104,19 @@ products039
     [Tags]    P0
     #取消商品删除
     #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
+    Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
+    Click Element    ${locator_products_checkbox_chooseFirstProducet}
     #获取此商品的名称
-    ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
+    ${name}    Get Text    ${locator_products_first_name}
     #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Wait And Click Element    ${locator_products_selection_batchOperations}
     #选择删除商品
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[2]    btn
+    Assign Id To Element    ${locator_products_dropdown_batchDel}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     #点击取消
     Wait And Click Element    ${locator_products_cancelDelete}
     #Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
@@ -130,21 +130,21 @@ products038
     #店铺中含有多个名称相同的商品，影响case运行!!!!!!!!!!!!!!!!!!!!
     #商品删除
     #选中第一个商品
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
-    Click Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[0]
+    Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
+    Click Element    ${locator_products_checkbox_chooseFirstProducet}
     #获取此商品的名称
-    ${name}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[0]
+    ${name}    Get Text    ${locator_products_first_name}
     #点击批量操作菜单
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]
+    Wait And Click Element    ${locator_products_selection_batchOperations}
     #选择删除商品
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[2]    btn
+    Assign Id To Element    ${locator_products_dropdown_batchDel}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     #点击确定
-    Wait And Click Element    ${locator_products_delBtn}
+    Wait And Click Element    ${locator_popUps_button_middle}
     #Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
     #Sleep    3
     #验证当前页面不应该含有该商品名称

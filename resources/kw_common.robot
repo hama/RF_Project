@@ -113,3 +113,8 @@ Common Js Click
     [Documentation]    封装js点击方法
     Execute JavaScript    return document.querySelectorAll("${element}")[${index}].click()
 
+
+JS Get Element Length
+    [Arguments]    ${element_locator}
+    [Documentation]    封装的JS方法，返回元素集长度
+    Execute Javascript    return ${element_locator}.length

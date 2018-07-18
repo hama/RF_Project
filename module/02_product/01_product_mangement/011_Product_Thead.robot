@@ -22,7 +22,7 @@ products066
     Sleep    1
     Wait And Click Element    ${locator_products_editTableHead}
     #验证弹窗中的排版信息
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     #可选复选框个数
     ${count}    Execute Javascript    return document.querySelectorAll(".col___39m-D").length
     Should Be True    ${count}==6
@@ -96,7 +96,7 @@ products070
 *** Keywords ***
 Click_All
     #选中所有
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-body")[0]
+    Wait Until Element Is Visible    ${locator_products_popUps_body}
     #点击已经选中的，将他们全部取消选中
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox-checked").length
     : FOR    ${index}    IN RANGE    ${count}
@@ -109,7 +109,7 @@ Click_All
 
 Cancel_All
     #取消所有
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-body")[0]
+    Wait Until Element Is Visible    ${locator_products_popUps_body}
     #点击已经选中的，将他们全部取消选中
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox-checked").length
     : FOR    ${index}    IN RANGE    ${count}

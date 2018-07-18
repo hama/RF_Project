@@ -33,7 +33,7 @@ products097
     #回车保存
     Press Key    id:option_values_0    \\13
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    5
     Go TO    ${home_page}
 
@@ -63,7 +63,7 @@ products098
     Press Key    id:option_values_0    \\13
     #点击保存
     Sleep    3
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    5
     Go TO    ${home_page}
 
@@ -97,7 +97,7 @@ products099
     Wait And Input Text    dom:document.querySelectorAll(".ant-select-search__field")[1]    test
     Press Key    dom:document.querySelectorAll(".ant-select-search__field")[1]    \\13
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    5
     Go TO    ${home_page}
 
@@ -126,7 +126,7 @@ products100
     ${title}    Execute Javascript    return document.querySelectorAll(".icon_custom_left___GO944")[3].text
     Should Be Equal As Strings    ${title}    编辑SEO
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    5
     Go TO    ${home_page}
 

@@ -19,12 +19,12 @@ products058
     #验证无专辑数据时
     Click_First_Product_And_Click_Batch_Menu
     #选择添加到专辑
-    Assign Id To Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    btn
+    Assign Id To Element    ${locator_products_dropdown_addtoCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-modal-content")[0]
+    Wait Until Element Is Visible    ${locator_products_popUps_content}
     #提示专辑暂无数据
     Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-table-placeholder")[0]
     ${title}    GetText    dom:document.querySelectorAll(".ant-table-placeholder")[0]
@@ -36,7 +36,7 @@ Products Suite Setup
     [Documentation]    删除所有专辑
     Login With Default User
     Start Ajax Listener
-    Delete_All_Collection
+    Delete All Collection
     Sleep    5
     Go To Products Page
 
@@ -44,7 +44,7 @@ Products Suite Teardown
     [Documentation]    删除所有商品
     Go To Products Page
     Sleep    5
-    Delete_All_Products
+    Delete All Products
     Close Test Suite Browser
 
 Products Test Case Setup

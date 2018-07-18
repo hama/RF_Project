@@ -18,7 +18,7 @@ checkout170
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     Select_Order_Page    ${title}
@@ -28,7 +28,7 @@ checkout170
     #进入后台，修改为只需填写邮箱
     Select Window    店匠科技
     Modify_Set    0
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #显示支付成功

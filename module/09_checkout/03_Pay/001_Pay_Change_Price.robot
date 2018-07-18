@@ -26,7 +26,7 @@ checkout138
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #选中商品，点击进入checkout页面
@@ -42,10 +42,10 @@ checkout138
     #修改售价
     Wait And Input Text    id:price    ${price1}
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    5
     #切换到支付页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #显示支付成功
@@ -66,7 +66,7 @@ checkout139
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #选中商品，点击进入checkout页面
@@ -82,21 +82,21 @@ checkout139
     #修改状态
     Wait And Click Element    id:status
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    5
     #切换到支付页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #支付失败
-    Page Should Contain    ${payment_failed}
+    Page Should Contain    ${content_payment_failed}
 
 checkout141
     [Documentation]    在支付界面返回后台删除本次购买的子商品，再返回支付界面点击pay now，支付失败
     [Tags]    P0
     #-----------------------------------------选中一个有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #给该商品增加子产品
@@ -108,18 +108,18 @@ checkout141
     #返回后台页面删除该商品
     Select Window    店匠科技
     Delete_Sub_Product_With_Already_Product    0
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #支付失败
-    Page Should Contain    ${payment_failed}
+    Page Should Contain    ${content_payment_failed}
 
 checkout142
     [Documentation]    在支付界面返回后台删除其他的子商品，再返回支付界面点击pay now，支付成功
     [Tags]    P0
     #-----------------------------------------选中一个有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #给该商品增加子产品
@@ -131,7 +131,7 @@ checkout142
     #返回后台页面删除其他商品
     Select Window    店匠科技
     Delete_Sub_Product_With_Already_Product    1
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #显示支付成功
@@ -143,7 +143,7 @@ checkout143
     [Tags]    P0
     #-----------------------------------------选中一个有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #给该商品增加子产品
@@ -163,7 +163,7 @@ checkout144
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #勾选该商品库存为0时仍可购买
@@ -177,7 +177,7 @@ checkout144
     Select Window    店匠科技
     Cancel_Select_Quantity_0
     #切换到商品submit页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #显示支付成功
@@ -189,7 +189,7 @@ checkout145
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #勾选该商品库存为0时仍可购买
@@ -203,7 +203,7 @@ checkout145
     Select Window    店匠科技
     Cancel_Select_Quantity
     #切换到商品submit页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #显示支付成功
@@ -215,7 +215,7 @@ checkout146
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #设置该商品的库存为10
@@ -229,7 +229,7 @@ checkout146
     Select Window    店匠科技
     Set_Quantity_To_0
     #切换到商品submit页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #显示支付成功
@@ -241,7 +241,7 @@ checkout147
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面-----------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #设置该商品的库存为10
@@ -255,7 +255,7 @@ checkout147
     Select Window    店匠科技
     Set_Quantity    10
     #切换到商品submit页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #显示支付成功
@@ -267,7 +267,7 @@ checkout150
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #点击第一件商品进入商品详情页
@@ -286,10 +286,10 @@ checkout150
     Select Window    店匠科技
     To_Change_Image
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
     Sleep    5
     #切换到商品submit页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #显示支付成功
@@ -310,7 +310,7 @@ checkout151
     [Tags]    P0
     #-----------------------------------------选中一个有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #给该商品增加子产品
@@ -322,7 +322,7 @@ checkout151
     #返回后台删除该商品的所有子商品
     Select Window    店匠科技
     Delete_All_Sub_Product_With_Already_Product
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #显示支付成功
@@ -334,7 +334,7 @@ checkout167
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     Select_Order_Page    ${title}
@@ -344,7 +344,7 @@ checkout167
     Select Window    店匠科技
     #修改其他国家税费金额
     Modify_Other_Tax_Price
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #显示支付成功
@@ -356,7 +356,7 @@ checkout168
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #先设置成只需填写邮箱
@@ -374,7 +374,7 @@ checkout168
     #修改为填写手机和邮箱
     Modify_Set    2
     Sleep    5
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #显示支付成功
@@ -388,7 +388,7 @@ checkout169
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    dom:document.querySelectorAll(".product_name___Ul4W-")[0]    title
+    Assign id To Element    ${locator_products_first_name}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #先设置成（姓名）
@@ -406,7 +406,7 @@ checkout169
     Select Window    店匠科技
     Modify_Set_Radio    1
     #跳回checkout页
-    Select Window    title=${store_name}
+    Select Window    title=${content_store_name}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #显示支付成功

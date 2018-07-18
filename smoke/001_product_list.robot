@@ -22,8 +22,8 @@ Inject Products
     # exec ajax listener
     Execute JavaScript    ${CURDIR}/../lib/ajaxListener.js
     # clieck product button
-    Wait Until Element Is Visible    class:icon_product___2ZYHZ
-    Click Element    class:icon_product___2ZYHZ
+    Wait Until Element Is Visible    ${locator_products}
+    Click Element    ${locator_products}
     # wait for table visible
     sleep    2
     Check result
