@@ -19,7 +19,7 @@ products058
     #验证无专辑数据时
     Click_First_Product_And_Click_Batch_Menu
     #选择添加到专辑
-    Assign Id To Element    ${locator_products_dropdown_addtoCategory}    btn
+    Assign Id To Element    ${locator_productsMgmt_dropdown_addtoCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn

@@ -18,10 +18,10 @@ products071
     [Tags]    P0
     #商品搜索
     #获取商品名称
-    Wait Until Page Contains Element    ${locator_products_first_name}
-    ${name}    Get Text    ${locator_products_first_name}
+    Wait Until Page Contains Element    ${locator_productsMgmt_text_firstProductName}
+    ${name}    Get Text    ${locator_productsMgmt_text_firstProductName}
     #输入商品名称
-    Wait And Input Text    ${locator_products_inputbox_name}    ${name}
+    Wait And Input Text    ${locator_productsMgmt_input_name}    ${name}
     #点击搜索
     Wait And Click Element    dom:document.querySelectorAll(".small_main_btn___2AyG3")[0]
     #验证搜索结果
@@ -33,10 +33,10 @@ products072
     [Tags]    P0
     #取消商品搜索
     #获取商品名称
-    Wait Until Page Contains Element    ${locator_products_first_name}
-    ${name}    Get Text    ${locator_products_first_name}
+    Wait Until Page Contains Element    ${locator_productsMgmt_text_firstProductName}
+    ${name}    Get Text    ${locator_productsMgmt_text_firstProductName}
     #输入商品名称
-    Wait And Input Text    ${locator_products_inputbox_name}    ${name}
+    Wait And Input Text    ${locator_productsMgmt_input_name}    ${name}
     #点击重置
     Wait And Click Element    dom:document.querySelectorAll(".small_btn___1P-Yc")[0]
     #输入框内容应该为空
@@ -46,7 +46,7 @@ products072
     #数据库中库存数量
     ${should_count}    getAllProductCount
     #查询页面上显示的商品记录总数
-    Assign id To Element    ${locator_page_total_record}    btn1
+    Assign id To Element    ${locator_page_text_totalRecord}    btn1
     Wait Until Element Is Visible    btn1
     ${count}    Get Text    btn1
     ${count}    searchStrs    ${count}

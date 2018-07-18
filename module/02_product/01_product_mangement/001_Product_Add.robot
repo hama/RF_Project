@@ -18,7 +18,7 @@ products074
     [Documentation]    只填写必要字段
     [Tags]    P0
     Add Product Required Content
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
     Wait For Save
     # check
     Sleep    3
@@ -32,37 +32,37 @@ products076
     [Tags]    P0
     # 添加必要字段
     Add Product Required Content
-    Wait And Input Text    ${locator_products_addRawPrice}    ${content_products_addRawPrice}    # 添加原价
-    Wait And Input Text    ${locator_products_addWeight}    ${content_products_addWeight}    # 添加重量
+    Wait And Input Text    ${locator_productsNew_input_addRawPrice}    ${content_products_addRawPrice}    # 添加原价
+    Wait And Input Text    ${locator_productsNew_input_addWeight}    ${content_products_addWeight}    # 添加重量
     # 添加描述
-    Wait And Click Element    ${locator_products_addDesc}
+    Wait And Click Element    ${locator_productsNew_input_addDesc}
     Execute Javascript    document.querySelectorAll(".fr-view")[0].querySelectorAll("p")[0].innerText='Description'
     # 添加供应商
-    Wait And Input Text    ${locator_products_addSupplier}    ${content_products_addSupplier}
+    Wait And Input Text    ${locator_productsNew_input_addSupplier}    ${content_products_addSupplier}
     Sleep    1
-    Press Key    ${locator_products_addSupplier}    ${keybord_enter}
+    Press Key    ${locator_productsNew_input_addSupplier}    ${keybord_enter}
     # 添加状态
-    Wait And Click Element    ${locator_products_status}
+    Wait And Click Element    ${locator_productsNew_tabindex_status}
     # 添加分类
-    Wait And Click Element    ${locator_products_addCategory}
-    Wait And Input Text    ${locator_products_addCategory}    三级分类C
-    Wait And Click Element    ${locator_products_addCategoryItem}
+    Wait And Click Element    ${locator_productsNew_input_productType}
+    Wait And Input Text    ${locator_productsNew_input_productType}    三级分类C
+    Wait And Click Element    ${locator_productsNew_cascader_chooseCategoryItem}
     # 输入标签
-    Wait And Input Text    ${locator_products_addTags}    ${content_products_addTags}
-    Press Key    ${locator_products_addTags}    ${keybord_enter}
+    Wait And Input Text    ${locator_productsNew_input_tags}    ${content_products_addTags}
+    Press Key    ${locator_productsNew_input_tags}    ${keybord_enter}
     # 输入 SKU
     ${rand_value}=    Evaluate    random.randint(0, 100)    modules=random
     ${sku}=    Convert To String    ${rand_value}
-    Wait And Input Text    ${locator_products_addSku}    ${rand_value}
+    Wait And Input Text    ${locator_productsNew_input_addSku}    ${rand_value}
     # 条形码
-    Wait And Input Text    ${locator_products_addBarcode}    ${content_products_addBarcode}
+    Wait And Input Text    ${locator_productsNew_input_addBarcode}    ${content_products_addBarcode}
     # 图片
     Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
-    Wait Until Element Is Visible    ${locator_products_uploadBtn}
-    Choose File    ${locator_products_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
+    Wait Until Element Is Visible    ${locator_productsNew_button_uploadBtn}
+    Choose File    ${locator_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Wait For Upload
     # 保存
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
     Wait For Save
     # 跳转到商品详情页面
     # check
@@ -81,7 +81,7 @@ products094
     Sleep    2
     Upload_Image    ${file_products_addImg2}
     # 保存
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
     Wait For Save
     # 保存之后检测该商品包含添加的多张图片数量是否一致
     Wait Until Page Contains Element    dom:document.querySelectorAll(".wrapper___3TwjV")[0]
@@ -130,8 +130,8 @@ Upload_Image
     [Arguments]    ${image}
     #上传一张图片
     Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
-    Wait Until Element Is Visible    ${locator_products_uploadBtn}
-    Choose File    ${locator_products_chooseFile}    ${image}
+    Wait Until Element Is Visible    ${locator_productsNew_button_uploadBtn}
+    Choose File    ${locator_productsNew_input_chooseFile}    ${image}
     Sleep    3
 
 Products Suite Setup
@@ -158,7 +158,7 @@ Add Category
     Wait And Input Text    dom:document.querySelectorAll("input")[1]    二级分类B
     Click Button    dom:document.querySelectorAll("button")[0]
     Wait And Input Text    dom:document.querySelectorAll("input")[2]    三级分类C
-    Wait And Click Element    ${locator_products_saveBtn}
+    Wait And Click Element    ${locator_productType_button_saveBtn}
 
 Delete All Category
     [Documentation]    删除分类
@@ -169,4 +169,4 @@ Delete All Category
     \    ${length}=  	Execute Javascript     return document.querySelectorAll(".djfont.remove").length
     \    Run Keyword If    ${length} == 0     Exit For Loop
     \    Click Button    ${remove_bt}
-    Click Element    ${locator_products_saveBtn}
+    Click Element    ${locator_productType_button_saveBtn}

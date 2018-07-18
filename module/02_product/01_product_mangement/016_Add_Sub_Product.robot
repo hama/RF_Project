@@ -20,9 +20,9 @@ products097
     ${title}    Set Variable    ceshi1
     #只填写必要参数以添加商品
     #点击添加商品按钮
-    Wait And Click Element    ${locator_products_add_product}
+    Wait And Click Element    ${locator_productsMgmt_button_addProduct}
     #标题
-    Wait And Input Text    ${locator_products_addTitle}    ${title}
+    Wait And Input Text    ${locator_productsNew_input_addTitle}    ${title}
     #添加选项
     Wait And Click Element    id:test_variant_setting_btn
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-dropdown-trigger")[0]
@@ -33,7 +33,7 @@ products097
     #回车保存
     Press Key    id:option_values_0    \\13
     #点击保存
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
     Sleep    5
     Go TO    ${home_page}
 
@@ -44,9 +44,9 @@ products098
     ${title}    Set Variable    ceshi1
     #只填写必要参数以添加商品
     #点击添加商品按钮
-    Wait And Click Element    ${locator_products_add_product}
+    Wait And Click Element    ${locator_productsMgmt_button_addProduct}
     #标题
-    Wait And Input Text    ${locator_products_addTitle}    ${title}
+    Wait And Input Text    ${locator_productsNew_input_addTitle}    ${title}
     #添加选项
     Wait And Click Element    id:test_variant_setting_btn
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-dropdown-trigger")[0]
@@ -63,7 +63,7 @@ products098
     Press Key    id:option_values_0    \\13
     #点击保存
     Sleep    3
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
     Sleep    5
     Go TO    ${home_page}
 
@@ -74,13 +74,13 @@ products099
     ${title}    Set Variable    ceshi1
     #只填写必要参数以添加商品
     #点击添加商品按钮
-    Wait And Click Element    ${locator_products_add_product}
+    Wait And Click Element    ${locator_productsMgmt_button_addProduct}
     #标题
-    Wait And Input Text    ${locator_products_addTitle}    ${title}
+    Wait And Input Text    ${locator_productsNew_input_addTitle}    ${title}
     #售价
-    Wait And Input Text    ${locator_products_addPrice}    100
+    Wait And Input Text    ${locator_productsNew_input_addPrice}    100
     #原价
-    Wait And Input Text    ${locator_products_addRawPrice}    110
+    Wait And Input Text    ${locator_productsNew_input_addRawPrice}    110
     #编辑商品seo
     Sleep    2
     Execute Javascript    return document.getElementById("test_upload_btn").scrollIntoView()
@@ -97,7 +97,7 @@ products099
     Wait And Input Text    dom:document.querySelectorAll(".ant-select-search__field")[1]    test
     Press Key    dom:document.querySelectorAll(".ant-select-search__field")[1]    \\13
     #点击保存
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
     Sleep    5
     Go TO    ${home_page}
 
@@ -108,13 +108,13 @@ products100
     ${title}    Set Variable    ceshi1
     #只填写必要参数以添加商品
     #点击添加商品按钮
-    Wait And Click Element    ${locator_products_add_product}
+    Wait And Click Element    ${locator_productsMgmt_button_addProduct}
     #标题
-    Wait And Input Text    ${locator_products_addTitle}    ${title}
+    Wait And Input Text    ${locator_productsNew_input_addTitle}    ${title}
     #售价
-    Wait And Input Text    ${locator_products_addPrice}    100
+    Wait And Input Text    ${locator_productsNew_input_addPrice}    100
     #原价
-    Wait And Input Text    ${locator_products_addRawPrice}    110
+    Wait And Input Text    ${locator_productsNew_input_addRawPrice}    110
     #编辑商品seo
     Execute Javascript    return document.getElementById("test_upload_btn").scrollIntoView()
     Sleep    2
@@ -126,7 +126,7 @@ products100
     ${title}    Execute Javascript    return document.querySelectorAll(".icon_custom_left___GO944")[3].text
     Should Be Equal As Strings    ${title}    编辑SEO
     #点击保存
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
     Sleep    5
     Go TO    ${home_page}
 

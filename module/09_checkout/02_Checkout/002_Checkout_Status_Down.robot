@@ -23,7 +23,7 @@ checkout105
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
 
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     Select_Order_Page    ${title}
@@ -35,7 +35,7 @@ checkout105
     #修改状态
     Wait And Click Element    id:status
     #点击保存
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
     Sleep    5
     #切换到商品submit页
     Select Window    title=${content_store_name}
@@ -49,7 +49,7 @@ checkout107
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
 
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #给该商品增加子产品
@@ -68,7 +68,7 @@ checkout108
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
 
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #给该商品增加子产品
@@ -89,7 +89,7 @@ checkout109
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #给该商品增加子产品
@@ -108,7 +108,7 @@ checkout110
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #勾选该商品库存为0时仍可购买
@@ -129,7 +129,7 @@ checkout111
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #勾选该商品库存为0时仍可购买
@@ -155,7 +155,7 @@ checkout112
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #设置该商品的库存为1
@@ -176,7 +176,7 @@ checkout113
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #设置该商品的库存为1
@@ -197,7 +197,7 @@ checkout116
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     Select_Order_Page    ${title}
@@ -208,7 +208,7 @@ checkout116
     ${src}    Execute Javascript    return document.querySelectorAll(".center___1nHSZ")[0].src
     ${src}    getImgName    ${src}
     #点击保存
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
     Sleep    5
     #切换到商品submit页
     Select Window    title=${content_store_name}
@@ -229,7 +229,7 @@ checkout127
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
 
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #进入设置-收款渠道，关闭货到付款
@@ -245,7 +245,7 @@ checkout128
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #进入设置-收款渠道，开启货到付款
@@ -262,7 +262,7 @@ checkout129
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
 
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #进入设置-收款渠道，开启货到付款
@@ -290,7 +290,7 @@ checkout133
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #修改其他国家税费金额
@@ -310,7 +310,7 @@ checkout134
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #先设置成只需填写邮箱
@@ -341,7 +341,7 @@ checkout135
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #先设置成（姓名）
