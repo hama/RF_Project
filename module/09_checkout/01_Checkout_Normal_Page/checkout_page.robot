@@ -25,7 +25,7 @@ checkout001
     [Tags]    P0
     #.click products btn
     Checkout Common Setp
-    Wait Until Element Is Visible    ${add_card_btn}
+    Wait Until Element Is Visible    ${locator_checkout_add_card_btn}
     Page Should Contain Image    dom:document.querySelectorAll("img")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".sales_price")[0]
 
@@ -34,8 +34,8 @@ checkout002
     [Tags]    P1
     #点击商品预览
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
     Sleep    2
     Page Should Contain Element    dom:document.querySelectorAll(".coline")[0]
 
@@ -43,33 +43,33 @@ checkout004
     [Documentation]    进入checkout界面 显示search按钮
     [Tags]    P1
     Checkout Common Setp
-    Page Should Contain Element    ${search_btn}
+    Page Should Contain Element    ${locator_checkout_search_btn}
 
 checkout005
     [Documentation]    进入checkout界面 点击搜索按钮 跳转到搜索页面
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${search_btn}
+    Wait And Click Element    ${locator_checkout_search_btn}
     Page Should Contain Element    dom:document.querySelectorAll(".search_header_txt")[0]
 
 checkout008
     [Documentation]    进入checkout界面 顶部导航栏中间显示店铺名
     [Tags]    P1
     Checkout Common Setp
-    Page Should Contain Element    ${checkout_user_name}
+    Page Should Contain Element    ${locator_checkout_user_name}
 
 checkout009
     [Documentation]    进入checkout界面 点击购物车按钮 显示购物车内容
     [Tags]    P0
     Checkout Common Setp
-    Wait And Click Element    ${card_img_btn}
+    Wait And Click Element    ${locator_checkout_card_img_btn}
     Page Should Contain Element    dom:document.querySelectorAll(".title")[0]
 
 checkout010
     [Documentation]    进入checkout界面 点击个人中心按钮 显示个人中心内容
     [Tags]    P0
     Checkout Common Setp
-    Wait And Click Element    ${member_btn}
+    Wait And Click Element    ${locator_checkout_member_btn}
     Sleep Time
     Page Should Contain Element    dom:document.querySelectorAll(".operal_list_item")[0]
 
@@ -77,29 +77,29 @@ checkout011
     [Documentation]    进入checkout界面 点击buynow 然后添加地址
     [Tags]    P0
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
-    Wait And Click Element    ${address_btn}
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_btn}
     Page Should Contain Element    dom:document.querySelectorAll("input[name='first_name']")[0]
 
 checkout012
     [Documentation]    进去checkout界面 点击buynow 添加地址·输入该输入信息·保存成功
     [Tags]    P0
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
-    Wait And Click Element    ${address_btn}
-    Input Text    ${address_first_name}    123
-    Input Text    ${address_last_name}    345
-    Select From List    ${address_select_country}    China
-    Input Text    ${address_city}    深圳
-    Input Text    ${address_add}    深圳123
-    Input Text    ${address_zip}    123456
-    Input Text    ${address_email}    123456@zz.xx
-    Input Text    ${address_phone}    123456789
-    Input Text    ${address_company}    123456789
-    Wait And Click Element    ${save_address_btn}
-    Wait And Click Element    ${save_checkout_btn}
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_btn}
+    Input Text    ${locator_checkout_address_first_name}    123
+    Input Text    ${locator_checkout_address_last_name}    345
+    Select From List    ${locator_checkout_address_select_country}    China
+    Input Text    ${locator_checkout_address_city}    深圳
+    Input Text    ${locator_checkout_address_add}    深圳123
+    Input Text    ${locator_checkout_address_zip}    123456
+    Input Text    ${locator_checkout_address_email}    123456@zz.xx
+    Input Text    ${locator_checkout_address_phone}    123456789
+    Input Text    ${locator_checkout_address_company}    123456789
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
     Sleep Time
     Page Should Contain Element    dom:document.querySelectorAll(".header")[0]
 
@@ -107,78 +107,78 @@ checkout013
     [Documentation]    进去checkout 界面 点击buynow 添加地址·姓名不输入 保存不成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
-    Wait And Click Element    ${address_btn}
-    Input Text    ${address_first_name}    ${Empty}
-    Input Text    ${address_last_name}    345
-    Select From List    ${address_select_country}    China
-    Input Text    ${address_city}    深圳
-    Input Text    ${address_add}    深圳123
-    Input Text    ${address_zip}    123456
-    Input Text    ${address_email}    123456@zz.xx
-    Input Text    ${address_phone}    123456789
-    Input Text    ${address_company}    123456789
-    Wait And Click Element    ${save_address_btn}
-    Page Should Contain Element    ${address_error}
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_btn}
+    Input Text    ${locator_checkout_address_first_name}    ${Empty}
+    Input Text    ${locator_checkout_address_last_name}    345
+    Select From List    ${locator_checkout_address_select_country}    China
+    Input Text    ${locator_checkout_address_city}    深圳
+    Input Text    ${locator_checkout_address_add}    深圳123
+    Input Text    ${locator_checkout_address_zip}    123456
+    Input Text    ${locator_checkout_address_email}    123456@zz.xx
+    Input Text    ${locator_checkout_address_phone}    123456789
+    Input Text    ${locator_checkout_address_company}    123456789
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Page Should Contain Element    ${locator_checkout_address_error}
 
 checkout017
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不选择国家 保存不成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
-    Wait And Click Element    ${address_btn}
-    Input Text    ${address_first_name}    123
-    Input Text    ${address_last_name}    345
-    Input Text    ${address_city}    深圳
-    Input Text    ${address_add}    深圳123
-    Input Text    ${address_zip}    123456
-    Input Text    ${address_email}    123456@zz.xx
-    Input Text    ${address_phone}    123456789
-    Input Text    ${address_company}    123456789
-    Wait And Click Element    ${save_address_btn}
-    Page Should Contain Element    ${address_error}
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_btn}
+    Input Text    ${locator_checkout_address_first_name}    123
+    Input Text    ${locator_checkout_address_last_name}    345
+    Input Text    ${locator_checkout_address_city}    深圳
+    Input Text    ${locator_checkout_address_add}    深圳123
+    Input Text    ${locator_checkout_address_zip}    123456
+    Input Text    ${locator_checkout_address_email}    123456@zz.xx
+    Input Text    ${locator_checkout_address_phone}    123456789
+    Input Text    ${locator_checkout_address_company}    123456789
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Page Should Contain Element    ${locator_checkout_address_error}
 
 checkout018
     [Documentation]    进去checkout 界面 点击buynow 添加地址·先在后台添加一个中国的国家 然后在c端显示可选的为中国
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
-    Wait And Click Element    ${address_btn}
-    Input Text    ${address_first_name}    123
-    Input Text    ${address_last_name}    345
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_btn}
+    Input Text    ${locator_checkout_address_first_name}    123
+    Input Text    ${locator_checkout_address_last_name}    345
     Page Should Contain Element    dom:document.querySelectorAll("#shipping_country_id option")[1]    #.代表中国
 
 checkout022
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不选择地区 保存不成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
-    Wait And Click Element    ${address_btn}
-    Input Text    ${address_first_name}    123
-    Input Text    ${address_last_name}    345
-    Input Text    ${address_city}    深圳
-    Input Text    ${address_add}    深圳123
-    Input Text    ${address_zip}    123456
-    Input Text    ${address_email}    123456@zz.xx
-    Input Text    ${address_phone}    123456789
-    Input Text    ${address_company}    123456789
-    Wait And Click Element    ${save_address_btn}
-    Page Should Contain Element    ${address_error}
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_btn}
+    Input Text    ${locator_checkout_address_first_name}    123
+    Input Text    ${locator_checkout_address_last_name}    345
+    Input Text    ${locator_checkout_address_city}    深圳
+    Input Text    ${locator_checkout_address_add}    深圳123
+    Input Text    ${locator_checkout_address_zip}    123456
+    Input Text    ${locator_checkout_address_email}    123456@zz.xx
+    Input Text    ${locator_checkout_address_phone}    123456789
+    Input Text    ${locator_checkout_address_company}    123456789
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Page Should Contain Element    ${locator_checkout_address_error}
 
 checkout023
     [Documentation]    进去checkout 界面 点击buynow 添加地址·选择中国 出现中国的所有地区
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
-    Wait And Click Element    ${address_btn}
-    Input Text    ${address_first_name}    123
-    Input Text    ${address_last_name}    345
-    Select From List    ${address_select_country}    China
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_btn}
+    Input Text    ${locator_checkout_address_first_name}    123
+    Input Text    ${locator_checkout_address_last_name}    345
+    Select From List    ${locator_checkout_address_select_country}    China
     Sleep Time
     ${count}    Execute JavaScript    return document.querySelectorAll("#shipping_zone_id")[0].length
     Should Be True    ${count}==32
@@ -187,123 +187,123 @@ checkout025
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入城市 保存不成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
-    Wait And Click Element    ${address_btn}
-    Input Text    ${address_first_name}    123
-    Input Text    ${address_last_name}    345
-    Select From List    ${address_select_country}    China
-    Input Text    ${address_add}    深圳123
-    Input Text    ${address_zip}    123456
-    Input Text    ${address_email}    123456@zz.xx
-    Input Text    ${address_phone}    123456789
-    Input Text    ${address_company}    123456789
-    Wait And Click Element    ${save_address_btn}
-    Page Should Contain Element    ${address_error}
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_btn}
+    Input Text    ${locator_checkout_address_first_name}    123
+    Input Text    ${locator_checkout_address_last_name}    345
+    Select From List    ${locator_checkout_address_select_country}    China
+    Input Text    ${locator_checkout_address_add}    深圳123
+    Input Text    ${locator_checkout_address_zip}    123456
+    Input Text    ${locator_checkout_address_email}    123456@zz.xx
+    Input Text    ${locator_checkout_address_phone}    123456789
+    Input Text    ${locator_checkout_address_company}    123456789
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Page Should Contain Element    ${locator_checkout_address_error}
 
 checkout026
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入详细地址 保存不成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
-    Wait And Click Element    ${address_btn}
-    Input Text    ${address_first_name}    123
-    Input Text    ${address_last_name}    345
-    Select From List    ${address_select_country}    China
-    Input Text    ${address_city}    深圳
-    Input Text    ${address_zip}    123456
-    Input Text    ${address_email}    123456@zz.xx
-    Input Text    ${address_phone}    123456789
-    Input Text    ${address_company}    123456789
-    Wait And Click Element    ${save_address_btn}
-    Page Should Contain Element    ${address_error}
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_btn}
+    Input Text    ${locator_checkout_address_first_name}    123
+    Input Text    ${locator_checkout_address_last_name}    345
+    Select From List    ${locator_checkout_address_select_country}    China
+    Input Text    ${locator_checkout_address_city}    深圳
+    Input Text    ${locator_checkout_address_zip}    123456
+    Input Text    ${locator_checkout_address_email}    123456@zz.xx
+    Input Text    ${locator_checkout_address_phone}    123456789
+    Input Text    ${locator_checkout_address_company}    123456789
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Page Should Contain Element    ${locator_checkout_address_error}
 
 checkout028
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入zip 保存不成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
-    Wait And Click Element    ${address_btn}
-    Input Text    ${address_first_name}    123
-    Input Text    ${address_last_name}    345
-    Select From List    ${address_select_country}    China
-    Input Text    ${address_city}    深圳
-    Input Text    ${address_add}    深圳123
-    Input Text    ${address_email}    123456@zz.xx
-    Input Text    ${address_phone}    123456789
-    Input Text    ${address_company}    123456789
-    Wait And Click Element    ${save_address_btn}
-    Page Should Contain Element    ${address_error}
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_btn}
+    Input Text    ${locator_checkout_address_first_name}    123
+    Input Text    ${locator_checkout_address_last_name}    345
+    Select From List    ${locator_checkout_address_select_country}    China
+    Input Text    ${locator_checkout_address_city}    深圳
+    Input Text    ${locator_checkout_address_add}    深圳123
+    Input Text    ${locator_checkout_address_email}    123456@zz.xx
+    Input Text    ${locator_checkout_address_phone}    123456789
+    Input Text    ${locator_checkout_address_company}    123456789
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Page Should Contain Element    ${locator_checkout_address_error}
 
 checkout030
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入邮箱 保存不成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
-    Wait And Click Element    ${address_btn}
-    Input Text    ${address_first_name}    123
-    Input Text    ${address_last_name}    345
-    Select From List    ${address_select_country}    China
-    Input Text    ${address_city}    深圳
-    Input Text    ${address_add}    深圳123
-    Input Text    ${address_zip}    123456
-    Input Text    ${address_phone}    123456789
-    Input Text    ${address_company}    123456789
-    Wait And Click Element    ${save_address_btn}
-    Page Should Contain Element    ${address_error}
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_btn}
+    Input Text    ${locator_checkout_address_first_name}    123
+    Input Text    ${locator_checkout_address_last_name}    345
+    Select From List    ${locator_checkout_address_select_country}    China
+    Input Text    ${locator_checkout_address_city}    深圳
+    Input Text    ${locator_checkout_address_add}    深圳123
+    Input Text    ${locator_checkout_address_zip}    123456
+    Input Text    ${locator_checkout_address_phone}    123456789
+    Input Text    ${locator_checkout_address_company}    123456789
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Page Should Contain Element    ${locator_checkout_address_error}
 
 checkout032
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入电话 保存不成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
-    Wait And Click Element    ${address_btn}
-    Input Text    ${address_first_name}    123
-    Input Text    ${address_last_name}    345
-    Select From List    ${address_select_country}    China
-    Input Text    ${address_city}    深圳
-    Input Text    ${address_add}    深圳123
-    Input Text    ${address_zip}    123456
-    Input Text    ${address_email}    123456@zz.xx
-    Input Text    ${address_company}    123456789
-    Wait And Click Element    ${save_address_btn}
-    Page Should Contain Element    ${address_error}
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_btn}
+    Input Text    ${locator_checkout_address_first_name}    123
+    Input Text    ${locator_checkout_address_last_name}    345
+    Select From List    ${locator_checkout_address_select_country}    China
+    Input Text    ${locator_checkout_address_city}    深圳
+    Input Text    ${locator_checkout_address_add}    深圳123
+    Input Text    ${locator_checkout_address_zip}    123456
+    Input Text    ${locator_checkout_address_email}    123456@zz.xx
+    Input Text    ${locator_checkout_address_company}    123456789
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Page Should Contain Element    ${locator_checkout_address_error}
 
 
 checkout035
     [Documentation]    进去checkout 界面 点击buynow 添加地址· 保存成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
-    Wait And Click Element    ${address_btn}
-    Input Text    ${address_first_name}    123
-    Input Text    ${address_last_name}    345
-    Select From List    ${address_select_country}    China
-    Input Text    ${address_city}    深圳
-    Input Text    ${address_add}    深圳123
-    Input Text    ${address_zip}    123456
-    Input Text    ${address_email}    123456@zz.xx
-    Input Text    ${address_phone}    123456789
-    Input Text    ${address_company}    123456789
-    Wait And Click Element    ${save_address_btn}
-    Page Should Contain Element    ${save_checkout_btn}
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_btn}
+    Input Text    ${locator_checkout_address_first_name}    123
+    Input Text    ${locator_checkout_address_last_name}    345
+    Select From List    ${locator_checkout_address_select_country}    China
+    Input Text    ${locator_checkout_address_city}    深圳
+    Input Text    ${locator_checkout_address_add}    深圳123
+    Input Text    ${locator_checkout_address_zip}    123456
+    Input Text    ${locator_checkout_address_email}    123456@zz.xx
+    Input Text    ${locator_checkout_address_phone}    123456789
+    Input Text    ${locator_checkout_address_company}    123456789
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Page Should Contain Element    ${locator_checkout_address_save_checkout_btn}
 
 checkout039
     [Documentation]    进去checkout 界面 点击buynow 添加2次购物车 购物车的数量为2
     [Tags]    P0
     Checkout Common Setp
-    Wait And Click Element    ${add_card_btn}
-    Wait And Click Element    ${submit_btn_s}
+    Wait And Click Element    ${locator_checkout_add_card_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
     Sleep    3
-    Wait And Click Element    ${add_card_btn}
-    Wait And Click Element    ${submit_btn_s}
+    Wait And Click Element    ${locator_checkout_add_card_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
     Sleep    3
-    Wait And Click Element    ${card_img_btn}
+    Wait And Click Element    ${locator_checkout_card_img_btn}
     ${count}    Execute JavaScript    return document.querySelectorAll(".space-between span")[2].innerText
     Should Be True    ${count}==2
 
@@ -312,7 +312,7 @@ checkout040
     [Tags]    P1
     Checkout Common Setp
     Execute JavaScript    return document.getElementsByClassName("review_write")[0].scrollIntoView()
-    Wait And Click Element    ${write_review}
+    Wait And Click Element    ${locator_checkout_write_review}
     Page Should Contain Element    dom:document.querySelectorAll(".addli")
 
 checkout043
@@ -322,7 +322,7 @@ checkout043
     Go To    ${home_page}    #.跳转主页
     Checkout Common Setp
     Execute JavaScript    return document.getElementsByClassName("review_write")[0].scrollIntoView()
-    Wait And Click Element    ${write_review}
+    Wait And Click Element    ${locator_checkout_write_review}
     Input Text    id:content    ${strs}
     Page Should Contain Element    dom:document.querySelectorAll(".addli")
 
@@ -333,9 +333,9 @@ checkout019
     Add Other Country
     Sleep    2
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
-    Wait And Click Element    ${save_checkout_btn}
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
     ${count}    Execute JavaScript    return document.querySelectorAll("#shipping_country_id")[0].length
     Should Be True    ${count}==228
     Go To    ${home_page}
@@ -345,33 +345,33 @@ checkout021
     [Documentation]    正常添加数据，保存成功
     [Tags]    P0
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
-    Wait And Click Element    ${save_checkout_btn}
-    Input Text    ${address_first_name}    123
-    Input Text    ${address_last_name}    345
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Input Text    ${locator_checkout_address_first_name}    123
+    Input Text    ${locator_checkout_address_last_name}    345
     ${name}    Execute JavaScript    return document.querySelectorAll("#shipping_country_id option")[1].innerText
-    Select From List    ${address_select_country}    ${name}
-    Input Text    ${address_city}    深圳
-    Input Text    ${address_add}    深圳123
-    Input Text    ${address_zip}    123456
-    Input Text    ${address_email}    123456@zz.xx
-    Input Text    ${address_phone}    123456789
-    Input Text    ${address_company}    123456789
-    Wait And Click Element    ${save_address_btn}
+    Select From List    ${locator_checkout_address_select_country}    ${name}
+    Input Text    ${locator_checkout_address_city}    深圳
+    Input Text    ${locator_checkout_address_add}    深圳123
+    Input Text    ${locator_checkout_address_zip}    123456
+    Input Text    ${locator_checkout_address_email}    123456@zz.xx
+    Input Text    ${locator_checkout_address_phone}    123456789
+    Input Text    ${locator_checkout_address_company}    123456789
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
     Page Should Contain Element    id:changeaddress
 checkout038
     [Documentation]    添加地址后关闭页面填写的信息不会被重置
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${by_now_btn}
-    Wait And Click Element    ${submit_btn_s}
-    Wait And Click Element    ${save_checkout_btn}
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
     ${first_name}    Set Variable    123
-    Input Text    ${address_first_name}    ${first_name}
-    Input Text    ${address_last_name}    345
-    Wait And Click Element    ${close_address}
-    Wait And Click Element    ${save_checkout_btn}
+    Input Text    ${locator_checkout_address_first_name}    ${first_name}
+    Input Text    ${locator_checkout_address_last_name}    345
+    Wait And Click Element    ${locator_checkout_address_close_address}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
     ${data}    Execute JavaScript    return document.querySelectorAll("input[name='first_name']")[0].value
     Should Be True    '${data}'=='${first_name}'
 

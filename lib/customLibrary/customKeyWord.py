@@ -28,9 +28,9 @@ class keyWord(object):
     db_name = "shop_"
 
     home_page_url = "http://admin1024.shoplazza.com"
-    datas_contact = "15220581724"
+    datas_contact = "17665076519"
     datas_password = "123456"
-    datas_username = "chen"
+    datas_username = "xx"
 
     def __init__(self):
         pass
