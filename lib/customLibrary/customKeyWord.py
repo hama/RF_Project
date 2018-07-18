@@ -29,6 +29,7 @@ class keyWord(object):
     db_pwd = "lansejiebo@123"
     db_name = "shop_"
 
+
     def __init__(self):
         config = ConfigParser.ConfigParser()
         path = os.path.join( os.path.dirname(__file__),'../..')+ '/config/common.ini'

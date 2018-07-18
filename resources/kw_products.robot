@@ -209,4 +209,4 @@ Add Order Products
     Choose File    ${locator_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
     Wait And Click Element    ${locator_products_button_confirm}
-    Sleep    5
+    Sleep    8

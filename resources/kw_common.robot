@@ -108,6 +108,12 @@ Wait And Click Link
     Wait Until Keyword Succeeds    5x    1s    Click Link    ${link_locator}
     Sleep    1
 
+Common Js Click
+    [Arguments]    ${element}    ${index}
+    [Documentation]    封装js点击方法
+    Execute JavaScript    return document.querySelectorAll("${element}")[${index}].click()
+
+
 JS Get Element Length
     [Arguments]    ${element_locator}
     [Documentation]    封装的JS方法，返回元素集长度

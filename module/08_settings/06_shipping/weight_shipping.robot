@@ -15,7 +15,7 @@ shipping057
     [Tags]    P0
     Go To Shipping Page
     Quantity All Setp
-    Wait And Click Element    class:ant-modal-close-x
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     sleep    1
     page should not contain element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
 
@@ -24,8 +24,8 @@ shipping058
     [Tags]    P0
     Go To Shipping Page
     Quantity All Setp
-    input text    dom:document.querySelectorAll('#name')[1]    价格运费
-    Wait And Click Element    class:ant-modal-close-x
+    input text    ${locator_shipping_weight_first_input}    价格运费
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     sleep    1
     page should not contain element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
 
@@ -34,13 +34,13 @@ shipping042
     [Tags]    P1
     Go To Shipping Page
     Quantity All Setp
-    input text    dom:document.querySelectorAll('#name')[1]    价格运费
-    Wait And Click Element    class:ant-modal-close-x
+    input text    ${locator_shipping_weight_first_input}    价格运费
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     sleep    2
-    Wait And Click Element    id:test_shipping_add_price_btn
-    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
-    page should contain element    class:ant-form-explain
-    Wait And Click Element    class:ant-modal-close-x
+    Wait And Click Element    ${locator_shipping_add_price_btn}
+    Wait And Click Element    ${locator_shipping_freight_save}
+    page should contain element    ${locator_shipping_freight_error_elm}
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping061
@@ -48,9 +48,9 @@ shipping061
     [Tags]    P1
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    page should contain element    id:test_shipping_edit_modal_sure_btn
-    Wait And Click Element    class:ant-modal-close-x
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    page should contain element    ${locator_shipping_freight_save}
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping064
@@ -58,12 +58,12 @@ shipping064
     [Tags]    P1
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
-    input text    dom:document.querySelectorAll('#name')[1]    重量运费
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
+    input text    ${locator_shipping_weight_first_input}    重量运费
     ${data}    execute javascript    return document.querySelectorAll("input[placeholder='Standard Shipping']")[0].value
     Should Be True    '${data}'=='重量运费'
-    Wait And Click Element    class:ant-modal-close-x
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping066
@@ -73,12 +73,12 @@ shipping066
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
     #.check button
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
-    input text    dom:document.querySelectorAll('#name')[1]    123
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
+    input text    ${locator_shipping_weight_first_input}    123
     ${data}    execute javascript    return document.querySelectorAll("input[placeholder='Standard Shipping']")[0].value
     Should Be True    '${data}'=='123'
-    Wait And Click Element    class:ant-modal-close-x
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping067
@@ -86,10 +86,10 @@ shipping067
     [Tags]    P0
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
-    input text    dom:document.querySelectorAll('#name')[1]    123
-    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
+    input text    ${locator_shipping_weight_first_input}    123
+    Wait And Click Element    ${locator_shipping_freight_save}
     page should contain element    //*[@id="dj"]/div/div[4]/div[2]/div/div/div/div/div/table/tbody/tr
     Quit All Shipping
 
@@ -98,13 +98,13 @@ shipping068
     [Tags]    P0
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${ss}    set variable    sssssssssssssssssssssssssddddddddddssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-    input text    dom:document.querySelectorAll('#name')[1]    ${ss}
-    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
-    page should contain element    class:ant-form-explain
-    Wait And Click Element    class:ant-modal-close-x
+    input text    ${locator_shipping_weight_first_input}    ${ss}
+    Wait And Click Element    ${locator_shipping_freight_save}
+    page should contain element    ${locator_shipping_freight_error_elm}
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping071
@@ -112,11 +112,11 @@ shipping071
     [Tags]    P0
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${ss}    set variable    重量运费
-    input text    dom:document.querySelectorAll('#name')[1]    ${ss}
-    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
+    input text    ${locator_shipping_weight_first_input}    ${ss}
+    Wait And Click Element    ${locator_shipping_freight_save}
     page should contain element    dom:document.querySelectorAll("table tbody tr")[0]
     Quit All Shipping
 
@@ -125,11 +125,11 @@ shipping069
     [Tags]    P0
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${ss}    set variable    重量运费
-    input text    dom:document.querySelectorAll('#name')[1]    ${ss}
-    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
+    input text    ${locator_shipping_weight_first_input}    ${ss}
+    Wait And Click Element    ${locator_shipping_freight_save}
     sleep    1.5
     page should contain element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
     Quit All Shipping
@@ -139,17 +139,17 @@ shipping073
     [Tags]    P1
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
     sleep    1
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${ss}    set variable    重量运费
     ${sm}    set variable    ssssssssssssssssssssssddsadasdasdasdasdasdasdasdsadasdasdcxvcbvfghfghfghfghdfsdfsdfdsfsdfdsdsfsssddddddddddssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-    input text    dom:document.querySelectorAll('#name')[1]    ${ss}
-    input text    dom:document.querySelectorAll('#desc')[0]    ${sm}
-    click button    id:test_shipping_edit_modal_sure_btn
+    input text    ${locator_shipping_weight_first_input}    ${ss}
+    input text    ${locator_shipping_description}    ${sm}
+    click button    ${locator_shipping_freight_save}
     sleep    1.5
-    page should contain element    class:ant-form-explain
-    Wait And Click Element    class:ant-modal-close-x
+    page should contain element    ${locator_shipping_freight_error_elm}
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping072
@@ -157,13 +157,13 @@ shipping072
     [Tags]    P1
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${ss}    set variable    重量运费
     ${sm}    set variable    6as51d65a1d65sa65d165as1d56as165d1as56d156as1d56as156d1as65d16sa1d56as1d56as1d6d89f498dfg489fd4g89fd4g89df4gdfg1d3f2g132df1g
-    input text    dom:document.querySelectorAll('#name')[1]    ${ss}
-    input text    dom:document.querySelectorAll('#desc')[0]    ${sm}
-    click button    id:test_shipping_edit_modal_sure_btn
+    input text    ${locator_shipping_weight_first_input}    ${ss}
+    input text    ${locator_shipping_description}    ${sm}
+    click button    ${locator_shipping_freight_save}
     sleep    1.5
     page should contain element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
     Quit All Shipping
@@ -173,14 +173,14 @@ shipping074
     [Tags]    P1
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${sm}    set variable    6as51d65a1d65sa65d165as1d56as165d1as56d156as1d56as156d1as65d16sa1d56as1d56as1d6d89f498dfg489fd4g89fd4g89df4gdfg1d3f2g132df1g
-    input text    dom:document.querySelectorAll('#desc')[0]    ${sm}
-    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
+    input text    ${locator_shipping_description}    ${sm}
+    Wait And Click Element    ${locator_shipping_freight_save}
     sleep    1.5
-    page should contain element    class:ant-form-explain\
-    Wait And Click Element    class:ant-modal-close-x
+    page should contain element    ${locator_shipping_freight_error_elm}
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping075
@@ -188,14 +188,14 @@ shipping075
     [Tags]    P1
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${sm}    set variable    454544454454545
-    input text    dom:document.querySelectorAll('#range_min')[0]    ${sm}
-    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
+    input text    ${locator_shipping_range_min}    ${sm}
+    Wait And Click Element    ${locator_shipping_freight_save}
     sleep    1.5
-    page should contain element    class:ant-form-explain
-    Wait And Click Element    class:ant-modal-close-x
+    page should contain element    ${locator_shipping_freight_error_elm}
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping076
@@ -203,14 +203,14 @@ shipping076
     [Tags]    P1
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${sm}    set variable    454544454454545
-    input text    dom:document.querySelectorAll('#range_max')[0]    ${sm}
-    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
+    input text    ${locator_shipping_range_max}    ${sm}
+    Wait And Click Element    ${locator_shipping_freight_save}
     sleep    1.5
-    page should contain element    class:ant-form-explain
-    Wait And Click Element    class:ant-modal-close-x
+    page should contain element    ${locator_shipping_freight_error_elm}
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping078
@@ -218,14 +218,14 @@ shipping078
     [Tags]    P0
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${sm}    set variable    10
     ${sx}    set variable    100
-    input text    dom:document.querySelectorAll('#name')[1]    ${sm}
-    input text    dom:document.querySelectorAll('#range_max')[0]    ${sm}
-    input text    dom:document.querySelectorAll('#range_max')[0]    ${sx}
-    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
+    input text    ${locator_shipping_weight_first_input}    ${sm}
+    input text    ${locator_shipping_range_min}    ${sm}
+    input text    ${locator_shipping_range_max}    ${sx}
+    Wait And Click Element    ${locator_shipping_freight_save}
     sleep    1.5
     page should contain element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
     Quit All Shipping
@@ -235,17 +235,17 @@ shipping079
     [Tags]    P1
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${sm}    set variable    100
     ${sx}    set variable    10
-    input text    dom:document.querySelectorAll('#range_min')[0]    ${sm}
-    input text    dom:document.querySelectorAll('#range_max')[0]    ${sx}
-    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
+    input text    ${locator_shipping_range_min}    ${sm}
+    input text    ${locator_shipping_range_max}    ${sx}
+    Wait And Click Element    ${locator_shipping_freight_save}
     ${data}    evaluate    ${sm}+1
-    ${res}    get value    id:range_max
+    ${res}    get value    ${locator_shipping_range_max}
     Should Be True    ${data}==${res}
-    Wait And Click Element    class:ant-modal-close-x
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping080
@@ -253,17 +253,17 @@ shipping080
     [Tags]    P1
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${sm}    set variable    200
     ${sx}    set variable    100
-    input text    dom:document.querySelectorAll('#range_max')[0]    ${sx}
-    input text    dom:document.querySelectorAll('#range_min')[0]    ${sm}
-    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
+    input text    ${locator_shipping_range_max}    ${sx}
+    input text    ${locator_shipping_range_min}    ${sm}
+    Wait And Click Element    ${locator_shipping_freight_save}
     ${data}    evaluate    ${sx}-1
-    ${res}    get value    id:range_min
+    ${res}    get value    ${locator_shipping_range_min}
     Should Be True    ${data}==${res}
-    Wait And Click Element    class:ant-modal-close-x
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping081
@@ -271,11 +271,11 @@ shipping081
     [Tags]    P1
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${res}    execute javascript    return document.querySelectorAll(".ant-select-selection-selected-value")[0].innerHTML
     Should Be True    '${res}'=='克'
-    Wait And Click Element    class:ant-modal-close-x
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping082
@@ -283,15 +283,15 @@ shipping082
     [Tags]    P1
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    #Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    #Wait Until Element Is Visible    ${locator_shipping_freight_save}
     #execute javascript    return document.querySelectorAll(".ant-select-arrow")[0].click()
     click element    dom:document.querySelectorAll(".ant-select-arrow")[0]
     #${res}    execute javascript    return document.querySelectorAll(“.ant-select-selection-selected-value”)[0].innerHTML
     Mouse Down    dom:document.querySelectorAll("div[role='combobox']")[0]
     Mouse Over    dom:document.querySelectorAll("div[role='combobox']")[0]
     Mouse Up    dom:document.querySelectorAll("div[role='combobox']")[0]
-    Wait And Click Element    class:ant-modal-close-x
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping087
@@ -299,11 +299,11 @@ shipping087
     [Tags]    P0
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
     execute javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
     #Wait And Click Element    dom:document.querySelectorAll(".ant-checkbox-input")[0]
-    Wait And Click Element    class:ant-modal-close-x
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping089
@@ -311,14 +311,14 @@ shipping089
     [Tags]    P0
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
-    input text    id:rate_amount    100
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
+    input text    ${locator_shipping_price}    100
     execute javascript    return document.querySelectorAll(".ant-checkbox-input")[1].click()
     #click element    dom:document.querySelectorAll(".ant-checkbox-input")[1]
     #execute javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
     page should not contain element    document.querySelectorAll(".ant-checkbox-checked")[0]
-    Wait And Click Element    class:ant-modal-close-x
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping090
@@ -326,12 +326,12 @@ shipping090
     [Tags]    P1
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
     ${re}    set variable    456789456789
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
-    input text    id:rate_amount    ${re}
-    page should contain element    class:ant-form-explain
-    Wait And Click Element    class:ant-modal-close-x
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
+    input text    ${locator_shipping_price}    ${re}
+    page should contain element    ${locator_shipping_freight_error_elm}
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping091
@@ -339,12 +339,12 @@ shipping091
     [Tags]    P0
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
     ${re}    set variable    100
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
-    input text    dom:document.querySelectorAll('#name')[1]    重量运费
-    input text    id:rate_amount    ${re}
-    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
+    input text    ${locator_shipping_weight_first_input}    重量运费
+    input text    ${locator_shipping_price}    ${re}
+    Wait And Click Element    ${locator_shipping_freight_save}
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
     ${res}    searchStrs    ${data}
     Should Be True    ${res}==${re}
@@ -355,12 +355,12 @@ shipping092
     [Tags]    P0
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
     ${re}    set variable    0
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
-    input text    dom:document.querySelectorAll('#name')[1]    重量运费
-    input text    id:rate_amount    ${re}
-    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
+    input text    ${locator_shipping_weight_first_input}    重量运费
+    input text    ${locator_shipping_price}    ${re}
+    Wait And Click Element    ${locator_shipping_freight_save}
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
     ${res}    searchStrs    ${data}
@@ -372,12 +372,12 @@ shipping093
     [Tags]    P0
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
     ${re}    set variable    0
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
-    input text    dom:document.querySelectorAll('#name')[1]    重量运费
-    input text    id:rate_amount    ${re}
-    Wait And Click Element    id:test_shipping_edit_modal_sure_btn
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
+    input text    ${locator_shipping_weight_first_input}    重量运费
+    input text    ${locator_shipping_price}    ${re}
+    Wait And Click Element    ${locator_shipping_freight_save}
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[2].innerText
     Should Be True    '${data}'=='支持'
     Quit All Shipping
@@ -387,15 +387,15 @@ shipping094
     [Tags]    P0
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
     ${re}    set variable    0
-    Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
-    input text    dom:document.querySelectorAll('#name')[1]    重量运费
-    input text    id:rate_amount    ${re}
+    Wait Until Element Is Visible    ${locator_shipping_freight_save}
+    input text    ${locator_shipping_weight_first_input}    重量运费
+    input text    ${locator_shipping_price}    ${re}
     Sleep    2
     execute javascript    return document.querySelectorAll(".ant-checkbox-input")[1].click()
     #Wait And Click Element    dom:document.querySelectorAll(".ant-checkbox-input")[1]
-    click button    id:test_shipping_edit_modal_sure_btn
+    click button    ${locator_shipping_freight_save}
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[2].innerText
     Should Be True    '${data}'=='不支持'
@@ -406,9 +406,9 @@ shipping095
     [Tags]    P0
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    id:test_shipping_add_weight_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
     execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
-    #click element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
+    #click element    ${locator_shipping_country_close_btn}
     page should not contain element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
 
 shipping096
@@ -417,13 +417,13 @@ shipping096
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
     sleep    1
-    Wait And Click Element    id:test_shipping_add_weight_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
     #execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
-    click element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
+    click element    ${locator_shipping_country_close_btn}
     sleep    1
-    Wait And Click Element    id:test_shipping_add_weight_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
     page should not contain    dom:document.querySelectorAll("#name")[1].value
-    Wait And Click Element    class:ant-modal-close-x
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp
 
 shipping098
@@ -432,17 +432,16 @@ shipping098
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
     sleep    1
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    Wait Until Element Is Visible    id:test_shipping_add_weight_btn
-    input text    dom:document.querySelectorAll('#name')[1]    重量运费
-    input text    dom:document.querySelectorAll('#desc')[0]    重量运费
-    input text    id:range_min    10
-    input text    id:range_max    100
-    input text    id:rate_amount    100
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
+    input text    ${locator_shipping_weight_first_input}    重量运费
+    input text    ${locator_shipping_description}    重量运费
+    input text    ${locator_shipping_range_min}    10
+    input text    ${locator_shipping_range_max}    100
+    input text    ${locator_shipping_price}    100
     #execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
-    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     sleep    1
-    Wait And Click Element    id:test_shipping_add_weight_btn
+    Wait And Click Element    ${locator_shipping_add_weight_btn}
     page should not contain    dom:document.querySelectorAll("#name")[1].value
-    Wait And Click Element    class:ant-modal-close-x
+    Wait And Click Element    ${locator_shipping_country_close_btn}
     Quit All Setp

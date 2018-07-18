@@ -16,8 +16,8 @@ order105
     [Tags]    P0d
     Order Export Setp
     Sleep    1
-    Page Should Contain Element    class:ant-modal-body
-    Wait And Click Element    class:ant-modal-close-x
+    Page Should Contain Element    ${locator_order_export}
+    Wait And Click Element    ${locator_order_close_btn}
     Quit Order Setp
 
 order109
@@ -25,27 +25,27 @@ order109
     [Tags]    P0
     Order Export Setp
     Sleep    1
-    Page Should Contain Element    class:ant-modal-body
-    Click Button    dom:document.querySelectorAll("button")[3]
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Wait And Click Element    class:ant-modal-close-x
+    Page Should Contain Element    ${locator_order_export}
+    Click Button    ${locator_order_three_btn}
+    Page Should Contain Element    ${locator_order_export_error}
+    Wait And Click Element    ${locator_order_close_btn}
     Quit Order Setp
 
 order110
     [Documentation]    已完成订单 点击导出 输入非邮箱 提示错误
     [Tags]    P1
     Order Export Setp
-    Wait Until Element Is Visible    dom:document.querySelectorAll("#email")[0]
-    Input Text    dom:document.querySelectorAll("#email")[0]    123456
+    Wait Until Element Is Visible    ${locator_order_export_email}
+    Input Text    ${locator_order_export_email}    123456
     Sleep    1
-    Click Button    dom:document.querySelectorAll("button")[3]
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Wait And Click Element    class:ant-modal-close-x
+    Click Button    ${locator_order_three_btn}
+    Page Should Contain Element    ${locator_order_export_error}
+    Wait And Click Element    ${locator_order_close_btn}
     Quit Order Setp
 
 *** keywords ***
 Order Export Setp
     sleep    1
-    Wait And Click Element    ${order_list_btn}
-    Wait And Click Element    ${order_alerady_mission_btn}    #.点击已完成
-    Wait And Click Element    ${order_list_export}
+    Wait And Click Element    ${locator_order}
+    Wait And Click Element    ${locator_order_alerady_mission_btn}    #.点击已完成
+    Wait And Click Element    ${locator_order_list_export}
