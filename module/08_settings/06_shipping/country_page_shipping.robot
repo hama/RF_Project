@@ -26,8 +26,7 @@ shipping013
     [Tags]    P0
     Go To Shipping Page
     Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait Until Element Is Visible    dom:documentquerySelectorAll.("button")[1]
-    sleep    1
+    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    ${locator_shipping_first_input}    中国
     Sleep    1
     Wait And Click Button    dom:document.querySelectorAll("button")[1]

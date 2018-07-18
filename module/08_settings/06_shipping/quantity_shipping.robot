@@ -26,7 +26,7 @@ shipping102
     Quantity All Setp
     Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${data}    set variable    数量运费
-    input text    {locator_shipping_quantity_first_input}    ${data}
+    Input Text    ${locator_shipping_quantity_first_input}    ${data}
     ${res}    execute javascript    return document.querySelectorAll("#name")[1].value
     Should Be True    '${res}'=='${data}'
     Wait And Click Element    ${locator_shipping_country_close_btn}
@@ -40,7 +40,7 @@ shipping104
     Quantity All Setp
     Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${data}    set variable    1234
-    input text    {locator_shipping_quantity_first_input}    ${data}
+    input text    ${locator_shipping_quantity_first_input}    ${data}
     ${res}    execute javascript    return document.querySelectorAll("#name")[1].value
     Should Be True    '${res}'=='${data}'
     Wait And Click Element    ${locator_shipping_country_close_btn}
@@ -53,7 +53,7 @@ shipping105
     Quantity All Setp
     Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${data}    set variable    数量运费
-    input text    {locator_shipping_quantity_first_input}    ${data}
+    input text    ${locator_shipping_quantity_first_input}    ${data}
     Wait And Click Element    ${locator_shipping_freight_save}
     sleep    1
     ${getdata}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[0].innerText
@@ -67,7 +67,7 @@ shipping106
     Quantity All Setp
     Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${data}    set variable    数量运费数量运费数量运费数量运费数量运费数量运费数量运费数量运费数量运费数量运费数量运费数量运费数量运费数量运费数量运费数量运费
-    input text    {locator_shipping_quantity_first_input}    ${data}
+    input text    ${locator_shipping_quantity_first_input}    ${data}
     Wait And Click Element    ${locator_shipping_freight_save}
     sleep    1
     page should contain element    ${locator_shipping_freight_error_elm}
@@ -95,7 +95,7 @@ shipping111
     Quantity All Setp
     Wait Until Element Is Visible    ${locator_shipping_freight_save}
     ${data}    set variable    运费数量运费数量运费数量运费数量运费数量运费数量运费数量运费数量运费
-    input text    {locator_shipping_quantity_first_input}    数量运费
+    input text    ${locator_shipping_quantity_first_input}    数量运费
     input text    ${locator_shipping_description}    ${data}
     Wait And Click Element    ${locator_shipping_freight_save}
     sleep    1
@@ -313,7 +313,7 @@ shipping128
     [Tags]    P1
     Go To Shipping Page
     Quantity All Setp
-    input text    {locator_shipping_quantity_first_input}    数量运费
+    input text    ${locator_shipping_quantity_first_input}    数量运费
     #execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
     sleep    1

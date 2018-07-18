@@ -44,7 +44,7 @@ ${locator_shipping_freight_error_elm}    class:ant-form-explain    # 添加价�
 ${locator_shipping_freight_free_freight_btn}    return document.querySelectorAll(".ant-checkbox-input")[0].click()    # 添加价格运费-免运费-按钮
 
 # add quantity shipping freight
-${locator_shipping_quantity_first_input}    dom:document.querySelectorAll("#name")[1]    #.添加数量运费-物流名称输入框
+${locator_shipping_quantity_first_input}    dom:document.querySelectorAll("#name")[1]     #.添加数量运费-物流名称输入框
 
 
 # shipping case variable

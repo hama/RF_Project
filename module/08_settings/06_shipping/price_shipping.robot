@@ -174,7 +174,7 @@ shipping047
     input text    ${locator_shipping_range_min}    ${min}
     input text    ${locator_shipping_range_max}    ${max}
     Sleep    1
-    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
+    Input Text    ${locator_shipping_price}    1
     ${data}    get value    ${locator_shipping_range_max}
     ${new_max}    evaluate    ${min}+1
     Should Be True    ${data}==${new_max}
@@ -195,8 +195,8 @@ shipping048
     ${max}    set variable    100
     input text    ${locator_shipping_range_max}    ${max}
     input text    ${locator_shipping_range_min}    ${min}
-    Execute JavaScript    ${locator_shipping_freight_free_freight_btn}
-    sleep    1.5
+    Input Text    ${locator_shipping_price}    1
+    sleep    1
     ${data}    get value    ${locator_shipping_range_min}
     ${new_min}    evaluate    ${max}-1
     Should Be True    ${data}==${new_min}
