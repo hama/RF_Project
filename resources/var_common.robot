@@ -27,6 +27,8 @@ ${locator_button_add}    dom:document.querySelectorAll(".large_btn___3RbRK")[0] 
 ### locator popUps
 ${locator_popUps_button_middle}    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]    #弹窗的中间按钮
 ${locator_popUps_button_default}    dom:document.querySelectorAll(".default_btn___2wyTS")[0]    #弹窗的默认按钮
+### locator page
+${locator_page_text_totalRecord}    dom:document.querySelectorAll(".ant-pagination-total-text")[0]      #页面分页按钮-"N 条记录"
 ### 页面模块 url
 ${url_home_page}    ${home_page}/    # home page
 ${url_order}      ${home_page}/order    # order page

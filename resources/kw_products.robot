@@ -14,44 +14,44 @@ Add Product
     Go To Products Page
     Add Product Required Content
     # add other content
-    Wait And Input Text    ${locator_products_addSubTitle}    ${content_products_addSubTitle}    # 添加副标题
-    Wait And Input Text    ${locator_products_addRawPrice}    ${content_products_addRawPrice}    # 添加原价
-    Wait And Input Text    ${locator_products_addWeight}    ${content_products_addWeight}    # 添加重量
+    Wait And Input Text    ${locator_productsNew_input_addSubTitle}    ${content_products_addSubTitle}    # 添加副标题
+    Wait And Input Text    ${locator_productsNew_input_addRawPrice}    ${content_products_addRawPrice}    # 添加原价
+    Wait And Input Text    ${locator_productsNew_input_addWeight}    ${content_products_addWeight}    # 添加重量
     # add image
     Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
-    Wait Until Element Is Visible    ${locator_products_uploadBtn}
+    Wait Until Element Is Visible    ${locator_productsNew_button_uploadBtn}
     log    ${CURDIR}
-    Choose File    ${locator_products_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
+    Choose File    ${locator_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
 
 Add Product_Up
     [Documentation]    添加上架商品以做测试，这里不能添加商品标签
     Add Product Required Content
     #选择商品上架
     Wait And Click Element    id:status
-    Wait And Input Text    ${locator_products_addSubTitle}    ${content_products_addSubTitle}    # 添加副标题
-    Wait And Input Text    ${locator_products_addRawPrice}    ${content_products_addRawPrice}    # 添加原价
-    Wait And Input Text    ${locator_products_addWeight}    ${content_products_addWeight}    # 添加重量
+    Wait And Input Text    ${locator_productsNew_input_addSubTitle}    ${content_products_addSubTitle}    # 添加副标题
+    Wait And Input Text    ${locator_productsNew_input_addRawPrice}    ${content_products_addRawPrice}    # 添加原价
+    Wait And Input Text    ${locator_productsNew_input_addWeight}    ${content_products_addWeight}    # 添加重量
     # add image
     Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
-    Wait Until Element Is Visible    ${locator_products_uploadBtn}
+    Wait Until Element Is Visible    ${locator_productsNew_button_uploadBtn}
     log    ${CURDIR}
-    Choose File    ${locator_products_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
+    Choose File    ${locator_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
 
 Add Product Required Content
     Go To Products Page
-    Wait And Click Element    ${locator_products_add_product}    # 点击添加商品按钮
+    Wait And Click Element    ${locator_productsMgmt_button_addProduct}    # 点击添加商品按钮
     Wait Until Page Contains    ${content_products_new}
-    Wait And Input Text    ${locator_products_addTitle}    ${content_products_addTitle}    # 添加标题
-    Wait And Input Text    ${locator_products_addPrice}    ${content_products_addPrice}    # 添加价格
+    Wait And Input Text    ${locator_productsNew_input_addTitle}    ${content_products_addTitle}    # 添加标题
+    Wait And Input Text    ${locator_productsNew_input_addPrice}    ${content_products_addPrice}    # 添加价格
 
 Delete Product
     [Documentation]    删除商品列表的第一个商品
     Go To Products Page
-    Wait And Click Element    ${locator_products_first}    # 商品列表第一条数据
+    Wait And Click Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}    # 商品列表第一条数据
     Wait And Click Button    ${locator_popUps_button_middle}
 
 Delete All Products
@@ -62,7 +62,7 @@ Delete All Products
 
 Delete All Product Execute
     [Documentation]     删除全部商品的执行办法
-    ${size}    Get Text    ${locator_page_total_record}
+    ${size}    Get Text    ${locator_page_text_totalRecord}
     ${total_record}    searchStrs    ${size}
     ${page_num}    evaluate    int(math.ceil(${total_record}/20.0))    math
     Run Keyword If    ${page_num}>1     Delete Product Loop     ${page_num}
@@ -112,10 +112,10 @@ Click_First_Product_And_Click_Batch_Menu
     [Documentation]    选中第一个商品,并且点击批量操作菜单
     #选中第一个商品
     Sleep    2
-    Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
-    Select Checkbox    ${locator_products_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Select Checkbox    ${locator_productsMgmt_checkbox_chooseFirstProducet}
     #点击批量操作菜单
-    Wait And Click Element    ${locator_products_selection_batchOperations}
+    Wait And Click Element    ${locator_productsMgmt_dropdown_batchOperations}
 
 Add_Collection
     [Documentation]    添加一个商品专辑
@@ -126,18 +126,18 @@ Add_Collection
     Sleep    5
     Wait And Click Element    ${locator_product_collection}
     #点击新建一个商品专辑
-    Wait And Click Element    ${locator_products_add_category}
+    Wait And Click Element    ${locator_productsCategory_button_addCategory}
     #输入专辑名称
     Wait And Input Text    id:title    ceshi
     #输入专辑描述
     Wait And Input Text    id:description    ceshi collection
     #上传一张专辑封面
     Execute JavaScript    return document.querySelectorAll(".wrapper___TgZZ3")[0].scrollIntoView()
-    Wait Until Page Contains Element    ${locator_products_chooseFile}
-    Choose File    ${locator_products_chooseFile}    ${file_products_addImg}
+    Wait Until Page Contains Element    ${locator_productsNew_input_chooseFile}
+    Choose File    ${locator_productsNew_input_chooseFile}    ${file_products_addImg}
     Sleep    5
     #点击保存按钮
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
     Sleep    5
 
 Delete_Collection
@@ -186,11 +186,11 @@ Delete All Collection
     #点击进入商品专辑界面
     Wait And Click Element    ${locator_product_collection}
     #点击选中所有专辑
-    Select Checkbox    ${locator_products_checkbox_chooseCategories}
+    Select Checkbox    ${locator_productsCategory_checkbox_chooseCategories}
     #点击删除按钮
     Wait And Click Element    ${locator_productsCategory_button_delProducts}
     #点击确定按钮
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
     Go TO    ${home_page}
 
 Add Order Products
@@ -198,15 +198,15 @@ Add Order Products
     Go To Products Page
     Add Product Required Content
     # add other content
-    Wait And Input Text    ${locator_products_addSubTitle}    ${content_products_addSubTitle}    # 添加副标题
-    Wait And Input Text    ${locator_products_addRawPrice}    ${content_products_addRawPrice}    # 添加原价
-    Wait And Input Text    ${locator_products_addWeight}    ${content_products_addWeight}    # 添加重量
+    Wait And Input Text    ${locator_productsNew_input_addSubTitle}    ${content_products_addSubTitle}    # 添加副标题
+    Wait And Input Text    ${locator_productsNew_input_addRawPrice}    ${content_products_addRawPrice}    # 添加原价
+    Wait And Input Text    ${locator_productsNew_input_addWeight}    ${content_products_addWeight}    # 添加重量
     Wait And Click Element    id:status
     # add image
     Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
-    Wait Until Element Is Visible    ${locator_products_uploadBtn}
+    Wait Until Element Is Visible    ${locator_productsNew_button_uploadBtn}
     log    ${CURDIR}
-    Choose File    ${locator_products_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
+    Choose File    ${locator_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
     Sleep    5

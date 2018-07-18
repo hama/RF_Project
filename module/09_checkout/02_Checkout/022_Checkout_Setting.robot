@@ -18,7 +18,7 @@ checkout136
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #进入checkout页面

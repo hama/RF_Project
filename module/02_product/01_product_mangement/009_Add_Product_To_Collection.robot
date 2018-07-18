@@ -19,7 +19,7 @@ products051
     #验证添加到商品专辑排版正确
     Click_First_Product_And_Click_Batch_Menu
     #选择添加到专辑
-    Assign Id To Element    ${locator_products_dropdown_addtoCategory}    btn
+    Assign Id To Element    ${locator_productsMgmt_dropdown_addtoCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
@@ -47,14 +47,14 @@ products052
     #选中第几个专辑
     ${which}=    Set Variable    0
     #选中第一个商品
-    Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
-    Click Element    ${locator_products_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Click Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
     #记录下操作的商品名称
-    ${name}    Get Text    ${locator_products_first_name}
+    ${name}    Get Text    ${locator_productsMgmt_text_firstProductName}
     #点击批量操作菜单
-    Wait And Click Element    ${locator_products_selection_batchOperations}
+    Wait And Click Element    ${locator_productsMgmt_dropdown_batchOperations}
     #选择添加到专辑
-    Assign Id To Element    ${locator_products_dropdown_addtoCategory}    btn
+    Assign Id To Element    ${locator_productsMgmt_dropdown_addtoCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
@@ -65,7 +65,7 @@ products052
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
-    Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
     #去商品专辑模块检查
     Wait And Click Element    ${locator_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
@@ -82,7 +82,7 @@ products053
     ${which}=    Set Variable    0
     Click_First_Product_And_Click_Batch_Menu
     #选择添加到专辑
-    Assign Id To Element    ${locator_products_dropdown_addtoCategory}    btn
+    Assign Id To Element    ${locator_productsMgmt_dropdown_addtoCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
@@ -107,14 +107,14 @@ products054
     ${which}=    Set Variable    0
     #选中第一个商品
     Sleep    2
-    Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
-    Select Checkbox    ${locator_products_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Select Checkbox    ${locator_productsMgmt_checkbox_chooseFirstProducet}
     #记录下操作的商品名称
-    ${name}    Get Text    ${locator_products_first_name}
+    ${name}    Get Text    ${locator_productsMgmt_text_firstProductName}
     #点击批量操作菜单
-    Wait And Click Element    ${locator_products_selection_batchOperations}
+    Wait And Click Element    ${locator_productsMgmt_dropdown_batchOperations}
     #选择添加到专辑
-    Assign Id To Element    ${locator_products_dropdown_addtoCategory}    btn
+    Assign Id To Element    ${locator_productsMgmt_dropdown_addtoCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
@@ -131,7 +131,7 @@ products054
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
-    Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
     #去商品专辑模块检查
     Wait And Click Element    ${locator_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
@@ -149,14 +149,14 @@ products055
     #获取选中的专辑编号
     ${collection_id}    getCollectionId    ${which}
     #选中第一个商品
-    Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
-    Click Element    ${locator_products_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Click Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
     #记录下操作的商品名称
-    ${name}    Get Text    ${locator_products_first_name}
+    ${name}    Get Text    ${locator_productsMgmt_text_firstProductName}
     #点击批量操作菜单
-    Wait And Click Element    ${locator_products_selection_batchOperations}
+    Wait And Click Element    ${locator_productsMgmt_dropdown_batchOperations}
     #选择添加到专辑
-    Assign Id To Element    ${locator_products_dropdown_addtoCategory}    btn
+    Assign Id To Element    ${locator_productsMgmt_dropdown_addtoCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
@@ -171,7 +171,7 @@ products055
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
-    Wait Until Page Contains Element    ${locator_products_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
     #去商品专辑模块检查
     Wait And Click Element    ${locator_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
@@ -186,7 +186,7 @@ products057
     #取消将商品加入专辑
     Click_First_Product_And_Click_Batch_Menu
     #选择添加到专辑
-    Assign Id To Element    ${locator_products_dropdown_addtoCategory}    btn
+    Assign Id To Element    ${locator_productsMgmt_dropdown_addtoCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn

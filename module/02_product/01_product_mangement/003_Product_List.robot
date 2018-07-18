@@ -17,8 +17,8 @@ products001
     [Documentation]    测试商品列表的展示（数量/标题/库存/SKU/浏览量/销量/上架状态/创建时间）
     [Tags]    P0
     #获取每页多少条数据
-    Wait Until Element Is Visible    ${locator_page_total_record}
-    ${size}    Get Text    ${locator_page_total_record}
+    Wait Until Element Is Visible    ${locator_page_text_totalRecord}
+    ${size}    Get Text    ${locator_page_text_totalRecord}
     ${total_record}    searchStrs    ${size}
     # 然后遍历校验列表数据是否一致
     : FOR    ${index}    IN RANGE    ${total_record}
@@ -39,7 +39,7 @@ Validate_Tab
     [Documentation]    验证商品模块标签
     [Tags]    P0
     ${class_should_be}=    Set Variable    ant-radio-button-wrapper ant-radio-button-wrapper-checked
-    Wait Until Element Is Visible    ${locator_products_all}
+    Wait Until Element Is Visible    ${locator_productsMgmt_button_all}
     ${class}    Execute Javascript    return document.querySelectorAll(".ant-radio-button-wrapper")[0].getAttribute('class')
     Should Be Equal As Strings    ${class_should_be}    ${class}
 
@@ -49,7 +49,7 @@ products003
     #验证表头显示
     Execute Javascript    return document.querySelectorAll(".edit_head___UidlR")[0].scrollIntoView()
     Sleep    1
-    Wait And Click Element    ${locator_products_editTableHead}
+    Wait And Click Element    ${locator_productsMgmt_button_editTableHead}
     Wait Until Element Is Visible    ${locator_products_popUps_body}
     #点击已经选中的，将他们全部取消选中
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox-checked").length
@@ -129,8 +129,8 @@ products016
     [Tags]    P0
     #删除商品
     #获取要删除的商品名称
-    Wait Until Element Is Visible    ${locator_products_first_name}
-    ${name}    Get Text    ${locator_products_first_name}
+    Wait Until Element Is Visible    ${locator_productsMgmt_text_firstProductName}
+    ${name}    Get Text    ${locator_productsMgmt_text_firstProductName}
     #点击删除按钮
     Wait And Click Element    ${locator_productsMgmt_icon_delete}
     Wait Until Element Is Visible    ${locator_products_popUps_content}
@@ -148,14 +148,14 @@ products017
     [Tags]    P0
     #取消删除商品
     #获取要删除的商品名称
-    Wait Until Element Is Visible    ${locator_products_first_name}
-    ${name}    Get Text    ${locator_products_first_name}
+    Wait Until Element Is Visible    ${locator_productsMgmt_text_firstProductName}
+    ${name}    Get Text    ${locator_productsMgmt_text_firstProductName}
     #点击删除按钮
     Wait And Click Element    ${locator_productsMgmt_icon_delete}
     Wait Until Element Is Visible    ${locator_products_popUps_content}
     Page Should Contain    确定删除吗？
     #取消
-    Wait And Click Element    ${locator_products_cancelDelete}
+    Wait And Click Element    ${locator_products_button_cancel}
     #数据无变化
     Page Should Contain    ${name}
 

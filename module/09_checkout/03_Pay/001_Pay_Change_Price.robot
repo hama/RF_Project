@@ -26,7 +26,7 @@ checkout138
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #选中商品，点击进入checkout页面
@@ -42,7 +42,7 @@ checkout138
     #修改售价
     Wait And Input Text    id:price    ${price1}
     #点击保存
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
     Sleep    5
     #切换到支付页
     Select Window    title=${content_store_name}
@@ -66,7 +66,7 @@ checkout139
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #选中商品，点击进入checkout页面
@@ -82,7 +82,7 @@ checkout139
     #修改状态
     Wait And Click Element    id:status
     #点击保存
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
     Sleep    5
     #切换到支付页
     Select Window    title=${content_store_name}
@@ -96,7 +96,7 @@ checkout141
     [Tags]    P0
     #-----------------------------------------选中一个有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #给该商品增加子产品
@@ -119,7 +119,7 @@ checkout142
     [Tags]    P0
     #-----------------------------------------选中一个有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #给该商品增加子产品
@@ -143,7 +143,7 @@ checkout143
     [Tags]    P0
     #-----------------------------------------选中一个有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #给该商品增加子产品
@@ -163,7 +163,7 @@ checkout144
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #勾选该商品库存为0时仍可购买
@@ -189,7 +189,7 @@ checkout145
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #勾选该商品库存为0时仍可购买
@@ -215,7 +215,7 @@ checkout146
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #设置该商品的库存为10
@@ -241,7 +241,7 @@ checkout147
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面-----------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #设置该商品的库存为10
@@ -267,7 +267,7 @@ checkout150
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #点击第一件商品进入商品详情页
@@ -286,7 +286,7 @@ checkout150
     Select Window    店匠科技
     To_Change_Image
     #点击保存
-    Wait And Click Element    ${locator_productsMgmt_button_saveProduct}
+    Wait And Click Element    ${locator_products_button_confirm}
     Sleep    5
     #切换到商品submit页
     Select Window    title=${content_store_name}
@@ -310,7 +310,7 @@ checkout151
     [Tags]    P0
     #-----------------------------------------选中一个有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #给该商品增加子产品
@@ -334,7 +334,7 @@ checkout167
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     Select_Order_Page    ${title}
@@ -356,7 +356,7 @@ checkout168
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #先设置成只需填写邮箱
@@ -388,7 +388,7 @@ checkout169
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_products_first_name}    title
+    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #先设置成（姓名）
