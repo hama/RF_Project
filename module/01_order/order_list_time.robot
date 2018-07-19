@@ -18,9 +18,10 @@ order078
     Add Order
     Go To    ${home_page}
     sleep    1
-    Wait And Click Element    ${order_list_btn}
+    Wait And Click Element    ${locator_order}
     sleep    3
-    Execute JavaScript    return document.querySelectorAll("input[placeholder='开始日期']")[0].click()
+    Common Js Click    input[placeholder='开始日期']    0
+    #Execute JavaScript    return document.querySelectorAll("input[placeholder='开始日期']")[0].click()
     Wait And Click Element    dom:document.querySelectorAll(".ant-calendar-month-select")[0]
     Wait And Click Element    dom:document.querySelector(".ant-calendar-month-panel-table tr:nth-child(2) td:nth-child(3)")
     Wait And Click Element    dom:document.querySelectorAll(".ant-calendar-date")[4]
@@ -37,7 +38,7 @@ order079
     [Tags]    P0
     Sleep    1.5
     Go To Order Page
-    Wait And Click Element    ${order_list_btn}
+    Wait And Click Element    ${locator_order}
     Wait Until Element Is Visible    dom:document.querySelectorAll("table tbody tr td")[0]
     ${time}    Execute JavaScript    return document.querySelectorAll("table tbody tr td p")[0].innerHTML
     sleep    1
