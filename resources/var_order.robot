@@ -1,6 +1,6 @@
 *** Variables ***
 # content
-${content_order_title}    全部
+${contentB_order_title}    全部
 # locator
 ${order_list_btn}    //*[@id="root"]/div/div/div[1]/div[1]/div/ul/li[2]/a    #.导航栏-订单 按钮
 ${order_all_btn}    //*[@id="dj"]/div/div[2]/div[1]/div/label[1]/span[2]    #.订单-全部 按钮

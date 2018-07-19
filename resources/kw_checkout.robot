@@ -7,10 +7,10 @@ Checkout Common Setp
     [Documentation]    封装公共步骤
     Go To    ${home_page}
     Sleep Time
-    Wait And Click Element    ${locator_products}
+    Wait And Click Element    ${locatorB_products}
     #点击商品预览
     Sleep Time
-    Wait And Click Element    ${locator_products_icon_preview}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     Sleep Time    #.休息2s
     #.第二个窗口
     Select Window    New
@@ -18,8 +18,8 @@ Checkout Common Setp
 
 Add Payment
     [Documentation]    添加支付方式
-    Wait And Click Element    ${locator_setting}    #.点击设置按钮
-    Wait And Click Element    ${locator_setting_payment}    #.点击收款渠道按钮
+    Wait And Click Element    ${locatorB_setting}    #.点击设置按钮
+    Wait And Click Element    ${locatorB_setting_payment}    #.点击收款渠道按钮
     Wait And Click Element    dom:document.querySelectorAll("button")[1]    #.点击收款渠道按钮
     Wait And Click Element    dom:document.querySelectorAll("button")[2]    #.点击绑定按钮
     Wait And Input Text    dom:document.querySelectorAll("#client_id")[0]    123456    #.绑定账号
@@ -198,7 +198,7 @@ Add_Sub_Product_With_Already_Product
     #回车保存
     Press Key    id:option_values_0    \\13
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
     Sleep    10
 
 Delete_Sub_Product_With_Already_Product
@@ -215,7 +215,7 @@ Delete_Sub_Product_With_Already_Product
     #删除第n个子商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__choice__remove")[${index}]
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
     Sleep    10
 
 Select_Quantity_0
@@ -232,7 +232,7 @@ Select_Quantity_0
     #点击库存为0时仍可购买
     Select Checkbox    dom:document.querySelectorAll(".wrapper_row___V4M9G")[4].querySelectorAll(".ant-checkbox-input")[1]
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
     Sleep    10
 
 Cancel_Select_Quantity_0
@@ -246,7 +246,7 @@ Cancel_Select_Quantity_0
     #点击取消库存为0时仍可购买
     Execute Javascript    return document.querySelectorAll(".wrapper_row___V4M9G")[4].querySelectorAll(".ant-checkbox-input")[1].click()
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
     Sleep    5
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".ant-confirm-btns .ant-btn-primary")[0]
@@ -266,7 +266,7 @@ Cancel_Select_Quantity
     #点击取消跟踪库存
     Execute Javascript    return document.querySelectorAll(".wrapper_row___V4M9G")[4].querySelectorAll(".ant-checkbox-input")[0].click()
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
     Sleep    5
 
 Set_Quantity_To_0
@@ -283,7 +283,7 @@ Set_Quantity_To_0
     #输入库存数量
     Wait And Input Text    id:inventory_quantity    0
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
     Sleep    5
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".ant-confirm-btns .ant-btn-primary")[0]
@@ -304,7 +304,7 @@ Set_Quantity
     #输入库存数量
     Wait And Input Text    id:inventory_quantity    ${num}
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
     Sleep    5
 
 To_Change_Image
@@ -318,10 +318,10 @@ To_Change_Image
     Execute Javascript    return document.querySelectorAll(".row___3Mua7")[0].scrollIntoView()
     Sleep    2
     #删除第一张图片
-    Mouse Over    ${locator_products_image_center}
+    Mouse Over    ${locatorB_products_image_center}
     Wait And Click Element    dom:document.querySelectorAll(".delete")[0]
     #更新另外一张图片
-    Choose File    ${locator_products_chooseFile}    ${file_products_addImg2}
+    Choose File    ${locatorB_products_chooseFile}    ${file_products_addImg2}
     Sleep    2
 
 Delete_All_Sub_Product_With_Already_Product
@@ -341,7 +341,7 @@ Delete_All_Sub_Product_With_Already_Product
     Wait And Click Element    id:test_delete_modal_sure_btn
     Sleep    2
     #点击保存
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
     Sleep    5
 
 Add_Full_Reduction
@@ -350,7 +350,7 @@ Add_Full_Reduction
     Go To Marketing Page
     Sleep    2
     #点击新增活动按钮
-    Wait And Click Element    ${locator_marketing_button_addSubstraction}
+    Wait And Click Element    ${locatorB_marketing_button_addSubstraction}
     Sleep    5
     #活动名称
     Wait And Input Text    id:name    ${name}
@@ -371,7 +371,7 @@ Add_Full_Reduction
     #选择适用范围
     Wait And Click Element    dom:document.querySelectorAll(".li___2Fxhj")[0]
     #点击保存按钮
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
     Sleep    5
 
 End_First_Full_Reduction
@@ -397,13 +397,13 @@ Modify_First_Full_Reduction
     Wait And Input Text    id:cutPrice0    ${cut2}
     Sleep    3
     #点击保存按钮
-    Wait And Click Element    ${locator_products_save_product}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
     Sleep    5
 
 Change_Cash
     Wait And Click Element    dom:document.querySelectorAll("#cod .ant-switch")[0]
     Sleep    5
-    Wait And Click Element    ${locator_products_popUps_confirm}
+    Wait And Click Element    ${locatorB_products_popUps_confirm}
     Sleep    2
 
 Close_Cash
@@ -485,7 +485,7 @@ Modify_Set_Radio
 Change_Card
     Wait And Click Element    dom:document.querySelectorAll(".payment_wrap___3m1lo")[1].querySelectorAll(" .ant-switch")[0]
     Sleep    5
-    Wait And Click Element    ${locator_products_popUps_confirm}
+    Wait And Click Element    ${locatorB_products_popUps_confirm}
     Sleep    2
 
 Open_Card

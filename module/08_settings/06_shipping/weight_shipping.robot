@@ -47,7 +47,7 @@ shipping061
     [Documentation]    点击添加重量运费按钮出现编辑窗口
     [Tags]    P1
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     page should contain element    id:test_shipping_edit_modal_sure_btn
     Wait And Click Element    class:ant-modal-close-x
@@ -57,7 +57,7 @@ shipping064
     [Documentation]    添加运费 在名称输入 重量运费 后 对应框里显示 重量运费
     [Tags]    P1
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    重量运费
@@ -71,7 +71,7 @@ shipping066
     [Tags]    P0
     #.添加运费 在名称输入 123 后    对应框里显示 123
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     #.check button
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -85,7 +85,7 @@ shipping067
     [Documentation]    添加运费 在名称输入 123 后 保存 列表里显示 123对应信息
     [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    dom:document.querySelectorAll('#name')[1]    123
@@ -97,7 +97,7 @@ shipping068
     [Documentation]    添加运费 在名称输入超过50个字符 提示错误
     [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${ss}    set variable    sssssssssssssssssssssssssddddddddddssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
@@ -111,7 +111,7 @@ shipping071
     [Documentation]    添加运费 在名称输入正常字符 保存成功
     [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${ss}    set variable    重量运费
@@ -124,7 +124,7 @@ shipping069
     [Documentation]    添加运费 在名称输入正常字符 保存成功
     [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${ss}    set variable    重量运费
@@ -138,7 +138,7 @@ shipping073
     [Documentation]    添加运费 在说明框里输入超过200个字符 提示错误
     [Tags]    P1
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     sleep    1
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -156,7 +156,7 @@ shipping072
     [Documentation]    添加运费 在说明框里输入 200个以内的字符 保存成功
     [Tags]    P1
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${ss}    set variable    重量运费
@@ -172,7 +172,7 @@ shipping074
     [Documentation]    添加重量运费 在说明框里输入字符 保存提示 其他信息未填写
     [Tags]    P1
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${sm}    set variable    6as51d65a1d65sa65d165as1d56as165d1as56d156as1d56as156d1as65d16sa1d56as1d56as1d6d89f498dfg489fd4g89fd4g89df4gdfg1d3f2g132df1g
@@ -187,7 +187,7 @@ shipping075
     [Documentation]    添加重量运费 最小单价输入 454544454454545 提示输入10位数以内的数字
     [Tags]    P1
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${sm}    set variable    454544454454545
@@ -202,7 +202,7 @@ shipping076
     [Documentation]    添加重量运费 最大单价输入 454544454454545 提示输入10位数以内的数字
     [Tags]    P1
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${sm}    set variable    454544454454545
@@ -217,7 +217,7 @@ shipping078
     [Documentation]    "最小订单重量输入：10 最大订单重量输入： 100" 输入正常最小最大运费 保存成功
     [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${sm}    set variable    10
@@ -234,7 +234,7 @@ shipping079
     [Documentation]    添加运费 最小订单重量输入：100 最大订单重量输入： 10 提示错误
     [Tags]    P1
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${sm}    set variable    100
@@ -252,7 +252,7 @@ shipping080
     [Documentation]    添加运费 最小订单重量输入：200 最大订单重量输入： 100 提示错误
     [Tags]    P1
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${sm}    set variable    200
@@ -270,7 +270,7 @@ shipping081
     [Documentation]    添加重量运费 默认单位是克
     [Tags]    P1
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     ${res}    execute javascript    return document.querySelectorAll(".ant-select-selection-selected-value")[0].innerHTML
@@ -282,7 +282,7 @@ shipping082
     [Documentation]    添加运费重量 克。千克，磅
     [Tags]    P1
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     #Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     #execute javascript    return document.querySelectorAll(".ant-select-arrow")[0].click()
@@ -298,7 +298,7 @@ shipping087
     [Documentation]    添加重量运费 取消勾选 免运费
     [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     execute javascript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
@@ -310,7 +310,7 @@ shipping089
     [Documentation]    添加重量运费 输入 运费 免运费的选中状态取消
     [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
     input text    id:rate_amount    100
@@ -325,7 +325,7 @@ shipping090
     [Documentation]    添加重量运费 运费价格输入框输入超过10位以上的数字 提示错误
     [Tags]    P1
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     ${re}    set variable    456789456789
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -338,7 +338,7 @@ shipping091
     [Documentation]    添加重量运费 运费价格输入框输入100 保存成功 列表出现该运费
     [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     ${re}    set variable    100
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -354,7 +354,7 @@ shipping092
     [Documentation]    添加重量运费 运费价格输入框输入0 保存成功 列表出现该运费为0
     [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     ${re}    set variable    0
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -371,7 +371,7 @@ shipping093
     [Documentation]    添加重量运费 勾选是否支持货到付款 列表出先支持
     [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     ${re}    set variable    0
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -386,7 +386,7 @@ shipping094
     [Documentation]    添加重量运费 不勾选是否支持货到付款 列表出先不支持
     [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     ${re}    set variable    0
     Wait Until Element Is Visible    id:test_shipping_edit_modal_sure_btn
@@ -405,7 +405,7 @@ shipping095
     [Documentation]    添加重量运费 直接关掉窗口 列表不存在运费信息
     [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_add_weight_btn
     execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
     #click element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
@@ -415,7 +415,7 @@ shipping096
     [Documentation]    添加重量运费 直接关掉窗口 列表不存在运费信息
     [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     sleep    1
     Wait And Click Element    id:test_shipping_add_weight_btn
     #execute javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
@@ -430,7 +430,7 @@ shipping098
     [Documentation]    直接关闭窗口，没有添加重量运费，再次打开窗口时，所输入的内容全部清空
     [Tags]    P1
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     sleep    1
     Wait And Click Element    id:test_shipping_add_weight_btn
     Wait Until Element Is Visible    id:test_shipping_add_weight_btn

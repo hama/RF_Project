@@ -18,7 +18,7 @@ products040
     [Tags]    P0
     Click_First_Product_And_Click_Batch_Menu
     #选择添加标签
-    Assign Id To Element    ${locator_productsMgmt_dropdown_addTags}    btn
+    Assign Id To Element    ${locatorB_productsMgmt_select_addTags}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
@@ -35,7 +35,7 @@ products042
     #添加商品标签
     Click_First_Product_And_Click_Batch_Menu
     #选择添加标签
-    Assign Id To Element    ${locator_productsMgmt_dropdown_addTags}    btn
+    Assign Id To Element    ${locatorB_productsMgmt_select_addTags}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
@@ -52,7 +52,7 @@ products042
     #点击空白处，取消下拉选项
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-title")[0]
     #点击确定按钮
-    Wait And Click Element    ${locator_products_button_confirm}
+    Wait And Click Element    ${locatorB_products_button_confirm}
     #提示添加成功
     #Page Should Contain    添加成功
     #点击进入商品详情查看该商品是否含有该标签
@@ -67,19 +67,19 @@ products043
     #验证添加已有的标签
     Click_First_Product_And_Click_Batch_Menu
     #选择添加标签
-    Assign Id To Element    ${locator_productsMgmt_dropdown_addTags}    btn
+    Assign Id To Element    ${locatorB_productsMgmt_select_addTags}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Page Contains Element    ${locator_products_popUps_content}
+    Wait Until Page Contains Element    ${locatorB_products_popUps_content}
     #记录下点击的标签内容
     ${tag}    Get Text    dom:document.querySelectorAll(".ant-tag")[0]
     Wait And Click Element    dom:document.querySelectorAll(".ant-tag")[0]
     #点击空白处，取消下拉选项
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-title")[0]
     #点击确定按钮
-    Wait And Click Element    ${locator_products_button_confirm}
+    Wait And Click Element    ${locatorB_products_button_confirm}
     Sleep    1
     #点击进入商品详情查看该商品是否含有该标签
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
@@ -94,14 +94,14 @@ products044
     ${input_tag}=    Set Variable    ccc
     Click_First_Product_And_Click_Batch_Menu
     #选择添加标签
-    Assign Id To Element    ${locator_productsMgmt_dropdown_addTags}    btn
+    Assign Id To Element    ${locatorB_productsMgmt_select_addTags}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__rendered")[3]
     #点击现有的标签
-    Wait Until Page Contains Element    ${locator_products_popUps_content}
+    Wait Until Page Contains Element    ${locatorB_products_popUps_content}
     #记录下点击的标签内容
     ${already_tag}    Get Text    dom:document.querySelectorAll(".ant-tag")[0]
     Wait And Click Element    dom:document.querySelectorAll(".ant-tag")[0]
@@ -118,7 +118,7 @@ products044
     #点击空白处，取消下拉选项
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-title")[0]
     #点击确定按钮
-    Wait And Click Element    ${locator_products_button_confirm}
+    Wait And Click Element    ${locatorB_products_button_confirm}
     #提示添加成功
     #Page Should Contain    添加成功
     #点击进入商品详情查看该商品是否含有该标签
@@ -135,16 +135,16 @@ products047
     #取消添加标签
     Click_First_Product_And_Click_Batch_Menu
     #选择添加标签
-    Assign Id To Element    ${locator_productsMgmt_dropdown_addTags}    btn
+    Assign Id To Element    ${locatorB_productsMgmt_select_addTags}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__rendered")[3]
     #点击取消按钮
-    Wait And Click Element    ${locator_popUps_button_default}
+    Wait And Click Element    ${locatorB_popUps_button_default}
     #返回界面
-    Wait Until Page Contains Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
     Go TO    ${home_page}
 
 products049
@@ -153,19 +153,19 @@ products049
     #移除标签
     Click_First_Product_And_Click_Batch_Menu
     #选择移除标签
-    Assign Id To Element    ${locator_productsMgmt_dropdown_delTags}    btn
+    Assign Id To Element    ${locatorB_productsMgmt_select_delTags}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps_content}
+    Wait Until Element Is Visible    ${locatorB_products_popUps_content}
     #包含已有的标签
     #选择要移除的标签
     Wait And Click Element    dom:document.querySelectorAll(".ant-tag-checkable")[0]
     #记录要移除的标签名称
     ${name}    Get Text    dom:document.querySelectorAll(".ant-tag-checkable")[0]
     #确定
-    Wait And Click Element    ${locator_productsMgmt_button_delTags}
+    Wait And Click Element    ${locatorB_productsMgmt_button_delTags}
     #点击进入商品详情查看该商品是否含有该标签
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
     Wait Until Page Contains Element    dom:document.querySelectorAll(".label___1jnO-")[2]

@@ -387,7 +387,7 @@ class keyWord(object):
 
     def getCollectionId(self, index):
         x_url = self.home_page_url + "/api/user/login"
-        p_url = self.home_page_url + "/api/collection/dropdown?page=0&limit=10&key="
+        p_url = self.home_page_url + "/api/collection/select?page=0&limit=10&key="
         datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:

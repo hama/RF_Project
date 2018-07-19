@@ -15,7 +15,7 @@ Add Order
     Go To Products Page
     #点击商品预览
     Sleep    2
-    Wait And Click Element    ${locator_productsMgmt_icon_preview}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     #.第二个窗口
     Select Window    New
     Wait Until Element Is Visible    dom:document.querySelectorAll(".submit_mb span")[0]

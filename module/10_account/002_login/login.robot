@@ -28,7 +28,7 @@ login001
     Input Text    id:username    ${user_default_domain}
     Wait And Click Element    ${login_btn}
     Sleep    2
-    Page Should Contain Element    ${locator_order}
+    Page Should Contain Element    ${locatorB_order}
     Logout
 
 login002
@@ -125,7 +125,7 @@ login007
     Input Text    id:username    ${user_default_domain}
     Wait And Click Element    ${login_btn}
     Sleep    2
-    Page Should Contain Element    ${locator_order}
+    Page Should Contain Element    ${locatorB_order}
     Logout
 
 login012

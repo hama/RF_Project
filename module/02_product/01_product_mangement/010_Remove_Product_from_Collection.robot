@@ -19,22 +19,22 @@ products061
     #将两个商品一次性从两个专辑中移除
     #选中两个商品
     Sleep    2
-    Wait Until Page Contains Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
-    Select Checkbox    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
     Wait Until Page Contains Element    dom:document.querySelectorAll("tbody .ant-checkbox-input")[1]
     Select Checkbox    dom:document.querySelectorAll("tbody .ant-checkbox-input")[1]
     #记录下操作的商品名称
-    ${name1}    Get Text    ${locator_productsMgmt_text_firstProductName}
+    ${name1}    Get Text    ${locatorB_productsMgmt_text_firstProductName}
     ${name2}    Get Text    dom:document.querySelectorAll(".product_name___Ul4W-")[1]
     #点击批量操作菜单
-    Wait And Click Element    ${locator_productsMgmt_dropdown_batchOperations}
+    Wait And Click Element    ${locatorB_productsMgmt_select_batchOperations}
     #选择从专辑移除
-    Assign Id To Element    ${locator_productsMgmt_dropdown_delfromCategory}    btn
+    Assign Id To Element    ${locatorB_productsMgmt_select_delfromCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_productsCategory_popUps_firstCategory}
+    Wait Until Element Is Visible    ${locatorB_productsCategory_popUps_firstCategory}
     #选中专辑
     Sleep    5
     Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[0]
@@ -44,9 +44,9 @@ products061
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".confirm___3pVk5")[0]
     Sleep    2
-    Wait Until Page Contains Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
     #去商品专辑模块检查
-    Wait And Click Element    ${locator_product_collection}
+    Wait And Click Element    ${locatorB_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
     #Wait Until Page Contains    专辑详情
@@ -66,14 +66,14 @@ products060
     #将一个商品从两个专辑中移除
     #选中1个商品
     Sleep    2
-    Wait Until Page Contains Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
-    Select Checkbox    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
     #记录下操作的商品名称
-    ${name}    Get Text    ${locator_productsMgmt_text_firstProductName}
+    ${name}    Get Text    ${locatorB_productsMgmt_text_firstProductName}
     #点击批量操作菜单
-    Wait And Click Element    ${locator_productsMgmt_dropdown_batchOperations}
+    Wait And Click Element    ${locatorB_productsMgmt_select_batchOperations}
     #选择从专辑移除
-    Assign Id To Element    ${locator_productsMgmt_dropdown_delfromCategory}    btn
+    Assign Id To Element    ${locatorB_productsMgmt_select_delfromCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
@@ -88,9 +88,9 @@ products060
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".confirm___3pVk5")[0]
     Sleep    2
-    Wait Until Page Contains Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
     #去商品专辑模块检查
-    Wait And Click Element    ${locator_product_collection}
+    Wait And Click Element    ${locatorB_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
     #Wait Until Page Contains    专辑详情

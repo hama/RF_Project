@@ -20,9 +20,9 @@ products066
     #点击“编辑表头”
     Execute Javascript    return document.querySelectorAll(".edit_head___UidlR")[0].scrollIntoView()
     Sleep    1
-    Wait And Click Element    ${locator_productsMgmt_button_editTableHead}
+    Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
     #验证弹窗中的排版信息
-    Wait Until Element Is Visible    ${locator_products_popUps_content}
+    Wait Until Element Is Visible    ${locatorB_products_popUps_content}
     #可选复选框个数
     ${count}    Execute Javascript    return document.querySelectorAll(".col___39m-D").length
     Should Be True    ${count}==6
@@ -44,7 +44,7 @@ products068
     #点击“编辑表头”
     Execute Javascript    return document.querySelectorAll(".edit_head___UidlR")[0].scrollIntoView()
     Sleep    1
-    Wait And Click Element    ${locator_productsMgmt_button_editTableHead}
+    Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
     #取消所有
     Cancel_All
     #确定
@@ -64,7 +64,7 @@ products069
     #点击“编辑表头”
     Execute Javascript    return document.querySelectorAll(".edit_head___UidlR")[0].scrollIntoView()
     Sleep    1
-    Wait And Click Element    ${locator_productsMgmt_button_editTableHead}
+    Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
     #选中所有
     Click_All
     #再取消上架和创建时间
@@ -85,7 +85,7 @@ products070
     Sleep    1
     #记录当前的表头排列
     ${old_count}    Execute Javascript    return document.querySelectorAll(".ant-table-thead tr")[0].querySelectorAll("th").length
-    Wait And Click Element    ${locator_productsMgmt_button_editTableHead}
+    Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
     #取消
     Wait And Click Element    dom:document.querySelectorAll(".cancel___3VskU")[0]
     Sleep    1
@@ -96,7 +96,7 @@ products070
 *** Keywords ***
 Click_All
     #选中所有
-    Wait Until Element Is Visible    ${locator_products_popUps_body}
+    Wait Until Element Is Visible    ${locatorB_products_popUps_body}
     #点击已经选中的，将他们全部取消选中
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox-checked").length
     : FOR    ${index}    IN RANGE    ${count}
@@ -109,7 +109,7 @@ Click_All
 
 Cancel_All
     #取消所有
-    Wait Until Element Is Visible    ${locator_products_popUps_body}
+    Wait Until Element Is Visible    ${locatorB_products_popUps_body}
     #点击已经选中的，将他们全部取消选中
     ${count}    Execute Javascript    return document.querySelectorAll(".ant-modal-body .ant-checkbox-checked").length
     : FOR    ${index}    IN RANGE    ${count}
@@ -123,7 +123,7 @@ Products Suite Setup
 
 Products Suite Teardown
     [Documentation]    删除商品,恢复到全部选中的状态
-    Wait And Click Element    ${locator_productsMgmt_button_editTableHead}
+    Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
     Click_All
     Wait And Click Element    dom:document.querySelectorAll(".ok___1LXqc")[0]
     Close Test Suite Browser

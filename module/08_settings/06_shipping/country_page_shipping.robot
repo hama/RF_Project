@@ -25,7 +25,7 @@ shipping013
     [Documentation]    tax price page should be normal atfer login
     [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     sleep    1
     Input Text    dom:document.querySelectorAll('#name')[0]    中国
@@ -38,7 +38,7 @@ shipping017
     [Documentation]    物流方案输入中
     [Tags]    P1
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     sleep    1
     input text    dom:document.querySelectorAll('#name')[0]    中
@@ -50,7 +50,7 @@ shipping018
     [Documentation]    物流方案输入 特殊字符
     [Tags]    P1
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     sleep    1
     input text    dom:document.querySelectorAll('#name')[0]    @#￥

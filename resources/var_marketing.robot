@@ -5,4 +5,4 @@ Resource          var_common.robot
 # api
 
 # locator
-${locator_marketing_button_addSubstraction}    ${locator_button_add}    #营销-满减活动页的新增活动按钮
+${locatorB_marketing_button_addSubstraction}    ${locatorB_button_add}    #营销-满减活动页的新增活动按钮

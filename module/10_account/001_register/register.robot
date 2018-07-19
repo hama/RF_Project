@@ -267,7 +267,7 @@ register_019
     #Input Text    id:username    ${register_domain}
     Wait And Click Element    ${login_btn}
     Sleep    1
-    Page Should Contain Element    ${locator_order}
+    Page Should Contain Element    ${locatorB_order}
     Wait And Click Element    dom:document.querySelectorAll(".hd-line-center")[0]
     Execute JavaScript    return document.querySelectorAll(".account_content___18o60 a")[1].click()
     Close Browser

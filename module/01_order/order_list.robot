@@ -128,7 +128,7 @@ order071
     sleep    1.5
     page should contain element    dom:document.querySelectorAll("button")[4]
     Wait And Click Element    class:ant-modal-close-x
-    Wait And Click Element    ${locator_order}
+    Wait And Click Element    ${locatorB_order}
 
 order080
     [Documentation]    订单列表跳转到搜索界面
@@ -151,7 +151,7 @@ order082
     #${dataLength}=    Execute JavaScript    return responseMap.get("${order_list_apis}").data.list
     #${count}    evaluate    len(${dataLength})
     #Should Be True    ${count}==20
-    Wait And Click Element    ${locator_order}
+    Wait And Click Element    ${locatorB_order}
 
 order_list_already_refund_check
     [Documentation]    选中已退款栏，订单列表展示已退款订单

@@ -16,7 +16,7 @@ shipping132
     [Documentation]    创建物流 输入 方案名 点击保存 提示 请添加国家
     [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     input text    id:name    方案1
     Wait And Click Button    dom:document.querySelectorAll("button")[1]
     sleep    2
@@ -31,7 +31,7 @@ shipping137
     ${range_min}    set variable    10
     ${range_max}    set variable    100
     ${rate_amount}    set variable    9
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     ${name}    salt
     input text    id:name    ${name}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
@@ -55,7 +55,7 @@ shipping97
     ${range_min}    set variable    10
     ${range_max}    set variable    100
     ${rate_amount}    set variable    9
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait And Click Element    id:test_shipping_country_add_btn
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2]
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[10]
@@ -70,7 +70,7 @@ shipping134
     [Documentation]    只添加价格运费，重量和数量运费不添加
     [Tags]    P0
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     ${name}    salt
     input text    id:name    ${name}
     Wait And Click Element    id:test_shipping_country_add_btn
@@ -115,7 +115,7 @@ shipping135
     ${range_min}    set variable    10
     ${range_max}    set variable    100
     ${rate_amount}    set variable    9
-    Wait And Click Element    ${locator_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
     sleep    1
     ${name}    salt
     input text    id:name    ${name}
