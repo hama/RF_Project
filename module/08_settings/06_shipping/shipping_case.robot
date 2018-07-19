@@ -35,16 +35,16 @@ shipping137
     ${name}    salt
     input text    id:name    ${name}
     Wait Until Element Is Visible    ${shipping_first_button}
-    Wait And Click Element    ${locator_shipping_add_country}
-    Wait Until Element Is Visible    ${locator_shipping_country_save_btn}
+    Wait And Click Element    ${locatorB_shipping_add_country}
+    Wait Until Element Is Visible    ${locatorB_shipping_country_save_btn}
     Execute JavaScript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2].click()
     Execute JavaScript    return document.getElementsByClassName("ant-tree-checkbox-inner")[10].click()
     sleep    1
-    Wait And Click Element    ${locator_shipping_country_save_btn}
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
     Wait And Click Element    dom:document.querySelectorAll("#test_shipping_country_edit_icon")[0]
     ${count}    execute javascript    return document.querySelectorAll(".ant-modal-body ul li").length
     Should Be True    ${count}==32
-    Wait And Click Element    ${locator_shipping_country_close_btn}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Shipping
 
 shipping97
@@ -55,15 +55,15 @@ shipping97
     ${range_min}    set variable    10
     ${range_max}    set variable    100
     ${rate_amount}    set variable    9
-    Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    ${locator_shipping_add_country}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_country}
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2]
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[10]
-    Wait And Click Element    ${locator_shipping_country_save_btn}
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
     Execute JavaScript    return document.querySelectorAll("#test_shipping_country_delete_icon")[0].click()
     sleep    2
     page should contain element    dom:document.querySelectorAll("button")[8]
-    Wait And Click Element    ${locator_shipping_country_close_btn}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Shipping
 
 shipping134
@@ -73,35 +73,35 @@ shipping134
     Wait And Click Element    ${locatorB_shipping_add_shipping}
     ${name}    salt
     input text    id:name    ${name}
-    Wait And Click Element    ${locator_shipping_add_country}
+    Wait And Click Element    ${locatorB_shipping_add_country}
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
-    Wait And Click Element    ${locator_shipping_country_save_btn}
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
     Wait And Click Element    id:test_shipping_add_weight_btn
     ${input}    set variable    重量运费
     ${desc}    set variable    重量运费说明
     ${range_min}    set variable    10
     ${range_max}    set variable    100
     ${rate_amount}    set variable    9
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
     input text    ${shipping_first_input}    ${input}
-    input text    ${locator_shipping_description}    ${desc}
-    input text    ${locator_shipping_range_min}    ${range_min}
-    input text    ${locator_shipping_range_max}    ${range_max}
-    input text    ${locator_shipping_price}    ${rate_amount}
+    input text    ${locatorB_shipping_description}    ${desc}
+    input text    ${locatorB_shipping_range_min}    ${range_min}
+    input text    ${locatorB_shipping_range_max}    ${range_max}
+    input text    ${locatorB_shipping_price}    ${rate_amount}
     sleep    1
-    Wait And Click Element    ${locator_shipping_freight_save}
-    Wait And Click Element    ${locator_shipping_add_quantity_btn}
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+    Wait And Click Element    ${locatorB_shipping_add_quantity_btn}
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
     ${input_a}    set variable    数量运费
     ${desc_a}    set variable    熟练给运费说明
     input text    ${shipping_first_input}    ${input_a}
-    input text    ${locator_shipping_description}    ${desc_a}
-    input text    ${locator_shipping_range_min}    ${range_min}
-    input text    ${locator_shipping_range_max}    ${range_max}
-    input text    ${locator_shipping_price}    ${rate_amount}
+    input text    ${locatorB_shipping_description}    ${desc_a}
+    input text    ${locatorB_shipping_range_min}    ${range_min}
+    input text    ${locatorB_shipping_range_max}    ${range_max}
+    input text    ${locatorB_shipping_price}    ${rate_amount}
     sleep    1
-    Wait And Click Element    ${locator_shipping_freight_save}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
     Wait And Click Element    ${shipping_first_button}
     sleep    2
     page should contain element    dom:document.querySelectorAll("#test_shipping_list_0 li")[0]
@@ -119,23 +119,23 @@ shipping135
     sleep    1
     ${name}    salt
     input text    id:name    ${name}
-    Wait And Click Element    ${locator_shipping_add_country}
-    Wait Until Element Is Visible    ${locator_shipping_country_save_btn}
+    Wait And Click Element    ${locatorB_shipping_add_country}
+    Wait Until Element Is Visible    ${locatorB_shipping_country_save_btn}
     execute javascript    return document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0].click()
     execute javascript    return document.getElementsByClassName("ant-tree-checkbox-inner")[1].click()
     sleep    1
-    Wait And Click Element    ${locator_shipping_country_save_btn}
-    Wait And Click Element    ${locator_shipping_add_quantity_btn}
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
+    Wait And Click Element    ${locatorB_shipping_add_quantity_btn}
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
     ${input_a}    set variable    数量运费
     ${desc_a}    set variable    熟练给运费说明
     input text    ${shipping_first_input}    ${input_a}
-    input text    ${locator_shipping_description}    ${desc_a}
-    input text    ${locator_shipping_range_min}    ${range_min}
-    input text    ${locator_shipping_range_max}    ${range_max}
-    input text    ${locator_shipping_price}    ${rate_amount}
+    input text    ${locatorB_shipping_description}    ${desc_a}
+    input text    ${locatorB_shipping_range_min}    ${range_min}
+    input text    ${locatorB_shipping_range_max}    ${range_max}
+    input text    ${locatorB_shipping_price}    ${rate_amount}
     sleep    1
-    Wait And Click Element    ${locator_shipping_freight_save}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
     Wait And Click Element    ${shipping_first_button}
     sleep    2
     page should contain element    dom:document.querySelectorAll("#test_shipping_list_0 li")[0]
@@ -149,9 +149,9 @@ check_list_data
     Execute JavaScript    return document.querySelectorAll("#test_setting_shipping")[0].click()
     #Wait Until Page Contains    ${tax_shipping_tab1}
     sleep    1.5s
-    ${dataLength}=    Execute JavaScript    return responseMap.get("${locator_shipping_list_api}").data.length;
+    ${dataLength}=    Execute JavaScript    return responseMap.get("${locatorB_shipping_list_api}").data.length;
     : FOR    ${i}    IN RANGE    ${dataLength}
-    \    ${res_data}    Execute Javascript    return responseMap.get("${locator_shipping_list_api}").data[${i}].shipping_name;
+    \    ${res_data}    Execute Javascript    return responseMap.get("${locatorB_shipping_list_api}").data[${i}].shipping_name;
     \    ${ul_data}    Execute Javascript    return document.querySelectorAll("#test_shipping_list_${i} li span")[0].innerHTML
     \    Should Be True    '${res_data}'=='${ul_data}'
     Delete Shipping

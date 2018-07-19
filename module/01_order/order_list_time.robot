@@ -18,7 +18,7 @@ order078
     Add Order
     Go To    ${home_page}
     sleep    1
-    Wait And Click Element    ${locator_order}
+    Wait And Click Element    ${locatorB_order}
     sleep    3
     Common Js Click    input[placeholder='开始日期']    0
     #Execute JavaScript    return document.querySelectorAll("input[placeholder='开始日期']")[0].click()
@@ -38,7 +38,7 @@ order079
     [Tags]    P0
     Sleep    1.5
     Go To Order Page
-    Wait And Click Element    ${locator_order}
+    Wait And Click Element    ${locatorB_order}
     Wait Until Element Is Visible    dom:document.querySelectorAll("table tbody tr td")[0]
     ${time}    Execute JavaScript    return document.querySelectorAll("table tbody tr td p")[0].innerHTML
     sleep    1
