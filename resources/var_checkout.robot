@@ -1,15 +1,5 @@
 *** Variables ***
 #.locator
-${first_name}     //*[@id="verify_form"]/div[2]/div[1]/input[1]
-${last_name}      //*[@id="verify_form"]/div[2]/div[1]/input[2]
-${city}           //*[@id="verify_form"]/div[2]/div[4]/input
-${address}        //*[@id="verify_form"]/div[2]/div[5]/input
-${post_code}      //*[@id="verify_form"]/div[2]/div[6]/input
-${email}          //*[@id="verify_form"]/div[2]/div[7]/input
-${phone}          //*[@id="verify_form"]/div[2]/div[8]/input
-${company}        //*[@id="verify_form"]/div[2]/div[9]/input
-
-
 ${locatorB_checkout_add_card_btn}    dom:document.querySelectorAll(".submit_mb span")[0]    #.添加购物车按钮
 ${locatorB_checkout_by_now_btn}    dom:document.querySelectorAll(".buy-now")[0]    #.by-now按钮
 ${locatorB_checkout_submit_btn_s}    dom:document.querySelectorAll(".footer-submit")[0]    #.点击by-now后的submit按钮

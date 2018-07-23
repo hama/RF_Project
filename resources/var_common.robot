@@ -10,17 +10,17 @@ ${register_btn}    dom:document.querySelectorAll(".bottomEdit___zk0l5 a")[0]    
 ${recover_pwd_btn}       dom:document.querySelectorAll(".bottomEdit___zk0l5 div a")[0]     #.忘记密码按钮
 
 ### 菜单栏 locator
-${locator_order}    dom:document.querySelectorAll('a[href="/order"]')[0]    # 导航栏-订单
-${locator_products}    id:test_product    # 导航栏-商品
-${locator_product_manage}    dom:document.querySelectorAll('a[href="/products"]')[0]    # 导航栏-商品管理
-${locator_product_collection}    dom:document.querySelectorAll('a[href="/collection"]')[0]    # 导航栏-商品专辑
-${locator_product_review}    dom:document.querySelectorAll('href="/reviews"')[0]    # 导航栏-商品评论
-${locator_marketing}    id:test_marketing    # 导航栏-营销
-${locator_store}    id:test_store    #.导航栏-店铺
-${locator_setting}    id:test_setting    # 导航栏-设置
-${locator_setting_shipping}    dom:document.querySelectorAll('a[href="/shipping"]')[0]    # 导航栏-设置-物流
-${locator_setting_taxPrice}    dom:document.querySelectorAll('a[href="/taxPrice"]')[0]    # 导航栏-设置-税费
-${locator_setting_payment}    dom:document.querySelectorAll('a[href="/pay"]')[0]    # 导航栏-设置-收款渠道
+${locatorB_order}    dom:document.querySelectorAll('a[href="/order"]')[0]    # 导航栏-订单
+${locatorB_products}    id:test_product    # 导航栏-商品
+${locatorB_product_manage}    dom:document.querySelectorAll('a[href="/products"]')[0]    # 导航栏-商品管理
+${locatorB_product_collection}    dom:document.querySelectorAll('a[href="/collection"]')[0]    # 导航栏-商品专辑
+${locatorB_product_review}    dom:document.querySelectorAll('href="/reviews"')[0]    # 导航栏-商品评论
+${locatorB_marketing}    id:test_marketing    # 导航栏-营销
+${locatorB_store}    id:test_store    #.导航栏-店铺
+${locatorB_setting}    id:test_setting    # 导航栏-设置
+${locatorB_setting_shipping}    dom:document.querySelectorAll('a[href="/shipping"]')[0]    # 导航栏-设置-物流
+${locatorB_setting_taxPrice}    dom:document.querySelectorAll('a[href="/taxPrice"]')[0]    # 导航栏-设置-税费
+${locatorB_setting_payment}    dom:document.querySelectorAll('a[href="/pay"]')[0]    # 导航栏-设置-收款渠道
 
 ### locator checkbox
 ${locatorB_checkbox00}    dom:document.querySelectorAll(".ant-checkbox-input")[0]    #定位当前页面第0个checkbox

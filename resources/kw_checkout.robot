@@ -12,7 +12,7 @@ Checkout Common Setp
     #点击商品预览
     Sleep Time
 <<<<<<< HEAD
-    Wait And Click Element    ${locator_productsMgmt_icon_preview}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
 =======
     Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
 >>>>>>> 4acd3402a962e196d48a25182fb7806886b84394
@@ -37,8 +37,8 @@ Add Payment
 <<<<<<< HEAD
     [Documentation]    B端添加支付方式
     Go To    ${home_page}
-    Wait And Click Element    ${locator_setting}    #.点击设置按钮
-    Wait And Click Element    ${locator_setting_payment}    #.点击收款渠道按钮
+    Wait And Click Element    ${locatorB_setting}    #.点击设置按钮
+    Wait And Click Element    ${locatorB_setting_payment}    #.点击收款渠道按钮
     ${condition}    Execute JavaScript    return document.querySelectorAll(".ant-switch-checked")[0]===undefined
     Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[1]    #.点击收款渠道按钮
     Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[2]    #.点击绑定按钮
@@ -53,8 +53,8 @@ Add Payment
 Add Cod Payment
     [Documentation]    添加COD支付
     Go To    ${home_page}
-    Wait And Click Element    ${locator_setting}    #.点击设置按钮
-    Wait And Click Element    ${locator_setting_payment}    #.点击收款渠道按钮
+    Wait And Click Element    ${locatorB_setting}    #.点击设置按钮
+    Wait And Click Element    ${locatorB_setting_payment}    #.点击收款渠道按钮
     ${condition}    Execute JavaScript    return document.querySelectorAll(".ant-switch-checked")[1]===undefined
     Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll(".ant-switch")[1]
     Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[5]

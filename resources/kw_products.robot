@@ -216,44 +216,44 @@ Add TenPrice Products
     [Documentation]    添加一个价格为10元的商品
     Go To    ${home_page}
     Go To Products Page
-    Wait And Click Element    ${locator_productsMgmt_button_addProduct}    # 点击添加商品按钮
+    Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}    # 点击添加商品按钮
     Wait Until Page Contains    ${content_products_new}
-    Wait And Input Text    ${locator_productsNew_input_addTitle}    ${content_products_addTitle}    # 添加标题
-    Wait And Input Text    ${locator_productsNew_input_addPrice}    10    # 添加价格
+    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${content_products_addTitle}    # 添加标题
+    Wait And Input Text    ${locatorB_productsNew_input_addPrice}    10    # 添加价格
     # add other content
-    Wait And Input Text    ${locator_productsNew_input_addSubTitle}    ${content_products_addSubTitle}    # 添加副标题
-    Wait And Input Text    ${locator_productsNew_input_addRawPrice}    10    # 添加原价
-    Wait And Input Text    ${locator_productsNew_input_addWeight}    ${content_products_addWeight}    # 添加重量
+    Wait And Input Text    ${locatorB_productsNew_input_addSubTitle}    ${content_products_addSubTitle}    # 添加副标题
+    Wait And Input Text    ${locatorB_productsNew_input_addRawPrice}    10    # 添加原价
+    Wait And Input Text    ${locatorB_productsNew_input_addWeight}    ${content_products_addWeight}    # 添加重量
     Wait And Click Element    id:status
     Wait And Click Element    dom:document.querySelectorAll('.ant-checkbox-wrapper span')[2]    #. 对此商品收税
     # add image
     Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
-    Wait Until Element Is Visible    ${locator_productsNew_button_uploadBtn}
+    Wait Until Element Is Visible    ${locatorB_productsNew_button_uploadBtn}
     log    ${CURDIR}
-    Choose File    ${locator_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
+    Choose File    ${locatorB_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
-    Wait And Click Element    ${locator_products_button_confirm}
+    Wait And Click Element    ${locatorB_products_button_confirm}
     Sleep    8
 Add Custom Products
     [Documentation]    添加一个任意价格的商品
     [Arguments]    ${price}
     Go To    ${home_page}
     Go To Products Page
-    Wait And Click Element    ${locator_productsMgmt_button_addProduct}    # 点击添加商品按钮
+    Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}    # 点击添加商品按钮
     Wait Until Page Contains    ${content_products_new}
-    Wait And Input Text    ${locator_productsNew_input_addTitle}    ${content_products_addTitle}    # 添加标题
-    Wait And Input Text    ${locator_productsNew_input_addPrice}    ${price}    # 添加价格
+    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${content_products_addTitle}    # 添加标题
+    Wait And Input Text    ${locatorB_productsNew_input_addPrice}    ${price}    # 添加价格
     # add other content
-    Wait And Input Text    ${locator_productsNew_input_addSubTitle}    ${content_products_addSubTitle}    # 添加副标题
-    Wait And Input Text    ${locator_productsNew_input_addRawPrice}    ${price}    # 添加原价
-    Wait And Input Text    ${locator_productsNew_input_addWeight}    ${content_products_addWeight}    # 添加重量
+    Wait And Input Text    ${locatorB_productsNew_input_addSubTitle}    ${content_products_addSubTitle}    # 添加副标题
+    Wait And Input Text    ${locatorB_productsNew_input_addRawPrice}    ${price}    # 添加原价
+    Wait And Input Text    ${locatorB_productsNew_input_addWeight}    ${content_products_addWeight}    # 添加重量
     Wait And Click Element    id:status
     Wait And Click Element    dom:document.querySelectorAll('.ant-checkbox-wrapper span')[2]    #. 对此商品收税
     # add image
     Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
-    Wait Until Element Is Visible    ${locator_productsNew_button_uploadBtn}
+    Wait Until Element Is Visible    ${locatorB_productsNew_button_uploadBtn}
     log    ${CURDIR}
-    Choose File    ${locator_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
+    Choose File    ${locatorB_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
-    Wait And Click Element    ${locator_products_button_confirm}
+    Wait And Click Element    ${locatorB_products_button_confirm}
     Sleep    8

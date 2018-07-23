@@ -138,7 +138,7 @@ Set Tax Price
 Checkout Page Decoration Condition
     [Documentation]    判断店铺是否装修
     Go To    ${home_page}
-    Wait And Click Element    ${locator_store}
+    Wait And Click Element    ${locatorB_store}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     ${name}    Execute JavaScript    return document.querySelectorAll("button span")[1].innerText
     Run keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[1]
