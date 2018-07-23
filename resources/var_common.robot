@@ -15,6 +15,7 @@ ${locator_product_manage}    dom:document.querySelectorAll('a[href="/products"]'
 ${locator_product_collection}    dom:document.querySelectorAll('a[href="/collection"]')[0]    # 导航栏-商品专辑
 ${locator_product_review}    dom:document.querySelectorAll('href="/reviews"')[0]    # 导航栏-商品评论
 ${locator_marketing}    id:test_marketing    # 导航栏-营销
+${locator_store}    id:test_store    #.导航栏-店铺
 ${locator_setting}    id:test_setting    # 导航栏-设置
 ${locator_setting_shipping}    dom:document.querySelectorAll('a[href="/shipping"]')[0]    # 导航栏-设置-物流
 ${locator_setting_taxPrice}    dom:document.querySelectorAll('a[href="/taxPrice"]')[0]    # 导航栏-设置-税费

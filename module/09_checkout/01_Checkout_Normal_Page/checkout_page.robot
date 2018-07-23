@@ -5,6 +5,7 @@ Suite Teardown    Close Test Suite Browser    # close the browser opened for thi
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Force Tags        Checkout
+Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_tax_price.robot
 Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/var_common.robot
@@ -14,6 +15,7 @@ Resource          ../../../resources/kw_products.robot
 Resource          ../../../resources/kw_shipping.robot
 Resource          ../../../resources/kw_checkout.robot
 Resource          ../../../resources/var_checkout.robot
+Library           customLibrary
 
 *** Test Cases ***
 add shipping
@@ -89,15 +91,7 @@ checkout012
     Wait And Click Element    ${locator_checkout_by_now_btn}
     Wait And Click Element    ${locator_checkout_submit_btn_s}
     Wait And Click Element    ${locator_checkout_address_btn}
-    Input Text    ${locator_checkout_address_first_name}    123
-    Input Text    ${locator_checkout_address_last_name}    345
-    Select From List    ${locator_checkout_address_select_country}    China
-    Input Text    ${locator_checkout_address_city}    深圳
-    Input Text    ${locator_checkout_address_add}    深圳123
-    Input Text    ${locator_checkout_address_zip}    123456
-    Input Text    ${locator_checkout_address_email}    123456@zz.xx
-    Input Text    ${locator_checkout_address_phone}    123456789
-    Input Text    ${locator_checkout_address_company}    123456789
+    Add Address Common Setp    # 添加地址公共部分
     Wait And Click Element    ${locator_checkout_address_save_address_btn}
     Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
     Sleep Time
@@ -281,15 +275,7 @@ checkout035
     Wait And Click Element    ${locator_checkout_by_now_btn}
     Wait And Click Element    ${locator_checkout_submit_btn_s}
     Wait And Click Element    ${locator_checkout_address_btn}
-    Input Text    ${locator_checkout_address_first_name}    123
-    Input Text    ${locator_checkout_address_last_name}    345
-    Select From List    ${locator_checkout_address_select_country}    China
-    Input Text    ${locator_checkout_address_city}    深圳
-    Input Text    ${locator_checkout_address_add}    深圳123
-    Input Text    ${locator_checkout_address_zip}    123456
-    Input Text    ${locator_checkout_address_email}    123456@zz.xx
-    Input Text    ${locator_checkout_address_phone}    123456789
-    Input Text    ${locator_checkout_address_company}    123456789
+    Add Address Common Setp    # 添加地址公共部分
     Wait And Click Element    ${locator_checkout_address_save_address_btn}
     Page Should Contain Element    ${locator_checkout_address_save_checkout_btn}
 
@@ -367,11 +353,202 @@ checkout038
     Wait And Click Element    ${locator_checkout_by_now_btn}
     Wait And Click Element    ${locator_checkout_submit_btn_s}
     Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
-    ${first_name}    Set Variable    123
-    Input Text    ${locator_checkout_address_first_name}    ${first_name}
-    Input Text    ${locator_checkout_address_last_name}    345
+    Add Address Common Setp    # 添加地址公共部分
     Wait And Click Element    ${locator_checkout_address_close_address}
     Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
     ${data}    Execute JavaScript    return document.querySelectorAll("input[name='first_name']")[0].value
     Should Be True    '${data}'=='${first_name}'
 
+checkout052
+    [Documentation]    1.添加价格为10USD的一个商品进入checkout界面2.选中没有设置税金的国家3.不使用优惠券4.查看价格选项中优惠前的总价  优惠前的总价显示为10USD
+    [Tags]    P1
+    Add TenPrice Products    #.添加商品
+    Checkout Common Setp
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Add Address Common Setp    # 添加地址公共部分
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Wait And Click Element    dom:document.getElementsByClassName("pm_footer_left")[0]
+    ${new_price}    Execute JavaScript    return document.querySelectorAll(".paydetail-line span")[1].innerText
+    Should Be True    '${new_price}'=='$999'
+
+checkout054
+    [Documentation]    1.添加价格为10USD的一个商品进入checkout界面2.不使用优惠券3.选择设置了税金的国家4.查看价格选项中优惠前的总价"  优惠价格显示为0USD
+    [Tags]    P1
+    Set Tax Price    中国    10
+    Add TenPrice Products    #.添加商品
+    Checkout Common Setp
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Add Address Common Setp    # 添加地址公共部分
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Wait And Click Element    dom:document.getElementsByClassName("pm_footer_left")[0]
+    ${new_price}    Execute JavaScript    return document.querySelectorAll(".paydetail-content div:nth-child(2) span")[1].innerText
+    ${res_price}    searchStrs    ${new_price}
+    Should Be True    ${res_price}==0
+
+checkout063
+    [Documentation]    1.添加价格为10USD的商品进入checkout界面2.添加购买地址时选择中国，城市选择上海3.查看价格选项中税金价格 税金价格显示为1USD
+    [Tags]    P1
+    Set Tax Price    中国    10    #.设置税金
+    Add TenPrice Products    #.添加商品
+    Checkout Common Setp
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Input Text    ${locator_checkout_address_first_name}    123
+    Input Text    ${locator_checkout_address_last_name}    345
+    Select From List    ${locator_checkout_address_select_country}    China
+    Sleep Time
+    Select From List    ${locator_checkout_address_select_city}    Shanghai
+    Input Text    ${locator_checkout_address_city}    深圳
+    Input Text    ${locator_checkout_address_add}    深圳123
+    Input Text    ${locator_checkout_address_zip}    123456
+    Input Text    ${locator_checkout_address_email}    123456@zz.xx
+    Input Text    ${locator_checkout_address_phone}    123456789
+    Input Text    ${locator_checkout_address_company}    123456789
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Wait And Click Element    dom:document.getElementsByClassName("pm_footer_left")[0]
+    ${new_price}    Execute JavaScript    return document.querySelectorAll(".paydetail-content div:nth-child(3) span")[1].innerText
+    ${res_price}    searchStrs    ${new_price}
+    Should Be True    ${res_price}==1
+
+checkout065
+    [Documentation]     "1.添加价格为10USD的商品进入checkout界面2.添加购买地址时选择中国，城市选择广东3.查看价格选项中税金价格"  税金价格显示为0USD
+    [Tags]    P0
+    Set Tax Price    中国    0    #.设置税金
+    Checkout Common Setp
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Input Text    ${locator_checkout_address_first_name}    123
+    Input Text    ${locator_checkout_address_last_name}    345
+    Select From List    ${locator_checkout_address_select_country}    China
+    Sleep Time
+    Select From List    ${locator_checkout_address_select_city}    Guangdong
+    Input Text    ${locator_checkout_address_city}    深圳
+    Input Text    ${locator_checkout_address_add}    深圳123
+    Input Text    ${locator_checkout_address_zip}    123456
+    Input Text    ${locator_checkout_address_email}    123456@zz.xx
+    Input Text    ${locator_checkout_address_phone}    123456789
+    Input Text    ${locator_checkout_address_company}    123456789
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Wait And Click Element    dom:document.getElementsByClassName("pm_footer_left")[0]
+    ${new_price}    Execute JavaScript    return document.querySelectorAll(".paydetail-content div:nth-child(3) span")[1].innerText
+    ${res_price}    searchStrs    ${new_price}
+    Should Be True    ${res_price}==0
+
+checkout079
+    [Documentation]     1.B端激活COD支付 2.进入checkout界面并进入支付界面" 支付界面显示COD支付方式
+    [Tags]    P0
+    Add Cod Payment    #.添加cod支付方式
+    Checkout Common Setp
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Add Address Common Setp    # 添加地址公共部分
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Page Should Contain Element    class:pm_name
+
+checkout081
+    [Documentation]     1.B端激活所有支付方式2.进入checkout界面并进入支付界面   支付界面显示所有激活的支付方式
+    [Tags]    P0
+    Add Payment    #.添加paylinks支付方式
+    Add Cod Payment    #.添加cod支付方式
+    Checkout Common Setp
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Add Address Common Setp    # 添加地址公共部分
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Page Should Contain Element    class:pm_list_row
+    Page Should Contain Element    dom:document.querySelectorAll(".pm_list_row[alt=ipaylinks]")[0]
+
+checkout088
+    [Documentation]    1.选择CDO支付方式 2.点击pay now"   直接跳转到支付成功界面
+    [Tags]    P0
+    Checkout Common Setp
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Add Address Common Setp    # 添加地址公共部分
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Wait And Click Element    ${locator_checkout_payment_cod_elm}
+    Wait And Click Element    ${locator_checkout_submit_save_btn}
+    Page Should Contain Element    class:success
+
+checkout098
+    [Documentation]    1.进入支付界面2.B端删除本次购买的商品3.点击支付    购买失败，进入支付失败界面
+    [Tags]    P0
+    Add Order Products    #.添加商品
+    Checkout Common Setp
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Add Address Common Setp    # 添加地址公共部分
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Wait And Click Element    ${locator_checkout_payment_cod_elm}
+    delFirstProduct    #. 调用关键字删除刚添加的商品
+    Sleep    2
+    Wait And Click Element    ${locator_checkout_submit_save_btn}
+    Page Should Contain Element    class:failed
+
+checkout099
+    [Documentation]    1.进入支付界面2.B端删除本次购买所选的支付方式3.点击支付    购买失败，进入支付失败界面
+    [Tags]    P0
+    Add Payment    #.添加支付方式
+    Checkout Common Setp
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Add Address Common Setp    # 添加地址公共部分
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Wait And Click Element    ${locator_checkout_payment_ipaylinks_elm}
+    delPaymentPk    #. 调用关键字删除刚添加的支付方式
+    Sleep    2
+    Wait And Click Element    ${locator_checkout_submit_save_btn}
+    Page Should Contain Element    class:failed
+checkout100
+    [Documentation ]     1.进入支付界面2.B端删除本次购买所选的物流  3.点击支付
+    [Tags]    P0
+    Checkout Common Setp
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Add Address Common Setp    # 添加地址公共部分
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Wait And Click Element    ${locator_checkout_payment_cod_elm}
+    delShipping    #. 调用关键字删除刚添加的物流方式
+    Sleep    2
+    Wait And Click Element    ${locator_checkout_submit_save_btn}
+    Page Should Contain Element    class:failed
+checkout101
+    [Documentation]    支付失败 1.点击Pay again 2.查看结果   返回支付界面
+    [Tags]    P0
+    Add Cod Payment    #.添加支付方式
+    Checkout Common Setp
+    Wait And Click Element    ${locator_checkout_by_now_btn}
+    Wait And Click Element    ${locator_checkout_submit_btn_s}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Add Address Common Setp    # 添加地址公共部分
+    Wait And Click Element    ${locator_checkout_address_save_address_btn}
+    Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
+    Wait And Click Element    ${locator_checkout_payment_cod_elm}
+    delPaymentCod    #. 调用关键字删除刚添加的支付方式
+    Sleep    2
+    Wait And Click Element    ${locator_checkout_submit_save_btn}
+    Wait And Click Element    id:payagain
+    Page Should Contain Element    class:cart-title
+   

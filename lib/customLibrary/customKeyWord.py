@@ -41,6 +41,30 @@ class keyWord(object):
         self.datas_password = config.get("common_account", "datas_password")
         self.datas_username = config.get("common_account", "datas_username")
 
+    #.公共登陆方法
+    def Login(self,paramts=False):
+        x_url = self.home_page_url + "/api/user/login"
+        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
+        res = requests.post(url=x_url,headers={},data=datas)
+        if res is None or res.status_code != 200:
+            return False
+        uid = json.loads(res.content)['data']['id']
+        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+        if paramts:
+            return {"cookie": cookiesx, "uid": uid}
+        else:
+            return cookiesx
+
+
+    #.公共获取数据方法
+    def commonGetData(self,p_url=''):
+        if not p_url:
+            p_url = self.home_page_url + "/api/product/search?page=0&limit=20"
+        cookiesx = self.Login()
+        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
+        res_data = json.loads(sub_list.content)['data']['products']
+        return res_data
+
     def mykeyword(self, url):
         return url
 
@@ -94,44 +118,20 @@ class keyWord(object):
             exit()
 
     def selectProduct(self):
-        x_url = self.home_page_url + "/api/user/login"
-        p_url = self.home_page_url + "/api/product/search?page=0&limit=20"
-        datas = {"contact": self.datas_contact, "password": self.datas_password}
-        res = requests.post(url=x_url, headers={}, data=datas)
-        if res is None or res.status_code != 200:
-            return res.status_code
-        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
-
-        uid = json.loads(res.content)['data']['id'] or None
-
-        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
-        res_data = json.loads(sub_list.content)['data']['products']
+        res_data = self.commonGetData()
         res_list = []
         for i in res_data:
             res_list.append(i['title'])
         return res_list
-        # res_data = requests.get(url=p_url)
-        # if res_data is None or res_data.status_code != 200:
-        #     return
-        # self.db_name = self.db_name + uid
-        # conn = pymysql.connect(host=self.db_hotst,user=self.db_uname,password=self.db_pwd,db=self.db_name,charset="utf8",port=self.port)
-        # curs = conn.cursor()
-        # sql = "SELECT count(*) FROM product "
-        # curs.execute(sql)
-        # counts = curs.fetchone()
-        # return counts
-
     def getResult(self, args):
         args = args.encode('unicode-escape').decode('string_escape')
-
         data = self.selectProduct()
         new_list = []
         for x in data:
             res_str = x.encode('unicode-escape').decode('string_escape')
             res_str = res_str.strip()
             new_list.append(res_str)
-        print args
-        print new_list
+
         if args in new_list:
             return True
         else:
@@ -171,6 +171,8 @@ class keyWord(object):
         else:
             return True
 
+
+
     def remove_user(self, args):
         if args is None: return False
         try:
@@ -189,13 +191,6 @@ class keyWord(object):
             curs.execute(sql)
             curs.execute(sql_)
             conn.commit()
-
-            # .删除domain
-            # curs.execute(select)
-            # for k in curs.fetchall():
-            #     sql_data = "DELETE FROM `user_domain` WHERE userid = %s" %(k['id'])
-            #     curs.execute(sql_data)
-            #     conn.commit()
             return True
         except Exception as e:
             print e
@@ -223,52 +218,21 @@ class keyWord(object):
             return 0
 
     def getFirstProductQuantity(self):
-        x_url = self.home_page_url + "/api/user/login"
-        p_url = self.home_page_url + "/api/product/search?page=0&limit=20"
-        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
-        res = requests.post(url=x_url, headers={}, data=datas)
-        if res is None or res.status_code != 200:
-            return res.status_code
-        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
-
-        uid = json.loads(res.content)['data']['id'] or None
-
-        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
-        res_data = json.loads(sub_list.content)['data']['products']
+        res_data = self.commonGetData()
         res_list = []
         for i in res_data:
             res_list.append(i['inventory_quantity'])
         return res_list[0]
 
     def getFirstProductTitle(self):
-        x_url = self.home_page_url + "/api/user/login"
-        p_url = self.home_page_url + "/api/product/search?page=0&limit=20"
-        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
-        res = requests.post(url=x_url, headers={}, data=datas)
-        if res is None or res.status_code != 200:
-            return res.status_code
-        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
-
-        uid = json.loads(res.content)['data']['id'] or None
-
-        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
-        res_data = json.loads(sub_list.content)['data']['products']
+        res_data = self.commonGetData()
         res_list = []
         for i in res_data:
             res_list.append(i['title'])
         return res_list[0]
 
     def getProductStatus(self, arg):
-        x_url = self.home_page_url + "/api/user/login"
-        p_url = self.home_page_url + "/api/product/search?page=0&limit=20"
-        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
-        res = requests.post(url=x_url, headers={}, data=datas)
-        if res is None or res.status_code != 200:
-            return res.status_code
-        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
-        uid = json.loads(res.content)['data']['id'] or None
-        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
-        res_data = json.loads(sub_list.content)['data']['products']
+        res_data = self.commonGetData()
         res_list = []
         for i in res_data:
             res_list.append(i['status'])
@@ -277,16 +241,7 @@ class keyWord(object):
         return res_list[arg]
 
     def getProductSku(self, arg):
-        x_url = self.home_page_url + "/api/user/login"
-        p_url = self.home_page_url + "/api/product/search?page=0&limit=20"
-        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
-        res = requests.post(url=x_url, headers={}, data=datas)
-        if res is None or res.status_code != 200:
-            return res.status_code
-        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
-        uid = json.loads(res.content)['data']['id'] or None
-        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
-        res_data = json.loads(sub_list.content)['data']['products']
+        res_data = self.commonGetData()
         res_list = []
         for i in res_data:
             res_list.append(i['variants'][0]['sku'])
@@ -303,19 +258,8 @@ class keyWord(object):
             arg = int(arg)
         else:
             return 0
-
-        x_url = self.home_page_url + "/api/user/login"
         p_url = self.home_page_url + "/api/product/search?status=" + str(arg) + "&page=0&limit=20"
-        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
-        res = requests.post(url=x_url, headers={}, data=datas)
-        if res is None or res.status_code != 200:
-            return res.status_code
-        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
-
-        uid = json.loads(res.content)['data']['id'] or None
-
-        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
-        res_data = json.loads(sub_list.content)['data']['products']
+        res_data = self.commonGetData(p_url)
         res_list = []
         for i in res_data:
             res_list.append(i['title'])
@@ -323,18 +267,8 @@ class keyWord(object):
         return len(res_list)
 
     def getProductTagsLength(self, arg):
-        x_url = self.home_page_url + "/api/user/login"
-        p_url = self.home_page_url + "/api/product/search?page=0&limit=20"
-        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
-        res = requests.post(url=x_url, headers={}, data=datas)
-        if res is None or res.status_code != 200:
-            return res.status_code
-        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
-        uid = json.loads(res.content)['data']['id'] or None
-        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
-        res_data = json.loads(sub_list.content)['data']['products']
+        res_data = self.commonGetData()
         res_list = []
-
         t = -1
         for i in res_data:
             t = t + 1
@@ -342,16 +276,80 @@ class keyWord(object):
 
         arg = int(arg)
         return res_list[arg]
+    #.删除商品
+    def delFirstProduct(self):
+        try:
+            cookie = self.Login(True)
+            resConn = pymysql.connect(host=self.db_hotst,user=self.db_uname,password=self.db_pwd,db=self.db_name +
+                                                                                                    str(cookie['uid']),
+                                      charset="utf8",port=self.port,cursorclass=pymysql.cursors.DictCursor)
+            curs = resConn.cursor()
+            SQL = "SELECT (product_id) FROM `product` order by product_id desc"
+            curs.execute(SQL)
+            sub = curs.fetchone()['product_id']
+            del_url = self.home_page_url + "/api/product/updatestatus"
+            del_data = {"product_ids":[str(sub)],"status":-1}
+            result = requests.post(url=del_url,headers={'cookie':cookie['cookie']},json=del_data)
+            if json.loads(result.content)['state']== 0:
+                return True
+            else:
+                return False
+        except Exception as e:
+            print e
+    #.删除支付方式 paylinks
+    def delPaymentPk(self):
+        try:
+            cookie = self.Login(True)
+            del_url = self.home_page_url + "/api/payment/method"
+            del_data = {"payment_method":"credit_card","method_is_enable":0}
+            res = requests.post(url=del_url,headers={"cookie":cookie},json=del_data)
+            if json.loads(res.content)['state'] == 0:
+                return True
+            else:
+                return False
+        except Exception as e:
+            print e
+
+    # .删除支付方式 paylinks
+    def delPaymentCod(self):
+        try:
+            cookie = self.Login()
+            del_url = self.home_page_url + "/api/payment/method"
+            del_data = {"payment_method":"cod","method_is_enable":0}
+            res = requests.post(url=del_url, headers={"cookie": cookie}, json=del_data)
+            if json.loads(res.content)['state'] == 0:
+                return True
+            else:
+                return False
+        except Exception as e:
+            print e
+
+    # .删除物流方式
+    def delShipping(self):
+        try:
+            cookie = self.Login(True)
+            resConn = pymysql.connect(host=self.db_hotst, user=self.db_uname, password=self.db_pwd,
+                                      db=self.db_name +
+                                                                                                      str(cookie[
+                                                                                                              'uid']),
+                                     charset="utf8", port=self.port, cursorclass=pymysql.cursors.DictCursor)
+            curs = resConn.cursor()
+            SQL = "select id from shipping where id<>1 order by date_added desc"
+            curs.execute(SQL)
+            sub = curs.fetchone()['id']
+            del_url = self.home_page_url + "/api/shipping/refresh"
+            del_data = {"shipping_id":sub,"is_enable":0}
+            res = requests.post(url=del_url, headers={"cookie": cookie}, json=del_data)
+            if json.loads(res.content)['state'] == 0:
+                return True
+            else:
+                return False
+        except Exception as e:
+            print e
 
     def getAllProductCount(self):
-        x_url = self.home_page_url + "/api/user/login"
         p_url = self.home_page_url + "/api/product/search"
-        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
-        res = requests.post(url=x_url, headers={}, data=datas)
-        if res is None or res.status_code != 200:
-            return res.status_code
-        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
-
+        cookiesx = self.Login()
         sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
         total = json.loads(sub_list.content)['data']['total']
 
@@ -369,32 +367,16 @@ class keyWord(object):
         return page
 
     def validateProductByPageAndSize(self, page, size):
-        x_url = self.home_page_url + "/api/user/login"
         p_url = self.home_page_url + "/api/product/search?page=" + str(page) + "&limit=" + str(size)
-        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
-        res = requests.post(url=x_url, headers={}, data=datas)
-        if res is None or res.status_code != 200:
-            return res.status_code
-        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
-
-        uid = json.loads(res.content)['data']['id'] or None
-
-        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
-        res_data = json.loads(sub_list.content)['data']['products']
+        res_data = self.commonGetData(p_url)
         res_list = []
         for i in res_data:
             res_list.append(i['title'])
         return res_list
 
     def getCollectionId(self, index):
-        x_url = self.home_page_url + "/api/user/login"
         p_url = self.home_page_url + "/api/collection/dropdown?page=0&limit=10&key="
-        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
-        res = requests.post(url=x_url, headers={}, data=datas)
-        if res is None or res.status_code != 200:
-            return res.status_code
-        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
-
+        cookiesx = self.Login()
         sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
         res_data = json.loads(sub_list.content)['data']['collections']
         index = int(index)
@@ -418,6 +400,6 @@ class keyWord(object):
         img_name = data.findall(img, re.M)
         return img_name[0]
 
-# if __name__ == '__main__':
-#     aaa = keyWord()
-#     aaa.getFirstProductQuantity()
+if __name__ == '__main__':
+    aaa = keyWord()
+    print aaa.delPaymentCod()

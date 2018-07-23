@@ -38,7 +38,7 @@ ${locator_productsMgmt_icon_grabProduct}    dom:document.querySelectorAll(".icon
 ${locator_productsMgmt_icon_migrateProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[1]    #商品列表页的店铺搬迁按钮
 ${locator_productsMgmt_icon_uploadProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[2]    #商品列表页的上传商品按钮
 ${locator_productsMgmt_image_center}    dom:document.querySelectorAll(".center___1nHSZ")[0]    #商品列表的图片
-${locator_productsMgmt_icon_preview}    dom:document.querySelectorAll(".preview___37DtU")[0]    #商品列表的预览icon
+${locator_productsMgmt_icon_preview}    dom:document.querySelectorAll("tbody tr:nth-child(1) td i")[0]    #商品列表的预览icon
 ${locator_productsMgmt_icon_delete}    dom:document.querySelectorAll(".delete___2xfx-")[0]    #商品列表的删除icon
 ${locator_productsMgmt_button_delTags}    dom:document.querySelectorAll(".ant-btn-primary")[0]    #删除标签弹框的删除button
 # locator_productsType

@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     checkout 公共方法
 Resource          var_common.robot
+Resource          var_checkout.robot
 
 *** keywords ***
 Checkout Common Setp
@@ -10,23 +11,48 @@ Checkout Common Setp
     Wait And Click Element    ${locator_products}
     #点击商品预览
     Sleep Time
-    Wait And Click Element    ${locator_products_icon_preview}
+    Wait And Click Element    ${locator_productsMgmt_icon_preview}
     Sleep Time    #.休息2s
     #.第二个窗口
     Select Window    New
     Sleep Time
 
+Add Address Common Setp
+    [Documentation]    添加地址公共部分
+    Input Text    ${locator_checkout_address_first_name}    123
+    Input Text    ${locator_checkout_address_last_name}    345
+    Select From List    ${locator_checkout_address_select_country}    China
+    Input Text    ${locator_checkout_address_city}    深圳
+    Input Text    ${locator_checkout_address_add}    深圳123
+    Input Text    ${locator_checkout_address_zip}    123456
+    Input Text    ${locator_checkout_address_email}    123456@zz.xx
+    Input Text    ${locator_checkout_address_phone}    123456789
+    Input Text    ${locator_checkout_address_company}    123456789
+
 Add Payment
-    [Documentation]    添加支付方式
+    [Documentation]    B端添加支付方式
+    Go To    ${home_page}
     Wait And Click Element    ${locator_setting}    #.点击设置按钮
     Wait And Click Element    ${locator_setting_payment}    #.点击收款渠道按钮
-    Wait And Click Element    dom:document.querySelectorAll("button")[1]    #.点击收款渠道按钮
-    Wait And Click Element    dom:document.querySelectorAll("button")[2]    #.点击绑定按钮
-    Wait And Input Text    dom:document.querySelectorAll("#client_id")[0]    123456    #.绑定账号
-    Wait And Input Text    dom:document.querySelectorAll("#secret_key")[0]    123123    #.绑定密码
-    Wait And Click Element    dom:document.querySelectorAll("button")[2]    #.点击绑定按钮
-    Wait And Click Element    class:ant-switch    #.点击开启按钮
-    Wait And Click Element    dom:document.querySelectorAll("button")[6]    #.点击确定
+    ${condition}    Execute JavaScript    return document.querySelectorAll(".ant-switch-checked")[0]===undefined
+    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[1]    #.点击收款渠道按钮
+    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[2]    #.点击绑定按钮
+    Run keyword If    ${condition}    Wait And Input Text    dom:document.querySelectorAll("#client_id")[0]    123456    #.绑定账号
+    Run keyword If    ${condition}    Wait And Input Text    dom:document.querySelectorAll("#secret_key")[0]    123123    #.绑定密码
+    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[2]    #.点击绑定按钮
+    Run keyword If    ${condition}    Wait And Click Element    class:ant-switch    #.点击开启按钮
+    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[6]    #.点击确定
+    Sleep Time
+
+
+Add Cod Payment
+    [Documentation]    添加COD支付
+    Go To    ${home_page}
+    Wait And Click Element    ${locator_setting}    #.点击设置按钮
+    Wait And Click Element    ${locator_setting_payment}    #.点击收款渠道按钮
+    ${condition}    Execute JavaScript    return document.querySelectorAll(".ant-switch-checked")[1]===undefined
+    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll(".ant-switch")[1]
+    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[5]
     Sleep Time
 
 Sleep Time
