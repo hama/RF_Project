@@ -3,18 +3,19 @@ Resource          var_common.robot
 
 *** Variables ***
 # api
-${api_products_add}    ${home_page}/api/product/add    # 保存商品
-${api_products_upload}    ${home_page}/api/file/upload    # 上传图片
-${api_products_addProductsType}    ${home_page}/productType    # 增加商品分类
-${api_products_list}    ${home_page}/api/product/search?page=0&limit=20    # 获取商品列表
-${api_products_list_shelf}    ${home_page}/api/product/search?status=1&page=0&limit=20    # 选择所有上架商品
-${api_products_list_drop}    ${home_page}/api/product/search?status=0&page=0&limit=20    # 选择所有下架商品
-${api_products_update_status}    ${home_page}/api/product/updatestatus    # 上架/下架 更新状态
+${apiB_products_add}    ${home_page}/api/product/add    # 保存商品
+${apiB_products_upload}    ${home_page}/api/file/upload    # 上传图片
+${apiB_products_addProductsType}    ${home_page}/productType    # 增加商品分类
+${apiB_products_list}    ${home_page}/api/product/search?page=0&limit=20    # 获取商品列表
+${apiB_products_list_shelf}    ${home_page}/api/product/search?status=1&page=0&limit=20    # 选择所有上架商品
+${apiB_products_list_drop}    ${home_page}/api/product/search?status=0&page=0&limit=20    # 选择所有下架商品
+${apiB_products_update_status}    ${home_page}/api/product/updatestatus    # 上架/下架 更新状态
 # locator_products
-${locator_products_popUps_content}      dom:document.querySelectorAll(".ant-modal-content")[0]      #弹窗_content
-${locator_products_popUps_body}    dom:document.querySelectorAll(".ant-modal-body")[0]    #弹窗_body
-${locator_products_button_cancel}    ${locator_popUps_button_default}    #商品天窗-默认按钮
-${locator_products_button_confirm}    ${locator_popUps_button_middle}    #商品弹窗-确定按钮
+${locatorB_products_popUps_content}      dom:document.querySelectorAll(".ant-modal-content")[0]      #弹窗_content
+${locatorB_products_popUps_body}    dom:document.querySelectorAll(".ant-modal-body")[0]    #弹窗_body
+${locatorB_products_button_cancel}    ${locatorB_popUps_button_default}    #商品弹窗-默认按钮
+${locatorB_products_button_confirm}    ${locatorB_popUps_button_middle}    #商品弹窗-确定按钮
+
 # locator_productsMgmt
 ${locator_productsMgmt_button_editTableHead}    dom:document.querySelectorAll(".edit_head___UidlR")[0]    #编辑表头
 ${locator_productsMgmt_tabindex_firstSwitch}    dom:document.querySelectorAll(".ant-switch")[0]    # 列表第一个商品的上架按钮
@@ -41,54 +42,55 @@ ${locator_productsMgmt_image_center}    dom:document.querySelectorAll(".center__
 ${locator_productsMgmt_icon_preview}    dom:document.querySelectorAll("tbody tr:nth-child(1) td i")[0]    #商品列表的预览icon
 ${locator_productsMgmt_icon_delete}    dom:document.querySelectorAll(".delete___2xfx-")[0]    #商品列表的删除icon
 ${locator_productsMgmt_button_delTags}    dom:document.querySelectorAll(".ant-btn-primary")[0]    #删除标签弹框的删除button
+
 # locator_productsType
-${locator_productType_button_saveBtn}    id:test_save_btn    # 商品分类-保存按钮
+${locatorB_productType_button_saveBtn}    id:test_save_btn    # 商品分类-保存按钮
 # locator_productsNew
-${locator_productsNew_button_back}    class:back    # 进入编辑页面的后退按钮
-${locator_productsNew_button_uploadBtn}    id:test_upload_btn    # 上传商品图片按钮
-${locator_productsNew_tabindex_status}    id:status    # 商品状态按钮
-${locator_productsNew_input_tags}    id:tags    # 添加标签按钮
-${locator_productsNew_input_chooseFile}    dom:document.querySelectorAll("input[type='file']")[0]    # 选择文件上传
-${locator_productsNew_input_addTitle}    id:__title    # 添加商品页面-标题按钮
-${locator_productsNew_input_addSubTitle}    id:__brief    # 添加商品页面-副标题按钮
-${locator_productsNew_input_addDesc}    dom:document.querySelectorAll(".fr-view")[0].querySelectorAll("p")[0]    # 添加商品页面-副标题按钮
-${locator_productsNew_input_addPrice}    id:price    # 添加商品页面-价格输入框
-${locator_productsNew_input_addRawPrice}    id:compare_at_price    # 添加商品页面-原价格输入框
-${locator_productsNew_input_addWeight}    id:weight    # 添加商品页面-重量输入
-${locator_productsNew_input_addSku}    id:sku    # 添加商品页面-Sku
-${locator_productsNew_input_addBarcode}    id:barcode    # 添加商品页面-条形码
-${locator_productsNew_input_addSupplier}    dom:document.querySelectorAll(".ant-input")[1]    # 添加供应商
-${locator_productsNew_input_productType}    id:product_type_cascade    #商品专辑页的新增专辑按钮
-${locator_productsNew_cascader_chooseCategoryItem}    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]    # 选择商品分类子项
+${locatorB_productsNew_button_back}    class:back    # 进入编辑页面的后退按钮
+${locatorB_productsNew_button_uploadBtn}    id:test_upload_btn    # 上传商品图片按钮
+${locatorB_productsNew_tabindex_status}    id:status    # 商品状态按钮
+${locatorB_productsNew_input_tags}    id:tags    # 添加标签按钮
+${locatorB_productsNew_input_chooseFile}    dom:document.querySelectorAll("input[type='file']")[0]    # 选择文件上传
+${locatorB_productsNew_input_addTitle}    id:__title    # 添加商品页面-标题按钮
+${locatorB_productsNew_input_addSubTitle}    id:__brief    # 添加商品页面-副标题按钮
+${locatorB_productsNew_input_addDesc}    dom:document.querySelectorAll(".fr-view")[0].querySelectorAll("p")[0]    # 添加商品页面-副标题按钮
+${locatorB_productsNew_input_addPrice}    id:price    # 添加商品页面-价格输入框
+${locatorB_productsNew_input_addRawPrice}    id:compare_at_price    # 添加商品页面-原价格输入框
+${locatorB_productsNew_input_addWeight}    id:weight    # 添加商品页面-重量输入
+${locatorB_productsNew_input_addSku}    id:sku    # 添加商品页面-Sku
+${locatorB_productsNew_input_addBarcode}    id:barcode    # 添加商品页面-条形码
+${locatorB_productsNew_input_addSupplier}    dom:document.querySelectorAll(".ant-input")[1]    # 添加供应商
+${locatorB_productsNew_input_productType}    id:product_type_cascade    #商品专辑页的新增专辑按钮
+${locatorB_productsNew_cascader_chooseCategoryItem}    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]    # 选择商品分类子项
+${locatorB_productsNew_button_save}    ${locatorB_popUps_button_middle}    #保存按钮
 # locator_productsCategory
-${locator_productsCategory_button_addCategory}    ${locator_button_add}    #商品专辑页的新增专辑按钮
-${locator_productsCategory_icon_del}    dom:document.querySelectorAll(".djfont.delete")[0]    #商品专辑的第一个删除icon
-${locator_productsCategory_button_delProducts}    dom:document.querySelectorAll(".batchSelectTable_btn___40HNR")[0]    #通过checkbox选中所有专辑之后，提供的删除button
-${locator_productsCategory_popUps_firstCategory}    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]    #"要添加到的专辑"弹窗的第一条条目
-${locator_productsCategory_checkbox_chooseCategories}    ${locator_checkbox00}    #点击checkbox按钮，选中当前页面所有专辑
+${locatorB_productsCategory_button_addCategory}    ${locatorB_button_add}    #商品专辑页的新增专辑按钮
+${locatorB_productsCategory_icon_del}    dom:document.querySelectorAll(".djfont.delete")[0]    #商品专辑的第一个删除icon
+${locatorB_productsCategory_button_delProducts}    dom:document.querySelectorAll(".batchSelectTable_btn___40HNR")[0]    #通过checkbox选中所有专辑之后，提供的删除button
+${locatorB_productsCategory_popUps_firstCategory}    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]    #"要添加到的专辑"弹窗的第一条条目
+${locatorB_productsCategory_checkbox_chooseCategories}    ${locatorB_checkbox00}    #点击checkbox按钮，选中当前页面所有专辑
 # locator_productsComment
 # content
-${content_products_all}    全部
-${content_products_empty}    暂无数据
-${content_products_new}    新建商品
-${content_products_title}    全部
-${content_products_addTitle}    此处为商品标题
-${content_products_addSubTitle}    此处为商品副标题
-${content_products_addPrice}    999
-${content_products_addRawPrice}    9999
-${content_products_addWeight}    1
-${content_products_addSku}    100
-${content_products_addBarcode}    9787115470416
-${content_products_addSupplier}    供应商A
-${content_products_input_price}    请输入价格
-${content_products_AddTags}    TagA
-${content_products_tips_save_ok}    保存成功
-${content_products_tips_select_products}    请至少选择一个商品
-${content_products_tips_saving}    页面有未保存内容
-${content_store_name}     test
-${content_payment_failed}     Order submission failed
-${content_products_tips_shelf}    是否上架
-${content_products_tips_shelf_ok}    上架成功
+${contentB_products_all}    全部
+${contentB_products_empty}    暂无数据
+${contentB_products_new}    新建商品
+${contentB_products_title}    全部
+${contentB_products_addTitle}    此处为商品标题
+${contentB_products_addSubTitle}    此处为商品副标题
+${contentB_products_addPrice}    999
+${contentB_products_addRawPrice}    9999
+${contentB_products_addWeight}    1
+${contentB_products_addSku}    100
+${contentB_products_addBarcode}    9787115470416
+${contentB_products_addSupplier}    供应商A
+${contentB_products_input_price}    请输入价格
+${contentB_products_AddTags}    TagA
+${contentB_products_tips_save_ok}    保存成功
+${contentB_products_tips_select_products}    请至少选择一个商品
+${contentB_products_tips_saving}    页面有未保存内容
+${contentB_payment_failed}     Order submission failed
+${contentB_products_tips_shelf}    是否上架
+${contentB_products_tips_shelf_ok}    上架成功
 
 # file
 ${file_products_template}    ${CURDIR}/xlsx/product_template.xlsx    # 添加单个商品模版文件

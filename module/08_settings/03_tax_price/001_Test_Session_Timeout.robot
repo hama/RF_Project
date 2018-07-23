@@ -17,5 +17,5 @@ Resource          ../../../resources/kw_browser.robot
     [Tags]    P1
     Go To Tax Price Page
     Delete All Cookies
-    Wait And Click Element    ${locator_setting}
+    Wait And Click Element    ${locatorB_setting}
     Page Should Contain    登录我的店匠商铺

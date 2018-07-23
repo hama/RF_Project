@@ -10,7 +10,7 @@ Resource          var_order.robot
 *** Keywords ***
 Quit Order Setp
     Sleep    1
-    Click Element    ${locator_order}
+    Click Element    ${locatorB_order}
     Sleep    1
 
 Add Alerady Mission Order

@@ -11,6 +11,7 @@ Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
+Resource          ../../../resources/kw_checkout.robot
 Library           customLibrary
 
 *** Variables ***
@@ -25,14 +26,14 @@ checkout121
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等，并且当前满减活动的优惠金额必须是最大的，否则会按照最大的来算--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
+    Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     Select_Order_Page    ${title}
     #返回后台修改该商品参与的满减活动的优惠内容
     Select Window    店匠科技
     Modify_First_Full_Reduction
-    Select Window    title=${content_store_name}
+    Select Window    title=${user_default_domain}
     Complete_Order_Message
     #验证优惠的金额还是之前的大小
     Wait And Click Element    dom:document.querySelectorAll(".icon-card-hd-shouhui")[0]    # 点击查看支付明细

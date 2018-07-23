@@ -19,14 +19,14 @@ products034
     #上架一个商品
     Click_First_Product_And_Click_Batch_Menu
     #选择上架
-    Assign Id To Element    ${locator_productsMgmt_dropdown_onShelf}    btn
+    Assign Id To Element    ${locatorB_productsMgmt_select_onShelf}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps_content}
+    Wait Until Element Is Visible    ${locatorB_products_popUps_content}
     #点击确定
-    Wait And Click Element    ${locator_products_button_confirm}
+    Wait And Click Element    ${locatorB_products_button_confirm}
     Sleep    3
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
     #比较class
@@ -42,12 +42,12 @@ products035
     ${should_class}    Execute Javascript    return document.querySelectorAll(".ant-switch")[0].getAttribute("class")
     Click_First_Product_And_Click_Batch_Menu
     #选择上架
-    Assign Id To Element    ${locator_productsMgmt_dropdown_onShelf}    btn
+    Assign Id To Element    ${locatorB_productsMgmt_select_onShelf}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps_content}
+    Wait Until Element Is Visible    ${locatorB_products_popUps_content}
     #点击取消
     Click Element    dom:document.querySelectorAll(".cancel___Nh0a2")[0]
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
@@ -62,14 +62,14 @@ products036
     #下架一个商品
     Click_First_Product_And_Click_Batch_Menu
     #选择下架
-    Assign Id To Element    ${locator_productsMgmt_dropdown_offShelf}    btn
+    Assign Id To Element    ${locatorB_productsMgmt_select_offShelf}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps_content}
+    Wait Until Element Is Visible    ${locatorB_products_popUps_content}
     #点击确定
-    Wait And Click Element    ${locator_products_button_confirm}
+    Wait And Click Element    ${locatorB_products_button_confirm}
     Sleep    3
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
     #比较class
@@ -85,12 +85,12 @@ products037
     ${should_class}    Execute Javascript    return document.querySelectorAll(".ant-switch")[0].getAttribute("class")
     Click_First_Product_And_Click_Batch_Menu
     #选择下架
-    Assign Id To Element    ${locator_productsMgmt_dropdown_offShelf}    btn
+    Assign Id To Element    ${locatorB_productsMgmt_select_offShelf}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps_content}
+    Wait Until Element Is Visible    ${locatorB_products_popUps_content}
     #点击取消
     Wait And Click Element    dom:document.querySelectorAll(".cancel___Nh0a2")[0]
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
@@ -104,21 +104,21 @@ products039
     [Tags]    P0
     #取消商品删除
     #选中第一个商品
-    Wait Until Page Contains Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
-    Click Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
     #获取此商品的名称
-    ${name}    Get Text    ${locator_productsMgmt_text_firstProductName}
+    ${name}    Get Text    ${locatorB_productsMgmt_text_firstProductName}
     #点击批量操作菜单
-    Wait And Click Element    ${locator_productsMgmt_dropdown_batchOperations}
+    Wait And Click Element    ${locatorB_productsMgmt_select_batchOperations}
     #选择删除商品
-    Assign Id To Element    ${locator_productsMgmt_dropdown_batchDel}    btn
+    Assign Id To Element    ${locatorB_productsMgmt_select_batchDel}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps_content}
+    Wait Until Element Is Visible    ${locatorB_products_popUps_content}
     #点击取消
-    Wait And Click Element    ${locator_products_button_cancel}
+    Wait And Click Element    ${locatorB_products_button_cancel}
     #Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
     #验证当前页面应该含有该商品名称
     #Page Should Contain    ${name}
@@ -130,21 +130,21 @@ products038
     #店铺中含有多个名称相同的商品，影响case运行!!!!!!!!!!!!!!!!!!!!
     #商品删除
     #选中第一个商品
-    Wait Until Page Contains Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
-    Click Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
     #获取此商品的名称
-    ${name}    Get Text    ${locator_productsMgmt_text_firstProductName}
+    ${name}    Get Text    ${locatorB_productsMgmt_text_firstProductName}
     #点击批量操作菜单
-    Wait And Click Element    ${locator_productsMgmt_dropdown_batchOperations}
+    Wait And Click Element    ${locatorB_productsMgmt_select_batchOperations}
     #选择删除商品
-    Assign Id To Element    ${locator_productsMgmt_dropdown_batchDel}    btn
+    Assign Id To Element    ${locatorB_productsMgmt_select_batchDel}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps_content}
+    Wait Until Element Is Visible    ${locatorB_products_popUps_content}
     #点击确定
-    Wait And Click Element    ${locator_popUps_button_middle}
+    Wait And Click Element    ${locatorB_popUps_button_middle}
     #Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
     #Sleep    3
     #验证当前页面不应该含有该商品名称

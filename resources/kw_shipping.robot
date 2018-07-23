@@ -22,7 +22,7 @@ Add Shipping
     [Documentation]    添加物流
     ${name}    salt
     Go To Shipping Page
-    Wait And click element    ${locator_shipping_add_shipping}
+    Wait And click element    ${locatorB_shipping_add_shipping}
     Wait And input text    id:name    ${name}    #.物流名称
     Wait And click button    id:test_shipping_country_add_btn
     Wait And click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
@@ -51,7 +51,7 @@ Add Shipping China
     [Documentation]    添加中国的物流
     ${name}    salt
     Go To Shipping Page
-    Wait And click element    ${locator_shipping_add_shipping}
+    Wait And click element    ${locatorB_shipping_add_shipping}
     Wait And input text    id:name    ${name}    #.物流名称
     Wait And click button    id:test_shipping_country_add_btn
     Wait And click element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[2]
@@ -81,7 +81,7 @@ Add Other Country
     [Documentation]    添加其他国家物流
     ${name}    salt
     Go To Shipping Page
-    Wait And click element    ${locator_shipping_add_shipping}
+    Wait And click element    ${locatorB_shipping_add_shipping}
     Wait And input text    id:name    ${name}    #.物流名称
     Wait And click button    id:test_shipping_country_add_btn
     Sleep    1
@@ -108,17 +108,17 @@ Add Other Country
 Delete Shipping
     [Documentation]    删除物流
     Go To Shipping Page
-    Wait And Click Element    ${locator_shipping_first_element}
-    Wait Until Element Is Visible    ${locator_shipping_add_country}
+    Wait And Click Element    ${locatorB_shipping_first_element}
+    Wait Until Element Is Visible    ${locatorB_shipping_add_country}
     Sleep    1
     Execute JavaScript    return document.getElementById("dj").scrollTo(0,10000)
-    Wait And Click Element    ${locator_shipping_del_shipping}
+    Wait And Click Element    ${locatorB_shipping_del_shipping}
     Wait And Click Element    dom:document.querySelectorAll("button")[7]
     Sleep    1
     Location Should Be    ${url_shipping}
 
 Quit Adding Shipping
-    Wait And Click Element    ${locator_setting_shipping}
+    Wait And Click Element    ${locatorB_setting_shipping}
     Alert Should Be Present
 
 Common Setp
@@ -128,33 +128,33 @@ Common Setp
 
 Quantity All Setp
     [Documentation]    回到添加按钮页面
-    Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    ${locator_shipping_add_quantity_btn}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_quantity_btn}
     Sleep    1
 
 Quit All Shipping
     [Documentation]    点击页面弹出的确定回到设置按钮页面
-    Wait And Click Element    ${locator_setting_shipping}
+    Wait And Click Element    ${locatorB_setting_shipping}
     Sleep    1
     Alert Should Be Present
 
 Quit All Setp
     [Documentation]    回到设置物流按钮页面
-    Wait And Click Element    ${locator_setting_shipping}
+    Wait And Click Element    ${locatorB_setting_shipping}
     Sleep    1
 
 Quit Add Country
     [Documentation]    添加国家页面
-    Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    ${locator_shipping_add_country}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_country}
     Sleep    1
 
 Quit Add Price Shipping
     [Documentation]    添加价格运费页面
-    Wait And Click Element    ${locator_shipping_add_shipping}
-    Wait And Click Element    ${locator_shipping_add_price_btn}
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_price_btn}
     Sleep    1
 
 Wait Setp
     [Documentation]    等待
-    Wait Until Element Is Visible    ${locator_shipping_add_country}
+    Wait Until Element Is Visible    ${locatorB_shipping_add_country}

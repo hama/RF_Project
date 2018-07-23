@@ -19,7 +19,7 @@ Login With User
     ${href}=    Execute JavaScript    return window.location.href
     ${has_login}=    Execute JavaScript    return '${href}'==='${url_home_page}'
     Run Keyword Unless    ${has_login}    Input Domain    ${domain}
-    Wait Until Element Is Visible    ${locator_setting}
+    Wait Until Element Is Visible    ${locatorB_setting}
     log    Login Success
 
 Input Domain
@@ -29,18 +29,18 @@ Input Domain
 
 Go To Setting Page
     [Documentation]    跳转到设置页面
-    Wait And Click Element    ${locator_setting}
+    Wait And Click Element    ${locatorB_setting}
 
 Go To Products Page
     [Documentation]    跳转到商品页面
-    Wait And Click Element    ${locator_products}
-    Wait Until Page Contains    ${content_products_all}
+    Wait And Click Element    ${locatorB_products}
+    Wait Until Page Contains    ${contentB_products_all}
     Location Should Be    ${url_products}
     Sleep    1
 
 Go To Marketing Page
     [Documentation]    跳转到营销页面
-    Wait And Click Element    ${locator_marketing}
+    Wait And Click Element    ${locatorB_marketing}
     Sleep    2
     #点击满减活动
     #Wait And Click Element    id:test_marketing_substraction
@@ -48,30 +48,30 @@ Go To Marketing Page
 
 Go To Order Page
     [Documentation]    跳转到订单页面
-    Wait And Click Element    ${locator_order}
-    Wait Until Page Contains    ${content_order_title}
+    Wait And Click Element    ${locatorB_order}
+    Wait Until Page Contains    ${contentB_order_title}
     Location Should Be    ${url_order}
 
 Go To Tax Price Page
     [Documentation]    跳转到税费页面
-    Wait Until Element Is Visible    ${locator_setting}
+    Wait Until Element Is Visible    ${locatorB_setting}
     # 若设置按钮没展开，则展开设置按钮
     ${unvisible}=    Execute Javascript    return document.querySelectorAll('a[href="/taxPrice"]')[0]===undefined
-    Run Keyword If    ${unvisible}    Wait And Click Element    ${locator_setting}
-    Wait And Click Element    ${locator_setting_taxPrice}
+    Run Keyword If    ${unvisible}    Wait And Click Element    ${locatorB_setting}
+    Wait And Click Element    ${locatorB_setting_taxPrice}
     Location Should Be    ${url_tax_price}
 
 Go To Shipping Page
     [Documentation]    跳转到物流页面
     Sleep    2.5
-    Wait Until Element Is Visible    ${locator_setting}
+    Wait Until Element Is Visible    ${locatorB_setting}
     # 若设置按钮没展开，则展开设置按钮
     ${unvisible}=    Execute Javascript    return document.querySelectorAll('a[href="/shipping"]')[0]===undefined
-    Run Keyword If    ${unvisible}    Wait And Click Element    ${locator_setting}
-    Wait And Click Element    ${locator_setting_shipping}
-    Wait Until Element Is Visible    ${locator_shipping_add_shipping}
-    Page Should Contain    ${content_shipping_tab1}
-    Page Should Contain    ${content_shipping_tab2}
+    Run Keyword If    ${unvisible}    Wait And Click Element    ${locatorB_setting}
+    Wait And Click Element    ${locatorB_setting_shipping}
+    Wait Until Element Is Visible    ${locatorB_shipping_add_shipping}
+    Page Should Contain    ${contentB_shipping_tab1}
+    Page Should Contain    ${contentB_shipping_tab2}
     Location Should Be    ${url_shipping}
 
 Wait And Input Text

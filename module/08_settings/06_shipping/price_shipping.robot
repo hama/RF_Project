@@ -16,8 +16,8 @@ shipping029
     #.check button
     Go To Shipping Page
     Quantity All Setp
-    page should contain button    ${locator_shipping_freight_save}
-    Wait And Click Element    ${locator_shipping_country_close_btn}
+    page should contain button    ${locatorB_shipping_freight_save}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Setp
 
 shipping032
@@ -26,10 +26,10 @@ shipping032
     Go To Shipping Page
     Quit Add Price Shipping
     #.输入名称
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
-    input text    ${locator_shipping_freight_first_input}    价格运费
-    Page Should Contain Element    ${locator_shipping_freight_first_input}
-    Wait And Click Element    ${locator_shipping_country_close_btn}
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
+    input text    ${locatorB_shipping_freight_first_input}    价格运费
+    Page Should Contain Element    ${locatorB_shipping_freight_first_input}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Setp
 
 shipping033
@@ -38,10 +38,10 @@ shipping033
     Go To Shipping Page
     Quit Add Price Shipping
     #.输入名称
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
-    input text    ${locator_shipping_freight_first_input}    123
-    Page Should Contain Element    ${locator_shipping_freight_first_input}
-    Wait And Click Element    ${locator_shipping_country_close_btn}
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
+    input text    ${locatorB_shipping_freight_first_input}    123
+    Page Should Contain Element    ${locatorB_shipping_freight_first_input}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Setp
 
 shipping034
@@ -50,11 +50,11 @@ shipping034
     #.add    transport price    check
     Go To Shipping Page
     Quit Add Price Shipping
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
-    input text    ${locator_shipping_freight_first_input}    价格运费
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
+    input text    ${locatorB_shipping_freight_first_input}    价格运费
     sleep    1.5
-    Wait And Click Element    ${locator_shipping_freight_save}
-    page should contain element    ${locator_shipping_freight_content_elm}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+    page should contain element    ${locatorB_shipping_freight_content_elm}
     Quit All Shipping
 
 shipping035
@@ -62,12 +62,12 @@ shipping035
     [Tags]    P1
     Go To Shipping Page
     Quit Add Price Shipping
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
     ${str}    set variable    sssssssssssssssssssssssssssssssssssssssssssssssss
-    input text    ${locator_shipping_freight_first_input}    ${str}
+    input text    ${locatorB_shipping_freight_first_input}    ${str}
     sleep    1.5
-    Wait And Click Element    ${locator_shipping_freight_save}
-    page should contain element    ${locator_shipping_freight_content_elm}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+    page should contain element    ${locatorB_shipping_freight_content_elm}
     Quit All Shipping
 
 shipping036
@@ -75,12 +75,12 @@ shipping036
     [Tags]    P1
     Go To Shipping Page
     Quit Add Price Shipping
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
     ${str}    set variable    ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-    input text    ${locator_shipping_freight_first_input}    ${str}
+    input text    ${locatorB_shipping_freight_first_input}    ${str}
     sleep    1.5
-    page should contain element    ${locator_shipping_freight_error_elm}
-    Wait And Click Element    ${locator_shipping_country_close_btn}
+    page should contain element    ${locatorB_shipping_freight_error_elm}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Setp
 
 shipping040
@@ -89,12 +89,12 @@ shipping040
     Go To Shipping Page
     Quit Add Price Shipping
     sleep    1
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
-    input text    ${locator_shipping_freight_first_input}    价格运费
-    input text    ${locator_shipping_description}    sssssssssssssssssssssssssddddddddddssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
+    input text    ${locatorB_shipping_freight_first_input}    价格运费
+    input text    ${locatorB_shipping_description}    sssssssssssssssssssssssssddddddddddssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
-    page should contain element    ${locator_shipping_freight_error_elm}
-    Wait And Click Element    ${locator_shipping_country_close_btn}
+    page should contain element    ${locatorB_shipping_freight_error_elm}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Setp
 
 shipping041
@@ -103,12 +103,12 @@ shipping041
     Go To Shipping Page
     Quit Add Price Shipping
     sleep    1
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
-    input text    ${locator_shipping_freight_first_input}    价格运费
-    input text    ${locator_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
+    input text    ${locatorB_shipping_freight_first_input}    价格运费
+    input text    ${locatorB_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
-    Wait And Click Element    ${locator_shipping_freight_save}
-    page should contain element    ${locator_shipping_freight_content_elm}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+    page should contain element    ${locatorB_shipping_freight_content_elm}
     Quit All Shipping
 
 shipping043
@@ -117,14 +117,14 @@ shipping043
     Go To Shipping Page
     Quit Add Price Shipping
     sleep    1
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
-    input text    ${locator_shipping_freight_first_input}    价格运费
-    input text    ${locator_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
+    input text    ${locatorB_shipping_freight_first_input}    价格运费
+    input text    ${locatorB_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
-    input text    ${locator_shipping_range_min}    123456789012
-    Wait And Click Element    ${locator_shipping_freight_save}
-    page should contain element    ${locator_shipping_freight_error_elm}
-    Wait And Click Element    ${locator_shipping_country_close_btn}
+    input text    ${locatorB_shipping_range_min}    123456789012
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+    page should contain element    ${locatorB_shipping_freight_error_elm}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Setp
 
 shipping044
@@ -133,14 +133,14 @@ shipping044
     Go To Shipping Page
     Quit Add Price Shipping
     sleep    1
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
-    input text    ${locator_shipping_freight_first_input}    价格运费
-    input text    ${locator_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
+    input text    ${locatorB_shipping_freight_first_input}    价格运费
+    input text    ${locatorB_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
-    input text    ${locator_shipping_range_max}    123456789012
-    Wait And Click Element    ${locator_shipping_freight_save}
-    page should contain element    ${locator_shipping_freight_error_elm}
-    Wait And Click Element    ${locator_shipping_country_close_btn}
+    input text    ${locatorB_shipping_range_max}    123456789012
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+    page should contain element    ${locatorB_shipping_freight_error_elm}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Setp
 
 shipping046
@@ -149,14 +149,14 @@ shipping046
     Go To Shipping Page
     Quit Add Price Shipping
     sleep    1
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
-    input text    ${locator_shipping_freight_first_input}    价格运费
-    input text    ${locator_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
+    input text    ${locatorB_shipping_freight_first_input}    价格运费
+    input text    ${locatorB_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
-    input text    ${locator_shipping_range_min}    10
-    input text    ${locator_shipping_range_max}    100
-    Wait And Click Element    ${locator_shipping_freight_save}
-    page should contain element    ${locator_shipping_freight_content_elm}
+    input text    ${locatorB_shipping_range_min}    10
+    input text    ${locatorB_shipping_range_max}    100
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+    page should contain element    ${locatorB_shipping_freight_content_elm}
     Quit All Shipping
 
 shipping047
@@ -165,20 +165,20 @@ shipping047
     Go To Shipping Page
     Quit Add Price Shipping
     sleep    1
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
-    input text    ${locator_shipping_freight_first_input}    价格运费
-    input text    ${locator_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
+    input text    ${locatorB_shipping_freight_first_input}    价格运费
+    input text    ${locatorB_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
     ${min}    set variable    100
     ${max}    set variable    10
-    input text    ${locator_shipping_range_min}    ${min}
-    input text    ${locator_shipping_range_max}    ${max}
+    input text    ${locatorB_shipping_range_min}    ${min}
+    input text    ${locatorB_shipping_range_max}    ${max}
     Sleep    1
-    Input Text    ${locator_shipping_price}    1
-    ${data}    get value    ${locator_shipping_range_max}
+    Input Text    ${locatorB_shipping_price}    1
+    ${data}    get value    ${locatorB_shipping_range_max}
     ${new_max}    evaluate    ${min}+1
     Should Be True    ${data}==${new_max}
-    Wait And Click Element    ${locator_shipping_country_close_btn}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Setp
 
 shipping048
@@ -187,20 +187,20 @@ shipping048
     Go To Shipping Page
     Quit Add Price Shipping
     sleep    1
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
-    input text    ${locator_shipping_freight_first_input}    价格运费
-    input text    ${locator_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
+    input text    ${locatorB_shipping_freight_first_input}    价格运费
+    input text    ${locatorB_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
     ${min}    set variable    200
     ${max}    set variable    100
-    input text    ${locator_shipping_range_max}    ${max}
-    input text    ${locator_shipping_range_min}    ${min}
-    Input Text    ${locator_shipping_price}    1
+    input text    ${locatorB_shipping_range_max}    ${max}
+    input text    ${locatorB_shipping_range_min}    ${min}
+    Input Text    ${locatorB_shipping_price}    1
     sleep    1
-    ${data}    get value    ${locator_shipping_range_min}
+    ${data}    get value    ${locatorB_shipping_range_min}
     ${new_min}    evaluate    ${max}-1
     Should Be True    ${data}==${new_min}
-    Wait And Click Element    ${locator_shipping_country_close_btn}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Setp
 
 shipping049
@@ -209,18 +209,18 @@ shipping049
     Go To Shipping Page
     Quit Add Price Shipping
     sleep    1
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
-    input text    ${locator_shipping_freight_first_input}    价格运费
-    input text    ${locator_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
+    input text    ${locatorB_shipping_freight_first_input}    价格运费
+    input text    ${locatorB_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
     ${min}    set variable    200
     ${max}    set variable    100
-    input text    ${locator_shipping_range_max}    ${max}
-    input text    ${locator_shipping_range_min}    ${min}
+    input text    ${locatorB_shipping_range_max}    ${max}
+    input text    ${locatorB_shipping_range_min}    ${min}
     input text    id:rate_amount    ${max}
     sleep    1.5
     page should not contain checkbox    execute javascript    return document.getElementsByClassName("ant-checkbox-input")[0]
-    Wait And Click Element    ${locator_shipping_country_close_btn}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Setp
 
 shipping052
@@ -229,19 +229,19 @@ shipping052
     Go To Shipping Page
     Quit Add Price Shipping
     sleep    1
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
-    input text    ${locator_shipping_freight_first_input}    价格运费
-    input text    ${locator_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
+    input text    ${locatorB_shipping_freight_first_input}    价格运费
+    input text    ${locatorB_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
     ${min}    set variable    200
     ${max}    set variable    100
     ${ship}    set variable    991212313165656
-    input text    ${locator_shipping_range_max}    ${max}
-    input text    ${locator_shipping_range_min}    ${min}
+    input text    ${locatorB_shipping_range_max}    ${max}
+    input text    ${locatorB_shipping_range_min}    ${min}
     input text    id:rate_amount    ${ship}
     sleep    1.5
-    page should contain element    ${locator_shipping_freight_error_elm}
-    Wait And Click Element    ${locator_shipping_country_close_btn}
+    page should contain element    ${locatorB_shipping_freight_error_elm}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Setp
 
 shipping053
@@ -250,18 +250,18 @@ shipping053
     Go To Shipping Page
     Quit Add Price Shipping
     sleep    1
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
-    input text    ${locator_shipping_freight_first_input}    价格运费
-    input text    ${locator_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
+    input text    ${locatorB_shipping_freight_first_input}    价格运费
+    input text    ${locatorB_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
     ${min}    set variable    200
     ${max}    set variable    100
     ${ship}    set variable    100
-    input text    ${locator_shipping_range_max}    ${max}
-    input text    ${locator_shipping_range_min}    ${min}
+    input text    ${locatorB_shipping_range_max}    ${max}
+    input text    ${locatorB_shipping_range_min}    ${min}
     input text    id:rate_amount    ${ship}
     sleep    1.5
-    Wait And Click Element    ${locator_shipping_freight_save}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
     sleep    4
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
     ${res}    searchStrs    ${data}
@@ -274,17 +274,17 @@ shipping054
     Go To Shipping Page
     Quit Add Price Shipping
     sleep    1
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
-    input text    ${locator_shipping_freight_first_input}    价格运费
-    input text    ${locator_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
+    input text    ${locatorB_shipping_freight_first_input}    价格运费
+    input text    ${locatorB_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
     ${min}    set variable    200
     ${max}    set variable    100
-    input text    ${locator_shipping_range_max}    ${max}
-    input text    ${locator_shipping_range_min}    ${min}
-    execute javascript    ${locator_shipping_freight_free_freight_btn}
+    input text    ${locatorB_shipping_range_max}    ${max}
+    input text    ${locatorB_shipping_range_min}    ${min}
+    execute javascript    ${locatorB_shipping_freight_free_freight_btn}
     sleep    1.5
-    Wait And Click Element    ${locator_shipping_freight_save}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
     sleep    2
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
     ${res}    searchStrs    ${data}
@@ -297,17 +297,17 @@ shipping055
     Go To Shipping Page
     Quit Add Price Shipping
     sleep    1
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
-    input text    ${locator_shipping_freight_first_input}    价格运费
-    input text    ${locator_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
+    input text    ${locatorB_shipping_freight_first_input}    价格运费
+    input text    ${locatorB_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
     ${min}    set variable    200
     ${max}    set variable    100
-    input text    ${locator_shipping_range_max}    ${max}
-    input text    ${locator_shipping_range_min}    ${min}
-    execute javascript    ${locator_shipping_freight_free_freight_btn}
+    input text    ${locatorB_shipping_range_max}    ${max}
+    input text    ${locatorB_shipping_range_min}    ${min}
+    execute javascript    ${locatorB_shipping_freight_free_freight_btn}
     sleep    1.5
-    Wait And Click Element    ${locator_shipping_freight_save}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
     sleep    2
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[2].innerText
     Should Be True    '${data}'=='支持'
@@ -319,17 +319,17 @@ shipping056
     Go To Shipping Page
     Quit Add Price Shipping
     sleep    1
-    Wait Until Element Is Visible    ${locator_shipping_freight_save}
-    input text    ${locator_shipping_freight_first_input}    价格运费
-    input text    ${locator_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
+    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
+    input text    ${locatorB_shipping_freight_first_input}    价格运费
+    input text    ${locatorB_shipping_description}    sssssssssssssssssssssssssssssssssssssssssssssss
     sleep    1.5
     ${min}    set variable    200
     ${max}    set variable    100
-    input text    ${locator_shipping_range_max}    ${max}
-    input text    ${locator_shipping_range_min}    ${min}
+    input text    ${locatorB_shipping_range_max}    ${max}
+    input text    ${locatorB_shipping_range_min}    ${min}
     execute javascript    return document.querySelectorAll(".ant-checkbox-input")[1].click()    #.货到付款按钮
     sleep    1.5
-    Wait And Click Element    ${locator_shipping_freight_save}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
     sleep    2
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[2].innerText
     Should Be True    '${data}'=='不支持'

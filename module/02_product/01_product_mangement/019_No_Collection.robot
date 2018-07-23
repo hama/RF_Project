@@ -19,16 +19,16 @@ products058
     #验证无专辑数据时
     Click_First_Product_And_Click_Batch_Menu
     #选择添加到专辑
-    Assign Id To Element    ${locator_productsMgmt_dropdown_addtoCategory}    btn
+    Assign Id To Element    ${locatorB_productsMgmt_select_addtoCategory}    btn
     Set Focus To Element    btn
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locator_products_popUps_content}
+    Wait Until Element Is Visible    ${locatorB_products_popUps_content}
     #提示专辑暂无数据
     Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-table-placeholder")[0]
     ${title}    GetText    dom:document.querySelectorAll(".ant-table-placeholder")[0]
-    Should Be Equal As Strings    ${title}    ${content_products_empty}
+    Should Be Equal As Strings    ${title}    ${contentB_products_empty}
     Go TO    ${home_page}
 
 *** Keywords ***

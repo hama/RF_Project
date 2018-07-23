@@ -11,6 +11,7 @@ Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
+Resource          ../../../resources/kw_checkout.robot
 
 *** Variables ***
 ${name}           ceshi    # 满减活动的名称
@@ -23,7 +24,7 @@ checkout154
     [Tags]    P0
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
+    Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     Select_Order_Page    ${title}
@@ -33,7 +34,7 @@ checkout154
     #提前结束该满减活动
     Select Window    店匠科技
     End_First_Full_Reduction
-    Select Window    title=${content_store_name}
+    Select Window    title=${user_default_domain}
     #点击pay now
     Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
     #显示支付成功

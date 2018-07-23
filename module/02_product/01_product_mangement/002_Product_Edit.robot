@@ -17,13 +17,13 @@ products023
     [Documentation]    测试已有商品的编辑，保存生效
     [Tags]    P0
     Sleep    2
-    Wait And Click Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
     # 编辑商品
     ${new_title}=    Evaluate    random.randint(0, 100)    modules=random
-    Wait And Input Text    ${locator_productsNew_input_addTitle}    ${new_title}
+    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${new_title}
     # 验证编辑页面排版
-    Wait And Click Element    ${locator_products_button_confirm}
-    Wait Until Page Contains    ${content_products_tips_save_ok}
+    Wait And Click Element    ${locatorB_products_button_confirm}
+    Wait Until Page Contains    ${contentB_products_tips_save_ok}
     Sleep    1
     Go To Products Page
     Sleep    5
@@ -34,33 +34,33 @@ products025
     [Documentation]    测试已有商品的编辑，保存生效
     [Tags]    P0
     Sleep    2
-    Wait And Click Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
     # 编辑商品
     ${new_price}=    Evaluate    random.randint(0, 100)    modules=random
-    Wait And Input Text    ${locator_productsNew_input_addPrice}    ${new_price}
+    Wait And Input Text    ${locatorB_productsNew_input_addPrice}    ${new_price}
     # 验证编辑页面排版
-    Wait And Click Element    ${locator_products_button_confirm}
-    Wait Until Page Contains    ${content_products_tips_save_ok}
+    Wait And Click Element    ${locatorB_products_button_confirm}
+    Wait Until Page Contains    ${contentB_products_tips_save_ok}
     Sleep    1
     Go To Products Page
     Sleep    5
-    Wait Until Page Contains Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
-    Wait And Click Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
     Sleep    3
-    ${price}=    Get Value    ${locator_productsNew_input_addPrice}
+    ${price}=    Get Value    ${locatorB_productsNew_input_addPrice}
     Should Be Equal As Strings    ${new_price}    ${price}
 
 products026
     [Documentation]    测试已有商品的编辑，保存生效
     [Tags]    P0
     Sleep    2
-    Wait And Click Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
     # 编辑商品
     ${new_sku}=    Evaluate    random.randint(0, 100)    modules=random
-    Wait And Input Text    ${locator_productsNew_input_addSku}    ${new_sku}
+    Wait And Input Text    ${locatorB_productsNew_input_addSku}    ${new_sku}
     # 验证编辑页面排版
-    Wait And Click Element    ${locator_products_button_confirm}
-    Wait Until Page Contains    ${content_products_tips_save_ok}
+    Wait And Click Element    ${locatorB_products_button_confirm}
+    Wait Until Page Contains    ${contentB_products_tips_save_ok}
     Sleep    1
     Go To Products Page
     Sleep    5
@@ -71,14 +71,14 @@ products029
     [Documentation]    测试已有商品的编辑，未保存退出，弹窗提示是否退出，选择 是
     [Tags]    P0
     Sleep    2
-    Wait And Click Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
     # 记录商品原始名称
-    ${old_sku}    Get Text    ${locator_productsNew_input_addSku}
+    ${old_sku}    Get Text    ${locatorB_productsNew_input_addSku}
     # 编辑商品
     ${new_sku}=    Evaluate    random.randint(0, 100)    modules=random
-    Wait And Input Text    ${locator_productsNew_input_addSku}    ${new_sku}
+    Wait And Input Text    ${locatorB_productsNew_input_addSku}    ${new_sku}
     # 验证编辑页面排版
-    Wait And Click Element    ${locator_productsNew_button_back}
+    Wait And Click Element    ${locatorB_productsNew_button_back}
     Sleep    5
     Alert Should Be Present
     Go To Products Page
@@ -89,18 +89,18 @@ products031
     [Documentation]    测试已有商品的编辑，未保存退出，弹窗提示是否退出，选择 否
     [Tags]    P0
     Sleep    2
-    Wait And Click Element    ${locator_productsMgmt_checkbox_chooseFirstProducet}
+    Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
     # 记录商品原始名称
-    ${old_sku}    Get Text    ${locator_productsNew_input_addSku}
+    ${old_sku}    Get Text    ${locatorB_productsNew_input_addSku}
     # 编辑商品
     ${new_sku}    Evaluate    random.randint(0, 100)    modules=random
-    Wait And Input Text    ${locator_productsNew_input_addSku}    ${new_sku}
+    Wait And Input Text    ${locatorB_productsNew_input_addSku}    ${new_sku}
     # 验证编辑页面排版
-    Wait And Click Element    ${locator_productsNew_button_back}
+    Wait And Click Element    ${locatorB_productsNew_button_back}
     Sleep    5
     Handle Alert    action=DISMISS
     # 正常退出
-    Wait And Click Element    ${locator_productsNew_button_back}
+    Wait And Click Element    ${locatorB_productsNew_button_back}
     Sleep    5
     Alert Should Be Present
 

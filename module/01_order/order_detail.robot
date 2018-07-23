@@ -22,25 +22,25 @@ order072
     Go To    ${home_page}
     Sleep    1
     Order Setp
-    Wait Until Element Is Visible    ${locator_order_first_btn}
+    Wait Until Element Is Visible    ${locatorB_order_first_btn}
     Click Button    添加运单
     Sleep    2
-    Wait And Click Element    ${locator_order_four_btn}
+    Wait And Click Element    ${locatorB_order_four_btn}
     Sleep    1.5
     Go To Order Page
     sleep    1
-    Wait Until Element Is Visible    ${locator_order}
+    Wait Until Element Is Visible    ${locatorB_order}
     Order Setp
-    page should contain element    ${locator_order_detail_element}
+    page should contain element    ${locatorB_order_detail_element}
     ${input}    set variable    123456
     ${res}    execute javascript    return document.querySelectorAll(".ant-col-3 p")[1].innerHTML
     Sleep    1.3
     Should Be True    '${res}'=='已发货'
     Sleep    1.5
-    Wait And Click Element    ${locator_order_dateil_update_send}
-    input text    ${locator_order_detail_nums}    ${input}
-    Wait And Click Element    ${locator_order_three_btn}
-    page should contain element    ${locator_order_waybill_information}
+    Wait And Click Element    ${locatorB_order_dateil_update_send}
+    input text    ${locatorB_order_detail_nums}    ${input}
+    Wait And Click Element    ${locatorB_order_three_btn}
+    page should contain element    ${locatorB_order_waybill_information}
     Quit Order Setp
 
 order073
@@ -50,12 +50,12 @@ order073
     Go To    ${home_page}
     sleep    1
     Order Setp
-    page should contain element    ${locator_order_detail_element}
-    Wait And Click Element    ${locator_order_first_btn}
-    Wait And Click Element    ${locator_order_four_btn}
-    Wait And Click Element    ${locator_order_dateil_update_send}
-    Wait And Click Element    ${locator_order_two_btn}
-    page should not contain    ${locator_order_waybill_information}
+    page should contain element    ${locatorB_order_detail_element}
+    Wait And Click Element    ${locatorB_order_first_btn}
+    Wait And Click Element    ${locatorB_order_four_btn}
+    Wait And Click Element    ${locatorB_order_dateil_update_send}
+    Wait And Click Element    ${locatorB_order_two_btn}
+    page should not contain    ${locatorB_order_waybill_information}
     #Execute JavaScript    return document.getElementById("dj").scrollTo(0,10000)
     Quit Order Setp
 
@@ -66,12 +66,12 @@ order074
     Go To    ${home_page}
     sleep    1
     Order Setp
-    page should contain element    ${locator_order_detail_element}
-    Wait And Click Element    ${locator_order_first_btn}
-    Wait And Click Element    ${locator_order_four_btn}
-    Wait And Click Element    ${locator_order_dateil_update_send}
-    Wait And Click Element    ${locator_order_three_btn}
-    page should not contain    ${locator_order_waybill_information}
+    page should contain element    ${locatorB_order_detail_element}
+    Wait And Click Element    ${locatorB_order_first_btn}
+    Wait And Click Element    ${locatorB_order_four_btn}
+    Wait And Click Element    ${locatorB_order_dateil_update_send}
+    Wait And Click Element    ${locatorB_order_three_btn}
+    page should not contain    ${locatorB_order_waybill_information}
     Quit Order Setp
 
 order075
@@ -82,14 +82,14 @@ order075
     sleep    1
     Order Setp
     Sleep    3
-    Wait And Click Element    ${locator_order_first_btn}
-    Wait And Click Element    ${locator_order_four_btn}
+    Wait And Click Element    ${locatorB_order_first_btn}
+    Wait And Click Element    ${locatorB_order_four_btn}
     Execute JavaScript    return document.getElementById("dj").scrollTo(0,10000)
     sleep    2.5
-    Common Js Click    ${locator_order_settint_status}    2
+    Common Js Click    ${locatorB_order_settint_status}    2
     sleep    1
-    Page Should Contain element    ${locator_order_two_btn}
-    Wait And Click Element    ${locator_order_close_btn}
+    Page Should Contain element    ${locatorB_order_two_btn}
+    Wait And Click Element    ${locatorB_order_close_btn}
     Quit Order Setp
 
 order_detail_update_send_not
@@ -99,17 +99,17 @@ order_detail_update_send_not
     go to    ${home_page}
     sleep    1
     Order Setp
-    page should contain element    ${locator_order_detail_element}
+    page should contain element    ${locatorB_order_detail_element}
     ${input}    set variable    123456
     ${res}    execute javascript    return document.querySelectorAll(".ant-col-3 p")[1].innerHTML
     Sleep    1.3
     Should Be True    '${res}'=='未发货'
     click button    添加运单
     Sleep    2
-    Wait And Click Element    ${locator_order_four_btn}
+    Wait And Click Element    ${locatorB_order_four_btn}
     Wait And Click Element    dom:document.querySelectorAll(".tw-Updated")[0]
-    Input Text    ${locator_order_detail_nums}    ${input}
-    Wait And Click Element    ${locator_order_three_btn}
+    Input Text    ${locatorB_order_detail_nums}    ${input}
+    Wait And Click Element    ${locatorB_order_three_btn}
     Sleep    2
     page should contain element    dom:document.querySelectorAll(".label___oVKMA")[0]
     Quit Order Setp
@@ -120,21 +120,21 @@ order076
     Add Order
     go to    ${home_page}
     Order Setp
-    Wait Until Element Is Visible    ${locator_order_first_btn}
+    Wait Until Element Is Visible    ${locatorB_order_first_btn}
     Click Button    添加运单
     Sleep    2
-    Wait And Click Element    ${locator_order_four_btn}
+    Wait And Click Element    ${locatorB_order_four_btn}
     Go To Order Page
     sleep    1
     Order Setp
-    page should contain element    ${locator_order_detail_element}
+    page should contain element    ${locatorB_order_detail_element}
     Execute JavaScript    return document.getElementById("dj").scrollTo(0,10000)
     sleep    1.5
-    Common Js Click    ${locator_order_settint_status}    2
+    Common Js Click    ${locatorB_order_settint_status}    2
     sleep    1
-    Wait And Click Element    ${locator_order_three_btn}
+    Wait And Click Element    ${locatorB_order_three_btn}
     Sleep    1.5s
-    Page Should Contain Element    ${locator_order_first_btn}
+    Page Should Contain Element    ${locatorB_order_first_btn}
     Quit Order Setp
 
 order077
@@ -143,24 +143,24 @@ order077
     Add Order
     go to    ${home_page}
     Order Setp
-    Wait Until Element Is Visible    ${locator_order_first_btn}
+    Wait Until Element Is Visible    ${locatorB_order_first_btn}
     Click Button    添加运单
     Sleep    2
-    Wait And Click Element    ${locator_order_four_btn}
+    Wait And Click Element    ${locatorB_order_four_btn}
     Go To Order Page
     sleep    1
     Order Setp
-    page should contain element    ${locator_order_detail_element}
+    page should contain element    ${locatorB_order_detail_element}
     Execute JavaScript    return document.getElementById("dj").scrollTo(0,10000)
     sleep    1.5
-    Common Js Click    ${locator_order_settint_status}    2
+    Common Js Click    ${locatorB_order_settint_status}    2
     sleep    1
-    Wait And Click Element    ${locator_order_two_btn}
+    Wait And Click Element    ${locatorB_order_two_btn}
     sleep    1.5
-    Page Should Not Contain Element    ${locator_order_first_btn}
+    Page Should Not Contain Element    ${locatorB_order_first_btn}
     Quit Order Setp
 
 *** keywords ***
 Order Setp
-    Wait And Click Element    ${locator_order}
-    Wait And Click Element    ${locator_order_list_first_tr}
+    Wait And Click Element    ${locatorB_order}
+    Wait And Click Element    ${locatorB_order_list_first_tr}

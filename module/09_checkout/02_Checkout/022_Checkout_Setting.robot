@@ -11,6 +11,7 @@ Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
+Resource          ../../../resources/kw_checkout.robot
 
 *** Test Cases ***
 checkout136
@@ -18,7 +19,7 @@ checkout136
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
     #获取第一个商品名称
-    Assign id To Element    ${locator_productsMgmt_text_firstProductName}    title
+    Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #进入checkout页面
@@ -29,7 +30,7 @@ checkout136
     Select Window    店匠科技
     Modify_Set_Radio    3
     #跳回checkout页
-    Select Window    title=${content_store_name}
+    Select Window    title=${user_default_domain}
     #点击submit按钮
     Wait And Click Element    id:submitMbPay
     #进入支付页
