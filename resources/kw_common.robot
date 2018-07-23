@@ -113,8 +113,34 @@ Common Js Click
     [Documentation]    封装js点击方法
     Execute JavaScript    return document.querySelectorAll("${element}")[${index}].click()
 
-
 JS Get Element Length
     [Arguments]    ${element_locator}
     [Documentation]    封装的JS方法，返回元素集长度
     Execute Javascript    return ${element_locator}.length
+
+Set Tax Price
+    [Documentation]    封装设置税金方法,[element]:需要设置国家的中文名字(string),[numbers]:设置多少税金(int)
+    [Arguments]    ${element}    ${numbers}
+    Go To    ${home_page}    #.跳转主页
+    Go To Tax Price Page    #.进入税金主页
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
+    ${length}    Execute JavaScript    return document.querySelectorAll(".ant-table-tbody tr").length
+    :FOR    ${i}    IN RANGE    ${length}
+    \    ${index}    evaluate    ${i}+1
+    \    ${name}    Execute JavaScript    return document.querySelectorAll(".ant-table-tbody tr:nth-child(${index}) td div div p")[0].innerText
+    \    Run Keyword If    '${name}'=='${element}'    Execute JavaScript    return document.querySelectorAll(".ant-table-tbody tr:nth-child(${index}) td i")[0].click()
+    \    Run Keyword If    '${name}'=='${element}'    Input Text    dom:document.querySelectorAll('input')[0]    ${numbers}
+    \    Run Keyword If    '${name}'=='${element}'    Wait And Click Element    dom:document.querySelectorAll('button')[2]
+    Go To    ${home_page}
+
+
+
+Checkout Page Decoration Condition
+    [Documentation]    判断店铺是否装修
+    Go To    ${home_page}
+    Wait And Click Element    ${locator_store}
+    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
+    ${name}    Execute JavaScript    return document.querySelectorAll("button span")[1].innerText
+    Run keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    Run keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[5]
+

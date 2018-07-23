@@ -19,6 +19,7 @@ ${locatorB_checkout_card_img_btn}    dom:document.querySelectorAll("a[alt='bag']
 ${locatorB_checkout_member_btn}    dom:document.querySelectorAll("a[alt='account']")[0]    #.checkout顶部个人中心图标按钮
 
 #.checkout - address
+
 ${locatorB_checkout_address_btn}    dom:document.querySelectorAll(".address_btn")[0]    #.checkout点击by-now后的添加地址按钮
 ${locatorB_checkout_address_first_name}    dom:document.querySelectorAll("input[name='first_name']")[0]    #.添加地址后-first_name输入框
 ${locatorB_checkout_address_last_name}    dom:document.querySelectorAll("input[name='last_name']")[0]    #.添加地址后-last_name输入框
@@ -36,4 +37,8 @@ ${locatorB_checkout_address_save_address_btn}    dom:document.querySelectorAll("
 ${locatorB_checkout_address_save_checkout_btn}    id:submitMbPay    #.保存地址后的提交按钮
 ${locatorB_checkout_write_review}    dom:document.querySelectorAll(".review_write")[0]    #.checkout-留言按钮
 
-${locatorB_checkout_down_price_eml}    dom:document.querySelectorAll(".detail")[0]    #.checkout-底部价格元素
+${locator_checkout_down_price_eml}    dom:document.querySelectorAll(".detail")[0]    #.checkout-底部价格元素
+${locator_checkout_submit_save_btn}    id:submitPaymentMb    #.checkout-提交地址后的保存按钮
+${locator_checkout_payment_ipaylinks_elm}    dom:document.querySelectorAll("label[for='ipaylinks']")[0]    #.checkout-选择支付方式 ipaylinks 元素
+${locator_checkout_payment_cod_elm}    dom:document.querySelectorAll("label[for='cod']")[0]    #.checkout-选择支付方式 cod 元素
+
