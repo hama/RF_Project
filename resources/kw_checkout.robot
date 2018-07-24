@@ -70,9 +70,9 @@ Select_Order_Page
     #跳转到页面底部
     Execute Javascript    return document.querySelectorAll(".buy-now")[0].scrollIntoView()
     #点击submit
-    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
     #进入到填写订单信息页面
-    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
 
 Select_Order_Page_With_Sub_Product
     [Arguments]    ${title}
@@ -85,41 +85,41 @@ Select_Order_Page_With_Sub_Product
     #跳转到页面底部
     Execute Javascript    return document.querySelectorAll(".buy-now")[0].scrollIntoView()
     #点击submit
-    Wait And Click Element    dom:document.querySelectorAll(".buy-now")[0]
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
     #选中第一个规格属性
     Wait And Click Element    dom:document.querySelectorAll(".attribute-item")[0]
     #进入到填写订单信息页面
-    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
+    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
 
 Complete_Order_Message
     [Documentation]    点击添加地址按钮，填写信息，点击保存按钮，点击进入支付页
     #添加地址信息
     Wait And Click Element    id:addAddress
     #first name
-    Wait And Input Text    dom:document.querySelectorAll("input[name=first_name]")[0]    zc
+    Wait And Input Text    ${locatorB_checkout_address_first_name}    zc
     #last name
-    Wait And Input Text    dom:document.querySelectorAll("input[name=last_name]")[0]    l
+    Wait And Input Text    ${locatorB_checkout_address_last_name}    l
     #选择国家
-    Select From List By Index    id:shipping_country_id    1
+    Select From List By Index    ${locatorB_checkout_address_select_country}    1
     Sleep    2
     #选择身份
     Select From List By Index    id:shipping_zone_id    1
     #city
-    Wait And Input Text    dom:document.querySelectorAll("input[name=city]")[0]    shenzhen
+    Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
-    Wait And Input Text    dom:document.querySelectorAll("input[name=address]")[0]    hhh
+    Wait And Input Text    ${locatorB_checkout_address_add}    hhh
     #postal code
-    Wait And Input Text    dom:document.querySelectorAll("input[name=zip]")[0]    333000
+    Wait And Input Text    ${locatorB_checkout_address_zip}    333000
     #email
-    Wait And Input Text    dom:document.querySelectorAll("input[name=email]")[0]    1004714019@qq.com
+    Wait And Input Text    ${locatorB_checkout_address_email}    1004714019@qq.com
     #phone
-    Wait And Input Text    dom:document.querySelectorAll("input[name=phone]")[0]    15297989918
+    Wait And Input Text    ${locatorB_checkout_address_phone}    15297989918
     #company
-    Wait And Input Text    dom:document.querySelectorAll("input[name=company]")[0]    dianjiangkeji
+    Wait And Input Text    ${locatorB_checkout_address_company}    dianjiangkeji
     #保存填写的地址信息
-    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     #点击Submit按钮进入支付页
-    Wait And Click Element    id:submitMbPay
+    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Sleep    2
 
 Complete_Order_Message_Not_Submit
@@ -127,80 +127,80 @@ Complete_Order_Message_Not_Submit
     #添加地址信息
     Wait And Click Element    id:addAddress
     #first name
-    Wait And Input Text    dom:document.querySelectorAll("input[name=first_name]")[0]    zc
+    Wait And Input Text    ${locatorB_checkout_address_first_name}    zc
     #last name
-    Wait And Input Text    dom:document.querySelectorAll("input[name=last_name]")[0]    l
+    Wait And Input Text    ${locatorB_checkout_address_last_name}    l
     #选择国家
-    Select From List By Index    id:shipping_country_id    1
+    Select From List By Index    ${locatorB_checkout_address_select_country}    1
     Sleep    2
     #选择身份
     Select From List By Index    id:shipping_zone_id    1
     #city
-    Wait And Input Text    dom:document.querySelectorAll("input[name=city]")[0]    shenzhen
+    Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
-    Wait And Input Text    dom:document.querySelectorAll("input[name=address]")[0]    hhh
+    Wait And Input Text    ${locatorB_checkout_address_add}    hhh
     #postal code
-    Wait And Input Text    dom:document.querySelectorAll("input[name=zip]")[0]    333000
+    Wait And Input Text    ${locatorB_checkout_address_zip}    333000
     #email
-    Wait And Input Text    dom:document.querySelectorAll("input[name=email]")[0]    1004714019@qq.com
+    Wait And Input Text    ${locatorB_checkout_address_email}    1004714019@qq.com
     #phone
-    Wait And Input Text    dom:document.querySelectorAll("input[name=phone]")[0]    15297989918
+    Wait And Input Text    ${locatorB_checkout_address_phone}    15297989918
     #company
-    Wait And Input Text    dom:document.querySelectorAll("input[name=company]")[0]    dianjiangkeji
+    Wait And Input Text    ${locatorB_checkout_address_company}    dianjiangkeji
     #保存填写的地址信息
-    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
 
 Complete_Order_Message_Without_Phone
     [Documentation]    点击添加地址按钮，填写信息（只需填写邮箱），点击保存按钮，不点击进入支付页
     #添加地址信息
     Wait And Click Element    id:addAddress
     #first name
-    Wait And Input Text    dom:document.querySelectorAll("input[name=first_name]")[0]    zc
+    Wait And Input Text    ${locatorB_checkout_address_first_name}    zc
     #last name
-    Wait And Input Text    dom:document.querySelectorAll("input[name=last_name]")[0]    l
+    Wait And Input Text    ${locatorB_checkout_address_last_name}    l
     #选择国家
-    Select From List By Index    id:shipping_country_id    1
+    Select From List By Index    ${locatorB_checkout_address_select_country}    1
     Sleep    2
     #选择身份
     Select From List By Index    id:shipping_zone_id    1
     #city
-    Wait And Input Text    dom:document.querySelectorAll("input[name=city]")[0]    shenzhen
+    Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
-    Wait And Input Text    dom:document.querySelectorAll("input[name=address]")[0]    hhh
+    Wait And Input Text    ${locatorB_checkout_address_add}    hhh
     #postal code
-    Wait And Input Text    dom:document.querySelectorAll("input[name=zip]")[0]    333000
+    Wait And Input Text    ${locatorB_checkout_address_zip}    333000
     #email
-    Wait And Input Text    dom:document.querySelectorAll("input[name=email]")[0]    1004714019@qq.com
+    Wait And Input Text    ${locatorB_checkout_address_email}    1004714019@qq.com
     #company
-    Wait And Input Text    dom:document.querySelectorAll("input[name=company]")[0]    dianjiangkeji
+    Wait And Input Text    ${locatorB_checkout_address_company}    dianjiangkeji
     #保存填写的地址信息
-    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
 
 Complete_Order_Message_Without_Last_name
     [Documentation]    点击添加地址按钮，填写信息（只需填写first name），点击保存按钮，不点击进入支付页
     #添加地址信息
     Wait And Click Element    id:addAddress
     #first name
-    Wait And Input Text    dom:document.querySelectorAll("input[name=first_name]")[0]    zc
+    Wait And Input Text    ${locatorB_checkout_address_first_name}    zc
     #选择国家
-    Select From List By Index    id:shipping_country_id    1
+    Select From List By Index    ${locatorB_checkout_address_select_country}    1
     Sleep    2
     #选择身份
     Select From List By Index    id:shipping_zone_id    1
     #city
-    Wait And Input Text    dom:document.querySelectorAll("input[name=city]")[0]    shenzhen
+    Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
-    Wait And Input Text    dom:document.querySelectorAll("input[name=address]")[0]    hhh
+    Wait And Input Text    ${locatorB_checkout_address_add}    hhh
     #postal code
-    Wait And Input Text    dom:document.querySelectorAll("input[name=zip]")[0]    333000
+    Wait And Input Text    ${locatorB_checkout_address_zip}    333000
     #email
-    Wait And Input Text    dom:document.querySelectorAll("input[name=email]")[0]    1004714019@qq.com
+    Wait And Input Text    ${locatorB_checkout_address_email}    1004714019@qq.com
     #phone
-    Wait And Input Text    dom:document.querySelectorAll("input[name=phone]")[0]    15297989918
+    Wait And Input Text    ${locatorB_checkout_address_phone}    15297989918
     #company
-    Wait And Input Text    dom:document.querySelectorAll("input[name=company]")[0]    dianjiangkeji
+    Wait And Input Text    ${locatorB_checkout_address_company}    dianjiangkeji
     #保存填写的地址信息
-    Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
+    Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
 
 Add_Sub_Product_With_Already_Product
     [Documentation]    给第一个现有的无子产品的商品添加两个子产品
