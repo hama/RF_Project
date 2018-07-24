@@ -6,6 +6,7 @@ import sys
 import re
 import os
 import requests
+import time
 import ConfigParser
 
 reload(sys)
@@ -36,10 +37,10 @@ class keyWord(object):
         config.read(path)
         # self.loc = locals()
         self.home_page_url = config.get("common_url", "home_page_url")
-        print
         self.datas_contact = config.get("common_account", "datas_contact")
         self.datas_password = config.get("common_account", "datas_password")
         self.datas_username = config.get("common_account", "datas_username")
+        self.datas_invite_code = config.get("common_account", "datas_invite_code")
 
     #.公共登陆方法
     def Login(self,paramts=False):
@@ -91,12 +92,13 @@ class keyWord(object):
         self.save_str = emails
         return emails
 
-    def selectCode(self, args):
+    # 从数据库获取第一条验证码
+    def get_db_verification_code(self, args):
         try:
             conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8",
                                    port=self.port)
             curs = conn.cursor()
-            sql = "SELECT code FROM user_validate WHERE `contact` = '%s' " % (args)
+            sql = "SELECT code FROM user_validate WHERE `contact` = '%s' order by create_time desc limit 1" % (args)
             curs.execute(sql)
             res = curs.fetchone()[0]
             return res
@@ -115,7 +117,7 @@ class keyWord(object):
             return res
         except Exception as e:
             print e
-            exit()
+            # exit()
 
     def selectProduct(self):
         res_data = self.commonGetData()
@@ -174,7 +176,8 @@ class keyWord(object):
 
 
     def remove_user(self, args):
-        if args is None: return False
+        if args is None:
+            return False
         try:
             conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8",
                                    port=self.port, cursorclass=pymysql.cursors.DictCursor)
@@ -194,7 +197,6 @@ class keyWord(object):
             return True
         except Exception as e:
             print e
-            exit()
 
     def dictTest(self, **dict_):
         print type(dict_)
@@ -330,9 +332,9 @@ class keyWord(object):
             cookie = self.Login(True)
             resConn = pymysql.connect(host=self.db_hotst, user=self.db_uname, password=self.db_pwd,
                                       db=self.db_name +
-                                                                                                      str(cookie[
-                                                                                                              'uid']),
-                                     charset="utf8", port=self.port, cursorclass=pymysql.cursors.DictCursor)
+                                         str(cookie[
+                                                 'uid']),
+                                      charset="utf8", port=self.port, cursorclass=pymysql.cursors.DictCursor)
             curs = resConn.cursor()
             SQL = "select id from shipping where id<>1 order by date_added desc"
             curs.execute(SQL)
@@ -400,6 +402,40 @@ class keyWord(object):
         img_name = data.findall(img, re.M)
         return img_name[0]
 
+    # 注册
+    def sign_up(self,datas):
+        x_url = self.home_page_url + "/api/user/signup"
+        if datas is None:
+            self.validate_signup(None)      # 发送验证码
+            time.sleep(5)
+            datas_vcode = self.get_db_verification_code(self.datas_contact).encode("utf-8")      # 获取验证码
+            time.sleep(5)
+            datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username,"vcode": datas_vcode,"invite_code": self.datas_invite_code}
+            print datas
+        res = requests.post(url=x_url,headers={},data=datas)
+        if res is None or res.status_code != 200:
+            return False
+        else:
+            return res.content
+
+    # 发送验证码
+    def validate_signup(self,datas):
+        x_url = self.home_page_url + "/api/user/validate-signup"
+        if datas is None:
+            datas = {"contact": self.datas_contact, "username": self.datas_username}
+            print datas
+        res = requests.post(url=x_url,headers={},data=datas)
+        if res is None or res.status_code != 200:
+            return False
+        else:
+            return res.content
+
+
+
+
+
 if __name__ == '__main__':
     aaa = keyWord()
-    print aaa.delPaymentCod()
+    # aaa.get_db_verification_code(aaa.datas_contact)
+    # aaa.validate_signup(None)
+    print aaa.sign_up(None)

@@ -9,7 +9,6 @@ Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/kw_products.robot
-Resource          customLibrary
 
 *** Test Cases ***
 remove_user
@@ -30,7 +29,7 @@ register_001
     input password    id:confirmpass    ${register_pwd}
     input text    id:account    ${register_user}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    ${code}    select code    ${register_user}
+    ${code}    get db verification code    ${register_user}
     input text    id:code    ${code}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -271,3 +270,5 @@ register_019
     Wait And Click Element    dom:document.querySelectorAll(".hd-line-center")[0]
     Execute JavaScript    return document.querySelectorAll(".account_content___18o60 a")[1].click()
     Close Browser
+
+

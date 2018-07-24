@@ -18,7 +18,7 @@ Register New User
     input text    id:account    ${username}    #.输入账号
     click button    dom:document.querySelectorAll("button")[0]
     sleep    2
-    ${code}    select code    ${username}
+    ${code}    get db verification code    ${username}
     input text    id:code    ${code}
     #click button    dom:document.querySelectorAll("button")[1]
     click button    确 定
