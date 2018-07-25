@@ -144,3 +144,11 @@ Checkout Page Decoration Condition
     Run keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Run keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[5]
 
+Click Save Button Until Success
+    [Documentation]    点击保存按钮直至成功，默认五秒超时
+    [Arguments]    ${times}
+    Wait And Click Element    ${locatorB_popUps_button_middle}
+    :FOR    ${i}    IN RANGE    ${times}
+    \    ${status1}=    Run Keyword And Return Status    Page Should Contain    保存
+    \    Run Keyword If    '${status1}'=='False'    Sleep    1
+    \    ...     ELSE    Exit For Loop

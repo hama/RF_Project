@@ -439,6 +439,8 @@ class keyWord(object):
 
 
 
+
+
 if __name__ == '__main__':
     # 设置执行入参
     parser = argparse.ArgumentParser(description='manual to this script')
@@ -455,5 +457,4 @@ if __name__ == '__main__':
     config.write(open(path, 'w'))
     # 注册用户
     kw = keyWord()
-    kw.get_db_verification_code(kw.datas_contact)
     kw.sign_up(None)

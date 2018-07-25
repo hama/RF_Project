@@ -23,7 +23,7 @@ Add Product
     log    ${CURDIR}
     Choose File    ${locatorB_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
-    Wait And Click Element    ${locatorB_products_button_confirm}
+    Click Save Button Until Success    20
 
 Add Product_Up
     [Documentation]    添加上架商品以做测试，这里不能添加商品标签
@@ -209,8 +209,7 @@ Add Order Products
     log    ${CURDIR}
     Choose File    ${locatorB_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
-    Wait And Click Element    ${locatorB_products_button_confirm}
-    Sleep    8
+    Click Save Button Until Success    20
 
 Add TenPrice Products
     [Documentation]    添加一个价格为10元的商品
@@ -232,8 +231,8 @@ Add TenPrice Products
     log    ${CURDIR}
     Choose File    ${locatorB_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
-    Wait And Click Element    ${locatorB_products_button_confirm}
-    Sleep    8
+    Click Save Button Until Success    20
+
 Add Custom Products
     [Documentation]    添加一个任意价格的商品
     [Arguments]    ${price}
@@ -255,5 +254,4 @@ Add Custom Products
     log    ${CURDIR}
     Choose File    ${locatorB_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
-    Wait And Click Element    ${locatorB_products_button_confirm}
-    Sleep    8
+    Click Save Button Until Success    20
