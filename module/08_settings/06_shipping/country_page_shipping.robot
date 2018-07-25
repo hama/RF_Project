@@ -2,7 +2,7 @@
 Suite Setup       Login With Default User
 Suite Teardown    Close Test Suite Browser
 Force Tags        Shipping
-Library           ${CURDIR}/../../lib/customLibrary
+Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/var_shipping.robot
 Resource          ../../../resources/kw_browser.robot
@@ -11,6 +11,7 @@ Resource          ../../../resources/kw_shipping.robot
 Library           customLibrary
 
 *** Test Cases ***
+
 shipping012
     [Documentation]    添加国家
     [Tags]    P0
@@ -65,7 +66,7 @@ shipping019
     Sleep    1
     Wait And Click Element    ${locatorB_shipping_country_select}
     Wait And Click Element    ${locatorB_shipping_country_nums}
-    ${count}    get text    class:country_selected___2BYCm
+    ${count}    get text    class:country_selected___1wa_o
     ${res}    searchStr    ${count}
     Should Be True    ${res}==1
     Wait And Click Element    ${locatorB_shipping_country_close_btn}
@@ -78,7 +79,7 @@ shipping022
     sleep    1
     Wait And Click Element    ${locatorB_shipping_country_select}
     Wait And Click Element    ${locatorB_shipping_country_nums}
-    ${data}    execute javascript    return document.getElementsByClassName("info_cn___N00o6")[1].innerHTML
+    ${data}    execute javascript    return document.getElementsByClassName("info_cn___3-J7E")[1].innerHTML
     Wait And Click Element    ${locatorB_shipping_country_save_btn}
     ${res}    get text    ${locatorB_shipping_country_get_other}
     Should Be True    '${data}'=='${res}'
