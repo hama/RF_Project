@@ -1,14 +1,14 @@
 *** Variables ***
 # locator
 
-${locator_shipping_btn}    dom:document.querySelectorAll("button")[1]    #.开始设置物流按钮
-${locator_shipping_first_element}    dom:document.querySelectorAll("#test_shipping_list_0 li")[0]    # 物流列表第一个元素
-${locator_shipping_add_country}    id:test_shipping_country_add_btn    # 设置物流-添加国家按钮
-${locator_shipping_add_shipping}    dom:document.querySelectorAll("button")[0]    # 添加物流按钮
-${locator_shipping_del_shipping}    id:test_shipping_delete_btn    # 删除物流按钮
-${locator_shipping_add_price_btn}    id:test_shipping_add_price_btn    #.添加价格运费按钮
-${locator_shipping_add_quantity_btn}    id:test_shipping_add_quantity_btn    #.添加数量运费按钮
-${locator_shipping_add_weight_btn}    id:test_shipping_add_weight_btn    #. 添加重量运费按钮
+${locatorB_shipping_btn}    dom:document.querySelectorAll("button")[1]    #.开始设置物流按钮
+${locatorB_shipping_first_element}    dom:document.querySelectorAll("#test_shipping_list_0 li")[0]    # 物流列表第一个元素
+${locatorB_shipping_add_country}    id:test_shipping_country_add_btn    # 设置物流-添加国家按钮
+${locatorB_shipping_add_shipping}    dom:document.querySelectorAll("button")[1]    # 添加物流按钮
+${locatorB_shipping_del_shipping}    id:test_shipping_delete_btn    # 删除物流按钮
+${locatorB_shipping_add_price_btn}    id:test_shipping_add_price_btn    #.添加价格运费按钮
+${locatorB_shipping_add_quantity_btn}    id:test_shipping_add_quantity_btn    #.添加数量运费按钮
+${locatorB_shipping_add_weight_btn}    id:test_shipping_add_weight_btn    #. 添加重量运费按钮
 
 
 # page content
@@ -32,7 +32,7 @@ ${locatorB_shipping_country_save_btn}    dom:document.getElementById("test_shipp
 ${locatorB_shipping_country_data}    class:ant-table-body    #.国家显示数据的地方
 ${locatorB_shipping_country_close_btn}    dom:document.querySelectorAll(".ant-modal-close-x")[0]    #.国家列表-关闭按钮
 ${locatorB_shipping_country_other}    return document.getElementsByClassName("ant-checkbox-input")[0].click()    #.国家列表-选择其他国家 元素
-${locatorB_shipping_country_get_other}    dom:document.querySelectorAll(".name_wrapper___Kkqpr p")[1]    #.获取物流列表显示其他国家的位置
+${locatorB_shipping_country_get_other}    dom:document.querySelectorAll(".name_wrapper___9BdrG p")[1]    #.获取物流列表显示其他国家的位置
 
 # shipping setting page
 ${locatorB_shipping_send_address}    class:title___29mch    #.物流界面-发货地址-
