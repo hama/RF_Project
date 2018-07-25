@@ -93,19 +93,6 @@ class keyWord(object):
         self.save_str = emails
         return emails
 
-    # 从数据库获取第一条验证码
-    def get_db_verification_code(self, args):
-        try:
-            conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8",
-                                   port=self.port)
-            curs = conn.cursor()
-            sql = "SELECT code FROM user_validate WHERE `contact` = '%s' order by create_time desc limit 1" % (args)
-            curs.execute(sql)
-            res = curs.fetchone()[0]
-            return res
-        except Exception as e:
-            print e
-
     def selectCodesPwd(self, args):
         try:
             conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8",
@@ -173,31 +160,6 @@ class keyWord(object):
             return False
         else:
             return True
-
-
-
-    def remove_user(self, args):
-        if args is None:
-            return False
-        try:
-            conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8",
-                                   port=self.port, cursorclass=pymysql.cursors.DictCursor)
-            curs = conn.cursor()
-            select = "SELECT id FROM `USER` WHERE `cell`= '%s'" % (args)
-            curs.execute(select)
-
-            for k in curs.fetchall():
-                sql_data = "DELETE FROM `user_domain` WHERE userid = %s" % (k['id'])
-                curs.execute(sql_data)
-
-            sql = "DELETE  FROM user_validate WHERE `contact` = '%s'" % (args)
-            sql_ = "DELETE  FROM user WHERE `cell` = '%s'" % (args)
-            curs.execute(sql)
-            curs.execute(sql_)
-            conn.commit()
-            return True
-        except Exception as e:
-            print e
 
     def dictTest(self, **dict_):
         print type(dict_)
@@ -431,7 +393,49 @@ class keyWord(object):
         else:
             return res.content
 
+    # 从数据库获取最新一条验证码
+    def get_db_verification_code(self, args):
+        try:
+            conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8",
+                                   port=self.port)
+            curs = conn.cursor()
+            sql = "SELECT code FROM user_validate WHERE `contact` = '%s' order by create_time desc limit 1" % (args)
+            curs.execute(sql)
+            res = curs.fetchone()[0]
+            return res
+        except Exception as e:
+            print e
 
+    # 删除用户,args为电话号码/邮箱(模糊查询)
+    def remove_user(self, args):
+        # 过滤无效入参
+        if len(args)==11 and args.isdigit():
+            target = 'cell'
+        elif '@abctest.com' in args:
+            target = 'email'
+        else:
+            return False
+        args = "%"+args+"%"
+        try:
+            conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8",
+                                   port=self.port, cursorclass=pymysql.cursors.DictCursor)
+            curs = conn.cursor()
+
+            select = "SELECT id FROM `USER` WHERE `%s` LIKE '%s'" % (target,args)
+            curs.execute(select)
+
+            for k in curs.fetchall():
+                sql_data = "DELETE FROM `user_domain` WHERE userid = %s" % (k['id'])
+                curs.execute(sql_data)
+
+            sql = "DELETE  FROM user_validate WHERE `contact` LIKE '%s'" % (args)
+            sql_ = "DELETE  FROM user WHERE `%s` LIKE '%s'" % (target,args)
+            curs.execute(sql)
+            curs.execute(sql_)
+            conn.commit()
+            return True
+        except Exception as e:
+            print e
 
 
 
@@ -451,4 +455,5 @@ if __name__ == '__main__':
     config.write(open(path, 'w'))
     # 注册用户
     kw = keyWord()
+    kw.get_db_verification_code(kw.datas_contact)
     kw.sign_up(None)
