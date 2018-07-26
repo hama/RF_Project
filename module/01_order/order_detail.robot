@@ -13,25 +13,6 @@ Resource          ../../resources/kw_products.robot
 
 
 *** Test Cases ***
-dddddddd
-    Add Order
-    go to    ${home_page}
-    Order Setp
-    Wait And Click Button    ${locatorB_order_first_btn}
-    Sleep    2
-    Wait And Click Element    ${locatorB_order_four_btn}
-    Go To Order Page
-    sleep    1
-    Order Setp
-    page should contain element    ${locatorB_order_detail_element}
-    Execute JavaScript    return document.getElementById("dj").scrollTo(0,10000)
-    sleep    1.5
-    Common Js Click    ${locatorB_order_settint_status}    2
-    sleep    1
-    Wait And Click Element    ${locatorB_order_three_btn}
-    Sleep    1.5s
-    Page Should Contain Element    ${locatorB_order_first_btn}
-    Quit Order Setp
 order072
     [Documentation]    运单号输入时，物流商会匹配对应的内容，点击保存后，运单号更新成功
     [Tags]    P0
