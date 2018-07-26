@@ -21,6 +21,8 @@ Login With User
     Run Keyword Unless    ${has_login}    Input Domain    ${domain}
     Wait Until Element Is Visible    ${locatorB_setting}
     log    Login Success
+    ${close}=    Execute JavaScript    return document.querySelectorAll('.ant-modal-close-x')[0]===undefined
+    Run Keyword If    ${close}=='${False}'    Wait And Click Element    dom:document.querySelectorAll('.ant-modal-close-x')[0]
 
 Input Domain
     [Arguments]    ${domain}
@@ -34,6 +36,7 @@ Go To Setting Page
 Go To Products Page
     [Documentation]    跳转到商品页面
     Wait And Click Element    ${locatorB_products}
+    Sleep    4
     Wait Until Page Contains    ${contentB_products_all}
     Location Should Be    ${url_products}
     Sleep    1
@@ -152,3 +155,14 @@ Click Save Button Until Success
     \    ${status1}=    Run Keyword And Return Status    Page Should Contain    保存
     \    Run Keyword If    '${status1}'=='False'    Sleep    1
     \    ...     ELSE    Exit For Loop
+
+TestClick
+    [Arguments]    ${click_element}    ${reload_element}
+    Wait And Click ELement    ${click_element}
+    ${location}=    Run Keyword And Ignore Error    page should contain element    ${reload_element}
+    ${length}    Set Variable    1
+    :FOR    ${i}    IN RANGE    ${length}
+    \    Run Keyword If    ${location}=="FAILED"    Execute JavaScript    return location.reload()
+    \    Run Keyword If    ${location}=="FAILED"    Wait And Click ELement    ${click_element}
+    \    ...    ELSE    Wait And Click Element    ${click_element}
+
