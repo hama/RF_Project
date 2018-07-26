@@ -14,6 +14,7 @@ Test Admin1024:
     - chmod +x run.sh
   script:
     - set -x 
+    - echo "172.18.128.160 admin1024.shoplazza.com" >> /etc/hosts
     - sh run.sh
   only:
     refs:
