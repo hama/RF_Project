@@ -2,7 +2,7 @@
 Suite Setup       Login With Default User
 Suite Teardown    Close Test Suite Browser
 Force Tags        Shipping
-Library           ${CURDIR}/../../lib/customLibrary
+Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/var_shipping.robot
 Resource          ../../../resources/kw_browser.robot

@@ -1,0 +1,27 @@
+stages:
+  - test
+
+variables:
+  GIT_DEPTH: "1"
+
+image: cn-registry.shoplazza.com/library/robot
+
+Test Admin1024:
+  stage: test
+  before_script:
+    - hostname -I | awk '{print $1}'
+    - pwd
+    - chmod +x run.sh
+  script:
+    - set -x 
+    - echo "172.18.128.160 admin1024.shoplazza.com" >> /etc/hosts
+    - sh run.sh
+  only:
+    refs:
+      - master
+      - schedules
+  artifacts:
+    paths:
+      - logs
+    expire_in: 7 days
+
