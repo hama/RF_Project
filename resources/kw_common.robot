@@ -144,11 +144,57 @@ Checkout Page Decoration Condition
     Run keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Run keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[5]
 
-Click Save Button Until Success
-    [Documentation]    点击保存按钮直至成功，默认五秒超时
-    [Arguments]    ${times}
-    Wait And Click Element    ${locatorB_popUps_button_middle}
-    :FOR    ${i}    IN RANGE    ${times}
-    \    ${status1}=    Run Keyword And Return Status    Page Should Contain    保存
-    \    Run Keyword If    '${status1}'=='False'    Sleep    1
+#Click Save Button Until Success
+#    [Documentation]    点击保存按钮直至成功，默认五秒超时
+#    [Arguments]    ${times}
+#    Wait And Click Element    ${locatorB_popUps_button_middle}
+#    :FOR    ${i}    IN RANGE    ${times}
+#    \    ${status1}    Run Keyword And Return Status    Wait Until Page Not Contains Element    ${click_element}    20    6
+#    \    Run Keyword If    '${status1}'=='False'    Sleep    1
+#    \    ...     ELSE    Exit For Loop
+
+Click And Check Element With Refresh
+    [Documentation]    点击&检查页面元素，含刷新机制
+    [Arguments]    ${click_element}    ${contain_element}    ${timeout}=20    ${retry_time}=6
+    :FOR    ${i}    IN RANGE    1
+    \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
+    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Element    ${contain_element}    ${timeout}    ${retry_time}
+    \    Run Keyword If    '${status0}'=='False'    Execute JavaScript    return location.reload()
     \    ...     ELSE    Exit For Loop
+
+Click And Check Text With Refresh
+    [Documentation]    点击&检查页面元素，含刷新机制
+    [Arguments]    ${click_element}    ${contain_text}    ${timeout}=20    ${retry_time}=6
+    :FOR    ${i}    IN RANGE    1
+    \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
+    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Text    ${contain_text}    ${timeout}    ${retry_time}
+    \    Run Keyword If    '${status0}'=='False'    Execute JavaScript    return location.reload()
+    \    ...     ELSE    Exit For Loop
+
+Click With Refresh
+    [Documentation]    点击，含刷新机制
+    [Arguments]    ${click_element}    ${timeout}=10    ${retry_time}=6
+    :FOR    ${i}    IN RANGE    1
+    \    ${status0}    Run Keyword And Return Status    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${click_element}
+    \    Run Keyword If    '${status0}'=='False'    Execute JavaScript    return location.reload()
+    \    ...     ELSE    Exit For Loop
+
+Wait Until Page Not Contains Element
+    [Documentation]    等待页面不包含${locator}，包含继续等待直至超时异常，不包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
+    [Arguments]    ${locator}    ${timeout}    ${retry_time}
+    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Page Should Not Contain Element    ${locator}
+
+Wait Until Page Not Contains Text
+    [Documentation]    等待页面不包含${text}，包含继续等待直至超时异常，不包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
+    [Arguments]    ${text}    ${timeout}    ${retry_time}
+    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Page Should Not Contain    ${text}
+
+Wait Until Alert Be Present
+    [Documentation]    等待Alert出现，并消除
+    [Arguments]    ${msg}    ${timeout}    ${retry_time}
+    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Alert Should Be Present    ${msg}
+
+Alert Should Not Be Present
+    [Arguments]    ${msg}
+    ${result}    Run Keyword And Ignore Error    Alert Should Be Present    ${msg}
+    Should Be True    '${result}'!='PASS'
