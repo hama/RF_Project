@@ -136,7 +136,7 @@ products016
     Wait Until Element Is Visible    ${locatorB_products_popUps_content}
     Page Should Contain    确定删除吗？
     #确定
-    Wait And Click Button    ${locatorB_popUps_button_middle}
+    Wait And Click Element    ${locatorB_popUps_button_middle}
     #等待页面刷新数据
     Sleep    1
     #页面不应该包含该商品名称

@@ -261,7 +261,7 @@ register_019
     Wait Until Element Is Visible    ${login_btn}
     Input Text    id:account    ${register_user}
     Input Password    id:password    ${register_pwd}
-    #Wait And Click Button    ${login_btn}
+    #Wait And Click Element    ${login_btn}
     #Wait Until Element Is Visible    id:username
     #Input Text    id:username    ${register_domain}
     Wait And Click Element    ${login_btn}

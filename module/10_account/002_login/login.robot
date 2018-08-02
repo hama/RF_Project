@@ -23,7 +23,7 @@ login001
     Wait Until Element Is Visible    ${login_btn}
     Input Text    id:account    ${user_default_name}
     Input Password    id:password    ${user_default_pwd}
-    Wait And Click Button    ${login_btn}
+    Wait And Click Element    ${login_btn}
     Wait Until Element Is Visible    id:username
     Input Text    id:username    ${user_default_domain}
     Wait And Click Element    ${login_btn}
@@ -119,7 +119,7 @@ login007
     Wait Until Element Is Visible    ${login_btn}
     Input Text    id:account    ${user_default_name}
     Input Password    id:password    ${user_default_pwd}
-    Wait And Click Button    ${login_btn}
+    Wait And Click Element    ${login_btn}
     Comment    wait until domain input text element is visible
     Wait Until Element Is Visible    id:username
     Input Text    id:username    ${user_default_domain}

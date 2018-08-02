@@ -30,7 +30,7 @@ shipping013
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    ${locatorB_shipping_first_input}    中国
     Sleep    1
-    Wait And Click Button    dom:document.querySelectorAll("button")[1]
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Not Contain Element    ${locatorB_shipping_send_address}
     Quit All Shipping
 
@@ -42,7 +42,7 @@ shipping017
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     sleep    1
     input text    ${locatorB_shipping_first_input}    中
-    Wait And Click Button    dom:document.querySelectorAll("button")[1]
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Not Contain Element    ${locatorB_shipping_send_address}
     Quit All Shipping
 
@@ -54,7 +54,7 @@ shipping018
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     sleep    1
     input text    ${locatorB_shipping_first_input}    @#￥
-    Wait And Click Button    dom:document.querySelectorAll("button")[1]
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Not Contain Element    ${locatorB_shipping_send_address}
     Quit All Shipping
 

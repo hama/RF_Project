@@ -18,7 +18,7 @@ shipping132
     Go To Shipping Page
     Wait And Click Element    ${locatorB_shipping_add_shipping}
     input text    id:name    方案1
-    Wait And Click Button    ${shipping_first_button}
+    Wait And Click Element    ${shipping_first_button}
     sleep    2
     page should contain element    dom:document.querySelectorAll(".anticon-cross-circle")[0]
     Quit All Shipping

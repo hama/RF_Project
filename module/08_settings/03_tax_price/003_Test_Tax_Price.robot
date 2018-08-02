@@ -23,7 +23,7 @@ Resource          ../../../resources/kw_shipping.robot
     Page Should Contain    ${contentB_tax_head_operation}
     Page Should Contain    ${contentB_tax_tips_list}
     log    点击设置按钮，跳转到物流设置
-    Wait And Click Button    tag:button
+    Wait And Click Element    tag:button
     Wait Until Page Contains    ${contentB_tax_setting}
     Sleep    2
     Page Should Contain    ${contentB_shipping_tab1}
