@@ -52,7 +52,7 @@ Delete Product
     [Documentation]    删除商品列表的第一个商品
     Go To Products Page
     Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}    # 商品列表第一条数据
-    Wait And Click Button    ${locatorB_popUps_button_middle}
+    Wait And Click Element    ${locatorB_popUps_button_middle}
 
 Delete All Products
     [Documentation]    删除全部商品

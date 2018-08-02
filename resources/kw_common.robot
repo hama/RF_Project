@@ -14,7 +14,7 @@ Login With User
     Comment    wait until login button is visible
     Wait And Input Text    id:account    ${username}
     Wait And Input Password    id:password    ${password}
-    Wait And Click Button    class:logBtn___3pRgJ
+    Wait And Click Element    class:logBtn___3pRgJ
     Comment    wait until domain input text element is visible
     ${href}=    Execute JavaScript    return window.location.href
     ${has_login}=    Execute JavaScript    return '${href}'==='${url_home_page}'
@@ -27,7 +27,7 @@ Login With User
 Input Domain
     [Arguments]    ${domain}
     Wait And Input Text    id:username    ${domain}
-    Wait And Click Button    class:logBtn___3pRgJ
+    Wait And Click Element    class:logBtn___3pRgJ
 
 Go To Setting Page
     [Documentation]    跳转到设置页面
@@ -95,14 +95,6 @@ Wait And Click Element
     Wait Until Element Is Visible    ${element_locator}
     Wait Until Keyword Succeeds    5x    5s    Click Element    ${element_locator}
     Sleep    2
-
-Wait And Click Button
-    [Arguments]    ${button_locator}
-    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
-    Sleep    1
-    Wait Until Element Is Visible    ${button_locator}
-    Wait Until Keyword Succeeds    5x    1s    Click Button    ${button_locator}
-    Sleep    1
 
 Common Js Click
     [Arguments]    ${element}    ${index}
