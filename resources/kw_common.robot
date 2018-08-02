@@ -130,8 +130,8 @@ Checkout Page Decoration Condition
     Run keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Run keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[5]
 
-Click And Check Element With Refresh
-    [Documentation]    点击&检查页面元素，含刷新机制
+Click And Page Contains Element With Refresh
+    [Documentation]    点击&检查页面包含元素，含刷新机制
     [Arguments]    ${click_element}    ${contain_element}    ${timeout}=10    ${retry_time}=2
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
@@ -139,13 +139,31 @@ Click And Check Element With Refresh
     \    Run Keyword If    '${status0}'=='False'    Execute JavaScript    return location.reload()
     \    ...     ELSE    Exit For Loop
 
-Click And Check Text With Refresh
-    [Documentation]    点击&检查页面文字，含刷新机制
+Click And Page Not Contains Element With Refresh
+    [Documentation]    点击&检查页面不包含元素，含刷新机制
+    [Arguments]    ${click_element}    ${contain_element}    ${timeout}=10    ${retry_time}=2
+    :FOR    ${i}    IN RANGE    1
+    \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
+    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Element    ${contain_element}    ${timeout}    ${retry_time}
+    \    Run Keyword If    '${status0}'=='True'    Execute JavaScript    return location.reload()
+    \    ...     ELSE    Exit For Loop
+
+Click And Page Contains With Refresh
+    [Documentation]    点击&检查页面包含文字，含刷新机制
     [Arguments]    ${click_element}    ${contain_text}    ${timeout}=10    ${retry_time}=2
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
     \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Text    ${contain_text}    ${timeout}    ${retry_time}
     \    Run Keyword If    '${status0}'=='False'    Execute JavaScript    return location.reload()
+    \    ...     ELSE    Exit For Loop
+
+Click And Page Not Contains With Refresh
+    [Documentation]    点击&检查页面不包含文字，含刷新机制
+    [Arguments]    ${click_element}    ${contain_text}    ${timeout}=10    ${retry_time}=2
+    :FOR    ${i}    IN RANGE    1
+    \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
+    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Text    ${contain_text}    ${timeout}    ${retry_time}
+    \    Run Keyword If    '${status0}'=='True'    Execute JavaScript    return location.reload()
     \    ...     ELSE    Exit For Loop
 
 Click With Refresh
