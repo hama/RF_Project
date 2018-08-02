@@ -104,13 +104,6 @@ Wait And Click Button
     Wait Until Keyword Succeeds    5x    1s    Click Button    ${button_locator}
     Sleep    1
 
-Wait And Click Link
-    [Arguments]    ${link_locator}
-    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
-    Wait Until Element Is Visible    ${link_locator}
-    Wait Until Keyword Succeeds    5x    1s    Click Link    ${link_locator}
-    Sleep    1
-
 Common Js Click
     [Arguments]    ${element}    ${index}
     [Documentation]    封装js点击方法
@@ -136,8 +129,6 @@ Set Tax Price
     \    Run Keyword If    '${name}'=='${element}'    Wait And Click Element    dom:document.querySelectorAll('button')[2]
     Go To    ${home_page}
 
-
-
 Checkout Page Decoration Condition
     [Documentation]    判断店铺是否装修
     Go To    ${home_page}
@@ -147,37 +138,18 @@ Checkout Page Decoration Condition
     Run keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Run keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[5]
 
-#Click Save Button Until Success
-#    [Documentation]    点击保存按钮直至成功，默认五秒超时
-#    [Arguments]    ${times}
-#    Wait And Click Element    ${locatorB_popUps_button_middle}
-#    :FOR    ${i}    IN RANGE    ${times}
-#    \    ${status1}    Run Keyword And Return Status    Wait Until Page Not Contains Element    ${click_element}    20    6
-#    \    Run Keyword If    '${status1}'=='False'    Sleep    1
-#    \    ...     ELSE    Exit For Loop
-
 Click And Check Element With Refresh
     [Documentation]    点击&检查页面元素，含刷新机制
-    [Arguments]    ${click_element}    ${contain_element}    ${timeout}=20    ${retry_time}=6
+    [Arguments]    ${click_element}    ${contain_element}    ${timeout}=10    ${retry_time}=2
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
     \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Element    ${contain_element}    ${timeout}    ${retry_time}
     \    Run Keyword If    '${status0}'=='False'    Execute JavaScript    return location.reload()
     \    ...     ELSE    Exit For Loop
 
-TestClick
-    [Arguments]    ${click_element}    ${reload_element}
-    Wait And Click ELement    ${click_element}
-    ${location}=    Run Keyword And Ignore Error    page should contain element    ${reload_element}
-    ${length}    Set Variable    1
-    :FOR    ${i}    IN RANGE    ${length}
-    \    Run Keyword If    ${location}=="FAILED"    Execute JavaScript    return location.reload()
-    \    Run Keyword If    ${location}=="FAILED"    Wait And Click ELement    ${click_element}
-    \    ...    ELSE    Wait And Click Element    ${click_element}
-
 Click And Check Text With Refresh
-    [Documentation]    点击&检查页面元素，含刷新机制
-    [Arguments]    ${click_element}    ${contain_text}    ${timeout}=20    ${retry_time}=6
+    [Documentation]    点击&检查页面文字，含刷新机制
+    [Arguments]    ${click_element}    ${contain_text}    ${timeout}=10    ${retry_time}=2
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
     \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Text    ${contain_text}    ${timeout}    ${retry_time}
@@ -186,7 +158,7 @@ Click And Check Text With Refresh
 
 Click With Refresh
     [Documentation]    点击，含刷新机制
-    [Arguments]    ${click_element}    ${timeout}=10    ${retry_time}=6
+    [Arguments]    ${click_element}    ${timeout}=10    ${retry_time}=2
     :FOR    ${i}    IN RANGE    1
     \    ${status0}    Run Keyword And Return Status    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${click_element}
     \    Run Keyword If    '${status0}'=='False'    Execute JavaScript    return location.reload()
@@ -194,17 +166,17 @@ Click With Refresh
 
 Wait Until Page Not Contains Element
     [Documentation]    等待页面不包含${locator}，包含继续等待直至超时异常，不包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
-    [Arguments]    ${locator}    ${timeout}    ${retry_time}
+    [Arguments]    ${locator}    ${timeout}=10    ${retry_time}=2
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Page Should Not Contain Element    ${locator}
 
 Wait Until Page Not Contains Text
     [Documentation]    等待页面不包含${text}，包含继续等待直至超时异常，不包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
-    [Arguments]    ${text}    ${timeout}    ${retry_time}
+    [Arguments]    ${text}    ${timeout}=10    ${retry_time}=2
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Page Should Not Contain    ${text}
 
 Wait Until Alert Be Present
     [Documentation]    等待Alert出现，并消除
-    [Arguments]    ${msg}    ${timeout}    ${retry_time}
+    [Arguments]    ${msg}    ${timeout}=10    ${retry_time}=2
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Alert Should Be Present    ${msg}
 
 Alert Should Not Be Present
