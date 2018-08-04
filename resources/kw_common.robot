@@ -35,11 +35,21 @@ Go To Setting Page
 
 Go To Products Page
     [Documentation]    跳转到商品页面
-    Wait And Click Element    ${locatorB_products}
-    Sleep    4
+    ${data}    Get Select Elements    0    #.获取导航栏商品的下拉按钮元素
+    Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_products}
+    ...    ELSE    Wait And Click Element    ${locatorB_product_manage}
+    #Wait And Click Element    ${locatorB_products}
+    #Wait And Click Element    ${locatorB_product_manage}
+    Sleep    1
     Wait Until Page Contains    ${contentB_products_all}
     Location Should Be    ${url_products}
     Sleep    1
+
+Get Select Elements
+    [Documentation]    获取第N个导航栏下拉元素
+    [Arguments]    ${index}
+    ${res}    Get Element Attribute    dom:document.querySelectorAll(".ant-menu-submenu-title")[${index}]    aria-expanded
+    [Return]    ${res}
 
 Go To Marketing Page
     [Documentation]    跳转到营销页面
@@ -135,7 +145,7 @@ Click And Page Contains Element With Refresh
     [Arguments]    ${click_element}    ${contain_element}    ${timeout}=10    ${retry_time}=2
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
-    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Element    ${contain_element}    ${timeout}    ${retry_time}
+    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contain Element    ${contain_element}    ${timeout}    ${retry_time}
     \    Run Keyword If    '${status0}'=='False'    Execute JavaScript    return location.reload()
     \    ...     ELSE    Exit For Loop
 
@@ -144,7 +154,7 @@ Click And Page Not Contains Element With Refresh
     [Arguments]    ${click_element}    ${contain_element}    ${timeout}=10    ${retry_time}=2
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
-    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Element    ${contain_element}    ${timeout}    ${retry_time}
+    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contain Element    ${contain_element}    ${timeout}    ${retry_time}
     \    Run Keyword If    '${status0}'=='True'    Execute JavaScript    return location.reload()
     \    ...     ELSE    Exit For Loop
 
@@ -153,7 +163,7 @@ Click And Page Contains With Refresh
     [Arguments]    ${click_element}    ${contain_text}    ${timeout}=10    ${retry_time}=2
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
-    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Text    ${contain_text}    ${timeout}    ${retry_time}
+    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contain Text    ${contain_text}    ${timeout}    ${retry_time}
     \    Run Keyword If    '${status0}'=='False'    Execute JavaScript    return location.reload()
     \    ...     ELSE    Exit For Loop
 
@@ -162,7 +172,7 @@ Click And Page Not Contains With Refresh
     [Arguments]    ${click_element}    ${contain_text}    ${timeout}=10    ${retry_time}=2
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
-    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Text    ${contain_text}    ${timeout}    ${retry_time}
+    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contain Text    ${contain_text}    ${timeout}    ${retry_time}
     \    Run Keyword If    '${status0}'=='True'    Execute JavaScript    return location.reload()
     \    ...     ELSE    Exit For Loop
 
