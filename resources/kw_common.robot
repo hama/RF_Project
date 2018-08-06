@@ -29,6 +29,10 @@ Input Domain
     Wait And Input Text    id:username    ${domain}
     Wait And Click Element    class:logBtn___3pRgJ
 
+Go To Home Page
+    [Documentation]    跳转到主页
+    Wait And Click Element    ${locatorB_overview}
+
 Go To Setting Page
     [Documentation]    跳转到设置页面
     Wait And Click Element    ${locatorB_setting}
@@ -44,12 +48,6 @@ Go To Products Page
     Wait Until Page Contains    ${contentB_products_all}
     Location Should Be    ${url_products}
     Sleep    1
-
-Get Select Elements
-    [Documentation]    获取第N个导航栏下拉元素
-    [Arguments]    ${index}
-    ${res}    Get Element Attribute    dom:document.querySelectorAll(".ant-menu-submenu-title")[${index}]    aria-expanded
-    [Return]    ${res}
 
 Go To Marketing Page
     [Documentation]    跳转到营销页面
@@ -214,3 +212,9 @@ Alert Should Not Be Present
     [Arguments]    ${msg}
     ${result}    Run Keyword And Ignore Error    Alert Should Be Present    ${msg}
     Should Be True    '${result}'!='PASS'
+
+Get Select Elements
+    [Documentation]    获取第N个导航栏下拉元素
+    [Arguments]    ${index}
+    ${res}    Get Element Attribute    dom:document.querySelectorAll(".ant-menu-submenu-title")[${index}]    aria-expanded
+    [Return]    ${res}
