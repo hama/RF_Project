@@ -538,21 +538,19 @@ class keyWord(object):
                                   charset="utf8", port=self.port, cursorclass=pymysql.cursors.DictCursor)
 
 if __name__ == '__main__':
-    res = keyWord()
-    print res.addSubtraction(1)
     # 设置执行入参
-    # parser = argparse.ArgumentParser(description='manual to this script')
-    # parser.add_argument('--url', type=str, default = 'http://admin1024.shoplazza.com')
-    # args = parser.parse_args()
-    # # 设置用户信息
-    # random_num = keyWord().salt()
-    # config = ConfigParser.ConfigParser()
-    # path = os.path.join( os.path.dirname(__file__),'../..')+ '/config/common.ini'
-    # config.read(path)
-    # config.set("common_url", "home_page_url", args.url)
-    # config.set("common_account", "datas_contact", random_num + "@abctest.com")
-    # config.set("common_account", "datas_username", random_num)
-    # config.write(open(path, 'w'))
-    # # 注册用户
-    # kw = keyWord()
-    # kw.sign_up(None)
+    parser = argparse.ArgumentParser(description='manual to this script')
+    parser.add_argument('--url', type=str, default = 'http://admin1024.shoplazza.com')
+    args = parser.parse_args()
+    # 设置用户信息
+    random_num = keyWord().salt()
+    config = ConfigParser.ConfigParser()
+    path = os.path.join( os.path.dirname(__file__),'../..')+ '/config/common.ini'
+    config.read(path)
+    config.set("common_url", "home_page_url", args.url)
+    config.set("common_account", "datas_contact", random_num + "@abctest.com")
+    config.set("common_account", "datas_username", random_num)
+    config.write(open(path, 'w'))
+    # 注册用户
+    kw = keyWord()
+    kw.sign_up(None)
