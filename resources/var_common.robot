@@ -16,6 +16,7 @@ ${locatorB_product_manage}    dom:document.querySelectorAll('a[href="/products"]
 ${locatorB_product_collection}    dom:document.querySelectorAll('a[href="/collection"]')[0]    # 导航栏-商品专辑
 ${locatorB_product_review}    dom:document.querySelectorAll('href="/reviews"')[0]    # 导航栏-商品评论
 ${locatorB_marketing}    id:test_marketing    # 导航栏-营销
+${locatorB_marketing_subtraction}    dom:document.querySelectorAll('a[href="/subtraction"]')[0]    # 导航栏-营销-满减活动
 ${locatorB_store}    id:test_store    #.导航栏-店铺
 ${locatorB_setting}    id:test_setting    # 导航栏-设置
 ${locatorB_setting_shipping}    dom:document.querySelectorAll('a[href="/shipping"]')[0]    # 导航栏-设置-物流
@@ -39,6 +40,7 @@ ${url_products}    ${home_page}/products    # products page
 ${url_marketing}    ${home_page}/subtraction    # marketing page
 ${url_tax_price}    ${home_page}/taxPrice    # tax price
 ${url_shipping}    ${home_page}/shipping    # shipping
+${url_subtraction}    ${home_page}/subtraction    # subtraction
 ### 测试用户
 
 ${user_default_name}    ${datas_contact}    # 默认使用的用户信息，用于跑大部分用例

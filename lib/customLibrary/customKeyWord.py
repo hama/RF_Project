@@ -6,7 +6,7 @@ import sys
 import re
 import os
 import requests
-import time
+import time ,datetime
 import argparse
 import ConfigParser
 
@@ -167,7 +167,6 @@ class keyWord(object):
 
     def time(self, args):
         import time
-
         # 转换成时间数组
         timeArray = time.strptime(args, "%Y-%m-%d %H:%M:%S")
         # 转换成时间戳
@@ -437,24 +436,123 @@ class keyWord(object):
         except Exception as e:
             print e
 
+    #.获取满减活动时间参数,
+    # @parments: 1：活动进行中
+    # @parments: 2：活动未开始
+    def getSubtractionTime(self,parments=None):
+        now_time = datetime.datetime.now()
+        now_times = now_time - datetime.timedelta(days=1)
+        TomorrowTime = now_time + datetime.timedelta(days=1)
+        beforeTime = now_time + datetime.timedelta(days=10)
+        if parments:
+            return {"date_start":now_times.strftime('%Y-%m-%d %H:%M:%S'),"date_end":beforeTime.strftime('%Y-%m-%d '
+                                                                                                        '%H:%M:%S')}
+        else:
+            return {"date_start":TomorrowTime.strftime('%Y-%m-%d %H:%M:%S'),"date_end":beforeTime.strftime('%Y-%m-%d %H:%M:%S')}
 
+    #. 获取满减活动参数
+    # @parments:-----1: 进行中
+    # @parments:-----2: 未开始
+    # @parments:-----3: 已结束
+    def getSubtractionData(self,argv):
+        if argv is None : return False
+        name = self.salt()
+        nowTime = datetime.datetime.now()
+        newTime = nowTime + datetime.timedelta(days=7)
+        date_start = nowTime.strftime('%Y-%m-%d %H:%M:%S')
+        date_end = newTime.strftime('%Y-%m-%d %H:%M:%S')
+        range_type = "1"
+        incr_count = 1
+        product_list = "{\"product\":[{\"product_id\":1,\"sub_product_id\":[]}]}"
+        product_scope = 1
+        rule_list = "[{\"range_unit\":\"price\",\"range_value\":\"20\",\"rate_amount\":\"15\",\"rate_shipping\":0}]"
+        if argv == 1:
+            new_time = self.getSubtractionTime(True)
+            date_start = new_time['date_start']
+            date_end = new_time['date_end']
+        elif argv == 2:
+            new_time = self.getSubtractionTime()
+            date_start = new_time['date_start']
+            date_end = new_time['date_end']
+        else:
+            pass
+        data = {
+            "name": name,
+            "date_start": date_start,
+            "date_end":date_end,
+            "range_type":range_type,
+            "incr_count":incr_count,
+            "product_list":product_list,
+            "product_scope":product_scope,
+            "rule_list":rule_list
+        }
+        return data
 
+    #. 添加一个某种类型的满减活动
+    # @parments:-----1: 进行中
+    # @parments:-----2: 未开始
+    # @parments:-----3: 已结束
+    def addSubtraction(self,argv):
+        if argv is None : return False
+        url = "http://admin1024.shoplazza.com/api/rebate/refresh"
+        del_url = "http://admin1024.shoplazza.com/api/rebate/end"
+        cookies = self.Login()
+        if cookies is None: return False
+        datax = self.getSubtractionData(int(argv))
+        try:
+            res = requests.post(url=url,headers={"cookie":cookies},json=datax)
+            if res.status_code != 200:
+                return res.status_code
+            #.如果为3,添加成功后请求结束接口
+            if argv == 3 and json.loads(res.content)['data']['id']:
+                rebate_id = {"rebate_id":json.loads(res.content)['data']['id']}
+                res_data = requests.post(url=del_url,headers={"cookie":cookies},json=rebate_id)
+                if res_data.status_code != 200:
+                    return res_data.status_code
+                return json.loads(res_data.content)
+            else:
+                return json.loads(res.content)
+        except Exception as e:
+            print e
+    #. 删除一个满减活动 arvg参数为 "all" 删除所有的满减活动
+    def delSubtraction(self,arvg=None):
+        try:
+            conn = self.getConnectObj()
+            curs = conn.cursor()
+            if arvg == 'all':
+                SQL = "DELETE FROM rebate"
+            else:
+                SQL = "DELETE FROM rebate  ORDER BY id DESC LIMIT 1"
+            curs.execute(SQL)
+            conn.commit()
+            return True
+        except Exception as e:
+            print e
+            return False
 
+    #. 获取数据库链接对象
+    def getConnectObj(self):
+        cookie = self.Login(True)
+        return pymysql.connect(host=self.db_hotst, user=self.db_uname, password=self.db_pwd, db=self.db_name +
+                                                                                                   str(cookie['uid']),
+                                  charset="utf8", port=self.port, cursorclass=pymysql.cursors.DictCursor)
 
 if __name__ == '__main__':
+    res = keyWord()
+    print res.addSubtraction(1)
     # 设置执行入参
-    parser = argparse.ArgumentParser(description='manual to this script')
-    parser.add_argument('--url', type=str, default = 'http://admin1024.shoplazza.com')
-    args = parser.parse_args()
-    # 设置用户信息
-    random_num = keyWord().salt()
-    config = ConfigParser.ConfigParser()
-    path = os.path.join( os.path.dirname(__file__),'../..')+ '/config/common.ini'
-    config.read(path)
-    config.set("common_url", "home_page_url", args.url)
-    config.set("common_account", "datas_contact", random_num + "@abctest.com")
-    config.set("common_account", "datas_username", random_num)
-    config.write(open(path, 'w'))
-    # 注册用户
-    kw = keyWord()
-    kw.sign_up(None)
+    # parser = argparse.ArgumentParser(description='manual to this script')
+    # parser.add_argument('--url', type=str, default = 'http://admin1024.shoplazza.com')
+    # args = parser.parse_args()
+    # # 设置用户信息
+    # random_num = keyWord().salt()
+    # config = ConfigParser.ConfigParser()
+    # path = os.path.join( os.path.dirname(__file__),'../..')+ '/config/common.ini'
+    # config.read(path)
+    # config.set("common_url", "home_page_url", args.url)
+    # config.set("common_account", "datas_contact", random_num + "@abctest.com")
+    # config.set("common_account", "datas_username", random_num)
+    # config.write(open(path, 'w'))
+    # # 注册用户
+    # kw = keyWord()
+    # kw.sign_up(None)

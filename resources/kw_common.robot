@@ -87,6 +87,17 @@ Go To Shipping Page
     Page Should Contain    ${contentB_shipping_tab2}
     Location Should Be    ${url_shipping}
 
+Go To Subtraction Page
+    [Documentation]    跳转营销-满减活动页面
+    Wait Until Element Is Visible    ${locatorB_marketing}
+    # 若营销按钮没展开，则展开营销按钮
+    ${data}    Get Select Elements    1    # 获取导航栏营销下拉元素
+    Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_marketing}
+    ...    ELSE    Wait And Click Element    ${locatorB_marketing_subtraction}
+    Page Should Contain    ${contentB_subtraction_text}
+    Location Should Be    ${url_subtraction}
+
+
 Wait And Input Text
     [Arguments]    ${element_locator}    ${text}
     [Documentation]    封装的输入方法，等待元素可被输入时，再输入
