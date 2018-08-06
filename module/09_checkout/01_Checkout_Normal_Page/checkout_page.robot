@@ -568,7 +568,7 @@ checkout101
     Page Should Contain Element    class:cart-title
 
 *** Keywords ***
-Common_Setp
+Common_Step
     #.登陆
     Login With Default User
     #.添加中国的物流
