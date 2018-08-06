@@ -17,6 +17,7 @@ order072
     [Documentation]    运单号输入时，物流商会匹配对应的内容，点击保存后，运单号更新成功
     [Tags]    P0
     Add Order Products    #.调用添加商品
+    Sleep    5
     Add Order    #.调用生成订单
     Sleep    1
     Go To    ${home_page}

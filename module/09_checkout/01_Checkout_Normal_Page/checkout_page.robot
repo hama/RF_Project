@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     Ckeckout Page Check
-Suite Setup       Login With Default User
+Suite Setup       Common_Setp
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
@@ -18,10 +18,6 @@ Resource          ../../../resources/var_checkout.robot
 Library           customLibrary
 
 *** Test Cases ***
-add shipping
-    Add Shipping China
-add product
-    Add Order Products
 checkout001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0
@@ -570,4 +566,14 @@ checkout101
     Wait And Click Element    ${locator_checkout_submit_save_btn}
     Wait And Click Element    id:payagain
     Page Should Contain Element    class:cart-title
+
+*** Keywords ***
+Common_Setp
+    #.登陆
+    Login With Default User
+    #.添加中国的物流
+    Add Shipping China
+    #.添加商品
+    Add Order Products
+
    

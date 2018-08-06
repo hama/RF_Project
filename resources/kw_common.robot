@@ -94,7 +94,7 @@ Go To Subtraction Page
     ${data}    Get Select Elements    1    # 获取导航栏营销下拉元素
     Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_marketing}
     ...    ELSE    Wait And Click Element    ${locatorB_marketing_subtraction}
-    Page Should Contain    ${contentB_subtraction_text}
+    Page Should Contain    ${locator_contentB_subtraction_text}
     Location Should Be    ${url_subtraction}
 
 

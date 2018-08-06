@@ -494,11 +494,12 @@ class keyWord(object):
     # @parments:-----3: 已结束
     def addSubtraction(self,argv):
         if argv is None : return False
+        argv = int(argv)
         url = "http://admin1024.shoplazza.com/api/rebate/refresh"
         del_url = "http://admin1024.shoplazza.com/api/rebate/end"
         cookies = self.Login()
         if cookies is None: return False
-        datax = self.getSubtractionData(int(argv))
+        datax = self.getSubtractionData(argv)
         try:
             res = requests.post(url=url,headers={"cookie":cookies},json=datax)
             if res.status_code != 200:
