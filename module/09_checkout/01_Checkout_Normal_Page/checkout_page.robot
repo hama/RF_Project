@@ -25,6 +25,7 @@ add product
 checkout001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0
+    Sleep    2
     #.click products btn
     Checkout Common Setp
     Wait Until Element Is Visible    ${locatorB_checkout_add_card_btn}
