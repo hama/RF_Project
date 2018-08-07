@@ -29,6 +29,10 @@ Input Domain
     Wait And Input Text    id:username    ${domain}
     Wait And Click Element    class:logBtn___3pRgJ
 
+Go To Home Page
+    [Documentation]    跳转到主页
+    Wait And Click Element    ${locatorB_overview}
+
 Go To Setting Page
     [Documentation]    跳转到设置页面
     Wait And Click Element    ${locatorB_setting}
@@ -44,12 +48,6 @@ Go To Products Page
     Wait Until Page Contains    ${contentB_products_all}
     Location Should Be    ${url_products}
     Sleep    1
-
-Get Select Elements
-    [Documentation]    获取第N个导航栏下拉元素
-    [Arguments]    ${index}
-    ${res}    Get Element Attribute    dom:document.querySelectorAll(".ant-menu-submenu-title")[${index}]    aria-expanded
-    [Return]    ${res}
 
 Go To Marketing Page
     [Documentation]    跳转到营销页面
@@ -156,7 +154,7 @@ Click And Page Contains Element With Refresh
     [Arguments]    ${click_element}    ${contain_element}    ${timeout}=10    ${retry_time}=2
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
-    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contain Element    ${contain_element}    ${timeout}    ${retry_time}
+    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Element    ${contain_element}    ${timeout}    ${retry_time}
     \    Run Keyword If    '${status0}'=='False'    Execute JavaScript    return location.reload()
     \    ...     ELSE    Exit For Loop
 
@@ -165,7 +163,7 @@ Click And Page Not Contains Element With Refresh
     [Arguments]    ${click_element}    ${contain_element}    ${timeout}=10    ${retry_time}=2
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
-    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contain Element    ${contain_element}    ${timeout}    ${retry_time}
+    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Element    ${contain_element}    ${timeout}    ${retry_time}
     \    Run Keyword If    '${status0}'=='True'    Execute JavaScript    return location.reload()
     \    ...     ELSE    Exit For Loop
 
@@ -174,7 +172,7 @@ Click And Page Contains With Refresh
     [Arguments]    ${click_element}    ${contain_text}    ${timeout}=10    ${retry_time}=2
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
-    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contain Text    ${contain_text}    ${timeout}    ${retry_time}
+    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Text    ${contain_text}    ${timeout}    ${retry_time}
     \    Run Keyword If    '${status0}'=='False'    Execute JavaScript    return location.reload()
     \    ...     ELSE    Exit For Loop
 
@@ -183,7 +181,7 @@ Click And Page Not Contains With Refresh
     [Arguments]    ${click_element}    ${contain_text}    ${timeout}=10    ${retry_time}=2
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
-    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contain Text    ${contain_text}    ${timeout}    ${retry_time}
+    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Text    ${contain_text}    ${timeout}    ${retry_time}
     \    Run Keyword If    '${status0}'=='True'    Execute JavaScript    return location.reload()
     \    ...     ELSE    Exit For Loop
 
@@ -214,3 +212,9 @@ Alert Should Not Be Present
     [Arguments]    ${msg}
     ${result}    Run Keyword And Ignore Error    Alert Should Be Present    ${msg}
     Should Be True    '${result}'!='PASS'
+
+Get Select Elements
+    [Documentation]    获取第N个导航栏下拉元素
+    [Arguments]    ${index}
+    ${res}    Get Element Attribute    dom:document.querySelectorAll(".ant-menu-submenu-title")[${index}]    aria-expanded
+    [Return]    ${res}

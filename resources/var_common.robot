@@ -10,6 +10,7 @@ ${register_btn}    dom:document.querySelectorAll(".bottomEdit___zk0l5 a")[0]    
 ${recover_pwd_btn}       dom:document.querySelectorAll(".bottomEdit___zk0l5 div a")[0]     #.忘记密码按钮
 
 ### 菜单栏 locator
+${locatorB_overview}    id:test_overview    # 导航栏-概览（即主页）
 ${locatorB_order}    dom:document.querySelectorAll('a[href="/order"]')[0]    # 导航栏-订单
 ${locatorB_products}    id:test_product    # 导航栏-商品
 ${locatorB_product_manage}    dom:document.querySelectorAll('a[href="/products"]')[0]    # 导航栏-商品管理
