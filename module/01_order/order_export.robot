@@ -26,6 +26,7 @@ order109
     Order Export Setp
     Sleep    1
     Page Should Contain Element    ${locatorB_order_export}
+    Input Text    ${locatorB_order_export_email}    ''
     Click Button    ${locatorB_order_three_btn}
     Page Should Contain Element    ${locatorB_order_export_error}
     Wait And Click Element    ${locatorB_order_close_btn}

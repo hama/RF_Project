@@ -213,25 +213,7 @@ Add Order Products
 
 Add TenPrice Products
     [Documentation]    添加一个价格为10元的商品
-    Go To    ${home_page}
-    Go To Products Page
-    Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}    # 点击添加商品按钮
-    Wait Until Page Contains    ${content_products_new}
-    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${content_products_addTitle}    # 添加标题
-    Wait And Input Text    ${locatorB_productsNew_input_addPrice}    10    # 添加价格
-    # add other content
-    Wait And Input Text    ${locatorB_productsNew_input_addSubTitle}    ${content_products_addSubTitle}    # 添加副标题
-    Wait And Input Text    ${locatorB_productsNew_input_addRawPrice}    10    # 添加原价
-    Wait And Input Text    ${locatorB_productsNew_input_addWeight}    ${content_products_addWeight}    # 添加重量
-    Wait And Click Element    id:status
-    Wait And Click Element    dom:document.querySelectorAll('.ant-checkbox-wrapper span')[2]    #. 对此商品收税
-    # add image
-    Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
-    Wait Until Element Is Visible    ${locatorB_productsNew_button_uploadBtn}
-    log    ${CURDIR}
-    Choose File    ${locatorB_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
-    Sleep    5
-    Click And Page Contains Element With Refresh    ${locatorB_popUps_button_middle}    ${locatorB_popUps_button_middle}
+    Add Custom Products    10
 
 Add Custom Products
     [Documentation]    添加一个任意价格的商品
@@ -239,13 +221,13 @@ Add Custom Products
     Go To    ${home_page}
     Go To Products Page
     Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}    # 点击添加商品按钮
-    Wait Until Page Contains    ${content_products_new}
-    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${content_products_addTitle}    # 添加标题
+    Wait Until Page Contains    ${contentB_products_new}
+    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${contentB_products_addTitle}    # 添加标题
     Wait And Input Text    ${locatorB_productsNew_input_addPrice}    ${price}    # 添加价格
     # add other content
-    Wait And Input Text    ${locatorB_productsNew_input_addSubTitle}    ${content_products_addSubTitle}    # 添加副标题
+    Wait And Input Text    ${locatorB_productsNew_input_addSubTitle}    ${contentB_products_addSubTitle}    # 添加副标题
     Wait And Input Text    ${locatorB_productsNew_input_addRawPrice}    ${price}    # 添加原价
-    Wait And Input Text    ${locatorB_productsNew_input_addWeight}    ${content_products_addWeight}    # 添加重量
+    Wait And Input Text    ${locatorB_productsNew_input_addWeight}    ${contentB_products_addWeight}    # 添加重量
     Wait And Click Element    id:status
     Wait And Click Element    dom:document.querySelectorAll('.ant-checkbox-wrapper span')[2]    #. 对此商品收税
     # add image

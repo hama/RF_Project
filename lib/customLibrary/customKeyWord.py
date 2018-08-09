@@ -510,9 +510,15 @@ class keyWord(object):
                 res_data = requests.post(url=del_url,headers={"cookie":cookies},json=rebate_id)
                 if res_data.status_code != 200:
                     return res_data.status_code
-                return json.loads(res_data.content)
+                if json.loads(res_data.content)['data']['id'] == 0:
+                    return True
+                else:
+                    return False
             else:
-                return json.loads(res.content)
+                if json.loads(res.content)['data']['id'] == 0:
+                    return True
+                else:
+                    return False
         except Exception as e:
             print e
     #. 删除一个满减活动 arvg参数为 "all" 删除所有的满减活动

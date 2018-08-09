@@ -19,24 +19,27 @@ Checkout Common Setp
 
 Add Address Common Setp
     [Documentation]    添加地址公共部分
-    Input Text    ${locator_checkout_address_first_name}    123
-    Input Text    ${locator_checkout_address_last_name}    345
-    Select From List    ${locator_checkout_address_select_country}    China
-    Input Text    ${locator_checkout_address_city}    深圳
-    Input Text    ${locator_checkout_address_add}    深圳123
-    Input Text    ${locator_checkout_address_zip}    123456
-    Input Text    ${locator_checkout_address_email}    123456@zz.xx
-    Input Text    ${locator_checkout_address_phone}    123456789
-    Input Text    ${locator_checkout_address_company}    123456789
+    Input Text    ${locatorB_checkout_address_first_name}    123
+    Input Text    ${locatorB_checkout_address_last_name}    345
+    Select From List    ${locatorB_checkout_address_select_country}    China
+    Input Text    ${locatorB_checkout_address_city}    深圳
+    Input Text    ${locatorB_checkout_address_add}    深圳123
+    Input Text    ${locatorB_checkout_address_zip}    123456
+    Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
+    Input Text    ${locatorB_checkout_address_phone}    123456789
+    Input Text    ${locatorB_checkout_address_company}    123456789
 
 Add Payment
     [Documentation]    B端添加支付方式
     Go To    ${home_page}
     Wait And Click Element    ${locatorB_setting}    #.点击设置按钮
     Wait And Click Element    ${locatorB_setting_payment}    #.点击收款渠道按钮
+    ${button}    Execute JavaScript    return document.querySelectorAll(".btn___2GFAg")[0]===undefined    #.开始设置按钮
+    Run keyword If    '${button}'=='False'    Wait And Click Element    dom:document.querySelectorAll(".btn___2GFAg")[0]
     ${condition}    Execute JavaScript    return document.querySelectorAll(".ant-switch-checked")[0]===undefined
-    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[1]    #.点击收款渠道按钮
-    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[2]    #.点击绑定按钮
+    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[1]    #.点击激活
+    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[0]    #.点击绑定按钮
+    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[1]    #.点击编辑
     Run keyword If    ${condition}    Wait And Input Text    dom:document.querySelectorAll("#client_id")[0]    123456    #.绑定账号
     Run keyword If    ${condition}    Wait And Input Text    dom:document.querySelectorAll("#secret_key")[0]    123123    #.绑定密码
     Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[2]    #.点击绑定按钮
@@ -50,6 +53,8 @@ Add Cod Payment
     Go To    ${home_page}
     Wait And Click Element    ${locatorB_setting}    #.点击设置按钮
     Wait And Click Element    ${locatorB_setting_payment}    #.点击收款渠道按钮
+    ${button}    Execute JavaScript    return document.querySelectorAll(".btn___2GFAg")[0]===undefined    #.开始设置按钮
+    Run keyword If    '${button}'=='False'    Wait And Click Element    dom:document.querySelectorAll(".btn___2GFAg")[0]
     ${condition}    Execute JavaScript    return document.querySelectorAll(".ant-switch-checked")[1]===undefined
     Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll(".ant-switch")[1]
     Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[5]

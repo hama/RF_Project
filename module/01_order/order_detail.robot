@@ -1,5 +1,5 @@
 *** Settings ***
-Suite Setup       Login With Default User
+Suite Setup       Order_Common_Step
 Suite Teardown    Close Test Suite Browser
 Force Tags        Order
 Resource          ../../resources/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
@@ -10,14 +10,15 @@ Library           SeleniumLibrary
 Resource          ../../resources/kw_add_order.robot
 Resource          ../../resources/kw_order.robot
 Resource          ../../resources/kw_products.robot
+Resource          ../../resources/kw_checkout.robot
 
 
 *** Test Cases ***
+sssssss
+    Add Payment
 order072
     [Documentation]    运单号输入时，物流商会匹配对应的内容，点击保存后，运单号更新成功
     [Tags]    P0
-    Add Order Products    #.调用添加商品
-    Sleep    5
     Add Order    #.调用生成订单
     Sleep    1
     Go To    ${home_page}
@@ -165,3 +166,13 @@ order077
 Order Setp
     Wait And Click Element    ${locatorB_order}
     Wait And Click Element    ${locatorB_order_list_first_tr}
+Order_Common_Step
+    #.登陆
+    Login With Default User
+    #.添加支付方式 ipaylinks
+    Add Payment
+    #.添加支付方式 cod
+    Add Cod Payment
+    Sleep    3
+    #.添加商品
+    Add Order Products
