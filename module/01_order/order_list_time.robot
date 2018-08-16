@@ -17,8 +17,7 @@ order078
     [Documentation]    选择后日期显示为2018-06-01~至今`,订单列表只显示这个时间段的订单
     [Tags]    P0
     Add Order
-    Go To    ${home_page}
-    sleep    1
+    Go To Home By Url
     Wait And Click Element    ${locatorB_order}
     sleep    3
     Common Js Click    input[placeholder='开始日期']    0
@@ -42,6 +41,5 @@ order079
     Wait And Click Element    ${locatorB_order}
     Wait Until Element Is Visible    dom:document.querySelectorAll("table tbody tr td")[0]
     ${time}    Execute JavaScript    return document.querySelectorAll("table tbody tr td p")[0].innerHTML
-    sleep    1
     ${result}    order list maxmonth check    ${time}    ${time}
     Should Be True    '${result}'=='${True}'

@@ -47,7 +47,6 @@ Add Payment
     Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[6]    #.点击确定
     Sleep Time
 
-
 Add Cod Payment
     [Documentation]    添加COD支付
     Go To    ${home_page}
@@ -59,6 +58,18 @@ Add Cod Payment
     Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll(".ant-switch")[1]
     Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[5]
     Sleep Time
+
+Checkout_Common_Address_Step
+    [Documentation]    checkout页面 点击buynow-保存-提交 三步
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
+    Wait And Click Element    ${locatorB_checkout_address_btn}
+
+Checkout_Common_Checkout_Step
+    [Documentation]    checkout页面 点击buynow-保存-提交
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
+    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
 
 Sleep Time
     [Documentation]    睡眠时间 2s
@@ -546,3 +557,4 @@ Close_Card
     #记录当前“银行卡支付”是否开启
     ${class}    Execute Javascript    return document.querySelectorAll(".payment_wrap___3m1lo")[1].querySelectorAll(" .ant-switch")[0].getAttribute("class")
     Run Keyword If    '${class}'=='ant-switch ant-switch-checked'    Change_Card    #关闭
+

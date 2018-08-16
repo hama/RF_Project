@@ -18,22 +18,9 @@ Resource          ../../../resources/var_checkout.robot
 Library           customLibrary
 
 *** Test Cases ***
-kdkdkdkd
-    Add TenPrice Products    #.添加商品
-    Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
-    Add Address Common Setp    # 添加地址公共部分
-    Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
-    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
-    Wait And Click Element    dom:document.getElementsByClassName("pm_footer_left")[0]
-    ${new_price}    Execute JavaScript    return document.querySelectorAll(".paydetail-line span")[1].innerText
-    Should Be True    '${new_price}'=='$10'
 checkout001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0
-    Sleep    2
     #.click products btn
     Checkout Common Setp
     Wait Until Element Is Visible    ${locatorB_checkout_add_card_btn}
@@ -59,9 +46,7 @@ checkout004
 checkout005
     [Documentation]    进入checkout界面 点击搜索按钮 跳转到搜索页面
     [Tags]    P1
-    Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_search_btn}
-    Page Should Contain Element    dom:document.querySelectorAll(".search_header_txt")[0]
+    Checkout_Common_Show_Element    ${locatorB_checkout_search_btn}    dom:document.querySelectorAll(".search_header_txt")[0]
 
 checkout008
     [Documentation]    进入checkout界面 顶部导航栏中间显示店铺名
@@ -72,9 +57,7 @@ checkout008
 checkout009
     [Documentation]    进入checkout界面 点击购物车按钮 显示购物车内容
     [Tags]    P0
-    Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_card_img_btn}
-    Page Should Contain Element    dom:document.querySelectorAll(".title")[0]
+    Checkout_Common_Show_Element    ${locatorB_checkout_card_img_btn}    dom:document.querySelectorAll(".title")[0]
 
 checkout010
     [Documentation]    进入checkout界面 点击个人中心按钮 显示个人中心内容
@@ -88,18 +71,14 @@ checkout011
     [Documentation]    进入checkout界面 点击buynow 然后添加地址
     [Tags]    P0
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_btn}
+    Checkout_Common_Address_Step
     Page Should Contain Element    dom:document.querySelectorAll("input[name='first_name']")[0]
 
 checkout012
     [Documentation]    进去checkout界面 点击buynow 添加地址·输入该输入信息·保存成功
     [Tags]    P0
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_btn}
+    Checkout_Common_Address_Step
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
@@ -118,9 +97,7 @@ checkout013
     [Documentation]    进去checkout 界面 点击buynow 添加地址·姓名不输入 保存不成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_btn}
+    Checkout_Common_Address_Step
     Input Text    ${locatorB_checkout_address_first_name}    ${Empty}
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
@@ -137,9 +114,7 @@ checkout017
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不选择国家 保存不成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_btn}
+    Checkout_Common_Address_Step
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
     Input Text    ${locatorB_checkout_address_city}    深圳
@@ -155,9 +130,7 @@ checkout018
     [Documentation]    进去checkout 界面 点击buynow 添加地址·先在后台添加一个中国的国家 然后在c端显示可选的为中国
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_btn}
+    Checkout_Common_Address_Step
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
     Page Should Contain Element    dom:document.querySelectorAll("#shipping_country_id option")[1]    #.代表中国
@@ -166,9 +139,7 @@ checkout022
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不选择地区 保存不成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_btn}
+    Checkout_Common_Address_Step
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
     Input Text    ${locatorB_checkout_address_city}    深圳
@@ -184,9 +155,7 @@ checkout023
     [Documentation]    进去checkout 界面 点击buynow 添加地址·选择中国 出现中国的所有地区
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_btn}
+    Checkout_Common_Address_Step
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
@@ -198,9 +167,7 @@ checkout025
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入城市 保存不成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_btn}
+    Checkout_Common_Address_Step
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
@@ -216,9 +183,7 @@ checkout026
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入详细地址 保存不成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_btn}
+    Checkout_Common_Address_Step
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
@@ -234,9 +199,7 @@ checkout028
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入zip 保存不成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_btn}
+    Checkout_Common_Address_Step
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
@@ -252,9 +215,7 @@ checkout030
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入邮箱 保存不成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_btn}
+    Checkout_Common_Address_Step
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
@@ -270,9 +231,7 @@ checkout032
     [Documentation]    进去checkout 界面 点击buynow 添加地址·不输入电话 保存不成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_btn}
+    Checkout_Common_Address_Step
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
@@ -289,9 +248,7 @@ checkout035
     [Documentation]    进去checkout 界面 点击buynow 添加地址· 保存成功
     [Tags]    P1
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_btn}
+    Checkout_Common_Address_Step
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
@@ -330,7 +287,7 @@ checkout043
     [Documentation]    进入checkout 界面 点击留言板，弹出窗口 输入超过500个字符
     [Tags]    P1
     ${strs}    Set Variable    aslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsaaslkdjlaksjdlkasjdksajdlaksjdlaksadsa
-    Go To    ${home_page}    #.跳转主页
+    Go To Home By Url
     Checkout Common Setp
     Execute JavaScript    return document.getElementsByClassName("review_write")[0].scrollIntoView()
     Wait And Click Element    ${locatorB_checkout_write_review}
@@ -340,25 +297,21 @@ checkout043
 checkout019
     [Documentation]    B端添加其他国家 checkout 展开下拉框，显示所有国家
     [Tags]    P1
-    Go To    ${home_page}
+    Go To Home By Url
     Add Other Country
     Sleep    2
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
+    Checkout_Common_Checkout_Step
     ${count}    Execute JavaScript    return document.querySelectorAll("#shipping_country_id")[0].length
     Should Be True    ${count}==228
-    Go To    ${home_page}
+    Go To Home By Url
     Delete Shipping
 
 checkout021
     [Documentation]    正常添加数据，保存成功
     [Tags]    P0
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
+    Checkout_Common_Checkout_Step
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
     ${name}    Execute JavaScript    return document.querySelectorAll("#shipping_country_id option")[1].innerText
@@ -371,6 +324,7 @@ checkout021
     Input Text    ${locatorB_checkout_address_company}    123456789
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Page Should Contain Element    id:changeaddress
+
 checkout038
     [Documentation]    添加地址后关闭页面填写的信息不会被重置
     [Tags]    P1
@@ -391,9 +345,7 @@ checkout052
     [Tags]    P1
     Add TenPrice Products    #.添加商品
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
+    Checkout_Common_Checkout_Step
     Add Address Common Setp    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
@@ -407,9 +359,7 @@ checkout054
     Set Tax Price    中国    10
     Add TenPrice Products    #.添加商品
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
+    Checkout_Common_Checkout_Step
     Add Address Common Setp    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
@@ -424,14 +374,12 @@ checkout063
     Set Tax Price    中国    10    #.设置税金
     Add TenPrice Products    #.添加商品
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
+    Checkout_Common_Checkout_Step
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
-    Select From List    ${locator_checkout_address_select_country}    China
+    Select From List    ${locatorB_checkout_address_select_country}    China
     Sleep Time
-    Select From List    ${locator_checkout_address_select_city}    Shanghai
+    Select From List    ${locatorB_checkout_address_select_city}    Shanghai
     Input Text    ${locatorB_checkout_address_city}    深圳
     Input Text    ${locatorB_checkout_address_add}    深圳123
     Input Text    ${locatorB_checkout_address_zip}    123456
@@ -450,9 +398,7 @@ checkout065
     [Tags]    P0
     Set Tax Price    中国    0    #.设置税金
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
+    Checkout_Common_Checkout_Step
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
@@ -476,9 +422,7 @@ checkout079
     [Tags]    P0
     Add Cod Payment    #.添加cod支付方式
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
+    Checkout_Common_Checkout_Step
     Add Address Common Setp    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
@@ -490,9 +434,7 @@ checkout081
     Add Payment    #.添加paylinks支付方式
     Add Cod Payment    #.添加cod支付方式
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
+    Checkout_Common_Checkout_Step
     Add Address Common Setp    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
@@ -503,9 +445,7 @@ checkout088
     [Documentation]    1.选择CDO支付方式 2.点击pay now"   直接跳转到支付成功界面
     [Tags]    P0
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
+    Checkout_Common_Checkout_Step
     Add Address Common Setp    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
@@ -518,9 +458,7 @@ checkout098
     [Tags]    P0
     Add Order Products    #.添加商品
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
+    Checkout_Common_Checkout_Step
     Add Address Common Setp    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
@@ -535,9 +473,7 @@ checkout099
     [Tags]    P0
     Add Payment    #.添加支付方式
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
+    Checkout_Common_Checkout_Step
     Add Address Common Setp    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
@@ -550,9 +486,7 @@ checkout100
     [Documentation ]     1.进入支付界面2.B端删除本次购买所选的物流  3.点击支付
     [Tags]    P0
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
+    Checkout_Common_Checkout_Step
     Add Address Common Setp    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
@@ -566,9 +500,7 @@ checkout101
     [Tags]    P0
     Add Cod Payment    #.添加支付方式
     Checkout Common Setp
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
+    Checkout_Common_Checkout_Step
     Add Address Common Setp    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
@@ -580,6 +512,13 @@ checkout101
     Page Should Contain Element    class:cart-title
 
 *** Keywords ***
+Checkout_Common_Show_Element
+    [Documentation]    封装 进入checkout界面 显示购买的商品，地址......
+    [Arguments]    ${click_element}    ${check_element}
+    Checkout Common Setp
+    Wait And Click Element    ${click_element}
+    Page Should Contain Element    ${check_element}
+
 Common_Step
     #.登陆
     Login With Default User

@@ -17,8 +17,7 @@ order009
     [Documentation]    显示订单列表，分别为，全部，已支付，已确认，已发货，已完成，未支付，已取消
     [Tags]    P1
     Add Order    #.添加订单
-    Go To    ${home_page}
-    sleep    1
+    Go To Home By Url
     Wait And Click Element    ${locatorB_order}
     Page Should Contain Element    ${locatorB_order}
     Page Should Contain Element    ${locatorB_order_already_pay_btn}
@@ -31,7 +30,6 @@ order011
     [Documentation]    显示全部订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价
     [Tags]    P1
     Go To Order Page
-    sleep    1
     Wait And Click Element    ${locatorB_order}
     page should contain element    ${locatorB_order_all}
 
@@ -39,7 +37,6 @@ order012
     [Documentation]    显示已支付订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价，支付状态全部显示为已支付
     [Tags]    P1
     Go To Order Page
-    sleep    1
     Wait And Click Element    ${locatorB_order}
     Wait And Click Element    ${locatorB_order_delivered_btn}
     page should contain element    ${locatorB_order_all}
@@ -48,7 +45,6 @@ order014
     [Documentation]    显示已发货订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价，订单状态全部显示为全部发货或部分发货
     [Tags]    P1
     Go To Order Page
-    sleep    1
     Wait And Click Element    ${locatorB_order}
     Wait And Click Element    ${locatorB_order_alerady_send_btn}
     page should contain element    ${locatorB_order_all}
@@ -57,7 +53,6 @@ order015
     [Documentation]    显示已完成订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价，订单状态全部显示为已完成
     [Tags]    P1
     Go To Order Page
-    sleep    1
     Wait And Click Element    ${locatorB_order}
     Wait And Click Element    ${locatorB_order_alerady_mission_btn}
     page should contain element    ${locatorB_order_all}
@@ -66,7 +61,6 @@ order016
     [Documentation]    显示未支付订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价，支付状态全部显示为未支付
     [Tags]    P1
     Go To Order Page
-    sleep    1
     Wait And Click Element    ${locatorB_order}
     Wait And Click Element    ${locatorB_order_not_payment_btn}
     page should contain element    ${locatorB_order_all}
@@ -75,7 +69,6 @@ order017
     [Documentation]    显示已取消订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价，订单状态全部显示为已取消
     [Tags]    P1
     Go To Order Page
-    sleep    1
     Wait And Click Element    ${locatorB_order}
     Wait And Click Element    ${locatorB_order_alerady_cencel_btn}
     page should contain element    ${locatorB_order_all}
@@ -84,7 +77,6 @@ order_013
     [Documentation]    显示已确认订单，分别显示订单编号，订单生成日期，顾客姓名，支付状态，订单状态和总价
     [Tags]    P1
     Go To Order Page
-    Sleep    1
     Wait And Click Element    ${locatorB_order}
     Wait And Click Element    ${locatorB_order_alerady_refund_btn}
     page should contain element    ${locatorB_order_all}
@@ -93,7 +85,6 @@ order018
     [Documentation]    进入订单详情页面，显示订单详情，分别为订单号，下单时间，订单状态，订单信息，商品总价，实际支付价格，支付状态，发货状态，收件人信息，以及发货详情
     [Tags]    P1
     Go To Order Page
-    sleep    1
     Wait And Click Element    ${locatorB_order}
     Wait And Click Element    ${locatorB_order_list_first_tr}
     page should contain element    ${locatorB_order_detail_element}
@@ -102,14 +93,13 @@ order070
     [Documentation]    发货成功后，订单状态下方将显示发货详情，包括商品详情，商品价格，商品数量，商品总价记忆物流信息
     [Tags]    P1
     Add Order
-    Go To    ${home_page}
+    Go To Home By Url
     Wait And Click Element    ${locatorB_order}
     Wait And Click Element    ${locatorB_order_list_first_tr}
     Wait Until Element Is Visible    ${locatorB_order_first_btn}
     Click Button    添加运单
     Wait And Click Element    ${locatorB_order_four_btn}
     Go To Order Page
-    sleep    1
     Wait And Click Element    ${locatorB_order}
     Wait And Click Element    ${locatorB_order_list_first_tr}
     page should contain element    ${locatorB_order_detail_element}
@@ -120,8 +110,7 @@ order071
     [Documentation]    弹窗更新运单号弹窗
     [Tags]    P1
     Add Order
-    Go To    ${home_page}
-    sleep    1
+    Go To Home By Url
     Wait And Click Element    ${locatorB_order}
     Wait And Click Element    ${locatorB_order_list_first_tr}
     page should contain element    ${locatorB_order_detail_element}
@@ -160,7 +149,6 @@ order_list_already_refund_check
     Go To Order Page
     Wait And Click Element    ${locatorB_order}
     Wait And Click Element    ${locatorB_order_alerady_refund_btn}
-    Sleep    2
     ${count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length
     : FOR    ${i}    IN RANGE    ${count}
     \    ${x}    Evaluate    ${i}+1
@@ -173,7 +161,6 @@ order085
     Go To Order Page
     Wait And Click Element    ${locatorB_order}
     Wait And Click Element    ${locatorB_order_alerady_send_btn}
-    Sleep    3
     ${count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length
     : FOR    ${i}    IN RANGE    ${count}
     \    ${x}    Evaluate    ${i}+1
@@ -184,7 +171,7 @@ order084
     [Documentation]    图标选中已支付栏，订单列表展示已支付订单
     [Tags]    P0
     Add Order    #.添加订单
-    Go To    ${home_page}
+    Go To Home By Url
     Add Alerady Mission Order    #.添加已完成订单
     Go To Order Page
     Wait And Click Element    ${locatorB_order}
@@ -201,23 +188,21 @@ order090
     Go To Order Page
     Wait And Click Element    ${locatorB_order}
     Wait And Click Element    ${locatorB_order_not_payment_btn}
-    Sleep    3
     ${count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length
     : FOR    ${i}    IN RANGE    ${count}
     \    ${x}    Evaluate    ${i}+1
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td")[3].innerText
-    \    Should Be True    '${data}'=='未支付'
+    \    Should Be True    '${data}'=='未支付COD'
 
 order092
     [Documentation]    图标选中已取消栏，订单列表展示已取消订单
     [Tags]    P0
     Add Order    #.添加订单
-    Go To    ${home_page}
+    Go To Home By Url
     Add Alerady Cancel Order    #.添加已取消订单
     Go To Order Page
     Wait And Click Element    ${locatorB_order}
     Wait And Click Element    ${locatorB_order_alerady_cencel_btn}
-    sleep    3
     ${count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length
     : FOR    ${i}    IN RANGE    ${count}
     \    ${x}    Evaluate    ${i}+1
@@ -235,7 +220,6 @@ order093
     ${odr_id}    searchStrs    ${order_id}
     Sleep    3
     Input Text    ${locatorB_order_list_input}    ${odr_id}
-    Sleep    1
     Wait And Click Element    ${locatorB_order_list_search}    #.搜索按钮
     ${order_ids}    Execute JavaScript    return document.querySelectorAll("table tbody tr td")[0].innerText    #,在获取tr第一个订单号
     ${ord_ids}    searchStrs    ${order_ids}
@@ -260,9 +244,7 @@ order096
     Wait And Click Element    ${locatorB_order}
     Wait Until Element Is Visible    ${locatorB_order_list_first_tr}
     ${order_name}    Execute JavaScript    return document.querySelectorAll("table tbody tr td p")[1].innerText    #,获取tr第一个姓名
-    Sleep    1
     Input Text    ${locatorB_order_list_input}    ${order_name}
-    Sleep    2
     Wait And Click Element    ${locatorB_order_list_search}    #.搜索按钮
     ${order_count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length    #,在获取tr数量
     : FOR    ${i}    IN RANGE    ${order_count}
@@ -277,9 +259,7 @@ order097
     Wait And Click Element    ${locatorB_order}
     Wait Until Element Is Visible    ${locatorB_order_list_first_tr}
     ${order_name}    Set Variable    张三
-    Sleep    1
     Input Text    ${locatorB_order_list_input}    ${order_name}
-    Sleep    1
     Wait And Click Element    ${locatorB_order_list_search}    #.搜索按钮
     Page Should Not Contain Element    ${locatorB_order_list_first_tr}
 
@@ -292,7 +272,6 @@ order098
     Wait Until Element Is Visible    ${locatorB_order_list_search}
     Input Text    ${locatorB_order_list_minprice}    ${price}
     Input Text    ${locatorB_order_list_maxprice}    ${price}
-    Sleep    1.5
     Wait And Click Element    ${locatorB_order_list_search}    #.搜索按钮
     ${order_count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length    #,在获取tr数量
     : FOR    ${i}    IN RANGE    ${order_count}
@@ -312,7 +291,6 @@ order099
     Input Text    ${locatorB_order_list_minprice}    ${min_price}
     Input Text    ${locatorB_order_list_maxprice}    ${max_price}
     Wait And Click Element    ${locatorB_order_list_search}    #.搜索按钮
-    Sleep    1.5
     ${order_count}    Execute JavaScript    return document.querySelectorAll("table tbody tr").length    #,在获取tr数量
     : FOR    ${i}    IN RANGE    ${order_count}
     \    ${x}    Evaluate    ${i}+1
