@@ -16,7 +16,7 @@ subtraction001
     [Documentation]    进入满减活动界面，查看左上角标题
     [Tags]    P0
     Go To Subtraction Page
-    Page Should Contain    ${locator_contentB_subtraction_text}
+    Page Should Contain    ${locatorB_subtraction_header_text}
 
 subtraction002
     [Documentation]    进入全部满减活动界面
@@ -25,7 +25,7 @@ subtraction002
     # 调用添加一个满减活动关键字 - 状态为：进行中
     run_keyword_wait_step    1
     Go To Subtraction Page
-    Page Should Contain Element    ${locator_ContentB_first_tr_eml}
+    Page Should Contain Element    ${locatorB_subtraction_first_tr_eml}
     delSubtraction    #.删除满减活动
 
 subtraction003
@@ -34,9 +34,9 @@ subtraction003
     Go To Subtraction Page
     #.添加一个未开始的活动
     run_keyword_wait_step    2
-    Wait And Click Element    ${locator_ContentB_title_not_start}
-    Page Should Contain Element    ${locator_ContentB_first_tr_eml}
-    ${data}    Get Text    ${locator_ContentB_get_status_text}
+    Wait And Click Element    ${locatorB_subtraction_title_not_start}
+    Page Should Contain Element    ${locatorB_subtraction_first_tr_eml}
+    ${data}    Get Text    ${locatorB_subtraction_get_status_text}
     Should Be True    '${data}'=='未开始'
     delSubtraction    #.删除满减活动
 
@@ -46,8 +46,8 @@ subtraction004
     Go To Subtraction Page
     #.添加一个进行中的活动
     run_keyword_wait_step    1
-    Wait And Click Element    ${locator_ContentB_title_processing}
-    ${data}    Get Text    ${locator_ContentB_get_status_text}
+    Wait And Click Element    ${locatorB_subtraction_title_processing}
+    ${data}    Get Text    ${locatorB_subtraction_get_status_text}
     Should Be True    '${data}'=='进行中'
     delSubtraction    #.删除满减活动
 
@@ -57,8 +57,8 @@ subtraction005
     Go To Subtraction Page
     #.添加一个已结束的活动
     run_keyword_wait_step    3
-    Wait And Click Element    ${locator_ContentB_title_end}
-    ${data}    Get Text    ${locator_ContentB_get_status_text}
+    Wait And Click Element    ${locatorB_subtraction_title_end}
+    ${data}    Get Text    ${locatorB_subtraction_get_status_text}
     Should Be True    '${data}'=='已结束'
     delSubtraction    #.删除满减活动
 
@@ -222,11 +222,11 @@ subtraction_common_change_name
     [Arguments]    ${value}    ${status}    ${paremeter}=False
     run_keyword_wait_step    ${status}
     Go To Subtraction Page
-    Wait And Click Element    ${locator_ContentB_title_all}
+    Wait And Click Element    ${locatorB_subtraction_title_all}
     ${data}    Get Text    dom:document.querySelectorAll("tbody tr td")[1]
-    Wait And Click Element    ${locator_ContentB_first_tr_eml}
-    Run keyword If    ${status}<>3    Wait And Input Text    ${locator_ContentB_edit_input_name}    ${value}
-    Run keyword If    ${status}<>3    Wait And Click Element    ${locator_ContentB_first_btn_save}
+    Wait And Click Element    ${locatorB_subtraction_first_tr_eml}
+    Run keyword If    ${status}<>3    Wait And Input Text    ${locatorB_subtraction_edit_input_name}    ${value}
+    Run keyword If    ${status}<>3    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
     ...    ELSE    Page Should Not Contain    保存
     Run keyword If    '${paremeter}'=='False'    Should Not Be True    '${data}'=='${value}'
     ...    ELSE    Should Be True    '${data}'=='${value}'
@@ -240,8 +240,8 @@ subtraction_set_time_zone
     Go To Subtraction Page
     #. 设置时区 - 美属萨摩亚
     run_keyword_wait_timezone    ${check}
-    Wait And Click Element    ${locator_ContentB_title_all}
-    Wait And Click Element    ${locator_ContentB_first_tr_eml}
+    Wait And Click Element    ${locatorB_subtraction_title_all}
+    Wait And Click Element    ${locatorB_subtraction_first_tr_eml}
     Wait Until Element Is Visible    dom:document.querySelectorAll('.title___1Hp1y span')[0]
     ${res}    Get Text    dom:document.querySelectorAll('.title___1Hp1y span')[0]
     Should Be True    '${res}'=='(GMT - 11:00) 美属萨摩亚，中途岛'
@@ -259,7 +259,7 @@ subtraction_change_time_start
     [Documentation]    修改开始时间case封装
     [Arguments]    ${index}
     common_click_first_tr_step    ${index}
-    Wait And Click Element    ${locator_ContentB_edit_select_first_time}
+    Wait And Click Element    ${locatorB_subtraction_edit_select_first_time}
     Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll('.ant-calendar-tbody tr td')[17]
     Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll("button")[1]
     ...    ELSE    Page Should Not Contain Element    dom:document.querySelectorAll('.ant-calendar-tbody tr td')[17]
@@ -271,29 +271,29 @@ subtraction_change_coupon_type
     Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__rendered")[0]
 
     Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-root li")[1]
-    Run keyword If    ${index}==2    Wait And Input Text    ${locator_ContentB_edit_input_totalPrice}    ${input_count}
-    Run keyword If    ${index}==2    Wait And Input Text    ${locator_ContentB_edit_input_cutPrice}    ${input_percentage}
-    Run keyword If    ${index}==2    Wait And Click Element    ${locator_ContentB_first_btn_save}
-    ...    ELSE    Page Should Not Contain    ${locator_ContentB_edit_text_save}
+    Run keyword If    ${index}==2    Wait And Input Text    ${locatorB_subtraction_edit_input_totalPrice}    ${input_count}
+    Run keyword If    ${index}==2    Wait And Input Text    ${locatorB_subtraction_edit_input_cutPrice}    ${input_percentage}
+    Run keyword If    ${index}==2    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
+    ...    ELSE    Page Should Not Contain    ${locatorB_subtraction_edit_text_save}
 
 subtraction_change_not_capped
     [Documentation]    修改上不封顶case封装
     [Arguments]    ${index}
     #.点击第一个tr的内容
     common_click_first_tr_step    ${index}
-    Wait And Click Element    ${locator_ContentB_edit_checkbox_capped}
-    Run keyword If    ${index}==3    Page Should Not Contain    ${locator_ContentB_edit_text_save}
-    ...    ELSE    Wait And Click Element    ${locator_ContentB_first_btn_save}
+    Wait And Click Element    ${locatorB_subtraction_edit_checkbox_capped}
+    Run keyword If    ${index}==3    Page Should Not Contain    ${locatorB_subtraction_edit_text_save}
+    ...    ELSE    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
 
 subtraction_change_preferential_rules
     [Documentation]    修改优惠规则case封装
     [Arguments]    ${index}
     #.点击第一个tr的内容
     common_click_first_tr_step    ${index}
-    Run keyword If    ${index}==2    Wait And Input Text    ${locator_ContentB_edit_input_totalPrice}    ${input_count}
-    Run keyword If    ${index}==2    Wait And Input Text    ${locator_ContentB_edit_input_cutPrice}    ${input_percentage}
-    Run keyword If    ${index}==2    Wait And Click Element    ${locator_ContentB_first_btn_save}
-    ...    ELSE    Page Should Not Contain    ${locator_ContentB_edit_text_save}
+    Run keyword If    ${index}==2    Wait And Input Text    ${locatorB_subtraction_edit_input_totalPrice}    ${input_count}
+    Run keyword If    ${index}==2    Wait And Input Text    ${locatorB_subtraction_edit_input_cutPrice}    ${input_percentage}
+    Run keyword If    ${index}==2    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
+    ...    ELSE    Page Should Not Contain    ${locatorB_subtraction_edit_text_save}
 
 subtraction_change_all_product_quantity
     [Documentation]    修改满减所有商品规则case封装
@@ -308,7 +308,7 @@ subtraction_change_all_product_quantity
     Run keyword If    ${index}==2    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-tbody")
     #Run keyword If    ${index}==2    ${length}=    Execute JavaScript    return document.querySelectorAll(".ant-table-tbody tr").length
     #Run keyword If    ${index}==2    Should Be True    ${length}==2
-    ...    ELSE    Page Should Not Contain    ${locator_ContentB_edit_text_save}
+    ...    ELSE    Page Should Not Contain    ${locatorB_subtraction_edit_text_save}
 
 subtraction_change_sub_product_quantity
     [Documentation]    修改满减部分商品规则case封装
@@ -321,9 +321,9 @@ subtraction_change_sub_product_quantity
     Run keyword If    ${index}<>3    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-checkbox-wrapper")[3]
     Run keyword If    ${index}<>3    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-wrapper")[3].click()
     Run keyword If    ${index}<>3    Execute JavaScript    return document.getElementsByClassName("handleSubmit___1JL8t")[0].scrollIntoView()
-    Run keyword If    ${index}<>3    Wait And Click Element    ${locator_ContentB_edit_select_product_save}
-    Run keyword If    ${index}<>3    Wait And Click Element    ${locator_ContentB_first_btn_save}
-    ...    ELSE    Page Should Not Contain    ${locator_ContentB_edit_text_save}
+    Run keyword If    ${index}<>3    Wait And Click Element    ${locatorB_subtraction_edit_select_product_save}
+    Run keyword If    ${index}<>3    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
+    ...    ELSE    Page Should Not Contain    ${locatorB_subtraction_edit_text_save}
 
 subtraction_change_cancel
     [Documentation]    修改页面内容case封装
@@ -331,14 +331,14 @@ subtraction_change_cancel
     ${name}    Set Variable    自动化测试
     #.点击第一个tr的内容
     common_click_first_tr_step    ${index}    ${type}
-    Wait And Input Text    ${locator_ContentB_edit_input_name}    ${name}
-    Wait And Click Element    ${locator_ContentB_first_btn_cancel}
+    Wait And Input Text    ${locatorB_subtraction_edit_input_name}    ${name}
+    Wait And Click Element    ${locatorB_subtraction_first_btn_cancel}
 
     Run keyword If    '${confirm}'=='false'    Wait Until Page Contains    放弃当前更改内容？
-    Run keyword If    '${confirm}'=='false'    Wait And Click Element    ${locator_ContentB_btn_confirm_cancel}
+    Run keyword If    '${confirm}'=='false'    Wait And Click Element    ${locatorB_subtraction_confirm_cancel_btn}
     Run keyword If    '${confirm}'=='false'    Wait And Click Element    ${locatorB_marketing_subtraction}
     Run keyword If    '${confirm}'=='false'    Alert Should Be Present
-    ...    ELSE    Wait And Click Element    ${locator_ContentB_btn_confirm_determine}
+    ...    ELSE    Wait And Click Element    ${locatorB_subtraction_confirm_determine_btn}
 
 
 

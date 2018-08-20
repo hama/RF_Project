@@ -126,8 +126,8 @@ Order_Common_Step
     #.登陆
     Login With Default User
     #.添加支付方式 ipaylinks
-    #Add Payment
+    Add Payment
     #.添加支付方式 cod
-    #Add Cod Payment
+    Add Cod Payment
     #.添加商品
-    #Add Order Products
+    Add Order Products
