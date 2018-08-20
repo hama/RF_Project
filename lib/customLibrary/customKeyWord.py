@@ -30,6 +30,10 @@ class keyWord(object):
     db_uname = "lansejiebo"
     db_pwd = "lansejiebo@123"
     db_name = "shop_"
+    #北京时区
+    Bj_timeZone = "+0800"
+    #美属萨摩亚时区
+    My_timeZone = "-1100"
 
     store_url = "http://admin1024.shoplazza.com/api/store/info"
 
@@ -304,14 +308,9 @@ class keyWord(object):
     def addShipping(self):
         cookie = self.Login()
         add_url = self.home_page_url + "/api/shipping/refresh"
-        add_data = {"has_other_country":0,"shipping_area":"[{\"country_id\":\"44\",\"zone_ids\":\"-1\"}]",
-                    "shipping_name":"自动化测试添加物流","shipping_plan":"[{\"name\":\"Standard shipping\",\
-                                                                           \"shipping_method\":\"price\","
-                                                                "\"range_min\":0,\"range_max\":-1,\"rate_amount\":0,"
-                                                                "\"payment_list\":\"cod;online;custom;credit_card\","
-                                                                "\"desc\":\"\",\"range_unit\":\"g\"}]"}
+        add_data = {"has_other_country":0,"shipping_area":"[{\"country_id\":\"44\",\"zone_ids\":\"-1\"}]","shipping_name":"自动化测试添加物流","shipping_plan":"[{\"name\":\"Standard shipping\",\"shipping_method\":\"price\",""\"range_min\":0,\"range_max\":-1,\"rate_amount\":0,""\"payment_list\":\"cod;online;custom;credit_card\",""\"desc\":\"\",\"range_unit\":\"g\"}]"}
         try:
-            add_res = requests.post(url=add_url,headers={"cookie":cookie},json=add_data)
+            add_res = requests.post(url=add_url, headers={"cookie":cookie}, json=add_data)
             if json.loads(add_res.content)['state'] == 0:
                 return True
             else:
@@ -533,8 +532,8 @@ class keyWord(object):
     def addSubtraction(self,argv,type=None):
         if argv is None : return False
         argv = int(argv)
-        url = "http://admin1024.shoplazza.com/api/rebate/refresh"
-        del_url = "http://admin1024.shoplazza.com/api/rebate/end"
+        url = self.home_page_url + "/api/rebate/refresh"
+        del_url = self.home_page_url + "/api/rebate/end"
         cookies = self.Login()
         if cookies is None: return False
         datax = self.getSubtractionData(argv,type)
@@ -580,13 +579,13 @@ class keyWord(object):
         cookie = self.Login()
         store_id = self.getStoreId()
         if timezone is None:
-            time_zone = "+0800"
+            time_zone = self.Bj_timeZone
         else:
-            time_zone = "-1100"
+            time_zone = self.My_timeZone
         data = {"address":"","city":"","currency":"USD","email":"171869092@qq.com","icon":{"src":"","path":""},
                 "name":"chen","service_email":"171869092@qq.com","store_id":store_id,"telephone":"15220581724",
                 "time_zone":time_zone,"zip":"","zone_id":"-1"}
-        url = "http://admin1024.shoplazza.com/api/store/update"
+        url = self.home_page_url + "/api/store/update"
         try:
             res = requests.post(url=url,headers={"cookie":cookie},json=data)
             if res.status_code == 200 and json.loads(res.content)['state']==0:
@@ -613,7 +612,6 @@ class keyWord(object):
                                   charset="utf8", port=self.port, cursorclass=pymysql.cursors.DictCursor)
 
 if __name__ == '__main__':
-    # res = keyWord()
     # res.delSubtraction('all')
     # print res.addSubtraction(2)
     # exit()

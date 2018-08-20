@@ -472,7 +472,7 @@ Subtraction Check Preferential Conditions
     Wait And Input Text    ${locatorB_subtraction_edit_input_name}    自动化测试
     #.选择所有商品
     Subtraction Select Product
-    #.点击第一个选择时间框
+    #.设置时间
     Subtraction Add Activity Set Time
     Subtraction Input Coupon Type    ${name}    ${value}
     Wait And Click Element    ${locatorB_subtraction_first_btn_save}
@@ -521,7 +521,7 @@ Subtraction Check Add Level
     Wait And Input Text    ${locatorB_subtraction_edit_input_name}    自动化测试
     #.选择所有商品
     Subtraction Select Product
-    #.点击第一个选择时间框
+    #.设置时间
     Subtraction Add Activity Set Time
     Run keyword If    '${parmeter}'<>'false'    Wait And Click Element    ${locatorB_subtraction_select_fullDiscount}
     Run keyword If    '${parmeter}'<>'false'    Wait And Click Element    ${locatorB_subtraction_select_fullDiscountData}
@@ -536,7 +536,7 @@ Subtraction Check Del Level
     Wait And Input Text    ${locatorB_subtraction_edit_input_name}    自动化测试
     #.选择所有商品
     Subtraction Select Product
-    #.点击第一个选择时间框
+    #.设置时间
     Subtraction Add Activity Set Time
     Run keyword If    '${parmeter}'<>'false'    Wait And Click Element    ${locatorB_subtraction_select_fullDiscount}
     Run keyword If    '${parmeter}'<>'false'    Wait And Click Element    ${locatorB_subtraction_select_fullDiscountData}
@@ -549,7 +549,7 @@ Subtraction Check Product Filter
     [Documentation]    添加活动 商品筛选case封装
     Common Step
     Wait And Input Text    ${locatorB_subtraction_edit_input_name}    自动化测试
-    #.点击第一个选择时间框
+    #.设置时间
     Subtraction Add Activity Set Time
     #.输入优惠规则
     Subtraction Input Coupon Type    ${input_count}    ${input_percentage}
