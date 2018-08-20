@@ -215,6 +215,9 @@ subtraction039
     [Tags]    P0
     subtraction_change_cancel    2
 
+#------------------------------------------------------------------------------------------------------------------
+#-------------------------------------------------KeyWord----------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------
 
 *** Keywords ***
 subtraction_common_change_name
@@ -333,7 +336,6 @@ subtraction_change_cancel
     Common Click First Tr Step    ${index}    ${type}
     Wait And Input Text    ${locatorB_subtraction_edit_input_name}    ${name}
     Wait And Click Element    ${locatorB_subtraction_first_btn_cancel}
-
     Run keyword If    '${confirm}'=='false'    Wait Until Page Contains    放弃当前更改内容？
     Run keyword If    '${confirm}'=='false'    Wait And Click Element    ${locatorB_subtraction_confirm_cancel_btn}
     Run keyword If    '${confirm}'=='false'    Wait And Click Element    ${locatorB_marketing_subtraction}

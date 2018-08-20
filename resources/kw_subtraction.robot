@@ -29,8 +29,8 @@ Common Click First Tr Step
     [Documentation]    点击table中的第一个tr公共步骤
     [Arguments]    ${index}    ${type}=${Empty}
     delSubtraction
-    run_keyword_wait_step    ${index}    ${type}
+    Add Subtraction Wait Step    ${index}    ${type}
     Go To Subtraction Page
-    Wait And Click Element    ${locator_ContentB_title_all}
-    Wait And Click Element    ${locator_ContentB_first_tr_eml}
+    Wait And Click Element    ${locatorB_subtraction_title_all}
+    Wait And Click Element    ${locatorB_subtraction_first_tr_eml}
 
