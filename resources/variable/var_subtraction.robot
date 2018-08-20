@@ -39,6 +39,8 @@ ${locatorB_subtraction_edit_add_level}    return document.querySelectorAll(".add
 ${locatorB_subtraction_edit_del_level}    dom:document.querySelectorAll(".delete_icon___2AQqo")[0]    #.满减活动-编辑-删除层级
 ${locatorB_subtraction_selectPro_allAblum}    dom:document.querySelectorAll(".ant-select-selection-selected-value")[1]    #.满减活动-选择商品-全部专辑
 ${locatorB_subtraction_selectPro_allStatus}    dom:document.querySelectorAll(".ant-select-selection-selected-value")[2]    #.满减活动-选择商品-全部状态
+${locatorB_subtraction_input_search}    dom:document.querySelectorAll('input[placeholder="请输入搜索内容"]')    #.满减活动-选择商品-搜索输入框
+${locatorB_subtraction_selectPro_search_bth}    dom:document.querySelectorAll("button")[6]    #.满减活动-选择商品-搜索按钮
 ${locatorB_subtraction_edit_text_save}    保存    #. 编辑页面保存字体
 ${locatorB_subtraction_edit_input_totalPrice}    id:totalPrice0    #.编辑页面 满减打折 输入框
 ${locatorB_subtraction_edit_input_cutPrice}    id:cutPrice0    #.编辑页面 百分比 输入框

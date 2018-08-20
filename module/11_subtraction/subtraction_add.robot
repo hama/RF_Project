@@ -12,6 +12,16 @@ Resource          ../../resources/keywords/kw_products.robot
 Resource          ../../resources/keywords/kw_subtraction.robot
 
 *** Test Cases ***
+lklklklklk
+    delSubtraction
+    Add Subtraction Wait Step    2
+    Go To Subtraction Page
+    #.输入100
+    Wait And Input Text    dom:document.querySelectorAll(".ant-input")[0]    100
+    #.点击重置
+    Wait And Click Element    dom:document.querySelectorAll("button")[2]
+    ${res_data}    Execute JavaScript    return document.querySelectorAll(".ant-input")[0].value===''
+    Should Be True    '${res_data}'=='True'
 subtraction040
     [Documentation]    活动名称输入中文字符  > 可以成功输入，并保存
     [Tags]    P1
@@ -410,6 +420,173 @@ subtraction110
     Wait And Click Element    ${locatorB_subtraction_comm_close}
     Confirm Cancel Alert
 
+subtraction111
+    [Documentation]    输入框输入任意关键字，点击搜索/按enter  > 搜索成功
+    [Tags]    P0
+    Subtraction Check Product Filter
+    ${get_values}    Execute JavaScript    return document.querySelectorAll(".list_li_content___1ZXgo div span")[0].innerText
+    Wait And Input Text    ${locatorB_subtraction_input_search}    ${get_values}
+    Wait And Click Element    ${locatorB_subtraction_selectPro_search_bth}
+    ${res_values}    Execute JavaScript    return document.querySelectorAll(".list_li_content___1ZXgo div span")[0].innerText
+    Should Be True    '${get_values}'=='${res_values}'
+    Wait And Click Element    ${locatorB_subtraction_comm_close}
+    Confirm Cancel Alert
+
+subtraction112
+    [Documentation]    输入字符“0”，点击搜索/按enter  > 搜索成功
+    [Tags]    P0
+    Subtraction Check Product Filter
+    Wait And Input Text    ${locatorB_subtraction_input_search}    0
+    Wait And Click Element    ${locatorB_subtraction_selectPro_search_bth}
+    Wait And Click Element    ${locatorB_subtraction_comm_close}
+    Confirm Cancel Alert
+
+subtraction113
+    [Documentation]    点击重置  > 恢复默认搜索
+    [Tags]    P1
+    Subtraction Check Product Filter
+    Wait And Input Text    ${locatorB_subtraction_input_search}    0
+    Wait And Click Element    ${locatorB_subtraction_selectPro_search_bth}
+    Wait And Click Element    dom:document.querySelectorAll("button")[7]
+    ${data}    Execute JavaScript    return document.querySelectorAll('input[placeholder="请输入搜索内容"]')[0].value===''
+    Should Be True    '${data}'=='True'
+    Wait And Click Element    ${locatorB_subtraction_comm_close}
+    Confirm Cancel Alert
+
+subtraction121
+    [Documentation]    商品从上往下依次退出活动  > 退出成功
+    [Tags]    P0
+    Subtraction Product Quit Subtraction    1
+
+subtraction124
+    [Documentation]    商品退出后保存，查看商品列表和活动列表中商品数量  > 数量更新
+    [Tags]    P1
+    Subtraction Product Quit Subtraction    1    true
+
+subtraction125
+    [Documentation]    未选中商品，点击保存 > 点击保存，弹出提示“请选择商品”
+    [Tags]    P0
+    Common Step
+    Wait And Input Text    ${locatorB_subtraction_edit_input_name}    自动化测试
+    #.设置时间
+    Subtraction Add Activity Set Time
+    Subtraction Input Coupon Type    19    2
+    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
+    Wait Until Page Contains    请选择商品
+
+subtraction127
+    [Documentation]    存在进行中活动 > 提前结束活动，点击确定  > 活动由进行中的状态变为已结束
+    [Tags]    P0
+    delSubtraction
+    Add Subtraction Wait Step    1
+    Go To Subtraction Page
+    Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(1) td div i")[1]
+    Wait And Click Element    dom:document.querySelectorAll("button")[5]
+    ${data}    Get Text    dom:document.querySelectorAll("tbody tr:nth-child(1) td p")[2]
+    Should Be True    '${data}'=='已结束'
+
+subtraction128
+    [Documentation]    存在进行中活动 > 提前结束活动，点击取消  > 保持原状
+    [Tags]    P1
+    delSubtraction
+    Add Subtraction Wait Step    1
+    Go To Subtraction Page
+    Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(1) td div i")[1]
+    Wait And Click Element    dom:document.querySelectorAll("button")[4]
+    ${data}    Get Text    dom:document.querySelectorAll("tbody tr:nth-child(1) td p")[2]
+    Should Be True    '${data}'=='进行中'
+
+subtraction129
+    [Documentation]    存在未开始活动 > 删除活动，点击确定 > 活动删除成功
+    [Tags]    P0
+    delSubtraction
+    Add Subtraction Wait Step    2
+    Go To Subtraction Page
+    Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(1) td div i")[1]
+    Wait And Click Element    dom:document.querySelectorAll("button")[5]
+    ${data}    Execute JavaScript    return document.querySelectorAll("tbody tr td")[0]===undefined
+    Should Be True    '${data}'=='True'
+
+subtraction130
+    [Documentation]    存在未开始活动 > 删除活动，点击取消 > 保持原状
+    [Tags]    P0
+    delSubtraction
+    Add Subtraction Wait Step    2
+    Go To Subtraction Page
+    Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(1) td div i")[1]
+    Wait And Click Element    dom:document.querySelectorAll("button")[4]
+    ${data}    Execute JavaScript    return document.querySelectorAll("tbody tr td")[0]===undefined
+    Should Be True    '${data}'=='False'
+
+subtraction131
+    [Documentation]    输入关键字为名称，点击搜索/按enter > 搜索成功
+    [Tags]    P0
+    delSubtraction
+    Add Subtraction Wait Step    2
+    Go To Subtraction Page
+    ${name}    Get Text    dom:document.querySelectorAll("tbody tr:nth-child(1) td")[1]
+    Wait And Input Text    dom:document.querySelectorAll(".ant-input")[0]    ${name}
+    #.点击搜索
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    ${res_name}    Get Text    dom:document.querySelectorAll("tbody tr:nth-child(1) td")[1]
+    Should Be True    '${name}'=='${res_name}'
+
+subtraction132
+    [Documentation]    输入关键字为编号，点击搜索/按enter > 搜索成功
+    [Tags]    P0
+    delSubtraction
+    Add Subtraction Wait Step    2
+    Go To Subtraction Page
+    ${name}    Get Text    dom:document.querySelectorAll("tbody tr:nth-child(1) td")[0]
+    Wait And Input Text    dom:document.querySelectorAll(".ant-input")[0]    ${name}
+    #.点击搜索
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    ${res_name}    Get Text    dom:document.querySelectorAll("tbody tr:nth-child(1) td")[0]
+    Should Be True    '${name}'=='${res_name}'
+
+subtraction133
+    [Documentation]    输入字符“0”，点击搜索/按enter > 搜索成功
+    [Tags]    P1
+    delSubtraction
+    Add Subtraction Wait Step    2
+    Go To Subtraction Page
+    Wait And Input Text    dom:document.querySelectorAll(".ant-input")[0]    0
+    #.点击搜索
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    ${res_data}    Execute JavaScript    return document.querySelectorAll("tbody tr:nth-child(1) td")[0]===undefined
+    Should Be True    '${res_data}'=='True'
+
+subtraction134
+    [Documentation]    点击类型满额减元 > 搜索成功
+    [Tags]    P0
+    delSubtraction
+    Add Subtraction Wait Step    2
+    Go To Subtraction Page
+    #.点击选择满额减元
+    Execute JavaScript    return document.querySelectorAll(".ant-select-dropdown-menu-item")[0]
+    Execute JavaScript    return document.querySelectorAll(".ant-select-dropdown-menu-item")[1]
+    #.点击搜索
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    ${res_data}    Execute JavaScript    return document.querySelectorAll("tbody tr:nth-child(1) td")[0]===undefined
+    Should Be True    '${res_data}'=='False'
+
+subtraction136
+    [Documentation]    点击重置 > 搜索成功
+    [Tags]    P0
+    delSubtraction
+    Add Subtraction Wait Step    2
+    Go To Subtraction Page
+    #.输入100
+    Wait And Input Text    dom:document.querySelectorAll(".ant-input")[0]    100
+    #.点击重置
+    Wait And Click Element    dom:document.querySelectorAll("button")[2]
+    ${res_data}    Execute JavaScript    return document.querySelectorAll(".ant-input")[0].value===''
+    Should Be True    '${res_data}'=='True'
+
+
+#------------------------------------------------------------------------------------------------------------------
+#-------------------------------------------------KeyWord----------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------
 
 
 *** Keywords ***
@@ -556,6 +733,27 @@ Subtraction Check Product Filter
     #.选择部分商品
     Subtraction Select SubProduct
     Wait Until Page Contains    选择商品
+
+Subtraction Product Quit Subtraction
+    [Documentation]    添加活动 商品退出活动case封装
+    [Arguments]    ${length}    ${parmeter}=false
+    Common Step
+    Wait And Input Text    ${locatorB_subtraction_edit_input_name}    自动化测试
+    #.设置时间
+    Subtraction Add Activity Set Time
+    #.输入优惠规则
+    Subtraction Input Coupon Type    ${input_count}    ${input_percentage}
+    #.选择部分商品
+    Subtraction Select SubProduct
+    Wait Until Page Contains    选择商品
+    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[22].click()
+    Wait And Click Element    dom:document.querySelectorAll("button")[9]
+    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody")[0]
+    :FOR    ${i}    IN RANGE    ${length}
+    \    ${x}    Evaluate    ${i}+1
+    \    Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(${x}) td")[5]
+    Run keyword If    '${parmeter}'=='false'    Confirm Cancel Alert
+    ...    ELSE    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
 
 
 Common Step
