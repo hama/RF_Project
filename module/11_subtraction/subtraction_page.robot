@@ -23,7 +23,7 @@ subtraction002
     [Tags]    P0
     Go To Subtraction Page
     # 调用添加一个满减活动关键字 - 状态为：进行中
-    run_keyword_wait_step    1
+    Add Subtraction Wait Step    1
     Go To Subtraction Page
     Page Should Contain Element    ${locatorB_subtraction_first_tr_eml}
     delSubtraction    #.删除满减活动
@@ -33,7 +33,7 @@ subtraction003
     [Tags]    P0
     Go To Subtraction Page
     #.添加一个未开始的活动
-    run_keyword_wait_step    2
+    Add Subtraction Wait Step    2
     Wait And Click Element    ${locatorB_subtraction_title_not_start}
     Page Should Contain Element    ${locatorB_subtraction_first_tr_eml}
     ${data}    Get Text    ${locatorB_subtraction_get_status_text}
@@ -45,7 +45,7 @@ subtraction004
     [Tags]    P0
     Go To Subtraction Page
     #.添加一个进行中的活动
-    run_keyword_wait_step    1
+    Add Subtraction Wait Step    1
     Wait And Click Element    ${locatorB_subtraction_title_processing}
     ${data}    Get Text    ${locatorB_subtraction_get_status_text}
     Should Be True    '${data}'=='进行中'
@@ -56,7 +56,7 @@ subtraction005
     [Tags]    P0
     Go To Subtraction Page
     #.添加一个已结束的活动
-    run_keyword_wait_step    3
+    Add Subtraction Wait Step    3
     Wait And Click Element    ${locatorB_subtraction_title_end}
     ${data}    Get Text    ${locatorB_subtraction_get_status_text}
     Should Be True    '${data}'=='已结束'
@@ -220,7 +220,7 @@ subtraction039
 subtraction_common_change_name
     [Documentation]    修改活动状态case封装
     [Arguments]    ${value}    ${status}    ${paremeter}=False
-    run_keyword_wait_step    ${status}
+    Add Subtraction Wait Step    ${status}
     Go To Subtraction Page
     Wait And Click Element    ${locatorB_subtraction_title_all}
     ${data}    Get Text    dom:document.querySelectorAll("tbody tr td")[1]
@@ -236,10 +236,10 @@ subtraction_set_time_zone
     [Arguments]    ${index}    ${check}
     delSubtraction
     #.添加进行中的活动
-    run_keyword_wait_step    ${index}
+    Add Subtraction Wait Step    ${index}
     Go To Subtraction Page
     #. 设置时区 - 美属萨摩亚
-    run_keyword_wait_timezone    ${check}
+    Add Subtraction Timezone Wait    ${check}
     Wait And Click Element    ${locatorB_subtraction_title_all}
     Wait And Click Element    ${locatorB_subtraction_first_tr_eml}
     Wait Until Element Is Visible    dom:document.querySelectorAll('.title___1Hp1y span')[0]
@@ -249,7 +249,7 @@ subtraction_set_time_zone
 subtraction_change_time_end
     [Documentation]    修改结束时间case封装
     [Arguments]    ${index}
-    common_click_first_tr_step    ${index}
+    Common Click First Tr Step    ${index}
     Wait And Click Element    dom:document.querySelectorAll('.ant-input-lg')[1]
     Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll('.ant-calendar-tbody tr td')[25]
     Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -258,7 +258,7 @@ subtraction_change_time_end
 subtraction_change_time_start
     [Documentation]    修改开始时间case封装
     [Arguments]    ${index}
-    common_click_first_tr_step    ${index}
+    Common Click First Tr Step    ${index}
     Wait And Click Element    ${locatorB_subtraction_edit_select_first_time}
     Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll('.ant-calendar-tbody tr td')[17]
     Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -267,7 +267,7 @@ subtraction_change_time_start
 subtraction_change_coupon_type
     [Documentation]    修改优惠类型case封装
     [Arguments]    ${index}
-    common_click_first_tr_step    ${index}
+    Common Click First Tr Step    ${index}
     Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__rendered")[0]
 
     Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-root li")[1]
@@ -280,7 +280,7 @@ subtraction_change_not_capped
     [Documentation]    修改上不封顶case封装
     [Arguments]    ${index}
     #.点击第一个tr的内容
-    common_click_first_tr_step    ${index}
+    Common Click First Tr Step    ${index}
     Wait And Click Element    ${locatorB_subtraction_edit_checkbox_capped}
     Run keyword If    ${index}==3    Page Should Not Contain    ${locatorB_subtraction_edit_text_save}
     ...    ELSE    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
@@ -289,7 +289,7 @@ subtraction_change_preferential_rules
     [Documentation]    修改优惠规则case封装
     [Arguments]    ${index}
     #.点击第一个tr的内容
-    common_click_first_tr_step    ${index}
+    Common Click First Tr Step    ${index}
     Run keyword If    ${index}==2    Wait And Input Text    ${locatorB_subtraction_edit_input_totalPrice}    ${input_count}
     Run keyword If    ${index}==2    Wait And Input Text    ${locatorB_subtraction_edit_input_cutPrice}    ${input_percentage}
     Run keyword If    ${index}==2    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
@@ -299,7 +299,7 @@ subtraction_change_all_product_quantity
     [Documentation]    修改满减所有商品规则case封装
     [Arguments]    ${index}
     #.点击第一个tr的内容
-    common_click_first_tr_step    ${index}
+    Common Click First Tr Step    ${index}
     Execute JavaScript    return document.getElementById("dj").scrollTo(0,10000)
     ${undefined}    Execute JavaScript    return document.querySelectorAll("button p")[4]===undefined
     Run keyword If    '${undefined}'=='False'    Wait And Click Element    dom:document.querySelectorAll("button p")[4]
@@ -314,7 +314,7 @@ subtraction_change_sub_product_quantity
     [Documentation]    修改满减部分商品规则case封装
     [Arguments]    ${index}    ${type}=${Empty}
     #.点击第一个tr的内容
-    common_click_first_tr_step    ${index}    ${type}
+    Common Click First Tr Step    ${index}    ${type}
     Execute JavaScript    return document.getElementById("dj").scrollTo(0,10000)
     ${undefined}    Execute JavaScript    return document.querySelectorAll("button p")[4]===undefined
     Run keyword If    '${undefined}'=='False'    Execute JavaScript    return document.querySelectorAll("button p")[4].click()
@@ -330,7 +330,7 @@ subtraction_change_cancel
     [Arguments]    ${index}    ${confirm}=false    ${type}=${Empty}
     ${name}    Set Variable    自动化测试
     #.点击第一个tr的内容
-    common_click_first_tr_step    ${index}    ${type}
+    Common Click First Tr Step    ${index}    ${type}
     Wait And Input Text    ${locatorB_subtraction_edit_input_name}    ${name}
     Wait And Click Element    ${locatorB_subtraction_first_btn_cancel}
 

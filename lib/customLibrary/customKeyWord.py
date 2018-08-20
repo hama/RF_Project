@@ -292,23 +292,18 @@ class keyWord(object):
                 return False
         except Exception as e:
             print e
-    #.请求封装
-    def requests(self,url,cookie,data,method=None):
-        try:
-            if method:
-                res = requests.get(url=url)
-            else:
-                res = requests.post(url=url, headers={"cookie": cookie}, json=data)
-            return json.loads(res.content)
-        except Exception as e:
-            print e
-
 
     # .添加中国物流
     def addShipping(self):
         cookie = self.Login()
         add_url = self.home_page_url + "/api/shipping/refresh"
-        add_data = {"has_other_country":0,"shipping_area":"[{\"country_id\":\"44\",\"zone_ids\":\"-1\"}]","shipping_name":"自动化测试添加物流","shipping_plan":"[{\"name\":\"Standard shipping\",\"shipping_method\":\"price\",""\"range_min\":0,\"range_max\":-1,\"rate_amount\":0,""\"payment_list\":\"cod;online;custom;credit_card\",""\"desc\":\"\",\"range_unit\":\"g\"}]"}
+        add_data = {
+            'shipping_name': '自动化测试添加物流',
+            'shipping_area': '[{"country_id":"44","zone_ids":"-1"}]',
+            'has_other_country': 0,
+            'shipping_plan': '[{"name":"Standard shipping","shipping_method":"price","range_min":0,"range_max":-1,"rate_amount":0,"payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]'
+        }
+
         try:
             add_res = requests.post(url=add_url, headers={"cookie":cookie}, json=add_data)
             if json.loads(add_res.content)['state'] == 0:
@@ -612,6 +607,9 @@ class keyWord(object):
                                   charset="utf8", port=self.port, cursorclass=pymysql.cursors.DictCursor)
 
 if __name__ == '__main__':
+    res = keyWord()
+    print res.addShipping()
+    exit()
     # res.delSubtraction('all')
     # print res.addSubtraction(2)
     # exit()

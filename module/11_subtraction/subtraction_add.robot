@@ -73,7 +73,7 @@ subtraction050
     Wait And Click Element    ${locatorB_subtraction_edit_select_second_next_mon}
     Wait And Click Element    dom:document.querySelectorAll(".ant-calendar-date")[19]
     Wait And Click Element    ${locatorB_subtraction_edit_select_second_confirm}
-    Subtraction Confirm Cancel Alert
+    Confirm Cancel Alert
 
 subtraction051
     [Documentation]    开始时间为空保存  > 下方提示“请选择时间”
@@ -90,7 +90,7 @@ subtraction051
     Subtraction Input Coupon Type    ${input_count}    ${input_percentage}
     Wait And Click Element    ${locatorB_subtraction_first_btn_save}
     Wait Until Page Contains Element    ${locatorB_subtraction_edit_common_error}
-    Subtraction Confirm Cancel Alert
+    Confirm Cancel Alert
 
 subtraction052
     [Documentation]    结束时间设置为等于或早于开始时间 > 不能设置
@@ -113,7 +113,7 @@ subtraction053
     Wait And Click Element    ${locatorB_subtraction_edit_select_second_next_mon}
     Wait And Click Element    dom:document.querySelectorAll(".ant-calendar-date")[19]
     Wait And Click Element    ${locatorB_subtraction_edit_select_second_confirm}
-    Subtraction Confirm Cancel Alert
+    Confirm Cancel Alert
 
 subtraction054
     [Documentation]    结束时间为空保存  > 下方提示“请选择时间”
@@ -130,7 +130,7 @@ subtraction054
     Subtraction Input Coupon Type    ${input_count}    ${input_percentage}
     Wait And Click Element    ${locatorB_subtraction_first_btn_save}
     Wait Until Page Contains Element    ${locatorB_subtraction_edit_common_error}
-    Subtraction Confirm Cancel Alert
+    Confirm Cancel Alert
 
 subtraction055
     [Documentation]    活动时间选择长期  > 结束时间为空
@@ -141,7 +141,7 @@ subtraction055
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()
     ${res}    Execute JavaScript    return document.querySelectorAll(".ant-input-lg")[1].value===''
     Should Be True    '${res}'=='True'
-    Subtraction Confirm Cancel Alert
+    Confirm Cancel Alert
 
 subtraction057
     [Documentation]    优惠类型选择满件打折  > 设置成功
@@ -177,13 +177,13 @@ subtraction060
     [Documentation]    满额减元优惠条件为空  > 提交时下方提示不能为空
     [Tags]    P0
     Subtraction Check Preferential Conditions    ${Empty}    ${Empty}
-    Subtraction Confirm Cancel Alert
+    Confirm Cancel Alert
 
 subtraction061
     [Documentation]    满额减元优惠条件为0  > 不能保存
     [Tags]    P0
     Subtraction Check Preferential Conditions    0    0
-    Subtraction Confirm Cancel Alert
+    Confirm Cancel Alert
 
 subtraction062
     [Documentation]    满额减元优惠条件＞0  > 可以提交成功
@@ -194,7 +194,7 @@ subtraction063
     [Documentation]    满额减元优惠条件输入非数字字符  > 下方提示“最多输入9位整数，两位小数”
     [Tags]    P1
     Subtraction Check Preferential Conditions    @#$    @
-    Subtraction Confirm Cancel Alert
+    Confirm Cancel Alert
 
 subtraction066
     [Documentation]    满额减元优惠内容为优惠金额小于优惠条件  > 可以提交成功
@@ -205,7 +205,7 @@ subtraction067
     [Documentation]    满额减元优惠内容为优惠金额大于优惠条件  > 提交时提示优惠内容为优惠金额不能大于优惠条件
     [Tags]    P1
     Subtraction Check Preferential Conditions    10    11
-    Subtraction Confirm Cancel Alert
+    Confirm Cancel Alert
 
 subtraction069
     [Documentation]    满额减元添加层级2  > 可以添加成功
@@ -368,7 +368,7 @@ subtraction106
     ${res}    Execute JavaScript    return document.querySelectorAll(".ant-select-dropdown-menu-item")[0]===undefined
     Should Be True    '${res}'=='True'
     Wait And Click Element    ${locatorB_subtraction_comm_close}
-    Subtraction Confirm Cancel Alert
+    Confirm Cancel Alert
 
 subtraction107
     [Documentation]    商品筛选专辑选择专辑A  > 筛选成功
@@ -378,7 +378,7 @@ subtraction107
     ${res}    Execute JavaScript    return document.querySelectorAll(".ant-select-dropdown-menu-item")[1]===undefined
     Should Be True    '${res}'=='True'
     Wait And Click Element    ${locatorB_subtraction_comm_close}
-    Subtraction Confirm Cancel Alert
+    Confirm Cancel Alert
 
 subtraction108
     [Documentation]    商品筛选状态选择全部  > 筛选成功
@@ -388,7 +388,7 @@ subtraction108
     ${res}    Execute JavaScript    return document.querySelectorAll(".ant-select-dropdown-menu-item")[2]===undefined
     Should Be True    '${res}'=='True'
     Wait And Click Element    ${locatorB_subtraction_comm_close}
-    Subtraction Confirm Cancel Alert
+    Confirm Cancel Alert
 
 subtraction109
     [Documentation]    商品筛选状态选择上架  > 筛选成功
@@ -398,7 +398,7 @@ subtraction109
     ${res}    Execute JavaScript    return document.querySelectorAll(".ant-select-dropdown-menu-item")[3]===undefined
     Should Be True    '${res}'=='True'
     Wait And Click Element    ${locatorB_subtraction_comm_close}
-    Subtraction Confirm Cancel Alert
+    Confirm Cancel Alert
 
 subtraction110
     [Documentation]    商品筛选状态选择下架  > 筛选成功
@@ -408,7 +408,7 @@ subtraction110
     ${res}    Execute JavaScript    return document.querySelectorAll(".ant-select-dropdown-menu-item")[4]===undefined
     Should Be True    '${res}'=='True'
     Wait And Click Element    ${locatorB_subtraction_comm_close}
-    Subtraction Confirm Cancel Alert
+    Confirm Cancel Alert
 
 
 
@@ -492,7 +492,7 @@ Subtraction Check Full Discount
     Subtraction Input Coupon Type    ${name}    ${value}
     Wait And Click Element    ${locatorB_subtraction_first_btn_save}
     Run keyword If    '${parmeter}'=='false'    Wait Until Page Contains Element    ${locatorB_subtraction_edit_common_error}
-    Run keyword If    '${parmeter}'=='false'    Subtraction Confirm Cancel Alert
+    Run keyword If    '${parmeter}'=='false'    Confirm Cancel Alert
 
 
 add_level
@@ -557,11 +557,6 @@ Subtraction Check Product Filter
     Subtraction Select SubProduct
     Wait Until Page Contains    选择商品
 
-
-Subtraction Confirm Cancel Alert
-    [Documentation]    取消页面填写内容未保存跳走出现的弹窗
-    Wait And Click Element    ${locatorB_subtraction_first_btn_cancel}
-    Wait And Click Element    ${locatorB_subtraction_confirm_determine_btn}
 
 Common Step
     [Documentation]    公共步骤
