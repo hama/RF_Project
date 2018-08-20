@@ -29,7 +29,6 @@ shipping013
     Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    ${locatorB_shipping_first_input}    中国
-    Sleep    1
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Not Contain Element    ${locatorB_shipping_send_address}
     Quit All Shipping
@@ -40,7 +39,6 @@ shipping017
     Go To Shipping Page
     Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    sleep    1
     input text    ${locatorB_shipping_first_input}    中
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Not Contain Element    ${locatorB_shipping_send_address}
@@ -52,7 +50,6 @@ shipping018
     Go To Shipping Page
     Wait And Click Element    ${locatorB_shipping_add_shipping}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    sleep    1
     input text    ${locatorB_shipping_first_input}    @#￥
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Not Contain Element    ${locatorB_shipping_send_address}
@@ -63,7 +60,6 @@ shipping019
     [Tags]    P0
     Go To Shipping Page
     Quit Add Country
-    Sleep    1
     Wait And Click Element    ${locatorB_shipping_country_select}
     Wait And Click Element    ${locatorB_shipping_country_nums}
     ${count}    get text    class:country_selected___1wa_o
@@ -76,7 +72,6 @@ shipping022
     [Tags]    P0
     Go To Shipping Page
     Quit Add Country
-    sleep    1
     Wait And Click Element    ${locatorB_shipping_country_select}
     Wait And Click Element    ${locatorB_shipping_country_nums}
     ${data}    execute javascript    return document.getElementsByClassName("info_cn___3-J7E")[1].innerHTML
@@ -90,7 +85,6 @@ shipping024
     [Tags]    P0
     Go To Shipping Page
     Quit Add Country
-    Sleep    1.5
     Execute JavaScript    ${locatorB_shipping_country_other}
     Wait And Click Element    ${locatorB_shipping_country_save_btn}
     ${res}    get text    ${locatorB_shipping_country_get_other}
@@ -102,7 +96,6 @@ shipping025
     [Tags]    P0
     Go To Shipping Page
     Quit Add Country
-    sleep    1.5
     Wait And Click Element    ${locatorB_shipping_country_select}
     Wait And Click Element    ${locatorB_shipping_country_nums}
     Wait And Click Element    ${locatorB_shipping_country_save_btn}
@@ -114,7 +107,6 @@ shipping027
     [Documentation]    选择国家不选国家 列表提示暂无数据
     [Tags]    P1
     Go To Shipping Page
-    Sleep    1
     Quit Add Country
     Wait And Click Element    ${locatorB_shipping_country_close_btn}
     ${res}    Execute JavaScript    return document.querySelectorAll(".ant-table-placeholder span")[0].innerText

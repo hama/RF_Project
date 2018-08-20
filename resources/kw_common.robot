@@ -15,10 +15,13 @@ Login With User
     Wait And Input Text    id:account    ${username}
     Wait And Input Password    id:password    ${password}
     Wait And Click Element    class:logBtn___3pRgJ
+
     Comment    wait until domain input text element is visible
-    ${href}=    Execute JavaScript    return window.location.href
-    ${has_login}=    Execute JavaScript    return '${href}'==='${url_home_page}'
-    Run Keyword Unless    ${has_login}    Input Domain    ${domain}
+    ${status}=    Execute JavaScript    return document.querySelectorAll("#username")[0]===undefined
+    Run keyword If    ${status}=='false'    Input Domain    ${domain}
+    #${href}=    Execute JavaScript    return window.location.href
+    #${has_login}=    Execute JavaScript    return '${href}'==='${url_home_page}'
+    #Run Keyword Unless    ${has_login}    Input Domain    ${domain}
     Wait Until Element Is Visible    ${locatorB_setting}
     log    Login Success
     ${close}=    Execute JavaScript    return document.querySelectorAll('.ant-modal-close-x')[0]===undefined
@@ -37,6 +40,12 @@ Go To Setting Page
     [Documentation]    跳转到设置页面
     Wait And Click Element    ${locatorB_setting}
 
+Go To Home By Url
+    [Documentation]    通过url跳转到主页
+    Sleep    1
+    Go To    ${home_page}
+    Sleep    1
+
 Go To Products Page
     [Documentation]    跳转到商品页面
     ${data}    Get Select Elements    0    #.获取导航栏商品的下拉按钮元素
@@ -44,7 +53,7 @@ Go To Products Page
     ...    ELSE    Wait And Click Element    ${locatorB_product_manage}
     #Wait And Click Element    ${locatorB_products}
     #Wait And Click Element    ${locatorB_product_manage}
-    Sleep    1
+    Sleep    2
     Wait Until Page Contains    ${contentB_products_all}
     Location Should Be    ${url_products}
     Sleep    1
@@ -92,7 +101,7 @@ Go To Subtraction Page
     ${data}    Get Select Elements    1    # 获取导航栏营销下拉元素
     Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_marketing}
     ...    ELSE    Wait And Click Element    ${locatorB_marketing_subtraction}
-    Page Should Contain    ${contentB_subtraction_text}
+    Page Should Contain    ${locator_contentB_subtraction_text}
     Location Should Be    ${url_subtraction}
 
 

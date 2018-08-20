@@ -88,7 +88,6 @@ shipping040
     [Tags]    P1
     Go To Shipping Page
     Quit Add Price Shipping
-    sleep    1
     Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
     input text    ${locatorB_shipping_freight_first_input}    价格运费
     input text    ${locatorB_shipping_description}    sssssssssssssssssssssssssddddddddddssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss

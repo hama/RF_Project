@@ -30,7 +30,12 @@ class keyWord(object):
     db_uname = "lansejiebo"
     db_pwd = "lansejiebo@123"
     db_name = "shop_"
+    #北京时区
+    Bj_timeZone = "+0800"
+    #美属萨摩亚时区
+    My_timeZone = "-1100"
 
+    store_url = "http://admin1024.shoplazza.com/api/store/info"
 
     def __init__(self):
         config = ConfigParser.ConfigParser()
@@ -288,6 +293,25 @@ class keyWord(object):
         except Exception as e:
             print e
 
+    # .添加中国物流
+    def addShipping(self):
+        cookie = self.Login()
+        add_url = self.home_page_url + "/api/shipping/refresh"
+        add_data = {
+            'shipping_name': '自动化测试添加物流',
+            'shipping_area': '[{"country_id":"44","zone_ids":"-1"}]',
+            'has_other_country': 0,
+            'shipping_plan': '[{"name":"Standard shipping","shipping_method":"price","range_min":0,"range_max":-1,"rate_amount":0,"payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]'
+        }
+
+        try:
+            add_res = requests.post(url=add_url, headers={"cookie":cookie}, json=add_data)
+            if json.loads(add_res.content)['state'] == 0:
+                return True
+            else:
+                return False
+        except Exception as e:
+            print e
     # .删除物流方式
     def delShipping(self):
         try:
@@ -436,6 +460,9 @@ class keyWord(object):
         except Exception as e:
             print e
 
+    def getProductId(self):
+        return self.commonGetData()[0]['id']
+
     #.获取满减活动时间参数,
     # @parments: 1：活动进行中
     # @parments: 2：活动未开始
@@ -454,17 +481,22 @@ class keyWord(object):
     # @parments:-----1: 进行中
     # @parments:-----2: 未开始
     # @parments:-----3: 已结束
-    def getSubtractionData(self,argv):
+    # @ type: 区分使用所有商品 或者 部分商品 | None: 所有商品
+    def getSubtractionData(self,argv,type=None):
         if argv is None : return False
         name = self.salt()
+        product_id = self.getProductId()
         nowTime = datetime.datetime.now()
         newTime = nowTime + datetime.timedelta(days=7)
         date_start = nowTime.strftime('%Y-%m-%d %H:%M:%S')
         date_end = newTime.strftime('%Y-%m-%d %H:%M:%S')
         range_type = "1"
+        if type:
+            product_scope = 3
+        else:
+            product_scope = 1
         incr_count = 1
-        product_list = "{\"product\":[{\"product_id\":1,\"sub_product_id\":[]}]}"
-        product_scope = 1
+        product_list = "{\"product\":[{\"product_id\":%s,\"sub_product_id\":[]}]}" %(product_id)
         rule_list = "[{\"range_unit\":\"price\",\"range_value\":\"20\",\"rate_amount\":\"15\",\"rate_shipping\":0}]"
         if argv == 1:
             new_time = self.getSubtractionTime(True)
@@ -492,13 +524,14 @@ class keyWord(object):
     # @parments:-----1: 进行中
     # @parments:-----2: 未开始
     # @parments:-----3: 已结束
-    def addSubtraction(self,argv):
+    def addSubtraction(self,argv,type=None):
         if argv is None : return False
-        url = "http://admin1024.shoplazza.com/api/rebate/refresh"
-        del_url = "http://admin1024.shoplazza.com/api/rebate/end"
+        argv = int(argv)
+        url = self.home_page_url + "/api/rebate/refresh"
+        del_url = self.home_page_url + "/api/rebate/end"
         cookies = self.Login()
         if cookies is None: return False
-        datax = self.getSubtractionData(int(argv))
+        datax = self.getSubtractionData(argv,type)
         try:
             res = requests.post(url=url,headers={"cookie":cookies},json=datax)
             if res.status_code != 200:
@@ -509,9 +542,15 @@ class keyWord(object):
                 res_data = requests.post(url=del_url,headers={"cookie":cookies},json=rebate_id)
                 if res_data.status_code != 200:
                     return res_data.status_code
-                return json.loads(res_data.content)
+                if json.loads(res_data.content)['state'] == 0:
+                    return True
+                else:
+                    return False
             else:
-                return json.loads(res.content)
+                if json.loads(res.content)['state'] == 0:
+                    return True
+                else:
+                    return False
         except Exception as e:
             print e
     #. 删除一个满减活动 arvg参数为 "all" 删除所有的满减活动
@@ -530,6 +569,36 @@ class keyWord(object):
             print e
             return False
 
+    #. 设置时区 ((GMT + 08:00) 北京，香港，台北，新加坡) timezone : none 设置北京时区 | 设置 美属萨摩亚时区
+    def setBjTimeZone(self,timezone=None):
+        cookie = self.Login()
+        store_id = self.getStoreId()
+        if timezone is None:
+            time_zone = self.Bj_timeZone
+        else:
+            time_zone = self.My_timeZone
+        data = {"address":"","city":"","currency":"USD","email":"171869092@qq.com","icon":{"src":"","path":""},
+                "name":"chen","service_email":"171869092@qq.com","store_id":store_id,"telephone":"15220581724",
+                "time_zone":time_zone,"zip":"","zone_id":"-1"}
+        url = self.home_page_url + "/api/store/update"
+        try:
+            res = requests.post(url=url,headers={"cookie":cookie},json=data)
+            if res.status_code == 200 and json.loads(res.content)['state']==0:
+                return True
+            else:
+                return False
+        except Exception as e:
+            print e
+
+    def getStoreId(self):
+        cookie = self.Login()
+        try:
+            res = requests.get(url=self.store_url, headers={"cookie": cookie})
+            return json.loads(res.content)['data']['store_id']
+        except Exception as e:
+            print e
+
+
     #. 获取数据库链接对象
     def getConnectObj(self):
         cookie = self.Login(True)
@@ -538,6 +607,12 @@ class keyWord(object):
                                   charset="utf8", port=self.port, cursorclass=pymysql.cursors.DictCursor)
 
 if __name__ == '__main__':
+    res = keyWord()
+    print res.addShipping()
+    exit()
+    # res.delSubtraction('all')
+    # print res.addSubtraction(2)
+    # exit()
     # 设置执行入参
     parser = argparse.ArgumentParser(description='manual to this script')
     parser.add_argument('--url', type=str, default = 'http://admin1024.shoplazza.com')

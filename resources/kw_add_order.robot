@@ -35,3 +35,5 @@ Add Order
     Input Text    dom:document.querySelectorAll("input[name='company']")[0]    123456789
     Wait And Click Element    dom:document.querySelectorAll(".form-footer")[0]
     Wait And Click Element    id:submitMbPay
+    Wait And Click Element    dom:document.querySelectorAll('label[for="cod"]')[0]
+    Wait And Click Element    class:submitPaymentMb
