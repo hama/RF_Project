@@ -15,6 +15,8 @@ New Test Suite Browser And Login
     ...    ELSE    Open Browser    ${home_page}    chrome
     #Set Window Size    960    1080
     Set Window Position    0    0
+    # 载入jquery，可使用jquery的selector去定位元素
+    Execute Javascript    a = window.document.createElement('script');a.src='//code.jquery.com/jquery-1.9.1.min.js';window.document.body.appendChild(a);
     Login With User    ${username}    ${password}    ${domain}
 
 Close Test Suite Browser
