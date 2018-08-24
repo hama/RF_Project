@@ -12,8 +12,8 @@ Login With User
     [Arguments]    ${username}    ${password}    ${domain}
     log    Login with ${username}
     Comment    wait until login button is visible
-    Wait And Input Text    id:account    ${username}
-    Wait And Input Password    id:password    ${password}
+    Wait And Input Text    ${locatorB_login_input_account}    ${username}
+    Wait And Input Password    ${locatorB_login_input_password}    ${password}
     Wait And Click Element    class:logBtn___3pRgJ
 
     Comment    wait until domain input text element is visible
@@ -29,7 +29,7 @@ Login With User
 
 Input Domain
     [Arguments]    ${domain}
-    Wait And Input Text    id:username    ${domain}
+    Wait And Input Text    ${locatorB_login_input_domain}    ${domain}
     Wait And Click Element    class:logBtn___3pRgJ
 
 Go To Home Page
