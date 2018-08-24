@@ -21,7 +21,7 @@ register_001
     [Tags]    P0
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    id:invite_code    ${register_code}
     input text    id:username    ${register_domain}
@@ -41,7 +41,7 @@ register_002
     [Tags]    P0
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    id:invite_code    ${register_code}
     input text    id:username    ${register_domain}
@@ -57,7 +57,7 @@ register_005
     [Tags]    P0
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    id:invite_code    ${register_code}
     input text    id:username    @!@$1
@@ -70,7 +70,7 @@ register_006
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    id:invite_code    ${register_code}
     input text    id:username    ${Empty}
@@ -84,7 +84,7 @@ register_007
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    id:invite_code    ${register_code}
     input text    id:username    lalala
@@ -99,7 +99,7 @@ register_008
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    id:invite_code    ${register_code}
     input text    id:username    lalala
@@ -116,7 +116,7 @@ register_009
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    id:invite_code    ${register_code}
     input text    id:username    lalala
@@ -133,7 +133,7 @@ register_010
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    id:invite_code    ${register_code}
     input text    id:username    lalala
@@ -150,7 +150,7 @@ register_011
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    id:invite_code    ${register_code}
     input text    id:username    lalala
@@ -167,7 +167,7 @@ register_013
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    id:invite_code    ${register_code}
     input text    id:username    lalala
@@ -184,7 +184,7 @@ register_014
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    id:invite_code    ${register_code}
     input text    id:username    lalala
@@ -201,7 +201,7 @@ register_015
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    id:invite_code    ${register_code}
     input text    id:username    lalala
@@ -220,7 +220,7 @@ register_017
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    id:invite_code    ${register_code}
     input text    id:username    lalala
@@ -239,7 +239,7 @@ register_018
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     Input Text    id:invite_code    ${register_code}
     input text    id:username    lalala
@@ -258,13 +258,13 @@ register_019
     [Tags]    P0
     Comment    wait until login button is visible
     Open Test Browser    ${home_page}
-    Wait Until Element Is Visible    ${login_btn}
+    Wait Until Element Is Visible    ${locatorB_login_btn_login}
     Input Text    id:account    ${register_user}
     Input Password    id:password    ${register_pwd}
-    #Wait And Click Element    ${login_btn}
+    #Wait And Click Element    ${locatorB_login_btn_login}
     #Wait Until Element Is Visible    id:username
     #Input Text    id:username    ${register_domain}
-    Wait And Click Element    ${login_btn}
+    Wait And Click Element    ${locatorB_login_btn_login}
     Sleep    1
     Page Should Contain Element    ${locatorB_order}
     Wait And Click Element    dom:document.querySelectorAll(".hd-line-center")[0]

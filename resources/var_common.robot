@@ -5,9 +5,7 @@ Variables         ${CURDIR}/../lib/customLibrary
 ### 未分类，需要分类并清理
 ${home_page}      ${home_page_url}
 ${error_msg}      出错啦！    #.自定义错误提示
-${login_btn}      class:logBtn___3pRgJ    #.登陆按钮
-${register_btn}    dom:document.querySelectorAll(".bottomEdit___zk0l5 a")[0]     #.注册按钮
-${recover_pwd_btn}       dom:document.querySelectorAll(".bottomEdit___zk0l5 div a")[0]     #.忘记密码按钮
+
 
 ### 菜单栏 locator
 ${locatorB_overview}    id:test_overview    # 导航栏-概览（即主页）

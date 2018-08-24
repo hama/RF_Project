@@ -27,7 +27,6 @@ class keyWord(object):
     save_str = ""
 
     rec_email = "ZPiX3lY@g0yP.com"
-    rec_keywork = "dianjiang_reset_password"
     db_hotst = "39.108.94.30"
     db_uname = "lansejiebo"
     db_pwd = "lansejiebo@123"
@@ -37,7 +36,7 @@ class keyWord(object):
     # 美属萨摩亚时区
     My_timeZone = "-1100"
 
-    store_url = "http://admin1024.shoplazza.com/api/store/info"
+
 
     def __init__(self):
         config = ConfigParser.ConfigParser()
@@ -99,19 +98,23 @@ class keyWord(object):
         self.save_str = emails
         return emails
 
-    def selectCodesPwd(self, args):
+    def get_reset_pwd_vcode_fromdb(self, contact_data):
+        '''
+        从数据库获取重置密码的验证码
+        :param contact_data:
+        :return:
+        '''
         try:
             conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8",
                                    port=self.port)
             curs = conn.cursor()
-            sql = "SELECT code FROM user_validate WHERE `contact` = '%s' AND `usage` = '%s'" % (args, self.rec_keywork)
+            sql = "SELECT code FROM user_validate WHERE `contact` = '%s' AND `usage` = 'dianjiang_reset_password'" % (contact_data)
 
             curs.execute(sql)
             res = curs.fetchone()[0]
             return res
         except Exception as e:
             print e
-            # exit()
 
     def selectProduct(self):
         res_data = self.commonGetData()
@@ -602,8 +605,9 @@ class keyWord(object):
 
     def getStoreId(self):
         cookie = self.Login()
+        store_url = self.home_page_url + "/api/store/info"
         try:
-            res = requests.get(url=self.store_url, headers={"cookie": cookie})
+            res = requests.get(url=store_url, headers={"cookie": cookie})
             return json.loads(res.content)['data']['store_id']
         except Exception as e:
             print e
