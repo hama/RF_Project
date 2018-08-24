@@ -1,198 +1,182 @@
 *** Settings ***
+Suite Setup       Login Suite Setup
 Suite Teardown    Close Test Suite Browser
+#Test Setup
+Test Teardown     Login Test Teardown
+Force Tags        Login
 Library           SeleniumLibrary
-Library           ${CURDIR}/../../../lib/customLibrary
-Resource          ../../../resources/var_tax_price.robot
-Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
-Resource          ../../../resources/kw_products.robot
-Library           customLibrary
 
-*** Variable ***
-${uname}          98989898
-${u_format}       $93!@#
 
 *** Test Cases ***
 login001
-    [Documentation]    登陆成功
+    [Documentation]     主账号登录成功
     [Tags]    P0
-    Comment    wait until login button is visible
-    Open Test Browser    ${home_page}
-    Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${user_default_name}
-    Input Password    id:password    ${user_default_pwd}
+    Wait And Input Text     id:account    ${user_default_name}
+    Wait And Input Password    id:password    ${user_default_pwd}
     Wait And Click Element    ${login_btn}
-    Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${user_default_domain}
+    Wait And Input Text    id:username    ${user_default_domain}
     Wait And Click Element    ${login_btn}
-    Sleep    2
-    Page Should Contain Element    ${locatorB_order}
+    Wait Until Page Contains Element    ${locatorB_order}
     Logout
 
 login002
-    [Documentation]    输入未注册的手机号 弹出提示店铺地址或者联系方式错误
+    [Documentation]     主账号登录失败_未注册账号
     [Tags]    P1
-    Login Setp
-    Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${uname}
-    Input Password    id:password    ${user_default_pwd}
+    Wait And Input Text    id:account    98989898
+    Wait And Input Password    id:password    ${user_default_pwd}
     Wait And Click Element    ${login_btn}
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入正确的邮箱／手机
 
 login003
-    [Documentation]    输入格式错误的账号 弹出提示店铺地址或者联系方式错误
-    [Tags]    P1
-    Login Setp
-    Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${Empty}
-    Input Password    id:password    ${user_default_pwd}
+    [Documentation]     主账号登录失败_格式不正确
+    [Tags]    P2
+    Wait And Input Text    id:account    $93!@#
+    Wait And Input Password    id:password    ${user_default_pwd}
     Wait And Click Element    ${login_btn}
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入正确的邮箱／手机
 
 login004
-    [Documentation]    账号为空 弹出提示店铺地址或者联系方式错误
-    [Tags]    P1
-    Login Setp
-    Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${u_format}
-    Input Password    id:password    ${user_default_pwd}
+    [Documentation]     主账号登录失败_账号为空
+    [Tags]    P2
+    Wait And Input Text    id:account    ${Empty}
+    Wait And Input Password    id:password    ${user_default_pwd}
     Wait And Click Element    ${login_btn}
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入正确的邮箱／手机
 
 login005
-    [Documentation]    输入正确账号，密码错误 弹出提示店铺地址或者联系方式错误
-    [Tags]    P1
-    Login Setp
-    Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${user_default_name}
-    Input Password    id:password    ${user_default_pwd}
+    [Documentation]     主账号登录失败_错误密码
+    [Tags]    P0
+    Wait And Input Text    id:account    ${user_default_name}
+    Wait And Input Password    id:password    000000
     Wait And Click Element    ${login_btn}
-    Wait Until Element Is Visible    id:username
-    Input Text    id:username    ss
+    Wait And Input Text    id:username    ${user_default_domain}
     Wait And Click Element    ${login_btn}
-    Page Should Contain Element    dom:document.querySelectorAll(".anticon-cross-circle")[0]
+    Wait Until Page Contains Element    dom:document.querySelectorAll(".anticon-cross-circle")[0]
+    Wait Until Page Contains    用户名或者密码错误
 
 login006
-    [Documentation]    输入正确账号，密码为空 弹出提示店铺地址或者联系方式错误误
-    [Tags]    P1
-    Login Setp
-    Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${user_default_name}
-    Input Password    id:password    1${Empty}
+    [Documentation]     主账号登录失败_密码为空
+    [Tags]    P2
+    Wait And Input Text    id:account    ${user_default_name}
+    Wait And Input Password    id:password    ${Empty}
     Wait And Click Element    ${login_btn}
-    Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${user_default_domain}
-    Wait And Click Element    ${login_btn}
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-message-notice")
-
-login010
-    [Documentation]    输入正确账号，密码 域名为空 弹出提示店铺地址或者联系方式错误
-    [Tags]    P1
-    Login Setp
-    Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${user_default_name}
-    Input Password    id:password    1${Empty}
-    Wait And Click Element    ${login_btn}
-    Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${Empty}
-    Wait And Click Element    ${login_btn}
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-
-login008
-    [Documentation]    输入正确账号，密码 域名错误 弹出提示店铺地址或者联系方式错误
-    [Tags]    P1
-    Login Setp
-    Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${user_default_name}
-    Input Password    id:password    1${Empty}
-    Wait And Click Element    ${login_btn}
-    Wait Until Element Is Visible    id:username
-    Input Text    id:username    dgdfg
-    Wait And Click Element    ${login_btn}
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-message-notice")
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入密码
 
 login007
-    [Documentation]    登陆成功
+    [Documentation]     员工账号登录_登录成功
     [Tags]    P0
-    Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${user_default_name}
-    Input Password    id:password    ${user_default_pwd}
+    Wait And Click Element    dom:document.querySelectorAll("div[class='bottomEdit___zk0l5'] div a")[1]
+    Wait And Input Text    id:account    ${user_default_name}
+    Wait And Input Password    id:password    ${user_default_pwd}
+    Wait And Input Text    id:username    ${user_default_domain}
     Wait And Click Element    ${login_btn}
-    Comment    wait until domain input text element is visible
-    Wait Until Element Is Visible    id:username
-    Input Text    id:username    ${user_default_domain}
-    Wait And Click Element    ${login_btn}
-    Sleep    2
-    Page Should Contain Element    ${locatorB_order}
+    Wait Until Page Contains Element    ${locatorB_order}
     Logout
 
-login012
-    [Documentation]    输入未注册的手机号 弹出提示店铺地址或者联系方式错误
-    [Tags]    P1
-    Login Setp
-    Comment    wait until login button is visible
-    Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    900000000
-    Input Password    id:password    123123
+login008
+    [Documentation]     员工账号登录失败_未注册的域名
+    [Tags]    P0
+    Wait And Click Element    dom:document.querySelectorAll("div[class='bottomEdit___zk0l5'] div a")[1]
+    Wait And Input Text    id:account    ${user_default_name}
+    Wait And Input Password    id:password    ${user_default_pwd}
+    Wait And Input Text    id:username    dgdfg
     Wait And Click Element    ${login_btn}
-    Comment    wait until domain input text element is visible
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Wait Until Page Contains Text    店铺地址或者联系方式错误
 
-login_main_account_error_two
-    [Documentation]    输入错误格式的账号 弹出提示店铺地址或者联系方式错误
-    [Tags]    P1
-    Login Setp
-    Comment    wait until login button is visible
-    Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    sdfsdf@@
-    Input Password    id:password    123123
+login009
+    [Documentation]     员工账号登录失败_格式不正确的域名
+    [Tags]    P2
+    Wait And Click Element    dom:document.querySelectorAll("div[class='bottomEdit___zk0l5'] div a")[1]
+    Wait And Input Text    id:account    ${user_default_name}
+    Wait And Input Password    id:password    ${user_default_pwd}
+    Wait And Input Text    id:username    @@@
     Wait And Click Element    ${login_btn}
-    Comment    wait until domain input text element is visible
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入合法域名
+
+login010
+    [Documentation]     员工账号登录失败_域名为空
+    [Tags]    P2
+    Wait And Click Element    dom:document.querySelectorAll("div[class='bottomEdit___zk0l5'] div a")[1]
+    Wait And Input Text    id:account    ${user_default_name}
+    Wait And Input Password    id:password    ${user_default_pwd}
+    Wait And Input Text    id:username    ${Empty}
+    Wait And Click Element    ${login_btn}
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入店铺域名
+
+login011
+    [Documentation]     员工账号登录失败_未注册的手机/邮箱
+    [Tags]    P0
+    Wait And Click Element    dom:document.querySelectorAll("div[class='bottomEdit___zk0l5'] div a")[1]
+    Wait And Input Text    id:account    17811111111
+    Wait And Input Password    id:password    ${user_default_pwd}
+    Wait And Input Text    id:username    ${user_default_domain}
+    Wait And Click Element    ${login_btn}
+    Wait Until Page Contains Text    店铺地址或者联系方式错误
+
+login012
+    [Documentation]     员工账号登录失败_格式不正确的手机/邮箱
+    [Tags]    P2
+    Wait And Click Element    dom:document.querySelectorAll("div[class='bottomEdit___zk0l5'] div a")[1]
+    Wait And Input Text    id:account    17@11111111
+    Wait And Input Password    id:password    ${user_default_pwd}
+    Wait And Input Text    id:username    ${user_default_domain}
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入正确的邮箱／手机
+
+login013
+    [Documentation]     员工账号登录失败_账号为空
+    [Tags]    P2
+    Wait And Click Element    dom:document.querySelectorAll("div[class='bottomEdit___zk0l5'] div a")[1]
+    Wait And Input Text    id:account    123456
+    Wait And Input Text    id:account    ${Empty}
+    Wait And Input Password    id:password    ${user_default_pwd}
+    Wait And Input Text    id:username    ${user_default_domain}
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入正确的邮箱／手机
+
+login014
+    [Documentation]     员工账号登录失败_错误密码
+    [Tags]    P0
+    Wait And Click Element    dom:document.querySelectorAll("div[class='bottomEdit___zk0l5'] div a")[1]
+    Wait And Input Text    id:account    ${user_default_name}
+    Wait And Input Password    id:password    000000
+    Wait And Input Text    id:username    ${user_default_domain}
+    Wait And Click Element    ${login_btn}
+    Wait Until Page Contains Text    用户名或者密码错误
 
 login015
-    [Documentation]    输入账号,错误密码 弹出提示店铺地址或者联系方式错误
-    [Tags]    P1
-    Login Setp
-    Comment    wait until login button is visible
-    Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    sdfsdf@@
-    Input Password    id:password    123123
+    [Documentation]     员工账号登录失败_密码为空
+    [Tags]    P2
+    Wait And Click Element    dom:document.querySelectorAll("div[class='bottomEdit___zk0l5'] div a")[1]
+    Wait And Input Text    id:account    ${user_default_name}
+    Wait And Input Password    id:password    ${Empty}
+    Wait And Input Text    id:username    ${user_default_domain}
     Wait And Click Element    ${login_btn}
-    Comment    wait until domain input text element is visible
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入密码
 
-login_main_account_error_four
-    [Documentation]    输入账号,错误为空 弹出提示店铺地址或者联系方式错误
-    [Tags]    P1
-    Login Setp
-    Comment    wait until login button is visible
-    Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${user_default_name}
-    Input Password    id:password    ${Empty}
-    Wait And Click Element    ${login_btn}
-    Comment    wait until domain input text element is visible
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
 
-login_main_account_five
-    [Documentation]    输入账号,密码为空 弹出提示店铺地址或者联系方式错误
-    [Tags]    P1
-    Login Setp
-    Comment    wait until login button is visible
-    Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${user_default_name}
-    Input Password    id:password    ${Empty}
-    Wait And Click Element    ${login_btn}
-    Comment    wait until domain input text element is visible
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
 
 *** keywords ***
-Login Setp
-    Go To    ${home_page}
+Login Suite Setup
+    Open Test Browser    ${home_page}
+
+Login Test Teardown
+    @{window_handle}    Get Window Handles
+    Execute Javascript    window.open("${home_page}")
+    Select Window    ${window_handle[0]}
+    Close Window
+    Select Window    title=店匠科技
 
 Logout
-    Wait And Click Element    dom:document.querySelectorAll(".hd-line-center")[0]
-    Execute JavaScript    return document.querySelectorAll(".account_content___18o60 a")[1].click()
-    Sleep    1.5
+    Wait And Click Element    dom:document.querySelectorAll("i[class~='hd-line-center']")[0]
+    Wait And Click Element    dom:document.querySelectorAll("div[class='account_content___18o60'] a")[1]

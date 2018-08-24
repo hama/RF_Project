@@ -15,7 +15,7 @@ test
     Order_Common_Export    ''
 order105
     [Documentation]    弹出导出订单弹窗，可选择导出本页数据，搜索出的数据和全部数据
-    [Tags]    P0d
+    [Tags]    P0
     Order Export Setp
     Page Should Contain Element    ${locatorB_order_export}
     Wait And Click Element    ${locatorB_order_close_btn}

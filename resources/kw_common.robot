@@ -106,23 +106,22 @@ Go To Subtraction Page
 
 
 Wait And Input Text
-    [Arguments]    ${element_locator}    ${text}
+    [Arguments]    ${element_locator}    ${text}    ${timeout}=3    ${retry_time}=1
     [Documentation]    封装的输入方法，等待元素可被输入时，再输入
     Wait Until Element Is Visible    ${element_locator}
-    Wait Until Keyword Succeeds    3x    1s    Input Text    ${element_locator}    ${text}
+    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Input Text    ${element_locator}    ${text}
 
 Wait And Input Password
-    [Arguments]    ${element_locator}    ${pwd}
+    [Arguments]    ${element_locator}    ${pwd}    ${timeout}=3    ${retry_time}=1
     [Documentation]    封装的输入方法，等待元素可被输入时，再输入
     Wait Until Element Is Visible    ${element_locator}
-    Wait Until Keyword Succeeds    3x    1s    Input Password    ${element_locator}    ${pwd}
+    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Input Password    ${element_locator}    ${pwd}
 
 Wait And Click Element
-    [Arguments]    ${element_locator}
+    [Arguments]    ${element_locator}    ${timeout}=25    ${retry_time}=5
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Visible    ${element_locator}
-    Wait Until Keyword Succeeds    5x    5s    Click Element    ${element_locator}
-    Sleep    2
+    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
 
 Common Js Click
     [Arguments]    ${element}    ${index}
@@ -207,10 +206,20 @@ Wait Until Page Not Contains Element
     [Arguments]    ${locator}    ${timeout}=10    ${retry_time}=2
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Page Should Not Contain Element    ${locator}
 
+Wait Until Page Contains Element
+    [Documentation]    等待页面包含${locator}，不包含继续等待直至超时异常，包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
+    [Arguments]    ${locator}    ${timeout}=10    ${retry_time}=2
+    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Page Should Contain Element    ${locator}
+
 Wait Until Page Not Contains Text
     [Documentation]    等待页面不包含${text}，包含继续等待直至超时异常，不包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
     [Arguments]    ${text}    ${timeout}=10    ${retry_time}=2
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Page Should Not Contain    ${text}
+
+Wait Until Page Contains Text
+    [Documentation]    等待页面包含${text}，不包含继续等待直至超时异常，包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
+    [Arguments]    ${text}    ${timeout}=10    ${retry_time}=2
+    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Page Should Contain    ${text}
 
 Wait Until Alert Be Present
     [Documentation]    等待Alert出现，并消除

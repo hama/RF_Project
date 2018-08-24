@@ -11,12 +11,7 @@ New Test Suite Browser And Login
     log    ===========================================================================================================================================================
     log    ===================================================== Test Suite Start, New Browser For Test Suite ========================================================
     log    ===========================================================================================================================================================
-    Run Keyword If    '${is_headless}'=='${true}'    Open Headless Chrome    ${home_page}
-    ...    ELSE    Open Browser    ${home_page}    chrome
-    #Set Window Size    960    1080
-    Set Window Position    0    0
-    # 载入jquery，可使用jquery的selector去定位元素
-    Execute Javascript    a = window.document.createElement('script');a.src='//code.jquery.com/jquery-1.9.1.min.js';window.document.body.appendChild(a);
+    Open Test Browser    ${home_page}
     Login With User    ${username}    ${password}    ${domain}
 
 Close Test Suite Browser
@@ -41,10 +36,15 @@ Teardown Test Case
 
 Open Test Browser
     [Arguments]    ${url}
-    [Documentation]    仅打开浏览器，不登录，用于验证 注册/找回密码模块
+    [Documentation]    仅打开浏览器，不登录
     log    Begin Open Browser Window
     Run Keyword If    '${is_headless}'=='${true}'    Open Headless Chrome    ${url}
     ...    ELSE    Open Browser    ${url}    chrome
+    # 载入jquery，可使用jquery的selector去定位元素
+    #    Execute Javascript    a = window.document.createElement('script');a.src='//code.jquery.com/jquery-1.9.1.min.js';window.document.body.appendChild(a);
+    #    Sleep    2
+    Set Window Position    0    0
+    Set Window Size    1440    1080
 
 Open Headless Chrome
     [Arguments]    ${url}
