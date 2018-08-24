@@ -101,7 +101,7 @@ Go To Subtraction Page
     ${data}    Get Select Elements    1    # 获取导航栏营销下拉元素
     Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_marketing}
     ...    ELSE    Wait And Click Element    ${locatorB_marketing_subtraction}
-    Page Should Contain    ${locator_contentB_subtraction_text}
+    Page Should Contain    ${locatorB_subtraction_header_text}
     Location Should Be    ${url_subtraction}
 
 
@@ -227,3 +227,8 @@ Get Select Elements
     [Arguments]    ${index}
     ${res}    Get Element Attribute    dom:document.querySelectorAll(".ant-menu-submenu-title")[${index}]    aria-expanded
     [Return]    ${res}
+
+Confirm Cancel Alert
+    [Documentation]    取消页面填写内容未保存跳走出现的弹窗
+    Wait And Click Element    ${locatorB_subtraction_first_btn_cancel}
+    Wait And Click Element    ${locatorB_subtraction_confirm_determine_btn}

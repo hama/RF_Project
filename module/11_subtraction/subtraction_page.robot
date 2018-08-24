@@ -12,6 +12,9 @@ Resource          ../../resources/kw_products.robot
 Resource          ../../resources/kw_subtraction.robot
 
 *** Test Cases ***
+sdsdsd
+    subtraction_change_time_start    2
+    Confirm Cancel Alert
 subtraction001
     [Documentation]    进入满减活动界面，查看左上角标题
     [Tags]    P0
@@ -21,9 +24,10 @@ subtraction001
 subtraction002
     [Documentation]    进入全部满减活动界面
     [Tags]    P0
-    Go To Subtraction Page
+    delSubtraction    all
     # 调用添加一个满减活动关键字 - 状态为：进行中
     Add Subtraction Wait Step    1
+    Go To Subtraction Page
     Go To Subtraction Page
     Page Should Contain Element    ${locatorB_subtraction_first_tr_eml}
     delSubtraction    #.删除满减活动
@@ -31,9 +35,9 @@ subtraction002
 subtraction003
     [Documentation]    进入未开始满减活动界面
     [Tags]    P0
-    Go To Subtraction Page
     #.添加一个未开始的活动
     Add Subtraction Wait Step    2
+    Go To Subtraction Page
     Wait And Click Element    ${locatorB_subtraction_title_not_start}
     Page Should Contain Element    ${locatorB_subtraction_first_tr_eml}
     ${data}    Get Text    ${locatorB_subtraction_get_status_text}
@@ -43,9 +47,9 @@ subtraction003
 subtraction004
     [Documentation]    进入-进行中满减活动界面
     [Tags]    P0
-    Go To Subtraction Page
     #.添加一个进行中的活动
     Add Subtraction Wait Step    1
+    Go To Subtraction Page
     Wait And Click Element    ${locatorB_subtraction_title_processing}
     ${data}    Get Text    ${locatorB_subtraction_get_status_text}
     Should Be True    '${data}'=='进行中'
@@ -54,9 +58,9 @@ subtraction004
 subtraction005
     [Documentation]    进入已结束满减活动界面
     [Tags]    P0
-    Go To Subtraction Page
     #.添加一个已结束的活动
     Add Subtraction Wait Step    3
+    Go To Subtraction Page
     Wait And Click Element    ${locatorB_subtraction_title_end}
     ${data}    Get Text    ${locatorB_subtraction_get_status_text}
     Should Be True    '${data}'=='已结束'
@@ -114,6 +118,7 @@ subtraction019
     [Documentation]    活动状态未开始修改结束时间  > 可修改成功
     [Tags]    P0
     subtraction_change_time_start    2
+
 
 subtraction020
     [Documentation]    活动状态进行中修改结束时间  > 可修改成功
@@ -253,7 +258,7 @@ subtraction_change_time_end
     [Documentation]    修改结束时间case封装
     [Arguments]    ${index}
     Common Click First Tr Step    ${index}
-    Wait And Click Element    dom:document.querySelectorAll('.ant-input-lg')[1]
+    Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll('.ant-input-lg')[1]
     Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll('.ant-calendar-tbody tr td')[25]
     Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll("button")[1]
     ...    ELSE    Page Should Not Contain Element    dom:document.querySelectorAll('.ant-calendar-tbody tr td')[25]
@@ -265,6 +270,7 @@ subtraction_change_time_start
     Wait And Click Element    ${locatorB_subtraction_edit_select_first_time}
     Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll('.ant-calendar-tbody tr td')[17]
     Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+
     ...    ELSE    Page Should Not Contain Element    dom:document.querySelectorAll('.ant-calendar-tbody tr td')[17]
 
 subtraction_change_coupon_type

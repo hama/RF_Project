@@ -1,9 +1,8 @@
 *** Settings ***
 Documentation     将本次购买的商品下架，submit之后直接显示"支付失败"
 Suite Setup       Products Suite Setup
-Suite Teardown    Products Suite Teardown
-Test Setup        Products Test Case Setup
-Test Teardown     Products Test Case Teardown
+Suite Teardown    Close Test Suite Browser
+Test Setup        #Products Test Case Setup
 Force Tags        Checkout
 Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_common.robot
@@ -19,11 +18,11 @@ ${tax_price}      1
 
 *** Test Cases ***
 checkout105
-    [Documentation]    点击商品预览后，进入checkout页面，在点击Submit前，在后台修改该商品的状态为下架，之后再点击Submit按钮，应该显示支付失败
+    [Documentation]    "1.将本次购买的商品下架2.点击submit" submit之后直接跳转到支付失败界面
     [Tags]    P0
-    #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
-
+    #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------4
     #获取第一个商品名称
+    Go To Products Page
     Wait Until Element Is Visible    ${locatorB_productsMgmt_text_firstProductName}
     ${title}    Get Text    ${locatorB_productsMgmt_text_firstProductName}
     Select_Order_Page    ${title}
@@ -31,12 +30,13 @@ checkout105
     Select Window    店匠科技
     #点击第一件商品进入商品详情页
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
-    Sleep    5
+    Sleep    2
     #修改状态
     Wait And Click Element    id:status
     #点击保存
     Wait And Click Element    ${locatorB_products_button_confirm}
-    Sleep    8
+    Sleep    5
+    Wait Until Element Is Visible    ${locatorB_productsMgmt_text_firstProductName}
     #切换到商品submit页
     Select Window    title=${user_default_domain}
     Complete_Order_Message
@@ -47,7 +47,7 @@ checkout107
     [Documentation]    此时第一个商品下有两个子产品，删除当前第一个商品下的第1个子商品（第一个子产品为下单时选中的子产品）
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
-
+    Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -66,7 +66,7 @@ checkout108
     [Documentation]    删除其他子商品，可支付成功
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
-
+    Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -88,6 +88,7 @@ checkout109
     [Documentation]    添加一个子商品，支付成功
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
+    Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -107,6 +108,7 @@ checkout110
     [Documentation]    先设置商品为跟踪库存并且库存为0时可购买,点击商品预览后，点击进入checkout页面，在点击Submit前，在后台修改该商品取消勾选库存为0时可购买
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
+    Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -128,6 +130,7 @@ checkout111
     [Documentation]    先设置商品为跟踪库存并且库存为0时可购买,点击商品预览后，点击进入checkout页面，在点击Submit前，在后台修改该商品取消勾选库存为0时可购买,取消跟踪库存
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
+    Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -154,6 +157,7 @@ checkout112
     [Documentation]    先设置商品为跟踪库存并且库存为1,点击商品预览后，点击进入checkout页面，在点击Submit前，在后台修改该商品库存为0
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
+    Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -175,6 +179,7 @@ checkout113
     [Documentation]    先设置商品为跟踪库存并且库存为1,点击商品预览后，点击进入checkout页面，在点击Submit前，在后台修改该商品库存为2
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
+    Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -196,6 +201,7 @@ checkout116
     [Documentation]    点击商品预览后，点击进入checkout页面，在点击Submit前，在后台更换该商品图片
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
+    Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -227,6 +233,7 @@ checkout127
     [Documentation]    关闭“货到付款”支付方式，在支付界面不显示“货到付款”的支付方式（若之前货到付款是开启的，把支持货到付款的物流方案都删除，则会自动关闭”货到付款“的支付方式）
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
+    Go To Products Page
 
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
@@ -244,6 +251,7 @@ checkout128
     [Documentation]    开启“货到付款”支付方式，在支付界面显示“货到付款”的支付方式（若之前货到付款是开启的，把支持货到付款的物流方案都删除，则会自动关闭”货到付款“的支付方式）
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
+    Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -260,7 +268,7 @@ checkout129
     [Documentation]    开启“货到付款”支付方式，在支付界面显示“货到付款”的支付方式（若之前货到付款是开启的，把支持货到付款的物流方案都删除，则会自动关闭”货到付款“的支付方式）
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
-
+    Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -289,6 +297,7 @@ checkout133
     [Documentation]    进入到checkout页面后，修改其他国家税费金额，再点击submit
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
+    Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -309,6 +318,7 @@ checkout134
     [Documentation]    进入到checkout页面后，填写完地址信息（邮箱）后，返回后台修改结账设置改为两者都需填写，再去checkout页面点击submit，页面将会刷新，地址信息将会变成两者都需填写
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
+    Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -340,6 +350,7 @@ checkout135
     [Documentation]    进入到checkout页面后，填写完地址信息后(姓名分开填写)，返回后台修改结账设置改为（姓名），再去checkout页面点击submit，页面将会刷新，地址信息将会刷新变化
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
+    Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -369,7 +380,7 @@ checkout135
 Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品
     Login With Default User
-    Start Ajax Listener
+    Add Order Products
 
 Products Suite Teardown
     [Documentation]    删除商品

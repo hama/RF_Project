@@ -607,9 +607,6 @@ class keyWord(object):
                                   charset="utf8", port=self.port, cursorclass=pymysql.cursors.DictCursor)
 
 if __name__ == '__main__':
-    res = keyWord()
-    print res.addShipping()
-    exit()
     # res.delSubtraction('all')
     # print res.addSubtraction(2)
     # exit()

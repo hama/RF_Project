@@ -79,7 +79,7 @@ Select_Order_Page
     [Arguments]    ${title}
     [Documentation]    点击预览第一个商品，跳转到商品详情页，点击submit按钮进入订单信息页面
     #点击第一个商品的预览icon
-    Wait And Click Element    dom:document.querySelectorAll(".preview")[0]
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     #跳转到商品详情页
     Select Window    title=${title}
     Sleep    1
