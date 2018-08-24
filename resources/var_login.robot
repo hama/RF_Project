@@ -11,6 +11,8 @@ ${locatorB_login_btn_sendVcode}       dom:document.querySelectorAll("button[clas
 ${locatorB_login_input_account}       id:account     #.账号输入框
 ${locatorB_login_input_password}       id:password     #.密码输入框
 ${locatorB_login_input_domain}       id:username     #.域名输入框
+${locatorB_login_input_confirmPwd}       id:confirmpass     #.确认密码输入框
+${locatorB_login_input_vcode}    id:code    #.验证码输入框
 
 # content
 ${contentB_login_errorFormatAccount}    17@11111111     #account格式不正确
@@ -18,3 +20,4 @@ ${contentB_login_unregisteredAccount}    17811111111    #account未注册
 ${contentB_login_errorPwd}    000000                    #password错误密码
 ${contentB_login_errorFormatDomain}    @@@              #domain格式不正确
 ${contentB_login_unregisteredDomain}    dgdfg           #domain未注册
+${contentB_login_errorFormatVCode}    12@456             #vcode格式不正确

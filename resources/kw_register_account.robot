@@ -19,7 +19,7 @@ Register New User
     click button    dom:document.querySelectorAll("button")[0]
     sleep    2
     ${code}    get db verification code    ${username}
-    input text    id:code    ${code}
+    input text    ${locatorB_login_input_vcode}    ${code}
     #click button    dom:document.querySelectorAll("button")[1]
     click button    确 定
     sleep    2

@@ -9,6 +9,7 @@ Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
 Resource          ../../../resources/var_login.robot
+Resource          ../../../resources/kw_login.robot
 
 
 *** Test Cases ***
@@ -179,6 +180,3 @@ Login Test Teardown
     @{window_handle}    Get Window Handles
     Select Window    ${window_handle[0]}
 
-Logout
-    Wait And Click Element    dom:document.querySelectorAll("i[class~='hd-line-center']")[0]
-    Wait And Click Element    dom:document.querySelectorAll("div[class='account_content___18o60'] a")[1]

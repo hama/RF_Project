@@ -30,7 +30,7 @@ register_001
     input text    ${locatorB_login_input_account}    ${register_user}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
     ${code}    get db verification code    ${register_user}
-    input text    id:code    ${code}
+    input text    ${locatorB_login_input_vcode}    ${code}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     page should contain element    //*[@id="root"]
@@ -209,7 +209,7 @@ register_015
     input password    id:confirmpass    123451234
     input text    ${locatorB_login_input_account}    ${register_user}
     #Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    Input Text    id:code    999999
+    Input Text    ${locatorB_login_input_vcode}    999999
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-message-notice-content")[0]
@@ -228,7 +228,7 @@ register_017
     input password    id:confirmpass    123451234
     input text    ${locatorB_login_input_account}    ${register_user}
     #Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    Input Text    id:code    9999
+    Input Text    ${locatorB_login_input_vcode}    9999
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -247,7 +247,7 @@ register_018
     input password    id:confirmpass    123451234
     input text    ${locatorB_login_input_account}    ${register_user}
     #Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    Input Text    id:code    ${Empty}
+    Input Text    ${locatorB_login_input_vcode}    ${Empty}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
