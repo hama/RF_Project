@@ -79,12 +79,12 @@ Select_Order_Page
     [Arguments]    ${title}
     [Documentation]    点击预览第一个商品，跳转到商品详情页，点击submit按钮进入订单信息页面
     #点击第一个商品的预览icon
-    Wait And Click Element    dom:document.querySelectorAll(".preview")[0]
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     #跳转到商品详情页
     Select Window    title=${title}
-    Sleep    1
+    Sleep    2
     #跳转到页面底部
-    Execute Javascript    return document.querySelectorAll(".buy-now")[0].scrollIntoView()
+    Execute Javascript    return document.querySelectorAll(".style-1")[0].scrollIntoView()
     #点击submit
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     #进入到填写订单信息页面
@@ -94,23 +94,24 @@ Select_Order_Page_With_Sub_Product
     [Arguments]    ${title}
     [Documentation]    点击预览第一个商品，跳转到商品详情页，选中一个子产品后，点击submit按钮进入订单信息页面
     #点击第一个商品的预览icon
-    Wait And Click Element    dom:document.querySelectorAll(".preview")[0]
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     #跳转到商品详情页
     Select Window    title=${title}
-    Sleep    1
+    Sleep    2
     #跳转到页面底部
-    Execute Javascript    return document.querySelectorAll(".buy-now")[0].scrollIntoView()
+    Execute Javascript    return document.querySelectorAll(".style-1")[0].scrollIntoView()
     #点击submit
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     #选中第一个规格属性
     Wait And Click Element    dom:document.querySelectorAll(".attribute-item")[0]
     #进入到填写订单信息页面
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
+    Wait And Click Element    dom:document.querySelectorAll(".item-Color")[1]
+    Wait And Click Element    dom:document.querySelectorAll(".footer-submit")[0]
 
 Complete_Order_Message
     [Documentation]    点击添加地址按钮，填写信息，点击保存按钮，点击进入支付页
     #添加地址信息
-    Wait And Click Element    id:addAddress
+    #Wait And Click Element    id:addAddress
     #first name
     Wait And Input Text    ${locatorB_checkout_address_first_name}    zc
     #last name
@@ -222,10 +223,9 @@ Add_Sub_Product_With_Already_Product
     [Documentation]    给第一个现有的无子产品的商品添加两个子产品
     #点击第一件商品进入商品详情页
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
-    Sleep    5
+    Sleep    2
     #划到底部
     Execute Javascript    return document.getElementById("test_variant_setting_btn").scrollIntoView()
-    Sleep    2
     #添加选项
     Wait And Click Element    id:test_variant_setting_btn
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-dropdown-trigger")[0]
@@ -235,58 +235,56 @@ Add_Sub_Product_With_Already_Product
     Wait And Input Text    id:option_values_0    red
     #回车保存
     Press Key    id:option_values_0    \\13
-    Sleep    1
     Wait And Input Text    id:option_values_0    black
     #回车保存
     Press Key    id:option_values_0    \\13
     #点击保存
-    Wait And Click Element    ${locatorB_productsNew_button_save}
-    Sleep    10
+    Click And Page Contains Element With Refresh    ${locatorB_productsNew_button_save}    ${locatorB_productsMgmt_icon_preview}
+    Go To Products Page
+    
 
 Delete_Sub_Product_With_Already_Product
     [Arguments]    ${index}
     [Documentation]    此时第一个商品下有两个子产品，删除当前第一个商品下的第n个子商品（第一个子产品为下单时选中的子产品）
     Go To Products Page
-    Sleep    5
     #点击第一件商品进入商品详情页
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
-    Sleep    5
+    Sleep    2
     #划到底部
     Execute Javascript    return document.getElementById("test_single_variant_setting_btn").scrollIntoView()
-    Sleep    2
     #删除第n个子商品
-    Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__choice__remove")[${index}]
+    Wait And Click Element    dom:document.querySelectorAll('tbody tr:nth-child(${index}) td i')[1]
+    Wait And Click Element    dom:document.querySelectorAll('.ant-btn-sm')[1]
     #点击保存
     Wait And Click Element    ${locatorB_productsNew_button_save}
-    Sleep    10
+    Sleep    3
 
 Select_Quantity_0
     [Documentation]    勾选该商品库存为0时仍可购买
     #点击第一件商品进入商品详情页
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
-    Sleep    5
+    Sleep    2
     #划到底部
-    Execute Javascript    return document.querySelectorAll(".wrapper_row___V4M9G")[4].scrollIntoView()
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[1].scrollIntoView()
     Sleep    2
     #点击跟踪库存
-    Select Checkbox    dom:document.querySelectorAll(".wrapper_row___V4M9G")[4].querySelectorAll(".ant-checkbox-input")[0]
-    Sleep    2
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[2].click()
     #点击库存为0时仍可购买
-    Select Checkbox    dom:document.querySelectorAll(".wrapper_row___V4M9G")[4].querySelectorAll(".ant-checkbox-input")[1]
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[3].click()
     #点击保存
     Wait And Click Element    ${locatorB_productsNew_button_save}
-    Sleep    10
+    Sleep    3
 
 Cancel_Select_Quantity_0
     [Documentation]    取消勾选该商品库存为0时仍可购买
     #点击第一件商品进入商品详情页
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
-    Sleep    5
+    Sleep    2
     #划到底部
-    Execute Javascript    return document.querySelectorAll(".wrapper_row___V4M9G")[4].scrollIntoView()
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[1].scrollIntoView()
     Sleep    2
     #点击取消库存为0时仍可购买
-    Execute Javascript    return document.querySelectorAll(".wrapper_row___V4M9G")[4].querySelectorAll(".ant-checkbox-input")[1].click()
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[3].click()
     #点击保存
     Wait And Click Element    ${locatorB_productsNew_button_save}
     Sleep    5
@@ -298,56 +296,53 @@ Cancel_Select_Quantity
     [Documentation]    取消勾选该商品跟踪库存
     #点击第一件商品进入商品详情页
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
-    Sleep    5
+    Sleep    2
     #划到底部
-    Execute Javascript    return document.querySelectorAll(".wrapper_row___V4M9G")[4].scrollIntoView()
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[1].scrollIntoView()
     Sleep    2
     #点击取消库存为0时仍可购买
-    Execute Javascript    return document.querySelectorAll(".wrapper_row___V4M9G")[4].querySelectorAll(".ant-checkbox-input")[1].click()
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[3].click()
     Sleep    1
     #点击取消跟踪库存
-    Execute Javascript    return document.querySelectorAll(".wrapper_row___V4M9G")[4].querySelectorAll(".ant-checkbox-input")[0].click()
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[2].click()
     #点击保存
     Wait And Click Element    ${locatorB_productsNew_button_save}
-    Sleep    5
+    Sleep    3
 
 Set_Quantity_To_0
     [Documentation]    设置商品的库存为0
     #点击第一件商品进入商品详情页
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
-    Sleep    5
+    Sleep    2
     #划到底部
-    Execute Javascript    return document.querySelectorAll(".wrapper_row___V4M9G")[4].scrollIntoView()
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[1].scrollIntoView()
     Sleep    2
     #点击跟踪库存
-    Select Checkbox    dom:document.querySelectorAll(".wrapper_row___V4M9G")[4].querySelectorAll(".ant-checkbox-input")[0]
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[2].click()
     Sleep    2
     #输入库存数量
-    Wait And Input Text    id:inventory_quantity    0
+    #Wait And Input Text    id:inventory_quantity    0
     #点击保存
     Wait And Click Element    ${locatorB_productsNew_button_save}
-    Sleep    5
-    #点击确定按钮
-    Wait And Click Element    dom:document.querySelectorAll(".ant-confirm-btns .ant-btn-primary")[0]
-    Sleep    5
+    Sleep    2
 
 Set_Quantity
-    [Arguments]    ${num}
+    [Arguments]    ${num}    ${type}=false
     [Documentation]    设置商品的库存
     #点击第一件商品进入商品详情页
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
-    Sleep    5
+    Sleep    2
     #划到底部
-    Execute Javascript    return document.querySelectorAll(".wrapper_row___V4M9G")[4].scrollIntoView()
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[1].scrollIntoView()
     Sleep    2
     #点击跟踪库存
-    Select Checkbox    dom:document.querySelectorAll(".wrapper_row___V4M9G")[4].querySelectorAll(".ant-checkbox-input")[0]
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[2].click()
     Sleep    2
     #输入库存数量
-    Wait And Input Text    id:inventory_quantity    ${num}
+    Run keyword If    '${type}'=='false'    Wait And Input Text    id:inventory_quantity    ${num}
     #点击保存
     Wait And Click Element    ${locatorB_productsNew_button_save}
-    Sleep    5
+    Sleep    3
 
 To_Change_Image
     [Documentation]    更换商品的图片，前提该商品已有一张图片
@@ -558,3 +553,10 @@ Close_Card
     ${class}    Execute Javascript    return document.querySelectorAll(".payment_wrap___3m1lo")[1].querySelectorAll(" .ant-switch")[0].getAttribute("class")
     Run Keyword If    '${class}'=='ant-switch ant-switch-checked'    Change_Card    #关闭
 
+Add Product Wait
+    [Documentation]    添加商品等待
+    [Arguments]    ${count}=10
+    :FOR    ${i}    IN RANGE    ${count}
+    \    ${res_status}    addProducts
+    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
+    \    ...    ELSE    Sleep    1

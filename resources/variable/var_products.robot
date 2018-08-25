@@ -19,7 +19,7 @@ ${locatorB_products_button_confirm}    ${locatorB_popUps_button_middle}    #商�
 # locator_productsMgmt
 ${locatorB_productsMgmt_button_editTableHead}    dom:document.querySelectorAll(".edit_head___UidlR")[0]    #编辑表头
 ${locatorB_productsMgmt_tabindex_firstSwitch}    dom:document.querySelectorAll(".ant-switch")[0]    # 列表第一个商品的上架按钮
-${locatorB_productsMgmt_text_firstProductName}    dom:document.querySelectorAll(".product_name___Ul4W-")[0]     #列表第一个商品的名字
+${locatorB_productsMgmt_text_firstProductName}    dom:document.querySelectorAll('tbody tr td span')[4]     #列表第一个商品的名字
 ${locatorB_productsMgmt_input_name}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[2]    #"商品名称/商品SKU/标签"输入框
 ${locatorB_productsMgmt_button_addProduct}    ${locatorB_button_add}    #商品列表页的新增商品按钮
 ${locatorB_productsMgmt_checkbox_chooseProducets}    ${locatorB_checkbox00}    #点击checkbox按钮，选中当前页面所有商品
