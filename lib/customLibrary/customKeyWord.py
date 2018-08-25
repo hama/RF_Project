@@ -113,142 +113,9 @@ class keyWord(object):
             return res
         except Exception as e:
             print e
-            # exit()
+        finally:
+            conn.close()
 
-    def selectProduct(self):
-        res_data = self.commonGetData()
-        res_list = []
-        for i in res_data:
-            res_list.append(i['title'])
-        return res_list
-
-    def getResult(self, args):
-        args = args.encode('unicode-escape').decode('string_escape')
-        data = self.selectProduct()
-        new_list = []
-        for x in data:
-            res_str = x.encode('unicode-escape').decode('string_escape')
-            res_str = res_str.strip()
-            new_list.append(res_str)
-
-        if args in new_list:
-            return True
-        else:
-            return False
-
-    def searchStr(self, args):
-        str_ = str(args)
-        restr = re.search('\d', str_).group()
-        return restr
-
-    def searchStrs(self, args):
-        str_ = str(args)
-        restr = re.search('\d+', str_).group()
-        return restr
-
-    def order_list_str(self, args):
-        str_ = str(args)
-
-        restr = re.findall('\d+', str_)
-        timelist = ['05', '31']
-        for i in timelist:
-            if i in restr:
-                return True
-            else:
-                return False
-
-    def order_list_maxmonth_check(self, max, min):
-        if max is None or min is None:
-            return False
-        maxstr_ = str(max)
-        minstr_ = str(min)
-        re_max = re.findall(r'-(\d+)', maxstr_)
-        re_min = re.findall(r'-(\d+)', minstr_)
-
-        if int(re_max[0]) - int(re_min[0]) > 3:
-            return False
-        else:
-            return True
-
-    def dictTest(self, **dict_):
-        print type(dict_)
-        return dict_
-
-    def time(self, args):
-        import time
-        # 转换成时间数组
-        timeArray = time.strptime(args, "%Y-%m-%d %H:%M:%S")
-        # 转换成时间戳
-        timestamp = time.mktime(timeArray)
-
-        return timestamp
-
-    def getProductCount(self):
-        arr = self.selectProduct()
-        if arr:
-            return len(arr)
-        else:
-            return 0
-
-    def getFirstProductQuantity(self):
-        res_data = self.commonGetData()
-        res_list = []
-        for i in res_data:
-            res_list.append(i['inventory_quantity'])
-        return res_list[0]
-
-    def getFirstProductTitle(self):
-        res_data = self.commonGetData()
-        res_list = []
-        for i in res_data:
-            res_list.append(i['title'])
-        return res_list[0]
-
-    def getProductStatus(self, arg):
-        res_data = self.commonGetData()
-        res_list = []
-        for i in res_data:
-            res_list.append(i['status'])
-
-        arg = int(arg)
-        return res_list[arg]
-
-    def getProductSku(self, arg):
-        res_data = self.commonGetData()
-        res_list = []
-        for i in res_data:
-            res_list.append(i['variants'][0]['sku'])
-
-        arg = int(arg)
-
-        if res_list[arg] == '':
-            return -1
-
-        return res_list[arg]
-
-    def selectProductCountByStatus(self, arg):
-        if arg:
-            arg = int(arg)
-        else:
-            return 0
-        p_url = self.home_page_url + "/api/product/search?status=" + str(arg) + "&page=0&limit=20"
-        res_data = self.commonGetData(p_url)
-        res_list = []
-        for i in res_data:
-            res_list.append(i['title'])
-
-        return len(res_list)
-
-    def getProductTagsLength(self, arg):
-        res_data = self.commonGetData()
-        res_list = []
-        t = -1
-        for i in res_data:
-            t = t + 1
-            res_list.append(len(i['tags']))
-
-        arg = int(arg)
-        return res_list[arg]
     #. md5加密方法
     def md5(self,fname):
         hash_md5 = hashlib.md5()
@@ -256,6 +123,7 @@ class keyWord(object):
             for chunk in iter(lambda: f.read(4096), b""):
                 hash_md5.update(chunk)
         return hash_md5.hexdigest()
+
     #. 添加商品
     def addProducts(self):
         #.获取图片
@@ -289,8 +157,6 @@ class keyWord(object):
 
         except Exception as e:
             return e
-
-
 
     #. 上传图片到阿里云
     def upload_oss(self,urlex, name='', extension='', timeout_second = 30):
