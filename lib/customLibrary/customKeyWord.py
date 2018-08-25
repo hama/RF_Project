@@ -8,10 +8,8 @@ import os
 import random
 import sys
 import time
-import multiprocessing
 import oss2
 import hashlib
-import boto3
 import uuid
 import pymysql
 import requests
