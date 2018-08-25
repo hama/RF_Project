@@ -123,6 +123,12 @@ Wait And Click Element
     Wait Until Element Is Visible    ${element_locator}
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
 
+Wait And Select Checkbox
+    [Arguments]    ${element_locator}    ${timeout}=3    ${retry_time}=1
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    Wait Until Element Is Visible    ${element_locator}
+    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Select Checkbox    ${element_locator}
+
 Common Js Click
     [Arguments]    ${element}    ${index}
     [Documentation]    封装js点击方法

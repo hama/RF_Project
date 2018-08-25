@@ -49,6 +49,6 @@ ${user_default_inviteCode}    ${datas_invite_code}
 ### keybord_key
 ${keybord_enter}    \\13
 ### 注册用户
-${register_user}    15297989918
-${register_domain}    VVRlkJWHq
+${register_user}    gt1zwkp@abctest.com
+${register_domain}    gt1zwkp
 ${register_pwd}    ${datas_password}

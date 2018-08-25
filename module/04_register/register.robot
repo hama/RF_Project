@@ -1,5 +1,5 @@
 *** Settings ***
-Suite Setup       Open Test Browser    ${home_page}
+Suite Setup       Register Suite Setup
 Suite Teardown    Close Test Suite Browser
 #Test Setup
 Test Teardown     Teardown Test Case
@@ -15,7 +15,6 @@ Resource          ../../resources/variable/var_login.robot
 register_001
     [Documentation]    注册
     [Tags]    P0
-    Sleep    4
     Wait And Click Element    ${locatorB_login_btn_register}
     Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
     Wait And input text    ${locatorB_login_input_domain}    ${register_domain}
@@ -23,12 +22,13 @@ register_001
     Wait And input password    ${locatorB_login_input_confirmPwd}    ${register_pwd}
     Wait And input text    ${locatorB_login_input_account}    ${register_user}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
+    Sleep    2
     ${code}    Get Latest Vcode Fromdb    ${register_user}
     Wait And input text    ${locatorB_login_input_vcode}    ${code}
-    Wait And Click Element    document.querySelectorAll(".ant-checkbox-input")[0]    #.点击我接受
+    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    page should contain element    //*[@id="root"]
-    Close Browser
+    Wait Until Page Contains Element    ${locatorB_order}
+    Logout
 
 register_002
     [Documentation]    注册 输入已注册的账号 提示错误
