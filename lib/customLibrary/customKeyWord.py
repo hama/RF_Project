@@ -8,7 +8,11 @@ import os
 import random
 import sys
 import time
-
+import multiprocessing
+import oss2
+import hashlib
+import boto3
+import uuid
 import pymysql
 import requests
 
@@ -109,8 +113,227 @@ class keyWord(object):
             return res
         except Exception as e:
             print e
+            # exit()
+
+    def selectProduct(self):
+        res_data = self.commonGetData()
+        res_list = []
+        for i in res_data:
+            res_list.append(i['title'])
+        return res_list
+
+    def getResult(self, args):
+        args = args.encode('unicode-escape').decode('string_escape')
+        data = self.selectProduct()
+        new_list = []
+        for x in data:
+            res_str = x.encode('unicode-escape').decode('string_escape')
+            res_str = res_str.strip()
+            new_list.append(res_str)
+
+        if args in new_list:
+            return True
+        else:
+            return False
+
+    def searchStr(self, args):
+        str_ = str(args)
+        restr = re.search('\d', str_).group()
+        return restr
+
+    def searchStrs(self, args):
+        str_ = str(args)
+        restr = re.search('\d+', str_).group()
+        return restr
+
+    def order_list_str(self, args):
+        str_ = str(args)
+
+        restr = re.findall('\d+', str_)
+        timelist = ['05', '31']
+        for i in timelist:
+            if i in restr:
+                return True
+            else:
+                return False
+
+    def order_list_maxmonth_check(self, max, min):
+        if max is None or min is None:
+            return False
+        maxstr_ = str(max)
+        minstr_ = str(min)
+        re_max = re.findall(r'-(\d+)', maxstr_)
+        re_min = re.findall(r'-(\d+)', minstr_)
+
+        if int(re_max[0]) - int(re_min[0]) > 3:
+            return False
+        else:
+            return True
+
+    def dictTest(self, **dict_):
+        print type(dict_)
+        return dict_
+
+    def time(self, args):
+        import time
+        # 转换成时间数组
+        timeArray = time.strptime(args, "%Y-%m-%d %H:%M:%S")
+        # 转换成时间戳
+        timestamp = time.mktime(timeArray)
+
+        return timestamp
+
+    def getProductCount(self):
+        arr = self.selectProduct()
+        if arr:
+            return len(arr)
+        else:
+            return 0
+
+    def getFirstProductQuantity(self):
+        res_data = self.commonGetData()
+        res_list = []
+        for i in res_data:
+            res_list.append(i['inventory_quantity'])
+        return res_list[0]
+
+    def getFirstProductTitle(self):
+        res_data = self.commonGetData()
+        res_list = []
+        for i in res_data:
+            res_list.append(i['title'])
+        return res_list[0]
+
+    def getProductStatus(self, arg):
+        res_data = self.commonGetData()
+        res_list = []
+        for i in res_data:
+            res_list.append(i['status'])
+
+        arg = int(arg)
+        return res_list[arg]
+
+    def getProductSku(self, arg):
+        res_data = self.commonGetData()
+        res_list = []
+        for i in res_data:
+            res_list.append(i['variants'][0]['sku'])
+
+        arg = int(arg)
+
+        if res_list[arg] == '':
+            return -1
+
+        return res_list[arg]
+
+    def selectProductCountByStatus(self, arg):
+        if arg:
+            arg = int(arg)
+        else:
+            return 0
+        p_url = self.home_page_url + "/api/product/search?status=" + str(arg) + "&page=0&limit=20"
+        res_data = self.commonGetData(p_url)
+        res_list = []
+        for i in res_data:
+            res_list.append(i['title'])
+
+        return len(res_list)
+
+    def getProductTagsLength(self, arg):
+        res_data = self.commonGetData()
+        res_list = []
+        t = -1
+        for i in res_data:
+            t = t + 1
+            res_list.append(len(i['tags']))
+
+        arg = int(arg)
+        return res_list[arg]
+    #. md5加密方法
+    def md5(self,fname):
+        hash_md5 = hashlib.md5()
+        with open(fname, "rb") as f:
+            for chunk in iter(lambda: f.read(4096), b""):
+                hash_md5.update(chunk)
+        return hash_md5.hexdigest()
+    #. 添加商品
+    def addProducts(self):
+        #.获取图片
+        imgs = self.upload_oss(self.img)[0]
+        path_img = "//cn.cdn.shoplazza.com/" + self.upload_oss(self.img)[0]
+        #.获取cookie
+        cookie = self.Login()
+        data = {
+            "barcode":"",
+            "brief":"自动化测试",
+            "compare_at_price":1000,
+            "has_only_default_variant":True,
+            "images":[{"lastModified": "1520929852000", "lastModifiedDate": "2018-03-13T08:30:52.000Z","name":imgs,"originFileObj":{"uid":"rc-upload-1535093594875-2"},"path":imgs,"percent":"100.00","status":"done","type":"image/jpeg","uid":"rc-upload-1535093594875-2","url":path_img}],
+            "meta_description":"",
+            "meta_keyword":"",
+            "meta_title": "自动化测试",
+            "price":99,
+            "status":1,
+            "title":"自动化测试",
+            "url":"/products/自动化测试",
+            "variants":[{"barcode":"","compare_at_price":1000,"inventory_management":"","inventory_policy":"","inventory_quantity":"","price":99,"requires_shipping":"","sku":"","taxable":"","weight":"","weight_unit":"kg"}]
+        }
+        try:
+            resData = requests.post(url=self.addProUrl,headers={"cookie":cookie},json=data)
+            if resData.status_code == 200 and json.loads(resData.content)['state'] == 0:
+                print resData.content
+                return True
+            else:
+                print resData.content
+                return False
+
+        except Exception as e:
+            return e
+
+
+
+    #. 上传图片到阿里云
+    def upload_oss(self,urlex, name='', extension='', timeout_second = 30):
+        auth = oss2.Auth(self.aliyun['accessKeyId'], self.aliyun['accessKeySecret'])
+        bucket = oss2.Bucket(auth, self.aliyun['endPoint'], self.aliyun['bucket'])
+        if not urlex:
+            return False
+        tmp_file = '/tmp/' + str(uuid.uuid1())
+        try:
+            r = requests.get(urlex, stream=True, timeout=timeout_second)
+            if r.status_code > 399:
+                return False
+            with open(tmp_file, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=1024):
+                    if chunk: # filter out keep-alive new chunks
+                        f.write(chunk)
+            md5_file = self.md5(tmp_file)
+            size_file = os.stat(tmp_file).st_size
+            s3key = name
+            if not s3key:
+                if not extension:
+                    extension = urlex.split('.')[-1].split('?')[0]
+                    if len(extension) > 5:
+                        extension = ""
+                if extension:
+                    s3key = md5_file + '.' + extension
+                else:
+                    s3key = md5_file
+                if s3key.endswith('.SS2'):
+                    s3key = str(s3key).replace('SS2','jpg')
+
+            with open(tmp_file, 'rb') as f:
+                bucket.put_object(s3key, f)
+            return (s3key, size_file)
+        except Exception as e:
+            print e
         finally:
-            conn.close()
+            try:
+                os.remove(tmp_file)
+            except Exception as e:
+                print e
+        return False
+        
 
     # .删除商品
     def delFirstProduct(self):
