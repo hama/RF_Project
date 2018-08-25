@@ -1,37 +1,31 @@
 *** Settings ***
+Suite Setup       Open Test Browser    ${home_page}
 Suite Teardown    Close Test Suite Browser
+#Test Setup
+Test Teardown     Teardown Test Case
 Force Tags        Register
 Library           SeleniumLibrary
-Library           ${CURDIR}/../../../lib/customLibrary
-Resource          ../../../resources/var_tax_price.robot
-Resource          ../../../resources/var_products.robot
-Resource          ../../../resources/var_common.robot
-Resource          ../../../resources/kw_common.robot
-Resource          ../../../resources/kw_browser.robot
-Resource          ../../../resources/kw_products.robot
+Library           ${CURDIR}/../../lib/customLibrary
+Resource          ../../resources/variable/var_common.robot
+Resource          ../../resources/keywords/kw_common.robot
+Resource          ../../resources/keywords/kw_browser.robot
+Resource          ../../resources/variable/var_login.robot
 
 *** Test Cases ***
-remove_user
-    [Documentation]    删除账户
-    [Tags]    common
-    remove user    ${register_user}
-
 register_001
     [Documentation]    注册
     [Tags]    P0
-    Comment    register
-    Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    id:invite_code    ${register_code}
-    input text    id:username    ${register_domain}
-    input password    id:password    ${register_pwd}
-    input password    id:confirmpass    ${register_pwd}
-    input text    id:account    ${register_user}
+    Sleep    4
+    Wait And Click Element    ${locatorB_login_btn_register}
+    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
+    Wait And input text    ${locatorB_login_input_domain}    ${register_domain}
+    Wait And input password    ${locatorB_login_input_password}    ${register_pwd}
+    Wait And input password    ${locatorB_login_input_confirmPwd}    ${register_pwd}
+    Wait And input text    ${locatorB_login_input_account}    ${register_user}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    ${code}    get db verification code    ${register_user}
-    input text    id:code    ${code}
-    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
+    ${code}    Get Latest Vcode Fromdb    ${register_user}
+    Wait And input text    ${locatorB_login_input_vcode}    ${code}
+    Wait And Click Element    document.querySelectorAll(".ant-checkbox-input")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     page should contain element    //*[@id="root"]
     Close Browser
@@ -41,13 +35,13 @@ register_002
     [Tags]    P0
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    id:invite_code    ${register_code}
-    input text    id:username    ${register_domain}
-    input password    id:password    ${register_pwd}
-    input password    id:confirmpass    ${register_pwd}
-    input text    id:account    ${register_user}
+    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
+    input text    ${locatorB_login_input_domain}    ${register_domain}
+    input password    ${locatorB_login_input_password}    ${register_pwd}
+    input password    ${locatorB_login_input_confirmPwd}    ${register_pwd}
+    input text    ${locatorB_login_input_account}    ${register_user}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-message-notice-content")[0]
     Close Browser
@@ -57,10 +51,10 @@ register_005
     [Tags]    P0
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    id:invite_code    ${register_code}
-    input text    id:username    @!@$1
+    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
+    input text    ${locatorB_login_input_domain}    @!@$1
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
     Close Browser
@@ -70,10 +64,10 @@ register_006
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    id:invite_code    ${register_code}
-    input text    id:username    ${Empty}
+    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
+    input text    ${locatorB_login_input_domain}    ${Empty}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -84,11 +78,11 @@ register_007
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    id:invite_code    ${register_code}
-    input text    id:username    lalala
-    input text    id:account    ${register_user}
+    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
+    input text    ${locatorB_login_input_domain}    lalala
+    input text    ${locatorB_login_input_account}    ${register_user}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -99,13 +93,13 @@ register_008
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    id:invite_code    ${register_code}
-    input text    id:username    lalala
-    input password    id:password    12345
-    input password    id:confirmpass    12345
-    input text    id:account    ${register_user}
+    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
+    input text    ${locatorB_login_input_domain}    lalala
+    input password    ${locatorB_login_input_password}    12345
+    input password    ${locatorB_login_input_confirmPwd}    12345
+    input text    ${locatorB_login_input_account}    ${register_user}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -116,13 +110,13 @@ register_009
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    id:invite_code    ${register_code}
-    input text    id:username    lalala
-    input password    id:password    12345123456783
-    input password    id:confirmpass    12345123456783
-    input text    id:account    ${register_user}
+    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
+    input text    ${locatorB_login_input_domain}    lalala
+    input password    ${locatorB_login_input_password}    12345123456783
+    input password    ${locatorB_login_input_confirmPwd}    12345123456783
+    input text    ${locatorB_login_input_account}    ${register_user}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -133,13 +127,13 @@ register_010
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    id:invite_code    ${register_code}
-    input text    id:username    lalala
-    input password    id:password    1234512345678
-    input password    id:confirmpass    ${Empty}
-    input text    id:account    ${register_user}
+    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
+    input text    ${locatorB_login_input_domain}    lalala
+    input password    ${locatorB_login_input_password}    1234512345678
+    input password    ${locatorB_login_input_confirmPwd}    ${Empty}
+    input text    ${locatorB_login_input_account}    ${register_user}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -150,13 +144,13 @@ register_011
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    id:invite_code    ${register_code}
-    input text    id:username    lalala
-    input password    id:password    123451234
-    input password    id:confirmpass    987654321
-    input text    id:account    ${register_user}
+    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
+    input text    ${locatorB_login_input_domain}    lalala
+    input password    ${locatorB_login_input_password}    123451234
+    input password    ${locatorB_login_input_confirmPwd}    987654321
+    input text    ${locatorB_login_input_account}    ${register_user}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -167,13 +161,13 @@ register_013
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    id:invite_code    ${register_code}
-    input text    id:username    lalala
-    input password    id:password    123451234
-    input password    id:confirmpass    123451234
-    input text    id:account    2$$%%@1q
+    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
+    input text    ${locatorB_login_input_domain}    lalala
+    input password    ${locatorB_login_input_password}    123451234
+    input password    ${locatorB_login_input_confirmPwd}    123451234
+    input text    ${locatorB_login_input_account}    2$$%%@1q
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -184,13 +178,13 @@ register_014
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    id:invite_code    ${register_code}
-    input text    id:username    lalala
-    input password    id:password    123451234
-    input password    id:confirmpass    123451234
-    input text    id:account    ${Empty}
+    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
+    input text    ${locatorB_login_input_domain}    lalala
+    input password    ${locatorB_login_input_password}    123451234
+    input password    ${locatorB_login_input_confirmPwd}    123451234
+    input text    ${locatorB_login_input_account}    ${Empty}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -201,15 +195,15 @@ register_015
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    id:invite_code    ${register_code}
-    input text    id:username    lalala
-    input password    id:password    123451234
-    input password    id:confirmpass    123451234
-    input text    id:account    ${register_user}
+    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
+    input text    ${locatorB_login_input_domain}    lalala
+    input password    ${locatorB_login_input_password}    123451234
+    input password    ${locatorB_login_input_confirmPwd}    123451234
+    input text    ${locatorB_login_input_account}    ${register_user}
     #Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    Input Text    id:code    999999
+    Input Text    ${locatorB_login_input_vcode}    999999
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-message-notice-content")[0]
@@ -220,15 +214,15 @@ register_017
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    id:invite_code    ${register_code}
-    input text    id:username    lalala
-    input password    id:password    123451234
-    input password    id:confirmpass    123451234
-    input text    id:account    ${register_user}
+    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
+    input text    ${locatorB_login_input_domain}    lalala
+    input password    ${locatorB_login_input_password}    123451234
+    input password    ${locatorB_login_input_confirmPwd}    123451234
+    input text    ${locatorB_login_input_account}    ${register_user}
     #Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    Input Text    id:code    9999
+    Input Text    ${locatorB_login_input_vcode}    9999
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -239,15 +233,15 @@ register_018
     [Tags]    P1
     Comment    register
     Open Test Browser    ${home_page}
-    Wait And Click Element    ${register_btn}
+    Wait And Click Element    ${locatorB_login_btn_register}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    id:invite_code    ${register_code}
-    input text    id:username    lalala
-    input password    id:password    123451234
-    input password    id:confirmpass    123451234
-    input text    id:account    ${register_user}
+    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
+    input text    ${locatorB_login_input_domain}    lalala
+    input password    ${locatorB_login_input_password}    123451234
+    input password    ${locatorB_login_input_confirmPwd}    123451234
+    input text    ${locatorB_login_input_account}    ${register_user}
     #Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    Input Text    id:code    ${Empty}
+    Input Text    ${locatorB_login_input_vcode}    ${Empty}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -258,17 +252,20 @@ register_019
     [Tags]    P0
     Comment    wait until login button is visible
     Open Test Browser    ${home_page}
-    Wait Until Element Is Visible    ${login_btn}
-    Input Text    id:account    ${register_user}
-    Input Password    id:password    ${register_pwd}
-    #Wait And Click Element    ${login_btn}
-    #Wait Until Element Is Visible    id:username
-    #Input Text    id:username    ${register_domain}
-    Wait And Click Element    ${login_btn}
+    Wait Until Element Is Visible    ${locatorB_login_btn_login}
+    Input Text    ${locatorB_login_input_account}    ${register_user}
+    Input Password    ${locatorB_login_input_password}    ${register_pwd}
+    #Wait And Click Element    ${locatorB_login_btn_login}
+    #Wait Until Element Is Visible    ${locatorB_login_input_domain}
+    #Input Text    ${locatorB_login_input_domain}    ${register_domain}
+    Wait And Click Element    ${locatorB_login_btn_login}
     Sleep    1
     Page Should Contain Element    ${locatorB_order}
     Wait And Click Element    dom:document.querySelectorAll(".hd-line-center")[0]
     Execute JavaScript    return document.querySelectorAll(".account_content___18o60 a")[1].click()
     Close Browser
 
-
+*** Keywords ***
+Register Suite Setup
+    Open Test Browser    ${home_page}
+    Del User Fromdb    ${register_user}

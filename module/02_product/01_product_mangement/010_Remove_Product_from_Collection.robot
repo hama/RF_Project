@@ -6,11 +6,11 @@ Test Setup        Products Test Case Setup
 Test Teardown     Products Test Case Teardown
 Force Tags        Products
 Library           ${CURDIR}/../../../lib/customLibrary
-Resource          ../../../resources/var_common.robot
-Resource          ../../../resources/var_products.robot
-Resource          ../../../resources/kw_common.robot
-Resource          ../../../resources/kw_browser.robot
-Resource          ../../../resources/kw_products.robot
+Resource          ../../../resources/variable/var_common.robot
+Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/keywords/kw_common.robot
+Resource          ../../../resources/keywords/kw_browser.robot
+Resource          ../../../resources/keywords/kw_products.robot
 
 *** Test Cases ***
 products061

@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     checkout 公共方法
-Resource          var_common.robot
-Resource          var_checkout.robot
+Resource          ../variable/var_common.robot
+Resource          ../variable/var_checkout.robot
 
 *** keywords ***
 Checkout Common Setp

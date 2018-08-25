@@ -1,10 +1,10 @@
 *** Settings ***
 Documentation     添加商品
 Library           SeleniumLibrary
-Library           ${CURDIR}/../lib/customLibrary
-Resource          var_common.robot
-Resource          var_marketing.robot
-Resource          var_products.robot
+Library           ${CURDIR}/../../lib/customLibrary
+Resource          ../variable/var_common.robot
+Resource          ../variable/var_marketing.robot
+Resource          ../variable/var_products.robot
 Resource          kw_browser.robot
 Resource          kw_common.robot
 

@@ -1,12 +1,11 @@
 *** Settings ***
 Documentation     满减活动封装公共部分关键字
 Library           SeleniumLibrary
-Library           ${CURDIR}/../lib/customLibrary
-Resource          var_common.robot
-Resource          var_subtraction.robot
+Library           ${CURDIR}/../../lib/customLibrary
+Resource          ../variable/var_common.robot
+Resource          ../variable/var_subtraction.robot
 Resource          kw_browser.robot
 Resource          kw_common.robot
-Library           customLibrary
 
 *** keyword ***
 Add Subtraction Timezone Wait

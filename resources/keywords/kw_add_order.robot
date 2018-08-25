@@ -1,11 +1,11 @@
 *** Settings ***
 Documentation     生成订单
 Library           SeleniumLibrary
-Library           ${CURDIR}/../lib/customLibrary
+Library           ${CURDIR}/../../lib/customLibrary
 Resource          kw_browser.robot
 Resource          kw_common.robot
-Resource          var_order.robot
-Resource          var_common.robot
+Resource          ../variable/var_order.robot
+Resource          ../variable/var_common.robot
 
 *** Keywords ***
 Add Order

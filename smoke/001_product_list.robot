@@ -1,6 +1,6 @@
 *** Settings ***
 Library           SeleniumLibrary    #Test Setup    Open Headless Chrome    #Test Teardown    Close Browser
-Resource          ../../../resources/var_common.robot
+Resource          ../../../resources/variable/var_common.robot
 
 *** Variables ***
 ${interface}      ${home_page}/api/product/search?page=0&limit=20
@@ -11,13 +11,13 @@ Inject Products
     # wait for login
     Comment    wait until login button is visible
     Wait Until Element Is Visible    class:logBtn___3pRgJ
-    Input Text    id:account    18825260804
-    Input Password    id:password    18825260804
+    Input Text    ${locatorB_login_input_account}    18825260804
+    Input Password    ${locatorB_login_input_password}    18825260804
     Click Button    class:logBtn___3pRgJ
     # wait for login
     Comment    wait until domain input text element is visible
-    Wait Until Element Is Visible    id:username
-    Input Text    id:username    diu
+    Wait Until Element Is Visible    ${locatorB_login_input_domain}
+    Input Text    ${locatorB_login_input_domain}    diu
     Click Button    class:logBtn___3pRgJ
     # exec ajax listener
     Execute JavaScript    ${CURDIR}/../lib/ajaxListener.js

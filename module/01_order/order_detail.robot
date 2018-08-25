@@ -2,15 +2,15 @@
 Suite Setup       Order_Common_Step
 Suite Teardown    Close Test Suite Browser
 Force Tags        Order
-Resource          ../../resources/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
-Resource          ../../resources/var_tax_price.robot
-Resource          ../../resources/kw_common.robot
-Resource          ../../resources/var_order.robot
+Resource          ../../resources/keywords/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
+Resource          ../../resources/variable/var_tax_price.robot
+Resource          ../../resources/keywords/kw_common.robot
+Resource          ../../resources/variable/var_order.robot
 Library           SeleniumLibrary
-Resource          ../../resources/kw_add_order.robot
-Resource          ../../resources/kw_order.robot
-Resource          ../../resources/kw_products.robot
-Resource          ../../resources/kw_checkout.robot
+Resource          ../../resources/keywords/kw_add_order.robot
+Resource          ../../resources/keywords/kw_order.robot
+Resource          ../../resources/keywords/kw_products.robot
+Resource          ../../resources/keywords/kw_checkout.robot
 
 
 *** Test Cases ***

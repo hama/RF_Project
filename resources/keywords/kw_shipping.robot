@@ -1,12 +1,11 @@
 *** Settings ***
 Documentation     添加物流
 Library           SeleniumLibrary
-Library           ${CURDIR}/../lib/customLibrary
-Resource          var_common.robot
-Resource          var_shipping.robot
+Library           ${CURDIR}/../../lib/customLibrary
+Resource          ../variable/var_common.robot
+Resource          ../variable/var_shipping.robot
 Resource          kw_browser.robot
 Resource          kw_common.robot
-Library           customLibrary
 
 *** Variable ***
 ${input}          重量运费

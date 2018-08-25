@@ -4,12 +4,12 @@ Suite Setup       Products Suite Setup
 Suite Teardown    #Close Test Suite Browser
 Force Tags        Checkout
 Library           ${CURDIR}/../../../lib/customLibrary
-Resource          ../../../resources/var_common.robot
-Resource          ../../../resources/var_products.robot
-Resource          ../../../resources/kw_common.robot
-Resource          ../../../resources/kw_browser.robot
-Resource          ../../../resources/kw_products.robot
-Resource          ../../../resources/kw_checkout.robot
+Resource          ../../../resources/variable/var_common.robot
+Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/keywords/kw_common.robot
+Resource          ../../../resources/keywords/kw_browser.robot
+Resource          ../../../resources/keywords/kw_products.robot
+Resource          ../../../resources/keywords/kw_checkout.robot
 
 *** Variable ***
 ${name}           Cash on Delivery222
