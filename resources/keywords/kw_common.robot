@@ -3,6 +3,7 @@ Library           SeleniumLibrary
 Resource          ../variable/var_common.robot
 Resource          kw_browser.robot
 Resource          kw_products.robot
+Resource          ../variable/var_login.robot
 
 *** Keywords ***
 Login With Default User
