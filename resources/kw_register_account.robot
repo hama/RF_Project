@@ -14,7 +14,7 @@ Register New User
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     input text    ${locatorB_login_input_domain}    ${domain}    #.输入域名
     input password    ${locatorB_login_input_password}    ${pwd}    #.输入密码
-    input password    id:confirmpass    ${pwd}    #.输入确认密码
+    input password    ${locatorB_login_input_confirmPwd}    ${pwd}    #.输入确认密码
     input text    ${locatorB_login_input_account}    ${username}    #.输入账号
     click button    dom:document.querySelectorAll("button")[0]
     sleep    2
@@ -28,4 +28,4 @@ Register New User
 
 Delete User
     [Arguments]    ${username}
-    remove user    ${username}
+    Del User Fromdb    ${username}

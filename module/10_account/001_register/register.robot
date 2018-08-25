@@ -1,20 +1,20 @@
 *** Settings ***
+Suite Setup       Open Test Browser    ${home_page}
 Suite Teardown    Close Test Suite Browser
+#Test Setup
+Test Teardown     Teardown Test Case
 Force Tags        Register
 Library           SeleniumLibrary
 Library           ${CURDIR}/../../../lib/customLibrary
-Resource          ../../../resources/var_tax_price.robot
-Resource          ../../../resources/var_products.robot
 Resource          ../../../resources/var_common.robot
 Resource          ../../../resources/kw_common.robot
 Resource          ../../../resources/kw_browser.robot
-Resource          ../../../resources/kw_products.robot
 
 *** Test Cases ***
 remove_user
     [Documentation]    删除账户
     [Tags]    common
-    remove user    ${register_user}
+    Del User Fromdb    ${register_user}
 
 register_001
     [Documentation]    注册
@@ -26,7 +26,7 @@ register_001
     Input Text    id:invite_code    ${register_code}
     input text    ${locatorB_login_input_domain}    ${register_domain}
     input password    ${locatorB_login_input_password}    ${register_pwd}
-    input password    id:confirmpass    ${register_pwd}
+    input password    ${locatorB_login_input_confirmPwd}    ${register_pwd}
     input text    ${locatorB_login_input_account}    ${register_user}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
     ${code}    get db verification code    ${register_user}
@@ -46,7 +46,7 @@ register_002
     Input Text    id:invite_code    ${register_code}
     input text    ${locatorB_login_input_domain}    ${register_domain}
     input password    ${locatorB_login_input_password}    ${register_pwd}
-    input password    id:confirmpass    ${register_pwd}
+    input password    ${locatorB_login_input_confirmPwd}    ${register_pwd}
     input text    ${locatorB_login_input_account}    ${register_user}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".ant-message-notice-content")[0]
@@ -104,7 +104,7 @@ register_008
     Input Text    id:invite_code    ${register_code}
     input text    ${locatorB_login_input_domain}    lalala
     input password    ${locatorB_login_input_password}    12345
-    input password    id:confirmpass    12345
+    input password    ${locatorB_login_input_confirmPwd}    12345
     input text    ${locatorB_login_input_account}    ${register_user}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -121,7 +121,7 @@ register_009
     Input Text    id:invite_code    ${register_code}
     input text    ${locatorB_login_input_domain}    lalala
     input password    ${locatorB_login_input_password}    12345123456783
-    input password    id:confirmpass    12345123456783
+    input password    ${locatorB_login_input_confirmPwd}    12345123456783
     input text    ${locatorB_login_input_account}    ${register_user}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -138,7 +138,7 @@ register_010
     Input Text    id:invite_code    ${register_code}
     input text    ${locatorB_login_input_domain}    lalala
     input password    ${locatorB_login_input_password}    1234512345678
-    input password    id:confirmpass    ${Empty}
+    input password    ${locatorB_login_input_confirmPwd}    ${Empty}
     input text    ${locatorB_login_input_account}    ${register_user}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -155,7 +155,7 @@ register_011
     Input Text    id:invite_code    ${register_code}
     input text    ${locatorB_login_input_domain}    lalala
     input password    ${locatorB_login_input_password}    123451234
-    input password    id:confirmpass    987654321
+    input password    ${locatorB_login_input_confirmPwd}    987654321
     input text    ${locatorB_login_input_account}    ${register_user}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -172,7 +172,7 @@ register_013
     Input Text    id:invite_code    ${register_code}
     input text    ${locatorB_login_input_domain}    lalala
     input password    ${locatorB_login_input_password}    123451234
-    input password    id:confirmpass    123451234
+    input password    ${locatorB_login_input_confirmPwd}    123451234
     input text    ${locatorB_login_input_account}    2$$%%@1q
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -189,7 +189,7 @@ register_014
     Input Text    id:invite_code    ${register_code}
     input text    ${locatorB_login_input_domain}    lalala
     input password    ${locatorB_login_input_password}    123451234
-    input password    id:confirmpass    123451234
+    input password    ${locatorB_login_input_confirmPwd}    123451234
     input text    ${locatorB_login_input_account}    ${Empty}
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -206,7 +206,7 @@ register_015
     Input Text    id:invite_code    ${register_code}
     input text    ${locatorB_login_input_domain}    lalala
     input password    ${locatorB_login_input_password}    123451234
-    input password    id:confirmpass    123451234
+    input password    ${locatorB_login_input_confirmPwd}    123451234
     input text    ${locatorB_login_input_account}    ${register_user}
     #Wait And Click Element    dom:document.querySelectorAll("button")[0]
     Input Text    ${locatorB_login_input_vcode}    999999
@@ -225,7 +225,7 @@ register_017
     Input Text    id:invite_code    ${register_code}
     input text    ${locatorB_login_input_domain}    lalala
     input password    ${locatorB_login_input_password}    123451234
-    input password    id:confirmpass    123451234
+    input password    ${locatorB_login_input_confirmPwd}    123451234
     input text    ${locatorB_login_input_account}    ${register_user}
     #Wait And Click Element    dom:document.querySelectorAll("button")[0]
     Input Text    ${locatorB_login_input_vcode}    9999
@@ -244,7 +244,7 @@ register_018
     Input Text    id:invite_code    ${register_code}
     input text    ${locatorB_login_input_domain}    lalala
     input password    ${locatorB_login_input_password}    123451234
-    input password    id:confirmpass    123451234
+    input password    ${locatorB_login_input_confirmPwd}    123451234
     input text    ${locatorB_login_input_account}    ${register_user}
     #Wait And Click Element    dom:document.querySelectorAll("button")[0]
     Input Text    ${locatorB_login_input_vcode}    ${Empty}

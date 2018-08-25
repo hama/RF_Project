@@ -1,8 +1,8 @@
 *** Settings ***
-Suite Setup       Login Suite Setup
+Suite Setup       Open Test Browser    ${home_page}
 Suite Teardown    Close Test Suite Browser
 #Test Setup
-Test Teardown     Login Test Teardown
+Test Teardown     Teardown Test Case
 Force Tags        login
 Library           SeleniumLibrary
 Resource          ../../../resources/var_common.robot
@@ -164,19 +164,3 @@ login015
     Wait And Click Element    ${locatorB_login_btn_login}
     ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
     Should Be Equal    ${prompt}    请输入密码
-
-
-
-*** keywords ***
-Login Suite Setup
-    Open Test Browser    ${home_page}
-
-Login Test Teardown
-    @{window_handle}    Get Window Handles
-    Execute Javascript    window.open("${home_page}")
-    Select Window    ${window_handle[0]}
-    Close Window
-    # focus on new window
-    @{window_handle}    Get Window Handles
-    Select Window    ${window_handle[0]}
-

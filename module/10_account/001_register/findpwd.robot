@@ -1,8 +1,8 @@
 *** Settings ***
-Suite Setup       Findpwd Suite Setup
+Suite Setup       Open Test Browser    ${home_page}
 Suite Teardown    Close Test Suite Browser
 #Test Setup
-Test Teardown     Findpwd Test Teardown
+Test Teardown     Teardown Test Case
 Force Tags        findpwd
 Library           SeleniumLibrary
 Resource          ../../../resources/var_common.robot
@@ -153,19 +153,3 @@ findpwd012
     Wait And Click Element    ${locatorB_login_btn_login}
     Wait Until Page Contains Element    ${locatorB_order}
     Logout
-
-
-
-
-*** keywords ***
-Findpwd Suite Setup
-    Open Test Browser    ${home_page}
-
-Findpwd Test Teardown
-    @{window_handle}    Get Window Handles
-    Execute Javascript    window.open("${home_page}")
-    Select Window    ${window_handle[0]}
-    Close Window
-    # focus on new window
-    @{window_handle}    Get Window Handles
-    Select Window    ${window_handle[0]}
