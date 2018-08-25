@@ -1,8 +1,7 @@
 *** Settings ***
 Documentation     将本次购买的商品下架，submit之后直接显示"支付失败"
 Suite Setup       Products Suite Setup
-Suite Teardown    Close Test Suite Browser
-Test Setup        #Products Test Case Setup
+Suite Teardown    #Close Test Suite Browser
 Force Tags        Checkout
 Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/var_common.robot
@@ -17,11 +16,32 @@ ${name}           Cash on Delivery222
 ${tax_price}      1
 
 *** Test Cases ***
+uiuiuiui
+    Add Product Wait
+    Go To Products Page
+    #获取第一个商品名称
+    Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
+    Wait Until Element Is Visible    title
+    ${title}    Get Text    title
+    #设置该商品的库存为1
+    Set_Quantity    1
+    Go To Products Page
+    Select_Order_Page    ${title}
+    #设置该商品的库存为2
+    Select Window    店匠科技
+    Set_Quantity    2    true
+    #切换到商品submit页
+    Select Window    title=${user_default_domain}
+    Complete_Order_Message
+    #支付页面应该显示支付失败
+    Page Should Contain    ${contentB_payment_failed}
+
 checkout105
     [Documentation]    "1.将本次购买的商品下架2.点击submit" submit之后直接跳转到支付失败界面
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------4
     #获取第一个商品名称
+    Add Product Wait
     Go To Products Page
     Wait Until Element Is Visible    ${locatorB_productsMgmt_text_firstProductName}
     ${title}    Get Text    ${locatorB_productsMgmt_text_firstProductName}
@@ -29,14 +49,12 @@ checkout105
     #返回后台页面修改商品状态为下架
     Select Window    店匠科技
     #点击第一件商品进入商品详情页
-    Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
-    Sleep    2
+    Click And Page Contains Element With Refresh    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    ${locatorB_productsNew_tabindex_status}
     #修改状态
-    Wait And Click Element    id:status
+    Sleep    2
+    Wait And Click Element    ${locatorB_productsNew_tabindex_status}
     #点击保存
-    Wait And Click Element    ${locatorB_products_button_confirm}
-    Sleep    5
-    Wait Until Element Is Visible    ${locatorB_productsMgmt_text_firstProductName}
+    Click And Page Contains Element With Refresh    ${locatorB_products_button_confirm}    ${locatorB_productsMgmt_text_firstProductName}
     #切换到商品submit页
     Select Window    title=${user_default_domain}
     Complete_Order_Message
@@ -47,7 +65,7 @@ checkout107
     [Documentation]    此时第一个商品下有两个子产品，删除当前第一个商品下的第1个子商品（第一个子产品为下单时选中的子产品）
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
-    Go To Products Page
+    Common_Click_Header
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -56,8 +74,9 @@ checkout107
     Add_Sub_Product_With_Already_Product
     Select_Order_Page_With_Sub_Product    ${title}
     Select Window    店匠科技
-    Delete_Sub_Product_With_Already_Product    0
+    Delete_Sub_Product_With_Already_Product    2
     Select Window    title=${user_default_domain}
+    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
     Complete_Order_Message
     #支付页面应该显示支付失败
     Page Should Contain    ${contentB_payment_failed}
@@ -66,7 +85,7 @@ checkout108
     [Documentation]    删除其他子商品，可支付成功
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
-    Go To Products Page
+    Common_Click_Header
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -77,12 +96,14 @@ checkout108
     Select Window    店匠科技
     Delete_Sub_Product_With_Already_Product    1
     Select Window    title=${user_default_domain}
+    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
     Complete_Order_Message
+    Execute Javascript    return document.querySelectorAll('label[for="cod"]')[0].scrollIntoView()
+    Wait And Click Element    dom:document.querySelectorAll('label[for="cod"]')[0]
     #点击pay now
-    Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
+    Wait And Click Element    ${locator_checkout_submit_save_btn}
     #显示支付成功
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".show_success")[0]
-    Page Should Contain    Your order has been submitted successfully.
+    Wait Until Page Contains    Your order has been submitted successfully.
 
 checkout109
     [Documentation]    添加一个子商品，支付成功
@@ -96,18 +117,21 @@ checkout109
     #给该商品增加子产品
     Add_Sub_Product_With_Already_Product
     Select_Order_Page_With_Sub_Product    ${title}
+    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
     Complete_Order_Message
+    Execute Javascript    return document.querySelectorAll('label[for="cod"]')[0].scrollIntoView()
+    Wait And Click Element    dom:document.querySelectorAll('label[for="cod"]')[0]
     #点击pay now
-    Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
+    Wait And Click Element    ${locator_checkout_submit_save_btn}
     #显示支付成功
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".show_success")[0]
-    Page Should Contain    Your order has been submitted successfully.
+    Wait Until Page Contains    Your order has been submitted successfully.
     #-------------------case跑完之后要回到商品列表页才能删除第一个商品--------------------
 
 checkout110
     [Documentation]    先设置商品为跟踪库存并且库存为0时可购买,点击商品预览后，点击进入checkout页面，在点击Submit前，在后台修改该商品取消勾选库存为0时可购买
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
+    Add Product Wait
     Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
@@ -122,6 +146,7 @@ checkout110
     Cancel_Select_Quantity_0
     #切换到商品submit页
     Select Window    title=${user_default_domain}
+    #Wait And Click Element    ${locatorB_checkout_submit_btn_s}
     Complete_Order_Message
     #支付页面应该显示支付失败
     Page Should Contain    ${contentB_payment_failed}
@@ -130,6 +155,7 @@ checkout111
     [Documentation]    先设置商品为跟踪库存并且库存为0时可购买,点击商品预览后，点击进入checkout页面，在点击Submit前，在后台修改该商品取消勾选库存为0时可购买,取消跟踪库存
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
+    Add Product Wait
     Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
@@ -157,6 +183,7 @@ checkout112
     [Documentation]    先设置商品为跟踪库存并且库存为1,点击商品预览后，点击进入checkout页面，在点击Submit前，在后台修改该商品库存为0
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
+    Add Product Wait
     Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
@@ -179,6 +206,7 @@ checkout113
     [Documentation]    先设置商品为跟踪库存并且库存为1,点击商品预览后，点击进入checkout页面，在点击Submit前，在后台修改该商品库存为2
     [Tags]    P0
     #---------------------------------前提环境：要去后台结账设置中选择在结账时要填写的内容，像first_name等--------------------------------------
+    Add Product Wait
     Go To Products Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
@@ -190,7 +218,7 @@ checkout113
     Select_Order_Page    ${title}
     #设置该商品的库存为2
     Select Window    店匠科技
-    Set_Quantity    2
+    Set_Quantity    2    true
     #切换到商品submit页
     Select Window    title=${user_default_domain}
     Complete_Order_Message
@@ -380,7 +408,6 @@ checkout135
 Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品
     Login With Default User
-    Add Order Products
 
 Products Suite Teardown
     [Documentation]    删除商品
@@ -397,3 +424,8 @@ Products Test Case Teardown
     Go To Products Page
     Delete_First_Product
     Teardown Test Case
+Common_Click_Header
+    [Documentation]    头部公共点击步骤
+    Add Product Wait
+    Go To Home By Url
+    Go To Products Page

@@ -1,8 +1,8 @@
 *** Variables ***
 #.locator
 ${locatorB_checkout_add_card_btn}    dom:document.querySelectorAll(".submit_mb span")[0]    #.添加购物车按钮
-${locatorB_checkout_by_now_btn}    dom:document.querySelectorAll(".buy-now")[0]    #.by-now按钮
-${locatorB_checkout_submit_btn_s}    dom:document.querySelectorAll(".footer-submit")[0]    #.点击by-now后的submit按钮
+${locatorB_checkout_by_now_btn}    dom:document.querySelectorAll('.buy_now_settings')[0]    #.by-now按钮
+${locatorB_checkout_submit_btn_s}    id:submitMbPay    #.点击by-now后的submit按钮
 ${locatorB_checkout_search_btn}    dom:document.querySelectorAll("a[alt='Search']")[0]    #.checkout搜索按钮
 ${locatorB_checkout_user_name}    dom:document.querySelectorAll("div[alt='Logo']")[0]    #.checkout顶部店铺名
 ${locatorB_checkout_card_img_btn}    dom:document.querySelectorAll("a[alt='Cart']")[0]    #.checkout购物车图标按钮
