@@ -16,7 +16,7 @@ ${name}           Cash on Delivery222
 ${tax_price}      1
 
 *** Test Cases ***
-uiuiuiui
+lklk
     Add Product Wait
     Go To Products Page
     #获取第一个商品名称
@@ -408,7 +408,6 @@ checkout135
 Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品
     Login With Default User
-
 Products Suite Teardown
     [Documentation]    删除商品
     Close Test Suite Browser

@@ -13,7 +13,6 @@ import hashlib
 import uuid
 import pymysql
 import requests
-
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -43,6 +42,15 @@ class keyWord(object):
             'charset': 'utf8'
         }
 
+    aliyun = {
+    "accessKeyId": "LTAIpvmId6CBlCH8",
+    "accessKeySecret": "RkrFrAmixqlS5su065AgVzFa9OXb9w",
+    "bucket": "shoplazza",
+    "endPoint": "oss-cn-shenzhen.aliyuncs.com"
+  }
+    img = "http://120.79.196.159:8000/RF/logs/module/result.png"
+    addProUrl = "http://admin1024.shoplazza.com/api/product/add"
+
     def __init__(self):
         config = ConfigParser.ConfigParser()
         path = os.path.join(os.path.dirname(__file__), '../..') + '/config/common.ini'
@@ -64,6 +72,7 @@ class keyWord(object):
         # uid为店铺id
         uid = json.loads(res.content)['data']['id']
         cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+
         return {"cookie": cookiesx, "uid": uid}
 
     # .公共获取数据方法
@@ -145,12 +154,10 @@ class keyWord(object):
             "variants":[{"barcode":"","compare_at_price":1000,"inventory_management":"","inventory_policy":"","inventory_quantity":"","price":99,"requires_shipping":"","sku":"","taxable":"","weight":"","weight_unit":"kg"}]
         }
         try:
-            resData = requests.post(url=self.addProUrl,headers={"cookie":cookie},json=data)
+            resData = requests.post(url=self.addProUrl,headers={"cookie":cookie['cookie']},json=data)
             if resData.status_code == 200 and json.loads(resData.content)['state'] == 0:
-                print resData.content
                 return True
             else:
-                print resData.content
                 return False
 
         except Exception as e:
@@ -564,7 +571,6 @@ class keyWord(object):
 
 
 if __name__ == '__main__':
-    res = keyWord()
     # 设置执行入参
     parser = argparse.ArgumentParser(description='manual to this script')
     parser.add_argument('--url', type=str, default='http://admin1024.shoplazza.com')
