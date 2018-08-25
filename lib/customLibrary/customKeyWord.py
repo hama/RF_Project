@@ -1,11 +1,11 @@
 # -*- coding:utf-8 -*-
 import ConfigParser
 import argparse
+import copy
 import datetime
 import json
 import os
 import random
-import re
 import sys
 import time
 
@@ -18,31 +18,27 @@ sys.setdefaultencoding('utf-8')
 
 class keyWord(object):
     ROBOT_LIBRARY_SCOPE = "GLOBAL"
-    host = "rm-wz9tz4ff2v9t95f9qao.mysql.rds.aliyuncs.com"
-    uname = "app"
-    pwd = "8rEdunuH@Fe+"
-    port = 3306
-    dbname = "service"
-
-    rec_email = "ZPiX3lY@g0yP.com"
-    db_hotst = "39.108.94.30"
-    db_uname = "lansejiebo"
-    db_pwd = "lansejiebo@123"
-    db_name = "shop_"
     # 北京时区
     Bj_timeZone = "+0800"
     # 美属萨摩亚时区
     My_timeZone = "-1100"
-
-    db_config = \
+    db_service_config = \
         {
             'host': 'rm-wz9tz4ff2v9t95f9qao.mysql.rds.aliyuncs.com',
             'port': 3306,
             'user': 'app',
             'password': '8rEdunuH@Fe+',
             'db': 'service',
-            'charset': 'utf8',
-            'cursorclass': pymysql.cursors.DictCursor,
+            'charset': 'utf8'
+        }
+    db_shop_config = \
+        {
+            'host': '39.108.94.30',
+            'port': 3306,
+            'user': 'lansejiebo',
+            'password': 'lansejiebo@123',
+            'db': 'shop_',
+            'charset': 'utf8'
         }
 
     def __init__(self):
@@ -102,8 +98,8 @@ class keyWord(object):
         :return:
         '''
         try:
-            conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8",
-                                   port=self.port)
+            db_config = copy.deepcopy(self.db_service_config)
+            conn = pymysql.connect(**db_config)
             curs = conn.cursor()
             sql = "SELECT code FROM user_validate WHERE `contact` = '%s' AND `usage` = 'dianjiang_reset_password'" % (
                 contact_data)
@@ -118,11 +114,11 @@ class keyWord(object):
     def delFirstProduct(self):
         try:
             cookie = self.Login()
-            resConn = pymysql.connect(host=self.db_hotst, user=self.db_uname, password=self.db_pwd, db=self.db_name +
-                                                                                                       str(cookie[
-                                                                                                               'uid']),
-                                      charset="utf8", port=self.port, cursorclass=pymysql.cursors.DictCursor)
-            curs = resConn.cursor()
+            db_config = copy.deepcopy(self.db_shop_config)
+            db_config['cursorclass'] = pymysql.cursors.DictCursor
+            db_config['db'] = db_config['db'] + str(cookie['uid'])
+            conn = pymysql.connect(**db_config)
+            curs = conn.cursor()
             SQL = "SELECT (product_id) FROM `product` order by product_id desc"
             curs.execute(SQL)
             sub = curs.fetchone()['product_id']
@@ -190,12 +186,11 @@ class keyWord(object):
     def delShipping(self):
         try:
             cookie = self.Login()
-            resConn = pymysql.connect(host=self.db_hotst, user=self.db_uname, password=self.db_pwd,
-                                      db=self.db_name +
-                                         str(cookie[
-                                                 'uid']),
-                                      charset="utf8", port=self.port, cursorclass=pymysql.cursors.DictCursor)
-            curs = resConn.cursor()
+            db_config = copy.deepcopy(self.db_shop_config)
+            db_config['cursorclass'] = pymysql.cursors.DictCursor
+            db_config['db'] = db_config['db'] + str(cookie['uid'])
+            conn = pymysql.connect(**db_config)
+            curs = conn.cursor()
             SQL = "select id from shipping where id<>1 order by date_added desc"
             curs.execute(SQL)
             sub = curs.fetchone()['id']
@@ -274,8 +269,8 @@ class keyWord(object):
         :return:
         '''
         try:
-            conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8",
-                                   port=self.port)
+            db_config = copy.deepcopy(self.db_service_config)
+            conn = pymysql.connect(**db_config)
             curs = conn.cursor()
             sql = "SELECT code FROM user_validate WHERE `contact` = '%s' order by create_time desc limit 1" % (contact)
             curs.execute(sql)
@@ -300,8 +295,9 @@ class keyWord(object):
         contact = "%" + contact + "%"
 
         try:
-            conn = pymysql.connect(host=self.host, user=self.uname, password=self.pwd, db=self.dbname, charset="utf8",
-                                   port=self.port, cursorclass=pymysql.cursors.DictCursor)
+            db_config = copy.deepcopy(self.db_service_config)
+            db_config['cursorclass'] = pymysql.cursors.DictCursor
+            conn = pymysql.connect(**db_config)
             curs = conn.cursor()
 
             select = "SELECT id FROM `USER` WHERE `%s` LIKE '%s'" % (target, contact)
@@ -418,7 +414,12 @@ class keyWord(object):
     # . 删除一个满减活动 arvg参数为 "all" 删除所有的满减活动
     def delSubtraction(self, arvg=None):
         try:
-            conn = self.getConnectObj()
+            cookie = self.Login()
+            db_config = copy.deepcopy(self.db_shop_config)
+            db_config['cursorclass'] = pymysql.cursors.DictCursor
+            db_config['db'] = db_config['db'] + str(cookie['uid'])
+            conn = pymysql.connect(**db_config)
+
             curs = conn.cursor()
             if arvg == 'all':
                 SQL = "DELETE FROM rebate"
@@ -462,21 +463,9 @@ class keyWord(object):
         except Exception as e:
             print e
 
-    # . 获取数据库链接对象
-    def getConnectObj(self):
-        cookie = self.Login(True)
-        return pymysql.connect(host=self.db_hotst, user=self.db_uname, password=self.db_pwd, db=self.db_name +
-                                                                                                str(cookie['uid']),
-                               charset="utf8", port=self.port, cursorclass=pymysql.cursors.DictCursor)
-
 
 if __name__ == '__main__':
     res = keyWord()
-    print res.addShipping()
-    exit()
-    # res.delSubtraction('all')
-    # print res.addSubtraction(2)
-    # exit()
     # 设置执行入参
     parser = argparse.ArgumentParser(description='manual to this script')
     parser.add_argument('--url', type=str, default='http://admin1024.shoplazza.com')
