@@ -16,7 +16,7 @@ ${name}           Cash on Delivery222
 ${tax_price}      1
 
 *** Test Cases ***
-uiuiuiui
+lklk
     Add Product Wait
     Go To Products Page
     #获取第一个商品名称
