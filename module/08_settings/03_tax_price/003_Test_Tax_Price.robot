@@ -5,12 +5,12 @@ Suite Teardown    Tax Price Suite Teardown
 Test Setup        Tax Price Test Cases Setup
 Force Tags        tax
 Library           SeleniumLibrary
-Resource          ../../../resources/var_common.robot
-Resource          ../../../resources/var_tax_price.robot
-Resource          ../../../resources/var_shipping.robot
-Resource          ../../../resources/kw_common.robot
-Resource          ../../../resources/kw_browser.robot
-Resource          ../../../resources/kw_shipping.robot
+Resource          ../../../resources/variable/var_common.robot
+Resource          ../../../resources/variable/var_tax_price.robot
+Resource          ../../../resources/variable/var_shipping.robot
+Resource          ../../../resources/keywords/kw_common.robot
+Resource          ../../../resources/keywords/kw_browser.robot
+Resource          ../../../resources/keywords/kw_shipping.robot
 
 *** Test Cases ***
 001 Test Forward To Shipping Page

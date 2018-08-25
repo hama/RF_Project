@@ -3,14 +3,14 @@ Suite Setup       Login With Default User
 Suite Teardown    Close Test Suite Browser
 Force Tags        Order
 Library           ${CURDIR}/../../lib/customLibrary
-Resource          ../../resources/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
-Resource          ../../resources/var_tax_price.robot
-Resource          ../../resources/kw_common.robot
+Resource          ../../resources/keywords/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
+Resource          ../../resources/variable/var_tax_price.robot
+Resource          ../../resources/keywords/kw_common.robot
 Library           SeleniumLibrary
 Library           customLibrary
-Resource          ../../resources/kw_order.robot
-Resource          ../../resources/var_order.robot
-Resource          ../../resources/kw_add_order.robot
+Resource          ../../resources/keywords/kw_order.robot
+Resource          ../../resources/variable/var_order.robot
+Resource          ../../resources/keywords/kw_add_order.robot
 
 *** Test Cases ***
 order078

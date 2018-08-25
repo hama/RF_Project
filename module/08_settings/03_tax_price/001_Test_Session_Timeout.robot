@@ -6,10 +6,10 @@ Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Force Tags        tax
 Library           SeleniumLibrary
-Resource          ../../../resources/var_common.robot
-Resource          ../../../resources/var_tax_price.robot
-Resource          ../../../resources/kw_common.robot
-Resource          ../../../resources/kw_browser.robot
+Resource          ../../../resources/variable/var_common.robot
+Resource          ../../../resources/variable/var_tax_price.robot
+Resource          ../../../resources/keywords/kw_common.robot
+Resource          ../../../resources/keywords/kw_browser.robot
 
 *** Test Cases ***
 001 Test Session Timeout

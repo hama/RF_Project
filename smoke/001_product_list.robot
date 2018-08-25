@@ -1,6 +1,6 @@
 *** Settings ***
 Library           SeleniumLibrary    #Test Setup    Open Headless Chrome    #Test Teardown    Close Browser
-Resource          ../../../resources/var_common.robot
+Resource          ../../../resources/variable/var_common.robot
 
 *** Variables ***
 ${interface}      ${home_page}/api/product/search?page=0&limit=20

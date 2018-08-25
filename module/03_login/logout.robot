@@ -5,11 +5,11 @@ Suite Teardown    Close Test Suite Browser
 Test Teardown     Teardown Test Case
 Force Tags        logout
 Library           SeleniumLibrary
-Resource          ../../../resources/var_common.robot
-Resource          ../../../resources/kw_common.robot
-Resource          ../../../resources/kw_browser.robot
-Resource          ../../../resources/var_login.robot
-Resource          ../../../resources/kw_login.robot
+Resource          ../../resources/variable/var_common.robot
+Resource          ../../resources/keywords/kw_common.robot
+Resource          ../../resources/keywords/kw_browser.robot
+Resource          ../../resources/variable/var_login.robot
+Resource          ../../resources/keywords/kw_login.robot
 
 
 *** Test Cases ***

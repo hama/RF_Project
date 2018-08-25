@@ -1,6 +1,6 @@
 *** Settings ***
 Library           SeleniumLibrary
-Resource          var_common.robot
+Resource          ../variable/var_common.robot
 Resource          kw_browser.robot
 Resource          kw_products.robot
 

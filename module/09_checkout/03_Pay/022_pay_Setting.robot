@@ -6,15 +6,15 @@ Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Force Tags        Checkout
 Library           ${CURDIR}/../../../lib/customLibrary
-Resource          ../../../resources/var_tax_price.robot
-Resource          ../../../resources/var_products.robot
-Resource          ../../../resources/var_common.robot
-Resource          ../../../resources/kw_common.robot
-Resource          ../../../resources/kw_browser.robot
-Resource          ../../../resources/kw_products.robot
-Resource          ../../../resources/kw_shipping.robot
-Resource          ../../../resources/kw_checkout.robot
-Resource          ../../../resources/var_checkout.robot
+Resource          ../../../resources/variable/var_tax_price.robot
+Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/variable/var_common.robot
+Resource          ../../../resources/keywords/kw_common.robot
+Resource          ../../../resources/keywords/kw_browser.robot
+Resource          ../../../resources/keywords/kw_products.robot
+Resource          ../../../resources/keywords/kw_shipping.robot
+Resource          ../../../resources/keywords/kw_checkout.robot
+Resource          ../../../resources/variable/var_checkout.robot
 Library           customLibrary
 
 *** Test Case ***

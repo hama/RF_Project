@@ -1,5 +1,5 @@
 *** Settings ***
-Variables         ${CURDIR}/../lib/customLibrary
+Variables         ${CURDIR}/../../lib/customLibrary
 
 *** Variables ***
 ### 未分类，需要分类并清理
@@ -45,10 +45,10 @@ ${url_subtraction}    ${home_page}/subtraction    # subtraction
 ${user_default_name}    ${datas_contact}    # 默认使用的用户信息，用于跑大部分用例
 ${user_default_pwd}    ${datas_password}
 ${user_default_domain}    ${datas_username}
+${user_default_inviteCode}    ${datas_invite_code}
 ### keybord_key
 ${keybord_enter}    \\13
 ### 注册用户
 ${register_user}    15297989918
-${register_domain}    cheng
-${register_pwd}    123456
-${register_code}    DJ6602    #.推荐吗
+${register_domain}    VVRlkJWHq
+${register_pwd}    ${datas_password}

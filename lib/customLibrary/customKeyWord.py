@@ -109,6 +109,8 @@ class keyWord(object):
             return res
         except Exception as e:
             print e
+        finally:
+            conn.close()
 
     # .删除商品
     def delFirstProduct(self):
@@ -131,6 +133,8 @@ class keyWord(object):
                 return False
         except Exception as e:
             print e
+        finally:
+            conn.close()
 
     # .删除支付方式 paylinks
     def delPaymentPk(self):
@@ -203,6 +207,8 @@ class keyWord(object):
                 return False
         except Exception as e:
             print e
+        finally:
+            conn.close()
 
     def getAllProductCount(self):
         p_url = self.home_page_url + "/api/product/search"
@@ -262,7 +268,7 @@ class keyWord(object):
         else:
             return res.content
 
-    def get_db_verification_code(self, contact):
+    def get_latest_vcode_fromdb(self, contact):
         '''
         从数据库获取最新一条验证码
         :param contact:
@@ -278,10 +284,12 @@ class keyWord(object):
             return res
         except Exception as e:
             print e
+        finally:
+            conn.close()
 
     def del_user_fromdb(self, contact):
         '''
-        删除用户
+        删除用户（!!!!!!-----未删除与用户关联的商铺信息，表结构不清晰-----!!!!!!）
         :param contact: 电话号码/邮箱(模糊查询)
         :return:
         '''
@@ -315,6 +323,8 @@ class keyWord(object):
             return True
         except Exception as e:
             print e
+        finally:
+            conn.close()
 
     def getProductId(self):
         return self.commonGetData()[0]['id']
@@ -431,6 +441,8 @@ class keyWord(object):
         except Exception as e:
             print e
             return False
+        finally:
+            conn.close()
 
     # . 设置时区 ((GMT + 08:00) 北京，香港，台北，新加坡) timezone : none 设置北京时区 | 设置 美属萨摩亚时区
     def setBjTimeZone(self, timezone=None):

@@ -1,8 +1,8 @@
 *** Settings ***
-Resource          ./kw_common.robot
-Resource          ./kw_browser.robot
+Resource          kw_common.robot
+Resource          kw_browser.robot
 Library           SeleniumLibrary
-Resource          var_common.robot
+Resource          ../variable/var_common.robot
 
 *** Variables ***
 ${is_headless}    false    # whether should use headless chrome
