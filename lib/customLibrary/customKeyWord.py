@@ -335,7 +335,7 @@ class keyWord(object):
         if datas is None:
             self.validate_signup(None)  # 发送验证码
             time.sleep(5)
-            datas_vcode = self.get_db_verification_code(self.datas_contact).encode("utf-8")  # 获取验证码
+            datas_vcode = self.get_latest_vcode_fromdb(self.datas_contact).encode("utf-8")  # 获取验证码
             time.sleep(5)
             datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username,
                      "vcode": datas_vcode, "invite_code": self.datas_invite_code}
@@ -586,4 +586,4 @@ if __name__ == '__main__':
     config.write(open(path, 'w'))
     # 注册用户
     kw = keyWord()
-    kw.sign_up(None)
+    kw.sign_up()
