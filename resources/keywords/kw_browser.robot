@@ -31,13 +31,13 @@ Teardown Test Case
     [Documentation]
     #    测试用例执行失败进行截图
     #Run Keyword If Test Failed    Capture Page Screenshot
-    @{window_handle}    Get Window Handles
+    @{window_handles}    Get Window Handles
     Execute Javascript    window.open("${home_page}")
-    Select Window    ${window_handle[0]}
-    Close Window
-    # focus on new window
-    @{window_handle}    Get Window Handles
-    Select Window    ${window_handle[0]}
+    :FOR    ${window_handle}    IN    @{window_handles}
+    \    Select Window    ${window_handle}
+    \    Close Window
+    @{new_window_handle}    Get Window Handles
+    Select Window    ${new_window_handle[0]}
     #    log    *******************************************************************************************************
     #    log    ******************************************** Test Case End ********************************************
     #    log    *******************************************************************************************************
