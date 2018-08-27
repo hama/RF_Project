@@ -1,5 +1,5 @@
 *** Settings ***
-Suite Setup       Register Suite Setup
+Suite Setup       Open Test Browser    ${home_page}
 Suite Teardown    Close Test Suite Browser
 #Test Setup
 Test Teardown     Teardown Test Case
@@ -15,6 +15,7 @@ Resource          ../../resources/variable/var_login.robot
 #register_001
 #    [Documentation]    注册信息成功
 #    [Tags]    P0
+#    Del User Fromdb    ${register_user}
 #    Wait And Click Element    ${locatorB_login_btn_register}
 #    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
 #    Wait And input text    ${locatorB_login_input_domain}    ${register_domain}
@@ -32,7 +33,7 @@ Resource          ../../resources/variable/var_login.robot
 
 register_002
     [Documentation]    注册信息失败_已注册的域名
-    [Tags]    P0
+    [Tags]    P1
     Wait And Click Element    ${locatorB_login_btn_register}
     Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
     Wait And input text    ${locatorB_login_input_domain}    ${user_default_domain}
@@ -77,7 +78,7 @@ register_004
 
 register_005
     [Documentation]    注册信息失败_格式不正确的域名
-    [Tags]    P0
+    [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_register}
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_errorFormatDomain}
     ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -85,7 +86,7 @@ register_005
 
 register_006
     [Documentation]    注册信息失败_域名为空
-    [Tags]    P0
+    [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_register}
     Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
     Wait And input text    ${locatorB_login_input_domain}    ${Empty}
@@ -100,7 +101,7 @@ register_006
 
 register_007
     [Documentation]    注册信息失败_密码为空
-    [Tags]    P0
+    [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_register}
     Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
@@ -146,7 +147,7 @@ register_009
 
 register_010
     [Documentation]    注册信息失败_确认密码为空
-    [Tags]    P1
+    [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_register}
     Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
@@ -176,7 +177,7 @@ register_011
 
 register_013
     [Documentation]    注册信息失败_格式不正确的手机/邮箱
-    [Tags]    P1
+    [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_register}
     Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
@@ -191,7 +192,7 @@ register_013
 
 register_014
     [Documentation]    注册信息失败_手机/邮箱为空
-    [Tags]    P1
+    [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_register}
     Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
@@ -220,7 +221,7 @@ register_015
 
 register_017
     [Documentation]    注册信息失败_格式不正确的验证码
-    [Tags]    P1
+    [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_register}
     Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
@@ -235,7 +236,7 @@ register_017
 
 register_018
     [Documentation]    注册信息失败_验证码为空
-    [Tags]    P1
+    [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_register}
     Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
@@ -247,8 +248,3 @@ register_018
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
     Should Be Equal    ${prompt}    请输入验证码
-
-*** Keywords ***
-Register Suite Setup
-    Open Test Browser    ${home_page}
-    Del User Fromdb    ${register_user}
