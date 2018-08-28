@@ -17,10 +17,10 @@ findpwd001
     [Tags]    P0
     Wait And Click Element    ${locatorB_login_btn_findpwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Click Element    ${locatorB_login_btn_sendVcode}
     Sleep    2
-    ${code}    Get Reset Pwd Vcode Fromdb    ${user_default_name}
+    ${code}    Get Reset Pwd Vcode Fromdb    ${user_default_contact}
     Wait And Input Text    ${locatorB_login_input_vcode}    ${code}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Wait Until Page Contains Text    密码重置
@@ -30,7 +30,7 @@ findpwd002
     [Tags]    P1
     Wait And Click Element    ${locatorB_login_btn_findpwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Click Element    ${locatorB_login_btn_sendVcode}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Wait Until Page Contains Text    店铺地址或者联系方式错误
@@ -48,7 +48,7 @@ findpwd004
     [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_findpwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${Empty}
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Text    ${locatorB_login_input_vcode}    123456
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -88,7 +88,7 @@ findpwd008
     [Tags]    P1
     Wait And Click Element    ${locatorB_login_btn_findpwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Click Element    ${locatorB_login_btn_sendVcode}
     Wait And Input Text    ${locatorB_login_input_vcode}    123456
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -100,10 +100,10 @@ findpwd008
 #    [Tags]    P1
 #    Wait And Click Element    ${locatorB_login_btn_findpwd}
 #    Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
-#    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_name}
+#    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
 #    Wait And Click Element    ${locatorB_login_btn_sendVcode}
 #    Sleep    300
-#    ${code}    Get Reset Pwd Vcode Fromdb    ${user_default_name}
+#    ${code}    Get Reset Pwd Vcode Fromdb    ${user_default_contact}
 #    Wait And Input Text    ${locatorB_login_input_vcode}    ${code}
 #    Wait And Click Element    dom:document.querySelectorAll("button")[1]
 #    Wait Until Page Contains Text    验证码无效
@@ -113,7 +113,7 @@ findpwd010
     [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_findpwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Text    ${locatorB_login_input_vcode}    ${contentB_login_errorFormatVCode}
     Wait Until Page Contains Text    请输入六位数字的验证码
 
@@ -122,7 +122,7 @@ findpwd011
     [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_findpwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Text    ${locatorB_login_input_vcode}    ${Empty}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Wait Until Page Contains Text    输入验证码
@@ -132,10 +132,10 @@ findpwd012
     [Tags]    P0
     Wait And Click Element    ${locatorB_login_btn_findpwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Click Element    ${locatorB_login_btn_sendVcode}
     Sleep    2
-    ${code}    Get Reset Pwd Vcode Fromdb    ${user_default_name}
+    ${code}    Get Reset Pwd Vcode Fromdb    ${user_default_contact}
     Wait And Input Text    ${locatorB_login_input_vcode}    ${code}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     # 修改密码操作
@@ -146,7 +146,7 @@ findpwd012
     Wait And Click Element    dom:document.querySelectorAll("button")[2]
     Wait Until Page Contains Text    登录我的店匠店铺
     # 登录店铺操作
-    Wait And Input Text     ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text     ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Click Element    ${locatorB_login_btn_login}
     Wait Until Page Contains Element    ${locatorB_order}

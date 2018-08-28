@@ -3,16 +3,18 @@ import ConfigParser
 import argparse
 import copy
 import datetime
+import hashlib
 import json
 import os
 import random
 import sys
 import time
-import oss2
-import hashlib
 import uuid
+
+import oss2
 import pymysql
 import requests
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -23,49 +25,31 @@ class keyWord(object):
     Bj_timeZone = "+0800"
     # 美属萨摩亚时区
     My_timeZone = "-1100"
-    db_service_config = \
-        {
-            'host': 'rm-wz9tz4ff2v9t95f9qao.mysql.rds.aliyuncs.com',
-            'port': 3306,
-            'user': 'app',
-            'password': '8rEdunuH@Fe+',
-            'db': 'service',
-            'charset': 'utf8'
-        }
-    db_shop_config = \
-        {
-            'host': '39.108.94.30',
-            'port': 3306,
-            'user': 'lansejiebo',
-            'password': 'lansejiebo@123',
-            'db': 'shop_',
-            'charset': 'utf8'
-        }
-
     aliyun = {
-    "accessKeyId": "LTAIpvmId6CBlCH8",
-    "accessKeySecret": "RkrFrAmixqlS5su065AgVzFa9OXb9w",
-    "bucket": "shoplazza",
-    "endPoint": "oss-cn-shenzhen.aliyuncs.com"
-  }
+        "accessKeyId": "LTAIpvmId6CBlCH8",
+        "accessKeySecret": "RkrFrAmixqlS5su065AgVzFa9OXb9w",
+        "bucket": "shoplazza",
+        "endPoint": "oss-cn-shenzhen.aliyuncs.com"
+    }
     img = "http://120.79.196.159:8000/RF/logs/module/result.png"
-    addProUrl = "http://admin1024.shoplazza.com/api/product/add"
 
     def __init__(self):
         config = ConfigParser.ConfigParser()
         path = os.path.join(os.path.dirname(__file__), '../..') + '/config/common.ini'
         config.read(path)
-        # self.loc = locals()
+
         self.home_page_url = config.get("common_url", "home_page_url")
         self.datas_contact = config.get("common_account", "datas_contact")
         self.datas_password = config.get("common_account", "datas_password")
-        self.datas_username = config.get("common_account", "datas_username")
+        self.datas_domain = config.get("common_account", "datas_domain")
         self.datas_invite_code = config.get("common_account", "datas_invite_code")
+        self.db_service_config = json.loads(config.get("common_db", "db_service_config"))
+        self.db_shop_config = json.loads(config.get("common_db", "db_shop_config"))
 
     # .公共登陆方法
     def Login(self):
         x_url = self.home_page_url + "/api/user/login"
-        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
+        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_domain}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return False
@@ -123,38 +107,43 @@ class keyWord(object):
         finally:
             conn.close()
 
-    #. md5加密方法
-    def md5(self,fname):
+    # . md5加密方法
+    def md5(self, fname):
         hash_md5 = hashlib.md5()
         with open(fname, "rb") as f:
             for chunk in iter(lambda: f.read(4096), b""):
                 hash_md5.update(chunk)
         return hash_md5.hexdigest()
 
-    #. 添加商品
+    # . 添加商品
     def addProducts(self):
-        #.获取图片
+        # .获取图片
         imgs = self.upload_oss(self.img)[0]
         path_img = "//cn.cdn.shoplazza.com/" + self.upload_oss(self.img)[0]
-        #.获取cookie
+        addProUrl = self.home_page_url + "/api/product/add"
+        # .获取cookie
         cookie = self.Login()
         data = {
-            "barcode":"",
-            "brief":"自动化测试",
-            "compare_at_price":1000,
-            "has_only_default_variant":True,
-            "images":[{"lastModified": "1520929852000", "lastModifiedDate": "2018-03-13T08:30:52.000Z","name":imgs,"originFileObj":{"uid":"rc-upload-1535093594875-2"},"path":imgs,"percent":"100.00","status":"done","type":"image/jpeg","uid":"rc-upload-1535093594875-2","url":path_img}],
-            "meta_description":"",
-            "meta_keyword":"",
+            "barcode": "",
+            "brief": "自动化测试",
+            "compare_at_price": 1000,
+            "has_only_default_variant": True,
+            "images": [{"lastModified": "1520929852000", "lastModifiedDate": "2018-03-13T08:30:52.000Z", "name": imgs,
+                        "originFileObj": {"uid": "rc-upload-1535093594875-2"}, "path": imgs, "percent": "100.00",
+                        "status": "done", "type": "image/jpeg", "uid": "rc-upload-1535093594875-2", "url": path_img}],
+            "meta_description": "",
+            "meta_keyword": "",
             "meta_title": "自动化测试",
-            "price":99,
-            "status":1,
-            "title":"自动化测试",
-            "url":"/products/自动化测试",
-            "variants":[{"barcode":"","compare_at_price":1000,"inventory_management":"","inventory_policy":"","inventory_quantity":"","price":99,"requires_shipping":"","sku":"","taxable":"","weight":"","weight_unit":"kg"}]
+            "price": 99,
+            "status": 1,
+            "title": "自动化测试",
+            "url": "/products/自动化测试",
+            "variants": [{"barcode": "", "compare_at_price": 1000, "inventory_management": "", "inventory_policy": "",
+                          "inventory_quantity": "", "price": 99, "requires_shipping": "", "sku": "", "taxable": "",
+                          "weight": "", "weight_unit": "kg"}]
         }
         try:
-            resData = requests.post(url=self.addProUrl,headers={"cookie":cookie['cookie']},json=data)
+            resData = requests.post(url=addProUrl, headers={"cookie": cookie['cookie']}, json=data)
             if resData.status_code == 200 and json.loads(resData.content)['state'] == 0:
                 return True
             else:
@@ -163,8 +152,8 @@ class keyWord(object):
         except Exception as e:
             return e
 
-    #. 上传图片到阿里云
-    def upload_oss(self,urlex, name='', extension='', timeout_second = 30):
+    # . 上传图片到阿里云
+    def upload_oss(self, urlex, name='', extension='', timeout_second=30):
         auth = oss2.Auth(self.aliyun['accessKeyId'], self.aliyun['accessKeySecret'])
         bucket = oss2.Bucket(auth, self.aliyun['endPoint'], self.aliyun['bucket'])
         if not urlex:
@@ -176,7 +165,7 @@ class keyWord(object):
                 return False
             with open(tmp_file, 'wb') as f:
                 for chunk in r.iter_content(chunk_size=1024):
-                    if chunk: # filter out keep-alive new chunks
+                    if chunk:  # filter out keep-alive new chunks
                         f.write(chunk)
             md5_file = self.md5(tmp_file)
             size_file = os.stat(tmp_file).st_size
@@ -191,7 +180,7 @@ class keyWord(object):
                 else:
                     s3key = md5_file
                 if s3key.endswith('.SS2'):
-                    s3key = str(s3key).replace('SS2','jpg')
+                    s3key = str(s3key).replace('SS2', 'jpg')
 
             with open(tmp_file, 'rb') as f:
                 bucket.put_object(s3key, f)
@@ -204,7 +193,6 @@ class keyWord(object):
             except Exception as e:
                 print e
         return False
-        
 
     # .删除商品
     def delFirstProduct(self):
@@ -406,7 +394,7 @@ class keyWord(object):
             time.sleep(5)
             datas_vcode = self.get_latest_vcode_fromdb(self.datas_contact).encode("utf-8")  # 获取验证码
             time.sleep(5)
-            datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username,
+            datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_domain,
                      "vcode": datas_vcode, "invite_code": self.datas_invite_code}
             print datas
         res = requests.post(url=x_url, headers={}, data=datas)
@@ -423,7 +411,7 @@ class keyWord(object):
         '''
         x_url = self.home_page_url + "/api/user/validate-signup"
         if datas is None:
-            datas = {"contact": self.datas_contact, "username": self.datas_username}
+            datas = {"contact": self.datas_contact, "username": self.datas_domain}
             print datas
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
@@ -648,14 +636,26 @@ if __name__ == '__main__':
     parser.add_argument('--url', type=str, default='http://admin1024.shoplazza.com')
     args = parser.parse_args()
     # 设置用户信息
-    random_num = keyWord().salt()
     config = ConfigParser.ConfigParser()
     path = os.path.join(os.path.dirname(__file__), '../..') + '/config/common.ini'
     config.read(path)
-    config.set("common_url", "home_page_url", args.url)
-    config.set("common_account", "datas_contact", random_num + "@abctest.com")
-    config.set("common_account", "datas_username", random_num)
-    config.write(open(path, 'w'))
-    # 注册用户
-    kw = keyWord()
-    kw.sign_up(None)
+    if 'http://admin.shoplazza.com' in args.url:
+        # 美服使用固定账号跑用例
+        config.set("common_url", "home_page_url", 'http://admin.shoplazza.com')
+        config.set("common_account", "datas_contact", '15220581724')
+        config.set("common_account", "datas_domain", 'chen')
+        config.set("common_account", "datas_invite_code", 'DJ2746')
+        config.set("common_db", "db_service_config", '{"host": "rm-rj9ww1316miq2j87l.mysql.rds.aliyuncs.com",'
+                                                     '"port": 3306,"user": "fortest","password": "fortest@123",'
+                                                     '"db": "service","charset": "utf8"}')
+        config.write(open(path, 'w'))
+    else:
+        # 测试服，使用新注册用户跑用例
+        random_str = keyWord().salt()
+        config.set("common_url", "home_page_url", args.url)
+        config.set("common_account", "datas_contact", random_str + "@abctest.com")
+        config.set("common_account", "datas_domain", random_str)
+        config.write(open(path, 'w'))
+        # 注册用户
+        kw = keyWord()
+        kw.sign_up()

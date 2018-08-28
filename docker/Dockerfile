@@ -12,6 +12,7 @@ RUN echo && cd /home  \
     && apt-get install -y python2.7 curl git vim\
     && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
     && python2.7 get-pip.py \
+    && pip install oss2 \
     && pip install robotframework \
     && pip install pymysql requests \
     && pip install  --pre --upgrade robotframework-selenium2library \
@@ -27,4 +28,4 @@ COPY /chromedriver /usr/local/bin
 # ENTRYPOINT
 # CMD
 
-CMD ["bash", "-c", "sleep 10000"]
+CMD ["bash", "-c", "sleep 100000000"]

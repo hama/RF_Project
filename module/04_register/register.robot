@@ -12,260 +12,239 @@ Resource          ../../resources/keywords/kw_browser.robot
 Resource          ../../resources/variable/var_login.robot
 
 *** Test Cases ***
-register_001
-    [Documentation]    注册
-    [Tags]    P0
-    Sleep    4
-    Wait And Click Element    ${locatorB_login_btn_register}
-    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
-    Wait And input text    ${locatorB_login_input_domain}    ${register_domain}
-    Wait And input password    ${locatorB_login_input_password}    ${register_pwd}
-    Wait And input password    ${locatorB_login_input_confirmPwd}    ${register_pwd}
-    Wait And input text    ${locatorB_login_input_account}    ${register_user}
-    Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    ${code}    Get Latest Vcode Fromdb    ${register_user}
-    Wait And input text    ${locatorB_login_input_vcode}    ${code}
-    Wait And Click Element    document.querySelectorAll(".ant-checkbox-input")[0]    #.点击我接受
-    Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    page should contain element    //*[@id="root"]
-    Close Browser
+#register_001
+#    [Documentation]    注册信息成功
+#    [Tags]    P0
+#    Del User Fromdb    ${register_contact}
+#    Wait And Click Element    ${locatorB_login_btn_register}
+#    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
+#    Wait And input text    ${locatorB_login_input_domain}    ${register_domain}
+#    Wait And input password    ${locatorB_login_input_password}    ${register_pwd}
+#    Wait And input password    ${locatorB_login_input_confirmPwd}    ${register_pwd}
+#    Wait And input text    ${locatorB_login_input_account}    ${register_contact}
+#    Wait And Click Element    dom:document.querySelectorAll("button")[0]
+#    Sleep    2
+#    ${code}    Get Latest Vcode Fromdb    ${register_contact}
+#    Wait And input text    ${locatorB_login_input_vcode}    ${code}
+#    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
+#    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+#    Wait Until Page Contains Element    ${locatorB_order}
+#    Logout
 
 register_002
-    [Documentation]    注册 输入已注册的账号 提示错误
-    [Tags]    P0
-    Comment    register
-    Open Test Browser    ${home_page}
+    [Documentation]    注册信息失败_已注册的域名
+    [Tags]    P1
     Wait And Click Element    ${locatorB_login_btn_register}
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
-    input text    ${locatorB_login_input_domain}    ${register_domain}
-    input password    ${locatorB_login_input_password}    ${register_pwd}
-    input password    ${locatorB_login_input_confirmPwd}    ${register_pwd}
-    input text    ${locatorB_login_input_account}    ${register_user}
+    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
+    Wait And input text    ${locatorB_login_input_domain}    ${user_default_domain}
+    Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
+    Wait And input password    ${locatorB_login_input_confirmPwd}    ${user_default_pwd}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-message-notice-content")[0]
-    Close Browser
+    Wait Until Page Contains Text    用户名已存在
+
+register_003
+    [Documentation]    注册信息失败_无效的邀请码
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_login_btn_register}
+    Wait And Input Text    ${locatorB_login_input_inviteCode}    abcdef
+    Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
+    Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
+    Wait And input password    ${locatorB_login_input_confirmPwd}    ${user_default_pwd}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
+    Wait And Click Element    dom:document.querySelectorAll("button")[0]
+    Sleep    2
+    ${code}    Get Latest Vcode Fromdb    ${user_default_contact}
+    Wait And input text    ${locatorB_login_input_vcode}    ${code}
+    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    Wait Until Page Contains Text    邀请码无效
+
+register_004
+    [Documentation]    注册信息失败_未勾选协议
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_login_btn_register}
+    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
+    Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
+    Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
+    Wait And input password    ${locatorB_login_input_confirmPwd}    ${user_default_pwd}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
+    Wait And Click Element    dom:document.querySelectorAll("button")[0]
+    Sleep    2
+    ${code}    Get Latest Vcode Fromdb    ${user_default_contact}
+    Wait And input text    ${locatorB_login_input_vcode}    ${code}
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    Wait Until Page Contains Element    dom:document.querySelectorAll("button:disabled")[0]
 
 register_005
-    [Documentation]    注册 输入格式错误的域名 提示错误
-    [Tags]    P0
-    Comment    register
-    Open Test Browser    ${home_page}
+    [Documentation]    注册信息失败_格式不正确的域名
+    [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_register}
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
-    input text    ${locatorB_login_input_domain}    @!@$1
-    Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Close Browser
+    Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_errorFormatDomain}
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入合法域名
 
 register_006
-    [Documentation]    注册 域名为空 提示错误
-    [Tags]    P1
-    Comment    register
-    Open Test Browser    ${home_page}
+    [Documentation]    注册信息失败_域名为空
+    [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_register}
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
-    input text    ${locatorB_login_input_domain}    ${Empty}
-    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
+    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
+    Wait And input text    ${locatorB_login_input_domain}    ${Empty}
+    Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
+    Wait And input password    ${locatorB_login_input_confirmPwd}    ${user_default_pwd}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
+    Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_invalidVCode}
+    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Close Browser
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入店铺域名
 
 register_007
-    [Documentation]    注册 输入未注册的域名 密码为空 提示错误
-    [Tags]    P1
-    Comment    register
-    Open Test Browser    ${home_page}
+    [Documentation]    注册信息失败_密码为空
+    [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_register}
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
-    input text    ${locatorB_login_input_domain}    lalala
-    input text    ${locatorB_login_input_account}    ${register_user}
-    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
+    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
+    Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
+    Wait And input password    ${locatorB_login_input_password}    ${Empty}
+    Wait And input password    ${locatorB_login_input_confirmPwd}    ${Empty}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
+    Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_invalidVCode}
+    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Close Browser
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入密码
 
 register_008
-    [Documentation]    注册 输入未注册的域名 密码5位 提示错误
+    [Documentation]    注册信息失败_输入1-5个字符密码
     [Tags]    P1
-    Comment    register
-    Open Test Browser    ${home_page}
     Wait And Click Element    ${locatorB_login_btn_register}
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
-    input text    ${locatorB_login_input_domain}    lalala
-    input password    ${locatorB_login_input_password}    12345
-    input password    ${locatorB_login_input_confirmPwd}    12345
-    input text    ${locatorB_login_input_account}    ${register_user}
-    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
+    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
+    Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
+    Wait And input password    ${locatorB_login_input_password}    12345
+    Wait And input password    ${locatorB_login_input_confirmPwd}    12345
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
+    Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_invalidVCode}
+    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Close Browser
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入6-12位数的密码
+
 
 register_009
-    [Documentation]    注册 输入未注册的域名 密码13位 提示错误
+    [Documentation]    注册信息失败_输入13个以上字符密码
     [Tags]    P1
-    Comment    register
-    Open Test Browser    ${home_page}
     Wait And Click Element    ${locatorB_login_btn_register}
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
-    input text    ${locatorB_login_input_domain}    lalala
-    input password    ${locatorB_login_input_password}    12345123456783
-    input password    ${locatorB_login_input_confirmPwd}    12345123456783
-    input text    ${locatorB_login_input_account}    ${register_user}
-    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
+    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
+    Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
+    Wait And input password    ${locatorB_login_input_password}    1234567890acf
+    Wait And input password    ${locatorB_login_input_confirmPwd}    1234567890acf
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
+    Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_invalidVCode}
+    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Close Browser
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入6-12位数的密码
 
 register_010
-    [Documentation]    注册 输入未注册的域名 密码6位 确认密码为空 提示错误
-    [Tags]    P1
-    Comment    register
-    Open Test Browser    ${home_page}
+    [Documentation]    注册信息失败_确认密码为空
+    [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_register}
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
-    input text    ${locatorB_login_input_domain}    lalala
-    input password    ${locatorB_login_input_password}    1234512345678
-    input password    ${locatorB_login_input_confirmPwd}    ${Empty}
-    input text    ${locatorB_login_input_account}    ${register_user}
-    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
+    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
+    Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
+    Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
+    Wait And input password    ${locatorB_login_input_confirmPwd}    ${Empty}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
+    Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_invalidVCode}
+    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Close Browser
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入确认密码
 
 register_011
-    [Documentation]    注册 输入未注册的域名 2次密码输入不一致 提示错误
+    [Documentation]    注册信息失败_确认密码输入1-5个字符
     [Tags]    P1
-    Comment    register
-    Open Test Browser    ${home_page}
     Wait And Click Element    ${locatorB_login_btn_register}
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
-    input text    ${locatorB_login_input_domain}    lalala
-    input password    ${locatorB_login_input_password}    123451234
-    input password    ${locatorB_login_input_confirmPwd}    987654321
-    input text    ${locatorB_login_input_account}    ${register_user}
-    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
+    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
+    Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
+    Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
+    Wait And input password    ${locatorB_login_input_confirmPwd}    12345
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
+    Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_invalidVCode}
+    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Close Browser
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入6-12位数的密码, 两次输入的密码不一致
 
 register_013
-    [Documentation]    注册 输入未注册的域名-密码 错误格式账号 提示错误
-    [Tags]    P1
-    Comment    register
-    Open Test Browser    ${home_page}
+    [Documentation]    注册信息失败_格式不正确的手机/邮箱
+    [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_register}
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
-    input text    ${locatorB_login_input_domain}    lalala
-    input password    ${locatorB_login_input_password}    123451234
-    input password    ${locatorB_login_input_confirmPwd}    123451234
-    input text    ${locatorB_login_input_account}    2$$%%@1q
-    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
+    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
+    Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
+    Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
+    Wait And input password    ${locatorB_login_input_confirmPwd}    ${user_default_pwd}
+    Wait And input text    ${locatorB_login_input_account}    ${contentB_login_errorFormatAccount}
+    Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_invalidVCode}
+    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Close Browser
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入正确的邮箱／手机
 
 register_014
-    [Documentation]    注册 输入未注册的域名-密码 账号为空 提示错误
-    [Tags]    P1
-    Comment    register
-    Open Test Browser    ${home_page}
+    [Documentation]    注册信息失败_手机/邮箱为空
+    [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_register}
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
-    input text    ${locatorB_login_input_domain}    lalala
-    input password    ${locatorB_login_input_password}    123451234
-    input password    ${locatorB_login_input_confirmPwd}    123451234
-    input text    ${locatorB_login_input_account}    ${Empty}
-    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
+    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
+    Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
+    Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
+    Wait And input password    ${locatorB_login_input_confirmPwd}    ${user_default_pwd}
+    Wait And input text    ${locatorB_login_input_account}    ${Empty}
+    Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_invalidVCode}
+    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Close Browser
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入正确的邮箱／手机
 
 register_015
-    [Documentation]    注册 输入未注册的域名-密码 验证码错误 提示错误
+    [Documentation]    注册信息失败_错误验证码
     [Tags]    P1
-    Comment    register
-    Open Test Browser    ${home_page}
     Wait And Click Element    ${locatorB_login_btn_register}
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
-    input text    ${locatorB_login_input_domain}    lalala
-    input password    ${locatorB_login_input_password}    123451234
-    input password    ${locatorB_login_input_confirmPwd}    123451234
-    input text    ${locatorB_login_input_account}    ${register_user}
-    #Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    Input Text    ${locatorB_login_input_vcode}    999999
-    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
+    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
+    Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
+    Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
+    Wait And input password    ${locatorB_login_input_confirmPwd}    ${user_default_pwd}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
+    Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_invalidVCode}
+    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-message-notice-content")[0]
-    Close Browser
+    Wait Until Page Contains Text    验证码无效
 
 register_017
-    [Documentation]    注册 输入未注册的域名-密码 验证码4位数 提示错误
-    [Tags]    P1
-    Comment    register
-    Open Test Browser    ${home_page}
+    [Documentation]    注册信息失败_格式不正确的验证码
+    [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_register}
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
-    input text    ${locatorB_login_input_domain}    lalala
-    input password    ${locatorB_login_input_password}    123451234
-    input password    ${locatorB_login_input_confirmPwd}    123451234
-    input text    ${locatorB_login_input_account}    ${register_user}
-    #Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    Input Text    ${locatorB_login_input_vcode}    9999
-    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
+    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
+    Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
+    Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
+    Wait And input password    ${locatorB_login_input_confirmPwd}    ${user_default_pwd}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
+    Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_errorFormatVCode}
+    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Close Browser
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入六位数字的验证码
 
 register_018
-    [Documentation]    注册 输入未注册的域名-密码 验证码为空 提示错误
-    [Tags]    P1
-    Comment    register
-    Open Test Browser    ${home_page}
+    [Documentation]    注册信息失败_验证码为空
+    [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_register}
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    Input Text    ${locatorB_login_input_inviteCode}    ${register_code}
-    input text    ${locatorB_login_input_domain}    lalala
-    input password    ${locatorB_login_input_password}    123451234
-    input password    ${locatorB_login_input_confirmPwd}    123451234
-    input text    ${locatorB_login_input_account}    ${register_user}
-    #Wait And Click Element    dom:document.querySelectorAll("button")[0]
-    Input Text    ${locatorB_login_input_vcode}    ${Empty}
-    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[0].click()    #.点击同意
+    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
+    Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
+    Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
+    Wait And input password    ${locatorB_login_input_confirmPwd}    ${user_default_pwd}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
+    Wait And input text    ${locatorB_login_input_vcode}    ${Empty}
+    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Page Should Contain Element    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Close Browser
-
-register_019
-    [Documentation]    登陆成功,然后退出登陆
-    [Tags]    P0
-    Comment    wait until login button is visible
-    Open Test Browser    ${home_page}
-    Wait Until Element Is Visible    ${locatorB_login_btn_login}
-    Input Text    ${locatorB_login_input_account}    ${register_user}
-    Input Password    ${locatorB_login_input_password}    ${register_pwd}
-    #Wait And Click Element    ${locatorB_login_btn_login}
-    #Wait Until Element Is Visible    ${locatorB_login_input_domain}
-    #Input Text    ${locatorB_login_input_domain}    ${register_domain}
-    Wait And Click Element    ${locatorB_login_btn_login}
-    Sleep    1
-    Page Should Contain Element    ${locatorB_order}
-    Wait And Click Element    dom:document.querySelectorAll(".hd-line-center")[0]
-    Execute JavaScript    return document.querySelectorAll(".account_content___18o60 a")[1].click()
-    Close Browser
-
-*** Keywords ***
-Register Suite Setup
-    Open Test Browser    ${home_page}
-    Del User Fromdb    ${register_user}
+    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
+    Should Be Equal    ${prompt}    请输入验证码

@@ -42,13 +42,13 @@ ${url_shipping}    ${home_page}/shipping    # shipping
 ${url_subtraction}    ${home_page}/subtraction    # subtraction
 ### 测试用户
 
-${user_default_name}    ${datas_contact}    # 默认使用的用户信息，用于跑大部分用例
+${user_default_contact}    ${datas_contact}    # 默认使用的用户信息，用于跑大部分用例
 ${user_default_pwd}    ${datas_password}
-${user_default_domain}    ${datas_username}
+${user_default_domain}    ${datas_domain}
 ${user_default_inviteCode}    ${datas_invite_code}
 ### keybord_key
 ${keybord_enter}    \\13
 ### 注册用户
-${register_user}    15297989918
-${register_domain}    VVRlkJWHq
+${register_contact}    gt1zwkp@abctest.com
+${register_domain}    gt1zwkp
 ${register_pwd}    ${datas_password}
