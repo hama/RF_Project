@@ -41,7 +41,7 @@ class keyWord(object):
         self.home_page_url = config.get("common_url", "home_page_url")
         self.datas_contact = config.get("common_account", "datas_contact")
         self.datas_password = config.get("common_account", "datas_password")
-        self.datas_username = config.get("common_account", "datas_username")
+        self.datas_domain = config.get("common_account", "datas_domain")
         self.datas_invite_code = config.get("common_account", "datas_invite_code")
         self.db_service_config = json.loads(config.get("common_db", "db_service_config"))
         self.db_shop_config = json.loads(config.get("common_db", "db_shop_config"))
@@ -49,7 +49,7 @@ class keyWord(object):
     # .公共登陆方法
     def Login(self):
         x_url = self.home_page_url + "/api/user/login"
-        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username}
+        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_domain}
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return False
@@ -325,7 +325,7 @@ class keyWord(object):
             time.sleep(5)
             datas_vcode = self.get_latest_vcode_fromdb(self.datas_contact).encode("utf-8")  # 获取验证码
             time.sleep(5)
-            datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username,
+            datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_domain,
                      "vcode": datas_vcode, "invite_code": self.datas_invite_code}
             print datas
         res = requests.post(url=x_url, headers={}, data=datas)
@@ -342,7 +342,7 @@ class keyWord(object):
         '''
         x_url = self.home_page_url + "/api/user/validate-signup"
         if datas is None:
-            datas = {"contact": self.datas_contact, "username": self.datas_username}
+            datas = {"contact": self.datas_contact, "username": self.datas_domain}
             print datas
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
@@ -571,14 +571,18 @@ if __name__ == '__main__':
         # 美服使用固定账号跑用例
         config.set("common_url", "home_page_url", 'http://admin.shoplazza.com')
         config.set("common_account", "datas_contact", '15220581724')
-        config.set("common_account", "datas_username", '123456')
+        config.set("common_account", "datas_domain", 'chen')
+        config.set("common_account", "datas_invite_code", 'DJ2746')
+        config.set("common_db", "db_service_config", '{"host": "rm-rj9ww1316miq2j87l.mysql.rds.aliyuncs.com",'
+                                                     '"port": 3306,"user": "fortest","password": "fortest@123",'
+                                                     '"db": "service","charset": "utf8"}')
         config.write(open(path, 'w'))
     else:
         # 测试服，使用新注册用户跑用例
-        random_num = keyWord().salt()
+        random_str = keyWord().salt()
         config.set("common_url", "home_page_url", args.url)
-        config.set("common_account", "datas_contact", random_num + "@abctest.com")
-        config.set("common_account", "datas_username", random_num)
+        config.set("common_account", "datas_contact", random_str + "@abctest.com")
+        config.set("common_account", "datas_domain", random_str)
         config.write(open(path, 'w'))
         # 注册用户
         kw = keyWord()

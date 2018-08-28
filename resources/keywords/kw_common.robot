@@ -7,7 +7,7 @@ Resource          ../variable/var_login.robot
 
 *** Keywords ***
 Login With Default User
-    New Test Suite Browser And Login    ${user_default_name}    ${user_default_pwd}    ${user_default_domain}
+    New Test Suite Browser And Login    ${user_default_contact}    ${user_default_pwd}    ${user_default_domain}
 
 Login With User
     [Arguments]    ${username}    ${password}    ${domain}

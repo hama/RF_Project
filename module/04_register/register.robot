@@ -15,16 +15,16 @@ Resource          ../../resources/variable/var_login.robot
 #register_001
 #    [Documentation]    注册信息成功
 #    [Tags]    P0
-#    Del User Fromdb    ${register_user}
+#    Del User Fromdb    ${register_contact}
 #    Wait And Click Element    ${locatorB_login_btn_register}
 #    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
 #    Wait And input text    ${locatorB_login_input_domain}    ${register_domain}
 #    Wait And input password    ${locatorB_login_input_password}    ${register_pwd}
 #    Wait And input password    ${locatorB_login_input_confirmPwd}    ${register_pwd}
-#    Wait And input text    ${locatorB_login_input_account}    ${register_user}
+#    Wait And input text    ${locatorB_login_input_account}    ${register_contact}
 #    Wait And Click Element    dom:document.querySelectorAll("button")[0]
 #    Sleep    2
-#    ${code}    Get Latest Vcode Fromdb    ${register_user}
+#    ${code}    Get Latest Vcode Fromdb    ${register_contact}
 #    Wait And input text    ${locatorB_login_input_vcode}    ${code}
 #    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
 #    Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -39,7 +39,7 @@ register_002
     Wait And input text    ${locatorB_login_input_domain}    ${user_default_domain}
     Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And input password    ${locatorB_login_input_confirmPwd}    ${user_default_pwd}
-    Wait And input text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
     Wait Until Page Contains Text    用户名已存在
 
@@ -51,10 +51,10 @@ register_003
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
     Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And input password    ${locatorB_login_input_confirmPwd}    ${user_default_pwd}
-    Wait And input text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
     Sleep    2
-    ${code}    Get Latest Vcode Fromdb    ${user_default_name}
+    ${code}    Get Latest Vcode Fromdb    ${user_default_contact}
     Wait And input text    ${locatorB_login_input_vcode}    ${code}
     Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -68,10 +68,10 @@ register_004
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
     Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And input password    ${locatorB_login_input_confirmPwd}    ${user_default_pwd}
-    Wait And input text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
     Sleep    2
-    ${code}    Get Latest Vcode Fromdb    ${user_default_name}
+    ${code}    Get Latest Vcode Fromdb    ${user_default_contact}
     Wait And input text    ${locatorB_login_input_vcode}    ${code}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Wait Until Page Contains Element    dom:document.querySelectorAll("button:disabled")[0]
@@ -92,7 +92,7 @@ register_006
     Wait And input text    ${locatorB_login_input_domain}    ${Empty}
     Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And input password    ${locatorB_login_input_confirmPwd}    ${user_default_pwd}
-    Wait And input text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_invalidVCode}
     Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -107,7 +107,7 @@ register_007
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
     Wait And input password    ${locatorB_login_input_password}    ${Empty}
     Wait And input password    ${locatorB_login_input_confirmPwd}    ${Empty}
-    Wait And input text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_invalidVCode}
     Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -122,7 +122,7 @@ register_008
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
     Wait And input password    ${locatorB_login_input_password}    12345
     Wait And input password    ${locatorB_login_input_confirmPwd}    12345
-    Wait And input text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_invalidVCode}
     Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -138,7 +138,7 @@ register_009
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
     Wait And input password    ${locatorB_login_input_password}    1234567890acf
     Wait And input password    ${locatorB_login_input_confirmPwd}    1234567890acf
-    Wait And input text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_invalidVCode}
     Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -153,7 +153,7 @@ register_010
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
     Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And input password    ${locatorB_login_input_confirmPwd}    ${Empty}
-    Wait And input text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_invalidVCode}
     Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -168,7 +168,7 @@ register_011
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
     Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And input password    ${locatorB_login_input_confirmPwd}    12345
-    Wait And input text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_invalidVCode}
     Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -213,7 +213,7 @@ register_015
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
     Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And input password    ${locatorB_login_input_confirmPwd}    ${user_default_pwd}
-    Wait And input text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_invalidVCode}
     Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -227,7 +227,7 @@ register_017
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
     Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And input password    ${locatorB_login_input_confirmPwd}    ${user_default_pwd}
-    Wait And input text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And input text    ${locatorB_login_input_vcode}    ${contentB_login_errorFormatVCode}
     Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -242,7 +242,7 @@ register_018
     Wait And input text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
     Wait And input password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And input password    ${locatorB_login_input_confirmPwd}    ${user_default_pwd}
-    Wait And input text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And input text    ${locatorB_login_input_vcode}    ${Empty}
     Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]

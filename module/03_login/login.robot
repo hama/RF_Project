@@ -16,7 +16,7 @@ Resource          ../../resources/keywords/kw_login.robot
 login001
     [Documentation]     主账号登录成功
     [Tags]    P0
-    Wait And Input Text     ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text     ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Click Element    ${locatorB_login_btn_login}
     Wait Until Page Contains Element    ${locatorB_order}
@@ -51,7 +51,7 @@ login004
 login005
     [Documentation]     主账号登录失败_错误密码
     [Tags]    P0
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${contentB_login_errorPwd}
     Wait And Click Element    ${locatorB_login_btn_login}
     Wait Until Page Contains Element    dom:document.querySelectorAll(".anticon-cross-circle")[0]
@@ -60,7 +60,7 @@ login005
 login006
     [Documentation]     主账号登录失败_密码为空
     [Tags]    P2
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${Empty}
     Wait And Click Element    ${locatorB_login_btn_login}
     ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
@@ -70,7 +70,7 @@ login007
     [Documentation]     员工账号登录_登录成功
     [Tags]    P0
     Wait And Click Element    ${locatorB_login_btn_employeeLogin}
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
     Wait And Click Element    ${locatorB_login_btn_login}
@@ -81,7 +81,7 @@ login008
     [Documentation]     员工账号登录失败_未注册的域名
     [Tags]    P0
     Wait And Click Element    ${locatorB_login_btn_employeeLogin}
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
     Wait And Click Element    ${locatorB_login_btn_login}
@@ -91,7 +91,7 @@ login009
     [Documentation]     员工账号登录失败_格式不正确的域名
     [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_employeeLogin}
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${contentB_login_errorFormatDomain}
     Wait And Click Element    ${locatorB_login_btn_login}
@@ -102,7 +102,7 @@ login010
     [Documentation]     员工账号登录失败_域名为空
     [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_employeeLogin}
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${Empty}
     Wait And Click Element    ${locatorB_login_btn_login}
@@ -144,7 +144,7 @@ login014
     [Documentation]     员工账号登录失败_错误密码
     [Tags]    P0
     Wait And Click Element    ${locatorB_login_btn_employeeLogin}
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${contentB_login_errorPwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
     Wait And Click Element    ${locatorB_login_btn_login}
@@ -154,7 +154,7 @@ login015
     [Documentation]     员工账号登录失败_密码为空
     [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_employeeLogin}
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_name}
+    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${Empty}
     Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
     Wait And Click Element    ${locatorB_login_btn_login}
