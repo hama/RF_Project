@@ -96,5 +96,5 @@ ${contentB_products_tips_shelf_ok}    上架成功
 ${file_products_template}    ${CURDIR}/xlsx/product_template.xlsx    # 添加单个商品模版文件
 ${file_products_templates}    ${CURDIR}/xlsx/products_template.xlsx    # 添加多个商品模版文件
 ${file_products_wrong_template}    ${CURDIR}/xlsx/wrong_format.xlsx    # 添加单个的错误的商品模版文件
-${file_products_addImg}    ${CURDIR}/images/tm.jpg    # 添加商品图片
-${file_products_addImg2}    ${CURDIR}/images/mv.jpg    # 添加商品图片
+${file_products_addImg}    ${CURDIR}/../images/tm.jpg    # 添加商品图片
+${file_products_addImg2}    ${CURDIR}/../images/mv.jpg    # 添加商品图片

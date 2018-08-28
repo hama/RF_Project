@@ -170,7 +170,7 @@ Complete_Order_Message_Not_Submit
 Complete_Order_Message_Without_Phone
     [Documentation]    点击添加地址按钮，填写信息（只需填写邮箱），点击保存按钮，不点击进入支付页
     #添加地址信息
-    Wait And Click Element    id:addAddress
+    #Wait And Click Element    id:addAddress
     #first name
     Wait And Input Text    ${locatorB_checkout_address_first_name}    zc
     #last name
@@ -196,14 +196,10 @@ Complete_Order_Message_Without_Phone
 Complete_Order_Message_Without_Last_name
     [Documentation]    点击添加地址按钮，填写信息（只需填写first name），点击保存按钮，不点击进入支付页
     #添加地址信息
-    Wait And Click Element    id:addAddress
     #first name
     Wait And Input Text    ${locatorB_checkout_address_first_name}    zc
     #选择国家
     Select From List By Index    ${locatorB_checkout_address_select_country}    1
-    Sleep    2
-    #选择身份
-    Select From List By Index    id:shipping_zone_id    1
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
@@ -347,18 +343,18 @@ Set_Quantity
 To_Change_Image
     [Documentation]    更换商品的图片，前提该商品已有一张图片
     Go To Products Page
-    Sleep    5
     #点击第一件商品进入商品详情页
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
-    Sleep    5
+    Sleep    2
     #划到底部
-    Execute Javascript    return document.querySelectorAll(".row___3Mua7")[0].scrollIntoView()
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[2].scrollIntoView()
     Sleep    2
     #删除第一张图片
-    Mouse Over    ${locatorB_products_image_center}
+    Mouse Over    ${locatorB_productsMgmt_image_center}
     Wait And Click Element    dom:document.querySelectorAll(".delete")[0]
     #更新另外一张图片
-    Choose File    ${locatorB_products_chooseFile}    ${file_products_addImg2}
+    Sleep    2
+    Choose File    ${locatorB_productsNew_input_chooseFile}    /Users/dianjiang/shoplaza/shoplaza_robot/resources/images/mv.jpg
     Sleep    2
 
 Delete_All_Sub_Product_With_Already_Product
@@ -558,5 +554,29 @@ Add Product Wait
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
     \    ${res_status}    addProducts
+    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
+    \    ...    ELSE    Sleep    1
+
+Add OtherTaxPrice Wait
+    [Documentation]    添加商品等待
+    [Arguments]    ${count}=10
+    :FOR    ${i}    IN RANGE    ${count}
+    \    ${res_status}    addOtherTaxPrice
+    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
+    \    ...    ELSE    Sleep    1
+
+Add StoreInfo Wait
+    [Documentation]    添加店铺基础信息
+    [Arguments]    ${par}    ${pars}    ${count}=10
+    :FOR    ${i}    IN RANGE    ${count}
+    \    ${res_status}    addStoreInfo    ${par}    ${pars}
+    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
+    \    ...    ELSE    Sleep    1
+
+Change Checkout Setp Wait
+    [Documentation]    修改结账流程的 地址输入模式
+    [Arguments]    ${parmeter}    ${count}=10
+    :FOR    ${i}    IN RANGE    ${count}
+    \    ${res_status}    setCheckoutStep    ${parmeter}
     \    Run keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1

@@ -242,3 +242,19 @@ Confirm Cancel Alert
     [Documentation]    取消页面填写内容未保存跳走出现的弹窗
     Wait And Click Element    ${locatorB_subtraction_first_btn_cancel}
     Wait And Click Element    ${locatorB_subtraction_confirm_determine_btn}
+
+Add Payment Cod Wait
+    [Documentation]    添加 cod支付方式
+    [Arguments]    ${count}=10
+    :FOR    ${i}    IN RANGE    ${count}
+    \    ${res_status}    addPaymentCod
+    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
+    \    ...    ELSE    Sleep    1
+
+Del Payment Cod Wait
+    [Documentation]    删除 cod支付方式
+    [Arguments]    ${count}=10
+    :FOR    ${i}    IN RANGE    ${count}
+    \    ${res_status}    delPaymentCod
+    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
+    \    ...    ELSE    Sleep    1

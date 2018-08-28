@@ -230,47 +230,44 @@ class keyWord(object):
         finally:
             conn.close()
 
+    # .支付方式 parmeter: true = 添加
+    # .支付方式 parmeter: false = 删除
+    def Payment(self,method_is_enable=1,payment_method="cod"):
+        cookie = self.Login()['cookie']
+        changeUrl = self.home_page_url + "/api/payment/method"
+        data = {"method_is_enable":method_is_enable,"payment_method":payment_method}
+        res_data = requests.post(url=changeUrl,headers={"cookie":cookie},json=data)
+
+        if res_data.status_code == 200 and json.loads(res_data.content)['state'] == 0:
+            return True
+        else:
+            return False
+    #. 添加支付方式 cod
+    def addPaymentCod(self):
+        return self.Payment()
+    #. 添加支付方式 paylinks
+    def addPaymentPk(self):
+        return self.Payment(1,'credit_card')
     # .删除支付方式 paylinks
     def delPaymentPk(self):
-        try:
-            cookie = self.Login()['cookie']
-            del_url = self.home_page_url + "/api/payment/method"
-            del_data = {"payment_method": "credit_card", "method_is_enable": 0}
-            res = requests.post(url=del_url, headers={"cookie": cookie}, json=del_data)
-            if json.loads(res.content)['state'] == 0:
-                return True
-            else:
-                return False
-        except Exception as e:
-            print e
-
-    # .删除支付方式 paylinks
+        return self.Payment(0,'credit_card')
+    # .删除支付方式 cod
     def delPaymentCod(self):
-        try:
-            cookie = self.Login()['cookie']
-            del_url = self.home_page_url + "/api/payment/method"
-            del_data = {"payment_method": "cod", "method_is_enable": 0}
-            res = requests.post(url=del_url, headers={"cookie": cookie}, json=del_data)
-            if json.loads(res.content)['state'] == 0:
-                return True
-            else:
-                return False
-        except Exception as e:
-            print e
+        return self.Payment(0)
 
-    # .添加中国物流
-    def addShipping(self):
+    # .添加中国物流 @has_other_country: 0 = 普通国家 | 1 = 其他国家
+    def addShipping(self,has_other_country=0):
         cookie = self.Login()['cookie']
         add_url = self.home_page_url + "/api/shipping/refresh"
+        if has_other_country != 0: has_other_country = 1
         add_data = {
             'shipping_name': '自动化测试添加物流',
             'shipping_area': '[{"country_id":"44","zone_ids":"-1"}]',
-            'has_other_country': 0,
+            'has_other_country': has_other_country,
             'shipping_plan': '[{"name":"Standard shipping","shipping_method":"price","range_min":0,'
                              '"range_max":-1,"rate_amount":0,"payment_list":"cod;online;custom;credit_card",'
                              '"desc":"","range_unit":"g"}]'
         }
-
         try:
             add_res = requests.post(url=add_url, headers={"cookie": cookie}, json=add_data)
             if json.loads(add_res.content)['state'] == 0:
@@ -279,7 +276,79 @@ class keyWord(object):
                 return False
         except Exception as e:
             print e
+    #. 添加其他国家税费
+    def addOtherTaxPrice(self):
+        #. 添加其他国家
+        add_shipping = self.addShipping(1)
+        cookie = self.Login()['cookie']
+        tax_url = self.home_page_url + "/api/tax/refresh"
+        data = {"country_id":"-1","country_price":"1","tax_info":'[{"zone_id":-1,"price":"1"}]'}
+        res_data = requests.post(url=tax_url,headers={"cookie": cookie},json=data)
+        if res_data.status_code == 200 and json.loads(res_data.content)['state'] == 0 and add_shipping == True:
+            return True
+        else:
+            return False
 
+    #. 添加店铺基础信息
+    def addStoreInfo(self,email="171869092@qq.com",telephone="15220581724"):
+        cookie = self.Login()['cookie']
+        store_rul = self.home_page_url + "/api/store/update"
+        store_id = self.getStoreId()
+        data = {"address":"",
+                "city":"",
+                "code":"USD",
+                "email":email,
+                "hour":-11,
+                "icon":{"src":"","path":""},
+                "meta_description":"null",
+                "meta_keyword":"null",
+                "meta_title":"home",
+                "name": self.datas_username,
+                "seo_id": 0,
+                "service_email": email,
+                "store_id": store_id,
+                "symbol": "$",
+                "symbol_left": "$",
+                "symbol_right": "null",
+                "telephone": telephone,
+                "time_zone": self.Bj_timeZone,
+                "url": "",
+                "zip": "",
+                "_": ""
+                }
+        res_data = requests.post(url=store_rul,headers={"cookie":cookie},json=data)
+        if res_data.status_code == 200 and json.loads(res_data.content)['state'] == 0:
+            return True
+        else:
+            return False
+    # .设置checkout结账流程的-地址-姓名输入的模式 1= 名字 2=姓 ／ 名
+    def setCheckoutStep(self,customer_name=None):
+        cookie = self.Login()['cookie']
+        set_url = self.home_page_url + "/api/checkout/save"
+        if customer_name:
+            customer_name = 2
+        else:
+            customer_name = 1
+        data = {
+            "company_setting": 2,
+            "customer_authority": 2,
+            "customer_contact": 3,
+            "customer_email": 1,
+            "customer_name": int(customer_name),
+            "customer_phone": 2,
+            "postcode_setting": 1,
+            "privacy_policy": "",
+            "refund_policy": "",
+            "server_policy": ""
+        }
+        try:
+            res_data = requests.post(url=set_url,headers={"cookie":cookie},json=data)
+            if res_data.status_code == 200 and json.loads(res_data.content)['state'] == 0:
+                return True
+            else:
+                return False
+        except Exception as e:
+            print e
     # .删除物流方式
     def delShipping(self):
         try:
@@ -335,7 +404,7 @@ class keyWord(object):
         if datas is None:
             self.validate_signup(None)  # 发送验证码
             time.sleep(5)
-            datas_vcode = self.get_db_verification_code(self.datas_contact).encode("utf-8")  # 获取验证码
+            datas_vcode = self.get_latest_vcode_fromdb(self.datas_contact).encode("utf-8")  # 获取验证码
             time.sleep(5)
             datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_username,
                      "vcode": datas_vcode, "invite_code": self.datas_invite_code}
@@ -571,6 +640,9 @@ class keyWord(object):
 
 
 if __name__ == '__main__':
+    zx = keyWord()
+    print zx.setCheckoutStep()
+    exit()
     # 设置执行入参
     parser = argparse.ArgumentParser(description='manual to this script')
     parser.add_argument('--url', type=str, default='http://admin1024.shoplazza.com')
