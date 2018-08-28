@@ -19,8 +19,6 @@ logout001
     Wait And Input Text     ${locatorB_login_input_account}    ${user_default_name}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Click Element    ${locatorB_login_btn_login}
-    Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
-    Wait And Click Element    ${locatorB_login_btn_login}
     Wait Until Page Contains Element    ${locatorB_order}
     Logout
     Wait Until Page Contains Text    登录我的店匠店铺

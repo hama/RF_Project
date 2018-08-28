@@ -28,4 +28,4 @@ COPY /chromedriver /usr/local/bin
 # ENTRYPOINT
 # CMD
 
-CMD ["bash", "-c", "sleep 10000"]
+CMD ["bash", "-c", "sleep 100000000"]

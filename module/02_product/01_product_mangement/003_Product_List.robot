@@ -1,9 +1,9 @@
 *** Settings ***
 Documentation     测试商品列表
-Suite Setup       Products Suite Setup
-Suite Teardown    Products Suite Teardown
-Test Setup        Products Test Case Setup
-Test Teardown     Products Test Case Teardown
+Suite Setup       Login With Default User
+Suite Teardown    Close Test Suite Browser
+Test Setup        Go To Products Page
+Test Teardown     Teardown Test Case
 Force Tags        Products
 Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/variable/var_common.robot
@@ -180,19 +180,3 @@ Should Be Checked
     #获取按钮类名
     ${class_name}    Execute Javascript    return document.getElementsByClassName("ant-switch")[${i}].getAttribute("class")
     Should Be Equal As Strings    ${class_name}    ant-switch ant-switch-checked
-
-Products Suite Setup
-    [Documentation]    商品 case setup
-    Login With Default User
-    Start Ajax Listener
-    Go To Products Page
-
-Products Suite Teardown
-    [Documentation]    删除商品
-    Close Test Suite Browser
-
-Products Test Case Setup
-    Go To Products Page
-
-Products Test Case Teardown
-    Teardown Test Case
