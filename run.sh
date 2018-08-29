@@ -10,4 +10,5 @@ else
 fi
 
 robot -v is_headless:True -d logs/  module/03_login/*
+
 python2.7 lib/utils/email_utils.py
