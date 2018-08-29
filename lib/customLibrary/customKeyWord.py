@@ -313,21 +313,19 @@ class keyWord(object):
 
         return res_list[index]
 
-    def sign_up(self, datas):
+    def sign_up(self):
         '''
         注册
-        :param datas:
         :return:
         '''
         x_url = self.home_page_url + "/api/user/signup"
-        if datas is None:
-            self.validate_signup(None)  # 发送验证码
-            time.sleep(5)
-            datas_vcode = self.get_latest_vcode_fromdb(self.datas_contact).encode("utf-8")  # 获取验证码
-            time.sleep(5)
-            datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_domain,
-                     "vcode": datas_vcode, "invite_code": self.datas_invite_code}
-            print datas
+        self.validate_signup(None)  # 发送验证码
+        time.sleep(5)
+        datas_vcode = self.get_latest_vcode_fromdb(self.datas_contact).encode("utf-8")  # 获取验证码
+        time.sleep(5)
+        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_domain,
+                 "vcode": datas_vcode, "invite_code": self.datas_invite_code}
+        print datas
         res = requests.post(url=x_url, headers={}, data=datas)
         if res is None or res.status_code != 200:
             return False
@@ -583,7 +581,13 @@ if __name__ == '__main__':
         config.set("common_url", "home_page_url", args.url)
         config.set("common_account", "datas_contact", random_str + "@abctest.com")
         config.set("common_account", "datas_domain", random_str)
+        config.set("common_account", "datas_invite_code", 'DJ6602')
+        config.set("common_db", "db_service_config", '{"host": "rm-wz9tz4ff2v9t95f9qao.mysql.rds.aliyuncs.com",'
+                                                     '"port": 3306,"user": "app","password": "8rEdunuH@Fe+",'
+                                                     '"db": "service","charset": "utf8"}')
         config.write(open(path, 'w'))
         # 注册用户
         kw = keyWord()
         kw.sign_up()
+        # 注册用户之后等待10s，等用户生效
+        time.sleep(10)

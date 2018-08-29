@@ -12,19 +12,20 @@ from selenium import webdriver
 
 username = "autotest@shoplazza.com"  # .发件人
 password = "Robot@123"  # .发件人密码
+relative_path = os.path.join(os.path.dirname(__file__), '../..')
 # . 收件邮箱
 to_addr = [
-    'wanglinyun@shoplazza.com',
-    'xiabing@shoplazza.com',
-    'qiansuixin@shoplazza.com',
+    # 'wanglinyun@shoplazza.com',
+    # 'xiabing@shoplazza.com',
+    # 'qiansuixin@shoplazza.com',
     'lijunchen@shoplazza.com'
 ]
 # . 抄送邮箱
 cc_addr = [
-    'zhangliqiong@shoplazza.com',
-    'yupeng@shoplazza.com',
-    'linyingjun@shoplazza.com',
-    'fangbaiyuan@shoplazza.com'
+    # 'zhangliqiong@shoplazza.com',
+    # 'yupeng@shoplazza.com',
+    # 'linyingjun@shoplazza.com',
+    # 'fangbaiyuan@shoplazza.com'
 ]
 email_service = "smtp.alibaba.com"
 default_port = 25
@@ -67,9 +68,10 @@ def get_screenshot():
     '''
     driver = webdriver.Chrome()
     driver.set_window_size(1200, 900)
-    file_path = 'file:///' + os.path.abspath('../../logs/report.html')
+    file_path = 'file:///' + os.getcwd() + '/logs/report.html'
     driver.get(file_path)
-    driver.save_screenshot(os.path.abspath('../../logs/screenshot_for_report.png'))
+    time.sleep(5)
+    driver.save_screenshot(relative_path + '/logs/screenshot_for_report.png')
     driver.quit()
 
 
@@ -94,13 +96,13 @@ def email_fomat_content():
     msgText = MIMEText(html, 'html', 'utf-8')
     msg.attach(msgText)
     # 图片
-    fp = open(os.path.abspath('../../logs/screenshot_for_report.png'), 'rb')
+    fp = open(relative_path + '/logs/screenshot_for_report.png', 'rb')
     msgImage = MIMEImage(fp.read())
     fp.close()
     msgImage.add_header('Content-ID', '<image1>')
     msg.attach(msgImage)
     # 附件
-    att = MIMEText(open(os.path.abspath('../../logs/log.html'), 'rb').read(), 'base64', 'utf-8')
+    att = MIMEText(open(relative_path + '/logs/log.html', 'rb').read(), 'base64', 'utf-8')
     att["Content-Type"] = 'application/octet-stream'
     att["Content-Disposition"] = 'attachment; filename="log.html"'
     msg.attach(att)
@@ -110,5 +112,5 @@ def email_fomat_content():
 
 if __name__ == "__main__":
     get_screenshot()
-    time.sleep(10)
+    time.sleep(5)
     send_email()
