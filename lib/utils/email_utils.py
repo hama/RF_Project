@@ -9,6 +9,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 username = "autotest@shoplazza.com"  # .发件人
 password = "Robot@123"  # .发件人密码
@@ -66,7 +67,9 @@ def get_screenshot():
     报告截屏
     :return:
     '''
-    driver = webdriver.Chrome()
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    driver = webdriver.Chrome(chrome_options=chrome_options)
     driver.set_window_size(1200, 900)
     file_path = 'file:///' + os.getcwd() + '/logs/report.html'
     driver.get(file_path)
@@ -112,5 +115,5 @@ def email_fomat_content():
 
 if __name__ == "__main__":
     get_screenshot()
-    time.sleep(5)
-    send_email()
+    # time.sleep(5)
+    # send_email()
