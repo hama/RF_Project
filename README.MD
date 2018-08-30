@@ -12,18 +12,20 @@
 
 ```shell
 ├── README.MD								# README
-├── lib										# 第三方库
+├── docker		                            # 构建docker镜像所需要的资源
+├── lib		                                # 第三方库
+│	├── customKeyWord
+│	├── utils							
 │   └── ajaxListener.js
 ├── logs									# 标准日志文件(可删除，此处仅作用例参考)
 │   ├── log.html
 │   ├── output.xml
 │   └── report.html
-├── resources                               # 资源目录，存放底层测试库
-│   ├── kw_kw_browser.robot						# 浏览器相关操作，打开/关闭 浏览器
-│   ├── payment.robot
-│   ├── shipping.robot
-│   ├── kw_common.robot				# 登录相关操作，调用关键字完成指定用户登录
-│   └── var_var_tax_price.robot						# 税费模块
+├── resources                               # 资源目录
+│   ├── images                      # 图片资源
+│   ├── keywords                    # robot应用的keywords，按模块分类
+│   ├── variable                    # robot应用的变量，按模块分类
+│   └── xlsx						# xlsx资源
 ├── module									# 按照模块区分测试用例
 │   ├── 01_order							# 01_xx   一级菜单
 │   │   ├── 01_checkout						# 01_xx   二级菜单
@@ -39,8 +41,9 @@
 │   ├── 07_tools
 │   └── 08_settings
 │       └── 01_shipping
-└── smoke									# 冒烟用例，为最基本用例，必须全部过
-    └── 001_product_list.robot
+├── smoke									# 冒烟用例，为最基本用例，必须全部过
+│   └── 001_product_list.robot
+└── run.sh                                  # 自动执行脚本的入口
 ```
 
 
@@ -128,6 +131,7 @@ defaults write com.apple.versioner.python Prefer-32-Bit -bool yes
 # pymysql  --  连接 mysql 数据库，获取验证码需要
 pip install pymysql
 pip install requests
+pip install oss2
 ```
 
 #### 3.4.1 VIM 语法高亮插件
@@ -207,8 +211,9 @@ Resource          ../../../resources/variable/var_tax_price.robot    # 导入封
 
 
 
-## 5. 命令行运行测试用例
+## 5. 运行测试用例
 
+### 5.1 命令行运行测试用例
 ```shell
 # 基本命令如下
 robot test.robot
@@ -239,6 +244,18 @@ ROBOT_INTERNAL_TRACES			# 非空时，错误堆栈将包含方法调用
 
 ```
 
+### 5.2 run.sh运行测试用例
+```shell
+# 基本命令如下
+bash /opt/shoplaza_robot/run.sh -e -u http://admin.shoplazza.com -c 'module/03_login/* module/04_register/*'
+
+# 参数说明
+-e --email                      # 是否开启email发送功能
+-u --url                        # 指定被测环境url
+-c --exec                       # 指定被执行用例
+
+## 注：此脚本仅在linux环境中可执行，mac不适用
+```
 
 
 ## 6. 自动化测试集成 CI
@@ -274,26 +291,4 @@ robot --outputdir logs \
 - [RF User Guide](http://robotframework.org/robotframework/2.9b2/RobotFrameworkUserGuide.html)
 - [RF API Reference](http://robot-framework.readthedocs.io/en/latest/)
 - [SeleniumLibrary API](http://robotframework.org/Selenium2Library/Selenium2Library.html)
-
-## 9. 用例模块负责人
-
-| 模块                         | 主要负责人  |
-| ---------------------------- | ----------- |
-| module                       |             |
-| \|—— 01_order     订单       | 俊成        |
-| \|—— 02_product 商品         | 志成        |
-| \|—— 03_customer  顾客       |             |
-| \|—— 04_data    数据         |             |
-| \|—— 05_marketing  营销      |             |
-| \|—— 06_store    店铺        |             |
-| \|—— 07_tools    工具        |             |
-| \|—— 08_settings  设置       |             |
-| \|—— 03_tax_price  税费      | 吴文雄      |
-| \|—— 04_payment 支付         | 俊成/志成   |
-| \|—— 05_payment 支付         | 俊成/志成   |
-| \|—— 06_shipping 物流        | 俊成        |
-| \|—— 09_checkout             | 俊成/吴文雄 |
-| \|—— 10_account 账户登录注册 | 俊成        |
-| \|—— 001 register  注册      | 俊成        |
-| \|—— 002 login 登录          | 俊成        |
 
