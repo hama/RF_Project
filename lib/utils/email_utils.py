@@ -92,6 +92,9 @@ def email_fomat_content():
     config.read(path)
     env_detail = config.get("common_url", "home_page_url")
     hostname = os.popen('hostname').readline().strip('\n')
+    pwd = os.path.abspath(os.path.curdir)
+    if pwd.endswith('/shoplaza_robot'):
+        os.popen('tar -zcvf ./logs/robot_log_$(date "+%Y%m%d%H%M%S").tar.gz ./logs --remove-files')
 
     msg = MIMEMultipart('alternative')
     msg['Subject'] = '%s (被测环境：%s  执行环境：%s )' % \

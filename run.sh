@@ -58,6 +58,7 @@ then
 else
     python2.7 lib/customLibrary/customKeyWord.py
 fi
+
 # 执行用例
 if [ "$test_exec" ]
 then
@@ -65,6 +66,7 @@ then
 else
     robot -v is_headless:True -d logs/ module/03_login/*
 fi
+
 # 执行email_utils.py
 if [ "$send_email" ]
 then
