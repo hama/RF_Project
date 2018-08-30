@@ -10,3 +10,4 @@ logs/
 # 开发根据环境自定义文件
 module/Test.robot
 **/.DS_Store
+test.sh
