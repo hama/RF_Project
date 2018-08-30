@@ -29,15 +29,15 @@ while true
 do
 	case "$1" in
 		-e | --email)
-			send_email = 'y'
+			send_email='y'
 			shift
 			;;
 		-c | --exec)
-			test_exec =  "$2"
+			test_exec="$2"
 			shift 2
 			;;
 		-u | --url)
-			test_url =  "$2"
+			test_url="$2"
 			shift 2
 			;;
 		--)
