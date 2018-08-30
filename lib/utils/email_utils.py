@@ -77,7 +77,7 @@ def get_screenshot():
     file_path = 'file:///' + os.getcwd() + '/logs/report.html'
     driver.get(file_path)
     time.sleep(5)
-    driver.save_screenshot(relative_path + '/logs/screenshot_for_report.png')
+    driver.save_screenshot(relative_path + '/screenshot_for_report.png')
     driver.quit()
 
 
@@ -88,13 +88,14 @@ def email_fomat_content():
     '''
     # 获取测试环境信息
     config = ConfigParser.ConfigParser()
-    path = os.path.join(os.path.dirname(__file__), '../..') + '/config/common.ini'
+    path = os.path.join(os.path.dirname(__file__), '../../config/common.ini')
     config.read(path)
     env_detail = config.get("common_url", "home_page_url")
     hostname = os.popen('hostname').readline().strip('\n')
     pwd = os.path.abspath(os.path.curdir)
+    date_stamp = time.strftime("%Y%m%d%H%M%S", time.localtime())
     if pwd.endswith('/shoplaza_robot'):
-        os.popen('tar -zcvf ./logs/robot_log_$(date "+%Y%m%d%H%M%S").tar.gz ./logs --remove-files')
+        os.popen('tar -zcvf ./logs/robot_log_%s.tar.gz ./logs --remove-files' % date_stamp)
 
     msg = MIMEMultipart('alternative')
     msg['Subject'] = '%s (被测环境：%s  执行环境：%s )' % \
@@ -114,16 +115,16 @@ def email_fomat_content():
     msg.attach(msgText)
     # 图片
 
-    fp = open(relative_path + '/logs/screenshot_for_report.png', 'rb')
+    fp = open(relative_path + '/screenshot_for_report.png', 'rb')
     msgImage = MIMEImage(fp.read())
     fp.close()
     msgImage.add_header('Content-ID', '<image1>')
     msg.attach(msgImage)
 
     # 附件
-    att = MIMEText(open(relative_path + '/logs/log.html', 'rb').read(), 'base64', 'utf-8')
+    att = MIMEText(open(relative_path + '/logs/robot_log_%s.tar.gz' % date_stamp, 'rb').read(), 'base64', 'utf-8')
     att["Content-Type"] = 'application/octet-stream'
-    att["Content-Disposition"] = 'attachment; filename="log.html"'
+    att["Content-Disposition"] = 'attachment; filename="robot_log"'
     msg.attach(att)
 
     return msg
