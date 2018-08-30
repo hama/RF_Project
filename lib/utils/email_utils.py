@@ -91,9 +91,11 @@ def email_fomat_content():
     path = os.path.join(os.path.dirname(__file__), '../..') + '/config/common.ini'
     config.read(path)
     env_detail = config.get("common_url", "home_page_url")
+    hostname = os.popen('hostname').readline().strip('\n')
 
     msg = MIMEMultipart('alternative')
-    msg['Subject'] = '%s (环境：%s)' % (Header('Robot测试报告'.decode('utf-8')).encode(), env_detail)
+    msg['Subject'] = '%s (被测环境：%s  执行环境：%s )' % \
+                     (Header('Robot测试报告'.decode('utf-8')).encode(), env_detail, hostname)
     msg['From'] = '%s <%s>' % (Header('自动化测试'.decode('utf-8')).encode(), username)
     msg['To'] = ', '.join(to_addr)
     msg['Cc'] = ', '.join(cc_addr)
