@@ -124,7 +124,7 @@ def email_fomat_content():
     # 附件
     att = MIMEText(open(relative_path + '/logs/robot_log_%s.tar.gz' % date_stamp, 'rb').read(), 'base64', 'utf-8')
     att["Content-Type"] = 'application/octet-stream'
-    att["Content-Disposition"] = 'attachment; filename="robot_log"'
+    att["Content-Disposition"] = 'attachment; filename="robot_log_%s.tar.gz"' % date_stamp
     msg.attach(att)
 
     return msg
