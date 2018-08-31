@@ -95,10 +95,10 @@ def email_fomat_content():
     pwd = os.path.abspath(os.path.curdir)
     date_stamp = time.strftime("%Y%m%d%H%M%S", time.localtime())
     if pwd.endswith('/shoplaza_robot'):
-        os.popen('tar -zcvf ./logs/robot_log_%s.tar.gz ./logs --remove-files' % date_stamp)
+        os.popen('cd logs; rm -rf *.tar.gz; tar -zcvf robot_log_%s.tar.gz ./* --remove-files; cd ..;' % date_stamp)
 
     msg = MIMEMultipart('alternative')
-    msg['Subject'] = '%s (被测环境：%s  执行环境：%s )' % \
+    msg['Subject'] = '%s ( tested_env : %s  execute_env : %s )' % \
                      (Header('Robot测试报告'.decode('utf-8')).encode(), env_detail, hostname)
     msg['From'] = '%s <%s>' % (Header('自动化测试'.decode('utf-8')).encode(), username)
     msg['To'] = ', '.join(to_addr)
