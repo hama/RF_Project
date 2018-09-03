@@ -18,24 +18,6 @@ ${name}           Cash on Delivery222
 ${tax_price}      1
 
 *** Test Cases ***
-lklk
-    Common Add GoTo Page
-    Change Checkout Setp Wait    ${empty}
-    #获取第一个商品名称
-    Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
-    Wait Until Element Is Visible    title
-    ${title}    Get Text    title
-    #进入checkout页面
-    Select_Order_Page    ${title}
-    #填写完地址信息(只填写邮箱)，不点击提交按钮
-    Complete_Order_Message_Without_Last_name
-    #点击submit按钮后，页面将刷新
-    #验证当前要填写的是不是(姓名分开填写)
-    #点击添加地址信息
-    Wait And Click Element    id:changeaddress
-    #last_name
-    Wait Until Element Is Not Visible    ${locatorB_checkout_address_last_name}
-
 checkout105
     [Documentation]    "1.将本次购买的商品下架2.点击submit" submit之后直接跳转到支付失败界面
     [Tags]    P0
@@ -141,7 +123,7 @@ checkout110
     #Wait And Click Element    ${locatorB_checkout_submit_btn_s}
     Complete_Order_Message
     #支付页面应该显示支付失败
-    Page Should Contain    ${contentB_payment_failed}
+    Wait Until Page Contains    ${contentB_payment_failed}
 
 checkout111
     [Documentation]    先设置商品为跟踪库存并且库存为0时可购买,点击商品预览后，点击进入checkout页面，在点击Submit前，在后台修改该商品取消勾选库存为0时可购买,取消跟踪库存
@@ -162,12 +144,8 @@ checkout111
     Select Window    title=${user_default_domain}
     Complete_Order_Message
     #支付页面应该显示支付失败
-    Page Should Contain    ${contentB_payment_failed}
-    #点击pay now
-    #Wait And Click Element    ${locator_checkout_submit_save_btn}
-    #显示支付成功
-    #Wait Until Element Is Visible    dom:document.querySelectorAll(".show_success")[0]
-    #Page Should Contain    ${locatorB_checkout_submitOrderPass_msg}
+    Wait Until Page Contains    ${contentB_payment_failed}
+    
 
 checkout112
     [Documentation]    先设置商品为跟踪库存并且库存为1,点击商品预览后，点击进入checkout页面，在点击Submit前，在后台修改该商品库存为0
@@ -188,7 +166,7 @@ checkout112
     Select Window    title=${user_default_domain}
     Complete_Order_Message
     #支付页面应该显示支付失败
-    Page Should Contain    ${contentB_payment_failed}
+    Wait Until Page Contains    ${contentB_payment_failed}
 
 checkout113
     [Documentation]    先设置商品为跟踪库存并且库存为1,点击商品预览后，点击进入checkout页面，在点击Submit前，在后台修改该商品库存为2
@@ -209,7 +187,7 @@ checkout113
     Select Window    title=${user_default_domain}
     Complete_Order_Message
     #支付页面应该显示支付失败
-    Page Should Contain    ${contentB_payment_failed}
+    Wait Until Page Contains    ${contentB_payment_failed}
 
 checkout116
     [Documentation]    点击商品预览后，点击进入checkout页面，在点击Submit前，在后台更换该商品图片
@@ -230,7 +208,7 @@ checkout116
     Select Window    title=${user_default_domain}
     Complete_Order_Message
     #支付页面应该显示支付失败
-    Page Should Contain    ${contentB_payment_failed}
+    Wait Until Page Contains    ${contentB_payment_failed}
 
 checkout127
     [Documentation]    关闭“货到付款”支付方式，在支付界面不显示“货到付款”的支付方式（若之前货到付款是开启的，把支持货到付款的物流方案都删除，则会自动关闭”货到付款“的支付方式）
@@ -260,7 +238,7 @@ checkout128
     Select_Order_Page    ${title}
     Complete_Order_Message
     #应该包含货到付款等字样
-    Page Should Contain    ${locatorB_checkout_Cod_font}
+    Wait Until Page Contains    ${locatorB_checkout_Cod_font}
 
 checkout129
     [Documentation]    开启“货到付款”支付方式，在支付界面显示“货到付款”的支付方式（若之前货到付款是开启的，把支持货到付款的物流方案都删除，则会自动关闭”货到付款“的支付方式）
@@ -275,7 +253,8 @@ checkout129
     Select_Order_Page    ${title}
     Complete_Order_Message
     #应该包含货到付款等字样
-    Page Should Contain    ${locatorB_checkout_Cod_font}
+    Wait Until Page Contains    ${locatorB_checkout_Cod_font}
+    
 checkout130
     [Documentation]    "1.税费关闭时开启 2.点击submit"  > 提交成功，跳转到支付界面，价格刷新，收取税费
     [Tags]    P0

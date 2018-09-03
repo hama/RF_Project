@@ -10,7 +10,7 @@ import random
 import sys
 import time
 import uuid
-
+import re
 import oss2
 import pymysql
 import requests
@@ -46,8 +46,11 @@ class keyWord(object):
         self.db_service_config = json.loads(config.get("common_db", "db_service_config"))
         self.db_shop_config = json.loads(config.get("common_db", "db_shop_config"))
 
-    # .公共登陆方法
     def Login(self):
+        """
+        公共登陆方法
+        :return: dict
+        """
         x_url = self.home_page_url + "/api/user/login"
         datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_domain}
         res = requests.post(url=x_url, headers={}, data=datas)
@@ -59,8 +62,12 @@ class keyWord(object):
 
         return {"cookie": cookiesx, "uid": uid}
 
-    # .公共获取数据方法
     def commonGetData(self, p_url=''):
+        """
+        公共获取数据方法
+        :param p_url: url
+        :return: dict
+        """
         if not p_url:
             p_url = self.home_page_url + "/api/product/search?page=0&limit=20"
         cookiesx = self.Login()['cookie']
@@ -85,6 +92,26 @@ class keyWord(object):
         salt = ''.join(saltList)
 
         return salt
+
+    def searchStr(self, args):
+        """
+        正则匹配数字
+        :param args:
+        :return: String
+        """
+        str_ = str(args)
+        restr = re.search('\d', str_).group()
+        return restr
+
+    def searchStrs(self, args):
+        """
+        正则匹配所有非符号字符
+        :param args:
+        :return: String
+        """
+        str_ = str(args)
+        restr = re.search('\d+', str_).group()
+        return restr
 
     def get_reset_pwd_vcode_fromdb(self, contact_data):
         '''
@@ -115,8 +142,11 @@ class keyWord(object):
                 hash_md5.update(chunk)
         return hash_md5.hexdigest()
 
-    # . 添加商品
-    def addProducts(self):
+    def add_products(self):
+        """
+        添加商品
+        :return: True | False
+        """
         # .获取图片
         imgs = self.upload_oss(self.img)[0]
         path_img = "//cn.cdn.shoplazza.com/" + self.upload_oss(self.img)[0]
@@ -152,8 +182,15 @@ class keyWord(object):
         except Exception as e:
             return e
 
-    # . 上传图片到阿里云
     def upload_oss(self, urlex, name='', extension='', timeout_second=30):
+        """
+        上传图片到阿里云
+        :param urlex: url
+        :param name: 名字
+        :param extension: 扩充信息
+        :param timeout_second: 超时时间
+        :return: tuple
+        """
         auth = oss2.Auth(self.aliyun['accessKeyId'], self.aliyun['accessKeySecret'])
         bucket = oss2.Bucket(auth, self.aliyun['endPoint'], self.aliyun['bucket'])
         if not urlex:
@@ -194,8 +231,11 @@ class keyWord(object):
                 print e
         return False
 
-    # .删除商品
     def delFirstProduct(self):
+        """
+        删除商品
+        :return: True | False
+        """
         try:
             cookie = self.Login()
             db_config = copy.deepcopy(self.db_shop_config)
@@ -218,9 +258,13 @@ class keyWord(object):
         finally:
             conn.close()
 
-    # .支付方式 parmeter: true = 添加
-    # .支付方式 parmeter: false = 删除
     def Payment(self,method_is_enable=1,payment_method="cod"):
+        """
+        支付方式公共方法
+        :param method_is_enable:  添加|删除 : 1|0
+        :param payment_method:  添加的方式
+        :return:  True | False
+        """
         cookie = self.Login()['cookie']
         changeUrl = self.home_page_url + "/api/payment/method"
         data = {"method_is_enable":method_is_enable,"payment_method":payment_method}
@@ -230,21 +274,41 @@ class keyWord(object):
             return True
         else:
             return False
-    #. 添加支付方式 cod
-    def addPaymentCod(self):
+
+    def add_payment_cod(self):
+        """
+        添加支付方式 cod
+        :return: True | False
+        """
         return self.Payment()
-    #. 添加支付方式 paylinks
-    def addPaymentPk(self):
+
+    def add_payment_pk(self):
+        """
+        添加支付方式 paylinks
+        :return: True | False
+        """
         return self.Payment(1,'credit_card')
-    # .删除支付方式 paylinks
-    def delPaymentPk(self):
+
+    def del_payment_pk(self):
+        """
+        删除支付方式 paylinks
+        :return: True | False
+        """
         return self.Payment(0,'credit_card')
-    # .删除支付方式 cod
-    def delPaymentCod(self):
+
+    def del_payment_cod(self):
+        """
+        删除支付方式 cod
+        :return: True | False
+        """
         return self.Payment(0)
 
-    # .添加中国物流 @has_other_country: 0 = 普通国家 | 1 = 其他国家
     def addShipping(self,has_other_country=0):
+        """
+        添加中国物流
+        :param has_other_country: 0 = 普通国家 | 1 = 其他国家
+        :return: True | False
+        """
         cookie = self.Login()['cookie']
         add_url = self.home_page_url + "/api/shipping/refresh"
         if has_other_country != 0: has_other_country = 1
@@ -265,8 +329,12 @@ class keyWord(object):
         except Exception as e:
             print e
     #. 添加其他国家税费
-    def addOtherTaxPrice(self):
-        #. 添加其他国家
+    def add_other_tax_price(self):
+        """
+        添加其他国家税费
+        :return:  True | False
+        """
+        # 添加其他国家
         add_shipping = self.addShipping(1)
         cookie = self.Login()['cookie']
         tax_url = self.home_page_url + "/api/tax/refresh"
@@ -277,8 +345,13 @@ class keyWord(object):
         else:
             return False
 
-    #. 添加店铺基础信息
-    def addStoreInfo(self,email="171869092@qq.com",telephone="15220581724"):
+    def add_store_info(self,email="171869092@qq.com",telephone="15220581724"):
+        """
+        添加店铺基础信息
+        :param email: 邮箱
+        :param telephone: 电话号码
+        :return: True | False
+        """
         cookie = self.Login()['cookie']
         store_rul = self.home_page_url + "/api/store/update"
         store_id = self.getStoreId()
@@ -291,7 +364,7 @@ class keyWord(object):
                 "meta_description":"null",
                 "meta_keyword":"null",
                 "meta_title":"home",
-                "name": self.datas_username,
+                "name": self.datas_domain,
                 "seo_id": 0,
                 "service_email": email,
                 "store_id": store_id,
@@ -309,20 +382,21 @@ class keyWord(object):
             return True
         else:
             return False
-    # .设置checkout结账流程的-地址-姓名输入的模式 1= 名字 2=姓 ／ 名
-    def setCheckoutStep(self,customer_name=None):
+    def set_checkout_step(self,customer_name=None,customer_contact=None):
+        """
+        设置checkout结账流程的-地址-姓名输入的模式
+        :param customer_name: 1= 名字 2=姓 ／ 名
+        :param customer_contact: 1= 邮箱 2= 手机 3 = 邮箱／手机
+        :return: True | False
+        """
         cookie = self.Login()['cookie']
         set_url = self.home_page_url + "/api/checkout/save"
-        if customer_name:
-            customer_name = 2
-        else:
-            customer_name = 1
         data = {
             "company_setting": 2,
             "customer_authority": 2,
-            "customer_contact": 3,
+            "customer_contact": int(customer_contact) or 3,
             "customer_email": 1,
-            "customer_name": int(customer_name),
+            "customer_name": int(customer_name) or 1,
             "customer_phone": 2,
             "postcode_setting": 1,
             "privacy_policy": "",
@@ -337,8 +411,12 @@ class keyWord(object):
                 return False
         except Exception as e:
             print e
-    # .删除物流方式
+
     def delShipping(self):
+        """
+        删除物流方式
+        :return: True | False
+        """
         try:
             cookie = self.Login()
             db_config = copy.deepcopy(self.db_shop_config)
@@ -480,10 +558,14 @@ class keyWord(object):
     def getProductId(self):
         return self.commonGetData()[0]['id']
 
-    # .获取满减活动时间参数,
-    # @parments: 1：活动进行中
-    # @parments: 2：活动未开始
+
     def getSubtractionTime(self, parments=None):
+        """
+        获取满减活动时间参数
+        :param parments: 1：活动进行中
+        :param parments: 2：活动未开始
+        :return:
+        """
         now_time = datetime.datetime.now()
         now_times = now_time - datetime.timedelta(days=1)
         TomorrowTime = now_time + datetime.timedelta(days=1)
@@ -495,12 +577,13 @@ class keyWord(object):
             return {"date_start": TomorrowTime.strftime('%Y-%m-%d %H:%M:%S'),
                     "date_end": beforeTime.strftime('%Y-%m-%d %H:%M:%S')}
 
-    # . 获取满减活动参数
-    # @parments:-----1: 进行中
-    # @parments:-----2: 未开始
-    # @parments:-----3: 已结束
-    # @ type: 区分使用所有商品 或者 部分商品 | None: 所有商品
     def getSubtractionData(self, argv, type=None):
+        """
+        获取满减活动参数
+        :param argv: 1: 进行中 2: 未开始 3: 已结束
+        :param type: 区分使用所有商品 或者 部分商品 | None: 所有商品
+        :return: String
+        """
         if argv is None: return False
         name = self.salt()
         product_id = self.getProductId()
@@ -538,11 +621,13 @@ class keyWord(object):
         }
         return data
 
-    # . 添加一个某种类型的满减活动
-    # @parments:-----1: 进行中
-    # @parments:-----2: 未开始
-    # @parments:-----3: 已结束
     def addSubtraction(self, argv, type=None):
+        """
+        添加一个某种类型的满减活动
+        :param argv: 1: 进行中 2: 未开始 3: 已结束
+        :param type: 区分使用所有商品 或者 部分商品 | None: 所有商品
+        :return: True | False
+        """
         if argv is None: return False
         argv = int(argv)
         url = self.home_page_url + "/api/rebate/refresh"
@@ -572,8 +657,12 @@ class keyWord(object):
         except Exception as e:
             print e
 
-    # . 删除一个满减活动 arvg参数为 "all" 删除所有的满减活动
     def delSubtraction(self, arvg=None):
+        """
+        删除一个满减活动 arvg参数为 "all" 删除所有的满减活动
+        :param arvg: 区分使用所有商品 或者 部分商品 | None: 所有商品
+        :return: True | False
+        """
         try:
             cookie = self.Login()
             db_config = copy.deepcopy(self.db_shop_config)
@@ -595,8 +684,12 @@ class keyWord(object):
         finally:
             conn.close()
 
-    # . 设置时区 ((GMT + 08:00) 北京，香港，台北，新加坡) timezone : none 设置北京时区 | 设置 美属萨摩亚时区
     def setBjTimeZone(self, timezone=None):
+        """
+        设置时区 ((GMT + 08:00) 北京，香港，台北，新加坡)
+        :param timezone: none 设置北京时区 | 设置 美属萨摩亚时区
+        :return:
+        """
         cookie = self.Login()['cookie']
         store_id = self.getStoreId()
         if timezone is None:
@@ -626,10 +719,9 @@ class keyWord(object):
         except Exception as e:
             print e
 
-
 if __name__ == '__main__':
     zx = keyWord()
-    print zx.setCheckoutStep()
+    print zx.addSubtraction(1)
     exit()
     # 设置执行入参
     parser = argparse.ArgumentParser(description='manual to this script')
