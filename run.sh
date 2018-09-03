@@ -11,7 +11,7 @@ export PATH=$PATH:/usr/local/bin/
 # $@ 从命令行取出参数列表(不能用用 $* 代替，因为 $* 将所有的参数解释成一个字符串
 #                         而 $@ 是一个参数数组)
 
-TEMP=`getopt -o em:u: -l email,module:,url: -- "$@"`
+TEMP=`getopt -o eam:u: -l email,account,module:,url: -- "$@"`
 
 # 判定 getopt 的执行时候有错，错误信息输出到 STDERR
 if [ $? != 0 ]
@@ -29,7 +29,11 @@ while true
 do
 	case "$1" in
 		-e | --email)
-			send_email='y'
+			send_email='yes'
+			shift
+			;;
+		-a | --account)
+			test_account='new'
 			shift
 			;;
 		-m | --module)
@@ -52,9 +56,15 @@ do
 done
 
 # 执行customKeyWord.py
-if [ "$test_url" ]
+if [ "$test_url" -a "$test_account" ]
+then
+    python2.7 lib/customLibrary/customKeyWord.py --url="$test_url" --user="$test_account"
+elif [ "$test_url" ]
 then
     python2.7 lib/customLibrary/customKeyWord.py --url="$test_url"
+elif [ "$test_account" ]
+then
+    python2.7 lib/customLibrary/customKeyWord.py --user="$test_account"
 else
     python2.7 lib/customLibrary/customKeyWord.py
 fi

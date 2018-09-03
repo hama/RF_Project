@@ -253,6 +253,7 @@ bash /opt/shoplaza_robot/run.sh -e -u http://admin.shoplazza.com -m 'module/03_l
 -e --email                      # 是否开启email发送功能
 -u --url                        # 指定被测环境url
 -m --module                     # 指定被执行用例
+-a --account                    # 是否先注册新用户再执行用例
 
 ## 注：此脚本仅在linux环境中可执行，mac不适用
 ```
