@@ -11,7 +11,7 @@ export PATH=$PATH:/usr/local/bin/
 # $@ 从命令行取出参数列表(不能用用 $* 代替，因为 $* 将所有的参数解释成一个字符串
 #                         而 $@ 是一个参数数组)
 
-TEMP=`getopt -o ec:u: -l email,exec:,url: -- "$@"`
+TEMP=`getopt -o em:u: -l email,module:,url: -- "$@"`
 
 # 判定 getopt 的执行时候有错，错误信息输出到 STDERR
 if [ $? != 0 ]
@@ -32,8 +32,8 @@ do
 			send_email='y'
 			shift
 			;;
-		-c | --exec)
-			test_exec="$2"
+		-m | --module)
+			test_module="$2"
 			shift 2
 			;;
 		-u | --url)
@@ -60,9 +60,9 @@ else
 fi
 
 # 执行用例
-if [ "$test_exec" ]
+if [ "$test_module" ]
 then
-    robot -v is_headless:True -d logs/ "$test_exec"
+    robot -v is_headless:True -d logs/ "$test_module"
 else
     robot -v is_headless:True -d logs/ module/03_login/*
 fi

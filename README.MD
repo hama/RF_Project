@@ -247,12 +247,12 @@ ROBOT_INTERNAL_TRACES			# 非空时，错误堆栈将包含方法调用
 ### 5.2 run.sh运行测试用例
 ```shell
 # 基本命令如下
-bash /opt/shoplaza_robot/run.sh -e -u http://admin.shoplazza.com -c 'module/03_login/* module/04_register/*'
+bash /opt/shoplaza_robot/run.sh -e -u http://admin.shoplazza.com -m 'module/03_login/* module/04_register/*'
 
 # 参数说明
 -e --email                      # 是否开启email发送功能
 -u --url                        # 指定被测环境url
--c --exec                       # 指定被执行用例
+-m --module                     # 指定被执行用例
 
 ## 注：此脚本仅在linux环境中可执行，mac不适用
 ```
