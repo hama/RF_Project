@@ -62,7 +62,7 @@ fi
 # 执行用例
 if [ "$test_module" ]
 then
-    robot -v is_headless:True -d logs/ "$test_module"
+    robot -v is_headless:True -d logs/ $test_module
 else
     robot -v is_headless:True -d logs/ module/03_login/*
 fi
