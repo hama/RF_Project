@@ -151,3 +151,4 @@ findpwd012
     Wait And Click Element    ${locatorB_login_btn_login}
     Wait Until Page Contains Element    ${locatorB_order}
     Logout
+    Wait Until Page Contains Element    ${locatorB_login_input_account}

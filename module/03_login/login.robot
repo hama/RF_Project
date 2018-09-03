@@ -21,6 +21,7 @@ login001
     Wait And Click Element    ${locatorB_login_btn_login}
     Wait Until Page Contains Element    ${locatorB_order}
     Logout
+    Wait Until Page Contains Element    ${locatorB_login_input_account}
 
 login002
     [Documentation]     主账号登录失败_未注册账号
@@ -76,6 +77,8 @@ login007
     Wait And Click Element    ${locatorB_login_btn_login}
     Wait Until Page Contains Element    ${locatorB_order}
     Logout
+    Wait Until Page Contains Element    ${locatorB_login_input_account}
+
 
 login008
     [Documentation]     员工账号登录失败_未注册的域名
