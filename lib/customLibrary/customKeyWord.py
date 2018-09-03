@@ -720,9 +720,6 @@ class keyWord(object):
             print e
 
 if __name__ == '__main__':
-    zx = keyWord()
-    print zx.addSubtraction(1)
-    exit()
     # 设置执行入参
     parser = argparse.ArgumentParser(description='manual to this script')
     parser.add_argument('--url', type=str, default='http://admin1024.shoplazza.com')
