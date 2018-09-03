@@ -14,7 +14,7 @@ Resource          ../../resources/keywords/kw_login.robot
 *** Test Cases ***
 findpwd001
     [Documentation]    密码找回成功
-    [Tags]    P0
+    [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_login_btn_findpwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
     Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
@@ -129,7 +129,7 @@ findpwd011
 
 findpwd012
     [Documentation]    密码修改成功
-    [Tags]    P0
+    [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_login_btn_findpwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
     Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}

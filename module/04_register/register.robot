@@ -12,24 +12,25 @@ Resource          ../../resources/keywords/kw_browser.robot
 Resource          ../../resources/variable/var_login.robot
 
 *** Test Cases ***
-#register_001
-#    [Documentation]    注册信息成功
-#    [Tags]    P0
-#    Del User Fromdb    ${register_contact}
-#    Wait And Click Element    ${locatorB_login_btn_register}
-#    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
-#    Wait And input text    ${locatorB_login_input_domain}    ${register_domain}
-#    Wait And input password    ${locatorB_login_input_password}    ${register_pwd}
-#    Wait And input password    ${locatorB_login_input_confirmPwd}    ${register_pwd}
-#    Wait And input text    ${locatorB_login_input_account}    ${register_contact}
-#    Wait And Click Element    dom:document.querySelectorAll("button")[0]
-#    Sleep    2
-#    ${code}    Get Latest Vcode Fromdb    ${register_contact}
-#    Wait And input text    ${locatorB_login_input_vcode}    ${code}
-#    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
-#    Wait And Click Element    dom:document.querySelectorAll("button")[1]
-#    Wait Until Page Contains Element    ${locatorB_order}
-#    Logout
+register_001
+    [Documentation]    注册信息成功
+    [Tags]    P0    threshold
+    Del User Fromdb    ${register_contact}
+    Wait And Click Element    ${locatorB_login_btn_register}
+    Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
+    Wait And input text    ${locatorB_login_input_domain}    ${register_domain}
+    Wait And input password    ${locatorB_login_input_password}    ${register_pwd}
+    Wait And input password    ${locatorB_login_input_confirmPwd}    ${register_pwd}
+    Wait And input text    ${locatorB_login_input_account}    ${register_contact}
+    Wait And Click Element    dom:document.querySelectorAll("button")[0]
+    Sleep    2
+    ${code}    Get Latest Vcode Fromdb    ${register_contact}
+    Wait And input text    ${locatorB_login_input_vcode}    ${code}
+    Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
+    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    Wait Until Page Contains Element    ${locatorB_order}
+    Logout
+    Wait Until Page Contains Element    ${locatorB_login_input_account}
 
 register_002
     [Documentation]    注册信息失败_已注册的域名

@@ -15,10 +15,10 @@ Resource          ../../resources/keywords/kw_login.robot
 *** Test Cases ***
 logout001
     [Documentation]     退出登录成功
-    [Tags]    P0
+    [Tags]    P0    threshold
     Wait And Input Text     ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Click Element    ${locatorB_login_btn_login}
     Wait Until Page Contains Element    ${locatorB_order}
     Logout
-    Wait Until Page Contains Text    登录我的店匠店铺
+    Wait Until Page Contains Element    ${locatorB_login_input_account}
