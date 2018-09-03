@@ -111,7 +111,8 @@ Select_Order_Page_With_Sub_Product
 Complete_Order_Message
     [Documentation]    点击添加地址按钮，填写信息，点击保存按钮，点击进入支付页
     #添加地址信息
-    #Wait And Click Element    id:addAddress
+    ${type}    Execute JavaScript    return document.querySelectorAll("#addAddress")[0]===undefined
+    Run keyword If    '${type}'=='False'    Wait And Click Element    id:addAddress
     #first name
     Wait And Input Text    ${locatorB_checkout_address_first_name}    zc
     #last name
@@ -142,7 +143,7 @@ Complete_Order_Message
 Complete_Order_Message_Not_Submit
     [Documentation]    点击添加地址按钮，填写信息，点击保存按钮，点击进入支付页
     #添加地址信息
-    Wait And Click Element    id:addAddress
+    #Wait And Click Element    id:addAddress
     #first name
     Wait And Input Text    ${locatorB_checkout_address_first_name}    zc
     #last name
@@ -170,7 +171,7 @@ Complete_Order_Message_Not_Submit
 Complete_Order_Message_Without_Phone
     [Documentation]    点击添加地址按钮，填写信息（只需填写邮箱），点击保存按钮，不点击进入支付页
     #添加地址信息
-    Wait And Click Element    id:addAddress
+    #Wait And Click Element    id:addAddress
     #first name
     Wait And Input Text    ${locatorB_checkout_address_first_name}    zc
     #last name
@@ -196,14 +197,10 @@ Complete_Order_Message_Without_Phone
 Complete_Order_Message_Without_Last_name
     [Documentation]    点击添加地址按钮，填写信息（只需填写first name），点击保存按钮，不点击进入支付页
     #添加地址信息
-    Wait And Click Element    id:addAddress
     #first name
     Wait And Input Text    ${locatorB_checkout_address_first_name}    zc
     #选择国家
     Select From List By Index    ${locatorB_checkout_address_select_country}    1
-    Sleep    2
-    #选择身份
-    Select From List By Index    id:shipping_zone_id    1
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
@@ -222,7 +219,7 @@ Complete_Order_Message_Without_Last_name
 Add_Sub_Product_With_Already_Product
     [Documentation]    给第一个现有的无子产品的商品添加两个子产品
     #点击第一件商品进入商品详情页
-    Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
+    Click And Page Contains Element With Refresh    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    dom:document.getElementById("test_variant_setting_btn")
     Sleep    2
     #划到底部
     Execute Javascript    return document.getElementById("test_variant_setting_btn").scrollIntoView()
@@ -248,16 +245,14 @@ Delete_Sub_Product_With_Already_Product
     [Documentation]    此时第一个商品下有两个子产品，删除当前第一个商品下的第n个子商品（第一个子产品为下单时选中的子产品）
     Go To Products Page
     #点击第一件商品进入商品详情页
-    Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
-    Sleep    2
+    Click And Page Contains Element With Refresh    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    document.getElementById("test_single_variant_setting_btn")
     #划到底部
     Execute Javascript    return document.getElementById("test_single_variant_setting_btn").scrollIntoView()
     #删除第n个子商品
     Wait And Click Element    dom:document.querySelectorAll('tbody tr:nth-child(${index}) td i')[1]
     Wait And Click Element    dom:document.querySelectorAll('.ant-btn-sm')[1]
     #点击保存
-    Wait And Click Element    ${locatorB_productsNew_button_save}
-    Sleep    3
+    Click And Page Contains Element With Refresh    ${locatorB_productsNew_button_save}    ${locatorB_productsMgmt_text_firstProductName}
 
 Select_Quantity_0
     [Documentation]    勾选该商品库存为0时仍可购买
@@ -278,19 +273,16 @@ Select_Quantity_0
 Cancel_Select_Quantity_0
     [Documentation]    取消勾选该商品库存为0时仍可购买
     #点击第一件商品进入商品详情页
-    Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
-    Sleep    2
+    #Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
+    Click And Page Contains Element With Refresh    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    dom:document.querySelectorAll(".ant-checkbox-inner")[1]
     #划到底部
     Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[1].scrollIntoView()
-    Sleep    2
     #点击取消库存为0时仍可购买
-    Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[3].click()
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[2].click()
     #点击保存
-    Wait And Click Element    ${locatorB_productsNew_button_save}
-    Sleep    5
+    Click And Page Contains Element With Refresh    ${locatorB_productsNew_button_save}    ${locatorB_productsMgmt_text_firstProductName}
     #点击确定按钮
-    Wait And Click Element    dom:document.querySelectorAll(".ant-confirm-btns .ant-btn-primary")[0]
-    Sleep    5
+    #Wait And Click Element    dom:document.querySelectorAll(".ant-confirm-btns .ant-btn-primary")[0]
 
 Cancel_Select_Quantity
     [Documentation]    取消勾选该商品跟踪库存
@@ -347,80 +339,47 @@ Set_Quantity
 To_Change_Image
     [Documentation]    更换商品的图片，前提该商品已有一张图片
     Go To Products Page
-    Sleep    5
     #点击第一件商品进入商品详情页
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
-    Sleep    5
+    Sleep    2
     #划到底部
-    Execute Javascript    return document.querySelectorAll(".row___3Mua7")[0].scrollIntoView()
+    Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[2].scrollIntoView()
     Sleep    2
     #删除第一张图片
-    Mouse Over    ${locatorB_products_image_center}
+    Mouse Over    ${locatorB_productsMgmt_image_center}
     Wait And Click Element    dom:document.querySelectorAll(".delete")[0]
     #更新另外一张图片
-    Choose File    ${locatorB_products_chooseFile}    ${file_products_addImg2}
+    Sleep    2
+    Choose File    ${locatorB_productsNew_input_chooseFile}    /Users/dianjiang/shoplaza/shoplaza_robot/resources/images/mv.jpg
     Sleep    2
 
 Delete_All_Sub_Product_With_Already_Product
     [Documentation]    此时第一个商品下有两个子产品，删除当前第一个商品下的所有子商品
     Go To Products Page
-    Sleep    5
     #点击第一件商品进入商品详情页
-    Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
-    Sleep    5
+    Click And Page Contains Element With Refresh    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    document.getElementById("test_single_variant_setting_btn")
     #划到底部
     Execute Javascript    return document.getElementById("test_single_variant_setting_btn").scrollIntoView()
     Sleep    2
     #点击单一款式按钮
     Wait And Click Element    id:test_single_variant_setting_btn
-    Sleep    5
+    #Click And Page Contains Element With Refresh    id:test_single_variant_setting_btn    dom:document.querySelectorAll("button span")[38]
+    Sleep    2
     #点击确定按钮
-    Wait And Click Element    id:test_delete_modal_sure_btn
+    Wait And Click Element    dom:document.querySelectorAll(".ant-modal-body")[0].querySelectorAll(".middle_btn___2ExQc")[0]
+    #Execute Javascript    return document.querySelectorAll("button span")[38].click()
     Sleep    2
     #点击保存
-    Wait And Click Element    ${locatorB_productsNew_button_save}
-    Sleep    5
+    Click And Page Contains Element With Refresh    ${locatorB_productsNew_button_save}    ${locatorB_productsMgmt_text_firstProductName}
 
-Add_Full_Reduction
-    [Documentation]    添加全部商品的满减活动，适用时要先定义变量name,full,cut
-    #进入满减活动页面
-    Go To Marketing Page
-    Sleep    2
-    #点击新增活动按钮
-    Wait And Click Element    ${locatorB_marketing_button_addSubstraction}
-    Sleep    5
-    #活动名称
-    Wait And Input Text    id:name    ${name}
-    #活动开始时间
-    Wait And Click Element    dom:document.querySelectorAll(".ant-calendar-picker-input")[0]    #点击弹出时间选择器
-    Wait And Click Element    dom:document.querySelectorAll(".ant-calendar-selected-day .ant-calendar-date")[0]    #点击选择亮起的时间
-    Wait And Click Element    dom:document.querySelectorAll(".ant-calendar-ok-btn")[0]    #点击时间选择器中的确定按钮，起始时间为当前时间
-    Sleep    1
-    #选择“长期”
-    Select Checkbox    dom:document.querySelectorAll(".ant-checkbox-input")[0]
-    #优惠类型,这里默认选中“满额减元”
-    #满10
-    Wait And Input Text    id:totalPrice0    ${full}
-    #点击满减checkbox
-    Select Checkbox    dom:document.querySelectorAll(".ant-checkbox-input")[2]
-    #减3
-    Wait And Input Text    id:cutPrice0    ${cut}
-    #选择适用范围
-    Wait And Click Element    dom:document.querySelectorAll(".li___2Fxhj")[0]
-    #点击保存按钮
-    Wait And Click Element    ${locatorB_productsNew_button_save}
-    Sleep    5
 
 End_First_Full_Reduction
     [Documentation]    提前结束第一个满减活动
     #进入满减活动页面
     Go To Marketing Page
-    Sleep    2
     #点击第一个提前结束按钮
     Wait And Click Element    dom:document.querySelectorAll(".stop_icon___1u6D1")[0]
-    Sleep    5
-    Wait And Click Element    id:test_delete_modal_sure_btn
-    Sleep    2
+    Wait And Click Element    dom:document.querySelectorAll("button")[5]
 
 Modify_First_Full_Reduction
     [Documentation]    修改第一个满减活动的优惠内容
@@ -557,6 +516,22 @@ Add Product Wait
     [Documentation]    添加商品等待
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    addProducts
+    \    ${res_status}    add_products
+    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
+    \    ...    ELSE    Sleep    1
+
+Add OtherTaxPrice Wait
+    [Documentation]    添加商品等待
+    [Arguments]    ${count}=10
+    :FOR    ${i}    IN RANGE    ${count}
+    \    ${res_status}    add_other_tax_price
+    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
+    \    ...    ELSE    Sleep    1
+
+Add StoreInfo Wait
+    [Documentation]    添加店铺基础信息
+    [Arguments]    ${par}    ${pars}    ${count}=10
+    :FOR    ${i}    IN RANGE    ${count}
+    \    ${res_status}    add_store_info    ${par}    ${pars}
     \    Run keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1

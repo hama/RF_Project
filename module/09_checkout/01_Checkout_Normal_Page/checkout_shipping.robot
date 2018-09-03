@@ -146,6 +146,7 @@ Checkout_Show_Detail
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Sleep Time
     Page Should Contain Element    ${element}
+    Wait Add StoreInfo
 
 Common_Step
     [Documentation]    公共suite

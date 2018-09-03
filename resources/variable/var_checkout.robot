@@ -33,3 +33,6 @@ ${locator_checkout_submit_save_btn}    id:submitPaymentMb    #.checkout-提交�
 ${locator_checkout_payment_ipaylinks_elm}    dom:document.querySelectorAll("label[for='ipaylinks']")[0]    #.checkout-选择支付方式 ipaylinks 元素
 ${locator_checkout_payment_cod_elm}    dom:document.querySelectorAll("label[for='cod']")[0]    #.checkout-选择支付方式 cod 元素
 
+${locatorB_checkout_submitOrderPass_msg}    Your order has been submitted successfully.    #.提交订单成功的页面出现的字体
+${locatorB_checkout_Cod_font}    Cash on Delivery    #.货到付款 字体
+

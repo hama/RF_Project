@@ -1,11 +1,10 @@
 *** Settings ***
 Documentation     将必填改为选择天或将选填改为必填，跳转到支付界面，可支付成功
 Suite Setup       Products Suite Setup
-Suite Teardown    Products Suite Teardown
-Test Setup        Products Test Case Setup
 Test Teardown     Products Test Case Teardown
+Suite Teardown    Close Test Suite Browser
 Force Tags        Checkout
-Library           ${CURDIR}/../../lib/customLibrary
+Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/variable/var_products.robot
 Resource          ../../../resources/keywords/kw_common.robot
@@ -26,38 +25,23 @@ checkout136
     Select_Order_Page    ${title}
     #填写完地址信息,不提交
     Complete_Order_Message_Not_Submit
-    #进入后台，修改选填或必填
-    Select Window    店匠科技
-    Modify_Set_Radio    3
-    #跳回checkout页
-    Select Window    title=${user_default_domain}
+    #修改选填或必填
+    Change Checkout Setp Wait    2
     #点击submit按钮
-    Wait And Click Element    id:submitMbPay
-    #进入支付页
+    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
+    Execute Javascript    return document.querySelectorAll("label[for='cod']")[0].scrollIntoView()
+    Wait And Click Element    ${locator_checkout_payment_cod_elm}
     #点击pay now
-    Wait And Click Element    dom:document.querySelectorAll(".submitPaymentMb")[0]
+    Wait And Click Element    ${locator_checkout_submit_save_btn}
     #显示支付成功
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".show_success")[0]
-    Page Should Contain    Your order has been submitted successfully.
+    Wait Until Page Contains    ${locatorB_checkout_submitOrderPass_msg}
 
 *** Keywords ***
 Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品
     Login With Default User
-    Start Ajax Listener
-    Add Product_Up
-    Sleep    8
-    Go To Products Page
-
-Products Suite Teardown
-    [Documentation]    删除商品，还原之前的设置
-    Select Window    店匠科技
-    Go To Products Page
-    Delete_First_Product
-    Modify_Set_Radio    2
-    Close Test Suite Browser
-
-Products Test Case Setup
+    Add Product Wait
+    Add Payment Cod Wait
     Go To Products Page
 
 Products Test Case Teardown

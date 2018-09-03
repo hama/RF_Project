@@ -40,7 +40,7 @@ ${locatorB_productsMgmt_icon_migrateProduct}    dom:document.querySelectorAll(".
 ${locatorB_productsMgmt_icon_uploadProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[2]    #商品列表页的上传商品按钮
 ${locatorB_productsMgmt_image_center}    dom:document.querySelectorAll(".center___1nHSZ")[0]    #商品列表的图片
 ${locatorB_productsMgmt_icon_preview}    dom:document.querySelectorAll("tbody tr:nth-child(1) td i")[0]    #商品列表的预览icon
-${locatorB_productsMgmt_icon_delete}    dom:document.querySelectorAll(".delete___2xfx-")[0]    #商品列表的删除icon
+${locatorB_productsMgmt_icon_delete}    dom:document.querySelectorAll("tbody tr td div i")[1]    #商品列表的删除icon
 ${locatorB_productsMgmt_button_delTags}    dom:document.querySelectorAll(".ant-btn-primary")[0]    #删除标签弹框的删除button
 
 # locator_productsType
@@ -96,5 +96,5 @@ ${contentB_products_tips_shelf_ok}    上架成功
 ${file_products_template}    ${CURDIR}/xlsx/product_template.xlsx    # 添加单个商品模版文件
 ${file_products_templates}    ${CURDIR}/xlsx/products_template.xlsx    # 添加多个商品模版文件
 ${file_products_wrong_template}    ${CURDIR}/xlsx/wrong_format.xlsx    # 添加单个的错误的商品模版文件
-${file_products_addImg}    ${CURDIR}/images/tm.jpg    # 添加商品图片
-${file_products_addImg2}    ${CURDIR}/images/mv.jpg    # 添加商品图片
+${file_products_addImg}    ${CURDIR}/../images/tm.jpg    # 添加商品图片
+${file_products_addImg2}    ${CURDIR}/../images/mv.jpg    # 添加商品图片
