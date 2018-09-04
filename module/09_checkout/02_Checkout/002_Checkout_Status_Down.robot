@@ -18,27 +18,6 @@ ${name}           Cash on Delivery222
 ${tax_price}      1
 
 *** Test Cases ***
-cccccc
-    Common Add GoTo Page
-    #获取第一个商品名称
-    Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
-    Wait Until Element Is Visible    title
-    ${title}    Get Text    title
-    #先设置成只需填写邮箱
-    Add StoreInfo Wait    ''    ''
-    #进入checkout页面
-    Select_Order_Page    ${title}
-    #填写完地址信息(只填写邮箱)，不点击提交按钮
-    Complete_Order_Message_Without_Phone
-    #进入后台，修改为填写手机和邮箱
-    Select Window    店匠科技
-    Add StoreInfo Wait    ''    ''
-    #跳回checkout页
-    Select Window    title=${user_default_domain}
-    #手机
-    Element Should Be Visible    ${locatorB_checkout_address_phone}
-    #邮箱
-    Element Should Be Visible    ${locatorB_checkout_address_email}
 checkout105
     [Documentation]    "1.将本次购买的商品下架2.点击submit" submit之后直接跳转到支付失败界面
     [Tags]    P0
@@ -243,7 +222,7 @@ checkout127
     Del Payment Cod Wait
     Select_Order_Page    ${title}
     Complete_Order_Message_Not_Submit
-        Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
+    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     #不应该包含货到付款等字样
     Page Should Not Contain    ${locatorB_checkout_Cod_font}
 
