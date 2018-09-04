@@ -53,6 +53,7 @@ Open Test Browser
     #    Sleep    2
     Set Window Position    0    0
     Set Window Size    1440    1080
+    Sleep    5
 
 Open Headless Chrome
     [Arguments]    ${url}

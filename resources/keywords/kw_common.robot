@@ -107,28 +107,28 @@ Go To Subtraction Page
 
 
 Wait And Input Text
-    [Arguments]    ${element_locator}    ${text}    ${timeout}=3    ${retry_time}=1
+    [Arguments]    ${element_locator}    ${text}    ${timeout}=10
     [Documentation]    封装的输入方法，等待元素可被输入时，再输入
-    Wait Until Element Is Visible    ${element_locator}
-    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Input Text    ${element_locator}    ${text}
+    Wait Until Element Is Visible    ${element_locator}    timeout=${timeout}
+    Input Text    ${element_locator}    ${text}
 
 Wait And Input Password
-    [Arguments]    ${element_locator}    ${pwd}    ${timeout}=3    ${retry_time}=1
+    [Arguments]    ${element_locator}    ${pwd}    ${timeout}=10
     [Documentation]    封装的输入方法，等待元素可被输入时，再输入
-    Wait Until Element Is Visible    ${element_locator}
-    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Input Password    ${element_locator}    ${pwd}
+    Wait Until Element Is Visible    ${element_locator}    timeout=${timeout}
+    Input Password    ${element_locator}    ${pwd}
 
 Wait And Click Element
-    [Arguments]    ${element_locator}    ${timeout}=25    ${retry_time}=5
-    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
-    Wait Until Element Is Visible    ${element_locator}
-    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
+    [Arguments]    ${element_locator}    ${timeout}=25
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击
+    Wait Until Element Is Visible    ${element_locator}    timeout=${timeout}
+    Click Element    ${element_locator}
 
 Wait And Select Checkbox
-    [Arguments]    ${element_locator}    ${timeout}=3    ${retry_time}=1
-    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
-    Wait Until Element Is Visible    ${element_locator}
-    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Select Checkbox    ${element_locator}
+    [Arguments]    ${element_locator}    ${timeout}=10
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击
+    Wait Until Element Is Visible    ${element_locator}    timeout=${timeout}
+    Select Checkbox    ${element_locator}
 
 Common Js Click
     [Arguments]    ${element}    ${index}
