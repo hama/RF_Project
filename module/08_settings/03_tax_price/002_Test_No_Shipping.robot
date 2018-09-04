@@ -5,7 +5,7 @@ Suite Teardown    Close Test Suite Browser
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Force Tags        tax
-Library           SeleniumLibrary
+Library           SeleniumLibrary    run_on_failure=NOTHING
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/variable/var_tax_price.robot
 Resource          ../../../resources/variable/var_shipping.robot

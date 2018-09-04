@@ -30,7 +30,7 @@ Setup Test Case
 Teardown Test Case
     [Documentation]
     #    测试用例执行失败进行截图
-    #Run Keyword If Test Failed    Capture Page Screenshot
+    Run Keyword If Test Failed    Capture Page Screenshot
     @{window_handles}    Get Window Handles
     Execute Javascript    window.open("${home_page}")
     :FOR    ${window_handle}    IN    @{window_handles}

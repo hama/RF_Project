@@ -4,7 +4,7 @@ Suite Teardown    Close Test Suite Browser
 Test Setup        Login Testcase Setup
 Test Teardown     Teardown Test Case
 Force Tags        findpwd
-Library           SeleniumLibrary
+Library           SeleniumLibrary    run_on_failure=NOTHING
 Resource          ../../resources/variable/var_common.robot
 Resource          ../../resources/keywords/kw_common.robot
 Resource          ../../resources/keywords/kw_browser.robot

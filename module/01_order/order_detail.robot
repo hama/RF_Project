@@ -6,7 +6,7 @@ Resource          ../../resources/keywords/kw_browser.robot    #Suite Teardown  
 Resource          ../../resources/variable/var_tax_price.robot
 Resource          ../../resources/keywords/kw_common.robot
 Resource          ../../resources/variable/var_order.robot
-Library           SeleniumLibrary
+Library           SeleniumLibrary    run_on_failure=NOTHING
 Resource          ../../resources/keywords/kw_add_order.robot
 Resource          ../../resources/keywords/kw_order.robot
 Resource          ../../resources/keywords/kw_products.robot
