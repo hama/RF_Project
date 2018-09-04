@@ -111,8 +111,8 @@ Select_Order_Page_With_Sub_Product
 Complete_Order_Message
     [Documentation]    点击添加地址按钮，填写信息，点击保存按钮，点击进入支付页
     #添加地址信息
-    ${type}    Execute JavaScript    return document.querySelectorAll("#addAddress")[0]===undefined
-    Run keyword If    '${type}'=='False'    Wait And Click Element    id:addAddress
+    #${type}    Execute JavaScript    return document.querySelectorAll("#addAddress")[0]===undefined
+    #Run keyword If    '${type}'=='False'    Wait And Click Element    id:addAddress
     #first name
     Wait And Input Text    ${locatorB_checkout_address_first_name}    zc
     #last name
@@ -513,7 +513,7 @@ Close_Card
     Run Keyword If    '${class}'=='ant-switch ant-switch-checked'    Change_Card    #关闭
 
 Add Product Wait
-    [Documentation]    添加商品等待
+    [Documentation]    等待添加商品
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
     \    ${res_status}    add_products
@@ -521,7 +521,7 @@ Add Product Wait
     \    ...    ELSE    Sleep    1
 
 Add OtherTaxPrice Wait
-    [Documentation]    添加商品等待
+    [Documentation]    等待添加其他税费
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
     \    ${res_status}    add_other_tax_price
@@ -529,7 +529,7 @@ Add OtherTaxPrice Wait
     \    ...    ELSE    Sleep    1
 
 Add StoreInfo Wait
-    [Documentation]    添加店铺基础信息
+    [Documentation]    等待添加店铺基础信息
     [Arguments]    ${par}    ${pars}    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
     \    ${res_status}    add_store_info    ${par}    ${pars}

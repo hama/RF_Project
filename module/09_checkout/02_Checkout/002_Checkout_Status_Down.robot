@@ -221,7 +221,8 @@ checkout127
     #进入设置-收款渠道，关闭货到付款
     Del Payment Cod Wait
     Select_Order_Page    ${title}
-    Complete_Order_Message
+    Complete_Order_Message_Not_Submit
+    Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     #不应该包含货到付款等字样
     Page Should Not Contain    ${locatorB_checkout_Cod_font}
 
@@ -327,7 +328,7 @@ checkout135
     [Tags]    P0
     Common Add GoTo Page
     #. 修改付款流程的地址为 输入名字
-    Change Checkout Setp Wait    ${empty}
+    Change Checkout Setp Wait    ${Empty}
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title

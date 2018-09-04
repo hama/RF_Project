@@ -4,6 +4,7 @@ Resource          ../variable/var_common.robot
 Resource          kw_browser.robot
 Resource          kw_products.robot
 Resource          ../variable/var_login.robot
+Resource          ../variable/var_coupon.robot
 
 *** Keywords ***
 Login With Default User
@@ -104,6 +105,17 @@ Go To Subtraction Page
     ...    ELSE    Wait And Click Element    ${locatorB_marketing_subtraction}
     Page Should Contain    ${locatorB_subtraction_header_text}
     Location Should Be    ${url_subtraction}
+
+Go To Coupon Page
+    [Documentation]    跳转营销-优惠券页面
+    Wait Until Element Is Visible    ${locatorB_marketing}
+    # 若营销按钮没展开，则展开营销按钮
+    ${data}    Get Select Elements    1    # 获取导航栏营销下拉元素
+    Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_marketing}
+    Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_marketing_coupon_code}
+    ...    ELSE    Wait And Click Element    ${locatorB_marketing_coupon_code}
+    Page Should Contain    ${locatorB_couponLst_couponText}
+    Location Should Be    ${url_coupon_code}
 
 
 Wait And Input Text
@@ -275,7 +287,7 @@ Wait Add StoreInfo
 
 Change Checkout Setp Wait
     [Documentation]    修改结账流程的 地址输入模式
-    [Arguments]    ${parameter}    ${type}=''    ${count}=10
+    [Arguments]    ${parameter}    ${type}=${Empty}    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
     \    ${res_status}    set_checkout_step    ${parameter}    ${type}
     \    Run keyword If    '${res_status}'=='True'    Exit For Loop
