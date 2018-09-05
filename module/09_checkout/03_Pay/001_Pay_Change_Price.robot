@@ -2,7 +2,7 @@
 Documentation     在支付界面返回后台修改本次购买的商品价格，再返回支付界面点击pay now，将以原来的价格支付成功
 Suite Setup       Products Suite Setup
 Suite Teardown    Close Test Suite Browser
-Test Teardown     Products Test Case Teardown
+Test Teardown     Teardown Test Case
 Force Tags        Checkout
 Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/variable/var_common.robot

@@ -3,7 +3,7 @@ Documentation     结账设置中改变姓名填写格式，pay now后支付成�
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup
-Test Teardown     Products Test Case Teardown
+Test Teardown     Teardown Test Case
 Force Tags        Checkout
 Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/variable/var_common.robot

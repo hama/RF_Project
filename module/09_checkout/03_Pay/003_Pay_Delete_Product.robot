@@ -3,7 +3,7 @@ Documentation     在支付界面返回后台删除本次购买的商品，再�
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup
-Test Teardown     Products Test Case Teardown
+Test Teardown     Teardown Test Case
 Force Tags        Checkout
 Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/variable/var_common.robot

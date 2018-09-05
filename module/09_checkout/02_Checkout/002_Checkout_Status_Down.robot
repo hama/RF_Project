@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation     将本次购买的商品下架，submit之后直接显示"支付失败"
 Suite Setup       Products Suite Setup
-
 Suite Teardown    Close Test Suite Browser
 Test Teardown     Teardown Test Case
 Force Tags        Checkout

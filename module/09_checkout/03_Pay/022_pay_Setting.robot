@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Ckeckout Page Check
 Suite Setup       Login With Default User
-Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
+Suite Teardown    Close Test Suite Browser
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Force Tags        Checkout

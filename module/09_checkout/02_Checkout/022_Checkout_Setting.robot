@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     将必填改为选择天或将选填改为必填，跳转到支付界面，可支付成功
 Suite Setup       Products Suite Setup
-Test Teardown     Products Test Case Teardown
+Test Teardown     Teardown Test Case
 Suite Teardown    Close Test Suite Browser
 Force Tags        Checkout
 Library           ${CURDIR}/../../../lib/customLibrary

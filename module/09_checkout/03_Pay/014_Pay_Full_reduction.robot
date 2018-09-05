@@ -3,7 +3,7 @@ Documentation     先添加一个商品和一个包括全部商品的满减活�
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup
-Test Teardown     Products Test Case Teardown
+Test Teardown     Teardown Test Case
 Force Tags        Checkout
 Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/variable/var_common.robot

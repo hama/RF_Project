@@ -2,6 +2,7 @@
 Suite Setup       Login With Default User
 Suite Teardown    Close Test Suite Browser
 Force Tags        Order
+Test Teardown     Teardown Test Case
 Library           ${CURDIR}/../../lib/customLibrary
 Resource          ../../resources/keywords/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Resource          ../../resources/variable/var_tax_price.robot
