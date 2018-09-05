@@ -7,10 +7,11 @@ import hashlib
 import json
 import os
 import random
+import re
 import sys
 import time
 import uuid
-import re
+
 import oss2
 import pymysql
 import requests
@@ -46,6 +47,8 @@ class keyWord(object):
         self.db_service_config = json.loads(config.get("common_db", "db_service_config"))
         self.db_shop_config = json.loads(config.get("common_db", "db_shop_config"))
 
+        self.cookie = self.Login()
+
     def Login(self):
         """
         公共登陆方法
@@ -58,20 +61,18 @@ class keyWord(object):
             return False
         # uid为店铺id
         uid = json.loads(res.content)['data']['id']
-        cookiesx = '; '.join(['='.join(item) for item in res.cookies.items()])
+        cookie = '; '.join(['='.join(item) for item in res.cookies.items()])
 
-        return {"cookie": cookiesx, "uid": uid}
+        return {"cookie": cookie, "uid": uid}
 
-    def commonGetData(self, p_url=''):
+    def product_search(self, api='/api/product/search?page=0&limit=20'):
         """
         公共获取数据方法
         :param p_url: url
         :return: dict
         """
-        if not p_url:
-            p_url = self.home_page_url + "/api/product/search?page=0&limit=20"
-        cookiesx = self.Login()['cookie']
-        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
+        p_url = self.home_page_url + api
+        sub_list = requests.get(url=p_url, headers={"cookie": self.cookie['cookie']})
         res_data = json.loads(sub_list.content)['data']['products']
         return res_data
 
@@ -150,9 +151,7 @@ class keyWord(object):
         # .获取图片
         imgs = self.upload_oss(self.img)[0]
         path_img = "//cn.cdn.shoplazza.com/" + self.upload_oss(self.img)[0]
-        addProUrl = self.home_page_url + "/api/product/add"
-        # .获取cookie
-        cookie = self.Login()
+        url = self.home_page_url + "/api/product/add"
         data = {
             "barcode": "",
             "brief": "自动化测试",
@@ -163,7 +162,7 @@ class keyWord(object):
                         "status": "done", "type": "image/jpeg", "uid": "rc-upload-1535093594875-2", "url": path_img}],
             "meta_description": "",
             "meta_keyword": "",
-            "meta_title": "自动化测试",
+            "meta_title": "sub自动化测试",
             "price": 99,
             "status": 1,
             "title": "自动化测试",
@@ -173,7 +172,26 @@ class keyWord(object):
                           "weight": "", "weight_unit": "kg"}]
         }
         try:
-            resData = requests.post(url=addProUrl, headers={"cookie": cookie['cookie']}, json=data)
+            resData = requests.post(url=url, headers={"cookie": self.cookie['cookie']}, json=data)
+            if resData.status_code == 200 and json.loads(resData.content)['state'] == 0:
+                return True
+            else:
+                return False
+
+        except Exception as e:
+            return e
+
+    def updates_status(self, product_list, status):
+        """
+        更改商品状态
+        :param product_list:
+        :param status: -1 = 删除商品（非数据库） | 0 = 设置下架 | 1 = 设置上架
+        :return:
+        """
+        url = self.home_page_url + "/api/product/updatestatus"
+        data = {"product_ids": product_list, "status": status}
+        try:
+            resData = requests.post(url=url, headers={"cookie": self.cookie['cookie']}, json=data)
             if resData.status_code == 200 and json.loads(resData.content)['state'] == 0:
                 return True
             else:
@@ -237,10 +255,9 @@ class keyWord(object):
         :return: True | False
         """
         try:
-            cookie = self.Login()
             db_config = copy.deepcopy(self.db_shop_config)
             db_config['cursorclass'] = pymysql.cursors.DictCursor
-            db_config['db'] = db_config['db'] + str(cookie['uid'])
+            db_config['db'] = db_config['db'] + str(self.cookie['uid'])
             conn = pymysql.connect(**db_config)
             curs = conn.cursor()
             SQL = "SELECT (product_id) FROM `product` order by product_id desc"
@@ -248,7 +265,7 @@ class keyWord(object):
             sub = curs.fetchone()['product_id']
             del_url = self.home_page_url + "/api/product/updatestatus"
             del_data = {"product_ids": [str(sub)], "status": -1}
-            result = requests.post(url=del_url, headers={'cookie': cookie['cookie']}, json=del_data)
+            result = requests.post(url=del_url, headers={'cookie': self.cookie['cookie']}, json=del_data)
             if json.loads(result.content)['state'] == 0:
                 return True
             else:
@@ -258,17 +275,16 @@ class keyWord(object):
         finally:
             conn.close()
 
-    def Payment(self,method_is_enable=1,payment_method="cod"):
+    def Payment(self, method_is_enable=1, payment_method="cod"):
         """
         支付方式公共方法
         :param method_is_enable:  添加|删除 : 1|0
         :param payment_method:  添加的方式
         :return:  True | False
         """
-        cookie = self.Login()['cookie']
         changeUrl = self.home_page_url + "/api/payment/method"
-        data = {"method_is_enable":method_is_enable,"payment_method":payment_method}
-        res_data = requests.post(url=changeUrl,headers={"cookie":cookie},json=data)
+        data = {"method_is_enable": method_is_enable, "payment_method": payment_method}
+        res_data = requests.post(url=changeUrl, headers={"cookie": self.cookie['cookie']}, json=data)
 
         if res_data.status_code == 200 and json.loads(res_data.content)['state'] == 0:
             return True
@@ -287,14 +303,14 @@ class keyWord(object):
         添加支付方式 paylinks
         :return: True | False
         """
-        return self.Payment(1,'credit_card')
+        return self.Payment(1, 'credit_card')
 
     def del_payment_pk(self):
         """
         删除支付方式 paylinks
         :return: True | False
         """
-        return self.Payment(0,'credit_card')
+        return self.Payment(0, 'credit_card')
 
     def del_payment_cod(self):
         """
@@ -303,13 +319,12 @@ class keyWord(object):
         """
         return self.Payment(0)
 
-    def addShipping(self,has_other_country=0):
+    def addShipping(self, has_other_country=0):
         """
         添加中国物流
         :param has_other_country: 0 = 普通国家 | 1 = 其他国家
         :return: True | False
         """
-        cookie = self.Login()['cookie']
         add_url = self.home_page_url + "/api/shipping/refresh"
         if has_other_country != 0: has_other_country = 1
         add_data = {
@@ -321,51 +336,50 @@ class keyWord(object):
                              '"desc":"","range_unit":"g"}]'
         }
         try:
-            add_res = requests.post(url=add_url, headers={"cookie": cookie}, json=add_data)
+            add_res = requests.post(url=add_url, headers={"cookie": self.cookie['cookie']}, json=add_data)
             if json.loads(add_res.content)['state'] == 0:
                 return True
             else:
                 return False
         except Exception as e:
             print e
-    #. 添加其他国家税费
+
+    # . 添加其他国家税费
     def add_other_tax_price(self):
         """
         添加其他国家税费
         :return:  True | False
         """
-        #.删除物流
+        # .删除物流
         self.delShipping()
         # 添加其他国家
         add_shipping = self.addShipping(1)
-        cookie = self.Login()['cookie']
         tax_url = self.home_page_url + "/api/tax/refresh"
-        data = {"country_id":"-1","country_price":"1","tax_info":'[{"zone_id":-1,"price":"1"}]'}
-        res_data = requests.post(url=tax_url,headers={"cookie": cookie},json=data)
+        data = {"country_id": "-1", "country_price": "1", "tax_info": '[{"zone_id":-1,"price":"1"}]'}
+        res_data = requests.post(url=tax_url, headers={"cookie": self.cookie['cookie']}, json=data)
         if res_data.status_code == 200 and json.loads(res_data.content)['state'] == 0 and add_shipping == True:
             return True
         else:
             return False
 
-    def add_store_info(self,email="171869092@qq.com",telephone="15220581724"):
+    def add_store_info(self, email="171869092@qq.com", telephone="15220581724"):
         """
         添加店铺基础信息
         :param email: 邮箱
         :param telephone: 电话号码
         :return: True | False
         """
-        cookie = self.Login()['cookie']
         store_rul = self.home_page_url + "/api/store/update"
         store_id = self.getStoreId()
-        data = {"address":"",
-                "city":"",
-                "code":"USD",
-                "email":email,
-                "hour":-11,
-                "icon":{"src":"","path":""},
-                "meta_description":"null",
-                "meta_keyword":"null",
-                "meta_title":"home",
+        data = {"address": "",
+                "city": "",
+                "code": "USD",
+                "email": email,
+                "hour": -11,
+                "icon": {"src": "", "path": ""},
+                "meta_description": "null",
+                "meta_keyword": "null",
+                "meta_title": "home",
                 "name": self.datas_domain,
                 "seo_id": 0,
                 "service_email": email,
@@ -379,25 +393,24 @@ class keyWord(object):
                 "zip": "",
                 "_": ""
                 }
-        res_data = requests.post(url=store_rul,headers={"cookie":cookie},json=data)
+        res_data = requests.post(url=store_rul, headers={"cookie": self.cookie['cookie']}, json=data)
         if res_data.status_code == 200 and json.loads(res_data.content)['state'] == 0:
             return True
         else:
             return False
-    def set_checkout_step(self,customer_name=None,customer_contact=None):
+
+    def set_checkout_step(self, customer_name=None, customer_contact=None):
         """
         设置checkout结账流程的-地址-姓名输入的模式
         :param customer_name: 1= 名字 2=姓 ／ 名
         :param customer_contact: 1= 邮箱 2= 手机 3 = 邮箱／手机
         :return: True | False
         """
-        cookie = self.Login()['cookie']
         set_url = self.home_page_url + "/api/checkout/save"
         if customer_name == None or str(customer_name) == "": customer_name = 1
         if customer_contact == None or str(customer_contact) == "": customer_contact = 3
         customer_name = int(str(customer_name))
         customer_contact = int(str(customer_contact))
-
 
         data = {
             "company_setting": 2,
@@ -412,7 +425,7 @@ class keyWord(object):
             "server_policy": ""
         }
         try:
-            res_data = requests.post(url=set_url,headers={"cookie":cookie},json=data)
+            res_data = requests.post(url=set_url, headers={"cookie": self.cookie['cookie']}, json=data)
             if res_data.status_code == 200 and json.loads(res_data.content)['state'] == 0:
                 return True
             else:
@@ -426,10 +439,9 @@ class keyWord(object):
         :return: True | False
         """
         try:
-            cookie = self.Login()
             db_config = copy.deepcopy(self.db_shop_config)
             db_config['cursorclass'] = pymysql.cursors.DictCursor
-            db_config['db'] = db_config['db'] + str(cookie['uid'])
+            db_config['db'] = db_config['db'] + str(self.cookie['uid'])
             conn = pymysql.connect(**db_config)
             curs = conn.cursor()
             SQL = "select id from shipping where id<>1 order by date_added desc"
@@ -437,7 +449,7 @@ class keyWord(object):
             sub = curs.fetchone()['id']
             del_url = self.home_page_url + "/api/shipping/refresh"
             del_data = {"shipping_id": sub, "is_enable": 0}
-            res = requests.post(url=del_url, headers={"cookie": cookie}, json=del_data)
+            res = requests.post(url=del_url, headers={"cookie": self.cookie}, json=del_data)
             if json.loads(res.content)['state'] == 0:
                 return True
             else:
@@ -449,16 +461,14 @@ class keyWord(object):
 
     def getAllProductCount(self):
         p_url = self.home_page_url + "/api/product/search"
-        cookiesx = self.Login()['cookie']
-        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
+        sub_list = requests.get(url=p_url, headers={"cookie": self.cookie['cookie']})
         total = json.loads(sub_list.content)['data']['total']
 
         return total
 
     def getCollectionId(self, index):
         p_url = self.home_page_url + "/api/collection/dropdown?page=0&limit=10&key="
-        cookiesx = self.Login()['cookie']
-        sub_list = requests.get(url=p_url, headers={"cookie": cookiesx})
+        sub_list = requests.get(url=p_url, headers={"cookie": self.cookie['cookie']})
         res_data = json.loads(sub_list.content)['data']['collections']
         index = int(index)
 
@@ -561,8 +571,8 @@ class keyWord(object):
         finally:
             conn.close()
 
-    def getProductId(self):
-        return self.commonGetData()[0]['id']
+    def get_latest_productid(self):
+        return self.product_search()[0]['id']
 
     def getTimes(self):
         """
@@ -579,7 +589,8 @@ class keyWord(object):
             "TomorrowTime": TomorrowTime,
             "beforeTime": beforeTime
         }
-    def get_coupon_data(self,argv,sub=None,type=None):
+
+    def get_coupon_data(self, argv, sub=None, type=None):
         """
         获取优惠券数据
         :arg 1: 进行中 2: 未开始 3: 已结束
@@ -587,7 +598,7 @@ class keyWord(object):
         :type 区分使用所有商品 或者 部分商品 | None: 所有商品
         :return: dict
         """
-        #.获取时间
+        # .获取时间
         new_time = self.getActividadTime(argv)
         code = self.salt(2) + "TWOES98B" + self.salt(4)
         code_type = ""
@@ -612,10 +623,12 @@ class keyWord(object):
         total_num = "5"
         used_num = ""
         return {
-            "code": code,"code_type":code_type,"code_value": code_value,"date_added": date_added,"date_end": date_end,
-            "date_start": date_start,"discount_type": discount_type,"is_enable": is_enable,"limit_num": limit_num,
-            "name": name,"product_list": product_list,"product_scope": product_scope,"progress": progress,
-            "range_type": range_type,"range_value": range_value,"timezone": timezone,"total_num": total_num,"used_num": used_num
+            "code": code, "code_type": code_type, "code_value": code_value, "date_added": date_added,
+            "date_end": date_end,
+            "date_start": date_start, "discount_type": discount_type, "is_enable": is_enable, "limit_num": limit_num,
+            "name": name, "product_list": product_list, "product_scope": product_scope, "progress": progress,
+            "range_type": range_type, "range_value": range_value, "timezone": timezone, "total_num": total_num,
+            "used_num": used_num
         }
 
     def getActividadTime(self, parments=None):
@@ -648,7 +661,7 @@ class keyWord(object):
         if argv is None: return False
         name = self.salt()
         new_time = self.getActividadTime(argv)
-        product_id = self.getProductId()
+        product_id = self.get_latest_productid()
         range_type = "1"
         if type:
             product_scope = 3
@@ -669,7 +682,7 @@ class keyWord(object):
         }
         return data
 
-    def addActividadCommon(self,url,datax,type=None):
+    def addActividadCommon(self, url, datax, type=None):
         """
         添加活动公共方法
         :param url: 请求url
@@ -678,21 +691,20 @@ class keyWord(object):
         :return: True | False
         """
         if url is None: return "参数错误"
-        cookies = self.Login()['cookie']
-        if cookies is None: return "Cookie 未找到"
+        if self.cookie is None: return "Cookie 未找到"
         try:
-            res = requests.post(url=url['add_url'], headers={"cookie": cookies}, json=datax)
-            if res.status_code != 200:return res.status_code
+            res = requests.post(url=url['add_url'], headers={"cookie": self.cookie['cookie']}, json=datax)
+            if res.status_code != 200: return res.status_code
             # .如果为3,添加成功后请求结束接口
             if type and json.loads(res.content)['data']['id']:
                 if "rebate" in url["add_url"]:
-                    #.满减的
+                    # .满减的
                     response = {"rebate_id": json.loads(res.content)['data']['id']}
                 else:
-                    #.优惠券
+                    # .优惠券
                     response = {"id": json.loads(res.content)['data']['id']}
-                res_data = requests.post(url=url['del_url'], headers={"cookie": cookies}, json=response)
-                if res_data.status_code != 200:return res_data.status_code
+                res_data = requests.post(url=url['del_url'], headers={"cookie": self.cookie['cookie']}, json=response)
+                if res_data.status_code != 200: return res_data.status_code
                 if json.loads(res_data.content)['state'] == 0:
                     return True
                 else:
@@ -705,20 +717,20 @@ class keyWord(object):
         except Exception as e:
             print e
 
-
-    def add_coupon(self,argv,sub=None,type=None):
+    def add_coupon(self, argv, sub=None, type=None):
         """
         添加优惠券
         :param argv: 1: 进行中 2: 未开始 3: 已结束
         :param type: 区分使用所有商品 或者 部分商品 | None: 所有商品
         :return: True | False
         """
-        if argv is False : return "参数错误"
+        if argv is False: return "参数错误"
         par = False
-        url = {"add_url":self.home_page_url + "/api/coupon-code/refresh","del_url":self.home_page_url + "/api/coupon-code/end"}
-        datas = self.get_coupon_data(int(argv),sub)
+        url = {"add_url": self.home_page_url + "/api/coupon-code/refresh",
+               "del_url": self.home_page_url + "/api/coupon-code/end"}
+        datas = self.get_coupon_data(int(argv), sub)
         if argv == 3: par = True
-        res_data = self.addActividadCommon(url,datas,par)
+        res_data = self.addActividadCommon(url, datas, par)
         return res_data
 
     def addSubtraction(self, argv, type=None):
@@ -733,7 +745,7 @@ class keyWord(object):
         datas = self.getSubtractionData(argv, type)
         par = False
         if argv == 3: par = True
-        res_data = self.addActividadCommon(url,datas,par)
+        res_data = self.addActividadCommon(url, datas, par)
         return res_data
 
     def del_coupon(self):
@@ -742,10 +754,9 @@ class keyWord(object):
         :return: True | False
         """
         try:
-            cookie = self.Login()
             db_config = copy.deepcopy(self.db_shop_config)
             db_config['cursorclass'] = pymysql.cursors.DictCursor
-            db_config['db'] = db_config['db'] + str(cookie['uid'])
+            db_config['db'] = db_config['db'] + str(self.cookie['uid'])
             conn = pymysql.connect(**db_config)
             curs = conn.cursor()
             SQL = "DELETE FROM coupon_code"
@@ -760,7 +771,6 @@ class keyWord(object):
         finally:
             conn.close()
 
-
     def delSubtraction(self, arvg=None):
         """
         删除一个满减活动 arvg参数为 "all" 删除所有的满减活动
@@ -768,10 +778,9 @@ class keyWord(object):
         :return: True | False
         """
         try:
-            cookie = self.Login()
             db_config = copy.deepcopy(self.db_shop_config)
             db_config['cursorclass'] = pymysql.cursors.DictCursor
-            db_config['db'] = db_config['db'] + str(cookie['uid'])
+            db_config['db'] = db_config['db'] + str(self.cookie['uid'])
             conn = pymysql.connect(**db_config)
 
             curs = conn.cursor()
@@ -794,7 +803,6 @@ class keyWord(object):
         :param timezone: none 设置北京时区 | 设置 美属萨摩亚时区
         :return:
         """
-        cookie = self.Login()['cookie']
         store_id = self.getStoreId()
         if timezone is None:
             time_zone = self.Bj_timeZone
@@ -806,7 +814,7 @@ class keyWord(object):
                 "time_zone": time_zone, "zip": "", "zone_id": "-1"}
         url = self.home_page_url + "/api/store/update"
         try:
-            res = requests.post(url=url, headers={"cookie": cookie}, json=data)
+            res = requests.post(url=url, headers={"cookie": self.cookie['cookie']}, json=data)
             if res.status_code == 200 and json.loads(res.content)['state'] == 0:
                 return True
             else:
@@ -815,16 +823,15 @@ class keyWord(object):
             print e
 
     def getStoreId(self):
-        cookie = self.Login()['cookie']
         store_url = self.home_page_url + "/api/store/info"
         try:
-            res = requests.get(url=store_url, headers={"cookie": cookie})
+            res = requests.get(url=store_url, headers={"cookie": self.cookie['cookie']})
             return json.loads(res.content)['data']['store_id']
         except Exception as e:
             print e
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     # 设置执行入参
     parser = argparse.ArgumentParser(description='manual to this script')
     parser.add_argument('--url', type=str, default='https://qa.shoplazza.com')
