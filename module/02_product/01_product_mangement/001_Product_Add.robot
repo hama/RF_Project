@@ -11,7 +11,6 @@ Resource          ../../../resources/variable/var_products.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
 Resource          ../../../resources/keywords/kw_products.robot
-Library           customLibrary
 
 *** Test Cases ***
 products074

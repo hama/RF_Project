@@ -3,7 +3,7 @@ Documentation     测试商品批量添加到专辑
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup
-Test Teardown     Products Test Case Teardown
+Test Teardown     Teardown Test Case
 Force Tags        Products
 Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/variable/var_common.robot
@@ -219,5 +219,3 @@ Products Suite Teardown
 Products Test Case Setup
     Go To Products Page
 
-Products Test Case Teardown
-    Teardown Test Case
