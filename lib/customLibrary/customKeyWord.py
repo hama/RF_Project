@@ -827,7 +827,7 @@ if __name__ == '__main__':
 
     # 设置执行入参
     parser = argparse.ArgumentParser(description='manual to this script')
-    parser.add_argument('--url', type=str, default='http://admin1024.shoplazza.com')
+    parser.add_argument('--url', type=str, default='https://qa.shoplazza.com')
     parser.add_argument('--user', type=str, default='default')
     args = parser.parse_args()
     # 设置用户信息
