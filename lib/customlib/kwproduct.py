@@ -44,7 +44,7 @@ def add_products():
                     "status": "done", "type": "image/jpeg", "uid": "rc-upload-1535093594875-2", "url": path_img}],
         "meta_description": "",
         "meta_keyword": "",
-        "meta_title": "sub自动化测试",
+        "meta_title": "自动化测试",
         "price": 99,
         "status": 1,
         "title": "自动化测试",

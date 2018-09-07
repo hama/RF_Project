@@ -5,11 +5,10 @@ Force Tags        Order
 Resource          ../../resources/keywords/kw_browser.robot    #Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
 Resource          ../../resources/variable/var_tax_price.robot
 Resource          ../../resources/keywords/kw_common.robot
-Library           SeleniumLibrary    run_on_failure=NOTHING
-
 Resource          ../../resources/keywords/kw_order.robot
 Resource          ../../resources/variable/var_order.robot
 Resource          ../../resources/keywords/kw_add_order.robot
+Library           SeleniumLibrary    run_on_failure=NOTHING
 
 *** Test Cases ***
 order078

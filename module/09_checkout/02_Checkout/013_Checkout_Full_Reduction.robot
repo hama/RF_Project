@@ -11,6 +11,7 @@ Resource          ../../../resources/keywords/kw_browser.robot
 Resource          ../../../resources/keywords/kw_products.robot
 Resource          ../../../resources/keywords/kw_checkout.robot
 Resource          ../../../resources/keywords/kw_subtraction.robot
+Library           ${CURDIR}/../../../lib/customlib/kwmarketing.py
 
 
 *** Variables ***

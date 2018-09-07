@@ -9,6 +9,7 @@ Resource          ../../resources/keywords/kw_add_order.robot
 Resource          ../../resources/keywords/kw_order.robot
 Resource          ../../resources/keywords/kw_products.robot
 Resource          ../../resources/keywords/kw_subtraction.robot
+Library           ${CURDIR}/../../lib/customlib/kwmarketing.py
 
 *** Test Cases ***
 sdsdsd

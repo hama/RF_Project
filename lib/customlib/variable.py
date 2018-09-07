@@ -10,7 +10,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 config = ConfigParser.ConfigParser()
-path = os.path.join(os.path.dirname(__file__), '../..') + '/config/common.ini'
+path = os.path.join(os.path.dirname(__file__), '../../config/common.ini')
 config.read(path)
 
 home_page_url = config.get("common_url", "home_page_url")
