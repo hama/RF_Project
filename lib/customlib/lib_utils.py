@@ -5,7 +5,6 @@ import random
 import re
 import sys
 
-# from lib.customlib.variable import *
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
