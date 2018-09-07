@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation     生成订单
 Library           SeleniumLibrary    run_on_failure=NOTHING
-Library           ${CURDIR}/../../lib/customLibrary
 Resource          kw_browser.robot
 Resource          kw_common.robot
 Resource          ../variable/var_common.robot

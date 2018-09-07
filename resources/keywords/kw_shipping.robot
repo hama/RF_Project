@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation     添加物流
 Library           SeleniumLibrary    run_on_failure=NOTHING
-Library           ${CURDIR}/../../lib/customLibrary
 Resource          ../variable/var_common.robot
 Resource          ../variable/var_shipping.robot
 Resource          kw_browser.robot

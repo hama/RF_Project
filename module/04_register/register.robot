@@ -5,7 +5,6 @@ Test Setup        Login Testcase Setup
 Test Teardown     Teardown Test Case
 Force Tags        register
 Library           SeleniumLibrary    run_on_failure=NOTHING
-Library           ${CURDIR}/../../lib/customLibrary
 Resource          ../../resources/variable/var_common.robot
 Resource          ../../resources/keywords/kw_common.robot
 Resource          ../../resources/keywords/kw_browser.robot

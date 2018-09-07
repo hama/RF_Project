@@ -4,7 +4,6 @@ Suite Setup       Products Suite Setup
 Suite Teardown    Close Test Suite Browser
 Test Teardown     Products Test Case Teardown
 Force Tags        Checkout
-Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/variable/var_products.robot
 Resource          ../../../resources/keywords/kw_common.robot

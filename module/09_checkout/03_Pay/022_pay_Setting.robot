@@ -5,7 +5,6 @@ Suite Teardown    Close Test Suite Browser    # close the browser opened for thi
 Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Force Tags        Checkout
-Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/variable/var_tax_price.robot
 Resource          ../../../resources/variable/var_products.robot
 Resource          ../../../resources/variable/var_common.robot
@@ -15,7 +14,7 @@ Resource          ../../../resources/keywords/kw_products.robot
 Resource          ../../../resources/keywords/kw_shipping.robot
 Resource          ../../../resources/keywords/kw_checkout.robot
 Resource          ../../../resources/variable/var_checkout.robot
-Library           customLibrary
+
 
 *** Test Case ***
 checkout172
