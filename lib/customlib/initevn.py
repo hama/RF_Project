@@ -21,13 +21,13 @@ if __name__ == '__main__':
     config = ConfigParser.ConfigParser()
     path = os.path.join(os.path.dirname(__file__), '../..') + '/config/common.ini'
     config.read(path)
-    if 'http://admin.shoplazza.com' in args.url:
+    if 'https://admin.shoplazza.com' in args.url:
         # 美服使用固定账号跑用例
         config.set("common_account", "datas_invite_code", 'DJ2746')
         config.set("common_db", "db_service_config", '{"host": "rm-rj9ww1316miq2j87l.mysql.rds.aliyuncs.com",'
                                                      '"port": 3306,"user": "fortest","password": "fortest@123",'
                                                      '"db": "service","charset": "utf8"}')
-        config.set("common_url", "home_page_url", 'http://admin.shoplazza.com')
+        config.set("common_url", "home_page_url", 'https://admin.shoplazza.com')
         config.set("common_account", "datas_contact", '15220581724')
         config.set("common_account", "datas_domain", 'chen')
         config.write(open(path, 'w'))
