@@ -1,8 +1,6 @@
 # -*- coding:utf-8 -*-
 
-import requests
-
-from variable import *
+from kwlogin import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -15,6 +13,7 @@ def Payment(method_is_enable=1, payment_method="cod"):
     :param payment_method:  添加的方式
     :return:  True | False
     """
+    cookie = login()
     changeUrl = home_page_url + "/api/payment/method"
     data = {"method_is_enable": method_is_enable, "payment_method": payment_method}
     res_data = requests.post(url=changeUrl, headers={"cookie": cookie['cookie']}, json=data)

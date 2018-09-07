@@ -1,8 +1,6 @@
 # -*- coding:utf-8 -*-
 
-import requests
-
-from variable import *
+from kwlogin import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -15,6 +13,7 @@ def add_store_info(email="171869092@qq.com", telephone="15220581724"):
     :param telephone: 电话号码
     :return: True | False
     """
+    cookie = login()
     store_rul = home_page_url + "/api/store/update"
     store_id = getStoreId()
     data = {"address": "",
@@ -47,6 +46,7 @@ def add_store_info(email="171869092@qq.com", telephone="15220581724"):
 
 
 def getStoreId():
+    cookie = login()
     store_url = home_page_url + "/api/store/info"
     try:
         res = requests.get(url=store_url, headers={"cookie": cookie['cookie']})
@@ -54,12 +54,14 @@ def getStoreId():
     except Exception as e:
         print e
 
+
 def setBjTimeZone(timezone=None):
     """
     设置时区 ((GMT + 08:00) 北京，香港，台北，新加坡)
     :param timezone: none 设置北京时区 | 设置 美属萨摩亚时区
     :return:
     """
+    cookie = login()
     store_id = getStoreId()
     if timezone is None:
         time_zone = Bj_timeZone

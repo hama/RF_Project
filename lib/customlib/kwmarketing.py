@@ -1,12 +1,8 @@
 # -*- coding:utf-8 -*-
-import copy
-
-import pymysql
-import requests
 
 import kwproduct
+from kwlogin import *
 from lib_utils import *
-from variable import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -115,6 +111,7 @@ def addActividadCommon(url, datax, type=None):
     :param type: 不为None代表是请求的结束的接口
     :return: True | False
     """
+    cookie = login()
     if url is None: return "参数错误"
     if cookie is None: return "Cookie 未找到"
     try:
@@ -181,6 +178,7 @@ def del_coupon():
     删除优惠券
     :return: True | False
     """
+    cookie = login()
     try:
         db_config = copy.deepcopy(db_shop_config)
         db_config['cursorclass'] = pymysql.cursors.DictCursor
@@ -206,6 +204,7 @@ def delSubtraction(arvg=None):
     :param arvg: 区分使用所有商品 或者 部分商品 | None: 所有商品
     :return: True | False
     """
+    cookie = login()
     try:
         db_config = copy.deepcopy(db_shop_config)
         db_config['cursorclass'] = pymysql.cursors.DictCursor

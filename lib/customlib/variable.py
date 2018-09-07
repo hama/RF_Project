@@ -4,7 +4,6 @@ import json
 import os
 import sys
 
-import kwlogin
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -33,4 +32,3 @@ aliyun = {
 }
 img = "http://120.79.196.159:8000/RF/logs/module/result.png"
 
-cookie = kwlogin().login()

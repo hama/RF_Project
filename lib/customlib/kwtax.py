@@ -2,7 +2,6 @@
 
 
 from kwshipping import *
-from variable import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -14,6 +13,7 @@ def add_other_tax_price():
     添加其他国家税费
     :return:  True | False
     """
+    cookie = login()
     # .删除物流
     delShipping()
     # 添加其他国家

@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 
-import requests
-
+from kwlogin import *
 from variable import *
 
 reload(sys)
@@ -15,6 +14,7 @@ def set_checkout_step(customer_name=None, customer_contact=None):
     :param customer_contact: 1= 邮箱 2= 手机 3 = 邮箱／手机
     :return: True | False
     """
+    cookie = login()
     set_url = home_page_url + "/api/checkout/save"
     if customer_name == None or str(customer_name) == "": customer_name = 1
     if customer_contact == None or str(customer_contact) == "": customer_contact = 3

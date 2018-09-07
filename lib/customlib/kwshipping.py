@@ -1,10 +1,6 @@
 # -*- coding:utf-8 -*-
-import copy
 
-import pymysql
-import requests
-
-from variable import *
+from kwlogin import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -16,6 +12,7 @@ def addShipping(has_other_country=0):
     :param has_other_country: 0 = 普通国家 | 1 = 其他国家
     :return: True | False
     """
+    cookie = login()
     add_url = home_page_url + "/api/shipping/refresh"
     if has_other_country != 0: has_other_country = 1
     add_data = {
@@ -41,6 +38,7 @@ def delShipping():
     删除物流方式
     :return: True | False
     """
+    cookie = login()
     try:
         db_config = copy.deepcopy(db_shop_config)
         db_config['cursorclass'] = pymysql.cursors.DictCursor

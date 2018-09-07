@@ -1,12 +1,9 @@
 # -*- coding:utf-8 -*-
-import copy
 import uuid
 
 import oss2
-import pymysql
-import requests
 
-from variable import *
+from kwlogin import *
 from lib_utils import *
 
 reload(sys)
@@ -19,6 +16,7 @@ def product_search(api='/api/product/search?page=0&limit=20'):
     :param p_url: url
     :return: dict
     """
+    cookie = login()
     p_url = home_page_url + api
     sub_list = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
     res_data = json.loads(sub_list.content)['data']['products']
@@ -30,6 +28,7 @@ def add_products():
     添加商品
     :return: True | False
     """
+    cookie = login()
     # .获取图片
     imgs = upload_oss(img)[0]
     path_img = "//cn.cdn.shoplazza.com/" + upload_oss(img)[0]
@@ -71,6 +70,7 @@ def updates_status(product_list, status):
     :param status: -1 = 删除商品（非数据库） | 0 = 设置下架 | 1 = 设置上架
     :return:
     """
+    cookie = login()
     url = home_page_url + "/api/product/updatestatus"
     data = {"product_ids": product_list, "status": status}
     try:
@@ -139,6 +139,7 @@ def delFirstProduct():
     删除商品
     :return: True | False
     """
+    cookie = login()
     try:
         db_config = copy.deepcopy(db_shop_config)
         db_config['cursorclass'] = pymysql.cursors.DictCursor
@@ -162,6 +163,7 @@ def delFirstProduct():
 
 
 def getAllProductCount():
+    cookie = login()
     p_url = home_page_url + "/api/product/search"
     sub_list = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
     total = json.loads(sub_list.content)['data']['total']

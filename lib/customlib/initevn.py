@@ -1,11 +1,8 @@
 # -*- coding:utf-8 -*-
-import ConfigParser
 import argparse
-import os
-import time
 
+from kwlogin import *
 from lib_utils import *
-from kwlogin import kwlogin
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -43,7 +40,7 @@ if __name__ == '__main__':
             config.set("common_account", "datas_domain", random_str)
             config.write(open(path, 'w'))
             # 注册用户
-            kwlogin().sign_up()
+            sign_up()
             # 注册用户之后等待10s，等用户生效
             time.sleep(10)
         else:
