@@ -171,8 +171,3 @@ def getAllProductCount():
 
 def get_latest_productid():
     return product_search()[0]['id']
-
-if __name__ == '__main__':
-    aaa =  sys.path
-    bbb = os.path.dirname(__file__)
-    print 'a'
