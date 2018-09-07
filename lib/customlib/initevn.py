@@ -2,10 +2,9 @@
 import ConfigParser
 import argparse
 import os
-import sys
 import time
 
-import kwlogin
+import kwaccount
 from lib_utils import *
 
 reload(sys)
@@ -44,7 +43,7 @@ if __name__ == '__main__':
             config.set("common_account", "datas_domain", random_str)
             config.write(open(path, 'w'))
             # 注册用户
-            kwlogin.sign_up()
+            kwaccount.sign_up()
             # 注册用户之后等待10s，等用户生效
             time.sleep(10)
         else:
