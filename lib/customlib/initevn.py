@@ -6,7 +6,7 @@ import sys
 import time
 
 import kwlogin
-from lib.utils import lib_utils
+from lib_utils import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -19,7 +19,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     # 设置用户信息
     config = ConfigParser.ConfigParser()
-    path = os.path.join(os.path.dirname(__file__), '../..') + '/config/common.ini'
+    path = os.path.join(os.path.dirname(__file__), '../../config/common.ini')
     config.read(path)
     if 'https://admin.shoplazza.com' in args.url:
         # 美服使用固定账号跑用例
@@ -39,7 +39,7 @@ if __name__ == '__main__':
         config.set("common_url", "home_page_url", args.url)
         # 测试服，使用新注册用户跑用例
         if args.user == 'new':
-            random_str = lib_utils.salt()
+            random_str = salt()
             config.set("common_account", "datas_contact", random_str + "@abctest.com")
             config.set("common_account", "datas_domain", random_str)
             config.write(open(path, 'w'))

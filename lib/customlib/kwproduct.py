@@ -7,7 +7,7 @@ import pymysql
 import requests
 
 from variable import *
-from lib.utils import lib_utils
+from lib_utils import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -106,7 +106,7 @@ def upload_oss(urlex, name='', extension='', timeout_second=30):
             for chunk in r.iter_content(chunk_size=1024):
                 if chunk:  # filter out keep-alive new chunks
                     f.write(chunk)
-        md5_file = lib_utils.md5(tmp_file)
+        md5_file = md5(tmp_file)
         size_file = os.stat(tmp_file).st_size
         s3key = name
         if not s3key:
@@ -171,3 +171,8 @@ def getAllProductCount():
 
 def get_latest_productid():
     return product_search()[0]['id']
+
+if __name__ == '__main__':
+    aaa =  sys.path
+    bbb = os.path.dirname(__file__)
+    print 'a'

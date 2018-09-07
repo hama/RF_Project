@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from SeleniumLibrary.base import DynamicCore
+import sys,os
 from lib.customlib import (kwshipping,
                            kwproduct,
                            kwcheckout,
@@ -10,8 +11,6 @@ from lib.customlib import (kwshipping,
                            kwpayment,
                            kwstore,
                            kwtax)
-from lib.utils import lib_utils
-
 # class lib(DynamicCore):
 #     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
 #
