@@ -15,7 +15,7 @@ Resource          ../../resources/keywords/kw_login.robot
 *** Test Cases ***
 login001
     [Documentation]     主账号登录成功
-    [Tags]    P0    threshold    withcheckout
+    [Tags]    P0    threshold
     Wait And Input Text     ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Click Element    ${locatorB_login_btn_login}
