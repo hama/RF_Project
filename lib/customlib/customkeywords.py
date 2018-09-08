@@ -36,7 +36,7 @@
 #
 #     def __init__(self):
 #         config = ConfigParser.ConfigParser()
-#         path = os.path.join(os.path.dirname(__file__), '../..') + '/config/common.ini'
+#         path = os.path.join(os.path.dirname(__file__), '../../config/common.ini')
 #         config.read(path)
 #
 #         self.home_page_url = config.get("common_url", "home_page_url")
@@ -839,7 +839,7 @@
 #     args = parser.parse_args()
 #     # 设置用户信息
 #     config = ConfigParser.ConfigParser()
-#     path = os.path.join(os.path.dirname(__file__), '../..') + '/config/common.ini'
+#     path = os.path.join(os.path.dirname(__file__), '../../config/common.ini')
 #     config.read(path)
 #     if 'http://admin.shoplazza.com' in args.url:
 #         # 美服使用固定账号跑用例

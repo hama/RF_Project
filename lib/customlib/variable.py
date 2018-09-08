@@ -1,9 +1,5 @@
 # -*- coding:utf-8 -*-
-import ConfigParser
-import json
-import os
-import sys
-
+from kwlogin import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -32,3 +28,4 @@ aliyun = {
 }
 img = "http://120.79.196.159:8000/RF/logs/module/result.png"
 
+cookie = login()
