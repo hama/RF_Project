@@ -8,12 +8,11 @@ sys.setdefaultencoding('utf-8')
 
 
 # . 添加其他国家税费
-def add_other_tax_price():
+def add_other_tax_price(cookie=init_cookie):
     """
     添加其他国家税费
     :return:  True | False
     """
-    cookie = login()
     # .删除物流
     delShipping()
     # 添加其他国家

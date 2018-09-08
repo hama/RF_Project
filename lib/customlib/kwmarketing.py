@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 import kwproduct
-from kwlogin import *
+from variable import *
 from lib_utils import *
 
 reload(sys)
@@ -103,7 +103,7 @@ def getSubtractionData(argv, type=None):
     return data
 
 
-def addActividadCommon(url, datax, type=None):
+def addActividadCommon(url, datax, type=None, cookie=init_cookie):
     """
     添加活动公共方法
     :param url: 请求url
@@ -111,7 +111,6 @@ def addActividadCommon(url, datax, type=None):
     :param type: 不为None代表是请求的结束的接口
     :return: True | False
     """
-    cookie = login()
     if url is None: return "参数错误"
     if cookie is None: return "Cookie 未找到"
     try:
@@ -173,12 +172,11 @@ def addSubtraction(argv, type=None):
     return res_data
 
 
-def del_coupon():
+def del_coupon(cookie=init_cookie):
     """
     删除优惠券
     :return: True | False
     """
-    cookie = login()
     try:
         db_config = copy.deepcopy(db_shop_config)
         db_config['cursorclass'] = pymysql.cursors.DictCursor
@@ -198,13 +196,12 @@ def del_coupon():
         conn.close()
 
 
-def delSubtraction(arvg=None):
+def delSubtraction(arvg=None, cookie=init_cookie):
     """
     删除一个满减活动 arvg参数为 "all" 删除所有的满减活动
     :param arvg: 区分使用所有商品 或者 部分商品 | None: 所有商品
     :return: True | False
     """
-    cookie = login()
     try:
         db_config = copy.deepcopy(db_shop_config)
         db_config['cursorclass'] = pymysql.cursors.DictCursor

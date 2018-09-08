@@ -1,13 +1,12 @@
 # -*- coding:utf-8 -*-
 
-from kwlogin import *
+from variable import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def getCollectionId(index):
-    cookie = login()
+def getCollectionId(index, cookie=init_cookie):
     p_url = home_page_url + "/api/collection/dropdown?page=0&limit=10&key="
     sub_list = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
     res_data = json.loads(sub_list.content)['data']['collections']

@@ -28,4 +28,4 @@ aliyun = {
 }
 img = "http://120.79.196.159:8000/RF/logs/module/result.png"
 
-cookie = login()
+init_cookie = login()

@@ -3,32 +3,30 @@ import uuid
 
 import oss2
 
-from kwlogin import *
+from variable import *
 from lib_utils import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def product_search(api='/api/product/search?page=0&limit=20'):
+def product_search(api='/api/product/search?page=0&limit=20', cookie=init_cookie):
     """
     公共获取数据方法
     :param p_url: url
     :return: dict
     """
-    cookie = login()
     p_url = home_page_url + api
     sub_list = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
     res_data = json.loads(sub_list.content)['data']['products']
     return res_data
 
 
-def add_products():
+def add_products(cookie=init_cookie):
     """
     添加商品
     :return: True | False
     """
-    cookie = login()
     # .获取图片
     imgs = upload_oss(img)[0]
     path_img = "//cn.cdn.shoplazza.com/" + upload_oss(img)[0]
@@ -63,14 +61,13 @@ def add_products():
         return e
 
 
-def updates_status(product_list, status):
+def updates_status(product_list, status, cookie=init_cookie):
     """
     更改商品状态
     :param product_list:
     :param status: -1 = 删除商品（非数据库） | 0 = 设置下架 | 1 = 设置上架
     :return:
     """
-    cookie = login()
     url = home_page_url + "/api/product/updatestatus"
     data = {"product_ids": product_list, "status": status}
     try:
@@ -134,12 +131,11 @@ def upload_oss(urlex, name='', extension='', timeout_second=30):
     return False
 
 
-def delFirstProduct():
+def delFirstProduct( cookie=init_cookie):
     """
     删除商品
     :return: True | False
     """
-    cookie = login()
     try:
         db_config = copy.deepcopy(db_shop_config)
         db_config['cursorclass'] = pymysql.cursors.DictCursor
@@ -162,8 +158,7 @@ def delFirstProduct():
         conn.close()
 
 
-def getAllProductCount():
-    cookie = login()
+def getAllProductCount(cookie=init_cookie):
     p_url = home_page_url + "/api/product/search"
     sub_list = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
     total = json.loads(sub_list.content)['data']['total']
