@@ -3,8 +3,8 @@ import uuid
 
 import oss2
 
-from variable import *
 from lib_utils import *
+from variable import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -17,9 +17,8 @@ def product_search(api='/api/product/search?page=0&limit=20', cookie=init_cookie
     :return: dict
     """
     p_url = home_page_url + api
-    sub_list = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
-    res_data = json.loads(sub_list.content)['data']['products']
-    return res_data
+    ret_data = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
+    return ret_data.content
 
 
 def add_products(cookie=init_cookie):
@@ -68,6 +67,13 @@ def updates_status(product_list, status, cookie=init_cookie):
     :param status: -1 = 删除商品（非数据库） | 0 = 设置下架 | 1 = 设置上架
     :return:
     """
+    first_product_id = get_latest_productid()
+    if isinstance(product_list, str):
+        if product_list == 'all':
+            product_list = range(1, first_product_id + 1)
+        elif product_list == 'first':
+            product_list = [first_product_id]
+
     url = home_page_url + "/api/product/updatestatus"
     data = {"product_ids": product_list, "status": status}
     try:
@@ -131,31 +137,20 @@ def upload_oss(urlex, name='', extension='', timeout_second=30):
     return False
 
 
-def delFirstProduct( cookie=init_cookie):
+def del_first_product(cookie=init_cookie):
     """
     删除商品
     :return: True | False
     """
-    try:
-        db_config = copy.deepcopy(db_shop_config)
-        db_config['cursorclass'] = pymysql.cursors.DictCursor
-        db_config['db'] = db_config['db'] + str(cookie['uid'])
-        conn = pymysql.connect(**db_config)
-        curs = conn.cursor()
-        SQL = "SELECT (product_id) FROM `product` order by product_id desc"
-        curs.execute(SQL)
-        sub = curs.fetchone()['product_id']
-        del_url = home_page_url + "/api/product/updatestatus"
-        del_data = {"product_ids": [str(sub)], "status": -1}
-        result = requests.post(url=del_url, headers={'cookie': cookie['cookie']}, json=del_data)
-        if json.loads(result.content)['state'] == 0:
-            return True
-        else:
-            return False
-    except Exception as e:
-        print e
-    finally:
-        conn.close()
+    updates_status('first', -1, cookie)
+
+
+def del_all_product(cookie=init_cookie):
+    """
+    删除商品
+    :return: True | False
+    """
+    updates_status('all', -1, cookie)
 
 
 def getAllProductCount(cookie=init_cookie):
@@ -167,4 +162,10 @@ def getAllProductCount(cookie=init_cookie):
 
 
 def get_latest_productid():
-    return product_search()[0]['id']
+    products_list = json.loads(product_search())['data']['products']
+    return products_list[0]['id']
+
+# if __name__ == '__main__':
+# product_search()
+# del_first_product()
+# del_all_product()
