@@ -6,7 +6,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def add_store_info(email="171869092@qq.com", telephone="15220581724", cookie=init_cookie):
+def add_store_info_py(email="171869092@qq.com", telephone="15220581724", cookie=init_cookie):
     """
     添加店铺基础信息
     :param email: 邮箱

@@ -37,7 +37,7 @@ checkout121
     #验证优惠的金额还是之前的大小
     Wait And Click Element    dom:document.querySelectorAll(".pm_footer_left")[0]    # 点击查看支付明细
     ${now_cut}    Execute JavaScript    return document.querySelectorAll(".tax_price")[0].innerText
-    ${now_cut}    searchStrs    ${now_cut}    # 现在的优惠金额
+    ${now_cut}    searchStrs_py    ${now_cut}    # 现在的优惠金额
     Should Be Equal As Strings    ${cut}    ${now_cut}
     #点击pay now
     Wait And Click Element    ${locator_checkout_submit_save_btn}

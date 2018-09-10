@@ -49,7 +49,7 @@ checkout155
     Wait And Click Element    dom:document.querySelectorAll(".order_info")[0]
     #获取当前优惠的金额
     ${now_cut}    Get Text    dom:document.querySelectorAll(".rebate")[0]
-    ${now_cut}    searchStrs    ${now_cut}
+    ${now_cut}    searchStrs_py    ${now_cut}
     #当前优惠的金额应该等于满减活动的金额
     Should Be Equal As Strings    ${cut}    ${now_cut}
 

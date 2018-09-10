@@ -18,7 +18,7 @@ def get_coupon_data(argv, sub=None, type=None):
     """
     # .获取时间
     new_time = getActividadTime(argv)
-    code = salt(2) + "TWOES98B" + salt(4)
+    code = salt_py(2) + "TWOES98B" + salt_py(4)
     code_type = ""
     code_value = 5
     date_added = ""
@@ -31,7 +31,7 @@ def get_coupon_data(argv, sub=None, type=None):
     # discount_type = 1 if sub else discount_type = 2
     is_enable = ""
     limit_num = "1"
-    name = "自动化测试" + salt(4)
+    name = "自动化测试" + salt_py(4)
     product_list = ""
     product_scope = "1"
     progress = ""
@@ -58,7 +58,7 @@ def getActividadTime(parments=None):
     :param parments: 3：活动已结束
     :return: dict
     """
-    res_time_data = getTimes()
+    res_time_data = getTimes_py()
     if parments == 1:
         return {"date_start": res_time_data['now_times'].strftime('%Y-%m-%d %H:%M:%S'),
                 "date_end": res_time_data['beforeTime'].strftime('%Y-%m-%d %H:%M:%S')}
@@ -79,9 +79,9 @@ def getSubtractionData(argv, type=None):
     :return: String
     """
     if argv is None: return False
-    name = salt()
+    name = salt_py()
     new_time = getActividadTime(argv)
-    product_id = kwproduct.get_latest_productid()
+    product_id = kwproduct.get_latest_productid_py()
     range_type = "1"
     if type:
         product_scope = 3

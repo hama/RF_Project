@@ -8,6 +8,22 @@ Resource          kw_browser.robot
 Resource          kw_common.robot
 
 *** keyword ***
+Products Suite Setup
+    [Documentation]    product
+    Login With Default User
+    del_all_product_py
+    add_product_py
+
+
+
+Product Testcase Setup
+    [Documentation]    product
+    add_product
+
+
+
+
+
 Add Product
     [Documentation]    添加下架商品以做测试
     Go To Products Page
@@ -62,7 +78,7 @@ Delete All Products
 Delete All Product Execute
     [Documentation]     删除全部商品的执行办法
     ${size}    Get Text    ${locatorB_page_text_totalRecord}
-    ${total_record}    searchStrs    ${size}
+    ${total_record}    searchStrs_py    ${size}
     ${page_num}    evaluate    int(math.ceil(${total_record}/20.0))    math
     Run Keyword If    ${page_num}>1     Delete Product Loop     ${page_num}
     ...    ELSE IF    ${page_num}==1     Delete Product Loop     1

@@ -146,7 +146,7 @@ products055
     #选中第几个专辑
     ${which}=    Set Variable    0
     #获取选中的专辑编号
-    ${collection_id}    getCollectionId    ${which}
+    ${collection_id}    getCollectionId_py    ${which}
     #选中第一个商品
     Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
     Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}

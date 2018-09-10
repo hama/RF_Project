@@ -18,7 +18,7 @@ products001
     #获取每页多少条数据
     Wait Until Element Is Visible    ${locatorB_page_text_totalRecord}
     ${size}    Get Text    ${locatorB_page_text_totalRecord}
-    ${total_record}    searchStrs    ${size}
+    ${total_record}    searchStrs_py    ${size}
     # 然后遍历校验列表数据是否一致
     : FOR    ${index}    IN RANGE    ${total_record}
     \    ${table_row}=    Evaluate    int(${index}) + 2
@@ -165,7 +165,7 @@ compare_quantity
 
 compare_quantity2
     [Arguments]    ${show_quantity}    ${should_quantity}
-    ${show_quantity}    searchStr    ${show_quantity}
+    ${show_quantity}    searchStr_py    ${show_quantity}
     Should Be True    ${show_quantity}==${should_quantity}
 
 Should Be Not Checked

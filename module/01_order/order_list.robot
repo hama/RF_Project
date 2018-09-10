@@ -216,12 +216,12 @@ order093
     Wait Until Element Is Visible    ${locatorB_order_list_first_tr}
     ${order_id}    Execute JavaScript    return document.querySelectorAll("table tbody tr td")[0].innerText    #,获取tr第一个订单号
     log    ${order_id}
-    ${odr_id}    searchStrs    ${order_id}
+    ${odr_id}    searchStrs_py    ${order_id}
     Sleep    3
     Input Text    ${locatorB_order_list_input}    ${odr_id}
     Wait And Click Element    ${locatorB_order_list_search}    #.搜索按钮
     ${order_ids}    Execute JavaScript    return document.querySelectorAll("table tbody tr td")[0].innerText    #,在获取tr第一个订单号
-    ${ord_ids}    searchStrs    ${order_ids}
+    ${ord_ids}    searchStrs_py    ${order_ids}
     sleep    1.5
     Should Be True    '${order_id}'=='${order_ids}'
 
@@ -276,7 +276,7 @@ order098
     : FOR    ${i}    IN RANGE    ${order_count}
     \    ${x}    Evaluate    ${i}+1
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td p")[2].innerText
-    \    ${res_data}    searchStrs    ${data}
+    \    ${res_data}    searchStrs_py    ${data}
     \    Should Be True    '${price}'=='${res_data}'
 
 order099
@@ -294,7 +294,7 @@ order099
     : FOR    ${i}    IN RANGE    ${order_count}
     \    ${x}    Evaluate    ${i}+1
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td p")[2].innerText
-    \    ${res_data}    searchStrs    ${data}
+    \    ${res_data}    searchStrs_py    ${data}
     \    Run keyword If    ${min_price}<'${res_data}'>${max_price}    log    success
     \    ...    ELSE    Run keyword    Fail    ${error_msg}
 

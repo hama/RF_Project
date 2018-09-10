@@ -20,22 +20,14 @@ Login With User
     Wait And Input Text    ${locatorB_login_input_account}    ${username}
     Wait And Input Password    ${locatorB_login_input_password}    ${password}
     Wait And Click Element    class:logBtn___3pRgJ
-
     Comment    wait until domain input text element is visible
-    ${status}=    Execute JavaScript    return document.querySelectorAll("#username")[0]===undefined
-    Run keyword If    ${status}=='false'    Input Domain    ${domain}
-    #${href}=    Execute JavaScript    return window.location.href
-    #${has_login}=    Execute JavaScript    return '${href}'==='${url_home_page}'
-    #Run Keyword Unless    ${has_login}    Input Domain    ${domain}
-    Wait Until Element Is Visible    ${locatorB_setting}
+    ${status}    Run Keyword And Return Status    Wait Until Page Contains Element    ${locatorB_login_input_domain}    2    0
+    Run keyword If    ${status}=='True'    Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
+    Wait Until Page Contains Element    ${locatorB_setting}
     log    Login Success
+    Comment    close new_user's pop
     ${close}=    Execute JavaScript    return document.querySelectorAll('.ant-modal-close-x')[0]===undefined
     Run Keyword If    ${close}=='${False}'    Wait And Click Element    dom:document.querySelectorAll('.ant-modal-close-x')[0]
-
-Input Domain
-    [Arguments]    ${domain}
-    Wait And Input Text    ${locatorB_login_input_domain}    ${domain}
-    Wait And Click Element    class:logBtn___3pRgJ
 
 Go To Home Page
     [Documentation]    跳转到主页
@@ -268,7 +260,7 @@ Add Payment Cod Wait
     [Documentation]    添加 cod支付方式
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    add_payment_cod
+    \    ${res_status}    add_payment_cod_py
     \    Run keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1
 
@@ -276,7 +268,7 @@ Del Payment Cod Wait
     [Documentation]    删除 cod支付方式
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    del_payment_cod
+    \    ${res_status}    del_payment_cod_py
     \    Run keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1
 
@@ -284,7 +276,7 @@ Wait Add StoreInfo
     [Documentation]    添加 基础信息
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    add_store_info
+    \    ${res_status}    add_store_info_py
     \    Run keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1
 
@@ -292,6 +284,6 @@ Change Checkout Setp Wait
     [Documentation]    修改结账流程的 地址输入模式
     [Arguments]    ${parameter}    ${type}=${Empty}    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    set_checkout_step    ${parameter}    ${type}
+    \    ${res_status}    set_checkout_step_py    ${parameter}    ${type}
     \    Run keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1

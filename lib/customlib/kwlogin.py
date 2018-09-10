@@ -14,7 +14,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def login(**data_config):
+def login_py(**data_config):
     """
     公共登陆方法
     :return: dict
@@ -46,7 +46,7 @@ def login(**data_config):
     return {"cookie": cookie, "uid": uid}
 
 
-def sign_up(**data_config):
+def sign_up_py(**data_config):
     '''
     注册
     :return:
@@ -57,7 +57,7 @@ def sign_up(**data_config):
         datas_password = data_config['datas_password']
         datas_domain = data_config['datas_domain']
         datas_invite_code = data_config['datas_invite_code']
-        validate_signup(**data_config)  # 发送验证码
+        validate_signup_py(**data_config)  # 发送验证码
     else:
         config = ConfigParser.ConfigParser()
         path = os.path.join(os.path.dirname(__file__), '../../config/common.ini')
@@ -68,7 +68,7 @@ def sign_up(**data_config):
         datas_password = config.get("common_account", "datas_password")
         datas_domain = config.get("common_account", "datas_domain")
         datas_invite_code = config.get("common_account", "datas_invite_code")
-        validate_signup()  # 发送验证码
+        validate_signup_py()  # 发送验证码
 
     x_url = home_page_url + "/api/user/signup"
 
@@ -86,7 +86,7 @@ def sign_up(**data_config):
         return res.content
 
 
-def validate_signup(**data_config):
+def validate_signup_py(**data_config):
     '''
     发送验证码
     :param datas:

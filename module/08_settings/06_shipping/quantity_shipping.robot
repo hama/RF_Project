@@ -244,7 +244,7 @@ shipping123
     Wait And Click Element    ${locatorB_shipping_freight_save}
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
-    ${res}    searchStrs    ${data}
+    ${res}    searchStrs_py    ${data}
     Should Be True    ${res}==${cc}
     Quit All Shipping
 
@@ -261,7 +261,7 @@ shipping124
     Wait And Click Element    ${locatorB_shipping_freight_save}
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
-    ${res}    searchStrs    ${data}
+    ${res}    searchStrs_py    ${data}
     Should Be True    ${res}==0
     Quit All Shipping
 

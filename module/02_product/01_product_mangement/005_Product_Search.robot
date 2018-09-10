@@ -43,12 +43,12 @@ products072
     Should Be Equal As Strings    ${content}    0
     #验证商品数量
     #数据库中库存数量
-    ${should_count}    getAllProductCount
+    ${should_count}    getAllProductCount_py
     #查询页面上显示的商品记录总数
     Assign id To Element    ${locatorB_page_text_totalRecord}    btn1
     Wait Until Element Is Visible    btn1
     ${count}    Get Text    btn1
-    ${count}    searchStrs    ${count}
+    ${count}    searchStrs_py    ${count}
     #比较商品总数
     Should Be True    ${should_count}==${count}
 

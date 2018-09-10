@@ -6,7 +6,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def addShipping(has_other_country=0, cookie=init_cookie):
+def addShipping_py(has_other_country=0, cookie=init_cookie):
     """
     添加中国物流
     :param has_other_country: 0 = 普通国家 | 1 = 其他国家
@@ -32,7 +32,7 @@ def addShipping(has_other_country=0, cookie=init_cookie):
         print e
 
 
-def delShipping(cookie=init_cookie):
+def delShipping_py(cookie=init_cookie):
     """
     删除物流方式
     :return: True | False

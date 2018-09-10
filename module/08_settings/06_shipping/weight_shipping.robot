@@ -345,7 +345,7 @@ shipping091
     input text    ${locatorB_shipping_price}    ${re}
     Wait And Click Element    ${locatorB_shipping_freight_save}
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
-    ${res}    searchStrs    ${data}
+    ${res}    searchStrs_py    ${data}
     Should Be True    ${res}==${re}
     Quit All Shipping
 
@@ -362,7 +362,7 @@ shipping092
     Wait And Click Element    ${locatorB_shipping_freight_save}
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
-    ${res}    searchStrs    ${data}
+    ${res}    searchStrs_py    ${data}
     Should Be True    ${res}==${re}
     Quit All Shipping
 
