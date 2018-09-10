@@ -3,7 +3,7 @@ Documentation     将手机和邮箱都需填写改成只需填写邮箱，点�
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup
-Test Teardown     Products Test Case Teardown
+Test Teardown     Teardown Test Case
 Force Tags        Checkout
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/variable/var_products.robot

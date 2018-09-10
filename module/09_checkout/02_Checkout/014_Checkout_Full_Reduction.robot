@@ -2,7 +2,7 @@
 Documentation     先添加一个商品和一个包括全部商品的满减活动，点击商品预览，商品详情submi进入checkout页面之后，修改该商品参与的满减活动的优惠内容，还是按照之前的优惠内容计算
 Suite Setup       Products Suite Setup
 Suite Teardown    Close Test Suite Browser
-Test Teardown     Products Test Case Teardown
+Test Teardown     Teardown Test Case
 Force Tags        Checkout
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/variable/var_products.robot
