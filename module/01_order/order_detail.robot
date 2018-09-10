@@ -2,6 +2,7 @@
 Suite Setup       Order_Common_Step
 Suite Teardown    Close Test Suite Browser
 Force Tags        Order
+Test Teardown     Teardown Test Case
 Library           SeleniumLibrary    run_on_failure=NOTHING
 Resource          ../../resources/variable/var_tax_price.robot
 Resource          ../../resources/variable/var_order.robot

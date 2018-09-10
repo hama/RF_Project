@@ -1,6 +1,7 @@
 *** Settings ***
 Suite Setup       Login With Default User
 Suite Teardown    Close Test Suite Browser
+Test Teardown     Teardown Test Case
 Force Tags        Shipping
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/variable/var_shipping.robot

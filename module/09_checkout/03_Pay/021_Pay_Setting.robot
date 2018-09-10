@@ -3,7 +3,7 @@ Documentation     进入支付页后,返回后台修改结账设置修改为必�
 Suite Setup       Products Suite Setup
 Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup
-Test Teardown     Products Test Case Teardown
+Test Teardown     Teardown Test Case
 Force Tags        Checkout
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/variable/var_products.robot
