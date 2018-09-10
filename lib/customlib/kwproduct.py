@@ -21,7 +21,7 @@ def product_search_py(api='/api/product/search?page=0&limit=20', cookie=init_coo
     return ret_data.content
 
 
-def add_product_py(cookie=init_cookie):
+def add_product_py(status, cookie=init_cookie):
     """
     添加商品
     :return: True | False
@@ -42,13 +42,14 @@ def add_product_py(cookie=init_cookie):
         "meta_keyword": "",
         "meta_title": "自动化测试",
         "price": 99,
-        "status": 1,
+        "status": status,
         "title": "自动化测试",
         "url": "/products/自动化测试",
         "variants": [{"barcode": "", "compare_at_price": 1000, "inventory_management": "", "inventory_policy": "",
                       "inventory_quantity": "", "price": 99, "requires_shipping": "", "sku": "", "taxable": "",
                       "weight": "", "weight_unit": "kg"}]
     }
+
     try:
         resData = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
         if resData.status_code == 200 and json.loads(resData.content)['state'] == 0:
@@ -58,6 +59,14 @@ def add_product_py(cookie=init_cookie):
 
     except Exception as e:
         return e
+
+
+def add_discontinued_product_py(cookie=init_cookie):
+    add_product_py(-1, cookie)
+
+
+def add_launched_product_py(cookie=init_cookie):
+    add_product_py(1, cookie)
 
 
 def updates_status_py(product_list, status, cookie=init_cookie):
@@ -163,9 +172,15 @@ def getAllProductCount_py(cookie=init_cookie):
 
 def get_latest_productid_py():
     products_list = json.loads(product_search_py())['data']['products']
-    return products_list[0]['id']
+    try:
+        return products_list[0]['id']
+    except Exception as e:
+        return 1
 
-# if __name__ == '__main__':
-# product_search_py()
-# del_first_product_py()
-# del_all_product_py()
+
+if __name__ == '__main__':
+    # product_search_py()
+    # del_first_product_py()
+    # del_all_product_py()
+    # add_discontinued_product_py()
+    add_launched_product_py()

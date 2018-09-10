@@ -52,7 +52,7 @@ def searchStrs_py(args):
 
 # . md5加密方法
 def md5_py(fname):
-    hash_md5 = hashlib.md5_py()
+    hash_md5 = hashlib.md5()
     with open(fname, "rb") as f:
         for chunk in iter(lambda: f.read(4096), b""):
             hash_md5.update(chunk)
