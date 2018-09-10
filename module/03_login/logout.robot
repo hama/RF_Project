@@ -4,12 +4,12 @@ Suite Teardown    Close Test Suite Browser
 Test Setup        Login Testcase Setup
 Test Teardown     Teardown Test Case
 Force Tags        logout
-Library           SeleniumLibrary    run_on_failure=NOTHING
 Resource          ../../resources/variable/var_common.robot
 Resource          ../../resources/keywords/kw_common.robot
 Resource          ../../resources/keywords/kw_browser.robot
 Resource          ../../resources/variable/var_login.robot
 Resource          ../../resources/keywords/kw_login.robot
+Library           SeleniumLibrary    run_on_failure=NOTHING
 
 
 *** Test Cases ***

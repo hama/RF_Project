@@ -2,16 +2,16 @@
 Documentation     税费正常功能测试
 Suite Setup       Login With Default User
 Suite Teardown    Close Test Suite Browser
-Test Setup        Setup Test Case
+#Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Force Tags        tax
-Library           SeleniumLibrary    run_on_failure=NOTHING
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/variable/var_tax_price.robot
 Resource          ../../../resources/variable/var_shipping.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
 Resource          ../../../resources/keywords/kw_shipping.robot
+Library           SeleniumLibrary    run_on_failure=NOTHING
 
 *** Test Cases ***
 001 Test No Shipping

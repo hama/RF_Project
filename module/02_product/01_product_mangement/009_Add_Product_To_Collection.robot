@@ -5,7 +5,6 @@ Suite Teardown    Products Suite Teardown
 Test Setup        Products Test Case Setup
 Test Teardown     Teardown Test Case
 Force Tags        Products
-Library           ${CURDIR}/../../../lib/customLibrary
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/variable/var_products.robot
 Resource          ../../../resources/keywords/kw_common.robot

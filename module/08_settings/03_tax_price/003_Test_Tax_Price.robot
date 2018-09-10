@@ -4,13 +4,13 @@ Suite Setup       Tax Price Suite Setup
 Suite Teardown    Tax Price Suite Teardown
 Test Setup        Tax Price Test Cases Setup
 Force Tags        tax
-Library           SeleniumLibrary    run_on_failure=NOTHING
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/variable/var_tax_price.robot
 Resource          ../../../resources/variable/var_shipping.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
 Resource          ../../../resources/keywords/kw_shipping.robot
+Library           SeleniumLibrary    run_on_failure=NOTHING
 
 *** Test Cases ***
 001 Test Forward To Shipping Page

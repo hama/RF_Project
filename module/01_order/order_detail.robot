@@ -3,11 +3,11 @@ Suite Setup       Order_Common_Step
 Suite Teardown    Close Test Suite Browser
 Force Tags        Order
 Test Teardown     Teardown Test Case
-Resource          ../../resources/keywords/kw_browser.robot
-Resource          ../../resources/variable/var_tax_price.robot
-Resource          ../../resources/keywords/kw_common.robot
-Resource          ../../resources/variable/var_order.robot
 Library           SeleniumLibrary    run_on_failure=NOTHING
+Resource          ../../resources/variable/var_tax_price.robot
+Resource          ../../resources/variable/var_order.robot
+Resource          ../../resources/keywords/kw_browser.robot
+Resource          ../../resources/keywords/kw_common.robot
 Resource          ../../resources/keywords/kw_add_order.robot
 Resource          ../../resources/keywords/kw_order.robot
 Resource          ../../resources/keywords/kw_products.robot

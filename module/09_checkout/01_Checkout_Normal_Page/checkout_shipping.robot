@@ -2,7 +2,7 @@
 Documentation     Ckeckout Price Page
 Suite Setup       Login With Default User
 Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
-Test Setup        Setup Test Case
+#Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Force Tags        Checkout
 Resource          ../../../resources/variable/var_tax_price.robot

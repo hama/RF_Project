@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation     添加商品
 Library           SeleniumLibrary    run_on_failure=NOTHING
-Library           ${CURDIR}/../../lib/customLibrary
 Resource          ../variable/var_common.robot
 Resource          ../variable/var_marketing.robot
 Resource          ../variable/var_products.robot
@@ -71,7 +70,7 @@ Delete All Product Execute
 Delete Product Loop
     [Documentation]     循环删除商品
     [Arguments]    ${page_num}
-    : FOR    ${index}    IN RANGE    ${page_num}
+    :FOR    ${index}    IN RANGE    ${page_num}
          #选中当前页面所有商品
     \     Select Checkbox    ${locatorB_products_checkbox_chooseProducets}
          #批量按钮
@@ -89,7 +88,7 @@ Delete Product Loop
 
 Wait For Save
     [Documentation]    等待商品保存成功
-    : FOR    ${index}    IN RANGE    10
+    :FOR    ${index}    IN RANGE    10
     \    Sleep    1
     \    ${apiB_done}=    Execute JavaScript    return responseMap.get("${apiB_products_add}")!=undefined;
     \    Continue For Loop If    ${apiB_done}==${False}
@@ -100,7 +99,7 @@ Wait For Save
 Wait For Upload
     [Documentation]    等待图片上传成功
     # TODO: 此处有 bug，无法获取到 upload 接口，暂时用 sleep 5 解决
-    : FOR    ${index}    IN RANGE    5
+    :FOR    ${index}    IN RANGE    5
     \    Sleep    1
     \    ${apiB_done}=    Execute JavaScript    return responseMap.get("${apiB_products_upload}")!=undefined;
     \    Continue For Loop If    ${apiB_done}==${False}

@@ -58,15 +58,15 @@ done
 # 执行customKeyWord.py
 if [ "$test_url" -a "$test_account" ]
 then
-    python2.7 lib/customLibrary/customKeyWord.py --url="$test_url" --user="$test_account"
+    python2.7 lib/customlib/initevn.py --url="$test_url" --user="$test_account"
 elif [ "$test_url" ]
 then
-    python2.7 lib/customLibrary/customKeyWord.py --url="$test_url"
+    python2.7 lib/customlib/initevn.py --url="$test_url"
 elif [ "$test_account" ]
 then
-    python2.7 lib/customLibrary/customKeyWord.py --user="$test_account"
+    python2.7 lib/customlib/initevn.py --user="$test_account"
 else
-    python2.7 lib/customLibrary/customKeyWord.py
+    python2.7 lib/customlib/initevn.py
 fi
 
 # 执行用例

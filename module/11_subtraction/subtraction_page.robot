@@ -2,7 +2,6 @@
 Suite Setup       Login With Default User
 Suite Teardown    Close Test Suite Browser
 Force Tags        Subtraction
-Library           ${CURDIR}/../../lib/customLibrary
 Resource          ../../resources/keywords/kw_browser.robot
 Resource          ../../resources/keywords/kw_common.robot
 Resource          ../../resources/variable/var_subtraction.robot
@@ -10,6 +9,7 @@ Resource          ../../resources/keywords/kw_add_order.robot
 Resource          ../../resources/keywords/kw_order.robot
 Resource          ../../resources/keywords/kw_products.robot
 Resource          ../../resources/keywords/kw_subtraction.robot
+Library           ${CURDIR}/../../lib/customlib/kwmarketing.py
 
 *** Test Cases ***
 sdsdsd

@@ -1,5 +1,5 @@
 *** Settings ***
-Variables         ${CURDIR}/../../lib/customLibrary
+Variables         ${CURDIR}/../../lib/customlib/variable.py
 
 *** Variables ***
 ### 未分类，需要分类并清理
