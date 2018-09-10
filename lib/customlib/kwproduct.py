@@ -46,7 +46,7 @@ def add_product_py(status, cookie=init_cookie):
         "title": "自动化测试",
         "url": "/products/自动化测试",
         "variants": [{"barcode": "", "compare_at_price": 1000, "inventory_management": "", "inventory_policy": "",
-                      "inventory_quantity": "", "price": 99, "requires_shipping": "", "sku": "", "taxable": "",
+                      "inventory_quantity": "", "price": 99, "requires_shipping": "", "sku": "autotest_sku", "taxable": "",
                       "weight": "", "weight_unit": "kg"}]
     }
 

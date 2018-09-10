@@ -100,7 +100,7 @@ subtraction051
     Wait And Click Element    ${locatorB_subtraction_edit_select_second_confirm}
     Subtraction Input Coupon Type    ${input_count}    ${input_percentage}
     Wait And Click Element    ${locatorB_subtraction_first_btn_save}
-    Wait Until Page Contains Element    ${locatorB_subtraction_edit_common_error}
+    Wait Until Page Contains Locator    ${locatorB_subtraction_edit_common_error}
     Confirm Cancel Alert
 
 subtraction052
@@ -140,7 +140,7 @@ subtraction054
     Wait And Click Element    ${locatorB_subtraction_edit_select_second_confirm}
     Subtraction Input Coupon Type    ${input_count}    ${input_percentage}
     Wait And Click Element    ${locatorB_subtraction_first_btn_save}
-    Wait Until Page Contains Element    ${locatorB_subtraction_edit_common_error}
+    Wait Until Page Contains Locator    ${locatorB_subtraction_edit_common_error}
     Confirm Cancel Alert
 
 subtraction055
@@ -654,7 +654,7 @@ Subtraction Check Preferential Conditions
     Subtraction Add Activity Set Time
     Subtraction Input Coupon Type    ${name}    ${value}
     Wait And Click Element    ${locatorB_subtraction_first_btn_save}
-    Run keyword If    '${parmeter}'=='false'    Wait Until Page Contains Element    ${locatorB_subtraction_edit_common_error}
+    Run keyword If    '${parmeter}'=='false'    Wait Until Page Contains Locator    ${locatorB_subtraction_edit_common_error}
 
 Subtraction Check Full Discount
     [Documentation]    添加活动 满件打折case封装
@@ -669,7 +669,7 @@ Subtraction Check Full Discount
     Wait And Click Element    ${locatorB_subtraction_select_fullDiscountData}
     Subtraction Input Coupon Type    ${name}    ${value}
     Wait And Click Element    ${locatorB_subtraction_first_btn_save}
-    Run keyword If    '${parmeter}'=='false'    Wait Until Page Contains Element    ${locatorB_subtraction_edit_common_error}
+    Run keyword If    '${parmeter}'=='false'    Wait Until Page Contains Locator    ${locatorB_subtraction_edit_common_error}
     Run keyword If    '${parmeter}'=='false'    Confirm Cancel Alert
 
 
@@ -749,7 +749,7 @@ Subtraction Product Quit Subtraction
     Wait Until Page Contains    选择商品
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[22].click()
     Wait And Click Element    dom:document.querySelectorAll("button")[9]
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll("tbody")[0]
     :FOR    ${i}    IN RANGE    ${length}
     \    ${x}    Evaluate    ${i}+1
     \    Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(${x}) td")[5]

@@ -150,6 +150,6 @@ findpwd012
     Wait And Input Text     ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Click Element    ${locatorB_login_btn_login}
-    Wait Until Page Contains Element    ${locatorB_order}
+    Wait Until Page Contains Locator    ${locatorB_order}
     Logout
-    Wait Until Page Contains Element    ${locatorB_login_input_account}
+    Wait Until Page Contains Locator    ${locatorB_login_input_account}

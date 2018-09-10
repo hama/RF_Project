@@ -19,7 +19,7 @@ products103
     #点击批量上传按钮
     Wait And Click Element    ${locatorB_productsMgmt_icon_uploadProduct}
     #等待上传按钮
-    Wait Until Page Contains Element    id:sheets
+    Wait Until Page Contains Locator    id:sheets
     #上传文件
     Choose File    id:sheets    ${file_products_template}
     #点击上传
@@ -39,7 +39,7 @@ products104
     Sleep    5
     Wait And Click Element    ${locatorB_productsMgmt_icon_uploadProduct}
     #等待上传按钮
-    Wait Until Page Contains Element    id:sheets
+    Wait Until Page Contains Locator    id:sheets
     #上传文件
     Choose File    id:sheets    ${file_products_wrong_template}
     Sleep    10
@@ -56,10 +56,10 @@ products105
     Sleep    5
     Wait And Click Element    ${locatorB_productsMgmt_icon_uploadProduct}
     #等待覆盖选项
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[0]
     Click Element    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[0]
     #等待上传按钮
-    Wait Until Page Contains Element    id:sheets
+    Wait Until Page Contains Locator    id:sheets
     #上传文件
     Choose File    id:sheets    ${file_products_template}
     #点击上传

@@ -44,7 +44,7 @@ checkout155
     #view orders
     Wait And Click Element    dom:document.querySelectorAll(".btn2")[1]
     #跳转到my orders页面
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".spec_order_item")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".spec_order_item")[0]
     #点击查看订单详细信息
     Wait And Click Element    dom:document.querySelectorAll(".order_info")[0]
     #获取当前优惠的金额

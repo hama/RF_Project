@@ -43,7 +43,7 @@ products025
     Sleep    1
     Go To Products Page
     Sleep    5
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
     Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
     Sleep    3
     ${price}=    Get Value    ${locatorB_productsNew_input_addPrice}
