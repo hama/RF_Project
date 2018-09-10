@@ -62,7 +62,7 @@ def add_product_py(status, cookie=init_cookie):
 
 
 def add_discontinued_product_py(cookie=init_cookie):
-    add_product_py(-1, cookie)
+    add_product_py(0, cookie)
 
 
 def add_launched_product_py(cookie=init_cookie):
@@ -182,5 +182,5 @@ if __name__ == '__main__':
     # product_search_py()
     # del_first_product_py()
     # del_all_product_py()
-    # add_discontinued_product_py()
-    add_launched_product_py()
+    add_discontinued_product_py()
+    # add_launched_product_py()
