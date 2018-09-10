@@ -14,7 +14,7 @@ def add_store_info_py(email="171869092@qq.com", telephone="15220581724", cookie=
     :return: True | False
     """
     store_rul = home_page_url + "/api/store/update"
-    store_id = getStoreId()
+    store_id = getStoreId_py()
     data = {"address": "",
             "city": "",
             "code": "USD",
@@ -44,7 +44,7 @@ def add_store_info_py(email="171869092@qq.com", telephone="15220581724", cookie=
         return False
 
 
-def getStoreId(cookie=init_cookie):
+def getStoreId_py(cookie=init_cookie):
     store_url = home_page_url + "/api/store/info"
     try:
         res = requests.get(url=store_url, headers={"cookie": cookie['cookie']})
@@ -53,13 +53,13 @@ def getStoreId(cookie=init_cookie):
         print e
 
 
-def setBjTimeZone(timezone=None, cookie=init_cookie):
+def setBjTimeZone_py(timezone=None, cookie=init_cookie):
     """
     设置时区 ((GMT + 08:00) 北京，香港，台北，新加坡)
     :param timezone: none 设置北京时区 | 设置 美属萨摩亚时区
     :return:
     """
-    store_id = getStoreId()
+    store_id = getStoreId_py()
     if timezone is None:
         time_zone = Bj_timeZone
     else:

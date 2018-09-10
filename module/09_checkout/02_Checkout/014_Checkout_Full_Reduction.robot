@@ -49,7 +49,7 @@ Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品和一个包括全部商品的满减活动
     Login With Default User
     Add Product Wait
-    delSubtraction    all
+    delSubtraction_fromdb    all
     Add Subtraction Wait Step    1
     Add Payment Cod Wait
     Go To Products Page

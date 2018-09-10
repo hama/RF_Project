@@ -24,13 +24,13 @@ subtraction001
 subtraction002
     [Documentation]    进入全部满减活动界面
     [Tags]    P0
-    delSubtraction    all
+    delSubtraction_fromdb    all
     # 调用添加一个满减活动关键字 - 状态为：进行中
     Add Subtraction Wait Step    1
     Go To Subtraction Page
     Go To Subtraction Page
     Page Should Contain Element    ${locatorB_subtraction_first_tr_eml}
-    delSubtraction    #.删除满减活动
+    delSubtraction_fromdb    #.删除满减活动
 
 subtraction003
     [Documentation]    进入未开始满减活动界面
@@ -42,7 +42,7 @@ subtraction003
     Page Should Contain Element    ${locatorB_subtraction_first_tr_eml}
     ${data}    Get Text    ${locatorB_subtraction_get_status_text}
     Should Be True    '${data}'=='未开始'
-    delSubtraction    #.删除满减活动
+    delSubtraction_fromdb    #.删除满减活动
 
 subtraction004
     [Documentation]    进入-进行中满减活动界面
@@ -53,7 +53,7 @@ subtraction004
     Wait And Click Element    ${locatorB_subtraction_title_processing}
     ${data}    Get Text    ${locatorB_subtraction_get_status_text}
     Should Be True    '${data}'=='进行中'
-    delSubtraction    #.删除满减活动
+    delSubtraction_fromdb    #.删除满减活动
 
 subtraction005
     [Documentation]    进入已结束满减活动界面
@@ -64,24 +64,24 @@ subtraction005
     Wait And Click Element    ${locatorB_subtraction_title_end}
     ${data}    Get Text    ${locatorB_subtraction_get_status_text}
     Should Be True    '${data}'=='已结束'
-    delSubtraction    #.删除满减活动
+    delSubtraction_fromdb    #.删除满减活动
 
 subtraction010
     [Documentation]    活动状态未开始修改名称 -修改成功
     [Tags]    P0
-    delSubtraction
+    delSubtraction_fromdb
     subtraction_common_change_name    gggggg    2
 
 subtraction011
     [Documentation]    活动状态进行中修改名称 -修改成功
     [Tags]    P0
-    delSubtraction
+    delSubtraction_fromdb
     subtraction_common_change_name    gggggg    1
 
 subtraction012
     [Documentation]    活动状态已结束修改名称 -修改失败
     [Tags]    P1
-    delSubtraction
+    delSubtraction_fromdb
     subtraction_common_change_name    gggggg    3
 
 subtraction013
@@ -242,7 +242,7 @@ subtraction_common_change_name
 subtraction_set_time_zone
     [Documentation]    设置时区case封装
     [Arguments]    ${index}    ${check}
-    delSubtraction
+    delSubtraction_fromdb
     #.添加进行中的活动
     Add Subtraction Wait Step    ${index}
     Go To Subtraction Page

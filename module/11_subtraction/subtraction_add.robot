@@ -14,7 +14,7 @@ Library           ${CURDIR}/../../lib/customlib/kwmarketing.py
 
 *** Test Cases ***
 lklklklklk
-    delSubtraction
+    delSubtraction_fromdb
     Add Subtraction Wait Step    2
     Go To Subtraction Page
     #.输入100
@@ -167,7 +167,7 @@ subtraction058
 subtraction059
     [Documentation]    下方添加多个层级，勾选上不封顶  > "3、提示选择上不封顶，只有优惠层级1生效，其他都会失效4、下方除了层级1，其他层级消失"
     [Tags]    P0
-    delSubtraction    all
+    delSubtraction_fromdb    all
     Go To Subtraction Page
     Wait And Click Element    ${locatorB_subtraction_add_subtraction}
     Wait And Input Text    ${locatorB_subtraction_edit_input_name}    自动化测试
@@ -478,7 +478,7 @@ subtraction125
 subtraction127
     [Documentation]    存在进行中活动 > 提前结束活动，点击确定  > 活动由进行中的状态变为已结束
     [Tags]    P0
-    delSubtraction
+    delSubtraction_fromdb
     Add Subtraction Wait Step    1
     Go To Subtraction Page
     Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(1) td div i")[1]
@@ -489,7 +489,7 @@ subtraction127
 subtraction128
     [Documentation]    存在进行中活动 > 提前结束活动，点击取消  > 保持原状
     [Tags]    P1
-    delSubtraction
+    delSubtraction_fromdb
     Add Subtraction Wait Step    1
     Go To Subtraction Page
     Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(1) td div i")[1]
@@ -500,7 +500,7 @@ subtraction128
 subtraction129
     [Documentation]    存在未开始活动 > 删除活动，点击确定 > 活动删除成功
     [Tags]    P0
-    delSubtraction
+    delSubtraction_fromdb
     Add Subtraction Wait Step    2
     Go To Subtraction Page
     Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(1) td div i")[1]
@@ -511,7 +511,7 @@ subtraction129
 subtraction130
     [Documentation]    存在未开始活动 > 删除活动，点击取消 > 保持原状
     [Tags]    P0
-    delSubtraction
+    delSubtraction_fromdb
     Add Subtraction Wait Step    2
     Go To Subtraction Page
     Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(1) td div i")[1]
@@ -522,7 +522,7 @@ subtraction130
 subtraction131
     [Documentation]    输入关键字为名称，点击搜索/按enter > 搜索成功
     [Tags]    P0
-    delSubtraction
+    delSubtraction_fromdb
     Add Subtraction Wait Step    2
     Go To Subtraction Page
     ${name}    Get Text    dom:document.querySelectorAll("tbody tr:nth-child(1) td")[1]
@@ -535,7 +535,7 @@ subtraction131
 subtraction132
     [Documentation]    输入关键字为编号，点击搜索/按enter > 搜索成功
     [Tags]    P0
-    delSubtraction
+    delSubtraction_fromdb
     Add Subtraction Wait Step    2
     Go To Subtraction Page
     ${name}    Get Text    dom:document.querySelectorAll("tbody tr:nth-child(1) td")[0]
@@ -548,7 +548,7 @@ subtraction132
 subtraction133
     [Documentation]    输入字符“0”，点击搜索/按enter > 搜索成功
     [Tags]    P1
-    delSubtraction
+    delSubtraction_fromdb
     Add Subtraction Wait Step    2
     Go To Subtraction Page
     Wait And Input Text    dom:document.querySelectorAll(".ant-input")[0]    0
@@ -560,7 +560,7 @@ subtraction133
 subtraction134
     [Documentation]    点击类型满额减元 > 搜索成功
     [Tags]    P0
-    delSubtraction
+    delSubtraction_fromdb
     Add Subtraction Wait Step    2
     Go To Subtraction Page
     #.点击选择满额减元
@@ -574,7 +574,7 @@ subtraction134
 subtraction136
     [Documentation]    点击重置 > 搜索成功
     [Tags]    P0
-    delSubtraction
+    delSubtraction_fromdb
     Add Subtraction Wait Step    2
     Go To Subtraction Page
     #.输入100
@@ -759,7 +759,7 @@ Subtraction Product Quit Subtraction
 
 Common Step
     [Documentation]    公共步骤
-    delSubtraction    all
+    delSubtraction_fromdb    all
     Go To Subtraction Page
     Wait And Click Element    ${locatorB_subtraction_add_subtraction}
 
