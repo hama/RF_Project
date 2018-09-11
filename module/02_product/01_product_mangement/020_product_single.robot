@@ -33,7 +33,7 @@ products005
 products007
     [Documentation]    验证商品无库存时展示正确
     [Tags]    P0
-    add_min_product_py
+    add_empty_quantity_product_py
     Reload Page
     Wait And Click Element    ${locatorB_productsMgmt_button_all}
 	${inventoryQuantity}    Wait And Get Text    ${locatorB_productsMgmt_text_inventoryQuantity}
@@ -42,12 +42,14 @@ products007
 products009
     [Documentation]    验证商品的创建时间正确
     [Tags]    P0
-    add_min_product_py
     ${time1}    Get Time
+    add_min_product_py
+    ${time2}    Get Time
     Reload Page
     Wait And Click Element    ${locatorB_productsMgmt_button_all}
 	${createTime}    Wait And Get Text    ${locatorB_productsMgmt_text_createTime}
-	Should Be Equal    '${createTime}'    '${time1}'
+	${status}    Evaluate    '${createTime}'=='${time1}' or '${createTime}'=='${time2}'
+	Should Be True    ${status}
 
 
 

@@ -62,6 +62,17 @@ def add_launched_product_py(cookie=init_cookie):
     add_product_py(data, cookie)
 
 
+def add_empty_quantity_product_py(cookie=init_cookie):
+    '''
+    添加min商品，除必填项（标题、售价、重量）其余不填，保存默认
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(product_min_data)
+    data['variants'][0]['inventory_management'] = True
+    add_product_py(data, cookie)
+
+
 def add_min_product_py(cookie=init_cookie):
     '''
     添加min商品，除必填项（标题、售价、重量）其余不填，保存默认

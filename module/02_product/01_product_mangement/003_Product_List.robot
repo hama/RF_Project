@@ -10,6 +10,7 @@ Resource          ../../../resources/variable/var_products.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
 Resource          ../../../resources/keywords/kw_products.robot
+Library           ${CURDIR}/../../../lib/customlib/lib_utils.py
 
 *** Test Cases ***
 products001
@@ -18,7 +19,7 @@ products001
     Wait And Click Element    ${locatorB_productsMgmt_button_all}
     ${item1_createtime}=    Wait And Get Text    dom:document.querySelectorAll('[class="vendor___2VuW9"]')[1]
     ${item2_createtime}=    Wait And Get Text    dom:document.querySelectorAll('[class="vendor___2VuW9"]')[2]
-    ${result}    compare_time_py    ${item1_createtime}    ${item2_createtime}
+    ${result}    lib_utils.compare_time_py    ${item1_createtime}    ${item2_createtime}
     Should Be Equal    ${result}    gt
 
 products002
@@ -26,7 +27,7 @@ products002
     [Tags]    P0
     Wait And Click Element    ${locatorB_productsMgmt_button_all}
     ${total_record}    Wait And Get Text    ${locatorB_page_text_totalRecord}
-    ${size}    searchStrs_py    ${total_record}
+    ${size}    lib_utils.searchStrs_py    ${total_record}
     Should Be Equal As Integers    ${size}    2
 
 
