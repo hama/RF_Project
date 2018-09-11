@@ -39,6 +39,17 @@ products007
 	${inventoryQuantity}    Wait And Get Text    ${locatorB_productsMgmt_text_inventoryQuantity}
 	Should Be equal    '${inventoryQuantity}'    '0件'
 
+products009
+    [Documentation]    验证商品的创建时间正确
+    [Tags]    P0
+    add_min_product_py
+    ${time1}    Get Time
+    Reload Page
+    Wait And Click Element    ${locatorB_productsMgmt_button_all}
+	${createTime}    Wait And Get Text    ${locatorB_productsMgmt_text_createTime}
+	Should Be Equal    '${createTime}'    '${time1}'
+
+
 
 
 

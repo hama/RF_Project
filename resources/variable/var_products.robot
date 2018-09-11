@@ -40,6 +40,7 @@ ${locatorB_productsMgmt_input_name}    dom:document.querySelectorAll(".search_co
 ${locatorB_productsMgmt_image_thumbnails}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[1].querySelectorAll("img")[0]     #商品列表第一个商品的图片
 ${locatorB_productsMgmt_text_firstProductName}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[2].querySelectorAll("span")[0]    #商品列表第一个商品的商品名称
 ${locatorB_productsMgmt_text_inventoryQuantity}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[3]    #商品列表第一个商品的库存(只能在Show All Header关键字执行之后使用)
+${locatorB_productsMgmt_text_createTime}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[9]    #商品列表第一个商品的库存(只能在Show All Header关键字执行之后使用)
 ${locatorB_productsMgmt_icon_preview}    dom:document.querySelectorAll("tbody tr:nth-child(1) td i")[0]    #商品列表的预览icon
 ${locatorB_productsMgmt_icon_delete}    dom:document.querySelectorAll("tbody tr td div i")[1]    #商品列表的删除icon
 ${locatorB_productsMgmt_button_delTags}    dom:document.querySelectorAll(".ant-btn-primary")[0]    #删除标签弹框的删除button

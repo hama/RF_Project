@@ -69,19 +69,6 @@ products008
     Should Be Equal    ${attr0}    ant-switch
     Should Be Equal    ${attr1}    ant-switch ant-switch-checked
 
-#products007
-#    [Documentation]    验证显示的所有商品状态是否显示正确
-#    [Tags]    P0
-#    #验证表头显示
-#    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-tbody .ant-table-row")[0]
-#    #获取当前页展示的商品数量
-#    ${count}    Execute Javascript    return document.querySelectorAll(".ant-table-tbody .ant-table-row").length
-#    #判断当前页所有商品状态
-#    : FOR    ${i}    IN RANGE    ${count}
-#    \    ${status}    getProductStatus    ${i}
-#    \    Run Keyword If    ${status}==0    Should Be Not Checked    ${i}
-#    \    Run Keyword If    ${status}==1    Should Be Checked    ${i}
-
 products010
     [Documentation]    验证显示的所有商品的sku是否显示正确
     [Tags]    P0
@@ -91,14 +78,6 @@ products010
     Should Be Equal As Strings    ${sku0}    autotest_sku
     Should Be Equal As Strings    ${sku1}    autotest_sku
 
-products018
-    [Documentation]    验证点击删除按钮可删除商品
-    [Tags]    P0
-    #判断当前页所有商品状态
-    ${sku0}    Wait And Get Text    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[4].querySelectorAll("span")[0]
-    ${sku1}    Wait And Get Text    dom:document.querySelectorAll(".ant-table-tbody tr")[1].querySelectorAll("td")[4].querySelectorAll("span")[0]
-    Should Be Equal As Strings    ${sku0}    autotest_sku
-    Should Be Equal As Strings    ${sku1}    autotest_sku
 
 #products015
 #    [Documentation]    验证商品上传弹窗
@@ -146,16 +125,3 @@ products018
 #    #数据无变化
 #    Page Should Contain    ${name}
 
-*** Keywords ***
-
-Should Be Not Checked
-    [Arguments]    ${i}
-    #获取按钮类名
-    ${class_name}    Execute Javascript    return document.getElementsByClassName("ant-switch")[${i}].getAttribute("class")
-    Should Be Equal As Strings    ${class_name}    ant-switch
-
-Should Be Checked
-    [Arguments]    ${i}
-    #获取按钮类名
-    ${class_name}    Execute Javascript    return document.getElementsByClassName("ant-switch")[${i}].getAttribute("class")
-    Should Be Equal As Strings    ${class_name}    ant-switch ant-switch-checked
