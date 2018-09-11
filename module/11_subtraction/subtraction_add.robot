@@ -12,9 +12,7 @@ Resource          ../../resources/keywords/kw_products.robot
 Resource          ../../resources/keywords/kw_subtraction.robot
 Library           ${CURDIR}/../../lib/customlib/kwmarketing.py
 
-*** Test Cases ***
-ddddd
-    
+*** Test Cases ***    
 subtraction040
     [Documentation]    活动名称输入中文字符  > 可以成功输入，并保存
     [Tags]    P1
