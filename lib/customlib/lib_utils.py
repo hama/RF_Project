@@ -1,13 +1,19 @@
 # -*- coding:utf-8 -*-
 import datetime
 import hashlib
+import os
+import oss2
 import random
-import time
 import re
+import requests
 import sys
+import time
+import uuid
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
+
+
 
 
 def salt_py(size=7):
@@ -76,7 +82,8 @@ def getTimes_py():
         "beforeTime": beforeTime
     }
 
-def compare_time_py(format_time1,format_time2):
+
+def compare_time_py(format_time1, format_time2):
     """
     将格式化时间，转换为时间戳，比较大小
     :return:
@@ -89,3 +96,60 @@ def compare_time_py(format_time1,format_time2):
         return 'lt'
     elif timestamp1 == timestamp2:
         return 'eq'
+
+
+def upload_oss_py(urlex, name='', extension='', timeout_second=30):
+    """
+    上传图片到阿里云
+    :param urlex: url
+    :param name: 名字
+    :param extension: 扩充信息
+    :param timeout_second: 超时时间
+    :return: tuple
+    """
+    aliyun = {
+        "accessKeyId": "LTAIpvmId6CBlCH8",
+        "accessKeySecret": "RkrFrAmixqlS5su065AgVzFa9OXb9w",
+        "bucket": "shoplazza",
+        "endPoint": "oss-cn-shenzhen.aliyuncs.com"
+    }
+
+    auth = oss2.Auth(aliyun['accessKeyId'], aliyun['accessKeySecret'])
+    bucket = oss2.Bucket(auth, aliyun['endPoint'], aliyun['bucket'])
+    if not urlex:
+        return False
+    tmp_file = '/tmp/' + str(uuid.uuid1())
+    try:
+        r = requests.get(urlex, stream=True, timeout=timeout_second)
+        if r.status_code > 399:
+            return False
+        with open(tmp_file, 'wb') as f:
+            for chunk in r.iter_content(chunk_size=1024):
+                if chunk:  # filter out keep-alive new chunks
+                    f.write(chunk)
+        md5_file = md5_py(tmp_file)
+        size_file = os.stat(tmp_file).st_size
+        s3key = name
+        if not s3key:
+            if not extension:
+                extension = urlex.split('.')[-1].split('?')[0]
+                if len(extension) > 5:
+                    extension = ""
+            if extension:
+                s3key = md5_file + '.' + extension
+            else:
+                s3key = md5_file
+            if s3key.endswith('.SS2'):
+                s3key = str(s3key).replace('SS2', 'jpg')
+
+        with open(tmp_file, 'rb') as f:
+            bucket.put_object(s3key, f)
+        return (s3key, size_file)
+    except Exception as e:
+        print e
+    finally:
+        try:
+            os.remove(tmp_file)
+        except Exception as e:
+            print e
+    return False

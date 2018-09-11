@@ -143,7 +143,7 @@ products047
     #点击取消按钮
     Wait And Click Element    ${locatorB_popUps_button_default}
     #返回界面
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     Go TO    ${home_page}
 
 products049

@@ -233,10 +233,10 @@ subtraction_common_change_name
     Wait And Click Element    ${locatorB_subtraction_title_all}
     ${data}    Get Text    dom:document.querySelectorAll("tbody tr td")[1]
     Wait And Click Element    ${locatorB_subtraction_first_tr_eml}
-    Run keyword If    ${status}<>3    Wait And Input Text    ${locatorB_subtraction_edit_input_name}    ${value}
-    Run keyword If    ${status}<>3    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
+    Run Keyword If    ${status}<>3    Wait And Input Text    ${locatorB_subtraction_edit_input_name}    ${value}
+    Run Keyword If    ${status}<>3    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
     ...    ELSE    Page Should Not Contain    保存
-    Run keyword If    '${paremeter}'=='False'    Should Not Be True    '${data}'=='${value}'
+    Run Keyword If    '${paremeter}'=='False'    Should Not Be True    '${data}'=='${value}'
     ...    ELSE    Should Be True    '${data}'=='${value}'
 
 subtraction_set_time_zone
@@ -258,9 +258,9 @@ subtraction_change_time_end
     [Documentation]    修改结束时间case封装
     [Arguments]    ${index}
     Common Click First Tr Step    ${index}
-    Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll('.ant-input-lg')[1]
-    Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll('.ant-calendar-tbody tr td')[25]
-    Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    Run Keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll('.ant-input-lg')[1]
+    Run Keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll('.ant-calendar-tbody tr td')[25]
+    Run Keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll("button")[1]
     ...    ELSE    Page Should Not Contain Element    dom:document.querySelectorAll('.ant-calendar-tbody tr td')[25]
 
 subtraction_change_time_start
@@ -268,8 +268,8 @@ subtraction_change_time_start
     [Arguments]    ${index}
     Common Click First Tr Step    ${index}
     Wait And Click Element    ${locatorB_subtraction_edit_select_first_time}
-    Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll('.ant-calendar-tbody tr td')[17]
-    Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    Run Keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll('.ant-calendar-tbody tr td')[17]
+    Run Keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll("button")[1]
 
     ...    ELSE    Page Should Not Contain Element    dom:document.querySelectorAll('.ant-calendar-tbody tr td')[17]
 
@@ -279,10 +279,10 @@ subtraction_change_coupon_type
     Common Click First Tr Step    ${index}
     Wait And Click Element    dom:document.querySelectorAll(".ant-select-selection__rendered")[0]
 
-    Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-root li")[1]
-    Run keyword If    ${index}==2    Wait And Input Text    ${locatorB_subtraction_edit_input_totalPrice}    ${input_count}
-    Run keyword If    ${index}==2    Wait And Input Text    ${locatorB_subtraction_edit_input_cutPrice}    ${input_percentage}
-    Run keyword If    ${index}==2    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
+    Run Keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll(".ant-select-dropdown-menu-root li")[1]
+    Run Keyword If    ${index}==2    Wait And Input Text    ${locatorB_subtraction_edit_input_totalPrice}    ${input_count}
+    Run Keyword If    ${index}==2    Wait And Input Text    ${locatorB_subtraction_edit_input_cutPrice}    ${input_percentage}
+    Run Keyword If    ${index}==2    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
     ...    ELSE    Page Should Not Contain    ${locatorB_subtraction_edit_text_save}
 
 subtraction_change_not_capped
@@ -291,7 +291,7 @@ subtraction_change_not_capped
     #.点击第一个tr的内容
     Common Click First Tr Step    ${index}
     Wait And Click Element    ${locatorB_subtraction_edit_checkbox_capped}
-    Run keyword If    ${index}==3    Page Should Not Contain    ${locatorB_subtraction_edit_text_save}
+    Run Keyword If    ${index}==3    Page Should Not Contain    ${locatorB_subtraction_edit_text_save}
     ...    ELSE    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
 
 subtraction_change_preferential_rules
@@ -299,9 +299,9 @@ subtraction_change_preferential_rules
     [Arguments]    ${index}
     #.点击第一个tr的内容
     Common Click First Tr Step    ${index}
-    Run keyword If    ${index}==2    Wait And Input Text    ${locatorB_subtraction_edit_input_totalPrice}    ${input_count}
-    Run keyword If    ${index}==2    Wait And Input Text    ${locatorB_subtraction_edit_input_cutPrice}    ${input_percentage}
-    Run keyword If    ${index}==2    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
+    Run Keyword If    ${index}==2    Wait And Input Text    ${locatorB_subtraction_edit_input_totalPrice}    ${input_count}
+    Run Keyword If    ${index}==2    Wait And Input Text    ${locatorB_subtraction_edit_input_cutPrice}    ${input_percentage}
+    Run Keyword If    ${index}==2    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
     ...    ELSE    Page Should Not Contain    ${locatorB_subtraction_edit_text_save}
 
 subtraction_change_all_product_quantity
@@ -311,12 +311,12 @@ subtraction_change_all_product_quantity
     Common Click First Tr Step    ${index}
     Execute JavaScript    return document.getElementById("dj").scrollTo(0,10000)
     ${undefined}    Execute JavaScript    return document.querySelectorAll("button p")[4]===undefined
-    Run keyword If    '${undefined}'=='False'    Wait And Click Element    dom:document.querySelectorAll("button p")[4]
-    Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll(".list___3_zLt div label")[0]
-    Run keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll("button")[6]
-    Run keyword If    ${index}==2    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-tbody")
-    #Run keyword If    ${index}==2    ${length}=    Execute JavaScript    return document.querySelectorAll(".ant-table-tbody tr").length
-    #Run keyword If    ${index}==2    Should Be True    ${length}==2
+    Run Keyword If    '${undefined}'=='False'    Wait And Click Element    dom:document.querySelectorAll("button p")[4]
+    Run Keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll(".list___3_zLt div label")[0]
+    Run Keyword If    ${index}==2    Wait And Click Element    dom:document.querySelectorAll("button")[6]
+    Run Keyword If    ${index}==2    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-tbody")
+    #Run Keyword If    ${index}==2    ${length}=    Execute JavaScript    return document.querySelectorAll(".ant-table-tbody tr").length
+    #Run Keyword If    ${index}==2    Should Be True    ${length}==2
     ...    ELSE    Page Should Not Contain    ${locatorB_subtraction_edit_text_save}
 
 subtraction_change_sub_product_quantity
@@ -326,12 +326,12 @@ subtraction_change_sub_product_quantity
     Common Click First Tr Step    ${index}    ${type}
     Execute JavaScript    return document.getElementById("dj").scrollTo(0,10000)
     ${undefined}    Execute JavaScript    return document.querySelectorAll("button p")[4]===undefined
-    Run keyword If    '${undefined}'=='False'    Execute JavaScript    return document.querySelectorAll("button p")[4].click()
-    Run keyword If    ${index}<>3    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-checkbox-wrapper")[3]
-    Run keyword If    ${index}<>3    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-wrapper")[3].click()
-    Run keyword If    ${index}<>3    Execute JavaScript    return document.getElementsByClassName("handleSubmit___1JL8t")[0].scrollIntoView()
-    Run keyword If    ${index}<>3    Wait And Click Element    ${locatorB_subtraction_edit_select_product_save}
-    Run keyword If    ${index}<>3    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
+    Run Keyword If    '${undefined}'=='False'    Execute JavaScript    return document.querySelectorAll("button p")[4].click()
+    Run Keyword If    ${index}<>3    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-checkbox-wrapper")[3]
+    Run Keyword If    ${index}<>3    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-wrapper")[3].click()
+    Run Keyword If    ${index}<>3    Execute JavaScript    return document.getElementsByClassName("handleSubmit___1JL8t")[0].scrollIntoView()
+    Run Keyword If    ${index}<>3    Wait And Click Element    ${locatorB_subtraction_edit_select_product_save}
+    Run Keyword If    ${index}<>3    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
     ...    ELSE    Page Should Not Contain    ${locatorB_subtraction_edit_text_save}
 
 subtraction_change_cancel
@@ -342,10 +342,10 @@ subtraction_change_cancel
     Common Click First Tr Step    ${index}    ${type}
     Wait And Input Text    ${locatorB_subtraction_edit_input_name}    ${name}
     Wait And Click Element    ${locatorB_subtraction_first_btn_cancel}
-    Run keyword If    '${confirm}'=='false'    Wait Until Page Contains    放弃当前更改内容？
-    Run keyword If    '${confirm}'=='false'    Wait And Click Element    ${locatorB_subtraction_confirm_cancel_btn}
-    Run keyword If    '${confirm}'=='false'    Wait And Click Element    ${locatorB_marketing_subtraction}
-    Run keyword If    '${confirm}'=='false'    Alert Should Be Present
+    Run Keyword If    '${confirm}'=='false'    Wait Until Page Contains    放弃当前更改内容？
+    Run Keyword If    '${confirm}'=='false'    Wait And Click Element    ${locatorB_subtraction_confirm_cancel_btn}
+    Run Keyword If    '${confirm}'=='false'    Wait And Click Element    ${locatorB_marketing_subtraction}
+    Run Keyword If    '${confirm}'=='false'    Alert Should Be Present
     ...    ELSE    Wait And Click Element    ${locatorB_subtraction_confirm_determine_btn}
 
 

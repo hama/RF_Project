@@ -13,10 +13,21 @@ Products Suite Setup
     Login With Default User
     del_all_product_py
     add_launched_product_py
-    Sleep    60
+    Sleep    60   # 为构造两个产品创建时间不同
     add_discontinued_product_py
+    Go To Products Page
+    Show All Header
 
+Products Single Suite Setup
+    [Documentation]    product
+    Login With Default User
+    del_all_product_py
+    Go To Products Page
 
+Products Single Case Teardown
+    [Documentation]    product
+    del_first_product_py
+	Teardown Test Case
 
 Product Testcase Setup
     [Documentation]    product
@@ -24,6 +35,12 @@ Product Testcase Setup
 
 
 
+Show All Header
+	Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
+    @{list}    Wait And Get List Items    document.querySelectorAll('.ant-modal-body span[class="ant-checkbox"]')
+    :FOR    ${i}    IN    @{list}
+    \    Wait And Click Element    ${i}
+    Wait And Click Element    dom:document.querySelectorAll('button[class*="middle_btn"]')[0]
 
 Add Product
     [Documentation]    添加下架商品以做测试
@@ -67,7 +84,7 @@ Add Product Required Content
 Delete Product
     [Documentation]    删除商品列表的第一个商品
     Go To Products Page
-    Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}    # 商品列表第一条数据
+    Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}    # 商品列表第一条数据
     Wait And Click Element    ${locatorB_popUps_button_middle}
 
 Delete All Products
@@ -128,8 +145,8 @@ Click_First_Product_And_Click_Batch_Menu
     [Documentation]    选中第一个商品,并且点击批量操作菜单
     #选中第一个商品
     Sleep    2
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
-    Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
+    Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #点击批量操作菜单
     Wait And Click Element    ${locatorB_productsMgmt_select_batchOperations}
 

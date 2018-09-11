@@ -18,8 +18,8 @@ products061
     #将两个商品一次性从两个专辑中移除
     #选中两个商品
     Sleep    2
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
-    Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
+    Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     Wait Until Page Contains Locator    dom:document.querySelectorAll("tbody .ant-checkbox-input")[1]
     Select Checkbox    dom:document.querySelectorAll("tbody .ant-checkbox-input")[1]
     #记录下操作的商品名称
@@ -43,7 +43,7 @@ products061
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".confirm___3pVk5")[0]
     Sleep    2
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #去商品专辑模块检查
     Wait And Click Element    ${locatorB_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
@@ -65,8 +65,8 @@ products060
     #将一个商品从两个专辑中移除
     #选中1个商品
     Sleep    2
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
-    Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
+    Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #记录下操作的商品名称
     ${name}    Get Text    ${locatorB_productsMgmt_text_firstProductName}
     #点击批量操作菜单
@@ -87,7 +87,7 @@ products060
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".confirm___3pVk5")[0]
     Sleep    2
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #去商品专辑模块检查
     Wait And Click Element    ${locatorB_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品

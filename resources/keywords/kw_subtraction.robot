@@ -12,7 +12,7 @@ Add Subtraction Timezone Wait
     [Arguments]    ${paremeter}    ${count}=10
     :FOR    ${index}    IN RANGE    ${count}
     \    ${data}    setBjTimeZone_py    ${paremeter}
-    \    Run keyword If    '${data}'=='True'    Exit For Loop
+    \    Run Keyword If    '${data}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1
 
 Add Subtraction Wait Step
@@ -20,7 +20,7 @@ Add Subtraction Wait Step
     [Arguments]    ${index}    ${type}=${Empty}    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
     \    ${res_status}    addSubtraction_py    ${index}    ${type}
-    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
+    \    Run Keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1
 
 Common Click First Tr Step

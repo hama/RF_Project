@@ -297,7 +297,7 @@ order099
     \    ${x}    Evaluate    ${i}+1
     \    ${data}    Execute JavaScript    return document.querySelectorAll("table tbody tr:nth-child(${x}) td p")[2].innerText
     \    ${res_data}    searchStrs_py    ${data}
-    \    Run keyword If    ${min_price}<'${res_data}'>${max_price}    log    success
+    \    Run Keyword If    ${min_price}<'${res_data}'>${max_price}    log    success
     \    ...    ELSE    Run keyword    Fail    ${error_msg}
 
 order101

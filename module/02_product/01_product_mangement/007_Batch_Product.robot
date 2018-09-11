@@ -103,8 +103,8 @@ products039
     [Tags]    P0
     #取消商品删除
     #选中第一个商品
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
-    Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
+    Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #获取此商品的名称
     ${name}    Get Text    ${locatorB_productsMgmt_text_firstProductName}
     #点击批量操作菜单
@@ -129,8 +129,8 @@ products038
     #店铺中含有多个名称相同的商品，影响case运行!!!!!!!!!!!!!!!!!!!!
     #商品删除
     #选中第一个商品
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
-    Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
+    Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #获取此商品的名称
     ${name}    Get Text    ${locatorB_productsMgmt_text_firstProductName}
     #点击批量操作菜单

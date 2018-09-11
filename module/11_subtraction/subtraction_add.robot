@@ -600,9 +600,9 @@ Subtraction Add Activity Name
     Subtraction Select Product
     #.设置时间
     Subtraction Add Activity Set Time
-    Run keyword If    '${type}'<>'false'    Wait And Click Element    ${locatorB_subtraction_select_fullDiscount}
-    Run keyword If    '${type}'<>'false'    Wait And Click Element    ${locatorB_subtraction_select_fullDiscountData}
-    Run keyword If    '${parmeter}'<>'false'    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-inner")[1].click()
+    Run Keyword If    '${type}'<>'false'    Wait And Click Element    ${locatorB_subtraction_select_fullDiscount}
+    Run Keyword If    '${type}'<>'false'    Wait And Click Element    ${locatorB_subtraction_select_fullDiscountData}
+    Run Keyword If    '${parmeter}'<>'false'    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-inner")[1].click()
     #.输入优惠规则
     Subtraction Input Coupon Type    ${input_count}    ${input_percentage}
 
@@ -635,12 +635,12 @@ Subtraction Input Add Level
 Subtraction Select Product
     [Documentation]    添加活动 选择所有商品
     [Arguments]    ${parmeter}=false
-    Run keyword If    '${parmeter}'=='false'    Wait And Click Element    dom:document.querySelectorAll("button")[3]
+    Run Keyword If    '${parmeter}'=='false'    Wait And Click Element    dom:document.querySelectorAll("button")[3]
 
 Subtraction Select SubProduct
     [Documentation]    添加活动 选择部分商品
     [Arguments]    ${parmeter}=false
-    Run keyword If    '${parmeter}'=='false'    Wait And Click Element    dom:document.querySelectorAll("button")[4]
+    Run Keyword If    '${parmeter}'=='false'    Wait And Click Element    dom:document.querySelectorAll("button")[4]
 
 
 Subtraction Check Preferential Conditions
@@ -654,7 +654,7 @@ Subtraction Check Preferential Conditions
     Subtraction Add Activity Set Time
     Subtraction Input Coupon Type    ${name}    ${value}
     Wait And Click Element    ${locatorB_subtraction_first_btn_save}
-    Run keyword If    '${parmeter}'=='false'    Wait Until Page Contains Locator    ${locatorB_subtraction_edit_common_error}
+    Run Keyword If    '${parmeter}'=='false'    Wait Until Page Contains Locator    ${locatorB_subtraction_edit_common_error}
 
 Subtraction Check Full Discount
     [Documentation]    添加活动 满件打折case封装
@@ -669,8 +669,8 @@ Subtraction Check Full Discount
     Wait And Click Element    ${locatorB_subtraction_select_fullDiscountData}
     Subtraction Input Coupon Type    ${name}    ${value}
     Wait And Click Element    ${locatorB_subtraction_first_btn_save}
-    Run keyword If    '${parmeter}'=='false'    Wait Until Page Contains Locator    ${locatorB_subtraction_edit_common_error}
-    Run keyword If    '${parmeter}'=='false'    Confirm Cancel Alert
+    Run Keyword If    '${parmeter}'=='false'    Wait Until Page Contains Locator    ${locatorB_subtraction_edit_common_error}
+    Run Keyword If    '${parmeter}'=='false'    Confirm Cancel Alert
 
 
 add_level
@@ -682,7 +682,7 @@ add_level
     \    ${level_cutprice}    Evaluate    ${i}+3
     \    ${elm_price}    Evaluate    str('id:totalPrice')+str(${x})
     \    ${elm_cutprice}    Evaluate    str('id:cutPrice')+str(${x})
-    \    Run keyword If    ${x}<>0    Execute JavaScript    ${locatorB_subtraction_edit_add_level}
+    \    Run Keyword If    ${x}<>0    Execute JavaScript    ${locatorB_subtraction_edit_add_level}
     \    Subtraction Input Add Level    ${elm_price}    ${elm_cutprice}    ${level_price}    ${level_cutprice}
 
 del_level
@@ -690,7 +690,7 @@ del_level
     [Arguments]    ${length}
     :FOR    ${i}    IN RANGE    ${length}
     \    ${del_len}    Execute JavaScript    return document.querySelectorAll(".delete_icon___2AQqo").length
-    \    Run keyword If    ${del_len}<>0    Wait And Click Element    ${locatorB_subtraction_edit_del_level}
+    \    Run Keyword If    ${del_len}<>0    Wait And Click Element    ${locatorB_subtraction_edit_del_level}
 
 Subtraction Check Add Level
     [Documentation]    添加活动 添加层级case封装
@@ -701,8 +701,8 @@ Subtraction Check Add Level
     Subtraction Select Product
     #.设置时间
     Subtraction Add Activity Set Time
-    Run keyword If    '${parmeter}'<>'false'    Wait And Click Element    ${locatorB_subtraction_select_fullDiscount}
-    Run keyword If    '${parmeter}'<>'false'    Wait And Click Element    ${locatorB_subtraction_select_fullDiscountData}
+    Run Keyword If    '${parmeter}'<>'false'    Wait And Click Element    ${locatorB_subtraction_select_fullDiscount}
+    Run Keyword If    '${parmeter}'<>'false'    Wait And Click Element    ${locatorB_subtraction_select_fullDiscountData}
     Subtraction Input Coupon Type    ${input_count}    ${input_percentage}
     add_level    ${length}
     Wait And Click Element    ${locatorB_subtraction_first_btn_save}
@@ -716,8 +716,8 @@ Subtraction Check Del Level
     Subtraction Select Product
     #.设置时间
     Subtraction Add Activity Set Time
-    Run keyword If    '${parmeter}'<>'false'    Wait And Click Element    ${locatorB_subtraction_select_fullDiscount}
-    Run keyword If    '${parmeter}'<>'false'    Wait And Click Element    ${locatorB_subtraction_select_fullDiscountData}
+    Run Keyword If    '${parmeter}'<>'false'    Wait And Click Element    ${locatorB_subtraction_select_fullDiscount}
+    Run Keyword If    '${parmeter}'<>'false'    Wait And Click Element    ${locatorB_subtraction_select_fullDiscountData}
     Subtraction Input Coupon Type    ${input_count}    ${input_percentage}
     add_level    6
     del_level    ${length}
@@ -753,7 +753,7 @@ Subtraction Product Quit Subtraction
     :FOR    ${i}    IN RANGE    ${length}
     \    ${x}    Evaluate    ${i}+1
     \    Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(${x}) td")[5]
-    Run keyword If    '${parmeter}'=='false'    Confirm Cancel Alert
+    Run Keyword If    '${parmeter}'=='false'    Confirm Cancel Alert
     ...    ELSE    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
 
 

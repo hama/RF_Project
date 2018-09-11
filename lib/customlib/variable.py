@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 from kwlogin import *
+from lib_utils import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -20,12 +21,13 @@ db_shop_config = json.loads(config.get("common_db", "db_shop_config"))
 Bj_timeZone = "+0800"
 # 美属萨摩亚时区
 My_timeZone = "-1100"
-aliyun = {
-    "accessKeyId": "LTAIpvmId6CBlCH8",
-    "accessKeySecret": "RkrFrAmixqlS5su065AgVzFa9OXb9w",
-    "bucket": "shoplazza",
-    "endPoint": "oss-cn-shenzhen.aliyuncs.com"
-}
+
 img = "http://120.79.196.159:8000/RF/logs/module/result.png"
+# 获取图片
+imgs = upload_oss_py(img)[0]
+path_img = "//cn.cdn.shoplazza.com/" + upload_oss_py(img)[0]
+images = [{"lastModified": "1520929852000", "lastModifiedDate": "2018-03-13T08:30:52.000Z", "name": imgs,
+           "originFileObj": {"uid": "rc-upload-1535093594875-2"}, "path": imgs, "percent": "100.00",
+           "status": "done", "type": "image/jpeg", "uid": "rc-upload-1535093594875-2", "url": path_img}]
 
 init_cookie = login_py()
