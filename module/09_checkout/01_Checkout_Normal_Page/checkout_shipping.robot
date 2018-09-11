@@ -73,10 +73,10 @@ checkout090
     Add Address Common Setp
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     ${res}    Get Text    class:total_price
-    ${rex}    searchStrs    ${res}
+    ${rex}    searchStrs_py    ${res}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     ${data}    Execute JavaScript    return document.querySelectorAll(".detail_total_price div span:nth-child(2)")[0].innerHTML
-    ${desc}    searchStrs    ${data}
+    ${desc}    searchStrs_py    ${data}
     Sleep Time
     Should Be True    '${rex}'=='${desc}'
 

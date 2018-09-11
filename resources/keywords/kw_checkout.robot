@@ -516,7 +516,7 @@ Add Product Wait
     [Documentation]    等待添加商品
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    add_products
+    \    ${res_status}    add_product
     \    Run keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1
 
@@ -524,7 +524,7 @@ Add OtherTaxPrice Wait
     [Documentation]    等待添加其他税费
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    add_other_tax_price
+    \    ${res_status}    add_other_tax_price_py
     \    Run keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1
 
@@ -532,6 +532,6 @@ Add StoreInfo Wait
     [Documentation]    等待添加店铺基础信息
     [Arguments]    ${par}    ${pars}    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    add_store_info    ${par}    ${pars}
+    \    ${res_status}    add_store_info_py    ${par}    ${pars}
     \    Run keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1

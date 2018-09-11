@@ -364,7 +364,7 @@ checkout054
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Wait And Click Element    dom:document.getElementsByClassName("pm_footer_left")[0]
     ${new_price}    Execute JavaScript    return document.querySelectorAll(".paydetail-content div:nth-child(2) span")[1].innerText
-    ${res_price}    searchStrs    ${new_price}
+    ${res_price}    searchStrs_py    ${new_price}
     Should Be True    ${res_price}==0
 
 checkout063
@@ -389,7 +389,7 @@ checkout063
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Wait And Click Element    dom:document.getElementsByClassName("pm_footer_left")[0]
     ${new_price}    Execute JavaScript    return document.querySelectorAll(".paydetail-content div:nth-child(3) span")[1].innerText
-    ${res_price}    searchStrs    ${new_price}
+    ${res_price}    searchStrs_py    ${new_price}
     Should Be True    ${res_price}==1
 
 checkout065
@@ -413,7 +413,7 @@ checkout065
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Wait And Click Element    dom:document.getElementsByClassName("pm_footer_left")[0]
     ${new_price}    Execute JavaScript    return document.querySelectorAll(".paydetail-content div:nth-child(3) span")[1].innerText
-    ${res_price}    searchStrs    ${new_price}
+    ${res_price}    searchStrs_py    ${new_price}
     Should Be True    ${res_price}==0
 
 checkout079
@@ -462,7 +462,7 @@ checkout098
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Wait And Click Element    ${locator_checkout_payment_cod_elm}
-    delFirstProduct    #. 调用关键字删除刚添加的商品
+    Del First Product    #. 调用关键字删除刚添加的商品
     Sleep    2
     Wait And Click Element    ${locator_checkout_submit_save_btn}
     Page Should Contain Element    class:failed
@@ -490,7 +490,7 @@ checkout100
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Wait And Click Element    ${locator_checkout_payment_cod_elm}
-    delShipping    #. 调用关键字删除刚添加的物流方式
+    delShipping_py    #. 调用关键字删除刚添加的物流方式
     Sleep    2
     Wait And Click Element    ${locator_checkout_submit_save_btn}
     Page Should Contain Element    class:failed

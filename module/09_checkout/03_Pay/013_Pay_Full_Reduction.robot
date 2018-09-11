@@ -42,12 +42,12 @@ checkout154
     #view orders
     Wait And Click Element    dom:document.querySelectorAll(".btn2")[1]
     #跳转到my orders页面
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".spec_order_item")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".spec_order_item")[0]
     #点击查看订单详细信息
     Wait And Click Element    dom:document.querySelectorAll(".order_info")[0]
     #获取当前优惠的金额
     ${now_cut}    Get Text    dom:document.querySelectorAll(".rebate")[0]
-    ${now_cut}    searchStrs    ${now_cut}
+    ${now_cut}    searchStrs_py    ${now_cut}
     #当前优惠的金额应该等于满减活动的金额
     Should Be Equal As Strings    ${cut}    ${now_cut}
 

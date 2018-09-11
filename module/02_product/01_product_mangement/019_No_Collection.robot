@@ -25,7 +25,7 @@ products058
     #弹出框
     Wait Until Element Is Visible    ${locatorB_products_popUps_content}
     #提示专辑暂无数据
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-table-placeholder")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".ant-table-placeholder")[0]
     ${title}    GetText    dom:document.querySelectorAll(".ant-table-placeholder")[0]
     Should Be Equal As Strings    ${title}    ${contentB_products_empty}
     Go TO    ${home_page}

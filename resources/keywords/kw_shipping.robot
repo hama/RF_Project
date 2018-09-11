@@ -18,7 +18,7 @@ ${desc_a}         数量运费说明
 *** keyword ***
 Add Shipping
     [Documentation]    添加物流
-    ${name}    salt
+    ${name}    salt_py
     Go To Shipping Page
     Wait And click element    ${locatorB_shipping_add_shipping}
     Wait And input text    id:name    ${name}    #.物流名称
@@ -47,7 +47,7 @@ Add Shipping
 
 Add Shipping China
     [Documentation]    添加中国的物流
-    ${name}    salt
+    ${name}    salt_py
     Go To Shipping Page
     Wait And click element    ${locatorB_shipping_add_shipping}
     Wait And input text    id:name    ${name}    #.物流名称
@@ -77,7 +77,7 @@ Add Shipping China
 
 Add Other Country
     [Documentation]    添加其他国家物流
-    ${name}    salt
+    ${name}    salt_py
     Go To Shipping Page
     Wait And click element    ${locatorB_shipping_add_shipping}
     Wait And input text    id:name    ${name}    #.物流名称

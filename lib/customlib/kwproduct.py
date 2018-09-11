@@ -3,33 +3,32 @@ import uuid
 
 import oss2
 
-from variable import *
 from lib_utils import *
+from variable import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def product_search(api='/api/product/search?page=0&limit=20', cookie=init_cookie):
+def product_search_py(api='/api/product/search?page=0&limit=20', cookie=init_cookie):
     """
     公共获取数据方法
     :param p_url: url
     :return: dict
     """
     p_url = home_page_url + api
-    sub_list = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
-    res_data = json.loads(sub_list.content)['data']['products']
-    return res_data
+    ret_data = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
+    return ret_data.content
 
 
-def add_products(cookie=init_cookie):
+def add_product_py(status, cookie=init_cookie):
     """
     添加商品
     :return: True | False
     """
     # .获取图片
-    imgs = upload_oss(img)[0]
-    path_img = "//cn.cdn.shoplazza.com/" + upload_oss(img)[0]
+    imgs = upload_oss_py(img)[0]
+    path_img = "//cn.cdn.shoplazza.com/" + upload_oss_py(img)[0]
     url = home_page_url + "/api/product/add"
     data = {
         "barcode": "",
@@ -43,13 +42,14 @@ def add_products(cookie=init_cookie):
         "meta_keyword": "",
         "meta_title": "自动化测试",
         "price": 99,
-        "status": 1,
+        "status": status,
         "title": "自动化测试",
         "url": "/products/自动化测试",
         "variants": [{"barcode": "", "compare_at_price": 1000, "inventory_management": "", "inventory_policy": "",
-                      "inventory_quantity": "", "price": 99, "requires_shipping": "", "sku": "", "taxable": "",
+                      "inventory_quantity": "", "price": 99, "requires_shipping": "", "sku": "autotest_sku", "taxable": "",
                       "weight": "", "weight_unit": "kg"}]
     }
+
     try:
         resData = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
         if resData.status_code == 200 and json.loads(resData.content)['state'] == 0:
@@ -61,13 +61,28 @@ def add_products(cookie=init_cookie):
         return e
 
 
-def updates_status(product_list, status, cookie=init_cookie):
+def add_discontinued_product_py(cookie=init_cookie):
+    add_product_py(0, cookie)
+
+
+def add_launched_product_py(cookie=init_cookie):
+    add_product_py(1, cookie)
+
+
+def updates_status_py(product_list, status, cookie=init_cookie):
     """
     更改商品状态
     :param product_list:
     :param status: -1 = 删除商品（非数据库） | 0 = 设置下架 | 1 = 设置上架
     :return:
     """
+    first_product_id = get_latest_productid_py()
+    if isinstance(product_list, str):
+        if product_list == 'all':
+            product_list = range(1, first_product_id + 1)
+        elif product_list == 'first':
+            product_list = [first_product_id]
+
     url = home_page_url + "/api/product/updatestatus"
     data = {"product_ids": product_list, "status": status}
     try:
@@ -81,7 +96,7 @@ def updates_status(product_list, status, cookie=init_cookie):
         return e
 
 
-def upload_oss(urlex, name='', extension='', timeout_second=30):
+def upload_oss_py(urlex, name='', extension='', timeout_second=30):
     """
     上传图片到阿里云
     :param urlex: url
@@ -103,7 +118,7 @@ def upload_oss(urlex, name='', extension='', timeout_second=30):
             for chunk in r.iter_content(chunk_size=1024):
                 if chunk:  # filter out keep-alive new chunks
                     f.write(chunk)
-        md5_file = md5(tmp_file)
+        md5_file = md5_py(tmp_file)
         size_file = os.stat(tmp_file).st_size
         s3key = name
         if not s3key:
@@ -131,34 +146,23 @@ def upload_oss(urlex, name='', extension='', timeout_second=30):
     return False
 
 
-def delFirstProduct( cookie=init_cookie):
+def del_first_product_py(cookie=init_cookie):
     """
-    删除商品
+    删除首个商品
     :return: True | False
     """
-    try:
-        db_config = copy.deepcopy(db_shop_config)
-        db_config['cursorclass'] = pymysql.cursors.DictCursor
-        db_config['db'] = db_config['db'] + str(cookie['uid'])
-        conn = pymysql.connect(**db_config)
-        curs = conn.cursor()
-        SQL = "SELECT (product_id) FROM `product` order by product_id desc"
-        curs.execute(SQL)
-        sub = curs.fetchone()['product_id']
-        del_url = home_page_url + "/api/product/updatestatus"
-        del_data = {"product_ids": [str(sub)], "status": -1}
-        result = requests.post(url=del_url, headers={'cookie': cookie['cookie']}, json=del_data)
-        if json.loads(result.content)['state'] == 0:
-            return True
-        else:
-            return False
-    except Exception as e:
-        print e
-    finally:
-        conn.close()
+    updates_status_py('first', -1, cookie)
 
 
-def getAllProductCount(cookie=init_cookie):
+def del_all_product_py(cookie=init_cookie):
+    """
+    删除全部商品
+    :return: True | False
+    """
+    updates_status_py('all', -1, cookie)
+
+
+def getAllProductCount_py(cookie=init_cookie):
     p_url = home_page_url + "/api/product/search"
     sub_list = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
     total = json.loads(sub_list.content)['data']['total']
@@ -166,5 +170,17 @@ def getAllProductCount(cookie=init_cookie):
     return total
 
 
-def get_latest_productid():
-    return product_search()[0]['id']
+def get_latest_productid_py():
+    products_list = json.loads(product_search_py())['data']['products']
+    try:
+        return products_list[0]['id']
+    except Exception as e:
+        return 1
+
+
+if __name__ == '__main__':
+    # product_search_py()
+    # del_first_product_py()
+    # del_all_product_py()
+    add_discontinued_product_py()
+    # add_launched_product_py()
