@@ -5,7 +5,6 @@ Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 Library           ${CURDIR}/../../lib/customlib/kwproduct.py
 Resource          ../variable/var_common.robot
 Resource          ../variable/var_login.robot
-Resource          ../variable/var_coupon.robot
 Resource          kw_browser.robot
 Resource          kw_products.robot
 
