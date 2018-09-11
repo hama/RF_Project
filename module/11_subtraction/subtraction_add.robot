@@ -1,6 +1,7 @@
 *** Settings ***
 Suite Setup       Login With Default User
 Suite Teardown    Close Test Suite Browser
+Test Teardown     Teardown Test Case
 Force Tags        Subtraction
 Resource          ../../resources/keywords/kw_browser.robot
 Resource          ../../resources/keywords/kw_common.robot
@@ -11,18 +12,9 @@ Resource          ../../resources/keywords/kw_products.robot
 Resource          ../../resources/keywords/kw_subtraction.robot
 Library           ${CURDIR}/../../lib/customlib/kwmarketing.py
 
-
 *** Test Cases ***
-lklklklklk
-    delSubtraction
-    Add Subtraction Wait Step    2
-    Go To Subtraction Page
-    #.输入100
-    Wait And Input Text    dom:document.querySelectorAll(".ant-input")[0]    100
-    #.点击重置
-    Wait And Click Element    dom:document.querySelectorAll("button")[2]
-    ${res_data}    Execute JavaScript    return document.querySelectorAll(".ant-input")[0].value===''
-    Should Be True    '${res_data}'=='True'
+ddddd
+    
 subtraction040
     [Documentation]    活动名称输入中文字符  > 可以成功输入，并保存
     [Tags]    P1
@@ -306,7 +298,7 @@ subtraction087
 subtraction089
     [Documentation]    满件打折优惠条件输入非数字字符  > 下方提示“只能输入整数”
     [Tags]    P1
-    Subtraction Check Full Discount    99    1
+    Subtraction Check Full Discount    ff    1g
 
 subtraction091
     [Documentation]    满件打折添加层级2  > 可以添加成功
@@ -377,7 +369,7 @@ subtraction106
     Subtraction Check Product Filter
     Wait And Click Element    ${locatorB_subtraction_selectPro_allAblum}
     ${res}    Execute JavaScript    return document.querySelectorAll(".ant-select-dropdown-menu-item")[0]===undefined
-    Should Be True    '${res}'=='True'
+    Should Be True    '${res}'=='False'
     Wait And Click Element    ${locatorB_subtraction_comm_close}
     Confirm Cancel Alert
 
@@ -397,7 +389,7 @@ subtraction108
     Subtraction Check Product Filter
     Wait And Click Element    ${locatorB_subtraction_selectPro_allStatus}
     ${res}    Execute JavaScript    return document.querySelectorAll(".ant-select-dropdown-menu-item")[2]===undefined
-    Should Be True    '${res}'=='True'
+    Should Be True    '${res}'=='False'
     Wait And Click Element    ${locatorB_subtraction_comm_close}
     Confirm Cancel Alert
 
@@ -425,9 +417,13 @@ subtraction111
     [Documentation]    输入框输入任意关键字，点击搜索/按enter  > 搜索成功
     [Tags]    P0
     Subtraction Check Product Filter
+    #.满减-添加活动-选择商品-第一个商品
+    ${first_pro}    set variable    dom:document.querySelectorAll(".list_li_content___1ZXgo div span")[0]
+    Wait Until Element Is Visible    ${first_pro}
     ${get_values}    Execute JavaScript    return document.querySelectorAll(".list_li_content___1ZXgo div span")[0].innerText
     Wait And Input Text    ${locatorB_subtraction_input_search}    ${get_values}
     Wait And Click Element    ${locatorB_subtraction_selectPro_search_bth}
+    Wait Until Element Is Visible    ${first_pro}
     ${res_values}    Execute JavaScript    return document.querySelectorAll(".list_li_content___1ZXgo div span")[0].innerText
     Should Be True    '${get_values}'=='${res_values}'
     Wait And Click Element    ${locatorB_subtraction_comm_close}
@@ -483,6 +479,8 @@ subtraction127
     Go To Subtraction Page
     Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(1) td div i")[1]
     Wait And Click Element    dom:document.querySelectorAll("button")[5]
+    Wait Until Element Is Visible    ${locatorB_subtraction_first_tr_eml}
+    Sleep    2
     ${data}    Get Text    dom:document.querySelectorAll("tbody tr:nth-child(1) td p")[2]
     Should Be True    '${data}'=='已结束'
 
@@ -494,6 +492,8 @@ subtraction128
     Go To Subtraction Page
     Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(1) td div i")[1]
     Wait And Click Element    dom:document.querySelectorAll("button")[4]
+    Wait Until Element Is Visible    ${locatorB_subtraction_first_tr_eml}
+    Sleep    2
     ${data}    Get Text    dom:document.querySelectorAll("tbody tr:nth-child(1) td p")[2]
     Should Be True    '${data}'=='进行中'
 
@@ -505,6 +505,8 @@ subtraction129
     Go To Subtraction Page
     Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(1) td div i")[1]
     Wait And Click Element    dom:document.querySelectorAll("button")[5]
+    Wait Until Element Is Visible    ${locatorB_subtraction_first_tr_eml}
+    Sleep    2
     ${data}    Execute JavaScript    return document.querySelectorAll("tbody tr td")[0]===undefined
     Should Be True    '${data}'=='True'
 
@@ -516,6 +518,8 @@ subtraction130
     Go To Subtraction Page
     Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(1) td div i")[1]
     Wait And Click Element    dom:document.querySelectorAll("button")[4]
+    Wait Until Element Is Visible    ${locatorB_subtraction_first_tr_eml}
+    Sleep    2
     ${data}    Execute JavaScript    return document.querySelectorAll("tbody tr td")[0]===undefined
     Should Be True    '${data}'=='False'
 
@@ -529,6 +533,8 @@ subtraction131
     Wait And Input Text    dom:document.querySelectorAll(".ant-input")[0]    ${name}
     #.点击搜索
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    Wait Until Element Is Visible    ${locatorB_subtraction_first_tr_eml}
+    Sleep    2
     ${res_name}    Get Text    dom:document.querySelectorAll("tbody tr:nth-child(1) td")[1]
     Should Be True    '${name}'=='${res_name}'
 
@@ -542,6 +548,8 @@ subtraction132
     Wait And Input Text    dom:document.querySelectorAll(".ant-input")[0]    ${name}
     #.点击搜索
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    Wait Until Element Is Visible    ${locatorB_subtraction_first_tr_eml}
+    Sleep    2
     ${res_name}    Get Text    dom:document.querySelectorAll("tbody tr:nth-child(1) td")[0]
     Should Be True    '${name}'=='${res_name}'
 
@@ -554,6 +562,8 @@ subtraction133
     Wait And Input Text    dom:document.querySelectorAll(".ant-input")[0]    0
     #.点击搜索
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    Wait Until Element Is Visible    ${locatorB_subtraction_first_tr_eml}
+    Sleep    2
     ${res_data}    Execute JavaScript    return document.querySelectorAll("tbody tr:nth-child(1) td")[0]===undefined
     Should Be True    '${res_data}'=='True'
 
@@ -747,6 +757,7 @@ Subtraction Product Quit Subtraction
     #.选择部分商品
     Subtraction Select SubProduct
     Wait Until Page Contains    选择商品
+    Sleep    3
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[22].click()
     Wait And Click Element    dom:document.querySelectorAll("button")[9]
     Wait Until Page Contains Element    dom:document.querySelectorAll("tbody")[0]

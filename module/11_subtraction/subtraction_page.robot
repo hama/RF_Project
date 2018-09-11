@@ -1,6 +1,7 @@
 *** Settings ***
 Suite Setup       Login With Default User
 Suite Teardown    Close Test Suite Browser
+Test Teardown     Teardown Test Case
 Force Tags        Subtraction
 Resource          ../../resources/keywords/kw_browser.robot
 Resource          ../../resources/keywords/kw_common.robot
@@ -12,9 +13,6 @@ Resource          ../../resources/keywords/kw_subtraction.robot
 Library           ${CURDIR}/../../lib/customlib/kwmarketing.py
 
 *** Test Cases ***
-sdsdsd
-    subtraction_change_time_start    2
-    Confirm Cancel Alert
 subtraction001
     [Documentation]    进入满减活动界面，查看左上角标题
     [Tags]    P0
