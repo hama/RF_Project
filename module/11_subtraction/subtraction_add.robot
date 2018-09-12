@@ -12,7 +12,7 @@ Resource          ../../resources/keywords/kw_products.robot
 Resource          ../../resources/keywords/kw_subtraction.robot
 Library           ${CURDIR}/../../lib/customlib/kwmarketing.py
 
-*** Test Cases ***    
+*** Test Cases ***
 subtraction040
     [Documentation]    活动名称输入中文字符  > 可以成功输入，并保存
     [Tags]    P1
@@ -527,6 +527,7 @@ subtraction131
     delSubtraction_fromdb
     Add Subtraction Wait Step    2
     Go To Subtraction Page
+    Wait Until Element Is Visible    ${locatorB_subtraction_first_tr_eml}
     ${name}    Get Text    dom:document.querySelectorAll("tbody tr:nth-child(1) td")[1]
     Wait And Input Text    dom:document.querySelectorAll(".ant-input")[0]    ${name}
     #.点击搜索
@@ -542,6 +543,7 @@ subtraction132
     delSubtraction_fromdb
     Add Subtraction Wait Step    2
     Go To Subtraction Page
+    Wait Until Element Is Visible    ${locatorB_subtraction_first_tr_eml}
     ${name}    Get Text    dom:document.querySelectorAll("tbody tr:nth-child(1) td")[0]
     Wait And Input Text    dom:document.querySelectorAll(".ant-input")[0]    ${name}
     #.点击搜索
@@ -756,8 +758,8 @@ Subtraction Product Quit Subtraction
     Subtraction Select SubProduct
     Wait Until Page Contains    选择商品
     Sleep    3
-    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[22].click()
-    Wait And Click Element    dom:document.querySelectorAll("button")[9]
+    Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[3].click()
+    Wait And Click Element    dom:document.querySelectorAll("button")[8]
     Wait Until Page Contains Locator    dom:document.querySelectorAll("tbody")[0]
     :FOR    ${i}    IN RANGE    ${length}
     \    ${x}    Evaluate    ${i}+1
