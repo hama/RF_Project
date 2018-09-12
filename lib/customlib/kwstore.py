@@ -77,3 +77,10 @@ def setBjTimeZone_py(timezone=None, cookie=init_cookie):
             return False
     except Exception as e:
         print e
+
+def get_store_name():
+    """
+    获取店铺名称
+    :return String
+    """
+    return datas_domain

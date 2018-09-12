@@ -164,6 +164,7 @@ def addSubtraction_py(argv, type=None):
     :return: True | False
     """
     if argv is False: return "参数错误"
+    argv = int(argv)
     url = {"add_url": home_page_url + "/api/rebate/refresh", "del_url": home_page_url + "/api/rebate/end"}
     datas = getSubtractionData_py(argv, type)
     par = False
