@@ -37,14 +37,16 @@ ${locatorB_productsMgmt_icon_uploadProduct}    dom:document.querySelectorAll(".i
 ${locatorB_productsMgmt_button_editTableHead}    dom:document.querySelectorAll(".edit_head___2-5Ey")[0]     #编辑表头
 ${locatorB_productsMgmt_tabindex_firstSwitch}    dom:document.querySelectorAll(".ant-switch")[0]    # 列表第一个商品的上架按钮
 ${locatorB_productsMgmt_input_name}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[2]    #"商品名称/商品SKU/标签"输入框
-${locatorB_productsMgmt_image_thumbnails}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[1].querySelectorAll("img")[0]     #商品列表第一个商品的图片
+${locatorB_productsMgmt_image_firstProductThumbnails}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[1].querySelectorAll("img")[0]     #商品列表第一个商品的图片
 ${locatorB_productsMgmt_text_firstProductName}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[2].querySelectorAll("span")[0]    #商品列表第一个商品的商品名称
-${locatorB_productsMgmt_text_inventoryQuantity}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[3]    #商品列表第一个商品的库存(只能在Show All Header关键字执行之后使用)
-${locatorB_productsMgmt_text_createTime}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[9]    #商品列表第一个商品的库存(只能在Show All Header关键字执行之后使用)
-${locatorB_productsMgmt_text_sku}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[4]    #商品列表第一个商品的SKU(只能在Show All Header关键字执行之后使用)
-${locatorB_productsMgmt_icon_preview}    dom:document.querySelectorAll("tbody tr:nth-child(1) td i")[0]    #商品列表的预览icon
-${locatorB_productsMgmt_icon_delete}    dom:document.querySelectorAll("tbody tr td div i")[1]    #商品列表的删除icon
-${locatorB_productsMgmt_button_delTags}    dom:document.querySelectorAll(".ant-btn-primary")[0]    #删除标签弹框的删除button
+${locatorB_productsMgmt_text_firstProductInventoryQuantity}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[3]    #商品列表第一个商品的库存(只能在Show All Header关键字执行之后使用)
+${locatorB_productsMgmt_text_firstProductSku}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[4]    #商品列表第一个商品的SKU(只能在Show All Header关键字执行之后使用)
+${locatorB_productsMgmt_icon_listPreview}    dom:document.querySelectorAll("i[class*='preview']")    #所有条目的预览icon,第0个为第一条商品的
+${locatorB_productsMgmt_icon_listDelete}    dom:document.querySelectorAll("i[class*='delete']")    #所有条目的删除icon,第0个为第一条商品的
+${locatorB_productsMgmt_text_listCreateTime}    dom:document.querySelectorAll('td[class="vendor___2VuW9"]')    #所有条目的创建时间，第0个为第一条商品的
+${locatorB_productsMgmt_switch_listLaunched}    dom:document.querySelectorAll('span[class="ant-switch ant-switch-checked"]')    #所有上架条目的switch按钮
+${locatorB_productsMgmt_switch_listDiscontinued}    dom:document.querySelectorAll('span[class="ant-switch"]')    #所有下架条目的switch按钮
+
 
 # locator_productsType
 ${locatorB_productType_button_saveBtn}    id:test_save_btn    # 商品分类-保存按钮

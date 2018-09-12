@@ -30,8 +30,9 @@ ${locatorB_checkbox01}    dom:document.querySelectorAll(".ant-checkbox-input")[1
 ### locator button
 ${locatorB_button_add}    dom:document.querySelectorAll(".large_btn___3RbRK")[0]        #添加按钮
 ### locator popUps
-${locatorB_popUps_button_middle}    dom:document.querySelectorAll(".middle_btn___2ExQc")[0]    #弹窗的中间按钮
-${locatorB_popUps_button_default}    dom:document.querySelectorAll(".default_btn___2wyTS")[0]    #弹窗的默认按钮
+${locatorB_popUps_button_middle}    dom:document.querySelectorAll("button[class*='middle']")[0]    #弹窗的中间按钮
+${locatorB_popUps_button_default}    dom:document.querySelectorAll("button[class*='default']")[0]    #弹窗的默认按钮
+${locatorB_popUps_allCheckbox}    dom:document.querySelectorAll('.ant-modal-body span[class="ant-checkbox"]')
 ### locator page
 ${locatorB_page_text_totalRecord}    dom:document.querySelectorAll(".ant-pagination-total-text")[0]      #页面分页按钮-"N 条记录"
 ### 页面模块 url

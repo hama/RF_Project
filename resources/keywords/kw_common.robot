@@ -158,10 +158,17 @@ Wait And Get Text
 Wait And Get List Items
 	[Arguments]    ${element_locator}    ${element_visible}=${Empty}
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
-    log    ${element_visible}
+	${exec_locator} =	Evaluate	'''${element_locator}'''[4:]
     Run Keyword If    '${element_visible}'!='${Empty}'    Wait Until Element Is Visible    ${element_visible}     10
-    @{return}    Execute Javascript    return ${element_locator}
+    @{return}    Execute Javascript    return ${exec_locator}
     [Return]    @{return}
+
+Get List Length
+	[Arguments]    ${element_locator}
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    ${exec_locator} =	Evaluate	'''${element_locator}'''[4:]
+	${return} =	Execute Javascript    return ${exec_locator}.length
+    [Return]    ${return}
 
 Open New And Close Other Windows
 	[Arguments]    ${url}
@@ -179,6 +186,11 @@ Focus On New Window
     @{new_window_handle}    Get Window Handles
     Select Window    ${new_window_handle[-1]}
     [Return]    ${new_window_handle[-1]}
+
+Length Should Be Equal
+	[Arguments]    ${element_locator}    ${expected}
+	${len}    Get List Length    ${element_locator}
+    Should Be Equal    ${len}    ${expected}
 
 
 Common Js Click

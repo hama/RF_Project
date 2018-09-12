@@ -24,20 +24,42 @@ Products Single Suite Setup
     del_all_product_py
     Go To Products Page
 
+Products Single Suite Teardown
+    [Documentation]    product
+    del_all_product_py
+    Close Test Suite Browser
+
+Products Single Case Setup
+    [Documentation]    product
+    del_latest_product_py    ${3}
+    Go To Products Page
+
 Products Single Case Teardown
     [Documentation]    product
-    del_first_product_py
 	Teardown Test Case
 
 Product Testcase Setup
     [Documentation]    product
 
 
+Select All Product Tag
+	Wait And Click Element    ${locatorB_productsMgmt_button_all}
+    Sleep    1
+
+Select Launched Product Tag
+	Wait And Click Element    ${locatorB_productsMgmt_button_launched}
+	Sleep    1
+
+Select Discontinued Product Tag
+	Wait And Click Element    ${locatorB_productsMgmt_button_discontinued}
+    Sleep    1
+
+
 
 
 Show All Header
 	Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
-    @{list}    Wait And Get List Items    document.querySelectorAll('.ant-modal-body span[class="ant-checkbox"]')
+    @{list}    Wait And Get List Items    ${locatorB_popUps_allCheckbox}
     :FOR    ${i}    IN    @{list}
     \    Wait And Click Element    ${i}
     Wait And Click Element    dom:document.querySelectorAll('button[class*="middle_btn"]')[0]
@@ -189,7 +211,7 @@ Delete_First_Product
     [Documentation]    删除第一个商品
     Go To Products Page
     Sleep    5
-    Wait And Click Element    ${locatorB_productsMgmt_icon_delete}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_listDelete}[0]
     Sleep    5
     #Wait And Click Element    id:test_delete_modal_sure_btn
     Wait And Click Element    ${locatorB_popUps_button_middle}

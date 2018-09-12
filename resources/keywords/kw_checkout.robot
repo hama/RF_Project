@@ -11,7 +11,7 @@ Checkout Common Setp
     Wait And Click Element    ${locatorB_products}
     #点击商品预览
     Sleep Time
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]
     Sleep Time    #.休息2s
     #.第二个窗口
     Select Window    New
@@ -79,7 +79,7 @@ Select_Order_Page
     [Arguments]    ${title}
     [Documentation]    点击预览第一个商品，跳转到商品详情页，点击submit按钮进入订单信息页面
     #点击第一个商品的预览icon
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]
     #跳转到商品详情页
     Select Window    title=${title}
     Sleep    2
@@ -94,7 +94,7 @@ Select_Order_Page_With_Sub_Product
     [Arguments]    ${title}
     [Documentation]    点击预览第一个商品，跳转到商品详情页，选中一个子产品后，点击submit按钮进入订单信息页面
     #点击第一个商品的预览icon
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]
     #跳转到商品详情页
     Select Window    title=${title}
     Sleep    2
@@ -236,7 +236,7 @@ Add_Sub_Product_With_Already_Product
     #回车保存
     Press Key    id:option_values_0    \\13
     #点击保存
-    Click And Page Contains Element With Refresh    ${locatorB_productsNew_button_save}    ${locatorB_productsMgmt_icon_preview}
+    Click And Page Contains Element With Refresh    ${locatorB_productsNew_button_save}    ${locatorB_productsMgmt_icon_listPreview}[0]
     Go To Products Page
     
 
@@ -346,7 +346,7 @@ To_Change_Image
     Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[2].scrollIntoView()
     Sleep    2
     #删除第一张图片
-    Mouse Over    ${locatorB_productsMgmt_image_thumbnails}
+    Mouse Over    ${locatorB_productsMgmt_image_firstProductThumbnails}
     Wait And Click Element    dom:document.querySelectorAll(".delete")[0]
     #更新另外一张图片
     Sleep    2

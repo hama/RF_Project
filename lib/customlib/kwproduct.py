@@ -104,6 +104,9 @@ def updates_status_py(product_list, status, cookie=init_cookie):
             product_list = range(1, first_product_id + 1)
         elif product_list == 'first':
             product_list = [first_product_id]
+    elif isinstance(product_list, int):
+        num = product_list
+        product_list = range(first_product_id + 1 - num, first_product_id + 1)
 
     url = home_page_url + "/api/product/updatestatus"
     data = {"product_ids": product_list, "status": status}
@@ -124,6 +127,16 @@ def del_first_product_py(cookie=init_cookie):
     :return: True | False
     """
     updates_status_py('first', -1, cookie)
+
+
+def del_latest_product_py(num, cookie=init_cookie):
+    """
+    删除最新商品
+    :param num:
+    :param cookie:
+    :return:
+    """
+    updates_status_py(num, -1, cookie)
 
 
 def del_all_product_py(cookie=init_cookie):
@@ -156,3 +169,7 @@ if __name__ == '__main__':
     # del_all_product_py()
     # add_discontinued_product_py()
     add_launched_product_py()
+    add_launched_product_py()
+    add_launched_product_py()
+    add_launched_product_py()
+    del_latest_product_py(2)

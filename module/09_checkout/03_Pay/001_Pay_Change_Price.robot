@@ -262,7 +262,7 @@ checkout150
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #.点击预览
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]
     Sleep    2
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #更换该商品图片
