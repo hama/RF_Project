@@ -7,6 +7,7 @@ Resource          ../variable/var_common.robot
 Resource          ../variable/var_login.robot
 Resource          kw_browser.robot
 Resource          kw_products.robot
+Resource          ../variable/var_store.robot
 
 *** Keywords ***
 Login With Default User
@@ -105,7 +106,7 @@ Go To Subtraction Page
     ${data}    Get Select Elements    1    # 获取导航栏营销下拉元素
     Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_marketing}
     ...    ELSE    Wait And Click Element    ${locatorB_marketing_subtraction}
-    Page Should Contain    ${locatorB_subtraction_header_text}
+    Wait Until Page Contains    ${locatorB_subtraction_header_text}
     Location Should Be    ${url_subtraction}
 
 Go To Coupon Page
@@ -116,9 +117,19 @@ Go To Coupon Page
     Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_marketing}
     Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_marketing_coupon_code}
     ...    ELSE    Wait And Click Element    ${locatorB_marketing_coupon_code}
-    Page Should Contain    ${locatorB_couponLst_couponText}
+    Wait Until Page Contains    ${locatorB_couponLst_couponText}
     Location Should Be    ${url_coupon_code}
 
+Go To Store Page
+    [Documentation]    跳转基础信息页面
+    Wait Until Element Is Visible    ${locatorB_setting}
+    # 若营销按钮没展开，则展开营销按钮
+    ${data}    Get Select Elements    3    # 获取导航栏营销下拉元素
+    Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_setting}
+    Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_setting_store}
+    ...    ELSE    Wait And Click Element    ${locatorB_setting_store}
+    Wait Until Page Contains    ${locatorB_storeLst_storeText}
+    Location Should Be    ${url_coupon_store}
 
 Wait And Input Text
     [Arguments]    ${element_locator}    ${text}    ${timeout}=3    ${retry_time}=1
