@@ -63,7 +63,7 @@ shipping019
     Wait And Click Element    ${locatorB_shipping_country_select}
     Wait And Click Element    ${locatorB_shipping_country_nums}
     ${count}    get text    class:country_selected___1wa_o
-    ${res}    searchStr    ${count}
+    ${res}    searchStr_py    ${count}
     Should Be True    ${res}==1
     Wait And Click Element    ${locatorB_shipping_country_close_btn}
 

@@ -6,7 +6,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def set_checkout_step(customer_name=None, customer_contact=None,cookie=init_cookie):
+def set_checkout_step_py(customer_name=None, customer_contact=None,cookie=init_cookie):
     """
     设置checkout结账流程的-地址-姓名输入的模式
     :param customer_name: 1= 名字 2=姓 ／ 名

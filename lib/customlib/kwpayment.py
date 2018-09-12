@@ -6,7 +6,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def Payment(method_is_enable=1, payment_method="cod", cookie=init_cookie):
+def payment_py(method_is_enable=1, payment_method="cod", cookie=init_cookie):
     """
     支付方式公共方法
     :param method_is_enable:  添加|删除 : 1|0
@@ -23,33 +23,33 @@ def Payment(method_is_enable=1, payment_method="cod", cookie=init_cookie):
         return False
 
 
-def add_payment_cod():
+def add_payment_cod_py():
     """
     添加支付方式 cod
     :return: True | False
     """
-    return Payment()
+    return payment_py()
 
 
-def add_payment_pk():
-    """
-    添加支付方式 paylinks
-    :return: True | False
-    """
-    return Payment(1, 'credit_card')
-
-
-def del_payment_pk():
-    """
-    删除支付方式 paylinks
-    :return: True | False
-    """
-    return Payment(0, 'credit_card')
-
-
-def del_payment_cod():
+def del_payment_cod_py():
     """
     删除支付方式 cod
     :return: True | False
     """
-    return Payment(0)
+    return payment_py(0)
+
+
+def add_payment_pk_py():
+    """
+    添加支付方式 paylinks
+    :return: True | False
+    """
+    return payment_py(1, 'credit_card')
+
+
+def del_payment_pk_py():
+    """
+    删除支付方式 paylinks
+    :return: True | False
+    """
+    return payment_py(0, 'credit_card')

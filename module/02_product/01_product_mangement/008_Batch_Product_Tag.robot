@@ -56,7 +56,7 @@ products042
     #Page Should Contain    添加成功
     #点击进入商品详情查看该商品是否含有该标签
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-select-selection__choice__content")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".ant-select-selection__choice__content")[0]
     Element Should Contain    dom:document.querySelectorAll(".ant-select-selection__rendered")[0]    ${input_tag}
     Go TO    ${home_page}
 
@@ -71,7 +71,7 @@ products043
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Page Contains Element    ${locatorB_products_popUps_content}
+    Wait Until Page Contains Locator    ${locatorB_products_popUps_content}
     #记录下点击的标签内容
     ${tag}    Get Text    dom:document.querySelectorAll(".ant-tag")[0]
     Wait And Click Element    dom:document.querySelectorAll(".ant-tag")[0]
@@ -82,7 +82,7 @@ products043
     Sleep    1
     #点击进入商品详情查看该商品是否含有该标签
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-select-selection__choice__content")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".ant-select-selection__choice__content")[0]
     Page Should Contain    ${tag}
     Go TO    ${home_page}
 
@@ -100,7 +100,7 @@ products044
     #弹出框
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__rendered")[3]
     #点击现有的标签
-    Wait Until Page Contains Element    ${locatorB_products_popUps_content}
+    Wait Until Page Contains Locator    ${locatorB_products_popUps_content}
     #记录下点击的标签内容
     ${already_tag}    Get Text    dom:document.querySelectorAll(".ant-tag")[0]
     Wait And Click Element    dom:document.querySelectorAll(".ant-tag")[0]
@@ -122,7 +122,7 @@ products044
     #Page Should Contain    添加成功
     #点击进入商品详情查看该商品是否含有该标签
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-select-selection__choice__content")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".ant-select-selection__choice__content")[0]
     #显示标签数据
     Page Should Contain    ${input_tag}
     Page Should Contain    ${already_tag}
@@ -143,7 +143,7 @@ products047
     #点击取消按钮
     Wait And Click Element    ${locatorB_popUps_button_default}
     #返回界面
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     Go TO    ${home_page}
 
 products049
@@ -167,7 +167,7 @@ products049
     Wait And Click Element    ${locatorB_productsMgmt_button_delTags}
     #点击进入商品详情查看该商品是否含有该标签
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".label___1jnO-")[2]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".label___1jnO-")[2]
     Page Should Not Contain    ${name}
     Go TO    ${home_page}
 

@@ -46,8 +46,8 @@ products052
     #选中第几个专辑
     ${which}=    Set Variable    0
     #选中第一个商品
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
-    Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
+    Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #记录下操作的商品名称
     ${name}    Get Text    ${locatorB_productsMgmt_text_firstProductName}
     #点击批量操作菜单
@@ -64,12 +64,12 @@ products052
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #去商品专辑模块检查
     Wait And Click Element    ${locatorB_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
     Page Should Contain    ${name}
     Go TO    ${home_page}
 
@@ -106,8 +106,8 @@ products054
     ${which}=    Set Variable    0
     #选中第一个商品
     Sleep    2
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
-    Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
+    Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #记录下操作的商品名称
     ${name}    Get Text    ${locatorB_productsMgmt_text_firstProductName}
     #点击批量操作菜单
@@ -130,12 +130,12 @@ products054
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #去商品专辑模块检查
     Wait And Click Element    ${locatorB_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
     Page Should Contain    ${name}
     Go TO    ${home_page}
 
@@ -146,10 +146,10 @@ products055
     #选中第几个专辑
     ${which}=    Set Variable    0
     #获取选中的专辑编号
-    ${collection_id}    getCollectionId    ${which}
+    ${collection_id}    getCollectionId_py    ${which}
     #选中第一个商品
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
-    Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
+    Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #记录下操作的商品名称
     ${name}    Get Text    ${locatorB_productsMgmt_text_firstProductName}
     #点击批量操作菜单
@@ -170,12 +170,12 @@ products055
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #去商品专辑模块检查
     Wait And Click Element    ${locatorB_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
     Page Should Contain    ${name}
     Go TO    ${home_page}
 

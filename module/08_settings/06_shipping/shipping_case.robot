@@ -32,7 +32,7 @@ shipping137
     ${range_max}    set variable    100
     ${rate_amount}    set variable    9
     Wait And Click Element    ${locatorB_shipping_add_shipping}
-    ${name}    salt
+    ${name}    salt_py
     input text    id:name    ${name}
     Wait Until Element Is Visible    ${shipping_first_button}
     Wait And Click Element    ${locatorB_shipping_add_country}
@@ -71,7 +71,7 @@ shipping134
     [Tags]    P0
     Go To Shipping Page
     Wait And Click Element    ${locatorB_shipping_add_shipping}
-    ${name}    salt
+    ${name}    salt_py
     input text    id:name    ${name}
     Wait And Click Element    ${locatorB_shipping_add_country}
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
@@ -117,7 +117,7 @@ shipping135
     ${rate_amount}    set variable    9
     Wait And Click Element    ${locatorB_shipping_add_shipping}
     sleep    1
-    ${name}    salt
+    ${name}    salt_py
     input text    id:name    ${name}
     Wait And Click Element    ${locatorB_shipping_add_country}
     Wait Until Element Is Visible    ${locatorB_shipping_country_save_btn}

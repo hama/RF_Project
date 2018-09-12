@@ -8,6 +8,40 @@ Resource          kw_browser.robot
 Resource          kw_common.robot
 
 *** keyword ***
+Products Suite Setup
+    [Documentation]    product
+    Login With Default User
+    del_all_product_py
+    add_launched_product_py
+    Sleep    60   # 为构造两个产品创建时间不同
+    add_discontinued_product_py
+    Go To Products Page
+    Show All Header
+
+Products Single Suite Setup
+    [Documentation]    product
+    Login With Default User
+    del_all_product_py
+    Go To Products Page
+
+Products Single Case Teardown
+    [Documentation]    product
+    del_first_product_py
+	Teardown Test Case
+
+Product Testcase Setup
+    [Documentation]    product
+
+
+
+
+Show All Header
+	Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
+    @{list}    Wait And Get List Items    document.querySelectorAll('.ant-modal-body span[class="ant-checkbox"]')
+    :FOR    ${i}    IN    @{list}
+    \    Wait And Click Element    ${i}
+    Wait And Click Element    dom:document.querySelectorAll('button[class*="middle_btn"]')[0]
+
 Add Product
     [Documentation]    添加下架商品以做测试
     Go To Products Page
@@ -50,7 +84,7 @@ Add Product Required Content
 Delete Product
     [Documentation]    删除商品列表的第一个商品
     Go To Products Page
-    Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}    # 商品列表第一条数据
+    Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}    # 商品列表第一条数据
     Wait And Click Element    ${locatorB_popUps_button_middle}
 
 Delete All Products
@@ -62,7 +96,7 @@ Delete All Products
 Delete All Product Execute
     [Documentation]     删除全部商品的执行办法
     ${size}    Get Text    ${locatorB_page_text_totalRecord}
-    ${total_record}    searchStrs    ${size}
+    ${total_record}    searchStrs_py    ${size}
     ${page_num}    evaluate    int(math.ceil(${total_record}/20.0))    math
     Run Keyword If    ${page_num}>1     Delete Product Loop     ${page_num}
     ...    ELSE IF    ${page_num}==1     Delete Product Loop     1
@@ -111,8 +145,8 @@ Click_First_Product_And_Click_Batch_Menu
     [Documentation]    选中第一个商品,并且点击批量操作菜单
     #选中第一个商品
     Sleep    2
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
-    Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
+    Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #点击批量操作菜单
     Wait And Click Element    ${locatorB_productsMgmt_select_batchOperations}
 
@@ -132,7 +166,7 @@ Add_Collection
     Wait And Input Text    id:description    ceshi collection
     #上传一张专辑封面
     Execute JavaScript    return document.querySelectorAll(".wrapper___TgZZ3")[0].scrollIntoView()
-    Wait Until Page Contains Element    ${locatorB_productsNew_input_chooseFile}
+    Wait Until Page Contains Locator    ${locatorB_productsNew_input_chooseFile}
     Choose File    ${locatorB_productsNew_input_chooseFile}    ${file_products_addImg}
     Sleep    5
     #点击保存按钮
@@ -167,7 +201,7 @@ Upload_Many_Products
     #点击批量上传按钮
     Wait And Click Element    ${locatorB_productsMgmt_icon_uploadProduct}
     #等待上传按钮
-    Wait Until Page Contains Element    id:sheets
+    Wait Until Page Contains Locator    id:sheets
     #上传文件
     Choose File    id:sheets    ${file_products_templates}
     #点击上传

@@ -1,15 +1,22 @@
 # -*- coding:utf-8 -*-
 import datetime
 import hashlib
+import os
+import oss2
 import random
 import re
+import requests
 import sys
+import time
+import uuid
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def salt(size=7):
+
+
+def salt_py(size=7):
     '''
     构造一窜只有数字与字母的随机数，且首位不为数字
     :param size:
@@ -28,7 +35,7 @@ def salt(size=7):
     return salt
 
 
-def searchStr(args):
+def searchStr_py(args):
     """
     正则匹配数字
     :param args:
@@ -39,7 +46,7 @@ def searchStr(args):
     return restr
 
 
-def searchStrs(args):
+def searchStrs_py(args):
     """
     正则匹配所有非符号字符
     :param args:
@@ -51,7 +58,7 @@ def searchStrs(args):
 
 
 # . md5加密方法
-def md5(fname):
+def md5_py(fname):
     hash_md5 = hashlib.md5()
     with open(fname, "rb") as f:
         for chunk in iter(lambda: f.read(4096), b""):
@@ -59,7 +66,7 @@ def md5(fname):
     return hash_md5.hexdigest()
 
 
-def getTimes():
+def getTimes_py():
     """
     获取添加满减|优惠券 活动的公共时间
     :return: dict
@@ -74,4 +81,3 @@ def getTimes():
         "TomorrowTime": TomorrowTime,
         "beforeTime": beforeTime
     }
-

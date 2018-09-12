@@ -19,23 +19,16 @@ Login With User
     Comment    wait until login button is visible
     Wait And Input Text    ${locatorB_login_input_account}    ${username}
     Wait And Input Password    ${locatorB_login_input_password}    ${password}
-    Wait And Click Element    class:logBtn___3pRgJ
-
+    Wait And Click Element    ${locatorB_login_btn_login}
     Comment    wait until domain input text element is visible
-    ${status}=    Execute JavaScript    return document.querySelectorAll("#username")[0]===undefined
-    Run keyword If    ${status}=='false'    Input Domain    ${domain}
-    #${href}=    Execute JavaScript    return window.location.href
-    #${has_login}=    Execute JavaScript    return '${href}'==='${url_home_page}'
-    #Run Keyword Unless    ${has_login}    Input Domain    ${domain}
-    Wait Until Element Is Visible    ${locatorB_setting}
+    ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_login_input_domain}    2
+    Run Keyword If    '${status}'=='${True}'    Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
+    Run Keyword If    '${status}'=='${True}'    Wait And Click Element    ${locatorB_login_btn_login}
+    Wait Until Page Contains Locator    ${locatorB_setting}
     log    Login Success
+    Comment    close new_user's pop
     ${close}=    Execute JavaScript    return document.querySelectorAll('.ant-modal-close-x')[0]===undefined
-    Run Keyword If    ${close}=='${False}'    Wait And Click Element    dom:document.querySelectorAll('.ant-modal-close-x')[0]
-
-Input Domain
-    [Arguments]    ${domain}
-    Wait And Input Text    ${locatorB_login_input_domain}    ${domain}
-    Wait And Click Element    class:logBtn___3pRgJ
+    Run Keyword If    '${close}'=='${False}'    Wait And Click Element    dom:document.querySelectorAll('.ant-modal-close-x')[0]
 
 Go To Home Page
     [Documentation]    跳转到主页
@@ -155,6 +148,21 @@ Wait And Select Checkbox
     Wait Until Element Is Visible    ${element_locator}     10
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Select Checkbox    ${element_locator}
 
+Wait And Get Text
+    [Arguments]    ${element_locator}
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    Wait Until Element Is Visible    ${element_locator}     10
+    ${return}    Get Text    ${element_locator}
+    [Return]    ${return}
+
+Wait And Get List Items
+	[Arguments]    ${element_locator}    ${element_visible}=${Empty}
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    log    ${element_visible}
+    Run Keyword If    '${element_visible}'!='${Empty}'    Wait Until Element Is Visible    ${element_visible}     10
+    @{return}    Execute Javascript    return ${element_locator}
+    [Return]    @{return}
+
 Common Js Click
     [Arguments]    ${element}    ${index}
     [Documentation]    封装js点击方法
@@ -186,15 +194,15 @@ Checkout Page Decoration Condition
     Wait And Click Element    ${locatorB_store}
     Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
     ${name}    Execute JavaScript    return document.querySelectorAll("button span")[1].innerText
-    Run keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Run keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[5]
+    Run Keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    Run Keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[5]
 
 Click And Page Contains Element With Refresh
     [Documentation]    点击&检查页面包含元素，含刷新机制
     [Arguments]    ${click_element}    ${contain_element}    ${timeout}=10    ${retry_time}=2
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
-    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Element    ${contain_element}    ${timeout}    ${retry_time}
+    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Locator    ${contain_element}    ${timeout}    ${retry_time}
     \    Run Keyword If    '${status0}'=='False'    Execute JavaScript    return location.reload()
     \    ...     ELSE    Exit For Loop
 
@@ -203,7 +211,7 @@ Click And Page Not Contains Element With Refresh
     [Arguments]    ${click_element}    ${contain_element}    ${timeout}=10    ${retry_time}=2
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
-    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Element    ${contain_element}    ${timeout}    ${retry_time}
+    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Locator    ${contain_element}    ${timeout}    ${retry_time}
     \    Run Keyword If    '${status0}'=='True'    Execute JavaScript    return location.reload()
     \    ...     ELSE    Exit For Loop
 
@@ -233,25 +241,25 @@ Click With Refresh
     \    Run Keyword If    '${status0}'=='False'    Execute JavaScript    return location.reload()
     \    ...     ELSE    Exit For Loop
 
-Wait Until Page Not Contains Element
+Wait Until Page Not Contains Locator
     [Documentation]    等待页面不包含${locator}，包含继续等待直至超时异常，不包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
-    [Arguments]    ${locator}    ${timeout}=10    ${retry_time}=2
-    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Page Should Not Contain Element    ${locator}
+    [Arguments]    ${locator}    ${timeout}=10
+    Wait Until Page Does Not Contain Element    ${locator}    ${timeout}
 
-Wait Until Page Contains Element
-    [Documentation]    等待页面包含${locator}，不包含继续等待直至超时异常，包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
-    [Arguments]    ${locator}    ${timeout}=10    ${retry_time}=2
-    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Page Should Contain Element    ${locator}
-
-Wait Until Page Not Contains Text
-    [Documentation]    等待页面不包含${text}，包含继续等待直至超时异常，不包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
-    [Arguments]    ${text}    ${timeout}=10    ${retry_time}=2
-    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Page Should Not Contain    ${text}
+Wait Until Page Contains Locator
+    [Documentation]    等待页面包含${locator}，不包含继续等待直至超时异常，包含即退出。${timeout}：超时时间
+    [Arguments]    ${locator}    ${timeout}=10
+    Wait Until Page Contains Element    ${locator}    ${timeout}
 
 Wait Until Page Contains Text
     [Documentation]    等待页面包含${text}，不包含继续等待直至超时异常，包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
-    [Arguments]    ${text}    ${timeout}=10    ${retry_time}=2
-    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Page Should Contain    ${text}
+    [Arguments]    ${text}    ${timeout}=10
+    Wait Until Page Contains    ${text}    ${timeout}
+
+Wait Until Page Not Contains Text
+    [Documentation]    等待页面不包含${text}，包含继续等待直至超时异常，不包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
+    [Arguments]    ${text}    ${timeout}=10
+    Wait Until Page Does Not Contain    ${text}    ${timeout}
 
 Wait Until Alert Be Present
     [Documentation]    等待Alert出现，并消除
@@ -278,30 +286,30 @@ Add Payment Cod Wait
     [Documentation]    添加 cod支付方式
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    add_payment_cod
-    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
+    \    ${res_status}    add_payment_cod_py
+    \    Run Keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1
 
 Del Payment Cod Wait
     [Documentation]    删除 cod支付方式
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    del_payment_cod
-    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
+    \    ${res_status}    del_payment_cod_py
+    \    Run Keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1
 
 Wait Add StoreInfo
     [Documentation]    添加 基础信息
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    add_store_info
-    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
+    \    ${res_status}    add_store_info_py
+    \    Run Keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1
 
 Change Checkout Setp Wait
     [Documentation]    修改结账流程的 地址输入模式
     [Arguments]    ${parameter}    ${type}=${Empty}    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    set_checkout_step    ${parameter}    ${type}
-    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
+    \    ${res_status}    set_checkout_step_py    ${parameter}    ${type}
+    \    Run Keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1

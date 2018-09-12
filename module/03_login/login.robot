@@ -19,9 +19,9 @@ login001
     Wait And Input Text     ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Click Element    ${locatorB_login_btn_login}
-    Wait Until Page Contains Element    ${locatorB_order}
+    Wait Until Page Contains Locator    ${locatorB_order}
     Logout
-    Wait Until Page Contains Element    ${locatorB_login_input_account}
+    Wait Until Page Contains Locator    ${locatorB_login_input_account}
 
 login002
     [Documentation]     主账号登录失败_未注册账号
@@ -55,7 +55,7 @@ login005
     Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${contentB_login_errorPwd}
     Wait And Click Element    ${locatorB_login_btn_login}
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".anticon-cross-circle")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".anticon-cross-circle")[0]
     Wait Until Page Contains    用户名或者密码错误
 
 login006
@@ -75,9 +75,9 @@ login007
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
     Wait And Click Element    ${locatorB_login_btn_login}
-    Wait Until Page Contains Element    ${locatorB_order}
+    Wait Until Page Contains Locator    ${locatorB_order}
     Logout
-    Wait Until Page Contains Element    ${locatorB_login_input_account}
+    Wait Until Page Contains Locator    ${locatorB_login_input_account}
 
 
 login008

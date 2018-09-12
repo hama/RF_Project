@@ -28,7 +28,7 @@ if __name__ == '__main__':
         config.set("common_account", "datas_domain", 'chen')
         config.write(open(path, 'w'))
     else:
-        random_str = salt()
+        random_str = salt_py()
         data_config = {}
         data_config['datas_invite_code'] = 'DJ6602'
         data_config['db_service_config'] = '{"host": "rm-wz9tz4ff2v9t95f9qao.mysql.rds.aliyuncs.com",' \
@@ -50,7 +50,7 @@ if __name__ == '__main__':
             config.write(open(path, 'w'))
 
             # 注册用户
-            sign_up(**data_config)
+            sign_up_py(**data_config)
             # 注册用户之后等待10s，等用户生效
             time.sleep(10)
         else:

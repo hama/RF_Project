@@ -82,35 +82,35 @@ products094
     Wait And Click Element    ${locatorB_products_button_confirm}
     Wait For Save
     # 保存之后检测该商品包含添加的多张图片数量是否一致
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".wrapper___3TwjV")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".wrapper___3TwjV")[0]
     ${count}    Execute Javascript    return document.querySelectorAll(".wrapper___3TwjV").length
     Should Be True    ${count}==3
     #接着图片预览，编辑替代文本，删除图片
     #预览
     #点击预览
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_image_center}
-    Mouse Over    ${locatorB_productsMgmt_image_center}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_image_thumbnails}
+    Mouse Over    ${locatorB_productsMgmt_image_thumbnails}
     Sleep    2
     Wait And Click Element    dom:document.querySelectorAll(".preview")[1]
     Sleep    2
     #展示图片大图
-    #Wait Until Page Contains Element    ${locatorB_products_popUps}
+    #Wait Until Page Contains Locator    ${locatorB_products_popUps}
     #Sleep    2
     #关闭大图
     #Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
     Execute Javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
     Sleep    5
     #编辑替代文本
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_image_center}
-    Mouse Over    ${locatorB_productsMgmt_image_center}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_image_thumbnails}
+    Mouse Over    ${locatorB_productsMgmt_image_thumbnails}
     Wait And Click Element    dom:document.querySelectorAll(".altbianji")[0]
     #展现弹出框
     Wait And Input Text    dom:document.querySelectorAll(".alt_input___1RvXO")[0]    test
     #确定
     Wait And Click Element    ${locatorB_productsMgmt_button_delTags}
     #点击删除图片
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_image_center}
-    Mouse Over    ${locatorB_productsMgmt_image_center}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_image_thumbnails}
+    Mouse Over    ${locatorB_productsMgmt_image_thumbnails}
     Wait And Click Element    dom:document.querySelectorAll(".delete")[0]
     ${now_count}    Execute Javascript    return document.querySelectorAll(".wrapper___3TwjV").length
     Should Be True    ${now_count}==2
