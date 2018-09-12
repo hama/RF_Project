@@ -760,7 +760,7 @@ Subtraction Product Quit Subtraction
     Sleep    3
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[3].click()
     Wait And Click Element    dom:document.querySelectorAll("button")[8]
-    Wait Until Page Contains Element    dom:document.querySelectorAll("tbody")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll("tbody")[0]
     :FOR    ${i}    IN RANGE    ${length}
     \    ${x}    Evaluate    ${i}+1
     \    Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(${x}) td")[5]
