@@ -37,7 +37,7 @@ products007
     Reload Page
     Wait And Click Element    ${locatorB_productsMgmt_button_all}
 	${inventoryQuantity}    Wait And Get Text    ${locatorB_productsMgmt_text_inventoryQuantity}
-	Should Be equal    '${inventoryQuantity}'    '0件'
+	Should Be Equal    '${inventoryQuantity}'    '0件'
 
 products009
     [Documentation]    验证商品的创建时间正确
@@ -50,6 +50,76 @@ products009
 	${createTime}    Wait And Get Text    ${locatorB_productsMgmt_text_createTime}
 	${status}    Evaluate    '${createTime}'=='${time1}' or '${createTime}'=='${time2}'
 	Should Be True    ${status}
+
+products011
+    [Documentation]    无SKU时，SKU展示空白
+    [Tags]    P0
+    add_min_product_py
+    Reload Page
+    Wait And Click Element    ${locatorB_productsMgmt_button_all}
+	${sku}    Wait And Get Text    ${locatorB_productsMgmt_text_sku}
+	Should Be Equal    '${sku}'    ''
+
+products014
+    [Documentation]    验证点击‘全部’无结果
+    [Tags]    P0
+    Reload Page
+    Wait And Click Element    ${locatorB_productsMgmt_button_all}
+	Wait Until Page Not Contains Locator    ${locatorB_productsMgmt_icon_preview}
+
+products018
+    [Documentation]    验证点击删除按钮可删除商品
+    [Tags]    P0
+    add_min_product_py
+    Reload Page
+    Wait And Click Element    ${locatorB_productsMgmt_button_all}
+	Wait And Click Element    ${locatorB_productsMgmt_icon_delete}
+	Wait And Click Element    ${locatorB_products_button_confirm}
+	Wait Until Page Not Contains Locator    ${locatorB_productsMgmt_icon_preview}
+
+products019
+    [Documentation]    验证可成功删除商品
+    [Tags]    P0
+    add_min_product_py
+    Reload Page
+    Wait And Click Element    ${locatorB_productsMgmt_button_all}
+	Wait And Click Element    ${locatorB_productsMgmt_icon_delete}
+	Wait And Click Element    ${locatorB_products_button_confirm}
+	Wait Until Page Not Contains Locator    ${locatorB_productsMgmt_icon_preview}
+
+products020
+    [Documentation]    验证可取消删除商品
+    [Tags]    P0
+    add_min_product_py
+    Reload Page
+    Wait And Click Element    ${locatorB_productsMgmt_button_all}
+	Wait And Click Element    ${locatorB_productsMgmt_icon_delete}
+	Wait And Click Element    ${locatorB_products_button_cancel}
+	Wait Until Page Contains Locator    ${locatorB_productsMgmt_icon_preview}
+
+
+products021.1
+    [Documentation]    验证展示的上架商品排序正确
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_productsMgmt_button_launched}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Wait Until Page Contains Locator    ${locatorC_products_logo}
+
+products021.2
+    [Documentation]    验证展示的上架商品数量正确
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_productsMgmt_button_launched}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Wait Until Page Contains Locator    ${locatorC_products_logo}
+
+products022
+    [Documentation]    验证点击‘上架’无结果
+    [Tags]    P0
+    add_min_product_py
+    Wait And Click Element    ${locatorB_productsMgmt_button_launched}
+    Wait Until Page Not Contains Locator    ${locatorB_productsMgmt_icon_preview}
+    Wait Until Page Not Contains Locator    ${locatorC_products_logo}
+
 
 
 

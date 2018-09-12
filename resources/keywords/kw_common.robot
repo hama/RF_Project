@@ -152,6 +152,24 @@ Wait And Get List Items
     @{return}    Execute Javascript    return ${element_locator}
     [Return]    @{return}
 
+Open New And Close Other Windows
+	[Arguments]    ${url}
+	[Documentation]    开启一个指定的新窗口，并关闭其余窗口
+	@{window_handles}    Get Window Handles
+    Execute Javascript    window.open("${url}")
+    :FOR    ${window_handle}    IN    @{window_handles}
+    \    Select Window    ${window_handle}
+    \    Close Window
+    @{new_window_handle}    Get Window Handles
+    Select Window    ${new_window_handle[0]}
+
+Focus On New Window
+	[Documentation]    聚焦到新窗口（紧跟开窗口动作之后）,并返回新窗口的handle
+    @{new_window_handle}    Get Window Handles
+    Select Window    ${new_window_handle[-1]}
+    [Return]    ${new_window_handle[-1]}
+
+
 Common Js Click
     [Arguments]    ${element}    ${index}
     [Documentation]    封装js点击方法

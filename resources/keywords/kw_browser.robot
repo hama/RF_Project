@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation     定义跟浏览器操作相关的关键字，如 打开浏览器、关闭浏览器
+Resource          kw_common.robot
 
 *** Variables ***
 ${is_headless}    False    # 定义是否采用 headless    (Case Sensitive for True/False)
@@ -32,13 +33,7 @@ Teardown Test Case
     [Documentation]
     #    测试用例执行失败进行截图
     Run Keyword If Test Failed    Capture Page Screenshot
-    @{window_handles}    Get Window Handles
-    Execute Javascript    window.open("${home_page}")
-    :FOR    ${window_handle}    IN    @{window_handles}
-    \    Select Window    ${window_handle}
-    \    Close Window
-    @{new_window_handle}    Get Window Handles
-    Select Window    ${new_window_handle[0]}
+    Open New And Close Other Windows    ${home_page}
     #    log    *******************************************************************************************************
     #    log    ******************************************** Test Case End ********************************************
     #    log    *******************************************************************************************************

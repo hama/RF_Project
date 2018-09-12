@@ -79,6 +79,26 @@ products010
     Should Be Equal As Strings    ${sku0}    autotest_sku
     Should Be Equal As Strings    ${sku1}    autotest_sku
 
+products017
+    [Documentation]    验证点击预览icon正确跳转到卡片C端
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_productsMgmt_button_all}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+	Focus On New Window
+    Wait Until Page Contains Locator    ${locatorC_products_logo}
+
+products021
+    [Documentation]    验证展示的商品只包含上架商品
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_productsMgmt_button_launched}
+    Wait Until Page Not Contains Locator    ${locatorB_productsMgmt_icon_preview}
+
+
+
+
+
+
+
 
 #products015
 #    [Documentation]    验证商品上传弹窗

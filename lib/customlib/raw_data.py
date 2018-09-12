@@ -252,7 +252,7 @@ product_min_data = {
     'meta_keyword': '',
     'url': '/products/autotest_title',
     'barcode': '',
-    'title': 'aa',
+    'title': 'autotest_title',
     'price': 444,
     'images': []
 }
