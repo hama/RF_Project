@@ -50,8 +50,6 @@ ${locatorB_productsMgmt_switch_listDiscontinued}    dom:document.querySelectorAl
 
 ${locatorB_productsMgmt_popUps_firstInput}    ${locatorB_popUps_inputs}[0]    # 弹窗第一个输入框
 
-${locatorB_productsMgmt_popUps_antTags}    dom:document.querySelectorAll('div[class="ant-tag ant-tag-checkable"]')    # 弹窗所有antTag
-
 
 # locator_productsType
 ${locatorB_productType_button_saveBtn}    id:test_save_btn    # 商品分类-保存按钮

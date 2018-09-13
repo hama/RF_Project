@@ -36,8 +36,9 @@ ${locatorB_popUps_allCheckbox}    dom:document.querySelectorAll('.ant-modal-body
 ${locatorB_popUps_inputs}    dom:document.querySelectorAll('.ant-modal-body input[class="ant-select-search__field"]')    #弹窗的所有input
 ### locator page
 ${locatorB_page_text_totalRecord}    dom:document.querySelectorAll(".ant-pagination-total-text")[0]      #页面分页按钮-"N 条记录"
-### locator tagboxs
-${locatorB_productsMgmt_tagboxs}    dom:document.querySelectorAll('div[class="ant-select-selection__choice__content"]')    #获取所有tagbox。（参考product的标签输入框中一个个小模块）
+### locator tag
+${locatorB_antTags}    dom:document.querySelectorAll('div[class="ant-tag ant-tag-checkable"]')    #获取所有antTags。（参考product批量操作的删除标签中一个个小模块）
+${locatorB_tagboxs}    dom:document.querySelectorAll('div[class="ant-select-selection__choice__content"]')    #获取所有tagbox。（参考product编辑的标签输入框中一个个小模块）
 ### 页面模块 url
 ${url_home_page}    ${home_page}/    # home page
 ${url_order}      ${home_page}/order    # order page

@@ -25,7 +25,7 @@ products004
 products005
     [Documentation]    下架商品且未上传商品图，商品图片展示默认图
     [Tags]    P0
-    add_discontinued_product_py
+    add_min_product_py
     Reload Page
     Select All Product Tag
 	${attr}    Get Element Attribute    ${locatorB_productsMgmt_image_firstProductThumbnails}    class
@@ -208,7 +208,7 @@ products047
     Wait Until Page Contains Text    添加成功
     # 进入product中检查是否存在
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
-    @{tagboxs}    Wait And Get List Items    ${locatorB_productsMgmt_tagboxs}    ${locatorB_productsMgmt_tagboxs}[0]
+    @{tagboxs}    Wait And Get List Items    ${locatorB_tagboxs}    ${locatorB_tagboxs}[0]
     :FOR    ${tagbox}    IN    @{tagboxs}
     \    ${text}    Wait And Get Text    ${tagbox}
     \    ${status}    Set Variable If    '${text}'=='manual_tag'    ${True}    ${False}
@@ -224,14 +224,15 @@ products052
     Select All Product Tag
     Select Products And Click Batch Menu
     Wait And Click Element    ${locatorB_productsMgmt_select_delTags}
-    @{antTags}    Wait And Get List Items    ${locatorB_productsMgmt_popUps_antTags}    ${locatorB_popUps_button_middle}
+    @{antTags}    Wait And Get List Items    ${locatorB_antTags}    ${locatorB_popUps_button_middle}
     :FOR    ${antTag}    IN    @{antTags}
     \    Wait And Click Element    ${antTag}
     Wait And Click Element    ${locatorB_popUps_button_middle}
     Wait Until Page Contains Text    移除成功
     # 进入product中检查是否存在
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
-    Wait Until Page Not Contains Locator    ${locatorB_productsMgmt_tagboxs}
+    Wait Until Page Contains Locator    ${locatorB_productsNew_input_tags}
+    Wait Until Page Not Contains Locator    ${locatorB_tagboxs}
 
 
 
