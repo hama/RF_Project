@@ -8,7 +8,7 @@ Resource          kw_browser.robot
 Resource          kw_common.robot
 
 *** keyword ***
-Products Suite Setup
+Products List Suite Setup
     [Documentation]    product
     Login With Default User
     del_all_product_py

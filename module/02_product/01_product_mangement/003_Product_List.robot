@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     测试商品列表
-Suite Setup       Products Suite Setup
+Suite Setup       Products List Suite Setup
 Suite Teardown    Close Test Suite Browser
 Test Setup        Go To Products Page
 Test Teardown     Teardown Test Case
