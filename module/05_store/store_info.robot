@@ -1,5 +1,5 @@
 *** Settings ***
-Suite Setup       Login With Default User
+Suite Setup       Common Suite
 Suite Teardown    Close Test Suite Browser
 Test Teardown     Teardown Test Case
 Force Tags        Store
@@ -10,16 +10,6 @@ Library           ${CURDIR}/../../lib/customlib/kwstore.py
 
 
 *** Test Cases ***
-test
-    Repetir Common Step
-    Wait And Click Element    ${locatorB_storeLst_country_elm}
-    Wait Until Page Contains    请选择国家
-    Wait Until Page Contains    阿富汗
-    Wait Until Page Contains    阿尔巴尼亚
-    Wait Until Page Contains    阿尔及利亚
-    Wait Until Page Contains    美属萨摩亚
-    Wait Until Page Contains    安道尔
-
 store001
     [Documentation]    店铺信息-店铺名称里UI展示正确 > 进入到设置/基础信息 > 店铺名称、前有红色必填型号必填标识，名称默认为注册时填写的名称，有x/50字数的显示
     [Tags]    P1
@@ -28,40 +18,36 @@ store001
     #.从页面获取店铺名称
     ${name}    Get Value    ${locatorB_storeLst_storename_ipt}
     #.查询关键字- 店铺名称
-    ${res_name}    get_store_name
-    Should Be True    '${name}'=='${res_name}'
+    Should Be True    '${name}'=='${user_default_domain}'
 
 store002
     [Documentation]    店铺名称可保存小于50个字符 > "1.更改名称，输入字数小于50个字符,点击保存" > 保存成功
     [Tags]    P0
-    ${names}    Set Variable    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    StoreName Common Step    ${names}
+    StoreName Common Step    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     Wait Until Page Contains    ${locatorB_storeLst_storeText}
 
 store003
     [Documentation]    店铺名称不可保存大于50个字符 > "1.更改名称，输入字数大于50个字符,点击保存" > 提示‘不能超过50个字符’，保存失败
     [Tags]    P0
-    ${names}    Set Variable    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    StoreName Common Step    ${names}
+    StoreName Common Step    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     Wait Until Page Contains Element    ${locatorB_storeLst_error_msg}
 
 store004
     [Documentation]     店铺名称可保存50个字符 > "1.更改名称，输入字数等于50个字符,点击保存" > 保存成功
     [Tags]    P0
-    ${names}    Set Variable    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    StoreName Common Step    ${names}
+    StoreName Common Step    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 store005
-    [Documentation]    店铺名称不可为空 > 店铺名输入为空 > 提示‘请输入店铺名称’，保存失败
+    [Documentation]    店铺名称不可为空 > 店铺名输入为空 > 提示‘请输入店铺名称’，保存失败 [现在逻辑：可以输入空格]
     [Tags]    P0
-    StoreName Common Step    ''
-    Wait Until Page Contains Element    ${locatorB_storeLst_error_msg}
+    StoreName Common Step    ${Empty}
+    Wait And Click Element    ${locatorB_storeLst_moneda_elm}
+    Wait Until Page Does Not Contain Element    ${locatorB_storeLst_error_msg}
 
 store006
     [Documentation]    输入店铺名称时字数统计对应变化 > "1.输入名称,2.查看字数显示" > 展示对应的字数，格式为字数/50
     [Tags]    P2
-    ${name}    Set Variable    22
-    StoreName Common Step    ${name}
+    StoreName Common Step    22
     #.获取 输入店铺名称时字数统计对应变化
     ${res}    Execute JavaScript    return document.querySelectorAll(".ant-input-suffix")[0].innerText
     Should Be True    '${res}'<>''
@@ -71,7 +57,8 @@ store007
     [Tags]    P0
     Repetir Common Step
     #.获取店铺url
-    ${res}    Execute JavaScript    return document.querySelectorAll("#email")[0].value===''
+    Wait Until Element Is Visible    dom:document.querySelectorAll("#domain")[0]
+    ${res}    Execute JavaScript    return document.querySelectorAll("#domain")[0].value===''
     Should Be True    '${res}'<>'True'
 
 store008
@@ -101,7 +88,7 @@ store011
     [Documentation]    店主邮箱输入正确格式的邮箱可保存成功
     [Tags]    P0
     Repetir Common Step
-    Wait And Input Text    ${locatorB_storeLst_storeemail_ipt}    ${store_email}
+    Wait And Input Text    ${locatorB_storeLst_storeemail_ipt}    ooppww22@ss.cc
     Wait And Click Element    ${locatorB_storeLst_save_btn}
 
 store012
@@ -168,6 +155,7 @@ store023
     [Documentation]    验证‘常规设置-店铺时区’UI展示正确
     [Tags]    P0
     Repetir Common Step
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection-selected-value")[1]
     ${res}    Execute JavaScript    return document.querySelectorAll(".ant-select-selection-selected-value")[1].innerText
     Should Be True    '${res}'=='(GMT + 08:00) 北京，香港，台北，新加坡'
 
@@ -177,12 +165,12 @@ store024
     Repetir Common Step
     #.点击店铺货币 展开下拉框
     Wait And Click Element    ${locatorB_storeLst_moneda_elm}
-    ${one}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-vertical li')[0].innerText
-    ${two}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-vertical li')[1].innerText
-    ${three}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-vertical li')[2].innerText
-    ${four}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-vertical li')[3].innerText
-    ${five}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-vertical li')[4].innerText
-    ${six}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-vertical li')[5].innerText
+    ${one}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[0].innerText
+    ${two}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[1].innerText
+    ${three}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[2].innerText
+    ${four}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[3].innerText
+    ${five}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[4].innerText
+    ${six}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[5].innerText
     Should Be True    '${one}'=='USD' and '${two}'=='EUR' and '${three}'=='GBP' and '${four}'=='CAD' and '${five}'=='AFN' and '${six}'=='ALL'
 
 store025
@@ -211,6 +199,7 @@ store027
     Wait And Click Element    ${locatorB_storeLst_moneda_elm}
     #.选择货币
     Wait And Click Element    ${locatorB_storeLst_moneda_elm}
+    Sleep    2
     ${one}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-vertical li')[0].innerText
     Should Be True    '${one}'=='USD'
 
@@ -220,8 +209,9 @@ store028
     Repetir Common Step
     #.点击店铺货币 展开下拉框
     Wait And Click Element    ${locatorB_storeLst_moneda_elm}
+    Sleep    2
     #.滑动下拉条
-    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-vertical li')[15].scrollIntoView()
+    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[6].scrollIntoView()
 
 store029
     [Documentation]    点击店铺时区展示下拉框
@@ -249,6 +239,7 @@ store032
     Repetir Common Step
     #.点击时区
     Wait And Click Element    ${locatorB_storeLst_timezone_elm}
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__rendered")[1]
     ${res}    Execute JavaScript    return document.querySelectorAll(".ant-select-selection__rendered")[1].innerText
     Should Be True    '${res}'=='(GMT + 08:00) 北京，香港，台北，新加坡'
 
@@ -279,7 +270,6 @@ store037
     Repetir Common Step
     Wait And Click Element    dom:document.querySelectorAll(".icon_more_2419")[0]
     Wait Until Page Contains    1. 店匠联系您：店匠可能会使用此地址邮寄一些店铺的账单、协议等文件给您；
-2. 您的顾客联系您：此地址将用在您店铺的退货协议里，作为默认退货邮寄地址。
 
 store038
     [Documentation]    联系地址各字段显示正确
@@ -308,6 +298,10 @@ store040
 #==================================================================================================================================================================#
 
 *** keywords ***
+Common Suite
+    [Documentation]    公共suite
+    Login With Default User
+    Wait Add StoreInfo
 Repetir Common Step
     [Documentation]    重复步骤
     Go To Store Page
@@ -317,7 +311,7 @@ StoreName Common Step
     [Documentation]    店铺名称case封装
     [Arguments]    ${name}
     Repetir Common Step
-    Wait And Input Text    ${locatorB_storeLst_storename_ipt}    $name
+    Wait And Input Text    ${locatorB_storeLst_storename_ipt}    ${name}
     Wait And Click Element    ${locatorB_storeLst_save_btn}
 
 StoreEmail Common Step
