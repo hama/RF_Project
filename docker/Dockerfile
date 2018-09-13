@@ -24,8 +24,12 @@ RUN echo && cd /home  \
     && apt-get install -f
 
 COPY /chromedriver /usr/local/bin
+COPY /run_in_docker.sh /opt/
+COPY /id_rsa ~/.ssh
+
+RUN chmod 600 ~/.ssh/id_rsa
 
 # ENTRYPOINT
 # CMD
 
-CMD ["bash", "-c", "sleep 100000000"]
+CMD ["bash", "-c", "1000000"]
