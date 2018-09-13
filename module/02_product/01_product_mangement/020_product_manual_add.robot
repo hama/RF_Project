@@ -1,9 +1,9 @@
 *** Settings ***
-Documentation     构造单个商品测试
+Documentation     手动添加商品测试
 Suite Setup       Products Single Suite Setup
 Suite Teardown    Close Test Suite Browser
-Test Setup        Products Single Case Setup
-Test Teardown     Products Single Case Teardown
+Test Setup        Product Manual Add Case Setup
+Test Teardown     Product Manual Add Case Teardown
 Force Tags        Products
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/variable/var_products.robot
@@ -74,8 +74,7 @@ products018
     add_min_product_py
     Reload Page
     Select All Product Tag
-	Wait And Click Element    ${locatorB_productsMgmt_icon_listDelete}[0]
-	Wait And Click Element    ${locatorB_products_button_confirm}
+	Click Element And Confirm    ${locatorB_productsMgmt_icon_listDelete}[0]
 	Wait Until Page Not Contains Locator    ${locatorB_productsMgmt_icon_listPreview}[0]
 
 products019
@@ -84,8 +83,7 @@ products019
     add_min_product_py
     Reload Page
     Select All Product Tag
-	Wait And Click Element    ${locatorB_productsMgmt_icon_listDelete}[0]
-	Wait And Click Element    ${locatorB_products_button_confirm}
+	Click Element And Confirm    ${locatorB_productsMgmt_icon_listDelete}[0]
 	Wait Until Page Not Contains Locator    ${locatorB_productsMgmt_icon_listPreview}[0]
 
 products020
@@ -94,8 +92,7 @@ products020
     add_min_product_py
     Reload Page
     Select All Product Tag
-	Wait And Click Element    ${locatorB_productsMgmt_icon_listDelete}[0]
-	Wait And Click Element    ${locatorB_products_button_cancel}
+	Click Element And Cancel    ${locatorB_productsMgmt_icon_listDelete}[0]
 	Wait Until Page Contains Locator    ${locatorB_productsMgmt_icon_listPreview}[0]
 
 products021.1
@@ -116,7 +113,7 @@ products021.2
     [Tags]    P0
     add_launched_product_py
     add_launched_product_py
-    add_min_product_py
+    add_discontinued_product_py
     Reload Page
     Select Launched Product Tag
     ${total_record}    Wait And Get Text    ${locatorB_page_text_totalRecord}
@@ -131,6 +128,70 @@ products022
     Reload Page
     Select Launched Product Tag
     Wait Until Page Not Contains Locator    ${locatorB_page_text_totalRecord}
+
+products023.1
+    [Documentation]    验证展示的下架商品排序正确
+    [Tags]    P0
+    add_discontinued_product_py
+    Sleep    60
+	add_discontinued_product_py
+	Reload Page
+    Select Discontinued Product Tag
+    ${item1_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[0]
+    ${item2_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[1]
+    ${result}    lib_utils.compare_time_py    ${item1_createtime}    ${item2_createtime}
+    Should Be Equal    ${result}    gt
+
+products023.2
+    [Documentation]    验证展示的下架商品数量正确
+    [Tags]    P0
+    add_discontinued_product_py
+    add_discontinued_product_py
+    add_launched_product_py
+    Reload Page
+    Select Discontinued Product Tag
+    ${total_record}    Wait And Get Text    ${locatorB_page_text_totalRecord}
+    ${size}    lib_utils.searchStrs_py    ${total_record}
+    Should Be Equal As Integers    ${size}    2
+    Length Should Be Equal    ${locatorB_productsMgmt_switch_listDiscontinued}    ${2}
+
+products037
+    [Documentation]    验证能上架一个或多个商品成功
+    [Tags]    P0
+    add_discontinued_product_py
+    add_discontinued_product_py
+    Reload Page
+    Select All Product Tag
+	Select Products And Click Batch Menu
+	Click Element And Confirm    ${locatorB_productsMgmt_select_launch}
+	Wait Until Page Contains Text    上架成功
+    Length Should Be Equal    ${locatorB_productsMgmt_switch_listLaunched}    ${2}
+
+products039
+    [Documentation]    验证能下架一个或多个商品成功
+    [Tags]    P0
+    add_launched_product_py
+    add_launched_product_py
+    Reload Page
+    Select All Product Tag
+	Select Products And Click Batch Menu
+	Click Element And Confirm    ${locatorB_productsMgmt_select_discontinue}
+	Wait Until Page Contains Text    下架成功
+    Length Should Be Equal    ${locatorB_productsMgmt_switch_listDiscontinued}    ${2}
+
+products041
+    [Documentation]    验证能够成功批量删除商品
+    [Tags]    P0
+    add_launched_product_py
+    add_launched_product_py
+    Reload Page
+    Select All Product Tag
+	Select Products And Click Batch Menu
+	Click Element And Confirm    ${locatorB_productsMgmt_select_batchDel}
+	Wait Until Page Contains Text    删除成功
+	Wait Until Page Contains Text    暂无数据
+    Length Should Be Equal    ${locatorB_productsMgmt_icon_listPreview}    ${0}
+
 
 
 

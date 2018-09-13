@@ -29,12 +29,12 @@ Products Single Suite Teardown
     del_all_product_py
     Close Test Suite Browser
 
-Products Single Case Setup
+Product Manual Add Case Setup
     [Documentation]    product
     del_latest_product_py    ${3}
     Go To Products Page
 
-Products Single Case Teardown
+Product Manual Add Case Teardown
     [Documentation]    product
 	Teardown Test Case
 
@@ -54,15 +54,21 @@ Select Discontinued Product Tag
 	Wait And Click Element    ${locatorB_productsMgmt_button_discontinued}
     Sleep    1
 
-
-
-
 Show All Header
 	Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
     @{list}    Wait And Get List Items    ${locatorB_popUps_allCheckbox}
     :FOR    ${i}    IN    @{list}
     \    Wait And Click Element    ${i}
     Wait And Click Element    dom:document.querySelectorAll('button[class*="middle_btn"]')[0]
+
+Select Products And Click Batch Menu
+    [Documentation]    选中所有商品,并且点击批量操作菜单
+    Wait And Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseProducets}
+    Wait And Click Element    ${locatorB_productsMgmt_select_batchOperations}
+
+
+
+
 
 Add Product
     [Documentation]    添加下架商品以做测试
@@ -163,14 +169,7 @@ Wait For Upload
     \    Should Be Equal As Strings    ${state}    0
     \    Exit For Loop
 
-Click_First_Product_And_Click_Batch_Menu
-    [Documentation]    选中第一个商品,并且点击批量操作菜单
-    #选中第一个商品
-    Sleep    2
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
-    Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
-    #点击批量操作菜单
-    Wait And Click Element    ${locatorB_productsMgmt_select_batchOperations}
+
 
 Add_Collection
     [Documentation]    添加一个商品专辑

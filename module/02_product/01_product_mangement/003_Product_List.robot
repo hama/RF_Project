@@ -96,6 +96,15 @@ products021
     \    Wait Until Page Contains Locator    ${var}
     Length Should Be Equal    ${locatorB_productsMgmt_switch_listDiscontinued}    ${0}
 
+products023
+    [Documentation]    验证展示的商品只包含下架商品
+    [Tags]    P0
+    Select Discontinued Product Tag
+    @{list1}    Wait And Get List Items    ${locatorB_productsMgmt_switch_listDiscontinued}
+    :FOR    ${var}    IN    @{list1}
+    \    Wait Until Page Contains Locator    ${var}
+    Length Should Be Equal    ${locatorB_productsMgmt_switch_listLaunched}    ${0}
+
 
 
 
