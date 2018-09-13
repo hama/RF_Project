@@ -48,9 +48,15 @@ ${locatorB_productsMgmt_switch_listLaunched}    dom:document.querySelectorAll('s
 ${locatorB_productsMgmt_switch_listDiscontinued}    dom:document.querySelectorAll('span[class="ant-switch"]')    #所有下架条目的switch按钮
 
 
+${locatorB_productsMgmt_popUps_firstInput}    ${locatorB_popUps_inputs}[0]    # 弹窗第一个输入框
+
+${locatorB_productsMgmt_popUps_antTags}    dom:document.querySelectorAll('div[class="ant-tag ant-tag-checkable"]')    # 弹窗所有antTag
+
+
 # locator_productsType
 ${locatorB_productType_button_saveBtn}    id:test_save_btn    # 商品分类-保存按钮
 # locator_productsNew
+#${locatorB_productsMgmt_switch_listDiscontinued}    dom:document.querySelectorAll('div[class="ant-select-selection__rendered"]')[0]    #所有下架条目的switch按钮
 ${locatorB_productsNew_button_back}    class:back    # 进入编辑页面的后退按钮
 ${locatorB_productsNew_button_uploadBtn}    id:test_upload_btn    # 上传商品图片按钮
 ${locatorB_productsNew_tabindex_status}    id:status    # 商品状态按钮

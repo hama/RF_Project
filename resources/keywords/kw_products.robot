@@ -43,23 +43,23 @@ Product Testcase Setup
 
 
 Select All Product Tag
-	Wait And Click Element    ${locatorB_productsMgmt_button_all}
-    Sleep    1
+    Wait And Click Element    ${locatorB_productsMgmt_button_all}
+    Sleep    2
 
 Select Launched Product Tag
-	Wait And Click Element    ${locatorB_productsMgmt_button_launched}
-	Sleep    1
+    Wait And Click Element    ${locatorB_productsMgmt_button_launched}
+	Sleep    2
 
 Select Discontinued Product Tag
-	Wait And Click Element    ${locatorB_productsMgmt_button_discontinued}
-    Sleep    1
+    Wait And Click Element    ${locatorB_productsMgmt_button_discontinued}
+    Sleep    2
 
 Show All Header
-	Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
+    Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
     @{list}    Wait And Get List Items    ${locatorB_popUps_allCheckbox}
     :FOR    ${i}    IN    @{list}
     \    Wait And Click Element    ${i}
-    Wait And Click Element    dom:document.querySelectorAll('button[class*="middle_btn"]')[0]
+    Wait And Click Element    ${locatorB_popUps_button_middle}
 
 Select Products And Click Batch Menu
     [Documentation]    选中所有商品,并且点击批量操作菜单

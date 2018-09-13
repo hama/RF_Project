@@ -159,7 +159,7 @@ Wait And Get List Items
 	[Arguments]    ${element_locator}    ${element_visible}=${Empty}
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
 	${exec_locator} =	Evaluate	'''${element_locator}'''[4:]
-    Run Keyword If    '${element_visible}'!='${Empty}'    Wait Until Element Is Visible    ${element_visible}     10
+    Run Keyword If    '''${element_visible}'''!='''${Empty}'''    Wait Until Element Is Visible    ${element_visible}     10
     @{return}    Execute Javascript    return ${exec_locator}
     [Return]    @{return}
 

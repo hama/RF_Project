@@ -193,6 +193,45 @@ products041
     Length Should Be Equal    ${locatorB_productsMgmt_icon_listPreview}    ${0}
 
 
+products047
+	[Documentation]    验证能成功添加新建的标签
+    [Tags]    P0
+    add_launched_product_py
+    Reload Page
+    Select All Product Tag
+    Select Products And Click Batch Menu
+    Wait And Click Element    ${locatorB_productsMgmt_select_addTags}
+	Wait And Input Text    ${locatorB_productsMgmt_popUps_firstInput}    manual_tag
+	# 回车
+    Press Key    ${locatorB_productsMgmt_popUps_firstInput}    ${keybord_enter}
+    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait Until Page Contains Text    添加成功
+    # 进入product中检查是否存在
+    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+    @{tagboxs}    Wait And Get List Items    ${locatorB_productsMgmt_tagboxs}    ${locatorB_productsMgmt_tagboxs}[0]
+    :FOR    ${tagbox}    IN    @{tagboxs}
+    \    ${text}    Wait And Get Text    ${tagbox}
+    \    ${status}    Set Variable If    '${text}'=='manual_tag'    ${True}    ${False}
+    \    Exit For Loop If    '${text}'=='manual_tag'
+    Should Be True    ${status}
+
+
+products052
+	[Documentation]    验证可成功移除已有标签
+    [Tags]    P0
+    add_launched_product_py
+    Reload Page
+    Select All Product Tag
+    Select Products And Click Batch Menu
+    Wait And Click Element    ${locatorB_productsMgmt_select_delTags}
+    @{antTags}    Wait And Get List Items    ${locatorB_productsMgmt_popUps_antTags}    ${locatorB_popUps_button_middle}
+    :FOR    ${antTag}    IN    @{antTags}
+    \    Wait And Click Element    ${antTag}
+    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait Until Page Contains Text    移除成功
+    # 进入product中检查是否存在
+    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+    Wait Until Page Not Contains Locator    ${locatorB_productsMgmt_tagboxs}
 
 
 
