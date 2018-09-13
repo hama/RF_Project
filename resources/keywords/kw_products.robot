@@ -60,6 +60,7 @@ Show All Header
     :FOR    ${i}    IN    @{list}
     \    Wait And Click Element    ${i}
     Wait And Click Element    ${locatorB_popUps_button_middle}
+    Sleep    2
 
 Select Products And Click Batch Menu
     [Documentation]    选中所有商品,并且点击批量操作菜单

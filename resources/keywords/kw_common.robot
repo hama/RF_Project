@@ -49,8 +49,6 @@ Go To Products Page
     ${data}    Get Select Elements    0    #.获取导航栏商品的下拉按钮元素
     Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_products}
     ...    ELSE    Wait And Click Element    ${locatorB_product_manage}
-    #Wait And Click Element    ${locatorB_products}
-    #Wait And Click Element    ${locatorB_product_manage}
     Sleep    2
     Wait Until Page Contains    ${contentB_products_all}
     Location Should Be    ${url_products}
@@ -201,6 +199,7 @@ Focus On New Window
 
 Length Should Be Equal
 	[Arguments]    ${element_locator}    ${expected}
+	Sleep    2
 	${len}    Get List Length    ${element_locator}
     Should Be Equal    ${len}    ${expected}
 
