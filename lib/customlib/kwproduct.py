@@ -43,7 +43,7 @@ def add_discontinued_product_py(cookie=init_cookie):
     :return:
     '''
     data = copy.deepcopy(product_max_data)
-    data['images'] = images
+    data['images'] = [image]
     data['status'] = 0
 
     add_product_py(data, cookie)
@@ -56,7 +56,7 @@ def add_launched_product_py(cookie=init_cookie):
     :return:
     '''
     data = copy.deepcopy(product_max_data)
-    data['images'] = images
+    data['images'] = [image]
     data['status'] = 1
 
     add_product_py(data, cookie)

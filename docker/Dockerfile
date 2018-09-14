@@ -6,9 +6,6 @@ RUN mkdir -p /home
 
 WORKDIR /opt
 
-ENV TZ=Asia/Shanghai
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
 RUN echo && cd /home  \
     && apt-get update \
     && apt-get install -y python2.7 curl git vim \
@@ -24,11 +21,15 @@ RUN echo && cd /home  \
     && apt-get -y install fontconfig xfonts-utils \
     && apt-get install -y fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei fonts-arphic-ukai fonts-arphic-uming
 
-RUN mkdir -p ~/.ssh
+RUN mkdir -p ~/.ssh && mkdir -p /usr/share/zoneinfo/Asia
 
 COPY /chromedriver /usr/local/bin
 COPY /run_in_docker.sh /opt/
 COPY /id_rsa /root/.ssh/id_rsa
 COPY /known_hosts /root/.ssh/known_hosts
+COPY /Shanghai /usr/share/zoneinfo/Asia/Shanghai
+
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 CMD ["sh", "-c", "/opt/run_in_docker.sh"]
