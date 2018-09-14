@@ -77,6 +77,7 @@ fi
 # 执行用例
 if [ "$test_module" ]
 then
+	echo "$test_module"
     robot -v is_headless:True -d logs/ $test_module
 else
 	echo 'test_module_default'
