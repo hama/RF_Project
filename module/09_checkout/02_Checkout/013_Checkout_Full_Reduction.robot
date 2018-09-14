@@ -48,7 +48,7 @@ Products Suite Setup
     delSubtraction_fromdb    all
     Add Subtraction Wait Step    2
     Add Payment Cod Wait
-    Go To Products Page
+    Go To Product Management Page
 
 
 Products Test Case Teardown

@@ -108,13 +108,13 @@ Products Suite Setup
     [Documentation]    商品 case setup,添加商品，专辑
     Login With Default User
     Start Ajax Listener
-    Go To Products Page
+    Go To Product Management Page
     Add_Collection
     Sleep    5
-    Go To Products Page
+    Go To Product Management Page
     Sleep    5
     Add_Collection
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    删除商品，专辑
@@ -125,5 +125,5 @@ Products Suite Teardown
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 

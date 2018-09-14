@@ -65,7 +65,7 @@ products076
     # 跳转到商品详情页面
     # check
     Sleep    3
-    Go To Products Page
+    Go To Product Management Page
     Page Should Contain    ${contentB_products_addTitle}
     Page Should Contain    ${sku}
 

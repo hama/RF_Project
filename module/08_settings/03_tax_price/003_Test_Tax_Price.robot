@@ -91,7 +91,7 @@ Tax Price Suite Teardown
     Close Test Suite Browser
 
 Tax Price Test Cases Setup
-    Go To Tax Price Page
+    Go To Tax Page
 
 Check Tax Page List
     log    获取指定接口的数据，使用 Table should countains 关键字判断是否包含

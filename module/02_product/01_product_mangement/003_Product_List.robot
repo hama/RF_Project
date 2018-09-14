@@ -2,7 +2,7 @@
 Documentation     测试商品列表
 Suite Setup       Products List Suite Setup
 Suite Teardown    Close Test Suite Browser
-Test Setup        Go To Products Page
+Test Setup        Go To Product Management Page
 Test Teardown     Teardown Test Case
 Force Tags        Products
 Resource          ../../../resources/variable/var_common.robot

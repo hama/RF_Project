@@ -40,14 +40,14 @@ Products Suite Setup
     Login With Default User
     Add Product Wait
     Change Checkout Setp Wait    2
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    商品 case set down
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 
 Products Test Case Teardown
     Teardown Test Case

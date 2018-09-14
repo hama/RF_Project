@@ -237,13 +237,13 @@ Add_Sub_Product_With_Already_Product
     Press Key    id:option_values_0    \\13
     #点击保存
     Click And Page Contains Element With Refresh    ${locatorB_productsNew_button_save}    ${locatorB_productsMgmt_icon_listPreview}[0]
-    Go To Products Page
+    Go To Product Management Page
     
 
 Delete_Sub_Product_With_Already_Product
     [Arguments]    ${index}
     [Documentation]    此时第一个商品下有两个子产品，删除当前第一个商品下的第n个子商品（第一个子产品为下单时选中的子产品）
-    Go To Products Page
+    Go To Product Management Page
     #点击第一件商品进入商品详情页
     Click And Page Contains Element With Refresh    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    document.getElementById("test_single_variant_setting_btn")
     #划到底部
@@ -338,7 +338,7 @@ Set_Quantity
 
 To_Change_Image
     [Documentation]    更换商品的图片，前提该商品已有一张图片
-    Go To Products Page
+    Go To Product Management Page
     #点击第一件商品进入商品详情页
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
     Sleep    2
@@ -355,7 +355,7 @@ To_Change_Image
 
 Delete_All_Sub_Product_With_Already_Product
     [Documentation]    此时第一个商品下有两个子产品，删除当前第一个商品下的所有子商品
-    Go To Products Page
+    Go To Product Management Page
     #点击第一件商品进入商品详情页
     Click And Page Contains Element With Refresh    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    document.getElementById("test_single_variant_setting_btn")
     #划到底部
@@ -433,7 +433,7 @@ Open_Cash
 Modify_Other_Tax_Price
     [Documentation]    修改其他国家税费金额
     Go TO    ${home_page}
-    Go To Tax Price Page
+    Go To Tax Page
     Sleep    5
     #点击第一个税率设置操作按钮
     Wait And Click Element    dom:document.querySelectorAll(".card-col-Setting")[0]

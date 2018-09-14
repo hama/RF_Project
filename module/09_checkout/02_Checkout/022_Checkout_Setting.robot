@@ -41,7 +41,7 @@ Products Suite Setup
     Login With Default User
     Add Product Wait
     Add Payment Cod Wait
-    Go To Products Page
+    Go To Product Management Page
 
 Products Test Case Teardown
     Teardown Test Case

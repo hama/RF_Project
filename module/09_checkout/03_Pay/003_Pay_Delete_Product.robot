@@ -46,14 +46,14 @@ Products Suite Setup
     Start Ajax Listener
     Add Product_Up
     Sleep    8
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    商品 case set down
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 
 Products Test Case Teardown
     Teardown Test Case

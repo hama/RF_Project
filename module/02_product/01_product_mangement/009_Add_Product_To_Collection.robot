@@ -205,16 +205,16 @@ Products Suite Setup
     Sleep    5
     Add_Collection
     Sleep    5
-    Go To Products Page
+    Go To Product Management Page
     Sleep    5
     Add_Collection
     Sleep    5
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    删除商品，专辑
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 

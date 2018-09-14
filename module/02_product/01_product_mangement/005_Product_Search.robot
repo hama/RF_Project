@@ -57,12 +57,12 @@ Products Suite Setup
     [Documentation]    商品 case setup
     Login With Default User
     Start Ajax Listener
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    删除商品
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 

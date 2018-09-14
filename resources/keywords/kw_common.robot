@@ -44,58 +44,54 @@ Go To Home By Url
     Go To    ${home_page}
     Sleep    1
 
-Go To Products Page
-    [Documentation]    跳转到商品页面
-    ${data}    Get Select Elements    0    #.获取导航栏商品的下拉按钮元素
-    Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_products}
-    ...    ELSE    Wait And Click Element    ${locatorB_product_manage}
-    Sleep    2
-    Wait Until Page Contains    ${contentB_products_all}
-    Location Should Be    ${url_products}
-    Sleep    1
-
-Go To Marketing Page
-    [Documentation]    跳转到营销页面
-    Wait And Click Element    ${locatorB_marketing}
-    Sleep    2
-    #点击满减活动
-    #Wait And Click Element    id:test_marketing_substraction
-    #Sleep    2
-
 Go To Order Page
     [Documentation]    跳转到订单页面
     Wait And Click Element    ${locatorB_order}
     Wait Until Page Contains    ${contentB_order_title}
     Location Should Be    ${url_order}
 
-Go To Tax Price Page
-    [Documentation]    跳转到税费页面
-    Wait Until Element Is Visible    ${locatorB_setting}
-    # 若设置按钮没展开，则展开设置按钮
-    ${unvisible}=    Execute Javascript    return document.querySelectorAll('a[href="/taxPrice"]')[0]===undefined
-    Run Keyword If    ${unvisible}    Wait And Click Element    ${locatorB_setting}
-    Wait And Click Element    ${locatorB_setting_taxPrice}
-    Location Should Be    ${url_tax_price}
+Go To Product Management Page
+    [Documentation]    跳转到商品页面
+    Wait Until Element Is Visible    ${locatorB_products}
+    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[0]    aria-expanded    #.获取导航栏商品的下拉按钮元素
+    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_products}
+    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_product_management}
+    ...    ELSE    Wait And Click Element    ${locatorB_product_management}
+    Sleep    2
+    Wait Until Page Contains    商品管理
+    Location Should Be    ${url_products}
+    Sleep    1
 
-Go To Shipping Page
-    [Documentation]    跳转到物流页面
-    Sleep    2.5
-    Wait Until Element Is Visible    ${locatorB_setting}
-    # 若设置按钮没展开，则展开设置按钮
-    ${unvisible}=    Execute Javascript    return document.querySelectorAll('a[href="/shipping"]')[0]===undefined
-    Run Keyword If    ${unvisible}    Wait And Click Element    ${locatorB_setting}
-    Wait And Click Element    ${locatorB_setting_shipping}
-    Wait Until Element Is Visible    ${locatorB_shipping_add_shipping}
-    Page Should Contain    ${contentB_shipping_tab1}
-    Page Should Contain    ${contentB_shipping_tab2}
-    Location Should Be    ${url_shipping}
+Go To Product Collection Page
+    [Documentation]    跳转到商品页面
+    Wait Until Element Is Visible    ${locatorB_products}
+    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[0]    aria-expanded    #.获取导航栏商品的下拉按钮元素
+    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_products}
+    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_product_collection}
+    ...    ELSE    Wait And Click Element    ${locatorB_product_collection}
+    Sleep    2
+    Wait Until Page Contains    商品专辑
+    Location Should Be    ${url_collection}
+    Sleep    1
+
+Go To Product Review Page
+    [Documentation]    跳转到商品页面
+    Wait Until Element Is Visible    ${locatorB_products}
+    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[0]    aria-expanded    #.获取导航栏商品的下拉按钮元素
+    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_products}
+    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_product_reviews}
+    ...    ELSE    Wait And Click Element    ${locatorB_product_reviews}
+    Sleep    2
+    Wait Until Page Contains    商品专辑
+    Location Should Be    ${url_reviews}
+    Sleep    1
 
 Go To Subtraction Page
     [Documentation]    跳转营销-满减活动页面
     Wait Until Element Is Visible    ${locatorB_marketing}
     # 若营销按钮没展开，则展开营销按钮
-    ${data}    Get Select Elements    1    # 获取导航栏营销下拉元素
-    Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_marketing}
+    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[1]    aria-expanded    # 获取导航栏营销下拉元素
+    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_marketing}
     ...    ELSE    Wait And Click Element    ${locatorB_marketing_subtraction}
     Wait Until Page Contains    ${locatorB_subtraction_header_text}
     Location Should Be    ${url_subtraction}
@@ -104,9 +100,9 @@ Go To Coupon Page
     [Documentation]    跳转营销-优惠券页面
     Wait Until Element Is Visible    ${locatorB_marketing}
     # 若营销按钮没展开，则展开营销按钮
-    ${data}    Get Select Elements    1    # 获取导航栏营销下拉元素
-    Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_marketing}
-    Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_marketing_coupon_code}
+    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[1]    aria-expanded    # 获取导航栏营销下拉元素
+    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_marketing}
+    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_marketing_coupon_code}
     ...    ELSE    Wait And Click Element    ${locatorB_marketing_coupon_code}
     Wait Until Page Contains    ${locatorB_couponLst_couponText}
     Location Should Be    ${url_coupon_code}
@@ -115,12 +111,36 @@ Go To Store Page
     [Documentation]    跳转基础信息页面
     Wait Until Element Is Visible    ${locatorB_setting}
     # 若营销按钮没展开，则展开营销按钮
-    ${data}    Get Select Elements    3    # 获取导航栏营销下拉元素
-    Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${data}'=='false'    Wait And Click Element    ${locatorB_setting_store}
+    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[3]    aria-expanded
+    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting}
+    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting_store}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_store}
-    Wait Until Page Contains    ${locatorB_storeLst_storeText}
+    Wait Until Page Contains    ${contextB_store_storeInfo}
     Location Should Be    ${url_coupon_store}
+
+Go To Tax Page
+    [Documentation]    跳转到税费页面
+    Wait Until Element Is Visible    ${locatorB_setting}
+    # 若设置按钮没展开，则展开设置按钮
+    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[3]    aria-expanded
+    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting}
+    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting_taxPrice}
+    ...    ELSE    Wait And Click Element    ${locatorB_setting_taxPrice}
+    Wait Until Page Contains    收税方式
+    Location Should Be    ${url_tax_price}
+
+Go To Shipping Page
+    [Documentation]    跳转到物流页面
+    Sleep    2.5
+    Wait Until Element Is Visible    ${locatorB_setting}
+    # 若设置按钮没展开，则展开设置按钮
+    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[3]    aria-expanded
+    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting}
+    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting_shipping}
+    ...    ELSE    Wait And Click Element    ${locatorB_setting_shipping}
+    Page Should Contain    ${contentB_shipping_tab1}
+    Page Should Contain    ${contentB_shipping_tab2}
+    Location Should Be    ${url_shipping}
 
 Wait And Input Text
     [Arguments]    ${element_locator}    ${text}    ${timeout}=3    ${retry_time}=1
@@ -218,7 +238,7 @@ Set Tax Price
     [Documentation]    封装设置税金方法,[element]:需要设置国家的中文名字(string),[numbers]:设置多少税金(int)
     [Arguments]    ${element}    ${numbers}
     Go To    ${home_page}    #.跳转主页
-    Go To Tax Price Page    #.进入税金主页
+    Go To Tax Page    #.进入税金主页
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
     ${length}    Execute JavaScript    return document.querySelectorAll(".ant-table-tbody tr").length
     :FOR    ${i}    IN RANGE    ${length}
@@ -311,12 +331,6 @@ Alert Should Not Be Present
     [Arguments]    ${msg}
     ${result}    Run Keyword And Ignore Error    Alert Should Be Present    ${msg}
     Should Be True    '${result}'!='PASS'
-
-Get Select Elements
-    [Documentation]    获取第N个导航栏下拉元素
-    [Arguments]    ${index}
-    ${res}    Get Element Attribute    dom:document.querySelectorAll(".ant-menu-submenu-title")[${index}]    aria-expanded
-    [Return]    ${res}
 
 Confirm Cancel Alert
     [Documentation]    取消页面填写内容未保存跳走出现的弹窗

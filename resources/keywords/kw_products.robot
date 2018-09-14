@@ -15,14 +15,14 @@ Products List Suite Setup
     add_launched_product_py
     Sleep    60   # 为构造两个产品创建时间不同
     add_discontinued_product_py
-    Go To Products Page
+    Go To Product Management Page
     Show All Header
 
 Products Single Suite Setup
     [Documentation]    product
     Login With Default User
     del_all_product_py
-    Go To Products Page
+    Go To Product Management Page
 
 Products Single Suite Teardown
     [Documentation]    product
@@ -32,7 +32,7 @@ Products Single Suite Teardown
 Product Manual Add Case Setup
     [Documentation]    product
     del_latest_product_py    ${3}
-    Go To Products Page
+    Go To Product Management Page
 
 Product Manual Add Case Teardown
     [Documentation]    product
@@ -56,7 +56,7 @@ Select Discontinued Product Tag
 
 Show All Header
     Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
-    @{list}    Wait And Get List Items    ${locatorB_popUps_allCheckbox}
+    @{list}    Wait And Get List Items    ${locatorB_popUps_allUncheckedCheckbox}
     :FOR    ${i}    IN    @{list}
     \    Wait And Click Element    ${i}
     Wait And Click Element    ${locatorB_popUps_button_middle}
@@ -73,7 +73,7 @@ Select Products And Click Batch Menu
 
 Add Product
     [Documentation]    添加下架商品以做测试
-    Go To Products Page
+    Go To Product Management Page
     Add Product Required Content
     # add other content
     Wait And Input Text    ${locatorB_productsNew_input_addSubTitle}    ${contentB_products_addSubTitle}    # 添加副标题
@@ -104,7 +104,7 @@ Add Product_Up
     Wait And Click Element    ${locatorB_products_button_confirm}
 
 Add Product Required Content
-    Go To Products Page
+    Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}    # 点击添加商品按钮
     Wait Until Page Contains    ${contentB_products_new}
     Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${contentB_products_addTitle}    # 添加标题
@@ -112,7 +112,7 @@ Add Product Required Content
 
 Delete Product
     [Documentation]    删除商品列表的第一个商品
-    Go To Products Page
+    Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}    # 商品列表第一条数据
     Wait And Click Element    ${locatorB_popUps_button_middle}
 
@@ -209,7 +209,7 @@ Delete_Collection
 
 Delete_First_Product
     [Documentation]    删除第一个商品
-    Go To Products Page
+    Go To Product Management Page
     Sleep    5
     Wait And Click Element    ${locatorB_productsMgmt_icon_listDelete}[0]
     Sleep    5
@@ -251,7 +251,7 @@ Delete All Collection
 Add Order Products
     [Documentation]    添加订单和checkout所需商品
     Go To    ${home_page}
-    Go To Products Page
+    Go To Product Management Page
     Add Product Required Content
     # add other content
     Wait And Input Text    ${locatorB_productsNew_input_addSubTitle}    ${contentB_products_addSubTitle}    # 添加副标题
@@ -274,7 +274,7 @@ Add Custom Products
     [Documentation]    添加一个任意价格的商品
     [Arguments]    ${price}
     Go To    ${home_page}
-    Go To Products Page
+    Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}    # 点击添加商品按钮
     Wait Until Page Contains    ${contentB_products_new}
     Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${contentB_products_addTitle}    # 添加标题

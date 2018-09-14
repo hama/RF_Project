@@ -37,15 +37,15 @@ Products Suite Setup
     Start Ajax Listener
     Delete All Collection
     Sleep    5
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    删除所有商品
-    Go To Products Page
+    Go To Product Management Page
     Sleep    5
     Delete All Products
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 

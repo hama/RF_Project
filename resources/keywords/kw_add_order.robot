@@ -11,7 +11,7 @@ Add Order
     [Documentation]    .add order
     #C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     #.click products btn
-    Go To Products Page
+    Go To Product Management Page
     #点击商品预览
     Sleep    2
     Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]

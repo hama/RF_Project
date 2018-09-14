@@ -17,7 +17,7 @@ Library           SeleniumLibrary    run_on_failure=NOTHING
 001 Test No Shipping
     [Documentation]    [测试内容]: 提示设置物流 [预期结果]: 税费页面提示前往物流设置，点击跳转到物流设置页面
     [Tags]    P0
-    Go To Tax Price Page
+    Go To Tax Page
     Comment    跳转到物流设置页面
     Wait And Click Element    ${locatorB_tax_goto_shipping}
     Wait Until Page Contains    ${contentB_shipping_tab2}

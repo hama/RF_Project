@@ -234,6 +234,24 @@ products052
     Wait Until Page Contains Locator    ${locatorB_productsNew_input_tags}
     Wait Until Page Not Contains Locator    ${locatorB_tagboxs}
 
+products055
+	[Documentation]    验证可成功加入一个或多个专辑
+    [Tags]    P0
+    add_launched_product_py
+    del_all_collection_py
+    add_collection_with_pic_py
+    Reload Page
+    Select All Product Tag
+    Select Products And Click Batch Menu
+    Wait And Click Element    ${locatorB_productsMgmt_select_addtoCategory}
+    Wait And Click Element    ${locatorB_popUps_allCheckbox}
+    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait Until Page Contains Text    添加成功
+    # 进入Collection中检查是否存在
+    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+    Wait Until Page Contains Locator    ${locatorB_productsNew_input_tags}
+    Wait Until Page Not Contains Locator    ${locatorB_tagboxs}
+
 
 
 
