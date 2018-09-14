@@ -5,7 +5,7 @@ Test Teardown     Teardown Test Case
 Force Tags        Store
 Resource          ../../resources/keywords/kw_browser.robot
 Resource          ../../resources/keywords/kw_common.robot
-Resource          ../../resources/Variable/var_store.robot
+Resource          ../../resources/variable/var_store.robot
 Library           ${CURDIR}/../../lib/customlib/kwstore.py
 
 
@@ -89,6 +89,7 @@ store011
     [Documentation]    店主邮箱输入正确格式的邮箱可保存成功
     [Tags]    P0
     Repetir Common Step
+    Wait And Input Text    ${locatorB_storeLst_storeemail_ipt}    ${Empty}
     Wait And Input Text    ${locatorB_storeLst_storeemail_ipt}    ooppww22@ss.cc
     Wait And Click Element    ${locatorB_storeLst_save_btn}
 
@@ -96,6 +97,7 @@ store012
     [Documentation]    店主邮箱输入格式错误的邮箱，不可保存 > 输入非法格式的邮箱：@qq@192 > 提示‘请输入正确的邮箱’，不可保存
     [Tags]    P1
     Repetir Common Step
+    Wait And Input Text    ${locatorB_storeLst_storeemail_ipt}    ${Empty}
     Wait And Input Text    ${locatorB_storeLst_storeemail_ipt}    @qq@192
     Wait And Click Element    ${locatorB_storeLst_save_btn}
     Wait Until Page Contains Element    ${locatorB_storeLst_error_msg}
@@ -164,9 +166,10 @@ store024
     [Documentation]    点击货币选择框，展开下拉框 > 展开下拉框，默认展示6种货币单位在页面上
     [Tags]    P1
     Repetir Common Step
+    Sleep    2
     #.点击店铺货币 展开下拉框
     Wait And Click Element    ${locatorB_storeLst_moneda_elm}
-    Sleep    2
+    Sleep    3.5
     ${one}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[0].innerText
     ${two}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[1].innerText
     ${three}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[2].innerText
@@ -198,10 +201,9 @@ store027
     [Tags]    P0
     Repetir Common Step
     #.点击店铺货币 展开下拉框
+    Sleep    2
     Wait And Click Element    ${locatorB_storeLst_moneda_elm}
-    #.选择货币
-    Wait And Click Element    ${locatorB_storeLst_moneda_elm}
-    Sleep    3
+    Sleep    4
     ${one}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-vertical li')[0].innerText
     Should Be True    '${one}'=='USD'
 
@@ -209,6 +211,7 @@ store028
     [Documentation]    货币下拉框可滚动查看更多
     [Tags]    P1
     Repetir Common Step
+    Sleep   2
     #.点击店铺货币 展开下拉框
     Wait And Click Element    ${locatorB_storeLst_moneda_elm}
     Sleep    3
@@ -227,6 +230,7 @@ store030
     [Tags]    P1
     Repetir Common Step
     #.点击时区
+    Sleep    2
     Wait And Click Element    ${locatorB_storeLst_timezone_elm}
     Wait Until Page Contains    (GMT + 08:00) 北京，香港，台北，新加坡
     Wait Until Page Contains    (GMT + 07:00) 河内，雅加达，新西伯利亚
@@ -287,7 +291,6 @@ store040
     [Tags]    P1
     Repetir Common Step
     Wait And Click Element    ${locatorB_storeLst_country_elm}
-
     Wait Until Page Contains    佛得角
     Wait Until Page Contains    开曼群岛
     Wait Until Page Contains    中非
