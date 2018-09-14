@@ -58,14 +58,18 @@ done
 # 执行customKeyWord.py
 if [ "$test_url" -a "$test_account" ]
 then
+	echo 'test_url and test_account'
     python2.7 lib/customlib/initevn.py --url="$test_url" --user="$test_account"
 elif [ "$test_url" ]
 then
+	echo 'test_url'
     python2.7 lib/customlib/initevn.py --url="$test_url"
 elif [ "$test_account" ]
 then
+	echo 'test_account'
     python2.7 lib/customlib/initevn.py --user="$test_account"
 else
+	echo 'not test_url and test_account'
     python2.7 lib/customlib/initevn.py
 fi
 
@@ -74,18 +78,17 @@ if [ "$test_module" ]
 then
     robot -v is_headless:True -d logs/ $test_module
 else
+	echo 'test_module_default'
     robot -v is_headless:True -d logs/ module/03_login/*
 fi
 
 # 执行email_utils.py
 if [ "$send_email" ]
 then
+	echo 'send_email_default'
     python2.7 lib/utils/email_utils.py
 fi
 
-echo $send_email
-echo $test_module
-echo $test_url
 
 #显示除选项外的参数(不包含选项的参数都会排到最后)
 # arg 是 getopt 内置的变量 , 里面的值，就是处理过之后的 $@(命令行传入的参数)
