@@ -6,11 +6,11 @@ Suite Teardown    Close Test Suite Browser    # close the browser opened for thi
 Test Teardown     Teardown Test Case
 Force Tags        Checkout
 Resource          ../../../resources/variable/var_tax_price.robot
-Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/variable/var_product_management.robot
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
-Resource          ../../../resources/keywords/kw_products.robot
+Resource          ../../../resources/keywords/kw_product_management.robot
 Resource          ../../../resources/keywords/kw_shipping.robot
 Resource          ../../../resources/keywords/kw_checkout.robot
 

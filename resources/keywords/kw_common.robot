@@ -6,7 +6,7 @@ Library           ${CURDIR}/../../lib/customlib/kwproduct.py
 Resource          ../variable/var_common.robot
 Resource          ../variable/var_login.robot
 Resource          kw_browser.robot
-Resource          kw_products.robot
+Resource          kw_product_management.robot
 Resource          ../variable/var_store.robot
 
 *** Keywords ***

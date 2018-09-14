@@ -3,7 +3,8 @@ Documentation     添加商品
 Library           SeleniumLibrary    run_on_failure=NOTHING
 Resource          ../variable/var_common.robot
 Resource          ../variable/var_marketing.robot
-Resource          ../variable/var_products.robot
+Resource          ../variable/var_product_management.robot
+Resource          ../variable/var_product_collection.robot
 Resource          kw_browser.robot
 Resource          kw_common.robot
 
@@ -181,7 +182,7 @@ Add_Collection
     Sleep    5
     Wait And Click Element    ${locatorB_product_collection}
     #点击新建一个商品专辑
-    Wait And Click Element    ${locatorB_productsCategory_button_addCategory}
+    Wait And Click Element    ${locatorB_productsCollection_button_addCategory}
     #输入专辑名称
     Wait And Input Text    id:title    ceshi
     #输入专辑描述
@@ -203,7 +204,7 @@ Delete_Collection
     #点击进入商品专辑界面
     Wait And Click Element    ${locatorB_product_collection}
     #点击删除第一个专辑按钮
-    Wait And Click Element    ${locatorB_productsCategory_icon_del}
+    Wait And Click Element    ${locatorB_productsCollection_icon_del}
     #点击确定
     Wait And Click Element    ${locatorB_popUps_button_middle}
 
@@ -241,9 +242,9 @@ Delete All Collection
     #点击进入商品专辑界面
     Wait And Click Element    ${locatorB_product_collection}
     #点击选中所有专辑
-    Select Checkbox    ${locatorB_productsCategory_checkbox_chooseCategories}
+    Select Checkbox    ${locatorB_productsCollection_checkbox_chooseCategories}
     #点击删除按钮
-    Wait And Click Element    ${locatorB_productsCategory_button_delProducts}
+    Wait And Click Element    ${locatorB_productsCollection_button_delProducts}
     #点击确定按钮
     Wait And Click Element    ${locatorB_products_button_confirm}
     Go TO    ${home_page}

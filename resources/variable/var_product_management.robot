@@ -72,20 +72,9 @@ ${locatorB_productsNew_input_addSupplier}    dom:document.querySelectorAll(".ant
 ${locatorB_productsNew_input_productType}    id:product_type_cascade    #商品专辑页的新增专辑按钮
 ${locatorB_productsNew_cascader_chooseCategoryItem}    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]    # 选择商品分类子项
 ${locatorB_productsNew_button_save}    ${locatorB_popUps_button_middle}    #保存按钮
-# locator_productsCategory
-${locatorB_productsCategory_button_addCategory}    ${locatorB_button_add}    #商品专辑页的新增专辑按钮
-${locatorB_productsCategory_icon_del}    dom:document.querySelectorAll(".djfont.delete")[0]    #商品专辑的第一个删除icon
-${locatorB_productsCategory_button_delProducts}    dom:document.querySelectorAll(".batchSelectTable_btn___40HNR")[0]    #通过checkbox选中所有专辑之后，提供的删除button
-${locatorB_productsCategory_popUps_firstCategory}    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]    #"要添加到的专辑"弹窗的第一条条目
-${locatorB_productsCategory_checkbox_chooseCategories}    ${locatorB_checkbox00}    #点击checkbox按钮，选中当前页面所有专辑
-# locator_productsComment
-
 
 # locator_productsMobile
 ${locatorC_products_logo}    dom:document.querySelectorAll('div[alt="Logo"]')[0]    #C端，产品logo
-
-
-
 
 # content
 ${contentB_products_all}    全部
