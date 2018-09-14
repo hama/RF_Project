@@ -58,6 +58,7 @@ store007
     Repetir Common Step
     #.获取店铺url
     Wait Until Element Is Visible    dom:document.querySelectorAll("#domain")[0]
+    Sleep    2
     ${res}    Execute JavaScript    return document.querySelectorAll("#domain")[0].value===''
     Should Be True    '${res}'<>'True'
 
@@ -165,6 +166,7 @@ store024
     Repetir Common Step
     #.点击店铺货币 展开下拉框
     Wait And Click Element    ${locatorB_storeLst_moneda_elm}
+    Sleep    2
     ${one}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[0].innerText
     ${two}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[1].innerText
     ${three}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[2].innerText
@@ -199,7 +201,7 @@ store027
     Wait And Click Element    ${locatorB_storeLst_moneda_elm}
     #.选择货币
     Wait And Click Element    ${locatorB_storeLst_moneda_elm}
-    Sleep    2
+    Sleep    3
     ${one}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-vertical li')[0].innerText
     Should Be True    '${one}'=='USD'
 
@@ -209,7 +211,7 @@ store028
     Repetir Common Step
     #.点击店铺货币 展开下拉框
     Wait And Click Element    ${locatorB_storeLst_moneda_elm}
-    Sleep    2
+    Sleep    3
     #.滑动下拉条
     Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[6].scrollIntoView()
 
@@ -240,6 +242,7 @@ store032
     #.点击时区
     Wait And Click Element    ${locatorB_storeLst_timezone_elm}
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-select-selection__rendered")[1]
+    Sleep    2
     ${res}    Execute JavaScript    return document.querySelectorAll(".ant-select-selection__rendered")[1].innerText
     Should Be True    '${res}'=='(GMT + 08:00) 北京，香港，台北，新加坡'
 
@@ -284,12 +287,13 @@ store040
     [Tags]    P1
     Repetir Common Step
     Wait And Click Element    ${locatorB_storeLst_country_elm}
-    Wait Until Page Contains    请选择国家
-    Wait Until Page Contains    阿富汗
-    Wait Until Page Contains    阿尔巴尼亚
-    Wait Until Page Contains    阿尔及利亚
-    Wait Until Page Contains    美属萨摩亚
-    Wait Until Page Contains    安道尔
+
+    Wait Until Page Contains    佛得角
+    Wait Until Page Contains    开曼群岛
+    Wait Until Page Contains    中非
+    Wait Until Page Contains    乍得
+    Wait Until Page Contains    智利
+    Wait Until Page Contains    中国
 
 #==================================================================================================================================================================#
 #==================================================================================================================================================================#
