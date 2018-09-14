@@ -19,7 +19,7 @@ if __name__ == '__main__':
     config.read(path)
     if 'https://admin.shoplazza.com' in args.url:
         # 美服使用固定账号跑用例
-        config.set("common_account", "datas_invite_code", 'DJ2746')
+        config.set("common_account", "datas_invite_code", 'DJ2311')
         config.set("common_db", "db_service_config", '{"host": "rm-rj9ww1316miq2j87l.mysql.rds.aliyuncs.com",'
                                                      '"port": 3306,"user": "fortest","password": "fortest@123",'
                                                      '"db": "service","charset": "utf8"}')
