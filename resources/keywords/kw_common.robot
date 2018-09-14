@@ -161,7 +161,7 @@ Wait And Click Element
     Wait Until Element Is Visible    ${element_locator}     10
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
 
-Wait And Select Checkbox
+Wait Enabled And Click Element
     [Arguments]    ${element_locator}    ${timeout}=3    ${retry_time}=1
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Enabled    ${element_locator}

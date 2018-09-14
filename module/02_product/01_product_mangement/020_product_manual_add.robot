@@ -247,11 +247,44 @@ products055
     Wait And Click Element    ${locatorB_productsMgmt_select_addtoCategory}
     Wait And Click Element    ${locatorB_popUps_allCheckbox}
     Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait Until Page Contains Text    添加成功
     # 进入Collection中检查是否存在
     Go To Product Collection Page
     Wait And Click Element    ${locatorB_productsCollection_text_firstCollectionNum}
     Wait Until Page Contains Text    专辑商品(1)
 
+products063
+	[Documentation]    验证可成功将商品从已加入的专辑中移除
+    [Tags]    P0
+    add_launched_product_py
+    del_all_collection_py
+    add_collection_with_pic_py
+    add_collection_without_pic_py
+    Reload Page
+    # 通过批量操作给商品添加入专辑1与专辑2
+    Select All Product Tag
+    Select Products And Click Batch Menu
+    Wait And Click Element    ${locatorB_productsMgmt_select_addtoCategory}
+    @{checkboxs}    Wait And Get List Items    ${locatorB_popUps_allCheckbox}    ${locatorB_popUps_allCheckbox}[0]
+    :FOR    ${checkbox}    IN    @{checkboxs}
+    \    Wait And Click Element    ${checkbox}
+    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait Until Page Contains Text    添加成功
+	# 批量删除专辑
+    Select Products And Click Batch Menu
+    Wait And Click Element    ${locatorB_productsMgmt_select_delfromCategory}
+	@{checkboxs}    Wait And Get List Items    ${locatorB_popUps_allCheckbox}    ${locatorB_popUps_allCheckbox}[0]
+    :FOR    ${checkbox}    IN    @{checkboxs}
+    \    Wait And Click Element    ${checkbox}
+    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait Until Page Contains Text    移除成功
+    # 进入Collection中检查是否存在
+    Go To Product Collection Page
+    Wait And Click Element    ${locatorB_productsCollection_text_collectionNum}[0]
+    Wait Until Page Contains Text    专辑商品(0)
+    Go To Product Collection Page
+    Wait And Click Element    ${locatorB_productsCollection_text_collectionNum}[1]
+    Wait Until Page Contains Text    专辑商品(0)
 
 
 

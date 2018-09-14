@@ -9,4 +9,6 @@ ${locatorB_productsCollection_button_delProducts}    dom:document.querySelectorA
 #${locatorB_productsCollection_popUps_firstCategory}    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]    #"要添加到的专辑"弹窗的第一条条目（不简洁，暂时不用）
 ${locatorB_productsCollection_checkbox_chooseCategories}    ${locatorB_checkbox00}    #点击checkbox按钮，选中当前页面所有专辑
 
-${locatorB_productsCollection_text_firstCollectionNum}    dom:document.querySelectorAll("td[class='collection_id___1EkxD']")[0]    # 商品专辑页面，列表first item's num
+${locatorB_productsCollection_text_collectionNum}    dom:document.querySelectorAll("td[class='collection_id___1EkxD']")    # 商品专辑页面，列表所有item's num
+${locatorB_productsCollection_text_firstCollectionNum}    ${locatorB_productsCollection_text_collectionNum}[0]    # 商品专辑页面，列表first item's num
+${locatorB_productsCollection_img_collectionThumbnails}    dom:document.querySelectorAll('td[class="collection_img___2CY1-"]')    # 商品专辑页面，列表所有items图片
