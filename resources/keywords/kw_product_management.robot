@@ -9,7 +9,7 @@ Resource          kw_browser.robot
 Resource          kw_common.robot
 
 *** keyword ***
-Products List Suite Setup
+Product Management Suite Setup Add Two Products
     [Documentation]    product
     Login With Default User
     del_all_product_py
@@ -19,28 +19,24 @@ Products List Suite Setup
     Go To Product Management Page
     Show All Header
 
-Products Single Suite Setup
+Product Management Common Suite Setup
     [Documentation]    product
     Login With Default User
     del_all_product_py
+    del_all_collection_py
     Go To Product Management Page
 
-Products Single Suite Teardown
+Product Management Common Suite Teardown
     [Documentation]    product
     del_all_product_py
+    del_all_collection_py
     Close Test Suite Browser
 
-Product Manual Add Case Setup
+Product Management Case Setup Clear Evn
     [Documentation]    product
     del_latest_product_py    ${3}
+    del_latest_collection_py    ${3}
     Go To Product Management Page
-
-Product Manual Add Case Teardown
-    [Documentation]    product
-	Teardown Test Case
-
-Product Testcase Setup
-    [Documentation]    product
 
 
 Select All Product Tag

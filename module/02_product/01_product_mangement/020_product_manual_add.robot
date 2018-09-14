@@ -1,12 +1,13 @@
 *** Settings ***
 Documentation     手动添加商品测试
-Suite Setup       Products Single Suite Setup
-Suite Teardown    Close Test Suite Browser
-Test Setup        Product Manual Add Case Setup
-Test Teardown     Product Manual Add Case Teardown
+Suite Setup       Product Management Common Suite Setup
+Suite Teardown    Product Management Common Suite Teardown
+Test Setup        Product Management Case Setup Clear Evn
+Test Teardown     Teardown Test Case
 Force Tags        Products
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/variable/var_product_management.robot
+Resource          ../../../resources/variable/var_product_collection.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
 Resource          ../../../resources/keywords/kw_product_management.robot
@@ -234,25 +235,22 @@ products052
     Wait Until Page Contains Locator    ${locatorB_productsNew_input_tags}
     Wait Until Page Not Contains Locator    ${locatorB_tagboxs}
 
-#products055
-#	[Documentation]    验证可成功加入一个或多个专辑
-#    [Tags]    P0
-#    add_launched_product_py
-#    del_all_collection_py
-#    add_collection_with_pic_py
-#    Reload Page
-#    Select All Product Tag
-#    Select Products And Click Batch Menu
-#    Wait And Click Element    ${locatorB_productsMgmt_select_addtoCategory}
-#    Wait And Click Element    ${locatorB_popUps_allCheckbox}
-#    Wait And Click Element    ${locatorB_popUps_button_middle}
-#    Wait Until Page Contains Text    添加成功
-#    # 进入Collection中检查是否存在
-#    Go To Product Collection Page
-#
-#    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
-#    Wait Until Page Contains Locator    ${locatorB_productsNew_input_tags}
-#    Wait Until Page Not Contains Locator    ${locatorB_tagboxs}
+products055
+	[Documentation]    验证可成功加入一个或多个专辑
+    [Tags]    P0
+    add_launched_product_py
+    del_all_collection_py
+    add_collection_with_pic_py
+    Reload Page
+    Select All Product Tag
+    Select Products And Click Batch Menu
+    Wait And Click Element    ${locatorB_productsMgmt_select_addtoCategory}
+    Wait And Click Element    ${locatorB_popUps_allCheckbox}
+    Wait And Click Element    ${locatorB_popUps_button_middle}
+    # 进入Collection中检查是否存在
+    Go To Product Collection Page
+    Wait And Click Element    ${locatorB_productsCollection_text_firstCollectionNum}
+    Wait Until Page Contains Text    专辑商品(1)
 
 
 

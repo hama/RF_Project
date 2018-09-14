@@ -3,11 +3,12 @@ Library           SeleniumLibrary    run_on_failure=NOTHING
 Library           ${CURDIR}/../../lib/customlib/kwpayment.py
 Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 Library           ${CURDIR}/../../lib/customlib/kwproduct.py
+Library           ${CURDIR}/../../lib/customlib/kwcollection.py
 Resource          ../variable/var_common.robot
 Resource          ../variable/var_login.robot
+Resource          ../variable/var_store.robot
 Resource          kw_browser.robot
 Resource          kw_product_management.robot
-Resource          ../variable/var_store.robot
 
 *** Keywords ***
 Login With Default User

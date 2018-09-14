@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     测试商品列表
-Suite Setup       Products List Suite Setup
-Suite Teardown    Close Test Suite Browser
+Suite Setup       Product Management Suite Setup Add Two Products
+Suite Teardown    Product Management Common Suite Teardown
 Test Setup        Go To Product Management Page
 Test Teardown     Teardown Test Case
 Force Tags        Products
