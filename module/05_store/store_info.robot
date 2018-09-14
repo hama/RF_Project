@@ -5,7 +5,7 @@ Test Teardown     Teardown Test Case
 Force Tags        Store
 Resource          ../../resources/keywords/kw_browser.robot
 Resource          ../../resources/keywords/kw_common.robot
-Resource          ../../resources/Variable/var_store.robot
+Resource          ../../resources/variable/var_store.robot
 Library           ${CURDIR}/../../lib/customlib/kwstore.py
 
 
@@ -166,7 +166,7 @@ store024
     Repetir Common Step
     #.点击店铺货币 展开下拉框
     Wait And Click Element    ${locatorB_storeLst_moneda_elm}
-    Sleep    2
+    Sleep    3.5
     ${one}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[0].innerText
     ${two}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[1].innerText
     ${three}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-item')[2].innerText
@@ -201,7 +201,7 @@ store027
     Wait And Click Element    ${locatorB_storeLst_moneda_elm}
     #.选择货币
     Wait And Click Element    ${locatorB_storeLst_moneda_elm}
-    Sleep    3
+    Sleep    4
     ${one}    Execute JavaScript    return document.querySelectorAll('.ant-select-dropdown-menu-vertical li')[0].innerText
     Should Be True    '${one}'=='USD'
 
@@ -287,7 +287,6 @@ store040
     [Tags]    P1
     Repetir Common Step
     Wait And Click Element    ${locatorB_storeLst_country_elm}
-
     Wait Until Page Contains    佛得角
     Wait Until Page Contains    开曼群岛
     Wait Until Page Contains    中非
