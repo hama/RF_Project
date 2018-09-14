@@ -10,11 +10,6 @@ Library           ${CURDIR}/../../lib/customlib/kwstore.py
 
 
 *** Test Cases ***
-dddddd
-    Repetir Common Step
-    Wait And Input Text    ${locatorB_storeLst_storeemail_ipt}    ${Empty}
-    Wait And Input Text    ${locatorB_storeLst_storeemail_ipt}    ooppww22@ss.cc
-    Wait And Click Element    ${locatorB_storeLst_save_btn}
 store001
     [Documentation]    店铺信息-店铺名称里UI展示正确 > 进入到设置/基础信息 > 店铺名称、前有红色必填型号必填标识，名称默认为注册时填写的名称，有x/50字数的显示
     [Tags]    P1
