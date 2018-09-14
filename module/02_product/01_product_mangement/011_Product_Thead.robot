@@ -118,7 +118,7 @@ Products Suite Setup
     [Documentation]    商品 case setup,添加商品
     Login With Default User
     Start Ajax Listener
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    删除商品,恢复到全部选中的状态
@@ -128,5 +128,5 @@ Products Suite Teardown
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 

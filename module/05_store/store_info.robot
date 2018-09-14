@@ -29,7 +29,7 @@ store002
     [Documentation]    店铺名称可保存小于50个字符 > "1.更改名称，输入字数小于50个字符,点击保存" > 保存成功
     [Tags]    P0
     StoreName Common Step    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    Wait Until Page Contains    ${locatorB_storeLst_storeText}
+    Wait Until Page Contains    ${contextB_store_storeInfo}
 
 store003
     [Documentation]    店铺名称不可保存大于50个字符 > "1.更改名称，输入字数大于50个字符,点击保存" > 提示‘不能超过50个字符’，保存失败
@@ -318,7 +318,7 @@ Common Suite
 Repetir Common Step
     [Documentation]    重复步骤
     Go To Store Page
-    Wait Until Page Contains    ${locatorB_storeLst_storeText}
+    Wait Until Page Contains    ${contextB_store_storeInfo}
 
 StoreName Common Step
     [Documentation]    店铺名称case封装

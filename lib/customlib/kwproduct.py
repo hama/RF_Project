@@ -43,7 +43,7 @@ def add_discontinued_product_py(cookie=init_cookie):
     :return:
     '''
     data = copy.deepcopy(product_max_data)
-    data['images'] = []
+    data['images'] = [image]
     data['status'] = 0
 
     add_product_py(data, cookie)
@@ -56,7 +56,7 @@ def add_launched_product_py(cookie=init_cookie):
     :return:
     '''
     data = copy.deepcopy(product_max_data)
-    data['images'] = images
+    data['images'] = [image]
     data['status'] = 1
 
     add_product_py(data, cookie)
@@ -91,19 +91,19 @@ def add_max_product_py(cookie=init_cookie):
     add_launched_product_py(cookie)
 
 
-def updates_status_py(product_list, status, cookie=init_cookie):
+def product_updatestatus_py(product_list, status, cookie=init_cookie):
     """
     更改商品状态
     :param product_list:
     :param status: -1 = 删除商品（非数据库） | 0 = 设置下架 | 1 = 设置上架
     :return:
     """
-    first_product_id = get_latest_productid_py()
-    if isinstance(product_list, str):
-        if product_list == 'all':
-            product_list = range(1, first_product_id + 1)
-        elif product_list == 'first':
-            product_list = [first_product_id]
+    latest_product_id = get_latest_productid_py()
+    if isinstance(product_list, str) and product_list == 'all':
+        product_list = range(1, latest_product_id + 1)
+    elif isinstance(product_list, int):
+        num = product_list
+        product_list = range(latest_product_id + 1 - num, latest_product_id + 1)
 
     url = home_page_url + "/api/product/updatestatus"
     data = {"product_ids": product_list, "status": status}
@@ -123,7 +123,17 @@ def del_first_product_py(cookie=init_cookie):
     删除首个商品
     :return: True | False
     """
-    updates_status_py('first', -1, cookie)
+    product_updatestatus_py(1, -1, cookie)
+
+
+def del_latest_product_py(num, cookie=init_cookie):
+    """
+    删除最新商品
+    :param num:
+    :param cookie:
+    :return:
+    """
+    product_updatestatus_py(num, -1, cookie)
 
 
 def del_all_product_py(cookie=init_cookie):
@@ -131,7 +141,7 @@ def del_all_product_py(cookie=init_cookie):
     删除全部商品
     :return: True | False
     """
-    updates_status_py('all', -1, cookie)
+    product_updatestatus_py('all', -1, cookie)
 
 
 def getAllProductCount_py(cookie=init_cookie):
@@ -156,3 +166,7 @@ if __name__ == '__main__':
     # del_all_product_py()
     # add_discontinued_product_py()
     add_launched_product_py()
+    # add_launched_product_py()
+    # add_launched_product_py()
+    # add_launched_product_py()
+    # del_latest_product_py(2)

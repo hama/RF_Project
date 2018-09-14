@@ -252,7 +252,36 @@ product_min_data = {
     'meta_keyword': '',
     'url': '/products/autotest_title',
     'barcode': '',
-    'title': 'aa',
+    'title': 'autotest_title',
     'price': 444,
     'images': []
+}
+
+
+collecion_data = {
+    'title': 'autotest_collection_name',
+    'description': 'autotest_collection_description',
+    'meta_title': 'autotest_collection_name',
+    'meta_description': 'autotest_collection_description',
+    'url': '/collections/autotest_collection_name',
+    'meta_keyword': 'autotest_collection_seo',
+    'image': {
+        'lastModified': 1530152476341,
+        'lastModifiedDate': '2018-06-28T02:21:16.341Z',
+        'name': '20180628102113.png',
+        'size': 272978,
+        'type': 'image/png',
+        'uid': 'rc-upload-1536908807832-2',
+        'response': {
+            'url': '//cdn.shoplazza.com/eee022100e586e73a103e94890dcc212.png',
+            'path': 'eee022100e586e73a103e94890dcc212.png'
+        },
+        'percent': 100,
+        'originFileObj': {
+            'uid': 'rc-upload-1536908807832-2'
+        },
+        'status': 'done',
+        'url': '//cdn.shoplazza.com/eee022100e586e73a103e94890dcc212.png',
+        'path': 'eee022100e586e73a103e94890dcc212.png'
+    }
 }

@@ -25,7 +25,7 @@ checkout106
     #返回后台页面删除该商品
     Select Window    店匠科技
     #点击删除第一件商品
-    Wait And Click Element    ${locatorB_productsMgmt_icon_delete}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_listDelete}[0]
     #点击确定按钮
     Wait And Click Element    ${locatorB_productsNew_button_save}
     #切换到商品submit页
@@ -40,14 +40,14 @@ Products Suite Setup
     Login With Default User
     Add Product Wait
     Change Checkout Setp Wait    2
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    商品 case set down
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 
 Products Test Case Teardown
     Teardown Test Case

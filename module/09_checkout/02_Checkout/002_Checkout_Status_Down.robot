@@ -111,7 +111,7 @@ checkout110
     ${title}    Get Text    title
     #勾选该商品库存为0时仍可购买
     Select_Quantity_0
-    Go To Products Page
+    Go To Product Management Page
     Select_Order_Page    ${title}
     #返回后台页面取消勾选该商品库存为0时仍可购买
     Select Window    店匠科技
@@ -133,7 +133,7 @@ checkout111
     ${title}    Get Text    title
     #勾选该商品库存为0时仍可购买
     Select_Quantity_0
-    Go To Products Page
+    Go To Product Management Page
     Select_Order_Page    ${title}
     #返回后台页面取消勾选该商品库存为0时仍可购买
     Select Window    店匠科技
@@ -155,7 +155,7 @@ checkout112
     ${title}    Get Text    title
     #设置该商品的库存为1
     Set_Quantity    1
-    Go To Products Page
+    Go To Product Management Page
     Select_Order_Page    ${title}
     #设置该商品的库存-0
     Select Window    店匠科技
@@ -176,7 +176,7 @@ checkout113
     ${title}    Get Text    title
     #设置该商品的库存为1
     Set_Quantity    1
-    Go To Products Page
+    Go To Product Management Page
     Select_Order_Page    ${title}
     #设置该商品的库存为2
     Select Window    店匠科技
@@ -282,7 +282,7 @@ checkout133
     Add Product Wait
     Add OtherTaxPrice Wait
     Add Payment Cod Wait
-    Go To Products Page
+    Go To Product Management Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -354,10 +354,10 @@ Common Click Header
     [Documentation]    头部公共点击步骤
     Add Product Wait
     Go To Home By Url
-    Go To Products Page
+    Go To Product Management Page
 
 Common Add GoTo Page
     [Documentation]    共用部分
     Add Product Wait
-    Go To Products Page
+    Go To Product Management Page
 

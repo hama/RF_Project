@@ -8,43 +8,72 @@ Resource          kw_browser.robot
 Resource          kw_common.robot
 
 *** keyword ***
-Products Suite Setup
+Products List Suite Setup
     [Documentation]    product
     Login With Default User
     del_all_product_py
     add_launched_product_py
     Sleep    60   # 为构造两个产品创建时间不同
     add_discontinued_product_py
-    Go To Products Page
+    Go To Product Management Page
     Show All Header
 
 Products Single Suite Setup
     [Documentation]    product
     Login With Default User
     del_all_product_py
-    Go To Products Page
+    Go To Product Management Page
 
-Products Single Case Teardown
+Products Single Suite Teardown
     [Documentation]    product
-    del_first_product_py
+    del_all_product_py
+    Close Test Suite Browser
+
+Product Manual Add Case Setup
+    [Documentation]    product
+    del_latest_product_py    ${3}
+    Go To Product Management Page
+
+Product Manual Add Case Teardown
+    [Documentation]    product
 	Teardown Test Case
 
 Product Testcase Setup
     [Documentation]    product
 
 
+Select All Product Tag
+    Wait And Click Element    ${locatorB_productsMgmt_button_all}
+    Sleep    2
 
+Select Launched Product Tag
+    Wait And Click Element    ${locatorB_productsMgmt_button_launched}
+	Sleep    2
+
+Select Discontinued Product Tag
+    Wait And Click Element    ${locatorB_productsMgmt_button_discontinued}
+    Sleep    2
 
 Show All Header
-	Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
-    @{list}    Wait And Get List Items    document.querySelectorAll('.ant-modal-body span[class="ant-checkbox"]')
+    Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
+    @{list}    Wait And Get List Items    ${locatorB_popUps_allUncheckedCheckbox}
     :FOR    ${i}    IN    @{list}
     \    Wait And Click Element    ${i}
-    Wait And Click Element    dom:document.querySelectorAll('button[class*="middle_btn"]')[0]
+    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Sleep    2
+
+Select Products And Click Batch Menu
+    [Documentation]    选中所有商品,并且点击批量操作菜单
+    Wait And Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseProducets}
+    Wait And Click Element    ${locatorB_productsMgmt_select_batchOperations}
+
+
+
+
 
 Add Product
     [Documentation]    添加下架商品以做测试
-    Go To Products Page
+    Go To Product Management Page
     Add Product Required Content
     # add other content
     Wait And Input Text    ${locatorB_productsNew_input_addSubTitle}    ${contentB_products_addSubTitle}    # 添加副标题
@@ -75,7 +104,7 @@ Add Product_Up
     Wait And Click Element    ${locatorB_products_button_confirm}
 
 Add Product Required Content
-    Go To Products Page
+    Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}    # 点击添加商品按钮
     Wait Until Page Contains    ${contentB_products_new}
     Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${contentB_products_addTitle}    # 添加标题
@@ -83,7 +112,7 @@ Add Product Required Content
 
 Delete Product
     [Documentation]    删除商品列表的第一个商品
-    Go To Products Page
+    Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}    # 商品列表第一条数据
     Wait And Click Element    ${locatorB_popUps_button_middle}
 
@@ -141,14 +170,7 @@ Wait For Upload
     \    Should Be Equal As Strings    ${state}    0
     \    Exit For Loop
 
-Click_First_Product_And_Click_Batch_Menu
-    [Documentation]    选中第一个商品,并且点击批量操作菜单
-    #选中第一个商品
-    Sleep    2
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
-    Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
-    #点击批量操作菜单
-    Wait And Click Element    ${locatorB_productsMgmt_select_batchOperations}
+
 
 Add_Collection
     [Documentation]    添加一个商品专辑
@@ -187,9 +209,9 @@ Delete_Collection
 
 Delete_First_Product
     [Documentation]    删除第一个商品
-    Go To Products Page
+    Go To Product Management Page
     Sleep    5
-    Wait And Click Element    ${locatorB_productsMgmt_icon_delete}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_listDelete}[0]
     Sleep    5
     #Wait And Click Element    id:test_delete_modal_sure_btn
     Wait And Click Element    ${locatorB_popUps_button_middle}
@@ -229,7 +251,7 @@ Delete All Collection
 Add Order Products
     [Documentation]    添加订单和checkout所需商品
     Go To    ${home_page}
-    Go To Products Page
+    Go To Product Management Page
     Add Product Required Content
     # add other content
     Wait And Input Text    ${locatorB_productsNew_input_addSubTitle}    ${contentB_products_addSubTitle}    # 添加副标题
@@ -252,7 +274,7 @@ Add Custom Products
     [Documentation]    添加一个任意价格的商品
     [Arguments]    ${price}
     Go To    ${home_page}
-    Go To Products Page
+    Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}    # 点击添加商品按钮
     Wait Until Page Contains    ${contentB_products_new}
     Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${contentB_products_addTitle}    # 添加标题

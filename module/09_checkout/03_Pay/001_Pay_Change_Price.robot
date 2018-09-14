@@ -22,7 +22,7 @@ ${last_name}      l    # 输入的last name
 *** Test Cases ***
 kkkkssss
     Add Product Wait
-    Go To Products Page
+    Go To Product Management Page
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
@@ -54,7 +54,7 @@ checkout138
     [Documentation]    在支付界面返回后台修改本次购买的商品价格，再返回支付界面点击pay now，将以原来的价格支付失败
     [Tags]    P0
     Add Product Wait
-    Go To Products Page
+    Go To Product Management Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
@@ -79,7 +79,7 @@ checkout139
     [Documentation]    在支付界面返回后台修改本次购买的商品状态为下架，再返回支付界面点击pay now，支付失败
     [Tags]    P0
     Add Product Wait
-    Go To Products Page
+    Go To Product Management Page
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
@@ -105,7 +105,7 @@ checkout141
     [Documentation]    在支付界面返回后台删除本次购买的子商品，再返回支付界面点击pay now，支付失败
     [Tags]    P0
     Add Product Wait
-    Go To Products Page
+    Go To Product Management Page
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
@@ -124,7 +124,7 @@ checkout142
     [Documentation]    在支付界面返回后台删除其他的子商品，再返回支付界面点击pay now，支付成功
     [Tags]    P0
     Add Product Wait
-    Go To Products Page
+    Go To Product Management Page
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
@@ -149,7 +149,7 @@ checkout143
     [Documentation]    在支付界面返回后台新增一个子商品，再返回支付界面点击pay now，支付成功
     [Tags]    P0
      Add Product Wait
-    Go To Products Page
+    Go To Product Management Page
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
@@ -170,13 +170,13 @@ checkout144
     [Documentation]    先设置商品为跟踪库存并且库存为0时可购买,点击商品预览后，点击进入checkout页面，在点击pay now前，在后台修改该商品取消勾选库存为0时不可购买
     [Tags]    P0
     Add Product Wait
-    Go To Products Page
+    Go To Product Management Page
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #勾选该商品库存为0时仍可购买
     Select_Quantity_0
-    Go To Products Page
+    Go To Product Management Page
     Select_Order_Page    ${title}
     #填写地址信息，保存并点击submit后，进入支付页面
     Complete_Order_Message_Not_Submit
@@ -191,14 +191,14 @@ checkout145
     [Documentation]    先设置商品为跟踪库存并且库存为0时可购买,点击商品预览后，点击进入checkout页面，在点击pay now前，在后台修改该商品取消勾选库存为0时可购买,取消跟踪库存
     [Tags]    P0
     Add Product Wait
-    Go To Products Page
+    Go To Product Management Page
     #获取第一个商品名称
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #勾选该商品库存为0时仍可购买
     Select_Quantity_0
-    Go To Products Page
+    Go To Product Management Page
     Select_Order_Page    ${title}
     #填写地址信息，保存并点击submit后，进入支付页面
     Complete_Order_Message_Not_Submit
@@ -214,13 +214,13 @@ checkout146
     [Documentation]    先设置商品为跟踪库存并且库存为10,点击商品预览后，点击进入checkout页面，在点击pay now前，在后台修改该商品库存为0，支付成功
     [Tags]    P0
     Add Product Wait
-    Go To Products Page
+    Go To Product Management Page
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #设置该商品的库存为10
     Set_Quantity    10
-    Go To Products Page
+    Go To Product Management Page
     Select_Order_Page    ${title}
     #填写地址信息，保存并点击submit后，进入支付页面
     Complete_Order_Message_Not_Submit
@@ -235,13 +235,13 @@ checkout147
     [Documentation]    先设置商品为跟踪库存并且库存为5,点击商品预览后，点击进入checkout页面，在点击pay now前，在后台修改该商品库存为10，支付成功
     [Tags]    P0
     Add Product Wait
-    Go To Products Page
+    Go To Product Management Page
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #设置该商品的库存为10
     Set_Quantity    5
-    Go To Products Page
+    Go To Product Management Page
     Select_Order_Page    ${title}
     #填写地址信息，保存并点击submit后，进入支付页面
     Complete_Order_Message_Not_Submit
@@ -257,12 +257,12 @@ checkout150
     [Documentation]    点击商品预览后，点击进入checkout页面，在点击pay now前，在后台更换该商品图片，支付界面应该显示最新图片
     [Tags]    P0
     Add Product Wait
-    Go To Products Page
+    Go To Product Management Page
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
     #.点击预览
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]
     Sleep    2
     #-----------------------------------------选中一个没有子商品的商品，进入到支付页面------------------------------------------
     #更换该商品图片
@@ -291,7 +291,7 @@ checkout151
     [Documentation]    此时第一个商品下有两个子产品，在点击pay now按钮之前，删除当前第一个商品下的所有子商品（一共有两个子产品），支付失败
     [Tags]    P0
     Add Product Wait
-    Go To Products Page
+    Go To Product Management Page
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
@@ -310,7 +310,7 @@ checkout167
     [Documentation]    修改其他国家税费金额
     [Tags]    P0
     Add Product Wait
-    Go To Products Page
+    Go To Product Management Page
     Assign id To Element    ${locatorB_productsMgmt_text_firstProductName}    title
     Wait Until Element Is Visible    title
     ${title}    Get Text    title
@@ -340,7 +340,7 @@ checkout168
     #先设置成只需填写邮箱
     Modify_Set    0
     Sleep    5
-    Go To Products Page
+    Go To Product Management Page
     Sleep    5
     Select_Order_Page    ${title}
     #填写完地址信息(只填写邮箱)，不点击提交按钮
@@ -372,7 +372,7 @@ checkout169
     #先设置成（姓名）
     Modify_Set_Radio    0
     Sleep    5
-    Go To Products Page
+    Go To Product Management Page
     Sleep    5
     Select_Order_Page    ${title}
     #填写完地址信息(只填写first name)，不点击提交按钮
@@ -399,7 +399,7 @@ Products Suite Setup
     Login With Default User
     Add Product Wait
     Add Payment Cod Wait
-    Go To Products Page
+    Go To Product Management Page
 
 Products Test Case Teardown
     Teardown Test Case

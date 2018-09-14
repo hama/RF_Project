@@ -24,7 +24,7 @@ products023
     Wait And Click Element    ${locatorB_products_button_confirm}
     Wait Until Page Contains    ${contentB_products_tips_save_ok}
     Sleep    1
-    Go To Products Page
+    Go To Product Management Page
     Sleep    5
     ${new_title_str}=    Convert To String    ${new_title}
     Page Should Contain    ${new_title_str}
@@ -41,7 +41,7 @@ products025
     Wait And Click Element    ${locatorB_products_button_confirm}
     Wait Until Page Contains    ${contentB_products_tips_save_ok}
     Sleep    1
-    Go To Products Page
+    Go To Product Management Page
     Sleep    5
     Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
@@ -61,7 +61,7 @@ products026
     Wait And Click Element    ${locatorB_products_button_confirm}
     Wait Until Page Contains    ${contentB_products_tips_save_ok}
     Sleep    1
-    Go To Products Page
+    Go To Product Management Page
     Sleep    5
     ${new_sku_str}=    Convert To String    ${new_sku}
     Page Should Contain    ${new_sku_str}
@@ -80,7 +80,7 @@ products029
     Wait And Click Element    ${locatorB_productsNew_button_back}
     Sleep    5
     Alert Should Be Present
-    Go To Products Page
+    Go To Product Management Page
     Sleep    5
     Page Should Contain    ${old_sku}
 
@@ -114,12 +114,12 @@ Products Suite Setup
     Sleep    5
     Add Product
     Sleep    5
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    删除商品
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 

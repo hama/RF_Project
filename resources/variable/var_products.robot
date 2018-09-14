@@ -21,33 +21,40 @@ ${locatorB_productsMgmt_button_addProduct}    ${locatorB_button_add}    #商品�
 ${locatorB_productsMgmt_checkbox_chooseProducets}    ${locatorB_checkbox00}    #点击checkbox按钮，选中当前页面所有商品
 ${locatorB_productsMgmt_checkbox_chooseFirstProduct}    ${locatorB_checkbox01}    #点击checkbox按钮，选中当前页面第一个商品
 ${locatorB_productsMgmt_select_batchOperations}    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]    #批量操作下拉框
-${locatorB_productsMgmt_select_onShelf}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[0]    #下拉框-上架
-${locatorB_productsMgmt_select_offShelf}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[1]    #下拉框-下架
+${locatorB_productsMgmt_select_launch}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[0]    #下拉框-上架
+${locatorB_productsMgmt_select_discontinue}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[1]    #下拉框-下架
 ${locatorB_productsMgmt_select_batchDel}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[2]    #下拉框-删除商品
 ${locatorB_productsMgmt_select_addTags}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[3]    #下拉框-添加标签
 ${locatorB_productsMgmt_select_delTags}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[4]    #下拉框-移除标签
 ${locatorB_productsMgmt_select_addtoCategory}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    #下拉框-添加到专辑
 ${locatorB_productsMgmt_select_delfromCategory}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[6]    #下拉框-从专辑移除
 ${locatorB_productsMgmt_button_all}    dom:document.querySelectorAll(".ant-radio-button-wrapper")[0]    # 商品管理页面，全部商品
-${locatorB_productsMgmt_button_shelf}    dom:document.querySelectorAll(".ant-radio-button-wrapper")[1]    # 商品管理页面，已上架商品
-${locatorB_productsMgmt_button_drop}    dom:document.querySelectorAll(".ant-radio-button-wrapper")[2]    # 商品管理页面，已下架商品
+${locatorB_productsMgmt_button_launched}    dom:document.querySelectorAll(".ant-radio-button-wrapper")[1]    # 商品管理页面，已上架商品
+${locatorB_productsMgmt_button_discontinued}    dom:document.querySelectorAll(".ant-radio-button-wrapper")[2]    # 商品管理页面，已下架商品
 ${locatorB_productsMgmt_icon_grabProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[0]    #商品列表页的商品抓取按钮
 ${locatorB_productsMgmt_icon_migrateProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[1]    #商品列表页的店铺搬迁按钮
 ${locatorB_productsMgmt_icon_uploadProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[2]    #商品列表页的上传商品按钮
 ${locatorB_productsMgmt_button_editTableHead}    dom:document.querySelectorAll(".edit_head___2-5Ey")[0]     #编辑表头
 ${locatorB_productsMgmt_tabindex_firstSwitch}    dom:document.querySelectorAll(".ant-switch")[0]    # 列表第一个商品的上架按钮
 ${locatorB_productsMgmt_input_name}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[2]    #"商品名称/商品SKU/标签"输入框
-${locatorB_productsMgmt_image_thumbnails}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[1].querySelectorAll("img")[0]     #商品列表第一个商品的图片
+${locatorB_productsMgmt_image_firstProductThumbnails}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[1].querySelectorAll("img")[0]     #商品列表第一个商品的图片
 ${locatorB_productsMgmt_text_firstProductName}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[2].querySelectorAll("span")[0]    #商品列表第一个商品的商品名称
-${locatorB_productsMgmt_text_inventoryQuantity}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[3]    #商品列表第一个商品的库存(只能在Show All Header关键字执行之后使用)
-${locatorB_productsMgmt_text_createTime}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[9]    #商品列表第一个商品的库存(只能在Show All Header关键字执行之后使用)
-${locatorB_productsMgmt_icon_preview}    dom:document.querySelectorAll("tbody tr:nth-child(1) td i")[0]    #商品列表的预览icon
-${locatorB_productsMgmt_icon_delete}    dom:document.querySelectorAll("tbody tr td div i")[1]    #商品列表的删除icon
-${locatorB_productsMgmt_button_delTags}    dom:document.querySelectorAll(".ant-btn-primary")[0]    #删除标签弹框的删除button
+${locatorB_productsMgmt_text_firstProductInventoryQuantity}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[3]    #商品列表第一个商品的库存(只能在Show All Header关键字执行之后使用)
+${locatorB_productsMgmt_text_firstProductSku}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[4]    #商品列表第一个商品的SKU(只能在Show All Header关键字执行之后使用)
+${locatorB_productsMgmt_icon_listPreview}    dom:document.querySelectorAll("i[class*='preview']")    #所有条目的预览icon,第0个为第一条商品的
+${locatorB_productsMgmt_icon_listDelete}    dom:document.querySelectorAll("i[class*='delete']")    #所有条目的删除icon,第0个为第一条商品的
+${locatorB_productsMgmt_text_listCreateTime}    dom:document.querySelectorAll('td[class="vendor___2VuW9"]')    #所有条目的创建时间，第0个为第一条商品的
+${locatorB_productsMgmt_switch_listLaunched}    dom:document.querySelectorAll('span[class="ant-switch ant-switch-checked"]')    #所有上架条目的switch按钮
+${locatorB_productsMgmt_switch_listDiscontinued}    dom:document.querySelectorAll('span[class="ant-switch"]')    #所有下架条目的switch按钮
+
+
+${locatorB_productsMgmt_popUps_firstInput}    ${locatorB_popUps_inputs}[0]    # 弹窗第一个输入框
+
 
 # locator_productsType
 ${locatorB_productType_button_saveBtn}    id:test_save_btn    # 商品分类-保存按钮
 # locator_productsNew
+#${locatorB_productsMgmt_switch_listDiscontinued}    dom:document.querySelectorAll('div[class="ant-select-selection__rendered"]')[0]    #所有下架条目的switch按钮
 ${locatorB_productsNew_button_back}    class:back    # 进入编辑页面的后退按钮
 ${locatorB_productsNew_button_uploadBtn}    id:test_upload_btn    # 上传商品图片按钮
 ${locatorB_productsNew_tabindex_status}    id:status    # 商品状态按钮
@@ -72,6 +79,14 @@ ${locatorB_productsCategory_button_delProducts}    dom:document.querySelectorAll
 ${locatorB_productsCategory_popUps_firstCategory}    dom:document.querySelectorAll(".ant-modal-content .ant-table-row")[0]    #"要添加到的专辑"弹窗的第一条条目
 ${locatorB_productsCategory_checkbox_chooseCategories}    ${locatorB_checkbox00}    #点击checkbox按钮，选中当前页面所有专辑
 # locator_productsComment
+
+
+# locator_productsMobile
+${locatorC_products_logo}    dom:document.querySelectorAll('div[alt="Logo"]')[0]    #C端，产品logo
+
+
+
+
 # content
 ${contentB_products_all}    全部
 ${contentB_products_empty}    暂无数据

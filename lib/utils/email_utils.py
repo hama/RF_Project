@@ -26,8 +26,8 @@ to_addr = [
 cc_addr = [
     'zhangliqiong@shoplazza.com',
     'yupeng@shoplazza.com',
-    'linyingjun@shoplazza.com',
-    'fangbaiyuan@shoplazza.com'
+    'fangbaiyuan@shoplazza.com',
+    'linyingjun@shoplazza.com'
 ]
 email_service = "smtp.mxhichina.com"
 default_port = 465

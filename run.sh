@@ -58,28 +58,40 @@ done
 # 执行customKeyWord.py
 if [ "$test_url" -a "$test_account" ]
 then
+	echo 'test_url and test_account'
     python2.7 lib/customlib/initevn.py --url="$test_url" --user="$test_account"
 elif [ "$test_url" ]
 then
+	echo 'test_url'
+	echo "$test_url"
     python2.7 lib/customlib/initevn.py --url="$test_url"
 elif [ "$test_account" ]
 then
+	echo 'test_account'
     python2.7 lib/customlib/initevn.py --user="$test_account"
 else
+	echo 'not test_url and test_account'
     python2.7 lib/customlib/initevn.py
 fi
 
 # 执行用例
 if [ "$test_module" ]
 then
+	echo "$test_module"
     robot -v is_headless:True -d logs/ $test_module
 else
-    robot -v is_headless:True -d logs/ module/03_login/*
+	echo 'test_module_default'
+    robot -v is_headless:True -d logs/ \
+        module/03_login/* \
+        module/02_product/01_product_mangement/003_Product_List.robot \
+        module/02_product/01_product_mangement/020_product_manual_add.robot \
+		module/05_store/store_info.robot
 fi
 
 # 执行email_utils.py
 if [ "$send_email" ]
 then
+	echo 'send_email_default'
     python2.7 lib/utils/email_utils.py
 fi
 
