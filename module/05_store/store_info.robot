@@ -10,6 +10,11 @@ Library           ${CURDIR}/../../lib/customlib/kwstore.py
 
 
 *** Test Cases ***
+dddddd
+    Repetir Common Step
+    Wait And Input Text    ${locatorB_storeLst_storeemail_ipt}    ${Empty}
+    Wait And Input Text    ${locatorB_storeLst_storeemail_ipt}    ooppww22@ss.cc
+    Wait And Click Element    ${locatorB_storeLst_save_btn}
 store001
     [Documentation]    店铺信息-店铺名称里UI展示正确 > 进入到设置/基础信息 > 店铺名称、前有红色必填型号必填标识，名称默认为注册时填写的名称，有x/50字数的显示
     [Tags]    P1
@@ -211,7 +216,7 @@ store028
     [Documentation]    货币下拉框可滚动查看更多
     [Tags]    P1
     Repetir Common Step
-    Sleep   2
+    Sleep   3
     #.点击店铺货币 展开下拉框
     Wait And Click Element    ${locatorB_storeLst_moneda_elm}
     Sleep    3
@@ -290,6 +295,7 @@ store040
     [Documentation]    点击【国家】选框，展开下拉框 > 展开下拉框，默认展示6个国家
     [Tags]    P1
     Repetir Common Step
+    Sleep    2
     Wait And Click Element    ${locatorB_storeLst_country_elm}
     Wait Until Page Contains    佛得角
     Wait Until Page Contains    开曼群岛
