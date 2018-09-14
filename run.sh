@@ -63,6 +63,7 @@ then
 elif [ "$test_url" ]
 then
 	echo 'test_url'
+	echo "$test_url"
     python2.7 lib/customlib/initevn.py --url="$test_url"
 elif [ "$test_account" ]
 then
