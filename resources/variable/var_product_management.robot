@@ -36,7 +36,11 @@ ${locatorB_productsMgmt_icon_migrateProduct}    dom:document.querySelectorAll(".
 ${locatorB_productsMgmt_icon_uploadProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[2]    #商品列表页的上传商品按钮
 ${locatorB_productsMgmt_button_editTableHead}    dom:document.querySelectorAll(".edit_head___2-5Ey")[0]     #编辑表头
 ${locatorB_productsMgmt_tabindex_firstSwitch}    dom:document.querySelectorAll(".ant-switch")[0]    # 列表第一个商品的上架按钮
+${locatorB_productsMgmt_input_minPrice}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[0]    #"最低售价"输入框
+${locatorB_productsMgmt_input_maxPrice}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[1]    #"最高售价"输入框
 ${locatorB_productsMgmt_input_name}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[2]    #"商品名称/商品SKU/标签"输入框
+${locatorB_productsMgmt_button_search}    dom:document.querySelectorAll('button[class*="confirm_btn"]')[0]    # 搜索按钮
+
 ${locatorB_productsMgmt_image_firstProductThumbnails}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[1].querySelectorAll("img")[0]     #商品列表第一个商品的图片
 ${locatorB_productsMgmt_text_firstProductName}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[2].querySelectorAll("span")[0]    #商品列表第一个商品的商品名称
 ${locatorB_productsMgmt_text_firstProductInventoryQuantity}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[3]    #商品列表第一个商品的库存(只能在Show All Header关键字执行之后使用)
@@ -49,7 +53,7 @@ ${locatorB_productsMgmt_switch_listDiscontinued}    dom:document.querySelectorAl
 
 
 ${locatorB_productsMgmt_popUps_firstInput}    ${locatorB_popUps_inputs}[0]    # 弹窗第一个输入框
-
+${locatorB_productsMgmt_textlist_itemsTitle}    dom:document.querySelectorAll('thead[class="ant-table-thead"] th')    # 商品列表的所有title
 
 # locator_productsType
 ${locatorB_productType_button_saveBtn}    id:test_save_btn    # 商品分类-保存按钮

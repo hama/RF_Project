@@ -159,6 +159,8 @@ Wait And Click Element
     [Arguments]    ${element_locator}    ${timeout}=25    ${retry_time}=5
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Visible    ${element_locator}     10
+    Log    ${timeout}
+    Log    ${retry_time}
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
 
 Wait Enabled And Click Element
@@ -182,6 +184,12 @@ Wait And Get List Items
     @{return}    Execute Javascript    return ${exec_locator}
     [Return]    @{return}
 
+#Wait And Select From List
+#	[Arguments]    ${element_selectbox}    ${element_selectitem}
+#    [Documentation]    由于项目中实现的下拉功能并不是select标签无法使用robot的关键字select from list。（暂不实现，为找见下拉框操作方法）
+#    Wait And Click Element    ${element_selectbox}
+#    Wait And Click Element    ${element_selectitem}
+
 Click Element And Confirm
 	[Arguments]    ${element_locator}
     [Documentation]
@@ -195,11 +203,21 @@ Click Element And Cancel
     Wait And Click Element    ${locatorB_popUps_button_default}
 
 Get List Length
-	[Arguments]    ${element_locator}
-    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
-    ${exec_locator} =	Evaluate	'''${element_locator}'''[4:]
+	[Arguments]    ${exec_locator}
+    [Documentation]    private，不建议直接调用。可使用Length Should Be Equal With Wait
 	${return} =	Execute Javascript    return ${exec_locator}.length
     [Return]    ${return}
+
+Length Should Be Equal With Wait
+    [Arguments]    ${element_locator}    ${expected}    ${timeout}=10
+    ${exec_locator} =	Evaluate	'''${element_locator}'''[4:]
+    ${times}    Evaluate    ${timeout}-1
+    :FOR    ${i}    IN RANGE    ${timeout}
+    \    ${len}    Get List Length    ${exec_locator}
+    \    ${status}    Run Keyword And Return Status    Should Be Equal    ${len}    ${expected}
+    \    Run Keyword If    ${status}    Exit For Loop
+    \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
+    \    ...    ELSE    Sleep    1
 
 Open New And Close Other Windows
 	[Arguments]    ${url}
@@ -217,47 +235,6 @@ Focus On New Window
     @{new_window_handle}    Get Window Handles
     Select Window    ${new_window_handle[-1]}
     [Return]    ${new_window_handle[-1]}
-
-Length Should Be Equal
-	[Arguments]    ${element_locator}    ${expected}
-	Sleep    2
-	${len}    Get List Length    ${element_locator}
-    Should Be Equal    ${len}    ${expected}
-
-
-Common Js Click
-    [Arguments]    ${element}    ${index}
-    [Documentation]    封装js点击方法
-    Execute JavaScript    return document.querySelectorAll("${element}")[${index}].click()
-
-JS Get Element Length
-    [Arguments]    ${element_locator}
-    [Documentation]    封装的JS方法，返回元素集长度
-    Execute Javascript    return ${element_locator}.length
-
-Set Tax Price
-    [Documentation]    封装设置税金方法,[element]:需要设置国家的中文名字(string),[numbers]:设置多少税金(int)
-    [Arguments]    ${element}    ${numbers}
-    Go To    ${home_page}    #.跳转主页
-    Go To Tax Page    #.进入税金主页
-    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
-    ${length}    Execute JavaScript    return document.querySelectorAll(".ant-table-tbody tr").length
-    :FOR    ${i}    IN RANGE    ${length}
-    \    ${index}    evaluate    ${i}+1
-    \    ${name}    Execute JavaScript    return document.querySelectorAll(".ant-table-tbody tr:nth-child(${index}) td div div p")[0].innerText
-    \    Run Keyword If    '${name}'=='${element}'    Execute JavaScript    return document.querySelectorAll(".ant-table-tbody tr:nth-child(${index}) td i")[0].click()
-    \    Run Keyword If    '${name}'=='${element}'    Input Text    dom:document.querySelectorAll('input')[0]    ${numbers}
-    \    Run Keyword If    '${name}'=='${element}'    Wait And Click Element    dom:document.querySelectorAll('button')[2]
-    Go To    ${home_page}
-
-Checkout Page Decoration Condition
-    [Documentation]    判断店铺是否装修
-    Go To    ${home_page}
-    Wait And Click Element    ${locatorB_store}
-    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
-    ${name}    Execute JavaScript    return document.querySelectorAll("button span")[1].innerText
-    Run Keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Run Keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[5]
 
 Click And Page Contains Element With Refresh
     [Documentation]    点击&检查页面包含元素，含刷新机制
@@ -332,6 +309,57 @@ Alert Should Not Be Present
     [Arguments]    ${msg}
     ${result}    Run Keyword And Ignore Error    Alert Should Be Present    ${msg}
     Should Be True    '${result}'!='PASS'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Common Js Click
+    [Arguments]    ${element}    ${index}
+    [Documentation]    封装js点击方法
+    Execute JavaScript    return document.querySelectorAll("${element}")[${index}].click()
+
+
+Set Tax Price
+    [Documentation]    封装设置税金方法,[element]:需要设置国家的中文名字(string),[numbers]:设置多少税金(int)
+    [Arguments]    ${element}    ${numbers}
+    Go To    ${home_page}    #.跳转主页
+    Go To Tax Page    #.进入税金主页
+    Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
+    ${length}    Execute JavaScript    return document.querySelectorAll(".ant-table-tbody tr").length
+    :FOR    ${i}    IN RANGE    ${length}
+    \    ${index}    evaluate    ${i}+1
+    \    ${name}    Execute JavaScript    return document.querySelectorAll(".ant-table-tbody tr:nth-child(${index}) td div div p")[0].innerText
+    \    Run Keyword If    '${name}'=='${element}'    Execute JavaScript    return document.querySelectorAll(".ant-table-tbody tr:nth-child(${index}) td i")[0].click()
+    \    Run Keyword If    '${name}'=='${element}'    Input Text    dom:document.querySelectorAll('input')[0]    ${numbers}
+    \    Run Keyword If    '${name}'=='${element}'    Wait And Click Element    dom:document.querySelectorAll('button')[2]
+    Go To    ${home_page}
+
+Checkout Page Decoration Condition
+    [Documentation]    判断店铺是否装修
+    Go To    ${home_page}
+    Wait And Click Element    ${locatorB_store}
+    Wait Until Element Is Visible    dom:document.querySelectorAll("button")[1]
+    ${name}    Execute JavaScript    return document.querySelectorAll("button span")[1].innerText
+    Run Keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[1]
+    Run Keyword If    '${name}'<>'优化pc展示'    Run keyword    Wait And Click Element    dom:document.querySelectorAll("button")[5]
 
 Confirm Cancel Alert
     [Documentation]    取消页面填写内容未保存跳走出现的弹窗

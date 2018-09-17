@@ -120,7 +120,7 @@ products021.2
     ${total_record}    Wait And Get Text    ${locatorB_page_text_totalRecord}
     ${size}    lib_utils.searchStrs_py    ${total_record}
     Should Be Equal As Integers    ${size}    2
-    Length Should Be Equal    ${locatorB_productsMgmt_switch_listLaunched}    ${2}
+    Length Should Be Equal With Wait    ${locatorB_productsMgmt_switch_listLaunched}    ${2}
 
 products022
     [Documentation]    验证点击‘上架’无结果
@@ -154,7 +154,7 @@ products023.2
     ${total_record}    Wait And Get Text    ${locatorB_page_text_totalRecord}
     ${size}    lib_utils.searchStrs_py    ${total_record}
     Should Be Equal As Integers    ${size}    2
-    Length Should Be Equal    ${locatorB_productsMgmt_switch_listDiscontinued}    ${2}
+    Length Should Be Equal With Wait    ${locatorB_productsMgmt_switch_listDiscontinued}    ${2}
 
 products037
     [Documentation]    验证能上架一个或多个商品成功
@@ -166,7 +166,7 @@ products037
 	Select Products And Click Batch Menu
 	Click Element And Confirm    ${locatorB_productsMgmt_select_launch}
 	Wait Until Page Contains Text    上架成功
-    Length Should Be Equal    ${locatorB_productsMgmt_switch_listLaunched}    ${2}
+    Length Should Be Equal With Wait    ${locatorB_productsMgmt_switch_listLaunched}    ${2}
 
 products039
     [Documentation]    验证能下架一个或多个商品成功
@@ -178,7 +178,7 @@ products039
 	Select Products And Click Batch Menu
 	Click Element And Confirm    ${locatorB_productsMgmt_select_discontinue}
 	Wait Until Page Contains Text    下架成功
-    Length Should Be Equal    ${locatorB_productsMgmt_switch_listDiscontinued}    ${2}
+    Length Should Be Equal With Wait    ${locatorB_productsMgmt_switch_listDiscontinued}    ${2}
 
 products041
     [Documentation]    验证能够成功批量删除商品
@@ -191,7 +191,7 @@ products041
 	Click Element And Confirm    ${locatorB_productsMgmt_select_batchDel}
 	Wait Until Page Contains Text    删除成功
 	Wait Until Page Contains Text    暂无数据
-    Length Should Be Equal    ${locatorB_productsMgmt_icon_listPreview}    ${0}
+    Length Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${0}
 
 
 products047
@@ -257,7 +257,6 @@ products063
 	[Documentation]    验证可成功将商品从已加入的专辑中移除
     [Tags]    P0
     add_launched_product_py
-    del_all_collection_py
     add_collection_with_pic_py
     add_collection_without_pic_py
     Reload Page
@@ -286,6 +285,69 @@ products063
     Wait And Click Element    ${locatorB_productsCollection_text_collectionNum}[1]
     Wait Until Page Contains Text    专辑商品(0)
 
+products070
+	[Documentation]    验证可全部取消自定义列表内容
+    [Tags]    P0
+    add_launched_product_py
+    Reload Page
+    Select All Product Tag
+    Hide All Header
+	Length Should Be Equal With Wait    ${locatorB_productsMgmt_textlist_itemsTitle}    ${5}
+    Show All Header
+	Length Should Be Equal With Wait    ${locatorB_productsMgmt_textlist_itemsTitle}    ${11}
 
+products076
+	[Documentation]    输入最低价格，搜索大于等于该价格商品
+    [Tags]    P0
+    &{product_conf01} =    Create Dictionary
+    ...    saleprice=1
+    add_product_with_conf_py    ${product_conf01}
+    &{product_conf02} =    Create Dictionary
+    ...    saleprice=199
+    add_product_with_conf_py    ${product_conf02}
+    Reload Page
+    Select All Product Tag
+    Wait And Input Text    ${locatorB_productsMgmt_input_minPrice}    99
+    Wait And Click Element    ${locatorB_productsMgmt_button_search}
+    Length Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
 
+products077
+	[Documentation]    输入最低价格，搜索大于等于该价格商品
+    [Tags]    P0
+    &{product_conf01} =    Create Dictionary
+    ...    saleprice=1
+    add_product_with_conf_py    ${product_conf01}
+    &{product_conf02} =    Create Dictionary
+    ...    saleprice=199
+    add_product_with_conf_py    ${product_conf02}
+    Reload Page
+    Select All Product Tag
+    Wait And Input Text    ${locatorB_productsMgmt_input_maxPrice}    99
+    Wait And Click Element    ${locatorB_productsMgmt_button_search}
+    Length Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
 
+products078
+	[Documentation]    输入最低价格10，最高价格90，搜索价格在10~90之间的商品
+    [Tags]    P0
+    &{product_conf01} =    Create Dictionary
+    ...    saleprice=1
+    add_product_with_conf_py    ${product_conf01}
+    &{product_conf02} =    Create Dictionary
+    ...    saleprice=199
+    add_product_with_conf_py    ${product_conf02}
+    Reload Page
+    Select All Product Tag
+    Wait And Input Text    ${locatorB_productsMgmt_input_minPrice}    10
+    Wait And Input Text    ${locatorB_productsMgmt_input_maxPrice}    99
+    Wait And Click Element    ${locatorB_productsMgmt_button_search}
+    Length Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${0}
+
+products079
+	[Documentation]    可模糊搜索出商品名称包含该单词的商品
+    [Tags]    P0
+    add_launched_product_py
+    Reload Page
+    Select All Product Tag
+    Wait And Input Text    ${locatorB_productsMgmt_input_name}    auto
+    Wait And Click Element    ${locatorB_productsMgmt_button_search}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_icon_listPreview}[0]

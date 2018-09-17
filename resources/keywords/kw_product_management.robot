@@ -55,7 +55,17 @@ Show All Header
     Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
     @{list}    Wait And Get List Items    ${locatorB_popUps_allUncheckedCheckbox}
     :FOR    ${i}    IN    @{list}
-    \    Wait And Click Element    ${i}
+    \    Wait And Click Element    ${i}    5    0
+#    \    Sleep    2
+    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Sleep    2
+
+Hide All Header
+    Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
+    @{list}    Wait And Get List Items    ${locatorB_popUps_allCheckedCheckbox}
+    :FOR    ${i}    IN    @{list}
+    \    Wait And Click Element    ${i}    5    0
+#    \    Sleep    2
     Wait And Click Element    ${locatorB_popUps_button_middle}
     Sleep    2
 

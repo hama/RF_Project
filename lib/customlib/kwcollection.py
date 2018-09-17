@@ -119,6 +119,6 @@ def get_latest_collectionid_py():
 
 
 if __name__ == '__main__':
-    add_collection_without_pic_py()
+    # add_collection_without_pic_py()
     add_collection_with_pic_py()
     # del_first_collection_py()
