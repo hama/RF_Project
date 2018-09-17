@@ -511,27 +511,3 @@ Close_Card
     #记录当前“银行卡支付”是否开启
     ${class}    Execute Javascript    return document.querySelectorAll(".payment_wrap___3m1lo")[1].querySelectorAll(" .ant-switch")[0].getAttribute("class")
     Run Keyword If    '${class}'=='ant-switch ant-switch-checked'    Change_Card    #关闭
-
-Add Product Wait
-    [Documentation]    等待添加商品
-    [Arguments]    ${count}=10
-    :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    add_product
-    \    Run Keyword If    '${res_status}'=='True'    Exit For Loop
-    \    ...    ELSE    Sleep    1
-
-Add OtherTaxPrice Wait
-    [Documentation]    等待添加其他税费
-    [Arguments]    ${count}=10
-    :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    add_other_tax_price_py
-    \    Run Keyword If    '${res_status}'=='True'    Exit For Loop
-    \    ...    ELSE    Sleep    1
-
-Add StoreInfo Wait
-    [Documentation]    等待添加店铺基础信息
-    [Arguments]    ${par}    ${pars}    ${count}=10
-    :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    add_store_info_py    ${par}    ${pars}
-    \    Run Keyword If    '${res_status}'=='True'    Exit For Loop
-    \    ...    ELSE    Sleep    1

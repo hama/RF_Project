@@ -1,5 +1,5 @@
 *** Settings ***
-Suite Setup       Login With Default User
+Suite Setup       Common Suite
 Suite Teardown    Close Test Suite Browser
 Test Teardown     Teardown Test Case
 Force Tags        Subtraction
@@ -11,6 +11,7 @@ Resource          ../../resources/keywords/kw_order.robot
 Resource          ../../resources/keywords/kw_product_management.robot
 Resource          ../../resources/keywords/kw_subtraction.robot
 Library           ${CURDIR}/../../lib/customlib/kwmarketing.py
+Library           ${CURDIR}/../../lib/customlib/kwproduct.py
 
 *** Test Cases ***
 subtraction040
@@ -415,6 +416,7 @@ subtraction111
     [Documentation]    输入框输入任意关键字，点击搜索/按enter  > 搜索成功
     [Tags]    P0
     Subtraction Check Product Filter
+    Sleep    3
     #.满减-添加活动-选择商品-第一个商品
     ${first_pro}    set variable    dom:document.querySelectorAll(".list_li_content___1ZXgo div span")[0]
     Wait Until Element Is Visible    ${first_pro}
@@ -489,6 +491,7 @@ subtraction128
     Add Subtraction Wait Step    1
     Go To Subtraction Page
     Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(1) td div i")[1]
+    Sleep    3
     Wait And Click Element    dom:document.querySelectorAll("button")[4]
     Wait Until Element Is Visible    ${locatorB_subtraction_first_tr_eml}
     Sleep    2
@@ -502,6 +505,7 @@ subtraction129
     Add Subtraction Wait Step    2
     Go To Subtraction Page
     Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(1) td div i")[1]
+    Sleep    2
     Wait And Click Element    dom:document.querySelectorAll("button")[5]
     Wait Until Element Is Visible    ${locatorB_subtraction_first_tr_eml}
     Sleep    2
@@ -565,7 +569,7 @@ subtraction133
     Wait Until Element Is Visible    ${locatorB_subtraction_first_tr_eml}
     Sleep    2
     ${res_data}    Execute JavaScript    return document.querySelectorAll("tbody tr:nth-child(1) td")[0]===undefined
-    Should Be True    '${res_data}'=='True'
+    Should Be True    '${res_data}'=='False'
 
 subtraction134
     [Documentation]    点击类型满额减元 > 搜索成功
@@ -757,7 +761,7 @@ Subtraction Product Quit Subtraction
     #.选择部分商品
     Subtraction Select SubProduct
     Wait Until Page Contains    选择商品
-    Sleep    3
+    Sleep    3.5
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-input")[3].click()
     Wait And Click Element    dom:document.querySelectorAll("button")[8]
     Wait Until Page Contains Locator    dom:document.querySelectorAll("tbody")[0]
@@ -767,11 +771,13 @@ Subtraction Product Quit Subtraction
     Run Keyword If    '${parmeter}'=='false'    Confirm Cancel Alert
     ...    ELSE    Wait And Click Element    ${locatorB_subtraction_first_btn_save}
 
-
 Common Step
     [Documentation]    公共步骤
     delSubtraction_fromdb    all
     Go To Subtraction Page
     Wait And Click Element    ${locatorB_subtraction_add_subtraction}
 
-
+Common Suite
+    [Documentation]    公共suite
+    Login With Default User
+    Add Product Wait
