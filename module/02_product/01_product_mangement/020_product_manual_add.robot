@@ -342,12 +342,17 @@ products078
     Wait And Click Element    ${locatorB_productsMgmt_button_search}
     Length Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${0}
 
-products079
+products080
 	[Documentation]    可模糊搜索出商品名称包含该单词的商品
     [Tags]    P0
     add_launched_product_py
+    &{product_conf01} =    Create Dictionary
+    ...    title=compareone
+    add_product_with_conf_py    ${product_conf01}
     Reload Page
     Select All Product Tag
-    Wait And Input Text    ${locatorB_productsMgmt_input_name}    auto
+    Wait And Input Text    ${locatorB_productsMgmt_input_name}    title
     Wait And Click Element    ${locatorB_productsMgmt_button_search}
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_icon_listPreview}[0]
+    Length Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
+    ${productName}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
+	Should Be Equal    '${productName}'    'autotest_title'
