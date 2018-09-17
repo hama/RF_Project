@@ -388,7 +388,7 @@ subtraction108
     Subtraction Check Product Filter
     Wait And Click Element    ${locatorB_subtraction_selectPro_allStatus}
     ${res}    Execute JavaScript    return document.querySelectorAll(".ant-select-dropdown-menu-item")[2]===undefined
-    Should Be True    '${res}'=='True'
+    Should Be True    '${res}'=='False'
     Wait And Click Element    ${locatorB_subtraction_comm_close}
     Confirm Cancel Alert
 
@@ -491,7 +491,7 @@ subtraction128
     Add Subtraction Wait Step    1
     Go To Subtraction Page
     Wait And Click Element    dom:document.querySelectorAll("tbody tr:nth-child(1) td div i")[1]
-    Sleep    2
+    Sleep    3
     Wait And Click Element    dom:document.querySelectorAll("button")[4]
     Wait Until Element Is Visible    ${locatorB_subtraction_first_tr_eml}
     Sleep    2
@@ -569,7 +569,7 @@ subtraction133
     Wait Until Element Is Visible    ${locatorB_subtraction_first_tr_eml}
     Sleep    2
     ${res_data}    Execute JavaScript    return document.querySelectorAll("tbody tr:nth-child(1) td")[0]===undefined
-    Should Be True    '${res_data}'=='True'
+    Should Be True    '${res_data}'=='False'
 
 subtraction134
     [Documentation]    点击类型满额减元 > 搜索成功

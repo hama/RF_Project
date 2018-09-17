@@ -125,6 +125,7 @@ store016
     [Documentation]    输入非法格式的邮箱，不可保存
     [Tags]    P1
     StoreEmail Common Step    $$kkfd@#
+    Wait And Click Element    ${locatorB_storeLst_save_btn}
     Wait Until Page Contains Element    ${locatorB_storeLst_error_msg}
 
 store017
