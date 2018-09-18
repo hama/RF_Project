@@ -285,16 +285,16 @@ products063
     Wait And Click Element    ${locatorB_productsCollection_text_collectionNum}[1]
     Wait Until Page Contains Text    专辑商品(0)
 
-products070
-	[Documentation]    验证可全部取消自定义列表内容
-    [Tags]    P0
-    add_launched_product_py
-    Reload Page
-    Select All Product Tag
-    Hide All Header
-	Length Should Be Equal With Wait    ${locatorB_productsMgmt_textlist_itemsTitle}    ${5}
-    Show All Header
-	Length Should Be Equal With Wait    ${locatorB_productsMgmt_textlist_itemsTitle}    ${11}
+#products070
+#	[Documentation]    验证可全部取消自定义列表内容
+#    [Tags]    P0
+#    add_launched_product_py
+#    Reload Page
+#    Select All Product Tag
+#    Hide All Header
+#	Length Should Be Equal With Wait    ${locatorB_productsMgmt_textlist_itemsTitle}    ${5}
+#    Show All Header
+#	Length Should Be Equal With Wait    ${locatorB_productsMgmt_textlist_itemsTitle}    ${11}
 
 products076
 	[Documentation]    输入最低价格，搜索大于等于该价格商品

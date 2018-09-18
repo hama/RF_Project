@@ -63,4 +63,4 @@ Open Headless Chrome
 
 Start Ajax Listener
     [Documentation]    执行 ajaxListener.js 开始监听页面 ajax 请求
-    Execute JavaScript    ${CURDIR}/../lib/ajaxListener.js
+    Execute JavaScript    ${CURDIR}/../../lib/ajaxListener.js
