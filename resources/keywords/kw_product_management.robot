@@ -3,12 +3,13 @@ Documentation     添加商品
 Library           SeleniumLibrary    run_on_failure=NOTHING
 Resource          ../variable/var_common.robot
 Resource          ../variable/var_marketing.robot
-Resource          ../variable/var_products.robot
+Resource          ../variable/var_product_management.robot
+Resource          ../variable/var_product_collection.robot
 Resource          kw_browser.robot
 Resource          kw_common.robot
 
 *** keyword ***
-Products List Suite Setup
+Product Management Suite Setup Add Two Products
     [Documentation]    product
     Login With Default User
     del_all_product_py
@@ -18,28 +19,24 @@ Products List Suite Setup
     Go To Product Management Page
     Show All Header
 
-Products Single Suite Setup
+Product Management Common Suite Setup
     [Documentation]    product
     Login With Default User
     del_all_product_py
+    del_all_collection_py
     Go To Product Management Page
 
-Products Single Suite Teardown
+Product Management Common Suite Teardown
     [Documentation]    product
     del_all_product_py
+    del_all_collection_py
     Close Test Suite Browser
 
-Product Manual Add Case Setup
+Product Management Case Setup Clear Evn
     [Documentation]    product
     del_latest_product_py    ${3}
+    del_latest_collection_py    ${3}
     Go To Product Management Page
-
-Product Manual Add Case Teardown
-    [Documentation]    product
-	Teardown Test Case
-
-Product Testcase Setup
-    [Documentation]    product
 
 
 Select All Product Tag
@@ -58,13 +55,23 @@ Show All Header
     Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
     @{list}    Wait And Get List Items    ${locatorB_popUps_allUncheckedCheckbox}
     :FOR    ${i}    IN    @{list}
-    \    Wait And Click Element    ${i}
+    \    Wait And Click Element    ${i}    5    0
+#    \    Sleep    2
+    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Sleep    2
+
+Hide All Header
+    Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
+    @{list}    Wait And Get List Items    ${locatorB_popUps_allCheckedCheckbox}
+    :FOR    ${i}    IN    @{list}
+    \    Wait And Click Element    ${i}    5    0
+#    \    Sleep    2
     Wait And Click Element    ${locatorB_popUps_button_middle}
     Sleep    2
 
 Select Products And Click Batch Menu
     [Documentation]    选中所有商品,并且点击批量操作菜单
-    Wait And Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseProducets}
+    Wait Enabled And Click Element    ${locatorB_productsMgmt_checkbox_chooseProducets}
     Wait And Click Element    ${locatorB_productsMgmt_select_batchOperations}
 
 
@@ -181,7 +188,7 @@ Add_Collection
     Sleep    5
     Wait And Click Element    ${locatorB_product_collection}
     #点击新建一个商品专辑
-    Wait And Click Element    ${locatorB_productsCategory_button_addCategory}
+    Wait And Click Element    ${locatorB_productsCollection_button_addCategory}
     #输入专辑名称
     Wait And Input Text    id:title    ceshi
     #输入专辑描述
@@ -203,7 +210,7 @@ Delete_Collection
     #点击进入商品专辑界面
     Wait And Click Element    ${locatorB_product_collection}
     #点击删除第一个专辑按钮
-    Wait And Click Element    ${locatorB_productsCategory_icon_del}
+    Wait And Click Element    ${locatorB_productsCollection_icon_del}
     #点击确定
     Wait And Click Element    ${locatorB_popUps_button_middle}
 
@@ -241,9 +248,9 @@ Delete All Collection
     #点击进入商品专辑界面
     Wait And Click Element    ${locatorB_product_collection}
     #点击选中所有专辑
-    Select Checkbox    ${locatorB_productsCategory_checkbox_chooseCategories}
+    Select Checkbox    ${locatorB_productsCollection_checkbox_chooseCategories}
     #点击删除按钮
-    Wait And Click Element    ${locatorB_productsCategory_button_delProducts}
+    Wait And Click Element    ${locatorB_productsCollection_button_delProducts}
     #点击确定按钮
     Wait And Click Element    ${locatorB_products_button_confirm}
     Go TO    ${home_page}

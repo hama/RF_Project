@@ -6,10 +6,10 @@ Test Setup        Products Test Case Setup
 Test Teardown     Teardown Test Case
 Force Tags        Products
 Resource          ../../../resources/variable/var_common.robot
-Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/variable/var_product_management.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
-Resource          ../../../resources/keywords/kw_products.robot
+Resource          ../../../resources/keywords/kw_product_management.robot
 
 *** Test Cases ***
 products051
@@ -23,16 +23,16 @@ products051
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locatorB_productsCategory_popUps_firstCategory}
+    Wait Until Element Is Visible    ${locatorB_productsCollection_popUps_firstCategory}
     Sleep    5
     #搜索栏
     Page Should Contain Element    dom:document.querySelectorAll(".ant-input")[5]
     #复选框
-    Page Should Contain Element    ${locatorB_productsCategory_popUps_firstCategory}.querySelectorAll("td")[0]
+    Page Should Contain Element    ${locatorB_productsCollection_popUps_firstCategory}.querySelectorAll("td")[0]
     #可搜索专辑名
-    Page Should Contain Element    ${locatorB_productsCategory_popUps_firstCategory}.querySelectorAll("td")[1]
+    Page Should Contain Element    ${locatorB_productsCollection_popUps_firstCategory}.querySelectorAll("td")[1]
     #专辑时间
-    Page Should Contain Element    ${locatorB_productsCategory_popUps_firstCategory}.querySelectorAll("td")[2]
+    Page Should Contain Element    ${locatorB_productsCollection_popUps_firstCategory}.querySelectorAll("td")[2]
     #确定按钮
     Page Should Contain Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
     #关闭弹出框
@@ -58,7 +58,7 @@ products052
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locatorB_productsCategory_popUps_firstCategory}
+    Wait Until Element Is Visible    ${locatorB_productsCollection_popUps_firstCategory}
     Sleep    5
     #选中专辑
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
@@ -86,14 +86,14 @@ products053
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locatorB_productsCategory_popUps_firstCategory}
+    Wait Until Element Is Visible    ${locatorB_productsCollection_popUps_firstCategory}
     Sleep    5
     #获取要搜索的专辑名称
-    ${collection_name}    Get Text    ${locatorB_productsCategory_popUps_firstCategory}.querySelectorAll("td")[1]
+    ${collection_name}    Get Text    ${locatorB_productsCollection_popUps_firstCategory}.querySelectorAll("td")[1]
     #搜索框输入搜索
     Wait And Input Text    dom:document.querySelectorAll(".ant-input")[5]    ${collection_name}
     Sleep    5
-    Element Should Contain    ${locatorB_productsCategory_popUps_firstCategory}.querySelectorAll("td")[1]    ${collection_name}
+    Element Should Contain    ${locatorB_productsCollection_popUps_firstCategory}.querySelectorAll("td")[1]    ${collection_name}
     #关闭弹出框
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close")[0]
     Go TO    ${home_page}
@@ -122,7 +122,7 @@ products054
     Sleep    5
     #先搜索符合条件的专辑
     #获取要搜索的专辑名称
-    ${collection_name}    Get Text    ${locatorB_productsCategory_popUps_firstCategory}.querySelectorAll("td")[1]
+    ${collection_name}    Get Text    ${locatorB_productsCollection_popUps_firstCategory}.querySelectorAll("td")[1]
     #搜索框输入搜索
     Wait And Input Text    dom:document.querySelectorAll(".ant-input")[5]    ${collection_name}
     Sleep    5
@@ -160,7 +160,7 @@ products055
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locatorB_productsCategory_popUps_firstCategory}
+    Wait Until Element Is Visible    ${locatorB_productsCollection_popUps_firstCategory}
     Sleep    5
     #先搜索符合条件的专辑
     #搜索框输入专辑编号搜索
@@ -190,7 +190,7 @@ products057
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locatorB_productsCategory_popUps_firstCategory}
+    Wait Until Element Is Visible    ${locatorB_productsCollection_popUps_firstCategory}
     Sleep    2
     #点击取消按钮
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close-x")[0]

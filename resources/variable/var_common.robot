@@ -25,6 +25,7 @@ ${locatorB_setting_payment}    dom:document.querySelectorAll('a[href="/pay"]')[0
 ${locatorB_setting_store}    dom:document.querySelectorAll('a[href="/store"]')[0]    # 导航栏-设置-基础信息
 ${locatorB_setting_menus}    dom:document.querySelectorAll(".ant-menu-submenu-title")    # 导航栏-设置-含自菜单的元素
 
+${locatorB_selects}    dom:document.querySelectorAll("div[class~='ant-select-selection']")    # 下拉页面所有选框
 ### locator checkbox
 ${locatorB_checkbox00}    dom:document.querySelectorAll(".ant-checkbox-input")[0]    #定位当前页面第0个checkbox
 ${locatorB_checkbox01}    dom:document.querySelectorAll(".ant-checkbox-input")[1]

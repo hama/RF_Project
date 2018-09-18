@@ -1,15 +1,15 @@
 *** Settings ***
 Documentation     测试商品列表
-Suite Setup       Products List Suite Setup
-Suite Teardown    Close Test Suite Browser
+Suite Setup       Product Management Suite Setup Add Two Products
+Suite Teardown    Product Management Common Suite Teardown
 Test Setup        Go To Product Management Page
 Test Teardown     Teardown Test Case
 Force Tags        Products
 Resource          ../../../resources/variable/var_common.robot
-Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/variable/var_product_management.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
-Resource          ../../../resources/keywords/kw_products.robot
+Resource          ../../../resources/keywords/kw_product_management.robot
 Library           ${CURDIR}/../../../lib/customlib/lib_utils.py
 
 *** Test Cases ***
@@ -94,7 +94,7 @@ products021
     @{list1}    Wait And Get List Items    ${locatorB_productsMgmt_switch_listLaunched}
     :FOR    ${var}    IN    @{list1}
     \    Wait Until Page Contains Locator    ${var}
-    Length Should Be Equal    ${locatorB_productsMgmt_switch_listDiscontinued}    ${0}
+    Length Should Be Equal With Wait    ${locatorB_productsMgmt_switch_listDiscontinued}    ${0}
 
 products023
     [Documentation]    验证展示的商品只包含下架商品
@@ -103,7 +103,7 @@ products023
     @{list1}    Wait And Get List Items    ${locatorB_productsMgmt_switch_listDiscontinued}
     :FOR    ${var}    IN    @{list1}
     \    Wait Until Page Contains Locator    ${var}
-    Length Should Be Equal    ${locatorB_productsMgmt_switch_listLaunched}    ${0}
+    Length Should Be Equal With Wait    ${locatorB_productsMgmt_switch_listLaunched}    ${0}
 
 
 

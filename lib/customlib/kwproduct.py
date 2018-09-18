@@ -90,6 +90,43 @@ def add_max_product_py(cookie=init_cookie):
     '''
     add_launched_product_py(cookie)
 
+def add_product_with_conf_py(conf, cookie=init_cookie):
+    '''
+    通过conf（dict数据类型）配置来添加产品
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(product_max_data)
+
+    key_list = conf.keys()
+    if 'title' in key_list:
+        data['meta_title'] = conf['title']
+        data['title'] = conf['title']
+        data['url'] = '/products/'+conf['title']
+    if 'subtitle' in key_list:
+        data['brief'] = conf['subtitle']
+    if 'status' in key_list:
+        data['status'] = conf['status']
+    if 'saleprice' in key_list:
+        data['price'] = conf['saleprice']
+        data['variants'][0]['price'] = conf['saleprice']
+    if 'rawprice' in key_list:
+        data['compare_at_price'] = conf['rawprice']
+        data['variants'][0]['compare_at_price'] = conf['rawprice']
+    if 'settax' in key_list:
+        data['variants'][0]['taxable'] = conf['settax']
+    if 'weight' in key_list:
+        data['variants'][0]['weight'] = conf['weight']
+    if 'images' in key_list and conf['images']=='yes':
+        data['images'] = [image]
+    elif 'images' in key_list and conf['images']=='no':
+        data['images'] = []
+    else:
+        data['images'] = [image]
+
+    add_product_py(data, cookie)
+
 
 def product_updatestatus_py(product_list, status, cookie=init_cookie):
     """
@@ -165,7 +202,9 @@ if __name__ == '__main__':
     # del_first_product_py()
     # del_all_product_py()
     # add_discontinued_product_py()
-    add_launched_product_py()
+    # add_launched_product_py()
+    conf = {'saleprice':111}
+    add_product_with_conf_py(conf)
     # add_launched_product_py()
     # add_launched_product_py()
     # add_launched_product_py()
