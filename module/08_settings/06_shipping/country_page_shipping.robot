@@ -11,10 +11,54 @@ Resource          ../../../resources/keywords/kw_shipping.robot
 
 
 *** Test Cases ***
+test
+    Go To Shipping Page
+    Quantity All Setp
+    Wait And Input Text    ${locatorB_shipping_weight_first_input}    价格运费
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
+    Wait Until Page Does Not Contain Element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
+
+#-------------------------------------------------------------------------------------------------------#
+#----------------------------------------------threshold_case-------------------------------------------#
+#-------------------------------------------------------------------------------------------------------#
+shipping005
+    [Documentation]    测试方案名称输入框 > 输入：方案 > 保存成功
+    [Tags]    P1    threshold
+    Go To Shipping Page
+    Quit Add Country
+    Wait And Click Element    ${locatorB_shipping_country_element}
+    Input Text    ${locatorB_shipping_first_input}    自动化测试
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
+    Page Should Contain Element    ${locatorB_shipping_country_data}
+    Quit All Shipping
+
+shipping006
+    [Documentation]    测试方案名称输入框
+    [Tags]    P1    threshold
+     Go To Shipping Page
+    Quit Add Country
+    Wait And Click Element    ${locatorB_shipping_country_element}
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
+    Page Should Contain Element    ${locatorB_shipping_country_data}
+    Quit All Shipping
+
+shipping009
+    [Documentation]    测试方案名称输入框 > "1.输入框不输入内容,2.点击保存" > 提示请输入物流方案
+    [Tags]    P1    threshold
+    Go To Shipping Page
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
+    Wait And Input Text    ${locatorB_shipping_first_input}    ${Empty}
+    Wait And Click Element    ${locatorB_shipping_add_country}
+    Wait And Click Element    ${locatorB_shipping_country_select}
+    Wait And Click Element    ${locatorB_shipping_country_nums}
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
+    Wait And Click Element    dom:document.querySelectorAll('button')[1]
+    Wait Until Page Contains Element    ${locatorB_shipping_freight_error_elm}
+    Quit All Shipping
 
 shipping012
     [Documentation]    添加国家
-    [Tags]    P0
+    [Tags]    P0    threshold
     Go To Shipping Page
     Quit Add Country
     Wait And Click Element    ${locatorB_shipping_country_element}
@@ -22,6 +66,166 @@ shipping012
     Page Should Contain Element    ${locatorB_shipping_country_data}
     Quit All Shipping
 
+shipping016
+    [Documentation]    搜索国家输入框输入内容 > 输入：中国 > 显示国家：中国
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Quit Add Country
+    Wait And Input Text    ${locatorB_shipping_country_ipt}    中国
+    Wait And Click Element    ${locatorB_shipping_country_search_btn}
+    Wait Until Page Contains    其他国家
+    Wait Until Page Contains    China
+
+shipping020
+    [Documentation]    勾选1个国家 > 勾选：中国 > 左下角显示已选1个国家
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Quit Add Country
+    Wait And Input Text    ${locatorB_shipping_country_ipt}    中国
+    Wait And Click Element    ${locatorB_shipping_country_search_btn}
+    #.点击中国
+    Wait And Click Element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[67]
+    Wait Until Page Contains    已选择1个地区
+
+shipping024
+    [Documentation]    勾选其他国家点击确认 > 勾选：其他国家 > 左下角显示其他国家
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Quit Add Country
+    #.点击其他国家
+    Wait And Click Element    dom:document.querySelectorAll(".ant-checkbox")[0]
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
+    Wait Until Page Contains Element    ${locatorB_shipping_country_get_other}
+    ${res}    Get Text    ${locatorB_shipping_country_get_other}
+    Should Be True    '${res}'=='其他国家'
+
+shipping029
+    [Documentation]    测试价格运费添加运费按钮 >> 点击添加运费按钮 > 打开添加价格运费设置弹窗
+    [Tags]    P0    threshold
+    #.check button
+    Go To Shipping Page
+    Quantity All Setp
+    page should contain button    ${locatorB_shipping_freight_save}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
+    Quit All Setp
+
+shipping035
+    [Documentation]    输入50个字符点击保存
+    [Tags]    P1    threshold
+    Go To Shipping Page
+    Quit Add Price Shipping
+    ${str}    set variable    sssssssssssssssssssssssssssssssssssssssssssssssss
+    Wait And Input Text    ${locatorB_shipping_freight_first_input}    ${str}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+    Wait Until Page Contains Element    ${locatorB_shipping_freight_content_elm}
+    Quit All Shipping
+
+shipping039
+    [Documentation]    测试添加价格运费弹窗界面说明输入框正常 > "1.说明输入框不输入内容,其他信息填写合法内容,点击保存" > 保存成功
+    [Tags]    P1    threshold
+    Go To Shipping Page
+    Quit Add Price Shipping
+    Wait And Input Text    ${locatorB_shipping_freight_first_input}    自动化测试
+    Wait And Input Text    ${locatorB_shipping_range_min}    10
+    Wait And Input Text    ${locatorB_shipping_range_max}    90
+    Wait And Input Text    ${locatorB_shipping_price}    5
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+
+shipping046
+    [Documentation]    测试添加价格运费弹窗界面价格范围输入框正常 > 正常输入最小价格，最大价格 > 保存成功
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Quit Add Price Shipping
+    Common Input Step    价格运费    sssssssssssssssssssssssssssssssssssssssssssssss    10    100
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+    Wait Until Page Contains Element    ${locatorB_shipping_freight_content_elm}
+    Quit All Shipping
+
+shipping048
+    [Documentation]    最大单价输入100 最小单价输入200 最小单价变为99
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Quit Add Price Shipping
+    ${min}    set variable    200
+    ${max}    set variable    100
+    ${description}    set variable    sssssssssssssssssssssssssssssssssssssssssssssss
+    Common Input Step    价格运费    ${description}    ${max}    ${min}
+    Wait And Input Text    ${locatorB_shipping_price}    1
+    ${data}    get value    ${locatorB_shipping_range_min}
+    ${new_min}    evaluate    ${max}-1
+    Should Be True    ${data}==${new_min}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
+    Quit All Setp
+
+shipping049
+    [Documentation]    在运费价格框输入值 免运费的勾选离开框取消勾选
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Quit Add Price Shipping
+    ${min}    set variable    200
+    ${max}    set variable    100
+    ${description}    set variable    sssssssssssssssssssssssssssssssssssssssssssssss
+    Common Input Step    价格运费    ${description}    ${max}    ${min}
+    Wait And Input Text    ${locatorB_shipping_price}    ${max}
+    page should not contain checkbox    execute javascript    return document.getElementsByClassName("ant-checkbox-input")[0]
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
+    Quit All Setp
+
+shipping050
+    [Documentation]    测试添加价格运费弹窗界面运费栏功能正常 > 免运费勾选框处于未勾选状态时点击勾选框 > 勾选免运费
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    ${min}    set variable    200
+    ${max}    set variable    100
+    ${description}    set variable    sssssssssssssssssssssssssssssssssssssssssssssss
+    Quit Add Price Shipping
+    Common Input Step    价格运费    ${description}    ${max}    ${min}
+    Wait And Input Text    ${locatorB_shipping_price}    ${max}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
+    Quit All Setp
+
+shipping051
+    [Documentation]    测试添加价格运费弹窗界面运费栏功能正常 > 免运费勾选框处于勾选状态时，在运费价格输入框中输入内容 > 免运费勾选框自动取消勾选
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    ${min}    set variable    200
+    ${max}    set variable    100
+    ${description}    set variable    sssssssssssssssssssssssssssssssssssssssssssssss
+    Quit Add Price Shipping
+    Common Input Step    价格运费    ${description}    ${max}    ${min}
+    Wait And Input Text    ${locatorB_shipping_price}    ${max}
+    Checkbox Should Not Be Selected    dom:document.getElementsByClassName("ant-checkbox-input")[0]
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
+    Quit All Setp
+
+shipping055
+    [Documentation]    勾选是否支持货到付款 列表显示支持
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Quit Add Price Shipping
+    ${min}    set variable    200
+    ${max}    set variable    100
+    ${description}    set variable    sssssssssssssssssssssssssssssssssssssssssssssss
+    Common Input Step    价格运费    ${description}    ${max}    ${min}
+    Wait And Click Element    dom:document.querySelectorAll(".ant-checkbox-checked")[0]
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-table-tbody tr td")[2]
+    ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[2].innerText
+    Should Be True    '${data}'=='支持'
+    Quit All Shipping
+
+shipping058
+    [Documentation]    添加运费窗口输入内容后直接关闭 列表不存在数据
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Quantity All Setp
+    Wait And Input Text    ${locatorB_shipping_weight_first_input}    价格运费
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
+    Wait Until Page Does Not Contain Element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
+
+#-------------------------------------------------------------------------------------------------------#
+#---------------------------------------------Ordinary Case---------------------------------------------#
+#-------------------------------------------------------------------------------------------------------#
 shipping013
     [Documentation]    tax price page should be normal atfer login
     [Tags]    P0
@@ -80,17 +284,6 @@ shipping022
     Should Be True    '${data}'=='${res}'
     Quit All Shipping
 
-shipping024
-    [Documentation]    选择国家的`其他国家` 列表出现其他国家
-    [Tags]    P0
-    Go To Shipping Page
-    Quit Add Country
-    Execute JavaScript    ${locatorB_shipping_country_other}
-    Wait And Click Element    ${locatorB_shipping_country_save_btn}
-    ${res}    get text    ${locatorB_shipping_country_get_other}
-    Should Be True    '${res}'=='其他国家'
-    Quit All Shipping
-
 shipping025
     [Documentation]    选择国家的随意一个国家 列表不会出现`其他国家`
     [Tags]    P0
@@ -113,3 +306,13 @@ shipping027
     #check data
     Should Be True    '${res}'=='暂无数据'
     Quit All Setp
+
+
+*** keywords ***
+Common Input Step
+    [Documentation]    添加各种运费公共输入框
+    [Arguments]    ${name}    ${description}    ${max}    ${min}
+    Wait And Input Text    ${locatorB_shipping_freight_first_input}    ${name}
+    Wait And Input Text    ${locatorB_shipping_description}    ${description}
+    Wait And Input Text    ${locatorB_shipping_range_max}    ${max}
+    Wait And Input Text    ${locatorB_shipping_range_min}    ${min}

@@ -25,6 +25,8 @@ ${locatorB_shipping_range_min}    id:range_min    #.添加数量运费-最小订
 ${locatorB_shipping_range_max}    id:range_max    #.添加数量运费-最大订单数量输入框
 
 # add country
+${locatorB_shipping_country_ipt}    dom:document.querySelectorAll('input[placeholder="国家名"]')[0]    #.添加国家-顶部输入国家输入框
+${locatorB_shipping_country_search_btn}    id:test_shipping_country_modal_search_btn    #.添加国家-搜索按钮
 ${locatorB_shipping_country_element}    dom:document.getElementsByClassName("ant-tree-checkbox")[0]    #.国家列表-选择非洲这一行的元素
 ${locatorB_shipping_country_select}    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]    #.国家列表-列出非洲 代表的元素
 ${locatorB_shipping_country_nums}    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]    #.国家列表-南极洲 元素
