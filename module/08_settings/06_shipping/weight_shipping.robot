@@ -19,16 +19,6 @@ shipping057
     sleep    1
     page should not contain element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
 
-shipping058
-    [Documentation]    添加运费窗口输入内容后直接关闭 列表不存在数据
-    [Tags]    P0
-    Go To Shipping Page
-    Quantity All Setp
-    input text    ${locatorB_shipping_weight_first_input}    价格运费
-    Wait And Click Element    ${locatorB_shipping_country_close_btn}
-    sleep    1
-    page should not contain element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
-
 shipping042
     [Documentation]    添加运费窗口输入内容后直接关闭 再次点击添加按钮 后的编辑窗口里没有数据
     [Tags]    P1

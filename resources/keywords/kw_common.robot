@@ -138,8 +138,6 @@ Go To Shipping Page
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting}
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting_shipping}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_shipping}
-    Page Should Contain    ${contentB_shipping_tab1}
-    Page Should Contain    ${contentB_shipping_tab2}
     Location Should Be    ${url_shipping}
 
 Wait And Input Text
