@@ -90,6 +90,7 @@ def add_max_product_py(cookie=init_cookie):
     '''
     add_launched_product_py(cookie)
 
+
 def add_product_with_conf_py(conf, cookie=init_cookie):
     '''
     通过conf（dict数据类型）配置来添加产品
@@ -103,7 +104,7 @@ def add_product_with_conf_py(conf, cookie=init_cookie):
     if 'title' in key_list:
         data['meta_title'] = conf['title']
         data['title'] = conf['title']
-        data['url'] = '/products/'+conf['title']
+        data['url'] = '/products/' + conf['title']
     if 'subtitle' in key_list:
         data['brief'] = conf['subtitle']
     if 'status' in key_list:
@@ -118,9 +119,9 @@ def add_product_with_conf_py(conf, cookie=init_cookie):
         data['variants'][0]['taxable'] = conf['settax']
     if 'weight' in key_list:
         data['variants'][0]['weight'] = conf['weight']
-    if 'images' in key_list and conf['images']=='yes':
+    if 'images' in key_list and conf['images'] == 'yes':
         data['images'] = [image]
-    elif 'images' in key_list and conf['images']=='no':
+    elif 'images' in key_list and conf['images'] == 'no':
         data['images'] = []
     else:
         data['images'] = [image]
@@ -135,19 +136,20 @@ def product_updatestatus_py(product_list, status, cookie=init_cookie):
     :param status: -1 = 删除商品（非数据库） | 0 = 设置下架 | 1 = 设置上架
     :return:
     """
-    latest_product_id = get_latest_productid_py()
+    exist_products_id = get_exist_productsid_py()
     if isinstance(product_list, str) and product_list == 'all':
-        oldest_product_id = get_oldest_productid_py()
-        product_list = range(oldest_product_id, latest_product_id + 1)
+        product_list = exist_products_id
     elif isinstance(product_list, int):
         num = product_list
-        product_list = range(latest_product_id + 1 - num, latest_product_id + 1)
+        product_list = exist_products_id[:num]
 
     url = home_page_url + "/api/product/updatestatus"
     data = {"product_ids": product_list, "status": status}
     try:
         resData = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        if resData.status_code == 200 and json.loads(resData.content)['state'] == 0:
+        if resData.status_code == 200 \
+                and (json.loads(resData.content)['state'] == 0 \
+                     or json.loads(resData.content)['state'] == 1):
             return True
         else:
             return False
@@ -197,6 +199,7 @@ def get_latest_productid_py():
     except Exception as e:
         return 1
 
+
 def get_oldest_productid_py():
     products_list = json.loads(product_search_py())['data']['products']
     try:
@@ -205,15 +208,23 @@ def get_oldest_productid_py():
         return 1
 
 
+def get_exist_productsid_py():
+    products_list = json.loads(product_search_py())['data']['products']
+    products_id = []
+    for product in products_list:
+        products_id.append(product['id'])
+    return products_id
+
+
 if __name__ == '__main__':
     # product_search_py()
     # del_first_product_py()
-    del_all_product_py()
+    # del_all_product_py()
     # add_discontinued_product_py()
     # add_launched_product_py()
-    # conf = {'saleprice':111}
+    # conf = {'saleprice': 111}
     # add_product_with_conf_py(conf)
     # add_launched_product_py()
     # add_launched_product_py()
     # add_launched_product_py()
-    # del_latest_product_py(2)
+    del_latest_product_py(2)
