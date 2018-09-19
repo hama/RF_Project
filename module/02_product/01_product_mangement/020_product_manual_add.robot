@@ -18,7 +18,7 @@ products004
     [Documentation]    上架商品图片展示商品主图
     [Tags]    P0
     add_launched_product_py
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
 	${attr}    Get Element Attribute    ${locatorB_productsMgmt_image_firstProductThumbnails}    class
 	Should Be equal    '${attr}'    'center___1nHSZ'
@@ -27,7 +27,7 @@ products005
     [Documentation]    下架商品且未上传商品图，商品图片展示默认图
     [Tags]    P0
     add_min_product_py
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
 	${attr}    Get Element Attribute    ${locatorB_productsMgmt_image_firstProductThumbnails}    class
 	Should Be equal    '${attr}'    ''
@@ -36,7 +36,7 @@ products007
     [Documentation]    验证商品无库存时展示正确
     [Tags]    P0
     add_empty_quantity_product_py
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
 	${inventoryQuantity}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductInventoryQuantity}
 	Should Be Equal    '${inventoryQuantity}'    '0件'
@@ -47,7 +47,7 @@ products009
     ${time1}    Get Time
     add_min_product_py
     ${time2}    Get Time
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
 	${createTime}    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[0]
 	${status}    Evaluate    '${createTime}'=='${time1}' or '${createTime}'=='${time2}'
@@ -57,7 +57,7 @@ products011
     [Documentation]    无SKU时，SKU展示空白
     [Tags]    P0
     add_min_product_py
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
 	${sku}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductSku}
 	Should Be Equal    '${sku}'    ''
@@ -65,7 +65,7 @@ products011
 products014
     [Documentation]    验证点击‘全部’无结果
     [Tags]    P0
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
 	Wait Until Page Not Contains Locator    ${locatorB_page_text_totalRecord}
 
@@ -73,7 +73,7 @@ products018
     [Documentation]    验证点击删除按钮可删除商品
     [Tags]    P0
     add_min_product_py
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
 	Click Element And Confirm    ${locatorB_productsMgmt_icon_listDelete}[0]
 	Wait Until Page Not Contains Locator    ${locatorB_productsMgmt_icon_listPreview}[0]
@@ -82,7 +82,7 @@ products019
     [Documentation]    验证可成功删除商品
     [Tags]    P0
     add_min_product_py
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
 	Click Element And Confirm    ${locatorB_productsMgmt_icon_listDelete}[0]
 	Wait Until Page Not Contains Locator    ${locatorB_productsMgmt_icon_listPreview}[0]
@@ -91,7 +91,7 @@ products020
     [Documentation]    验证可取消删除商品
     [Tags]    P0
     add_min_product_py
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
 	Click Element And Cancel    ${locatorB_productsMgmt_icon_listDelete}[0]
 	Wait Until Page Contains Locator    ${locatorB_productsMgmt_icon_listPreview}[0]
@@ -102,7 +102,7 @@ products021.1
     add_launched_product_py
     Sleep    60
 	add_launched_product_py
-	Reload Page
+	Reload Page And Start Ajax
     Select Launched Product Tag
     ${item1_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[0]
     ${item2_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[1]
@@ -115,7 +115,7 @@ products021.2
     add_launched_product_py
     add_launched_product_py
     add_discontinued_product_py
-    Reload Page
+    Reload Page And Start Ajax
     Select Launched Product Tag
     ${total_record}    Wait And Get Text    ${locatorB_page_text_totalRecord}
     ${size}    lib_utils.searchStrs_py    ${total_record}
@@ -126,7 +126,7 @@ products022
     [Documentation]    验证点击‘上架’无结果
     [Tags]    P0
     add_min_product_py
-    Reload Page
+    Reload Page And Start Ajax
     Select Launched Product Tag
     Wait Until Page Not Contains Locator    ${locatorB_page_text_totalRecord}
 
@@ -136,7 +136,7 @@ products023.1
     add_discontinued_product_py
     Sleep    60
 	add_discontinued_product_py
-	Reload Page
+	Reload Page And Start Ajax
     Select Discontinued Product Tag
     ${item1_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[0]
     ${item2_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[1]
@@ -149,7 +149,7 @@ products023.2
     add_discontinued_product_py
     add_discontinued_product_py
     add_launched_product_py
-    Reload Page
+    Reload Page And Start Ajax
     Select Discontinued Product Tag
     ${total_record}    Wait And Get Text    ${locatorB_page_text_totalRecord}
     ${size}    lib_utils.searchStrs_py    ${total_record}
@@ -161,7 +161,7 @@ products037
     [Tags]    P0
     add_discontinued_product_py
     add_discontinued_product_py
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
 	Select Products And Click Batch Menu
 	Click Element And Confirm    ${locatorB_productsMgmt_select_launch}
@@ -173,7 +173,7 @@ products039
     [Tags]    P0
     add_launched_product_py
     add_launched_product_py
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
 	Select Products And Click Batch Menu
 	Click Element And Confirm    ${locatorB_productsMgmt_select_discontinue}
@@ -185,7 +185,7 @@ products041
     [Tags]    P0
     add_launched_product_py
     add_launched_product_py
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
 	Select Products And Click Batch Menu
 	Click Element And Confirm    ${locatorB_productsMgmt_select_batchDel}
@@ -198,7 +198,7 @@ products047
 	[Documentation]    验证能成功添加新建的标签
     [Tags]    P0
     add_launched_product_py
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
     Select Products And Click Batch Menu
     Wait And Click Element    ${locatorB_productsMgmt_select_addTags}
@@ -221,7 +221,7 @@ products052
 	[Documentation]    验证可成功移除已有标签
     [Tags]    P0
     add_launched_product_py
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
     Select Products And Click Batch Menu
     Wait And Click Element    ${locatorB_productsMgmt_select_delTags}
@@ -241,7 +241,7 @@ products055
     add_launched_product_py
     del_all_collection_py
     add_collection_with_pic_py
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
     Select Products And Click Batch Menu
     Wait And Click Element    ${locatorB_productsMgmt_select_addtoCategory}
@@ -259,7 +259,7 @@ products063
     add_launched_product_py
     add_collection_with_pic_py
     add_collection_without_pic_py
-    Reload Page
+    Reload Page And Start Ajax
     # 通过批量操作给商品添加入专辑1与专辑2
     Select All Product Tag
     Select Products And Click Batch Menu
@@ -289,7 +289,7 @@ products063
 #	[Documentation]    验证可全部取消自定义列表内容
 #    [Tags]    P0
 #    add_launched_product_py
-#    Reload Page
+#    Reload Page And Start Ajax
 #    Select All Product Tag
 #    Hide All Header
 #	Length Should Be Equal With Wait    ${locatorB_productsMgmt_textlist_itemsTitle}    ${5}
@@ -305,7 +305,7 @@ products076
     &{product_conf02} =    Create Dictionary
     ...    saleprice=199
     add_product_with_conf_py    ${product_conf02}
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
     Wait And Input Text    ${locatorB_productsMgmt_input_minPrice}    99
     Wait And Click Element    ${locatorB_productsMgmt_button_search}
@@ -320,7 +320,7 @@ products077
     &{product_conf02} =    Create Dictionary
     ...    saleprice=199
     add_product_with_conf_py    ${product_conf02}
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
     Wait And Input Text    ${locatorB_productsMgmt_input_maxPrice}    99
     Wait And Click Element    ${locatorB_productsMgmt_button_search}
@@ -335,7 +335,7 @@ products078
     &{product_conf02} =    Create Dictionary
     ...    saleprice=199
     add_product_with_conf_py    ${product_conf02}
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
     Wait And Input Text    ${locatorB_productsMgmt_input_minPrice}    10
     Wait And Input Text    ${locatorB_productsMgmt_input_maxPrice}    99
@@ -349,7 +349,7 @@ products080
     &{product_conf01} =    Create Dictionary
     ...    title=compareone
     add_product_with_conf_py    ${product_conf01}
-    Reload Page
+    Reload Page And Start Ajax
     Select All Product Tag
     Wait And Input Text    ${locatorB_productsMgmt_input_name}    title
     Wait And Click Element    ${locatorB_productsMgmt_button_search}

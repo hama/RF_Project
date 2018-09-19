@@ -55,7 +55,7 @@ Go To Order Page
 Go To Product Management Page
     [Documentation]    跳转到商品页面
     Wait Until Element Is Visible    ${locatorB_products}
-    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[0]    aria-expanded    #.获取导航栏商品的下拉按钮元素
+    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[1]    aria-expanded    #.获取导航栏商品的下拉按钮元素
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_products}
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_product_management}
     ...    ELSE    Wait And Click Element    ${locatorB_product_management}
@@ -67,7 +67,7 @@ Go To Product Management Page
 Go To Product Collection Page
     [Documentation]    跳转到商品页面
     Wait Until Element Is Visible    ${locatorB_products}
-    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[0]    aria-expanded    #.获取导航栏商品的下拉按钮元素
+    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[1]    aria-expanded    #.获取导航栏商品的下拉按钮元素
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_products}
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_product_collection}
     ...    ELSE    Wait And Click Element    ${locatorB_product_collection}
@@ -79,7 +79,7 @@ Go To Product Collection Page
 Go To Product Review Page
     [Documentation]    跳转到商品页面
     Wait Until Element Is Visible    ${locatorB_products}
-    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[0]    aria-expanded    #.获取导航栏商品的下拉按钮元素
+    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[1]    aria-expanded    #.获取导航栏商品的下拉按钮元素
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_products}
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_product_reviews}
     ...    ELSE    Wait And Click Element    ${locatorB_product_reviews}
@@ -92,7 +92,7 @@ Go To Subtraction Page
     [Documentation]    跳转营销-满减活动页面
     Wait Until Element Is Visible    ${locatorB_marketing}
     # 若营销按钮没展开，则展开营销按钮
-    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[1]    aria-expanded    # 获取导航栏营销下拉元素
+    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[2]    aria-expanded    # 获取导航栏营销下拉元素
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_marketing}
     ...    ELSE    Wait And Click Element    ${locatorB_marketing_subtraction}
     Wait Until Page Contains    ${locatorB_subtraction_header_text}
@@ -102,7 +102,7 @@ Go To Coupon Page
     [Documentation]    跳转营销-优惠券页面
     Wait Until Element Is Visible    ${locatorB_marketing}
     # 若营销按钮没展开，则展开营销按钮
-    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[1]    aria-expanded    # 获取导航栏营销下拉元素
+    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[2]    aria-expanded    # 获取导航栏营销下拉元素
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_marketing}
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_marketing_coupon_code}
     ...    ELSE    Wait And Click Element    ${locatorB_marketing_coupon_code}
@@ -113,7 +113,7 @@ Go To Store Page
     [Documentation]    跳转基础信息页面
     Wait Until Element Is Visible    ${locatorB_setting}
     # 若营销按钮没展开，则展开营销按钮
-    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[3]    aria-expanded
+    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[4]    aria-expanded
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting}
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting_store}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_store}
@@ -124,7 +124,7 @@ Go To Tax Page
     [Documentation]    跳转到税费页面
     Wait Until Element Is Visible    ${locatorB_setting}
     # 若设置按钮没展开，则展开设置按钮
-    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[3]    aria-expanded
+    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[4]    aria-expanded
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting}
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting_taxPrice}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_taxPrice}
@@ -136,7 +136,7 @@ Go To Shipping Page
     Sleep    2.5
     Wait Until Element Is Visible    ${locatorB_setting}
     # 若设置按钮没展开，则展开设置按钮
-    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[3]    aria-expanded
+    ${attr}    Get Element Attribute    ${locatorB_setting_menus}[4]    aria-expanded
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting}
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting_shipping}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_shipping}
@@ -309,9 +309,9 @@ Alert Should Not Be Present
     ${result}    Run Keyword And Ignore Error    Alert Should Be Present    ${msg}
     Should Be True    '${result}'!='PASS'
 
-
-
-
+Reload Page And Start Ajax
+	Reload Page
+	Start Ajax Listener
 
 
 

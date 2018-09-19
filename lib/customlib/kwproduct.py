@@ -137,7 +137,8 @@ def product_updatestatus_py(product_list, status, cookie=init_cookie):
     """
     latest_product_id = get_latest_productid_py()
     if isinstance(product_list, str) and product_list == 'all':
-        product_list = range(1, latest_product_id + 1)
+        oldest_product_id = get_oldest_productid_py()
+        product_list = range(oldest_product_id, latest_product_id + 1)
     elif isinstance(product_list, int):
         num = product_list
         product_list = range(latest_product_id + 1 - num, latest_product_id + 1)
@@ -196,15 +197,22 @@ def get_latest_productid_py():
     except Exception as e:
         return 1
 
+def get_oldest_productid_py():
+    products_list = json.loads(product_search_py())['data']['products']
+    try:
+        return products_list[-1]['id']
+    except Exception as e:
+        return 1
+
 
 if __name__ == '__main__':
     # product_search_py()
     # del_first_product_py()
-    # del_all_product_py()
+    del_all_product_py()
     # add_discontinued_product_py()
     # add_launched_product_py()
-    conf = {'saleprice':111}
-    add_product_with_conf_py(conf)
+    # conf = {'saleprice':111}
+    # add_product_with_conf_py(conf)
     # add_launched_product_py()
     # add_launched_product_py()
     # add_launched_product_py()
