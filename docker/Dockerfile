@@ -13,7 +13,7 @@ RUN echo && cd /home  \
     && python2.7 get-pip.py \
     && pip install oss2 \
     && pip install robotframework \
-    && pip install pymysql requests \
+    && pip install pymysql requests PyExecJS \
     && pip install  --pre --upgrade robotframework-selenium2library \
     && apt-get install -y wget curl libxss1 libappindicator1 libindicator7 fonts-liberation libasound2 libnspr4 libnss3 lsb-release xdg-utils \
     && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
