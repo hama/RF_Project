@@ -85,7 +85,8 @@ else
         module/03_login/* \
         module/02_product/01_product_mangement/003_Product_List.robot \
         module/02_product/01_product_mangement/020_product_manual_add.robot \
-		module/05_store/store_info.robot
+		module/05_store/store_info.robot \
+		module/08_settings/06_shipping/country_page_shipping.robot
 fi
 
 # 执行email_utils.py

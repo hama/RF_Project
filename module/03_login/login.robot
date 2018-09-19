@@ -11,12 +11,11 @@ Resource          ../../resources/variable/var_login.robot
 Resource          ../../resources/keywords/kw_login.robot
 Library           SeleniumLibrary    run_on_failure=NOTHING
 
-
 *** Test Cases ***
 login001
-    [Documentation]     主账号登录成功
+    [Documentation]    主账号登录成功
     [Tags]    P0    threshold
-    Wait And Input Text     ${locatorB_login_input_account}    ${user_default_contact}
+    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Click Element    ${locatorB_login_btn_login}
     Wait Until Page Contains Locator    ${locatorB_order}
@@ -24,7 +23,7 @@ login001
     Wait Until Page Contains Locator    ${locatorB_login_input_account}
 
 login002
-    [Documentation]     主账号登录失败_未注册账号
+    [Documentation]    主账号登录失败_未注册账号
     [Tags]    P1
     Wait And Input Text    ${locatorB_login_input_account}    ${contentB_login_unregisteredAccount}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
@@ -32,7 +31,7 @@ login002
     Wait Until Page Contains Text    店铺地址或者联系方式错误
 
 login003
-    [Documentation]     主账号登录失败_格式不正确
+    [Documentation]    主账号登录失败_格式不正确
     [Tags]    P2
     Wait And Input Text    ${locatorB_login_input_account}    ${contentB_login_errorFormatAccount}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
@@ -41,7 +40,7 @@ login003
     Should Be Equal    ${prompt}    请输入正确的邮箱／手机
 
 login004
-    [Documentation]     主账号登录失败_账号为空
+    [Documentation]    主账号登录失败_账号为空
     [Tags]    P2
     Wait And Input Text    ${locatorB_login_input_account}    ${Empty}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
@@ -50,7 +49,7 @@ login004
     Should Be Equal    ${prompt}    请输入正确的邮箱／手机
 
 login005
-    [Documentation]     主账号登录失败_错误密码
+    [Documentation]    主账号登录失败_错误密码
     [Tags]    P0
     Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${contentB_login_errorPwd}
@@ -59,7 +58,7 @@ login005
     Wait Until Page Contains    用户名或者密码错误
 
 login006
-    [Documentation]     主账号登录失败_密码为空
+    [Documentation]    主账号登录失败_密码为空
     [Tags]    P2
     Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${Empty}
@@ -68,7 +67,7 @@ login006
     Should Be Equal    ${prompt}    请输入密码
 
 login007
-    [Documentation]     员工账号登录_登录成功
+    [Documentation]    员工账号登录_登录成功
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_login_btn_employeeLogin}
     Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
@@ -79,9 +78,8 @@ login007
     Logout
     Wait Until Page Contains Locator    ${locatorB_login_input_account}
 
-
 login008
-    [Documentation]     员工账号登录失败_未注册的域名
+    [Documentation]    员工账号登录失败_未注册的域名
     [Tags]    P0
     Wait And Click Element    ${locatorB_login_btn_employeeLogin}
     Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
@@ -91,7 +89,7 @@ login008
     Wait Until Page Contains Text    店铺地址或者联系方式错误
 
 login009
-    [Documentation]     员工账号登录失败_格式不正确的域名
+    [Documentation]    员工账号登录失败_格式不正确的域名
     [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_employeeLogin}
     Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
@@ -102,7 +100,7 @@ login009
     Should Be Equal    ${prompt}    请输入合法域名
 
 login010
-    [Documentation]     员工账号登录失败_域名为空
+    [Documentation]    员工账号登录失败_域名为空
     [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_employeeLogin}
     Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
@@ -113,7 +111,7 @@ login010
     Should Be Equal    ${prompt}    请输入店铺域名
 
 login011
-    [Documentation]     员工账号登录失败_未注册的手机/邮箱
+    [Documentation]    员工账号登录失败_未注册的手机/邮箱
     [Tags]    P0
     Wait And Click Element    ${locatorB_login_btn_employeeLogin}
     Wait And Input Text    ${locatorB_login_input_account}    ${contentB_login_unregisteredAccount}
@@ -123,7 +121,7 @@ login011
     Wait Until Page Contains Text    店铺地址或者联系方式错误
 
 login012
-    [Documentation]     员工账号登录失败_格式不正确的手机/邮箱
+    [Documentation]    员工账号登录失败_格式不正确的手机/邮箱
     [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_employeeLogin}
     Wait And Input Text    ${locatorB_login_input_account}    ${contentB_login_errorFormatAccount}
@@ -133,7 +131,7 @@ login012
     Should Be Equal    ${prompt}    请输入正确的邮箱／手机
 
 login013
-    [Documentation]     员工账号登录失败_账号为空
+    [Documentation]    员工账号登录失败_账号为空
     [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_employeeLogin}
     Wait And Input Text    ${locatorB_login_input_account}    123456
@@ -144,7 +142,7 @@ login013
     Should Be Equal    ${prompt}    请输入正确的邮箱／手机
 
 login014
-    [Documentation]     员工账号登录失败_错误密码
+    [Documentation]    员工账号登录失败_错误密码
     [Tags]    P0
     Wait And Click Element    ${locatorB_login_btn_employeeLogin}
     Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
@@ -154,7 +152,7 @@ login014
     Wait Until Page Contains Text    用户名或者密码错误
 
 login015
-    [Documentation]     员工账号登录失败_密码为空
+    [Documentation]    员工账号登录失败_密码为空
     [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_employeeLogin}
     Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
