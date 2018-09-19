@@ -39,7 +39,7 @@ ${locatorB_productsMgmt_tabindex_firstSwitch}    dom:document.querySelectorAll("
 ${locatorB_productsMgmt_input_minPrice}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[0]    #"最低售价"输入框
 ${locatorB_productsMgmt_input_maxPrice}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[1]    #"最高售价"输入框
 ${locatorB_productsMgmt_input_name}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[2]    #"商品名称/商品SKU/标签"输入框
-${locatorB_productsMgmt_button_search}    dom:document.querySelectorAll('button[class*="confirm_btn"]')[0]    # 搜索按钮
+${locatorB_productsMgmt_button_search}    dom:document.querySelectorAll('button[data-robot="btn_search"]')[0]    # 搜索按钮
 
 ${locatorB_productsMgmt_image_firstProductThumbnails}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[1].querySelectorAll("img")[0]     #商品列表第一个商品的图片
 ${locatorB_productsMgmt_text_firstProductName}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[2].querySelectorAll("span")[0]    #商品列表第一个商品的商品名称
@@ -75,7 +75,7 @@ ${locatorB_productsNew_input_addBarcode}    id:barcode    # 添加商品页面-�
 ${locatorB_productsNew_input_addSupplier}    dom:document.querySelectorAll(".ant-input")[1]    # 添加供应商
 ${locatorB_productsNew_input_productType}    id:product_type_cascade    #商品专辑页的新增专辑按钮
 ${locatorB_productsNew_cascader_chooseCategoryItem}    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]    # 选择商品分类子项
-${locatorB_productsNew_button_save}    ${locatorB_popUps_button_middle}    #保存按钮
+${locatorB_productsNew_button_save}    dom:document.querySelectorAll('button[data-robot="btn_save"]')[0]    #保存按钮
 
 # locator_productsMobile
 ${locatorC_products_logo}    dom:document.querySelectorAll('div[alt="Logo"]')[0]    #C端，产品logo
