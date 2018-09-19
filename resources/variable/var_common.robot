@@ -8,17 +8,17 @@ ${error_msg}      出错啦！    #.自定义错误提示
 
 
 ### 菜单栏 locator
-${locatorB_overview}    id:test_overview    # 导航栏-概览（即主页）
-${locatorB_order}    dom:document.querySelectorAll('a[href="/order"]')[0]    # 导航栏-订单
-${locatorB_products}    id:test_product    # 导航栏-商品
+${locatorB_overview}    dom:document.querySelectorAll('span[data-robot="overview"]')[0]    # 导航栏-概览（即主页）
+${locatorB_order}    dom:document.querySelectorAll('span[data-robot="order"]')[0]    # 导航栏-订单
+${locatorB_products}    dom:document.querySelectorAll('span[data-robot="products"]')[0]    # 导航栏-商品
 ${locatorB_product_management}    dom:document.querySelectorAll('a[href="/products"]')[0]    # 导航栏-商品管理
 ${locatorB_product_collection}    dom:document.querySelectorAll('a[href="/collection"]')[0]    # 导航栏-商品专辑
 ${locatorB_product_reviews}    dom:document.querySelectorAll('href="/reviews"')[0]    # 导航栏-商品评论
-${locatorB_marketing}    id:test_marketing    # 导航栏-营销
+${locatorB_marketing}    dom:document.querySelectorAll('span[data-robot="marketing"]')[0]    # 导航栏-营销
 ${locatorB_marketing_subtraction}    dom:document.querySelectorAll('a[href="/subtraction"]')[0]    # 导航栏-营销-满减活动
 ${locatorB_marketing_coupon_code}    dom:document.querySelectorAll('a[href="/coupon_code"]')[0]    # 导航栏-营销-优惠券
-${locatorB_store}    id:test_store    #.导航栏-店铺
-${locatorB_setting}    id:test_setting    # 导航栏-设置
+${locatorB_store}    dom:document.querySelectorAll('span[data-robot="decoration"]')[0]    #.导航栏-店铺
+${locatorB_setting}    dom:document.querySelectorAll('span[data-robot="setting"]')[0]    # 导航栏-设置
 ${locatorB_setting_shipping}    dom:document.querySelectorAll('a[href="/shipping"]')[0]    # 导航栏-设置-物流
 ${locatorB_setting_taxPrice}    dom:document.querySelectorAll('a[href="/taxPrice"]')[0]    # 导航栏-设置-税费
 ${locatorB_setting_payment}    dom:document.querySelectorAll('a[href="/pay"]')[0]    # 导航栏-设置-收款渠道
@@ -45,7 +45,7 @@ ${locatorB_antTags}    dom:document.querySelectorAll('div[class="ant-tag ant-tag
 ${locatorB_tagboxs}    dom:document.querySelectorAll('div[class="ant-select-selection__choice__content"]')    #获取所有tagbox。（参考product编辑的标签输入框中一个个小模块）
 ### 页面模块 url
 ${url_home_page}    ${home_page}/    # home page
-${url_order}      ${home_page}/order    # order page
+3${url_order}      ${home_page}/order    # order page
 ${url_products}    ${home_page}/products    # products page
 ${url_marketing}    ${home_page}/subtraction    # marketing page
 ${url_tax_price}    ${home_page}/taxPrice    # tax price
