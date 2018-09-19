@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     定义跟浏览器操作相关的关键字，如 打开浏览器、关闭浏览器
 Resource          kw_common.robot
+Resource          kw_ajax.robot
 
 *** Variables ***
 ${is_headless}    False    # 定义是否采用 headless    (Case Sensitive for True/False)
@@ -25,6 +26,7 @@ Close Test Suite Browser
 
 Setup Test Case
     [Documentation]    测试用例初始化
+    Start Ajax Listener
     #    log    *******************************************************************************************************
     #    log    ******************************************* Test Case Start *******************************************
     #    log    *******************************************************************************************************
@@ -33,6 +35,7 @@ Teardown Test Case
     [Documentation]
     #    测试用例执行失败进行截图
     Run Keyword If Test Failed    Capture Page Screenshot
+    Run Keyword If Test Failed    Log Error Response Of Ajax Listener
     Open New And Close Other Windows    ${home_page}
     #    log    *******************************************************************************************************
     #    log    ******************************************** Test Case End ********************************************
@@ -64,3 +67,15 @@ Open Headless Chrome
 Start Ajax Listener
     [Documentation]    执行 ajaxListener.js 开始监听页面 ajax 请求
     Execute JavaScript    ${CURDIR}/../../lib/ajaxListener.js
+
+Log Error Response Of Ajax Listener
+	[Documentation]    将监听的Error Response内容写入报告
+	# 避免未初始化导致的异常
+    Start Ajax Listener
+    Get All Error Responses With Wait
+
+Log Correct Response Of Ajax Listener
+	[Documentation]    将监听的Correct Response内容写入报告
+	# 避免未初始化导致的异常
+    Start Ajax Listener
+    Get All Correct Responses With Wait
