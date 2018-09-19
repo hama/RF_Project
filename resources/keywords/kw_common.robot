@@ -138,8 +138,10 @@ Go To Shipping Page
     # 若设置按钮没展开，则展开设置按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting}
+    Run Keyword If    '${attr}'=='false'    Sleep    2
     Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting_shipping}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_shipping}
+    Wait Until Page Contains    物流方案
     Location Should Be    ${url_shipping}
 
 Wait And Input Text

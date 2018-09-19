@@ -1,5 +1,5 @@
 *** Settings ***
-Suite Setup       Login With Default User
+Suite Setup       Common Suites Step
 Suite Teardown    Close Test Suite Browser
 Test Teardown     Teardown Test Case
 Force Tags        Shipping
@@ -8,16 +8,10 @@ Resource          ../../../resources/variable/var_shipping.robot
 Resource          ../../../resources/keywords/kw_browser.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_shipping.robot
+Library           ${CURDIR}/../../../lib/customlib/kwshipping.py
 
 
 *** Test Cases ***
-test
-    Go To Shipping Page
-    Quantity All Setp
-    Wait And Input Text    ${locatorB_shipping_weight_first_input}    价格运费
-    Wait And Click Element    ${locatorB_shipping_country_close_btn}
-    Wait Until Page Does Not Contain Element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
-
 #-------------------------------------------------------------------------------------------------------#
 #----------------------------------------------threshold_case-------------------------------------------#
 #-------------------------------------------------------------------------------------------------------#
@@ -35,7 +29,7 @@ shipping005
 shipping006
     [Documentation]    测试方案名称输入框
     [Tags]    P1    threshold
-     Go To Shipping Page
+    Go To Shipping Page
     Quit Add Country
     Wait And Click Element    ${locatorB_shipping_country_element}
     Wait And Click Element    ${locatorB_shipping_country_save_btn}
@@ -216,12 +210,101 @@ shipping055
 
 shipping058
     [Documentation]    添加运费窗口输入内容后直接关闭 列表不存在数据
-    [Tags]    P0    threshold
+    [Tags]    P1    threshold
     Go To Shipping Page
     Quantity All Setp
     Wait And Input Text    ${locatorB_shipping_weight_first_input}    价格运费
     Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Wait Until Page Does Not Contain Element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
+
+shipping060
+    [Documentation]    测试价格运费添加界面关闭按钮 > 输入内容后点击取消 > 直接关闭窗口，没有添加价格运费，再次打开窗口时，所输入的内容全部清空
+    [Tags]    P1    threshold
+    Go To Shipping Page
+    Quit Add Price Shipping
+    ${min}    set variable    200
+    ${max}    set variable    100
+    ${description}    set variable    sssssssssssssssssssssssssssssssssssssssssssssss
+    Common Input Step    价格运费    ${description}    ${max}    ${min}
+    Wait And Click Element    ${locatorB_shipping_freight_cancel_btn}
+    Wait And Click Element    ${locatorB_shipping_add_price_btn}
+    ${res}    Execute JavaScript    return document.querySelectorAll("#name")[1].value==''
+    Should Be True    '${res}'=='True'
+
+shipping061
+    [Documentation]    点击添加重量运费按钮出现编辑窗口
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_weight_btn}
+    Wait Until Page Contains Element    ${locatorB_shipping_freight_save}
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
+    Quit All Setp
+
+shipping082
+    [Documentation]    添加运费重量 克。千克，磅
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_weight_btn}
+    Wait And Click Element    dom:document.querySelectorAll(".ant-select-arrow")[0]
+    Mouse Down    dom:document.querySelectorAll("div[role='combobox']")[0]
+    Mouse Over    dom:document.querySelectorAll("div[role='combobox']")[0]
+    Mouse Up    dom:document.querySelectorAll("div[role='combobox']")[0]
+    Wait And Click Element    ${locatorB_shipping_country_close_btn}
+    Quit All Setp
+
+shipping131
+    [Documentation]    测试添加物流界面保存按钮 > "1.不输入物流名称,2.其他信息正常填写,3.点击保存" > 保存失败，提示：请输入物流名称
+    [Tags]    P0
+    Go To Shipping Page
+    Quit Add Country
+    Wait And Click Element    ${locatorB_shipping_country_element}
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
+    Wait And Click Element    ${locatorB_shipping_save_btn}
+    Wait Until Page Contains    请输入物流方案名称。
+
+shipping134
+    [Documentation]    只添加价格运费，重量和数量运费不添加
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
+    ${name}    Set Variable    自动化
+    input text    id:name    ${name}
+    Wait And Click Element    ${locatorB_shipping_add_country}
+    Wait And Click Element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
+    Wait And Click Element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
+    Wait And Click Element    id:test_shipping_add_weight_btn
+    ${input}    set variable    重量运费
+    ${desc}    set variable    重量运费说明
+    ${range_min}    set variable    10
+    ${range_max}    set variable    100
+    ${rate_amount}    set variable    9
+    Common Input Step    ${input}    ${desc}    ${range_max}    ${range_min}
+    Wait And Input Text    ${locatorB_shipping_price}    ${rate_amount}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+    Wait And Click Element    ${locatorB_shipping_add_quantity_btn}
+    ${input_a}    set variable    数量运费
+    ${desc_a}    set variable    熟练给运费说明
+    Common Input Step    ${input_a}    ${desc_a}    ${range_max}    ${range_min}
+    Wait And Input Text    ${locatorB_shipping_price}    ${rate_amount}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+    Wait And Click Element    ${shipping_first_button}
+    Wait Until Page Contains Element    dom:document.querySelectorAll("#test_shipping_list_0 li")[0]
+    delShipping_py
+
+shipping138
+    [Documentation]    测试添加物流界面国家列表界面的修改和删除按钮 > "1.添加国家2.点击修改按钮3.取消勾选城市列表中的城市4.点击确认" >保存成功，关闭弹窗，添加的物流对取消勾选的城市不生效
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Quit Add Country
+    Wait And Click Element    ${locatorB_shipping_country_element}
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
+    Quit Add Country
+    Wait And Click Element    ${locatorB_shipping_country_element}
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
+
 
 #-------------------------------------------------------------------------------------------------------#
 #---------------------------------------------Ordinary Case---------------------------------------------#
@@ -316,3 +399,8 @@ Common Input Step
     Wait And Input Text    ${locatorB_shipping_description}    ${description}
     Wait And Input Text    ${locatorB_shipping_range_max}    ${max}
     Wait And Input Text    ${locatorB_shipping_range_min}    ${min}
+
+Common Suites Step
+    [Documentation]    公共suite步骤
+    Login With Default User
+    delShipping_py

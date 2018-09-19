@@ -33,16 +33,6 @@ shipping042
     Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Setp
 
-shipping061
-    [Documentation]    点击添加重量运费按钮出现编辑窗口
-    [Tags]    P1
-    Go To Shipping Page
-    Wait And Click Element    ${locatorB_shipping_add_shipping}
-    Wait And Click Element    ${locatorB_shipping_add_weight_btn}
-    page should contain element    ${locatorB_shipping_freight_save}
-    Wait And Click Element    ${locatorB_shipping_country_close_btn}
-    Quit All Setp
-
 shipping064
     [Documentation]    添加运费 在名称输入 重量运费 后 对应框里显示 重量运费
     [Tags]    P1
@@ -265,22 +255,6 @@ shipping081
     Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
     ${res}    execute javascript    return document.querySelectorAll(".ant-select-selection-selected-value")[0].innerHTML
     Should Be True    '${res}'=='克'
-    Wait And Click Element    ${locatorB_shipping_country_close_btn}
-    Quit All Setp
-
-shipping082
-    [Documentation]    添加运费重量 克。千克，磅
-    [Tags]    P1
-    Go To Shipping Page
-    Wait And Click Element    ${locatorB_shipping_add_shipping}
-    Wait And Click Element    ${locatorB_shipping_add_weight_btn}
-    #Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
-    #execute javascript    return document.querySelectorAll(".ant-select-arrow")[0].click()
-    click element    dom:document.querySelectorAll(".ant-select-arrow")[0]
-    #${res}    execute javascript    return document.querySelectorAll(“.ant-select-selection-selected-value”)[0].innerHTML
-    Mouse Down    dom:document.querySelectorAll("div[role='combobox']")[0]
-    Mouse Over    dom:document.querySelectorAll("div[role='combobox']")[0]
-    Mouse Up    dom:document.querySelectorAll("div[role='combobox']")[0]
     Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Setp
 
