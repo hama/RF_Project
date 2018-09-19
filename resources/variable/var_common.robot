@@ -45,7 +45,7 @@ ${locatorB_antTags}    dom:document.querySelectorAll('div[class="ant-tag ant-tag
 ${locatorB_tagboxs}    dom:document.querySelectorAll('div[class="ant-select-selection__choice__content"]')    #获取所有tagbox。（参考product编辑的标签输入框中一个个小模块）
 ### 页面模块 url
 ${url_home_page}    ${home_page}/    # home page
-3${url_order}      ${home_page}/order    # order page
+${url_order}      ${home_page}/order    # order page
 ${url_products}    ${home_page}/products    # products page
 ${url_marketing}    ${home_page}/subtraction    # marketing page
 ${url_tax_price}    ${home_page}/taxPrice    # tax price
