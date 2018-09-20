@@ -9,6 +9,9 @@ ${locatorB_shipping_del_shipping}    id:test_shipping_delete_btn    # 删除物�
 ${locatorB_shipping_add_price_btn}    dom:document.querySelectorAll('button[data-robot="shipping_add_price"]')[0]    #.添加价格运费按钮
 ${locatorB_shipping_add_quantity_btn}    dom:document.querySelectorAll('button[data-robot="shipping_add_quantity"]')[0]    #.添加数量运费按钮
 ${locatorB_shipping_add_weight_btn}    dom:document.querySelectorAll('button[data-robot="shipping_add_weight"]')[0]    #. 添加重量运费按钮
+${locatorB_shipping_del_country_btn}    dom:document.querySelectorAll(".icon_delete___ITXOZ")[0]    #. 删除国家按钮
+${locatorB_shipping_edit_priceFgt_btn}    dom:document.querySelectorAll("#test_shipping_price_edit_icon")[0]    #. 价格运费编辑按钮
+${locatorB_shipping_del_priceFgt_btn}    dom:document.querySelectorAll("#test_shipping_price_delete_icon")[0]    #. 加个运费删除按钮
 
 
 # page content
