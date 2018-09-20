@@ -80,8 +80,8 @@ Go To Product Review Page
     [Documentation]    跳转到商品页面
     Wait Until Element Is Visible    ${locatorB_products}
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_productMenus_expanded}    5
-    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_products}
-    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_product_reviews}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_products}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_product_reviews}
     ...    ELSE    Wait And Click Element    ${locatorB_product_reviews}
     Sleep    2
     Wait Until Page Contains    商品专辑
@@ -93,7 +93,7 @@ Go To Subtraction Page
     Wait Until Element Is Visible    ${locatorB_marketing}
     # 若营销按钮没展开，则展开营销按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_marketingMenus_expanded}    5
-    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_marketing}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_marketing}
     ...    ELSE    Wait And Click Element    ${locatorB_marketing_subtraction}
     Wait Until Page Contains    ${locatorB_subtraction_header_text}
     Location Should Be    ${url_subtraction}
@@ -103,8 +103,8 @@ Go To Coupon Page
     Wait Until Element Is Visible    ${locatorB_marketing}
     # 若营销按钮没展开，则展开营销按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_marketingMenus_expanded}    5
-    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_marketing}
-    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_marketing_coupon_code}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_marketing}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_marketing_coupon_code}
     ...    ELSE    Wait And Click Element    ${locatorB_marketing_coupon_code}
     Wait Until Page Contains    ${locatorB_couponLst_couponText}
     Location Should Be    ${url_coupon_code}
@@ -114,8 +114,8 @@ Go To Store Page
     Wait Until Element Is Visible    ${locatorB_setting}
     # 若营销按钮没展开，则展开营销按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
-    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting_store}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_store}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_store}
     Wait Until Page Contains    ${contextB_store_storeInfo}
     Location Should Be    ${url_coupon_store}
@@ -125,8 +125,8 @@ Go To Tax Page
     Wait Until Element Is Visible    ${locatorB_setting}
     # 若设置按钮没展开，则展开设置按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
-    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting_taxPrice}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_taxPrice}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_taxPrice}
     Wait Until Page Contains    收税方式
     Location Should Be    ${url_tax_price}
@@ -137,9 +137,9 @@ Go To Shipping Page
     Wait Until Element Is Visible    ${locatorB_setting}
     # 若设置按钮没展开，则展开设置按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
-    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='false'    Sleep    2
-    Run Keyword If    '${attr}'=='false'    Wait And Click Element    ${locatorB_setting_shipping}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
+    Run Keyword If    '${attr}'=='False'    Sleep    2
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_shipping}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_shipping}
     Wait Until Page Contains    物流方案
     Location Should Be    ${url_shipping}
