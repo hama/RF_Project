@@ -6,7 +6,8 @@ Variables         ${CURDIR}/../../lib/customlib/variable.py
 ${home_page}      ${home_page_url}
 ${error_msg}      出错啦！    #.自定义错误提示
 
-
+${locatorB_global_alert_confirm}    dom:document.querySelectorAll('button[data-robot="pop_confirm"]')[0]    #.全局弹窗 确定 按钮
+${locatorB_global_alert_cancel}    dom:document.querySelectorAll('button[data-robot="pop_cancal"]')[0]    #.全局弹窗 取消 按钮
 ### 菜单栏 locator
 ${locatorB_overview}    dom:document.querySelectorAll('span[data-robot="overview"]')[0]    # 导航栏-概览（即主页）
 ${locatorB_order}    dom:document.querySelectorAll('span[data-robot="order"]')[0]    # 导航栏-订单
