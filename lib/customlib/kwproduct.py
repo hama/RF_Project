@@ -222,9 +222,9 @@ if __name__ == '__main__':
     # del_all_product_py()
     # add_discontinued_product_py()
     # add_launched_product_py()
-    # conf = {'saleprice': 111}
-    # add_product_with_conf_py(conf)
-    # add_launched_product_py()
-    # add_launched_product_py()
-    # add_launched_product_py()
-    del_latest_product_py(2)
+    conf = {'saleprice': 111}
+    add_product_with_conf_py(conf)
+    add_launched_product_py()
+    add_launched_product_py()
+    add_launched_product_py()
+    # del_latest_product_py(2)
