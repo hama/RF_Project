@@ -24,7 +24,6 @@ shipping005
     Wait And Input Text    ${locatorB_shipping_first_input}    自动化测试
     Wait And Click Element    ${locatorB_shipping_country_save_btn}
     Page Should Contain Element    ${locatorB_shipping_country_data}
-    Quit All Shipping
 
 shipping006
     [Documentation]    测试方案名称输入框
@@ -34,7 +33,6 @@ shipping006
     Wait And Click Element    ${locatorB_shipping_country_element}
     Wait And Click Element    ${locatorB_shipping_country_save_btn}
     Page Should Contain Element    ${locatorB_shipping_country_data}
-    Quit All Shipping
 
 shipping009
     [Documentation]    测试方案名称输入框 > "1.输入框不输入内容,2.点击保存" > 提示请输入物流方案
@@ -48,7 +46,6 @@ shipping009
     Wait And Click Element    ${locatorB_shipping_country_save_btn}
     Wait And Click Element    dom:document.querySelectorAll('button')[1]
     Wait Until Page Contains Element    ${locatorB_shipping_freight_error_elm}
-    Quit All Shipping
 
 shipping012
     [Documentation]    添加国家
@@ -58,7 +55,6 @@ shipping012
     Wait And Click Element    ${locatorB_shipping_country_element}
     Wait And Click Element    ${locatorB_shipping_country_save_btn}
     Page Should Contain Element    ${locatorB_shipping_country_data}
-    Quit All Shipping
 
 shipping016
     [Documentation]    搜索国家输入框输入内容 > 输入：中国 > 显示国家：中国
@@ -90,6 +86,7 @@ shipping024
     Wait And Click Element    dom:document.querySelectorAll(".ant-checkbox")[0]
     Wait And Click Element    ${locatorB_shipping_country_save_btn}
     Wait Until Page Contains Element    ${locatorB_shipping_country_get_other}
+    Sleep    2
     ${res}    Get Text    ${locatorB_shipping_country_get_other}
     Should Be True    '${res}'=='其他国家'
 

@@ -144,6 +144,14 @@ Go To Shipping Page
     Wait Until Page Contains    物流方案
     Location Should Be    ${url_shipping}
 
+Go To Application Page
+    [Documentation]    跳转到应用市场-网站seo
+    Wait And Click Element    ${locatorB_Application}
+    Wait Until Page Contains    图片SEO
+    Wait And Click Element    ${locatorB_Application_seoimg}
+    Location Should Be    ${url_seoimage}
+    
+
 Wait And Input Text
     [Arguments]    ${element_locator}    ${text}    ${timeout}=3    ${retry_time}=1
     [Documentation]    封装的输入方法，等待元素可被输入时，再输入
