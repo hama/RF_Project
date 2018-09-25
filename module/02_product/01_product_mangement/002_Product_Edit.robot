@@ -19,7 +19,7 @@ products023
     Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     # 编辑商品
     ${new_title}=    Evaluate    random.randint(0, 100)    modules=random
-    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${new_title}
+    Wait And Input Text    ${locatorB_productsNew_input_title}    ${new_title}
     # 验证编辑页面排版
     Wait And Click Element    ${locatorB_products_button_confirm}
     Wait Until Page Contains    ${contentB_products_tips_save_ok}
@@ -36,7 +36,7 @@ products025
     Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     # 编辑商品
     ${new_price}=    Evaluate    random.randint(0, 100)    modules=random
-    Wait And Input Text    ${locatorB_productsNew_input_addPrice}    ${new_price}
+    Wait And Input Text    ${locatorB_productsNew_input_salePrice}    ${new_price}
     # 验证编辑页面排版
     Wait And Click Element    ${locatorB_products_button_confirm}
     Wait Until Page Contains    ${contentB_products_tips_save_ok}
@@ -46,7 +46,7 @@ products025
     Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     Sleep    3
-    ${price}=    Get Value    ${locatorB_productsNew_input_addPrice}
+    ${price}=    Get Value    ${locatorB_productsNew_input_salePrice}
     Should Be Equal As Strings    ${new_price}    ${price}
 
 products026
@@ -56,7 +56,7 @@ products026
     Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     # 编辑商品
     ${new_sku}=    Evaluate    random.randint(0, 100)    modules=random
-    Wait And Input Text    ${locatorB_productsNew_input_addSku}    ${new_sku}
+    Wait And Input Text    ${locatorB_productsNew_input_sku}    ${new_sku}
     # 验证编辑页面排版
     Wait And Click Element    ${locatorB_products_button_confirm}
     Wait Until Page Contains    ${contentB_products_tips_save_ok}
@@ -72,10 +72,10 @@ products029
     Sleep    2
     Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     # 记录商品原始名称
-    ${old_sku}    Get Text    ${locatorB_productsNew_input_addSku}
+    ${old_sku}    Get Text    ${locatorB_productsNew_input_sku}
     # 编辑商品
     ${new_sku}=    Evaluate    random.randint(0, 100)    modules=random
-    Wait And Input Text    ${locatorB_productsNew_input_addSku}    ${new_sku}
+    Wait And Input Text    ${locatorB_productsNew_input_sku}    ${new_sku}
     # 验证编辑页面排版
     Wait And Click Element    ${locatorB_productsNew_button_back}
     Sleep    5
@@ -90,10 +90,10 @@ products031
     Sleep    2
     Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     # 记录商品原始名称
-    ${old_sku}    Get Text    ${locatorB_productsNew_input_addSku}
+    ${old_sku}    Get Text    ${locatorB_productsNew_input_sku}
     # 编辑商品
     ${new_sku}    Evaluate    random.randint(0, 100)    modules=random
-    Wait And Input Text    ${locatorB_productsNew_input_addSku}    ${new_sku}
+    Wait And Input Text    ${locatorB_productsNew_input_sku}    ${new_sku}
     # 验证编辑页面排版
     Wait And Click Element    ${locatorB_productsNew_button_back}
     Sleep    5

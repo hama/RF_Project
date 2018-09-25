@@ -61,21 +61,25 @@ ${locatorB_productType_button_saveBtn}    id:test_save_btn    # 商品分类-保
 #${locatorB_productsMgmt_switch_listDiscontinued}    dom:document.querySelectorAll('div[class="ant-select-selection__rendered"]')[0]    #所有下架条目的switch按钮
 ${locatorB_productsNew_button_back}    class:back    # 进入编辑页面的后退按钮
 ${locatorB_productsNew_button_uploadBtn}    id:test_upload_btn    # 上传商品图片按钮
-${locatorB_productsNew_tabindex_status}    id:status    # 商品状态按钮
+${locatorB_productsNew_switch_status}    dom:document.querySelectorAll('span[data-robot="products_status"]')[0]    # 商品状态按钮
 ${locatorB_productsNew_input_tags}    id:tags    # 添加标签按钮
-${locatorB_productsNew_input_chooseFile}    dom:document.querySelectorAll("input[type='file']")[0]    # 选择文件上传
-${locatorB_productsNew_input_addTitle}    id:__title    # 添加商品页面-标题按钮
-${locatorB_productsNew_input_addSubTitle}    id:__brief    # 添加商品页面-副标题按钮
-${locatorB_productsNew_input_addDesc}    dom:document.querySelectorAll(".fr-view")[0].querySelectorAll("p")[0]    # 添加商品页面-副标题按钮
-${locatorB_productsNew_input_addPrice}    id:price    # 添加商品页面-价格输入框
-${locatorB_productsNew_input_addRawPrice}    id:compare_at_price    # 添加商品页面-原价格输入框
-${locatorB_productsNew_input_addWeight}    id:weight    # 添加商品页面-重量输入
-${locatorB_productsNew_input_addSku}    id:sku    # 添加商品页面-Sku
-${locatorB_productsNew_input_addBarcode}    id:barcode    # 添加商品页面-条形码
-${locatorB_productsNew_input_addSupplier}    dom:document.querySelectorAll(".ant-input")[1]    # 添加供应商
+${locatorB_productsNew_input_addImage}    dom:document.querySelectorAll("input[type='file']")[0]    # 选择文件上传
+${locatorB_productsNew_img_firstImage}    dom:document.querySelectorAll('img[class="center___1nHSZ"]')[0]    # 选择第一张图片
+${locatorB_productsNew_input_title}    id:__title    # 添加商品页面-标题按钮
+${locatorB_productsNew_input_subTitle}    id:__brief    # 添加商品页面-副标题按钮
+${locatorB_productsNew_input_desc}    dom:document.querySelectorAll('div[class="fr-element fr-view"] p')[0]    # 添加商品页面-副标题按钮
+${locatorB_productsNew_input_salePrice}    id:price    # 添加商品页面-价格输入框
+${locatorB_productsNew_input_rawPrice}    id:compare_at_price    # 添加商品页面-原价格输入框
+${locatorB_productsNew_input_weight}    id:weight    # 添加商品页面-重量输入
+${locatorB_productsNew_input_sku}    id:sku    # 添加商品页面-Sku
+${locatorB_productsNew_input_barcode}    id:barcode    # 添加商品页面-条形码
+${locatorB_productsNew_input_supplier}    dom:document.querySelectorAll(".ant-input")[1]    # 添加供应商
 ${locatorB_productsNew_input_productType}    id:product_type_cascade    #商品专辑页的新增专辑按钮
 ${locatorB_productsNew_cascader_chooseCategoryItem}    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]    # 选择商品分类子项
 ${locatorB_productsNew_button_save}    dom:document.querySelectorAll('button[data-robot="btn_save"]')[0]    #保存按钮
+${locatorB_productsNew_button_setting}    dom:document.querySelectorAll('button[data-robot="products_setting"]')[0]    #设置按钮
+${locatorB_productsNew_dropdown_addItems}    dom:document.querySelectorAll('button[class="ant-btn ant-dropdown-trigger"]')[0]    #设置按钮
+${locatorB_productsNew_dropdown_customize}    dom:document.querySelectorAll('li[class="ant-dropdown-menu-item"]')[0]    #设置按钮
 
 # locator_productsMobile
 ${locatorC_products_logo}    dom:document.querySelectorAll('div[alt="Logo"]')[0]    #C端，产品logo

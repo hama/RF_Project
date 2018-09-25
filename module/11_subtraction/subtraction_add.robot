@@ -171,7 +171,7 @@ subtraction059
     Execute JavaScript    return document.querySelectorAll(".ant-checkbox-inner")[1].click()
     Execute JavaScript    ${locatorB_subtraction_edit_add_level}
     Wait Until Page Contains    新增优惠层级，上不封顶功能将会失效。请确认是否新增
-    Execute JavaScript    return location.reload()
+    Reload Page And Start Ajax
     Alert Should Be Present
     Go To Subtraction Page
 

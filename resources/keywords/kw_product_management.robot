@@ -14,7 +14,7 @@ Product Management Suite Setup Add Two Products
     Login With Default User
     del_all_product_py
     add_launched_product_py
-    Sleep    60   # 为构造两个产品创建时间不同
+    Sleep    1   # 为构造两个产品创建时间不同
     add_discontinued_product_py
     Go To Product Management Page
     Show All Header
@@ -53,7 +53,7 @@ Select Discontinued Product Tag
 
 Show All Header
     Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
-    @{list}    Wait And Get List Items    ${locatorB_popUps_allUncheckedCheckbox}
+    @{list}    Wait And Get Items List From Locator    ${locatorB_popUps_allUncheckedCheckbox}
     :FOR    ${i}    IN    @{list}
     \    Wait And Click Element    ${i}    5    0
 #    \    Sleep    2
@@ -62,7 +62,7 @@ Show All Header
 
 Hide All Header
     Wait And Click Element    ${locatorB_productsMgmt_button_editTableHead}
-    @{list}    Wait And Get List Items    ${locatorB_popUps_allCheckedCheckbox}
+    @{list}    Wait And Get Items List From Locator    ${locatorB_popUps_allCheckedCheckbox}
     :FOR    ${i}    IN    @{list}
     \    Wait And Click Element    ${i}    5    0
 #    \    Sleep    2
@@ -74,6 +74,27 @@ Select Products And Click Batch Menu
     Wait Enabled And Click Element    ${locatorB_productsMgmt_checkbox_chooseProducets}
     Wait And Click Element    ${locatorB_productsMgmt_select_batchOperations}
 
+Fill In Required Items When Create Product
+	Wait And Input Text    ${locatorB_productsNew_input_title}    newproduct
+    Wait And Input Text    ${locatorB_productsNew_input_salePrice}    99
+    Wait And Input Text    ${locatorB_productsNew_input_weight}    66
+    Wait And Make Switch On    ${locatorB_productsNew_switch_status}
+    Wait Enabled And Choose File    ${locatorB_productsNew_input_addImage}    ${img_file}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -83,14 +104,14 @@ Add Product
     Go To Product Management Page
     Add Product Required Content
     # add other content
-    Wait And Input Text    ${locatorB_productsNew_input_addSubTitle}    ${contentB_products_addSubTitle}    # 添加副标题
-    Wait And Input Text    ${locatorB_productsNew_input_addRawPrice}    ${contentB_products_addRawPrice}    # 添加原价
-    Wait And Input Text    ${locatorB_productsNew_input_addWeight}    ${contentB_products_addWeight}    # 添加重量
+    Wait And Input Text    ${locatorB_productsNew_input_subTitle}    ${contentB_products_addSubTitle}    # 添加副标题
+    Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    ${contentB_products_addRawPrice}    # 添加原价
+    Wait And Input Text    ${locatorB_productsNew_input_weight}    ${contentB_products_addWeight}    # 添加重量
     # add image
     Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
     Wait Until Element Is Visible    ${locatorB_productsNew_button_uploadBtn}
     log    ${CURDIR}
-    Choose File    ${locatorB_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
+    Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
     Click And Page Contains Element With Refresh    ${locatorB_popUps_button_middle}    ${locatorB_popUps_button_middle}
 
@@ -99,14 +120,14 @@ Add Product_Up
     Add Product Required Content
     #选择商品上架
     Wait And Click Element    id:status
-    Wait And Input Text    ${locatorB_productsNew_input_addSubTitle}    ${contentB_products_addSubTitle}    # 添加副标题
-    Wait And Input Text    ${locatorB_productsNew_input_addRawPrice}    ${contentB_products_addRawPrice}    # 添加原价
-    Wait And Input Text    ${locatorB_productsNew_input_addWeight}    ${contentB_products_addWeight}    # 添加重量
+    Wait And Input Text    ${locatorB_productsNew_input_subTitle}    ${contentB_products_addSubTitle}    # 添加副标题
+    Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    ${contentB_products_addRawPrice}    # 添加原价
+    Wait And Input Text    ${locatorB_productsNew_input_weight}    ${contentB_products_addWeight}    # 添加重量
     # add image
     Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
     Wait Until Element Is Visible    ${locatorB_productsNew_button_uploadBtn}
     log    ${CURDIR}
-    Choose File    ${locatorB_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
+    Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
     Wait And Click Element    ${locatorB_products_button_confirm}
 
@@ -114,8 +135,8 @@ Add Product Required Content
     Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}    # 点击添加商品按钮
     Wait Until Page Contains    ${contentB_products_new}
-    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${contentB_products_addTitle}    # 添加标题
-    Wait And Input Text    ${locatorB_productsNew_input_addPrice}    ${contentB_products_addPrice}    # 添加价格
+    Wait And Input Text    ${locatorB_productsNew_input_title}    ${contentB_products_addTitle}    # 添加标题
+    Wait And Input Text    ${locatorB_productsNew_input_salePrice}    ${contentB_products_addPrice}    # 添加价格
 
 Delete Product
     [Documentation]    删除商品列表的第一个商品
@@ -195,8 +216,8 @@ Add_Collection
     Wait And Input Text    id:description    ceshi collection
     #上传一张专辑封面
     Execute JavaScript    return document.querySelectorAll(".wrapper___TgZZ3")[0].scrollIntoView()
-    Wait Until Page Contains Locator    ${locatorB_productsNew_input_chooseFile}
-    Choose File    ${locatorB_productsNew_input_chooseFile}    ${file_products_addImg}
+    Wait Until Page Contains Locator    ${locatorB_productsNew_input_addImage}
+    Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}
     Sleep    5
     #点击保存按钮
     Wait And Click Element    ${locatorB_products_button_confirm}
@@ -261,15 +282,15 @@ Add Order Products
     Go To Product Management Page
     Add Product Required Content
     # add other content
-    Wait And Input Text    ${locatorB_productsNew_input_addSubTitle}    ${contentB_products_addSubTitle}    # 添加副标题
-    Wait And Input Text    ${locatorB_productsNew_input_addRawPrice}    ${contentB_products_addRawPrice}    # 添加原价
-    Wait And Input Text    ${locatorB_productsNew_input_addWeight}    ${contentB_products_addWeight}    # 添加重量
+    Wait And Input Text    ${locatorB_productsNew_input_subTitle}    ${contentB_products_addSubTitle}    # 添加副标题
+    Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    ${contentB_products_addRawPrice}    # 添加原价
+    Wait And Input Text    ${locatorB_productsNew_input_weight}    ${contentB_products_addWeight}    # 添加重量
     Wait And Click Element    id:status
     # add image
     Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
     Wait Until Element Is Visible    ${locatorB_productsNew_button_uploadBtn}
     log    ${CURDIR}
-    Choose File    ${locatorB_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
+    Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
     Click And Page Contains Element With Refresh    ${locatorB_popUps_button_middle}    ${locatorB_popUps_button_middle}
 
@@ -284,18 +305,18 @@ Add Custom Products
     Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}    # 点击添加商品按钮
     Wait Until Page Contains    ${contentB_products_new}
-    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${contentB_products_addTitle}    # 添加标题
-    Wait And Input Text    ${locatorB_productsNew_input_addPrice}    ${price}    # 添加价格
+    Wait And Input Text    ${locatorB_productsNew_input_title}    ${contentB_products_addTitle}    # 添加标题
+    Wait And Input Text    ${locatorB_productsNew_input_salePrice}    ${price}    # 添加价格
     # add other content
-    Wait And Input Text    ${locatorB_productsNew_input_addSubTitle}    ${contentB_products_addSubTitle}    # 添加副标题
-    Wait And Input Text    ${locatorB_productsNew_input_addRawPrice}    ${price}    # 添加原价
-    Wait And Input Text    ${locatorB_productsNew_input_addWeight}    ${contentB_products_addWeight}    # 添加重量
+    Wait And Input Text    ${locatorB_productsNew_input_subTitle}    ${contentB_products_addSubTitle}    # 添加副标题
+    Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    ${price}    # 添加原价
+    Wait And Input Text    ${locatorB_productsNew_input_weight}    ${contentB_products_addWeight}    # 添加重量
     Wait And Click Element    id:status
     Wait And Click Element    dom:document.querySelectorAll('.ant-checkbox-wrapper span')[2]    #. 对此商品收税
     # add image
     Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
     Wait Until Element Is Visible    ${locatorB_productsNew_button_uploadBtn}
     log    ${CURDIR}
-    Choose File    ${locatorB_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
+    Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
     Click And Page Contains Element With Refresh    ${locatorB_popUps_button_middle}    ${locatorB_popUps_button_middle}

@@ -119,6 +119,10 @@ def add_product_with_conf_py(conf, cookie=init_cookie):
         data['variants'][0]['taxable'] = conf['settax']
     if 'weight' in key_list:
         data['variants'][0]['weight'] = conf['weight']
+    if 'sku' in key_list:
+        data['variants'][0]['sku'] = conf['sku']
+    if 'tags' in key_list:
+        data['tags'] = conf['tags']
     if 'images' in key_list and conf['images'] == 'yes':
         data['images'] = [image]
     elif 'images' in key_list and conf['images'] == 'no':
@@ -222,9 +226,6 @@ if __name__ == '__main__':
     # del_all_product_py()
     # add_discontinued_product_py()
     # add_launched_product_py()
-    conf = {'saleprice': 111}
+    conf = {'tags': ['color']}
     add_product_with_conf_py(conf)
-    add_launched_product_py()
-    add_launched_product_py()
-    add_launched_product_py()
     # del_latest_product_py(2)

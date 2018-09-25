@@ -350,7 +350,7 @@ To_Change_Image
     Wait And Click Element    dom:document.querySelectorAll(".delete")[0]
     #更新另外一张图片
     Sleep    2
-    Choose File    ${locatorB_productsNew_input_chooseFile}    /Users/dianjiang/shoplaza/shoplaza_robot/resources/images/mv.jpg
+    Choose File    ${locatorB_productsNew_input_addImage}    /Users/dianjiang/shoplaza/shoplaza_robot/resources/images/mv.jpg
     Sleep    2
 
 Delete_All_Sub_Product_With_Already_Product

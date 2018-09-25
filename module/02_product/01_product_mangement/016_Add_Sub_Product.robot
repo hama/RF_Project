@@ -21,7 +21,7 @@ products097
     #点击添加商品按钮
     Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
     #标题
-    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${title}
+    Wait And Input Text    ${locatorB_productsNew_input_title}    ${title}
     #添加选项
     Wait And Click Element    id:test_variant_setting_btn
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-dropdown-trigger")[0]
@@ -45,7 +45,7 @@ products098
     #点击添加商品按钮
     Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
     #标题
-    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${title}
+    Wait And Input Text    ${locatorB_productsNew_input_title}    ${title}
     #添加选项
     Wait And Click Element    id:test_variant_setting_btn
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-dropdown-trigger")[0]
@@ -75,11 +75,11 @@ products099
     #点击添加商品按钮
     Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
     #标题
-    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${title}
+    Wait And Input Text    ${locatorB_productsNew_input_title}    ${title}
     #售价
-    Wait And Input Text    ${locatorB_productsNew_input_addPrice}    100
+    Wait And Input Text    ${locatorB_productsNew_input_salePrice}    100
     #原价
-    Wait And Input Text    ${locatorB_productsNew_input_addRawPrice}    110
+    Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    110
     #编辑商品seo
     Sleep    2
     Execute Javascript    return document.getElementById("test_upload_btn").scrollIntoView()
@@ -109,11 +109,11 @@ products100
     #点击添加商品按钮
     Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
     #标题
-    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${title}
+    Wait And Input Text    ${locatorB_productsNew_input_title}    ${title}
     #售价
-    Wait And Input Text    ${locatorB_productsNew_input_addPrice}    100
+    Wait And Input Text    ${locatorB_productsNew_input_salePrice}    100
     #原价
-    Wait And Input Text    ${locatorB_productsNew_input_addRawPrice}    110
+    Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    110
     #编辑商品seo
     Execute Javascript    return document.getElementById("test_upload_btn").scrollIntoView()
     Sleep    2
