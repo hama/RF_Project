@@ -11,11 +11,6 @@ Resource          ../../resources/variable/var_seoimage.robot
 Library           ${CURDIR}/../../lib/customlib/kwstore.py
 
 *** Test Cases ***
-dddjdjjdjdjddjdj
-    ${name}    Set Variable    [商品标题]、[商品分类]、[供应商]、[店铺名]
-    Common Setting Name    ${name}
-
-
 seoImage006
     [Documentation]    验证alt文本设置为【商品标题】，可保存成功且生效 > 修改为[商品标题]，点击保存 > 提示网站所有图片已设置为[商品标题]，图片alt 显示为对应的商品标题
     [Tags]    P0    threshold
