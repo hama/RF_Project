@@ -48,7 +48,7 @@ def delShipping_py(cookie=init_cookie):
         sub = curs.fetchone()['id']
         del_url = home_page_url + "/api/shipping/refresh"
         del_data = {"shipping_id": sub, "is_enable": 0}
-        res = requests.post(url=del_url, headers={"cookie": cookie}, json=del_data)
+        res = requests.post(url=del_url, headers={"cookie": cookie['cookie']}, json=del_data)
         if json.loads(res.content)['state'] == 0:
             return True
         else:

@@ -40,7 +40,8 @@ store004
 store005
     [Documentation]    店铺名称不可为空 > 店铺名输入为空 > 提示‘请输入店铺名称’，保存失败 [现在逻辑：可以输入空格]
     [Tags]    P0
-    StoreName Common Step    ${Empty}
+    Repetir Common Step
+    Wait And Input Text    ${locatorB_storeLst_storename_ipt}    ${Empty}
     Wait And Click Element    ${locatorB_storeLst_moneda_elm}
     Wait Until Page Does Not Contain Element    ${locatorB_storeLst_error_msg}
 
@@ -313,6 +314,7 @@ Common Suite
 Repetir Common Step
     [Documentation]    重复步骤
     Go To Store Page
+    Sleep    2
     Wait Until Page Contains    ${contextB_store_storeInfo}
 
 StoreName Common Step

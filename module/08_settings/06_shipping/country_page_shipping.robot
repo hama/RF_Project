@@ -21,10 +21,9 @@ shipping005
     Go To Shipping Page
     Quit Add Country
     Wait And Click Element    ${locatorB_shipping_country_element}
-    Input Text    ${locatorB_shipping_first_input}    自动化测试
+    Wait And Input Text    ${locatorB_shipping_first_input}    自动化测试
     Wait And Click Element    ${locatorB_shipping_country_save_btn}
     Page Should Contain Element    ${locatorB_shipping_country_data}
-    Quit All Shipping
 
 shipping006
     [Documentation]    测试方案名称输入框
@@ -34,7 +33,6 @@ shipping006
     Wait And Click Element    ${locatorB_shipping_country_element}
     Wait And Click Element    ${locatorB_shipping_country_save_btn}
     Page Should Contain Element    ${locatorB_shipping_country_data}
-    Quit All Shipping
 
 shipping009
     [Documentation]    测试方案名称输入框 > "1.输入框不输入内容,2.点击保存" > 提示请输入物流方案
@@ -48,7 +46,6 @@ shipping009
     Wait And Click Element    ${locatorB_shipping_country_save_btn}
     Wait And Click Element    dom:document.querySelectorAll('button')[1]
     Wait Until Page Contains Element    ${locatorB_shipping_freight_error_elm}
-    Quit All Shipping
 
 shipping012
     [Documentation]    添加国家
@@ -58,7 +55,6 @@ shipping012
     Wait And Click Element    ${locatorB_shipping_country_element}
     Wait And Click Element    ${locatorB_shipping_country_save_btn}
     Page Should Contain Element    ${locatorB_shipping_country_data}
-    Quit All Shipping
 
 shipping016
     [Documentation]    搜索国家输入框输入内容 > 输入：中国 > 显示国家：中国
@@ -90,6 +86,7 @@ shipping024
     Wait And Click Element    dom:document.querySelectorAll(".ant-checkbox")[0]
     Wait And Click Element    ${locatorB_shipping_country_save_btn}
     Wait Until Page Contains Element    ${locatorB_shipping_country_get_other}
+    Sleep    2
     ${res}    Get Text    ${locatorB_shipping_country_get_other}
     Should Be True    '${res}'=='其他国家'
 
@@ -270,7 +267,7 @@ shipping134
     Go To Shipping Page
     Wait And Click Element    ${locatorB_shipping_add_shipping}
     ${name}    Set Variable    自动化
-    input text    id:name    ${name}
+    Wait And Input Text    id:name    ${name}
     Wait And Click Element    ${locatorB_shipping_add_country}
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
     Wait And Click Element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
@@ -305,6 +302,124 @@ shipping138
     Wait And Click Element    ${locatorB_shipping_country_element}
     Wait And Click Element    ${locatorB_shipping_country_save_btn}
 
+shipping139
+    [Documentation]    测试添加物流界面国家列表界面的修改和删除按钮 > "已添加国家列表中点击删除按钮" > 弹出确认删除弹窗
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Quit Add Country
+    Wait And Click Element    ${locatorB_shipping_country_element}
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
+    Wait And Click Element    ${locatorB_shipping_del_country_btn}
+    Wait Until Page Contains    确定删除吗？
+
+shipping142
+    [Documentation]    测试添加物流界面运费列表中修改和删除按钮 > 1.点击运费列表中的修改按钮 > 弹出运费修改界面，显示运费的所有信息
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_price_btn}
+    ${input}    set variable    重量运费
+    ${desc}    set variable    重量运费说明
+    ${range_min}    set variable    10
+    ${range_max}    set variable    100
+    ${rate_amount}    set variable    9
+    Common Input Step    ${input}    ${desc}    ${range_max}    ${range_min}
+    Wait And Input Text    ${locatorB_shipping_price}    ${rate_amount}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+    Wait And Click Element    ${locatorB_shipping_edit_priceFgt_btn}
+    Wait Until Page Contains    顾客在结账时，将会看到该物流名称
+
+shipping149
+    [Documentation]    测试添加物流界面运费列表中修改和删除按钮 > "1.点击运费列表中的删除按钮,2.确认弹窗弹出后点击确认" > 删除成功，运费列表中没有显示删除的运费
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
+    Wait And Click Element    ${locatorB_shipping_add_price_btn}
+    ${input}    set variable    重量运费
+    ${desc}    set variable    重量运费说明
+    ${range_min}    set variable    10
+    ${range_max}    set variable    100
+    ${rate_amount}    set variable    9
+    Common Input Step    ${input}    ${desc}    ${range_max}    ${range_min}
+    Wait And Input Text    ${locatorB_shipping_price}    ${rate_amount}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+    Wait And Click Element    ${locatorB_shipping_del_priceFgt_btn}
+    Wait And Click Element    ${locatorB_global_alert_confirm}
+    Wait Until Page Does Not Contain Element    ${locatorB_shipping_del_priceFgt_btn}
+
+shipping150
+    [Documentation]    测试物流类表中显示所有已添加的物流 > "1.添加一个物流,2.保存后返回到物流列表" > 物流列表中显示已添加的物流
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Wait And Click Element    ${locatorB_shipping_add_shipping}
+    ${name}    Set Variable    自动化
+    Wait And Input Text    id:name    ${name}
+    Wait And Click Element    ${locatorB_shipping_add_country}
+    Wait And Click Element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
+    Wait And Click Element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
+    Wait And Click Element    id:test_shipping_add_weight_btn
+    ${input}    set variable    重量运费
+    ${desc}    set variable    重量运费说明
+    ${range_min}    set variable    10
+    ${range_max}    set variable    100
+    ${rate_amount}    set variable    9
+    Common Input Step    ${input}    ${desc}    ${range_max}    ${range_min}
+    Wait And Input Text    ${locatorB_shipping_price}    ${rate_amount}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+    Wait And Click Element    ${locatorB_shipping_add_quantity_btn}
+    ${input_a}    set variable    数量运费
+    ${desc_a}    set variable    熟练给运费说明
+    Common Input Step    ${input_a}    ${desc_a}    ${range_max}    ${range_min}
+    Wait And Input Text    ${locatorB_shipping_price}    ${rate_amount}
+    Wait And Click Element    ${locatorB_shipping_freight_save}
+    Wait And Click Element    ${shipping_first_button}
+    Wait Until Page Contains Element    dom:document.querySelectorAll("#test_shipping_list_0 li")[0]
+    delShipping_py
+
+shipping153
+    [Documentation]    测试物流详情界面可修改内容 > "1.修改物流的所有信息 > 保存成功，关闭物流详情界面，返回到物流列表
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Quit Add Country
+    Wait And Input Text    ${locatorB_shipping_first_input}    自动化测试
+    Wait And Click Element    ${locatorB_shipping_country_element}
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
+    Wait And Click Element    ${locatorB_shipping_save_btn}
+    Wait And Click Element    dom:document.querySelectorAll('#test_shipping_list_0')[0]
+    Wait And Input Text    ${locatorB_shipping_first_input}    自动化测试123
+    Wait And Click Element    ${locatorB_shipping_save_btn}
+    delShipping_py
+
+shipping154
+    [Documentation]    测试物流详情界面可修改内容 > "1.修改物流信息,点击返回按钮" > 弹出未保存提示，取消留在物流详情界面，确认后返回物流列表界面修改的信息不保存
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Quit Add Country
+    Wait And Input Text    ${locatorB_shipping_first_input}    自动化测试
+    Wait And Click Element    ${locatorB_shipping_country_element}
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
+    Wait And Click Element    ${locatorB_shipping_save_btn}
+    Wait And Click Element    dom:document.querySelectorAll('#test_shipping_list_0')[0]
+    Wait And Input Text    ${locatorB_shipping_first_input}    自动化测试123
+    Wait And Click Element    ${locatorB_setting_shipping}
+    Alert Should Be Present
+    delShipping_py
+
+shipping155
+    [Documentation]    测试物流详情界面删除按钮 > 1.点击物流详情界面的删除按钮 > 删除成功
+    [Tags]    P0    threshold
+    Go To Shipping Page
+    Quit Add Country
+    Wait And Input Text    ${locatorB_shipping_first_input}    自动化测试
+    Wait And Click Element    ${locatorB_shipping_country_element}
+    Wait And Click Element    ${locatorB_shipping_country_save_btn}
+    Wait And Click Element    ${locatorB_shipping_save_btn}
+    Wait And Click Element    dom:document.querySelectorAll('#test_shipping_list_0')[0]
+    Wait Until Page Contains    顾客看不到物流方案名
+    Execute JavaScript    return document.querySelectorAll('#test_shipping_delete_btn')[0].scrollIntoView()
+    Wait And Click Element    dom:document.querySelectorAll('#test_shipping_delete_btn')[0]
+    Wait And Click Element    ${locatorB_global_alert_confirm}
 
 #-------------------------------------------------------------------------------------------------------#
 #---------------------------------------------Ordinary Case---------------------------------------------#
