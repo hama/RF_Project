@@ -60,6 +60,30 @@ def collection_updatestatus_py(collection_list, status, cookie=init_cookie):
         return e
 
 
+def add_collection_with_conf_py(conf, cookie=init_cookie):
+    '''
+    通过conf（dict数据类型）配置来添加专辑
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(collecion_data)
+
+    key_list = conf.keys()
+    if 'title' in key_list:
+        data['meta_title'] = conf['title']
+        data['title'] = conf['title']
+        data['url'] = '/collections/' + conf['title']
+    if 'image' in key_list and conf['image'] == 'yes':
+        data['image'] = image
+    elif 'images' in key_list and conf['image'] == 'no':
+        del data['image']
+    else:
+        data['image'] = image
+
+    add_collection_py(data, cookie)
+
+
 def add_collection_with_pic_py(cookie=init_cookie):
     '''
     添加含封面的专辑
