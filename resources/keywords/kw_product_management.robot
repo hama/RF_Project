@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     添加商品
+Documentation     product management keyword
 Library           SeleniumLibrary    run_on_failure=NOTHING
 Resource          ../variable/var_common.robot
 Resource          ../variable/var_marketing.robot
@@ -34,8 +34,8 @@ Product Management Common Suite Teardown
 
 Product Management Case Setup Clear Evn
     [Documentation]    product
-    del_latest_product_py    ${3}
-    del_latest_collection_py    ${3}
+    del_all_product_py
+    del_all_collection_py
     Go To Product Management Page
 
 
@@ -80,6 +80,12 @@ Fill In Required Items When Create Product
     Wait And Input Text    ${locatorB_productsNew_input_weight}    66
     Wait And Make Switch On    ${locatorB_productsNew_switch_status}
     Wait Enabled And Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}
+
+
+
+
+
+
 
 
 

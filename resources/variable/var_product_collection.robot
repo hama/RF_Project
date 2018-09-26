@@ -12,3 +12,8 @@ ${locatorB_productsCollection_checkbox_chooseCategories}    ${locatorB_checkbox0
 ${locatorB_productsCollection_text_collectionNum}    dom:document.querySelectorAll("td[class='collection_id___1EkxD']")    # 商品专辑页面，列表所有item's num
 ${locatorB_productsCollection_text_firstCollectionNum}    ${locatorB_productsCollection_text_collectionNum}[0]    # 商品专辑页面，列表first item's num
 ${locatorB_productsCollection_img_collectionThumbnails}    dom:document.querySelectorAll('td[class="collection_img___2CY1-"]')    # 商品专辑页面，列表所有items图片
+
+${locatorB_productsCollection_text_collection}    dom:document.querySelectorAll('p[class="title___3MmN9"]')    # 商品专辑
+${locatorB_productsCollection_icon_listDetailFold}    dom:document.querySelectorAll('i[class="djfont dj-fold icon_custom___3gJ6J undefined"]')    # 所有-专辑详情-fold
+${locatorB_productsCollection_icon_listDetailOpen}    dom:document.querySelectorAll('i[class="djfont dj-open icon_custom___3gJ6J undefined"]')    # 所有-专辑详情-open
+${locatorB_productsCollection_icon_listDel}    dom:document.querySelectorAll('i[class="djfont delete icon_custom___3gJ6J undefined"]')    # 所有-专辑删除icon

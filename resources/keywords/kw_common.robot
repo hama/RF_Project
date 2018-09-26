@@ -8,6 +8,7 @@ Library           ${CURDIR}/../../lib/customlib/kwcollection.py
 Resource          ../variable/var_common.robot
 Resource          ../variable/var_login.robot
 Resource          ../variable/var_store.robot
+Resource          ../variable/var_account.robot
 Resource          ../variable/var_shipping.robot
 Resource          kw_browser.robot
 Resource          kw_product_management.robot
@@ -54,7 +55,7 @@ Go To Order Page
     Location Should Be    ${url_order}
 
 Go To Product Management Page
-    [Documentation]    跳转到商品页面
+    [Documentation]    跳转到商品管理页面
     Wait Until Element Is Visible    ${locatorB_products}
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_productMenus_expanded}    5    #.获取导航栏商品的下拉按钮元素
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_products}
@@ -66,7 +67,7 @@ Go To Product Management Page
     Sleep    1
 
 Go To Product Collection Page
-    [Documentation]    跳转到商品页面
+    [Documentation]    跳转到商品专辑页面
     Wait Until Element Is Visible    ${locatorB_products}
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_productMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_products}
@@ -78,7 +79,7 @@ Go To Product Collection Page
     Sleep    1
 
 Go To Product Review Page
-    [Documentation]    跳转到商品页面
+    [Documentation]    跳转到商品评论页面
     Wait Until Element Is Visible    ${locatorB_products}
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_productMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_products}
@@ -145,11 +146,24 @@ Go To Shipping Page
     Wait Until Page Contains    物流方案
     Location Should Be    ${url_shipping}
 
+Go To Employee Account Page
+    [Documentation]    跳转员工账号页面
+    Wait Until Element Is Visible    ${locatorB_setting}
+    # 若设置按钮没展开，则展开营销按钮
+    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_employee}
+    ...    ELSE    Wait And Click Element    ${locatorB_setting_employee}
+    Sleep    2
+    Wait Until Page Contains    ${contextB_account_employeeManagement}
+    Location Should Be    ${url_accounts}
+    Sleep    1
+
 Go To Application Page
     [Documentation]    跳转到应用市场-网站seo
-    Wait And Click Element    ${locatorB_Application}
+    Wait And Click Element    ${locatorB_application}
     Wait Until Page Contains    图片SEO
-    Wait And Click Element    ${locatorB_Application_seoimg}
+    Wait And Click Element    ${locatorB_application_seoimg}
     Location Should Be    ${url_seoimage}
     
 
@@ -237,11 +251,11 @@ Wait Enabled And Choose File
 # 可用Get Element Count替代
 #Get List Length
 #	[Arguments]    ${exec_locator}
-#    [Documentation]    private，不建议直接调用。可使用Length Should Be Equal With Wait
+#    [Documentation]    private，不建议直接调用。可使用Count Of Element Should Be Equal With Wait
 #	${return} =	Execute Javascript    return ${exec_locator}.length
 #    [Return]    ${return}
 
-Length Should Be Equal With Wait
+Count Of Element Should Be Equal With Wait
     [Arguments]    ${element_locator}    ${expected}    ${timeout}=10
 #    ${exec_locator} =	Evaluate	'''${element_locator}'''[4:]
     ${times}    Evaluate    ${timeout}-1
