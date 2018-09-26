@@ -52,16 +52,22 @@ kw_AddToCart_Checkout_with_Credit_Card
 	Run Keyword And Ignore Error    Reload Page
 	Run Keyword And Ignore Error    Mouse Over    ${img}
 	Run Keyword And Ignore Error    Wait And Click Element    ${btn_quickView}
+	Sleep    1
 	Run Keyword And Ignore Error    Wait And Click Element    ${btn_addToCart}
-	Run Keyword And Ignore Error    Sleep    1
+	Sleep    1
 	Run Keyword And Ignore Error    Wait And Click Element    ${icon_cart}
+	Sleep    1
 	Run Keyword And Ignore Error    Wait And Click Element    ${btn_checkout}
+	Sleep    1
 	Run Keyword And Ignore Error    Add Address Common Step
 	Run Keyword And Ignore Error    Wait And Click Element    ${btn_continue_checkout_complete}
+	Sleep    1
 	Run Keyword And Ignore Error    Wait And Click Element    ${icon_credit_card}
 	Run Keyword And Ignore Error    Add Credit Card Info
 	Run Keyword And Ignore Error    Wait And Click Element    ${btn_continue_checkout_complete}
+	Sleep    1
 	Run Keyword And Ignore Error    Wait Until Page Contains Locator    ${btn_pay_again}
+	Sleep    1
 	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
 
 kw_BuyNow_with_Credit_Card
@@ -69,25 +75,27 @@ kw_BuyNow_with_Credit_Card
 	Run Keyword And Ignore Error    Reload Page
 	Run Keyword And Ignore Error    Wait And Click Element    ${img}
 	Run Keyword And Ignore Error    Wait And Click Element    ${btn_buyNow}
+	Sleep    1
 	Run Keyword And Ignore Error    Add Address Common Step
 	Run Keyword And Ignore Error    Wait And Click Element    ${btn_continue_checkout_complete}
+	Sleep    1
 	Run Keyword And Ignore Error    Wait And Click Element    ${icon_cod}
-	Run Keyword And Ignore Error    Sleep    1
 	Run Keyword And Ignore Error    Wait And Click Element    ${btn_continue_checkout_complete}
+	Sleep    1
 	Run Keyword And Ignore Error    Wait Until Page Contains Text    Payment successful!
+	Sleep    1
 	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
 
 kw_Searching
 	Run Keyword And Ignore Error    Delete Cookie    client_id
 	Run Keyword And Ignore Error    Reload Page
-	Start Ajax Listener
+#	Start Ajax Listener
 	Run Keyword And Ignore Error    Wait And Input Text    ${input_search}    1111111
-	Sleep    1
 	Run Keyword And Ignore Error    Press Key    ${input_search}    ${keybord_enter}
 	Sleep    1
 	Run Keyword And Ignore Error    Wait Until Page Contains Text    Try something like.
+#	Log Error Response Of Ajax Listener
+#	Log Correct Response Of Ajax Listener
 	Sleep    1
-	Log Error Response Of Ajax Listener
-	Log Correct Response Of Ajax Listener
 	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
 
