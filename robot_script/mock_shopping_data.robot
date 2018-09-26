@@ -31,17 +31,17 @@ ${input_search}    dom:document.querySelectorAll('[placeholder="Search for..."]'
 
 *** Testcases ***
 AddToCart_Checkout_with_Credit_Card
-	:FOR    ${i}    IN RANGE    10
+	:FOR    ${i}    IN RANGE    5000
 	\    kw_AddToCart_Checkout_with_Credit_Card
 	\    Log    ${i}
 
 BuyNow_with_Credit_Card
-	:FOR    ${i}    IN RANGE    10
+	:FOR    ${i}    IN RANGE    5000
     \    kw_BuyNow_with_Credit_Card
     \    Log    ${i}
 
 Searching
-	:FOR    ${i}    IN RANGE    1
+	:FOR    ${i}    IN RANGE    400
 	\    kw_Searching
 	\    Log    ${i}
 
@@ -78,10 +78,8 @@ kw_BuyNow_with_Credit_Card
 	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
 
 kw_Searching
-#	Run Keyword And Ignore Error    Delete Cookie    client_id
-#	Sleep    1
-#	Run Keyword And Ignore Error    Reload Page
-	Sleep    1
+	Run Keyword And Ignore Error    Delete Cookie    client_id
+	Run Keyword And Ignore Error    Reload Page
 	Start Ajax Listener
 	Run Keyword And Ignore Error    Wait And Input Text    ${input_search}    1111111
 	Sleep    1
@@ -91,6 +89,5 @@ kw_Searching
 	Sleep    1
 	Log Error Response Of Ajax Listener
 	Log Correct Response Of Ajax Listener
-	Run Keyword And Ignore Error    Execute Javascript    window.open("${url}")
-#	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
+	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
 
