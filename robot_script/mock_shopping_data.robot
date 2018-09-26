@@ -14,7 +14,7 @@ Resource          ../resources/keywords/kw_common.robot
 Resource          ../resources/keywords/kw_checkout.robot
 
 *** Variables ***
-${url}    https://jolly.myshoplaza.com/search
+${url}    https://jolly.myshoplaza.com
 ${btn_quickView}    dom:document.querySelectorAll('[class="normal_btn product_btn"]')[0]
 ${img}    dom:document.querySelectorAll('img')[0]
 ${btn_addToCart}    dom:document.querySelectorAll('[class="footer-submit normal_btn"]')[0]
