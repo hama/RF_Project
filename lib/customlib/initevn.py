@@ -27,7 +27,9 @@ if __name__ == '__main__':
         config.set("common_account", "datas_contact", '15220581724')
         config.set("common_account", "datas_domain", 'chen')
         #>修改数据库配置
-        config.set("common_db","db_shop_config",'{"host": "rm-rj9f22zpw641v45g9.mysql.rds.aliyuncs.com","port": 3306,"user": "lansejiebo","password": "lansejiebo@123","db": "shop_","charset": "utf8"}')
+        config.set("common_db","db_shop_config",'{"host": "rm-rj9f22zpw641v45g9.mysql.rds.aliyuncs.com",'
+                                                '"port": 3306,"user": "lansejiebo","password": "lansejiebo@123",'
+                                                '"db": "shop_","charset": "utf8"}')
         config.write(open(path, 'w'))
     else:
         random_str = salt_py()

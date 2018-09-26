@@ -21,7 +21,7 @@ ksksksksksk
     Wait And Click Element    ${locator_checkout_by_now_btn}
     Wait And Click Element    ${locator_checkout_submit_btn_s}
     Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
-    Add Address Common Setp    # 添加地址公共部分
+    Add Address Common Step    # 添加地址公共部分
 checkout171
     [Documentation]    进入支付页后,返回后台修改结账设置修改为必填或选填,点击pay now支付成功
     [Tags]    P0

@@ -1,5 +1,6 @@
 *** Settings ***
 Library           SeleniumLibrary    run_on_failure=NOTHING
+Library           OperatingSystem
 Library           ${CURDIR}/../../lib/customlib/kwpayment.py
 Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 Library           ${CURDIR}/../../lib/customlib/kwproduct.py
@@ -226,10 +227,11 @@ Wait And Make Switch Off
 	Run Keyword If    '${class}'=='ant-switch ant-switch-checked'    Wait And Click Element    ${element_locator}
 
 Wait Enabled And Choose File
-	[Arguments]    ${element_locator}    ${img_file}
+	[Arguments]    ${element_locator}    ${file}
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Enabled    ${element_locator}    10
-    Choose File    ${element_locator}    ${img_file}
+    ${NORMAL_PATH}    Normalize Path  ${file}
+    Choose File    ${element_locator}    ${NORMAL_PATH}
 	Sleep    5    # 由于商品图片未上传完成，点击保存，保存成功。会导致bug，因此等待5秒钟
 
 # 可用Get Element Count替代

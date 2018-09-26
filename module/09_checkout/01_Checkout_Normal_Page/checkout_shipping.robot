@@ -58,7 +58,7 @@ checkout076
     [Tags]    P1
     Checkout Common Setp
     Checkout_Common_Address_Step
-    Add Address Common Setp
+    Add Address Common Step
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Wait And Click Element    dom:document.querySelectorAll(".pm_order_header i")[0]
@@ -70,7 +70,7 @@ checkout090
     [Tags]    P1
     Checkout Common Setp
     Checkout_Common_Address_Step
-    Add Address Common Setp
+    Add Address Common Step
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     ${res}    Get Text    class:total_price
     ${rex}    searchStrs_py    ${res}
@@ -85,7 +85,7 @@ checkout091
     [Tags]    P1
     Checkout Common Setp
     Checkout_Common_Address_Step
-    Add Address Common Setp
+    Add Address Common Step
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Sleep Time
     Page Should Contain Element    dom:document.querySelectorAll(".detail_total_price div span:nth-child(2)")[0]
@@ -130,7 +130,7 @@ Checkout_Submit_Location_Fz
     [Documentation]    checkout 页面提交成功后 页面跳转 在封装
     Checkout Common Setp
     Checkout_Common_Address_Step
-    Add Address Common Setp
+    Add Address Common Step
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Wait And Click Element    ${locator_checkout_payment_cod_elm}
@@ -141,7 +141,7 @@ Checkout_Show_Detail
     [Arguments]    ${element}
     Checkout Common Setp
     Checkout_Common_Address_Step
-    Add Address Common Setp
+    Add Address Common Step
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Sleep Time

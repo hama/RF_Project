@@ -77,3 +77,6 @@ ${keybord_enter}    \\13
 ${register_contact}    gt1zwkp@abctest.com
 ${register_domain}    gt1zwkp
 ${register_pwd}    ${datas_password}
+### 图片文件
+${file_products_addImg}    ${CURDIR}/../images/tm.jpg    # 添加商品图片
+${file_products_addImg2}    ${CURDIR}/../images/mv.jpg    # 添加商品图片

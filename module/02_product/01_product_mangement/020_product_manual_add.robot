@@ -13,6 +13,7 @@ Resource          ../../../resources/keywords/kw_browser.robot
 Resource          ../../../resources/keywords/kw_product_management.robot
 Library           ${CURDIR}/../../../lib/customlib/lib_utils.py
 
+
 *** Test Cases ***
 products004
     [Documentation]    上架商品图片展示商品主图
@@ -465,16 +466,103 @@ products112
 #	Mouse Over    ${locatorB_productsNew_img_firstImage}
 #	Wait And Click Element
 
+# 无法点开'增加选项'，暂不实现
 #products122
 #	[Documentation]    验证可添加子产品
-#    [Tags]    P0    threshold
+#    [Tags]    P1    threshold
 #    Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
 #    Fill In Required Items When Create Product
-#
+#    Execute JavaScript    document.querySelectorAll('button[data-robot="products_setting"]')[0].scrollIntoView()
+#    Sleep    2
+#    Wait And Click Element    ${locatorB_productsNew_button_setting}
+#    Wait And Click Element    ${locatorB_productsNew_dropdown_addItems}
+#    Wait And Click Element    ${locatorB_productsNew_dropdown_customize}
+#    Wait And Input Text    ${locatorB_productsNew_input_firstStyleCategory}    firstStyleCategory
+#    Wait And Input Text    ${locatorB_productsNew_input_firstSubStyleCategory}    firstSubStyleCategory
+#	Press Key    ${locatorB_productsNew_input_firstSubStyleCategory}    ${keybord_enter}
+#    Wait Until Page Contains Locator    ${locatorB_productsNew_checkbox_firstSubProduct}
 #    Wait And Click Element    ${locatorB_productsNew_button_save}
 #    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
 #    Go To Product Management Page
 #    Length Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
-#    ${productName}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
-#    Should Be Equal    '${productName}'    'newproduct'
+#    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+#    Wait Until Page Contains Locator    ${locatorB_productsNew_checkbox_firstSubProduct}
+#
+# 无法点开'增加选项'，暂不实现
+#products123
+#	[Documentation]    验证可自定义选项
+#    [Tags]    P1    threshold
+#    Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
+#    Fill In Required Items When Create Product
+#    Wait And Click Element    ${locatorB_productsNew_button_setting}
+#    Wait And Click Element    ${locatorB_productsNew_dropdown_addItems}
+#    Wait And Click Element    ${locatorB_productsNew_dropdown_customize}
+#    Wait And Input Text    ${locatorB_productsNew_input_firstStyleCategory}    firstStyleCategory
+#    Wait And Input Text    ${locatorB_productsNew_input_firstSubStyleCategory}    firstSubStyleCategory
+#	Press Key    ${locatorB_productsNew_input_firstSubStyleCategory}    ${keybord_enter}
+#    Wait Until Page Contains Locator    ${locatorB_productsNew_checkbox_firstSubProduct}
+#    Wait And Click Element    ${locatorB_productsNew_button_save}
+#    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
+#    Go To Product Management Page
+#    Length Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
+#    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+#    Wait Until Page Contains Locator    ${locatorB_productsNew_checkbox_firstSubProduct}
+
+# 元素不好定位，待多福添加robot-data之后，再写此用例
+#products124
+#	[Documentation]    验证可编辑SEO,成功保存
+#    [Tags]    P1    threshold
+#    Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
+#    Fill In Required Items When Create Product
+#    Wait And Click Element    ${locatorB_productsNew_icon_editSEO}
+#    Wait And Input Text    ${locatorB_productsNew_input_homeTitle}    homeTitle
+#    Wait And Input Text    ${locatorB_productsNew_textarea_homeSEODesc}    homeSEODesc
+#    Wait And Input Text    ${locatorB_productsNew_input_homeSEOLink}    homeSEOLink
+#    Wait And Input Text    ${locatorB_productsNew_input_homeSEOKeyword}    homeSEOKeyword
+#	Press Key    ${locatorB_productsNew_input_homeSEOKeyword}    ${keybord_enter}
+#	Sleep    20
+
+products128
+	[Documentation]    验证可批量上传商品
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_icon_uploadProduct}
+    Wait Enabled And Choose File    ${locatorB_productsMgmt_input_uploadProduct}    ${file_products_template}
+    Wait And Click Element    ${locatorB_productsMgmt_button_toImport}
+    Wait Until Page Contains Text    导入完成    20
+    Wait And Click Element    ${locatorB_productsMgmt_button_confirmAfterImport}
+    Length Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
+    ${productName}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
+    Should Be Equal    '${productName}'    'Example T-Shirt'
+
+products129
+	[Documentation]    验证上传不合格的商品文件，无法上传
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_icon_uploadProduct}
+    Wait Enabled And Choose File    ${locatorB_productsMgmt_input_uploadProduct}    ${file_products_wrong_template}
+    Wait Until Page Contains Text    其中格式正确的有0条
+
+products187
+	[Documentation]    不可批量上架无图片商品
+    [Tags]    P0    threshold
+    add_min_product_py
+    Reload Page And Start Ajax
+    Select All Product Tag
+    Select Products And Click Batch Menu
+    Click Element And Confirm    ${locatorB_productsMgmt_select_launch}
+    Wait Until Page Contains Text    全部商品上架失败：缺少图片
+    Length Should Be Equal With Wait    ${locatorB_productsMgmt_switch_listLaunched}    ${0}
+
+products188
+	[Documentation]    浏览量增加
+    [Tags]    P0    threshold
+    add_max_product_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]
+    Sleep    2
+    Open New And Close Other Windows    ${home_page}
+    Go To Product Management Page
+    Select All Product Tag
+    ${text}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductViews}
+    Should Be equal    '${text}'    '1'
+
 

@@ -17,5 +17,3 @@ ${locatorB_storeLst_country_elm}    dom:document.querySelectorAll(".ant-select-s
 ${locatorB_storeLst_error_msg}    dom:document.querySelectorAll(".ant-form-explain")[0]    #.错误提示
 
 ${contextB_store_storeInfo}    店铺信息
-
-${img_file}    ${CURDIR}/mv.jpg    # 添加商品图片

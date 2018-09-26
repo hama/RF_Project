@@ -79,7 +79,7 @@ Fill In Required Items When Create Product
     Wait And Input Text    ${locatorB_productsNew_input_salePrice}    99
     Wait And Input Text    ${locatorB_productsNew_input_weight}    66
     Wait And Make Switch On    ${locatorB_productsNew_switch_status}
-    Wait Enabled And Choose File    ${locatorB_productsNew_input_addImage}    ${img_file}
+    Wait Enabled And Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}
 
 
 
