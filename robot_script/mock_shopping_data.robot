@@ -33,7 +33,7 @@ ${input_search}    dom:document.querySelectorAll('[placeholder="Search for..."]'
 
 *** Testcases ***
 AddToCart_Checkout_By_Credit_Card
-	:FOR    ${i}    IN RANGE    5000
+	:FOR    ${i}    IN RANGE    1000
 	\    ${timestamp1}    Get Time    epoch
 	\    kw_AddToCart_Checkout_By_Credit_Card
 	\    ${timestamp2}    Get Time    epoch
@@ -44,7 +44,7 @@ AddToCart_Checkout_By_Credit_Card
 	\    Log To Console    (AddToCart_Checkout_By_Credit_Card) 执行次数:${times} 开始时间:${startMoment} 执行时长:${period}
 
 BuyNow_By_COD
-	:FOR    ${i}    IN RANGE    5000
+	:FOR    ${i}    IN RANGE    1000
     \    ${timestamp1}    Get Time    epoch
     \    kw_BuyNow_By_COD
     \    ${timestamp2}    Get Time    epoch
@@ -55,7 +55,7 @@ BuyNow_By_COD
     \    Log To Console    (kw_BuyNow_By_COD) 执行次数:${times} 开始时间:${startMoment} 执行时长:${period}
 
 Searching
-	:FOR    ${i}    IN RANGE    400
+	:FOR    ${i}    IN RANGE    100
 	\    ${timestamp1}    Get Time    epoch
     \    kw_Searching
     \    ${timestamp2}    Get Time    epoch
@@ -82,11 +82,13 @@ kw_AddToCart_Checkout_By_Credit_Card
 	Run Keyword And Ignore Error    Add Address Common Step
 	Run Keyword And Ignore Error    Wait And Click Element    ${btn_continue_checkout_complete}
 	Sleep    1
-	Run Keyword And Ignore Error    Wait And Click Element    ${icon_credit_card}
-	Run Keyword And Ignore Error    Add Credit Card Info
+#	Run Keyword And Ignore Error    Wait And Click Element    ${icon_credit_card}
+#	Run Keyword And Ignore Error    Add Credit Card Info
+	Run Keyword And Ignore Error    Wait And Click Element    ${icon_cod}
 	Run Keyword And Ignore Error    Wait And Click Element    ${btn_continue_checkout_complete}
 	Sleep    1
-	Run Keyword And Ignore Error    Wait Until Page Contains Locator    ${btn_pay_again}
+#	Run Keyword And Ignore Error    Wait Until Page Contains Locator    ${btn_pay_again}
+	Run Keyword And Ignore Error    Wait Until Page Contains Locator    Payment successful!
 	Sleep    1
 	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
 
