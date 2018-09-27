@@ -27,10 +27,10 @@ ${locatorB_setting_payment}    dom:document.querySelectorAll('a[href="/pay"]')[0
 ${locatorB_setting_employee}    dom:document.querySelectorAll('a[href="/accounts"]')[0]    # 导航栏-设置-员工账号
 ${locatorB_setting_store}    dom:document.querySelectorAll('a[href="/store"]')[0]    # 导航栏-设置-基础信息
 ${locatorB_setting_upfile}    dom:document.querySelectorAll('a[href="/uploadFile"]')[0]    # 导航栏-设置-文件管理
-${locatorB_Application}    dom:document.querySelectorAll('a[href="/tools"]')[0]    #.导航栏-应用市场
+${locatorB_application}    dom:document.querySelectorAll('a[href="/tools"]')[0]    #.导航栏-应用市场
 ${locatorB_setting_menus}    dom:document.querySelectorAll(".ant-menu-submenu-title")    # 导航栏-设置-含自菜单的元素
-${locatorB_Application_seoimg}    dom:document.querySelectorAll('.item___3Js4k')[4]    #.应用市场-图片seo
-${locatorB_Application_invitaion}    dom:document.querySelectorAll('.item___3Js4k')[0]    #.应用市场-邀请码工具
+${locatorB_application_seoimg}    dom:document.querySelectorAll('.item___3Js4k')[4]    #.应用市场-图片seo
+${locatorB_application_invitaion}    dom:document.querySelectorAll('.item___3Js4k')[0]    #.应用市场-邀请码工具
 
 ${isExistB_setting_orderMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="order"]')[0]    # 判断order菜单展开的元素是否存在
 ${isExistB_setting_productMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="products"]')[0]    # 判断product菜单展开的元素是否存在

@@ -168,9 +168,9 @@ Go To Application Page
 
 Go To Invitaion Page
     [Documentation]    跳转到 邀请码工具
-    Wait And Click Element    ${locatorB_Application}
+    Wait And Click Element    ${locatorB_application}
     Wait Until Page Contains    邀请码工具
-    Wait And Click Element    ${locatorB_Application_invitaion}
+    Wait And Click Element    ${locatorB_application_invitaion}
     #Wait Until Page Contains     授权确认
     #Location Should Be    ${url_invitaion}
 
