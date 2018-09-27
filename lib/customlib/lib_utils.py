@@ -97,6 +97,7 @@ def compare_time_py(format_time1, format_time2):
         return 'eq'
 
 
+
 def upload_oss_py(urlex, name='', extension='', timeout_second=30):
     """
     上传图片到阿里云
@@ -144,6 +145,7 @@ def upload_oss_py(urlex, name='', extension='', timeout_second=30):
         with open(tmp_file, 'rb') as f:
             bucket.put_object(s3key, f)
         return (s3key, size_file)
+        # return (s3key, size_file)
     except Exception as e:
         print e
     finally:
@@ -151,4 +153,4 @@ def upload_oss_py(urlex, name='', extension='', timeout_second=30):
             os.remove(tmp_file)
         except Exception as e:
             print e
-    return False
+            return False
