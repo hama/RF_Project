@@ -2,18 +2,17 @@
 import datetime
 import hashlib
 import os
-import oss2
 import random
 import re
-import requests
 import sys
 import time
 import uuid
 
+import oss2
+import requests
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
-
-
 
 
 def salt_py(size=7):

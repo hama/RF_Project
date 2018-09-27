@@ -63,3 +63,32 @@ collection013
 	Wait And Click Element    ${locatorB_productsCollection_icon_listDel}[0]
 	Wait And Click Element    ${locatorB_global_alert_confirm}
 	Wait Until Page Contains Text     暂无数据
+
+collection015
+    [Documentation]    列表批量删除
+    [Tags]    P0    threshold
+    add_collection_with_pic_py
+    Reload Page And Start Ajax
+	Wait Enabled And Click Element    ${locatorB_productsCollection_checkbox_chooseCategories}
+	Wait And Click Element    ${locatorB_productsCollection_button_delProducts}
+	Wait Until Page Contains Text     确定删除吗？
+
+collection016
+    [Documentation]    列表批量删除点击确定
+    [Tags]    P0    threshold
+    add_collection_with_pic_py
+    Reload Page And Start Ajax
+	Wait Enabled And Click Element    ${locatorB_productsCollection_checkbox_chooseCategories}
+	Wait And Click Element    ${locatorB_productsCollection_button_delProducts}
+	Wait And Click Element    ${locatorB_global_alert_confirm}
+	Wait Until Page Contains Text     暂无数据
+
+collection023
+    [Documentation]    专辑名称输入混合（包括中英文，特殊符号，数字）字符
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsCollection_button_addCategory}
+	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
+	Wait And Click Element    ${locatorB_button_save}
+	Wait Until Page Contains Text     添加成功
+	Wait Until Page Contains Locator     ${locatorB_productsCollection_text_firstCollectionNum}
+

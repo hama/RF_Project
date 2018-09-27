@@ -280,10 +280,10 @@ products063
     Wait Until Page Contains Text    移除成功
     # 进入Collection中检查是否存在
     Go To Product Collection Page
-    Wait And Click Element    ${locatorB_productsCollection_text_collectionNum}[0]
+    Wait And Click Element    ${locatorB_productsCollection_text_listCollectionNum}[0]
     Wait Until Page Contains Text    专辑商品(0)
     Go To Product Collection Page
-    Wait And Click Element    ${locatorB_productsCollection_text_collectionNum}[1]
+    Wait And Click Element    ${locatorB_productsCollection_text_listCollectionNum}[1]
     Wait Until Page Contains Text    专辑商品(0)
 
 #products070

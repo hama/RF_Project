@@ -237,7 +237,7 @@ Delete_Collection
     #点击进入商品专辑界面
     Wait And Click Element    ${locatorB_product_collection}
     #点击删除第一个专辑按钮
-    Wait And Click Element    ${locatorB_productsCollection_icon_del}
+    Wait And Click Element    ${locatorB_productsCollection_icon_listDel}[0]
     #点击确定
     Wait And Click Element    ${locatorB_popUps_button_middle}
 

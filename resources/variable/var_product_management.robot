@@ -81,7 +81,7 @@ ${locatorB_productsNew_input_barcode}    id:barcode    # 添加商品页面-条�
 ${locatorB_productsNew_input_supplier}    dom:document.querySelectorAll(".ant-input")[1]    # 添加供应商
 ${locatorB_productsNew_input_productType}    id:product_type_cascade    #商品专辑页的新增专辑按钮
 ${locatorB_productsNew_cascader_chooseCategoryItem}    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]    # 选择商品分类子项
-${locatorB_productsNew_button_save}    dom:document.querySelectorAll('button[data-robot="btn_save"]')[0]    #保存按钮
+${locatorB_productsNew_button_save}    ${locatorB_button_save}    #保存按钮
 ${locatorB_productsNew_button_setting}    dom:document.querySelectorAll('button[data-robot="products_setting"]')[0]    #设置按钮
 ${locatorB_productsNew_dropdown_addItems}    dom:document.querySelectorAll('button[class="ant-btn ant-dropdown-trigger"]')[0]
 ${locatorB_productsNew_dropdown_customize}    dom:document.querySelectorAll('li[class="ant-dropdown-menu-item"]')[0]

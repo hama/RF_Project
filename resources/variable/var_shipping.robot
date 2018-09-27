@@ -1,3 +1,6 @@
+*** Settings ***
+Resource          var_common.robot
+
 *** Variables ***
 # locator
 
@@ -26,7 +29,7 @@ ${locatorB_shipping_description}    dom:document.querySelectorAll("#desc")[0]   
 ${locatorB_shipping_price}    id:rate_amount    #.价格运费框
 ${locatorB_shipping_range_min}    id:range_min    #.添加数量运费-最小订单数量输入框
 ${locatorB_shipping_range_max}    id:range_max    #.添加数量运费-最大订单数量输入框
-${locatorB_shipping_save_btn}    dom:document.querySelectorAll('button[data-robot="btn_save"]')[0]    #.添加物流-保存-按钮
+${locatorB_shipping_save_btn}    ${locatorB_button_save}    #.添加物流-保存-按钮
 
 # add country
 ${locatorB_shipping_country_ipt}    dom:document.querySelectorAll('input[placeholder="国家名"]')[0]    #.添加国家-顶部输入国家输入框

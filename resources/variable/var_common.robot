@@ -41,6 +41,7 @@ ${locatorB_checkbox00}    dom:document.querySelectorAll(".ant-checkbox-input")[0
 ${locatorB_checkbox01}    dom:document.querySelectorAll(".ant-checkbox-input")[1]
 ### locator button
 ${locatorB_button_add}    dom:document.querySelectorAll(".large_btn___3RbRK")[0]        #添加按钮
+${locatorB_button_save}    dom:document.querySelectorAll('button[data-robot="btn_save"]')[0]        #保存按钮
 ### locator popUps
 ${locatorB_popUps_button_middle}    dom:document.querySelectorAll("button[class*='middle']")[0]    #弹窗的中间按钮
 ${locatorB_popUps_button_default}    dom:document.querySelectorAll("button[class*='default']")[0]    #弹窗的默认按钮
