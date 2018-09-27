@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 
 from variable import *
-from lib_utils import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -79,14 +78,8 @@ def setBjTimeZone_py(timezone=None, cookie=init_cookie):
     except Exception as e:
         print e
 
-def get_store_name():
-    """
-    获取店铺名称
-    :return String
-    """
-    return datas_domain
 
-def add_upfiles(cookie=init_cookie):
+def add_upfiles_py(cookie=init_cookie):
     xesurl = [
         "https://cdn.shoplazza.com/8679b2d0ef7e8fdfc40d55ea7cb3afaf.jpg",
         "https://cn.cdn.shoplazza.com/9ea1104b6d57568f7cbdc26acceac636_120x.png",
@@ -123,8 +116,9 @@ def add_upfiles(cookie=init_cookie):
         for x in xesurl:
             img = upload_oss_py(x)
             res_url = home_page_url + "/api/file/info"
-            data = {"filename":"aa","folder":"product","height":"1125","size":img[1],"type":"image/jpeg","url":img[0],"width":"750"}
-            xx = requests.post(url=res_url,headers={"cookie":cookie['cookie']},json=data)
+            data = {"filename": "aa", "folder": "product", "height": "1125", "size": img[1], "type": "image/jpeg",
+                    "url": img[0], "width": "750"}
+            xx = requests.post(url=res_url, headers={"cookie": cookie['cookie']}, json=data)
             print xx.text
             if xx.status_code != 200:
                 return False
@@ -133,20 +127,20 @@ def add_upfiles(cookie=init_cookie):
         print e
         return False
 
-def del_upfiles(cookie=init_cookie):
-    
+
+def del_upfiles_py(cookie=init_cookie):
     del_url = home_page_url + "/api/file/remove"
     res_list = []
     lst_url = home_page_url + "/api/file/list?folder=product&page=1&limit=50"
-    #.请求列表的数据
+    # .请求列表的数据
     new_str = ""
-    res = requests.get(url=lst_url,headers={"cookie":cookie['cookie']})
+    res = requests.get(url=lst_url, headers={"cookie": cookie['cookie']})
     for x in json.loads(res.content)['data']:
         # res_list.append(str(x['path']))
         new_str += str(x['path']) + ","
-    #.请求删除接口
+    # .请求删除接口
     try:
-        res_data = requests.post(url=del_url,headers={"cookie":cookie['cookie']},json={"path":new_str})
+        res_data = requests.post(url=del_url, headers={"cookie": cookie['cookie']}, json={"path": new_str})
         if json.loads(res_data.content)['state'] != 0:
             return False
         return True
