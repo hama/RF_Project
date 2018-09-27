@@ -9,6 +9,8 @@ Force Tags        mock_shopping_data
 #Resource          ../resources/variable/var_common.robot
 #Variables         ${CURDIR}/../lib/customlib/customkeywords.py
 #Library           ${CURDIR}/../lib/customlib/customkeywords.py
+Library           DateTime
+Library           ${CURDIR}/../lib/customlib/lib_utils.py
 Resource          ../resources/keywords/kw_browser.robot
 Resource          ../resources/keywords/kw_common.robot
 Resource          ../resources/keywords/kw_checkout.robot
@@ -30,24 +32,42 @@ ${input_search}    dom:document.querySelectorAll('[placeholder="Search for..."]'
 
 
 *** Testcases ***
-AddToCart_Checkout_with_Credit_Card
+AddToCart_Checkout_By_Credit_Card
 	:FOR    ${i}    IN RANGE    5000
-	\    kw_AddToCart_Checkout_with_Credit_Card
-	\    Log    ${i}
+	\    ${timestamp1}    Get Time    epoch
+	\    kw_AddToCart_Checkout_By_Credit_Card
+	\    ${timestamp2}    Get Time    epoch
+	\    ${period}    Evaluate    ${timestamp2}-${timestamp1}
+	\    ${times}    Evaluate    ${i}+1
+	\    ${periodFormat}    Convert Time    ${period}    timer    exclude_milles=yes
+	\    ${startMoment}    Convert Date    ${timestamp1}    exclude_millis=yes    date_format=%m.%d.%Y %H:%M
+	\    Log To Console    (AddToCart_Checkout_By_Credit_Card) 执行次数:${times} 开始时间:${startMoment} 执行时长:${period}
 
-BuyNow_with_Credit_Card
+BuyNow_By_COD
 	:FOR    ${i}    IN RANGE    5000
-    \    kw_BuyNow_with_Credit_Card
-    \    Log    ${i}
+    \    ${timestamp1}    Get Time    epoch
+    \    kw_BuyNow_By_COD
+    \    ${timestamp2}    Get Time    epoch
+    \    ${period}    Evaluate    ${timestamp2}-${timestamp1}
+    \    ${times}    Evaluate    ${i}+1
+    \    ${periodFormat}    Convert Time    ${period}    timer    exclude_milles=yes
+    \    ${startMoment}    Convert Date    ${timestamp1}    exclude_millis=yes    date_format=%m.%d.%Y %H:%M
+    \    Log To Console    (kw_BuyNow_By_COD) 执行次数:${times} 开始时间:${startMoment} 执行时长:${period}
 
 Searching
 	:FOR    ${i}    IN RANGE    400
-	\    kw_Searching
-	\    Log    ${i}
+	\    ${timestamp1}    Get Time    epoch
+    \    kw_Searching
+    \    ${timestamp2}    Get Time    epoch
+    \    ${period}    Evaluate    ${timestamp2}-${timestamp1}
+    \    ${times}    Evaluate    ${i}+1
+    \    ${periodFormat}    Convert Time    ${period}    timer    exclude_milles=yes
+    \    ${startMoment}    Convert Date    ${timestamp1}    exclude_millis=yes    date_format=%m.%d.%Y %H:%M
+    \    Log To Console    (kw_Searching) 执行次数:${times} 开始时间:${startMoment} 执行时长:${period}
 
 
 *** keyword ***
-kw_AddToCart_Checkout_with_Credit_Card
+kw_AddToCart_Checkout_By_Credit_Card
 	Run Keyword And Ignore Error    Delete Cookie    client_id
 	Run Keyword And Ignore Error    Reload Page
 	Run Keyword And Ignore Error    Mouse Over    ${img}
@@ -70,7 +90,7 @@ kw_AddToCart_Checkout_with_Credit_Card
 	Sleep    1
 	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
 
-kw_BuyNow_with_Credit_Card
+kw_BuyNow_By_COD
 	Run Keyword And Ignore Error    Delete Cookie    client_id
 	Run Keyword And Ignore Error    Reload Page
 	Run Keyword And Ignore Error    Wait And Click Element    ${img}
@@ -98,4 +118,5 @@ kw_Searching
 #	Log Correct Response Of Ajax Listener
 	Sleep    1
 	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
+
 
