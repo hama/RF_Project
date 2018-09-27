@@ -165,6 +165,26 @@ Go To Application Page
     Wait Until Page Contains    图片SEO
     Wait And Click Element    ${locatorB_application_seoimg}
     Location Should Be    ${url_seoimage}
+
+Go To Invitaion Page
+    [Documentation]    跳转到 邀请码工具
+    Wait And Click Element    ${locatorB_Application}
+    Wait Until Page Contains    邀请码工具
+    Wait And Click Element    ${locatorB_Application_invitaion}
+    #Wait Until Page Contains     授权确认
+    #Location Should Be    ${url_invitaion}
+
+Go To Uploadfile Page
+    [Documentation]    跳转到 文件管理页面
+    Wait Until Element Is Visible    ${locatorB_setting}
+    # 若设置按钮没展开，则展开设置按钮
+    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
+    Run Keyword If    '${attr}'=='False'    Sleep    2
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_upfile}
+    ...    ELSE    Wait And Click Element    ${locatorB_setting_upfile}
+    Wait Until Page Contains    上传文件
+    Location Should Be    ${url_uploadFile}
     
 
 Wait And Input Text
