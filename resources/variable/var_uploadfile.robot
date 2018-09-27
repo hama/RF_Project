@@ -10,5 +10,4 @@ ${locatorB_upfile_batchSect_elm}    dom:document.querySelectorAll('.ant-checkbox
 ${locatorB_upfile_prePge_btn}    dom:document.querySelectorAll('.ant-btn-icon-only')[0]    #.文件管理- 上一页
 ${locatorB_upfile_nextPge_btn}    dom:document.querySelectorAll('.ant-btn-icon-only')[1]    #.文件管理- 下一页
 
-${Img2}    ${CURDIR}/mv.jpg    # 添加商品图片
 

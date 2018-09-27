@@ -28,7 +28,7 @@ uploadFile004
     [Tags]    P1    threshold
     Go To Uploadfile Page
     Wait Until Page Contains Locator    ${locatorB_upfile_add_btn}
-    Choose File    ${locatorB_upfile_add_btn}    ${Img2}
+    Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg}
     Sleep    2
     Wait Until Page Contains    上传成功
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
@@ -39,7 +39,7 @@ uploadFile005
     [Tags]    P0
     Go To Uploadfile Page
     Wait Until Page Contains Locator    ${locatorB_upfile_add_btn}
-    Choose File    ${locatorB_upfile_add_btn}    ${Img2}
+    Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg}
     Sleep    2
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     ${res}    Execute JavaScript    return document.querySelectorAll('tbody tr td')[2].innerHTML
@@ -57,7 +57,7 @@ uploadFile009
     Go To Uploadfile Page
     #.切换到 上传文件 栏目
     Wait And Click Element    ${locatorB_upfile_upfile_txt}
-    Choose File    ${locatorB_upfile_add_btn}    ${Img2}
+    Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg}
     Sleep    2
     Wait Until Page Contains    上传成功
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
@@ -67,7 +67,7 @@ uploadFile011
     [Documentation]    测试素材链接及复制按钮
     [Tags]    P0    threshold
     Go To Uploadfile Page
-    Choose File    ${locatorB_upfile_add_btn}    ${Img2}
+    Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg}
     Sleep    2
     Wait Until Page Contains    上传成功
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
@@ -103,7 +103,7 @@ uploadFile014
     [Tags]    P0    threshold
     Go To Uploadfile Page
     Wait Until Page Contains Locator    ${locatorB_upfile_add_btn}
-    Choose File    ${locatorB_upfile_add_btn}    ${Img2}
+    Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg}
     Sleep    2
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     #.点击删除
