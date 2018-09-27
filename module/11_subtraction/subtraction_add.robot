@@ -428,7 +428,7 @@ subtraction111
     Should Be True    '${get_values}'=='${res_values}'
     Wait And Click Element    ${locatorB_subtraction_comm_close}
     Confirm Cancel Alert
-
+ 
 subtraction112
     [Documentation]    输入字符“0”，点击搜索/按enter  > 搜索成功
     [Tags]    P0
