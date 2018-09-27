@@ -27,10 +27,10 @@ checkout105
     #返回后台页面修改商品状态为下架
     Select Window    店匠科技
     #点击第一件商品进入商品详情页
-    Click And Page Contains Element With Refresh    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    ${locatorB_productsNew_tabindex_status}
+    Click And Page Contains Element With Refresh    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    ${locatorB_productsNew_switch_status}
     #修改状态
     Sleep    2
-    Wait And Click Element    ${locatorB_productsNew_tabindex_status}
+    Wait And Click Element    ${locatorB_productsNew_switch_status}
     #点击保存
     Click And Page Contains Element With Refresh    ${locatorB_products_button_confirm}    ${locatorB_productsMgmt_text_firstProductName}
     #切换到商品submit页
@@ -266,7 +266,7 @@ checkout130
     #返回后台页面修改商品-对此商品收税
     Select Window    店匠科技
     #点击第一件商品进入商品详情页
-    Click And Page Contains Element With Refresh    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    ${locatorB_productsNew_tabindex_status}
+    Click And Page Contains Element With Refresh    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    ${locatorB_productsNew_switch_status}
     Sleep    2
     Wait And Click Element    dom:document.querySelectorAll(".operableTxt___ycvdI span")[2]
     #点击保存

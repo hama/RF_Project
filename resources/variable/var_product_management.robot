@@ -34,6 +34,10 @@ ${locatorB_productsMgmt_button_discontinued}    dom:document.querySelectorAll(".
 ${locatorB_productsMgmt_icon_grabProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[0]    #商品列表页的商品抓取按钮
 ${locatorB_productsMgmt_icon_migrateProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[1]    #商品列表页的店铺搬迁按钮
 ${locatorB_productsMgmt_icon_uploadProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[2]    #商品列表页的上传商品按钮
+${locatorB_productsMgmt_input_uploadProduct}    dom:document.querySelectorAll("input[type='file']")[0]    #批量上传商品input
+${locatorB_productsMgmt_button_toImport}    dom:document.querySelectorAll('button[class="ant-btn middle_btn___2ExQc undefined ant-btn-submit"]')[0]    #开始导入
+${locatorB_productsMgmt_button_confirmAfterImport}    dom:document.querySelectorAll('button[class="ant-btn middle_btn___2ExQc undefined"]')[0]    # 导入之后的确定按钮
+
 ${locatorB_productsMgmt_button_editTableHead}    dom:document.querySelectorAll(".edit_head___2-5Ey")[0]     #编辑表头
 ${locatorB_productsMgmt_tabindex_firstSwitch}    dom:document.querySelectorAll(".ant-switch")[0]    # 列表第一个商品的上架按钮
 ${locatorB_productsMgmt_input_minPrice}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[0]    #"最低售价"输入框
@@ -45,6 +49,7 @@ ${locatorB_productsMgmt_image_firstProductThumbnails}    dom:document.querySelec
 ${locatorB_productsMgmt_text_firstProductName}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[2].querySelectorAll("span")[0]    #商品列表第一个商品的商品名称
 ${locatorB_productsMgmt_text_firstProductInventoryQuantity}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[3]    #商品列表第一个商品的库存(只能在Show All Header关键字执行之后使用)
 ${locatorB_productsMgmt_text_firstProductSku}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[4]    #商品列表第一个商品的SKU(只能在Show All Header关键字执行之后使用)
+${locatorB_productsMgmt_text_firstProductViews}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[5]    #商品列表第一个商品的浏览量(只能在Show All Header关键字执行之后使用)
 ${locatorB_productsMgmt_icon_listPreview}    dom:document.querySelectorAll("i[class*='preview']")    #所有条目的预览icon,第0个为第一条商品的
 ${locatorB_productsMgmt_icon_listDelete}    dom:document.querySelectorAll("i[class*='delete']")    #所有条目的删除icon,第0个为第一条商品的
 ${locatorB_productsMgmt_text_listCreateTime}    dom:document.querySelectorAll('td[class="vendor___2VuW9"]')    #所有条目的创建时间，第0个为第一条商品的
@@ -61,21 +66,33 @@ ${locatorB_productType_button_saveBtn}    id:test_save_btn    # 商品分类-保
 #${locatorB_productsMgmt_switch_listDiscontinued}    dom:document.querySelectorAll('div[class="ant-select-selection__rendered"]')[0]    #所有下架条目的switch按钮
 ${locatorB_productsNew_button_back}    class:back    # 进入编辑页面的后退按钮
 ${locatorB_productsNew_button_uploadBtn}    id:test_upload_btn    # 上传商品图片按钮
-${locatorB_productsNew_tabindex_status}    id:status    # 商品状态按钮
+${locatorB_productsNew_switch_status}    dom:document.querySelectorAll('span[data-robot="products_status"]')[0]    # 商品状态按钮
 ${locatorB_productsNew_input_tags}    id:tags    # 添加标签按钮
-${locatorB_productsNew_input_chooseFile}    dom:document.querySelectorAll("input[type='file']")[0]    # 选择文件上传
-${locatorB_productsNew_input_addTitle}    id:__title    # 添加商品页面-标题按钮
-${locatorB_productsNew_input_addSubTitle}    id:__brief    # 添加商品页面-副标题按钮
-${locatorB_productsNew_input_addDesc}    dom:document.querySelectorAll(".fr-view")[0].querySelectorAll("p")[0]    # 添加商品页面-副标题按钮
-${locatorB_productsNew_input_addPrice}    id:price    # 添加商品页面-价格输入框
-${locatorB_productsNew_input_addRawPrice}    id:compare_at_price    # 添加商品页面-原价格输入框
-${locatorB_productsNew_input_addWeight}    id:weight    # 添加商品页面-重量输入
-${locatorB_productsNew_input_addSku}    id:sku    # 添加商品页面-Sku
-${locatorB_productsNew_input_addBarcode}    id:barcode    # 添加商品页面-条形码
-${locatorB_productsNew_input_addSupplier}    dom:document.querySelectorAll(".ant-input")[1]    # 添加供应商
+${locatorB_productsNew_input_addImage}    dom:document.querySelectorAll("input[type='file']")[0]    # 选择文件上传
+${locatorB_productsNew_img_firstImage}    dom:document.querySelectorAll('img[class="center___1nHSZ"]')[0]    # 选择第一张图片
+${locatorB_productsNew_input_title}    id:__title    # 添加商品页面-标题按钮
+${locatorB_productsNew_input_subTitle}    id:__brief    # 添加商品页面-副标题按钮
+${locatorB_productsNew_input_desc}    dom:document.querySelectorAll('div[class="fr-element fr-view"] p')[0]    # 添加商品页面-副标题按钮
+${locatorB_productsNew_input_salePrice}    id:price    # 添加商品页面-价格输入框
+${locatorB_productsNew_input_rawPrice}    id:compare_at_price    # 添加商品页面-原价格输入框
+${locatorB_productsNew_input_weight}    id:weight    # 添加商品页面-重量输入
+${locatorB_productsNew_input_sku}    id:sku    # 添加商品页面-Sku
+${locatorB_productsNew_input_barcode}    id:barcode    # 添加商品页面-条形码
+${locatorB_productsNew_input_supplier}    dom:document.querySelectorAll(".ant-input")[1]    # 添加供应商
 ${locatorB_productsNew_input_productType}    id:product_type_cascade    #商品专辑页的新增专辑按钮
 ${locatorB_productsNew_cascader_chooseCategoryItem}    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]    # 选择商品分类子项
 ${locatorB_productsNew_button_save}    dom:document.querySelectorAll('button[data-robot="btn_save"]')[0]    #保存按钮
+${locatorB_productsNew_button_setting}    dom:document.querySelectorAll('button[data-robot="products_setting"]')[0]    #设置按钮
+${locatorB_productsNew_dropdown_addItems}    dom:document.querySelectorAll('button[class="ant-btn ant-dropdown-trigger"]')[0]
+${locatorB_productsNew_dropdown_customize}    dom:document.querySelectorAll('li[class="ant-dropdown-menu-item"]')[0]
+${locatorB_productsNew_input_firstStyleCategory}    id:option_0    # 第一个款式分类输入框
+${locatorB_productsNew_input_firstSubStyleCategory}    id:option_values_4  # 第一个款式分类sub输入框
+${locatorB_productsNew_checkbox_firstSubProduct}    dom:document.querySelectorAll('label[class="ant-checkbox-wrapper"]')[1]  # 第一个subproduct
+${locatorB_productsNew_icon_editSEO}    dom:document.querySelectorAll('a[class="icon_custom_left___GO944 gap___1qNPB"]')[0]  # 编辑SEO
+${locatorB_productsNew_input_homeTitle}    dom:document.querySelectorAll('input[class="autosize-input___MJu1O"]')[0]  # 主页标题输入框
+${locatorB_productsNew_textarea_homeSEODesc}    dom:document.querySelectorAll('textarea[class="ant-input text_area___BhZLp"]')[0]  # 主页SEO描述
+${locatorB_productsNew_input_homeSEOLink}    dom:document.querySelectorAll('input[class="autosize-input___MJu1O"]')[1]  #
+${locatorB_productsNew_input_homeSEOKeyword}    dom:document.querySelectorAll('input[class="ant-select-search__field"]')[0]  #
 
 # locator_productsMobile
 ${locatorC_products_logo}    dom:document.querySelectorAll('div[alt="Logo"]')[0]    #C端，产品logo
@@ -103,8 +120,7 @@ ${contentB_products_tips_shelf}    是否上架
 ${contentB_products_tips_shelf_ok}    上架成功
 
 # file
-${file_products_template}    ${CURDIR}/xlsx/product_template.xlsx    # 添加单个商品模版文件
-${file_products_templates}    ${CURDIR}/xlsx/products_template.xlsx    # 添加多个商品模版文件
-${file_products_wrong_template}    ${CURDIR}/xlsx/wrong_format.xlsx    # 添加单个的错误的商品模版文件
-${file_products_addImg}    ${CURDIR}/../images/tm.jpg    # 添加商品图片
-${file_products_addImg2}    ${CURDIR}/../images/mv.jpg    # 添加商品图片
+${file_products_template}    ${CURDIR}/../xlsx/product_template.xlsx    # 添加单个商品模版文件
+${file_products_templates}    ${CURDIR}/../xlsx/products_template.xlsx    # 添加多个商品模版文件
+${file_products_wrong_template}    ${CURDIR}/../xlsx/wrong_format.xlsx    # 添加单个的错误的商品模版文件
+

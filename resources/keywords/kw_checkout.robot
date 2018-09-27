@@ -4,6 +4,10 @@ Resource          ../variable/var_common.robot
 Resource          ../variable/var_checkout.robot
 
 *** keywords ***
+Add Checkout Addr
+    [Documentation]    添加checkout地址
+
+
 Checkout Common Setp
     [Documentation]    封装公共步骤
     Go To    ${home_page}
@@ -17,17 +21,28 @@ Checkout Common Setp
     Select Window    New
     Sleep Time
 
-Add Address Common Setp
+Add Address Common Step
     [Documentation]    添加地址公共部分
-    Input Text    ${locatorB_checkout_address_first_name}    123
-    Input Text    ${locatorB_checkout_address_last_name}    345
-    Select From List    ${locatorB_checkout_address_select_country}    China
-    Input Text    ${locatorB_checkout_address_city}    深圳
-    Input Text    ${locatorB_checkout_address_add}    深圳123
-    Input Text    ${locatorB_checkout_address_zip}    123456
-    Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
-    Input Text    ${locatorB_checkout_address_phone}    123456789
-    Input Text    ${locatorB_checkout_address_company}    123456789
+    Wait And Input Text    ${locatorB_checkout_address_first_name}    123
+    Wait And Input Text    ${locatorB_checkout_address_last_name}    345
+    Wait And Input Text    ${locatorB_checkout_address_addr}    深圳123
+    Wait And Input Text    ${locatorB_checkout_address_city}    深圳
+    Select From List    ${locatorB_checkout_address_select_country}    Albania
+#   Select From List    ${locatorB_checkout_address_select_province}    Berat
+    Wait And Input Text    ${locatorB_checkout_address_zip}    123456
+    Wait And Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
+    Wait And Input Text    ${locatorB_checkout_address_phone}    123456789
+#    Wait And Input Text    ${locatorB_checkout_address_company}    123456789
+
+Add Credit Card Info
+	[Documentation]    添加信用卡公共部分
+	Wait And Input Text    ${locatorB_checkout_creditCard_input_name}    aaaaa
+	Wait And Input Text    ${locatorB_checkout_creditCard_input_email}    123456@zz.xx
+	Wait And Input Text    ${locatorB_checkout_creditCard_input_phone}    123456789
+	Wait And Input Text    ${locatorB_checkout_creditCard_input_post}    0000
+	Wait And Input Text    ${locatorB_checkout_creditCard_input_number}    123123123
+	Wait And Input Text    ${locatorB_checkout_creditCard_input_expireDate}    1231
+	Wait And Input Text    ${locatorB_checkout_creditCard_input_securityCode}    123
 
 Add Payment
     [Documentation]    B端添加支付方式
@@ -125,7 +140,7 @@ Complete_Order_Message
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
-    Wait And Input Text    ${locatorB_checkout_address_add}    hhh
+    Wait And Input Text    ${locatorB_checkout_address_addr}    hhh
     #postal code
     Wait And Input Text    ${locatorB_checkout_address_zip}    333000
     #email
@@ -156,7 +171,7 @@ Complete_Order_Message_Not_Submit
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
-    Wait And Input Text    ${locatorB_checkout_address_add}    hhh
+    Wait And Input Text    ${locatorB_checkout_address_addr}    hhh
     #postal code
     Wait And Input Text    ${locatorB_checkout_address_zip}    333000
     #email
@@ -184,7 +199,7 @@ Complete_Order_Message_Without_Phone
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
-    Wait And Input Text    ${locatorB_checkout_address_add}    hhh
+    Wait And Input Text    ${locatorB_checkout_address_addr}    hhh
     #postal code
     Wait And Input Text    ${locatorB_checkout_address_zip}    333000
     #email
@@ -204,7 +219,7 @@ Complete_Order_Message_Without_Last_name
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
-    Wait And Input Text    ${locatorB_checkout_address_add}    hhh
+    Wait And Input Text    ${locatorB_checkout_address_addr}    hhh
     #postal code
     Wait And Input Text    ${locatorB_checkout_address_zip}    333000
     #email
@@ -350,7 +365,7 @@ To_Change_Image
     Wait And Click Element    dom:document.querySelectorAll(".delete")[0]
     #更新另外一张图片
     Sleep    2
-    Choose File    ${locatorB_productsNew_input_chooseFile}    /Users/dianjiang/shoplaza/shoplaza_robot/resources/images/mv.jpg
+    Choose File    ${locatorB_productsNew_input_addImage}    /Users/dianjiang/shoplaza/shoplaza_robot/resources/images/mv.jpg
     Sleep    2
 
 Delete_All_Sub_Product_With_Already_Product

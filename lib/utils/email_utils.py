@@ -13,7 +13,7 @@ from email.mime.text import MIMEText
 from selenium import webdriver
 
 username = "autotest@shoplazza.com"  # .发件人
-password = "Robot@123"  # .发件人密码
+password = "AAAaaa111"  # .发件人密码
 relative_path = os.path.join(os.path.dirname(__file__), '../..')
 # . 收件邮箱
 to_addr = [
@@ -131,6 +131,6 @@ def email_fomat_content():
 
 
 if __name__ == "__main__":
-    get_screenshot()
+    # get_screenshot()
     time.sleep(5)
     send_email()

@@ -68,7 +68,7 @@ checkout138
     #返回后台页面修改商品售价
     Select Window    店匠科技
     #点击第一件商品进入商品详情页
-    Click And Page Contains Element With Refresh    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    ${locatorB_productsNew_tabindex_status}
+    Click And Page Contains Element With Refresh    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    ${locatorB_productsNew_switch_status}
     #修改售价
     Wait And Input Text    id:price    ${price1}
     #点击保存
@@ -95,7 +95,7 @@ checkout139
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
     Sleep    2
     #修改状态
-    Wait And Click Element    ${locatorB_productsNew_tabindex_status}
+    Wait And Click Element    ${locatorB_productsNew_switch_status}
     #点击保存
     Wait And Click Element    ${locatorB_products_button_confirm}
     Sleep    2

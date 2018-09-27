@@ -1,5 +1,6 @@
 *** Settings ***
 Library           SeleniumLibrary    run_on_failure=NOTHING
+Library           OperatingSystem
 Library           ${CURDIR}/../../lib/customlib/kwpayment.py
 Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 Library           ${CURDIR}/../../lib/customlib/kwproduct.py
@@ -7,6 +8,7 @@ Library           ${CURDIR}/../../lib/customlib/kwcollection.py
 Resource          ../variable/var_common.robot
 Resource          ../variable/var_login.robot
 Resource          ../variable/var_store.robot
+Resource          ../variable/var_account.robot
 Resource          ../variable/var_shipping.robot
 Resource          kw_browser.robot
 Resource          kw_product_management.robot
@@ -53,7 +55,7 @@ Go To Order Page
     Location Should Be    ${url_order}
 
 Go To Product Management Page
-    [Documentation]    跳转到商品页面
+    [Documentation]    跳转到商品管理页面
     Wait Until Element Is Visible    ${locatorB_products}
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_productMenus_expanded}    5    #.获取导航栏商品的下拉按钮元素
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_products}
@@ -65,7 +67,7 @@ Go To Product Management Page
     Sleep    1
 
 Go To Product Collection Page
-    [Documentation]    跳转到商品页面
+    [Documentation]    跳转到商品专辑页面
     Wait Until Element Is Visible    ${locatorB_products}
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_productMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_products}
@@ -77,7 +79,7 @@ Go To Product Collection Page
     Sleep    1
 
 Go To Product Review Page
-    [Documentation]    跳转到商品页面
+    [Documentation]    跳转到商品评论页面
     Wait Until Element Is Visible    ${locatorB_products}
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_productMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_products}
@@ -144,11 +146,24 @@ Go To Shipping Page
     Wait Until Page Contains    物流方案
     Location Should Be    ${url_shipping}
 
+Go To Employee Account Page
+    [Documentation]    跳转员工账号页面
+    Wait Until Element Is Visible    ${locatorB_setting}
+    # 若设置按钮没展开，则展开营销按钮
+    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_employee}
+    ...    ELSE    Wait And Click Element    ${locatorB_setting_employee}
+    Sleep    2
+    Wait Until Page Contains    ${contextB_account_employeeManagement}
+    Location Should Be    ${url_accounts}
+    Sleep    1
+
 Go To Application Page
     [Documentation]    跳转到应用市场-网站seo
-    Wait And Click Element    ${locatorB_Application}
+    Wait And Click Element    ${locatorB_application}
     Wait Until Page Contains    图片SEO
-    Wait And Click Element    ${locatorB_Application_seoimg}
+    Wait And Click Element    ${locatorB_application_seoimg}
     Location Should Be    ${url_seoimage}
 
 Go To Invitaion Page
@@ -205,9 +220,9 @@ Wait And Get Text
     ${return}    Get Text    ${element_locator}
     [Return]    ${return}
 
-Wait And Get List Items
+Wait And Get Items List From Locator
 	[Arguments]    ${element_locator}    ${element_visible}=${Empty}
-    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    [Documentation]    获取${element_locator}中的元素，并放入列表中返回
 	${exec_locator} =	Evaluate	'''${element_locator}'''[4:]
     Run Keyword If    '''${element_visible}'''!='''${Empty}'''    Wait Until Element Is Visible    ${element_visible}     10
     @{return}    Execute Javascript    return ${exec_locator}
@@ -231,18 +246,42 @@ Click Element And Cancel
     Wait And Click Element    ${element_locator}
     Wait And Click Element    ${locatorB_popUps_button_default}
 
-Get List Length
-	[Arguments]    ${exec_locator}
-    [Documentation]    private，不建议直接调用。可使用Length Should Be Equal With Wait
-	${return} =	Execute Javascript    return ${exec_locator}.length
-    [Return]    ${return}
+Wait And Make Switch On
+	[Arguments]    ${element_locator}
+    [Documentation]
+    Wait Until Element Is Visible    ${element_locator}     10
+	${class} =    Get Element Attribute    ${element_locator}    class
+	Run Keyword If    '${class}'=='ant-switch'    Wait And Click Element    ${element_locator}
 
-Length Should Be Equal With Wait
+Wait And Make Switch Off
+	[Arguments]    ${element_locator}
+    [Documentation]
+    Wait Until Element Is Visible    ${element_locator}     10
+	${class} =    Get Element Attribute    ${element_locator}    class
+	Run Keyword If    '${class}'=='ant-switch ant-switch-checked'    Wait And Click Element    ${element_locator}
+
+Wait Enabled And Choose File
+	[Arguments]    ${element_locator}    ${file}
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    Wait Until Element Is Enabled    ${element_locator}    10
+    ${NORMAL_PATH}    Normalize Path  ${file}
+    Choose File    ${element_locator}    ${NORMAL_PATH}
+	Sleep    5    # 由于商品图片未上传完成，点击保存，保存成功。会导致bug，因此等待5秒钟
+
+# 可用Get Element Count替代
+#Get List Length
+#	[Arguments]    ${exec_locator}
+#    [Documentation]    private，不建议直接调用。可使用Count Of Element Should Be Equal With Wait
+#	${return} =	Execute Javascript    return ${exec_locator}.length
+#    [Return]    ${return}
+
+Count Of Element Should Be Equal With Wait
     [Arguments]    ${element_locator}    ${expected}    ${timeout}=10
-    ${exec_locator} =	Evaluate	'''${element_locator}'''[4:]
+#    ${exec_locator} =	Evaluate	'''${element_locator}'''[4:]
     ${times}    Evaluate    ${timeout}-1
     :FOR    ${i}    IN RANGE    ${timeout}
-    \    ${len}    Get List Length    ${exec_locator}
+#    \    ${len}    Get List Length    ${exec_locator}
+    \    ${len}    Get Element Count    ${element_locator}
     \    ${status}    Run Keyword And Return Status    Should Be Equal    ${len}    ${expected}
     \    Run Keyword If    ${status}    Exit For Loop
     \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
@@ -271,7 +310,7 @@ Click And Page Contains Element With Refresh
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
     \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Locator    ${contain_element}    ${timeout}    ${retry_time}
-    \    Run Keyword If    '${status0}'=='False'    Execute JavaScript    return location.reload()
+    \    Run Keyword If    '${status0}'=='False'    Reload Page And Start Ajax
     \    ...     ELSE    Exit For Loop
 
 Click And Page Not Contains Element With Refresh
@@ -280,7 +319,7 @@ Click And Page Not Contains Element With Refresh
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
     \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Locator    ${contain_element}    ${timeout}    ${retry_time}
-    \    Run Keyword If    '${status0}'=='True'    Execute JavaScript    return location.reload()
+    \    Run Keyword If    '${status0}'=='True'    Reload Page And Start Ajax
     \    ...     ELSE    Exit For Loop
 
 Click And Page Contains With Refresh
@@ -289,7 +328,7 @@ Click And Page Contains With Refresh
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
     \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Text    ${contain_text}    ${timeout}    ${retry_time}
-    \    Run Keyword If    '${status0}'=='False'    Execute JavaScript    return location.reload()
+    \    Run Keyword If    '${status0}'=='False'    Reload Page And Start Ajax
     \    ...     ELSE    Exit For Loop
 
 Click And Page Not Contains With Refresh
@@ -298,7 +337,7 @@ Click And Page Not Contains With Refresh
     :FOR    ${i}    IN RANGE    1
     \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
     \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Text    ${contain_text}    ${timeout}    ${retry_time}
-    \    Run Keyword If    '${status0}'=='True'    Execute JavaScript    return location.reload()
+    \    Run Keyword If    '${status0}'=='True'    Reload Page And Start Ajax
     \    ...     ELSE    Exit For Loop
 
 Click With Refresh
@@ -306,7 +345,7 @@ Click With Refresh
     [Arguments]    ${click_element}    ${timeout}=10    ${retry_time}=2
     :FOR    ${i}    IN RANGE    1
     \    ${status0}    Run Keyword And Return Status    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${click_element}
-    \    Run Keyword If    '${status0}'=='False'    Execute JavaScript    return location.reload()
+    \    Run Keyword If    '${status0}'=='False'    Reload Page And Start Ajax
     \    ...     ELSE    Exit For Loop
 
 Wait Until Page Not Contains Locator

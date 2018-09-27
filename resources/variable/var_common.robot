@@ -20,9 +20,11 @@ ${locatorB_marketing_subtraction}    dom:document.querySelectorAll('a[href="/sub
 ${locatorB_marketing_coupon_code}    dom:document.querySelectorAll('a[href="/coupon_code"]')[0]    # 导航栏-营销-优惠券
 ${locatorB_store}    dom:document.querySelectorAll('span[data-robot="decoration"]')[0]    #.导航栏-店铺
 ${locatorB_setting}    dom:document.querySelectorAll('span[data-robot="setting"]')[0]    # 导航栏-设置
+${locatorB_setting_menus}    dom:document.querySelectorAll(".ant-menu-submenu-title")    # 导航栏-设置-含自菜单的元素
 ${locatorB_setting_shipping}    dom:document.querySelectorAll('a[href="/shipping"]')[0]    # 导航栏-设置-物流
 ${locatorB_setting_taxPrice}    dom:document.querySelectorAll('a[href="/taxPrice"]')[0]    # 导航栏-设置-税费
 ${locatorB_setting_payment}    dom:document.querySelectorAll('a[href="/pay"]')[0]    # 导航栏-设置-收款渠道
+${locatorB_setting_employee}    dom:document.querySelectorAll('a[href="/accounts"]')[0]    # 导航栏-设置-员工账号
 ${locatorB_setting_store}    dom:document.querySelectorAll('a[href="/store"]')[0]    # 导航栏-设置-基础信息
 ${locatorB_setting_upfile}    dom:document.querySelectorAll('a[href="/uploadFile"]')[0]    # 导航栏-设置-文件管理
 ${locatorB_Application}    dom:document.querySelectorAll('a[href="/tools"]')[0]    #.导航栏-应用市场
@@ -63,7 +65,8 @@ ${url_tax_price}    ${home_page}/taxPrice    # tax price
 ${url_shipping}    ${home_page}/shipping    # shipping
 ${url_subtraction}    ${home_page}/subtraction    # subtraction
 ${url_coupon_code}    ${home_page}/coupon_code    # coupon
-${url_coupon_store}    ${home_page}/store    # coupon
+${url_coupon_store}    ${home_page}/store    # store
+${url_accounts}    ${home_page}/accounts   # accounts
 ${url_collection}    ${home_page}/collection   # collection
 ${url_reviews}    ${home_page}/reviews   # reviews
 ${url_seoimage}    ${home_page}/seoImage    #. seoimage
@@ -80,3 +83,6 @@ ${keybord_enter}    \\13
 ${register_contact}    gt1zwkp@abctest.com
 ${register_domain}    gt1zwkp
 ${register_pwd}    ${datas_password}
+### 图片文件
+${file_products_addImg}    ${CURDIR}/../images/tm.jpg    # 添加商品图片
+${file_products_addImg2}    ${CURDIR}/../images/mv.jpg    # 添加商品图片

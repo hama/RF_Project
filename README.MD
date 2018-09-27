@@ -92,7 +92,7 @@ pip install robotframework
 # 安装测试库 selenium library
 pip install --pre --upgrade robotframework-seleniumlibrary
 
-# 下载谷歌浏览器驱动，并放到运行环境的 PATH 下面
+# 下载谷歌浏览器驱动（2.38 版本），并放到运行环境的 PATH 下面
 https://sites.google.com/a/chromium.org/chromedriver/downloads
 ```
 

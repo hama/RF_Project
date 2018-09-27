@@ -82,7 +82,7 @@ checkout012
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
     Input Text    ${locatorB_checkout_address_city}    深圳
-    Input Text    ${locatorB_checkout_address_add}    深圳123
+    Input Text    ${locatorB_checkout_address_addr}    深圳123
     Input Text    ${locatorB_checkout_address_zip}    123456
     Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
     Input Text    ${locatorB_checkout_address_phone}    123456789
@@ -101,7 +101,7 @@ checkout013
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
     Input Text    ${locatorB_checkout_address_city}    深圳
-    Input Text    ${locatorB_checkout_address_add}    深圳123
+    Input Text    ${locatorB_checkout_address_addr}    深圳123
     Input Text    ${locatorB_checkout_address_zip}    123456
     Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
     Input Text    ${locatorB_checkout_address_phone}    123456789
@@ -117,7 +117,7 @@ checkout017
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
     Input Text    ${locatorB_checkout_address_city}    深圳
-    Input Text    ${locatorB_checkout_address_add}    深圳123
+    Input Text    ${locatorB_checkout_address_addr}    深圳123
     Input Text    ${locatorB_checkout_address_zip}    123456
     Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
     Input Text    ${locatorB_checkout_address_phone}    123456789
@@ -142,7 +142,7 @@ checkout022
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
     Input Text    ${locatorB_checkout_address_city}    深圳
-    Input Text    ${locatorB_checkout_address_add}    深圳123
+    Input Text    ${locatorB_checkout_address_addr}    深圳123
     Input Text    ${locatorB_checkout_address_zip}    123456
     Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
     Input Text    ${locatorB_checkout_address_phone}    123456789
@@ -170,7 +170,7 @@ checkout025
     Input Text    ${locatorB_checkout_address_first_name}    123
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
-    Input Text    ${locatorB_checkout_address_add}    深圳123
+    Input Text    ${locatorB_checkout_address_addr}    深圳123
     Input Text    ${locatorB_checkout_address_zip}    123456
     Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
     Input Text    ${locatorB_checkout_address_phone}    123456789
@@ -203,7 +203,7 @@ checkout028
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
     Input Text    ${locatorB_checkout_address_city}    深圳
-    Input Text    ${locatorB_checkout_address_add}    深圳123
+    Input Text    ${locatorB_checkout_address_addr}    深圳123
     Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
     Input Text    ${locatorB_checkout_address_phone}    123456789
     Input Text    ${locatorB_checkout_address_company}    123456789
@@ -219,7 +219,7 @@ checkout030
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
     Input Text    ${locatorB_checkout_address_city}    深圳
-    Input Text    ${locatorB_checkout_address_add}    深圳123
+    Input Text    ${locatorB_checkout_address_addr}    深圳123
     Input Text    ${locatorB_checkout_address_zip}    123456
     Input Text    ${locatorB_checkout_address_phone}    123456789
     Input Text    ${locatorB_checkout_address_company}    123456789
@@ -235,7 +235,7 @@ checkout032
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
     Input Text    ${locatorB_checkout_address_city}    深圳
-    Input Text    ${locatorB_checkout_address_add}    深圳123
+    Input Text    ${locatorB_checkout_address_addr}    深圳123
     Input Text    ${locatorB_checkout_address_zip}    123456
     Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
     Input Text    ${locatorB_checkout_address_company}    123456789
@@ -252,7 +252,7 @@ checkout035
     Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
     Input Text    ${locatorB_checkout_address_city}    深圳
-    Input Text    ${locatorB_checkout_address_add}    深圳123
+    Input Text    ${locatorB_checkout_address_addr}    深圳123
     Input Text    ${locatorB_checkout_address_zip}    123456
     Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
     Input Text    ${locatorB_checkout_address_phone}    123456789
@@ -316,7 +316,7 @@ checkout021
     ${name}    Execute JavaScript    return document.querySelectorAll("#shipping_country_id option")[1].innerText
     Select From List    ${locatorB_checkout_address_select_country}    ${name}
     Input Text    ${locatorB_checkout_address_city}    深圳
-    Input Text    ${locatorB_checkout_address_add}    深圳123
+    Input Text    ${locatorB_checkout_address_addr}    深圳123
     Input Text    ${locatorB_checkout_address_zip}    123456
     Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
     Input Text    ${locatorB_checkout_address_phone}    123456789
@@ -345,7 +345,7 @@ checkout052
     Add TenPrice Products    #.添加商品
     Checkout Common Setp
     Checkout_Common_Checkout_Step
-    Add Address Common Setp    # 添加地址公共部分
+    Add Address Common Step    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Wait And Click Element    dom:document.getElementsByClassName("pm_footer_left")[0]
@@ -359,7 +359,7 @@ checkout054
     Add TenPrice Products    #.添加商品
     Checkout Common Setp
     Checkout_Common_Checkout_Step
-    Add Address Common Setp    # 添加地址公共部分
+    Add Address Common Step    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Wait And Click Element    dom:document.getElementsByClassName("pm_footer_left")[0]
@@ -380,7 +380,7 @@ checkout063
     Sleep Time
     Select From List    ${locatorB_checkout_address_select_city}    Shanghai
     Input Text    ${locatorB_checkout_address_city}    深圳
-    Input Text    ${locatorB_checkout_address_add}    深圳123
+    Input Text    ${locatorB_checkout_address_addr}    深圳123
     Input Text    ${locatorB_checkout_address_zip}    123456
     Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
     Input Text    ${locatorB_checkout_address_phone}    123456789
@@ -404,7 +404,7 @@ checkout065
     Sleep Time
     Select From List    ${locatorB_checkout_address_select_city}    Guangdong
     Input Text    ${locatorB_checkout_address_city}    深圳
-    Input Text    ${locatorB_checkout_address_add}    深圳123
+    Input Text    ${locatorB_checkout_address_addr}    深圳123
     Input Text    ${locatorB_checkout_address_zip}    123456
     Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
     Input Text    ${locatorB_checkout_address_phone}    123456789
@@ -422,7 +422,7 @@ checkout079
     Add Cod Payment    #.添加cod支付方式
     Checkout Common Setp
     Checkout_Common_Checkout_Step
-    Add Address Common Setp    # 添加地址公共部分
+    Add Address Common Step    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Page Should Contain Element    class:pm_name
@@ -434,7 +434,7 @@ checkout081
     Add Cod Payment    #.添加cod支付方式
     Checkout Common Setp
     Checkout_Common_Checkout_Step
-    Add Address Common Setp    # 添加地址公共部分
+    Add Address Common Step    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Page Should Contain Element    class:pm_list_row
@@ -445,7 +445,7 @@ checkout088
     [Tags]    P0
     Checkout Common Setp
     Checkout_Common_Checkout_Step
-    Add Address Common Setp    # 添加地址公共部分
+    Add Address Common Step    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Wait And Click Element    ${locator_checkout_payment_cod_elm}
@@ -458,7 +458,7 @@ checkout098
     Add Order Products    #.添加商品
     Checkout Common Setp
     Checkout_Common_Checkout_Step
-    Add Address Common Setp    # 添加地址公共部分
+    Add Address Common Step    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Wait And Click Element    ${locator_checkout_payment_cod_elm}
@@ -473,7 +473,7 @@ checkout099
     Add Payment    #.添加支付方式
     Checkout Common Setp
     Checkout_Common_Checkout_Step
-    Add Address Common Setp    # 添加地址公共部分
+    Add Address Common Step    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Wait And Click Element    ${locator_checkout_payment_ipaylinks_elm}
@@ -486,7 +486,7 @@ checkout100
     [Tags]    P0
     Checkout Common Setp
     Checkout_Common_Checkout_Step
-    Add Address Common Setp    # 添加地址公共部分
+    Add Address Common Step    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Wait And Click Element    ${locator_checkout_payment_cod_elm}
@@ -500,7 +500,7 @@ checkout101
     Add Cod Payment    #.添加支付方式
     Checkout Common Setp
     Checkout_Common_Checkout_Step
-    Add Address Common Setp    # 添加地址公共部分
+    Add Address Common Step    # 添加地址公共部分
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Wait And Click Element    ${locator_checkout_payment_cod_elm}

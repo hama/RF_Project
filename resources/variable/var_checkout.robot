@@ -13,16 +13,27 @@ ${locatorB_checkout_member_btn}    dom:document.querySelectorAll("a[alt='Account
 ${locatorB_checkout_address_btn}    dom:document.querySelectorAll(".address_btn")[0]    #.checkout点击by-now后的添加地址按钮
 ${locatorB_checkout_address_first_name}    dom:document.querySelectorAll("input[name='first_name']")[0]    #.添加地址后-first_name输入框
 ${locatorB_checkout_address_last_name}    dom:document.querySelectorAll("input[name='last_name']")[0]    #.添加地址后-last_name输入框
-${locatorB_checkout_address_select_country}    id:shipping_country_id    #.添加地址后选择国家下拉框
+${locatorB_checkout_address_select_country}    id:shipping_country_select    #.添加地址后选择国家下拉框
+${locatorB_checkout_address_select_province}    id:shipping_province_select    #.添加地址后选择省份下拉框
 ${locatorB_checkout_address_select_city}    id:shipping_zone_id    #.添加地址后选择国家下拉框
 ${locatorB_checkout_address_city}    dom:document.querySelectorAll("input[name='city']")[0]    #.添加地址后选择城市
-${locatorB_checkout_address_add}    dom:document.querySelectorAll("input[name='address']")[0]    #.添加地址后填写地址
+${locatorB_checkout_address_addr}    dom:document.querySelectorAll("input[name='address']")[0]    #.添加地址后填写地址
 ${locatorB_checkout_address_zip}    dom:document.querySelectorAll("input[name='zip']")[0]    #.添加地址后zip框
 ${locatorB_checkout_address_email}    dom:document.querySelectorAll("input[name='email']")[0]    #.添加地址后email框
 ${locatorB_checkout_address_phone}    dom:document.querySelectorAll("input[name='phone']")[0]    #.添加地址后phone框
 ${locatorB_checkout_address_company}    dom:document.querySelectorAll("input[name='company']")[0]    #.添加地址后copmany框
 ${locatorB_checkout_address_error}    dom:document.querySelectorAll(".not_none")[0]    #.添加地址错误类
 ${locatorB_checkout_address_close_address}    dom:document.querySelectorAll(".close_icon")[1]    #.关闭地址按钮
+
+# 信用卡信息
+${locatorB_checkout_creditCard_input_name}    dom:document.querySelectorAll('[name="card_first_name"]')[0]    #.信用卡name
+${locatorB_checkout_creditCard_input_email}    dom:document.querySelectorAll('[name="card_email"]')[0]
+${locatorB_checkout_creditCard_input_phone}    dom:document.querySelectorAll('[name="card_phone"]')[0]
+${locatorB_checkout_creditCard_input_post}    dom:document.querySelectorAll('[name="card_postcode"]')[0]
+${locatorB_checkout_creditCard_input_number}    dom:document.querySelectorAll('[name="card_number"]')[0]
+${locatorB_checkout_creditCard_input_expireDate}    dom:document.querySelectorAll('[name="card_date"]')[0]
+${locatorB_checkout_creditCard_input_securityCode}    dom:document.querySelectorAll('[name="card_code"]')[0]
+
 
 ${locatorB_checkout_address_save_address_btn}    dom:document.querySelectorAll(".form-footer")[0]    #.保存地址按钮
 ${locatorB_checkout_address_save_checkout_btn}    id:submitMbPay    #.保存地址后的提交按钮
