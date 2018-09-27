@@ -168,7 +168,7 @@ Wait Add Upfile
     [Documentation]    添加30个文件
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    add_upfiles
+    \    ${res_status}    add_upfiles_py
     \    Sleep    12
     \    Run Keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    5
@@ -177,6 +177,6 @@ Wait Del Upfile
     [Documentation]    接口删除
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    del_upfiles
+    \    ${res_status}    del_upfiles_py
     \    Run Keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1
