@@ -146,7 +146,7 @@ store019
     [Tags]    P0
     Repetir Common Step
     #.上传图片
-    Wait Enabled And Choose File    dom:document.querySelectorAll("input[type='file']")[0]    ${file_products_addImg}
+    Wait Enabled And Choose File    dom:document.querySelectorAll('input[type="file"]')[0]   ${file_products_addImg}
     Wait And Click Element    ${locatorB_storeLst_save_btn}
 
 store022

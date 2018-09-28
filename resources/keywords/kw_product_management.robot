@@ -215,7 +215,7 @@ Add_Collection
     Sleep    5
     Wait And Click Element    ${locatorB_product_collection}
     #点击新建一个商品专辑
-    Wait And Click Element    ${locatorB_productsCollection_button_addCategory}
+    Wait And Click Element    ${locatorB_button_add}
     #输入专辑名称
     Wait And Input Text    id:title    ceshi
     #输入专辑描述

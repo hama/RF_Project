@@ -220,6 +220,36 @@ Wait And Get Text
     ${return}    Get Text    ${element_locator}
     [Return]    ${return}
 
+Wait And Get Value
+    [Arguments]    ${element_locator}
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    Wait Until Element Is Visible    ${element_locator}     10
+    ${return}    Get Value    ${element_locator}
+    [Return]    ${return}
+
+Text Of Element Should Be Equal With Wait
+	[Arguments]    ${element_locator}    ${expected_text}    ${timeout}=10
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    ${times}    Evaluate    ${timeout}-1
+    :FOR    ${i}    IN RANGE    ${timeout}
+    \    ${text}    Wait And Get Text    ${element_locator}
+    \    ${status}    Run Keyword And Return Status    Should Be Equal    ${text}    ${expected_text}
+    \    Run Keyword If    ${status}    Exit For Loop
+    \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
+    \    ...    ELSE    Sleep    1
+
+Value Of Element Should Be Equal With Wait
+	[Arguments]    ${element_locator}    ${expected_value}    ${timeout}=10
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    ${times}    Evaluate    ${timeout}-1
+    :FOR    ${i}    IN RANGE    ${timeout}
+    \    ${value}    Wait And Get Value    ${element_locator}
+    \    ${status}    Run Keyword And Return Status    Should Be Equal    ${value}    ${expected_value}
+    \    Run Keyword If    ${status}    Exit For Loop
+    \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
+    \    ...    ELSE    Sleep    1
+
+
 Wait And Get Items List From Locator
 	[Arguments]    ${element_locator}    ${element_visible}=${Empty}
     [Documentation]    获取${element_locator}中的元素，并放入列表中返回
@@ -368,15 +398,15 @@ Wait Until Page Not Contains Text
     [Arguments]    ${text}    ${timeout}=10
     Wait Until Page Does Not Contain    ${text}    ${timeout}
 
-Wait Until Alert Be Present
-    [Documentation]    等待Alert出现，并消除
-    [Arguments]    ${msg}    ${timeout}=10    ${retry_time}=2
-    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Alert Should Be Present    ${msg}
+Wait Alert Should Be Present And Accept
+	[Documentation]    告警弹窗${text}
+    [Arguments]    ${text}    ${timeout}=10
+    Alert Should Be Present    ${text}    ACCEPT    ${timeout}
 
-Alert Should Not Be Present
-    [Arguments]    ${msg}
-    ${result}    Run Keyword And Ignore Error    Alert Should Be Present    ${msg}
-    Should Be True    '${result}'!='PASS'
+Wait Alert Should Be Present And Dismiss
+	[Documentation]    告警弹窗${text}
+    [Arguments]    ${text}    ${timeout}=10
+    Alert Should Be Present    ${text}    DISMISS    ${timeout}
 
 Reload Page And Start Ajax
 	Reload Page

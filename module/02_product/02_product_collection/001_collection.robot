@@ -26,7 +26,7 @@ collection007
     [Tags]    P0    threshold
     add_collection_with_pic_py
     Reload Page And Start Ajax
-	Wait And Click Element    ${locatorB_productsCollection_icon_listDetail}[0]
+	Wait And Click Element    ${locatorB_productsCollection_icon_listDetailOpen}[0]
 	Wait Until Page Contains Text    商品(0)
 
 collection008
@@ -86,9 +86,258 @@ collection016
 collection023
     [Documentation]    专辑名称输入混合（包括中英文，特殊符号，数字）字符
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_productsCollection_button_addCategory}
+    add_collection_with_pic_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
+	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
+	Wait And Click Element    ${locatorB_button_save}
+	Wait Until Page Contains Text     修改成功
+	Go To Product Collection Page
+	Wait Until Page Contains Locator     ${locatorB_productsCollection_text_firstCollectionNum}
+
+collection025
+    [Documentation]    专辑名称输入1-255个字符
+    [Tags]    P0    threshold
+    add_collection_with_pic_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
+	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
+	Wait And Click Element    ${locatorB_button_save}
+	Wait Until Page Contains Text     修改成功
+	Go To Product Collection Page
+	Wait Until Page Contains Locator     ${locatorB_productsCollection_text_firstCollectionNum}
+
+collection031
+    [Documentation]    专辑描述输入混合（包括中英文，特殊符号，数字）字符
+    [Tags]    P0    threshold
+    add_collection_with_pic_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
+	Wait And Input Text    ${locatorB_collectionDetail_input_description}    description@123
+	Wait And Click Element    ${locatorB_button_save}
+	Wait Until Page Contains Text     修改成功
+	Go To Product Collection Page
+	Wait Until Page Contains Locator     ${locatorB_productsCollection_text_firstCollectionNum}
+
+collection032
+    [Documentation]    专辑描述输入1-255个字符
+    [Tags]    P0    threshold
+    add_collection_with_pic_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
+	Wait And Input Text    ${locatorB_collectionDetail_input_description}    description@123
+	Wait And Click Element    ${locatorB_button_save}
+	Wait Until Page Contains Text     修改成功
+	Go To Product Collection Page
+	Wait Until Page Contains Locator     ${locatorB_productsCollection_text_firstCollectionNum}
+
+collection034
+    [Documentation]    专辑封面格式JPG
+    [Tags]    P0    threshold
+    add_collection_without_pic_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
+	Wait Enabled And Choose File    ${locatorB_collectionDetail_input_addImage}    ${file_products_addImg}
+	Wait And Click Element    ${locatorB_button_save}
+	Wait Until Page Contains Text     修改成功
+	Go To Product Collection Page
+	Wait Until Page Contains Locator     ${locatorB_productsCollection_text_firstCollectionNum}
+	Wait Until Page Contains Locator     ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
+
+collection090
+    [Documentation]    展开专辑快速查找
+    [Tags]    P0    threshold
+    add_collection_without_pic_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
+    Wait Until Page Contains Locator    ${locatorB_collectionDetail_icon_quickSearchToShow}
+    Wait And Click Element    ${locatorB_collectionDetail_icon_quickSearchToShow}
+    Wait Until Page Contains Locator    ${locatorB_collectionDetail_icon_quickSearchToClose}
+
+collection091
+    [Documentation]    收起专辑快速查找
+    [Tags]    P0    threshold
+    add_collection_without_pic_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
+    Wait Until Page Contains Locator    ${locatorB_collectionDetail_icon_quickSearchToShow}
+    Wait And Click Element    ${locatorB_collectionDetail_icon_quickSearchToShow}
+    Wait Until Page Contains Locator    ${locatorB_collectionDetail_icon_quickSearchToClose}
+    Wait And Click Element    ${locatorB_collectionDetail_icon_quickSearchToClose}
+    Wait Until Page Contains Locator    ${locatorB_collectionDetail_icon_quickSearchToShow}
+
+collection093
+    [Documentation]    切换为改专辑详情页
+    [Tags]    P0    threshold
+    &{collection_conf00} =    Create Dictionary
+    ...    title=autotest_title0
+    add_collection_with_conf_py    ${collection_conf00}
+    Sleep    1
+    &{collection_conf01} =    Create Dictionary
+    ...    title=autotest_title1
+    add_collection_with_conf_py    ${collection_conf01}
+    Reload Page And Start Ajax
+	# 点击进入专辑详情页
+    Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
+    Value Of Element Should Be Equal With Wait    ${locatorB_collectionDetail_input_title}    autotest_title1
+    Wait And Click Element    ${locatorB_collectionDetail_icon_quickSearchToShow}
+    Wait And Click Element    ${locatorB_collectionDetail_text_quickSearchListItemsName}[0]
+    Value Of Element Should Be Equal With Wait    ${locatorB_collectionDetail_input_title}    autotest_title0
+
+collection094
+    [Documentation]    修改后未保存时点击切换专辑
+    [Tags]    P0    threshold
+    &{collection_conf00} =    Create Dictionary
+    ...    title=autotest_title0
+    add_collection_with_conf_py    ${collection_conf00}
+    Sleep    1
+    &{collection_conf01} =    Create Dictionary
+    ...    title=autotest_title1
+    add_collection_with_conf_py    ${collection_conf01}
+    Reload Page And Start Ajax
+	# 点击进入专辑详情页
+    Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
+    Value Of Element Should Be Equal With Wait    ${locatorB_collectionDetail_input_title}    autotest_title1
+    Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
+    Wait And Click Element    ${locatorB_collectionDetail_icon_quickSearchToShow}
+    Wait And Click Element    ${locatorB_collectionDetail_text_quickSearchListItemsName}[0]
+    Wait Until Page Contains Text    确定离开当前页面吗？
+
+collection095
+    [Documentation]    修改后未保存时点击切换专辑确定
+    [Tags]    P0    threshold
+    &{collection_conf00} =    Create Dictionary
+    ...    title=autotest_title0
+    add_collection_with_conf_py    ${collection_conf00}
+    Sleep    1
+    &{collection_conf01} =    Create Dictionary
+    ...    title=autotest_title1
+    add_collection_with_conf_py    ${collection_conf01}
+    Reload Page And Start Ajax
+	# 点击进入专辑详情页
+    Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
+    Value Of Element Should Be Equal With Wait    ${locatorB_collectionDetail_input_title}    autotest_title1
+    Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
+    Wait And Click Element    ${locatorB_collectionDetail_icon_quickSearchToShow}
+    Wait And Click Element    ${locatorB_collectionDetail_text_quickSearchListItemsName}[0]
+    Wait Until Page Contains Text    确定离开当前页面吗？
+    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Value Of Element Should Be Equal With Wait    ${locatorB_collectionDetail_input_title}    autotest_title0
+
+collection098
+    [Documentation]    未保存点击返回按钮退出
+    [Tags]    P0    threshold
+    add_collection_without_pic_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
+	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
+	Wait And Click Element    ${locatorB_icon_back}
+	${alert_msg}    Get Alert Message
+    Should Be Equal     页面上有未保存内容，是否确定退出?    ${alert_msg}
+
+collection099
+    [Documentation]    未保存点击返回按钮退出确定
+    [Tags]    P0    threshold
+    add_collection_without_pic_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
+	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
+	Wait And Click Element    ${locatorB_icon_back}
+	Wait Alert Should Be Present And Accept    页面上有未保存内容，是否确定退出?
+	Wait Until Page Contains Locator     ${locatorB_productsCollection_text_firstCollectionNum}
+
+collection100
+    [Documentation]    未保存点击返回按钮退出取消
+    [Tags]    P0    threshold
+    add_collection_without_pic_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
+	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
+	Wait And Click Element    ${locatorB_icon_back}
+	Wait Alert Should Be Present And Dismiss    页面上有未保存内容，是否确定退出?
+	Wait Until Page Contains Text    专辑预览
+
+collection121
+    [Documentation]    专辑名称输入混合（包括中英文，特殊符号，数字）字符
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_button_add}
 	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
 	Wait And Click Element    ${locatorB_button_save}
 	Wait Until Page Contains Text     添加成功
 	Wait Until Page Contains Locator     ${locatorB_productsCollection_text_firstCollectionNum}
+
+collection123
+    [Documentation]    专辑名称输入1-255个字符
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_button_add}
+	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
+	Wait And Click Element    ${locatorB_button_save}
+	Wait Until Page Contains Text     添加成功
+	Wait Until Page Contains Locator     ${locatorB_productsCollection_text_firstCollectionNum}
+
+collection129
+    [Documentation]    专辑描述输入混合（包括中英文，特殊符号，数字）字符
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_button_add}
+	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
+	Wait And Input Text    ${locatorB_collectionDetail_input_description}    description@123
+	Wait And Click Element    ${locatorB_button_save}
+	Wait Until Page Contains Text     添加成功
+	Wait Until Page Contains Locator     ${locatorB_productsCollection_text_firstCollectionNum}
+
+collection130
+    [Documentation]    专辑描述输入1-255个字符
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_button_add}
+	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
+	Wait And Input Text    ${locatorB_collectionDetail_input_description}    description@123
+	Wait And Click Element    ${locatorB_button_save}
+	Wait Until Page Contains Text     添加成功
+	Wait Until Page Contains Locator     ${locatorB_productsCollection_text_firstCollectionNum}
+
+collection132
+    [Documentation]    专辑封面格式JPG
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_button_add}
+	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
+	Wait Enabled And Choose File    ${locatorB_collectionDetail_input_addImage}    ${file_products_addImg}
+	Wait And Click Element    ${locatorB_button_save}
+	Wait Until Page Contains Text     添加成功
+	Wait Until Page Contains Locator     ${locatorB_productsCollection_text_firstCollectionNum}
+	Wait Until Page Contains Locator     ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
+
+# 暂时不写
+#collection152
+#    [Documentation]    删除商品
+#    [Tags]    P0    threshold
+
+collection181
+    [Documentation]    未保存点击返回按钮退出
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_button_add}
+	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
+	Wait And Click Element    ${locatorB_icon_back}
+	${alert_msg}    Get Alert Message
+	Should Be Equal     页面上有未保存内容，是否确定退出?    ${alert_msg}
+
+collection182
+    [Documentation]    未保存点击返回按钮退出确定
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_button_add}
+	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
+	Wait And Click Element    ${locatorB_icon_back}
+	Wait Alert Should Be Present And Accept    页面上有未保存内容，是否确定退出?
+	Wait Until Page Contains Text    暂无数据
+
+collection183
+    [Documentation]    未保存点击返回按钮退出确定
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_button_add}
+	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
+	Wait And Click Element    ${locatorB_icon_back}
+	Wait Alert Should Be Present And Dismiss    页面上有未保存内容，是否确定退出?
+	Wait Until Page Contains Text    新建专辑
+
+
+
 

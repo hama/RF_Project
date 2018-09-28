@@ -34,7 +34,7 @@ ${locatorB_productsMgmt_button_discontinued}    dom:document.querySelectorAll(".
 ${locatorB_productsMgmt_icon_grabProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[0]    #商品列表页的商品抓取按钮
 ${locatorB_productsMgmt_icon_migrateProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[1]    #商品列表页的店铺搬迁按钮
 ${locatorB_productsMgmt_icon_uploadProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[2]    #商品列表页的上传商品按钮
-${locatorB_productsMgmt_input_uploadProduct}    dom:document.querySelectorAll("input[type='file']")[0]    #批量上传商品input
+${locatorB_productsMgmt_input_uploadProduct}    dom:document.querySelectorAll('input[type="file"]')[0]   #批量上传商品input
 ${locatorB_productsMgmt_button_toImport}    dom:document.querySelectorAll('button[class="ant-btn middle_btn___2ExQc undefined ant-btn-submit"]')[0]    #开始导入
 ${locatorB_productsMgmt_button_confirmAfterImport}    dom:document.querySelectorAll('button[class="ant-btn middle_btn___2ExQc undefined"]')[0]    # 导入之后的确定按钮
 
@@ -68,7 +68,7 @@ ${locatorB_productsNew_button_back}    class:back    # 进入编辑页面的后�
 ${locatorB_productsNew_button_uploadBtn}    id:test_upload_btn    # 上传商品图片按钮
 ${locatorB_productsNew_switch_status}    dom:document.querySelectorAll('span[data-robot="products_status"]')[0]    # 商品状态按钮
 ${locatorB_productsNew_input_tags}    id:tags    # 添加标签按钮
-${locatorB_productsNew_input_addImage}    dom:document.querySelectorAll("input[type='file']")[0]    # 选择文件上传
+${locatorB_productsNew_input_addImage}    dom:document.querySelectorAll('input[type="file"]')[0]   # 选择文件上传
 ${locatorB_productsNew_img_firstImage}    dom:document.querySelectorAll('img[class="center___1nHSZ"]')[0]    # 选择第一张图片
 ${locatorB_productsNew_input_title}    id:__title    # 添加商品页面-标题按钮
 ${locatorB_productsNew_input_subTitle}    id:__brief    # 添加商品页面-副标题按钮
