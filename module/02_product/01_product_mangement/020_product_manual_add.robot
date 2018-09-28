@@ -206,7 +206,7 @@ products047
 	Wait And Input Text    ${locatorB_productsMgmt_popUps_firstInput}    manual_tag
 	# 回车
     Press Key    ${locatorB_productsMgmt_popUps_firstInput}    ${keybord_enter}
-    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
+    Wait And Click Element    ${locatorB_popUps_button_footermiddle}
     Wait Until Page Contains Text    添加成功
     # 进入product中检查是否存在
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
@@ -226,10 +226,10 @@ products052
     Select All Product Tag
     Select Products And Click Batch Menu
     Wait And Click Element    ${locatorB_productsMgmt_select_delTags}
-    @{antTags}    Wait And Get Items List From Locator    ${locatorB_antTags}    ${locatorB_popUps_button_bodymiddle}
+    @{antTags}    Wait And Get Items List From Locator    ${locatorB_antTags}    ${locatorB_popUps_button_footermiddle}
     :FOR    ${antTag}    IN    @{antTags}
     \    Wait And Click Element    ${antTag}
-    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
+    Wait And Click Element    ${locatorB_popUps_button_footermiddle}
     Wait Until Page Contains Text    移除成功
     # 进入product中检查是否存在
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
@@ -528,7 +528,7 @@ products128
     Wait And Click Element    ${locatorB_productsMgmt_icon_uploadProduct}
     Wait Enabled And Choose File    ${locatorB_productsMgmt_input_uploadProduct}    ${file_products_template}
     Wait And Click Element    ${locatorB_productsMgmt_button_toImport}
-    Wait Until Page Contains Text    导入完成    20
+    Wait Until Page Contains Text    导入完成    30
     Wait And Click Element    ${locatorB_productsMgmt_button_confirmAfterImport}
     Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
     ${productName}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
@@ -565,5 +565,3 @@ products188
     Select All Product Tag
     ${text}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductViews}
     Should Be equal    '${text}'    '1'
-
-

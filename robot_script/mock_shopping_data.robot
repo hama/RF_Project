@@ -43,27 +43,27 @@ AddToCart_Checkout_By_Credit_Card
 	\    ${startMoment}    Convert Date    ${timestamp1}    exclude_millis=yes    date_format=%m.%d.%Y %H:%M
 	\    Log To Console    (AddToCart_Checkout_By_Credit_Card) 执行次数:${times} 开始时间:${startMoment} 执行时长:${period}
 
-BuyNow_By_COD
-	:FOR    ${i}    IN RANGE    1000
-    \    ${timestamp1}    Get Time    epoch
-    \    kw_BuyNow_By_COD
-    \    ${timestamp2}    Get Time    epoch
-    \    ${period}    Evaluate    ${timestamp2}-${timestamp1}
-    \    ${times}    Evaluate    ${i}+1
-    \    ${periodFormat}    Convert Time    ${period}    timer    exclude_milles=yes
-    \    ${startMoment}    Convert Date    ${timestamp1}    exclude_millis=yes    date_format=%m.%d.%Y %H:%M
-    \    Log To Console    (kw_BuyNow_By_COD) 执行次数:${times} 开始时间:${startMoment} 执行时长:${period}
-
-Searching
-	:FOR    ${i}    IN RANGE    100
-	\    ${timestamp1}    Get Time    epoch
-    \    kw_Searching
-    \    ${timestamp2}    Get Time    epoch
-    \    ${period}    Evaluate    ${timestamp2}-${timestamp1}
-    \    ${times}    Evaluate    ${i}+1
-    \    ${periodFormat}    Convert Time    ${period}    timer    exclude_milles=yes
-    \    ${startMoment}    Convert Date    ${timestamp1}    exclude_millis=yes    date_format=%m.%d.%Y %H:%M
-    \    Log To Console    (kw_Searching) 执行次数:${times} 开始时间:${startMoment} 执行时长:${period}
+#BuyNow_By_COD
+#	:FOR    ${i}    IN RANGE    1000
+#    \    ${timestamp1}    Get Time    epoch
+#    \    kw_BuyNow_By_COD
+#    \    ${timestamp2}    Get Time    epoch
+#    \    ${period}    Evaluate    ${timestamp2}-${timestamp1}
+#    \    ${times}    Evaluate    ${i}+1
+#    \    ${periodFormat}    Convert Time    ${period}    timer    exclude_milles=yes
+#    \    ${startMoment}    Convert Date    ${timestamp1}    exclude_millis=yes    date_format=%m.%d.%Y %H:%M
+#    \    Log To Console    (kw_BuyNow_By_COD) 执行次数:${times} 开始时间:${startMoment} 执行时长:${period}
+#
+#Searching
+#	:FOR    ${i}    IN RANGE    100
+#	\    ${timestamp1}    Get Time    epoch
+#    \    kw_Searching
+#    \    ${timestamp2}    Get Time    epoch
+#    \    ${period}    Evaluate    ${timestamp2}-${timestamp1}
+#    \    ${times}    Evaluate    ${i}+1
+#    \    ${periodFormat}    Convert Time    ${period}    timer    exclude_milles=yes
+#    \    ${startMoment}    Convert Date    ${timestamp1}    exclude_millis=yes    date_format=%m.%d.%Y %H:%M
+#    \    Log To Console    (kw_Searching) 执行次数:${times} 开始时间:${startMoment} 执行时长:${period}
 
 
 *** keyword ***
