@@ -13,8 +13,8 @@ ${apiB_products_update_status}    ${home_page}/api/product/updatestatus    # 上
 # locator_products
 ${locatorB_products_popUps_content}      dom:document.querySelectorAll(".ant-modal-content")[0]      #弹窗_content
 ${locatorB_products_popUps_body}    dom:document.querySelectorAll(".ant-modal-body")[0]    #弹窗_body
-${locatorB_products_button_cancel}    ${locatorB_popUps_button_default}    #商品弹窗-默认按钮
-${locatorB_products_button_confirm}    ${locatorB_popUps_button_middle}    #商品弹窗-确定按钮
+${locatorB_products_button_cancel}    ${locatorB_popUps_button_bodydefault}    #商品弹窗-默认按钮
+${locatorB_products_button_confirm}    ${locatorB_popUps_button_bodymiddle}    #商品弹窗-确定按钮
 
 # locator_productsMgmt
 ${locatorB_productsMgmt_button_addProduct}    ${locatorB_button_add}    #商品列表页的新增商品按钮

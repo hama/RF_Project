@@ -221,7 +221,7 @@ collection095
     Wait And Click Element    ${locatorB_collectionDetail_icon_quickSearchToShow}
     Wait And Click Element    ${locatorB_collectionDetail_text_quickSearchListItemsName}[0]
     Wait Until Page Contains Text    确定离开当前页面吗？
-    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
     Value Of Element Should Be Equal With Wait    ${locatorB_collectionDetail_input_title}    autotest_title0
 
 collection098

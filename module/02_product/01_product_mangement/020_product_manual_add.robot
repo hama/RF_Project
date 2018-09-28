@@ -206,7 +206,7 @@ products047
 	Wait And Input Text    ${locatorB_productsMgmt_popUps_firstInput}    manual_tag
 	# 回车
     Press Key    ${locatorB_productsMgmt_popUps_firstInput}    ${keybord_enter}
-    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
     Wait Until Page Contains Text    添加成功
     # 进入product中检查是否存在
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
@@ -226,10 +226,10 @@ products052
     Select All Product Tag
     Select Products And Click Batch Menu
     Wait And Click Element    ${locatorB_productsMgmt_select_delTags}
-    @{antTags}    Wait And Get Items List From Locator    ${locatorB_antTags}    ${locatorB_popUps_button_middle}
+    @{antTags}    Wait And Get Items List From Locator    ${locatorB_antTags}    ${locatorB_popUps_button_bodymiddle}
     :FOR    ${antTag}    IN    @{antTags}
     \    Wait And Click Element    ${antTag}
-    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
     Wait Until Page Contains Text    移除成功
     # 进入product中检查是否存在
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
@@ -247,7 +247,7 @@ products055
     Select Products And Click Batch Menu
     Wait And Click Element    ${locatorB_productsMgmt_select_addtoCategory}
     Wait And Click Element    ${locatorB_popUps_allCheckbox}
-    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
     Wait Until Page Contains Text    添加成功
     # 进入Collection中检查是否存在
     Go To Product Collection Page
@@ -268,7 +268,7 @@ products063
     @{checkboxs}    Wait And Get Items List From Locator    ${locatorB_popUps_allCheckbox}    ${locatorB_popUps_allCheckbox}[0]
     :FOR    ${checkbox}    IN    @{checkboxs}
     \    Wait And Click Element    ${checkbox}
-    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
     Wait Until Page Contains Text    添加成功
 	# 批量删除专辑
     Select Products And Click Batch Menu
@@ -276,7 +276,7 @@ products063
 	@{checkboxs}    Wait And Get Items List From Locator    ${locatorB_popUps_allCheckbox}    ${locatorB_popUps_allCheckbox}[0]
     :FOR    ${checkbox}    IN    @{checkboxs}
     \    Wait And Click Element    ${checkbox}
-    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
     Wait Until Page Contains Text    移除成功
     # 进入Collection中检查是否存在
     Go To Product Collection Page

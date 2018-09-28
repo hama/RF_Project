@@ -203,8 +203,6 @@ Wait And Click Element
     [Arguments]    ${element_locator}    ${timeout}=25    ${retry_time}=5
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Visible    ${element_locator}     10
-    Log    ${timeout}
-    Log    ${retry_time}
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
 
 Wait Enabled And Click Element
@@ -268,13 +266,17 @@ Click Element And Confirm
 	[Arguments]    ${element_locator}
     [Documentation]
     Wait And Click Element    ${element_locator}
-    Wait And Click Element    ${locatorB_popUps_button_middle}
+    ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_popUps_button_footermiddle}
+    Run Keyword If    '${status}'!='False'    Wait And Click Element    ${locatorB_popUps_button_footermiddle}
+	...    ELSE    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
 
 Click Element And Cancel
 	[Arguments]    ${element_locator}
     [Documentation]
     Wait And Click Element    ${element_locator}
-    Wait And Click Element    ${locatorB_popUps_button_default}
+    ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_popUps_button_footerdefault}
+    Run Keyword If    '${status}'!='False'    Wait And Click Element    ${locatorB_popUps_button_footerdefault}
+    ...    ELSE    Wait And Click Element    ${locatorB_popUps_button_bodydefault}
 
 Wait And Make Switch On
 	[Arguments]    ${element_locator}

@@ -31,7 +31,7 @@ checkout140
     #点击删除第一件商品
     Wait And Click Element    ${locatorB_productsMgmt_icon_listDelete}[0]
     #点击确定按钮
-    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
     #切换到支付页
     Select Window    title=${user_default_domain}
     #点击pay now

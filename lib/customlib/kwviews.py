@@ -26,6 +26,13 @@ def comments_insert_py(data, cookie=init_cookie):
         return e
 
 
+def add_comment_py(cookie=init_cookie):
+    data = copy.deepcopy(comment_data)
+    product_id = add_max_product_py()
+    data['product_id'] = product_id
+    comments_insert_py(data, cookie)
+
+
 def add_comments_with_conf_py(conf, cookie=init_cookie):
     '''
     通过conf（dict数据类型）配置来添加评论
@@ -33,7 +40,7 @@ def add_comments_with_conf_py(conf, cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    data = copy.deepcopy(collecion_data)
+    data = copy.deepcopy(comment_data)
 
     key_list = conf.keys()
     if 'star' in key_list:
@@ -124,4 +131,4 @@ def get_exist_commentsid_py():
 
 
 if __name__ == '__main__':
-    add_comments_with_conf_py()
+    add_comment_py()

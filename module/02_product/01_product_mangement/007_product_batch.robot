@@ -144,7 +144,7 @@ Resource          ../../../resources/keywords/kw_product_management.robot
 #    #弹出框
 #    Wait Until Element Is Visible    ${locatorB_products_popUps_content}
 #    #点击确定
-#    Wait And Click Element    ${locatorB_popUps_button_middle}
+#    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
 #    #Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-switch")[0]
 #    #Sleep    3
 #    #验证当前页面不应该含有该商品名称

@@ -57,7 +57,7 @@ Show All Header
     :FOR    ${i}    IN    @{list}
     \    Wait And Click Element    ${i}    5    0
 #    \    Sleep    2
-    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
     Sleep    2
 
 Hide All Header
@@ -66,7 +66,7 @@ Hide All Header
     :FOR    ${i}    IN    @{list}
     \    Wait And Click Element    ${i}    5    0
 #    \    Sleep    2
-    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
     Sleep    2
 
 Select Products And Click Batch Menu
@@ -119,7 +119,7 @@ Add Product
     log    ${CURDIR}
     Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
-    Click And Page Contains Element With Refresh    ${locatorB_popUps_button_middle}    ${locatorB_popUps_button_middle}
+    Click And Page Contains Element With Refresh    ${locatorB_popUps_button_bodymiddle}    ${locatorB_popUps_button_bodymiddle}
 
 Add Product_Up
     [Documentation]    添加上架商品以做测试，这里不能添加商品标签
@@ -148,7 +148,7 @@ Delete Product
     [Documentation]    删除商品列表的第一个商品
     Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}    # 商品列表第一条数据
-    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
 
 Delete All Products
     [Documentation]    删除全部商品
@@ -239,7 +239,7 @@ Delete_Collection
     #点击删除第一个专辑按钮
     Wait And Click Element    ${locatorB_productsCollection_icon_listDel}[0]
     #点击确定
-    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
 
 Delete_First_Product
     [Documentation]    删除第一个商品
@@ -248,7 +248,7 @@ Delete_First_Product
     Wait And Click Element    ${locatorB_productsMgmt_icon_listDelete}[0]
     Sleep    5
     #Wait And Click Element    id:test_delete_modal_sure_btn
-    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
     Go TO    ${home_page}
 
 Upload_Many_Products
@@ -298,7 +298,7 @@ Add Order Products
     log    ${CURDIR}
     Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
-    Click And Page Contains Element With Refresh    ${locatorB_popUps_button_middle}    ${locatorB_popUps_button_middle}
+    Click And Page Contains Element With Refresh    ${locatorB_popUps_button_bodymiddle}    ${locatorB_popUps_button_bodymiddle}
 
 Add TenPrice Products
     [Documentation]    添加一个价格为10元的商品
@@ -325,4 +325,4 @@ Add Custom Products
     log    ${CURDIR}
     Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}    # 选择文件并自动上传
     Sleep    5
-    Click And Page Contains Element With Refresh    ${locatorB_popUps_button_middle}    ${locatorB_popUps_button_middle}
+    Click And Page Contains Element With Refresh    ${locatorB_popUps_button_bodymiddle}    ${locatorB_popUps_button_bodymiddle}
