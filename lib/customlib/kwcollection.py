@@ -18,16 +18,18 @@ def collection_dropdown_py(api='/api/collection/dropdown?page=0&limit=20&key=', 
     return ret_data.content
 
 
-def add_collection_py(data, cookie=init_cookie):
+def collection_add_py(data, cookie=init_cookie):
     url = home_page_url + "/api/collection/add"
 
     try:
-        resData = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        if resData.status_code == 200 and json.loads(resData.content)['state'] == 0:
-            return True
+        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200 and json.loads(response_data.content)['state'] == 0:
+            return_data['result'] = 'success'
         else:
-            return False
-
+            return_data['result'] = 'fail'
+        return return_data
     except Exception as e:
         return e
 
@@ -39,13 +41,12 @@ def collection_updatestatus_py(collection_list, status, cookie=init_cookie):
     :param status: -1 = 删除专辑（非数据库）
     :return:
     """
-    latest_collection_id = get_latest_collectionid_py()
+    exist_collections_id = get_exist_productsid_py()
     if isinstance(collection_list, str) and collection_list == 'all':
-        collection_list = range(1, latest_collection_id + 1)
+        collection_list = exist_collections_id
     elif isinstance(collection_list, int):
         num = collection_list
-        collection_list = range(latest_collection_id + 1 - num, latest_collection_id + 1)
-    collection_list = map(str, collection_list)
+        collection_list = exist_collections_id[:num]
 
     url = home_page_url + "/api/collection/updatestatus"
     data = {"collection_ids": collection_list, "status": status}
@@ -81,7 +82,7 @@ def add_collection_with_conf_py(conf, cookie=init_cookie):
     else:
         data['image'] = image
 
-    add_collection_py(data, cookie)
+    return collection_add_py(data, cookie)['content']['data']['collection_id']
 
 
 def add_collection_with_pic_py(cookie=init_cookie):
@@ -93,7 +94,7 @@ def add_collection_with_pic_py(cookie=init_cookie):
     data = copy.deepcopy(collecion_data)
     data['image'] = image
 
-    add_collection_py(data, cookie)
+    return collection_add_py(data, cookie)['content']['data']['collection_id']
 
 
 def add_collection_without_pic_py(cookie=init_cookie):
@@ -105,20 +106,20 @@ def add_collection_without_pic_py(cookie=init_cookie):
     data = copy.deepcopy(collecion_data)
     del data['image']
 
-    add_collection_py(data, cookie)
+    return collection_add_py(data, cookie)['content']['data']['collection_id']
 
 
-def del_first_collection_py(cookie=init_cookie):
+def del_latest_collection_py(cookie=init_cookie):
     """
-    删除首个专辑
+    删除最新专辑
     :return: True | False
     """
     collection_updatestatus_py(1, -1, cookie)
 
 
-def del_latest_collection_py(num, cookie=init_cookie):
+def del_latest_collections_py(num, cookie=init_cookie):
     """
-    删除最新专辑
+    删除最新专辑s
     :param num:
     :param cookie:
     :return:
@@ -126,7 +127,7 @@ def del_latest_collection_py(num, cookie=init_cookie):
     collection_updatestatus_py(num, -1, cookie)
 
 
-def del_all_collection_py(cookie=init_cookie):
+def del_all_collections_py(cookie=init_cookie):
     """
     删除全部专辑
     :return: True | False
@@ -142,7 +143,17 @@ def get_latest_collectionid_py():
         return 1
 
 
+def get_exist_productsid_py():
+    collections_list = json.loads(collection_dropdown_py())['data']['collections']
+    collections_id = []
+    for collection in collections_list:
+        collections_id.append(collection['collection_id'])
+    return collections_id
+
+
 if __name__ == '__main__':
-    # add_collection_without_pic_py()
-    add_collection_with_pic_py()
-    # del_first_collection_py()
+    add_collection_without_pic_py()
+    print add_collection_with_pic_py()
+    # del_latest_collection_py()
+    # del_all_collections_py()
+    del_latest_collections_py(4)

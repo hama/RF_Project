@@ -285,3 +285,15 @@ collecion_data = {
         'path': 'eee022100e586e73a103e94890dcc212.png'
     }
 }
+
+
+comment_data = {
+    'star': '5',
+    'content': 'autotest_comment_content',
+    'praise': '99',
+    'status': '1',
+    'uname': 'autotester@autotest.com',
+    'product_id': 000,
+    # 'img_link': ['//cn.cdn.shoplazza.com/d330406101ae1c48e33ed1f29f77c8b2.jpg'],
+    'ctime': '2018-9-28 10:10:10'
+}

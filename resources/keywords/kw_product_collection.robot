@@ -15,10 +15,10 @@ Product Collection Suite Setup
 
 Product Collection Suite Teardown
     [Documentation]
-    del_all_collection_py
+    del_all_collections_py
     Close Test Suite Browser
 
 Product Collection Case Setup
     [Documentation]
-    del_all_collection_py
+    del_all_collections_py
     Go To Product Collection Page

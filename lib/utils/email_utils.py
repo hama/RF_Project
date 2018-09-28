@@ -131,6 +131,6 @@ def email_fomat_content():
 
 
 if __name__ == "__main__":
-    # get_screenshot()
+    get_screenshot()
     time.sleep(5)
     send_email()

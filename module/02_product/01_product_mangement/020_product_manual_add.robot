@@ -240,7 +240,7 @@ products055
 	[Documentation]    验证可成功加入一个或多个专辑
     [Tags]    P0    threshold
     add_launched_product_py
-    del_all_collection_py
+    del_all_collections_py
     add_collection_with_pic_py
     Reload Page And Start Ajax
     Select All Product Tag

@@ -18,7 +18,7 @@ def product_search_py(api='/api/product/search?page=0&limit=20', cookie=init_coo
     return ret_data.content
 
 
-def add_product_py(data, cookie=init_cookie):
+def product_add_py(data, cookie=init_cookie):
     """
     添加商品
     :return: True | False
@@ -26,12 +26,14 @@ def add_product_py(data, cookie=init_cookie):
     url = home_page_url + "/api/product/add"
 
     try:
-        resData = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        if resData.status_code == 200 and json.loads(resData.content)['state'] == 0:
-            return True
+        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200 and json.loads(response_data.content)['state'] == 0:
+            return_data['result'] = 'success'
         else:
-            return False
-
+            return_data['result'] = 'fail'
+        return return_data
     except Exception as e:
         return e
 
@@ -46,7 +48,7 @@ def add_discontinued_product_py(cookie=init_cookie):
     data['images'] = [image]
     data['status'] = 0
 
-    add_product_py(data, cookie)
+    return product_add_py(data, cookie)['content']['data']['product_id']
 
 
 def add_launched_product_py(cookie=init_cookie):
@@ -59,7 +61,7 @@ def add_launched_product_py(cookie=init_cookie):
     data['images'] = [image]
     data['status'] = 1
 
-    add_product_py(data, cookie)
+    return product_add_py(data, cookie)['content']['data']['product_id']
 
 
 def add_empty_quantity_product_py(cookie=init_cookie):
@@ -70,7 +72,7 @@ def add_empty_quantity_product_py(cookie=init_cookie):
     '''
     data = copy.deepcopy(product_min_data)
     data['variants'][0]['inventory_management'] = True
-    add_product_py(data, cookie)
+    return product_add_py(data, cookie)['content']['data']['product_id']
 
 
 def add_min_product_py(cookie=init_cookie):
@@ -79,7 +81,7 @@ def add_min_product_py(cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    add_product_py(product_min_data, cookie)
+    return product_add_py(product_min_data, cookie)['content']['data']['product_id']
 
 
 def add_max_product_py(cookie=init_cookie):
@@ -88,7 +90,7 @@ def add_max_product_py(cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    add_launched_product_py(cookie)
+    return add_launched_product_py(cookie)
 
 
 def add_product_with_conf_py(conf, cookie=init_cookie):
@@ -130,7 +132,7 @@ def add_product_with_conf_py(conf, cookie=init_cookie):
     else:
         data['images'] = [image]
 
-    add_product_py(data, cookie)
+    return product_add_py(data, cookie)['content']['data']['product_id']
 
 
 def product_updatestatus_py(product_list, status, cookie=init_cookie):
@@ -150,10 +152,10 @@ def product_updatestatus_py(product_list, status, cookie=init_cookie):
     url = home_page_url + "/api/product/updatestatus"
     data = {"product_ids": product_list, "status": status}
     try:
-        resData = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        if resData.status_code == 200 \
-                and (json.loads(resData.content)['state'] == 0 \
-                     or json.loads(resData.content)['state'] == 1):
+        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
+        if response_data.status_code == 200 \
+                and (json.loads(response_data.content)['state'] == 0 \
+                     or json.loads(response_data.content)['state'] == 1):
             return True
         else:
             return False
@@ -162,17 +164,17 @@ def product_updatestatus_py(product_list, status, cookie=init_cookie):
         return e
 
 
-def del_first_product_py(cookie=init_cookie):
+def del_latest_product_py(cookie=init_cookie):
     """
-    删除首个商品
+    删除最新商品
     :return: True | False
     """
     product_updatestatus_py(1, -1, cookie)
 
 
-def del_latest_product_py(num, cookie=init_cookie):
+def del_latest_products_py(num, cookie=init_cookie):
     """
-    删除最新商品
+    删除最新商品s
     :param num:
     :param cookie:
     :return:
@@ -180,7 +182,7 @@ def del_latest_product_py(num, cookie=init_cookie):
     product_updatestatus_py(num, -1, cookie)
 
 
-def del_all_product_py(cookie=init_cookie):
+def del_all_products_py(cookie=init_cookie):
     """
     删除全部商品
     :return: True | False
@@ -222,10 +224,10 @@ def get_exist_productsid_py():
 
 if __name__ == '__main__':
     # product_search_py()
-    # del_first_product_py()
-    # del_all_product_py()
-    # add_discontinued_product_py()
+    # del_latest_product_py()
+    # del_all_products_py()
+    # print add_discontinued_product_py()
     # add_launched_product_py()
-    conf = {'tags': ['color']}
-    add_product_with_conf_py(conf)
-    # del_latest_product_py(2)
+    # conf = {'tags': ['color']}
+    # add_product_with_conf_py(conf)
+    del_latest_products_py(2)
