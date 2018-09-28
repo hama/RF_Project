@@ -47,8 +47,8 @@ ${locatorB_button_add}    dom:document.querySelectorAll(".large_btn___3RbRK")[0]
 ${locatorB_button_save}    dom:document.querySelectorAll('button[data-robot="btn_save"]')[0]        #保存按钮
 ${locatorB_icon_back}    dom:document.querySelectorAll('i[class="djfont dj-back"]')[0]        #返回icon
 ### locator popUps
-${locatorB_popUps_button_footermiddle}    dom:document.querySelectorAll(".ant-modal-body button[class*='middle']")[0]    #弹窗footer的中间按钮
-${locatorB_popUps_button_bodymiddle}    dom:document.querySelectorAll(".ant-modal-footer button[class*='middle']")[0]    #弹窗body的中间按钮
+${locatorB_popUps_button_footermiddle}    dom:document.querySelectorAll(".ant-modal-footer button[class*='middle']")[0]    #弹窗footer的中间按钮
+${locatorB_popUps_button_bodymiddle}    dom:document.querySelectorAll(".ant-modal-body button[class*='middle']")[0]    #弹窗body的中间按钮
 ${locatorB_popUps_button_footerdefault}    dom:document.querySelectorAll(".ant-modal-footer button[class*='default']")[0]    #弹窗footer的默认按钮
 ${locatorB_popUps_button_bodydefault}    dom:document.querySelectorAll(".ant-modal-body button[class*='default']")[0]    #弹窗body的默认按钮
 ${locatorB_popUps_allCheckbox}    dom:document.querySelectorAll('.ant-modal-body span[class~="ant-checkbox"]')    #弹窗的所有checkbox
