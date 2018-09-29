@@ -26,14 +26,19 @@ def comments_insert_py(data, cookie=init_cookie):
         return e
 
 
-def add_comment_py(cookie=init_cookie):
-    data = copy.deepcopy(comment_data)
-    product_id = add_max_product_py()
-    data['product_id'] = product_id
-    comments_insert_py(data, cookie)
+def add_published_comment_py(cookie=init_cookie):
+    conf = {}
+    conf['status'] = '1'
+    add_comment_with_conf_py(conf, cookie)
 
 
-def add_comments_with_conf_py(conf, cookie=init_cookie):
+def add_unpublished_comment_py(cookie=init_cookie):
+    conf = {}
+    conf['status'] = '0'
+    add_comment_with_conf_py(conf, cookie)
+
+
+def add_comment_with_conf_py(conf, cookie=init_cookie):
     '''
     通过conf（dict数据类型）配置来添加评论
     :param conf:
@@ -55,8 +60,12 @@ def add_comments_with_conf_py(conf, cookie=init_cookie):
         data['uname'] = conf['uname']
     if 'product_id' in key_list:
         data['product_id'] = conf['product_id']
+    else:
+        data['product_id'] = add_max_product_py()
     if 'ctime' in key_list:
         data['ctime'] = conf['ctime']
+    else:
+        data['ctime'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     if 'img_link' in key_list and conf['img_link'] == 'yes':
         data['img_link'] = ['//cn.cdn.shoplazza.com/d330406101ae1c48e33ed1f29f77c8b2.jpg']
     else:
@@ -114,7 +123,7 @@ def del_all_comments_py(cookie=init_cookie):
     comments_delete_py('all', cookie)
 
 
-def get_latest_comments_py():
+def get_latest_commentid_py():
     comments_list = json.loads(comments_select_py())['data']['list']
     try:
         return int(comments_list[0]['id'])
@@ -131,4 +140,8 @@ def get_exist_commentsid_py():
 
 
 if __name__ == '__main__':
-    add_comment_py()
+    # add_published_comment_py()
+    config01 = {'content': 'content00'}
+    config02 = {'content': 'content01'}
+    add_comment_with_conf_py(config01)
+    add_comment_with_conf_py(config02)

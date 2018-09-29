@@ -20,7 +20,7 @@ ${locatorB_products_button_confirm}    ${locatorB_popUps_button_bodymiddle}    #
 ${locatorB_productsMgmt_button_addProduct}    ${locatorB_button_add}    #商品列表页的新增商品按钮
 ${locatorB_productsMgmt_checkbox_chooseProducets}    ${locatorB_checkbox00}    #点击checkbox按钮，选中当前页面所有商品
 ${locatorB_productsMgmt_checkbox_chooseFirstProduct}    ${locatorB_checkbox01}    #点击checkbox按钮，选中当前页面第一个商品
-${locatorB_productsMgmt_select_batchOperations}    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]    #批量操作下拉框
+${locatorB_productsMgmt_select_batchOperations}    ${locatorB_select_batchOperations}    #批量操作下拉框
 ${locatorB_productsMgmt_select_launch}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[0]    #下拉框-上架
 ${locatorB_productsMgmt_select_discontinue}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[1]    #下拉框-下架
 ${locatorB_productsMgmt_select_batchDel}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[2]    #下拉框-删除商品

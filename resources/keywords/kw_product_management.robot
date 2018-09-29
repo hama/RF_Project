@@ -69,11 +69,6 @@ Hide All Header
     Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
     Sleep    2
 
-Select Products And Click Batch Menu
-    [Documentation]    选中所有商品,并且点击批量操作菜单
-    Wait Enabled And Click Element    ${locatorB_productsMgmt_checkbox_chooseProducets}
-    Wait And Click Element    ${locatorB_productsMgmt_select_batchOperations}
-
 Fill In Required Items When Create Product
 	Wait And Input Text    ${locatorB_productsNew_input_title}    newproduct
     Wait And Input Text    ${locatorB_productsNew_input_salePrice}    99

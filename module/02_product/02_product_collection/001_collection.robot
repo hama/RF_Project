@@ -69,7 +69,7 @@ collection015
     [Tags]    P0    threshold
     add_collection_with_pic_py
     Reload Page And Start Ajax
-	Wait Enabled And Click Element    ${locatorB_productsCollection_checkbox_chooseCategories}
+	Wait Exist And Click Element    ${locatorB_productsCollection_checkbox_chooseCategories}
 	Wait And Click Element    ${locatorB_productsCollection_button_delProducts}
 	Wait Until Page Contains Text     确定删除吗？
 
@@ -78,7 +78,7 @@ collection016
     [Tags]    P0    threshold
     add_collection_with_pic_py
     Reload Page And Start Ajax
-	Wait Enabled And Click Element    ${locatorB_productsCollection_checkbox_chooseCategories}
+	Wait Exist And Click Element    ${locatorB_productsCollection_checkbox_chooseCategories}
 	Wait And Click Element    ${locatorB_productsCollection_button_delProducts}
 	Wait And Click Element    ${locatorB_global_alert_confirm}
 	Wait Until Page Contains Text     暂无数据

@@ -206,10 +206,11 @@ Wait And Click Element
     Wait Until Element Is Visible    ${element_locator}     10
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
 
-Wait Enabled And Click Element
+Wait Exist And Click Element
     [Arguments]    ${element_locator}    ${timeout}=3    ${retry_time}=1
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
-    Wait Until Element Is Enabled    ${element_locator}
+    Wait Until Page Contains Locator    ${element_locator}
+#    Wait Until Element Is Enabled    ${element_locator}
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
 
 Wait And Get Text
@@ -248,6 +249,16 @@ Value Of Element Should Be Equal With Wait
     \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
     \    ...    ELSE    Sleep    1
 
+Location Should Contain With Wait
+	[Arguments]    ${expected_value}    ${timeout}=10
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    ${times}    Evaluate    ${timeout}-1
+    :FOR    ${i}    IN RANGE    ${timeout}
+    \    ${status}    Run Keyword And Return Status    Location Should Contain    ${expected_value}
+    \    Run Keyword If    ${status}    Exit For Loop
+    \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
+    \    ...    ELSE    Sleep    1
+
 
 Wait And Get Items List From Locator
 	[Arguments]    ${element_locator}    ${element_visible}=${Empty}
@@ -263,7 +274,7 @@ Wait And Get Items List From Locator
 #    Wait And Click Element    ${element_selectbox}
 #    Wait And Click Element    ${element_selectitem}
 
-Click Element And Confirm
+Wait And Click Element Then Confirm
 	[Arguments]    ${element_locator}
     [Documentation]
     Wait And Click Element    ${element_locator}
@@ -271,7 +282,7 @@ Click Element And Confirm
     Run Keyword If    '${status}'!='False'    Wait And Click Element    ${locatorB_popUps_button_footermiddle}
 	...    ELSE    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
 
-Click Element And Cancel
+Wait And Click Element Then Cancel
 	[Arguments]    ${element_locator}
     [Documentation]
     Wait And Click Element    ${element_locator}
@@ -415,7 +426,10 @@ Reload Page And Start Ajax
 	Reload Page
 	Start Ajax Listener
 
-
+Select All Items Then Click Batch Menu
+    [Documentation]    选中所有items,并且点击批量操作菜单
+    Wait Exist And Click Element    ${locatorB_checkbox00}
+    Wait And Click Element    ${locatorB_select_batchOperations}
 
 
 

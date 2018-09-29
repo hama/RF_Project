@@ -76,7 +76,7 @@ products018
     add_min_product_py
     Reload Page And Start Ajax
     Select All Product Tag
-	Click Element And Confirm    ${locatorB_productsMgmt_icon_listDelete}[0]
+	Wait And Click Element Then Confirm    ${locatorB_productsMgmt_icon_listDelete}[0]
 	Wait Until Page Not Contains Locator    ${locatorB_productsMgmt_icon_listPreview}[0]
 
 products019
@@ -85,7 +85,7 @@ products019
     add_min_product_py
     Reload Page And Start Ajax
     Select All Product Tag
-	Click Element And Confirm    ${locatorB_productsMgmt_icon_listDelete}[0]
+	Wait And Click Element Then Confirm    ${locatorB_productsMgmt_icon_listDelete}[0]
 	Wait Until Page Not Contains Locator    ${locatorB_productsMgmt_icon_listPreview}[0]
 
 products020
@@ -94,7 +94,7 @@ products020
     add_min_product_py
     Reload Page And Start Ajax
     Select All Product Tag
-	Click Element And Cancel    ${locatorB_productsMgmt_icon_listDelete}[0]
+	Wait And Click Element Then Cancel    ${locatorB_productsMgmt_icon_listDelete}[0]
 	Wait Until Page Contains Locator    ${locatorB_productsMgmt_icon_listPreview}[0]
 
 products021.1
@@ -164,8 +164,8 @@ products037
     add_discontinued_product_py
     Reload Page And Start Ajax
     Select All Product Tag
-	Select Products And Click Batch Menu
-	Click Element And Confirm    ${locatorB_productsMgmt_select_launch}
+	Select All Items Then Click Batch Menu
+	Wait And Click Element Then Confirm    ${locatorB_productsMgmt_select_launch}
 	Wait Until Page Contains Text    上架成功
     Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_switch_listLaunched}    ${2}
 
@@ -176,8 +176,8 @@ products039
     add_launched_product_py
     Reload Page And Start Ajax
     Select All Product Tag
-	Select Products And Click Batch Menu
-	Click Element And Confirm    ${locatorB_productsMgmt_select_discontinue}
+	Select All Items Then Click Batch Menu
+	Wait And Click Element Then Confirm    ${locatorB_productsMgmt_select_discontinue}
 	Wait Until Page Contains Text    下架成功
     Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_switch_listDiscontinued}    ${2}
 
@@ -188,8 +188,8 @@ products041
     add_launched_product_py
     Reload Page And Start Ajax
     Select All Product Tag
-	Select Products And Click Batch Menu
-	Click Element And Confirm    ${locatorB_productsMgmt_select_batchDel}
+	Select All Items Then Click Batch Menu
+	Wait And Click Element Then Confirm    ${locatorB_productsMgmt_select_batchDel}
 	Wait Until Page Contains Text    删除成功
 	Wait Until Page Contains Text    暂无数据
     Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${0}
@@ -201,7 +201,7 @@ products047
     add_launched_product_py
     Reload Page And Start Ajax
     Select All Product Tag
-    Select Products And Click Batch Menu
+    Select All Items Then Click Batch Menu
     Wait And Click Element    ${locatorB_productsMgmt_select_addTags}
 	Wait And Input Text    ${locatorB_productsMgmt_popUps_firstInput}    manual_tag
 	# 回车
@@ -225,7 +225,7 @@ products052
     add_launched_product_py
     Reload Page And Start Ajax
     Select All Product Tag
-    Select Products And Click Batch Menu
+    Select All Items Then Click Batch Menu
     Wait And Click Element    ${locatorB_productsMgmt_select_delTags}
     @{antTags}    Wait And Get Items List From Locator    ${locatorB_antTags}    ${locatorB_popUps_button_footermiddle}
     :FOR    ${antTag}    IN    @{antTags}
@@ -245,7 +245,7 @@ products055
     add_collection_with_pic_py
     Reload Page And Start Ajax
     Select All Product Tag
-    Select Products And Click Batch Menu
+    Select All Items Then Click Batch Menu
     Wait And Click Element    ${locatorB_productsMgmt_select_addtoCategory}
     Wait And Click Element    ${locatorB_popUps_allCheckbox}
     Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
@@ -264,7 +264,7 @@ products063
     Reload Page And Start Ajax
     # 通过批量操作给商品添加入专辑1与专辑2
     Select All Product Tag
-    Select Products And Click Batch Menu
+    Select All Items Then Click Batch Menu
     Wait And Click Element    ${locatorB_productsMgmt_select_addtoCategory}
     @{checkboxs}    Wait And Get Items List From Locator    ${locatorB_popUps_allCheckbox}    ${locatorB_popUps_allCheckbox}[0]
     :FOR    ${checkbox}    IN    @{checkboxs}
@@ -272,7 +272,7 @@ products063
     Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
     Wait Until Page Contains Text    添加成功
 	# 批量删除专辑
-    Select Products And Click Batch Menu
+    Select All Items Then Click Batch Menu
     Wait And Click Element    ${locatorB_productsMgmt_select_delfromCategory}
 	@{checkboxs}    Wait And Get Items List From Locator    ${locatorB_popUps_allCheckbox}    ${locatorB_popUps_allCheckbox}[0]
     :FOR    ${checkbox}    IN    @{checkboxs}
@@ -549,8 +549,8 @@ products129
 #    add_min_product_py
 #    Reload Page And Start Ajax
 #    Select All Product Tag
-#    Select Products And Click Batch Menu
-#    Click Element And Confirm    ${locatorB_productsMgmt_select_launch}
+#    Select All Items Then Click Batch Menu
+#    Wait And Click Element Then Confirm    ${locatorB_productsMgmt_select_launch}
 #    Wait Until Page Contains Text    全部商品上架失败：缺少图片
 #    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_switch_listLaunched}    ${0}
 
