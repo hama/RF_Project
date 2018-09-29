@@ -35,13 +35,13 @@ ${input_search}    dom:document.querySelectorAll('[placeholder="Search for..."]'
 AddToCart_Checkout_By_Credit_Card
 	:FOR    ${i}    IN RANGE    1000
 	\    ${timestamp1}    Get Time    epoch
-	\    kw_AddToCart_Checkout_By_Credit_Card
+	\    ${status}    kw_AddToCart_Checkout_By_Credit_Card
 	\    ${timestamp2}    Get Time    epoch
 	\    ${period}    Evaluate    ${timestamp2}-${timestamp1}
 	\    ${times}    Evaluate    ${i}+1
 	\    ${periodFormat}    Convert Time    ${period}    timer    exclude_milles=yes
 	\    ${startMoment}    Convert Date    ${timestamp1}    exclude_millis=yes    date_format=%m.%d.%Y %H:%M
-	\    Log To Console    (AddToCart_Checkout_By_Credit_Card) 执行次数:${times} 开始时间:${startMoment} 执行时长:${period}
+	\    Log To Console    (AddToCart_Checkout_By_Credit_Card) 执行次数:${times} 开始时间:${startMoment} 执行时长:${period} 执行状态:${status}
 
 #BuyNow_By_COD
 #	:FOR    ${i}    IN RANGE    1000
@@ -68,8 +68,6 @@ AddToCart_Checkout_By_Credit_Card
 
 *** keyword ***
 kw_AddToCart_Checkout_By_Credit_Card
-	Run Keyword And Ignore Error    Delete Cookie    client_id
-	Run Keyword And Ignore Error    Reload Page
 	Run Keyword And Ignore Error    Mouse Over    ${img}
 	Run Keyword And Ignore Error    Wait And Click Element    ${btn_quickView}
 	Sleep    1
@@ -78,47 +76,64 @@ kw_AddToCart_Checkout_By_Credit_Card
 	Run Keyword And Ignore Error    Wait And Click Element    ${icon_cart}
 	Sleep    1
 	Run Keyword And Ignore Error    Wait And Click Element    ${btn_checkout}
-	Sleep    1
-	Run Keyword And Ignore Error    Add Address Common Step
-	Run Keyword And Ignore Error    Wait And Click Element    ${btn_continue_checkout_complete}
-	Sleep    1
-#	Run Keyword And Ignore Error    Wait And Click Element    ${icon_credit_card}
-#	Run Keyword And Ignore Error    Add Credit Card Info
-	Run Keyword And Ignore Error    Wait And Click Element    ${icon_cod}
-	Run Keyword And Ignore Error    Wait And Click Element    ${btn_continue_checkout_complete}
-	Sleep    1
-#	Run Keyword And Ignore Error    Wait Until Page Contains Locator    ${btn_pay_again}
-	Run Keyword And Ignore Error    Wait Until Page Contains Locator    Payment successful!
-	Sleep    1
+	Run Keyword And Ignore Error    Wait Until Page Contains Locator    dom:document.querySelectorAll('[id="coupon_apply"]')[0]
+	${status}    Run Keyword And Return Status   Location Should Contain    myshoplaza.com/checkout
 	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
-
-kw_BuyNow_By_COD
-	Run Keyword And Ignore Error    Delete Cookie    client_id
-	Run Keyword And Ignore Error    Reload Page
-	Run Keyword And Ignore Error    Wait And Click Element    ${img}
-	Run Keyword And Ignore Error    Wait And Click Element    ${btn_buyNow}
-	Sleep    1
-	Run Keyword And Ignore Error    Add Address Common Step
-	Run Keyword And Ignore Error    Wait And Click Element    ${btn_continue_checkout_complete}
-	Sleep    1
-	Run Keyword And Ignore Error    Wait And Click Element    ${icon_cod}
-	Run Keyword And Ignore Error    Wait And Click Element    ${btn_continue_checkout_complete}
-	Sleep    1
-	Run Keyword And Ignore Error    Wait Until Page Contains Text    Payment successful!
-	Sleep    1
-	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
-
-kw_Searching
-	Run Keyword And Ignore Error    Delete Cookie    client_id
-	Run Keyword And Ignore Error    Reload Page
-#	Start Ajax Listener
-	Run Keyword And Ignore Error    Wait And Input Text    ${input_search}    1111111
-	Run Keyword And Ignore Error    Press Key    ${input_search}    ${keybord_enter}
-	Sleep    1
-	Run Keyword And Ignore Error    Wait Until Page Contains Text    Try something like.
-#	Log Error Response Of Ajax Listener
-#	Log Correct Response Of Ajax Listener
-	Sleep    1
-	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
+	[Return]    ${status}
 
 
+#kw_AddToCart_Checkout_By_Credit_Card
+#	Run Keyword And Ignore Error    Delete Cookie    client_id
+#	Run Keyword And Ignore Error    Reload Page
+#	Run Keyword And Ignore Error    Mouse Over    ${img}
+#	Run Keyword And Ignore Error    Wait And Click Element    ${btn_quickView}
+#	Sleep    1
+#	Run Keyword And Ignore Error    Wait And Click Element    ${btn_addToCart}
+#	Sleep    1
+#	Run Keyword And Ignore Error    Wait And Click Element    ${icon_cart}
+#	Sleep    1
+#	Run Keyword And Ignore Error    Wait And Click Element    ${btn_checkout}
+#	Sleep    1
+#	Run Keyword And Ignore Error    Add Address Common Step
+#	Run Keyword And Ignore Error    Wait And Click Element    ${btn_continue_checkout_complete}
+#	Sleep    1
+##	Run Keyword And Ignore Error    Wait And Click Element    ${icon_credit_card}
+##	Run Keyword And Ignore Error    Add Credit Card Info
+#	Run Keyword And Ignore Error    Wait And Click Element    ${icon_cod}
+#	Run Keyword And Ignore Error    Wait And Click Element    ${btn_continue_checkout_complete}
+#	Sleep    1
+##	Run Keyword And Ignore Error    Wait Until Page Contains Locator    ${btn_pay_again}
+#	Run Keyword And Ignore Error    Wait Until Page Contains Locator    Payment successful!
+#	Sleep    1
+#	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
+#
+#kw_BuyNow_By_COD
+#	Run Keyword And Ignore Error    Delete Cookie    client_id
+#	Run Keyword And Ignore Error    Reload Page
+#	Run Keyword And Ignore Error    Wait And Click Element    ${img}
+#	Run Keyword And Ignore Error    Wait And Click Element    ${btn_buyNow}
+#	Sleep    1
+#	Run Keyword And Ignore Error    Add Address Common Step
+#	Run Keyword And Ignore Error    Wait And Click Element    ${btn_continue_checkout_complete}
+#	Sleep    1
+#	Run Keyword And Ignore Error    Wait And Click Element    ${icon_cod}
+#	Run Keyword And Ignore Error    Wait And Click Element    ${btn_continue_checkout_complete}
+#	Sleep    1
+#	Run Keyword And Ignore Error    Wait Until Page Contains Text    Payment successful!
+#	Sleep    1
+#	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
+#
+#kw_Searching
+#	Run Keyword And Ignore Error    Delete Cookie    client_id
+#	Run Keyword And Ignore Error    Reload Page
+##	Start Ajax Listener
+#	Run Keyword And Ignore Error    Wait And Input Text    ${input_search}    1111111
+#	Run Keyword And Ignore Error    Press Key    ${input_search}    ${keybord_enter}
+#	Sleep    1
+#	Run Keyword And Ignore Error    Wait Until Page Contains Text    Try something like.
+##	Log Error Response Of Ajax Listener
+##	Log Correct Response Of Ajax Listener
+#	Sleep    1
+#	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
+#
+#
