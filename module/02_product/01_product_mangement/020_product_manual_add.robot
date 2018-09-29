@@ -206,6 +206,7 @@ products047
 	Wait And Input Text    ${locatorB_productsMgmt_popUps_firstInput}    manual_tag
 	# 回车
     Press Key    ${locatorB_productsMgmt_popUps_firstInput}    ${keybord_enter}
+    Wait And Click Element    ${locatorB_productsMgmt_text_tagInPopUps}
     Wait And Click Element    ${locatorB_popUps_button_footermiddle}
     Wait Until Page Contains Text    添加成功
     # 进入product中检查是否存在

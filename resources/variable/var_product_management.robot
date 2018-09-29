@@ -50,6 +50,7 @@ ${locatorB_productsMgmt_text_firstProductName}    dom:document.querySelectorAll(
 ${locatorB_productsMgmt_text_firstProductInventoryQuantity}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[3]    #商品列表第一个商品的库存(只能在Show All Header关键字执行之后使用)
 ${locatorB_productsMgmt_text_firstProductSku}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[4]    #商品列表第一个商品的SKU(只能在Show All Header关键字执行之后使用)
 ${locatorB_productsMgmt_text_firstProductViews}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[5]    #商品列表第一个商品的浏览量(只能在Show All Header关键字执行之后使用)
+${locatorB_productsMgmt_text_tagInPopUps}    dom:document.querySelectorAll('[class="des1___37crS"]')[0]    # 批量添加标签中的标签text
 ${locatorB_productsMgmt_icon_listPreview}    dom:document.querySelectorAll("i[class*='preview']")    #所有条目的预览icon,第0个为第一条商品的
 ${locatorB_productsMgmt_icon_listDelete}    dom:document.querySelectorAll("i[class*='delete']")    #所有条目的删除icon,第0个为第一条商品的
 ${locatorB_productsMgmt_text_listCreateTime}    dom:document.querySelectorAll('td[class="vendor___2VuW9"]')    #所有条目的创建时间，第0个为第一条商品的
