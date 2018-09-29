@@ -5,6 +5,7 @@ Library           ${CURDIR}/../../lib/customlib/kwpayment.py
 Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 Library           ${CURDIR}/../../lib/customlib/kwproduct.py
 Library           ${CURDIR}/../../lib/customlib/kwcollection.py
+Library           ${CURDIR}/../../lib/customlib/kwcomment.py
 Resource          ../variable/var_common.robot
 Resource          ../variable/var_login.robot
 Resource          ../variable/var_store.robot
@@ -86,7 +87,7 @@ Go To Product Review Page
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_product_reviews}
     ...    ELSE    Wait And Click Element    ${locatorB_product_reviews}
     Sleep    2
-    Wait Until Page Contains    商品专辑
+    Wait Until Page Contains    商品评论
     Location Should Be    ${url_reviews}
     Sleep    1
 
