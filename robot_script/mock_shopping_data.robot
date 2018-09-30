@@ -1,6 +1,6 @@
 *** Settings ***
 Suite Setup       Open Test Browser    ${url}
-#Suite Teardown    Close Test Suite Browser
+Suite Teardown    Close Test Suite Browser
 #Test Setup        Login Testcase Setup
 #Test Teardown     Teardown Test Case
 Force Tags        mock_shopping_data
@@ -33,7 +33,7 @@ ${input_search}    dom:document.querySelectorAll('[placeholder="Search for..."]'
 
 *** Testcases ***
 AddToCart_Checkout_By_Credit_Card
-	:FOR    ${i}    IN RANGE    1000
+	:FOR    ${i}    IN RANGE    2000
 	\    ${timestamp1}    Get Time    epoch
 	\    ${status}    kw_AddToCart_Checkout_By_Credit_Card
 	\    ${timestamp2}    Get Time    epoch
@@ -42,6 +42,7 @@ AddToCart_Checkout_By_Credit_Card
 	\    ${periodFormat}    Convert Time    ${period}    timer    exclude_milles=yes
 	\    ${startMoment}    Convert Date    ${timestamp1}    exclude_millis=yes    date_format=%m.%d.%Y %H:%M
 	\    Log To Console    (AddToCart_Checkout_By_Credit_Card) 执行次数:${times} 开始时间:${startMoment} 执行时长:${period} 执行状态:${status}
+
 
 #BuyNow_By_COD
 #	:FOR    ${i}    IN RANGE    1000
@@ -68,17 +69,18 @@ AddToCart_Checkout_By_Credit_Card
 
 *** keyword ***
 kw_AddToCart_Checkout_By_Credit_Card
-	Run Keyword And Ignore Error    Mouse Over    ${img}
-	Run Keyword And Ignore Error    Wait And Click Element    ${btn_quickView}
-	Sleep    1
-	Run Keyword And Ignore Error    Wait And Click Element    ${btn_addToCart}
-	Sleep    1
-	Run Keyword And Ignore Error    Wait And Click Element    ${icon_cart}
-	Sleep    1
-	Run Keyword And Ignore Error    Wait And Click Element    ${btn_checkout}
-	Run Keyword And Ignore Error    Wait Until Page Contains Locator    dom:document.querySelectorAll('[id="coupon_apply"]')[0]
-	${status}    Run Keyword And Return Status   Location Should Contain    myshoplaza.com/checkout
-	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
+#	Run Keyword And Ignore Error    Mouse Over    ${img}
+#	Run Keyword And Ignore Error    Wait And Click Element    ${btn_quickView}
+#	Run Keyword And Ignore Error    Wait And Click Element    ${btn_addToCart}
+#	Run Keyword And Ignore Error    Wait And Click Element    ${icon_cart}
+#	Run Keyword And Ignore Error    Wait And Click Element    ${btn_checkout}
+#	Sleep    5
+	Go To    https://jolly.myshoplaza.com/checkout/dbb64f36-6fd4-4ff7-a902-f74c6aa5eba1
+	Sleep    5
+	${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    dom:document.querySelectorAll('[id="coupon_apply"]')[0]
+#	${status}    Run Keyword And Return Status   Location Should Contain    myshoplaza.com/checkout
+	Run keyword If    ${status}==False    Capture Page Screenshot
+#	Run Keyword And Ignore Error    Open New And Close Other Windows    ${url}
 	[Return]    ${status}
 
 
