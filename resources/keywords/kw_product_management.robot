@@ -12,30 +12,30 @@ Resource          kw_common.robot
 Product Management Suite Setup Add Two Products
     [Documentation]    product
     Login With Default User
-    del_all_products_py
-    add_launched_product_py
+    kwproduct.del_all_products_py
+    kwproduct.add_launched_product_py
     Sleep    1   # 为构造两个产品创建时间不同
-    add_discontinued_product_py
+    kwproduct.add_discontinued_product_py
     Go To Product Management Page
     Show All Header
 
 Product Management Common Suite Setup
     [Documentation]    product
     Login With Default User
-    del_all_products_py
-    del_all_collections_py
+    kwproduct.del_all_products_py
+    kwcollection.del_all_collections_py
     Go To Product Management Page
 
 Product Management Common Suite Teardown
     [Documentation]    product
-    del_all_products_py
-    del_all_collections_py
+    kwproduct.del_all_products_py
+    kwcollection.del_all_collections_py
     Close Test Suite Browser
 
 Product Management Case Setup Clear Evn
     [Documentation]    product
-    del_all_products_py
-    del_all_collections_py
+    kwproduct.del_all_products_py
+    kwcollection.del_all_collections_py
     Go To Product Management Page
 
 

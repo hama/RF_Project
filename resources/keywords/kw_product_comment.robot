@@ -13,13 +13,13 @@ Product Comment Suite Setup
 
 Product Comment Suite Teardown
     [Documentation]
-    del_all_comments_py
+    kwcomment.del_all_comments_py
     kwproduct.del_all_products_py
     Close Test Suite Browser
 
 Product Comment Case Setup
     [Documentation]
-    del_all_comments_py
+    kwcomment.del_all_comments_py
     Go To Product Review Page
 
 Select All Comment Tag

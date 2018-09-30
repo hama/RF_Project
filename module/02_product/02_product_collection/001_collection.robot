@@ -24,7 +24,7 @@ collection001
 collection007
     [Documentation]    进入商品专辑界面，查看左上角标题
     [Tags]    P0    threshold
-    add_collection_with_pic_py
+    kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
 	Wait And Click Element    ${locatorB_productsCollection_icon_listDetailOpen}[0]
 	Wait Until Page Contains Text    商品(0)
@@ -32,8 +32,8 @@ collection007
 collection008
     [Documentation]    进入商品专辑界面，查看左上角标题
     [Tags]    P0    threshold
-	add_collection_with_pic_py
-	add_collection_with_pic_py
+	kwcollection.add_collection_with_pic_py
+	kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     # 含2个listDetailOpen的元素
     Count Of Element Should Be Equal With Wait    ${locatorB_productsCollection_icon_listDetailOpen}    ${2}
@@ -50,7 +50,7 @@ collection008
 collection012
     [Documentation]    列表单个删除
     [Tags]    P0    threshold
-    add_collection_with_pic_py
+    kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
 	Wait And Click Element    ${locatorB_productsCollection_icon_listDel}[0]
 	Wait Until Page Contains Text     确定删除吗？
@@ -58,7 +58,7 @@ collection012
 collection013
     [Documentation]    列表单个删除点击确定
     [Tags]    P0    threshold
-    add_collection_with_pic_py
+    kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
 	Wait And Click Element    ${locatorB_productsCollection_icon_listDel}[0]
 	Wait And Click Element    ${locatorB_global_alert_confirm}
@@ -67,7 +67,7 @@ collection013
 collection015
     [Documentation]    列表批量删除
     [Tags]    P0    threshold
-    add_collection_with_pic_py
+    kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
 	Wait Exist And Click Element    ${locatorB_productsCollection_checkbox_chooseCategories}
 	Wait And Click Element    ${locatorB_productsCollection_button_delProducts}
@@ -76,7 +76,7 @@ collection015
 collection016
     [Documentation]    列表批量删除点击确定
     [Tags]    P0    threshold
-    add_collection_with_pic_py
+    kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
 	Wait Exist And Click Element    ${locatorB_productsCollection_checkbox_chooseCategories}
 	Wait And Click Element    ${locatorB_productsCollection_button_delProducts}
@@ -86,7 +86,7 @@ collection016
 collection023
     [Documentation]    专辑名称输入混合（包括中英文，特殊符号，数字）字符
     [Tags]    P0    threshold
-    add_collection_with_pic_py
+    kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
 	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
@@ -98,7 +98,7 @@ collection023
 collection025
     [Documentation]    专辑名称输入1-255个字符
     [Tags]    P0    threshold
-    add_collection_with_pic_py
+    kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
 	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
@@ -110,7 +110,7 @@ collection025
 collection031
     [Documentation]    专辑描述输入混合（包括中英文，特殊符号，数字）字符
     [Tags]    P0    threshold
-    add_collection_with_pic_py
+    kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
 	Wait And Input Text    ${locatorB_collectionDetail_input_description}    description@123
@@ -122,7 +122,7 @@ collection031
 collection032
     [Documentation]    专辑描述输入1-255个字符
     [Tags]    P0    threshold
-    add_collection_with_pic_py
+    kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
 	Wait And Input Text    ${locatorB_collectionDetail_input_description}    description@123
@@ -134,7 +134,7 @@ collection032
 collection034
     [Documentation]    专辑封面格式JPG
     [Tags]    P0    threshold
-    add_collection_without_pic_py
+    kwcollection.add_collection_without_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
 	Wait Enabled And Choose File    ${locatorB_collectionDetail_input_addImage}    ${file_products_addImg}
@@ -147,7 +147,7 @@ collection034
 collection090
     [Documentation]    展开专辑快速查找
     [Tags]    P0    threshold
-    add_collection_without_pic_py
+    kwcollection.add_collection_without_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
     Wait Until Page Contains Locator    ${locatorB_collectionDetail_icon_quickSearchToShow}
@@ -157,7 +157,7 @@ collection090
 collection091
     [Documentation]    收起专辑快速查找
     [Tags]    P0    threshold
-    add_collection_without_pic_py
+    kwcollection.add_collection_without_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
     Wait Until Page Contains Locator    ${locatorB_collectionDetail_icon_quickSearchToShow}
@@ -171,11 +171,11 @@ collection093
     [Tags]    P0    threshold
     &{collection_conf00} =    Create Dictionary
     ...    title=autotest_title0
-    add_collection_with_conf_py    ${collection_conf00}
+    kwcollection.add_collection_with_conf_py    ${collection_conf00}
     Sleep    1
     &{collection_conf01} =    Create Dictionary
     ...    title=autotest_title1
-    add_collection_with_conf_py    ${collection_conf01}
+    kwcollection.add_collection_with_conf_py    ${collection_conf01}
     Reload Page And Start Ajax
 	# 点击进入专辑详情页
     Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
@@ -189,11 +189,11 @@ collection094
     [Tags]    P0    threshold
     &{collection_conf00} =    Create Dictionary
     ...    title=autotest_title0
-    add_collection_with_conf_py    ${collection_conf00}
+    kwcollection.add_collection_with_conf_py    ${collection_conf00}
     Sleep    1
     &{collection_conf01} =    Create Dictionary
     ...    title=autotest_title1
-    add_collection_with_conf_py    ${collection_conf01}
+    kwcollection.add_collection_with_conf_py    ${collection_conf01}
     Reload Page And Start Ajax
 	# 点击进入专辑详情页
     Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
@@ -208,11 +208,11 @@ collection095
     [Tags]    P0    threshold
     &{collection_conf00} =    Create Dictionary
     ...    title=autotest_title0
-    add_collection_with_conf_py    ${collection_conf00}
+    kwcollection.add_collection_with_conf_py    ${collection_conf00}
     Sleep    1
     &{collection_conf01} =    Create Dictionary
     ...    title=autotest_title1
-    add_collection_with_conf_py    ${collection_conf01}
+    kwcollection.add_collection_with_conf_py    ${collection_conf01}
     Reload Page And Start Ajax
 	# 点击进入专辑详情页
     Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
@@ -227,7 +227,7 @@ collection095
 collection098
     [Documentation]    未保存点击返回按钮退出
     [Tags]    P0    threshold
-    add_collection_without_pic_py
+    kwcollection.add_collection_without_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
 	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
@@ -238,7 +238,7 @@ collection098
 collection099
     [Documentation]    未保存点击返回按钮退出确定
     [Tags]    P0    threshold
-    add_collection_without_pic_py
+    kwcollection.add_collection_without_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
 	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
@@ -249,7 +249,7 @@ collection099
 collection100
     [Documentation]    未保存点击返回按钮退出取消
     [Tags]    P0    threshold
-    add_collection_without_pic_py
+    kwcollection.add_collection_without_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
 	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123

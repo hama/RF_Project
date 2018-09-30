@@ -24,7 +24,7 @@ reviews001
 reviews002
     [Documentation]    进入全部评论界面
     [Tags]    P0    threshold
-    add_published_comment_py
+    kwcomment.add_published_comment_py
     Reload Page And Start Ajax
     Select All Comment Tag
 	Wait Until Page Contains Text    评论内容
@@ -38,11 +38,11 @@ reviews003
     [Tags]    P0
     &{comment_conf00} =    Create Dictionary
     ...    praise=99
-    add_comment_with_conf_py    ${comment_conf00}
+    kwcomment.add_comment_with_conf_py    ${comment_conf00}
     Sleep    1
     &{comment_conf01} =    Create Dictionary
     ...    praise=1
-    add_comment_with_conf_py    ${comment_conf01}
+    kwcomment.add_comment_with_conf_py    ${comment_conf01}
     Reload Page And Start Ajax
     Select All Comment Tag
 	Wait And Click Element    ${locatorB_productsReviews_icon_listArrowDown}[0]
@@ -55,11 +55,11 @@ reviews004
     [Tags]    P0
     &{comment_conf00} =    Create Dictionary
     ...    praise=99
-    add_comment_with_conf_py    ${comment_conf00}
+    kwcomment.add_comment_with_conf_py    ${comment_conf00}
     Sleep    1
     &{comment_conf01} =    Create Dictionary
     ...    praise=1
-    add_comment_with_conf_py    ${comment_conf01}
+    kwcomment.add_comment_with_conf_py    ${comment_conf01}
     Reload Page And Start Ajax
     Select All Comment Tag
     Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listThumbsUpNum}[0]    1
@@ -73,11 +73,11 @@ reviews005
     [Tags]    P0
     &{comment_conf00} =    Create Dictionary
     ...    content=content00
-    add_comment_with_conf_py    ${comment_conf00}
+    kwcomment.add_comment_with_conf_py    ${comment_conf00}
     Sleep    1
     &{comment_conf01} =    Create Dictionary
     ...    content=content01
-    add_comment_with_conf_py    ${comment_conf01}
+    kwcomment.add_comment_with_conf_py    ${comment_conf01}
     Reload Page And Start Ajax
     Select All Comment Tag
     Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listContent}[0]    content01
@@ -91,11 +91,11 @@ reviews006
     [Tags]    P0
     &{comment_conf00} =    Create Dictionary
     ...    content=content00
-    add_comment_with_conf_py    ${comment_conf00}
+    kwcomment.add_comment_with_conf_py    ${comment_conf00}
     Sleep    1
     &{comment_conf01} =    Create Dictionary
     ...    content=content01
-    add_comment_with_conf_py    ${comment_conf01}
+    kwcomment.add_comment_with_conf_py    ${comment_conf01}
     Reload Page And Start Ajax
     Select All Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_icon_listArrowDown}[1]
@@ -106,7 +106,7 @@ reviews006
 reviews007
     [Documentation]    进入已发布评论界面
     [Tags]    P1
-    add_published_comment_py
+    kwcomment.add_published_comment_py
     Reload Page And Start Ajax
     Select Published Comment Tag
 	Wait Until Page Contains Text    评论内容
@@ -121,12 +121,12 @@ reviews008
     &{comment_conf00} =    Create Dictionary
     ...    praise=99
     ...    status=1
-    add_comment_with_conf_py    ${comment_conf00}
+    kwcomment.add_comment_with_conf_py    ${comment_conf00}
     Sleep    1
     &{comment_conf01} =    Create Dictionary
     ...    praise=1
     ...    status=1
-    add_comment_with_conf_py    ${comment_conf01}
+    kwcomment.add_comment_with_conf_py    ${comment_conf01}
     Reload Page And Start Ajax
     Select Published Comment Tag
 	Wait And Click Element    ${locatorB_productsReviews_icon_listArrowDown}[0]
@@ -140,12 +140,12 @@ reviews009
     &{comment_conf00} =    Create Dictionary
     ...    praise=99
     ...    status=1
-    add_comment_with_conf_py    ${comment_conf00}
+    kwcomment.add_comment_with_conf_py    ${comment_conf00}
     Sleep    1
     &{comment_conf01} =    Create Dictionary
     ...    praise=1
     ...    status=1
-    add_comment_with_conf_py    ${comment_conf01}
+    kwcomment.add_comment_with_conf_py    ${comment_conf01}
     Reload Page And Start Ajax
     Select Published Comment Tag
     Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listThumbsUpNum}[0]    1
@@ -160,12 +160,12 @@ reviews010
     &{comment_conf00} =    Create Dictionary
     ...    content=content00
     ...    status=1
-    add_comment_with_conf_py    ${comment_conf00}
+    kwcomment.add_comment_with_conf_py    ${comment_conf00}
     Sleep    1
     &{comment_conf01} =    Create Dictionary
     ...    content=content01
     ...    status=1
-    add_comment_with_conf_py    ${comment_conf01}
+    kwcomment.add_comment_with_conf_py    ${comment_conf01}
     Reload Page And Start Ajax
     Select Published Comment Tag
     Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listContent}[0]    content01
@@ -180,12 +180,12 @@ reviews011
     &{comment_conf00} =    Create Dictionary
     ...    content=content00
     ...    status=1
-    add_comment_with_conf_py    ${comment_conf00}
+    kwcomment.add_comment_with_conf_py    ${comment_conf00}
     Sleep    1
     &{comment_conf01} =    Create Dictionary
     ...    content=content01
     ...    status=1
-    add_comment_with_conf_py    ${comment_conf01}
+    kwcomment.add_comment_with_conf_py    ${comment_conf01}
     Reload Page And Start Ajax
     Select Published Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_icon_listArrowDown}[1]
@@ -196,7 +196,7 @@ reviews011
 reviews012
     [Documentation]    进入未发布评论界面
     [Tags]    P1
-    add_unpublished_comment_py
+    kwcomment.add_unpublished_comment_py
     Reload Page And Start Ajax
     Select Unpublished Comment Tag
 	Wait Until Page Contains Text    评论内容
@@ -211,12 +211,12 @@ reviews013
     &{comment_conf00} =    Create Dictionary
     ...    praise=99
     ...    status=0
-    add_comment_with_conf_py    ${comment_conf00}
+    kwcomment.add_comment_with_conf_py    ${comment_conf00}
     Sleep    1
     &{comment_conf01} =    Create Dictionary
     ...    praise=1
     ...    status=0
-    add_comment_with_conf_py    ${comment_conf01}
+    kwcomment.add_comment_with_conf_py    ${comment_conf01}
     Reload Page And Start Ajax
     Select Published Comment Tag
 	Wait And Click Element    ${locatorB_productsReviews_icon_listArrowDown}[0]
@@ -230,12 +230,12 @@ reviews014
     &{comment_conf00} =    Create Dictionary
     ...    praise=99
     ...    status=0
-    add_comment_with_conf_py    ${comment_conf00}
+    kwcomment.add_comment_with_conf_py    ${comment_conf00}
     Sleep    1
     &{comment_conf01} =    Create Dictionary
     ...    praise=1
     ...    status=0
-    add_comment_with_conf_py    ${comment_conf01}
+    kwcomment.add_comment_with_conf_py    ${comment_conf01}
     Reload Page And Start Ajax
     Select Published Comment Tag
     Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listThumbsUpNum}[0]    1
@@ -250,12 +250,12 @@ reviews015
     &{comment_conf00} =    Create Dictionary
     ...    content=content00
     ...    status=0
-    add_comment_with_conf_py    ${comment_conf00}
+    kwcomment.add_comment_with_conf_py    ${comment_conf00}
     Sleep    1
     &{comment_conf01} =    Create Dictionary
     ...    content=content01
     ...    status=0
-    add_comment_with_conf_py    ${comment_conf01}
+    kwcomment.add_comment_with_conf_py    ${comment_conf01}
     Reload Page And Start Ajax
     Select Published Comment Tag
     Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listContent}[0]    content01
@@ -270,12 +270,12 @@ reviews016
     &{comment_conf00} =    Create Dictionary
     ...    content=content00
     ...    status=0
-    add_comment_with_conf_py    ${comment_conf00}
+    kwcomment.add_comment_with_conf_py    ${comment_conf00}
     Sleep    1
     &{comment_conf01} =    Create Dictionary
     ...    content=content01
     ...    status=0
-    add_comment_with_conf_py    ${comment_conf01}
+    kwcomment.add_comment_with_conf_py    ${comment_conf01}
     Reload Page And Start Ajax
     Select Published Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_icon_listArrowDown}[1]
@@ -286,7 +286,7 @@ reviews016
 reviews021
     [Documentation]    点击商品名称
     [Tags]    P0    threshold
-    add_published_comment_py
+    kwcomment.add_published_comment_py
     Reload Page And Start Ajax
     Select All Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_link_listProductName}[0]
@@ -295,7 +295,7 @@ reviews021
 reviews023
     [Documentation]    点击商品链接
     [Tags]    P0    threshold
-    add_published_comment_py
+    kwcomment.add_published_comment_py
     Reload Page And Start Ajax
     Select All Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_link_listProductName}[0]
@@ -307,7 +307,7 @@ reviews023
 reviews035
     [Documentation]    商品详情页批量全选发布
     [Tags]    P0    threshold
-    add_unpublished_comment_py
+    kwcomment.add_unpublished_comment_py
     Reload Page And Start Ajax
     Select All Comment Tag
 	Wait And Click Element    ${locatorB_productsReviews_link_listProductName}[0]
@@ -318,7 +318,7 @@ reviews035
 reviews037
     [Documentation]    商品详情页单个发布
     [Tags]    P0    threshold
-    add_unpublished_comment_py
+    kwcomment.add_unpublished_comment_py
     Reload Page And Start Ajax
     Select All Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_link_listProductName}[0]
@@ -328,7 +328,7 @@ reviews037
 reviews038
     [Documentation]    商品详情页批量全选取消发布
     [Tags]    P0    threshold
-    add_unpublished_comment_py
+    kwcomment.add_unpublished_comment_py
     Reload Page And Start Ajax
     Select All Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_link_listProductName}[0]
@@ -339,7 +339,7 @@ reviews038
 reviews040
     [Documentation]    商品详情页单个取消发布
     [Tags]    P0    threshold
-    add_published_comment_py
+    kwcomment.add_published_comment_py
     Reload Page And Start Ajax
     Select All Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_link_listProductName}[0]
@@ -349,7 +349,7 @@ reviews040
 reviews041
     [Documentation]    商品详情页批量全选删除
     [Tags]    P0    threshold
-    add_published_comment_py
+    kwcomment.add_published_comment_py
     Reload Page And Start Ajax
     Select All Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_link_listProductName}[0]
@@ -360,7 +360,7 @@ reviews041
 reviews043
     [Documentation]    商品详情页单个删除
     [Tags]    P0    threshold
-    add_published_comment_py
+    kwcomment.add_published_comment_py
     Reload Page And Start Ajax
     Select All Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_link_listProductName}[0]
@@ -370,7 +370,7 @@ reviews043
 reviews064
     [Documentation]    批量全选发布
     [Tags]    P0    threshold
-    add_unpublished_comment_py
+    kwcomment.add_unpublished_comment_py
     Reload Page And Start Ajax
     Select All Comment Tag
     Select All Items Then Click Batch Menu
@@ -380,7 +380,7 @@ reviews064
 reviews066
     [Documentation]    单个发布
     [Tags]    P0    threshold
-    add_unpublished_comment_py
+    kwcomment.add_unpublished_comment_py
     Reload Page And Start Ajax
     Select All Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_switch_listUnpublished}[0]
@@ -389,7 +389,7 @@ reviews066
 reviews067
     [Documentation]    批量全选取消发布
     [Tags]    P0    threshold
-    add_unpublished_comment_py
+    kwcomment.add_unpublished_comment_py
     Reload Page And Start Ajax
     Select All Comment Tag
     Select All Items Then Click Batch Menu
@@ -399,7 +399,7 @@ reviews067
 reviews069
     [Documentation]    单个取消发布
     [Tags]    P0    threshold
-    add_published_comment_py
+    kwcomment.add_published_comment_py
     Reload Page And Start Ajax
     Select All Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_switch_listPublished}[0]
@@ -408,7 +408,7 @@ reviews069
 reviews070
     [Documentation]    批量全选删除
     [Tags]    P0    threshold
-    add_published_comment_py
+    kwcomment.add_published_comment_py
     Reload Page And Start Ajax
     Select All Comment Tag
     Select All Items Then Click Batch Menu
@@ -418,7 +418,7 @@ reviews070
 reviews072
     [Documentation]    单个删除
     [Tags]    P0    threshold
-    add_published_comment_py
+    kwcomment.add_published_comment_py
     Reload Page And Start Ajax
     Select All Comment Tag
     Wait And Click Element Then Confirm    ${locatorB_pReviews_icon_listDelete}[0]

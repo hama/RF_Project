@@ -18,7 +18,7 @@ Library           ${CURDIR}/../../../lib/customlib/lib_utils.py
 products004
     [Documentation]    上架商品图片展示商品主图
     [Tags]    P0    threshold
-    add_launched_product_py
+    kwproduct.add_launched_product_py
     Reload Page And Start Ajax
     Select All Product Tag
 	${attr}    Get Element Attribute    ${locatorB_productsMgmt_image_firstProductThumbnails}    class
@@ -27,7 +27,7 @@ products004
 products005
     [Documentation]    下架商品且未上传商品图，商品图片展示默认图
     [Tags]    P0    threshold
-    add_min_product_py
+    kwproduct.add_min_product_py
     Reload Page And Start Ajax
     Select All Product Tag
 	${attr}    Get Element Attribute    ${locatorB_productsMgmt_image_firstProductThumbnails}    class
@@ -36,7 +36,7 @@ products005
 products007
     [Documentation]    验证商品无库存时展示正确
     [Tags]    P0
-    add_empty_quantity_product_py
+    kwproduct.add_empty_quantity_product_py
     Reload Page And Start Ajax
     Select All Product Tag
 	${inventoryQuantity}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductInventoryQuantity}
@@ -46,7 +46,7 @@ products009
     [Documentation]    验证商品的创建时间正确
     [Tags]    P0
     ${time1}    Get Time
-    add_min_product_py
+    kwproduct.add_min_product_py
     ${time2}    Get Time
     Reload Page And Start Ajax
     Select All Product Tag
@@ -57,7 +57,7 @@ products009
 products011
     [Documentation]    无SKU时，SKU展示空白
     [Tags]    P0
-    add_min_product_py
+    kwproduct.add_min_product_py
     Reload Page And Start Ajax
     Select All Product Tag
 	${sku}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductSku}
@@ -73,7 +73,7 @@ products014
 products018
     [Documentation]    验证点击删除按钮可删除商品
     [Tags]    P0    threshold
-    add_min_product_py
+    kwproduct.add_min_product_py
     Reload Page And Start Ajax
     Select All Product Tag
 	Wait And Click Element Then Confirm    ${locatorB_productsMgmt_icon_listDelete}[0]
@@ -82,7 +82,7 @@ products018
 products019
     [Documentation]    验证可成功删除商品
     [Tags]    P0
-    add_min_product_py
+    kwproduct.add_min_product_py
     Reload Page And Start Ajax
     Select All Product Tag
 	Wait And Click Element Then Confirm    ${locatorB_productsMgmt_icon_listDelete}[0]
@@ -91,7 +91,7 @@ products019
 products020
     [Documentation]    验证可取消删除商品
     [Tags]    P0
-    add_min_product_py
+    kwproduct.add_min_product_py
     Reload Page And Start Ajax
     Select All Product Tag
 	Wait And Click Element Then Cancel    ${locatorB_productsMgmt_icon_listDelete}[0]
@@ -100,9 +100,9 @@ products020
 products021.1
     [Documentation]    验证展示的上架商品排序正确
     [Tags]    P0    threshold
-    add_launched_product_py
+    kwproduct.add_launched_product_py
     Sleep    1
-	add_launched_product_py
+	kwproduct.add_launched_product_py
 	Reload Page And Start Ajax
     Select Launched Product Tag
     ${item1_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[0]
@@ -113,9 +113,9 @@ products021.1
 products021.2
     [Documentation]    验证展示的上架商品数量正确
     [Tags]    P0    threshold
-    add_launched_product_py
-    add_launched_product_py
-    add_discontinued_product_py
+    kwproduct.add_launched_product_py
+    kwproduct.add_launched_product_py
+    kwproduct.add_discontinued_product_py
     Reload Page And Start Ajax
     Select Launched Product Tag
     ${total_record}    Wait And Get Text    ${locatorB_page_text_totalRecord}
@@ -126,7 +126,7 @@ products021.2
 products022
     [Documentation]    验证点击‘上架’无结果
     [Tags]    P0
-    add_min_product_py
+    kwproduct.add_min_product_py
     Reload Page And Start Ajax
     Select Launched Product Tag
     Wait Until Page Not Contains Locator    ${locatorB_page_text_totalRecord}
@@ -134,9 +134,9 @@ products022
 products023.1
     [Documentation]    验证展示的下架商品排序正确
     [Tags]    P0    threshold
-    add_discontinued_product_py
+    kwproduct.add_discontinued_product_py
     Sleep    1
-	add_discontinued_product_py
+	kwproduct.add_discontinued_product_py
 	Reload Page And Start Ajax
     Select Discontinued Product Tag
     ${item1_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[0]
@@ -147,9 +147,9 @@ products023.1
 products023.2
     [Documentation]    验证展示的下架商品数量正确
     [Tags]    P0    threshold
-    add_discontinued_product_py
-    add_discontinued_product_py
-    add_launched_product_py
+    kwproduct.add_discontinued_product_py
+    kwproduct.add_discontinued_product_py
+    kwproduct.add_launched_product_py
     Reload Page And Start Ajax
     Select Discontinued Product Tag
     ${total_record}    Wait And Get Text    ${locatorB_page_text_totalRecord}
@@ -160,8 +160,8 @@ products023.2
 products037
     [Documentation]    验证能上架一个或多个商品成功
     [Tags]    P0    threshold
-    add_discontinued_product_py
-    add_discontinued_product_py
+    kwproduct.add_discontinued_product_py
+    kwproduct.add_discontinued_product_py
     Reload Page And Start Ajax
     Select All Product Tag
 	Select All Items Then Click Batch Menu
@@ -172,8 +172,8 @@ products037
 products039
     [Documentation]    验证能下架一个或多个商品成功
     [Tags]    P0    threshold
-    add_launched_product_py
-    add_launched_product_py
+    kwproduct.add_launched_product_py
+    kwproduct.add_launched_product_py
     Reload Page And Start Ajax
     Select All Product Tag
 	Select All Items Then Click Batch Menu
@@ -184,8 +184,8 @@ products039
 products041
     [Documentation]    验证能够成功批量删除商品
     [Tags]    P0    threshold
-    add_launched_product_py
-    add_launched_product_py
+    kwproduct.add_launched_product_py
+    kwproduct.add_launched_product_py
     Reload Page And Start Ajax
     Select All Product Tag
 	Select All Items Then Click Batch Menu
@@ -198,7 +198,7 @@ products041
 products047
 	[Documentation]    验证能成功添加新建的标签
     [Tags]    P0    threshold
-    add_launched_product_py
+    kwproduct.add_launched_product_py
     Reload Page And Start Ajax
     Select All Product Tag
     Select All Items Then Click Batch Menu
@@ -222,7 +222,7 @@ products047
 products052
 	[Documentation]    验证可成功移除已有标签
     [Tags]    P0    threshold
-    add_launched_product_py
+    kwproduct.add_launched_product_py
     Reload Page And Start Ajax
     Select All Product Tag
     Select All Items Then Click Batch Menu
@@ -240,9 +240,9 @@ products052
 products055
 	[Documentation]    验证可成功加入一个或多个专辑
     [Tags]    P0    threshold
-    add_launched_product_py
+    kwproduct.add_launched_product_py
     del_all_collections_py
-    add_collection_with_pic_py
+    kwproduct.add_collection_with_pic_py
     Reload Page And Start Ajax
     Select All Product Tag
     Select All Items Then Click Batch Menu
@@ -258,9 +258,9 @@ products055
 products063
 	[Documentation]    验证可成功将商品从已加入的专辑中移除
     [Tags]    P0    threshold
-    add_launched_product_py
-    add_collection_with_pic_py
-    add_collection_without_pic_py
+    kwproduct.add_launched_product_py
+    kwproduct.add_collection_with_pic_py
+    kwproduct.add_collection_without_pic_py
     Reload Page And Start Ajax
     # 通过批量操作给商品添加入专辑1与专辑2
     Select All Product Tag
@@ -290,7 +290,7 @@ products063
 #products070
 #	[Documentation]    验证可全部取消自定义列表内容
 #    [Tags]    P0    threshold
-#    add_launched_product_py
+#    kwproduct.add_launched_product_py
 #    Reload Page And Start Ajax
 #    Select All Product Tag
 #    Hide All Header
@@ -303,10 +303,10 @@ products076
     [Tags]    P0    threshold
     &{product_conf01} =    Create Dictionary
     ...    saleprice=1
-    add_product_with_conf_py    ${product_conf01}
+    kwproduct.add_product_with_conf_py    ${product_conf01}
     &{product_conf02} =    Create Dictionary
     ...    saleprice=199
-    add_product_with_conf_py    ${product_conf02}
+    kwproduct.add_product_with_conf_py    ${product_conf02}
     Reload Page And Start Ajax
     Select All Product Tag
     Wait And Input Text    ${locatorB_productsMgmt_input_minPrice}    99
@@ -318,10 +318,10 @@ products077
     [Tags]    P0    threshold
     &{product_conf01} =    Create Dictionary
     ...    saleprice=1
-    add_product_with_conf_py    ${product_conf01}
+    kwproduct.add_product_with_conf_py    ${product_conf01}
     &{product_conf02} =    Create Dictionary
     ...    saleprice=199
-    add_product_with_conf_py    ${product_conf02}
+    kwproduct.add_product_with_conf_py    ${product_conf02}
     Reload Page And Start Ajax
     Select All Product Tag
     Wait And Input Text    ${locatorB_productsMgmt_input_maxPrice}    99
@@ -333,10 +333,10 @@ products078
     [Tags]    P0    threshold
     &{product_conf01} =    Create Dictionary
     ...    saleprice=1
-    add_product_with_conf_py    ${product_conf01}
+    kwproduct.add_product_with_conf_py    ${product_conf01}
     &{product_conf02} =    Create Dictionary
     ...    saleprice=199
-    add_product_with_conf_py    ${product_conf02}
+    kwproduct.add_product_with_conf_py    ${product_conf02}
     Reload Page And Start Ajax
     Select All Product Tag
     Wait And Input Text    ${locatorB_productsMgmt_input_minPrice}    10
@@ -347,10 +347,10 @@ products078
 products080
 	[Documentation]    可模糊搜索出商品名称包含该单词的商品
     [Tags]    P0    threshold
-    add_launched_product_py
+    kwproduct.add_launched_product_py
     &{product_conf01} =    Create Dictionary
     ...    title=compareone
-    add_product_with_conf_py    ${product_conf01}
+    kwproduct.add_product_with_conf_py    ${product_conf01}
     Reload Page And Start Ajax
     Select All Product Tag
     Wait And Input Text    ${locatorB_productsMgmt_input_name}    compare
@@ -362,11 +362,11 @@ products080
 products081
 	[Documentation]    可通过模糊搜索SKU，搜索出商品
     [Tags]    P0    threshold
-    add_launched_product_py
+    kwproduct.add_launched_product_py
     &{product_conf01} =    Create Dictionary
     ...    sku=123456
     ...    title=compareone
-    add_product_with_conf_py    ${product_conf01}
+    kwproduct.add_product_with_conf_py    ${product_conf01}
     Reload Page And Start Ajax
     Select All Product Tag
     Wait And Input Text    ${locatorB_productsMgmt_input_name}    123456
@@ -378,12 +378,12 @@ products081
 products082
 	[Documentation]    可通过标签搜索出商品
     [Tags]    P0    threshold
-    add_launched_product_py
+    kwproduct.add_launched_product_py
     @{tags} =    Create List    'color'
     &{product_conf01} =    Create Dictionary
     ...    tags=@{tags}
     ...    title=compareone
-    add_product_with_conf_py    ${product_conf01}
+    kwproduct.add_product_with_conf_py    ${product_conf01}
     Reload Page And Start Ajax
     Select All Product Tag
     Wait And Input Text    ${locatorB_productsMgmt_input_name}    color
@@ -546,7 +546,7 @@ products129
 #products187
 #	[Documentation]    不可批量上架无图片商品
 #    [Tags]    P0    threshold
-#    add_min_product_py
+#    kwproduct.add_min_product_py
 #    Reload Page And Start Ajax
 #    Select All Product Tag
 #    Select All Items Then Click Batch Menu
@@ -557,7 +557,7 @@ products129
 products188
 	[Documentation]    浏览量增加
     [Tags]    P0    threshold
-    add_max_product_py
+    kwproduct.add_max_product_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]
     Sleep    2
