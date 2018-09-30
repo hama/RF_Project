@@ -242,7 +242,7 @@ products055
     [Tags]    P0    threshold
     kwproduct.add_launched_product_py
     del_all_collections_py
-    kwproduct.add_collection_with_pic_py
+    kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Select All Product Tag
     Select All Items Then Click Batch Menu
@@ -259,7 +259,7 @@ products063
 	[Documentation]    验证可成功将商品从已加入的专辑中移除
     [Tags]    P0    threshold
     kwproduct.add_launched_product_py
-    kwproduct.add_collection_with_pic_py
+    kwcollection.add_collection_with_pic_py
     kwproduct.add_collection_without_pic_py
     Reload Page And Start Ajax
     # 通过批量操作给商品添加入专辑1与专辑2

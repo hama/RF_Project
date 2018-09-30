@@ -446,6 +446,17 @@ Select All Items Then Click Batch Menu
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 Common Js Click
     [Arguments]    ${element}    ${index}
     [Documentation]    封装js点击方法
