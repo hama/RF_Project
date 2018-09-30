@@ -1,10 +1,10 @@
 *** Settings ***
-
+Resource          ../variable/var_login.robot
 
 *** Keywords ***
 Logout
-    Mouse Over    dom:document.querySelectorAll("i[class~='hd-line-center']")[0]
-    Wait And Click Element    dom:document.querySelectorAll("div[class='account_content___18o60'] a")[1]
+    Mouse Over    ${locatorB_logout_icon_individualAccount}
+    Wait And Click Element    ${locatorB_logout_icon_logout}
 
 Login Testcase Setup
     # 判断是否退出登录

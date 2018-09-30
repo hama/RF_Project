@@ -8,13 +8,18 @@ ${locatorB_login_btn_register}    dom:document.querySelectorAll('a[data-robot="r
 ${locatorB_login_btn_findpwd}       dom:document.querySelectorAll('a[data-robot="forgotten_pwd"]')[0]     #.忘记密码按钮
 ${locatorB_login_btn_employeeLogin}       dom:document.querySelectorAll('a[data-robot="employee_login"]')[0]     #.员工登录按钮
 ${locatorB_login_btn_sendVcode}       dom:document.querySelectorAll('button[data-robot="send_vcode"]')[0]     #.发送验证码按钮
-#${locatorB_login_input_account}       dom:document.querySelectorAll("input[data-robot='account']")[0]     #.账号输入框
-${locatorB_login_input_account}       id:account    #.账号输入框
+${locatorB_login_input_account}       dom:document.querySelectorAll("input[data-robot='ph_account']")[0]     #.账号输入框
+#${locatorB_login_input_account}       id:account    #.账号输入框
 ${locatorB_login_input_password}       dom:document.querySelectorAll('input[data-robot="ph_password"]')[0]     #.密码输入框
 ${locatorB_login_input_domain}       dom:document.querySelectorAll('input[data-robot="username"]')[0]     #.域名输入框
 ${locatorB_login_input_confirmPwd}       dom:document.querySelectorAll('input[data-robot="ph_confirmpwd"]')[0]     #.确认密码输入框
-${locatorB_login_input_vcode}    dom:document.querySelectorAll('input[data-robot="ph_invite_code"]')[0]    #.验证码输入框
-${locatorB_login_input_inviteCode}    id:invite_code    #.邀请码输入框
+${locatorB_login_input_vcode}    dom:document.querySelectorAll('input[data-robot="ph_input_vcode"]')[0]    #.验证码输入框
+${locatorB_login_input_inviteCode}    dom:document.querySelectorAll('input[data-robot="ph_invite_code"]')[0]    #.邀请码输入框
+
+${locatorB_logout_icon_logout}    dom:document.querySelectorAll('a[data-robot="logout"]')[0]    #.退出登录
+${locatorB_logout_icon_individualAccount}    dom:document.querySelectorAll('a[data-robot="individual_account"]')[0]    #.个人账户
+
+
 
 # content
 ${contentB_login_errorFormatAccount}    17@11111111     #account格式不正确
