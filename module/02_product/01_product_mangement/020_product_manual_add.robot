@@ -260,7 +260,7 @@ products063
     [Tags]    P0    threshold
     kwproduct.add_launched_product_py
     kwcollection.add_collection_with_pic_py
-    kwproduct.add_collection_without_pic_py
+    kwcollection.add_collection_without_pic_py
     Reload Page And Start Ajax
     # 通过批量操作给商品添加入专辑1与专辑2
     Select All Product Tag
