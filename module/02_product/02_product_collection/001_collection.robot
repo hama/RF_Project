@@ -164,7 +164,7 @@ collection091
     Wait And Click Element    ${locatorB_collectionDetail_icon_quickSearchToShow}
     Wait Until Page Contains Locator    ${locatorB_collectionDetail_icon_quickSearchToClose}
     Sleep 2 Then Click Element ${locatorB_collectionDetail_icon_quickSearchToClose}
-    Wait Until Page Contains Locator  `  ${locatorB_collectionDetail_icon_quickSearchToShow}
+    Wait Until Page Contains Locator    ${locatorB_collectionDetail_icon_quickSearchToShow}
 
 collection093
     [Documentation]    切换为改专辑详情页
