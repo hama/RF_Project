@@ -21,7 +21,7 @@ def product_search(api='/api/product/search?page=0&limit=20', cookie=init_cookie
     res_data = json.loads(sub_list.content)['data']['products']
     return res_data
 
-
+ 
 def add_products(cookie=init_cookie):
     """
     添加商品

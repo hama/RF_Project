@@ -19,15 +19,15 @@ Checkout Common Setp
 
 Add Address Common Setp
     [Documentation]    添加地址公共部分
-    Input Text    ${locatorB_checkout_address_first_name}    123
-    Input Text    ${locatorB_checkout_address_last_name}    345
+    Wait And Input Text    ${locatorB_checkout_address_first_name}    123
+    Wait And Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
-    Input Text    ${locatorB_checkout_address_city}    深圳
-    Input Text    ${locatorB_checkout_address_add}    深圳123
-    Input Text    ${locatorB_checkout_address_zip}    123456
-    Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
-    Input Text    ${locatorB_checkout_address_phone}    123456789
-    Input Text    ${locatorB_checkout_address_company}    123456789
+    Wait And Input Text    ${locatorB_checkout_address_city}    深圳
+    Wait And Input Text    ${locatorB_checkout_address_add}    深圳123
+    Wait And Input Text    ${locatorB_checkout_address_zip}    123456
+    Wait And Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
+    Wait And Input Text    ${locatorB_checkout_address_phone}    123456789
+    Wait And Input Text    ${locatorB_checkout_address_company}    123456789
 
 Add Payment
     [Documentation]    B端添加支付方式

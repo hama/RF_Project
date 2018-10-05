@@ -1,27 +1,27 @@
 *** Settings ***
 Documentation     Ckeckout Page Check
-Suite Setup       Common_Step
-Suite Teardown    Close Test Suite Browser    # close the browser opened for this test suite
-Test Setup        Setup Test Case
+Suite Setup       Checkout Common Step
+Suite Teardown    Common Teardown    # close the browser opened for this test suite
 Test Teardown     Teardown Test Case
 Force Tags        Checkout
+
 Resource          ../../../resources/variable/var_tax_price.robot
 Resource          ../../../resources/variable/var_products.robot
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
 Resource          ../../../resources/keywords/kw_products.robot
-Resource          ../../../resources/keywords/kw_shipping.robot
 Resource          ../../../resources/keywords/kw_checkout.robot
 Resource          ../../../resources/variable/var_checkout.robot
-
+Library           ${CURDIR}/../../../lib/customlib/kwproduct.py
+Library           ${CURDIR}/../../../lib/customlib/kwshipping.py
 
 *** Test Cases ***
 checkout001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0
     #.click products btn
-    Checkout Common Setp
+    Click Preview Step
     Wait Until Element Is Visible    ${locatorB_checkout_add_card_btn}
     Page Should Contain Image    dom:document.querySelectorAll("img")[0]
     Page Should Contain Element    dom:document.querySelectorAll(".sales_price")[0]
@@ -30,11 +30,12 @@ checkout002
     [Documentation]    进入checkout界面 显示购买的商品，地址，
     [Tags]    P1
     #点击商品预览
-    Checkout Common Setp
+    Click Preview Step
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Add Address Common Setp
     Wait And Click Element    ${locatorB_checkout_submit_btn_s}
     Sleep    2
-    Page Should Contain Element    dom:document.querySelectorAll(".coline")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".coline")[0]
 
 checkout004
     [Documentation]    进入checkout界面 显示search按钮
@@ -518,12 +519,24 @@ Checkout_Common_Show_Element
     Wait And Click Element    ${click_element}
     Page Should Contain Element    ${check_element}
 
-Common_Step
+Checkout Common Step
     #.登陆
     Login With Default User
     #.添加中国的物流
-    Add Shipping China
-    #.添加商品
-    Add Order Products
+    add_shipping_py
+    add_products
+
+Click Preview Step
+    [Documentation]    点击预览的公共步骤
+    Go To Products Page
+    Sleep Time
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Sleep Time
+    Select Window    New
+    Sleep Time
+Common Teardown
+    [Documentation]    结束公共步骤
+    Close Test Suite Browser
+    delShipping
 
    
