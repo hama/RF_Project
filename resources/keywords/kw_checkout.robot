@@ -4,6 +4,10 @@ Resource          ../variable/var_common.robot
 Resource          ../variable/var_checkout.robot
 
 *** keywords ***
+Add Checkout Addr
+    [Documentation]    添加checkout地址
+
+
 Checkout Common Setp
     [Documentation]    封装公共步骤
     Go To    ${home_page}
@@ -11,13 +15,13 @@ Checkout Common Setp
     Wait And Click Element    ${locatorB_products}
     #点击商品预览
     Sleep Time
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]
     Sleep Time    #.休息2s
     #.第二个窗口
     Select Window    New
     Sleep Time
 
-Add Address Common Setp
+Add Address Common Step
     [Documentation]    添加地址公共部分
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
@@ -29,22 +33,32 @@ Add Address Common Setp
     Wait And Input Text    ${locatorB_checkout_address_phone}    123456789
     Wait And Input Text    ${locatorB_checkout_address_company}    123456789
 
+Add Credit Card Info
+	[Documentation]    添加信用卡公共部分
+	Wait And Input Text    ${locatorB_checkout_creditCard_input_name}    aaaaa
+	Wait And Input Text    ${locatorB_checkout_creditCard_input_email}    123456@zz.xx
+	Wait And Input Text    ${locatorB_checkout_creditCard_input_phone}    123456789
+	Wait And Input Text    ${locatorB_checkout_creditCard_input_post}    0000
+	Wait And Input Text    ${locatorB_checkout_creditCard_input_number}    123123123
+	Wait And Input Text    ${locatorB_checkout_creditCard_input_expireDate}    1231
+	Wait And Input Text    ${locatorB_checkout_creditCard_input_securityCode}    123
+
 Add Payment
     [Documentation]    B端添加支付方式
     Go To    ${home_page}
     Wait And Click Element    ${locatorB_setting}    #.点击设置按钮
     Wait And Click Element    ${locatorB_setting_payment}    #.点击收款渠道按钮
     ${button}    Execute JavaScript    return document.querySelectorAll(".btn___2GFAg")[0]===undefined    #.开始设置按钮
-    Run keyword If    '${button}'=='False'    Wait And Click Element    dom:document.querySelectorAll(".btn___2GFAg")[0]
+    Run Keyword If    '${button}'=='False'    Wait And Click Element    dom:document.querySelectorAll(".btn___2GFAg")[0]
     ${condition}    Execute JavaScript    return document.querySelectorAll(".ant-switch-checked")[0]===undefined
-    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[1]    #.点击激活
-    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[0]    #.点击绑定按钮
-    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[1]    #.点击编辑
-    Run keyword If    ${condition}    Wait And Input Text    dom:document.querySelectorAll("#client_id")[0]    123456    #.绑定账号
-    Run keyword If    ${condition}    Wait And Input Text    dom:document.querySelectorAll("#secret_key")[0]    123123    #.绑定密码
-    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[2]    #.点击绑定按钮
-    Run keyword If    ${condition}    Wait And Click Element    class:ant-switch    #.点击开启按钮
-    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[6]    #.点击确定
+    Run Keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[1]    #.点击激活
+    Run Keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[0]    #.点击绑定按钮
+    Run Keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[1]    #.点击编辑
+    Run Keyword If    ${condition}    Wait And Input Text    dom:document.querySelectorAll("#client_id")[0]    123456    #.绑定账号
+    Run Keyword If    ${condition}    Wait And Input Text    dom:document.querySelectorAll("#secret_key")[0]    123123    #.绑定密码
+    Run Keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[2]    #.点击绑定按钮
+    Run Keyword If    ${condition}    Wait And Click Element    class:ant-switch    #.点击开启按钮
+    Run Keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[6]    #.点击确定
     Sleep Time
 
 Add Cod Payment
@@ -53,10 +67,10 @@ Add Cod Payment
     Wait And Click Element    ${locatorB_setting}    #.点击设置按钮
     Wait And Click Element    ${locatorB_setting_payment}    #.点击收款渠道按钮
     ${button}    Execute JavaScript    return document.querySelectorAll(".btn___2GFAg")[0]===undefined    #.开始设置按钮
-    Run keyword If    '${button}'=='False'    Wait And Click Element    dom:document.querySelectorAll(".btn___2GFAg")[0]
+    Run Keyword If    '${button}'=='False'    Wait And Click Element    dom:document.querySelectorAll(".btn___2GFAg")[0]
     ${condition}    Execute JavaScript    return document.querySelectorAll(".ant-switch-checked")[1]===undefined
-    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll(".ant-switch")[1]
-    Run keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[5]
+    Run Keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll(".ant-switch")[1]
+    Run Keyword If    ${condition}    Wait And Click Element    dom:document.querySelectorAll("button")[5]
     Sleep Time
 
 Checkout_Common_Address_Step
@@ -79,7 +93,7 @@ Select_Order_Page
     [Arguments]    ${title}
     [Documentation]    点击预览第一个商品，跳转到商品详情页，点击submit按钮进入订单信息页面
     #点击第一个商品的预览icon
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]
     #跳转到商品详情页
     Select Window    title=${title}
     Sleep    2
@@ -94,7 +108,7 @@ Select_Order_Page_With_Sub_Product
     [Arguments]    ${title}
     [Documentation]    点击预览第一个商品，跳转到商品详情页，选中一个子产品后，点击submit按钮进入订单信息页面
     #点击第一个商品的预览icon
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]
     #跳转到商品详情页
     Select Window    title=${title}
     Sleep    2
@@ -112,7 +126,7 @@ Complete_Order_Message
     [Documentation]    点击添加地址按钮，填写信息，点击保存按钮，点击进入支付页
     #添加地址信息
     #${type}    Execute JavaScript    return document.querySelectorAll("#addAddress")[0]===undefined
-    #Run keyword If    '${type}'=='False'    Wait And Click Element    id:addAddress
+    #Run Keyword If    '${type}'=='False'    Wait And Click Element    id:addAddress
     #first name
     Wait And Input Text    ${locatorB_checkout_address_first_name}    zc
     #last name
@@ -125,7 +139,7 @@ Complete_Order_Message
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
-    Wait And Input Text    ${locatorB_checkout_address_add}    hhh
+    Wait And Input Text    ${locatorB_checkout_address_addr}    hhh
     #postal code
     Wait And Input Text    ${locatorB_checkout_address_zip}    333000
     #email
@@ -156,7 +170,7 @@ Complete_Order_Message_Not_Submit
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
-    Wait And Input Text    ${locatorB_checkout_address_add}    hhh
+    Wait And Input Text    ${locatorB_checkout_address_addr}    hhh
     #postal code
     Wait And Input Text    ${locatorB_checkout_address_zip}    333000
     #email
@@ -184,7 +198,7 @@ Complete_Order_Message_Without_Phone
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
-    Wait And Input Text    ${locatorB_checkout_address_add}    hhh
+    Wait And Input Text    ${locatorB_checkout_address_addr}    hhh
     #postal code
     Wait And Input Text    ${locatorB_checkout_address_zip}    333000
     #email
@@ -204,7 +218,7 @@ Complete_Order_Message_Without_Last_name
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
-    Wait And Input Text    ${locatorB_checkout_address_add}    hhh
+    Wait And Input Text    ${locatorB_checkout_address_addr}    hhh
     #postal code
     Wait And Input Text    ${locatorB_checkout_address_zip}    333000
     #email
@@ -236,14 +250,14 @@ Add_Sub_Product_With_Already_Product
     #回车保存
     Press Key    id:option_values_0    \\13
     #点击保存
-    Click And Page Contains Element With Refresh    ${locatorB_productsNew_button_save}    ${locatorB_productsMgmt_icon_preview}
-    Go To Products Page
+    Click And Page Contains Element With Refresh    ${locatorB_productsNew_button_save}    ${locatorB_productsMgmt_icon_listPreview}[0]
+    Go To Product Management Page
     
 
 Delete_Sub_Product_With_Already_Product
     [Arguments]    ${index}
     [Documentation]    此时第一个商品下有两个子产品，删除当前第一个商品下的第n个子商品（第一个子产品为下单时选中的子产品）
-    Go To Products Page
+    Go To Product Management Page
     #点击第一件商品进入商品详情页
     Click And Page Contains Element With Refresh    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    document.getElementById("test_single_variant_setting_btn")
     #划到底部
@@ -331,14 +345,14 @@ Set_Quantity
     Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[2].click()
     Sleep    2
     #输入库存数量
-    Run keyword If    '${type}'=='false'    Wait And Input Text    id:inventory_quantity    ${num}
+    Run Keyword If    '${type}'=='false'    Wait And Input Text    id:inventory_quantity    ${num}
     #点击保存
     Wait And Click Element    ${locatorB_productsNew_button_save}
     Sleep    3
 
 To_Change_Image
     [Documentation]    更换商品的图片，前提该商品已有一张图片
-    Go To Products Page
+    Go To Product Management Page
     #点击第一件商品进入商品详情页
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-tbody tr")[0]
     Sleep    2
@@ -346,16 +360,16 @@ To_Change_Image
     Execute Javascript    return document.querySelectorAll(".ant-checkbox-inner")[2].scrollIntoView()
     Sleep    2
     #删除第一张图片
-    Mouse Over    ${locatorB_productsMgmt_image_center}
+    Mouse Over    ${locatorB_productsMgmt_image_firstProductThumbnails}
     Wait And Click Element    dom:document.querySelectorAll(".delete")[0]
     #更新另外一张图片
     Sleep    2
-    Choose File    ${locatorB_productsNew_input_chooseFile}    /Users/dianjiang/shoplaza/shoplaza_robot/resources/images/mv.jpg
+    Choose File    ${locatorB_productsNew_input_addImage}    /Users/dianjiang/shoplaza/shoplaza_robot/resources/images/mv.jpg
     Sleep    2
 
 Delete_All_Sub_Product_With_Already_Product
     [Documentation]    此时第一个商品下有两个子产品，删除当前第一个商品下的所有子商品
-    Go To Products Page
+    Go To Product Management Page
     #点击第一件商品进入商品详情页
     Click And Page Contains Element With Refresh    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    document.getElementById("test_single_variant_setting_btn")
     #划到底部
@@ -433,7 +447,7 @@ Open_Cash
 Modify_Other_Tax_Price
     [Documentation]    修改其他国家税费金额
     Go TO    ${home_page}
-    Go To Tax Price Page
+    Go To Tax Page
     Sleep    5
     #点击第一个税率设置操作按钮
     Wait And Click Element    dom:document.querySelectorAll(".card-col-Setting")[0]
@@ -511,27 +525,3 @@ Close_Card
     #记录当前“银行卡支付”是否开启
     ${class}    Execute Javascript    return document.querySelectorAll(".payment_wrap___3m1lo")[1].querySelectorAll(" .ant-switch")[0].getAttribute("class")
     Run Keyword If    '${class}'=='ant-switch ant-switch-checked'    Change_Card    #关闭
-
-Add Product Wait
-    [Documentation]    等待添加商品
-    [Arguments]    ${count}=10
-    :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    add_products
-    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
-    \    ...    ELSE    Sleep    1
-
-Add OtherTaxPrice Wait
-    [Documentation]    等待添加其他税费
-    [Arguments]    ${count}=10
-    :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    add_other_tax_price
-    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
-    \    ...    ELSE    Sleep    1
-
-Add StoreInfo Wait
-    [Documentation]    等待添加店铺基础信息
-    [Arguments]    ${par}    ${pars}    ${count}=10
-    :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    add_store_info    ${par}    ${pars}
-    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
-    \    ...    ELSE    Sleep    1

@@ -1,12 +1,12 @@
 *** Settings ***
-
+Resource          ../variable/var_login.robot
 
 *** Keywords ***
 Logout
-    Wait And Click Element    dom:document.querySelectorAll("i[class~='hd-line-center']")[0]
-    Wait And Click Element    dom:document.querySelectorAll("div[class='account_content___18o60'] a")[1]
+    Mouse Over    ${locatorB_logout_icon_individualAccount}
+    Wait And Click Element    ${locatorB_logout_icon_logout}
 
 Login Testcase Setup
     # 判断是否退出登录
-    ${status0}    Run Keyword And Return Status    Wait Until Page Contains Element    ${locatorB_login_btn_login}    2    0
+    ${status0}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_login_btn_login}    2
     Run Keyword If    '${status0}'=='False'    Logout

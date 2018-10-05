@@ -32,7 +32,7 @@ shipping137
     ${range_max}    set variable    100
     ${rate_amount}    set variable    9
     Wait And Click Element    ${locatorB_shipping_add_shipping}
-    ${name}    salt
+    ${name}    salt_py
     input text    id:name    ${name}
     Wait Until Element Is Visible    ${shipping_first_button}
     Wait And Click Element    ${locatorB_shipping_add_country}
@@ -66,47 +66,6 @@ shipping97
     Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Shipping
 
-shipping134
-    [Documentation]    只添加价格运费，重量和数量运费不添加
-    [Tags]    P0
-    Go To Shipping Page
-    Wait And Click Element    ${locatorB_shipping_add_shipping}
-    ${name}    salt
-    input text    id:name    ${name}
-    Wait And Click Element    ${locatorB_shipping_add_country}
-    Wait And Click Element    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]
-    Wait And Click Element    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]
-    Wait And Click Element    ${locatorB_shipping_country_save_btn}
-    Wait And Click Element    id:test_shipping_add_weight_btn
-    ${input}    set variable    重量运费
-    ${desc}    set variable    重量运费说明
-    ${range_min}    set variable    10
-    ${range_max}    set variable    100
-    ${rate_amount}    set variable    9
-    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
-    input text    ${shipping_first_input}    ${input}
-    input text    ${locatorB_shipping_description}    ${desc}
-    input text    ${locatorB_shipping_range_min}    ${range_min}
-    input text    ${locatorB_shipping_range_max}    ${range_max}
-    input text    ${locatorB_shipping_price}    ${rate_amount}
-    sleep    1
-    Wait And Click Element    ${locatorB_shipping_freight_save}
-    Wait And Click Element    ${locatorB_shipping_add_quantity_btn}
-    Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
-    ${input_a}    set variable    数量运费
-    ${desc_a}    set variable    熟练给运费说明
-    input text    ${shipping_first_input}    ${input_a}
-    input text    ${locatorB_shipping_description}    ${desc_a}
-    input text    ${locatorB_shipping_range_min}    ${range_min}
-    input text    ${locatorB_shipping_range_max}    ${range_max}
-    input text    ${locatorB_shipping_price}    ${rate_amount}
-    sleep    1
-    Wait And Click Element    ${locatorB_shipping_freight_save}
-    Wait And Click Element    ${shipping_first_button}
-    sleep    2
-    page should contain element    dom:document.querySelectorAll("#test_shipping_list_0 li")[0]
-    Delete Shipping
-
 shipping135
     [Documentation]    只添加重量运费，价格和数量运费不添加
     [Tags]    P0
@@ -117,7 +76,7 @@ shipping135
     ${rate_amount}    set variable    9
     Wait And Click Element    ${locatorB_shipping_add_shipping}
     sleep    1
-    ${name}    salt
+    ${name}    salt_py
     input text    id:name    ${name}
     Wait And Click Element    ${locatorB_shipping_add_country}
     Wait Until Element Is Visible    ${locatorB_shipping_country_save_btn}

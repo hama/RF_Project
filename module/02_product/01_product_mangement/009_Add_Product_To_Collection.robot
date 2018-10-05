@@ -6,10 +6,10 @@ Test Setup        Products Test Case Setup
 Test Teardown     Teardown Test Case
 Force Tags        Products
 Resource          ../../../resources/variable/var_common.robot
-Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/variable/var_product_management.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
-Resource          ../../../resources/keywords/kw_products.robot
+Resource          ../../../resources/keywords/kw_product_management.robot
 
 *** Test Cases ***
 products051
@@ -23,16 +23,16 @@ products051
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locatorB_productsCategory_popUps_firstCategory}
+    Wait Until Element Is Visible    ${locatorB_productsCollection_popUps_firstCategory}
     Sleep    5
     #搜索栏
     Page Should Contain Element    dom:document.querySelectorAll(".ant-input")[5]
     #复选框
-    Page Should Contain Element    ${locatorB_productsCategory_popUps_firstCategory}.querySelectorAll("td")[0]
+    Page Should Contain Element    ${locatorB_productsCollection_popUps_firstCategory}.querySelectorAll("td")[0]
     #可搜索专辑名
-    Page Should Contain Element    ${locatorB_productsCategory_popUps_firstCategory}.querySelectorAll("td")[1]
+    Page Should Contain Element    ${locatorB_productsCollection_popUps_firstCategory}.querySelectorAll("td")[1]
     #专辑时间
-    Page Should Contain Element    ${locatorB_productsCategory_popUps_firstCategory}.querySelectorAll("td")[2]
+    Page Should Contain Element    ${locatorB_productsCollection_popUps_firstCategory}.querySelectorAll("td")[2]
     #确定按钮
     Page Should Contain Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
     #关闭弹出框
@@ -46,8 +46,8 @@ products052
     #选中第几个专辑
     ${which}=    Set Variable    0
     #选中第一个商品
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
-    Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
+    Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #记录下操作的商品名称
     ${name}    Get Text    ${locatorB_productsMgmt_text_firstProductName}
     #点击批量操作菜单
@@ -58,18 +58,18 @@ products052
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locatorB_productsCategory_popUps_firstCategory}
+    Wait Until Element Is Visible    ${locatorB_productsCollection_popUps_firstCategory}
     Sleep    5
     #选中专辑
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #去商品专辑模块检查
     Wait And Click Element    ${locatorB_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
     Page Should Contain    ${name}
     Go TO    ${home_page}
 
@@ -86,14 +86,14 @@ products053
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locatorB_productsCategory_popUps_firstCategory}
+    Wait Until Element Is Visible    ${locatorB_productsCollection_popUps_firstCategory}
     Sleep    5
     #获取要搜索的专辑名称
-    ${collection_name}    Get Text    ${locatorB_productsCategory_popUps_firstCategory}.querySelectorAll("td")[1]
+    ${collection_name}    Get Text    ${locatorB_productsCollection_popUps_firstCategory}.querySelectorAll("td")[1]
     #搜索框输入搜索
     Wait And Input Text    dom:document.querySelectorAll(".ant-input")[5]    ${collection_name}
     Sleep    5
-    Element Should Contain    ${locatorB_productsCategory_popUps_firstCategory}.querySelectorAll("td")[1]    ${collection_name}
+    Element Should Contain    ${locatorB_productsCollection_popUps_firstCategory}.querySelectorAll("td")[1]    ${collection_name}
     #关闭弹出框
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close")[0]
     Go TO    ${home_page}
@@ -106,8 +106,8 @@ products054
     ${which}=    Set Variable    0
     #选中第一个商品
     Sleep    2
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
-    Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
+    Select Checkbox    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #记录下操作的商品名称
     ${name}    Get Text    ${locatorB_productsMgmt_text_firstProductName}
     #点击批量操作菜单
@@ -122,7 +122,7 @@ products054
     Sleep    5
     #先搜索符合条件的专辑
     #获取要搜索的专辑名称
-    ${collection_name}    Get Text    ${locatorB_productsCategory_popUps_firstCategory}.querySelectorAll("td")[1]
+    ${collection_name}    Get Text    ${locatorB_productsCollection_popUps_firstCategory}.querySelectorAll("td")[1]
     #搜索框输入搜索
     Wait And Input Text    dom:document.querySelectorAll(".ant-input")[5]    ${collection_name}
     Sleep    5
@@ -130,12 +130,12 @@ products054
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #去商品专辑模块检查
     Wait And Click Element    ${locatorB_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
     Page Should Contain    ${name}
     Go TO    ${home_page}
 
@@ -146,10 +146,10 @@ products055
     #选中第几个专辑
     ${which}=    Set Variable    0
     #获取选中的专辑编号
-    ${collection_id}    getCollectionId    ${which}
+    ${collection_id}    getCollectionId_py    ${which}
     #选中第一个商品
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
-    Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
+    Click Element    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #记录下操作的商品名称
     ${name}    Get Text    ${locatorB_productsMgmt_text_firstProductName}
     #点击批量操作菜单
@@ -160,7 +160,7 @@ products055
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locatorB_productsCategory_popUps_firstCategory}
+    Wait Until Element Is Visible    ${locatorB_productsCollection_popUps_firstCategory}
     Sleep    5
     #先搜索符合条件的专辑
     #搜索框输入专辑编号搜索
@@ -170,12 +170,12 @@ products055
     Select Checkbox    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[${which}]
     #点击确定按钮
     Wait And Click Element    dom:document.querySelectorAll(".confirm___2lMF-")[0]
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_checkbox_chooseFirstProducet}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseFirstProduct}
     #去商品专辑模块检查
     Wait And Click Element    ${locatorB_product_collection}
     #进入专辑详情查看是否存在刚刚添加的商品
     Wait And Click Element    dom:document.querySelectorAll(".ant-table-row")[0]
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".shop_name___3rsn4")[1]
     Page Should Contain    ${name}
     Go TO    ${home_page}
 
@@ -190,7 +190,7 @@ products057
     Mouse Down    btn
     Mouse Up    btn
     #弹出框
-    Wait Until Element Is Visible    ${locatorB_productsCategory_popUps_firstCategory}
+    Wait Until Element Is Visible    ${locatorB_productsCollection_popUps_firstCategory}
     Sleep    2
     #点击取消按钮
     Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
@@ -205,16 +205,16 @@ Products Suite Setup
     Sleep    5
     Add_Collection
     Sleep    5
-    Go To Products Page
+    Go To Product Management Page
     Sleep    5
     Add_Collection
     Sleep    5
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    删除商品，专辑
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 

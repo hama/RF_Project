@@ -6,10 +6,10 @@ Test Setup        Products Test Case Setup
 Test Teardown     Teardown Test Case
 Force Tags        Products
 Resource          ../../../resources/variable/var_common.robot
-Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/variable/var_product_management.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
-Resource          ../../../resources/keywords/kw_products.robot
+Resource          ../../../resources/keywords/kw_product_management.robot
 
 *** Test Cases ***
 products103
@@ -19,7 +19,7 @@ products103
     #点击批量上传按钮
     Wait And Click Element    ${locatorB_productsMgmt_icon_uploadProduct}
     #等待上传按钮
-    Wait Until Page Contains Element    id:sheets
+    Wait Until Page Contains Locator    id:sheets
     #上传文件
     Choose File    id:sheets    ${file_products_template}
     #点击上传
@@ -39,7 +39,7 @@ products104
     Sleep    5
     Wait And Click Element    ${locatorB_productsMgmt_icon_uploadProduct}
     #等待上传按钮
-    Wait Until Page Contains Element    id:sheets
+    Wait Until Page Contains Locator    id:sheets
     #上传文件
     Choose File    id:sheets    ${file_products_wrong_template}
     Sleep    10
@@ -56,10 +56,10 @@ products105
     Sleep    5
     Wait And Click Element    ${locatorB_productsMgmt_icon_uploadProduct}
     #等待覆盖选项
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[0]
     Click Element    dom:document.querySelectorAll(".ant-modal-content .ant-checkbox-input")[0]
     #等待上传按钮
-    Wait Until Page Contains Element    id:sheets
+    Wait Until Page Contains Locator    id:sheets
     #上传文件
     Choose File    id:sheets    ${file_products_template}
     #点击上传
@@ -77,12 +77,12 @@ Products Suite Setup
     Login With Default User
     Start Ajax Listener
     Sleep    5
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    删除商品
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 

@@ -6,7 +6,11 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
+<<<<<<< HEAD
 def add_shipping_py(has_other_country=0, cookie=init_cookie):
+=======
+def addShipping_py(has_other_country=0, cookie=init_cookie):
+>>>>>>> 1134a10491b2ffad1bd54ad64a8599422a0c51ae
     """
     添加中国物流
     :param has_other_country: 0 = 普通国家 | 1 = 其他国家
@@ -32,7 +36,7 @@ def add_shipping_py(has_other_country=0, cookie=init_cookie):
         print e
 
 
-def delShipping(cookie=init_cookie):
+def delShipping_py(cookie=init_cookie):
     """
     删除物流方式
     :return: True | False
@@ -48,7 +52,7 @@ def delShipping(cookie=init_cookie):
         sub = curs.fetchone()['id']
         del_url = home_page_url + "/api/shipping/refresh"
         del_data = {"shipping_id": sub, "is_enable": 0}
-        res = requests.post(url=del_url, headers={"cookie": cookie}, json=del_data)
+        res = requests.post(url=del_url, headers={"cookie": cookie['cookie']}, json=del_data)
         if json.loads(res.content)['state'] == 0:
             return True
         else:

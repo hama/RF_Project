@@ -1,3 +1,6 @@
+*** Settings ***
+Resource          var_common.robot
+
 *** Variables ***
 # locator
 
@@ -9,7 +12,9 @@ ${locatorB_shipping_del_shipping}    id:test_shipping_delete_btn    # 删除物�
 ${locatorB_shipping_add_price_btn}    dom:document.querySelectorAll('button[data-robot="shipping_add_price"]')[0]    #.添加价格运费按钮
 ${locatorB_shipping_add_quantity_btn}    dom:document.querySelectorAll('button[data-robot="shipping_add_quantity"]')[0]    #.添加数量运费按钮
 ${locatorB_shipping_add_weight_btn}    dom:document.querySelectorAll('button[data-robot="shipping_add_weight"]')[0]    #. 添加重量运费按钮
-
+${locatorB_shipping_del_country_btn}    dom:document.querySelectorAll(".icon_delete___ITXOZ")[0]    #. 删除国家按钮
+${locatorB_shipping_edit_priceFgt_btn}    dom:document.querySelectorAll("#test_shipping_price_edit_icon")[0]    #. 价格运费编辑按钮
+${locatorB_shipping_del_priceFgt_btn}    dom:document.querySelectorAll("#test_shipping_price_delete_icon")[0]    #. 加个运费删除按钮
 
 # page content
 ${contentB_shipping_tab1}    物流方案    # 物流页面两个基本标签页 物流方案/物流商
@@ -18,13 +23,16 @@ ${contentB_shipping_name}    物流1    # 物流名称
 ${contentB_shipping_setup}    设置你的物流方案    # 没有物流方案时，页面提示设置物流
 
 ${locatorB_shipping_list_api}    ${home_page}/api/shipping/list
-${locatorB_shipping_first_input}    dom:document.querySelectorAll('#name')[0]    #.输入物流名称框
+${locatorB_shipping_first_input}    dom:document.querySelectorAll('input[data-robot="shipping_ph_name"]')[0]    #.输入物流名称框
 ${locatorB_shipping_description}    dom:document.querySelectorAll("#desc")[0]    #.添加运费- 说明框
 ${locatorB_shipping_price}    id:rate_amount    #.价格运费框
 ${locatorB_shipping_range_min}    id:range_min    #.添加数量运费-最小订单数量输入框
 ${locatorB_shipping_range_max}    id:range_max    #.添加数量运费-最大订单数量输入框
+${locatorB_shipping_save_btn}    ${locatorB_button_save}    #.添加物流-保存-按钮
 
 # add country
+${locatorB_shipping_country_ipt}    dom:document.querySelectorAll('input[placeholder="国家名"]')[0]    #.添加国家-顶部输入国家输入框
+${locatorB_shipping_country_search_btn}    id:test_shipping_country_modal_search_btn    #.添加国家-搜索按钮
 ${locatorB_shipping_country_element}    dom:document.getElementsByClassName("ant-tree-checkbox")[0]    #.国家列表-选择非洲这一行的元素
 ${locatorB_shipping_country_select}    dom:document.getElementsByClassName("ant-tree-switcher ant-tree-switcher_close")[0]    #.国家列表-列出非洲 代表的元素
 ${locatorB_shipping_country_nums}    dom:document.getElementsByClassName("ant-tree-checkbox-inner")[1]    #.国家列表-南极洲 元素
@@ -40,6 +48,7 @@ ${locatorB_shipping_send_address}    class:title___29mch    #.物流界面-发�
 
 # add price shipping freight
 ${locatorB_shipping_freight_save}    id:test_shipping_edit_modal_sure_btn    #.添加运费- 保存-按钮
+${locatorB_shipping_freight_cancel_btn}    id:test_shipping_edit_modal_cancel_btn    #. 添加运费-取消-按钮
 ${locatorB_shipping_freight_first_input}    dom:document.querySelectorAll('#name')[1]    # 添加价格运费-物流名称输入框
 ${locatorB_shipping_freight_content_elm}    dom:document.querySelectorAll(".ant-table-tbody")[1]    # 添加价格运费-显示价格运费的地方的元素
 ${locatorB_shipping_freight_error_elm}    class:ant-form-explain    # 添加价格运费- 提示错误文案的元素

@@ -6,10 +6,10 @@ Test Setup        Products Test Case Setup
 Test Teardown     Teardown Test Case
 Force Tags        Checkout
 Resource          ../../../resources/variable/var_common.robot
-Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/variable/var_product_management.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
-Resource          ../../../resources/keywords/kw_products.robot
+Resource          ../../../resources/keywords/kw_product_management.robot
 Resource          ../../../resources/keywords/kw_checkout.robot
 
 *** Test Cases ***
@@ -29,9 +29,9 @@ checkout140
     #返回后台页面删除该商品
     Select Window    店匠科技
     #点击删除第一件商品
-    Wait And Click Element    ${locatorB_productsMgmt_icon_delete}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_listDelete}[0]
     #点击确定按钮
-    Wait And Click Element    ${locatorB_popUps_button_middle}
+    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
     #切换到支付页
     Select Window    title=${user_default_domain}
     #点击pay now
@@ -46,14 +46,14 @@ Products Suite Setup
     Start Ajax Listener
     Add Product_Up
     Sleep    8
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    商品 case set down
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 
 Products Test Case Teardown
     Teardown Test Case

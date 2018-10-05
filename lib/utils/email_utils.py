@@ -13,7 +13,7 @@ from email.mime.text import MIMEText
 from selenium import webdriver
 
 username = "autotest@shoplazza.com"  # .发件人
-password = "Robot@123"  # .发件人密码
+password = "AAAaaa111"  # .发件人密码
 relative_path = os.path.join(os.path.dirname(__file__), '../..')
 # . 收件邮箱
 to_addr = [
@@ -26,8 +26,8 @@ to_addr = [
 cc_addr = [
     'zhangliqiong@shoplazza.com',
     'yupeng@shoplazza.com',
-    'linyingjun@shoplazza.com',
-    'fangbaiyuan@shoplazza.com'
+    'fangbaiyuan@shoplazza.com',
+    'linyingjun@shoplazza.com'
 ]
 email_service = "smtp.mxhichina.com"
 default_port = 465

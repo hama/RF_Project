@@ -5,10 +5,10 @@ Suite Teardown    Close Test Suite Browser
 Test Teardown     Teardown Test Case
 Force Tags        Checkout
 Resource          ../../../resources/variable/var_common.robot
-Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/variable/var_product_management.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
-Resource          ../../../resources/keywords/kw_products.robot
+Resource          ../../../resources/keywords/kw_product_management.robot
 Resource          ../../../resources/keywords/kw_checkout.robot
 Resource          ../../../resources/keywords/kw_subtraction.robot
 Library           ${CURDIR}/../../../lib/customlib/kwmarketing.py
@@ -37,7 +37,7 @@ checkout121
     #验证优惠的金额还是之前的大小
     Wait And Click Element    dom:document.querySelectorAll(".pm_footer_left")[0]    # 点击查看支付明细
     ${now_cut}    Execute JavaScript    return document.querySelectorAll(".tax_price")[0].innerText
-    ${now_cut}    searchStrs    ${now_cut}    # 现在的优惠金额
+    ${now_cut}    searchStrs_py    ${now_cut}    # 现在的优惠金额
     Should Be Equal As Strings    ${cut}    ${now_cut}
     #点击pay now
     Wait And Click Element    ${locator_checkout_submit_save_btn}
@@ -49,15 +49,15 @@ Products Suite Setup
     [Documentation]    商品 case setup,每次预览时都新增一个上架商品和一个包括全部商品的满减活动
     Login With Default User
     Add Product Wait
-    delSubtraction    all
+    delSubtraction_fromdb    all
     Add Subtraction Wait Step    1
     Add Payment Cod Wait
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    删除商品，提前结束第一个满减活动
     Select Window    店匠科技
-    Go To Products Page
+    Go To Product Management Page
     Delete_First_Product
     Sleep    5
     End_First_Full_Reduction
@@ -65,7 +65,7 @@ Products Suite Teardown
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 
 Products Test Case Teardown
     Teardown Test Case

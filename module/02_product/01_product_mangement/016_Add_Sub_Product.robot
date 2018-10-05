@@ -6,10 +6,10 @@ Test Setup        Products Test Case Setup
 Test Teardown     Teardown Test Case
 Force Tags        Products
 Resource          ../../../resources/variable/var_common.robot
-Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/variable/var_product_management.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
-Resource          ../../../resources/keywords/kw_products.robot
+Resource          ../../../resources/keywords/kw_product_management.robot
 
 *** Test Cases ***
 products097
@@ -21,7 +21,7 @@ products097
     #点击添加商品按钮
     Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
     #标题
-    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${title}
+    Wait And Input Text    ${locatorB_productsNew_input_title}    ${title}
     #添加选项
     Wait And Click Element    id:test_variant_setting_btn
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-dropdown-trigger")[0]
@@ -45,7 +45,7 @@ products098
     #点击添加商品按钮
     Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
     #标题
-    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${title}
+    Wait And Input Text    ${locatorB_productsNew_input_title}    ${title}
     #添加选项
     Wait And Click Element    id:test_variant_setting_btn
     Wait Until Element Is Visible    dom:document.querySelectorAll(".ant-dropdown-trigger")[0]
@@ -75,11 +75,11 @@ products099
     #点击添加商品按钮
     Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
     #标题
-    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${title}
+    Wait And Input Text    ${locatorB_productsNew_input_title}    ${title}
     #售价
-    Wait And Input Text    ${locatorB_productsNew_input_addPrice}    100
+    Wait And Input Text    ${locatorB_productsNew_input_salePrice}    100
     #原价
-    Wait And Input Text    ${locatorB_productsNew_input_addRawPrice}    110
+    Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    110
     #编辑商品seo
     Sleep    2
     Execute Javascript    return document.getElementById("test_upload_btn").scrollIntoView()
@@ -109,11 +109,11 @@ products100
     #点击添加商品按钮
     Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
     #标题
-    Wait And Input Text    ${locatorB_productsNew_input_addTitle}    ${title}
+    Wait And Input Text    ${locatorB_productsNew_input_title}    ${title}
     #售价
-    Wait And Input Text    ${locatorB_productsNew_input_addPrice}    100
+    Wait And Input Text    ${locatorB_productsNew_input_salePrice}    100
     #原价
-    Wait And Input Text    ${locatorB_productsNew_input_addRawPrice}    110
+    Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    110
     #编辑商品seo
     Execute Javascript    return document.getElementById("test_upload_btn").scrollIntoView()
     Sleep    2
@@ -134,12 +134,12 @@ Products Suite Setup
     [Documentation]    商品 case setup
     Login With Default User
     Start Ajax Listener
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    删除商品
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 

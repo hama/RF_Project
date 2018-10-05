@@ -6,10 +6,10 @@ Test Setup        Products Test Case Setup
 Test Teardown     Teardown Test Case
 Force Tags        Products
 Resource          ../../../resources/variable/var_common.robot
-Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/variable/var_product_management.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
-Resource          ../../../resources/keywords/kw_products.robot
+Resource          ../../../resources/keywords/kw_product_management.robot
 
 *** Test Cases ***
 products058
@@ -25,7 +25,7 @@ products058
     #弹出框
     Wait Until Element Is Visible    ${locatorB_products_popUps_content}
     #提示专辑暂无数据
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".ant-table-placeholder")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".ant-table-placeholder")[0]
     ${title}    GetText    dom:document.querySelectorAll(".ant-table-placeholder")[0]
     Should Be Equal As Strings    ${title}    ${contentB_products_empty}
     Go TO    ${home_page}
@@ -37,15 +37,15 @@ Products Suite Setup
     Start Ajax Listener
     Delete All Collection
     Sleep    5
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    删除所有商品
-    Go To Products Page
+    Go To Product Management Page
     Sleep    5
     Delete All Products
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 

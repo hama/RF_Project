@@ -8,7 +8,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def get_coupon_data(argv, sub=None, type=None):
+def get_coupon_data_py(argv, sub=None, type=None):
     """
     获取优惠券数据
     :arg 1: 进行中 2: 未开始 3: 已结束
@@ -17,8 +17,8 @@ def get_coupon_data(argv, sub=None, type=None):
     :return: dict
     """
     # .获取时间
-    new_time = getActividadTime(argv)
-    code = salt(2) + "TWOES98B" + salt(4)
+    new_time = getActividadTime_py(argv)
+    code = salt_py(2) + "TWOES98B" + salt_py(4)
     code_type = ""
     code_value = 5
     date_added = ""
@@ -31,7 +31,7 @@ def get_coupon_data(argv, sub=None, type=None):
     # discount_type = 1 if sub else discount_type = 2
     is_enable = ""
     limit_num = "1"
-    name = "自动化测试" + salt(4)
+    name = "自动化测试" + salt_py(4)
     product_list = ""
     product_scope = "1"
     progress = ""
@@ -50,7 +50,7 @@ def get_coupon_data(argv, sub=None, type=None):
     }
 
 
-def getActividadTime(parments=None):
+def getActividadTime_py(parments=None):
     """
     获取满减 | 优惠券 公共活动时间参数
     :param parments: 1：活动进行中
@@ -58,7 +58,7 @@ def getActividadTime(parments=None):
     :param parments: 3：活动已结束
     :return: dict
     """
-    res_time_data = getTimes()
+    res_time_data = getTimes_py()
     if parments == 1:
         return {"date_start": res_time_data['now_times'].strftime('%Y-%m-%d %H:%M:%S'),
                 "date_end": res_time_data['beforeTime'].strftime('%Y-%m-%d %H:%M:%S')}
@@ -71,7 +71,7 @@ def getActividadTime(parments=None):
                 "date_end": newTime.strftime('%Y-%m-%d %H:%M:%S')}
 
 
-def getSubtractionData(argv, type=None):
+def getSubtractionData_py(argv, type=None):
     """
     获取满减活动参数
     :param argv: 1: 进行中 2: 未开始 3: 已结束
@@ -79,9 +79,9 @@ def getSubtractionData(argv, type=None):
     :return: String
     """
     if argv is None: return False
-    name = salt()
-    new_time = getActividadTime(argv)
-    product_id = kwproduct.get_latest_productid()
+    name = salt_py()
+    new_time = getActividadTime_py(argv)
+    product_id = kwproduct.get_latest_productid_py()
     range_type = "1"
     if type:
         product_scope = 3
@@ -103,7 +103,7 @@ def getSubtractionData(argv, type=None):
     return data
 
 
-def addActividadCommon(url, datax, type=None, cookie=init_cookie):
+def addActividadCommon_py(url, datax, type=None, cookie=init_cookie):
     """
     添加活动公共方法
     :param url: 请求url
@@ -139,7 +139,7 @@ def addActividadCommon(url, datax, type=None, cookie=init_cookie):
         print e
 
 
-def add_coupon(argv, sub=None, type=None):
+def add_coupon_py(argv, sub=None, type=None):
     """
     添加优惠券
     :param argv: 1: 进行中 2: 未开始 3: 已结束
@@ -150,13 +150,13 @@ def add_coupon(argv, sub=None, type=None):
     par = False
     url = {"add_url": home_page_url + "/api/coupon-code/refresh",
            "del_url": home_page_url + "/api/coupon-code/end"}
-    datas = get_coupon_data(int(argv), sub)
+    datas = get_coupon_data_py(int(argv), sub)
     if argv == 3: par = True
-    res_data = addActividadCommon(url, datas, par)
+    res_data = addActividadCommon_py(url, datas, par)
     return res_data
 
 
-def addSubtraction(argv, type=None):
+def addSubtraction_py(argv, type=None):
     """
     添加一个某种类型的满减活动
     :param argv: 1: 进行中 2: 未开始 3: 已结束
@@ -166,14 +166,14 @@ def addSubtraction(argv, type=None):
     if argv is False: return "参数错误"
     argv = int(argv)
     url = {"add_url": home_page_url + "/api/rebate/refresh", "del_url": home_page_url + "/api/rebate/end"}
-    datas = getSubtractionData(argv, type)
+    datas = getSubtractionData_py(argv, type)
     par = False
     if argv == 3: par = True
-    res_data = addActividadCommon(url, datas, par)
+    res_data = addActividadCommon_py(url, datas, par)
     return res_data
 
 
-def del_coupon(cookie=init_cookie):
+def del_coupon_fromdb(cookie=init_cookie):
     """
     删除优惠券
     :return: True | False
@@ -197,7 +197,7 @@ def del_coupon(cookie=init_cookie):
         conn.close()
 
 
-def delSubtraction(arvg=None, cookie=init_cookie):
+def delSubtraction_fromdb(arvg=None, cookie=init_cookie):
     """
     删除一个满减活动 arvg参数为 "all" 删除所有的满减活动
     :param arvg: 区分使用所有商品 或者 部分商品 | None: 所有商品

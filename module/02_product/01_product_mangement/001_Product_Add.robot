@@ -6,10 +6,10 @@ Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Force Tags        Products
 Resource          ../../../resources/variable/var_common.robot
-Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/variable/var_product_management.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
-Resource          ../../../resources/keywords/kw_products.robot
+Resource          ../../../resources/keywords/kw_product_management.robot
 
 *** Test Cases ***
 products074
@@ -30,17 +30,17 @@ products076
     [Tags]    P0
     # 添加必要字段
     Add Product Required Content
-    Wait And Input Text    ${locatorB_productsNew_input_addRawPrice}    ${contentB_products_addRawPrice}    # 添加原价
-    Wait And Input Text    ${locatorB_productsNew_input_addWeight}    ${contentB_products_addWeight}    # 添加重量
+    Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    ${contentB_products_addRawPrice}    # 添加原价
+    Wait And Input Text    ${locatorB_productsNew_input_weight}    ${contentB_products_addWeight}    # 添加重量
     # 添加描述
-    Wait And Click Element    ${locatorB_productsNew_input_addDesc}
+    Wait And Click Element    ${locatorB_productsNew_input_desc}
     Execute Javascript    document.querySelectorAll(".fr-view")[0].querySelectorAll("p")[0].innerText='Description'
     # 添加供应商
-    Wait And Input Text    ${locatorB_productsNew_input_addSupplier}    ${contentB_products_addSupplier}
+    Wait And Input Text    ${locatorB_productsNew_input_supplier}    ${contentB_products_addSupplier}
     Sleep    1
-    Press Key    ${locatorB_productsNew_input_addSupplier}    ${keybord_enter}
+    Press Key    ${locatorB_productsNew_input_supplier}    ${keybord_enter}
     # 添加状态
-    Wait And Click Element    ${locatorB_productsNew_tabindex_status}
+    Wait And Click Element    ${locatorB_productsNew_switch_status}
     # 添加分类
     Wait And Click Element    ${locatorB_productsNew_input_productType}
     Wait And Input Text    ${locatorB_productsNew_input_productType}    三级分类C
@@ -51,13 +51,13 @@ products076
     # 输入 SKU
     ${rand_value}=    Evaluate    random.randint(0, 100)    modules=random
     ${sku}=    Convert To String    ${rand_value}
-    Wait And Input Text    ${locatorB_productsNew_input_addSku}    ${rand_value}
+    Wait And Input Text    ${locatorB_productsNew_input_sku}    ${rand_value}
     # 条形码
-    Wait And Input Text    ${locatorB_productsNew_input_addBarcode}    ${contentB_products_addBarcode}
+    Wait And Input Text    ${locatorB_productsNew_input_barcode}    ${contentB_products_addBarcode}
     # 图片
     Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
     Wait Until Element Is Visible    ${locatorB_productsNew_button_uploadBtn}
-    Choose File    ${locatorB_productsNew_input_chooseFile}    ${file_products_addImg}    # 选择文件并自动上传
+    Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}    # 选择文件并自动上传
     Wait For Upload
     # 保存
     Wait And Click Element    ${locatorB_products_button_confirm}
@@ -65,7 +65,7 @@ products076
     # 跳转到商品详情页面
     # check
     Sleep    3
-    Go To Products Page
+    Go To Product Management Page
     Page Should Contain    ${contentB_products_addTitle}
     Page Should Contain    ${sku}
 
@@ -82,35 +82,35 @@ products094
     Wait And Click Element    ${locatorB_products_button_confirm}
     Wait For Save
     # 保存之后检测该商品包含添加的多张图片数量是否一致
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".wrapper___3TwjV")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".wrapper___3TwjV")[0]
     ${count}    Execute Javascript    return document.querySelectorAll(".wrapper___3TwjV").length
     Should Be True    ${count}==3
     #接着图片预览，编辑替代文本，删除图片
     #预览
     #点击预览
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_image_center}
-    Mouse Over    ${locatorB_productsMgmt_image_center}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_image_firstProductThumbnails}
+    Mouse Over    ${locatorB_productsMgmt_image_firstProductThumbnails}
     Sleep    2
     Wait And Click Element    dom:document.querySelectorAll(".preview")[1]
     Sleep    2
     #展示图片大图
-    #Wait Until Page Contains Element    ${locatorB_products_popUps}
+    #Wait Until Page Contains Locator    ${locatorB_products_popUps}
     #Sleep    2
     #关闭大图
     #Wait And Click Element    dom:document.querySelectorAll(".ant-modal-close-x")[0]
     Execute Javascript    return document.querySelectorAll(".ant-modal-close-x")[0].click()
     Sleep    5
     #编辑替代文本
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_image_center}
-    Mouse Over    ${locatorB_productsMgmt_image_center}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_image_firstProductThumbnails}
+    Mouse Over    ${locatorB_productsMgmt_image_firstProductThumbnails}
     Wait And Click Element    dom:document.querySelectorAll(".altbianji")[0]
     #展现弹出框
     Wait And Input Text    dom:document.querySelectorAll(".alt_input___1RvXO")[0]    test
     #确定
     Wait And Click Element    ${locatorB_productsMgmt_button_delTags}
     #点击删除图片
-    Wait Until Page Contains Element    ${locatorB_productsMgmt_image_center}
-    Mouse Over    ${locatorB_productsMgmt_image_center}
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_image_firstProductThumbnails}
+    Mouse Over    ${locatorB_productsMgmt_image_firstProductThumbnails}
     Wait And Click Element    dom:document.querySelectorAll(".delete")[0]
     ${now_count}    Execute Javascript    return document.querySelectorAll(".wrapper___3TwjV").length
     Should Be True    ${now_count}==2
@@ -129,7 +129,7 @@ Upload_Image
     #上传一张图片
     Execute JavaScript    return document.getElementById("test_upload_btn").scrollIntoView()
     Wait Until Element Is Visible    ${locatorB_productsNew_button_uploadBtn}
-    Choose File    ${locatorB_productsNew_input_chooseFile}    ${image}
+    Choose File    ${locatorB_productsNew_input_addImage}    ${image}
     Sleep    3
 
 Products Suite Setup

@@ -1,78 +1,166 @@
 # -*- coding:utf-8 -*-
-import uuid
 
-import oss2
-
+from raw_data import *
 from variable import *
-from lib_utils import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def product_search(api='/api/product/search?page=0&limit=20', cookie=init_cookie):
+def product_search_py(api='/api/product/search?page=0&limit=20', cookie=init_cookie):
     """
     公共获取数据方法
     :param p_url: url
     :return: dict
     """
     p_url = home_page_url + api
-    sub_list = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
-    res_data = json.loads(sub_list.content)['data']['products']
-    return res_data
+    ret_data = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
+    return ret_data.content
 
+<<<<<<< HEAD
  
 def add_products(cookie=init_cookie):
+=======
+
+def product_add_py(data, cookie=init_cookie):
+>>>>>>> 1134a10491b2ffad1bd54ad64a8599422a0c51ae
     """
     添加商品
     :return: True | False
     """
-    # .获取图片
-    imgs = upload_oss(img)[0]
-    path_img = "//cn.cdn.shoplazza.com/" + upload_oss(img)[0]
     url = home_page_url + "/api/product/add"
-    data = {
-        "barcode": "",
-        "brief": "自动化测试",
-        "compare_at_price": 1000,
-        "has_only_default_variant": True,
-        "images": [{"lastModified": "1520929852000", "lastModifiedDate": "2018-03-13T08:30:52.000Z", "name": imgs,
-                    "originFileObj": {"uid": "rc-upload-1535093594875-2"}, "path": imgs, "percent": "100.00",
-                    "status": "done", "type": "image/jpeg", "uid": "rc-upload-1535093594875-2", "url": path_img}],
-        "meta_description": "",
-        "meta_keyword": "",
-        "meta_title": "自动化测试",
-        "price": 99,
-        "status": 1,
-        "title": "自动化测试",
-        "url": "/products/自动化测试",
-        "variants": [{"barcode": "", "compare_at_price": 1000, "inventory_management": "", "inventory_policy": "",
-                      "inventory_quantity": "", "price": 99, "requires_shipping": "", "sku": "", "taxable": "",
-                      "weight": "", "weight_unit": "kg"}]
-    }
-    try:
-        resData = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        if resData.status_code == 200 and json.loads(resData.content)['state'] == 0:
-            return True
-        else:
-            return False
 
+    try:
+        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200 and json.loads(response_data.content)['state'] == 0:
+            return_data['result'] = 'success'
+        else:
+            return_data['result'] = 'fail'
+        return return_data
     except Exception as e:
         return e
 
 
-def updates_status(product_list, status, cookie=init_cookie):
+def add_discontinued_product_py(cookie=init_cookie):
+    '''
+    添加未上架商品
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(product_max_data)
+    data['images'] = [image]
+    data['status'] = 0
+
+    return product_add_py(data, cookie)['content']['data']['product_id']
+
+
+def add_launched_product_py(cookie=init_cookie):
+    '''
+    添加已上架商品
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(product_max_data)
+    data['images'] = [image]
+    data['status'] = 1
+
+    return product_add_py(data, cookie)['content']['data']['product_id']
+
+
+def add_empty_quantity_product_py(cookie=init_cookie):
+    '''
+    添加min商品，除必填项（标题、售价、重量）其余不填，保存默认
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(product_min_data)
+    data['variants'][0]['inventory_management'] = True
+    return product_add_py(data, cookie)['content']['data']['product_id']
+
+
+def add_min_product_py(cookie=init_cookie):
+    '''
+    添加min商品，除必填项（标题、售价、重量）其余不填，保存默认
+    :param cookie:
+    :return:
+    '''
+    return product_add_py(product_min_data, cookie)['content']['data']['product_id']
+
+
+def add_max_product_py(cookie=init_cookie):
+    '''
+    添加max商品，即所有可填项都填
+    :param cookie:
+    :return:
+    '''
+    return add_launched_product_py(cookie)
+
+
+def add_product_with_conf_py(conf, cookie=init_cookie):
+    '''
+    通过conf（dict数据类型）配置来添加产品
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(product_max_data)
+
+    key_list = conf.keys()
+    if 'title' in key_list:
+        data['meta_title'] = conf['title']
+        data['title'] = conf['title']
+        data['url'] = '/products/' + conf['title']
+    if 'subtitle' in key_list:
+        data['brief'] = conf['subtitle']
+    if 'status' in key_list:
+        data['status'] = conf['status']
+    if 'saleprice' in key_list:
+        data['price'] = conf['saleprice']
+        data['variants'][0]['price'] = conf['saleprice']
+    if 'rawprice' in key_list:
+        data['compare_at_price'] = conf['rawprice']
+        data['variants'][0]['compare_at_price'] = conf['rawprice']
+    if 'settax' in key_list:
+        data['variants'][0]['taxable'] = conf['settax']
+    if 'weight' in key_list:
+        data['variants'][0]['weight'] = conf['weight']
+    if 'sku' in key_list:
+        data['variants'][0]['sku'] = conf['sku']
+    if 'tags' in key_list:
+        data['tags'] = conf['tags']
+    if 'images' in key_list and conf['images'] == 'yes':
+        data['images'] = [image]
+    elif 'images' in key_list and conf['images'] == 'no':
+        data['images'] = []
+    else:
+        data['images'] = [image]
+
+    return product_add_py(data, cookie)['content']['data']['product_id']
+
+
+def product_updatestatus_py(product_list, status, cookie=init_cookie):
     """
     更改商品状态
     :param product_list:
     :param status: -1 = 删除商品（非数据库） | 0 = 设置下架 | 1 = 设置上架
     :return:
     """
+    exist_products_id = get_exist_productsid_py()
+    if isinstance(product_list, str) and product_list == 'all':
+        product_list = exist_products_id
+    elif isinstance(product_list, int):
+        num = product_list
+        product_list = exist_products_id[:num]
+
     url = home_page_url + "/api/product/updatestatus"
     data = {"product_ids": product_list, "status": status}
     try:
-        resData = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        if resData.status_code == 200 and json.loads(resData.content)['state'] == 0:
+        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
+        if response_data.status_code == 200 \
+                and (json.loads(response_data.content)['state'] == 0 \
+                     or json.loads(response_data.content)['state'] == 1):
             return True
         else:
             return False
@@ -81,84 +169,33 @@ def updates_status(product_list, status, cookie=init_cookie):
         return e
 
 
-def upload_oss(urlex, name='', extension='', timeout_second=30):
+def del_latest_product_py(cookie=init_cookie):
     """
-    上传图片到阿里云
-    :param urlex: url
-    :param name: 名字
-    :param extension: 扩充信息
-    :param timeout_second: 超时时间
-    :return: tuple
-    """
-    auth = oss2.Auth(aliyun['accessKeyId'], aliyun['accessKeySecret'])
-    bucket = oss2.Bucket(auth, aliyun['endPoint'], aliyun['bucket'])
-    if not urlex:
-        return False
-    tmp_file = '/tmp/' + str(uuid.uuid1())
-    try:
-        r = requests.get(urlex, stream=True, timeout=timeout_second)
-        if r.status_code > 399:
-            return False
-        with open(tmp_file, 'wb') as f:
-            for chunk in r.iter_content(chunk_size=1024):
-                if chunk:  # filter out keep-alive new chunks
-                    f.write(chunk)
-        md5_file = md5(tmp_file)
-        size_file = os.stat(tmp_file).st_size
-        s3key = name
-        if not s3key:
-            if not extension:
-                extension = urlex.split('.')[-1].split('?')[0]
-                if len(extension) > 5:
-                    extension = ""
-            if extension:
-                s3key = md5_file + '.' + extension
-            else:
-                s3key = md5_file
-            if s3key.endswith('.SS2'):
-                s3key = str(s3key).replace('SS2', 'jpg')
-
-        with open(tmp_file, 'rb') as f:
-            bucket.put_object(s3key, f)
-        return (s3key, size_file)
-    except Exception as e:
-        print e
-    finally:
-        try:
-            os.remove(tmp_file)
-        except Exception as e:
-            print e
-    return False
-
-
-def delFirstProduct( cookie=init_cookie):
-    """
-    删除商品
+    删除最新商品
     :return: True | False
     """
-    try:
-        db_config = copy.deepcopy(db_shop_config)
-        db_config['cursorclass'] = pymysql.cursors.DictCursor
-        db_config['db'] = db_config['db'] + str(cookie['uid'])
-        conn = pymysql.connect(**db_config)
-        curs = conn.cursor()
-        SQL = "SELECT (product_id) FROM `product` order by product_id desc"
-        curs.execute(SQL)
-        sub = curs.fetchone()['product_id']
-        del_url = home_page_url + "/api/product/updatestatus"
-        del_data = {"product_ids": [str(sub)], "status": -1}
-        result = requests.post(url=del_url, headers={'cookie': cookie['cookie']}, json=del_data)
-        if json.loads(result.content)['state'] == 0:
-            return True
-        else:
-            return False
-    except Exception as e:
-        print e
-    finally:
-        conn.close()
+    product_updatestatus_py(1, -1, cookie)
 
 
-def getAllProductCount(cookie=init_cookie):
+def del_latest_products_py(num, cookie=init_cookie):
+    """
+    删除最新商品s
+    :param num:
+    :param cookie:
+    :return:
+    """
+    product_updatestatus_py(num, -1, cookie)
+
+
+def del_all_products_py(cookie=init_cookie):
+    """
+    删除全部商品
+    :return: True | False
+    """
+    product_updatestatus_py('all', -1, cookie)
+
+
+def getAllProductCount_py(cookie=init_cookie):
     p_url = home_page_url + "/api/product/search"
     sub_list = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
     total = json.loads(sub_list.content)['data']['total']
@@ -166,5 +203,36 @@ def getAllProductCount(cookie=init_cookie):
     return total
 
 
-def get_latest_productid():
-    return product_search()[0]['id']
+def get_latest_productid_py():
+    products_list = json.loads(product_search_py())['data']['products']
+    try:
+        return products_list[0]['id']
+    except Exception as e:
+        return 1
+
+
+def get_oldest_productid_py():
+    products_list = json.loads(product_search_py())['data']['products']
+    try:
+        return products_list[-1]['id']
+    except Exception as e:
+        return 1
+
+
+def get_exist_productsid_py():
+    products_list = json.loads(product_search_py())['data']['products']
+    products_id = []
+    for product in products_list:
+        products_id.append(product['id'])
+    return products_id
+
+
+if __name__ == '__main__':
+    # product_search_py()
+    # del_latest_product_py()
+    # del_all_products_py()
+    # print add_discontinued_product_py()
+    # add_launched_product_py()
+    # conf = {'tags': ['color']}
+    # add_product_with_conf_py(conf)
+    del_latest_products_py(2)

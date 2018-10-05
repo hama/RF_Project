@@ -29,9 +29,9 @@ register_001
     Wait And input text    ${locatorB_login_input_vcode}    ${code}
     Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Wait Until Page Contains Element    ${locatorB_order}
+    Wait Until Page Contains Locator    ${locatorB_order}
     Logout
-    Wait Until Page Contains Element    ${locatorB_login_input_account}
+    Wait Until Page Contains Locator    ${locatorB_login_input_account}
 
 register_002
     [Documentation]    注册信息失败_已注册的域名
@@ -76,7 +76,7 @@ register_004
     ${code}    Get Latest Vcode Fromdb    ${user_default_contact}
     Wait And input text    ${locatorB_login_input_vcode}    ${code}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
-    Wait Until Page Contains Element    dom:document.querySelectorAll("button:disabled")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll("button:disabled")[0]
 
 register_005
     [Documentation]    注册信息失败_格式不正确的域名

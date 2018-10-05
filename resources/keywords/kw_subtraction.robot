@@ -11,22 +11,30 @@ Add Subtraction Timezone Wait
     [Documentation]   等待设置时区接口返回
     [Arguments]    ${paremeter}    ${count}=10
     :FOR    ${index}    IN RANGE    ${count}
-    \    ${data}    setBjTimeZone    ${paremeter}
-    \    Run keyword If    '${data}'=='True'    Exit For Loop
+    \    ${data}    setBjTimeZone_py    ${paremeter}
+    \    Run Keyword If    '${data}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1
 
 Add Subtraction Wait Step
     [Documentation]    等待添加满减活动接口返回成功失败
     [Arguments]    ${index}    ${type}=${Empty}    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    addSubtraction    ${index}    ${type}
-    \    Run keyword If    '${res_status}'=='True'    Exit For Loop
+    \    ${res_status}    addSubtraction_py    ${index}    ${type}
+    \    Run Keyword If    '${res_status}'=='True'    Exit For Loop
+    \    ...    ELSE    Sleep    1
+
+Wait Del Subtraction
+    [Documentation]    等待添加满减活动接口返回成功失败
+    [Arguments]    ${index}    ${count}=10
+    :FOR    ${i}    IN RANGE    ${count}
+    \    ${res_status}    delSubtraction_fromdb    all
+    \    Run Keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1
 
 Common Click First Tr Step
     [Documentation]    点击table中的第一个tr公共步骤
     [Arguments]    ${index}    ${type}=${Empty}
-    delSubtraction
+    Wait Del Subtraction    
     Add Subtraction Wait Step    ${index}    ${type}
     Go To Subtraction Page
     Wait And Click Element    ${locatorB_subtraction_title_all}

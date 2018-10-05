@@ -19,16 +19,6 @@ shipping057
     sleep    1
     page should not contain element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
 
-shipping058
-    [Documentation]    添加运费窗口输入内容后直接关闭 列表不存在数据
-    [Tags]    P0
-    Go To Shipping Page
-    Quantity All Setp
-    input text    ${locatorB_shipping_weight_first_input}    价格运费
-    Wait And Click Element    ${locatorB_shipping_country_close_btn}
-    sleep    1
-    page should not contain element    dom:document.querySelectorAll(".ant-table-row-level-0")[0]
-
 shipping042
     [Documentation]    添加运费窗口输入内容后直接关闭 再次点击添加按钮 后的编辑窗口里没有数据
     [Tags]    P1
@@ -40,16 +30,6 @@ shipping042
     Wait And Click Element    ${locatorB_shipping_add_price_btn}
     Wait And Click Element    ${locatorB_shipping_freight_save}
     page should contain element    ${locatorB_shipping_freight_error_elm}
-    Wait And Click Element    ${locatorB_shipping_country_close_btn}
-    Quit All Setp
-
-shipping061
-    [Documentation]    点击添加重量运费按钮出现编辑窗口
-    [Tags]    P1
-    Go To Shipping Page
-    Wait And Click Element    ${locatorB_shipping_add_shipping}
-    Wait And Click Element    ${locatorB_shipping_add_weight_btn}
-    page should contain element    ${locatorB_shipping_freight_save}
     Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Setp
 
@@ -278,22 +258,6 @@ shipping081
     Wait And Click Element    ${locatorB_shipping_country_close_btn}
     Quit All Setp
 
-shipping082
-    [Documentation]    添加运费重量 克。千克，磅
-    [Tags]    P1
-    Go To Shipping Page
-    Wait And Click Element    ${locatorB_shipping_add_shipping}
-    Wait And Click Element    ${locatorB_shipping_add_weight_btn}
-    #Wait Until Element Is Visible    ${locatorB_shipping_freight_save}
-    #execute javascript    return document.querySelectorAll(".ant-select-arrow")[0].click()
-    click element    dom:document.querySelectorAll(".ant-select-arrow")[0]
-    #${res}    execute javascript    return document.querySelectorAll(“.ant-select-selection-selected-value”)[0].innerHTML
-    Mouse Down    dom:document.querySelectorAll("div[role='combobox']")[0]
-    Mouse Over    dom:document.querySelectorAll("div[role='combobox']")[0]
-    Mouse Up    dom:document.querySelectorAll("div[role='combobox']")[0]
-    Wait And Click Element    ${locatorB_shipping_country_close_btn}
-    Quit All Setp
-
 shipping087
     [Documentation]    添加重量运费 取消勾选 免运费
     [Tags]    P0
@@ -346,7 +310,7 @@ shipping091
     input text    ${locatorB_shipping_price}    ${re}
     Wait And Click Element    ${locatorB_shipping_freight_save}
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
-    ${res}    searchStrs    ${data}
+    ${res}    searchStrs_py    ${data}
     Should Be True    ${res}==${re}
     Quit All Shipping
 
@@ -363,7 +327,7 @@ shipping092
     Wait And Click Element    ${locatorB_shipping_freight_save}
     sleep    1
     ${data}    execute javascript    return document.querySelectorAll(".ant-table-tbody tr td")[3].innerText
-    ${res}    searchStrs    ${data}
+    ${res}    searchStrs_py    ${data}
     Should Be True    ${res}==${re}
     Quit All Shipping
 

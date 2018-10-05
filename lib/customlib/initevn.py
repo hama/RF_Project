@@ -19,16 +19,20 @@ if __name__ == '__main__':
     config.read(path)
     if 'https://admin.shoplazza.com' in args.url:
         # 美服使用固定账号跑用例
-        config.set("common_account", "datas_invite_code", 'DJ2746')
+        config.set("common_account", "datas_invite_code", 'DJ2311')
         config.set("common_db", "db_service_config", '{"host": "rm-rj9ww1316miq2j87l.mysql.rds.aliyuncs.com",'
                                                      '"port": 3306,"user": "fortest","password": "fortest@123",'
                                                      '"db": "service","charset": "utf8"}')
         config.set("common_url", "home_page_url", 'https://admin.shoplazza.com')
         config.set("common_account", "datas_contact", '15220581724')
         config.set("common_account", "datas_domain", 'chen')
+        #>修改数据库配置
+        config.set("common_db","db_shop_config",'{"host": "rm-rj9f22zpw641v45g9.mysql.rds.aliyuncs.com",'
+                                                '"port": 3306,"user": "lansejiebo","password": "lansejiebo@123",'
+                                                '"db": "shop_","charset": "utf8"}')
         config.write(open(path, 'w'))
     else:
-        random_str = salt()
+        random_str = salt_py()
         data_config = {}
         data_config['datas_invite_code'] = 'DJ6602'
         data_config['db_service_config'] = '{"host": "rm-wz9tz4ff2v9t95f9qao.mysql.rds.aliyuncs.com",' \
@@ -50,7 +54,7 @@ if __name__ == '__main__':
             config.write(open(path, 'w'))
 
             # 注册用户
-            sign_up(**data_config)
+            sign_up_py(**data_config)
             # 注册用户之后等待10s，等用户生效
             time.sleep(10)
         else:

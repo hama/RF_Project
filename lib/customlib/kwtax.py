@@ -8,15 +8,15 @@ sys.setdefaultencoding('utf-8')
 
 
 # . 添加其他国家税费
-def add_other_tax_price(cookie=init_cookie):
+def add_other_tax_price_py(cookie=init_cookie):
     """
     添加其他国家税费
     :return:  True | False
     """
     # .删除物流
-    delShipping()
+    delShipping_py()
     # 添加其他国家
-    add_shipping = addShipping(1)
+    add_shipping = addShipping_py(1)
     tax_url = home_page_url + "/api/tax/refresh"
     data = {"country_id": "-1", "country_price": "1", "tax_info": '[{"zone_id":-1,"price":"1"}]'}
     res_data = requests.post(url=tax_url, headers={"cookie": cookie['cookie']}, json=data)

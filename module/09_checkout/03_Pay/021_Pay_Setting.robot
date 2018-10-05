@@ -6,10 +6,10 @@ Test Setup        Products Test Case Setup
 Test Teardown     Teardown Test Case
 Force Tags        Checkout
 Resource          ../../../resources/variable/var_common.robot
-Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/variable/var_product_management.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
-Resource          ../../../resources/keywords/kw_products.robot
+Resource          ../../../resources/keywords/kw_product_management.robot
 Resource          ../../../resources/keywords/kw_checkout.robot
 Resource          ../../../resources/variable/var_checkout.robot
 
@@ -21,7 +21,7 @@ ksksksksksk
     Wait And Click Element    ${locator_checkout_by_now_btn}
     Wait And Click Element    ${locator_checkout_submit_btn_s}
     Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
-    Add Address Common Setp    # 添加地址公共部分
+    Add Address Common Step    # 添加地址公共部分
 checkout171
     [Documentation]    进入支付页后,返回后台修改结账设置修改为必填或选填,点击pay now支付成功
     [Tags]    P0
@@ -52,18 +52,18 @@ Products Suite Setup
     Start Ajax Listener
     Add Product_Up
     Sleep    8
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    删除商品，还原之前的设置
     Select Window    店匠科技
-    Go To Products Page
+    Go To Product Management Page
     Delete_First_Product
     Modify_Set_Radio    2
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 
 Products Test Case Teardown
     Teardown Test Case

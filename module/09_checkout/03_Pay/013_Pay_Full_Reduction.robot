@@ -6,10 +6,10 @@ Test Setup        Products Test Case Setup
 Test Teardown     Teardown Test Case
 Force Tags        Checkout
 Resource          ../../../resources/variable/var_common.robot
-Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/variable/var_product_management.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
-Resource          ../../../resources/keywords/kw_products.robot
+Resource          ../../../resources/keywords/kw_product_management.robot
 Resource          ../../../resources/keywords/kw_checkout.robot
 
 *** Variables ***
@@ -42,12 +42,12 @@ checkout154
     #view orders
     Wait And Click Element    dom:document.querySelectorAll(".btn2")[1]
     #跳转到my orders页面
-    Wait Until Page Contains Element    dom:document.querySelectorAll(".spec_order_item")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".spec_order_item")[0]
     #点击查看订单详细信息
     Wait And Click Element    dom:document.querySelectorAll(".order_info")[0]
     #获取当前优惠的金额
     ${now_cut}    Get Text    dom:document.querySelectorAll(".rebate")[0]
-    ${now_cut}    searchStrs    ${now_cut}
+    ${now_cut}    searchStrs_py    ${now_cut}
     #当前优惠的金额应该等于满减活动的金额
     Should Be Equal As Strings    ${cut}    ${now_cut}
 
@@ -60,18 +60,18 @@ Products Suite Setup
     Sleep    8
     Add_Full_Reduction
     Sleep    5
-    Go To Products Page
+    Go To Product Management Page
 
 Products Suite Teardown
     [Documentation]    删除商品
     Select Window    店匠科技
-    Go To Products Page
+    Go To Product Management Page
     Delete_First_Product
     Sleep    5
     Close Test Suite Browser
 
 Products Test Case Setup
-    Go To Products Page
+    Go To Product Management Page
 
 Products Test Case Teardown
     Teardown Test Case

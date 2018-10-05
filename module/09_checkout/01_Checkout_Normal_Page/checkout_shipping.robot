@@ -6,11 +6,11 @@ Suite Teardown    Close Test Suite Browser    # close the browser opened for thi
 Test Teardown     Teardown Test Case
 Force Tags        Checkout
 Resource          ../../../resources/variable/var_tax_price.robot
-Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/variable/var_product_management.robot
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
-Resource          ../../../resources/keywords/kw_products.robot
+Resource          ../../../resources/keywords/kw_product_management.robot
 Resource          ../../../resources/keywords/kw_shipping.robot
 Resource          ../../../resources/keywords/kw_checkout.robot
 
@@ -58,7 +58,7 @@ checkout076
     [Tags]    P1
     Checkout Common Setp
     Checkout_Common_Address_Step
-    Add Address Common Setp
+    Add Address Common Step
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Wait And Click Element    dom:document.querySelectorAll(".pm_order_header i")[0]
@@ -70,13 +70,13 @@ checkout090
     [Tags]    P1
     Checkout Common Setp
     Checkout_Common_Address_Step
-    Add Address Common Setp
+    Add Address Common Step
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     ${res}    Get Text    class:total_price
-    ${rex}    searchStrs    ${res}
+    ${rex}    searchStrs_py    ${res}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     ${data}    Execute JavaScript    return document.querySelectorAll(".detail_total_price div span:nth-child(2)")[0].innerHTML
-    ${desc}    searchStrs    ${data}
+    ${desc}    searchStrs_py    ${data}
     Sleep Time
     Should Be True    '${rex}'=='${desc}'
 
@@ -85,7 +85,7 @@ checkout091
     [Tags]    P1
     Checkout Common Setp
     Checkout_Common_Address_Step
-    Add Address Common Setp
+    Add Address Common Step
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Sleep Time
     Page Should Contain Element    dom:document.querySelectorAll(".detail_total_price div span:nth-child(2)")[0]
@@ -130,7 +130,7 @@ Checkout_Submit_Location_Fz
     [Documentation]    checkout 页面提交成功后 页面跳转 在封装
     Checkout Common Setp
     Checkout_Common_Address_Step
-    Add Address Common Setp
+    Add Address Common Step
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Wait And Click Element    ${locator_checkout_payment_cod_elm}
@@ -141,7 +141,7 @@ Checkout_Show_Detail
     [Arguments]    ${element}
     Checkout Common Setp
     Checkout_Common_Address_Step
-    Add Address Common Setp
+    Add Address Common Step
     Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
     Sleep Time

@@ -10,7 +10,7 @@ Resource          ../../resources/keywords/kw_browser.robot
 Resource          ../../resources/keywords/kw_common.robot
 Resource          ../../resources/keywords/kw_add_order.robot
 Resource          ../../resources/keywords/kw_order.robot
-Resource          ../../resources/keywords/kw_products.robot
+Resource          ../../resources/keywords/kw_product_management.robot
 Resource          ../../resources/keywords/kw_checkout.robot
 
 
@@ -117,8 +117,8 @@ Order_Cancel_Ship
     page should contain element    ${locatorB_order_detail_element}
     Execute JavaScript    return document.getElementById("dj").scrollTo(0,10000)
     Common Js Click    ${locatorB_order_settint_status}    2
-    Run keyword If    '${check_element}'=='false'    Wait And Click Element    ${locatorB_order_two_btn}
-    Run keyword If    '${check_element}'=='false'    Page Should Not Contain Element    ${locatorB_order_first_btn}
+    Run Keyword If    '${check_element}'=='false'    Wait And Click Element    ${locatorB_order_two_btn}
+    Run Keyword If    '${check_element}'=='false'    Page Should Not Contain Element    ${locatorB_order_first_btn}
     ...    ELSE    Wait And Click Element    ${locatorB_order_three_btn}
     ...    ELSE    Page Should Contain Element    ${locatorB_order_first_btn}
     Quit Order Setp

@@ -6,11 +6,11 @@ Test Setup        Setup Test Case
 Test Teardown     Teardown Test Case
 Force Tags        Checkout
 Resource          ../../../resources/variable/var_tax_price.robot
-Resource          ../../../resources/variable/var_products.robot
+Resource          ../../../resources/variable/var_product_management.robot
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
-Resource          ../../../resources/keywords/kw_products.robot
+Resource          ../../../resources/keywords/kw_product_management.robot
 Resource          ../../../resources/keywords/kw_shipping.robot
 Resource          ../../../resources/keywords/kw_checkout.robot
 Resource          ../../../resources/variable/var_checkout.robot
@@ -26,7 +26,7 @@ checkout172
     Wait And Click Element    ${locator_checkout_by_now_btn}
     Wait And Click Element    ${locator_checkout_submit_btn_s}
     Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
-    Add Address Common Setp    # 添加地址公共部分
+    Add Address Common Step    # 添加地址公共部分
     Wait And Click Element    ${locator_checkout_address_save_address_btn}
     Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
     Page Should Not Contain Element    ${locator_checkout_payment_ipaylinks_elm}
@@ -39,7 +39,7 @@ checkout173
     Wait And Click Element    ${locator_checkout_by_now_btn}
     Wait And Click Element    ${locator_checkout_submit_btn_s}
     Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
-    Add Address Common Setp    # 添加地址公共部分
+    Add Address Common Step    # 添加地址公共部分
     Wait And Click Element    ${locator_checkout_address_save_address_btn}
     Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
     Page Should Contain Element    ${locator_checkout_payment_ipaylinks_elm}
@@ -53,7 +53,7 @@ checkout175
     Wait And Click Element    ${locator_checkout_by_now_btn}
     Wait And Click Element    ${locator_checkout_submit_btn_s}
     Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
-    Add Address Common Setp    # 添加地址公共部分
+    Add Address Common Step    # 添加地址公共部分
     Wait And Click Element    ${locator_checkout_address_save_address_btn}
     Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
     Page Should Contain Element    ${locator_checkout_payment_cod_elm}
@@ -67,7 +67,7 @@ checkout176
     Wait And Click Element    ${locator_checkout_by_now_btn}
     Wait And Click Element    ${locator_checkout_submit_btn_s}
     Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
-    Add Address Common Setp    # 添加地址公共部分
+    Add Address Common Step    # 添加地址公共部分
     Wait And Click Element    ${locator_checkout_address_save_address_btn}
     Wait And Click Element    ${locator_checkout_address_save_checkout_btn}
     Page Should Contain Element    ${locator_checkout_payment_cod_elm}
