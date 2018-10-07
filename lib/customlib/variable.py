@@ -16,6 +16,7 @@ datas_domain = config.get("common_account", "datas_domain")
 datas_invite_code = config.get("common_account", "datas_invite_code")
 db_service_config = json.loads(config.get("common_db", "db_service_config"))
 db_shop_config = json.loads(config.get("common_db", "db_shop_config"))
+myshoplaza_url = 'https://' + datas_domain + '.myshoplaza.com'
 
 # 北京时区
 Bj_timeZone = "+0800"
@@ -27,7 +28,7 @@ img = "http://120.79.196.159:8000/RF/logs/module/result.png"
 imgs = upload_oss_py(img)[0]
 path_img = "//cn.cdn.shoplazza.com/" + upload_oss_py(img)[0]
 image = {"lastModified": "1520929852000", "lastModifiedDate": "2018-03-13T08:30:52.000Z", "name": imgs,
-           "originFileObj": {"uid": "rc-upload-1535093594875-2"}, "path": imgs, "percent": "100.00",
-           "status": "done", "type": "image/jpeg", "uid": "rc-upload-1535093594875-2", "url": path_img}
+         "originFileObj": {"uid": "rc-upload-1535093594875-2"}, "path": imgs, "percent": "100.00",
+         "status": "done", "type": "image/jpeg", "uid": "rc-upload-1535093594875-2", "url": path_img}
 
 init_cookie = login_py()

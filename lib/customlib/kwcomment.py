@@ -6,11 +6,42 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def comments_select_py(api='/api/comments/select?page=0&limit=10&keyword=&customer='
-                           '&sort%5Bpraise%5D=&sort%5Bctime%5D=', cookie=init_cookie):
-    p_url = home_page_url + api
-    ret_data = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
-    return ret_data.content
+def comments_select_py(query_str, cookie=init_cookie):
+    url = home_page_url + '/api/comments/select'
+    try:
+        response_data = requests.get(url=url, headers={"cookie": cookie['cookie']}, params=query_str)
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200:
+            return_data['result'] = 'success'
+        else:
+            return_data['result'] = 'fail'
+        return return_data
+    except Exception as e:
+        return e
+
+
+def comments_delete_py(comments_list, cookie=init_cookie):
+    exist_comments_id = get_exist_commentsid_py()
+    if isinstance(comments_list, str) and comments_list == 'all':
+        comments_list = exist_comments_id
+    elif isinstance(comments_list, int):
+        num = comments_list
+        comments_list = exist_comments_id[:num]
+
+    url = home_page_url + '/api/comments/delete'
+    data = {"id": comments_list}
+    try:
+        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
+        if response_data.status_code == 200 \
+                and (json.loads(response_data.content)['state'] == 0 \
+                     or json.loads(response_data.content)['state'] == 1):
+            return True
+        else:
+            return False
+
+    except Exception as e:
+        return e
 
 
 def comments_insert_py(data, cookie=init_cookie):
@@ -74,29 +105,6 @@ def add_comment_with_conf_py(conf, cookie=init_cookie):
     comments_insert_py(data, cookie)
 
 
-def comments_delete_py(comments_list, cookie=init_cookie):
-    exist_comments_id = get_exist_commentsid_py()
-    if isinstance(comments_list, str) and comments_list == 'all':
-        comments_list = exist_comments_id
-    elif isinstance(comments_list, int):
-        num = comments_list
-        comments_list = exist_comments_id[:num]
-
-    url = home_page_url + '/api/comments/delete'
-    data = {"id": comments_list}
-    try:
-        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        if response_data.status_code == 200 \
-                and (json.loads(response_data.content)['state'] == 0 \
-                     or json.loads(response_data.content)['state'] == 1):
-            return True
-        else:
-            return False
-
-    except Exception as e:
-        return e
-
-
 def del_latest_comment_py(cookie=init_cookie):
     """
     删除最新评论
@@ -124,7 +132,8 @@ def del_all_comments_py(cookie=init_cookie):
 
 
 def get_latest_commentid_py():
-    comments_list = json.loads(comments_select_py())['data']['list']
+    query_str = copy.deepcopy(query_list_data)
+    comments_list = comments_select_py(query_str)['content']['data']['list']
     try:
         return int(comments_list[0]['id'])
     except Exception as e:
@@ -132,7 +141,8 @@ def get_latest_commentid_py():
 
 
 def get_exist_commentsid_py():
-    comments_list = json.loads(comments_select_py())['data']['list']
+    query_str = copy.deepcopy(query_list_data)
+    comments_list = comments_select_py(query_str)['content']['data']['list']
     comments_id = []
     for comment in comments_list:
         comments_id.append(comment['id'])
@@ -141,7 +151,8 @@ def get_exist_commentsid_py():
 
 if __name__ == '__main__':
     # add_published_comment_py()
-    config01 = {'content': 'content00'}
-    config02 = {'content': 'content01'}
-    add_comment_with_conf_py(config01)
-    add_comment_with_conf_py(config02)
+    # config01 = {'content': 'content00'}
+    # config02 = {'content': 'content01'}
+    # add_comment_with_conf_py(config01)
+    # add_comment_with_conf_py(config02)
+    print get_latest_commentid_py()

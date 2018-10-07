@@ -7,15 +7,19 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def collection_dropdown_py(api='/api/collection/dropdown?page=0&limit=20&key=', cookie=init_cookie):
-    """
-    公共获取collection数据方法
-    :param p_url: url
-    :return: dict
-    """
-    p_url = home_page_url + api
-    ret_data = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
-    return ret_data.content
+def collection_dropdown_py(query_str, cookie=init_cookie):
+    url = home_page_url + '/api/collection/dropdown'
+    try:
+        response_data = requests.get(url=url, headers={"cookie": cookie['cookie']}, params=query_str)
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200:
+            return_data['result'] = 'success'
+        else:
+            return_data['result'] = 'fail'
+        return return_data
+    except Exception as e:
+        return e
 
 
 def collection_add_py(data, cookie=init_cookie):
@@ -25,7 +29,7 @@ def collection_add_py(data, cookie=init_cookie):
         response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
         return_data = {}
         return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200 and json.loads(response_data.content)['state'] == 0:
+        if response_data.status_code == 200:
             return_data['result'] = 'success'
         else:
             return_data['result'] = 'fail'
@@ -51,12 +55,14 @@ def collection_updatestatus_py(collection_list, status, cookie=init_cookie):
     url = home_page_url + "/api/collection/updatestatus"
     data = {"collection_ids": collection_list, "status": status}
     try:
-        resData = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        if resData.status_code == 200 and json.loads(resData.content)['state'] == 0:
-            return True
+        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200:
+            return_data['result'] = 'success'
         else:
-            return False
-
+            return_data['result'] = 'fail'
+        return return_data
     except Exception as e:
         return e
 
@@ -135,8 +141,13 @@ def del_all_collections_py(cookie=init_cookie):
     collection_updatestatus_py('all', -1, cookie)
 
 
+def get_all_collections_count_py():
+    return collection_dropdown_py({})['content']['data']['total']
+
+
 def get_latest_collectionid_py():
-    collections_list = json.loads(collection_dropdown_py())['data']['collections']
+    query_str = copy.deepcopy(query_list_data)
+    collections_list = collection_dropdown_py(query_str)['content']['data']['collections']
     try:
         return int(collections_list[0]['collection_id'])
     except Exception as e:
@@ -144,7 +155,8 @@ def get_latest_collectionid_py():
 
 
 def get_exist_productsid_py():
-    collections_list = json.loads(collection_dropdown_py())['data']['collections']
+    query_str = copy.deepcopy(query_list_data)
+    collections_list = collection_dropdown_py(query_str)['content']['data']['collections']
     collections_id = []
     for collection in collections_list:
         collections_id.append(collection['collection_id'])
@@ -152,8 +164,8 @@ def get_exist_productsid_py():
 
 
 if __name__ == '__main__':
-    add_collection_without_pic_py()
-    print add_collection_with_pic_py()
+    # add_collection_without_pic_py()
+    print get_all_collections_count_py()
     # del_latest_collection_py()
     # del_all_collections_py()
-    del_latest_collections_py(4)
+    # del_latest_collections_py(4)

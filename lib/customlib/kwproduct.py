@@ -7,15 +7,46 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def product_search_py(api='/api/product/search?page=0&limit=20', cookie=init_cookie):
-    """
-    公共获取数据方法
-    :param p_url: url
-    :return: dict
-    """
-    p_url = home_page_url + api
-    ret_data = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
-    return ret_data.content
+def product_search_py(query_str, cookie=init_cookie):
+    '''
+    查询产品列表信息
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = home_page_url + '/api/product/search'
+    try:
+        response_data = requests.get(url=url, headers={"cookie": cookie['cookie']}, params=query_str)
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200:
+            return_data['result'] = 'success'
+        else:
+            return_data['result'] = 'fail'
+        return return_data
+    except Exception as e:
+        return e
+
+
+def product_info_py(query_str, cookie=init_cookie):
+    '''
+    查询产品信息
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = home_page_url + '/api/product/info'
+    try:
+        response_data = requests.get(url=url, headers={"cookie": cookie['cookie']}, params=query_str)
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200:
+            return_data['result'] = 'success'
+        else:
+            return_data['result'] = 'fail'
+        return return_data
+    except Exception as e:
+        return e
 
 
 def product_add_py(data, cookie=init_cookie):
@@ -29,7 +60,36 @@ def product_add_py(data, cookie=init_cookie):
         response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
         return_data = {}
         return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200 and json.loads(response_data.content)['state'] == 0:
+        if response_data.status_code == 200:
+            return_data['result'] = 'success'
+        else:
+            return_data['result'] = 'fail'
+        return return_data
+    except Exception as e:
+        return e
+
+
+def product_updatestatus_py(product_list, status, cookie=init_cookie):
+    """
+    更改商品状态
+    :param product_list:
+    :param status: -1 = 删除商品（非数据库） | 0 = 设置下架 | 1 = 设置上架
+    :return:
+    """
+    exist_products_id = get_exist_productsid_py()
+    if isinstance(product_list, str) and product_list == 'all':
+        product_list = exist_products_id
+    elif isinstance(product_list, int):
+        num = product_list
+        product_list = exist_products_id[:num]
+
+    url = home_page_url + "/api/product/updatestatus"
+    data = {"product_ids": product_list, "status": status}
+    try:
+        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200:
             return_data['result'] = 'success'
         else:
             return_data['result'] = 'fail'
@@ -135,35 +195,6 @@ def add_product_with_conf_py(conf, cookie=init_cookie):
     return product_add_py(data, cookie)['content']['data']['product_id']
 
 
-def product_updatestatus_py(product_list, status, cookie=init_cookie):
-    """
-    更改商品状态
-    :param product_list:
-    :param status: -1 = 删除商品（非数据库） | 0 = 设置下架 | 1 = 设置上架
-    :return:
-    """
-    exist_products_id = get_exist_productsid_py()
-    if isinstance(product_list, str) and product_list == 'all':
-        product_list = exist_products_id
-    elif isinstance(product_list, int):
-        num = product_list
-        product_list = exist_products_id[:num]
-
-    url = home_page_url + "/api/product/updatestatus"
-    data = {"product_ids": product_list, "status": status}
-    try:
-        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        if response_data.status_code == 200 \
-                and (json.loads(response_data.content)['state'] == 0 \
-                     or json.loads(response_data.content)['state'] == 1):
-            return True
-        else:
-            return False
-
-    except Exception as e:
-        return e
-
-
 def del_latest_product_py(cookie=init_cookie):
     """
     删除最新商品
@@ -190,16 +221,13 @@ def del_all_products_py(cookie=init_cookie):
     product_updatestatus_py('all', -1, cookie)
 
 
-def getAllProductCount_py(cookie=init_cookie):
-    p_url = home_page_url + "/api/product/search"
-    sub_list = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
-    total = json.loads(sub_list.content)['data']['total']
-
-    return total
+def get_all_products_count_py():
+    return product_search_py({})['content']['data']['total']
 
 
 def get_latest_productid_py():
-    products_list = json.loads(product_search_py())['data']['products']
+    query_str = copy.deepcopy(query_list_data)
+    products_list = product_search_py(query_str)['content']['data']['products']
     try:
         return products_list[0]['id']
     except Exception as e:
@@ -207,7 +235,8 @@ def get_latest_productid_py():
 
 
 def get_oldest_productid_py():
-    products_list = json.loads(product_search_py())['data']['products']
+    query_str = copy.deepcopy(query_list_data)
+    products_list = product_search_py(query_str)['content']['data']['products']
     try:
         return products_list[-1]['id']
     except Exception as e:
@@ -215,7 +244,8 @@ def get_oldest_productid_py():
 
 
 def get_exist_productsid_py():
-    products_list = json.loads(product_search_py())['data']['products']
+    query_str = copy.deepcopy(query_list_data)
+    products_list = product_search_py(query_str)['content']['data']['products']
     products_id = []
     for product in products_list:
         products_id.append(product['id'])
@@ -226,8 +256,11 @@ if __name__ == '__main__':
     # product_search_py()
     # del_latest_product_py()
     # del_all_products_py()
-    # print add_discontinued_product_py()
-    # add_launched_product_py()
+    # print add_max_product_py()
+    # print add_max_product_py()
+    print get_all_products_count_py()
+    # product_info_py()
+    # print add_launched_product_py()
     # conf = {'tags': ['color']}
     # add_product_with_conf_py(conf)
-    del_latest_products_py(2)
+    # del_latest_products_py(2)
