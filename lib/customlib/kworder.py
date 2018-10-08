@@ -235,7 +235,8 @@ def add_dealing_order_with_products_py(cookie=init_cookie):
     :return:
     '''
     order_token = add_undeal_order_with_products_py(cookie)
-    return add_order_by_order_token_py(order_token, cookie)
+    add_order_by_order_token_py(order_token, cookie)
+    return order_token
 
 
 def add_dealing_order_with_product_py(cookie=init_cookie):
@@ -247,7 +248,8 @@ def add_dealing_order_with_product_py(cookie=init_cookie):
     :return:
     '''
     order_token = add_undeal_order_with_product_py(cookie)
-    return add_order_by_order_token_py(order_token, cookie)
+    add_order_by_order_token_py(order_token, cookie)
+    return order_token
 
 
 def add_undeal_order_with_products_py(cookie=init_cookie):
@@ -289,7 +291,8 @@ if __name__ == '__main__':
     # print get_order_token_by_productid_py('602')
     # print get_order_token_by_productidlist_py(['602', '601'])
     # print json.dumps(query_undeal_order_by_num_py())
-    print add_undeal_order_with_products_py()
+    # print add_undeal_order_with_products_py()
+    print get_order_num_by_order_id_py('1c9b41d0-7a20-4600-9a33-459353c892be')
     # print get_latest_undeal_order_num_py()
     # print get_order_num_by_order_id_py('1c9b41d0-7a20-4600-9a33-459353c892be')
     # productid = add_launched_product_py()\

@@ -2,11 +2,29 @@
 # content
 ${contentB_order_title}    全部
 
-# locator
+# locatorB_orderDealing
 ${locatorB_orderDealing_button_all}    dom:document.querySelectorAll(".ant-tabs-tab")[0]    # 待处理订单，全部
-${locatorB_orderDealing_button_alreadyToDeliver}    dom:document.querySelectorAll(".ant-tabs-tab")[1]    # 待处理订单，待发货
+${locatorB_orderDealing_button_toDeliver}    dom:document.querySelectorAll(".ant-tabs-tab")[1]    # 待处理订单，待发货
 ${locatorB_orderDealing_button_delivered}    dom:document.querySelectorAll(".ant-tabs-tab")[2]    # 待处理订单，已发货
 ${locatorB_orderDealing_button_finished}    dom:document.querySelectorAll(".ant-tabs-tab")[3]    # 待处理订单，已完成
+
+${locatorB_orderDealing_text_firstOrder_orderNum}    dom:document.querySelectorAll(".ant-table-row")[0].querySelectorAll("td")[1]    #待处理订单第一个订单的，订单编号
+${locatorB_orderDealing_text_firstOrder_date}    dom:document.querySelectorAll(".ant-table-row")[0].querySelectorAll("td")[2]    #待处理订单第一个订单的，日期
+${locatorB_orderDealing_text_firstOrder_receiverName}    dom:document.querySelectorAll(".ant-table-row")[0].querySelectorAll("td")[3]    #待处理订单第一个订单的，收货人姓名
+${locatorB_orderDealing_text_firstOrder_paymentMethod}    dom:document.querySelectorAll(".ant-table-row")[0].querySelectorAll("td")[4]    #待处理订单第一个订单的，支付方式
+${locatorB_orderDealing_text_firstOrder_paymentStatus}    dom:document.querySelectorAll(".ant-table-row")[0].querySelectorAll("td")[5]    #待处理订单第一个订单的，支付状态
+${locatorB_orderDealing_text_firstOrder_shippingStatus}    dom:document.querySelectorAll(".ant-table-row")[0].querySelectorAll("td")[6]    #待处理订单第一个订单的，物流状态
+${locatorB_orderDealing_text_firstOrder_orderStatus}    dom:document.querySelectorAll(".ant-table-row")[0].querySelectorAll("td")[7]    #待处理订单第一个订单的，订单状态
+${locatorB_orderDealing_text_firstOrder_orderSumPrice}    dom:document.querySelectorAll(".ant-table-row")[0].querySelectorAll("td")[8]    #待处理订单第一个订单的，订单总价
+
+
+
+
+
+# locatorB_orderUndeal
+${locatorB_orderUndeal_button_all}    dom:document.querySelectorAll(".ant-tabs-tab")[0]    # 未完成订单，全部
+${locatorB_orderUndeal_button_toPay}    dom:document.querySelectorAll(".ant-tabs-tab")[1]    # 未完成订单，待支付
+${locatorB_orderUndeal_button_canceled}    dom:document.querySelectorAll(".ant-tabs-tab")[2]    # 未完成订单，已取消
 
 
 

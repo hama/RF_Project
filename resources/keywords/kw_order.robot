@@ -36,7 +36,7 @@ Select All Dealing Order Tag
     Sleep    2
 
 Select To Deliver Dealing Order Tag
-    Wait And Click Element    ${locatorB_orderDealing_button_alreadyToDeliver}
+    Wait And Click Element    ${locatorB_orderDealing_button_toDeliver}
     Sleep    2
 
 Select Delivered Dealing Order Tag
