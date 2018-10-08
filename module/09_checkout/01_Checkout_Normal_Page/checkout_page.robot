@@ -5,22 +5,29 @@ Suite Teardown    Common Teardown    # close the browser opened for this test su
 Test Teardown     Teardown Test Case
 Force Tags        Checkout
 
-Resource          ../../../resources/variable/var_tax_price.robot
-Resource          ../../../resources/variable/var_product_management.robot
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
-Resource          ../../../resources/keywords/kw_product_management.robot
-Resource          ../../../resources/keywords/kw_shipping.robot
 Resource          ../../../resources/keywords/kw_checkout.robot
 Resource          ../../../resources/variable/var_checkout.robot
+Resource          ../../../resources/variable/var_checkout.robot
+Resource          ../../../resources/variable/var_product_management.robot
 Library           ${CURDIR}/../../../lib/customlib/kwproduct.py
 Library           ${CURDIR}/../../../lib/customlib/kwshipping.py
 
 *** Test Cases ***
+xsxsxsxs
+    Click Preview Step
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Add Address Common Step
+    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
+    Sleep    2
+    Wait Until Page Contains Locator    class:order_summary
+
+
 checkout001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
-    [Tags]    P0
+    [Tags]    P0    threshold    smoke
     #.click products btn
     Click Preview Step
     Wait Until Element Is Visible    ${locatorB_checkout_add_card_btn}
@@ -29,20 +36,38 @@ checkout001
 
 checkout002
     [Documentation]    进入checkout界面 显示购买的商品，地址，
-    [Tags]    P1
+    [Tags]    P0    threshold    smoke
     #点击商品预览
     Click Preview Step
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Add Address Common Setp
+    Add Address Common Step
     Wait And Click Element    ${locatorB_checkout_submit_btn_s}
     Sleep    2
     Wait Until Page Contains Locator    dom:document.querySelectorAll(".coline")[0]
 
-checkout004
-    [Documentation]    进入checkout界面 显示search按钮
-    [Tags]    P1
-    Checkout Common Setp
-    Page Should Contain Element    ${locatorB_checkout_search_btn}
+checkout006
+    [Documentation]    验证checkout shipping页面，订单汇总，商品栏，商品标题显示正常
+    [Tags]    P0    threshold    smoke
+    Click Preview Step
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Add Address Common Step
+    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
+    Sleep    2
+    Wait Until Page Contains Locator    class:order_summary
+
+checkout_007
+    [Documentation]    验证checkout shipping页面，订单汇总，商品栏，商品子产品显示正常 > "1.C端购买商品women的子款式：blue XXL,2.进入checkout shipping页面,3.查看订单汇总商品栏子产品" > "子产品显示为：,color：blue,size：XXL"
+    [Tags]    P0    threshold    smoke
+    # 添加一个待自产品的商品
+    Click Preview Step
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Add Address Common Step
+    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
+    
+    
+    
+
+# -------------------------------------------------------------------------------- old -----------------------------------------------------------------------------------
 
 checkout005
     [Documentation]    进入checkout界面 点击搜索按钮 跳转到搜索页面
@@ -525,19 +550,21 @@ Checkout Common Step
     Login With Default User
     #.添加中国的物流
     add_shipping_py
-    add_products
+    #.添加一个上架商品
+    kwproduct.add_launched_product_py
 
 Click Preview Step
     [Documentation]    点击预览的公共步骤
-    Go To Products Page
+    Go To Product Management Page
     Sleep Time
     Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     Sleep Time
     Select Window    New
     Sleep Time
+
 Common Teardown
     [Documentation]    结束公共步骤
     Close Test Suite Browser
-    delShipping
+    delShipping_py
 
    

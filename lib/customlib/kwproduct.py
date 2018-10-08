@@ -17,13 +17,7 @@ def product_search_py(api='/api/product/search?page=0&limit=20', cookie=init_coo
     ret_data = requests.get(url=p_url, headers={"cookie": cookie['cookie']})
     return ret_data.content
 
-<<<<<<< HEAD
- 
-def add_products(cookie=init_cookie):
-=======
-
 def product_add_py(data, cookie=init_cookie):
->>>>>>> 1134a10491b2ffad1bd54ad64a8599422a0c51ae
     """
     添加商品
     :return: True | False
@@ -235,4 +229,5 @@ if __name__ == '__main__':
     # add_launched_product_py()
     # conf = {'tags': ['color']}
     # add_product_with_conf_py(conf)
-    del_latest_products_py(2)
+    # del_latest_products_py(2)
+    print add_launched_product_py()
