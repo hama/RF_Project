@@ -252,13 +252,22 @@ def get_exist_productsid_py():
     return products_id
 
 
+def add_max_product_with_sub_py(cookie=init_cookie):
+    '''
+    添加max商品，即所有可填项都填（含子产品）
+    :param cookie:
+    :return:
+    '''
+    return product_add_py(product_max_data_with_sub, cookie)
+
+
 if __name__ == '__main__':
     # product_search_py()
     # del_latest_product_py()
     # del_all_products_py()
     # print add_max_product_py()
     # print add_max_product_py()
-    print get_all_products_count_py()
+    print add_max_product_with_sub_py()
     # product_info_py()
     # print add_launched_product_py()
     # conf = {'tags': ['color']}
