@@ -263,11 +263,12 @@ def add_undeal_order_with_products_py(cookie=init_cookie):
     count = product_search_py(cookie)['content']['data']['total']
     if count == 0:
         add_max_product_py(cookie)
+        add_max_product_py(cookie)
     elif count == 1:
         add_max_product_py(cookie)
-        add_max_product_py(cookie)
-    productid01 = product_search_py(cookie)['content']['data']['products'][0]['id']
-    productid02 = product_search_py(cookie)['content']['data']['products'][1]['id']
+    search_data = product_search_py(cookie)
+    productid01 = search_data['content']['data']['products'][0]['id']
+    productid02 = search_data['content']['data']['products'][1]['id']
     productidlist = [productid01, productid02]
     return get_order_token_by_productidlist_py(productidlist)
 
