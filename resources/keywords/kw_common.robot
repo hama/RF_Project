@@ -49,11 +49,29 @@ Go To Home By Url
     Go To    ${home_page}
     Sleep    1
 
-Go To Order Page
-    [Documentation]    跳转到订单页面
-    Wait And Click Element    ${locatorB_order}
-    Wait Until Page Contains    ${contentB_order_title}
-    Location Should Be    ${url_order}
+Go To Dealing Order Page
+    [Documentation]    跳转到待处理订单页面
+    Wait Until Element Is Visible    ${locatorB_products}
+    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_orderMenus_expanded}    5    #.获取导航栏订单的下拉按钮元素
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_order}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_order_dealing}
+    ...    ELSE    Wait And Click Element    ${locatorB_order_dealing}
+    Sleep    2
+    Wait Until Page Contains    待处理订单
+    Location Should Be    ${url_order_dealing}
+    Sleep    1
+
+Go To Undeal Order Page
+    [Documentation]    跳转到未完成订单页面
+    Wait Until Element Is Visible    ${locatorB_products}
+    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_orderMenus_expanded}    5    #.获取导航栏订单的下拉按钮元素
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_order}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_order_undeal}
+    ...    ELSE    Wait And Click Element    ${locatorB_order_undeal}
+    Sleep    2
+    Wait Until Page Contains    未完成订单
+    Location Should Be    ${url_order_undeal}
+    Sleep    1
 
 Go To Product Management Page
     [Documentation]    跳转到商品管理页面

@@ -257,7 +257,6 @@ product_min_data = {
     'images': []
 }
 
-
 collecion_data = {
     'title': 'autotest_collection_name',
     'description': 'autotest_collection_description',
@@ -286,7 +285,6 @@ collecion_data = {
     }
 }
 
-
 comment_data = {
     'star': '5',
     'content': 'autotest_comment_content',
@@ -296,4 +294,181 @@ comment_data = {
     'product_id': 000,
     # 'img_link': ['//cn.cdn.shoplazza.com/d330406101ae1c48e33ed1f29f77c8b2.jpg'],
     'ctime': '2018-9-28 10:10:10'
+}
+
+shipping_data = {
+    'shipping_name': 'autotest_shipping',
+    'shipping_area': '[{"country_id":"44","zone_ids":"-1"}]',
+    'has_other_country': 0,
+    'shipping_plan': '[{"name":"price_fee","shipping_method":"price","range_min":0,'
+                     '"range_max":-1,"rate_amount":0,"payment_list":"cod;online;custom;credit_card",'
+                     '"desc":"","range_unit":"g"}]'
+}
+
+checkout_create_data = {
+    'line_items': [
+        {
+            'quantity': 1,
+            'variant_id': 628,
+            'note': ''
+        }
+    ],
+    'refer_info': {
+        'source': 'cart'  # source:buy_now/cart
+    }
+}
+
+payment_pay_data = {
+    'order_token': 'be6cb44f-402a-4728-84a1-c974ead1e97e',
+    'payment_line': {
+        'id': '1',
+        'name': 'Cash on Delivery',
+        'desc': None,
+        'tips': None,
+        'logo': None,
+        'payment_channel': 'cod',
+        'payment_rate': None,
+        'transaction_fee': None,
+        'is_enable': '1',
+        'is_active': True,
+        'payment_method': 'cod',
+        'public_key': None
+    },
+    'card_info': {
+
+    },
+    'need_billing_address': 0,
+    'billing_address_info': {
+        'first_name': '',
+        'last_name': '',
+        'address': '',
+        'address1': '',
+        'city': '',
+        'country_code': '',
+        'province_code': '',
+        'zip': ''
+    }
+}
+
+place_order_data = {
+    "order_token": "be6cb44f-402a-4728-84a1-c974ead1e97e",
+    "shipping_line": {
+        "name": "price_fee",
+        "desc": "",
+        "range_min": "0.00",
+        "range_max": "-1.00",
+        "range_unit": "",
+        "rate_amount": "0.00",
+        "shipping_method": "price",
+        "payment_list": [
+            "cod",
+            "online",
+            "custom",
+            "credit_card"
+        ],
+        "id": "21"
+    },
+    "shipping_address": {
+        "first_name": "name",
+        "last_name": "lastname",
+        "address": "addr",
+        "address1": "addr1",
+        "city": "city",
+        "country_code": "CN",
+        "province_code": "BE",
+        "city_code": "",
+        "area": "",
+        "zip": "00000",
+        "email": "12345@autotest.com",
+        "phone": "123456789",
+        "company": "company",
+        "buyer_accepts_marketing": "on",
+        "remember": "on",
+        "customer_note": "",
+        "order_token": "be6cb44f-402a-4728-84a1-c974ead1e97e",
+        "country": "China",
+        "province": "北京"
+    },
+    "discount_code": "",
+    "prices": {
+        "total_price": 444,
+        "subtotal_price": 444,
+        "shipping_price": 0,
+        "tax_price": 0,
+        "discount_price": 0,
+        "discount_line_item_price": 0,
+        "discount_code_price": 0
+    },
+    "customer_info": {
+        "note": "",
+        "newsletter": 1
+    }
+}
+
+price_calculate_data = {
+    "order_token": "be6cb44f-402a-4728-84a1-c974ead1e97e",
+    "shipping_line": {
+        "name": "price_fee",
+        "desc": "",
+        "range_min": "0.00",
+        "range_max": "-1.00",
+        "range_unit": "",
+        "rate_amount": "0.00",
+        "shipping_method": "price",
+        "payment_list": [
+            "cod",
+            "online",
+            "custom",
+            "credit_card"
+        ],
+        "id": "21"
+    },
+    "shipping_address": {
+        "country_code": "CN",
+        "province_code": "BE"
+    },
+    "discount_code": "",
+    "customer_info": {
+
+    }
+}
+
+# /api/payment/method这个接口的编辑数据
+payment_method_edit_data = {
+    "method_name": "Cash on Delivery",
+    "method_desc": "desc",
+    "method_tips": "tips",
+    "payment_method": "cod"
+}
+
+# /api/payment/method这个接口的激活数据
+payment_method_activation_data = {
+    "payment_method": "cod",
+    "method_is_enable": 0
+}
+
+cart_add_data = {
+    'product_id': '601',
+    'variant_id': '641',
+    'quantity': '1',
+    'ref': '',
+}
+
+shipping_lines_data = {
+    'country_code': 'CN',
+    'province_code': 'BE',
+    'order_token': '2e043a92-46c5-4f26-953a-88f347cd1e08'
+}
+
+# 订单列表数据查询入参数据
+query_orders_data = {
+    'page': '1',
+    'per_page': '10',
+    'deal_status': 'dealing'
+}
+
+# 通用列表数据查询入参数据
+query_list_data = {
+    'page': '0',
+    'limit': '20'
 }

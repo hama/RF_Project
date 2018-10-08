@@ -8,7 +8,6 @@ Resource          ../../resources/variable/var_tax_price.robot
 Resource          ../../resources/variable/var_order.robot
 Resource          ../../resources/keywords/kw_browser.robot
 Resource          ../../resources/keywords/kw_common.robot
-Resource          ../../resources/keywords/kw_add_order.robot
 Resource          ../../resources/keywords/kw_order.robot
 Resource          ../../resources/keywords/kw_product_management.robot
 Resource          ../../resources/keywords/kw_checkout.robot

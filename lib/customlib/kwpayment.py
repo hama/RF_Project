@@ -1,26 +1,88 @@
 # -*- coding:utf-8 -*-
 
+from raw_data import *
 from variable import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def payment_py(method_is_enable=1, payment_method="cod", cookie=init_cookie):
+def payment_method_py(data, cookie=init_cookie):
     """
-    支付方式公共方法
-    :param method_is_enable:  添加|删除 : 1|0
-    :param payment_method:  添加的方式
-    :return:  True | False
+    收款渠道激活
     """
-    changeUrl = home_page_url + "/api/payment/method"
-    data = {"method_is_enable": method_is_enable, "payment_method": payment_method}
-    res_data = requests.post(url=changeUrl, headers={"cookie": cookie['cookie']}, json=data)
+    url = home_page_url + "/api/payment/method"
 
-    if res_data.status_code == 200 and json.loads(res_data.content)['state'] == 0:
-        return True
-    else:
-        return False
+    try:
+        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200:
+            return_data['result'] = 'success'
+        else:
+            return_data['result'] = 'fail'
+        return return_data
+    except Exception as e:
+        return e
+
+
+def payment_channel_py(method_is_enable=1, payment_method="cod", cookie=init_cookie):
+    url = home_page_url + "/api/payment/channel"
+    data = {"method_is_enable": method_is_enable, "payment_method": payment_method}
+
+    try:
+        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200:
+            return_data['result'] = 'success'
+        else:
+            return_data['result'] = 'fail'
+        return return_data
+    except Exception as e:
+        return e
+
+
+def payment_pay_py(data, cookie=init_cookie):
+    '''
+    付款-下订单
+    :param data:
+    :param cookie:
+    :return:
+    '''
+    url = myshoplaza_url + '/checkout/payment/pay'
+    try:
+        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200:
+            return_data['result'] = 'success'
+        else:
+            return_data['result'] = 'fail'
+        return return_data
+    except Exception as e:
+        return e
+
+
+def payment_list_py(cookie=init_cookie):
+    '''
+    付款-下订单
+    :param data:
+    :param cookie:
+    :return:
+    '''
+    url = home_page_url + '/api/payment/list'
+    try:
+        response_data = requests.get(url=url, headers={"cookie": cookie['cookie']})
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200:
+            return_data['result'] = 'success'
+        else:
+            return_data['result'] = 'fail'
+        return return_data
+    except Exception as e:
+        return e
 
 
 def add_payment_cod_py():
@@ -28,7 +90,10 @@ def add_payment_cod_py():
     添加支付方式 cod
     :return: True | False
     """
-    return payment_py()
+    data = copy.deepcopy(payment_method_activation_data)
+    data['method_is_enable'] = 1
+    data['payment_method'] = "cod"
+    return payment_method_py(data)
 
 
 def del_payment_cod_py():
@@ -36,7 +101,10 @@ def del_payment_cod_py():
     删除支付方式 cod
     :return: True | False
     """
-    return payment_py(0)
+    data = copy.deepcopy(payment_method_activation_data)
+    data['method_is_enable'] = 0
+    data['payment_method'] = "cod"
+    return payment_method_py(data)
 
 
 def add_payment_pk_py():
@@ -44,7 +112,10 @@ def add_payment_pk_py():
     添加支付方式 paylinks
     :return: True | False
     """
-    return payment_py(1, 'credit_card')
+    data = copy.deepcopy(payment_method_activation_data)
+    data['method_is_enable'] = 1
+    data['payment_method'] = "credit_card"
+    return payment_method_py(data)
 
 
 def del_payment_pk_py():
@@ -52,4 +123,11 @@ def del_payment_pk_py():
     删除支付方式 paylinks
     :return: True | False
     """
-    return payment_py(0, 'credit_card')
+    data = copy.deepcopy(payment_method_activation_data)
+    data['method_is_enable'] = 0
+    data['payment_method'] = "credit_card"
+    return payment_method_py(data)
+
+
+if __name__ == '__main__':
+    print payment_list_py()

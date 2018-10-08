@@ -11,6 +11,8 @@ ${locatorB_global_alert_cancel}    dom:document.querySelectorAll('button[data-ro
 ### 菜单栏 locator
 ${locatorB_overview}    dom:document.querySelectorAll('span[data-robot="overview"]')[0]    # 导航栏-概览（即主页）
 ${locatorB_order}    dom:document.querySelectorAll('span[data-robot="order"]')[0]    # 导航栏-订单
+${locatorB_order_dealing}    dom:document.querySelectorAll('a[href="/order/_dealing"]')[0]    # 导航栏-待处理订单
+${locatorB_order_undeal}    dom:document.querySelectorAll('a[href="/order/_undeal"]')[0]    # 导航栏-未完成订单
 ${locatorB_products}    dom:document.querySelectorAll('span[data-robot="products"]')[0]    # 导航栏-商品
 ${locatorB_product_management}    dom:document.querySelectorAll('a[href="/products"]')[0]    # 导航栏-商品管理
 ${locatorB_product_collection}    dom:document.querySelectorAll('a[href="/collection"]')[0]    # 导航栏-商品专辑
@@ -65,6 +67,8 @@ ${locatorB_select_batchOperations}    dom:document.querySelectorAll(".ant-select
 ### 页面模块 url
 ${url_home_page}    ${home_page}/    # home page
 ${url_order}      ${home_page}/order    # order page
+${url_order_dealing}      ${home_page}/order/_dealing
+${url_order_undeal}      ${home_page}/order/_undeal
 ${url_products}    ${home_page}/products    # products page
 ${url_marketing}    ${home_page}/subtraction    # marketing page
 ${url_tax_price}    ${home_page}/taxPrice    # tax price
