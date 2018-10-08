@@ -204,7 +204,18 @@ Go To Uploadfile Page
     ...    ELSE    Wait And Click Element    ${locatorB_setting_upfile}
     Wait Until Page Contains    上传文件
     Location Should Be    ${url_uploadFile}
-    
+
+Go To Checkout Settings Page
+    [Documentation]    跳转到店铺装修-结账流程页面
+    Wait Until Element Is Visible    ${locatorB_setting}
+    # 若设置按钮没展开，则展开设置按钮
+    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_decorationMenus_expanded}    5
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_decoration}
+    Run Keyword If    '${attr}'=='False'    Sleep    2
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_decoration_checkoutSettings}
+    ...    ELSE    Wait And Click Element    ${locatorB_decoration_checkoutSettings}
+    Wait Until Page Contains    结账页设置
+    Location Should Be    ${url_checkoutSettings}
 
 Wait And Input Text
     [Arguments]    ${element_locator}    ${text}    ${timeout}=3    ${retry_time}=1

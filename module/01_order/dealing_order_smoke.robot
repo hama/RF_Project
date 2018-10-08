@@ -47,10 +47,17 @@ order040
     [Documentation]     验证待处理订单列表中，订单栏日期显示为在checkout生成订单的时间
     [tags]    P0    threshold    smoke
     ${order_id}    kworder.add_dealing_order_with_products_py
+	# 创建订单的时间戳
+    ${timestamp1}    Get Time    epoch
     Reload Page And Start Ajax
-    ${timestamp1}    Get Time
     ${item1_createtime}=    Wait And Get Text    ${locatorB_orderDealing_text_firstOrder_date}
+    # 通过订单号，判断是否创建了一个新的订单
 	${order_num00}    kworder.get_latest_dealing_order_num_py
 	${order_num01}    kworder.get_order_num_by_order_id_py    ${order_id}
 	Should Be Equal    ${order_num00}    ${order_num01}
+	# 创建订单的时间戳
+	${timestamp2}    Convert Date    ${item1_createtime}    epoch
+	${status} =    Evaluate    -60000 < ${timestamp2}-${timestamp1} < 60000
+
+
 
