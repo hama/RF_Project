@@ -66,7 +66,7 @@ def payment_pay_py(data, cookie=init_cookie):
 
 def payment_list_py(cookie=init_cookie):
     '''
-    付款-下订单
+    收款渠道列表
     :param data:
     :param cookie:
     :return:
@@ -127,6 +127,19 @@ def del_payment_pk_py():
     data['method_is_enable'] = 0
     data['payment_method'] = "credit_card"
     return payment_method_py(data)
+
+
+def do_pay_with_conf_py(conf={}, cookie=init_cookie):
+    '''
+    支付订单
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(payment_pay_data)
+    dict_deepupdate(data, conf)
+
+    return payment_pay_py(data, cookie)
 
 
 if __name__ == '__main__':

@@ -18,6 +18,20 @@ ${locatorB_orderDealing_text_firstOrder_orderStatus}    dom:document.querySelect
 ${locatorB_orderDealing_text_firstOrder_orderSumPrice}    dom:document.querySelectorAll(".ant-table-row")[0].querySelectorAll("td")[8]    #待处理订单第一个订单的，订单总价
 
 
+${locatorB_orderDealing_text_paymentMethod}    dom:document.querySelectorAll('label[for="payment_method"]')    # 支付方式
+${locatorB_orderDealing_text_financialStatus}    dom:document.querySelectorAll('label[for="financial_status"]')    # 支付状态
+${locatorB_orderDealing_text_shippingStatus}    dom:document.querySelectorAll('label[for="fulfillment_status"]')    # 物流状态
+${locatorB_orderDealing_text_orderStatus}    dom:document.querySelectorAll('label[for="status"]')    # 订单状态
+
+
+${locatorB_orderDealing_select_paymentMethod}    dom:document.querySelectorAll('[id="payment_method"]')    # 支付方式select
+${locatorB_orderDealing_select_financialStatus}    dom:document.querySelectorAll('[id="financial_status"]')    # 支付状态select
+${locatorB_orderDealing_select_shippingStatus}    dom:document.querySelectorAll('[id="fulfillment_status"]')    # 物流状态select
+${locatorB_orderDealing_select_orderStatus}    dom:document.querySelectorAll('[id="status"]')    # 订单状态select
+
+
+
+
 
 
 

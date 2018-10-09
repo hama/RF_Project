@@ -231,43 +231,43 @@ def add_order_by_conf_py(conf={}, cookie=init_cookie):
 
     # 1、调计算价格接口
     if 'price_calculate_conf' in key_list:
-        conf['price_calculate_conf']['order_token'] = order_token
         price_calculate_conf = conf['price_calculate_conf']
     else:
         price_calculate_conf = copy.deepcopy(price_calculate_data)
-        price_calculate_conf['order_token'] = order_token
+    price_calculate_conf['order_token'] = order_token
     calculate_result = do_price_calculate_with_conf_py(price_calculate_conf, cookie)
 
     # 2、调shipping_lines接口
     if 'shipping_lines_conf' in key_list:
-        conf['shipping_lines_conf']['order_token'] = order_token
         shipping_lines_conf = conf['shipping_lines_conf']
     else:
         shipping_lines_conf = copy.deepcopy(shipping_lines_data)
-        shipping_lines_conf['order_token'] = order_token
-    shipping_lines_result = checkout_shipping_lines_py(shipping_lines_conf, cookie)
+    shipping_lines_conf['order_token'] = order_token
+    shipping_lines_result = get_shipping_lines_with_conf_py(shipping_lines_conf, cookie)
 
     # 3、调订单地址接口
     if 'place_order_conf' in key_list:
-        conf['place_order_conf']['order_token'] = order_token
         place_order_conf = conf['place_order_conf']
     else:
         place_order_conf = copy.deepcopy(place_order_data)
-        place_order_conf['order_token'] = order_token
-        place_order_conf['prices'] = calculate_result['content']['data']['prices']
-        place_order_conf['shipping_line'] = shipping_lines_result['content']['data']['shipping_lines'][0]
+    place_order_conf['order_token'] = order_token
+    place_order_conf['prices'] = calculate_result['content']['data']['prices']
+    place_order_conf['shipping_line'] = shipping_lines_result['content']['data']['shipping_lines'][0]
     add_place_order_with_conf_py(place_order_conf, cookie)
 
     # 4、调付款接口
     if 'payment_pay_conf' in key_list:
-        conf['payment_pay_data']['order_token'] = order_token
         payment_pay_conf = conf['payment_pay_conf']
+        # 保证payment_line的数据是有效的
+        if not conf['payment_pay_conf'].has_key('payment_line'):
+            data_payment_line = payment_list_py()['content']['data'][0]['channel_list'][0]
+            payment_pay_conf['payment_line'] = data_payment_line
     else:
-        data_payment_line = payment_list_py()['content']['data'][0]['channel_list'][0]
         payment_pay_conf = copy.deepcopy(payment_pay_data)
-        payment_pay_conf['order_token'] = order_token
+        data_payment_line = payment_list_py()['content']['data'][0]['channel_list'][0]
         payment_pay_conf['payment_line'] = data_payment_line
-    payment_pay_py(payment_pay_conf, cookie)
+    payment_pay_conf['order_token'] = order_token
+    do_pay_with_conf_py(payment_pay_conf, cookie)
 
     return order_token
 

@@ -158,6 +158,12 @@ def get_order_token_by_productidlist_py(product_id_list, cookie=init_cookie):
 
 
 def add_place_order_with_conf_py(conf={}, cookie=init_cookie):
+    '''
+    给订单添加收货地址信息
+    :param conf:
+    :param cookie:
+    :return:
+    '''
     data = copy.deepcopy(place_order_data)
     dict_deepupdate(data, conf)
     # key_list = conf.keys()
@@ -178,6 +184,12 @@ def add_place_order_with_conf_py(conf={}, cookie=init_cookie):
 
 
 def do_price_calculate_with_conf_py(conf={}, cookie=init_cookie):
+    '''
+    计算最终价格
+    :param conf:
+    :param cookie:
+    :return:
+    '''
     data = copy.deepcopy(price_calculate_data)
     dict_deepupdate(data, conf)
     # key_list = conf.keys()
@@ -194,6 +206,17 @@ def do_price_calculate_with_conf_py(conf={}, cookie=init_cookie):
 
     return checkout_price_calculate_py(data, cookie)
 
+def get_shipping_lines_with_conf_py(conf={}, cookie=init_cookie):
+    '''
+    获取shipping_lines
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(shipping_lines_data)
+    dict_deepupdate(data, conf)
+
+    return checkout_shipping_lines_py(data, cookie)
 
 if __name__ == '__main__':
     print json.dumps(checkout_shipping_lines_py(shipping_lines_data))
