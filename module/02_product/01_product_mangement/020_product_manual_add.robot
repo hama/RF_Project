@@ -108,7 +108,8 @@ products021.1
     ${item1_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[0]
     ${item2_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[1]
     ${result}    lib_utils.compare_time_py    ${item1_createtime}    ${item2_createtime}
-    Should Be Equal    ${result}    gt
+    ${status} =    Evaluate    ${result}>0
+    Should Be Equal    '${status}'    'True'
 
 products021.2
     [Documentation]    验证展示的上架商品数量正确
@@ -142,7 +143,8 @@ products023.1
     ${item1_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[0]
     ${item2_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[1]
     ${result}    lib_utils.compare_time_py    ${item1_createtime}    ${item2_createtime}
-    Should Be Equal    ${result}    gt
+    ${status} =    Evaluate    ${result}>0
+    Should Be Equal    '${status}'    'True'
 
 products023.2
     [Documentation]    验证展示的下架商品数量正确

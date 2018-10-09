@@ -13,7 +13,7 @@ Library           ${CURDIR}/../../lib/customlib/lib_utils.py
 Library           ${CURDIR}/../../lib/customlib/kworder.py
 
 
-*** Testcases ***
+*** Test Cases ***
 order003
     [Documentation]     验证未完成订单列表可正常进入
     [tags]    P0    threshold    smoke

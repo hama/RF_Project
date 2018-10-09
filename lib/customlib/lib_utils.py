@@ -6,7 +6,7 @@ import random
 import re
 import sys
 import time
-import uuid
+import uuid,copy
 
 import oss2
 import requests
@@ -89,13 +89,10 @@ def compare_time_py(format_time1, format_time2):
     """
     timestamp1 = time.mktime(time.strptime(format_time1, "%Y-%m-%d %H:%M:%S"))
     timestamp2 = time.mktime(time.strptime(format_time2, "%Y-%m-%d %H:%M:%S"))
-    if timestamp1 > timestamp2:
-        return 'gt'
-    elif timestamp1 < timestamp2:
-        return 'lt'
-    elif timestamp1 == timestamp2:
+    if timestamp1 == timestamp2:
         return 'eq'
-
+    else:
+        return timestamp1 - timestamp2
 
 
 def upload_oss_py(urlex, name='', extension='', timeout_second=30):
@@ -154,3 +151,35 @@ def upload_oss_py(urlex, name='', extension='', timeout_second=30):
         except Exception as e:
             print e
             return False
+
+
+# json_data = {'a':{'a1':'a1','a2':'a2'}}
+# json_conf = {'a':{'a1':'b1'}}
+def dict_deepupdate(json_data, json_conf):
+    '''
+    深度更新
+    通过遍历，把json_conf中的内容，更新至json_data中
+    :param json_data:
+    :param json_conf:
+    :return:
+    '''
+    if isinstance(json_conf, dict):
+        for key, values in json_conf.items():
+            if isinstance(values, dict):
+                dict_deepupdate(json_data[key], values)
+            else:
+                json_data[key] = values
+
+
+if __name__ == '__main__':
+    # time1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    # time.sleep(3)
+    # time2 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    # print time1
+    # print compare_time_py(time1, time2)
+    # dict.update(dict2)
+    json_data = {'a': {'a1': 'a1', 'a2': 'a2'}, 'b': [123], 'c': {'c1': [456]}}
+    # json_conf = {'a': {'a1': 'b1'}, 'c': {'c1': 'nb'},'d':'ddd'}
+    json_conf = {}
+    dict_deepupdate(json_data, json_conf)
+    print 'a'

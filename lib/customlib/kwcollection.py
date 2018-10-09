@@ -67,7 +67,7 @@ def collection_updatestatus_py(collection_list, status, cookie=init_cookie):
         return e
 
 
-def add_collection_with_conf_py(conf, cookie=init_cookie):
+def add_collection_with_conf_py(conf={}, cookie=init_cookie):
     '''
     通过conf（dict数据类型）配置来添加专辑
     :param conf:

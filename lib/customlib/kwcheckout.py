@@ -157,39 +157,40 @@ def get_order_token_by_productidlist_py(product_id_list, cookie=init_cookie):
     return get_order_token_py(data, cookie)
 
 
-def add_place_order_with_conf_py(conf, cookie=init_cookie):
+def add_place_order_with_conf_py(conf={}, cookie=init_cookie):
     data = copy.deepcopy(place_order_data)
-    key_list = conf.keys()
-    if 'order_token' in key_list:
-        data['order_token'] = conf['order_token']
-    if 'shipping_line' in key_list:
-        data['shipping_line'] = conf['shipping_line']
-    if 'shipping_address' in key_list:
-        data['shipping_address'] = conf['shipping_address']
-    if 'discount_code' in key_list:
-        data['discount_code'] = conf['discount_code']
-    if 'customer_info' in key_list:
-        data['customer_info'] = conf['customer_info']
-    if 'prices' in key_list:
-        data['prices'] = conf['prices']
+    dict_deepupdate(data, conf)
+    # key_list = conf.keys()
+    # if 'order_token' in key_list:
+    #     data['order_token'] = conf['order_token']
+    # if 'shipping_line' in key_list:
+    #     data['shipping_line'] = conf['shipping_line']
+    # if 'shipping_address' in key_list:
+    #     data['shipping_address'] = conf['shipping_address']
+    # if 'discount_code' in key_list:
+    #     data['discount_code'] = conf['discount_code']
+    # if 'customer_info' in key_list:
+    #     data['customer_info'] = conf['customer_info']
+    # if 'prices' in key_list:
+    #     data['prices'] = conf['prices']
 
     return checkout_place_order_py(data, cookie)
 
 
-def do_price_calculate_with_conf_py(conf, cookie=init_cookie):
+def do_price_calculate_with_conf_py(conf={}, cookie=init_cookie):
     data = copy.deepcopy(price_calculate_data)
-
-    key_list = conf.keys()
-    if 'order_token' in key_list:
-        data['order_token'] = conf['order_token']
-    if 'shipping_line' in key_list:
-        data['shipping_line'] = conf['shipping_line']
-    if 'shipping_address' in key_list:
-        data['shipping_address'] = conf['shipping_address']
-    if 'discount_code' in key_list:
-        data['discount_code'] = conf['discount_code']
-    if 'customer_info' in key_list:
-        data['customer_info'] = conf['customer_info']
+    dict_deepupdate(data, conf)
+    # key_list = conf.keys()
+    # if 'order_token' in key_list:
+    #     data['order_token'] = conf['order_token']
+    # if 'shipping_line' in key_list:
+    #     data['shipping_line'] = conf['shipping_line']
+    # if 'shipping_address' in key_list:
+    #     data['shipping_address'] = conf['shipping_address']
+    # if 'discount_code' in key_list:
+    #     data['discount_code'] = conf['discount_code']
+    # if 'customer_info' in key_list:
+    #     data['customer_info'] = conf['customer_info']
 
     return checkout_price_calculate_py(data, cookie)
 

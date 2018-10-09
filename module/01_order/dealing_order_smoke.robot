@@ -4,16 +4,16 @@ Suite Teardown    Dealing Order Suite Teardown
 Test Setup        Dealing Order Case Setup
 Test Teardown     Teardown Test Case
 Force Tags        Order
-Resource          ../../resources/variable/var_order.robot
 Resource          ../../resources/variable/var_common.robot
+Resource          ../../resources/variable/var_order.robot
 Resource          ../../resources/keywords/kw_common.robot
 Resource          ../../resources/keywords/kw_browser.robot
 Resource          ../../resources/keywords/kw_order.robot
 Library           ${CURDIR}/../../lib/customlib/lib_utils.py
-Library           ${CURDIR}/../../lib/customlib/kworder.py
 
 
-*** Testcases ***
+
+*** Test Cases ***
 order002
 	[Documentation]     验证在菜单栏点击订单时，默认选中并进入订单的第一个子菜单：待处理订单
     [tags]    P0    threshold    smoke
@@ -48,16 +48,34 @@ order040
     [tags]    P0    threshold    smoke
     ${order_id}    kworder.add_dealing_order_with_products_py
 	# 创建订单的时间戳
-    ${timestamp1}    Get Time    epoch
+    ${createtime1}    Get Time
     Reload Page And Start Ajax
-    ${item1_createtime}=    Wait And Get Text    ${locatorB_orderDealing_text_firstOrder_date}
+    ${tmptime} =    Sleep And Get Text    ${locatorB_orderDealing_text_firstOrder_date}
+    ${createtime2} =    Convert Date    ${tmptime}    result_format=%Y-%m-%d %H:%M:%S
     # 通过订单号，判断是否创建了一个新的订单
 	${order_num00}    kworder.get_latest_dealing_order_num_py
 	${order_num01}    kworder.get_order_num_by_order_id_py    ${order_id}
 	Should Be Equal    ${order_num00}    ${order_num01}
-	# 创建订单的时间戳
-	${timestamp2}    Convert Date    ${item1_createtime}    epoch
-	${status} =    Evaluate    -60000 < ${timestamp2}-${timestamp1} < 60000
+	${result} =    lib_utils.compare_time_py    ${createtime1}    ${createtime2}
+	${status} =    Evaluate    ${result}<10
+	Should Be Equal    '${status}'    'True'
+
+order041
+    [Documentation]     验证待处理订单列表中，订单栏顾客姓名显示为在checkout下单时填写的顾客姓名
+    [tags]    P0    threshold    smoke
+
+    &{shipping_address} =    Create Dictionary
+    ...    first_name=auto
+    ...    last_name=test
+    &{place_order_conf} =    Create Dictionary
+    ...    shipping_address=&{shipping_address}
+    &{conf} =    Create Dictionary
+    ...    place_order_conf=&{place_order_conf}
+    Log To Console    ${conf}
+    ${order_id}    kworder.add_order_by_conf_py    ${conf}
+    Reload Page And Start Ajax
+    ${tmptime} =    Sleep And Get Text    ${locatorB_orderDealing_text_firstOrder_receiverName}
+	Should Be Equal    '${status}'    'True'
 
 
 

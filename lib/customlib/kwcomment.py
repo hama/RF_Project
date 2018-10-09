@@ -69,7 +69,7 @@ def add_unpublished_comment_py(cookie=init_cookie):
     add_comment_with_conf_py(conf, cookie)
 
 
-def add_comment_with_conf_py(conf, cookie=init_cookie):
+def add_comment_with_conf_py(conf={}, cookie=init_cookie):
     '''
     通过conf（dict数据类型）配置来添加评论
     :param conf:
