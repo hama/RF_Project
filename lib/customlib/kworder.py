@@ -37,14 +37,79 @@ def admin_orders_by_str_py(string, cookie=init_cookie):
         return e
 
 
-def del_order_py(order_id, cookie=init_cookie):
+def orders_fulfillments_via_post_py(order_token, data, cookie=init_cookie):
     '''
-    删除订单（只能软删除已取消订单）
-    :param order_id:
+    设置订单发货
+    :param order_token:
     :param cookie:
     :return:
     '''
-    url = '%s/api/admin/orders/%s.json' % (home_page_url, order_id)
+    url = '%s/api/admin/orders/%s/fulfillments' % (home_page_url, order_token)
+    try:
+        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200:
+            return_data['result'] = 'success'
+        else:
+            return_data['result'] = 'fail'
+        return return_data
+    except Exception as e:
+        return e
+
+
+def orders_fulfillments_via_get_py(order_token, cookie=init_cookie):
+    '''
+    查询订单发货状态
+    :param order_token:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/admin/orders/%s/fulfillments' % (home_page_url, order_token)
+    try:
+        response_data = requests.get(url=url, headers={"cookie": cookie['cookie']})
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200:
+            return_data['result'] = 'success'
+        else:
+            return_data['result'] = 'fail'
+        return return_data
+    except Exception as e:
+        return e
+
+
+def orders_finish_py(order_token, fulfillment_id, cookie=init_cookie):
+    '''
+     B端确认收货
+    fulfillment的id通过orders_fulfillments_via_post_py获取
+    :param order_token:
+    :param fulfillment_id:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/admin/orders/%s/fulfillments/%s/finish' % (home_page_url, order_token, fulfillment_id)
+    try:
+        response_data = requests.patch(url=url, headers={"cookie": cookie['cookie']})
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200:
+            return_data['result'] = 'success'
+        else:
+            return_data['result'] = 'fail'
+        return return_data
+    except Exception as e:
+        return e
+
+
+def del_order_py(order_token, cookie=init_cookie):
+    '''
+    删除订单（只能软删除已取消订单）
+    :param order_token:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/admin/orders/%s.json' % (home_page_url, order_token)
     try:
         response_data = requests.delete(url=url, headers={"cookie": cookie['cookie']})
         return_data = {}
@@ -56,6 +121,19 @@ def del_order_py(order_id, cookie=init_cookie):
         return return_data
     except Exception as e:
         return e
+
+
+def shipment_with_conf_py(order_token, conf={}, cookie=init_cookie):
+    '''
+    通过productidlist创建未完成订单
+    :param order_token:
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(orders_fulfillments_data)
+    dict_deepupdate(data, conf)
+    return orders_fulfillments_via_post_py(order_token, data, cookie)
 
 
 def query_all_dealing_order_py(cookie=init_cookie):
@@ -130,24 +208,24 @@ def get_undeal_order_count_py(cookie=init_cookie):
     return admin_orders_by_raw_data_py(data, cookie)['content']['count']
 
 
-def query_order_py(order_id, cookie=init_cookie):
+def query_order_py(order_token, cookie=init_cookie):
     '''
     查询指定order的信息
-    :param order_id:
+    :param order_token:
     :param cookie:
     :return:
     '''
-    return admin_orders_by_str_py(order_id, cookie)
+    return admin_orders_by_str_py(order_token, cookie)
 
 
-def get_order_num_by_order_id_py(order_id, cookie=init_cookie):
+def get_order_num_by_order_token_py(order_token, cookie=init_cookie):
     '''
     获取指定order订单编号
-    :param order_id:
+    :param order_token:
     :param cookie:
     :return:
     '''
-    return admin_orders_by_str_py(order_id, cookie)['content']['order']['order_no']
+    return admin_orders_by_str_py(order_token, cookie)['content']['order']['order_no']
 
 
 def get_latest_dealing_order_num_by_num_py(num, cookie=init_cookie):
@@ -203,10 +281,97 @@ def add_order_by_order_token_py(order_token, cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    return add_order_by_conf_py({'order_token': order_token}, cookie)
+    return add_deading_order_with_conf_py({'order_token': order_token}, cookie)
 
 
-def add_order_by_conf_py(conf={}, cookie=init_cookie):
+def add_deading_order_with_delivering_status_py(conf={}, cookie=init_cookie):
+    '''
+    创建待处理订单的发货状态为：待发货
+    	COD支付	待支付	待发货	进行中
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    return add_deading_order_with_conf_py(conf, cookie)
+
+
+def add_deading_order_with_some_delivered_status_py(conf={}, cookie=init_cookie):
+    '''
+    创建待处理订单的发货状态为：部分发货
+    	COD支付	待支付	部分发货	进行中
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    order_token = add_deading_order_with_conf_py(conf, cookie)
+    productidlist_in_order = get_productidlist_in_order_py(order_token, cookie)
+    conf = {'line_item_ids': [productidlist_in_order[0]]}
+    return shipment_with_conf_py(order_token, conf, cookie)
+
+
+def add_deading_order_with_all_delivered_status_py(conf={}, cookie=init_cookie):
+    '''
+    创建待处理订单的发货状态为：全部发货
+    	COD支付	待支付	全部发货	进行中
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    order_token = add_deading_order_with_conf_py(conf, cookie)
+    productidlist_in_order = get_productidlist_in_order_py(order_token, cookie)
+    conf = {'line_item_ids': productidlist_in_order}
+    return shipment_with_conf_py(order_token, conf, cookie)
+
+
+def add_deading_order_with_some_finished_status_py(conf={}, cookie=init_cookie):
+    '''
+    创建待处理订单的
+    发货状态：部分完成
+    	COD支付	已支付	部分完成	进行中
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    order_token = add_deading_order_with_conf_py(conf, cookie)
+    productidlist_in_order = get_productidlist_in_order_py(order_token, cookie)
+    conf00 = {'line_item_ids': [productidlist_in_order[0]]}
+    conf01 = {'line_item_ids': [productidlist_in_order[1]]}
+    fulfillment_id00 = shipment_with_conf_py(order_token, conf00, cookie)['content']['fulfillment']['id']
+    fulfillment_id01 = shipment_with_conf_py(order_token, conf01, cookie)['content']['fulfillment']['id']
+    return orders_finish_py(order_token, fulfillment_id01, cookie)
+
+
+def add_deading_order_with_finished_status_py(conf={}, cookie=init_cookie):
+    '''
+    创建待处理订单的
+    发货状态：全部完成
+    订单状态：已完成
+    	COD支付	已支付	全部完成	已完成
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    order_token = add_deading_order_with_conf_py(conf, cookie)
+    productidlist_in_order = get_productidlist_in_order_py(order_token, cookie)
+    conf = {'line_item_ids': productidlist_in_order}
+    fulfillment_id = shipment_with_conf_py(order_token, conf, cookie)['content']['fulfillment']['id']
+    return orders_finish_py(order_token, fulfillment_id, cookie)
+
+
+def get_productidlist_in_order_py(order_token, cookie=init_cookie):
+    '''
+    通过order_token获取对应order中的productid
+    :param order_token:
+    :param cookie:
+    :return: list
+    '''
+    productidlist_in_order = []
+    for item in query_order_py(order_token, cookie)['content']['order']['line_items']:
+        productidlist_in_order.append(item['id'])
+    return productidlist_in_order
+
+
+def add_deading_order_with_conf_py(conf={}, cookie=init_cookie):
     '''
     通过conf添加新订单
     	支付方式	支付状态	物流状态	订单状态
@@ -305,7 +470,7 @@ def add_dealing_order_by_productidlist_py(productidlist, cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    return add_order_by_conf_py({'productidlist': productidlist}, cookie)
+    return add_deading_order_with_conf_py({'productidlist': productidlist}, cookie)
 
 
 def add_undeal_order_with_products_py(cookie=init_cookie):
@@ -359,12 +524,16 @@ if __name__ == '__main__':
     # print get_order_token_by_productidlist_py(['602', '601'])
     # print json.dumps(query_undeal_order_by_num_py())
     # print add_undeal_order_with_products_py()
-    shipping_address = {"first_name": "auto", "last_name": "test"}
-    place_order_conf = {'shipping_address': shipping_address}
-    conf = {'place_order_conf': place_order_conf}
-    print add_order_by_conf_py(conf)
+    # shipping_address = {"first_name": "auto", "last_name": "test"}
+    # place_order_conf = {'shipping_address': shipping_address}
+    # conf = {'place_order_conf': place_order_conf}
+    # print add_deading_order_with_conf_py(conf)
+
+    # print shipment_with_conf_py('90e29c86-4780-4fb1-bfb1-36249deb69bc')
+    # print orders_finish_py('90e29c86-4780-4fb1-bfb1-36249deb69bc', '85382d5a-6d8a-4d46-8c50-9407802173ba')
+    # print add_deading_order_with_some_delivered_status_py()
+    print add_deading_order_with_some_finished_status_py()
     # print get_latest_undeal_order_num_py()
-    # print get_order_num_by_order_id_py('1c9b41d0-7a20-4600-9a33-459353c892be')
     # productid = add_launched_product_py()\
     # print add_order_by_productid_py(productid)
     # print query_dealing_order()

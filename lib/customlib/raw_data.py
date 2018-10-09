@@ -472,3 +472,14 @@ query_list_data = {
     'page': '0',
     'limit': '20'
 }
+
+orders_fulfillments_data = {
+    "line_item_ids":[
+        "016c78d3-4d40-4b90-904a-03da5e40540d",
+        "37db26d6-18c6-4b9f-b366-8e19f31eccc5"
+    ],
+    "retrieve_method":"manual",
+    "tracking_number":"autotest_tracking_number",
+    "tracking_company":"其他",
+    "tracking_company_code":"-1"
+}

@@ -70,7 +70,7 @@ order041
     ...    shipping_address=&{shipping_address}
     &{conf} =    Create Dictionary
     ...    place_order_conf=&{place_order_conf}
-    kworder.add_order_by_conf_py    ${conf}
+    kworder.add_deading_order_with_conf_py    ${conf}
     Reload Page And Start Ajax
     ${text} =    Sleep And Get Text    ${locatorB_orderDealing_text_firstOrder_receiverName}
 	Should Be Equal    ${text}    auto test
@@ -130,5 +130,20 @@ order065
     Should Be Equal    ${text00}    支付方式
     Should Be Equal    ${text01}    支付状态
     Should Be Equal    ${text02}    物流状态
+
+order085
+    [Documentation]     验证待处理订单列表，未发货栏下，只显示未发货和部分发货的订单
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    kworder.add_deading_order_with_some_delivered_status_py
+    kworder.add_deading_order_with_all_delivered_status_py
+    kworder.add_deading_order_with_some_finished_status_py
+    kworder.add_deading_order_with_finished_status_py
+    Select To Deliver Dealing Order Tag
+    Reload Page And Start Ajax
+    ${text00} =    Wait And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[0]
+    ${text01} =    Wait And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[1]
+    Should Be Equal    ${text00}    部分发货
+    Should Be Equal    ${text01}    待发货
 
 
