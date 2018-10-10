@@ -89,7 +89,9 @@ else
         module/02_product/03_product_comment/001_comment.robot \
 		module/05_store/store_info.robot \
 		module/08_settings/06_shipping/country_page_shipping.robot \
-		module/07_seoimg/seoimage.robot
+		module/07_seoimg/seoimage.robot \
+		module/13_uploadfile/uploadfile.robot \
+		module/15_ber_tutorial/tutorial.robot
 fi
 
 # 执行email_utils.py
