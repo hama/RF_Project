@@ -15,7 +15,7 @@ uploadFile001
     [Documentation]    测试素材库界面可正常进入
     [Tags]    P0    threshold
     Go To Uploadfile Page
-    Wait Until Page Contains    商品图
+    Wait Until Page Contains Text    商品图
 
 uploadFile003
     [Documentation]    测试素材库界面产品和上传tab > "1.点击产品,查看结果" > 页面显示商品中所上传的所有图片或文件
@@ -30,7 +30,7 @@ uploadFile004
     Wait Until Page Contains Locator    ${locatorB_upfile_add_btn}
     Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}
     Sleep    2
-    Wait Until Page Contains    上传成功
+    Wait Until Page Contains Text    上传成功
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     DelImg
 
@@ -59,7 +59,7 @@ uploadFile009
     Wait And Click Element    ${locatorB_upfile_upfile_txt}
     Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}
     Sleep    2
-    Wait Until Page Contains    上传成功
+    Wait Until Page Contains Text    上传成功
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     DelImg
 
@@ -69,7 +69,7 @@ uploadFile011
     Go To Uploadfile Page
     Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}
     Sleep    2
-    Wait Until Page Contains    上传成功
+    Wait Until Page Contains Text    上传成功
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     ${xurl}    Execute JavaScript    return document.querySelectorAll('tbody tr td div input')[0].value
     Execute Javascript    window.open("${xurl}")
@@ -85,7 +85,7 @@ uploadFile012
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     #.点击删除
     Wait And Click Element    ${locatorB_upfile_del_img}
-    Wait Until Page Contains    确定
+    Wait Until Page Contains Text    确定
 
 uploadFile013
     [Documentation]    测试素材栏删除按钮 > "1.点击删除按钮,2.查看结果" > 点击确认
@@ -158,7 +158,7 @@ Common Suite
 
 DelImg
     [Documentation]    删除图片方法
-    Wait Until Page Contains    商品图
+    Wait Until Page Contains Text    商品图
     ${res}    Execute JavaScript    return document.querySelectorAll('tbody tr')[0]===undefined
     Run keyword If    '${res}'=='False'    Wait And Click Element    ${locatorB_upfile_del_img}
     Run keyword If    '${res}'=='False'    Wait And Click Element    ${locatorB_global_alert_confirm}
