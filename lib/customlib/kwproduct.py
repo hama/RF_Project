@@ -48,7 +48,6 @@ def product_info_py(query_str, cookie=init_cookie):
     except Exception as e:
         return e
 
-
 def product_add_py(data, cookie=init_cookie):
     """
     添加商品

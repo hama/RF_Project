@@ -25,14 +25,13 @@ Add Address Common Step
     [Documentation]    添加地址公共部分
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Wait And Input Text    ${locatorB_checkout_address_addr}    深圳123
+    Select From List    ${locatorB_checkout_address_select_country}    China
     Wait And Input Text    ${locatorB_checkout_address_city}    深圳
-    Select From List    ${locatorB_checkout_address_select_country}    Albania
-#   Select From List    ${locatorB_checkout_address_select_province}    Berat
+    Wait And Input Text    ${locatorB_checkout_address_add}    深圳123
     Wait And Input Text    ${locatorB_checkout_address_zip}    123456
     Wait And Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
     Wait And Input Text    ${locatorB_checkout_address_phone}    123456789
-#    Wait And Input Text    ${locatorB_checkout_address_company}    123456789
+    Wait And Input Text    ${locatorB_checkout_address_company}    123456789
 
 Add Credit Card Info
 	[Documentation]    添加信用卡公共部分

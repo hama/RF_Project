@@ -2,7 +2,7 @@
 #.locator
 ${locatorB_checkout_add_card_btn}    dom:document.querySelectorAll(".submit_mb span")[0]    #.添加购物车按钮
 ${locatorB_checkout_by_now_btn}    dom:document.querySelectorAll('.buy_now_settings')[0]    #.by-now按钮
-${locatorB_checkout_submit_btn_s}    id:submitMbPay    #.点击by-now后的submit按钮
+${locatorB_checkout_submit_btn_s}    dom:document.querySelectorAll('.checkout-btn.fr')[0]    #.点击by-now后的submit按钮
 ${locatorB_checkout_search_btn}    dom:document.querySelectorAll("a[alt='Search']")[0]    #.checkout搜索按钮
 ${locatorB_checkout_user_name}    dom:document.querySelectorAll("div[alt='Logo']")[0]    #.checkout顶部店铺名
 ${locatorB_checkout_card_img_btn}    dom:document.querySelectorAll("a[alt='Cart']")[0]    #.checkout购物车图标按钮
@@ -17,7 +17,7 @@ ${locatorB_checkout_address_select_country}    id:shipping_country_select    #.�
 ${locatorB_checkout_address_select_province}    id:shipping_province_select    #.添加地址后选择省份下拉框
 ${locatorB_checkout_address_select_city}    id:shipping_zone_id    #.添加地址后选择国家下拉框
 ${locatorB_checkout_address_city}    dom:document.querySelectorAll("input[name='city']")[0]    #.添加地址后选择城市
-${locatorB_checkout_address_addr}    dom:document.querySelectorAll("input[name='address']")[0]    #.添加地址后填写地址
+${locatorB_checkout_address_add}    dom:document.querySelectorAll("input[name='address']")[0]    #.添加地址后填写地址
 ${locatorB_checkout_address_zip}    dom:document.querySelectorAll("input[name='zip']")[0]    #.添加地址后zip框
 ${locatorB_checkout_address_email}    dom:document.querySelectorAll("input[name='email']")[0]    #.添加地址后email框
 ${locatorB_checkout_address_phone}    dom:document.querySelectorAll("input[name='phone']")[0]    #.添加地址后phone框
