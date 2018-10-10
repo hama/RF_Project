@@ -150,7 +150,8 @@ def del_all_shipping_py(cookie=init_cookie):
     删除全部物流方案
     :return: True | False
     """
-    if shipping_list_py()['result'] != 'success':
+    data = shipping_list_py()
+    if data['result'] != 'success' and data['content']['state'] != 0:
         return {'result': 'success', 'content': 'shipping had been deleted'}
     shipping_list_data = shipping_list_py()['content']['data']
     for shipping_data in shipping_list_data:
