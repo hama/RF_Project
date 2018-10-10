@@ -102,6 +102,27 @@ def orders_finish_py(order_token, fulfillment_id, cookie=init_cookie):
         return e
 
 
+def orders_cancel_py(order_token, cookie=init_cookie):
+    '''
+     B端取消订单
+    :param order_token:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/admin/orders/%s/cancel' % (home_page_url, order_token)
+    try:
+        response_data = requests.patch(url=url, headers={"cookie": cookie['cookie']})
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200:
+            return_data['result'] = 'success'
+        else:
+            return_data['result'] = 'fail'
+        return return_data
+    except Exception as e:
+        return e
+
+
 def del_order_py(order_token, cookie=init_cookie):
     '''
     删除订单（只能软删除已取消订单）
@@ -343,7 +364,7 @@ def add_deading_order_with_some_finished_status_py(conf={}, cookie=init_cookie):
 
 def add_deading_order_with_finished_status_py(conf={}, cookie=init_cookie):
     '''
-    创建待处理订单的
+    创建未完成订单的
     发货状态：全部完成
     订单状态：已完成
     	COD支付	已支付	全部完成	已完成
@@ -356,6 +377,30 @@ def add_deading_order_with_finished_status_py(conf={}, cookie=init_cookie):
     conf = {'line_item_ids': productidlist_in_order}
     fulfillment_id = shipment_with_conf_py(order_token, conf, cookie)['content']['fulfillment']['id']
     return orders_finish_py(order_token, fulfillment_id, cookie)
+
+
+def add_undead_order_with_to_pay_status_py(cookie=init_cookie):
+    '''
+    创建待处理订单的支付状态为：待支付
+    	无	待支付	未完成
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    return add_undeal_order_with_products_py(cookie)
+
+
+def add_undead_order_with_order_cancel_status_py(cookie=init_cookie):
+    '''
+    创建待处理订单的订单状态为：已取消
+    	无	待支付	已取消
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    order_token = add_undeal_order_with_products_py(cookie)
+    orders_cancel_py(order_token, cookie)
+    return order_token
 
 
 def get_productidlist_in_order_py(order_token, cookie=init_cookie):

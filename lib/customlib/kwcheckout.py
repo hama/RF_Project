@@ -41,6 +41,22 @@ def set_checkout_step_py(customer_name=None, customer_contact=None, cookie=init_
         print e
 
 
+def checkout_save_py(data, cookie=init_cookie):
+    url = home_page_url + "/api/checkout/save"
+
+    try:
+        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
+        return_data = {}
+        return_data['content'] = json.loads(response_data.content)
+        if response_data.status_code == 200:
+            return_data['result'] = 'success'
+        else:
+            return_data['result'] = 'fail'
+        return return_data
+    except Exception as e:
+        return e
+
+
 def checkout_create_py(data, cookie=init_cookie):
     '''
     创建checkout
@@ -206,6 +222,7 @@ def do_price_calculate_with_conf_py(conf={}, cookie=init_cookie):
 
     return checkout_price_calculate_py(data, cookie)
 
+
 def get_shipping_lines_with_conf_py(conf={}, cookie=init_cookie):
     '''
     获取shipping_lines
@@ -218,5 +235,20 @@ def get_shipping_lines_with_conf_py(conf={}, cookie=init_cookie):
 
     return checkout_shipping_lines_py(data, cookie)
 
+
+def set_checkout_process_py(conf={}, cookie=init_cookie):
+    '''
+    获取shipping_lines
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(checkout_save_data)
+    dict_deepupdate(data, conf)
+
+    return checkout_save_py(data, cookie)
+
+
 if __name__ == '__main__':
-    print json.dumps(checkout_shipping_lines_py(shipping_lines_data))
+    # print json.dumps(checkout_shipping_lines_py(shipping_lines_data))
+    print set_checkout_process_py()

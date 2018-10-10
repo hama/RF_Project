@@ -483,3 +483,16 @@ orders_fulfillments_data = {
     "tracking_company":"其他",
     "tracking_company_code":"-1"
 }
+
+checkout_save_data = {
+    "customer_authority":1,
+    "customer_contact":1,
+    "customer_email":1,
+    "customer_phone":2,
+    "customer_name":1,
+    "company_setting":1,
+    "postcode_setting":1,
+    "refund_policy":"",
+    "privacy_policy":"",
+    "server_policy":""
+}
