@@ -286,7 +286,46 @@ order192
     Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_payway}    COD
 
+order199
+    [Documentation]     验证订单详情页面，收货人信息栏，编辑按钮可点击
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    Select All Dealing Order Tag
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    Wait And Click Element    ${locatorB_icon_edit}
+    Wait Until Page Contains Locator    ${locatorB_button_save00}
 
+order227
+    [Documentation]     验证订单详情页面，去发货按钮可点击
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    Select All Dealing Order Tag
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    Wait And Click Element    ${locatorB_orderDetail_button_toDelivery}
+    Wait Until Page Contains Text    选择发货商品
+
+order235
+    [Documentation]     验证订单详情页面，添加运单弹窗，收货地址栏可展开
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    Select All Dealing Order Tag
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    Wait And Click Element    ${locatorB_orderDetail_button_toDelivery}
+    Wait And Click Element    ${locatorB_orderDetail_arrow_toExpand}[1]
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationLastName}    姓：lastname
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationName}    名：name
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationPhone}    电话：123456789
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationEmail}    邮箱：12345@autotest.com
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationCountry}    国家：China
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationProvince}    省份：北京
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationCity}    城市：city
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationStreet}    街道：addr
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationApartment}    寓所：addr1
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationCompany}    公司：company
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationCode}    邮编：00000
 
 
 

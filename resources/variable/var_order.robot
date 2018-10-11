@@ -95,6 +95,22 @@ ${locatorB_orderDetail_text_deliveryInformationApartment}    ${locatorB_orderDet
 ${locatorB_orderDetail_text_deliveryInformationCompany}    ${locatorB_orderDetail_text_deliveryInformation}[9]    # 订单详情页收货信息
 ${locatorB_orderDetail_text_deliveryInformationCode}    ${locatorB_orderDetail_text_deliveryInformation}[10]    # 订单详情页收货信息
 
+${locatorB_orderDetail_text_popUp_deliveryInformation}    dom:document.querySelectorAll('[class*="shipping_address_area"] [class*="info_list"] [class*="info_item"]')    # 添加运单弹窗-收货地址-所有选项
+${locatorB_orderDetail_text_popUp_deliveryInformationLastName}    ${locatorB_orderDetail_text_popUp_deliveryInformation}[0]    # 添加运单弹窗-收货地址信息
+${locatorB_orderDetail_text_popUp_deliveryInformationName}    ${locatorB_orderDetail_text_popUp_deliveryInformation}[1]    # 添加运单弹窗-收货地址信息
+${locatorB_orderDetail_text_popUp_deliveryInformationPhone}    ${locatorB_orderDetail_text_popUp_deliveryInformation}[2]    # 添加运单弹窗-收货地址信息
+${locatorB_orderDetail_text_popUp_deliveryInformationEmail}    ${locatorB_orderDetail_text_popUp_deliveryInformation}[3]    # 添加运单弹窗-收货地址信息
+${locatorB_orderDetail_text_popUp_deliveryInformationCountry}    ${locatorB_orderDetail_text_popUp_deliveryInformation}[4]    # 添加运单弹窗-收货地址信息
+${locatorB_orderDetail_text_popUp_deliveryInformationProvince}    ${locatorB_orderDetail_text_popUp_deliveryInformation}[5]    # 添加运单弹窗-收货地址信息
+${locatorB_orderDetail_text_popUp_deliveryInformationCity}    ${locatorB_orderDetail_text_popUp_deliveryInformation}[6]    # 添加运单弹窗-收货地址信息
+${locatorB_orderDetail_text_popUp_deliveryInformationStreet}    ${locatorB_orderDetail_text_popUp_deliveryInformation}[7]    # 添加运单弹窗-收货地址信息
+${locatorB_orderDetail_text_popUp_deliveryInformationApartment}    ${locatorB_orderDetail_text_popUp_deliveryInformation}[8]    # 添加运单弹窗-收货地址信息
+${locatorB_orderDetail_text_popUp_deliveryInformationCompany}    ${locatorB_orderDetail_text_popUp_deliveryInformation}[9]    # 添加运单弹窗-收货地址信息
+${locatorB_orderDetail_text_popUp_deliveryInformationCode}    ${locatorB_orderDetail_text_popUp_deliveryInformation}[10]    # 添加运单弹窗-收货地址信息
+
+${locatorB_orderDetail_button_toDelivery}    dom:document.querySelectorAll('[class*="text_button"]')    # 去发货按钮
+${locatorB_orderDetail_arrow_toExpand}    dom:document.querySelectorAll('[class*="arrow_expand"]')    # 箭头to展开
+${locatorB_orderDetail_arrow_toCollapse}    dom:document.querySelectorAll('[class*="arrow_collapse"]')    # 箭头to收起
 
 
 
