@@ -82,15 +82,14 @@ then
 else
 	echo 'test_module_default'
     robot -v is_headless:True -d logs/ \
-        module/03_login/* \
-        module/02_product/01_product_mangement/003_Product_List.robot \
-        module/02_product/01_product_mangement/020_product_manual_add.robot \
-        module/02_product/02_product_collection/001_collection.robot \
-        module/02_product/03_product_comment/001_comment.robot \
+        module/00_login/login.robot \
+        module/00_login/logout.robot \
+        module/02_order/* \
+        module/03_product/* \
 		module/05_store/store_info.robot \
-		module/08_settings/06_shipping/country_page_shipping.robot \
-		module/07_seoimg/seoimage.robot \
-		module/13_uploadfile/uploadfile.robot
+		module/08_settings/01_basic_info/* \
+		module/08_settings/03_shipping/country_page_shipping.robot \
+		module/08_settings/13_file_management/file_management.robot
 fi
 
 # 执行email_utils.py
