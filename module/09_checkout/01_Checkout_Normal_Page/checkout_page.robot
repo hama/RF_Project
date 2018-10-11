@@ -19,19 +19,6 @@ Library           ${CURDIR}/../../../lib/customlib/kwmarketing.py
 Library           ${CURDIR}/../../../lib/customlib/lib_utils.py
 
 *** Test Cases ***
-xsxsxsxs
-    kwshipping.del_all_shipping_py
-    #.添加一个重量运费的物流
-    kwshipping.add_shipping_py    0    1
-    Click Preview Step
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    #.选择中国
-    Select From List    ${locatorB_checkout_address_select_country}    China
-    Sleep    3
-    ${res}    Get Text    dom:document.querySelectorAll(".fl")[4]
-    Should Be True    '${res}'=='Freight Standard shipping'
-
-
 checkout001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0    threshold    smoke
