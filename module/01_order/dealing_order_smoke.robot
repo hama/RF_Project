@@ -34,19 +34,19 @@ order039
     [Documentation]     验证待处理订单列表中，订单编号显示为checkout发起订单时的订单编号
     [tags]    P0    threshold    smoke
     ${count00}    kworder.get_dealing_order_count_py
-    ${order_id}    kworder.add_dealing_order_with_products_py
+    ${order_token}    kworder.add_dealing_order_with_products_py
     Reload Page And Start Ajax
     ${count01}    kworder.get_dealing_order_count_py
 	${difference}    Evaluate    ${count01}-${count00}
 	Should Be Equal    ${difference}    ${1}
 	${order_num00}    kworder.get_latest_dealing_order_num_py
-	${order_num01}    kworder.get_order_num_by_order_id_py    ${order_id}
+	${order_num01}    kworder.get_order_num_by_order_token_py    ${order_token}
 	Should Be Equal    ${order_num00}    ${order_num01}
 
 order040
     [Documentation]     验证待处理订单列表中，订单栏日期显示为在checkout生成订单的时间
     [tags]    P0    threshold    smoke
-    ${order_id}    kworder.add_dealing_order_with_products_py
+    ${order_token}    kworder.add_dealing_order_with_products_py
 	# 创建订单的时间戳
     ${createtime1}    Get Time
     Reload Page And Start Ajax
@@ -54,7 +54,7 @@ order040
     ${createtime2} =    Convert Date    ${tmptime}    result_format=%Y-%m-%d %H:%M:%S
     # 通过订单号，判断是否创建了一个新的订单
 	${order_num00}    kworder.get_latest_dealing_order_num_py
-	${order_num01}    kworder.get_order_num_by_order_id_py    ${order_id}
+	${order_num01}    kworder.get_order_num_by_order_token_py    ${order_token}
 	Should Be Equal    ${order_num00}    ${order_num01}
 	${result} =    lib_utils.compare_time_py    ${createtime1}    ${createtime2}
 	${status} =    Evaluate    ${result}<10
@@ -201,6 +201,7 @@ order150
     Select All Dealing Order Tag
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    Sleep    2    # 需要等待数据加载
     ${order_num01}    Wait And Get Text    ${locatorB_orderDetail_text_orderNum}
     ${order_num00}    kworder.get_latest_dealing_order_num_py
 	Should Be Equal    ${order_num00}    ${order_num01}
@@ -212,6 +213,7 @@ order160
     Select All Dealing Order Tag
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    Sleep    2    # 需要等待数据加载
     Wait Until Page Contains Locator    ${locatorB_orderDetail_tag_payWaiting}
 
 order163
@@ -299,7 +301,7 @@ order199
 order227
     [Documentation]     验证订单详情页面，去发货按钮可点击
     [tags]    P0    threshold    smoke
-    kworder.add_deading_order_with_delivering_status_py
+    kworder.add_deading_order_with_some_delivered_status_py
     Select All Dealing Order Tag
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
@@ -309,7 +311,7 @@ order227
 order235
     [Documentation]     验证订单详情页面，添加运单弹窗，收货地址栏可展开
     [tags]    P0    threshold    smoke
-    kworder.add_deading_order_with_delivering_status_py
+    kworder.add_deading_order_with_some_delivered_status_py
     Select All Dealing Order Tag
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
