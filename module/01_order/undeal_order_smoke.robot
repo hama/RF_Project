@@ -34,7 +34,6 @@ order112
     [Documentation]     验证未完成订单列表，全部栏下含有筛选框：支付方式、支付状态、订单状态
     [tags]    P0    threshold    smoke
     Select All Undeal Order Tag
-    Reload Page And Start Ajax
     ${text00} =    Wait And Get Text    ${locatorB_orderUndeal_text_paymentMethod}
     ${text01} =    Wait And Get Text    ${locatorB_orderUndeal_text_financialStatus}
     ${text02} =    Wait And Get Text    ${locatorB_orderUndeal_text_orderStatus}
@@ -48,8 +47,8 @@ order130
     kworder.add_undead_order_with_to_pay_status_py
     kworder.add_undead_order_with_order_cancel_status_py
     kworder.add_undead_order_with_pay_fail_status_py
-    Select To Pay Undeal Order Tag
     Reload Page And Start Ajax
+    Select To Pay Undeal Order Tag
     ${text00} =    Sleep And Get Text    ${locatorB_orderUndeal_text_firstOrder_paymentStatus}
     Should Be Equal    ${text00}    待支付
 
@@ -59,8 +58,8 @@ order131
     kworder.add_undead_order_with_order_cancel_status_py
     kworder.add_undead_order_with_pay_fail_status_py
     kworder.add_undead_order_with_to_pay_status_py
-    Select Canceled Undeal Order Tag
     Reload Page And Start Ajax
+    Select Canceled Undeal Order Tag
     ${text00} =    Sleep And Get Text    ${locatorB_orderUndeal_text_firstOrder_orderStatus}
     Should Be Equal    ${text00}    已取消
 
@@ -68,8 +67,8 @@ order149
     [Documentation]     验证未完成订单列表中的订单详情页面，左上角返回按钮可返回到未完成订单列表
     [tags]    P0    threshold    smoke
     kworder.add_undead_order_with_order_cancel_status_py
-    Select All Undeal Order Tag
     Reload Page And Start Ajax
+    Select All Undeal Order Tag
     Wait And Click Element    ${locatorB_orderUndeal_items_listOrder}[0]
     Wait Until Page Contains Text    返回订单列表
     Wait And Click Element    ${locatorB_icon_back00}
@@ -79,8 +78,8 @@ order152
     [Documentation]     验证未完成支付的订单，订单详情页面的订单状态显示为：未完成
     [tags]    P0    threshold    smoke
     kworder.add_undead_order_with_to_pay_status_py
-    Select All Undeal Order Tag
     Reload Page And Start Ajax
+    Select All Undeal Order Tag
     Wait And Click Element    ${locatorB_orderUndeal_items_listOrder}[0]
     Wait Until Page Contains Locator    ${locatorB_orderDetail_tag_unfinished}
 
@@ -88,8 +87,8 @@ order193
     [Documentation]     验证C端使用信用卡支付后，订单详情页面显示的支付方式为：credit card
     [tags]    P0    threshold    smoke
     kworder.add_undead_order_with_pay_fail_status_py
-    Select All Undeal Order Tag
     Reload Page And Start Ajax
+    Select All Undeal Order Tag
     Wait And Click Element    ${locatorB_orderUndeal_items_listOrder}[0]
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_payway}    Credit Card
 
@@ -97,8 +96,8 @@ order195
     [Documentation]     验证C端未选择支付方式的订单，订单详情页面显示的支付方式为：无
     [tags]    P0    threshold    smoke
     kworder.add_undead_order_with_to_pay_status_py
-    Select All Undeal Order Tag
     Reload Page And Start Ajax
+    Select All Undeal Order Tag
     Wait And Click Element    ${locatorB_orderUndeal_items_listOrder}[0]
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_payway}    无
 
@@ -106,8 +105,8 @@ order196
     [Documentation]     验证订单详情页面，收货信息显示正常
     [tags]    P0    threshold    smoke
     kworder.add_undead_order_with_pay_fail_status_py
-    Select All Undeal Order Tag
     Reload Page And Start Ajax
+    Select All Undeal Order Tag
     Wait And Click Element    ${locatorB_orderUndeal_items_listOrder}[0]
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationLastName}    姓：lastname
 	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationName}    名：name
