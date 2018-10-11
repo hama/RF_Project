@@ -1,8 +1,16 @@
 *** Variables ***
 #.locator
+
+
+
+
+
+
+
 ${locatorB_checkout_add_card_btn}    dom:document.querySelectorAll(".submit_mb span")[0]    #.添加购物车按钮
 ${locatorB_checkout_by_now_btn}    dom:document.querySelectorAll(".second_btn")[0]    #.by-now按钮
 ${locatorB_checkout_submit_btn_s}    dom:document.querySelectorAll('.checkout-btn.fr')[0]    #.点击by-now后的submit按钮
+${locatorB_checkout_submit_shippingCart}    dom:document.querySelectorAll('#checkout-btn')[0]   #.购物车-checkout提交按钮
 ${locatorB_checkout_search_btn}    dom:document.querySelectorAll("a[alt='Search']")[0]    #.checkout搜索按钮
 ${locatorB_checkout_user_name}    dom:document.querySelectorAll("div[alt='Logo']")[0]    #.checkout顶部店铺名
 ${locatorB_checkout_card_img_btn}    dom:document.querySelectorAll("a[alt='Cart']")[0]    #.checkout购物车图标按钮
@@ -52,3 +60,4 @@ ${locator_checkout_payment_cod_elm}    dom:document.querySelectorAll("label[for=
 ${locatorB_checkout_submitOrderPass_msg}    Your order has been submitted successfully.    #.提交订单成功的页面出现的字体
 ${locatorB_checkout_Cod_font}    Cash on Delivery    #.货到付款 字体
 
+${locator_checkout_button_checkoutBack}     dom:document.querySelectorAll("#checkout-back")[0]

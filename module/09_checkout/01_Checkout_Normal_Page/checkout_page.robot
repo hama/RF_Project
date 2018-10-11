@@ -142,6 +142,7 @@ checkout_021
     ${copun}    Execute JavaScript    return document.querySelectorAll("tbody tr:nth-child(1) td")[2].innerText
     Click Preview Step
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Sleep    3
     Wait And Click Element    ${locatorB_checkout_address_showProduct_eml}
     #.输入优惠码
     Wait And Input Text    ${locatorB_checkout_addressCoupon_ipt}    ${copun}
