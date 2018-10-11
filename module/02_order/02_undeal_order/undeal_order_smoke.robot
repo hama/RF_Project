@@ -4,13 +4,13 @@ Suite Teardown    Undeal Order Suite Teardown
 Test Setup        Undeal Order Case Setup
 Test Teardown     Teardown Test Case
 Force Tags        Order
-Resource          ../../resources/variable/var_order.robot
-Resource          ../../resources/variable/var_common.robot
-Resource          ../../resources/keywords/kw_common.robot
-Resource          ../../resources/keywords/kw_browser.robot
-Resource          ../../resources/keywords/kw_order.robot
-Library           ${CURDIR}/../../lib/customlib/lib_utils.py
-Library           ${CURDIR}/../../lib/customlib/kworder.py
+Resource          ../../../resources/variable/var_order.robot
+Resource          ../../../resources/variable/var_common.robot
+Resource          ../../../resources/keywords/kw_common.robot
+Resource          ../../../resources/keywords/kw_browser.robot
+Resource          ../../../resources/keywords/kw_order.robot
+Library           ${CURDIR}/../../../lib/customlib/lib_utils.py
+Library           ${CURDIR}/../../../lib/customlib/kworder.py
 
 
 *** Test Cases ***

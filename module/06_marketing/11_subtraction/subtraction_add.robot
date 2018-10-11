@@ -3,15 +3,15 @@ Suite Setup       Common Suite
 Suite Teardown    Close Test Suite Browser
 Test Teardown     Teardown Test Case
 Force Tags        Subtraction
-Resource          ../../resources/keywords/kw_browser.robot
-Resource          ../../resources/keywords/kw_common.robot
-Resource          ../../resources/variable/var_subtraction.robot
-Resource          ../../resources/keywords/kw_add_order.robot
-Resource          ../../resources/keywords/kw_order.robot
-Resource          ../../resources/keywords/kw_product_management.robot
-Resource          ../../resources/keywords/kw_subtraction.robot
-Library           ${CURDIR}/../../lib/customlib/kwmarketing.py
-Library           ${CURDIR}/../../lib/customlib/kwproduct.py
+Resource          ../../../resources/keywords/kw_browser.robot
+Resource          ../../../resources/keywords/kw_common.robot
+Resource          ../../../resources/variable/var_subtraction.robot
+Resource          ../../../resources/keywords/kw_add_order.robot
+Resource          ../../../resources/keywords/kw_order.robot
+Resource          ../../../resources/keywords/kw_product_management.robot
+Resource          ../../../resources/keywords/kw_subtraction.robot
+Library           ${CURDIR}/../../../lib/customlib/kwmarketing.py
+Library           ${CURDIR}/../../../lib/customlib/kwproduct.py
 
 *** Test Cases ***
 subtraction040

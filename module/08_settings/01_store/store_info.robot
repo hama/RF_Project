@@ -3,10 +3,10 @@ Suite Setup       Common Suite
 Suite Teardown    Close Test Suite Browser
 Test Teardown     Teardown Test Case
 Force Tags        Store
-Resource          ../../resources/keywords/kw_browser.robot
-Resource          ../../resources/keywords/kw_common.robot
-Resource          ../../resources/variable/var_store.robot
-Library           ${CURDIR}/../../lib/customlib/kwstore.py
+Resource          ../../../resources/keywords/kw_browser.robot
+Resource          ../../../resources/keywords/kw_common.robot
+Resource          ../../../resources/variable/var_store.robot
+Library           ${CURDIR}/../../../lib/customlib/kwstore.py
 
 
 *** Test Cases ***
