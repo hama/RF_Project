@@ -59,7 +59,7 @@ def product_add_py(data, cookie=init_cookie):
         response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
         return_data = {}
         return_data['content'] = json.loads(response_data.content)
-        if return_data['content']['state'] == 0:
+        if response_data.status_code == 200:
             return_data['result'] = 'success'
         else:
             return_data['result'] = 'fail'
