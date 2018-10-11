@@ -5,6 +5,39 @@ Resource          var_common.robot
 # api interface
 ${apiB_tax_list}    ${home_page}/api/tax/list    # 税费数据列表接口
 ${apiB_tax_toggle}    ${home_page}/api/tax/toggle    # 税费开关接口
+
+# locator
+#   text
+${locatorB_taxPrice_text_theTax}     收税方式
+
+
+${locatorB_taxPrice_div_logisticsProviders}    dom:document.querySelectorAll('span[class="enterprise_icon___1kAvj"]')[0]         #物流商
+${locatorB_taxPrice_span_closeAndOpen}      dom:document.querySelectorAll('.ant-switch')[0]    #运费设置关闭/开启
+${locatorB_taxPrice_i_setUp}       dom:document.querySelectorAll('.djfont')[0]
+
+#   button
+${locatorB_taxPrice_button_setLogistics}     dom:document.querySelectorAll("button")[0]
+${locatorB_taxPrice_setting}      dom:document.querySelectorAll(".setting")[0]
+${locatorB_taxPrice_span_antSwitch}     dom:document.querySelectorAll("class~=ant-switch")
+${locatorB_shipping_ul_solutionLogistics}   dom:document.querySelectorAll('ul[id="test_shipping_list_0"]')      #.物流列表-第一个列表
+${locatorB_shipping_button_deleteLogisticsa}   dom:document.querySelectorAll('button[id="test_shipping_delete_btn"]')       #。物流详细信息-删除该物流方案
+${locatorB_shipping_button_determine}   dom:document.querySelectorAll('button[data-robot="pop_confirm"]')       #.确定按钮
+
+${locatorB_taxPrice_button_logisticsSet}    dom:document.querySelectorAll('button[type="button"]')[0]     #物流设置
+
+${locatorB_shipping_button_btn}    dom:document.querySelectorAll("button")[0]    #.开始设置物流按钮
+
+
+
+
+
+
+
+
+
+# api interface
+${apiB_tax_list}    ${home_page}/api/tax/list    # 税费数据列表接口
+${apiB_tax_toggle}    ${home_page}/api/tax/toggle    # 税费开关接口
 # locator
 ${locatorB_tax_goto_shipping}    tag:button    # 页面只有一个 button
 ${locatorB_tax_help}    dom:document.querySelectorAll('.hd-line-help')[1]
@@ -21,3 +54,5 @@ ${contentB_tax_head_taxPrice}    国家税率    # 列表中展示税率的 titl
 ${contentB_tax_head_location}    分地区    # 列表中展示地区税率的 title
 ${contentB_tax_head_operation}    操作    # 列表中设置按钮和切换开关所在的 title
 ${contentB_tax_data_all}    全部    # 不区分地区的国家，在地区栏显示全部
+
+
