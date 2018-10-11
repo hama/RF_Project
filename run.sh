@@ -86,8 +86,7 @@ else
         module/00_login/logout.robot \
         module/02_order/* \
         module/03_product/* \
-		module/05_store/store_info.robot \
-		module/08_settings/01_basic_info/* \
+		module/08_settings/01_basic_info/store_info.robot \
 		module/08_settings/03_shipping/country_page_shipping.robot \
 		module/08_settings/13_file_management/file_management.robot
 fi
