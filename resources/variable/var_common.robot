@@ -66,6 +66,7 @@ ${locatorB_antTags}    dom:document.querySelectorAll('div[class="ant-tag ant-tag
 ${locatorB_tagboxs}    dom:document.querySelectorAll('div[class="ant-select-selection__choice__content"]')    #获取所有tagbox。（参考product编辑的标签输入框中一个个小模块）
 ### locator tag
 ${locatorB_select_batchOperations}    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]    #批量操作下拉框
+${locatorB_couponLst_couponText}    全部
 ### 页面模块 url
 ${url_home_page}    ${home_page}/    # home page
 ${url_order}      ${home_page}/order    # order page
@@ -96,6 +97,7 @@ ${keybord_enter}    \\13
 ${register_contact}    gt1zwkp@abctest.com
 ${register_domain}    gt1zwkp
 ${register_pwd}    ${datas_password}
+
 ### 图片文件
 ${file_products_addImg}    ${CURDIR}/../images/tm.jpg    # 添加商品图片
 ${file_products_addImg2}    ${CURDIR}/../images/mv.jpg    # 添加商品图片
