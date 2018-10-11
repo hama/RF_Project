@@ -222,6 +222,24 @@ def do_price_calculate_with_conf_py(conf={}, cookie=init_cookie):
 
     return checkout_price_calculate_py(data, cookie)
 
+def start_pc_show_py(show=0,cookie=init_cookie):
+    """
+    是否开启PC优化
+    :param show: 默认0 = 关闭 | 1 = 开启
+    :param cookie:
+    :return:
+    """
+    url = home_page_url + "/api/themes/switch-pc"
+    data = {"status": int(show), "theme_id": 1}
+    try:
+        res = requests.post(url=url,headers={"cookie":cookie['cookie']},json=data)
+        print res.content
+        if json.loads(res.content)['state'] == 0 :
+            return True
+        else:
+            return False
+    except Exception as e:
+        print e
 
 def get_shipping_lines_with_conf_py(conf={}, cookie=init_cookie):
     '''

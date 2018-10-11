@@ -4,6 +4,99 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+# 添加一个自产品的商品
+product_onw_data_with_sub = {
+"has_only_default_variant": False,
+    "variants": [
+        {
+            "option": [
+                {
+                    "option": "Color",
+                    "option_value": "red"
+                },
+                {
+                    "option": "Size",
+                    "option_value": "min"
+                }
+            ],
+            "price": 99,
+            "compare_at_price": 199,
+            "weight": "666",
+            "weight_unit": "kg",
+            "sku": "autotest_sku",
+            "barcode": "autotest_barcode",
+            "sales": 0,
+            "inventory_management": True,
+            "requires_shipping": 1,
+            "taxable": 1,
+            "inventory_policy": "continue"
+        }
+    ],
+    "status": 1,
+    "meta_title": "autotest_title",
+    "meta_description": "autotest_description",
+    "meta_keyword": "autotest_seo",
+    "url": "/products/autotest_title",
+    "barcode": "autotest_barcode",
+    "title": "autotest_title",
+    "brief": "autotest_subtitle",
+    "description": "<p>autotest_description</p>",
+    "images": [
+        {
+            "lastModified": 1530100037585,
+            "lastModifiedDate": "2018-06-27T11:47:17.585Z",
+            "name": "20180627194715.png",
+            "size": 25125,
+            "type": "image/png",
+            "uid": "rc-upload-1536560132310-2",
+            "response": {
+                "url": "//cn.cdn.shoplazza.com/7ca156ec405c3c93b6742ca037978ecf.png",
+                "path": "7ca156ec405c3c93b6742ca037978ecf.png"
+            },
+            "percent": 100,
+            "originFileObj": {
+                "uid": "rc-upload-1536560132310-2"
+            },
+            "status": "done",
+            "url": "//cn.cdn.shoplazza.com/7ca156ec405c3c93b6742ca037978ecf.png",
+            "path": "7ca156ec405c3c93b6742ca037978ecf.png"
+        }
+    ],
+    "price": 444,
+    "compare_at_price": 888,
+    "product_type_id": 12,
+    "product_type_cascade": [
+        10,
+        11,
+        12
+    ],
+    "vendor": "autotest_supplier",
+    "tags": [
+        "autotest_tag"
+    ],
+    "options_with_values": [
+        {
+            "name": "Color",
+            "values": [
+                "red",
+                "black"
+            ]
+        },
+        {
+            "name": "Size",
+            "values": [
+                "min",
+                "mid"
+            ]
+        }
+    ],
+    "options": [
+        "Color",
+        "Size"
+    ],
+    "size_guide": "<p>autotest_<span lang=\"en\">sizechart</span></p>"
+}
+
 # 含子商品的商品数据（max）
 product_max_data_with_sub = {
     "has_only_default_variant": False,
