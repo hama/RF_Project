@@ -3,7 +3,7 @@ Suite Setup       Common Suite
 Suite Teardown    Close Test Suite Browser
 Test Setup        del_tutorial    #.删除所有的新手教程前置信息
 Test Teardown     Teardown Test Case
-Force Tags        Overview
+Force Tags        overview
 Resource          ../../resources/keywords/kw_browser.robot
 Resource          ../../resources/keywords/kw_common.robot
 Resource          ../../resources/variable/var_common.robot
