@@ -4,9 +4,6 @@ Resource          ../variable/var_common.robot
 Resource          ../variable/var_checkout.robot
 
 *** keywords ***
-Add Checkout Addr
-    [Documentation]    添加checkout地址
-
 
 Checkout Common Setp
     [Documentation]    封装公共步骤

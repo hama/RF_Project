@@ -20,16 +20,16 @@ Library           ${CURDIR}/../../../lib/customlib/lib_utils.py
 
 *** Test Cases ***
 xsxsxsxs
+    kwshipping.del_all_shipping_py
+    #.添加一个重量运费的物流
+    kwshipping.add_shipping_py    0    1
     Click Preview Step
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Add Address Common Step
-    #.点击展开留言框
-    Wait And Click Element    dom:document.querySelectorAll('#instructionToggle')[0]
-    #.输入留言
-    Wait And Input Text    dom:document.querySelectorAll('textarea[name="customer_note"]')[0]    自动化测试
-    #.点击提交
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait Until Page Contains    PAYMENT
+    #.选择中国
+    Select From List    ${locatorB_checkout_address_select_country}    China
+    Sleep    3
+    ${res}    Get Text    dom:document.querySelectorAll(".fl")[4]
+    Should Be True    '${res}'=='Freight Standard shipping'
 
 
 checkout001
@@ -308,11 +308,36 @@ checkout_082
     Wait And Click Element    ${locatorB_checkout_by_now_btn_s}
     
 checkout_083
-    [Documentation]    验证B端运费方案设置价格范围时，C端购买的商品价格满足此价格范围，checkout shipping页面将展示此运费方案
+    [Documentation]    验证B端运费方案设置价格范围时，C端购买的商品价格满足此价格范围，checkout shipping页面将展示此运费方案 > 运费方案中显示：价格方案1
     [Tags]    P0    threshold    smoke
     Click Preview Step
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    
+    #.选择中国
+    Select From List    ${locatorB_checkout_address_select_country}    China
+    Sleep    3
+    ${res}    Get Text    dom:document.querySelectorAll(".fl")[4]
+    Should Be True    '${res}'=='Standard shipping'
+
+
+checkout_085
+    [Documentation]    验证B端运费方案设置重量范围时，C端购买的商品重量满足此重量范围，checkout shipping页面将展示此运费方案 > 运费方案中显示 重量方案1
+    [Tags]    P0    threshold    smoke
+    #.先删除物流
+    kwshipping.del_all_shipping_py
+    #.添加一个重量运费的物流
+    kwshipping.add_shipping_py    0    1
+    Click Preview Step
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    #.选择中国
+    Select From List    ${locatorB_checkout_address_select_country}    China
+    Sleep    3
+    ${res}    Get Text    dom:document.querySelectorAll(".fl")[4]
+    Should Be True    '${res}'=='Freight Standard shipping'
+
+checkout_087
+    [Documentation]    验证B端运费方案设置数量范围时，C端购买的商品数量满足此数量范围，checkout shipping页面将展示此运费方案 > "1.C端购买5件商品进入checkout shipping页面,2.选择国家：中国,3.查看shipping delivery栏运费方案" >运费方案中显示 数量方案1
+    [Tags]    P0    threshold    smoke
+    Click Preview Step
 
 # -------------------------------------------------------------------------------- old -----------------------------------------------------------------------------------
 

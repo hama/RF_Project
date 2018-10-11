@@ -1,15 +1,17 @@
 *** Variables ***
 #.locator
 ${locatorB_checkout_add_card_btn}    dom:document.querySelectorAll(".submit_mb span")[0]    #.添加购物车按钮
-${locatorB_checkout_by_now_btn}    dom:document.querySelectorAll('.buy_now_settings')[0]    #.by-now按钮
+${locatorB_checkout_by_now_btn}    dom:document.querySelectorAll(".second_btn")[0]    #.by-now按钮
 ${locatorB_checkout_submit_btn_s}    dom:document.querySelectorAll('.checkout-btn.fr')[0]    #.点击by-now后的submit按钮
 ${locatorB_checkout_search_btn}    dom:document.querySelectorAll("a[alt='Search']")[0]    #.checkout搜索按钮
 ${locatorB_checkout_user_name}    dom:document.querySelectorAll("div[alt='Logo']")[0]    #.checkout顶部店铺名
 ${locatorB_checkout_card_img_btn}    dom:document.querySelectorAll("a[alt='Cart']")[0]    #.checkout购物车图标按钮
 ${locatorB_checkout_member_btn}    dom:document.querySelectorAll("a[alt='Account']")[0]    #.checkout顶部个人中心图标按钮
-
+${locatorB_checkout_selectColor_elm}    dom:document.querySelectorAll(".variant_select_all")[0]    #.checkout主页-选择颜色，尺寸
 #.checkout - address
 
+${locatorB_checkout_addressCoupon_ipt}    dom:document.querySelectorAll("#coupon_code_input")[0]    #.checkout 输入优惠券框
+${locatorB_checkout_addressClickCoupon_btn}    dom:document.querySelectorAll("#coupon_apply")[0]    #.checkout 填写地址页面 - 点击应用优惠券按钮
 ${locatorB_checkout_address_btn}    dom:document.querySelectorAll(".address_btn")[0]    #.checkout点击by-now后的添加地址按钮
 ${locatorB_checkout_address_first_name}    dom:document.querySelectorAll("input[name='first_name']")[0]    #.添加地址后-first_name输入框
 ${locatorB_checkout_address_last_name}    dom:document.querySelectorAll("input[name='last_name']")[0]    #.添加地址后-last_name输入框
@@ -24,6 +26,7 @@ ${locatorB_checkout_address_phone}    dom:document.querySelectorAll("input[name=
 ${locatorB_checkout_address_company}    dom:document.querySelectorAll("input[name='company']")[0]    #.添加地址后copmany框
 ${locatorB_checkout_address_error}    dom:document.querySelectorAll(".not_none")[0]    #.添加地址错误类
 ${locatorB_checkout_address_close_address}    dom:document.querySelectorAll(".close_icon")[1]    #.关闭地址按钮
+${locatorB_checkout_address_buyMesg_elm}    id:instructionToggle    #.买家留言
 
 # 信用卡信息
 ${locatorB_checkout_creditCard_input_name}    dom:document.querySelectorAll('[name="card_first_name"]')[0]    #.信用卡name
@@ -38,6 +41,8 @@ ${locatorB_checkout_creditCard_input_securityCode}    dom:document.querySelector
 ${locatorB_checkout_address_save_address_btn}    dom:document.querySelectorAll(".form-footer")[0]    #.保存地址按钮
 ${locatorB_checkout_address_save_checkout_btn}    id:submitMbPay    #.保存地址后的提交按钮
 ${locatorB_checkout_write_review}    dom:document.querySelectorAll(".review_write")[0]    #.checkout-留言按钮
+${locatorB_checkout_address_showProduct_eml}    class:order_summary    #.checkout-添加地址页面的顶部查看商品详情(向下箭头)
+
 
 ${locatorB_checkout_down_price_eml}    dom:document.querySelectorAll(".detail")[0]    #.checkout-底部价格元素
 ${locator_checkout_submit_save_btn}    id:submitPaymentMb    #.checkout-提交地址后的保存按钮
