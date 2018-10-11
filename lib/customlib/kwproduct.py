@@ -59,7 +59,7 @@ def product_add_py(data, cookie=init_cookie):
         response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
         return_data = {}
         return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
+        if return_data['content']['state'] == 0:
             return_data['result'] = 'success'
         else:
             return_data['result'] = 'fail'
@@ -259,14 +259,23 @@ def add_max_product_with_sub_py(cookie=init_cookie):
     '''
     return product_add_py(product_max_data_with_sub, cookie)
 
+def add_one_product_with_sub_py(cookie=init_cookie):
+    """
+    添加一个sub商品
+    :param cookie:
+    :return:
+    """
+    return product_add_py(product_onw_data_with_sub,cookie)
 
 if __name__ == '__main__':
+    pass
+    print add_one_product_with_sub_py()
     # product_search_py()
     # del_latest_product_py()
     # del_all_products_py()
     # print add_max_product_py()
     # print add_max_product_py()
-    print add_max_product_with_sub_py()
+    # print add_one_product_with_sub_py()
     # product_info_py()
     # print add_launched_product_py()
     # conf = {'tags': ['color']}
