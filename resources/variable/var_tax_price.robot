@@ -35,9 +35,6 @@ ${locatorB_shipping_button_btn}    dom:document.querySelectorAll("button")[0]   
 
 
 
-# api interface
-${apiB_tax_list}    ${home_page}/api/tax/list    # 税费数据列表接口
-${apiB_tax_toggle}    ${home_page}/api/tax/toggle    # 税费开关接口
 # locator
 ${locatorB_tax_goto_shipping}    tag:button    # 页面只有一个 button
 ${locatorB_tax_help}    dom:document.querySelectorAll('.hd-line-help')[1]

@@ -14,8 +14,6 @@ Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
 Resource          ../../../resources/keywords/kw_shipping.robot
 Resource          ../../../resources/keywords/kw_tax_rate.robot
-Resource          ../../../resources/variable/var_tax_rate.robot
-
 
 Library           SeleniumLibrary    run_on_failure=NOTHING
 

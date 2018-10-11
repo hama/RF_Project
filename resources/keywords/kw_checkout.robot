@@ -25,7 +25,7 @@ Common Teardown
     Close Test Suite Browser
     kwshipping.delShipping_py
 
-Checkout Common Step
+Checkout Common Step Out
     #.登陆
     Login With Default User
     #.添加中国的物流
@@ -33,7 +33,9 @@ Checkout Common Step
     #.添加一个上架商品
     kwproduct.add_launched_product_py
     #.chechout 运行环境的初始化
-    kwproduct.set_checkout_process_py
+    kwcheckout.set_checkout_process_py
+    #.关闭PC优化
+    kwcheckout.start_pc_show_py
 
 
 
