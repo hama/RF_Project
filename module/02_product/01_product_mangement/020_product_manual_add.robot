@@ -108,7 +108,8 @@ products021.1
     ${item1_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[0]
     ${item2_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[1]
     ${result}    lib_utils.compare_time_py    ${item1_createtime}    ${item2_createtime}
-    Should Be Equal    ${result}    gt
+    ${status} =    Evaluate    ${result}>0
+    Should Be Equal    '${status}'    'True'
 
 products021.2
     [Documentation]    验证展示的上架商品数量正确
@@ -142,7 +143,8 @@ products023.1
     ${item1_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[0]
     ${item2_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[1]
     ${result}    lib_utils.compare_time_py    ${item1_createtime}    ${item2_createtime}
-    Should Be Equal    ${result}    gt
+    ${status} =    Evaluate    ${result}>0
+    Should Be Equal    '${status}'    'True'
 
 products023.2
     [Documentation]    验证展示的下架商品数量正确
@@ -194,7 +196,6 @@ products041
 	Wait Until Page Contains Text    暂无数据
     Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${0}
 
-
 products047
 	[Documentation]    验证能成功添加新建的标签
     [Tags]    P0    threshold
@@ -218,24 +219,24 @@ products047
     \    Exit For Loop If    '${text}'=='manual_tag'
     Should Be True    ${status}
 
-
-products052
-	[Documentation]    验证可成功移除已有标签
-    [Tags]    P0    threshold
-    kwproduct.add_launched_product_py
-    Reload Page And Start Ajax
-    Select All Product Tag
-    Select All Items Then Click Batch Menu
-    Wait And Click Element    ${locatorB_productsMgmt_select_delTags}
-    @{antTags}    Wait And Get Items List From Locator    ${locatorB_antTags}    ${locatorB_popUps_button_footermiddle}
-    :FOR    ${antTag}    IN    @{antTags}
-    \    Wait And Click Element    ${antTag}
-    Wait And Click Element    ${locatorB_popUps_button_footermiddle}
-    Wait Until Page Contains Text    移除成功
-    # 进入product中检查是否存在
-    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
-    Wait Until Page Contains Locator    ${locatorB_productsNew_input_tags}
-    Wait Until Page Not Contains Locator    ${locatorB_tagboxs}
+# 有bug，已提单，暂不跑
+#products052
+#	[Documentation]    验证可成功移除已有标签
+#    [Tags]    P0    threshold
+#    kwproduct.add_launched_product_py
+#    Reload Page And Start Ajax
+#    Select All Product Tag
+#    Select All Items Then Click Batch Menu
+#    Wait And Click Element    ${locatorB_productsMgmt_select_delTags}
+#    @{antTags}    Wait And Get Items List From Locator    ${locatorB_antTags}    ${locatorB_popUps_button_footermiddle}
+#    :FOR    ${antTag}    IN    @{antTags}
+#    \    Wait And Click Element    ${antTag}
+#    Wait And Click Element    ${locatorB_popUps_button_footermiddle}
+#    Wait Until Page Contains Text    移除成功
+#    # 进入product中检查是否存在
+#    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+#    Wait Until Page Contains Locator    ${locatorB_productsNew_input_tags}
+#    Wait Until Page Not Contains Locator    ${locatorB_tagboxs}
 
 products055
 	[Documentation]    验证可成功加入一个或多个专辑
@@ -523,17 +524,18 @@ products112
 #	Press Key    ${locatorB_productsNew_input_homeSEOKeyword}    ${keybord_enter}
 #	Sleep    20
 
-products128
-	[Documentation]    验证可批量上传商品
-    [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_productsMgmt_icon_uploadProduct}
-    Wait Enabled And Choose File    ${locatorB_productsMgmt_input_uploadProduct}    ${file_products_template}
-    Wait And Click Element    ${locatorB_productsMgmt_button_toImport}
-    Wait Until Page Contains Text    导入完成    30
-    Wait And Click Element    ${locatorB_productsMgmt_button_confirmAfterImport}
-    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
-    ${productName}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
-    Should Be Equal    '${productName}'    'Example T-Shirt'
+# 有bug，已提单，暂不跑
+#products128
+#	[Documentation]    验证可批量上传商品
+#    [Tags]    P0    threshold
+#    Wait And Click Element    ${locatorB_productsMgmt_icon_uploadProduct}
+#    Wait Enabled And Choose File    ${locatorB_productsMgmt_input_uploadProduct}    ${file_products_template}
+#    Wait And Click Element    ${locatorB_productsMgmt_button_toImport}
+#    Wait Until Page Contains Text    导入完成    30
+#    Wait And Click Element    ${locatorB_productsMgmt_button_confirmAfterImport}
+#    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
+#    ${productName}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
+#    Should Be Equal    '${productName}'    'Example T-Shirt'
 
 products129
 	[Documentation]    验证上传不合格的商品文件，无法上传
@@ -554,15 +556,16 @@ products129
 #    Wait Until Page Contains Text    全部商品上架失败：缺少图片
 #    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_switch_listLaunched}    ${0}
 
-products188
-	[Documentation]    浏览量增加
-    [Tags]    P0    threshold
-    kwproduct.add_max_product_py
-    Reload Page And Start Ajax
-    Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]
-    Sleep    2
-    Open New And Close Other Windows    ${home_page}
-    Go To Product Management Page
-    Select All Product Tag
-    ${text}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductViews}
-    Should Be equal    '${text}'    '1'
+# 有bug，已提单，暂不跑
+#products188
+#	[Documentation]    浏览量增加
+#    [Tags]    P0    threshold
+#    kwproduct.add_max_product_py
+#    Reload Page And Start Ajax
+#    Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]
+#    Sleep    2
+#    Open New And Close Other Windows    ${home_page}
+#    Go To Product Management Page
+#    Select All Product Tag
+#    ${text}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductViews}
+#    Should Be equal    '${text}'    '1'

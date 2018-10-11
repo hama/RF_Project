@@ -112,18 +112,18 @@ def shipping_list_py(cookie=init_cookie):
         return e
 
 
-def add_shipping_with_conf_py(conf, cookie=init_cookie):
+def add_shipping_with_conf_py(conf={}, cookie=init_cookie):
     data = copy.deepcopy(shipping_data)
-
-    key_list = conf.keys()
-    if 'shipping_name' in key_list:
-        data['shipping_name'] = conf['shipping_name']
-    if 'shipping_area' in key_list:
-        data['shipping_area'] = conf['shipping_area']
-    if 'shipping_plan' in key_list:
-        data['shipping_plan'] = conf['shipping_plan']
-    if 'has_other_country' in key_list:
-        data['has_other_country'] = conf['has_other_country']
+    dict_deepupdate(data, conf)
+    # key_list = conf.keys()
+    # if 'shipping_name' in key_list:
+    #     data['shipping_name'] = conf['shipping_name']
+    # if 'shipping_area' in key_list:
+    #     data['shipping_area'] = conf['shipping_area']
+    # if 'shipping_plan' in key_list:
+    #     data['shipping_plan'] = conf['shipping_plan']
+    # if 'has_other_country' in key_list:
+    #     data['has_other_country'] = conf['has_other_country']
     if data['has_other_country'] == 1:
         data['shipping_area'] = []
 
@@ -166,7 +166,8 @@ def del_all_shipping_py(cookie=init_cookie):
     删除全部物流方案
     :return: True | False
     """
-    if shipping_list_py()['result'] != 'success':
+    data = shipping_list_py()
+    if data['result'] != 'success' or data['content']['state'] != 0:
         return {'result': 'success', 'content': 'shipping had been deleted'}
     shipping_list_data = shipping_list_py()['content']['data']
     for shipping_data in shipping_list_data:

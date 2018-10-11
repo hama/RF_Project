@@ -20,7 +20,8 @@ products001
     ${item1_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[0]
     ${item2_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[1]
     ${result}    lib_utils.compare_time_py    ${item1_createtime}    ${item2_createtime}
-    Should Be Equal    ${result}    gt
+    ${status} =    Evaluate    ${result}>0
+    Should Be Equal    '${status}'    'True'
 
 products002
     [Documentation]    验证展示的商品数量正确
@@ -85,7 +86,7 @@ products017
     Select All Product Tag
     Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]
 	Focus On New Window
-    Wait Until Page Contains Locator    ${locatorC_products_logo}
+    Wait Until Page Contains Locator    ${locatorC_products_icon_cart}
 
 products021
     [Documentation]    验证展示的商品只包含上架商品

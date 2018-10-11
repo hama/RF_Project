@@ -2,7 +2,7 @@
 Suite Setup       Common Suite
 Suite Teardown    Close Test Suite Browser
 Test Teardown     Teardown Test Case
-Force Tags        Invitaion
+Force Tags        uploadFile
 Resource          ../../resources/keywords/kw_browser.robot
 Resource          ../../resources/keywords/kw_common.robot
 Resource          ../../resources/variable/var_common.robot
@@ -15,7 +15,7 @@ uploadFile001
     [Documentation]    测试素材库界面可正常进入
     [Tags]    P0    threshold
     Go To Uploadfile Page
-    Wait Until Page Contains    商品图
+    Wait Until Page Contains Text    商品图
 
 uploadFile003
     [Documentation]    测试素材库界面产品和上传tab > "1.点击产品,查看结果" > 页面显示商品中所上传的所有图片或文件
@@ -28,9 +28,8 @@ uploadFile004
     [Tags]    P1    threshold
     Go To Uploadfile Page
     Wait Until Page Contains Locator    ${locatorB_upfile_add_btn}
-    Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}
-    Sleep    2
-    Wait Until Page Contains    上传成功
+    Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}    0
+    Wait Until Page Contains Text    上传成功
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     DelImg
 
@@ -39,8 +38,7 @@ uploadFile005
     [Tags]    P0
     Go To Uploadfile Page
     Wait Until Page Contains Locator    ${locatorB_upfile_add_btn}
-    Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}
-    Sleep    2
+    Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}    0
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     ${res}    Execute JavaScript    return document.querySelectorAll('tbody tr td')[2].innerHTML
     Should Be True    '${res}'=='<div>mv.jpg</div>'
@@ -57,9 +55,8 @@ uploadFile009
     Go To Uploadfile Page
     #.切换到 上传文件 栏目
     Wait And Click Element    ${locatorB_upfile_upfile_txt}
-    Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}
-    Sleep    2
-    Wait Until Page Contains    上传成功
+    Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}    0
+    Wait Until Page Contains Text    上传成功
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     DelImg
 
@@ -67,9 +64,8 @@ uploadFile011
     [Documentation]    测试素材链接及复制按钮
     [Tags]    P0    threshold
     Go To Uploadfile Page
-    Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}
-    Sleep    2
-    Wait Until Page Contains    上传成功
+    Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}    0
+    Wait Until Page Contains Text    上传成功
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     ${xurl}    Execute JavaScript    return document.querySelectorAll('tbody tr td div input')[0].value
     Execute Javascript    window.open("${xurl}")
@@ -85,7 +81,7 @@ uploadFile012
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     #.点击删除
     Wait And Click Element    ${locatorB_upfile_del_img}
-    Wait Until Page Contains    确定
+    Wait Until Page Contains Text    确定
 
 uploadFile013
     [Documentation]    测试素材栏删除按钮 > "1.点击删除按钮,2.查看结果" > 点击确认
@@ -103,8 +99,7 @@ uploadFile014
     [Tags]    P0    threshold
     Go To Uploadfile Page
     Wait Until Page Contains Locator    ${locatorB_upfile_add_btn}
-    Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}
-    Sleep    2
+    Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}    0
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     #.点击删除
     Wait And Click Element    ${locatorB_upfile_del_img}
@@ -158,7 +153,7 @@ Common Suite
 
 DelImg
     [Documentation]    删除图片方法
-    Wait Until Page Contains    商品图
+    Wait Until Page Contains Text    商品图
     ${res}    Execute JavaScript    return document.querySelectorAll('tbody tr')[0]===undefined
     Run keyword If    '${res}'=='False'    Wait And Click Element    ${locatorB_upfile_del_img}
     Run keyword If    '${res}'=='False'    Wait And Click Element    ${locatorB_global_alert_confirm}

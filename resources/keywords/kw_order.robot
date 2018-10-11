@@ -36,7 +36,7 @@ Select All Dealing Order Tag
     Sleep    2
 
 Select To Deliver Dealing Order Tag
-    Wait And Click Element    ${locatorB_orderDealing_button_alreadyToDeliver}
+    Wait And Click Element    ${locatorB_orderDealing_button_toDeliver}
     Sleep    2
 
 Select Delivered Dealing Order Tag
@@ -45,6 +45,18 @@ Select Delivered Dealing Order Tag
 
 Select Finished Dealing Order Tag
     Wait And Click Element    ${locatorB_orderDealing_button_finished}
+    Sleep    2
+
+Select All Undeal Order Tag
+    Wait And Click Element    ${locatorB_orderUndeal_button_all}
+    Sleep    2
+
+Select To Pay Undeal Order Tag
+    Wait And Click Element    ${locatorB_orderUndeal_button_toPay}
+    Sleep    2
+
+Select Canceled Undeal Order Tag
+    Wait And Click Element    ${locatorB_orderUndeal_button_canceled}
     Sleep    2
 
 

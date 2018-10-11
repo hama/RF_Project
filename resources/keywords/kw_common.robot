@@ -1,17 +1,20 @@
 *** Settings ***
 Library           SeleniumLibrary    run_on_failure=NOTHING
 Library           OperatingSystem
+Library           DateTime
 Library           ${CURDIR}/../../lib/customlib/kwpayment.py
 Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 Library           ${CURDIR}/../../lib/customlib/kwproduct.py
 Library           ${CURDIR}/../../lib/customlib/kwcollection.py
 Library           ${CURDIR}/../../lib/customlib/kwcomment.py
+Library           ${CURDIR}/../../lib/customlib/kworder.py
 Resource          ../variable/var_common.robot
 Resource          ../variable/var_login.robot
 Resource          ../variable/var_store.robot
 Resource          ../variable/var_account.robot
 Resource          ../variable/var_shipping.robot
 Resource          kw_browser.robot
+Resource          kw_navigation.robot
 Resource          kw_product_management.robot
 
 *** Keywords ***
@@ -34,177 +37,6 @@ Login With User
     Comment    close new_user's pop
     ${close}=    Execute JavaScript    return document.querySelectorAll('.ant-modal-close-x')[0]===undefined
     Run Keyword If    '${close}'=='${False}'    Wait And Click Element    dom:document.querySelectorAll('.ant-modal-close-x')[0]
-
-Go To Home Page
-    [Documentation]    跳转到主页
-    Wait And Click Element    ${locatorB_overview}
-
-Go To Setting Page
-    [Documentation]    跳转到设置页面
-    Wait And Click Element    ${locatorB_setting}
-
-Go To Home By Url
-    [Documentation]    通过url跳转到主页
-    Sleep    1
-    Go To    ${home_page}
-    Sleep    1
-
-Go To Dealing Order Page
-    [Documentation]    跳转到待处理订单页面
-    Wait Until Element Is Visible    ${locatorB_products}
-    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_orderMenus_expanded}    5    #.获取导航栏订单的下拉按钮元素
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_order}
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_order_dealing}
-    ...    ELSE    Wait And Click Element    ${locatorB_order_dealing}
-    Sleep    2
-    Wait Until Page Contains    待处理订单
-    Location Should Be    ${url_order_dealing}
-    Sleep    1
-
-Go To Undeal Order Page
-    [Documentation]    跳转到未完成订单页面
-    Wait Until Element Is Visible    ${locatorB_products}
-    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_orderMenus_expanded}    5    #.获取导航栏订单的下拉按钮元素
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_order}
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_order_undeal}
-    ...    ELSE    Wait And Click Element    ${locatorB_order_undeal}
-    Sleep    2
-    Wait Until Page Contains    未完成订单
-    Location Should Be    ${url_order_undeal}
-    Sleep    1
-
-Go To Product Management Page
-    [Documentation]    跳转到商品管理页面
-    Wait Until Element Is Visible    ${locatorB_products}
-    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_productMenus_expanded}    5    #.获取导航栏商品的下拉按钮元素
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_products}
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_product_management}
-    ...    ELSE    Wait And Click Element    ${locatorB_product_management}
-    Sleep    2
-    Wait Until Page Contains    商品管理
-    Location Should Be    ${url_products}
-    Sleep    1
-
-Go To Product Collection Page
-    [Documentation]    跳转到商品专辑页面
-    Wait Until Element Is Visible    ${locatorB_products}
-    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_productMenus_expanded}    5
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_products}
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_product_collection}
-    ...    ELSE    Wait And Click Element    ${locatorB_product_collection}
-    Sleep    2
-    Wait Until Page Contains    商品专辑
-    Location Should Be    ${url_collection}
-    Sleep    1
-
-Go To Product Review Page
-    [Documentation]    跳转到商品评论页面
-    Wait Until Element Is Visible    ${locatorB_products}
-    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_productMenus_expanded}    5
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_products}
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_product_reviews}
-    ...    ELSE    Wait And Click Element    ${locatorB_product_reviews}
-    Sleep    2
-    Wait Until Page Contains    商品评论
-    Location Should Be    ${url_reviews}
-    Sleep    1
-
-Go To Subtraction Page
-    [Documentation]    跳转营销-满减活动页面
-    Wait Until Element Is Visible    ${locatorB_marketing}
-    # 若营销按钮没展开，则展开营销按钮
-    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_marketingMenus_expanded}    5
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_marketing}
-    ...    ELSE    Wait And Click Element    ${locatorB_marketing_subtraction}
-    Wait Until Page Contains    ${locatorB_subtraction_header_text}
-    Location Should Be    ${url_subtraction}
-
-Go To Coupon Page
-    [Documentation]    跳转营销-优惠券页面
-    Wait Until Element Is Visible    ${locatorB_marketing}
-    # 若营销按钮没展开，则展开营销按钮
-    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_marketingMenus_expanded}    5
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_marketing}
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_marketing_coupon_code}
-    ...    ELSE    Wait And Click Element    ${locatorB_marketing_coupon_code}
-    Wait Until Page Contains    ${locatorB_couponLst_couponText}
-    Location Should Be    ${url_coupon_code}
-
-Go To Store Page
-    [Documentation]    跳转基础信息页面
-    Wait Until Element Is Visible    ${locatorB_setting}
-    # 若营销按钮没展开，则展开营销按钮
-    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_store}
-    ...    ELSE    Wait And Click Element    ${locatorB_setting_store}
-    Wait Until Page Contains    ${contextB_store_storeInfo}
-    Location Should Be    ${url_coupon_store}
-
-Go To Tax Page
-    [Documentation]    跳转到税费页面
-    Wait Until Element Is Visible    ${locatorB_setting}
-    # 若设置按钮没展开，则展开设置按钮
-    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_taxPrice}
-    ...    ELSE    Wait And Click Element    ${locatorB_setting_taxPrice}
-    Wait Until Page Contains    收税方式
-    Location Should Be    ${url_tax_price}
-
-Go To Shipping Page
-    [Documentation]    跳转到物流页面
-    Sleep    2.5
-    Wait Until Element Is Visible    ${locatorB_setting}
-    # 若设置按钮没展开，则展开设置按钮
-    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='False'    Sleep    2
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_shipping}
-    ...    ELSE    Wait And Click Element    ${locatorB_setting_shipping}
-    Wait Until Page Contains    物流方案
-    Location Should Be    ${url_shipping}
-
-Go To Employee Account Page
-    [Documentation]    跳转员工账号页面
-    Wait Until Element Is Visible    ${locatorB_setting}
-    # 若设置按钮没展开，则展开营销按钮
-    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_employee}
-    ...    ELSE    Wait And Click Element    ${locatorB_setting_employee}
-    Sleep    2
-    Wait Until Page Contains    ${contextB_account_employeeManagement}
-    Location Should Be    ${url_accounts}
-    Sleep    1
-
-Go To Application Page
-    [Documentation]    跳转到应用市场-网站seo
-    Wait And Click Element    ${locatorB_application}
-    Wait Until Page Contains    图片SEO
-    Wait And Click Element    ${locatorB_application_seoimg}
-    Location Should Be    ${url_seoimage}
-
-Go To Invitaion Page
-    [Documentation]    跳转到 邀请码工具
-    Wait And Click Element    ${locatorB_application}
-    Wait Until Page Contains    邀请码工具
-    Wait And Click Element    ${locatorB_application_invitaion}
-    #Wait Until Page Contains     授权确认
-    #Location Should Be    ${url_invitaion}
-
-Go To Uploadfile Page
-    [Documentation]    跳转到 文件管理页面
-    Wait Until Element Is Visible    ${locatorB_setting}
-    # 若设置按钮没展开，则展开设置按钮
-    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='False'    Sleep    2
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_upfile}
-    ...    ELSE    Wait And Click Element    ${locatorB_setting_upfile}
-    Wait Until Page Contains    上传文件
-    Location Should Be    ${url_uploadFile}
-    
 
 Wait And Input Text
     [Arguments]    ${element_locator}    ${text}    ${timeout}=3    ${retry_time}=1
@@ -231,6 +63,12 @@ Wait Exist And Click Element
 #    Wait Until Element Is Enabled    ${element_locator}
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
 
+Sleep And Click Element
+    [Arguments]    ${element_locator}    ${sleep_time}=3    ${timeout}=25    ${retry_time}=5
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    Sleep    ${sleep_time}
+    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
+
 Sleep ${sleeptime:\d+} Then Click Element ${element_locator}
     [Documentation]    关键字嵌入参数
     Sleep    ${sleeptime}
@@ -240,6 +78,13 @@ Wait And Get Text
     [Arguments]    ${element_locator}
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Visible    ${element_locator}     10
+    ${return}    Get Text    ${element_locator}
+    [Return]    ${return}
+
+Sleep And Get Text
+    [Arguments]    ${element_locator}    ${sleep_time}=3
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    Sleep    ${sleep_time}
     ${return}    Get Text    ${element_locator}
     [Return]    ${return}
 
@@ -328,12 +173,12 @@ Wait And Make Switch Off
 	Run Keyword If    '${class}'=='ant-switch ant-switch-checked'    Wait And Click Element    ${element_locator}
 
 Wait Enabled And Choose File
-	[Arguments]    ${element_locator}    ${file}
+	[Arguments]    ${element_locator}    ${file}    ${sleep_time}=5
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Enabled    ${element_locator}    10
     ${NORMAL_PATH}    Normalize Path  ${file}
     Choose File    ${element_locator}    ${NORMAL_PATH}
-	Sleep    5    # 由于商品图片未上传完成，点击保存，保存成功。会导致bug，因此等待5秒钟
+	Sleep    ${sleep_time}    # 由于商品图片未上传完成，点击保存，保存成功。会导致bug，因此等待5秒钟
 
 # 可用Get Element Count替代
 #Get List Length

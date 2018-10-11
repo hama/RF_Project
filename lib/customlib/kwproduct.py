@@ -152,7 +152,7 @@ def add_max_product_py(cookie=init_cookie):
     return add_launched_product_py(cookie)
 
 
-def add_product_with_conf_py(conf, cookie=init_cookie):
+def add_product_with_conf_py(conf={}, cookie=init_cookie):
     '''
     通过conf（dict数据类型）配置来添加产品
     :param conf:

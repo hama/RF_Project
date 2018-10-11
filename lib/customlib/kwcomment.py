@@ -69,7 +69,7 @@ def add_unpublished_comment_py(cookie=init_cookie):
     add_comment_with_conf_py(conf, cookie)
 
 
-def add_comment_with_conf_py(conf, cookie=init_cookie):
+def add_comment_with_conf_py(conf={}, cookie=init_cookie):
     '''
     通过conf（dict数据类型）配置来添加评论
     :param conf:
@@ -151,8 +151,8 @@ def get_exist_commentsid_py():
 
 if __name__ == '__main__':
     # add_published_comment_py()
-    # config01 = {'content': 'content00'}
-    # config02 = {'content': 'content01'}
-    # add_comment_with_conf_py(config01)
-    # add_comment_with_conf_py(config02)
-    print get_latest_commentid_py()
+    config01 = {'content': 'content00'}
+    config02 = {'content': 'content01'}
+    add_comment_with_conf_py(config01)
+    add_comment_with_conf_py(config02)
+    # print get_latest_commentid_py()
