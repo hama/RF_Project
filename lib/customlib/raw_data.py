@@ -30,8 +30,7 @@ product_max_data_with_sub = {
             "requires_shipping": 1,
             "taxable": 1,
             "inventory_policy": "continue"
-        },
-        {
+        },{
             "option": [
                 {
                     "option": "Color",
