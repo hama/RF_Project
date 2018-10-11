@@ -4,6 +4,56 @@ Resource          ../variable/var_common.robot
 Resource          ../variable/var_checkout.robot
 
 *** keywords ***
+Add Shipping The Freight
+    [Documentation]    封装添加运费
+    Go To Shipping Page
+    #.创建一个中国的物流方案
+    Taxprice New Shipping China
+
+
+Click Preview Step
+    [Documentation]    点击预览的公共步骤
+    Go To Product Management Page
+    Sleep Time
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Sleep Time
+    Select Window    New
+    Sleep Time
+
+Common Teardown
+    [Documentation]    结束公共步骤
+    Close Test Suite Browser
+    kwshipping.delShipping_py
+
+Checkout Common Step
+    #.登陆
+    Login With Default User
+    #.添加中国的物流
+    kwshipping.add_shipping_py
+    #.添加一个上架商品
+    kwproduct.add_launched_product_py
+    #.chechout 运行环境的初始化
+    kwproduct.set_checkout_process_py
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Checkout Common Setp
     [Documentation]    封装公共步骤

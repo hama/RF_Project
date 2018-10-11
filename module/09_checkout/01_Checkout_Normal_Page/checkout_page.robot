@@ -101,6 +101,9 @@ checkout_014
 checkout_015
     [Documentation]    验证checkout shipping页面，价格详情中，shipping显示正常 >  shipping显示为：$10
     [Tags]    P0    threshold    smoke
+    kwshipping.del_all_shipping_py
+    #.添加中国物流
+    kwshipping.add_shipping_py
     Click Preview Step
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
@@ -139,6 +142,7 @@ checkout_021
     ${copun}    Execute JavaScript    return document.querySelectorAll("tbody tr:nth-child(1) td")[2].innerText
     Click Preview Step
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Sleep    3
     Wait And Click Element    ${locatorB_checkout_address_showProduct_eml}
     #.输入优惠码
     Wait And Input Text    ${locatorB_checkout_addressCoupon_ipt}    ${copun}
@@ -151,6 +155,8 @@ checkout_024
     [Tags]    P0    threshold    smoke
     #.添加一个满50减10的全场优惠券
     kwmarketing.add_coupon_py    1
+    #.先删除所有物流
+    kwshipping.del_all_shipping_py
     #.添加一个物流为中国百分之60的税金
     add_other_tax_price_py    60
     #. 先获得优惠码
@@ -184,7 +190,7 @@ checkout_024
     Wait Until Page Contains Locator    dom:document.querySelectorAll(".checkout-prices-value")[3]
     ${code}    Get Text    dom:document.querySelectorAll(".checkout-prices-value")[3]
     Sleep Time
-    #.获取total 
+    #.获取total
     Wait Until Page Contains Locator    dom:document.querySelectorAll("tfoot tr td")[1]
     ${exs}    Get Text    dom:document.querySelectorAll("tfoot tr td")[1]
     #.去掉多余字符后运算
@@ -195,7 +201,8 @@ checkout_024
     ${codes}    lib_utils.searchStrs_py    ${code}
     #.获取优惠券信息
     ${res}    Evaluate    ${totals}+${shippings}+${codes}-int(${numsx})
-    Should Be True    ${res}==${exsx}
+    ${rex}    Evaluate    ${res}-1
+    Should Be True    ${rex}==${exsx}
     
 checkout_025
     [Documentation]    验证checkout shipping页面，优惠码输入框中可输入内容 > "1.点击优惠码输入框,2.输入内容：AAA003" > 优惠码输入框中显示输入的内容：AAA003
@@ -252,7 +259,6 @@ checkout_034
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait And Click Element    ${locatorB_checkout_address_select_country}
 
-
 checkout_035
     [Documentation]    验证checkout shipping页面，shipping address栏，省份选择框可点击以及省份选择展示  > "1.点击国家选择框选择中国,2.点击省份选择框" > 点击后城市选择框下拉展开，显示中国的所有省份
     [Tags]    P0    threshold    smoke
@@ -270,7 +276,7 @@ checkout_037
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Sleep    2
     Add Address Common Step
-    Wait And Click Element    ${locatorB_checkout_address_save_address_btn}
+    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
     Wait Until Page Contains    PAYMENT
 
 checkout_073
@@ -283,6 +289,8 @@ checkout_073
 checkout_077
     [Documentation]    验证checkout shipping页面，买家留言输入框输入的内容，会同步到B端订单详情 > "1.C端发起新订单AAA00111进入checkout shipping页面,2.买家留言输入框中输入内容：请尽快发货,3.完成订单进入B端订单AAA00111详情,4.查看订单详情页面买家留言" > 买家留言内容显示为：请尽快发货
     [Tags]    P0    threshold    smoke
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
     Click Preview Step
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Add Address Common Step
@@ -293,25 +301,28 @@ checkout_077
     #.点击提交
     Wait And Click Element    ${locatorB_checkout_submit_btn_s}
     Wait Until Page Contains    PAYMENT
+    #.关闭PC优化
+    kwcheckout.start_pc_show_py
 
 
 checkout_082
     [Documentation]    验证checkout shipping页面，没有可选择物流方案时，payment method 按钮无法点击 > payment method按钮置灰无法点击
     [Tags]    P0    threshold    smoke
-    #.开启pc优化
     kwcheckout.start_pc_show_py    1
     Click Preview Step
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait Until Page Contains    SHIPPING
-    #.关闭PC优化
-    kwcheckout.start_pc_show_py
+    Wait Until Page Does Not Contain    SHIPPING
     
 checkout_083
     [Documentation]    验证B端运费方案设置价格范围时，C端购买的商品价格满足此价格范围，checkout shipping页面将展示此运费方案 > 运费方案中显示：价格方案1
     [Tags]    P0    threshold    smoke
     #.开启pc优化
     kwcheckout.start_pc_show_py    1
+    #.先删除物流
+    kwshipping.del_all_shipping_py
+    #.添加一个价格运费物流
+    kwshipping.add_shipping_py
     Click Preview Step
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     #.选择中国
@@ -343,6 +354,8 @@ checkout_085
     Sleep    3
     ${res}    Get Text    dom:document.querySelectorAll(".fl")[4]
     Should Be True    '${res}'=='Freight Standard shipping'
+    #.关闭PC优化
+    kwcheckout.start_pc_show_py
 
 checkout_087
     [Documentation]    验证B端运费方案设置数量范围时，C端购买的商品数量满足此数量范围，checkout shipping页面将展示此运费方案 > "1.C端购买5件商品进入checkout shipping页面,2.选择国家：中国,3.查看shipping delivery栏运费方案" >运费方案中显示 数量方案1
@@ -362,6 +375,8 @@ checkout_087
     Sleep    3
     ${res}    Get Text    dom:document.querySelectorAll(".fl")[4]
     Should Be True    '${res}'=='Quantity Standard shipping'
+    #.关闭PC优化
+    kwcheckout.start_pc_show_py
 
 # -------------------------------------------------------------------------------- old -----------------------------------------------------------------------------------
 
@@ -380,6 +395,9 @@ Checkout Common Step
     kwshipping.add_shipping_py
     #.添加一个上架商品
     kwproduct.add_one_product_with_sub_py
+    #.关闭PC优化
+    kwcheckout.start_pc_show_py
+
 
 Click Preview Step
     [Documentation]    点击预览的公共步骤
