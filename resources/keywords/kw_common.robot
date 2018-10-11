@@ -63,6 +63,12 @@ Wait Exist And Click Element
 #    Wait Until Element Is Enabled    ${element_locator}
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
 
+Sleep And Click Element
+    [Arguments]    ${element_locator}    ${sleep_time}=3    ${timeout}=25    ${retry_time}=5
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    Sleep    ${sleep_time}
+    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
+
 Sleep ${sleeptime:\d+} Then Click Element ${element_locator}
     [Documentation]    关键字嵌入参数
     Sleep    ${sleeptime}
@@ -167,12 +173,12 @@ Wait And Make Switch Off
 	Run Keyword If    '${class}'=='ant-switch ant-switch-checked'    Wait And Click Element    ${element_locator}
 
 Wait Enabled And Choose File
-	[Arguments]    ${element_locator}    ${file}
+	[Arguments]    ${element_locator}    ${file}    ${sleep_time}=5
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Enabled    ${element_locator}    10
     ${NORMAL_PATH}    Normalize Path  ${file}
     Choose File    ${element_locator}    ${NORMAL_PATH}
-	Sleep    5    # 由于商品图片未上传完成，点击保存，保存成功。会导致bug，因此等待5秒钟
+	Sleep    ${sleep_time}    # 由于商品图片未上传完成，点击保存，保存成功。会导致bug，因此等待5秒钟
 
 # 可用Get Element Count替代
 #Get List Length

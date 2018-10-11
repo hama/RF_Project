@@ -146,4 +146,150 @@ order085
     Should Be Equal    ${text00}    部分发货
     Should Be Equal    ${text01}    待发货
 
+order087
+    [Documentation]     验证待处理订单列表，已发货栏下，只显示全部发货和部分完成的订单
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    kworder.add_deading_order_with_some_delivered_status_py
+    kworder.add_deading_order_with_all_delivered_status_py
+    kworder.add_deading_order_with_some_finished_status_py
+    kworder.add_deading_order_with_finished_status_py
+    Select Delivered Dealing Order Tag
+    Reload Page And Start Ajax
+    ${text00} =    Wait And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[0]
+    ${text01} =    Wait And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[1]
+    Should Be Equal    ${text00}    部分完成
+    Should Be Equal    ${text01}    全部发货
+
+order088
+    [Documentation]     验证待处理订单列表，已完成栏下，只显示已完成订单
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    kworder.add_deading_order_with_some_delivered_status_py
+    kworder.add_deading_order_with_all_delivered_status_py
+    kworder.add_deading_order_with_some_finished_status_py
+    kworder.add_deading_order_with_finished_status_py
+    Select Finished Dealing Order Tag
+    Reload Page And Start Ajax
+    ${text00} =    Sleep And Get Text    ${locatorB_orderDealing_text_firstOrder_orderStatus}
+    Should Be Equal    ${text00}    已完成
+
+order147
+    [Documentation]     验证从订单列表，点击订单可进入订单详情页面
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    Select All Dealing Order Tag
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    Wait Until Page Contains Text    返回订单列表
+
+order148
+    [Documentation]     验证待处理订单列表中的订单详情页面，左上角返回按钮可返回到待处理订单列表
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    Select All Dealing Order Tag
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    Wait Until Page Contains Text    返回订单列表
+    Wait And Click Element    ${locatorB_icon_back00}
+    Wait Until Page Contains Locator    ${locatorB_orderDealing_items_listOrder}
+
+order150
+    [Documentation]     验证订单详情中，左上角显示文本为本订单的订单编号
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    Select All Dealing Order Tag
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    ${order_num01}    Wait And Get Text    ${locatorB_orderDetail_text_orderNum}
+    ${order_num00}    kworder.get_latest_dealing_order_num_py
+	Should Be Equal    ${order_num00}    ${order_num01}
+
+order160
+    [Documentation]     验证使用COD完成支付的订单，订单详情中显示的支付状态为待支付
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_all_delivered_status_py
+    Select All Dealing Order Tag
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    Wait Until Page Contains Locator    ${locatorB_orderDetail_tag_payWaiting}
+
+order163
+    [Documentation]     验证新订单，订单详情页面的物流状态显示为：未发货
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    Select All Dealing Order Tag
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    Wait Until Page Contains Locator    ${locatorB_orderDetail_tag_shipWaiting}
+
+order174
+    [Documentation]     验证订单详情页面，商品栏标题显示为本次购买的商品标题
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    Select All Dealing Order Tag
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_listProductName}[0]    autotest_title
+
+order177
+    [Documentation]     验证订单详情页面，商品栏，sku可正常显示
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    Select All Dealing Order Tag
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_firstProductSku}    SKU: autotest_sku
+
+order178
+    [Documentation]     验证订单详情页面，商品栏，供应商可正常显示
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    Select All Dealing Order Tag
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_firstProductVendor}    供应商: autotest_vendor
+
+order179
+    [Documentation]     验证订单详情页面，商品单价及数量显示正常
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    Select All Dealing Order Tag
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_firstProductPriceAndNum}    444.00 USD x 1
+
+order180
+    [Documentation]     验证订单详情页面，商品栏，单个商品总价显示正常
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    Select All Dealing Order Tag
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_firstProductSumPrice}    444.00 USD
+
+order181
+    [Documentation]     验证新生成的订单，订单详情页面，商品栏，单个商品的物流状态显示为：待发货
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    Select All Dealing Order Tag
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_tag_firstProduct_shipPartiallyFinished}    待发货
+
+order192
+    [Documentation]     验证C端使用COD支付后，订单详情页面的支付方式显示为：COD
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_delivering_status_py
+    Select All Dealing Order Tag
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_payway}    COD
+
+
+
+
+
+
+
 

@@ -86,7 +86,7 @@ products017
     Select All Product Tag
     Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]
 	Focus On New Window
-    Wait Until Page Contains Locator    ${locatorC_products_logo}
+    Wait Until Page Contains Locator    ${locatorC_products_icon_cart}
 
 products021
     [Documentation]    验证展示的商品只包含上架商品

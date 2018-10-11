@@ -2,7 +2,7 @@
 Suite Setup       Common Suite
 Suite Teardown    Close Test Suite Browser
 Test Teardown     Teardown Test Case
-Force Tags        Invitaion
+Force Tags        uploadFile
 Resource          ../../resources/keywords/kw_browser.robot
 Resource          ../../resources/keywords/kw_common.robot
 Resource          ../../resources/variable/var_common.robot
@@ -28,8 +28,7 @@ uploadFile004
     [Tags]    P1    threshold
     Go To Uploadfile Page
     Wait Until Page Contains Locator    ${locatorB_upfile_add_btn}
-    Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}
-    Sleep    2
+    Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}    0
     Wait Until Page Contains Text    上传成功
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     DelImg
@@ -39,8 +38,7 @@ uploadFile005
     [Tags]    P0
     Go To Uploadfile Page
     Wait Until Page Contains Locator    ${locatorB_upfile_add_btn}
-    Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}
-    Sleep    2
+    Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}    0
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     ${res}    Execute JavaScript    return document.querySelectorAll('tbody tr td')[2].innerHTML
     Should Be True    '${res}'=='<div>mv.jpg</div>'
@@ -57,8 +55,7 @@ uploadFile009
     Go To Uploadfile Page
     #.切换到 上传文件 栏目
     Wait And Click Element    ${locatorB_upfile_upfile_txt}
-    Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}
-    Sleep    2
+    Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}    0
     Wait Until Page Contains Text    上传成功
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     DelImg
@@ -67,8 +64,7 @@ uploadFile011
     [Documentation]    测试素材链接及复制按钮
     [Tags]    P0    threshold
     Go To Uploadfile Page
-    Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}
-    Sleep    2
+    Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}    0
     Wait Until Page Contains Text    上传成功
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     ${xurl}    Execute JavaScript    return document.querySelectorAll('tbody tr td div input')[0].value
@@ -103,8 +99,7 @@ uploadFile014
     [Tags]    P0    threshold
     Go To Uploadfile Page
     Wait Until Page Contains Locator    ${locatorB_upfile_add_btn}
-    Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}
-    Sleep    2
+    Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}    0
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     #.点击删除
     Wait And Click Element    ${locatorB_upfile_del_img}

@@ -47,6 +47,18 @@ Select Finished Dealing Order Tag
     Wait And Click Element    ${locatorB_orderDealing_button_finished}
     Sleep    2
 
+Select All Undeal Order Tag
+    Wait And Click Element    ${locatorB_orderUndeal_button_all}
+    Sleep    2
+
+Select To Pay Undeal Order Tag
+    Wait And Click Element    ${locatorB_orderUndeal_button_toPay}
+    Sleep    2
+
+Select Canceled Undeal Order Tag
+    Wait And Click Element    ${locatorB_orderUndeal_button_canceled}
+    Sleep    2
+
 
 Add Order
     [Documentation]    .add order

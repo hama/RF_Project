@@ -85,6 +85,24 @@ def payment_list_py(cookie=init_cookie):
         return e
 
 
+def get_expected_payment_line_py(expected, cookie=init_cookie):
+    '''
+    获取指定的payment_line数据
+    :param expected: credit_card/cod
+    :param cookie:
+    :return:
+    '''
+    for payment_line in payment_list_py(cookie)['content']['data']:
+        payment_method = payment_line['payment_method']
+        if expected == payment_method and payment_line['is_enable'] == '1':
+            re_data = payment_line['channel_list'][0]
+            re_data['payment_method'] = payment_method
+            return re_data
+        elif expected == payment_method and payment_line['is_enable'] == '0':
+            return 'please turn on expected payment_method'
+    return 'there is not expected payment_method,please add it'
+
+
 def add_payment_cod_py():
     """
     添加支付方式 cod

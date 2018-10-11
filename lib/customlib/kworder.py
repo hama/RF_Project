@@ -381,7 +381,7 @@ def add_deading_order_with_finished_status_py(conf={}, cookie=init_cookie):
 
 def add_undead_order_with_to_pay_status_py(cookie=init_cookie):
     '''
-    创建待处理订单的支付状态为：待支付
+    创建未完成订单的支付状态为：待支付
     	无	待支付	未完成
     :param conf:
     :param cookie:
@@ -390,9 +390,37 @@ def add_undead_order_with_to_pay_status_py(cookie=init_cookie):
     return add_undeal_order_with_products_py(cookie)
 
 
+def add_undead_order_with_pay_fail_status_py(cookie=init_cookie):
+    '''
+    创建未完成订单的支付状态为：支付失败
+    	线上支付	支付失败	已取消
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    config = {}
+    card_info = {
+        "card_first_name": "name ",
+        "card_email": "qiansuixin@shoplazza.com",
+        "card_phone": "123456789011",
+        "card_postcode": "0000",
+        "card_number": "123123123123123",
+        "card_month": "12",
+        "card_year": "27",
+        "card_code": "001"
+    }
+
+    payment_pay_conf = copy.deepcopy(payment_pay_data)
+    payment_pay_conf['card_info'] = card_info
+    payment_pay_conf['payment_line'] = get_expected_payment_line_py('credit_card')
+    do_pay_with_conf_py(payment_pay_conf, cookie)
+    config['payment_pay_conf'] = payment_pay_conf
+    return add_deading_order_with_conf_py(config, cookie)
+
+
 def add_undead_order_with_order_cancel_status_py(cookie=init_cookie):
     '''
-    创建待处理订单的订单状态为：已取消
+    创建未完成订单的订单状态为：已取消
     	无	待支付	已取消
     :param conf:
     :param cookie:
@@ -474,7 +502,7 @@ def add_deading_order_with_conf_py(conf={}, cookie=init_cookie):
             payment_pay_conf['payment_line'] = data_payment_line
     else:
         payment_pay_conf = copy.deepcopy(payment_pay_data)
-        data_payment_line = payment_list_py()['content']['data'][0]['channel_list'][0]
+        data_payment_line = get_expected_payment_line_py('cod')
         payment_pay_conf['payment_line'] = data_payment_line
     payment_pay_conf['order_token'] = order_token
     do_pay_with_conf_py(payment_pay_conf, cookie)
@@ -577,7 +605,10 @@ if __name__ == '__main__':
     # print shipment_with_conf_py('90e29c86-4780-4fb1-bfb1-36249deb69bc')
     # print orders_finish_py('90e29c86-4780-4fb1-bfb1-36249deb69bc', '85382d5a-6d8a-4d46-8c50-9407802173ba')
     # print add_deading_order_with_some_delivered_status_py()
-    print add_deading_order_with_some_finished_status_py()
+    # print add_deading_order_with_some_finished_status_py()
+    # print payment_list_py()
+    print add_undead_order_with_pay_fail_status_py()
+    # print add_deading_order_with_delivering_status_py()
     # print get_latest_undeal_order_num_py()
     # productid = add_launched_product_py()\
     # print add_order_by_productid_py(productid)

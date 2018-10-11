@@ -97,7 +97,7 @@ ${locatorB_productsNew_input_homeSEOLink}    dom:document.querySelectorAll('inpu
 ${locatorB_productsNew_input_homeSEOKeyword}    dom:document.querySelectorAll('input[class="ant-select-search__field"]')[0]  #
 
 # locator_productsMobile
-${locatorC_products_logo}    dom:document.querySelectorAll('div[alt="Logo"]')[0]    #C端，产品logo
+${locatorC_products_icon_cart}    dom:document.querySelectorAll('i[class="djfont dj-cart"]')[0]    #C端，购物车
 
 # content
 ${contentB_products_all}    全部

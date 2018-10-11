@@ -307,7 +307,7 @@ reviews023
     Wait And Click Element    ${locatorB_productsReviews_link_listProductName}[0]
     Wait And Click Element    ${locatorB_pReviews_link_productName}
     Focus On New Window
-    Wait Until Page Contains Locator    ${locatorC_products_logo}
+    Wait Until Page Contains Locator    ${locatorC_products_icon_cart}
 
 
 reviews035

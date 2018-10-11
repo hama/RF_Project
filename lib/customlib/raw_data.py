@@ -30,7 +30,8 @@ product_max_data_with_sub = {
             "requires_shipping": 1,
             "taxable": 1,
             "inventory_policy": "continue"
-        },{
+        },
+        {
             "option": [
                 {
                     "option": "Color",
@@ -473,25 +474,25 @@ query_list_data = {
 }
 
 orders_fulfillments_data = {
-    "line_item_ids":[
+    "line_item_ids": [
         "016c78d3-4d40-4b90-904a-03da5e40540d",
         "37db26d6-18c6-4b9f-b366-8e19f31eccc5"
     ],
-    "retrieve_method":"manual",
-    "tracking_number":"autotest_tracking_number",
-    "tracking_company":"其他",
-    "tracking_company_code":"-1"
+    "retrieve_method": "manual",
+    "tracking_number": "autotest_tracking_number",
+    "tracking_company": "其他",
+    "tracking_company_code": "-1"
 }
 
 checkout_save_data = {
-    "customer_authority":1,
-    "customer_contact":1,
-    "customer_email":1,
-    "customer_phone":2,
-    "customer_name":1,
-    "company_setting":1,
-    "postcode_setting":1,
-    "refund_policy":"",
-    "privacy_policy":"",
-    "server_policy":""
+    "customer_authority": 1,
+    "customer_contact": 1,
+    "customer_email": 1,
+    "customer_phone": 2,
+    "customer_name": 1,
+    "company_setting": 1,
+    "postcode_setting": 1,
+    "refund_policy": "",
+    "privacy_policy": "",
+    "server_policy": ""
 }
