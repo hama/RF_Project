@@ -6,7 +6,7 @@ sys.setdefaultencoding('utf-8')
 
 # 添加一个自产品的商品
 product_onw_data_with_sub = {
-"has_only_default_variant": False,
+    "has_only_default_variant": False,
     "variants": [
         {
             "option": [
@@ -579,12 +579,12 @@ orders_fulfillments_data = {
 
 checkout_save_data = {
     "customer_authority": 1,
-    "customer_contact": 1,
+    "customer_contact": 3,
     "customer_email": 1,
-    "customer_phone": 2,
-    "customer_name": 1,
-    "company_setting": 1,
-    "postcode_setting": 1,
+    "customer_phone": 1,
+    "customer_name": 2,
+    "company_setting": 2,
+    "postcode_setting": 2,
     "refund_policy": "",
     "privacy_policy": "",
     "server_policy": ""
