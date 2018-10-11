@@ -17,17 +17,17 @@ password = "AAAaaa111"  # .发件人密码
 relative_path = os.path.join(os.path.dirname(__file__), '../..')
 # . 收件邮箱
 to_addr = [
-    'wanglinyun@shoplazza.com',
-    'xiabing@shoplazza.com',
+    # 'wanglinyun@shoplazza.com',
+    # 'xiabing@shoplazza.com',
     'qiansuixin@shoplazza.com',
     'huayacheng@shoplazza.com'
 ]
 # . 抄送邮箱
 cc_addr = [
-    'zhangliqiong@shoplazza.com',
-    'yupeng@shoplazza.com',
-    'fangbaiyuan@shoplazza.com',
-    'linyingjun@shoplazza.com'
+    # 'zhangliqiong@shoplazza.com',
+    # 'yupeng@shoplazza.com',
+    # 'fangbaiyuan@shoplazza.com',
+    # 'linyingjun@shoplazza.com'
 ]
 email_service = "smtp.mxhichina.com"
 default_port = 465
