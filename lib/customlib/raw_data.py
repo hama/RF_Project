@@ -30,6 +30,74 @@ product_max_data_with_sub = {
             "requires_shipping": 1,
             "taxable": 1,
             "inventory_policy": "continue"
+        },{
+            "option": [
+                {
+                    "option": "Color",
+                    "option_value": "red"
+                },
+                {
+                    "option": "Size",
+                    "option_value": "mid"
+                }
+            ],
+            "price": 99,
+            "compare_at_price": 199,
+            "weight": "666",
+            "weight_unit": "kg",
+            "sku": "autotest_sku",
+            "barcode": "autotest_barcode",
+            "sales": 0,
+            "inventory_management": True,
+            "requires_shipping": 1,
+            "taxable": 1,
+            "inventory_policy": "continue"
+        },
+        {
+            "option": [
+                {
+                    "option": "Color",
+                    "option_value": "black"
+                },
+                {
+                    "option": "Size",
+                    "option_value": "min"
+                }
+            ],
+            "price": 99,
+            "compare_at_price": 199,
+            "weight": "666",
+            "weight_unit": "kg",
+            "sku": "autotest_sku",
+            "barcode": "autotest_barcode",
+            "sales": 0,
+            "inventory_management": True,
+            "requires_shipping": 1,
+            "taxable": 1,
+            "inventory_policy": "continue"
+        },
+        {
+            "option": [
+                {
+                    "option": "Color",
+                    "option_value": "black"
+                },
+                {
+                    "option": "Size",
+                    "option_value": "mid"
+                }
+            ],
+            "price": 99,
+            "compare_at_price": 199,
+            "weight": "666",
+            "weight_unit": "kg",
+            "sku": "autotest_sku",
+            "barcode": "autotest_barcode",
+            "sales": 0,
+            "inventory_management": True,
+            "requires_shipping": 1,
+            "taxable": 1,
+            "inventory_policy": "continue"
         }
     ],
     "status": 1,
