@@ -7,7 +7,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def collection_dropdown_py(query_str, cookie=init_cookie):
+def collection_dropdown_py(query_str={}, cookie=init_cookie):
     url = home_page_url + '/api/collection/dropdown'
     try:
         response_data = requests.get(url=url, headers={"cookie": cookie['cookie']}, params=query_str)

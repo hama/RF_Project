@@ -7,7 +7,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def product_search_py(query_str, cookie=init_cookie):
+def product_search_py(query_str={}, cookie=init_cookie):
     '''
     查询产品列表信息
     :param query_str:
@@ -28,7 +28,7 @@ def product_search_py(query_str, cookie=init_cookie):
         return e
 
 
-def product_info_py(query_str, cookie=init_cookie):
+def product_info_py(query_str={}, cookie=init_cookie):
     '''
     查询产品信息
     :param query_str:
@@ -47,6 +47,7 @@ def product_info_py(query_str, cookie=init_cookie):
         return return_data
     except Exception as e:
         return e
+
 
 def product_add_py(data, cookie=init_cookie):
     """
@@ -107,7 +108,7 @@ def add_discontinued_product_py(cookie=init_cookie):
     data['images'] = [image]
     data['status'] = 0
 
-    return product_add_py(data, cookie)['content']['data']['product_id']
+    return product_add_py(data, cookie=cookie)['content']['data']['product_id']
 
 
 def add_launched_product_py(cookie=init_cookie):
@@ -120,7 +121,7 @@ def add_launched_product_py(cookie=init_cookie):
     data['images'] = [image]
     data['status'] = 1
 
-    return product_add_py(data, cookie)['content']['data']['product_id']
+    return product_add_py(data, cookie=cookie)['content']['data']['product_id']
 
 
 def add_empty_quantity_product_py(cookie=init_cookie):
@@ -131,7 +132,7 @@ def add_empty_quantity_product_py(cookie=init_cookie):
     '''
     data = copy.deepcopy(product_min_data)
     data['variants'][0]['inventory_management'] = True
-    return product_add_py(data, cookie)['content']['data']['product_id']
+    return product_add_py(data, cookie=cookie)['content']['data']['product_id']
 
 
 def add_min_product_py(cookie=init_cookie):
@@ -140,7 +141,7 @@ def add_min_product_py(cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    return product_add_py(product_min_data, cookie)['content']['data']['product_id']
+    return product_add_py(product_min_data, cookie=cookie)['content']['data']['product_id']
 
 
 def add_max_product_py(cookie=init_cookie):
@@ -149,7 +150,7 @@ def add_max_product_py(cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    return add_launched_product_py(cookie)
+    return add_launched_product_py(cookie=cookie)
 
 
 def add_product_with_conf_py(conf={}, cookie=init_cookie):
@@ -191,7 +192,7 @@ def add_product_with_conf_py(conf={}, cookie=init_cookie):
     else:
         data['images'] = [image]
 
-    return product_add_py(data, cookie)['content']['data']['product_id']
+    return product_add_py(data, cookie=cookie)['content']['data']['product_id']
 
 
 def del_latest_product_py(cookie=init_cookie):
@@ -199,7 +200,7 @@ def del_latest_product_py(cookie=init_cookie):
     删除最新商品
     :return: True | False
     """
-    product_updatestatus_py(1, -1, cookie)
+    product_updatestatus_py(1, -1, cookie=cookie)
 
 
 def del_latest_products_py(num, cookie=init_cookie):
@@ -209,7 +210,7 @@ def del_latest_products_py(num, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    product_updatestatus_py(num, -1, cookie)
+    product_updatestatus_py(num, -1, cookie=cookie)
 
 
 def del_all_products_py(cookie=init_cookie):
@@ -217,7 +218,7 @@ def del_all_products_py(cookie=init_cookie):
     删除全部商品
     :return: True | False
     """
-    product_updatestatus_py('all', -1, cookie)
+    product_updatestatus_py('all', -1, cookie=cookie)
 
 
 def get_all_products_count_py():
@@ -226,7 +227,7 @@ def get_all_products_count_py():
 
 def get_latest_productid_py():
     query_str = copy.deepcopy(query_list_data)
-    products_list = product_search_py(query_str)['content']['data']['products']
+    products_list = product_search_py(query_str, cookie=cookie)['content']['data']['products']
     try:
         return products_list[0]['id']
     except Exception as e:
@@ -235,7 +236,7 @@ def get_latest_productid_py():
 
 def get_oldest_productid_py():
     query_str = copy.deepcopy(query_list_data)
-    products_list = product_search_py(query_str)['content']['data']['products']
+    products_list = product_search_py(query_str, cookie=cookie)['content']['data']['products']
     try:
         return products_list[-1]['id']
     except Exception as e:
@@ -244,7 +245,7 @@ def get_oldest_productid_py():
 
 def get_exist_productsid_py():
     query_str = copy.deepcopy(query_list_data)
-    products_list = product_search_py(query_str)['content']['data']['products']
+    products_list = product_search_py(query_str, cookie=cookie)['content']['data']['products']
     products_id = []
     for product in products_list:
         products_id.append(product['id'])
@@ -257,7 +258,8 @@ def add_max_product_with_sub_py(cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    return product_add_py(product_max_data_with_sub, cookie)
+    return product_add_py(product_max_data_with_sub, cookie=cookie)
+
 
 def add_one_product_with_sub_py(cookie=init_cookie):
     """
@@ -265,7 +267,8 @@ def add_one_product_with_sub_py(cookie=init_cookie):
     :param cookie:
     :return:
     """
-    return product_add_py(product_onw_data_with_sub,cookie)
+    return product_add_py(product_onw_data_with_sub, cookie=cookie)
+
 
 if __name__ == '__main__':
     pass

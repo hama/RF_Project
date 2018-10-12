@@ -6,7 +6,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def comments_select_py(query_str, cookie=init_cookie):
+def comments_select_py(query_str={}, cookie=init_cookie):
     url = home_page_url + '/api/comments/select'
     try:
         response_data = requests.get(url=url, headers={"cookie": cookie['cookie']}, params=query_str)

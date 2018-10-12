@@ -540,6 +540,13 @@ payment_method_activation_data = {
     "method_is_enable": 0
 }
 
+payment_channel_data = {
+    "client_id": "11111",
+    "secret_key": "11111",
+    "payment_method": "credit_card",
+    "payment_channel": "iPayLinks"
+}
+
 cart_add_data = {
     'product_id': '601',
     'variant_id': '641',
