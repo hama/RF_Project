@@ -10,7 +10,6 @@ Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_browser.robot
 Resource          ../../../resources/keywords/kw_checkout.robot
 Resource          ../../../resources/variable/var_checkout.robot
-Resource          ../../../resources/variable/var_checkout.robot
 Resource          ../../../resources/variable/var_product_management.robot
 Library           ${CURDIR}/../../../lib/customlib/kwproduct.py
 Library           ${CURDIR}/../../../lib/customlib/kwshipping.py
@@ -428,8 +427,9 @@ checkout096
 
     #添加是shipping address
     Add Address Common Step
+    Sleep Time
     Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait Until Page Contains Text   order_summary
+    Wait Until Page Contains Text   Order summary
 
 
 
