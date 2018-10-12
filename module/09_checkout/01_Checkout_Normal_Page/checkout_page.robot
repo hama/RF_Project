@@ -20,6 +20,7 @@ Library           ${CURDIR}/../../../lib/customlib/lib_utils.py
 Library           ${CURDIR}/../../../lib/customlib/kwcheckout.py
 
 *** Test Cases ***
+
 checkout001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0    threshold    smoke
@@ -81,12 +82,14 @@ checkout_008
 checkout_009
     [Documentation]    验证checkout shipping页面，订单汇总商品栏，商品价格显示正常 >"1.C端购买商品women进入checkout shipping页面,2.查看订单汇总商品栏，商品价格显示" > 商品价格显示为：444USD
     [Tags]    P0    threshold    smoke
+    #.创建订单初始化
+    Chenckout Product Initial
     Click Preview Step
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Sleep    2
     Wait Until Page Contains Locator        dom:document.querySelectorAll(".order_price")[0]
     ${res}    Execute JavaScript    return document.querySelectorAll(".order_price")[0].innerText
-    Should Be True    '${res}'=='$99.00'
+    Should Be True    '${res}'=='$444.00'
 
 checkout_014
     [Documentation]    验证checkout shipping页面，subtotal显示正常 > "1.C端购买商品women两件进入checkout shipping页面,2.查看价格详情中subtotal" > subtotal为：$444.00
@@ -153,7 +156,10 @@ checkout_021
 
 checkout_024
     [Documentation]    验证checkout shipping页面，total显示正常 > "1.C端购买商品进入checkout shipping页面,2.信息填写栏选择国家 中国,3.选择物流方案：方案1,4.使用优惠码AAA001,5.此订单价格为：,,subtotal：$50.00,shipping：+ $2.00,discount code：- $10.00,tax: + $25.00,6.查看价格详情total"
-    [Tags]    P0    threshold    smoke
+    [Tags]    P0    threshold    smoke          #后面再做调整
+
+    #.开启pc优化
+    # kwcheckout.start_pc_show_py    1
     #.添加一个满50减10的全场优惠券
     kwmarketing.add_coupon_py    1
     #.先删除所有物流
@@ -171,9 +177,11 @@ checkout_024
     Sleep    2
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
     Select From List    ${locatorB_checkout_address_select_country}    China
+    #.关闭PC优化
+    # kwcheckout.start_pc_show_py
     Sleep    4
     #，点击查看详情的下拉剪头
-    Wait And Click Element    ${locatorB_checkout_address_showProduct_eml}
+    # Wait And Click Element    ${locatorB_checkout_address_showProduct_eml}
     #.输入优惠码
     Wait And Input Text    ${locatorB_checkout_addressCoupon_ipt}    ${copun}
     #.点击应用
@@ -202,7 +210,7 @@ checkout_024
     ${codes}    lib_utils.searchStrs_py    ${code}
     #.获取优惠券信息
     ${res}    Evaluate    ${totals}+${shippings}+${codes}-int(${numsx})
-    ${rex}    Evaluate    ${res}-1
+
     Should Be True    ${rex}==${exsx}
     
 checkout_025
@@ -420,7 +428,7 @@ checkout094
 
 checkout096
     [Documentation]    验证checkout shipping页面，点击payment method按钮可进入支付页面 > 1.shipping address中输入合法内容  2.点击payment method按钮
-
+    [Tags]    P0    threshold    smoke
     #从B端进入商品详情页
     Click Preview Step
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
@@ -430,6 +438,102 @@ checkout096
     Sleep Time
     Wait And Click Element    ${locatorB_checkout_submit_btn_s}
     Wait Until Page Contains Text   Order summary
+
+checkout097
+    [Documentation]    验证checkout shipping页面，选择没有省份的国家后，点击payment method可以跳转到支付页面 > 1.shipping address中选择国家Bouvet Island  2.其他输入框输入合法内容 3.点击payment method按钮
+    [Tags]    P0    threshold    smoke
+    #初始化物流信息
+    Chenckout Del Shipping Information
+    #创建物流方案中已添加国家：Bouvet Island
+    Chenckout Add Shipping BouvetIsland
+    #从B端进入商品详情页
+    Click Preview Step
+    Wait And Click Element  ${locatorB_checkout_by_now_btn}
+
+    #添加是shipping address
+    Wait And Input Text    ${locatorB_checkout_address_first_name}    123
+    Wait And Input Text    ${locatorB_checkout_address_last_name}    345
+    Select From List    ${locatorB_checkout_address_select_country}    Bouvet Island
+    Wait And Input Text    ${locatorB_checkout_address_city}    Island
+    Wait And Input Text    ${locatorB_checkout_address_add}    Island123
+    Wait And Input Text    ${locatorB_checkout_address_zip}    123456
+    Wait And Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
+    Wait And Input Text    ${locatorB_checkout_address_phone}    123456789
+    Wait And Input Text    ${locatorB_checkout_address_company}    123456789
+
+    Sleep Time
+    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
+    Wait Until Page Contains Text   Order summary
+
+checkout098
+    [Documentation]    验证checkout 支付页面，订单汇总，商品栏，商品标题显示正常 > 1.C端购买商品women进入checkout支付页面  2.查看订单汇总，商品栏，商品标题
+    [Tags]    P0    threshold    smoke
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
+    #.创建一个新商品
+    kwproduct.add_one_product_with_sub_py
+    #从B端进入商品详情页
+    Click Preview Step
+    Wait And Click Element  ${locatorB_checkout_by_now_btn}
+    Wait Until Page Contains Text   autotest_title
+
+checkout100
+    [Documentation]   验证checkout 支付页面，订单汇总商品栏，商品数量显示正常 > 1.C端够买商品women5件进入checkout 支付页 2.查看订单汇总商品栏，商品数量显示
+    [Tags]    P0    threshold    smoke
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
+    #.创建一个新商品
+    kwproduct.add_one_product_with_sub_py
+    #从B端进入商品详情页
+    Click Preview Step
+    Wait And Input Text  ${locatorC_checkout_input_checkNum}     5
+    Wait And Click Element  ${locatorB_checkout_by_now_btn}
+    Wait Until Page Contains Text   X5
+
+checkout101
+    [Documentation]   验证checkout 支付页面，订单汇总商品栏，商品价格显示正常 > 1.C端购买商品women进入checkout 支付页面  2.查看订单汇总商品栏，商品价格显示
+    [Tags]    P0    threshold    smoke
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
+    #.创建一个新商品
+    kwproduct.add_one_product_with_sub_py
+    #从B端进入商品详情页
+    Click Preview Step
+    Wait And Click Element  ${locatorB_checkout_by_now_btn}
+    Wait Until Page Contains Text   99.00
+
+checkout106
+    [Documentation]   验证checkout 支付页面，subtotal显示正常 > 1.C端购买商品women两件进入checkout 支付页面  2.查看价格详情中subtotal
+    [Tags]    P0    threshold    smoke
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
+    #.创建一个新商品
+    kwproduct.add_one_product_with_sub_py
+    #从B端进入商品详情页
+    Click Preview Step
+    Wait And Input Text  ${locatorC_checkout_input_checkNum}     2
+    Wait And Click Element  ${locatorC_checkout_submit_bynow}
+    Wait Until Page Contains Text   888.00
+
+
+checkout107
+    [Documentation]   验证checkout 支付页面，价格详情中，shipping显示正常  > 1.C端购买商品进入checkout shipping页面  2.填写购买人信息，国家选择：中国  3.选择运费：方案0  4.进入支付页面查看价格详情中shippinga
+    [Tags]    P0    threshold    smoke
+    #初始化物流信息
+    Chenckout Del Shipping Information
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
+    #.创建运费方案0  中国方案  运费价格10
+    &{conf}=   Create Dictionary
+    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_name=shipping_yunfei
+    kwshipping.add_shipping_with_conf_py    ${conf}
+
+    #从B端进入商品详情页
+    Click Preview Step
+    Wait And Click Element  ${locatorC_checkout_submit_bynow}
+    Add Address Common Step
+    Wait Until Page Contains Text   10.00
 
 
 
@@ -457,17 +561,5 @@ Checkout Common Step
     kwcheckout.start_pc_show_py
 
 
-Click Preview Step
-    [Documentation]    点击预览的公共步骤
-    Go To Product Management Page
-    Sleep Time
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
-    Sleep Time
-    Select Window    New
-    Sleep Time
 
-Common Teardown
-    [Documentation]    结束公共步骤
-    Close Test Suite Browser
-    kwshipping.delShipping_py
    

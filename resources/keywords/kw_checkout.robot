@@ -2,6 +2,13 @@
 Documentation     checkout 公共方法
 Resource          ../variable/var_common.robot
 Resource          ../variable/var_checkout.robot
+Library           ${CURDIR}/../../lib/customlib/kwproduct.py
+Library           ${CURDIR}/../../lib/customlib/kwshipping.py
+Library           ${CURDIR}/../../lib/customlib/kwtax.py
+Library           ${CURDIR}/../../lib/customlib/kwmarketing.py
+Library           ${CURDIR}/../../lib/customlib/lib_utils.py
+
+Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 
 *** keywords ***
 Add Shipping The Freight
@@ -23,9 +30,13 @@ Click Preview Step
 Common Teardown
     [Documentation]    结束公共步骤
     Close Test Suite Browser
-    kwshipping.delShipping_py
+
+
+    #.关闭PC优化
+    kwcheckout.start_pc_show_py
 
 Checkout Common Step Out
+    [Documentation]    checkout Suite Setup 开始
     #.登陆
     Login With Default User
     #.添加中国的物流
@@ -34,8 +45,25 @@ Checkout Common Step Out
     kwproduct.add_launched_product_py
     #.chechout 运行环境的初始化
     kwcheckout.set_checkout_process_py
-    #.关闭PC优化
-    kwcheckout.start_pc_show_py
+
+
+Chenckout Product Initial
+    [Documentation]    创建订单的初始化
+    kwproduct.add_launched_product_py
+
+Chenckout Add Shipping BouvetIsland
+    [Documentation]    添加一个Bouvet Island国家物流信息
+    &{conf}=   Create Dictionary
+    ...    shipping_area=[{"country_id":"29","zone_ids":"-1"}]
+    ...    shipping_name=autotest_shipping001
+    kwshipping.add_shipping_with_conf_py    ${conf}
+
+Chenckout Del Shipping Information
+    [Documentation]    初始化物流信息，删除全部物流信息
+    #.初始化物流信息
+    kwshipping.del_all_shipping_py
+
+
 
 
 
