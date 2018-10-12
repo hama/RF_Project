@@ -367,7 +367,7 @@ Add Payment Cod Wait
     [Documentation]    添加 cod支付方式
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    add_payment_cod_py
+    \    ${res_status}    activate_payment_cod_py
     \    Run Keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1
 
@@ -375,7 +375,7 @@ Del Payment Cod Wait
     [Documentation]    删除 cod支付方式
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    del_payment_cod_py
+    \    ${res_status}    inactivate_payment_cod_py
     \    Run Keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1
 

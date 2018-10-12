@@ -99,7 +99,7 @@ def checkout_price_calculate_py(data, cookie=init_cookie):
         return e
 
 
-def checkout_shipping_lines_py(query_str, cookie=init_cookie):
+def checkout_shipping_lines_py(query_str={}, cookie=init_cookie):
     '''
     获取checkout的入参shipping_lines
     :param data:

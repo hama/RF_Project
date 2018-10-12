@@ -110,21 +110,21 @@ BeginnerTutorial015
     [Tags]    P1    threshold
     Go To Home Page
     #.添加支付方式
-    add_payment_cod_py
+    activate_payment_cod_py
     #.刷新
     Execute JavaScript    return location.reload()
     Wait Until Page Contains Locator    dom:document.querySelectorAll('button')[3]
     ${res}    Execute JavaScript    return document.querySelectorAll('button')[3].innerText
     Should Be True    '${res}'=='已完成'
     #.删除支付方式
-    del_payment_cod_py
+    inactivate_payment_cod_py
 
 BeginnerTutorial018
     [Documentation]    测试新手教程变为概览数据页面 > 所有教程完成是概览页面会变为数据统计页面
     [Tags]    P1    threshold
     Go To Home Page
     #.添加支付方式
-    add_payment_cod_py
+    activate_payment_cod_py
     #.添加商品
     add_discontinued_product_py
     #. 添加物流

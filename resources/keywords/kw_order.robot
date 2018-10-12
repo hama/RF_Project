@@ -13,6 +13,7 @@ Dealing Order Suite Setup
 
 Dealing Order Suite Teardown
     [Documentation]
+    kwproduct.del_all_products_py
     Close Test Suite Browser
 
 Dealing Order Case Setup
@@ -25,6 +26,7 @@ Undeal Order Suite Setup
 
 Undeal Order Suite Teardown
     [Documentation]
+    kwproduct.del_all_products_py
     Close Test Suite Browser
 
 Undeal Order Case Setup

@@ -7,7 +7,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def add_shipping_py(has_other_country=0,has_freight = 0, cookie=init_cookie):
+def add_shipping_py(has_other_country=0, has_freight=0, cookie=init_cookie):
     """
     添加中国物流
     :param has_other_country: 0 = 普通国家 | 1 = 其他国家
@@ -73,7 +73,6 @@ def delShipping_py(cookie=init_cookie):
             return False
     except Exception as e:
         print e
-    
 
 
 def shipping_refresh_py(data, cookie=init_cookie):
@@ -127,7 +126,7 @@ def add_shipping_with_conf_py(conf={}, cookie=init_cookie):
     if data['has_other_country'] == 1:
         data['shipping_area'] = []
 
-    return shipping_refresh_add_py(data, cookie)['content']['data']['shipping_id']
+    return shipping_refresh_add_py(data, cookie=cookie)['content']['data']['shipping_id']
 
 
 def shipping_refresh_add_py(data, cookie=init_cookie):
@@ -137,7 +136,7 @@ def shipping_refresh_add_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    return shipping_refresh_py(data, cookie)
+    return shipping_refresh_py(data, cookie=cookie)
 
 
 def shipping_refresh_del_py(shipping_id, cookie=init_cookie):
@@ -148,7 +147,7 @@ def shipping_refresh_del_py(shipping_id, cookie=init_cookie):
     :return:
     '''
     data = {"shipping_id": shipping_id, "is_enable": 0}
-    return shipping_refresh_py(data, cookie)
+    return shipping_refresh_py(data, cookie=cookie)
 
 
 def add_max_shipping_py(cookie=init_cookie):
@@ -158,7 +157,7 @@ def add_max_shipping_py(cookie=init_cookie):
     :return:
     '''
     data = copy.deepcopy(shipping_data)
-    return shipping_refresh_add_py(data, cookie)
+    return shipping_refresh_add_py(data, cookie=cookie)
 
 
 def del_all_shipping_py(cookie=init_cookie):
@@ -166,13 +165,57 @@ def del_all_shipping_py(cookie=init_cookie):
     删除全部物流方案
     :return: True | False
     """
-    data = shipping_list_py()
-    if data['result'] != 'success' or data['content']['state'] != 0:
-        return {'result': 'success', 'content': 'shipping had been deleted'}
-    shipping_list_data = shipping_list_py()['content']['data']
-    for shipping_data in shipping_list_data:
-        return shipping_refresh_del_py(shipping_data['shipping_id'], cookie)
+    return keep_certain_shipping_py(cookie=cookie)
+
+
+def keep_latest_shipping_py(cookie=init_cookie):
+    """
+    保留最新的那条物流方案
+    :return: True | False
+    """
+    return keep_certain_shipping_py([1], cookie=cookie)
+
+
+def keep_certain_shipping_py(num_list=[], cookie=init_cookie):
+    """
+    保留某些物流方案
+    :return: True | False
+    """
+    if num_of_exist_shipping_py(cookie=cookie) == 0:
+        return {'result': 'success', 'content': 'there are not shipping to be deleted'}
+    shipping_list_data = shipping_list_py(cookie=cookie)['content']['data']
+    for i in range(len(shipping_list_data)):
+        if i + 1 in num_list:
+            continue
+        shipping_refresh_del_py(shipping_list_data[i]['shipping_id'], cookie=cookie)
+    return {'result': 'success', 'content': 'assigned shipping had been deleted'}
+
+
+def create_only_one_shipping_py(conf={}, cookie=init_cookie):
+    """
+    创建唯一的物流方案
+    :return: True | False
+    """
+    num = num_of_exist_shipping_py(cookie=cookie)
+    if num == 1:
+        return shipping_list_py(cookie=cookie)['content']['data'][0]['shipping_id']
+    elif num > 1:
+        del_all_shipping_py(cookie=cookie)
+    return add_shipping_with_conf_py(conf, cookie=cookie)
+
+
+def num_of_exist_shipping_py(cookie=init_cookie):
+    '''
+    判断是否存在物流方案
+    :return: 存在物流的个数
+    '''
+    data = shipping_list_py(cookie=cookie)
+    if 'data' in data['content']:
+        return len(data['content']['data'])
+    else:
+        return 0
 
 
 if __name__ == '__main__':
-    print add_shipping_py()
+    # add_max_shipping_py()
+    print create_only_one_shipping_py()
