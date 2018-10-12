@@ -87,7 +87,7 @@ BeginnerTutorial012
     [Tags]    P1    threshold
     Go To Home Page
     #.先删除物流
-    delShipping_py
+    kwshipping.del_all_shipping_py
     #. 添加物流
     addShipping_py
     Execute JavaScript    return location.reload()

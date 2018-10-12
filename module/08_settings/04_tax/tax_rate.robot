@@ -4,27 +4,22 @@ Suite Setup       Login With Default User
 Suite Teardown    Close Test Suite Browser
 Test Setup        Taxprice Page Test Setup
 Test Teardown     Teardown Test Case
-Force Tags        checkoutPageSetings
-
-
+Force Tags        tax
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/variable/var_tax_price.robot
 Resource          ../../../resources/variable/var_shipping.robot
 Resource          ../../../resources/keywords/kw_common.robot
-Resource          ../../../resources/keywords/kw_browser.robot
 Resource          ../../../resources/keywords/kw_shipping.robot
-Resource          ../../../resources/keywords/kw_tax_rate.robot
-
-Library           SeleniumLibrary    run_on_failure=NOTHING
+Resource          ../../../resources/keywords/kw_tax.robot
 
 *** Test Cases ***
 
-ShippingTaxRate001
+taxPrice001
     [Documentation]    测试税金界面可以正常进入
     [Tags]    P0    threshold   smoke
     Go To Tax Page
 
-ShippingTaxRate005
+taxPrice005
     [Documentation]    测试在物流中添加的国家会显示在税金列表中
     [Tags]    P0    threshold   smoke
     Go To Shipping Page
@@ -36,7 +31,7 @@ ShippingTaxRate005
     Go To Tax Page
     Wait Until Page Contains Text   中国
 
-ShippingTaxRate011
+taxPrice011
     [Documentation]    测试税金界面运费设置按钮
     [Tags]    P0    threshold   smoke
     Go To Tax Page
@@ -48,7 +43,7 @@ ShippingTaxRate011
     Wait And Click Element  ${locatorB_taxPrice_button_logisticsSet}
     Wait Until Page Contains Locator  ${locatorB_taxPrice_div_logisticsProviders}
 
-ShippingTaxRate012
+taxPrice012
     [Documentation]    测试国家栏后面的开启关闭按钮正常
     [Tags]    P0    threshold   smoke
     Go To Tax Page
@@ -60,7 +55,7 @@ ShippingTaxRate012
     Click Element  ${locatorB_taxPrice_span_closeAndOpen}
     Wait Until Page Contains Text   设置成功
 
-ShippingTaxRate017
+taxPrice017
     [Documentation]    测试城市税金设置
     [Tags]    P0    threshold   smoke
     Go To Tax Page

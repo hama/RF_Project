@@ -556,11 +556,12 @@ checkout109
     #.开启pc优化
     kwcheckout.start_pc_show_py    1
     #进入税费里设置中国的税率60%
-    Go To Shipping Page
+    Go To Tax Page
     Wait Until Page Contains Text   中国
-    Wait And Click Element  ${locatorB_taxPrice_i_setUp}
+    Wait And Click Element  ${locatorB_taxPrice_set_setUp}
+    Wait And Input Text  ${locatorB_taxPrice_set_taxes}   ${empty}
     Wait And Input Text  ${locatorB_taxPrice_set_taxes}  60
-    Wait And Click Element  ${locatorB_taxPrice_button_submit}
+    Wait And Click Element  ${locatorB_taxPrice_button_submitTax}
     #从B端进入商品详情页
     Click Preview Step
     #添加是shipping address
@@ -569,10 +570,11 @@ checkout109
     Sleep    2
     #.选择中国
     Select From List    ${locatorB_checkout_address_select_country}    China
+    Sleep    2
     #查看商品扣除60%税费后的金额
-    ${rel}   Evaluate       444.00*60%
-    ${pries}
-    Should Be True    '+${rel}'==''
+    ${rel}   Evaluate       444.00*0.6
+    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".checkout-prices-value")[2]    + $${rel}0
+
 
 
 
@@ -610,4 +612,11 @@ Checkout Common Step
 
 
 
+<<<<<<< HEAD
+=======
+Common Teardown
+    [Documentation]    结束公共步骤
+    Close Test Suite Browser
+    kwshipping.del_all_shipping_py
+>>>>>>> 05e6e30870962438b3e4a12d6dadd72748c57378
    

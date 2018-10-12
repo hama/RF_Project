@@ -289,7 +289,7 @@ shipping134
     Wait And Click Element    ${locatorB_shipping_freight_save}
     Wait And Click Element    ${shipping_first_button}
     Wait Until Page Contains Element    dom:document.querySelectorAll("#test_shipping_list_0 li")[0]
-    delShipping_py
+    kwshipping.del_all_shipping_py
 
 shipping138
     [Documentation]    测试添加物流界面国家列表界面的修改和删除按钮 > "1.添加国家2.点击修改按钮3.取消勾选城市列表中的城市4.点击确认" >保存成功，关闭弹窗，添加的物流对取消勾选的城市不生效
@@ -375,7 +375,7 @@ shipping150
     Wait And Click Element    ${locatorB_shipping_freight_save}
     Wait And Click Element    ${shipping_first_button}
     Wait Until Page Contains Element    dom:document.querySelectorAll("#test_shipping_list_0 li")[0]
-    delShipping_py
+    kwshipping.del_all_shipping_py
 
 shipping153
     [Documentation]    测试物流详情界面可修改内容 > "1.修改物流的所有信息 > 保存成功，关闭物流详情界面，返回到物流列表
@@ -389,7 +389,7 @@ shipping153
     Wait And Click Element    dom:document.querySelectorAll('#test_shipping_list_0')[0]
     Wait And Input Text    ${locatorB_shipping_first_input}    自动化测试123
     Wait And Click Element    ${locatorB_shipping_save_btn}
-    delShipping_py
+    kwshipping.del_all_shipping_py
 
 shipping154
     [Documentation]    测试物流详情界面可修改内容 > "1.修改物流信息,点击返回按钮" > 弹出未保存提示，取消留在物流详情界面，确认后返回物流列表界面修改的信息不保存
@@ -404,7 +404,7 @@ shipping154
     Wait And Input Text    ${locatorB_shipping_first_input}    自动化测试123
     Wait And Click Element    ${locatorB_setting_shipping}
     Alert Should Be Present
-    delShipping_py
+    kwshipping.del_all_shipping_py
 
 shipping155
     [Documentation]    测试物流详情界面删除按钮 > 1.点击物流详情界面的删除按钮 > 删除成功
@@ -518,4 +518,4 @@ Common Input Step
 Common Suites Step
     [Documentation]    公共suite步骤
     Login With Default User
-    delShipping_py
+    kwshipping.del_all_shipping_py

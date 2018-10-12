@@ -3,6 +3,7 @@ logs/
 *.log
 *.pyc
 *.png
+*.jpg
 *.html
 *.xml
 *.iml

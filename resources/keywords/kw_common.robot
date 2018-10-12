@@ -2,6 +2,7 @@
 Library           SeleniumLibrary    run_on_failure=NOTHING
 Library           OperatingSystem
 Library           DateTime
+Library           Screenshot
 Library           ${CURDIR}/../../lib/customlib/kwpayment.py
 Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 Library           ${CURDIR}/../../lib/customlib/kwproduct.py

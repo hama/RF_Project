@@ -50,31 +50,6 @@ def add_shipping_py(has_other_country=0, has_freight=0, cookie=init_cookie):
         print e
 
 
-def delShipping_py(cookie=init_cookie):
-    """
-    删除物流方式
-    :return: True | False
-    """
-    try:
-        db_config = copy.deepcopy(db_shop_config)
-        db_config['cursorclass'] = pymysql.cursors.DictCursor
-        db_config['db'] = db_config['db'] + str(cookie['uid'])
-        conn = pymysql.connect(**db_config)
-        curs = conn.cursor()
-        SQL = "select id from shipping where id<>1 order by date_added desc"
-        curs.execute(SQL)
-        sub = curs.fetchone()['id']
-        del_url = home_page_url + "/api/shipping/refresh"
-        del_data = {"shipping_id": sub, "is_enable": 0}
-        res = requests.post(url=del_url, headers={"cookie": cookie['cookie']}, json=del_data)
-        if json.loads(res.content)['state'] == 0:
-            return True
-        else:
-            return False
-    except Exception as e:
-        print e
-
-
 def shipping_refresh_py(data, cookie=init_cookie):
     url = home_page_url + "/api/shipping/refresh"
     try:

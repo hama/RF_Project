@@ -221,11 +221,11 @@ def del_all_products_py(cookie=init_cookie):
     product_updatestatus_py('all', -1, cookie=cookie)
 
 
-def get_all_products_count_py():
-    return product_search_py({})['content']['data']['total']
+def get_all_products_count_py(cookie=init_cookie):
+    return product_search_py({}, cookie=cookie)['content']['data']['total']
 
 
-def get_latest_productid_py():
+def get_latest_productid_py(cookie=init_cookie):
     query_str = copy.deepcopy(query_list_data)
     products_list = product_search_py(query_str, cookie=cookie)['content']['data']['products']
     try:
@@ -234,7 +234,7 @@ def get_latest_productid_py():
         return 1
 
 
-def get_oldest_productid_py():
+def get_oldest_productid_py(cookie=init_cookie):
     query_str = copy.deepcopy(query_list_data)
     products_list = product_search_py(query_str, cookie=cookie)['content']['data']['products']
     try:
@@ -243,7 +243,7 @@ def get_oldest_productid_py():
         return 1
 
 
-def get_exist_productsid_py():
+def get_exist_productsid_py(cookie=init_cookie):
     query_str = copy.deepcopy(query_list_data)
     products_list = product_search_py(query_str, cookie=cookie)['content']['data']['products']
     products_id = []
@@ -272,7 +272,7 @@ def add_one_product_with_sub_py(cookie=init_cookie):
 
 if __name__ == '__main__':
     pass
-    print add_one_product_with_sub_py()
+    print del_all_products_py()
     # product_search_py()
     # del_latest_product_py()
     # del_all_products_py()

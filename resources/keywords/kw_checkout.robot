@@ -30,6 +30,10 @@ Click Preview Step
 Common Teardown
     [Documentation]    结束公共步骤
     Close Test Suite Browser
+<<<<<<< HEAD
+=======
+    kwshipping.del_all_shipping_py
+>>>>>>> 05e6e30870962438b3e4a12d6dadd72748c57378
 
 
     #.关闭PC优化
