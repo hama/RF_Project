@@ -12,6 +12,9 @@ Taxprice Page Test Setup
     #. 调用接口，初始化数据
     kwshipping.del_all_shipping_py
 
+
+
+
 Taxprice New Shipping Information
     [Documentation]    添加物流信息为中国
     [Tags]    P0    threshold   smoke
@@ -19,13 +22,6 @@ Taxprice New Shipping Information
     kwshipping.add_shipping_with_conf_py
     Reload Page And Start Ajax
 
-Taxprice Del Shipping Information
-    [Documentation]    初始化物流信息
-    [Tags]    P0    threshold   smoke
-    #. 调用接口，删除单个物流
-    kwshipping.shipping_refresh_del_py
-    #刷新页面
-    Reload Page And Start Ajax
 
 
 Taxprice New Shipping China
