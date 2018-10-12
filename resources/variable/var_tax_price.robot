@@ -13,8 +13,12 @@ ${locatorB_taxPrice_text_theTax}     收税方式
 
 ${locatorB_taxPrice_div_logisticsProviders}    dom:document.querySelectorAll('span[class="enterprise_icon___1kAvj"]')[0]         #物流商
 ${locatorB_taxPrice_span_closeAndOpen}      dom:document.querySelectorAll('.ant-switch')[0]    #运费设置关闭/开启
-${locatorB_taxPrice_i_setUp}       dom:document.querySelectorAll('.djfont')[0]
+${locatorB_taxPrice_set_setUp}       dom:document.querySelectorAll('.ant-table-row .djfont')[0]      #.税费设置的第一个国家，设置操作
 
+#.税费设置 center
+${locatorB_taxPrice_set_taxes}     dom:document.querySelectorAll('.ant-input')[0]     #.税费设置-国家税率设置input
+
+${locatorB_taxPrice_button_submitTax}      dom:document.querySelectorAll('.ant-btn-primary')[0]     #.税费设置-确定提交按钮
 #   button
 ${locatorB_taxPrice_button_setLogistics}     dom:document.querySelectorAll("button")[0]
 ${locatorB_taxPrice_setting}      dom:document.querySelectorAll(".setting")[0]
@@ -35,9 +39,6 @@ ${locatorB_shipping_button_btn}    dom:document.querySelectorAll("button")[0]   
 
 
 
-# api interface
-${apiB_tax_list}    ${home_page}/api/tax/list    # 税费数据列表接口
-${apiB_tax_toggle}    ${home_page}/api/tax/toggle    # 税费开关接口
 # locator
 ${locatorB_tax_goto_shipping}    tag:button    # 页面只有一个 button
 ${locatorB_tax_help}    dom:document.querySelectorAll('.hd-line-help')[1]
