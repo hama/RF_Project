@@ -26,7 +26,7 @@ ${locatorC_checkout_input_quantity}    dom:document.querySelectorAll("input[data
 ${locatorC_checkout_input_checkNum}    dom:document.querySelectorAll("input[class='qty-num']")[0]   #订单页-订单输入数量框
 
 #.checkout - address
-
+${locatorB_productsMgmt_icon_preview}      dom:document.querySelectorAll('.dj-preview')[0]  #B端商品预览按钮
 
 ${locatorB_checkout_addressCoupon_ipt}    dom:document.querySelectorAll("#coupon_code_input")[0]    #.checkout 输入优惠券框
 ${locatorB_checkout_addressClickCoupon_btn}    dom:document.querySelectorAll("#coupon_apply")[0]    #.checkout 填写地址页面 - 点击应用优惠券按钮

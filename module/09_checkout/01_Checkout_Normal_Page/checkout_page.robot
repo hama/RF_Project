@@ -11,6 +11,7 @@ Resource          ../../../resources/keywords/kw_browser.robot
 Resource          ../../../resources/keywords/kw_checkout.robot
 Resource          ../../../resources/variable/var_checkout.robot
 Resource          ../../../resources/variable/var_product_management.robot
+Resource          ../../../resources/variable/var_tax_price.robot
 Library           ${CURDIR}/../../../lib/customlib/kwproduct.py
 Library           ${CURDIR}/../../../lib/customlib/kwshipping.py
 Library           ${CURDIR}/../../../lib/customlib/kwtax.py
@@ -521,19 +522,66 @@ checkout107
     [Tags]    P0    threshold    smoke
     #初始化物流信息
     Chenckout Del Shipping Information
-    #.开启pc优化
-    kwcheckout.start_pc_show_py    1
+
     #.创建运费方案0  中国方案  运费价格10
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
+    ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
-
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
     #从B端进入商品详情页
     Click Preview Step
-    Wait And Click Element  ${locatorC_checkout_submit_bynow}
-    Add Address Common Step
+    #添加是shipping address
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
+    Sleep    2
+    #.选择中国   运费价格10
+    Select From List    ${locatorB_checkout_address_select_country}    China
+
     Wait Until Page Contains Text   10.00
+
+checkout109
+    [Documentation]   验证checkout 支付页面，订单详情中tax显示正常  > 1.C端购买商品women 1件进入checkout shipping页面  2.信息填写栏选择国家中国 3.进入支付页面查看价格详情中tax
+    [Tags]    P0    threshold    smoke
+    #初始化物流信息
+    Chenckout Del Shipping Information
+
+    #.创建运费方案0  中国方案
+    &{conf}=   Create Dictionary
+    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_name=shipping_yunfei
+    kwshipping.add_shipping_with_conf_py    ${conf}
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
+    #进入税费里设置中国的税率60%
+    Go To Shipping Page
+    Wait Until Page Contains Text   中国
+    Wait And Click Element  ${locatorB_taxPrice_i_setUp}
+    Wait And Input Text  ${locatorB_taxPrice_set_taxes}  60
+    Wait And Click Element  ${locatorB_taxPrice_button_submit}
+    #从B端进入商品详情页
+    Click Preview Step
+    #添加是shipping address
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
+    Sleep    2
+    #.选择中国
+    Select From List    ${locatorB_checkout_address_select_country}    China
+    #查看商品扣除60%税费后的金额
+    ${rel}   Evaluate       444.00*60%
+    ${pries}
+    Should Be True    '+${rel}'==''
+
+
+
+
+
+
+
+
+
 
 
 
