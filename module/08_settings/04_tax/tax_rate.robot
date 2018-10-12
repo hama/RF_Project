@@ -11,7 +11,6 @@ Resource          ../../../resources/variable/var_shipping.robot
 Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_shipping.robot
 Resource          ../../../resources/keywords/kw_tax.robot
-Resource          ../../../resources/variable/var_tax_rate.robot
 
 
 *** Test Cases ***
