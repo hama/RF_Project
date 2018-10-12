@@ -4,7 +4,7 @@
 
 #button
 ${locatorB_checkout_button_cancel}     dom:document.querySelectorAll('button[type="button"]')[0]  #.取消按钮
-${locatorB_checkout_button_determine}    dom:document.querySelectorAll('button[type="button"]')[1]   #.保存按钮
+${locatorB_checkout_button_save}    dom:document.querySelectorAll('button[type="button"]')[1]   #.保存按钮
 # locator invoicinglabel
 ${locatorB_checkout_text_customerRights}    dom:document.querySelectorAll('p[class="title_bdd1"]')[0]              #顾客权限文字
 ${locatorB_checkout_label_notMembers}    dom:document.querySelectorAll('.radio_btn_cddf')[0]    #.顾客权限-不开启会员注册

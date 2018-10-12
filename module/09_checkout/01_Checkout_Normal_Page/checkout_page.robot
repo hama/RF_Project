@@ -411,5 +411,5 @@ Click Preview Step
 Common Teardown
     [Documentation]    结束公共步骤
     Close Test Suite Browser
-    kwshipping.delShipping_py
+    kwshipping.del_all_shipping_py
    

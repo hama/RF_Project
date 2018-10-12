@@ -39,7 +39,7 @@ checkoutPageSetings003
     Wait And Click Element  ${locatorB_checkout_linkBut_generateRefundTreaty}
     Wait And Click Element  ${locatorBcheckout_linkBut_generatePolicy}
     Wait And Click Element  ${locatorB_checkout_linkBut_generateServiceTreaty}
-    Wait Exist And Click Element  ${locatorB_checkout_button_determine}
+    Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
 
 checkoutPageSetings008
@@ -51,7 +51,7 @@ checkoutPageSetings008
     Wait And Click Element  ${locatorB_checkout_label_customerPhone}
 
 
-    Wait Exist And Click Element  ${locatorB_checkout_button_determine}
+    Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
 
 checkoutPageSetings011
@@ -62,7 +62,7 @@ checkoutPageSetings011
     Wait And Click Element  ${locatorB_checkout_label_buyMembers}
     Wait And Click Element  ${locatorB_checkout_label_customerEmail}
 
-    Wait Exist And Click Element  ${locatorB_checkout_button_determine}
+    Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
 
 checkoutPageSetings012
@@ -73,7 +73,7 @@ checkoutPageSetings012
     Wait And Click Element  ${locatorB_checkout_label_notMembers}
     Wait And Click Element  ${locatorB_checkout_label_customerPhone}
 
-    Wait Exist And Click Element  ${locatorB_checkout_button_determine}
+    Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
 
 checkoutPageSetings013
@@ -84,7 +84,7 @@ checkoutPageSetings013
     Wait And Click Element  ${locatorB_checkout_label_notMembers}
     Wait And Click Element  ${locatorB_checkout_label_customerEmailAndPhone}
 
-    Wait Exist And Click Element  ${locatorB_checkout_button_determine}
+    Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
 
 checkoutPageSetings018
@@ -126,7 +126,7 @@ checkoutPageSetings021
 #    Sleep   3
     Sleep And Click Element  ${locatorB_checkout_radio_surnameAndName}
 
-    Wait Exist And Click Element  ${locatorB_checkout_button_determine}
+    Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
 
 checkoutPageSetings029
@@ -142,7 +142,7 @@ checkoutPageSetings029
 
     Wait And Input Text  ${locatorB_checkout_textarea_refundTreatyInputBox}     ${locatorB_checkout_generateRefundTreaty}
 
-    Wait Exist And Click Element  ${locatorB_checkout_button_determine}
+    Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
 
 

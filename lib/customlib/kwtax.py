@@ -15,7 +15,7 @@ def add_other_tax_price_py(parameter,cookie=init_cookie):
     :return:  True | False
     """
     # .删除物流
-    #delShipping_py()
+    #del_all_shipping_py()
     # 添加其他国家
     shipping_id = add_shipping_py(0)
     print shipping_id
