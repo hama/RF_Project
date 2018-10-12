@@ -81,7 +81,7 @@ checkoutPageSetings013
     [Tags]    P0    threshold   smoke
     Go To Checkout Settings Page
 
-    Wait And Click Element  ${locatorB_checkout_label_notMembers}
+    Wait And Click Element  ${locatorB_checkout_label_loginMembers}
     Wait And Click Element  ${locatorB_checkout_label_customerEmailAndPhone}
 
     Wait Exist And Click Element  ${locatorB_checkout_button_save}

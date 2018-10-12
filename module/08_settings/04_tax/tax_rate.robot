@@ -12,7 +12,6 @@ Resource          ../../../resources/keywords/kw_common.robot
 Resource          ../../../resources/keywords/kw_shipping.robot
 Resource          ../../../resources/keywords/kw_tax.robot
 
-
 *** Test Cases ***
 
 taxPrice001
