@@ -320,7 +320,7 @@ order192
     Reload Page And Start Ajax
     Select All Dealing Order Tag
     Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
-    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_payway}    COD
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_payway}    CO
 
 order199
     [Documentation]     验证订单详情页面，收货人信息栏，编辑按钮可点击
