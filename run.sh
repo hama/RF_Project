@@ -82,10 +82,7 @@ then
 else
 	echo 'test_module_default'
     robot -v is_headless:True -d logs/ \
-        module/00_login/login.robot \
-        module/00_login/logout.robot \
         module/02_order/* \
-        module/03_product/* \
         module/07_decoration/02_checkout_process/setings_checkout.robot \
 		module/08_settings/01_basic_info/store_info.robot \
 		module/08_settings/03_shipping/shipping.robot \
