@@ -618,7 +618,7 @@ if __name__ == '__main__':
     # print add_deading_order_with_some_finished_status_py()
     # print payment_list_py()
     # print add_undead_order_with_pay_fail_status_py()
-    print add_dealing_order_with_products_py()
+    print add_undead_order_with_to_pay_status_py()
     # print payment_list_py()
     # print product_search_py()
     # print add_deading_order_with_delivering_status_py()

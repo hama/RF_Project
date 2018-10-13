@@ -10,6 +10,7 @@ Resource          ../variable/var_order.robot
 Dealing Order Suite Setup
     [Documentation]
     Login With Default User
+    kwproduct.del_all_products_py
 
 Dealing Order Suite Teardown
     [Documentation]
@@ -23,6 +24,7 @@ Dealing Order Case Setup
 Undeal Order Suite Setup
     [Documentation]
     Login With Default User
+    kwproduct.del_all_products_py
 
 Undeal Order Suite Teardown
     [Documentation]

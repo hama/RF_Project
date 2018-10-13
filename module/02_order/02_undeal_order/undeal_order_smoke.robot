@@ -99,7 +99,10 @@ order195
     Reload Page And Start Ajax
     Select All Undeal Order Tag
     Wait And Click Element    ${locatorB_orderUndeal_items_listOrder}[0]
+#    !!!!!!!!!!!!!!!!去对应位置截图！！！！！！！！！！！！！！！！！
+    Scroll Element Into View    dom:document.querySelectorAll('[class="title_20c8"]')[0]
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_payway}    无
+    Capture Page Screenshot
 
 order196
     [Documentation]     验证订单详情页面，收货信息显示正常
