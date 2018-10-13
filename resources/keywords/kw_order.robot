@@ -22,6 +22,7 @@ Dealing Order Suite Teardown
 Dealing Order Case Setup
     [Documentation]
     Capture Page Screenshot
+    Set Window Size    1440    1080
     Go To Dealing Order Page
     Capture Page Screenshot
 
@@ -40,6 +41,7 @@ Undeal Order Suite Teardown
 Undeal Order Case Setup
     [Documentation]
     Capture Page Screenshot
+    Set Window Size    1440    1080
     Go To Undeal Order Page
     Capture Page Screenshot
 
