@@ -33,13 +33,8 @@ Setup Test Case
 
 Teardown Test Case
     [Documentation]
-	# 由于SeleniumLibrary自身问题，用例失败之后window变为默认800*600，导致截图不全。因此添加以下步骤
-#    Run Keyword If Test Failed    Get Current Window Size
-#    Run Keyword If Test Failed    Set Window Size    1440    1080
-#    Run Keyword If Test Failed    Get Current Window Size
     #    测试用例执行失败进行截图
     Run Keyword If Test Failed    Capture Page Screenshot
-#    Run Keyword If Test Failed    Take Screenshot    # 不可用于headless
     Run Keyword If Test Failed    Log Error Response Of Ajax Listener
     Open New And Close Other Windows    ${home_page}
     #    log    *******************************************************************************************************
@@ -57,7 +52,6 @@ Open Test Browser
     #    Sleep    2
     Set Window Position    0    0
     Set Window Size    1440    1080
-	Get Current Window Size
     Sleep    5
 
 Open Headless Chrome
@@ -86,7 +80,8 @@ Log Correct Response Of Ajax Listener
     Start Ajax Listener
     Get All Correct Responses With Wait
 
-Get Current Window Size
+Get Window Size And Print
+	[Documentation]    获取窗口size并打印
 	${width}    ${height}    Get Window Size
     Log To Console    ${Empty}
     Log To Console    Window's width is ${width}
