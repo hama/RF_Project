@@ -34,6 +34,8 @@ Setup Test Case
 Teardown Test Case
     [Documentation]
     #    测试用例执行失败进行截图
+    Run Keyword If Test Failed    Set Window Size    1440    1080
+    Run Keyword If Test Failed    Get Current Window Size
     Run Keyword If Test Failed    Capture Page Screenshot
 #    Run Keyword If Test Failed    Take Screenshot    # 不可用于headless
     Run Keyword If Test Failed    Log Error Response Of Ajax Listener
@@ -53,7 +55,6 @@ Open Test Browser
     #    Sleep    2
     Set Window Position    0    0
     Set Window Size    1440    1080
-	Maximize Browser Window
 	Get Current Window Size
     Sleep    5
 
