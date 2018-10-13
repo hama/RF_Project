@@ -10,30 +10,38 @@ Resource          ../variable/var_order.robot
 Dealing Order Suite Setup
     [Documentation]
     Login With Default User
+    Capture Page Screenshot
     kwproduct.del_all_products_py
 
 Dealing Order Suite Teardown
     [Documentation]
     kwproduct.del_all_products_py
+    Capture Page Screenshot
     Close Test Suite Browser
 
 Dealing Order Case Setup
     [Documentation]
+    Capture Page Screenshot
     Go To Dealing Order Page
+    Capture Page Screenshot
 
 Undeal Order Suite Setup
     [Documentation]
     Login With Default User
+    Capture Page Screenshot
     kwproduct.del_all_products_py
 
 Undeal Order Suite Teardown
     [Documentation]
     kwproduct.del_all_products_py
+    Capture Page Screenshot
     Close Test Suite Browser
 
 Undeal Order Case Setup
     [Documentation]
+    Capture Page Screenshot
     Go To Undeal Order Page
+    Capture Page Screenshot
 
 Select All Dealing Order Tag
     Wait And Click Element    ${locatorB_orderDealing_button_all}

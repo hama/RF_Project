@@ -24,6 +24,6 @@ ${locatorB_productsReviews__select_unpublish}    dom:document.querySelectorAll("
 ${locatorB_productsReviews_select_del}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[2]    #下拉框-删除
 
 
-${locatorB_pReviews_link_productName}    dom:document.querySelectorAll('a[class="product_name___286-c"]')[0]    #进入单个商品评论页，商品名连接
-${locatorB_pReviews_text_listProductName}    dom:document.querySelectorAll('p[class="review_content___5DZ8l"]')    # 进入单个商品评论页，商品名列表
-${locatorB_pReviews_icon_listDelete}    dom:document.querySelectorAll("i[class*='delete']")
+${locatorB_productsReviews_link_productName}    dom:document.querySelectorAll('a[class="product_name___286-c"]')[0]    #进入单个商品评论页，商品名连接
+${locatorB_productsReviews_text_listProductName}    dom:document.querySelectorAll('p[class="review_content___5DZ8l"]')    # 进入单个商品评论页，商品名列表
+${locatorB_productsReviews_icon_listDelete}    dom:document.querySelectorAll("i[class*='delete']")

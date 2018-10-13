@@ -305,7 +305,7 @@ reviews023
     Reload Page And Start Ajax
     Select All Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_link_listProductName}[0]
-    Wait And Click Element    ${locatorB_pReviews_link_productName}
+    Wait And Click Element    ${locatorB_productsReviews_link_productName}
     Focus On New Window
     Wait Until Page Contains Locator    ${locatorC_products_icon_cart}
 
@@ -361,7 +361,7 @@ reviews041
     Wait And Click Element    ${locatorB_productsReviews_link_listProductName}[0]
     Select All Items Then Click Batch Menu
     Wait And Click Element Then Confirm    ${locatorB_productsReviews_select_del}
-	Wait Until Page Not Contains Locator    ${locatorB_pReviews_text_listProductName}
+	Wait Until Page Not Contains Locator    ${locatorB_productsReviews_text_listProductName}
 
 reviews043
     [Documentation]    商品详情页单个删除
@@ -370,8 +370,8 @@ reviews043
     Reload Page And Start Ajax
     Select All Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_link_listProductName}[0]
-    Wait And Click Element Then Confirm    ${locatorB_pReviews_icon_listDelete}[0]
-	Wait Until Page Not Contains Locator    ${locatorB_pReviews_text_listProductName}
+    Wait And Click Element Then Confirm    ${locatorB_productsReviews_icon_listDelete}[0]
+	Wait Until Page Not Contains Locator    ${locatorB_productsReviews_text_listProductName}
 
 reviews064
     [Documentation]    批量全选发布
@@ -419,7 +419,7 @@ reviews070
     Select All Comment Tag
     Select All Items Then Click Batch Menu
     Wait And Click Element Then Confirm    ${locatorB_productsReviews_select_del}
-	Wait Until Page Not Contains Locator    ${locatorB_pReviews_text_listProductName}
+	Wait Until Page Not Contains Locator    ${locatorB_productsReviews_text_listProductName}
 
 reviews072
     [Documentation]    单个删除
@@ -427,5 +427,5 @@ reviews072
     kwcomment.add_published_comment_py
     Reload Page And Start Ajax
     Select All Comment Tag
-    Wait And Click Element Then Confirm    ${locatorB_pReviews_icon_listDelete}[0]
-	Wait Until Page Not Contains Locator    ${locatorB_pReviews_text_listProductName}
+    Wait And Click Element Then Confirm    ${locatorB_productsReviews_icon_listDelete}[0]
+	Wait Until Page Not Contains Locator    ${locatorB_productsReviews_text_listProductName}
