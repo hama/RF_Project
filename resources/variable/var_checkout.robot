@@ -80,10 +80,16 @@ ${locatorC_checkout_submit_apply}     dom:document.querySelectorAll('button[id="
 
 ${locatorC_checkout_shipping_price}     dom:document.querySelectorAll('span[class="fr"]')[0]
 ${locatorC_checkout_shipping_submitCheckout}     dom:document.querySelectorAll('.checkout-btn')[0]        #type="submit"    checkout  提交到shipping method
-${locatorC_checkout_payment_cashOnDelivery}     om:document.querySelectorAll('div[class="payment-line"]')[0]         #支付方式-货到付款
+${locatorC_checkout_payment_cashOnDelivery}     dom:document.querySelectorAll('div[class~="payment-line"]')[0]         #支付方式-货到付款
 #locatorC payment
-${locatorC_checkout_payment_creditCard}     dom:document.querySelectorAll('div[class="payment-line"]')[1]           #支付方式-信用卡支付
-
+${locatorC_checkout_payment_creditCard}     dom:document.querySelectorAll('.payment-line-item')[0]           #支付方式-信用卡支付
+${locatorC_checkout_paymentCard_fristName}    dom:document.querySelectorAll('input[name="card_first_name"]')[0]    #first_name 姓名
+${locatorC_checkout_paymentCard_cardEmail}     dom:document.querySelectorAll('input[name="card_email"]')[0]     #card email 邮箱
+${locatorC_checkout_paymentCard_phone}     dom:document.querySelectorAll('input[name="card_phone"]')[0]       #.card phone 手机
+${locatorC_checkout_paymentCard_cardPostcode}     dom:document.querySelectorAll('input[name="card_postcode"]')[0]      #card_postcode  邮编号码
+${locatorC_checkout_paymentCard_cardNumber}     dom:document.querySelectorAll('input[name="card_number"]')[0]        #card_number 信用卡 卡号
+${locatorC_checkout_paymentCard_cardDate}     dom:document.querySelectorAll('input[name="card_date"]')[0]      #.card_date  有效日期
+${locatorC_checkout_paymentCard_card_code}     dom:document.querySelectorAll('input[name="card_code"]')[0]     #.card_code  安全码
 #locatorC checkout method
 ${locatorC_checkout_shipping_method}    dom:document.querySelectorAll('.checkout-prices-name')[0]       #shipping  显示物流价格
 ${locatorC_checkout_shipping_preferential}    dom:document.querySelectorAll('.checkout-prices-value')[1]    #.订单运费

@@ -707,6 +707,8 @@ checkout126
 checkout163
     [Documentation]   验证checkout页面，stripe支付信息中输入错误的信用卡号时，订单会支付失败  >  1.stripe支付信息中填写信息： 卡号：4111119987834534 有效日期：11/23  安全码：123 邮编：518000 2.点击place order按钮
     [Tags]    P0    threshold    smoke
+    #激活COD货到付款方式
+    kwpayment.activate_payment_cod_py
     #.激活stripe 信用卡支付方式
     kwpayment.activate_payment_credit_card_py
     #.开启pc优化
@@ -732,9 +734,18 @@ checkout163
 
     Sleep Time
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
+    Sleep  5
     Wait And Click Element    ${locatorC_checkout_payment_creditCard}
-
-
+    Sleep  2
+    #.信用卡信息填写
+    Wait And Input Text    ${locatorC_checkout_paymentCard_fristName}      javen
+    Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}      928548179@qq.com
+    Wait And Input Text    ${locatorC_checkout_paymentCard_phone}      18609809122
+    Wait And Input Text    ${locatorC_checkout_paymentCard_cardPostcode}      518000
+    Wait And Input Text    ${locatorC_checkout_paymentCard_cardNumber}     4111119987834534
+    Wait And Input Text    ${locatorC_checkout_paymentCard_cardDate}      11/23
+    Wait And Input Text    ${locatorC_checkout_paymentCard_card_code}      123
+    Wait And Click Element      ${locatorC_checkout_shipping_submitCheckout}
 
 checkout168
     [Documentation]   验证checkout支付页面，billing address栏选择框可点击以及选择项展示  >   1.点击选择框
