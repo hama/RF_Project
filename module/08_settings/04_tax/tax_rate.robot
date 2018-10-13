@@ -64,7 +64,7 @@ taxPrice017
     Taxprice New Shipping Information
 
     Sleep  4
-    Wait And Click Element  ${locatorB_taxPrice_i_setUp}
+    Wait And Click Element    ${locatorB_taxPrice_set_setUp}
 
     Wait Until Page Contains Text   国家税率
 
