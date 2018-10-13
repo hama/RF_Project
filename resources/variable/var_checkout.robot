@@ -94,8 +94,12 @@ ${locatorC_checkout_paymentCard_card_code}     dom:document.querySelectorAll('in
 ${locatorC_checkout_shipping_method}    dom:document.querySelectorAll('.checkout-prices-name')[0]       #shipping  显示物流价格
 ${locatorC_checkout_shipping_preferential}    dom:document.querySelectorAll('.checkout-prices-value')[1]    #.订单运费
 ${locatorC_checkout_text_order}     dom:document.querySelectorAll(".item-sku-title")[0]     #.商品标题
+${locatorC_checkout_shipping_delivery}   dom:document.querySelectorAll(".fr")[3]        #shipping delivery 运费价格
 
-
+${locatorC_checkout_prices_total}   dom:document.querySelectorAll(".checkout-prices tfoot td")[1]   #.商品总价格
+${locatorC_checkout_prices_itemPrice}   dom:document.querySelectorAll(".item-price")[0]     #商品单价
+${locatorC_checkout_prices_shippingValue}   dom:document.querySelectorAll(".checkout-prices-value")[0]      #.运费shipping
+${locatorC_checkout_prices_itemQuantity}   dom:document.querySelectorAll(".item-quantity")[0]      #.商品数量显示
 #locatorC Payment Method
 ${locatorC_checkout_select_billingAddress}    dom:document.querySelectorAll("select[id='billingSelect']")[0]       #.billingAddress  扩展select
 ${locatorC_checkout_inputText_firstName}    dom:document.querySelectorAll("input[name='first_name']")[0]        #.payment method /first_name输入框

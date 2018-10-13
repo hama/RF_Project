@@ -25,6 +25,8 @@ Library           ${CURDIR}/../../../lib/customlib/kwcheckout.py
 checkout001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0    threshold    smoke
+    #.关闭pc优化
+    kwcheckout.start_pc_show_py    0
     #.click products btn
     Click Preview Step
     Wait Until Element Is Visible    ${locatorB_checkout_add_card_btn}
@@ -45,6 +47,8 @@ checkout002
 checkout006
     [Documentation]    验证checkout shipping页面，订单汇总，商品栏，商品标题显示正常
     [Tags]    P0    threshold    smoke
+    #.关闭pc优化
+    kwcheckout.start_pc_show_py    0
     Click Preview Step
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Add Address Common Step
@@ -66,6 +70,8 @@ checkout_007
 checkout_008
     [Documentation]    验证checkout shipping页面，订单汇总商品栏，商品数量显示正常 > "1.C端够买商品women5件进入checkout shipping页面,2.查看订单汇总商品栏，商品数量显示" > 商品数量显示为：X5
     [Tags]    P0    threshold    smoke
+    #.关闭pc优化
+    kwcheckout.start_pc_show_py    0
     Click Preview Step
     #.先点击选中颜色，尺寸
     Wait And Click Element    ${locatorB_checkout_selectColor_elm}
@@ -83,6 +89,8 @@ checkout_008
 checkout_009
     [Documentation]    验证checkout shipping页面，订单汇总商品栏，商品价格显示正常 >"1.C端购买商品women进入checkout shipping页面,2.查看订单汇总商品栏，商品价格显示" > 商品价格显示为：444USD
     [Tags]    P0    threshold    smoke
+    #.关闭pc优化
+    kwcheckout.start_pc_show_py    0
     #.创建订单初始化
     Chenckout Product Initial
     Click Preview Step
@@ -106,6 +114,8 @@ checkout_014
 checkout_015
     [Documentation]    验证checkout shipping页面，价格详情中，shipping显示正常 >  shipping显示为：$10
     [Tags]    P0    threshold    smoke
+    #.关闭pc优化
+    kwcheckout.start_pc_show_py    0
     kwshipping.del_all_shipping_py
     #.添加中国物流
     kwshipping.add_shipping_py
@@ -124,6 +134,8 @@ checkout_018
     [Documentation]    验证checkout shipping页面，订单详情中tax显示正常 >
     [Tags]    P0    threshold    smoke
     #.添加一个物流为中国百分之60的税金
+    #.关闭pc优化
+    kwcheckout.start_pc_show_py    0
     add_other_tax_price_py    60
     Click Preview Step
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
@@ -158,7 +170,8 @@ checkout_021
 checkout_024
     [Documentation]    验证checkout shipping页面，total显示正常 > "1.C端购买商品进入checkout shipping页面,2.信息填写栏选择国家 中国,3.选择物流方案：方案1,4.使用优惠码AAA001,5.此订单价格为：,,subtotal：$50.00,shipping：+ $2.00,discount code：- $10.00,tax: + $25.00,6.查看价格详情total"
     [Tags]    P0    threshold    smoke          #后面再做调整
-
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
     #.开启pc优化
     # kwcheckout.start_pc_show_py    1
     #.添加一个满50减10的全场优惠券
@@ -212,11 +225,13 @@ checkout_024
     #.获取优惠券信息
     ${res}    Evaluate    ${totals}+${shippings}+${codes}-int(${numsx})
 
-    Should Be True    ${rex}==${exsx}
+    Should Be True    ${res}==${exsx}
 
 checkout_025
     [Documentation]    验证checkout shipping页面，优惠码输入框中可输入内容 > "1.点击优惠码输入框,2.输入内容：AAA003" > 优惠码输入框中显示输入的内容：AAA003
     [Tags]    P1    threshold    smoke
+    #.关闭pc优化
+    kwcheckout.start_pc_show_py    0
     ${num}    Set Variable    AAA003
     Click Preview Step
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
@@ -230,6 +245,8 @@ checkout_025
 checkout_026
     [Documentation]    验证checkout shipping页面，优惠码输入框后apply按钮可点击>"1.C端购买任意商品进入checkout shipping页面,2.优惠码输入框中输入优惠码AAA006,3.点击apply按钮" > 点击后优惠码使用成功，价格详情中显示discount code： - $10.00
     [Tags]    P0    threshold    smoke
+    #.关闭pc优化
+    kwcheckout.start_pc_show_py    0
     #.添加一个满50减10的全场优惠券
     kwmarketing.add_coupon_py    1
     #. 先获得优惠码
@@ -253,6 +270,8 @@ checkout_026
 checkout_027
     [Documentation]    验证checkout shipping页面输入错误的优惠码时，点击apply，会给出对应提示 > 2.优惠码输入框中输入任意内容：..0001,3.点击apply > 优惠码输入框下方出现错误提示
     [Tags]    P1    threshold    smoke
+    #.关闭pc优化
+    kwcheckout.start_pc_show_py    0
     Click Preview Step
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     #，点击查看详情的下拉剪头
@@ -394,12 +413,24 @@ checkout_087
 checkout090
     [Documentation]    验证B端运费方案中，勾选免运费时，checkout shipping页面，运费栏显示的运费价格为$0.00 >1.B端物流方案中添加物流物流，国家：中国，运费：运费1 不限价格 免运费2.C端购买任意商品进入checkout shipping页面 3.国家选择中国4.查看shipping delivery栏运费
     [Tags]    P0    threshold    smoke
-    #添加一个中国物流，默认免运费
-    Add Shipping The Freight
+    #初始化物流信息
+    Chenckout Del Shipping Information
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
+    #.创建运费方案0  中国方案  运费价格10
+    &{conf}=   Create Dictionary
+    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_name=shipping_yunfei
+    ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+    kwshipping.add_shipping_with_conf_py    ${conf}
+
     #进入商品详情页步骤
     Click Preview Step
-
-    Wait Until Page Contains Text   0.00
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Sleep    2
+    #.选择中国
+    Select From List    ${locatorB_checkout_address_select_country}    China
+    Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_delivery}    $0.00
 
 checkout093
     [Documentation]    验证从商品详情页面buy now进入checkout shipping页面后，点击return可返回商品详情页面 > 1.C端进入任意一个商品详情页面 2.buy now进入checkout shipping页面 3.点击return
@@ -415,6 +446,8 @@ checkout093
 checkout094
     [Documentation]    验证从购物车进入checkout shipping页面后，点击return可返回购物车 > 1.C端将任意商品加入购物车 2.进入购物车点击checkout按钮进入checkout shipping页面 3.点击return
     [Tags]    P0    threshold    smoke
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    0
     #从B端进入商品详情页
     Click Preview Step
     Wait And Click Element  ${locatorB_checkout_add_card_btn}
@@ -489,7 +522,7 @@ checkout100
     Click Preview Step
     Wait And Input Text  ${locatorC_checkout_input_checkNum}     5
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
-    Wait Until Page Contains Text   X5
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_itemQuantity}   X5
 
 checkout101
     [Documentation]   验证checkout 支付页面，订单汇总商品栏，商品价格显示正常 > 1.C端购买商品women进入checkout 支付页面  2.查看订单汇总商品栏，商品价格显示
@@ -501,7 +534,7 @@ checkout101
     #从B端进入商品详情页
     Click Preview Step
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
-    Wait Until Page Contains Text   99.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_itemPrice}   $99.00
 
 checkout106
     [Documentation]   验证checkout 支付页面，subtotal显示正常 > 1.C端购买商品women两件进入checkout 支付页面  2.查看价格详情中subtotal
@@ -514,7 +547,7 @@ checkout106
     Click Preview Step
     Wait And Input Text  ${locatorC_checkout_input_checkNum}     2
     Wait And Click Element  ${locatorC_checkout_submit_bynow}
-    Wait Until Page Contains Text   888.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_total}     $198.00
 
 
 checkout107
@@ -540,7 +573,7 @@ checkout107
     #.选择中国   运费价格10
     Select From List    ${locatorB_checkout_address_select_country}    China
 
-    Wait Until Page Contains Text   10.00
+    Text Of Element Should Be Equal With Wait   ${locatorC_checkout_prices_shippingValue}    +$ 10.00
 
 checkout109
     [Documentation]   验证checkout 支付页面，订单详情中tax显示正常  > 1.C端购买商品women 1件进入checkout shipping页面  2.信息填写栏选择国家中国 3.进入支付页面查看价格详情中tax
