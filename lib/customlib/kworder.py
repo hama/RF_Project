@@ -147,7 +147,7 @@ def del_order_py(order_token, cookie=init_cookie):
 
 def shipment_with_conf_py(order_token, conf={}, cookie=init_cookie):
     '''
-    通过productidlist创建未完成订单
+    设置订单发货通过conf
     :param order_token:
     :param conf:
     :param cookie:
@@ -451,13 +451,59 @@ def add_deading_order_with_conf_py(conf={}, cookie=init_cookie):
     通过conf添加新订单
     	支付方式	支付状态	物流状态	订单状态
         COD支付	待支付	待发货	进行中
-    1、调shipping_lines接口 2、调计算价格接口 3、调订单地址接口 4、调付款接口
+
+    # ---------- step one ----------
+    # 生成raw订单2个方式：
+    # 1、加入购物车，点击checkout
+    # 2、商品详情页点击buynow
+    # 调用接口：myshoplaza_url + "/checkout/create"
+    # 进入checkout页面，即生成未完成订单，状态为：
+    # 日期	               收货人姓名	 支付方式	 支付状态	 订单状态
+    # 2018.10.13 13:14:40		     无	     待支付	 未完成
+    # ---------- step two ----------
+    # 确定物流、计费、收货地址：
+    # 调用接口：
+    # 1、myshoplaza_url + "/checkout/shipping/lines"
+    # 2、myshoplaza_url + "/checkout/price/calculate"
+    # 3、myshoplaza_url + "/checkout/place-order"
+    # 进入checkout页面，即生成未完成订单，状态变为：
+    # 日期	               收货人姓名	 支付方式	 支付状态	 订单状态
+    # 2018.10.13 13:14:40  name	     无	     待支付	 未完成
+    # ---------- step three ----------
+    # 支付：
+    # 调用接口：myshoplaza_url + '/checkout/payment/pay'
+    # 进入Payment页面，即生成待处理订单，状态变为：
+    # 日期	               收货人姓名	 支付方式	 支付状态	 物流状态	 订单状态
+    # 2018.10.13 13:14:40  name 	 COD支付	 待支付	 待发货	 进行中
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+
+    order_token = do_create_raw_order_process_py(conf, cookie=cookie)
+
+    do_place_order_process_py(conf, order_token, cookie=cookie)
+
+    do_pay_process_py(conf, order_token, cookie=cookie)
+
+    return order_token
+
+
+def do_create_raw_order_process_py(conf, cookie=init_cookie):
+    '''
+    # ---------- step one ----------
+    # 生成raw订单2个方式：
+    # 1、加入购物车，点击checkout
+    # 2、商品详情页点击buynow
+    # 调用接口：myshoplaza_url + "/checkout/create"
+    # 进入checkout页面，即生成未完成订单，状态为：
+    # 日期	               收货人姓名	 支付方式	 支付状态	 订单状态
+    # 2018.10.13 13:14:40		     无	     待支付	 未完成
     :param conf:
     :param cookie:
     :return:
     '''
     key_list = conf.keys()
-
     if 'order_token' in key_list:
         # 接受已生成的订单
         order_token = conf['order_token']
@@ -468,13 +514,29 @@ def add_deading_order_with_conf_py(conf={}, cookie=init_cookie):
         else:
             # 生成默认订单（含两个max产品）
             order_token = add_undeal_order_with_products_py(cookie=cookie)
+    return order_token
 
-    # 是否满足前提条件：1、设置物流，2、设置支付方式
-    # 1、查看是否存在物流，
+
+def do_place_order_process_py(conf, order_token, cookie=init_cookie):
+    '''
+    # ---------- step two ----------
+    # 确定物流、计费、收货地址：
+    # 调用接口：
+    # 1、myshoplaza_url + "/checkout/shipping/lines"
+    # 2、myshoplaza_url + "/checkout/price/calculate"
+    # 3、myshoplaza_url + "/checkout/place-order"
+    # 进入checkout页面，即生成未完成订单，状态变为：
+    # 日期	               收货人姓名	 支付方式	 支付状态	 订单状态
+    # 2018.10.13 13:14:40  name	     无	     待支付	 未完成
+    :param conf:
+    :param order_token:
+    :param cookie:
+    :return:
+    '''
+    # 是否满足前提条件：查看是否存在物流
     create_only_one_shipping_py(cookie=cookie)
-    # 2、查看是否开启支付方式
-    activate_payment_cod_py(cookie=cookie)
 
+    key_list = conf.keys()
     # 1、调shipping_lines接口
     if 'shipping_lines_conf' in key_list:
         shipping_lines_conf = conf['shipping_lines_conf']
@@ -482,17 +544,15 @@ def add_deading_order_with_conf_py(conf={}, cookie=init_cookie):
         shipping_lines_conf = copy.deepcopy(shipping_lines_data)
     shipping_lines_conf['order_token'] = order_token
     shipping_lines_result = get_shipping_lines_with_conf_py(shipping_lines_conf, cookie=cookie)
-    data_shipping_lines = shipping_lines_result['content']['data']['shipping_lines'][0]
-
+    data_shipping_line = shipping_lines_result['content']['data']['shipping_lines'][0]
     # 2、调计算价格接口
     if 'price_calculate_conf' in key_list:
         price_calculate_conf = conf['price_calculate_conf']
     else:
         price_calculate_conf = copy.deepcopy(price_calculate_data)
     price_calculate_conf['order_token'] = order_token
-    price_calculate_conf['shipping_line'] = data_shipping_lines
+    price_calculate_conf['shipping_line'] = data_shipping_line
     calculate_result = do_price_calculate_with_conf_py(price_calculate_conf, cookie=cookie)
-
     # 3、调订单地址接口
     if 'place_order_conf' in key_list:
         place_order_conf = conf['place_order_conf']
@@ -500,9 +560,27 @@ def add_deading_order_with_conf_py(conf={}, cookie=init_cookie):
         place_order_conf = copy.deepcopy(place_order_data)
     place_order_conf['order_token'] = order_token
     place_order_conf['prices'] = calculate_result['content']['data']['prices']
-    place_order_conf['shipping_line'] = data_shipping_lines
-    add_place_order_with_conf_py(place_order_conf, cookie=cookie)
+    place_order_conf['shipping_line'] = data_shipping_line
+    return add_place_order_with_conf_py(place_order_conf, cookie=cookie)
 
+
+def do_pay_process_py(conf, order_token, cookie=init_cookie):
+    '''
+    # ---------- step three ----------
+    # 支付：
+    # 调用接口：myshoplaza_url + '/checkout/payment/pay'
+    # 进入Payment页面，即生成待处理订单，状态变为：
+    # 日期	               收货人姓名	 支付方式	 支付状态	 物流状态	 订单状态
+    # 2018.10.13 13:14:40  name 	 COD支付	 待支付	 待发货	 进行中
+    :param conf:
+    :param order_token:
+    :param cookie:
+    :return:
+    '''
+    # 是否满足前提条件：查看是否开启支付方式
+    activate_payment_cod_py(cookie=cookie)
+
+    key_list = conf.keys()
     # 4、调付款接口
     if 'payment_pay_conf' in key_list:
         payment_pay_conf = conf['payment_pay_conf']
@@ -515,9 +593,7 @@ def add_deading_order_with_conf_py(conf={}, cookie=init_cookie):
         data_payment_line = get_expected_payment_line_py('cod', cookie=cookie)
         payment_pay_conf['payment_line'] = data_payment_line
     payment_pay_conf['order_token'] = order_token
-    do_pay_with_conf_py(payment_pay_conf, cookie=cookie)
-
-    return order_token
+    return do_pay_with_conf_py(payment_pay_conf, cookie=cookie)
 
 
 def add_dealing_order_with_products_py(cookie=init_cookie):
