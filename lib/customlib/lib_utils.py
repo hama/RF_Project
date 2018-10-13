@@ -86,13 +86,13 @@ def compare_time_py(format_time1, format_time2):
     """
     将格式化时间，转换为时间戳，比较大小
     :return:
+    timestamp1 > timestamp2 返回正数
+    timestamp1 = timestamp2 返回0
+    timestamp1 < timestamp2 返回负数
     """
     timestamp1 = time.mktime(time.strptime(format_time1, "%Y-%m-%d %H:%M:%S"))
     timestamp2 = time.mktime(time.strptime(format_time2, "%Y-%m-%d %H:%M:%S"))
-    if timestamp1 == timestamp2:
-        return 'eq'
-    else:
-        return timestamp1 - timestamp2
+    return timestamp1 - timestamp2
 
 
 def upload_oss_py(urlex, name='', extension='', timeout_second=30):
