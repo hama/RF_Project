@@ -210,6 +210,7 @@ Open New And Close Other Windows
     \    Close Window
     @{new_window_handle}    Get Window Handles
     Select Window    ${new_window_handle[0]}
+    Set Window Size    1440    1080
 
 Focus On New Window
 	[Documentation]    聚焦到新窗口（紧跟开窗口动作之后）,并返回新窗口的handle

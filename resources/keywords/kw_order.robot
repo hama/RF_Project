@@ -10,44 +10,35 @@ Resource          ../variable/var_order.robot
 Dealing Order Suite Setup
     [Documentation]
     Login With Default User
-    Capture Page Screenshot
     kwproduct.del_all_products_py
 
 Dealing Order Suite Teardown
     [Documentation]
     kwproduct.del_all_products_py
-    Capture Page Screenshot
     Close Test Suite Browser
 
 Dealing Order Case Setup
     [Documentation]
-    Capture Page Screenshot
-    Set Window Size    1440    1080
     Go To Dealing Order Page
-    Capture Page Screenshot
+    
 
 Undeal Order Suite Setup
     [Documentation]
     Login With Default User
-    Capture Page Screenshot
     kwproduct.del_all_products_py
 
 Undeal Order Suite Teardown
     [Documentation]
     kwproduct.del_all_products_py
-    Capture Page Screenshot
     Close Test Suite Browser
 
 Undeal Order Case Setup
     [Documentation]
-    Capture Page Screenshot
-    Set Window Size    1440    1080
     Go To Undeal Order Page
-    Capture Page Screenshot
+
 
 Select All Dealing Order Tag
     Wait And Click Element    ${locatorB_orderDealing_button_all}
-    Get Current Window Size
     Sleep    2
 
 Select To Deliver Dealing Order Tag
@@ -64,7 +55,6 @@ Select Finished Dealing Order Tag
 
 Select All Undeal Order Tag
     Wait And Click Element    ${locatorB_orderUndeal_button_all}
-    Get Current Window Size
     Sleep    2
 
 Select To Pay Undeal Order Tag
