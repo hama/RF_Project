@@ -53,6 +53,8 @@ Open Test Browser
     #    Sleep    2
     Set Window Position    0    0
     Set Window Size    1440    1080
+	Maximize Browser Window
+	Get Current Window Size
     Sleep    5
 
 Open Headless Chrome
@@ -80,3 +82,9 @@ Log Correct Response Of Ajax Listener
 	# 避免未初始化导致的异常
     Start Ajax Listener
     Get All Correct Responses With Wait
+
+Get Current Window Size
+	${width}    ${height}    Get Window Size
+    Log To Console    ${Empty}
+    Log To Console    Window's width is ${width}
+    Log To Console    Window's height is ${height}

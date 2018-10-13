@@ -45,6 +45,7 @@ Undeal Order Case Setup
 
 Select All Dealing Order Tag
     Wait And Click Element    ${locatorB_orderDealing_button_all}
+    Get Current Window Size
     Sleep    2
 
 Select To Deliver Dealing Order Tag
@@ -61,6 +62,7 @@ Select Finished Dealing Order Tag
 
 Select All Undeal Order Tag
     Wait And Click Element    ${locatorB_orderUndeal_button_all}
+    Get Current Window Size
     Sleep    2
 
 Select To Pay Undeal Order Tag
