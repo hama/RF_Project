@@ -78,8 +78,8 @@ ${locatorB_orderDetail_text_firstProductVendor}    dom:document.querySelectorAll
 ${locatorB_orderDetail_text_firstProductPriceAndNum}    dom:document.querySelectorAll('div[class="num_e8aa"]')[0]    # 订单详情页第一个商品的单价及数量
 ${locatorB_orderDetail_text_firstProductSumPrice}    dom:document.querySelectorAll('div[class="total_price_51f1"]')[0]    # 订单详情页第一个商品的总价
 ${locatorB_orderDetail_tag_firstProduct_shipPartiallyFinished}    dom:document.querySelectorAll('[class*="image_tag"] [class*="tag_fulfillment_status_waiting"]')[0]    # 订单详情页第一个商品的tag:待发货
-${locatorB_orderDetail_text_payway}    dom:document.querySelectorAll('[class="payway_d7c5"]')[0]    # 订单详情页第一个商品的支付方式
-${locatorB_orderDetail_text_shipway}    dom:document.querySelectorAll('[class="payway_d7c5"]')[1]    # 订单详情页第一个商品的物流方案
+${locatorB_orderDetail_text_payway}    dom:document.querySelectorAll('[class*="payway"]')[0]    # 订单详情页第一个商品的支付方式
+${locatorB_orderDetail_text_shipway}    dom:document.querySelectorAll('[class*="payway"]')[1]    # 订单详情页第一个商品的物流方案
 
 
 ${locatorB_orderDetail_text_deliveryInformation}    dom:document.querySelectorAll('[class*="info_list"] [class*="info_item"]')    # 订单详情页收货信息
