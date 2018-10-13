@@ -80,7 +80,9 @@ ${locatorC_checkout_submit_apply}     dom:document.querySelectorAll('button[id="
 
 ${locatorC_checkout_shipping_price}     dom:document.querySelectorAll('span[class="fr"]')[0]
 ${locatorC_checkout_shipping_submitCheckout}     dom:document.querySelectorAll('.checkout-btn')[0]        #type="submit"    checkout  提交到shipping method
-${locatorC_checkout_payment_cashOnDelivery}     dom:document.querySelectorAll('span[class="payment-line-item"]')[0]         #支付方式-货到付款
+${locatorC_checkout_payment_cashOnDelivery}     om:document.querySelectorAll('div[class="payment-line"]')[0]         #支付方式-货到付款
+#locatorC payment
+${locatorC_checkout_payment_creditCard}     dom:document.querySelectorAll('div[class="payment-line"]')[1]           #支付方式-信用卡支付
 
 #locatorC checkout method
 ${locatorC_checkout_shipping_method}    dom:document.querySelectorAll('.checkout-prices-name')[0]       #shipping  显示物流价格
@@ -91,3 +93,25 @@ ${locatorC_checkout_text_order}     dom:document.querySelectorAll(".item-sku-tit
 #locatorC Payment Method
 ${locatorC_checkout_select_billingAddress}    dom:document.querySelectorAll("select[id='billingSelect']")[0]       #.billingAddress  扩展select
 ${locatorC_checkout_inputText_firstName}    dom:document.querySelectorAll("input[name='first_name']")[0]        #.payment method /first_name输入框
+${locatorC_checkout_inputText_lastName}    dom:document.querySelectorAll("input[name='last_name']")[0]          #.payment method / last_name输入框
+${locatorC_checkout_inputText_address}    dom:document.querySelectorAll("input[name='address']")[0]     #.payment method   /address 输入框
+${locatorC_checkout_inputText_address1}    dom:document.querySelectorAll("input[name='address1']")[0]       #.payment method  /address1 输入框
+${locatorC_checkout_inputText_city}    dom:document.querySelectorAll("input[name='city']")[0]       #.payment method    /city 城市输入框
+${locatorC_checkout_inputText_countyCode}    dom:document.querySelectorAll("select[name='country_code']")[0]        #.payment method    /county 国家下拉选择
+${locatorC_checkout_inputText_provinceCode}    dom:document.querySelectorAll("select[name='province_code']")[0]     #.payment method    /province 城市下拉选择
+${locatorC_checkout_inputText_zip}    dom:document.querySelectorAll("input[name='zip']")[0]        #.payment method    /zip 输入框
+
+#locatorC payment Method successful
+${locatorC_checkout_link_viewOrders}    dom:document.querySelectorAll(".order-btn")[0]        #.订单成功-订单详情按钮 viewOrders
+${locatorC_checkout_link_continueShopping}    dom:document.querySelectorAll(".continue-btn")[0]        #.订单成功-跳转到首页 continue shopping
+#locatorC order yong hu
+${locatorC_checkout_link_orderList}    dom:document.querySelectorAll('a[href="/account/order"]')[0]     #.个人中心里，订单详情页
+#locatorC home
+${locatorC_checkout_home}    dom:document.querySelectorAll('.swiper-wrapper')[0]      #首页banner图元素模块
+
+
+
+
+
+
+

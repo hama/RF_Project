@@ -30,7 +30,7 @@ Click Preview Step
 Common Teardown
     [Documentation]    结束公共步骤
     Close Test Suite Browser
-
+    #初始化物流信息
     kwshipping.del_all_shipping_py
 
 
