@@ -80,9 +80,10 @@ ${locatorC_checkout_submit_apply}     dom:document.querySelectorAll('button[id="
 
 ${locatorC_checkout_shipping_price}     dom:document.querySelectorAll('span[class="fr"]')[0]
 ${locatorC_checkout_shipping_submitCheckout}     dom:document.querySelectorAll('.checkout-btn')[0]        #type="submit"    checkout  提交到shipping method
-${locatorC_checkout_payment_cashOnDelivery}     dom:document.querySelectorAll('div[class~="payment-line"]')[0]         #支付方式-货到付款
+${locatorC_checkout_payment_cashOnDelivery}     dom:document.querySelectorAll('.payment-line')[0]        #支付方式-货到付款
+${locatorC_checkout_shipping_orderSubmit}      dom:document.querySelectorAll('button[type="submit"]')[0]     #order checkout 提交按钮
 #locatorC payment
-${locatorC_checkout_payment_creditCard}     dom:document.querySelectorAll('.payment-line-item')[0]           #支付方式-信用卡支付
+${locatorC_checkout_payment_creditCard}     dom:document.querySelectorAll('.payment-line')[1]         #支付方式-信用卡支付
 ${locatorC_checkout_paymentCard_fristName}    dom:document.querySelectorAll('input[name="card_first_name"]')[0]    #first_name 姓名
 ${locatorC_checkout_paymentCard_cardEmail}     dom:document.querySelectorAll('input[name="card_email"]')[0]     #card email 邮箱
 ${locatorC_checkout_paymentCard_phone}     dom:document.querySelectorAll('input[name="card_phone"]')[0]       #.card phone 手机
@@ -98,7 +99,7 @@ ${locatorC_checkout_shipping_delivery}   dom:document.querySelectorAll(".fr")[3]
 
 ${locatorC_checkout_prices_total}   dom:document.querySelectorAll(".checkout-prices tfoot td")[1]   #.商品总价格
 ${locatorC_checkout_prices_itemPrice}   dom:document.querySelectorAll(".item-price")[0]     #商品单价
-${locatorC_checkout_prices_shippingValue}   dom:document.querySelectorAll(".checkout-prices-value")[0]      #.运费shipping
+${locatorC_checkout_prices_shippingValue}   dom:document.querySelectorAll(".checkout-prices-value")[1]      #.运费shipping
 ${locatorC_checkout_prices_itemQuantity}   dom:document.querySelectorAll(".item-quantity")[0]      #.商品数量显示
 #locatorC Payment Method
 ${locatorC_checkout_select_billingAddress}    dom:document.querySelectorAll("select[id='billingSelect']")[0]       #.billingAddress  扩展select
