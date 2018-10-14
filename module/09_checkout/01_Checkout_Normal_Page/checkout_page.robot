@@ -611,6 +611,7 @@ checkout109
     #从B端进入商品详情页
     Click Preview Step
     #添加是shipping address
+    Sleep Time
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Sleep    2
@@ -780,15 +781,6 @@ checkout163
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Sleep Time
     Wait And Click Element    ${locatorC_checkout_payment_creditCard}
-    Sleep Time
-    Wait And Click Element    ${locatorC_checkout_payment_creditCard}
-    Sleep Time
-    Wait And Click Element    ${locatorC_checkout_payment_creditCard}
-    Sleep Time
-    Wait And Click Element    ${locatorC_checkout_payment_creditCard}
-    Sleep Time
-    Wait And Click Element    ${locatorC_checkout_payment_creditCard}
-
     Sleep Time
     #.信用卡信息填写
     Wait And Input Text    ${locatorC_checkout_paymentCard_fristName}      javen
@@ -983,6 +975,7 @@ checkout196
     Sleep Time
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
+    Sleep Time
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait Until Page Contains Text      Payment successful!
     Wait And Click Element    ${locatorC_checkout_link_continueShopping}
