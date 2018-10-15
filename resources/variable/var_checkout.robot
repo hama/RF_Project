@@ -47,7 +47,9 @@ ${locatorC_checkout_address_postalCode}     dom:document.querySelectorAll('input
 ${locatorB_checkout_address_error}    dom:document.querySelectorAll(".not_none")[0]    #.添加地址错误类
 ${locatorB_checkout_address_close_address}    dom:document.querySelectorAll(".close_icon")[1]    #.关闭地址按钮
 ${locatorB_checkout_address_buyMesg_elm}    id:instructionToggle    #.买家留言
-
+${locatorC_checkout_address_offersAndDiscounts}    dom:document.querySelectorAll('.checkbox')[0]    #.订阅优惠活动多选按钮
+${locatorC_checkout_address_saveInformation}    dom:document.querySelectorAll('.checkbox')[1]    #.保存信息多选按钮
+${locatorC_checkout_delivery_shippingLine}     dom:document.querySelectorAll('[class*="shipping-line"]')[0]     #.订单物流信息运费显示
 # 信用卡信息
 ${locatorB_checkout_creditCard_input_name}    dom:document.querySelectorAll('[name="card_first_name"]')[0]    #.信用卡name
 ${locatorB_checkout_creditCard_input_email}    dom:document.querySelectorAll('[name="card_email"]')[0]

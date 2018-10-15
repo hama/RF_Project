@@ -252,6 +252,8 @@ checkout_024
 
     Should Be True    ${res}==${exsx}
 
+
+
 checkout_025
     [Documentation]    验证checkout shipping页面，优惠码输入框中可输入内容 > "1.点击优惠码输入框,2.输入内容：AAA003" > 优惠码输入框中显示输入的内容：AAA003
     [Tags]    P1
@@ -306,6 +308,9 @@ checkout_027
     Wait And Click Element    ${locatorB_checkout_addressClickCoupon_btn}
     Wait Until Page Contains    This discount does not exist.
 
+
+
+
 checkout_034
     [Documentation]    验证checkout shipping页面，shipping address栏，国家选择框可点击以及国家选择展示 > 1.点击shipping address栏国家选择框 >点击后国家选择框下拉展开，显示所有可选择的国家
     [Tags]    P0    threshold    smoke
@@ -337,6 +342,28 @@ checkout_037
     Wait And Click Element    ${locatorB_checkout_submit_btn_s}
     Wait Until Page Contains    PAYMENT
 
+checkout_070
+    [Documentation]    验证checkout shipping页面，订阅优惠活动选项可取消勾选  >  1.点击订阅优惠活动选项前小正方形图标
+    [Tags]    P0    threshold
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
+    Click Preview Step
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Sleep Time
+    Wait And Click Element    ${locatorC_checkout_address_offersAndDiscounts}
+
+
+checkout_072
+    [Documentation]    验证checkout shipping页面，订阅优惠活动选项可取消勾选  >  1.点击订阅优惠活动选项前小正方形图标
+    [Tags]    P0    threshold
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
+    Click Preview Step
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Sleep Time
+    Wait And Click Element    ${locatorC_checkout_address_saveInformation}
+
+
 checkout_073
     [Documentation]    验证checkout shipping页面，点击买家留言栏，可展开买家留言输入框 > 1.点击special instruction栏 > 点击后展开买家留言输入框
     [Tags]    P0    threshold    smoke
@@ -363,6 +390,37 @@ checkout_077
     #.关闭PC优化
     kwcheckout.start_pc_show_py
 
+checkout_078
+    [Documentation]    验证checkout shipping页面，未选择国家时，shipping delivery栏不显示运费方案  >  1.购买任意商品进入checkout shipping页面  2.不选择国家查看shipping delivery栏
+    [Tags]    P0    threshold
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
+    Click Preview Step
+    Sleep Time
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Wait Until Page Does Not Contain    Please enter a shipping address first
+
+checkout_079
+    [Documentation]    验证checkout shipping页面，选择国家后，shipping delivery栏会出现此国家对应的运费方案  >  1.C端购买商品women进入checkout shipping页面  2.选择国家中国  3.查看shipping delivery栏
+    [Tags]    P0    threshold
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
+    Click Preview Step
+    Sleep Time
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Add Address Common Step
+    Wait Until Page Contains Locator    ${locatorC_checkout_delivery_shippingLine}
+
+checkout_080
+    [Documentation]    验证checkout shipping页面，购买的商品不需要物流运输时，选择国家后，shipping delivery栏会出现交付虚拟产品的运费方案  >  1.C端购买商品women进入checkout shipping页面  2.选择国家   3.查看shipping delivery栏
+    [Tags]    P0    threshold
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
+    Click Preview Step
+    Sleep Time
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Add Address Common Step
+    Wait Until Page Contains Locator    ${locatorC_checkout_delivery_shippingLine}
 
 checkout_082
     [Documentation]    验证checkout shipping页面，没有可选择物流方案时，payment method 按钮无法点击 > payment method按钮置灰无法点击
@@ -489,6 +547,8 @@ checkout094
     #.返回
     Wait And Click Element  ${locator_checkout_button_checkoutBack}
     Wait Until Page Contains Text   Shopping cart
+
+
 
 checkout096
     [Documentation]    验证checkout shipping页面，点击payment method按钮可进入支付页面 > 1.shipping address中输入合法内容  2.点击payment method按钮
@@ -640,6 +700,12 @@ checkout109
     #查看商品扣除60%税费后的金额
     Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".checkout-prices-value")[2]    + $59.40
 
+checkout110
+    [Documentation]      验证checkout 支付页面，商品不收取税费时，价格详情中的tax显示为：+ $0.00   >  1.C端购买商品women进入checkout 支付页面  2.查看价格详情中tax
+    [Tags]    P0    threshold
+
+
+
 checkout111
     [Documentation]   验证checkout 支付页面，订单使用优惠码后，价格详情中会显示discount code并显示优惠价格 > 1.C端购买商品women进入checkout shipping页面  2.使用优惠码AAA001  3.进入支付页面查看价格详情
     [Tags]    P0    threshold    smoke
@@ -653,6 +719,7 @@ checkout111
     Wait And Click Element   ${locatorC_checkout_submit_apply}
     Sleep Time
     Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll(".checkout-prices-value")[1]     - $10.00
+
 
 checkout114
     [Documentation]   验证checkout 支付页面，payment栏，ship to信息显示正常  >  1.购买商品进入checkout shipping页面2.填写信息：first name：Javenlast name：fangaddress：南山区apartment：中山大学产学研基地city：深圳country：Chinaprovince：广东postal code：518000email：dianjiang@shoplazza.comphone：18688886666company：shoplazza3.进入支付页面查看ship to信息
