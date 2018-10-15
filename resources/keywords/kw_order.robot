@@ -20,6 +20,7 @@ Dealing Order Suite Teardown
 Dealing Order Case Setup
     [Documentation]
     Go To Dealing Order Page
+    
 
 Undeal Order Suite Setup
     [Documentation]
@@ -34,6 +35,7 @@ Undeal Order Suite Teardown
 Undeal Order Case Setup
     [Documentation]
     Go To Undeal Order Page
+
 
 Select All Dealing Order Tag
     Wait And Click Element    ${locatorB_orderDealing_button_all}

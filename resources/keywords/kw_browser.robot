@@ -35,7 +35,6 @@ Teardown Test Case
     [Documentation]
     #    测试用例执行失败进行截图
     Run Keyword If Test Failed    Capture Page Screenshot
-#    Run Keyword If Test Failed    Take Screenshot    # 不可用于headless
     Run Keyword If Test Failed    Log Error Response Of Ajax Listener
     Open New And Close Other Windows    ${home_page}
     #    log    *******************************************************************************************************
@@ -80,3 +79,10 @@ Log Correct Response Of Ajax Listener
 	# 避免未初始化导致的异常
     Start Ajax Listener
     Get All Correct Responses With Wait
+
+Get Window Size And Print
+	[Documentation]    获取窗口size并打印
+	${width}    ${height}    Get Window Size
+    Log To Console    ${Empty}
+    Log To Console    Window's width is ${width}
+    Log To Console    Window's height is ${height}

@@ -93,7 +93,7 @@ order040
 	${order_num01}    kworder.get_order_num_by_order_token_py    ${order_token}
 	Should Be Equal    ${order_num00}    ${order_num01}
 	${result} =    lib_utils.compare_time_py    ${createtime1}    ${createtime2}
-	${status} =    Evaluate    ${result}<10
+	${status} =    Evaluate    0<${result}<10
 	Should Be Equal    '${status}'    'True'
 
 order041

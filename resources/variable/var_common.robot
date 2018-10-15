@@ -70,6 +70,8 @@ ${locatorB_page_text_totalRecord}    dom:document.querySelectorAll(".ant-paginat
 ### locator tag
 ${locatorB_antTags}    dom:document.querySelectorAll('div[class="ant-tag ant-tag-checkable"]')    #获取所有antTags。（参考product批量操作的删除标签中一个个小模块）
 ${locatorB_tagboxs}    dom:document.querySelectorAll('div[class="ant-select-selection__choice__content"]')    #获取所有tagbox。（参考product编辑的标签输入框中一个个小模块）
+### locator table
+${locatorB_table_listItems}    dom:document.querySelectorAll(".ant-table-row")    # 列表页面table中的listitem
 ### locator tag
 ${locatorB_select_batchOperations}    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]    #批量操作下拉框
 ${locatorB_couponLst_couponText}    全部

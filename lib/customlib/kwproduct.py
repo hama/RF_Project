@@ -183,6 +183,8 @@ def add_product_with_conf_py(conf={}, cookie=init_cookie):
         data['variants'][0]['weight'] = conf['weight']
     if 'sku' in key_list:
         data['variants'][0]['sku'] = conf['sku']
+    if 'setshipping' in key_list:
+        data['variants'][0]['requires_shipping'] = conf['setshipping']
     if 'tags' in key_list:
         data['tags'] = conf['tags']
     if 'images' in key_list and conf['images'] == 'yes':
