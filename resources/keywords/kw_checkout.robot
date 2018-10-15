@@ -15,7 +15,7 @@ Add Shipping The Freight
     [Documentation]    封装添加运费
     Go To Shipping Page
     #.创建一个中国的物流方案
-    Taxprice New Shipping China
+    Taxprice New Shipping Information
 
 
 Click Preview Step
