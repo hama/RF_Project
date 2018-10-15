@@ -106,7 +106,7 @@ Go To Store Page
     # 若营销按钮没展开，则展开营销按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='False'    Sleep    2
+    Run Keyword If    '${attr}'=='False'    Sleep    4
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_store}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_store}
     Wait Until Page Contains    ${contextB_store_storeInfo}
@@ -118,7 +118,7 @@ Go To Tax Page
     # 若设置按钮没展开，则展开设置按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='False'    Sleep    2
+    Run Keyword If    '${attr}'=='False'    Sleep    4
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_taxPrice}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_taxPrice}
     Wait Until Page Contains    收税方式
@@ -131,7 +131,7 @@ Go To Shipping Page
     # 若设置按钮没展开，则展开设置按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='False'    Sleep    2
+    Run Keyword If    '${attr}'=='False'    Sleep    4
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_shipping}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_shipping}
     Wait Until Page Contains    物流方案
@@ -143,7 +143,7 @@ Go To Employee Account Page
     # 若设置按钮没展开，则展开营销按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='False'    Sleep    2
+    Run Keyword If    '${attr}'=='False'    Sleep    4
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_employee}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_employee}
     Sleep    2
@@ -157,7 +157,7 @@ Go To Uploadfile Page
     # 若设置按钮没展开，则展开设置按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='False'    Sleep    2
+    Run Keyword If    '${attr}'=='False'    Sleep    4
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_upfile}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_upfile}
     Wait Until Page Contains    上传文件

@@ -87,6 +87,12 @@ def shipping_list_py(cookie=init_cookie):
 
 
 def add_shipping_with_conf_py(conf={}, cookie=init_cookie):
+    '''
+    通过conf添加物流
+    :param conf:
+    :param cookie:
+    :return:
+    '''
     data = copy.deepcopy(shipping_data)
     dict_deepupdate(data, conf)
     # key_list = conf.keys()
@@ -169,6 +175,9 @@ def keep_certain_shipping_py(num_list=[], cookie=init_cookie):
 def create_only_one_shipping_py(conf={}, cookie=init_cookie):
     """
     创建唯一的物流方案
+    (若当前有且仅存一个物流时，返回它的shippingId；
+    若大于一个物流，则删除所有，并添加一个默认物流；
+    若没有物流，则添加一个默认物流)
     :return: True | False
     """
     num = num_of_exist_shipping_py(cookie=cookie)
@@ -192,5 +201,5 @@ def num_of_exist_shipping_py(cookie=init_cookie):
 
 
 if __name__ == '__main__':
-    # add_max_shipping_py()
-    print create_only_one_shipping_py()
+    add_max_shipping_py()
+    # print create_only_one_shipping_py()
