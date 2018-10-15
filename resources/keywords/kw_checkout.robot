@@ -118,7 +118,7 @@ Add Credit Card Info
 	Wait And Input Text    ${locatorB_checkout_creditCard_input_email}    123456@zz.xx
 	Wait And Input Text    ${locatorB_checkout_creditCard_input_phone}    123456789
 	Wait And Input Text    ${locatorB_checkout_creditCard_input_post}    0000
-	Wait And Input Text    ${locatorB_checkout_creditCard_input_number}    123123123
+	Wait And Input Text    ${locatorB_checkout_creditCard_input_number}    43231123123123
 	Wait And Input Text    ${locatorB_checkout_creditCard_input_expireDate}    1231
 	Wait And Input Text    ${locatorB_checkout_creditCard_input_securityCode}    123
 
