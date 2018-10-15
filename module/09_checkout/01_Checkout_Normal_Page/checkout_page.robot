@@ -721,7 +721,7 @@ checkout126
     Sleep Time
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
 
-    Sleep    2
+    Sleep Time
     #.选择中国   运费价格10
     #添加是shipping address
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
@@ -960,7 +960,7 @@ checkout196
     Sleep Time
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
 
-    Sleep    2
+    Sleep Time
     #.选择中国
     #添加是shipping address
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123

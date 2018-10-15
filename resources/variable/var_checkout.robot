@@ -83,7 +83,7 @@ ${locatorC_checkout_shipping_submitCheckout}     dom:document.querySelectorAll('
 ${locatorC_checkout_payment_cashOnDelivery}     dom:document.querySelectorAll('.payment-line')[0]        #支付方式-货到付款
 ${locatorC_checkout_shipping_orderSubmit}      dom:document.querySelectorAll('button[type="submit"]')[0]     #order checkout 提交按钮
 #locatorC payment
-${locatorC_checkout_payment_creditCard}     dom:document.querySelectorAll('.payment-line')[1]         #支付方式-信用卡支付
+${locatorC_checkout_payment_creditCard}     dom:document.querySelectorAll('[class="djfont card-checkout-credit"]')[0]        #支付方式-信用卡支付
 ${locatorC_checkout_paymentCard_fristName}    dom:document.querySelectorAll('input[name="card_first_name"]')[0]    #first_name 姓名
 ${locatorC_checkout_paymentCard_cardEmail}     dom:document.querySelectorAll('input[name="card_email"]')[0]     #card email 邮箱
 ${locatorC_checkout_paymentCard_phone}     dom:document.querySelectorAll('input[name="card_phone"]')[0]       #.card phone 手机
