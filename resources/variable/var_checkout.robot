@@ -34,7 +34,7 @@ ${locatorB_checkout_address_btn}    dom:document.querySelectorAll(".address_btn"
 ${locatorB_checkout_address_first_name}    dom:document.querySelectorAll("input[name='first_name']")[0]    #.添加地址后-first_name输入框
 ${locatorB_checkout_address_last_name}    dom:document.querySelectorAll("input[name='last_name']")[0]    #.添加地址后-last_name输入框
 ${locatorB_checkout_address_select_country}    dom:document.querySelectorAll('#shipping_country_select')[0]    #.添加地址后选择国家下拉框
-${locatorB_checkout_address_select_province}    dom:document.querySelectorAll('#shipping_province_select')[0]  #.添加地址后选择省份下拉框
+${locatorB_checkout_address_select_province}    dom:document.querySelectorAll('#shipping_province_select')[1]  #.添加地址后选择省份下拉框
 
 ${locatorB_checkout_address_city}    dom:document.querySelectorAll("input[name='city']")[0]    #.添加地址后选择城市
 ${locatorB_checkout_address_add}    dom:document.querySelectorAll("input[name='address']")[0]    #.添加地址后填写地址
@@ -62,6 +62,7 @@ ${locatorB_checkout_address_save_address_btn}    dom:document.querySelectorAll("
 ${locatorB_checkout_address_save_checkout_btn}    id:submitMbPay    #.保存地址后的提交按钮
 ${locatorB_checkout_write_review}    dom:document.querySelectorAll(".review_write")[0]    #.checkout-留言按钮
 ${locatorB_checkout_address_showProduct_eml}    class:order_summary    #.checkout-添加地址页面的顶部查看商品详情(向下箭头)
+
 
 
 ${locatorB_checkout_down_price_eml}    dom:document.querySelectorAll(".detail")[0]    #.checkout-底部价格元素
@@ -93,7 +94,7 @@ ${locatorC_checkout_paymentCard_cardDate}     dom:document.querySelectorAll('inp
 ${locatorC_checkout_paymentCard_card_code}     dom:document.querySelectorAll('input[name="card_code"]')[0]     #.card_code  安全码
 #locatorC checkout method
 ${locatorC_checkout_shipping_method}    dom:document.querySelectorAll('.checkout-prices-name')[0]       #shipping  显示物流价格
-${locatorC_checkout_shipping_preferential}    dom:document.querySelectorAll('.checkout-prices-value')[1]    #.订单运费
+${locatorC_checkout_shipping_preferential}    dom:document.querySelectorAll('.checkout-prices-value')[2]    #.订单运费
 ${locatorC_checkout_text_order}     dom:document.querySelectorAll(".item-sku-title")[0]     #.商品标题
 ${locatorC_checkout_shipping_delivery}   dom:document.querySelectorAll(".fr")[3]        #shipping delivery 运费价格
 

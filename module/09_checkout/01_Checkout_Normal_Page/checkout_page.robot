@@ -151,6 +151,25 @@ checkout_018
     Wait And Click Element    ${locatorB_checkout_address_showProduct_eml}
     Wait Until Page Contains Locator    dom:document.querySelectorAll("tbody tr td")[9]
 
+checkout_019
+    [Documentation]    验证checkout shipping页面，商品不收取税费时，价格详情中的tax显示为：+ $0.00  >  1.C端购买商品women进入checkout shipping页面   2.查看价格详情中tax
+    [Tags]    P0    threshold
+    #初始化物流信息
+    kwshipping.del_all_shipping_py
+    #.添加中国的物流
+    kwshipping.add_shipping_py
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
+    Click Preview Step
+    Sleep Time
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
+    Sleep Time
+    Wait And Input Text    ${locatorB_checkout_address_last_name}    345
+    Select From List    ${locatorB_checkout_address_select_country}    China
+    Sleep Time
+    Text Of Element Should Be Equal With Wait     ${locatorC_checkout_shipping_preferential}    + $0.00
+
 checkout_021
     [Documentation]    验证checkout shipping页面，使用优惠码后，价格详情中会出现discount code并显示优惠价格 > "1.C端购买商品women进入checkout shipping页面，2.使用优惠码AAA001，3.查看价格详情" > 价格详情显示优惠金额
     [Tags]    P0    threshold    smoke
@@ -235,7 +254,7 @@ checkout_024
 
 checkout_025
     [Documentation]    验证checkout shipping页面，优惠码输入框中可输入内容 > "1.点击优惠码输入框,2.输入内容：AAA003" > 优惠码输入框中显示输入的内容：AAA003
-    [Tags]    P1    threshold    smoke
+    [Tags]    P1
     #.关闭pc优化
     kwcheckout.start_pc_show_py    0
     ${num}    Set Variable    AAA003
@@ -250,7 +269,7 @@ checkout_025
 
 checkout_026
     [Documentation]    验证checkout shipping页面，优惠码输入框后apply按钮可点击>"1.C端购买任意商品进入checkout shipping页面,2.优惠码输入框中输入优惠码AAA006,3.点击apply按钮" > 点击后优惠码使用成功，价格详情中显示discount code： - $10.00
-    [Tags]    P0    threshold    smoke
+    [Tags]    P0    threshold
     #.关闭pc优化
     kwcheckout.start_pc_show_py    0
     #.添加一个满50减10的全场优惠券
@@ -275,7 +294,7 @@ checkout_026
 
 checkout_027
     [Documentation]    验证checkout shipping页面输入错误的优惠码时，点击apply，会给出对应提示 > 2.优惠码输入框中输入任意内容：..0001,3.点击apply > 优惠码输入框下方出现错误提示
-    [Tags]    P1    threshold    smoke
+    [Tags]    P1
     #.关闭pc优化
     kwcheckout.start_pc_show_py    0
     Click Preview Step
