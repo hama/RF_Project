@@ -232,9 +232,9 @@ Open New And Close Other Windows
     Execute Javascript    window.open("${url}")
     Capture Page Screenshot
     :FOR    ${window_handle}    IN    @{window_handles}
-    \    Capture Page Screenshot
+#    \    Capture Page Screenshot
     \    Select Window    ${window_handle}
-    \    Capture Page Screenshot
+#    \    Capture Page Screenshot
     \    Close Window
     @{new_window_handle}    Get Window Handles
     Select Window    ${new_window_handle[0]}

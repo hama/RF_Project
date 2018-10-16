@@ -24,8 +24,8 @@ if __name__ == '__main__':
                                                      '"port": 3306,"user": "fortest","password": "fortest@123",'
                                                      '"db": "service","charset": "utf8"}')
         config.set("common_url", "home_page_url", 'https://admin.shoplazza.com')
-        config.set("common_account", "datas_contact", '15220581724')
-        config.set("common_account", "datas_domain", 'chen')
+        config.set("common_account", "datas_contact", '17665076519')
+        config.set("common_account", "datas_domain", 'homer')
         #>修改数据库配置
         config.set("common_db","db_shop_config",'{"host": "rm-rj9f22zpw641v45g9.mysql.rds.aliyuncs.com",'
                                                 '"port": 3306,"user": "lansejiebo","password": "lansejiebo@123",'
