@@ -41,34 +41,34 @@ Login With User
     Run Keyword If    '${close}'=='${False}'    Wait And Click Element    dom:document.querySelectorAll('.ant-modal-close-x')[0]
 
 Wait And Input Text
-    [Arguments]    ${element_locator}    ${text}    ${timeout}=3s    ${retry_time}=1x
+    [Arguments]    ${element_locator}    ${text}    ${timeout}=3s    ${retry_time}=3x
     [Documentation]    封装的输入方法，等待元素可被输入时，再输入
     Wait Until Element Is Visible    ${element_locator}    10
     # 避免已有value的input标签，无法输入。因此在Input Text之前，点击input标签。解决此问题
-    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
+    Wait And Click Element    ${element_locator}
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Input Text    ${element_locator}    ${text}
 
 Wait And Input Password
-    [Arguments]    ${element_locator}    ${pwd}    ${timeout}=3s    ${retry_time}=1x
+    [Arguments]    ${element_locator}    ${pwd}    ${timeout}=3s    ${retry_time}=3x
     [Documentation]    封装的输入方法，等待元素可被输入时，再输入
     Wait Until Element Is Visible    ${element_locator}    10
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Input Password    ${element_locator}    ${pwd}
 
 Wait And Click Element
-    [Arguments]    ${element_locator}    ${timeout}=25s    ${retry_time}=5x
+    [Arguments]    ${element_locator}    ${timeout}=7s    ${retry_time}=5x
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Visible    ${element_locator}     10
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
 
 Wait Exist And Click Element
-    [Arguments]    ${element_locator}    ${timeout}=25s    ${retry_time}=5x
+    [Arguments]    ${element_locator}    ${timeout}=7s    ${retry_time}=5x
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Page Contains Locator    ${element_locator}
 #    Wait Until Element Is Enabled    ${element_locator}
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
 
 Sleep And Click Element
-    [Arguments]    ${element_locator}    ${sleep_time}=3    ${timeout}=25s    ${retry_time}=5x
+    [Arguments]    ${element_locator}    ${sleep_time}=3    ${timeout}=7s    ${retry_time}=5x
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Sleep    ${sleep_time}
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
