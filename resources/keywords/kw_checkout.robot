@@ -7,7 +7,7 @@ Library           ${CURDIR}/../../lib/customlib/kwshipping.py
 Library           ${CURDIR}/../../lib/customlib/kwtax.py
 Library           ${CURDIR}/../../lib/customlib/kwmarketing.py
 Library           ${CURDIR}/../../lib/customlib/lib_utils.py
-
+Library           ${CURDIR}/../../lib/customlib/kwpayment.py
 Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 
 *** keywords ***
@@ -17,6 +17,10 @@ Checkout Suite Setup
     kwshipping.add_shipping_py
     kwproduct.add_launched_product_py
     kwcheckout.set_checkout_process_py
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
+    #激活COD货到付款方式
+    kwpayment.activate_payment_cod_py
 
 Checkout Suite Teardown
     [Documentation]    每个用例执行结束步骤
@@ -24,8 +28,26 @@ Checkout Suite Teardown
 
 Checkout Case Setup
     [Documentation]    每个用例执行开始步骤
+    Go To Product Management Page
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Select Window    New
+
+
+Checkout2 Suite Setup
+    [Documentation]    布置开始执行用例环境
+    Login With Default User
+    kwshipping.add_shipping_py
+    kwproduct.add_launched_product_py
+    kwcheckout.set_checkout_process_py
     #.开启pc优化
     kwcheckout.start_pc_show_py    1
+
+Checkout2 Suite Teardown
+    [Documentation]    每个用例执行结束步骤
+    Close Test Suite Browser
+
+Checkout2 Case Setup
+    [Documentation]    每个用例执行开始步骤
     Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     Select Window    New
@@ -33,9 +55,8 @@ Checkout Case Setup
 
 
 
-
-
-
+Sleep Time
+    Sleep  2
 
 
 
@@ -151,10 +172,6 @@ Checkout_Common_Checkout_Step
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait And Click Element    ${locatorB_checkout_submit_btn_s}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
-
-Sleep Time
-    [Documentation]    睡眠时间 2s
-    Sleep    2
 
 Select_Order_Page
     [Arguments]    ${title}

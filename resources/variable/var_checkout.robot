@@ -7,20 +7,22 @@
 
 
 
-${locatorB_checkout_add_card_btn}    dom:document.querySelectorAll(".submit_mb span")[0]    #.添加购物车按钮
-${locatorB_checkout_by_now_btn}    dom:document.querySelectorAll(".second_btn")[0]    #.by-now按钮
-${locatorB_checkout_submit_btn_s}    dom:document.querySelectorAll('.checkout-btn')[0]    #.点击by-now后的submit按钮
-${locatorB_checkout_submit_shippingCart}    dom:document.querySelectorAll('#checkout-btn')[0]   #.购物车-checkout提交按钮
+${locatorB_checkout_shippingcart_cartBut}    dom:document.querySelectorAll("[class*='dj-cart']")[0]     #.添加购物车按钮
+${locatorB_checkout_by_now_btn}    dom:document.querySelectorAll("[class*='second_btn']")[0]    #.by-now按钮
+${locatorB_checkout_submit_btn_s}    dom:document.querySelectorAll('[class*="checkout-btn"]')[0]    #.点击by-now后的submit按钮
+${locatorB_checkout_submit_shippingCart}    dom:document.querySelectorAll('[class*="checkout"]')[0]   #.购物车-checkout提交按钮
 ${locatorB_checkout_search_btn}    dom:document.querySelectorAll("a[alt='Search']")[0]    #.checkout搜索按钮
 ${locatorB_checkout_user_name}    dom:document.querySelectorAll("div[alt='Logo']")[0]    #.checkout顶部店铺名
 ${locatorB_checkout_card_img_btn}    dom:document.querySelectorAll("a[alt='Cart']")[0]    #.checkout购物车图标按钮
 ${locatorB_checkout_member_btn}    dom:document.querySelectorAll("a[alt='Account']")[0]    #.checkout顶部个人中心图标按钮
 ${locatorB_checkout_selectColor_elm}    dom:document.querySelectorAll(".variant_select_all")[0]    #.checkout主页-选择颜色，尺寸
 
+
+${locatorB_checkout_shippingcart_checkoutCart}    dom:document.querySelectorAll("[class*='checkout']")[0]   #.购物车checkout提交按钮
 #.checkout - order
 
-${locatorB_checkout_selectColor_elm}    dom:document.querySelectorAll("div[class='footer-add']")[0]     #.c端订单-添加到购物车 add to cart
-${locatorC_checkout_submit_bynow}    dom:document.querySelectorAll(".footer-submit")[0]     #.c端订单-by-now按钮
+${locatorB_checkout_product_addToCart}    dom:document.querySelectorAll("div[class*='footer-add']")[0]     #.c端订单-添加到购物车 add to cart
+#${locatorC_checkout_submit_bynow}    dom:document.querySelectorAll("[class='footer-submit']")[0]     #.c端订单-by-now按钮
 #.checkout - input
 ${locatorC_checkout_input_quantity}    dom:document.querySelectorAll("input[data-track-type='input']")[0]     #.购物车购买商品数量输入框
 ${locatorC_checkout_input_checkNum}    dom:document.querySelectorAll("input[class='qty-num']")[0]   #订单页-订单输入数量框
@@ -52,18 +54,18 @@ ${locatorC_checkout_address_saveInformation}    dom:document.querySelectorAll('.
 ${locatorC_checkout_delivery_shippingLine}     dom:document.querySelectorAll('[class*="shipping-line"]')[0]     #.订单物流信息运费显示
 # 信用卡信息
 ${locatorB_checkout_creditCard_input_name}    dom:document.querySelectorAll('[name="card_first_name"]')[0]    #.信用卡name
-${locatorB_checkout_creditCard_input_email}    dom:document.querySelectorAll('[name="card_email"]')[0]
-${locatorB_checkout_creditCard_input_phone}    dom:document.querySelectorAll('[name="card_phone"]')[0]
-${locatorB_checkout_creditCard_input_post}    dom:document.querySelectorAll('[name="card_postcode"]')[0]
-${locatorB_checkout_creditCard_input_number}    dom:document.querySelectorAll('[name="card_number"]')[0]
-${locatorB_checkout_creditCard_input_expireDate}    dom:document.querySelectorAll('[name="card_date"]')[0]
-${locatorB_checkout_creditCard_input_securityCode}    dom:document.querySelectorAll('[name="card_code"]')[0]
+${locatorB_checkout_creditCard_input_email}    dom:document.querySelectorAll('[name="card_email"]')[0]      #.信用卡email
+${locatorB_checkout_creditCard_input_phone}    dom:document.querySelectorAll('[name="card_phone"]')[0]      #.信用卡phone  手机
+${locatorB_checkout_creditCard_input_post}    dom:document.querySelectorAll('[name="card_postcode"]')[0]    #.信用卡postcode
+${locatorB_checkout_creditCard_input_number}    dom:document.querySelectorAll('[name="card_number"]')[0]    #.信用卡number
+${locatorB_checkout_creditCard_input_expireDate}    dom:document.querySelectorAll('[name="card_date"]')[0]      #.信用卡date
+${locatorB_checkout_creditCard_input_securityCode}    dom:document.querySelectorAll('[name="card_code"]')[0]    #.信用卡code
 
 
 ${locatorB_checkout_address_save_address_btn}    dom:document.querySelectorAll(".form-footer")[0]    #.保存地址按钮
 ${locatorB_checkout_address_save_checkout_btn}    id:submitMbPay    #.保存地址后的提交按钮
 ${locatorB_checkout_write_review}    dom:document.querySelectorAll(".review_write")[0]    #.checkout-留言按钮
-${locatorB_checkout_address_showProduct_eml}    class:order_summary    #.checkout-添加地址页面的顶部查看商品详情(向下箭头)
+${locatorB_checkout_address_showProduct_eml}    dom:document.querySelectorAll('[class="order_summary"]')[0]   #.checkout-添加地址页面的顶部查看商品详情(向下箭头)
 
 
 
@@ -103,7 +105,7 @@ ${locatorC_checkout_shipping_method}    dom:document.querySelectorAll('.checkout
 
 ${locatorC_checkout_shipping_preferential}    dom:document.querySelectorAll('.checkout-prices-value')[2]    #.订单运费
 ${locatorC_checkout_text_order}     dom:document.querySelectorAll(".item-sku-title")[0]     #.商品标题
-${locatorC_checkout_shipping_delivery}   dom:document.querySelectorAll(".fr")[3]        #shipping delivery 运费价格
+${locatorC_checkout_shipping_delivery}   dom:document.querySelectorAll("[class*='fr']")[3]        #shipping delivery 运费价格
 
 ${locatorC_checkout_prices_total}   dom:document.querySelectorAll(".checkout-prices tfoot td")[1]   #.商品总价格
 ${locatorC_checkout_prices_itemPrice}   dom:document.querySelectorAll(".item-price")[0]     #商品单价

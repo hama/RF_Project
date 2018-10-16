@@ -151,11 +151,11 @@ Wait And Get Items List From Locator
     @{return}    Execute Javascript    return ${exec_locator}
     [Return]    @{return}
 
-#Wait And Select From List
-#	[Arguments]    ${element_selectbox}    ${element_selectitem}
-#    [Documentation]    由于项目中实现的下拉功能并不是select标签无法使用robot的关键字select from list。（暂不实现，为找见下拉框操作方法）
-#    Wait And Click Element    ${element_selectbox}
-#    Wait And Click Element    ${element_selectitem}
+Wait And Select From List
+	[Arguments]    ${element_selectbox}    ${element_selectitem}
+    [Documentation]    由于项目中实现的下拉功能并不是select标签无法使用robot的关键字select from list。（暂不实现，为找见下拉框操作方法）
+    Wait And Click Element    ${element_selectbox}
+    Wait And Click Element    ${element_selectitem}
 
 Wait And Click Element Then Confirm
 	[Arguments]    ${element_locator}
