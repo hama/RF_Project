@@ -110,6 +110,7 @@ ${locatorC_checkout_prices_itemPrice}   dom:document.querySelectorAll(".item-pri
 ${locatorC_checkout_prices_shippingValue}   dom:document.querySelectorAll(".checkout-prices-value")[1]      #.运费shipping
 ${locatorC_checkout_prices_itemQuantity}   dom:document.querySelectorAll(".item-quantity")[0]      #.商品数量显示
 #locatorC Payment Method
+${locatorC_checkout_payment_shippingMethoda}    dom:document.querySelectorAll('.checkout-prices-value')[1]      #payment 订单运费数据
 ${locatorC_checkout_select_billingAddress}    dom:document.querySelectorAll("select[id='billingSelect']")[0]       #.billingAddress  扩展select
 ${locatorC_checkout_inputText_firstName}    dom:document.querySelectorAll("input[name='first_name']")[0]        #.payment method /first_name输入框
 ${locatorC_checkout_inputText_lastName}    dom:document.querySelectorAll("input[name='last_name']")[0]          #.payment method / last_name输入框
