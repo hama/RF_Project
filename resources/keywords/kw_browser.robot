@@ -62,7 +62,7 @@ Open Headless Chrome
     Call Method    ${chrome_options}    add_argument    headless
     Call Method    ${chrome_options}    add_argument    disable-gpu
     Call Method    ${chrome_options}    add_argument    no-sandbox
-    Call Method    ${chrome_options}    add_argument    disable-setuid-sandbox
+#    Call Method    ${chrome_options}    add_argument    disable-setuid-sandbox
     Create Webdriver    Chrome    chrome_options=${chrome_options}
     Go To    ${url}
 
