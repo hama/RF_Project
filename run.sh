@@ -82,8 +82,9 @@ then
 else
 	echo 'test_module_default'
     robot -v is_headless:True -d logs/ \
-        module/00_login/login.robot \
-		module/00_login/logout.robot
+		module/00_login/logout.robot \
+		module/08_settings/03_shipping/shipping.robot \
+		module/08_settings/04_tax/tax_rate.robot
 fi
 
 # 执行email_utils.py
