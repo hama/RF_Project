@@ -6,13 +6,14 @@ Resource          kw_common.robot
 
 Shipping Suite Setup
 	[Documentation]
-#    Login With Default User
+    Login With Default User
 
 Shipping Suite Teardown
     [Documentation]
     kwshipping.del_all_shipping_py
     Close Test Suite Browser
 
+# 由于使用封装的
 Shipping Case Setup
 	[Documentation]
 	Login With Default User
@@ -20,7 +21,7 @@ Shipping Case Setup
     Go To Shipping Page
 
 Shipping Case Teardown
-	kwshipping.del_all_shipping_py
+	[Documentation]
     Close Browser
 
 Add Default Shipping Country

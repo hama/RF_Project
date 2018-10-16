@@ -228,18 +228,12 @@ Open New And Close Other Windows
 	[Arguments]    ${url}
 	[Documentation]    开启一个指定的新窗口，并关闭其余窗口
 	@{window_handles}    Get Window Handles
-	Capture Page Screenshot
     Execute Javascript    window.open("${url}")
-    Capture Page Screenshot
     :FOR    ${window_handle}    IN    @{window_handles}
-#    \    Capture Page Screenshot
     \    Select Window    ${window_handle}
-#    \    Capture Page Screenshot
     \    Close Window
     @{new_window_handle}    Get Window Handles
     Select Window    ${new_window_handle[0]}
-    Capture Page Screenshot
-#    Set Window Position    0    0
     Set Window Size    1440    1080
 
 Focus On New Window

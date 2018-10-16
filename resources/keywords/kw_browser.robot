@@ -34,7 +34,6 @@ Setup Test Case
 Teardown Test Case
     [Documentation]
     #    测试用例执行失败进行截图
-    Capture Page Screenshot
     Run Keyword If Test Failed    Capture Page Screenshot
 #    Run Keyword If Test Failed    Run Keyword And Ignore Error    Handle Alert
     Run Keyword If Test Failed    Log Error Response Of Ajax Listener
