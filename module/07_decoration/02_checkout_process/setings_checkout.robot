@@ -100,21 +100,6 @@ checkoutPageSetings018
     \    Wait And Click Element    ${var}
     Wait Until Page Contains Text   手机和邮箱必填其一!
 
-#    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${locatorB_checkout_span_phoneMandatory}   5
-#    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_checkout_span_phoneMandatory}
-#    Run Keyword If    '${attr}'=='False'    Sleep    2
-#    ...    ELSE   Wait And Click Element      ${locatorB_checkout_span_phoneMandatorySelected}
-#
-#    ${attr1}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${locatorB_checkout_span_emailMandatory}    5
-#        Run Keyword If    '${attr1}'=='False'    Wait And Click Element    ${locatorB_checkout_span_emailMandatory}
-#        Run Keyword If    '${attr1}'=='False'    Sleep    2
-#        ...    ELSE    Wait And Click Element    ${locatorB_checkout_span_emailMandatorySelected}
-#
-#
-#    Wait Until Page Contains Text   手机和邮箱必填其一!
-
-    #Wait Until Page Contains Text   手机和邮箱必填其一!
-
 checkoutPageSetings021
     [Documentation]    测试顾客信息设置-点击姓和名分开
     [Tags]    P0    threshold   smoke

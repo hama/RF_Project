@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     navigation
-Library           SeleniumLibrary    run_on_failure=NOTHING
+
 Resource          kw_common.robot
 Resource          ../variable/var_common.robot
 
@@ -12,12 +12,6 @@ Go To Home Page
 Go To Setting Page
     [Documentation]    跳转到设置页面
     Wait And Click Element    ${locatorB_setting}
-
-Go To Home By Url
-    [Documentation]    通过url跳转到主页
-    Sleep    1
-    Go To    ${home_page}
-    Sleep    1
 
 Go To Dealing Order Page
     [Documentation]    跳转到待处理订单页面
@@ -106,7 +100,7 @@ Go To Store Page
     # 若营销按钮没展开，则展开营销按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='False'    Sleep    2
+    Run Keyword If    '${attr}'=='False'    Sleep    4
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_store}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_store}
     Wait Until Page Contains    ${contextB_store_storeInfo}
@@ -118,7 +112,7 @@ Go To Tax Page
     # 若设置按钮没展开，则展开设置按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='False'    Sleep    2
+    Run Keyword If    '${attr}'=='False'    Sleep    4
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_taxPrice}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_taxPrice}
     Wait Until Page Contains    收税方式
@@ -126,12 +120,10 @@ Go To Tax Page
 
 Go To Shipping Page
     [Documentation]    跳转到物流页面
-    Sleep    2.5
     Wait Until Element Is Visible    ${locatorB_setting}
-    # 若设置按钮没展开，则展开设置按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='False'    Sleep    2
+    Run Keyword If    '${attr}'=='False'    Sleep    4
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_shipping}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_shipping}
     Wait Until Page Contains    物流方案
@@ -140,10 +132,9 @@ Go To Shipping Page
 Go To Employee Account Page
     [Documentation]    跳转员工账号页面
     Wait Until Element Is Visible    ${locatorB_setting}
-    # 若设置按钮没展开，则展开营销按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='False'    Sleep    2
+    Run Keyword If    '${attr}'=='False'    Sleep    4
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_employee}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_employee}
     Sleep    2
@@ -157,7 +148,7 @@ Go To Uploadfile Page
     # 若设置按钮没展开，则展开设置按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
-    Run Keyword If    '${attr}'=='False'    Sleep    2
+    Run Keyword If    '${attr}'=='False'    Sleep    4
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_upfile}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_upfile}
     Wait Until Page Contains    上传文件
@@ -188,3 +179,15 @@ Go To Invitaion Page
     Wait And Click Element    ${locatorB_application_invitaion}
     #Wait Until Page Contains     授权确认
     #Location Should Be    ${url_invitaion}
+
+Go To Home By Url
+    [Documentation]    通过url跳转到主页
+    Sleep    1
+    Go To    ${home_page}
+    Sleep    1
+
+Go To Shipping Page By Url
+    [Documentation]    通过url跳转到物流页面
+    Sleep    1
+    Go To    ${url_shipping}
+    Sleep    1

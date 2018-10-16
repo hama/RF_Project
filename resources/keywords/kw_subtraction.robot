@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     满减活动封装公共部分关键字
-Library           SeleniumLibrary    run_on_failure=NOTHING
+
 Resource          ../variable/var_common.robot
 Resource          ../variable/var_subtraction.robot
 Resource          kw_browser.robot

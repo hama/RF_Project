@@ -256,7 +256,7 @@ def get_shipping_lines_with_conf_py(conf={}, cookie=init_cookie):
 
 def set_checkout_process_py(conf={}, cookie=init_cookie):
     '''
-    获取shipping_lines
+    设置checkout流程
     :param conf:
     :param cookie:
     :return:

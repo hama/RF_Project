@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     Checkout Page keyword
-Library           SeleniumLibrary    run_on_failure=NOTHING
+
 Resource          ../variable/var_setings_page.robot
 Resource          ../variable/var_common.robot
 Resource          kw_browser.robot

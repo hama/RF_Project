@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     product management keyword
-Library           SeleniumLibrary    run_on_failure=NOTHING
+
 Resource          ../variable/var_common.robot
 Resource          ../variable/var_marketing.robot
 Resource          ../variable/var_product_management.robot

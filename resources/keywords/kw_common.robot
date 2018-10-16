@@ -15,6 +15,7 @@ Resource          ../variable/var_store.robot
 Resource          ../variable/var_account.robot
 Resource          ../variable/var_shipping.robot
 Resource          kw_browser.robot
+Resource          kw_shipping.robot
 Resource          kw_navigation.robot
 Resource          kw_product_management.robot
 
@@ -40,32 +41,34 @@ Login With User
     Run Keyword If    '${close}'=='${False}'    Wait And Click Element    dom:document.querySelectorAll('.ant-modal-close-x')[0]
 
 Wait And Input Text
-    [Arguments]    ${element_locator}    ${text}    ${timeout}=3    ${retry_time}=1
+    [Arguments]    ${element_locator}    ${text}    ${timeout}=3s    ${retry_time}=1x
     [Documentation]    封装的输入方法，等待元素可被输入时，再输入
     Wait Until Element Is Visible    ${element_locator}    10
+    # 避免已有value的input标签，无法输入。因此在Input Text之前，点击input标签。解决此问题
+    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Input Text    ${element_locator}    ${text}
 
 Wait And Input Password
-    [Arguments]    ${element_locator}    ${pwd}    ${timeout}=3    ${retry_time}=1
+    [Arguments]    ${element_locator}    ${pwd}    ${timeout}=3s    ${retry_time}=1x
     [Documentation]    封装的输入方法，等待元素可被输入时，再输入
     Wait Until Element Is Visible    ${element_locator}    10
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Input Password    ${element_locator}    ${pwd}
 
 Wait And Click Element
-    [Arguments]    ${element_locator}    ${timeout}=25    ${retry_time}=5
+    [Arguments]    ${element_locator}    ${timeout}=25s    ${retry_time}=5x
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Visible    ${element_locator}     10
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
 
 Wait Exist And Click Element
-    [Arguments]    ${element_locator}    ${timeout}=25    ${retry_time}=5
+    [Arguments]    ${element_locator}    ${timeout}=25s    ${retry_time}=5x
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Page Contains Locator    ${element_locator}
 #    Wait Until Element Is Enabled    ${element_locator}
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
 
 Sleep And Click Element
-    [Arguments]    ${element_locator}    ${sleep_time}=3    ${timeout}=25    ${retry_time}=5
+    [Arguments]    ${element_locator}    ${sleep_time}=3    ${timeout}=25s    ${retry_time}=5x
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Sleep    ${sleep_time}
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
@@ -103,6 +106,17 @@ Text Of Element Should Be Equal With Wait
     :FOR    ${i}    IN RANGE    ${timeout}
     \    ${text}    Wait And Get Text    ${element_locator}
     \    ${status}    Run Keyword And Return Status    Should Be Equal    ${text}    ${expected_text}
+    \    Run Keyword If    ${status}    Exit For Loop
+    \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
+    \    ...    ELSE    Sleep    1
+
+Text Of Element Should Contain With Wait
+	[Arguments]    ${element_locator}    ${expected_text}    ${timeout}=10
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    ${times}    Evaluate    ${timeout}-1
+    :FOR    ${i}    IN RANGE    ${timeout}
+    \    ${text}    Wait And Get Text    ${element_locator}
+    \    ${status}    Run Keyword And Return Status    Should Contain    ${text}    ${expected_text}
     \    Run Keyword If    ${status}    Exit For Loop
     \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
     \    ...    ELSE    Sleep    1
@@ -200,16 +214,32 @@ Count Of Element Should Be Equal With Wait
     \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
     \    ...    ELSE    Sleep    1
 
+Element Attribute Should Be Equal With Wait
+    [Arguments]    ${element_locator}    ${attribute}    ${expected}    ${timeout}=10
+    ${times}    Evaluate    ${timeout}-1
+    :FOR    ${i}    IN RANGE    ${timeout}
+    \    ${attr}    Get Element Attribute    ${element_locator}    ${attribute}
+    \    ${status}    Run Keyword And Return Status    Should Be equal    '${attr}'    '${expected}'
+    \    Run Keyword If    ${status}    Exit For Loop
+    \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
+    \    ...    ELSE    Sleep    1
+
 Open New And Close Other Windows
 	[Arguments]    ${url}
 	[Documentation]    开启一个指定的新窗口，并关闭其余窗口
 	@{window_handles}    Get Window Handles
+	Capture Page Screenshot
     Execute Javascript    window.open("${url}")
+    Capture Page Screenshot
     :FOR    ${window_handle}    IN    @{window_handles}
+#    \    Capture Page Screenshot
     \    Select Window    ${window_handle}
+#    \    Capture Page Screenshot
     \    Close Window
     @{new_window_handle}    Get Window Handles
     Select Window    ${new_window_handle[0]}
+    Capture Page Screenshot
+#    Set Window Position    0    0
     Set Window Size    1440    1080
 
 Focus On New Window
@@ -218,49 +248,49 @@ Focus On New Window
     Select Window    ${new_window_handle[-1]}
     [Return]    ${new_window_handle[-1]}
 
-Click And Page Contains Element With Refresh
-    [Documentation]    点击&检查页面包含元素，含刷新机制
-    [Arguments]    ${click_element}    ${contain_element}    ${timeout}=10    ${retry_time}=2
-    :FOR    ${i}    IN RANGE    1
-    \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
-    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Locator    ${contain_element}    ${timeout}    ${retry_time}
-    \    Run Keyword If    '${status0}'=='False'    Reload Page And Start Ajax
-    \    ...     ELSE    Exit For Loop
-
-Click And Page Not Contains Element With Refresh
-    [Documentation]    点击&检查页面不包含元素，含刷新机制
-    [Arguments]    ${click_element}    ${contain_element}    ${timeout}=10    ${retry_time}=2
-    :FOR    ${i}    IN RANGE    1
-    \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
-    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Locator    ${contain_element}    ${timeout}    ${retry_time}
-    \    Run Keyword If    '${status0}'=='True'    Reload Page And Start Ajax
-    \    ...     ELSE    Exit For Loop
-
-Click And Page Contains With Refresh
-    [Documentation]    点击&检查页面包含文字，含刷新机制
-    [Arguments]    ${click_element}    ${contain_text}    ${timeout}=10    ${retry_time}=2
-    :FOR    ${i}    IN RANGE    1
-    \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
-    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Text    ${contain_text}    ${timeout}    ${retry_time}
-    \    Run Keyword If    '${status0}'=='False'    Reload Page And Start Ajax
-    \    ...     ELSE    Exit For Loop
-
-Click And Page Not Contains With Refresh
-    [Documentation]    点击&检查页面不包含文字，含刷新机制
-    [Arguments]    ${click_element}    ${contain_text}    ${timeout}=10    ${retry_time}=2
-    :FOR    ${i}    IN RANGE    1
-    \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
-    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Text    ${contain_text}    ${timeout}    ${retry_time}
-    \    Run Keyword If    '${status0}'=='True'    Reload Page And Start Ajax
-    \    ...     ELSE    Exit For Loop
-
-Click With Refresh
-    [Documentation]    点击，含刷新机制
-    [Arguments]    ${click_element}    ${timeout}=10    ${retry_time}=2
-    :FOR    ${i}    IN RANGE    1
-    \    ${status0}    Run Keyword And Return Status    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${click_element}
-    \    Run Keyword If    '${status0}'=='False'    Reload Page And Start Ajax
-    \    ...     ELSE    Exit For Loop
+#Click And Page Contains Element With Refresh
+#    [Documentation]    点击&检查页面包含元素，含刷新机制
+#    [Arguments]    ${click_element}    ${contain_element}    ${timeout}=10    ${retry_time}=2
+#    :FOR    ${i}    IN RANGE    1
+#    \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
+#    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Locator    ${contain_element}    ${timeout}    ${retry_time}
+#    \    Run Keyword If    '${status0}'=='False'    Reload Page And Start Ajax
+#    \    ...     ELSE    Exit For Loop
+#
+#Click And Page Not Contains Element With Refresh
+#    [Documentation]    点击&检查页面不包含元素，含刷新机制
+#    [Arguments]    ${click_element}    ${contain_element}    ${timeout}=10    ${retry_time}=2
+#    :FOR    ${i}    IN RANGE    1
+#    \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
+#    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Locator    ${contain_element}    ${timeout}    ${retry_time}
+#    \    Run Keyword If    '${status0}'=='True'    Reload Page And Start Ajax
+#    \    ...     ELSE    Exit For Loop
+#
+#Click And Page Contains With Refresh
+#    [Documentation]    点击&检查页面包含文字，含刷新机制
+#    [Arguments]    ${click_element}    ${contain_text}    ${timeout}=10    ${retry_time}=2
+#    :FOR    ${i}    IN RANGE    1
+#    \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
+#    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Text    ${contain_text}    ${timeout}    ${retry_time}
+#    \    Run Keyword If    '${status0}'=='False'    Reload Page And Start Ajax
+#    \    ...     ELSE    Exit For Loop
+#
+#Click And Page Not Contains With Refresh
+#    [Documentation]    点击&检查页面不包含文字，含刷新机制
+#    [Arguments]    ${click_element}    ${contain_text}    ${timeout}=10    ${retry_time}=2
+#    :FOR    ${i}    IN RANGE    1
+#    \    Click With Refresh    ${click_element}    ${timeout}    ${retry_time}
+#    \    ${status0}    Run Keyword And Return Status    Wait Until Page Not Contains Text    ${contain_text}    ${timeout}    ${retry_time}
+#    \    Run Keyword If    '${status0}'=='True'    Reload Page And Start Ajax
+#    \    ...     ELSE    Exit For Loop
+#
+#Click With Refresh
+#    [Documentation]    点击，含刷新机制
+#    [Arguments]    ${click_element}    ${timeout}=10    ${retry_time}=2
+#    :FOR    ${i}    IN RANGE    1
+#    \    ${status0}    Run Keyword And Return Status    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${click_element}
+#    \    Run Keyword If    '${status0}'=='False'    Reload Page And Start Ajax
+#    \    ...     ELSE    Exit For Loop
 
 Wait Until Page Not Contains Locator
     [Documentation]    等待页面不包含${locator}，包含继续等待直至超时异常，不包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
