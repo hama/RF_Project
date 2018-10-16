@@ -235,11 +235,10 @@ Open New And Close Other Windows
     \    Select Window    ${window_handle}
     \    Capture Page Screenshot
     \    Close Window
-    Capture Page Screenshot
     @{new_window_handle}    Get Window Handles
-    Capture Page Screenshot
     Select Window    ${new_window_handle[0]}
-    Set Window Position    0    0
+    Capture Page Screenshot
+#    Set Window Position    0    0
     Set Window Size    1440    1080
 
 Focus On New Window
