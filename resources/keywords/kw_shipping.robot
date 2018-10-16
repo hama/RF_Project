@@ -13,7 +13,9 @@ Shipping Suite Teardown
     kwshipping.del_all_shipping_py
     Close Test Suite Browser
 
-# 由于使用封装的
+# 由于使用封装的Open New And Close Other Windows方法导致为止chrome错误，且只有shipping模块会报错
+# （只有在docker中跑会出错，无法截图，暂时找不到错误原因。）
+# 先使用每个用例重新登录的方法跑用例
 Shipping Case Setup
 	[Documentation]
 	Login With Default User
