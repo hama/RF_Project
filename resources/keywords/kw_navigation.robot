@@ -13,12 +13,6 @@ Go To Setting Page
     [Documentation]    跳转到设置页面
     Wait And Click Element    ${locatorB_setting}
 
-Go To Home By Url
-    [Documentation]    通过url跳转到主页
-    Sleep    1
-    Go To    ${home_page}
-    Sleep    1
-
 Go To Dealing Order Page
     [Documentation]    跳转到待处理订单页面
     Wait Until Element Is Visible    ${locatorB_products}
@@ -126,9 +120,7 @@ Go To Tax Page
 
 Go To Shipping Page
     [Documentation]    跳转到物流页面
-    Sleep    2.5
     Wait Until Element Is Visible    ${locatorB_setting}
-    # 若设置按钮没展开，则展开设置按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
     Run Keyword If    '${attr}'=='False'    Sleep    4
@@ -140,7 +132,6 @@ Go To Shipping Page
 Go To Employee Account Page
     [Documentation]    跳转员工账号页面
     Wait Until Element Is Visible    ${locatorB_setting}
-    # 若设置按钮没展开，则展开营销按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
     Run Keyword If    '${attr}'=='False'    Sleep    4
@@ -188,3 +179,15 @@ Go To Invitaion Page
     Wait And Click Element    ${locatorB_application_invitaion}
     #Wait Until Page Contains     授权确认
     #Location Should Be    ${url_invitaion}
+
+Go To Home By Url
+    [Documentation]    通过url跳转到主页
+    Sleep    1
+    Go To    ${home_page}
+    Sleep    1
+
+Go To Shipping Page By Url
+    [Documentation]    通过url跳转到物流页面
+    Sleep    1
+    Go To    ${url_shipping}
+    Sleep    1
