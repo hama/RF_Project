@@ -142,7 +142,6 @@ Location Should Contain With Wait
     \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
     \    ...    ELSE    Sleep    1
 
-
 Wait And Get Items List From Locator
 	[Arguments]    ${element_locator}    ${element_visible}=${Empty}
     [Documentation]    获取${element_locator}中的元素，并放入列表中返回
@@ -151,11 +150,29 @@ Wait And Get Items List From Locator
     @{return}    Execute Javascript    return ${exec_locator}
     [Return]    @{return}
 
-#Wait And Select From List
-#	[Arguments]    ${element_selectbox}    ${element_selectitem}
-#    [Documentation]    由于项目中实现的下拉功能并不是select标签无法使用robot的关键字select from list。（暂不实现，为找见下拉框操作方法）
-#    Wait And Click Element    ${element_selectbox}
-#    Wait And Click Element    ${element_selectitem}
+Wait And Select From List By Clicking
+	[Arguments]    ${element_selectbox}    ${element_selectitem}
+    [Documentation]    点击元素，实现select选择。（用于非select标签封装的下拉选框）
+    Wait And Click Element    ${element_selectbox}
+    Wait And Click Element    ${element_selectitem}
+
+Wait And Select From List By Index
+	[Arguments]    ${element_selectbox}    ${index}
+    [Documentation]
+    Wait Until Element Is Visible    ${element_locator}     10
+    Select From List By Index    ${element_selectbox}    ${index}
+
+Wait And Select From List By Label
+	[Arguments]    ${element_selectbox}    ${label}
+    [Documentation]
+    Wait Until Element Is Visible    ${element_locator}     10
+    Select From List By Label    ${element_selectbox}    ${label}
+
+Wait And Select From List By Value
+	[Arguments]    ${element_selectbox}    ${value}
+    [Documentation]
+    Wait Until Element Is Visible    ${element_locator}     10
+    Select From List By Value    ${element_selectbox}    ${value}
 
 Wait And Click Element Then Confirm
 	[Arguments]    ${element_locator}
