@@ -6,7 +6,7 @@ Resource          kw_common.robot
 
 Shipping Suite Setup
 	[Documentation]
-    Login With Default User
+#    Login With Default User
 
 Shipping Suite Teardown
     [Documentation]
@@ -15,8 +15,13 @@ Shipping Suite Teardown
 
 Shipping Case Setup
 	[Documentation]
+	Login With Default User
 	kwshipping.del_all_shipping_py
     Go To Shipping Page
+
+Shipping Case Teardown
+	kwshipping.del_all_shipping_py
+    Close Browser
 
 Add Default Shipping Country
 	[Documentation]    添加默认的物流国家（即第一个大洲的第一个国家），并保存
