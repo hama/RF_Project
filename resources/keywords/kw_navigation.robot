@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     navigation
-Library           SeleniumLibrary    run_on_failure=NOTHING
+
 Resource          kw_common.robot
 Resource          ../variable/var_common.robot
 

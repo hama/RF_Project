@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     product comment keyword
-Library           SeleniumLibrary    run_on_failure=NOTHING
+
 Resource          ../variable/var_common.robot
 Resource          ../variable/var_product_comment.robot
 Resource          kw_browser.robot

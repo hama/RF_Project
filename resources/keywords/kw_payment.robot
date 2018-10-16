@@ -1,7 +1,7 @@
 *** Settings ***
 Resource          kw_common.robot
 Resource          kw_browser.robot
-Library           SeleniumLibrary    run_on_failure=NOTHING
+
 Resource          ../variable/var_common.robot
 
 *** Variables ***

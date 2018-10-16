@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     order keyword
-Library           SeleniumLibrary    run_on_failure=NOTHING
+
 Resource          kw_browser.robot
 Resource          kw_common.robot
 Resource          ../variable/var_common.robot

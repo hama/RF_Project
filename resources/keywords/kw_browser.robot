@@ -34,8 +34,9 @@ Setup Test Case
 Teardown Test Case
     [Documentation]
     #    测试用例执行失败进行截图
+    Capture Page Screenshot
     Run Keyword If Test Failed    Capture Page Screenshot
-    Run Keyword If Test Failed    Run Keyword And Ignore Error    Handle Alert
+#    Run Keyword If Test Failed    Run Keyword And Ignore Error    Handle Alert
     Run Keyword If Test Failed    Log Error Response Of Ajax Listener
     Open New And Close Other Windows    ${home_page}
     #    log    *******************************************************************************************************
@@ -53,7 +54,7 @@ Open Test Browser
     #    Sleep    2
     Set Window Position    0    0
     Set Window Size    1440    1080
-    Sleep    5
+    Sleep    3
 
 Open Headless Chrome
     [Arguments]    ${url}

@@ -9,7 +9,7 @@ Resource          ../../resources/keywords/kw_common.robot
 Resource          ../../resources/keywords/kw_browser.robot
 Resource          ../../resources/variable/var_login.robot
 Resource          ../../resources/keywords/kw_login.robot
-Library           SeleniumLibrary    run_on_failure=NOTHING
+
 
 
 *** Test Cases ***
