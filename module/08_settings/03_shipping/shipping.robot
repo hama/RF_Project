@@ -1,10 +1,10 @@
 *** Settings ***
-#Suite Setup       Shipping Suite Setup
-#Suite Teardown    Shipping Suite Teardown
-#Test Setup        Shipping Case Setup
-#Test Teardown     Shipping Case Teardown
-Test Setup        Shipping Case Setup Tmp Fix
-Test Teardown     Shipping Case Teardown Tmp Fix
+Suite Setup       Shipping Suite Setup
+Suite Teardown    Shipping Suite Teardown
+Test Setup        Shipping Case Setup
+Test Teardown     Shipping Case Teardown
+#Test Setup        Shipping Case Setup Tmp Fix
+#Test Teardown     Shipping Case Teardown Tmp Fix
 Force Tags        Shipping
 Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/variable/var_shipping.robot
