@@ -15,6 +15,7 @@ Resource          ../variable/var_store.robot
 Resource          ../variable/var_account.robot
 Resource          ../variable/var_shipping.robot
 Resource          kw_browser.robot
+Resource          kw_shipping.robot
 Resource          kw_navigation.robot
 Resource          kw_product_management.robot
 

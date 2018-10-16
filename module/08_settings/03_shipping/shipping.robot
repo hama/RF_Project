@@ -13,7 +13,6 @@ Library           ${CURDIR}/../../../lib/customlib/kwshipping.py
 
 
 *** Test Cases ***
-
 shipping006
     [Documentation]    测试方案名称输入框输入中文
     [Tags]    P1    threshold
