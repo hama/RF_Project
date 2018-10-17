@@ -620,3 +620,19 @@ coupon_code_refresh_data = {
     "product_num": "",
     "stock_num": ""
 }
+
+tax_refresh_data = {
+    'tax_info': '[{"zone_id":"701","price":""},{"zone_id":"702","price":""},{"zone_id":"703","price":""},'
+                '{"zone_id":"704","price":""},{"zone_id":"705","price":""},{"zone_id":"706","price":""},'
+                '{"zone_id":"707","price":""},{"zone_id":"708","price":""},{"zone_id":"709","price":""},'
+                '{"zone_id":"710","price":""},{"zone_id":"711","price":""},{"zone_id":"712","price":""},'
+                '{"zone_id":"713","price":""},{"zone_id":"714","price":""},{"zone_id":"4106","price":""},'
+                '{"zone_id":"700","price":""},{"zone_id":"699","price":""},{"zone_id":"684","price":""},'
+                '{"zone_id":"685","price":""},{"zone_id":"686","price":""},{"zone_id":"687","price":""},'
+                '{"zone_id":"688","price":""},{"zone_id":"689","price":""},{"zone_id":"690","price":""},'
+                '{"zone_id":"691","price":""},{"zone_id":"692","price":""},{"zone_id":"693","price":""},'
+                '{"zone_id":"694","price":""},{"zone_id":"695","price":""},{"zone_id":"696","price":""},'
+                '{"zone_id":"697","price":""},{"zone_id":"698","price":""}]"',
+    'country_id': '44',
+    'country_price': '10.00'
+}

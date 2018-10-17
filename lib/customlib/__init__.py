@@ -6,9 +6,9 @@ from .kwproduct import *
 from .kwcheckout import *
 from .kwcollection import *
 from .kwlogin import *
-from .kwmarketing import *
+from .kwmarketing_will_be_del import *
 from .kwpayment import *
-from .kwstore import *
+from .kwstore_will_be_del import *
 from .kwtax import *
 from .lib_utils import *
 

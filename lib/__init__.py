@@ -7,9 +7,9 @@ from lib.customlib import (kwshipping,
                            kwcheckout,
                            kwcollection,
                            kwlogin,
-                           kwmarketing,
+                           kwmarketing_will_be_del,
                            kwpayment,
-                           kwstore,
+                           kwstore_will_be_del,
                            kwtax)
 # class lib(DynamicCore):
 #     ROBOT_LIBRARY_SCOPE = 'GLOBAL'

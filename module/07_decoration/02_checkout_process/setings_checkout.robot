@@ -7,9 +7,9 @@ Test Teardown     Teardown Test Case
 Force Tags        checkoutPageSetings
 
 Resource        ../../../resources/keywords/kw_common.robot
-Resource        ../../../resources/keywords/kw_setings_page.robot
+Resource        ../../../resources/keywords/kw_settings_page.robot
 Resource        ../../../resources/variable/var_common.robot
-Resource        ../../../resources/variable/var_setings_page.robot
+Resource        ../../../resources/variable/var_settings_page.robot
 Resource        ../../../resources/keywords/kw_browser.robot
 
 

@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Checkout Page keyword
 
-Resource          ../variable/var_setings_page.robot
+Resource          ../variable/var_settings_page.robot
 Resource          ../variable/var_common.robot
 Resource          kw_browser.robot
 Resource          kw_common.robot

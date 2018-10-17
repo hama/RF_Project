@@ -15,6 +15,7 @@ Coupon Code Suite Teardown
 
 Coupon Code Case Setup
     [Documentation]
+    kwcoupon.add_before_coupon_code_py
     Go To Coupon Page
 
 Select All Coupon Code Tag
