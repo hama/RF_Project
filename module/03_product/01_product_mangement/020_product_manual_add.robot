@@ -5,13 +5,7 @@ Suite Teardown    Product Management Common Suite Teardown
 Test Setup        Product Management Case Setup Clear Evn
 Test Teardown     Teardown Test Case
 Force Tags        Products
-Resource          ../../../resources/variable/var_common.robot
-Resource          ../../../resources/variable/var_product_management.robot
-Resource          ../../../resources/variable/var_product_collection.robot
 Resource          ../../../resources/keywords/kw_common.robot
-Resource          ../../../resources/keywords/kw_browser.robot
-Resource          ../../../resources/keywords/kw_product_management.robot
-Library           ${CURDIR}/../../../lib/customlib/lib_utils.py
 
 
 *** Test Cases ***

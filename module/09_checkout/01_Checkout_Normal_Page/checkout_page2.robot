@@ -6,12 +6,7 @@ Suite Teardown    Checkout Suite Teardown    # close the browser opened for this
 Test Teardown     Teardown Test Case
 Force Tags        Checkout
 
-Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/keywords/kw_common.robot
-Resource          ../../../resources/keywords/kw_checkout.robot
-Resource          ../../../resources/variable/var_checkout.robot
-Library           ${CURDIR}/../../../lib/customlib/lib_utils.py
-Library           ${CURDIR}/../../../lib/customlib/kwcheckout.py
 
 *** Test Cases ***
 

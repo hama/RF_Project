@@ -6,13 +6,7 @@ Test Teardown     Shipping Case Teardown
 #Test Setup        Shipping Case Setup Tmp Fix
 #Test Teardown     Shipping Case Teardown Tmp Fix
 Force Tags        Shipping
-Resource          ../../../resources/variable/var_common.robot
-Resource          ../../../resources/variable/var_shipping.robot
-Resource          ../../../resources/keywords/kw_browser.robot
 Resource          ../../../resources/keywords/kw_common.robot
-Resource          ../../../resources/keywords/kw_shipping.robot
-Library           ${CURDIR}/../../../lib/customlib/kwshipping.py
-
 
 *** Test Cases ***
 shipping006

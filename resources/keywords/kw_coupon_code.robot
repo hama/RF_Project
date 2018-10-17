@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation     Coupon Code 公共方法
-Resource          ../variable/var_common.robot
-Resource          ../variable/var_coupon_code.robot
+Resource          kw_common.robot
 
 *** keywords ***
 
