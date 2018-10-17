@@ -2,7 +2,6 @@
 
 import kwproduct
 from variable import *
-from lib_utils import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -48,27 +47,6 @@ def get_coupon_data_py(argv, sub=None, type=None):
         "range_type": range_type, "range_value": range_value, "timezone": timezone, "total_num": total_num,
         "used_num": used_num
     }
-
-
-def getActividadTime_py(parments=None):
-    """
-    获取满减 | 优惠券 公共活动时间参数
-    :param parments: 1：活动进行中
-    :param parments: 2：活动未开始
-    :param parments: 3：活动已结束
-    :return: dict
-    """
-    res_time_data = getTimes_py()
-    if parments == 1:
-        return {"date_start": res_time_data['now_times'].strftime('%Y-%m-%d %H:%M:%S'),
-                "date_end": res_time_data['beforeTime'].strftime('%Y-%m-%d %H:%M:%S')}
-    elif parments == 2:
-        return {"date_start": res_time_data['TomorrowTime'].strftime('%Y-%m-%d %H:%M:%S'),
-                "date_end": res_time_data['beforeTime'].strftime('%Y-%m-%d %H:%M:%S')}
-    else:
-        newTime = res_time_data['now_time'] + datetime.timedelta(days=7)
-        return {"date_start": res_time_data['now_time'].strftime('%Y-%m-%d %H:%M:%S'),
-                "date_end": newTime.strftime('%Y-%m-%d %H:%M:%S')}
 
 
 def getSubtractionData_py(argv, type=None):

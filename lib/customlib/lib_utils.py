@@ -6,7 +6,7 @@ import random
 import re
 import sys
 import time
-import uuid,copy
+import uuid
 
 import oss2
 import requests
@@ -65,21 +65,46 @@ def md5_py(fname):
     return hash_md5.hexdigest()
 
 
-def getTimes_py():
+def get_certain_date_py():
     """
-    获取添加满减|优惠券 活动的公共时间
+    获取指点的date数据
     :return: dict
     """
-    now_time = datetime.datetime.now()
-    now_times = now_time - datetime.timedelta(days=1)
-    TomorrowTime = now_time + datetime.timedelta(days=1)
-    beforeTime = now_time + datetime.timedelta(days=10)
+    current_date_data = datetime.datetime.now()
+    current_date = current_date_data.strftime('%Y-%m-%d %H:%M:%S')
+    yesterday_date = (current_date_data - datetime.timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')
+    tomorrow_date = (current_date_data + datetime.timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')
+    todayBeforeYesterday_date = (current_date_data - datetime.timedelta(days=2)).strftime('%Y-%m-%d %H:%M:%S')
+    todayAfterTomorrow_date = (current_date_data + datetime.timedelta(days=2)).strftime('%Y-%m-%d %H:%M:%S')
+
     return {
-        "now_time": now_time,
-        "now_times": now_times,
-        "TomorrowTime": TomorrowTime,
-        "beforeTime": beforeTime
+        "current_date": current_date,
+        "yesterday_date": yesterday_date,
+        "tomorrow_date": tomorrow_date,
+        "todayBeforeYesterday_date": todayBeforeYesterday_date,
+        "todayAfterTomorrow_date": todayAfterTomorrow_date
     }
+
+
+def getActividadTime_py(parments=None):
+    """
+    获取满减 | 优惠券 公共活动时间参数
+    :param parments: 1：活动进行中
+    :param parments: 2：活动未开始
+    :param parments: 3：活动已结束
+    :return: dict
+    """
+    res_time_data = get_certain_date_py()
+    if parments == 1:
+        return {"date_start": res_time_data['now_times'].strftime('%Y-%m-%d %H:%M:%S'),
+                "date_end": res_time_data['beforeTime'].strftime('%Y-%m-%d %H:%M:%S')}
+    elif parments == 2:
+        return {"date_start": res_time_data['TomorrowTime'].strftime('%Y-%m-%d %H:%M:%S'),
+                "date_end": res_time_data['beforeTime'].strftime('%Y-%m-%d %H:%M:%S')}
+    else:
+        newTime = res_time_data['now_time'] + datetime.timedelta(days=7)
+        return {"date_start": res_time_data['now_time'].strftime('%Y-%m-%d %H:%M:%S'),
+                "date_end": newTime.strftime('%Y-%m-%d %H:%M:%S')}
 
 
 def compare_time_py(format_time1, format_time2):
@@ -180,6 +205,7 @@ if __name__ == '__main__':
     # dict.update(dict2)
     json_data = {'a': {'a1': 'a1', 'a2': 'a2'}, 'b': [123], 'c': {'c1': [456]}}
     # json_conf = {'a': {'a1': 'b1'}, 'c': {'c1': 'nb'},'d':'ddd'}
-    json_conf = {}
-    dict_deepupdate(json_data, json_conf)
-    print 'a'
+    # json_conf = {}
+    # dict_deepupdate(json_data, json_conf)
+
+    print get_certain_date_py()
