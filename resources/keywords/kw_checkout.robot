@@ -7,7 +7,7 @@ Library           ${CURDIR}/../../lib/customlib/kwshipping.py
 Library           ${CURDIR}/../../lib/customlib/kwtax.py
 Library           ${CURDIR}/../../lib/customlib/kwmarketing.py
 Library           ${CURDIR}/../../lib/customlib/lib_utils.py
-
+Library           ${CURDIR}/../../lib/customlib/kwpayment.py
 Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 
 *** keywords ***
@@ -17,6 +17,10 @@ Checkout Suite Setup
     kwshipping.add_shipping_py
     kwproduct.add_launched_product_py
     kwcheckout.set_checkout_process_py
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
+    #激活COD货到付款方式
+    kwpayment.activate_payment_cod_py
 
 Checkout Suite Teardown
     [Documentation]    每个用例执行结束步骤
@@ -24,8 +28,26 @@ Checkout Suite Teardown
 
 Checkout Case Setup
     [Documentation]    每个用例执行开始步骤
+    Go To Product Management Page
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Select Window    New
+
+
+Checkout2 Suite Setup
+    [Documentation]    布置开始执行用例环境
+    Login With Default User
+    kwshipping.add_shipping_py
+    kwproduct.add_launched_product_py
+    kwcheckout.set_checkout_process_py
     #.开启pc优化
     kwcheckout.start_pc_show_py    1
+
+Checkout2 Suite Teardown
+    [Documentation]    每个用例执行结束步骤
+    Close Test Suite Browser
+
+Checkout2 Case Setup
+    [Documentation]    每个用例执行开始步骤
     Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     Select Window    New
@@ -33,9 +55,8 @@ Checkout Case Setup
 
 
 
-
-
-
+Sleep Time
+    Sleep  2
 
 
 
@@ -92,7 +113,7 @@ Add Address Common Step
     [Documentation]    添加地址公共部分
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Wait And Input Text    ${locatorB_checkout_address_city}    深圳
     Wait And Input Text    ${locatorB_checkout_address_add}    深圳123
     Wait And Input Text    ${locatorB_checkout_address_zip}    123456
@@ -152,10 +173,6 @@ Checkout_Common_Checkout_Step
     Wait And Click Element    ${locatorB_checkout_submit_btn_s}
     Wait And Click Element    ${locatorB_checkout_address_save_checkout_btn}
 
-Sleep Time
-    [Documentation]    睡眠时间 2s
-    Sleep    2
-
 Select_Order_Page
     [Arguments]    ${title}
     [Documentation]    点击预览第一个商品，跳转到商品详情页，点击submit按钮进入订单信息页面
@@ -199,10 +216,10 @@ Complete_Order_Message
     #last name
     Wait And Input Text    ${locatorB_checkout_address_last_name}    l
     #选择国家
-    Select From List By Index    ${locatorB_checkout_address_select_country}    1
+    Wait And Select From List By Value By Index    ${locatorB_checkout_address_select_country}    1
     Sleep    2
     #选择身份
-    Select From List By Index    id:shipping_zone_id    1
+    Wait And Select From List By Value By Index    id:shipping_zone_id    1
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
@@ -230,10 +247,10 @@ Complete_Order_Message_Not_Submit
     #last name
     Wait And Input Text    ${locatorB_checkout_address_last_name}    l
     #选择国家
-    Select From List By Index    ${locatorB_checkout_address_select_country}    1
+    Wait And Select From List By Value By Index    ${locatorB_checkout_address_select_country}    1
     Sleep    2
     #选择身份
-    Select From List By Index    id:shipping_zone_id    1
+    Wait And Select From List By Value By Index    id:shipping_zone_id    1
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
@@ -258,10 +275,10 @@ Complete_Order_Message_Without_Phone
     #last name
     Wait And Input Text    ${locatorB_checkout_address_last_name}    l
     #选择国家
-    Select From List By Index    ${locatorB_checkout_address_select_country}    1
+    Wait And Select From List By Value By Index    ${locatorB_checkout_address_select_country}    1
     Sleep    2
     #选择身份
-    Select From List By Index    id:shipping_zone_id    1
+    Wait And Select From List By Value By Index    id:shipping_zone_id    1
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
@@ -281,7 +298,7 @@ Complete_Order_Message_Without_Last_name
     #first name
     Wait And Input Text    ${locatorB_checkout_address_first_name}    zc
     #选择国家
-    Select From List By Index    ${locatorB_checkout_address_select_country}    1
+    Wait And Select From List By Value By Index    ${locatorB_checkout_address_select_country}    1
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
