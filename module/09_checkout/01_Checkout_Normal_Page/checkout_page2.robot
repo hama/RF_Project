@@ -44,12 +44,31 @@ checkout_019
     Select From List    ${locatorB_checkout_address_select_country}    China
     Text Of Element Should Be Equal With Wait     ${locatorC_checkout_shipping_preferential}    + $0.00
 
+checkout110
+    [Documentation]      验证checkout 支付页面，商品不收取税费时，价格详情中的tax显示为：+ $0.00   >  1.C端购买商品women进入checkout 支付页面  2.查看价格详情中tax
+    [Tags]    P0    threshold
+    #初始化物流信息
+    kwshipping.del_all_shipping_py
+    &{conf}=   Create Dictionary
+    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_name=shipping_yunfei
+    kwshipping.add_shipping_with_conf_py    ${conf}
+    #.添加一个不收税费的商品
+    &{conf}=   Create Dictionary
+    ...    settax=0
+    kwproduct.add_product_with_conf_py   ${conf}
+    #进入商品详情步骤
+    Checkout Case Setup
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Add Address Common Step
+    Wait And Click Element    ${locatorC_checkout_delivery_shippingLine}
+    Text Of Element Should Be Equal With Wait     ${locatorC_checkout_shipping_preferential}    + $0.00
 
 checkout_119
     [Documentation]    验证购买不需要物流运输的商品进入支付页面时，shipping method显示为Delivery for virtual product  >  1.C端购买商品women进入checkout 支付页面  2.查看payment栏 shipping method
     [Tags]    P0    threshold
     #初始化物流信息
-    Chenckout Del Shipping Information
+    kwshipping.del_all_shipping_py
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
@@ -64,3 +83,40 @@ checkout_119
     Add Address Common Step
     Wait Until Page Contains Locator    ${locatorC_checkout_delivery_shippingLine}
 
+
+checkout_080
+    [Documentation]    验证checkout shipping页面，购买的商品不需要物流运输时，选择国家后，shipping delivery栏会出现交付虚拟产品的运费方案  >  1.C端购买商品women进入checkout shipping页面  2.选择国家   3.查看shipping delivery栏
+    [Tags]    P0    threshold
+     #.初始化物流信息
+    kwshipping.del_all_shipping_py
+    &{conf}=   Create Dictionary
+    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_name=shipping_yunfei
+    kwshipping.add_shipping_with_conf_py    ${conf}
+    #.添加一个不收税费的商品
+    &{conf}=   Create Dictionary
+    ...    settax=0
+    #进入商品详情步骤
+    Checkout Case Setup
+    kwproduct.add_product_with_conf_py   ${conf}
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Add Address Common Step
+    Wait Until Page Contains Locator    ${locatorC_checkout_delivery_shippingLine}
+
+checkout_080
+    [Documentation]    验证checkout shipping页面，购买的商品不需要物流运输时，选择国家后，shipping delivery栏会出现交付虚拟产品的运费方案  >  1.C端购买商品women进入checkout shipping页面  2.选择国家   3.查看shipping delivery栏
+    [Tags]    P0    threshold
+    #初始化物流信息
+    kwshipping.del_all_shipping_py
+    &{conf}=   Create Dictionary
+    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_name=shipping_yunfei
+    kwshipping.add_shipping_with_conf_py    ${conf}
+    #.添加一个不收税费的商品
+    &{conf}=   Create Dictionary
+    ...    settax=0
+    kwproduct.add_product_with_conf_py   ${conf}
+    Checkout Case Setup
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Add Address Common Step
+    Wait Until Page Contains Locator    ${locatorC_checkout_delivery_shippingLine}
