@@ -12,7 +12,7 @@ ${locatorB_couponCode_items_listCoupon}    ${locatorB_table_listItems}    # 列�
 ${locatorB_couponCode_button_all}    dom:document.querySelectorAll('[class*="ant-tabs-tab"]')[0]
 ${locatorB_couponCode_button_before}    dom:document.querySelectorAll('[class*="ant-tabs-tab"]')[1]   # 未开始
 ${locatorB_couponCode_button_doing}    dom:document.querySelectorAll('[class*="ant-tabs-tab"]')[2]    # 进行中
-${locatorB_couponCode_button_done}    dom:document.querySelectorAll('[class*="ant-tabs-tab"]')[3]    # 已结束
+${locatorB_couponCode_button_finish}    dom:document.querySelectorAll('[class*="ant-tabs-tab"]')[3]    # 已结束
 
 ${locatorB_couponCode_text_firstCoupon_activityNum}    ${locatorB_table_listItems}[0].querySelectorAll("td")[0]    #第一个优惠码的，优惠码编号
 ${locatorB_couponCode_text_firstCoupon_activityName}    ${locatorB_table_listItems}[0].querySelectorAll("td")[1]    #第一个优惠码的，

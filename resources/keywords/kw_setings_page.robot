@@ -8,7 +8,5 @@ Resource          kw_common.robot
 Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 *** keyword ***
 Checkout Page Test Setup
-    [Documentation]    测试结账设置界面保存按钮
-    [Tags]    P0    threshold   smoke
-    #. 调用接口，初始化数据
     kwcheckout.set_checkout_process_py
+    Go To Checkout Settings Page

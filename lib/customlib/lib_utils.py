@@ -67,7 +67,7 @@ def md5_py(fname):
 
 def get_certain_date_py():
     """
-    获取指点的date数据
+    获取指点的date数据(用于营销模块)
     :return: dict
     """
     current_date_data = datetime.datetime.now()
@@ -84,27 +84,6 @@ def get_certain_date_py():
         "todayBeforeYesterday_date": todayBeforeYesterday_date,
         "todayAfterTomorrow_date": todayAfterTomorrow_date
     }
-
-
-def getActividadTime_py(parments=None):
-    """
-    获取满减 | 优惠券 公共活动时间参数
-    :param parments: 1：活动进行中
-    :param parments: 2：活动未开始
-    :param parments: 3：活动已结束
-    :return: dict
-    """
-    res_time_data = get_certain_date_py()
-    if parments == 1:
-        return {"date_start": res_time_data['now_times'].strftime('%Y-%m-%d %H:%M:%S'),
-                "date_end": res_time_data['beforeTime'].strftime('%Y-%m-%d %H:%M:%S')}
-    elif parments == 2:
-        return {"date_start": res_time_data['TomorrowTime'].strftime('%Y-%m-%d %H:%M:%S'),
-                "date_end": res_time_data['beforeTime'].strftime('%Y-%m-%d %H:%M:%S')}
-    else:
-        newTime = res_time_data['now_time'] + datetime.timedelta(days=7)
-        return {"date_start": res_time_data['now_time'].strftime('%Y-%m-%d %H:%M:%S'),
-                "date_end": newTime.strftime('%Y-%m-%d %H:%M:%S')}
 
 
 def compare_time_py(format_time1, format_time2):
