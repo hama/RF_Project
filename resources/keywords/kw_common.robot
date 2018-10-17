@@ -162,7 +162,7 @@ Wait And Select From List By Index
     Wait Until Element Is Visible    ${element_selectbox}     10
     ${times}    Evaluate    ${timeout}-1
     :FOR    ${i}    IN RANGE    ${timeout}
-    \    ${status}    Run Keyword And Return Status    Select From List By Value    ${element_selectbox}    ${index}
+    \    ${status}    Run Keyword And Return Status    Select From List By Index    ${element_selectbox}    ${index}
     \    Run Keyword If    ${status}    Exit For Loop
     \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
     \    ...    ELSE    Sleep    1
@@ -173,7 +173,7 @@ Wait And Select From List By Label
     Wait Until Element Is Visible    ${element_selectbox}     10
     ${times}    Evaluate    ${timeout}-1
     :FOR    ${i}    IN RANGE    ${timeout}
-    \    ${status}    Run Keyword And Return Status    Select From List By Value    ${element_selectbox}    ${label}
+    \    ${status}    Run Keyword And Return Status    Select From List By Label    ${element_selectbox}    ${label}
     \    Run Keyword If    ${status}    Exit For Loop
     \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
     \    ...    ELSE    Sleep    1
