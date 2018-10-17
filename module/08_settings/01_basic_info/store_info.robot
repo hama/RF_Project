@@ -307,7 +307,7 @@ store040
 Common Suite
     [Documentation]    公共suite
     Login With Default User
-    Wait Add StoreInfo
+    add_store_info_py
 Repetir Common Step
     [Documentation]    重复步骤
     Go To Store Page

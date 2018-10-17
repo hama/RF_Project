@@ -772,4 +772,4 @@ Common Step
 Common Suite
     [Documentation]    公共suite
     Login With Default User
-    Add Product Wait
+    add_min_product_py

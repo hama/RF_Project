@@ -24,27 +24,6 @@ Checkout Case Setup
     Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     Select Window    New
 
-
-
-
-
-
-
-
-
-Checkout Common Setp
-    [Documentation]    封装公共步骤
-    Go To    ${home_page}
-    Sleep Time
-    Wait And Click Element    ${locatorB_products}
-    #点击商品预览
-    Sleep Time
-    Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]
-    Sleep Time    #.休息2s
-    #.第二个窗口
-    Select Window    New
-    Sleep Time
-
 Add Address Common Step
     [Documentation]    添加地址公共部分
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
@@ -66,6 +45,12 @@ Add Credit Card Info
 	Wait And Input Text    ${locatorB_checkout_creditCard_input_number}    43231123123123
 	Wait And Input Text    ${locatorB_checkout_creditCard_input_expireDate}    1231
 	Wait And Input Text    ${locatorB_checkout_creditCard_input_securityCode}    123
+
+
+
+
+
+
 
 Add Payment
     [Documentation]    B端添加支付方式
