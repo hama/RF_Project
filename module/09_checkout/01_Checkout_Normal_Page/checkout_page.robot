@@ -113,6 +113,7 @@ checkout_024
     #.点击应用
     Wait And Click Element    ${locatorB_checkout_addressClickCoupon_btn}
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $710.40
+    kwshipping.del_all_shipping_py
     kwproduct.add_launched_product_py
 
 
