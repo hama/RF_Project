@@ -10,7 +10,7 @@ Resource          ../../../resources/keywords/kw_common.robot
 
 *** Test Cases ***
 
-#第二个环境下执行的用例
+    #第二个环境下执行的用例
 checkout_007
     [Documentation]    验证checkout shipping页面，订单汇总，商品栏，商品子产品显示正常 > "1.C端购买商品women的子款式：blue XXL,2.进入checkout shipping页面,3.查看订单汇总商品栏子产品" > "子产品显示为：,color：blue,size：XXL"
     [Tags]    P0    threshold    smoke
