@@ -159,19 +159,19 @@ Wait And Select From List By Clicking
 Wait And Select From List By Index
 	[Arguments]    ${element_selectbox}    ${index}
     [Documentation]
-    Wait Until Element Is Visible    ${element_locator}     10
+    Wait Until Element Is Visible    ${element_selectbox}     10
     Select From List By Index    ${element_selectbox}    ${index}
 
 Wait And Select From List By Label
 	[Arguments]    ${element_selectbox}    ${label}
     [Documentation]
-    Wait Until Element Is Visible    ${element_locator}     10
+    Wait Until Element Is Visible    ${element_selectbox}     10
     Select From List By Label    ${element_selectbox}    ${label}
 
 Wait And Select From List By Value
 	[Arguments]    ${element_selectbox}    ${value}
     [Documentation]
-    Wait Until Element Is Visible    ${element_locator}     10
+    Wait Until Element Is Visible    ${element_selectbox}     10
     Select From List By Value    ${element_selectbox}    ${value}
 
 Wait And Click Element Then Confirm
