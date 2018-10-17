@@ -69,7 +69,7 @@ checkout_015
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}    + $10.00
 
 checkout_018
@@ -79,7 +79,7 @@ checkout_018
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}   $720.40
 
 
@@ -109,7 +109,7 @@ checkout_024
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Wait And Input Text    ${locatorB_checkout_addressCoupon_ipt}    OAA36EC2
     #.点击应用
     Wait And Click Element    ${locatorB_checkout_addressClickCoupon_btn}
@@ -167,7 +167,7 @@ checkout_035
     [Tags]    P0    threshold    smoke
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Wait And Click Element    ${locatorB_checkout_address_select_province}
 
 checkout_037
@@ -256,7 +256,7 @@ checkout_083
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     #.选择中国
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll(".fl")[4]    Standard shipping
 
 
@@ -270,7 +270,7 @@ checkout_085
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     #.选择中国
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll(".fl")[4]    Freight Standard shipping
 
 checkout_087
@@ -283,7 +283,7 @@ checkout_087
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     #.选择中国
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll(".fl")[4]    Quantity Standard shipping
 
 
@@ -304,7 +304,7 @@ checkout090
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     #.选择中国
     Sleep  5
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_delivery}    $0.00
 
 checkout093
@@ -350,7 +350,7 @@ checkout097
     #添加是shipping address
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Select From List    ${locatorB_checkout_address_select_country}    Bouvet Island
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    Bouvet Island
     Wait And Input Text    ${locatorB_checkout_address_city}    Island
     Wait And Input Text    ${locatorB_checkout_address_add}    Island123
     Wait And Input Text    ${locatorB_checkout_address_zip}    123456
@@ -404,7 +404,7 @@ checkout107
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Sleep    2
     #.选择中国   运费价格10
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_prices_shippingValue}    + $10.00
 
 checkout109
@@ -426,7 +426,7 @@ checkout109
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Sleep    2
     #.选择中国
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Sleep    2
     #查看商品扣除60%税费后的金额
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $710.40
@@ -498,7 +498,7 @@ checkout114
     #添加是shipping address
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Select From List    ${locatorB_checkout_address_select_country}    Bouvet Island
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    Bouvet Island
     Wait And Input Text    ${locatorB_checkout_address_city}    Island
     Wait And Input Text    ${locatorB_checkout_address_add}    Island123
     Wait And Input Text    ${locatorB_checkout_address_zip}    123456
@@ -516,7 +516,7 @@ checkout118
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Wait And Input Text    ${locatorB_checkout_address_city}    China
     Wait And Input Text    ${locatorB_checkout_address_add}    China123
     Wait And Input Text    ${locatorB_checkout_address_zip}    123456
@@ -561,7 +561,7 @@ checkout120
     #添加是shipping address
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Wait And Input Text    ${locatorB_checkout_address_city}    China
     Wait And Input Text    ${locatorB_checkout_address_add}    China123
     Wait And Input Text    ${locatorB_checkout_address_zip}    123456
@@ -585,7 +585,7 @@ checkout121
     #添加是shipping address
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Wait And Input Text    ${locatorB_checkout_address_city}    China
     Wait And Input Text    ${locatorB_checkout_address_add}    China123
     Wait And Input Text    ${locatorB_checkout_address_zip}    123456
@@ -698,7 +698,7 @@ checkout168
     Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
     #点击billing address栏选择框
     Wait And Click Element    ${locatorC_checkout_select_billingAddress}
-    Select From List By index     ${locatorC_checkout_select_billingAddress}    1
+    Wait And Select From List By Value By index     ${locatorC_checkout_select_billingAddress}    1
     Wait Until Page Contains Locator    ${locatorC_checkout_inputText_firstName}
 
 checkout169
@@ -736,7 +736,7 @@ checkout170
     #添加是shipping address
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Wait And Input Text    ${locatorB_checkout_address_city}    China
     Wait And Input Text    ${locatorB_checkout_address_add}    China123
     Wait And Input Text    ${locatorB_checkout_address_zip}    123456
@@ -747,16 +747,16 @@ checkout170
     Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
     #点击billing address栏选择框
     Wait And Click Element    ${locatorC_checkout_select_billingAddress}
-    Select From List By index     ${locatorC_checkout_select_billingAddress}    1
+    Wait And Select From List By Index     ${locatorC_checkout_select_billingAddress}    1
     #添加Billing address
     Wait And Input Text     ${locatorC_checkout_inputText_firstName}    aven
     Wait And Input Text     ${locatorC_checkout_inputText_lastName}     fang
     Wait And Input Text     ${locatorC_checkout_inputText_address}    南山区
     Wait And Input Text     ${locatorC_checkout_inputText_address1}    中山大学产学研基地
     Wait And Input Text     ${locatorC_checkout_inputText_city}    深圳
-    Select From List     ${locatorC_checkout_inputText_countyCode}    China
+    Wait And Select From List By Value     ${locatorC_checkout_inputText_countyCode}    China
     Sleep Time
-    Select From List     ${locatorC_checkout_inputText_provinceCode}    广东
+    Wait And Select From List By Value     ${locatorC_checkout_inputText_provinceCode}    广东
     Wait And Input Text     ${locatorC_checkout_inputText_zip}    518000
     Sleep Time
     Wait And Click Element      ${locatorC_checkout_shipping_submitCheckout}
@@ -786,8 +786,8 @@ checkout193
     #添加是shipping address
     Wait And Input Text    ${locatorB_checkout_address_first_name}    Javen
     Wait And Input Text    ${locatorB_checkout_address_last_name}    fang
-    Select From List    ${locatorB_checkout_address_select_country}    China
-    Select From List    ${locatorB_checkout_address_select_province}    广东
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_province}    广东
     Wait And Input Text    ${locatorB_checkout_address_city}    深圳
     Wait And Input Text    ${locatorB_checkout_address_add}    南山区
     Wait And Input Text    ${locatorB_checkout_address_zip}    518000
@@ -817,7 +817,7 @@ checkout194
     #.选择中国   运费价格10
     #添加是shipping address
     Sleep Time
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait Until Page Contains Text   方案1
 
@@ -832,7 +832,7 @@ checkout195
     #添加是shipping address
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Wait And Input Text    ${locatorB_checkout_address_city}    China
     Wait And Input Text    ${locatorB_checkout_address_add}    China123
     Wait And Input Text    ${locatorB_checkout_address_zip}    123456
@@ -857,7 +857,7 @@ checkout196
     #添加是shipping address
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Wait And Input Text    ${locatorB_checkout_address_city}    China
     Wait And Input Text    ${locatorB_checkout_address_add}    China123
     Wait And Input Text    ${locatorB_checkout_address_zip}    123456

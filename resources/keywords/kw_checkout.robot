@@ -113,7 +113,7 @@ Add Address Common Step
     [Documentation]    添加地址公共部分
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
     Wait And Input Text    ${locatorB_checkout_address_city}    深圳
     Wait And Input Text    ${locatorB_checkout_address_add}    深圳123
     Wait And Input Text    ${locatorB_checkout_address_zip}    123456
@@ -216,10 +216,10 @@ Complete_Order_Message
     #last name
     Wait And Input Text    ${locatorB_checkout_address_last_name}    l
     #选择国家
-    Select From List By Index    ${locatorB_checkout_address_select_country}    1
+    Wait And Select From List By Value By Index    ${locatorB_checkout_address_select_country}    1
     Sleep    2
     #选择身份
-    Select From List By Index    id:shipping_zone_id    1
+    Wait And Select From List By Value By Index    id:shipping_zone_id    1
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
@@ -247,10 +247,10 @@ Complete_Order_Message_Not_Submit
     #last name
     Wait And Input Text    ${locatorB_checkout_address_last_name}    l
     #选择国家
-    Select From List By Index    ${locatorB_checkout_address_select_country}    1
+    Wait And Select From List By Value By Index    ${locatorB_checkout_address_select_country}    1
     Sleep    2
     #选择身份
-    Select From List By Index    id:shipping_zone_id    1
+    Wait And Select From List By Value By Index    id:shipping_zone_id    1
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
@@ -275,10 +275,10 @@ Complete_Order_Message_Without_Phone
     #last name
     Wait And Input Text    ${locatorB_checkout_address_last_name}    l
     #选择国家
-    Select From List By Index    ${locatorB_checkout_address_select_country}    1
+    Wait And Select From List By Value By Index    ${locatorB_checkout_address_select_country}    1
     Sleep    2
     #选择身份
-    Select From List By Index    id:shipping_zone_id    1
+    Wait And Select From List By Value By Index    id:shipping_zone_id    1
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address
@@ -298,7 +298,7 @@ Complete_Order_Message_Without_Last_name
     #first name
     Wait And Input Text    ${locatorB_checkout_address_first_name}    zc
     #选择国家
-    Select From List By Index    ${locatorB_checkout_address_select_country}    1
+    Wait And Select From List By Value By Index    ${locatorB_checkout_address_select_country}    1
     #city
     Wait And Input Text    ${locatorB_checkout_address_city}    shenzhen
     #address

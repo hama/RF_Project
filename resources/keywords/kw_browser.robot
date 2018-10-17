@@ -34,7 +34,6 @@ Setup Test Case
 Teardown Test Case
     [Documentation]
     #    测试用例执行失败进行截图
-    Capture Page Screenshot
     Run Keyword If Test Failed    Capture Page Screenshot
 #    Run Keyword If Test Failed    Run Keyword And Ignore Error    Handle Alert
     Run Keyword If Test Failed    Log Error Response Of Ajax Listener
@@ -63,6 +62,7 @@ Open Headless Chrome
     Call Method    ${chrome_options}    add_argument    headless
     Call Method    ${chrome_options}    add_argument    disable-gpu
     Call Method    ${chrome_options}    add_argument    no-sandbox
+#    Call Method    ${chrome_options}    add_argument    disable-setuid-sandbox
     Create Webdriver    Chrome    chrome_options=${chrome_options}
     Go To    ${url}
 

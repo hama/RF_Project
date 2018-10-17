@@ -41,34 +41,34 @@ Login With User
     Run Keyword If    '${close}'=='${False}'    Wait And Click Element    dom:document.querySelectorAll('.ant-modal-close-x')[0]
 
 Wait And Input Text
-    [Arguments]    ${element_locator}    ${text}    ${timeout}=3s    ${retry_time}=1x
+    [Arguments]    ${element_locator}    ${text}    ${timeout}=3s    ${retry_time}=3x
     [Documentation]    封装的输入方法，等待元素可被输入时，再输入
     Wait Until Element Is Visible    ${element_locator}    10
     # 避免已有value的input标签，无法输入。因此在Input Text之前，点击input标签。解决此问题
-    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
+    Wait And Click Element    ${element_locator}
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Input Text    ${element_locator}    ${text}
 
 Wait And Input Password
-    [Arguments]    ${element_locator}    ${pwd}    ${timeout}=3s    ${retry_time}=1x
+    [Arguments]    ${element_locator}    ${pwd}    ${timeout}=3s    ${retry_time}=3x
     [Documentation]    封装的输入方法，等待元素可被输入时，再输入
     Wait Until Element Is Visible    ${element_locator}    10
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Input Password    ${element_locator}    ${pwd}
 
 Wait And Click Element
-    [Arguments]    ${element_locator}    ${timeout}=25s    ${retry_time}=5x
+    [Arguments]    ${element_locator}    ${timeout}=7s    ${retry_time}=5x
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Visible    ${element_locator}     10
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
 
 Wait Exist And Click Element
-    [Arguments]    ${element_locator}    ${timeout}=25s    ${retry_time}=5x
+    [Arguments]    ${element_locator}    ${timeout}=7s    ${retry_time}=5x
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Page Contains Locator    ${element_locator}
 #    Wait Until Element Is Enabled    ${element_locator}
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
 
 Sleep And Click Element
-    [Arguments]    ${element_locator}    ${sleep_time}=3    ${timeout}=25s    ${retry_time}=5x
+    [Arguments]    ${element_locator}    ${sleep_time}=3    ${timeout}=7s    ${retry_time}=5x
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Sleep    ${sleep_time}
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
@@ -142,7 +142,6 @@ Location Should Contain With Wait
     \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
     \    ...    ELSE    Sleep    1
 
-
 Wait And Get Items List From Locator
 	[Arguments]    ${element_locator}    ${element_visible}=${Empty}
     [Documentation]    获取${element_locator}中的元素，并放入列表中返回
@@ -156,6 +155,30 @@ Wait And Select From List
     [Documentation]    由于项目中实现的下拉功能并不是select标签无法使用robot的关键字select from list。（暂不实现，为找见下拉框操作方法）
     Wait And Click Element    ${element_selectbox}
     Wait And Click Element    ${element_selectitem}
+=======
+Wait And Select From List By Clicking
+	[Arguments]    ${element_selectbox}    ${element_selectitem}
+    [Documentation]    点击元素，实现select选择。（用于非select标签封装的下拉选框）
+    Wait And Click Element    ${element_selectbox}
+    Wait And Click Element    ${element_selectitem}
+
+Wait And Select From List By Index
+	[Arguments]    ${element_selectbox}    ${index}
+    [Documentation]
+    Wait Until Element Is Visible    ${element_locator}     10
+    Select From List By Index    ${element_selectbox}    ${index}
+
+Wait And Select From List By Label
+	[Arguments]    ${element_selectbox}    ${label}
+    [Documentation]
+    Wait Until Element Is Visible    ${element_locator}     10
+    Select From List By Label    ${element_selectbox}    ${label}
+
+Wait And Select From List By Value
+	[Arguments]    ${element_selectbox}    ${value}
+    [Documentation]
+    Wait Until Element Is Visible    ${element_locator}     10
+    Select From List By Value    ${element_selectbox}    ${value}
 
 Wait And Click Element Then Confirm
 	[Arguments]    ${element_locator}
@@ -228,18 +251,12 @@ Open New And Close Other Windows
 	[Arguments]    ${url}
 	[Documentation]    开启一个指定的新窗口，并关闭其余窗口
 	@{window_handles}    Get Window Handles
-	Capture Page Screenshot
     Execute Javascript    window.open("${url}")
-    Capture Page Screenshot
     :FOR    ${window_handle}    IN    @{window_handles}
-#    \    Capture Page Screenshot
     \    Select Window    ${window_handle}
-#    \    Capture Page Screenshot
     \    Close Window
     @{new_window_handle}    Get Window Handles
     Select Window    ${new_window_handle[0]}
-    Capture Page Screenshot
-#    Set Window Position    0    0
     Set Window Size    1440    1080
 
 Focus On New Window

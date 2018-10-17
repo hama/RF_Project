@@ -6,7 +6,7 @@ Resource          kw_common.robot
 
 Shipping Suite Setup
 	[Documentation]
-#    Login With Default User
+    Login With Default User
 
 Shipping Suite Teardown
     [Documentation]
@@ -15,12 +15,24 @@ Shipping Suite Teardown
 
 Shipping Case Setup
 	[Documentation]
-	Login With Default User
 	kwshipping.del_all_shipping_py
     Go To Shipping Page
 
 Shipping Case Teardown
+	[Documentation]
+    Teardown Test Case
+
+# 由于使用封装的Open New And Close Other Windows方法导致为止chrome错误，且只有shipping模块会报错
+# （只有在docker中跑会出错，无法截图，暂时找不到错误原因。）
+# 先使用每个用例重新登录的方法跑用例
+Shipping Case Setup Tmp Fix
+	[Documentation]
+	Login With Default User
 	kwshipping.del_all_shipping_py
+    Go To Shipping Page
+
+Shipping Case Teardown Tmp Fix
+	[Documentation]
     Close Browser
 
 Add Default Shipping Country
