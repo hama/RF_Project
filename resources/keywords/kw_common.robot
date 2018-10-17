@@ -157,22 +157,37 @@ Wait And Select From List By Clicking
     Wait And Click Element    ${element_selectitem}
 
 Wait And Select From List By Index
-	[Arguments]    ${element_selectbox}    ${index}
+	[Arguments]    ${element_selectbox}    ${index}    ${timeout}=10
     [Documentation]
     Wait Until Element Is Visible    ${element_selectbox}     10
-    Select From List By Index    ${element_selectbox}    ${index}
+    ${times}    Evaluate    ${timeout}-1
+    :FOR    ${i}    IN RANGE    ${timeout}
+    \    ${status}    Run Keyword And Return Status    Select From List By Value    ${element_selectbox}    ${index}
+    \    Run Keyword If    ${status}    Exit For Loop
+    \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
+    \    ...    ELSE    Sleep    1
 
 Wait And Select From List By Label
-	[Arguments]    ${element_selectbox}    ${label}
+	[Arguments]    ${element_selectbox}    ${label}    ${timeout}=10
     [Documentation]
     Wait Until Element Is Visible    ${element_selectbox}     10
-    Select From List By Label    ${element_selectbox}    ${label}
+    ${times}    Evaluate    ${timeout}-1
+    :FOR    ${i}    IN RANGE    ${timeout}
+    \    ${status}    Run Keyword And Return Status    Select From List By Value    ${element_selectbox}    ${label}
+    \    Run Keyword If    ${status}    Exit For Loop
+    \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
+    \    ...    ELSE    Sleep    1
 
 Wait And Select From List By Value
-	[Arguments]    ${element_selectbox}    ${value}
+	[Arguments]    ${element_selectbox}    ${value}    ${timeout}=10
     [Documentation]
     Wait Until Element Is Visible    ${element_selectbox}     10
-    Select From List By Value    ${element_selectbox}    ${value}
+    ${times}    Evaluate    ${timeout}-1
+    :FOR    ${i}    IN RANGE    ${timeout}
+    \    ${status}    Run Keyword And Return Status    Select From List By Value    ${element_selectbox}    ${value}
+    \    Run Keyword If    ${status}    Exit For Loop
+    \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
+    \    ...    ELSE    Sleep    1
 
 Wait And Click Element Then Confirm
 	[Arguments]    ${element_locator}
