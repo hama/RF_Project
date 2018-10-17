@@ -82,7 +82,6 @@ checkout_018
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}   $720.40
 
-
 checkout_021
     [Documentation]    验证checkout shipping页面，使用优惠码后，价格详情中会出现discount code并显示优惠价格 > "1.C端购买商品women进入checkout shipping页面，2.使用优惠码AAA001，3.查看价格详情" > 价格详情显示优惠金额
     [Tags]    P0    threshold    smoke
@@ -96,7 +95,6 @@ checkout_021
 checkout_024
     [Documentation]    验证checkout shipping页面，total显示正常 > "1.C端购买商品进入checkout shipping页面,2.信息填写栏选择国家 中国,3.选择物流方案：方案1,4.使用优惠码AAA001,5.此订单价格为：,,subtotal：$50.00,shipping：+ $2.00,discount code：- $10.00,tax: + $25.00,6.查看价格详情total"
     [Tags]    P0    threshold    smoke          #后面再做调整
-     #.初始化物流信息
     kwshipping.del_all_shipping_py
     #添加一个价格10 物流
     &{conf}=   Create Dictionary
@@ -114,6 +112,9 @@ checkout_024
     #.点击应用
     Wait And Click Element    ${locatorB_checkout_addressClickCoupon_btn}
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $710.40
+    kwshipping.del_all_shipping_py
+    kwproduct.add_launched_product_py
+
 
 
 checkout_025

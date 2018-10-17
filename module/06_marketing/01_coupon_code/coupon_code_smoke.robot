@@ -13,10 +13,6 @@ Library           ${CURDIR}/../../../lib/customlib/lib_utils.py
 coupon_code070
     [Documentation]    验证新建优惠码界面，活动名称输入框输入合法内容可保存成功
     [Tags]    P0    threshold
-    Select All Product Tag
+    Select All Coupon Code Tag
+    Wait And Click Element    ${locatorB_button_add}
 
-    ${item1_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[0]
-    ${item2_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[1]
-    ${result}    lib_utils.compare_time_py    ${item1_createtime}    ${item2_createtime}
-    ${status} =    Evaluate    ${result}>0
-    Should Be Equal    '${status}'    'True'

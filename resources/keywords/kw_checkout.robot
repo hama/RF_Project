@@ -32,23 +32,6 @@ Checkout Case Setup
     Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     Select Window    New
 
-Sleep Time
-    Sleep  2
-
-
-
-
-
-
-
-Chenckout Product Initial
-    [Documentation]    创建订单的初始化
-    kwproduct.add_launched_product_py
-
-
-
-
-
 
 
 

@@ -47,7 +47,7 @@ ${locatorB_selects}    dom:document.querySelectorAll("div[class~='ant-select-sel
 ${locatorB_checkbox00}    dom:document.querySelectorAll(".ant-checkbox-input")[0]    #定位当前页面第0个checkbox
 ${locatorB_checkbox01}    dom:document.querySelectorAll(".ant-checkbox-input")[1]
 ### locator button
-${locatorB_button_add}    dom:document.querySelectorAll(".large_btn___3RbRK")[0]        #添加按钮
+${locatorB_button_add}    dom:document.querySelectorAll('button[class*="large_btn"]')[0]        #添加按钮
 ${locatorB_button_save}    dom:document.querySelectorAll('button[data-robot="btn_save"]')[0]        #保存按钮
 ${locatorB_button_save00}    dom:document.querySelectorAll('button[class*="middle_btn"]')[0]        #保存按钮
 ${locatorB_button_canecl}    dom:document.querySelectorAll('button[class*="cancel"]')[0]        #取消按钮
