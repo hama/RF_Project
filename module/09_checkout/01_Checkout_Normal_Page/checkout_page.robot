@@ -66,25 +66,32 @@ checkout_015
     ...    shipping_name=shipping_yunfei
     ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
+    Sleep    2
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}    + $10.00
-    #还原初始化环境
-    kwshipping.del_all_shipping_py
-    kwshipping.add_shipping_py
+
 
 checkout_018
     [Documentation]    验证checkout shipping页面，订单详情中tax显示正常 >
     [Tags]    P0    threshold    smoke
+    #初始化物流信息
+    kwshipping.del_all_shipping_py
+    #添加一个价格10 物流
+    &{conf}=   Create Dictionary
+    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_name=shipping_yunfei
+    kwshipping.add_shipping_with_conf_py    ${conf}
     #创建60的税费
-    kwtax.add_default_tax_price_py    60
+    kwtax.add_default_tax_price_py
+    Sleep    2
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}   $720.40
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}   $710.40
 
 
 checkout_021
@@ -109,7 +116,8 @@ checkout_024
     ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     #.添加一个物流为中国百分之60的税金
-    kwtax.add_default_tax_price_py    60
+    kwtax.add_default_tax_price_py
+    Sleep    2
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
@@ -118,9 +126,6 @@ checkout_024
     #.点击应用
     Wait And Click Element    ${locatorB_checkout_addressClickCoupon_btn}
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $710.40
-    #还原初始化环境
-    kwshipping.del_all_shipping_py
-    kwshipping.add_shipping_py
 
 
 
@@ -243,13 +248,18 @@ checkout_083
     [Tags]    P0    threshold    smoke
     #.先删除物流
     kwshipping.del_all_shipping_py
-    #.添加一个价格运费物流
-    kwshipping.add_shipping_py
+    #.创建运费方案0  中国方案  运费价格0
+    &{conf}=   Create Dictionary
+    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_name=shipping_yunfei
+    ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+    kwshipping.add_shipping_with_conf_py    ${conf}
+    Sleep    2
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     #.选择中国
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll(".fl")[4]    Standard shipping
+    Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll(".fl")[4]    price_fee
 
 
 checkout_085
@@ -259,6 +269,7 @@ checkout_085
     kwshipping.del_all_shipping_py
     #.添加一个重量运费的物流
     kwshipping.add_shipping_py    0    1
+    Sleep    2
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     #.选择中国
@@ -272,6 +283,7 @@ checkout_087
     kwshipping.del_all_shipping_py
     #.添加一个重量运费的物流
     kwshipping.add_shipping_py    0    2
+    Sleep    2
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     #.选择中国
@@ -295,12 +307,8 @@ checkout090
     Sleep  5
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     #.选择中国
-    Sleep  5
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_delivery}    $0.00
-    #还原初始化环境
-    kwshipping.del_all_shipping_py
-    kwshipping.add_shipping_py
 
 checkout093
     [Documentation]    验证从商品详情页面buy now进入checkout shipping页面后，点击return可返回商品详情页面 > 1.C端进入任意一个商品详情页面 2.buy now进入checkout shipping页面 3.点击return
@@ -340,8 +348,8 @@ checkout097
     ...    shipping_area=[{"country_id":"29","zone_ids":"-1"}]
     ...    shipping_name=autotest_shipping001
     kwshipping.add_shipping_with_conf_py    ${conf}
+    Sleep    2
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
-
     #添加是shipping address
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
@@ -354,9 +362,6 @@ checkout097
     Wait And Input Text    ${locatorB_checkout_address_company}    123456789
     Wait And Click Element    ${locatorB_checkout_submit_btn_s}
     Wait Until Page Contains Text   Order summary
-    #还原初始化环境
-    kwshipping.del_all_shipping_py
-    kwshipping.add_shipping_py
 
 checkout098
     [Documentation]    验证checkout 支付页面，订单汇总，商品栏，商品标题显示正常 > 1.C端购买商品women进入checkout支付页面  2.查看订单汇总，商品栏，商品标题
@@ -400,27 +405,24 @@ checkout107
     Sleep    2
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
-    Sleep    2
     #.选择中国   运费价格10
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_prices_shippingValue}    + $10.00
-    #还原初始化环境
-    kwshipping.del_all_shipping_py
-    kwshipping.add_shipping_py
+
 checkout109
     [Documentation]   验证checkout 支付页面，订单详情中tax显示正常  > 1.C端购买商品women 1件进入checkout shipping页面  2.信息填写栏选择国家中国 3.进入支付页面查看价格详情中tax
     [Tags]    P0    threshold    smoke
-    #进入税费里设置中国的税率60%
-    #.添加一个物流为中国百分之60的税金
-    kwtax.add_default_tax_price_py    60
+    #初始化物流信息
+    kwshipping.del_all_shipping_py
+    kwshipping.add_shipping_with_conf_py
+    #创建60的税费
+    kwtax.add_default_tax_price_py
     #添加是shipping address
     Sleep    2
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
-    Sleep    2
     #.选择中国
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Sleep    2
     #查看商品扣除60%税费后的金额
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $710.40
 
@@ -454,64 +456,38 @@ checkout113
     Add Address Common Step
     Sleep    2
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_prices_shippingValue}   - $10.00
-    Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_total}     $444.00
+    Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_total}     $434.00
 
 
 checkout114
     [Documentation]   验证checkout 支付页面，payment栏，ship to信息显示正常  >  1.购买商品进入checkout shipping页面2.填写信息：first name：Javenlast name：fangaddress：南山区apartment：中山大学产学研基地city：深圳country：Chinaprovince：广东postal code：518000email：dianjiang@shoplazza.comphone：18688886666company：shoplazza3.进入支付页面查看ship to信息
     [Tags]    P0    threshold    smoke
-    #初始化物流信息
-    kwshipping.del_all_shipping_py
-    #.创建运费方案0  bouvet island
-    &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"29","zone_ids":"-1"}]
-    ...    shipping_name=shipping_yunfei
-    kwshipping.add_shipping_with_conf_py    ${conf}
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #添加是shipping address
-    Wait And Input Text    ${locatorB_checkout_address_first_name}    123
-    Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    Bouvet Island
-    Wait And Input Text    ${locatorB_checkout_address_city}    Island
-    Wait And Input Text    ${locatorB_checkout_address_add}    Island123
-    Wait And Input Text    ${locatorB_checkout_address_zip}    123456
-    Wait And Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
-    Wait And Input Text    ${locatorB_checkout_address_phone}    123456789
-    Wait And Input Text    ${locatorB_checkout_address_company}    123456789
+    Add Address Common Step
+    Wait And Click Element      ${locatorC_checkout_shipping_submitCheckout}
     ${firstName}    Get Value   ${locatorB_checkout_address_first_name}
     Wait And Click Element     ${locatorB_checkout_submit_btn_s}
     Wait Until Page Contains Text    ${firstName}
-    #还原初始化环境
-    kwshipping.del_all_shipping_py
-    kwshipping.add_shipping_py
 
 
 checkout118
     [Documentation]   验证checkout 支付页面，payment栏，shipping method显示正常  >  1.购买商品进入checkout shipping页面  2.选择运费方案：运费1   3.进入支付页面查看payment栏，shipping methoda
     [Tags]    P0    threshold    smoke
-     #.创建运费方案1  中国方案  运费价格10
+    #初始化物流环境
+    kwshipping.del_all_shipping_py
+    #.创建运费方案1  中国方案  运费价格10
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
     ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
+    Sleep    2
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
-    Wait And Input Text    ${locatorB_checkout_address_first_name}    123
-    Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Wait And Input Text    ${locatorB_checkout_address_city}    China
-    Wait And Input Text    ${locatorB_checkout_address_add}    China123
-    Wait And Input Text    ${locatorB_checkout_address_zip}    123456
-    Wait And Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
-    Wait And Input Text    ${locatorB_checkout_address_phone}    123456789
-    Wait And Input Text    ${locatorB_checkout_address_company}    123456789
+    Add Address Common Step
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_price}     $10.00
     Wait And Click Element      ${locatorC_checkout_shipping_submitCheckout}
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_payment_shippingMethoda}     + $10.00
-
-    #还原初始化环境
-    kwshipping.del_all_shipping_py
-    kwshipping.add_shipping_py
 
 
 checkout120
@@ -526,27 +502,16 @@ checkout120
     ...    shipping_name=shipping_yunfei
     kwshipping.add_shipping_with_conf_py    ${conf}
     #添加是shipping address
+    Sleep    2
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国   运费价格10
     #添加是shipping address
-    Wait And Input Text    ${locatorB_checkout_address_first_name}    123
-    Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Wait And Input Text    ${locatorB_checkout_address_city}    China
-    Wait And Input Text    ${locatorB_checkout_address_add}    China123
-    Wait And Input Text    ${locatorB_checkout_address_zip}    123456
-    Wait And Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
-    Wait And Input Text    ${locatorB_checkout_address_phone}    123456789
-    Wait And Input Text    ${locatorB_checkout_address_company}    123456789
+    Add Address Common Step
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait Until Page Contains Locator    ${locatorC_checkout_payment_cashOnDelivery}
     Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
     Wait And Click Element    ${locatorC_checkout_paymentCard_change}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
-
-    #还原初始化环境
-    kwshipping.del_all_shipping_py
-    kwshipping.add_shipping_py
 
 checkout121
     [Documentation]         验证checkout支付页面，return按钮可返回到shipping页面  >  1.点击return按钮
@@ -554,18 +519,11 @@ checkout121
     #激活COD货到付款方式
     kwpayment.activate_payment_cod_py
     #添加是shipping address
+    Sleep    2
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国   运费价格10
     #添加是shipping address
-    Wait And Input Text    ${locatorB_checkout_address_first_name}    123
-    Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Wait And Input Text    ${locatorB_checkout_address_city}    China
-    Wait And Input Text    ${locatorB_checkout_address_add}    China123
-    Wait And Input Text    ${locatorB_checkout_address_zip}    123456
-    Wait And Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
-    Wait And Input Text    ${locatorB_checkout_address_phone}    123456789
-    Wait And Input Text    ${locatorB_checkout_address_company}    123456789
+    Add Address Common Step
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait Until Page Contains Locator    ${locatorC_checkout_payment_cashOnDelivery}
     Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
@@ -580,26 +538,26 @@ checkout125
     #关闭credit_card  信用卡支付方式
     kwpayment.inactivate_payment_credit_card_py
     #添加是shipping address
+    Sleep    2
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国   运费价格10
     #添加是shipping address
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
-    Wait Until Page Contains Locator    Payment method
+    Wait Until Page Contains Text    Payment method
+    #重新开启cod支付方式
+    kwpayment.activate_payment_cod_py
 
 checkout126
     [Documentation]   验证checkout 支付页面，使用COD支付方式可正常支付  >  1.购买商品进入checkout 支付页面  2.选择支付方式COD  3.点击place order按钮
     [Tags]    P0    threshold    smoke
-    #激活card 信用卡付款方式
-    kwpayment.activate_payment_credit_card_py
-    #添加是shipping address
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
-    #.选择中国   运费价格10
     #添加是shipping address
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
+    Wait Until Page Contains Text   Payment successful!
 
 
 checkout132
@@ -610,8 +568,8 @@ checkout132
     #. 信用卡支付方式
     kwpayment.activate_payment_credit_card_py
     #添加是shipping address
-    Wait And Click Element  ${locatorB_checkout_by_now_btn}
     Sleep    2
+    Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国
     #添加是shipping address
     Add Address Common Step
@@ -621,6 +579,10 @@ checkout132
     Add Credit Card Info
     Wait And Click Element      ${locatorC_checkout_shipping_submitCheckout}
     Wait Until Page Contains Text   Payment failure!
+
+    #关闭信用卡
+    #关闭credit_card  信用卡支付方式
+    kwpayment.inactivate_payment_credit_card_py
 
 
 checkout163
@@ -639,6 +601,7 @@ checkout163
     #.激活stripe 信用卡支付方式
     kwpayment.activate_payment_credit_card_py
     #添加是shipping address
+    Sleep    5
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国
     #添加是shipping address
@@ -649,16 +612,12 @@ checkout163
     Add Credit Card Info
     Wait And Click Element      ${locatorC_checkout_shipping_submitCheckout}
     Wait Until Page Contains Text   Payment failure!
-
-    #还原初始化环境
-    kwshipping.del_all_shipping_py
-    kwshipping.add_shipping_py
+    #关闭credit_card  信用卡支付方式
+    kwpayment.inactivate_payment_credit_card_py
 
 checkout168
     [Documentation]   验证checkout支付页面，billing address栏选择框可点击以及选择项展示  >   1.点击选择框
     [Tags]    P0    threshold    smoke
-    #激活COD货到付款方式
-    kwpayment.activate_payment_cod_py
     #初始化物流信息
     kwshipping.del_all_shipping_py
     #.创建运费方案0  中国方案  运费价格10
@@ -668,6 +627,7 @@ checkout168
     ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     #添加是shipping address
+    Sleep    2
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国   运费价格10
     #添加是shipping address
@@ -676,17 +636,11 @@ checkout168
     Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
     #点击billing address栏选择框
     Wait And Click Element    ${locatorC_checkout_select_billingAddress}
-    Wait And Select From List  By index     ${locatorC_checkout_select_billingAddress}    1
-    Wait Until Page Contains Locator    ${locatorC_checkout_inputText_firstName}
-    #还原初始化环境
-    kwshipping.del_all_shipping_py
-    kwshipping.add_shipping_py
+    Wait And Select From List By index     ${locatorC_checkout_select_billingAddress}    1
 
 checkout169
     [Documentation]  验证checkout支付页面，选择new billing address之后，选择框下方会出现信息填写栏  >  1.点击选择框   2.选择new billing address
     [Tags]    P0    threshold
-    #激活COD货到付款方式
-    kwpayment.activate_payment_cod_py
     #初始化物流信息
     kwshipping.del_all_shipping_py
     #.创建运费方案0  中国方案  运费价格10
@@ -696,6 +650,7 @@ checkout169
     ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     #添加是shipping address
+    Sleep    2
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国   运费价格10
     #添加是shipping address
@@ -705,29 +660,16 @@ checkout169
     #点击billing address栏选择框
     Wait And Click Element    ${locatorC_checkout_select_billingAddress}
     Wait Until Page Contains Locator     ${locatorC_checkout_select_billingAddress}    1
-    #还原初始化环境
-    kwshipping.del_all_shipping_py
-    kwshipping.add_shipping_py
 
 
 checkout170
     [Documentation]   验证checkout支付页面，billing address栏选择框可点击以及选择项展示  >   1.点击选择框
     [Tags]    P0    threshold    smoke
-    #激活COD货到付款方式
-    kwpayment.activate_payment_cod_py
     #添加是shipping address
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国   运费价格10
     #添加是shipping address
-    Wait And Input Text    ${locatorB_checkout_address_first_name}    123
-    Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Wait And Input Text    ${locatorB_checkout_address_city}    China
-    Wait And Input Text    ${locatorB_checkout_address_add}    China123
-    Wait And Input Text    ${locatorB_checkout_address_zip}    123456
-    Wait And Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
-    Wait And Input Text    ${locatorB_checkout_address_phone}    123456789
-    Wait And Input Text    ${locatorB_checkout_address_company}    123456789
+    Add Address Common Step
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
     #点击billing address栏选择框
@@ -746,10 +688,8 @@ checkout170
     Wait Until Page Contains Text      Payment successful!
 
 checkout189
-    [Documentation]   验证checkout支付页面，billing address栏选择框可点击以及选择项展示  >   1.点击选择框
+    [Documentation]   验证checkout支付页面，place order按钮正常  >  1.购买商品进入checkout支付页面  2.选择COD支付   3.点击place order按钮
     [Tags]    P0    threshold    smoke
-    #激活COD货到付款方式
-    kwpayment.activate_payment_cod_py
     #添加是shipping address
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     Add Address Common Step
@@ -761,8 +701,6 @@ checkout189
 checkout193
     [Documentation]   验证payment successful页面，shipping information显示正常  >  1.购买商品进入checkout shipping页面 2.填写信息：first name：Javen last name：fang address：南山区 apartment：中山大学产学研基地 city：深圳 country：China province：广东 postal code：518000 email：dianjiang@shoplazza.com phone：18688886666 company：shoplazza 3.完成订单进入payment successful 页面查看shipping information
     [Tags]    P0    threshold
-    #激活COD货到付款方式
-    kwpayment.activate_payment_cod_py
     #添加是shipping address
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国
@@ -784,11 +722,8 @@ checkout193
 checkout194
     [Documentation]   验证payment successful页面，物流方案显示正常  >  1.购买商品进入checkout shipping页面  2.国家选择中国，物流方案选择：方案1 3.完成订单进入payment successful页面  4.查看物流方案
     [Tags]    P0    threshold    smoke
-    #激活COD货到付款方式
-    kwpayment.activate_payment_cod_py
     #初始化物流信息
     kwshipping.del_all_shipping_py
-
     #.创建运费方案0  中国方案  运费价格10
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
@@ -796,36 +731,23 @@ checkout194
     ...    shipping_plan=[{"name":"方案1","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     #添加是shipping address
+    Sleep    2
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国   运费价格10
     #添加是shipping address
-    Sleep Time
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait Until Page Contains Text   方案1
 
-    #还原初始化环境
-    kwshipping.del_all_shipping_py
-    kwshipping.add_shipping_py
-
 checkout195
     [Documentation]   验证payment successful页面，view order按钮可跳转到个人中心订单详情页面  >  1.购买商品进入checkout并完成支付进入payment successful页面  2.点击view order按钮
     [Tags]    P0    threshold    smoke
-    #激活COD货到付款方式
-    kwpayment.activate_payment_cod_py
     #添加是shipping address
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国
     #添加是shipping address
-    Wait And Input Text    ${locatorB_checkout_address_first_name}    123
-    Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Wait And Input Text    ${locatorB_checkout_address_city}    China
-    Wait And Input Text    ${locatorB_checkout_address_add}    China123
-    Wait And Input Text    ${locatorB_checkout_address_zip}    123456
-    Wait And Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
-    Wait And Input Text    ${locatorB_checkout_address_phone}    123456789
-    Wait And Input Text    ${locatorB_checkout_address_company}    123456789
+    Add Address Common Step
+    Sleep    2
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
@@ -836,27 +758,18 @@ checkout195
 checkout196
     [Documentation]   验证payment successful页面，continue shopping按钮可跳转到店铺首页  >  1.购买商品进入checkout并完成支付进入payment successful页面  2.点击continue shopping按钮
     [Tags]    P0    threshold    smoke
-    #激活COD货到付款方式
-    kwpayment.activate_payment_cod_py
     #添加是shipping address
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国
     #添加是shipping address
-    Wait And Input Text    ${locatorB_checkout_address_first_name}    123
-    Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Wait And Input Text    ${locatorB_checkout_address_city}    China
-    Wait And Input Text    ${locatorB_checkout_address_add}    China123
-    Wait And Input Text    ${locatorB_checkout_address_zip}    123456
-    Wait And Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
-    Wait And Input Text    ${locatorB_checkout_address_phone}    123456789
-    Wait And Input Text    ${locatorB_checkout_address_company}    123456789
+    Add Address Common Step
+    Sleep    2
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait Until Page Contains Text      Payment successful!
     Wait And Click Element    ${locatorC_checkout_link_continueShopping}
-    Wait Until Page Contains Locator    ${locatorC_checkout_home}
+    Wait Until Page Contains Locator    ${locatorC_checkout_homeBanner}
 
 
 
@@ -884,7 +797,7 @@ Checkout Common Step
     #.登陆
     Login With Default User
     #.添加中国的物流
-    kwshipping.add_shipping_py
+    kwshipping.add_shipping_with_conf_py
     #.添加一个上架商品
     kwproduct.add_one_product_with_sub_py
 

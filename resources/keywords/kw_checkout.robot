@@ -6,7 +6,8 @@ Resource          kw_common.robot
 Checkout Suite Setup
     [Documentation]    布置开始执行用例环境
     Login With Default User
-    kwshipping.add_shipping_py
+    #初始化物流环境
+    kwshipping.del_all_shipping_py
     kwproduct.add_launched_product_py
     kwcheckout.set_checkout_process_py
     #.开启pc优化
@@ -17,9 +18,13 @@ Checkout Suite Setup
 Checkout Suite Teardown
     [Documentation]    每个用例执行结束步骤
     Close Test Suite Browser
+    #还原初始化环境
+    kwshipping.del_all_shipping_py
+    kwshipping.add_shipping_with_conf_py
 
 Checkout Case Setup
     [Documentation]    每个用例执行开始步骤
+    kwshipping.add_shipping_with_conf_py
     Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     Select Window    New
