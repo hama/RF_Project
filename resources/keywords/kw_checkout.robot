@@ -113,7 +113,7 @@ Add Address Common Step
     [Documentation]    添加地址公共部分
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
     Wait And Input Text    ${locatorB_checkout_address_city}    深圳
     Wait And Input Text    ${locatorB_checkout_address_add}    深圳123
     Wait And Input Text    ${locatorB_checkout_address_zip}    123456

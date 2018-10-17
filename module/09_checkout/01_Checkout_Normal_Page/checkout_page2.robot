@@ -45,3 +45,22 @@ checkout_019
     Text Of Element Should Be Equal With Wait     ${locatorC_checkout_shipping_preferential}    + $0.00
 
 
+checkout_119
+    [Documentation]    验证购买不需要物流运输的商品进入支付页面时，shipping method显示为Delivery for virtual product  >  1.C端购买商品women进入checkout 支付页面  2.查看payment栏 shipping method
+    [Tags]    P0    threshold
+    #初始化物流信息
+    Chenckout Del Shipping Information
+    &{conf}=   Create Dictionary
+    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_name=shipping_yunfei
+    kwshipping.add_shipping_with_conf_py    ${conf}
+    #.添加一个不需要物流的商品
+    &{conf}=   Create Dictionary
+    ...    requires_shipping=0
+    kwproduct.add_product_with_conf_py   ${conf}
+    #进入商品详情步骤
+    Checkout Case Setup
+    Wait And Click Element    ${locatorB_checkout_by_now_btn}
+    Add Address Common Step
+    Wait Until Page Contains Locator    ${locatorC_checkout_delivery_shippingLine}
+
