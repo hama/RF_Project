@@ -25,15 +25,15 @@ Shipping Case Teardown
 # 由于使用封装的Open New And Close Other Windows方法导致为止chrome错误，且只有shipping模块会报错
 # （只有在docker中跑会出错，无法截图，暂时找不到错误原因。）
 # 先使用每个用例重新登录的方法跑用例
-Shipping Case Setup Tmp Fix
-	[Documentation]
-	Login With Default User
-	kwshipping.del_all_shipping_py
-    Go To Shipping Page
-
-Shipping Case Teardown Tmp Fix
-	[Documentation]
-    Close Browser
+#Shipping Case Setup Tmp Fix
+#	[Documentation]
+#	Login With Default User
+#	kwshipping.del_all_shipping_py
+#    Go To Shipping Page
+#
+#Shipping Case Teardown Tmp Fix
+#	[Documentation]
+#    Close Browser
 
 Add Default Shipping Country
 	[Documentation]    添加默认的物流国家（即第一个大洲的第一个国家），并保存

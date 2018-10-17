@@ -596,3 +596,27 @@ checkout_save_data = {
     "privacy_policy": "",
     "server_policy": ""
 }
+
+coupon_code_refresh_data = {
+    "id": "0",
+    "name": "autotest_activity_name",
+    "code": "U8GFH5L1",
+    "date_start": "2018-10-17 00:00:00",
+    "date_end": "-1",
+    "code_type": "",
+    "discount_type": "2",
+    "range_type": "1",
+    "range_value": "",
+    "code_value": "10",
+    "total_num": "-1",
+    "limit_num": "-1",
+    "product_scope": "1",
+    "is_enable": "",
+    "date_added": "",
+    "progress": "",
+    "timezone": "",
+    "product_list": "",
+    "used_num": "",
+    "product_num": "",
+    "stock_num": ""
+}

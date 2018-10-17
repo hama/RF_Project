@@ -33,50 +33,6 @@ Checkout Case Setup
     Select Window    New
 
 
-Checkout2 Suite Setup
-    [Documentation]    布置开始执行用例环境
-    Login With Default User
-    kwshipping.add_shipping_py
-    kwproduct.add_launched_product_py
-    kwcheckout.set_checkout_process_py
-    #.开启pc优化
-    kwcheckout.start_pc_show_py    1
-
-Checkout2 Suite Teardown
-    [Documentation]    每个用例执行结束步骤
-    Close Test Suite Browser
-
-Checkout2 Case Setup
-    [Documentation]    每个用例执行开始步骤
-    Go To Product Management Page
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
-    Select Window    New
-
-
-
-
-Sleep Time
-    Sleep  2
-
-
-
-
-
-
-
-Chenckout Product Initial
-    [Documentation]    创建订单的初始化
-    kwproduct.add_launched_product_py
-
-
-Chenckout Del Shipping Information
-    [Documentation]    初始化物流信息，删除全部物流信息
-    #.初始化物流信息
-    kwshipping.del_all_shipping_py
-
-
-
-
 
 
 
