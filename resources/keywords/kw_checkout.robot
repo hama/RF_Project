@@ -1,14 +1,6 @@
 *** Settings ***
 Documentation     checkout 公共方法
-Resource          ../variable/var_common.robot
-Resource          ../variable/var_checkout.robot
-Library           ${CURDIR}/../../lib/customlib/kwproduct.py
-Library           ${CURDIR}/../../lib/customlib/kwshipping.py
-Library           ${CURDIR}/../../lib/customlib/kwtax.py
-Library           ${CURDIR}/../../lib/customlib/kwmarketing.py
-Library           ${CURDIR}/../../lib/customlib/lib_utils.py
-Library           ${CURDIR}/../../lib/customlib/kwpayment.py
-Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
+Resource          kw_common.robot
 
 *** keywords ***
 Checkout Suite Setup

@@ -5,12 +5,7 @@ Suite Teardown    Close Test Suite Browser
 Test Setup        Taxprice Page Test Setup
 Test Teardown     Teardown Test Case
 Force Tags        tax
-Resource          ../../../resources/variable/var_common.robot
-Resource          ../../../resources/variable/var_tax_price.robot
-Resource          ../../../resources/variable/var_shipping.robot
 Resource          ../../../resources/keywords/kw_common.robot
-Resource          ../../../resources/keywords/kw_shipping.robot
-Resource          ../../../resources/keywords/kw_tax.robot
 
 *** Test Cases ***
 

@@ -4,13 +4,7 @@ Suite Teardown    Close Test Suite Browser
 Test Setup        del_tutorial    #.删除所有的新手教程前置信息
 Test Teardown     Teardown Test Case
 Force Tags        Tutorial
-Resource          ../../resources/keywords/kw_browser.robot
 Resource          ../../resources/keywords/kw_common.robot
-Resource          ../../resources/variable/var_common.robot
-Library           ${CURDIR}/../../lib/customlib/kwproduct.py
-Library           ${CURDIR}/../../lib/customlib/kwstore.py
-Library           ${CURDIR}/../../lib/customlib/kwshipping.py
-Library           ${CURDIR}/../../lib/customlib/kwpayment.py
 
 
 *** Test Cases ***    

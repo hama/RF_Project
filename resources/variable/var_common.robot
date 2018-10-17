@@ -1,5 +1,20 @@
 *** Settings ***
 Variables         ${CURDIR}/../../lib/customlib/variable.py
+Resource          var_account.robot
+Resource          var_checkout.robot
+Resource          var_coupon_code.robot
+Resource          var_login.robot
+Resource          var_order.robot
+Resource          var_product_collection.robot
+Resource          var_product_comment.robot
+Resource          var_product_management.robot
+Resource          var_seoimage.robot
+Resource          var_settings_page.robot
+Resource          var_shipping.robot
+Resource          var_store.robot
+Resource          var_subtraction.robot
+Resource          var_tax.robot
+Resource          var_uploadfile.robot
 
 *** Variables ***
 ### 未分类，需要分类并清理

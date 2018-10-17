@@ -201,5 +201,5 @@ def num_of_exist_shipping_py(cookie=init_cookie):
 
 
 if __name__ == '__main__':
-    add_max_shipping_py()
+    print shipping_list_py()
     # print create_only_one_shipping_py()

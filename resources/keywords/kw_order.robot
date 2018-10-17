@@ -1,10 +1,7 @@
 *** Settings ***
 Documentation     order keyword
 
-Resource          kw_browser.robot
 Resource          kw_common.robot
-Resource          ../variable/var_common.robot
-Resource          ../variable/var_order.robot
 
 *** keyword ***
 Dealing Order Suite Setup

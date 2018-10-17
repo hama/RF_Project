@@ -1,5 +1,5 @@
 *** Settings ***
-Resource          ../variable/var_login.robot
+Resource          kw_common.robot
 
 *** Keywords ***
 Logout

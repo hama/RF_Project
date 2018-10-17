@@ -2,18 +2,18 @@
 Library           SeleniumLibrary    run_on_failure=NOTHING
 Library           OperatingSystem
 Library           DateTime
-Library           Screenshot
-Library           ${CURDIR}/../../lib/customlib/kwpayment.py
+Library           ${CURDIR}/../../lib/customlib/kwcart.py
 Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
-Library           ${CURDIR}/../../lib/customlib/kwproduct.py
 Library           ${CURDIR}/../../lib/customlib/kwcollection.py
 Library           ${CURDIR}/../../lib/customlib/kwcomment.py
+Library           ${CURDIR}/../../lib/customlib/kwcoupon.py
 Library           ${CURDIR}/../../lib/customlib/kworder.py
+Library           ${CURDIR}/../../lib/customlib/kwpayment.py
+Library           ${CURDIR}/../../lib/customlib/kwproduct.py
+Library           ${CURDIR}/../../lib/customlib/kwshipping.py
+Library           ${CURDIR}/../../lib/customlib/kwtax.py
+Library           ${CURDIR}/../../lib/customlib/lib_utils.py
 Resource          ../variable/var_common.robot
-Resource          ../variable/var_login.robot
-Resource          ../variable/var_store.robot
-Resource          ../variable/var_account.robot
-Resource          ../variable/var_shipping.robot
 Resource          kw_browser.robot
 Resource          kw_checkout.robot
 Resource          kw_coupon_code.robot
@@ -25,6 +25,7 @@ Resource          kw_product_comment.robot
 Resource          kw_product_management.robot
 Resource          kw_settings_page.robot
 Resource          kw_shipping.robot
+Resource          kw_tax.robot
 
 *** Keywords ***
 Login With Default User
@@ -472,7 +473,7 @@ Add OtherTaxPrice Wait
     [Documentation]    等待添加其他税费
     [Arguments]    ${count}=10
     :FOR    ${i}    IN RANGE    ${count}
-    \    ${res_status}    add_other_tax_price_py
+    \    ${res_status}    add_default_tax_price_py
     \    Run Keyword If    '${res_status}'=='True'    Exit For Loop
     \    ...    ELSE    Sleep    1
 

@@ -1,9 +1,6 @@
 *** Settings ***
 Documentation     product comment keyword
 
-Resource          ../variable/var_common.robot
-Resource          ../variable/var_product_comment.robot
-Resource          kw_browser.robot
 Resource          kw_common.robot
 
 *** keyword ***

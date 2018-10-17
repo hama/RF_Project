@@ -6,14 +6,7 @@ Test Setup        Checkout Case Setup
 Test Teardown     Teardown Test Case
 Force Tags        Checkout
 
-Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/keywords/kw_common.robot
-Resource          ../../../resources/keywords/kw_checkout.robot
-Resource          ../../../resources/variable/var_checkout.robot
-Library           ${CURDIR}/../../../lib/customlib/lib_utils.py
-Library           ${CURDIR}/../../../lib/customlib/kwcheckout.py
-Library           ${CURDIR}/../../../lib/customlib/kwshipping.py
-Library           ${CURDIR}/../../../lib/customlib/kwtax.py
 
 *** Test Cases ***
 checkout001
@@ -86,7 +79,7 @@ checkout_018
     [Documentation]    验证checkout shipping页面，订单详情中tax显示正常 >
     [Tags]    P0    threshold    smoke
     #创建60的税费
-    kwtax.add_other_tax_price_py    60
+    kwtax.add_default_tax_price_py    60
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
@@ -116,7 +109,7 @@ checkout_024
     ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     #.添加一个物流为中国百分之60的税金
-    kwtax.add_other_tax_price_py    60
+    kwtax.add_default_tax_price_py    60
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
@@ -419,7 +412,7 @@ checkout109
     [Tags]    P0    threshold    smoke
     #进入税费里设置中国的税率60%
     #.添加一个物流为中国百分之60的税金
-    kwtax.add_other_tax_price_py    60
+    kwtax.add_default_tax_price_py    60
     #添加是shipping address
     Sleep    2
     Wait And Click Element    ${locatorB_checkout_by_now_btn}

@@ -5,9 +5,7 @@ Suite Teardown    Coupon Code Suite Teardown
 Test Setup        Coupon Code Case Setup
 Test Teardown     Teardown Test Case
 Force Tags        coupon code
-Resource          ../../../resources/variable/var_common.robot
 Resource          ../../../resources/keywords/kw_common.robot
-Library           ${CURDIR}/../../../lib/customlib/lib_utils.py
 
 *** Test Cases ***
 coupon_code070

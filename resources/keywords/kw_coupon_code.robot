@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation     Coupon Code 公共方法
-Resource          ../variable/var_common.robot
-Resource          ../variable/var_coupon_code.robot
+Resource          kw_common.robot
 
 *** keywords ***
 
@@ -15,6 +14,7 @@ Coupon Code Suite Teardown
 
 Coupon Code Case Setup
     [Documentation]
+    kwcoupon.add_before_coupon_code_py
     Go To Coupon Page
 
 Select All Coupon Code Tag

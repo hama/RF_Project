@@ -2,7 +2,6 @@
 Documentation     navigation
 
 Resource          kw_common.robot
-Resource          ../variable/var_common.robot
 
 *** keyword ***
 Go To Home Page
