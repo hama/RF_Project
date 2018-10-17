@@ -11,54 +11,42 @@ Library           ${CURDIR}/../../lib/customlib/lib_utils.py
 Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 
 *** keywords ***
-Add Shipping The Freight
-    [Documentation]    封装添加运费
-    Go To Shipping Page
-    #.创建一个中国的物流方案
-    Taxprice New Shipping Information
-
-
-Click Preview Step
-    [Documentation]    点击预览的公共步骤
-    Go To Product Management Page
-    Sleep Time
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
-    Sleep Time
-    Select Window    New
-    Sleep Time
-
-Common Teardown
-    [Documentation]    结束公共步骤
-    Close Test Suite Browser
-    #初始化物流信息
-    kwshipping.del_all_shipping_py
-
-
-    #.关闭PC优化
-    kwcheckout.start_pc_show_py
-
-Checkout Common Step Out
-    [Documentation]    checkout Suite Setup 开始
-    #.登陆
+Checkout Suite Setup
+    [Documentation]    布置开始执行用例环境
     Login With Default User
-    #.添加中国的物流
     kwshipping.add_shipping_py
-    #.添加一个上架商品
     kwproduct.add_launched_product_py
-    #.chechout 运行环境的初始化
     kwcheckout.set_checkout_process_py
+
+Checkout Suite Teardown
+    [Documentation]    每个用例执行结束步骤
+    Close Test Suite Browser
+
+Checkout Case Setup
+    [Documentation]    每个用例执行开始步骤
+    #.开启pc优化
+    kwcheckout.start_pc_show_py    1
+    Go To Product Management Page
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Select Window    New
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Chenckout Product Initial
     [Documentation]    创建订单的初始化
     kwproduct.add_launched_product_py
 
-Chenckout Add Shipping BouvetIsland
-    [Documentation]    添加一个Bouvet Island国家物流信息
-    &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"29","zone_ids":"-1"}]
-    ...    shipping_name=autotest_shipping001
-    kwshipping.add_shipping_with_conf_py    ${conf}
 
 Chenckout Del Shipping Information
     [Documentation]    初始化物流信息，删除全部物流信息
@@ -118,7 +106,7 @@ Add Credit Card Info
 	Wait And Input Text    ${locatorB_checkout_creditCard_input_email}    123456@zz.xx
 	Wait And Input Text    ${locatorB_checkout_creditCard_input_phone}    123456789
 	Wait And Input Text    ${locatorB_checkout_creditCard_input_post}    0000
-	Wait And Input Text    ${locatorB_checkout_creditCard_input_number}    123123123
+	Wait And Input Text    ${locatorB_checkout_creditCard_input_number}    43231123123123
 	Wait And Input Text    ${locatorB_checkout_creditCard_input_expireDate}    1231
 	Wait And Input Text    ${locatorB_checkout_creditCard_input_securityCode}    123
 
