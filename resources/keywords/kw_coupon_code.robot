@@ -29,10 +29,6 @@ Select Doing Coupon Code Tag
     Wait And Click Element    ${locatorB_couponCode_button_doing}
     Sleep    2
 
-Select Done Coupon Code Tag
-    Wait And Click Element    ${locatorB_couponCode_button_done}
-    Sleep    2
-
-Select Done Coupon Code Tag
-    Wait And Click Element    ${locatorB_couponCode_button_done}
+Select Finish Coupon Code Tag
+    Wait And Click Element    ${locatorB_couponCode_button_finish}
     Sleep    2

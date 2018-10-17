@@ -108,21 +108,47 @@ def add_coupon_code_with_conf_py(conf={}, cookie=init_cookie):
     key_list = conf.keys()
     if 'code' not in key_list:
         data['code'] = get_coupon_code_random_code_py(cookie=cookie)
-    if 'shipping_area' in key_list:
-        data['shipping_area'] = conf['shipping_area']
-    if 'shipping_plan' in key_list:
-        data['shipping_plan'] = conf['shipping_plan']
-    if 'has_other_country' in key_list:
-        data['has_other_country'] = conf['has_other_country']
 
     return coupon_code_refresh_py(data, cookie=cookie)['content']['data']['id']
 
 
-def add_default_coupon_code_py(cookie=init_cookie):
+def add_doing_coupon_code_py(cookie=init_cookie):
     '''
-    添加一个默认的coupon code
+    添加一个正在进行的coupon code
     :param cookie:
     :return:
     '''
+    certain_date = get_certain_date_py()
+    conf = {}
+    conf['date_start'] = certain_date['yesterday_date']
+    return add_coupon_code_with_conf_py(conf, cookie=cookie)
 
-    return add_coupon_code_with_conf_py(cookie=cookie)
+
+def add_before_coupon_code_py(cookie=init_cookie):
+    '''
+    添加一个未开始的coupon code(规范)
+    :param cookie:
+    :return:
+    '''
+    certain_date = get_certain_date_py()
+    conf = {}
+    conf['date_start'] = certain_date['tomorrow_date']
+    return add_coupon_code_with_conf_py(conf, cookie=cookie)
+
+
+def add_finish_coupon_code_py(cookie=init_cookie):
+    '''
+    添加一个已结束的coupon code
+    :param cookie:
+    :return:
+    '''
+    certain_date = get_certain_date_py()
+    conf = {}
+    conf['date_start'] = certain_date['todayBeforeYesterday_date']
+    conf['date_end'] = certain_date['yesterday_date']
+    return add_coupon_code_with_conf_py(conf, cookie=cookie)
+
+
+if __name__ == '__main__':
+    print add_doing_coupon_code_py()
+    print add_before_coupon_code_py()

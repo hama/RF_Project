@@ -15,9 +15,16 @@ Resource          ../variable/var_store.robot
 Resource          ../variable/var_account.robot
 Resource          ../variable/var_shipping.robot
 Resource          kw_browser.robot
-Resource          kw_shipping.robot
+Resource          kw_checkout.robot
+Resource          kw_coupon_code.robot
+Resource          kw_login.robot
 Resource          kw_navigation.robot
+Resource          kw_order.robot
+Resource          kw_product_collection.robot
+Resource          kw_product_comment.robot
 Resource          kw_product_management.robot
+Resource          kw_settings_page.robot
+Resource          kw_shipping.robot
 
 *** Keywords ***
 Login With Default User

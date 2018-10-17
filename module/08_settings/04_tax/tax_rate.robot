@@ -18,53 +18,32 @@ taxPrice001
     [Documentation]    测试税金界面可以正常进入
     [Tags]    P0    threshold   smoke
     Go To Tax Page
+    加一个判断元素
 
 taxPrice005
     [Documentation]    测试在物流中添加的国家会显示在税金列表中
     [Tags]    P0    threshold   smoke
-    Go To Shipping Page
-    Sleep  2
-    Wait And Click Element  ${locatorB_shipping_button_btn}
-    #.添加一个物流信息
-    Taxprice New Shipping Information
-    Sleep  5
-    Go To Tax Page
     Wait Until Page Contains Text   中国
+    Wait Until Page Contains Text   China
 
 taxPrice011
     [Documentation]    测试税金界面运费设置按钮
     [Tags]    P0    threshold   smoke
-    Go To Tax Page
-
-    #.添加一个物流信息
-    Taxprice New Shipping Information
-
-    Sleep  4
-    Wait And Click Element  ${locatorB_taxPrice_button_logisticsSet}
-    Wait Until Page Contains Locator  ${locatorB_taxPrice_div_logisticsProviders}
+    Wait And Click Element  ${locatorB_taxPrice_button_shippingSet}
+    Wait Until Page Contains Locator  ${locatorB_taxPrice_icon_shippingVender}
 
 taxPrice012
     [Documentation]    测试国家栏后面的开启关闭按钮正常
     [Tags]    P0    threshold   smoke
-    Go To Tax Page
-
-    #.添加一个物流信息
-    Taxprice New Shipping Information
-
-    Sleep   4
-    Click Element  ${locatorB_taxPrice_span_closeAndOpen}
+    Click Element  ${locatorB_taxPrice_switch_list}[0]
     Wait Until Page Contains Text   设置成功
+    判断是否真的按钮转换了
+    Wait Until Page Contains Locator  ${locatorB_taxPrice_icon_shippingVender}
+    class="ant-switch ant-switch-checked"
 
 taxPrice017
     [Documentation]    测试城市税金设置
     [Tags]    P0    threshold   smoke
-    Go To Tax Page
-
-    #.添加一个物流信息
-    Taxprice New Shipping Information
-
-    Sleep  4
-    Wait And Click Element    ${locatorB_taxPrice_set_setUp}
-
+    Wait And Click Element    ${locatorB_taxPrice_icon_set}
     Wait Until Page Contains Text   国家税率
 
