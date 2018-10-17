@@ -40,18 +40,6 @@ Checkout Case Setup
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 Checkout Common Setp
     [Documentation]    封装公共步骤
     Go To    ${home_page}
