@@ -585,7 +585,7 @@ checkout121
     #添加是shipping address
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Wait And Select From List By Value    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Lable    ${locatorB_checkout_address_select_country}    China
     Wait And Input Text    ${locatorB_checkout_address_city}    China
     Wait And Input Text    ${locatorB_checkout_address_add}    China123
     Wait And Input Text    ${locatorB_checkout_address_zip}    123456
