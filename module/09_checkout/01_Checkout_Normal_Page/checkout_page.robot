@@ -290,9 +290,6 @@ checkout_087
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
     Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll(".fl")[4]    Quantity Standard shipping
 
-
-#下面我的用例
-
 checkout090
     [Documentation]    验证B端运费方案中，勾选免运费时，checkout shipping页面，运费栏显示的运费价格为$0.00 >1.B端物流方案中添加物流物流，国家：中国，运费：运费1 不限价格 免运费2.C端购买任意商品进入checkout shipping页面 3.国家选择中国4.查看shipping delivery栏运费
     [Tags]    P0    threshold    smoke
@@ -771,38 +768,6 @@ checkout196
     Wait And Click Element    ${locatorC_checkout_link_continueShopping}
     Wait Until Page Contains Locator    ${locatorC_checkout_homeBanner}
 
-
-
-
-
-
-
-
-
-
-
-
-
-# -------------------------------------------------------------------------------- old -----------------------------------------------------------------------------------
-
-*** Keywords ***
-Checkout_Common_Show_Element
-    [Documentation]    封装 进入checkout界面 显示购买的商品，地址......
-    [Arguments]    ${click_element}    ${check_elements}
-    Checkout Common Setp
-    Wait And Click Element    ${click_element}
-    Wait Until Page Contains Locator    ${check_elements}
-
-Checkout Common Step
-    #.登陆
-    Login With Default User
-    #.添加中国的物流
-    kwshipping.add_shipping_with_conf_py
-    #.添加一个上架商品
-    kwproduct.add_one_product_with_sub_py
-
-    #.关闭PC优化
-    kwcheckout.start_pc_show_py
 
 
 

@@ -39,7 +39,7 @@ def tax_refresh_py(data, cookie=init_cookie):
 
 def add_default_tax_price_py(cookie=init_cookie):
     '''
-    添加默认税费（默认税率10%）
+    添加默认税费（默认税率60%）
     :param cookie:
     :return:
     '''
