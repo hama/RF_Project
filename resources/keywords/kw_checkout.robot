@@ -24,7 +24,6 @@ Checkout Suite Teardown
 
 Checkout Case Setup
     [Documentation]    每个用例执行开始步骤
-    kwshipping.add_shipping_with_conf_py
     Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     Select Window    New
