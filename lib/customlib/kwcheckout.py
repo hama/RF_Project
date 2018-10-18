@@ -43,18 +43,7 @@ def set_checkout_step_py(customer_name=None, customer_contact=None, cookie=init_
 
 def checkout_save_py(data, cookie=init_cookie):
     url = home_page_url + "/api/checkout/save"
-
-    try:
-        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    return do_post(url, data, cookie=cookie)
 
 
 def checkout_create_py(data, cookie=init_cookie):
@@ -65,17 +54,7 @@ def checkout_create_py(data, cookie=init_cookie):
     :return: order_token
     '''
     url = myshoplaza_url + "/checkout/create"
-    try:
-        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    return do_post(url, data, cookie=cookie)
 
 
 def checkout_price_calculate_py(data, cookie=init_cookie):
@@ -86,17 +65,7 @@ def checkout_price_calculate_py(data, cookie=init_cookie):
     :return:
     '''
     url = myshoplaza_url + "/checkout/price/calculate"
-    try:
-        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    return do_post(url, data, cookie=cookie)
 
 
 def checkout_shipping_lines_py(query_str={}, cookie=init_cookie):
@@ -107,17 +76,7 @@ def checkout_shipping_lines_py(query_str={}, cookie=init_cookie):
     :return: order_token
     '''
     url = myshoplaza_url + "/checkout/shipping/lines"
-    try:
-        response_data = requests.get(url=url, headers={"cookie": cookie['cookie']}, params=query_str)
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    return do_get(url, query_str, cookie=cookie)
 
 
 def checkout_place_order_py(data, cookie=init_cookie):
@@ -128,17 +87,7 @@ def checkout_place_order_py(data, cookie=init_cookie):
     :return:
     '''
     url = myshoplaza_url + "/checkout/place-order"
-    try:
-        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    return do_post(url, data, cookie=cookie)
 
 
 def get_order_token_py(data, cookie=init_cookie):
@@ -222,7 +171,8 @@ def do_price_calculate_with_conf_py(conf={}, cookie=init_cookie):
 
     return checkout_price_calculate_py(data, cookie)
 
-def start_pc_show_py(show=0,cookie=init_cookie):
+
+def start_pc_show_py(show=0, cookie=init_cookie):
     """
     是否开启PC优化
     :param show: 默认0 = 关闭 | 1 = 开启
@@ -232,14 +182,15 @@ def start_pc_show_py(show=0,cookie=init_cookie):
     url = home_page_url + "/api/themes/switch-pc"
     data = {"status": int(show), "theme_id": 1}
     try:
-        res = requests.post(url=url,headers={"cookie":cookie['cookie']},json=data)
+        res = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
         print res.content
-        if json.loads(res.content)['state'] == 0 :
+        if json.loads(res.content)['state'] == 0:
             return True
         else:
             return False
     except Exception as e:
         print e
+
 
 def get_shipping_lines_with_conf_py(conf={}, cookie=init_cookie):
     '''

@@ -6,8 +6,6 @@ Test Teardown     Teardown Test Case
 Force Tags        Order
 Resource          ../../../resources/keywords/kw_common.robot
 
-
-
 *** Test Cases ***
 order002
 	[Documentation]     验证在菜单栏点击订单时，默认选中并进入订单的第一个子菜单：待处理订单
