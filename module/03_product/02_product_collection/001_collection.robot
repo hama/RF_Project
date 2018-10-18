@@ -226,7 +226,7 @@ collection098
     Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
 	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
 	Wait And Click Element    ${locatorB_icon_back}
-	${alert_msg}    Get Alert Message
+	${alert_msg}    Handle Alert
     Should Be Equal     页面上有未保存内容，是否确定退出?    ${alert_msg}
 
 collection099
@@ -311,7 +311,7 @@ collection181
     Wait And Click Element    ${locatorB_button_add}
 	Wait And Input Text    ${locatorB_collectionDetail_input_title}    test@123
 	Wait And Click Element    ${locatorB_icon_back}
-	${alert_msg}    Get Alert Message
+	${alert_msg}    Handle Alert
 	Should Be Equal     页面上有未保存内容，是否确定退出?    ${alert_msg}
 
 collection182
