@@ -52,17 +52,7 @@ def add_shipping_py(has_other_country=0, has_freight=0, cookie=init_cookie):
 
 def shipping_refresh_py(data, cookie=init_cookie):
     url = home_page_url + "/api/shipping/refresh"
-    try:
-        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    return do_post(url, data, cookie=cookie)
 
 
 def shipping_list_py(cookie=init_cookie):
@@ -72,18 +62,8 @@ def shipping_list_py(cookie=init_cookie):
     :return:
     '''
     url = home_page_url + '/api/shipping/list'
-    try:
-        response_data = requests.get(url=url, headers={"cookie": cookie['cookie']})
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-
-    except Exception as e:
-        return e
+    query_str = {}
+    return do_get(url, query_str, cookie=cookie)
 
 
 def add_shipping_with_conf_py(conf={}, cookie=init_cookie):
@@ -201,5 +181,6 @@ def num_of_exist_shipping_py(cookie=init_cookie):
 
 
 if __name__ == '__main__':
-    print shipping_list_py()
-    # print create_only_one_shipping_py()
+    print del_all_shipping_py()
+    # print shipping_list_py()
+    print create_only_one_shipping_py()

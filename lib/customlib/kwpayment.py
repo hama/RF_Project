@@ -12,18 +12,7 @@ def payment_method_py(data, cookie=init_cookie):
     收款渠道激活
     """
     url = home_page_url + "/api/payment/method"
-
-    try:
-        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    return do_post(url, data, cookie=cookie)
 
 
 def payment_channel_py(data, cookie=init_cookie):
@@ -34,18 +23,7 @@ def payment_channel_py(data, cookie=init_cookie):
     :return:
     '''
     url = home_page_url + "/api/payment/channel"
-
-    try:
-        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    return do_post(url, data, cookie=cookie)
 
 
 def payment_pay_py(data, cookie=init_cookie):
@@ -56,17 +34,7 @@ def payment_pay_py(data, cookie=init_cookie):
     :return:
     '''
     url = myshoplaza_url + '/checkout/payment/pay'
-    try:
-        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    return do_post(url, data, cookie=cookie)
 
 
 def payment_list_py(cookie=init_cookie):
@@ -77,17 +45,8 @@ def payment_list_py(cookie=init_cookie):
     :return:
     '''
     url = home_page_url + '/api/payment/list'
-    try:
-        response_data = requests.get(url=url, headers={"cookie": cookie['cookie']})
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    query_str = {}
+    return do_get(url, query_str, cookie=cookie)
 
 
 def get_expected_payment_line_py(expected, cookie=init_cookie):

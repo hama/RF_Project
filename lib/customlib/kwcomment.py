@@ -8,17 +8,7 @@ sys.setdefaultencoding('utf-8')
 
 def comments_select_py(query_str={}, cookie=init_cookie):
     url = home_page_url + '/api/comments/select'
-    try:
-        response_data = requests.get(url=url, headers={"cookie": cookie['cookie']}, params=query_str)
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    return do_get(url, query_str, cookie=cookie)
 
 
 def comments_delete_py(comments_list, cookie=init_cookie):
@@ -31,30 +21,12 @@ def comments_delete_py(comments_list, cookie=init_cookie):
 
     url = home_page_url + '/api/comments/delete'
     data = {"id": comments_list}
-    try:
-        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        if response_data.status_code == 200 \
-                and (json.loads(response_data.content)['state'] == 0 \
-                     or json.loads(response_data.content)['state'] == 1):
-            return True
-        else:
-            return False
-
-    except Exception as e:
-        return e
+    return do_post(url, data, cookie=cookie)
 
 
 def comments_insert_py(data, cookie=init_cookie):
     url = home_page_url + '/api/comments/insert'
-
-    try:
-        resData = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        if resData.status_code == 200 and json.loads(resData.content)['state'] == 0:
-            return True
-        else:
-            return False
-    except Exception as e:
-        return e
+    return do_post(url, data, cookie=cookie)
 
 
 def add_published_comment_py(cookie=init_cookie):
@@ -102,7 +74,7 @@ def add_comment_with_conf_py(conf={}, cookie=init_cookie):
     else:
         data['img_link'] = []
 
-    comments_insert_py(data, cookie)
+    return comments_insert_py(data, cookie)
 
 
 def del_latest_comment_py(cookie=init_cookie):
@@ -110,7 +82,7 @@ def del_latest_comment_py(cookie=init_cookie):
     删除最新评论
     :return: True | False
     """
-    comments_delete_py(1, cookie)
+    return comments_delete_py(1, cookie)
 
 
 def del_latest_comments_py(num, cookie=init_cookie):
@@ -120,7 +92,7 @@ def del_latest_comments_py(num, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    comments_delete_py(num, cookie)
+    return comments_delete_py(num, cookie)
 
 
 def del_all_comments_py(cookie=init_cookie):
@@ -128,7 +100,7 @@ def del_all_comments_py(cookie=init_cookie):
     删除全部评论
     :return: True | False
     """
-    comments_delete_py('all', cookie)
+    return comments_delete_py('all', cookie)
 
 
 def get_latest_commentid_py():

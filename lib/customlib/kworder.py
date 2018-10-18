@@ -10,32 +10,13 @@ sys.setdefaultencoding('utf-8')
 
 def admin_orders_by_raw_data_py(query_str={}, cookie=init_cookie):
     url = home_page_url + '/api/admin/orders'
-    try:
-        response_data = requests.get(url=url, headers={"cookie": cookie['cookie']}, params=query_str)
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    return do_get(url, query_str, cookie=cookie)
 
 
 def admin_orders_by_str_py(string, cookie=init_cookie):
     url = '%s/api/admin/orders/%s' % (home_page_url, string)
-    try:
-        response_data = requests.get(url=url, headers={"cookie": cookie['cookie']})
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    query_str = {}
+    return do_get(url, query_str, cookie=cookie)
 
 
 def orders_fulfillments_via_post_py(order_token, data, cookie=init_cookie):
@@ -46,17 +27,7 @@ def orders_fulfillments_via_post_py(order_token, data, cookie=init_cookie):
     :return:
     '''
     url = '%s/api/admin/orders/%s/fulfillments' % (home_page_url, order_token)
-    try:
-        response_data = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    return do_post(url, data, cookie=cookie)
 
 
 def orders_fulfillments_via_get_py(order_token, cookie=init_cookie):
@@ -67,17 +38,8 @@ def orders_fulfillments_via_get_py(order_token, cookie=init_cookie):
     :return:
     '''
     url = '%s/api/admin/orders/%s/fulfillments' % (home_page_url, order_token)
-    try:
-        response_data = requests.get(url=url, headers={"cookie": cookie['cookie']})
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    query_str = {}
+    return do_get(url, query_str, cookie=cookie)
 
 
 def orders_finish_py(order_token, fulfillment_id, cookie=init_cookie):
@@ -90,17 +52,7 @@ def orders_finish_py(order_token, fulfillment_id, cookie=init_cookie):
     :return:
     '''
     url = '%s/api/admin/orders/%s/fulfillments/%s/finish' % (home_page_url, order_token, fulfillment_id)
-    try:
-        response_data = requests.patch(url=url, headers={"cookie": cookie['cookie']})
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    return do_patch(url, cookie=cookie)
 
 
 def orders_cancel_py(order_token, cookie=init_cookie):
@@ -111,17 +63,7 @@ def orders_cancel_py(order_token, cookie=init_cookie):
     :return:
     '''
     url = '%s/api/admin/orders/%s/cancel' % (home_page_url, order_token)
-    try:
-        response_data = requests.patch(url=url, headers={"cookie": cookie['cookie']})
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    return do_patch(url, cookie=cookie)
 
 
 def del_order_py(order_token, cookie=init_cookie):
@@ -132,17 +74,7 @@ def del_order_py(order_token, cookie=init_cookie):
     :return:
     '''
     url = '%s/api/admin/orders/%s.json' % (home_page_url, order_token)
-    try:
-        response_data = requests.delete(url=url, headers={"cookie": cookie['cookie']})
-        return_data = {}
-        return_data['content'] = json.loads(response_data.content)
-        if response_data.status_code == 200:
-            return_data['result'] = 'success'
-        else:
-            return_data['result'] = 'fail'
-        return return_data
-    except Exception as e:
-        return e
+    return do_delete(url, cookie=cookie)
 
 
 def shipment_with_conf_py(order_token, conf={}, cookie=init_cookie):
@@ -694,7 +626,7 @@ if __name__ == '__main__':
     # print add_deading_order_with_some_finished_status_py()
     # print payment_list_py()
     # print add_undead_order_with_pay_fail_status_py()
-    print add_undead_order_with_to_pay_status_py()
+    print add_dealing_order_with_products_py()
     # print payment_list_py()
     # print product_search_py()
     # print add_deading_order_with_delivering_status_py()
