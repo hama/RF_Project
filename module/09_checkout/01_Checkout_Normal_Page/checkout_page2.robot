@@ -19,7 +19,9 @@ checkout_007
     #添加一个待自产品的商品 子商品
     kwproduct.add_max_product_with_sub_py
     #进入商品详情步骤
-    Checkout Case Setup
+    Go To Product Management Page
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Select Window    New
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Text    Color:red
     Wait Until Page Contains Text    Size:min
@@ -27,16 +29,18 @@ checkout_007
 checkout_019
     [Documentation]    验证checkout shipping页面，商品不收取税费时，价格详情中的tax显示为：+ $0.00  >  1.C端购买商品women进入checkout shipping页面   2.查看价格详情中tax
     [Tags]    P0    threshold
-    #.添加一个不收税费的商品
+    #.添加一个不要物流费的商品
     &{conf}=   Create Dictionary
     ...    requires_shipping=0
     kwproduct.add_product_with_conf_py   ${conf}
     #进入商品详情步骤
-    Checkout Case Setup
+    Go To Product Management Page
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Select Window    New
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Select From List    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
     Text Of Element Should Be Equal With Wait     ${locatorC_checkout_shipping_preferential}    + $0.00
 
 checkout110
@@ -53,7 +57,9 @@ checkout110
     ...    settax=0
     kwproduct.add_product_with_conf_py   ${conf}
     #进入商品详情步骤
-    Checkout Case Setup
+    Go To Product Management Page
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Select Window    New
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkout_delivery_shippingLine}
@@ -73,7 +79,9 @@ checkout_119
     ...    requires_shipping=0
     kwproduct.add_product_with_conf_py   ${conf}
     #进入商品详情步骤
-    Checkout Case Setup
+    Go To Product Management Page
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Select Window    New
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Add Address Common Step
     Wait Until Page Contains Locator    ${locatorC_checkout_delivery_shippingLine}
@@ -92,7 +100,9 @@ checkout_080
     &{conf}=   Create Dictionary
     ...    settax=0
     #进入商品详情步骤
-    Checkout Case Setup
+    Go To Product Management Page
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Select Window    New
     kwproduct.add_product_with_conf_py   ${conf}
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Add Address Common Step
@@ -111,7 +121,9 @@ checkout_080
     &{conf}=   Create Dictionary
     ...    settax=0
     kwproduct.add_product_with_conf_py   ${conf}
-    Checkout Case Setup
+    Go To Product Management Page
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Select Window    New
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Add Address Common Step
     Wait Until Page Contains Locator    ${locatorC_checkout_delivery_shippingLine}
