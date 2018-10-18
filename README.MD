@@ -273,10 +273,6 @@ robot --outputdir logs \
       module/08_settings/03_tax_price
 ```
 
-**评论效果如下图所示**
-
-![comment](images/comment.jpg)
-
 
 
 ## 7. 使用教程
