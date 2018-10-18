@@ -30,7 +30,8 @@ ${locatorB_shipping_button_determine}   dom:document.querySelectorAll('button[da
 ${locatorB_taxPrice_button_shippingSet}    dom:document.querySelectorAll('button[type="button"]')[0]     #物流设置
 
 ${locatorB_shipping_button_btn}    dom:document.querySelectorAll("button")[0]    #.开始设置物流按钮
-
+#locator icon
+${locatorC_taxPrice_icon_custom}    dom:document.querySelectorAll("[class*='con_custom']")[0]      #.税费提示问题
 
 
 
