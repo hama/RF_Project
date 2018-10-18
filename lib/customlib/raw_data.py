@@ -634,5 +634,5 @@ tax_refresh_data = {
                 '{"zone_id":"694","price":""},{"zone_id":"695","price":""},{"zone_id":"696","price":""},'
                 '{"zone_id":"697","price":""},{"zone_id":"698","price":""}]"',
     'country_id': '44',
-    'country_price': '10.00'
+    'country_price': '60.00'
 }

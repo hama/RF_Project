@@ -124,12 +124,12 @@ ${locatorC_checkout_inputText_provinceCode}    dom:document.querySelectorAll("se
 ${locatorC_checkout_inputText_zip}    dom:document.querySelectorAll("input[name='zip']")[0]        #.payment method    /zip 输入框
 
 #locatorC payment Method successful
-${locatorC_checkout_link_viewOrders}    dom:document.querySelectorAll(".order-btn")[0]        #.订单成功-订单详情按钮 viewOrders
-${locatorC_checkout_link_continueShopping}    dom:document.querySelectorAll(".continue-btn")[0]        #.订单成功-跳转到首页 continue shopping
+${locatorC_checkout_link_viewOrders}    dom:document.querySelectorAll("[class*='order-btn']")[0]        #.订单成功-订单详情按钮 viewOrders
+${locatorC_checkout_link_continueShopping}    dom:document.querySelectorAll("[class*='continue-btn']")[0]       #.订单成功-跳转到首页 continue shopping
 #locatorC order yong hu
-${locatorC_checkout_link_orderList}    dom:document.querySelectorAll('a[href="/account/order"]')[0]     #.个人中心里，订单详情页
+${locatorC_checkout_link_orderList}    dom:document.querySelectorAll("[class*='breadcrumbs']")[0]     #.个人中心里，订单详情页
 #locatorC home
-${locatorC_checkout_home}    dom:document.querySelectorAll('.swiper-wrapper')[0]      #首页banner图元素模块
+${locatorC_checkout_homeBanner}    dom:document.querySelectorAll("[class*='page-width banner']")[0]       #首页banner图元素模块
 
 
 
