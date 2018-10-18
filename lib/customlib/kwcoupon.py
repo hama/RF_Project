@@ -73,38 +73,35 @@ def add_coupon_code_with_conf_py(conf={}, cookie=init_cookie):
     return coupon_code_refresh_py(data, cookie=cookie)['content']['data']['id']
 
 
-def add_doing_coupon_code_py(cookie=init_cookie):
+def add_doing_coupon_code_py(conf={}, cookie=init_cookie):
     '''
     添加一个正在进行的coupon code
     :param cookie:
     :return:
     '''
     certain_date = get_certain_date_py()
-    conf = {}
     conf['date_start'] = certain_date['yesterday_date']
     return add_coupon_code_with_conf_py(conf, cookie=cookie)
 
 
-def add_before_coupon_code_py(cookie=init_cookie):
+def add_before_coupon_code_py(conf={}, cookie=init_cookie):
     '''
     添加一个未开始的coupon code(规范)
     :param cookie:
     :return:
     '''
     certain_date = get_certain_date_py()
-    conf = {}
     conf['date_start'] = certain_date['tomorrow_date']
     return add_coupon_code_with_conf_py(conf, cookie=cookie)
 
 
-def add_finish_coupon_code_py(cookie=init_cookie):
+def add_finish_coupon_code_py(conf={}, cookie=init_cookie):
     '''
     添加一个已结束的coupon code
     :param cookie:
     :return:
     '''
     certain_date = get_certain_date_py()
-    conf = {}
     conf['date_start'] = certain_date['todayBeforeYesterday_date']
     conf['date_end'] = certain_date['yesterday_date']
     return add_coupon_code_with_conf_py(conf, cookie=cookie)

@@ -33,10 +33,10 @@ def login_py(**data_config):
         datas_contact = config.get("common_account", "datas_contact")
         datas_password = config.get("common_account", "datas_password")
         datas_domain = config.get("common_account", "datas_domain")
-    x_url = home_page_url + "/api/user/login"
+    url = home_page_url + "/api/user/login"
 
     datas = {"contact": datas_contact, "password": datas_password, "username": datas_domain}
-    res = requests.post(url=x_url, headers={}, data=datas)
+    res = requests.post(url=url, headers={}, data=datas)
     if res is None or res.status_code != 200:
         return False
     # uid为店铺id
@@ -70,7 +70,7 @@ def sign_up_py(**data_config):
         datas_invite_code = config.get("common_account", "datas_invite_code")
         validate_signup_py()  # 发送验证码
 
-    x_url = home_page_url + "/api/user/signup"
+    url = home_page_url + "/api/user/signup"
 
     time.sleep(5)
     datas_vcode = get_latest_vcode_fromdb(datas_contact)  # 获取验证码
@@ -79,7 +79,7 @@ def sign_up_py(**data_config):
     datas = {"contact": datas_contact, "password": datas_password, "username": datas_domain,
              "vcode": datas_vcode, "invite_code": datas_invite_code}
     print datas
-    res = requests.post(url=x_url, headers={}, data=datas)
+    res = requests.post(url=url, headers={}, data=datas)
     if res is None or res.status_code != 200:
         return False
     else:
@@ -105,9 +105,9 @@ def validate_signup_py(**data_config):
         datas_contact = config.get("common_account", "datas_contact")
         datas_domain = config.get("common_account", "datas_domain")
 
-    x_url = home_page_url + "/api/user/validate-signup"
+    url = home_page_url + "/api/user/validate-signup"
     datas = {"contact": datas_contact, "username": datas_domain}
-    res = requests.post(url=x_url, headers={}, data=datas)
+    res = requests.post(url=url, headers={}, data=datas)
     if res is None or res.status_code != 200:
         return False
     else:

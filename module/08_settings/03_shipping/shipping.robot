@@ -5,7 +5,7 @@ Test Setup        Shipping Case Setup
 Test Teardown     Shipping Case Teardown
 #Test Setup        Shipping Case Setup Tmp Fix
 #Test Teardown     Shipping Case Teardown Tmp Fix
-Force Tags        Shipping
+Force Tags        shipping
 Resource          ../../../resources/keywords/kw_common.robot
 
 *** Test Cases ***

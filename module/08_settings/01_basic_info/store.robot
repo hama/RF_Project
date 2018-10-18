@@ -3,7 +3,7 @@ Suite Setup       Store Suite Setup
 Suite Teardown    Store Suite Teardown
 Test Setup        Store Test Setup
 Test Teardown     Teardown Test Case
-Force Tags        Store
+Force Tags        store
 Resource          ../../../resources/keywords/kw_common.robot
 
 
