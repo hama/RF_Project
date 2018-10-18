@@ -53,6 +53,8 @@ checkoutPageSetings008
     Wait And Click Element  ${locatorB_checkout_label_customerPhone}
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
 
 checkoutPageSetings009
@@ -62,6 +64,8 @@ checkoutPageSetings009
      Wait And Click Element  ${locatorB_checkout_label_customerPhone}
      Wait Exist And Click Element  ${locatorB_checkout_button_save}
      Wait Until Page Contains Text   设置成功
+     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+     Reload Page And Start Ajax
      Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
 
 checkoutPageSetings010
@@ -72,6 +76,8 @@ checkoutPageSetings010
      Wait And Click Element  ${locatorB_checkout_label_customerEmailAndPhone}
      Wait Exist And Click Element  ${locatorB_checkout_button_save}
      Wait Until Page Contains Text   设置成功
+     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+     Reload Page And Start Ajax
      Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
 
 checkoutPageSetings011
@@ -81,6 +87,8 @@ checkoutPageSetings011
     Wait And Click Element  ${locatorB_checkout_label_customerEmail}
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf min_height_245e ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
 
@@ -91,6 +99,8 @@ checkoutPageSetings012
     Wait And Click Element  ${locatorB_checkout_label_customerPhone}
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf min_height_245e ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
 
@@ -102,6 +112,8 @@ checkoutPageSetings013
     Wait And Click Element  ${locatorB_checkout_label_customerEmailAndPhone}
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf min_height_245e ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
 
@@ -125,6 +137,8 @@ checkoutPageSetings021
     Sleep And Click Element  ${locatorB_checkout_radio_surnameAndName}
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="ant-radio-wrapper ant-radio-wrapper-checked"]')[0]
 
 checkoutPageSetings022
@@ -136,6 +150,8 @@ checkoutPageSetings022
     Wait Exist And Click Element  ${locatorB_checkout_radio_name}
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="ant-radio-wrapper ant-radio-wrapper-checked"]')[0]
 
 checkoutPageSetings023
@@ -148,6 +164,8 @@ checkoutPageSetings023
     Wait Exist And Click Element  ${locatorB_checkout_radio_companyNameMandatory}
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="ant-radio-wrapper ant-radio-wrapper-checked"]')[0]
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="ant-radio-wrapper ant-radio-wrapper-checked"]')[1]
 
@@ -161,6 +179,8 @@ checkoutPageSetings024
     Wait Exist And Click Element  ${locatorB_checkout_radio_companyNameOptional}
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="ant-radio-wrapper ant-radio-wrapper-checked"]')[0]
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="ant-radio-wrapper ant-radio-wrapper-checked"]')[1]
 
@@ -174,6 +194,8 @@ checkoutPageSetings025
     Wait Exist And Click Element    ${locatorB_checkout_radio_companyNameHidden}
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text    设置成功
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="ant-radio-wrapper ant-radio-wrapper-checked"]')[0]
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="ant-radio-wrapper ant-radio-wrapper-checked"]')[1]
 
@@ -188,6 +210,8 @@ checkoutPageSetings026
     Wait Exist And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
     Wait Exist And Click Element    ${locatorB_checkout_button_save}
     Wait Until Page Contains Text    设置成功
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="ant-radio-wrapper ant-radio-wrapper-checked"]')[0]
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="ant-radio-wrapper ant-radio-wrapper-checked"]')[1]
 
@@ -202,6 +226,8 @@ checkoutPageSetings027
     Wait Exist And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
     Wait Exist And Click Element    ${locatorB_checkout_button_save}
     Wait Until Page Contains Text    设置成功
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="ant-radio-wrapper ant-radio-wrapper-checked"]')[0]
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="ant-radio-wrapper ant-radio-wrapper-checked"]')[1]
 
@@ -216,6 +242,8 @@ checkoutPageSetings028
     Wait Exist And Click Element    ${locatorB_checkout_radio_emailCodeHidden}
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text    设置成功
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="ant-radio-wrapper ant-radio-wrapper-checked"]')[0]
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="ant-radio-wrapper ant-radio-wrapper-checked"]')[1]
 
@@ -228,6 +256,8 @@ checkoutPageSetings029
     Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     退款条约
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="btn_wrapper_bdca"]')[0]
 
 checkoutPageSetings030
@@ -240,6 +270,8 @@ checkoutPageSetings030
     Wait And Input Text     ${locatorB_checkout_textarea_policyInputBox}      隐私政策
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="btn_wrapper_bdca"]')[1]
 
 checkoutPageSetings031
@@ -253,6 +285,8 @@ checkoutPageSetings031
     Wait And Input Text     ${locatorB_checkout_textarea_refundServiceInputBox}      服务条约
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="btn_wrapper_bdca"]')[2]
 
 
