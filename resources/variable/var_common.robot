@@ -12,7 +12,6 @@ Resource          var_seoimage.robot
 Resource          var_settings_page.robot
 Resource          var_shipping.robot
 Resource          var_store.robot
-Resource          var_subtraction.robot
 Resource          var_tax.robot
 Resource          var_uploadfile.robot
 
@@ -51,12 +50,16 @@ ${locatorB_setting_menus}    dom:document.querySelectorAll(".ant-menu-submenu-ti
 ${locatorB_application_seoimg}    dom:document.querySelectorAll('.item___3Js4k')[4]    #.应用市场-图片seo
 ${locatorB_application_invitaion}    dom:document.querySelectorAll('.item___3Js4k')[0]    #.应用市场-邀请码工具
 
+
+
 ${isExistB_setting_orderMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="order"]')[0]    # 判断order菜单展开的元素是否存在
 ${isExistB_setting_productMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="products"]')[0]    # 判断product菜单展开的元素是否存在
 ${isExistB_setting_marketingMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="marketing"]')[0]    # 判断marketing菜单展开的元素是否存在
 ${isExistB_setting_decorationMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="decoration"]')[0]    # 判断decoration菜单展开的元素是否存在
 ${isExistB_setting_settingMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="setting"]')[0]    # 判断setting菜单展开的元素是否存在
 
+
+### locator selects
 ${locatorB_selects}    dom:document.querySelectorAll("div[class~='ant-select-selection']")    # 下拉页面所有选框
 ### locator checkbox
 ${locatorB_checkbox00}    dom:document.querySelectorAll(".ant-checkbox-input")[0]    #定位当前页面第0个checkbox
@@ -70,7 +73,7 @@ ${locatorB_button_close}    dom:document.querySelectorAll('button[class*="close"
 ${locatorB_icon_back}    dom:document.querySelectorAll('i[class="djfont dj-back"]')[0]        #返回icon
 ${locatorB_icon_back00}    dom:document.querySelectorAll('i[class="djfont back"]')[0]        #返回icon
 ${locatorB_icon_edit}    dom:document.querySelectorAll('i[class*="edit_icon"]')[0]        #编辑icon
-### locator popUps=
+### locator popUps
 ${locatorB_popUps_title}    dom:document.querySelectorAll('[class~="ant-modal-title"]')[0]    #弹窗title
 ${locatorB_popUps_body}    dom:document.querySelectorAll(".ant-modal-body")[0]    #弹窗body(判断弹窗是否存在)
 ${locatorB_popUps_footer}    dom:document.querySelectorAll(".ant-modal-footer")[0]    #弹窗footer判断弹窗是否存在)

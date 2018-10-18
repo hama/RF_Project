@@ -11,6 +11,7 @@ Library           ${CURDIR}/../../lib/customlib/kworder.py
 Library           ${CURDIR}/../../lib/customlib/kwpayment.py
 Library           ${CURDIR}/../../lib/customlib/kwproduct.py
 Library           ${CURDIR}/../../lib/customlib/kwshipping.py
+Library           ${CURDIR}/../../lib/customlib/kwstore.py
 Library           ${CURDIR}/../../lib/customlib/kwtax.py
 Library           ${CURDIR}/../../lib/customlib/lib_utils.py
 Resource          ../variable/var_common.robot
@@ -25,6 +26,7 @@ Resource          kw_product_comment.robot
 Resource          kw_product_management.robot
 Resource          kw_settings_page.robot
 Resource          kw_shipping.robot
+Resource          kw_store.robot
 Resource          kw_tax.robot
 
 *** Keywords ***

@@ -57,8 +57,6 @@ taxPrice007
     #查看商品扣除60%税费后的金额
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $444.00
 
-
-
 taxPrice011
     [Documentation]    测试税金界面运费设置按钮
     [Tags]    P0    threshold   smoke
@@ -72,7 +70,6 @@ taxPrice012
     Wait Until Page Contains Text   设置成功
     #判断是否真的按钮转换了
     Wait Until Page Contains Locator  ${locatorB_taxPrice_switch_list}
-
 
 taxPrice017
     [Documentation]    测试城市税金设置

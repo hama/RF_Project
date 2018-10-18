@@ -8,7 +8,7 @@ from .kwcollection import *
 from .kwlogin import *
 from .kwmarketing_will_be_del import *
 from .kwpayment import *
-from .kwstore_will_be_del import *
+from .kwstore import *
 from .kwtax import *
 from .lib_utils import *
 
