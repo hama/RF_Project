@@ -222,15 +222,6 @@ def add_max_product_with_sub_py(cookie=init_cookie):
     return product_add_py(product_max_data_with_sub, cookie=cookie)
 
 
-def add_one_product_with_sub_py(cookie=init_cookie):
-    """
-    添加一个sub商品
-    :param cookie:
-    :return:
-    """
-    return product_add_py(product_onw_data_with_sub, cookie=cookie)
-
-
 if __name__ == '__main__':
     pass
     print del_all_products_py()
@@ -239,7 +230,7 @@ if __name__ == '__main__':
     # del_all_products_py()
     # print add_max_product_py()
     # print add_max_product_py()
-    # print add_one_product_with_sub_py()
+    # print add_product_with_one_sub_py()
     # product_info_py()
     # print add_launched_product_py()
     # conf = {'tags': ['color']}
