@@ -7,6 +7,12 @@ Resource          ../../../resources/keywords/kw_common.robot
 
 
 *** Test Cases ***
+store001
+    [Documentation]    店铺信息-店铺名称里UI展示正确
+    [Tags]    P0
+    StoreName Common Step    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    Wait Until Page Contains    ${contextB_store_storeInfo}
+
 store002
     [Documentation]    店铺名称可保存小于50个字符 > "1.更改名称，输入字数小于50个字符,点击保存" > 保存成功
     [Tags]    P0

@@ -636,3 +636,36 @@ tax_refresh_data = {
     'country_id': '44',
     'country_price': '60.00'
 }
+
+store_update_data = {
+    'store_id': '9',
+    'name': 'autotest_store',
+    'email': 'autotest@shoplazza.com',
+    'seo_id': '0',
+    'currency': 'USD',
+    'url': None,
+    'service_email': 'autotest@shoplazza.com',
+    'icon': {
+        'src': '//cdn.shoplazza.com/c9f9562678e0febfde4d739a941484fc.jpg',
+        'alt': '',
+        'path': 'c9f9562678e0febfde4d739a941484fc.jpg'
+    },
+    'time_zone': '+0800',
+    'country_id': '0',
+    'zone_id': '-1',
+    'city': '',
+    'address': '',
+    'zip': '',
+    'telephone': '18888888888',
+    'code': 'USD',
+    'symbol_left': '$',
+    'symbol_right': None,
+    'hour': 8,
+    'symbol': '$',
+    'meta_title': 'home',
+    'meta_keyword': None,
+    'meta_description': None,
+    '_': '',
+    'create_time': '1535454128',
+    'update_time': '1539764050'
+}

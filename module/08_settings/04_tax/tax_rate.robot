@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     税费设置功能测试
-Suite Setup       Login With Default User
-Suite Teardown    Close Test Suite Browser
+Suite Setup       Taxprice Page Suite Setup
+Suite Teardown    Taxprice Page Suite Teardown
 Test Setup        Taxprice Page Test Setup
 Test Teardown     Teardown Test Case
 Force Tags        tax
@@ -12,11 +12,8 @@ Resource          ../../../resources/keywords/kw_common.robot
 taxPrice001
     [Documentation]    测试税金界面可以正常进入
     [Tags]    P0    threshold   smoke
-    Go To Tax Page
     #加一个判断元素
     Wait Until Page Contains Text    ${locatorB_taxPrice_text_methodOfTax}
-
-
 
 taxPrice005
     [Documentation]    测试在物流中添加的国家会显示在税金列表中
@@ -34,7 +31,8 @@ taxPrice006
     #刷新税金页面
     Reload Page And Start Ajax
     Wait Until Page Not Contains Text     中国
-    Wait Until Page Contains Text       China
+    Wait Until Page Not Contains Text       China
+    kwshipping.add_shipping_with_conf_py
 
 taxPrice007
     [Documentation]    测试国家栏后面的开启关闭按钮正常

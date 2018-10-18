@@ -19,10 +19,6 @@ db_shop_config = json.loads(config.get("common_db", "db_shop_config"))
 myshoplaza_url = 'https://' + datas_domain + '.myshoplaza.com'
 # myshoplaza_url = 'https://' + datas_domain + '.preview.shoplazza.com'
 
-# 北京时区
-Bj_timeZone = "+0800"
-# 美属萨摩亚时区
-My_timeZone = "-1100"
 
 img = "http://120.79.196.159:8000/RF/logs/module/result.png"
 # 获取图片

@@ -1,82 +1,54 @@
 # -*- coding:utf-8 -*-
 
+from raw_data import *
 from variable import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def add_store_info_py(email="171869092@qq.com", telephone="15220581724", cookie=init_cookie):
-    """
-    添加店铺基础信息
-    :param email: 邮箱
-    :param telephone: 电话号码
-    :return: True | False
-    """
-    store_rul = home_page_url + "/api/store/update"
-    store_id = getStoreId_py()
-    data = {"address": "",
-            "city": "",
-            "code": "USD",
-            "email": email,
-            "hour": -11,
-            "icon": {"src": "", "path": ""},
-            "meta_description": "null",
-            "meta_keyword": "null",
-            "meta_title": "home",
-            "name": datas_domain,
-            "seo_id": 0,
-            "service_email": email,
-            "store_id": store_id,
-            "symbol": "$",
-            "symbol_left": "$",
-            "symbol_right": "null",
-            "telephone": telephone,
-            "time_zone": Bj_timeZone,
-            "url": "",
-            "zip": "",
-            "_": ""
-            }
-    res_data = requests.post(url=store_rul, headers={"cookie": cookie['cookie']}, json=data)
-    if res_data.status_code == 200 and json.loads(res_data.content)['state'] == 0:
-        return True
-    else:
-        return False
-
-
-def getStoreId_py(cookie=init_cookie):
-    store_url = home_page_url + "/api/store/info"
-    try:
-        res = requests.get(url=store_url, headers={"cookie": cookie['cookie']})
-        return json.loads(res.content)['data']['store_id']
-    except Exception as e:
-        print e
-
-
-def setBjTimeZone_py(timezone=None, cookie=init_cookie):
-    """
-    设置时区 ((GMT + 08:00) 北京，香港，台北，新加坡)
-    :param timezone: none 设置北京时区 | 设置 美属萨摩亚时区
+def store_update_py(data, cookie=init_cookie):
+    '''
+    更新店铺信息
+    :param data:
+    :param cookie:
     :return:
-    """
-    store_id = getStoreId_py()
-    if timezone is None:
-        time_zone = Bj_timeZone
-    else:
-        time_zone = My_timeZone
-    data = {"address": "", "city": "", "currency": "USD", "email": "171869092@qq.com",
-            "icon": {"src": "", "path": ""},
-            "name": "chen", "service_email": "171869092@qq.com", "store_id": store_id, "telephone": "15220581724",
-            "time_zone": time_zone, "zip": "", "zone_id": "-1"}
+    '''
     url = home_page_url + "/api/store/update"
-    try:
-        res = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        if res.status_code == 200 and json.loads(res.content)['state'] == 0:
-            return True
-        else:
-            return False
-    except Exception as e:
-        print e
+    return do_post(url, data, cookie=cookie)
+
+
+def store_info_py(cookie=init_cookie):
+    '''
+    获取店铺信息
+    :param cookie:
+    :return:
+    '''
+    url = home_page_url + "/api/store/info"
+    query_str = {}
+    return do_get(url, query_str, cookie=cookie)
+
+
+def set_store_info_with_conf_py(conf={}, cookie=init_cookie):
+    '''
+    设置store_info通过conf
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(store_update_data)
+    dict_deepupdate(data, conf)
+    key_list = conf.keys()
+    if 'name' not in key_list:
+        data['name'] = datas_domain
+    if 'store_id' not in key_list:
+        data['store_id'] = store_info_py()['content']['data']['store_id']
+    if 'create_time' not in key_list:
+        data['create_time'] = store_info_py()['content']['data']['create_time']
+    if 'update_time' not in key_list:
+        data['update_time'] = str(int(time.time()))
+
+    return store_update_py(data, cookie=cookie)
 
 
 def add_upfiles_py(cookie=init_cookie):
@@ -147,3 +119,7 @@ def del_upfiles_py(cookie=init_cookie):
     except Exception as e:
         print e
         return False
+
+
+if __name__ == '__main__':
+    print set_store_info_with_conf_py()
