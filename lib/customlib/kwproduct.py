@@ -224,7 +224,7 @@ def add_max_product_with_sub_py(cookie=init_cookie):
 
 if __name__ == '__main__':
     pass
-    print del_all_products_py()
+    print add_max_product_with_sub_py()
     # product_search_py()
     # del_latest_product_py()
     # del_all_products_py()

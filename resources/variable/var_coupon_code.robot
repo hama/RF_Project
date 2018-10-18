@@ -10,6 +10,7 @@ ${locatorB_couponCodeNew_button_allProducts}    dom:document.querySelectorAll('[
 ${locatorB_couponCodeNew_button_chooseSomeProducts}    dom:document.querySelectorAll('[class*="btnselproduct"]')    # 选择部分商品
 ${locatorB_couponCodeNew_icon_continueToAdd}    dom:document.querySelectorAll('[class="anticon anticon-plus"]')    # 添加
 ${locatorB_couponCodeNew_text_hadAdded}    dom:document.querySelectorAll('p[class*="product"]')[0]    #
+${locatorB_couponCodeNew_input_couponCode}    id:code    #
 
 ${locatorB_couponCodeNew_items_listProduct}    ${locatorB_table_listItems}    # 商品列表
 

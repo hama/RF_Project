@@ -69,6 +69,7 @@ ${locatorB_button_add}    dom:document.querySelectorAll('button[class*="large_bt
 ${locatorB_button_save}    dom:document.querySelectorAll('button[data-robot="btn_save"]')[0]        #保存按钮
 ${locatorB_button_save00}    dom:document.querySelectorAll('button[class*="middle_btn"]')[0]        #保存按钮
 ${locatorB_button_canecl}    dom:document.querySelectorAll('button[class*="cancel"]')[0]        #取消按钮
+${locatorB_button_canecl00}    dom:document.querySelectorAll('button[class*="default_btn"]')[0]        #取消按钮
 ${locatorB_button_close}    dom:document.querySelectorAll('button[class*="close"]')[0]        #close按钮
 ${locatorB_icon_back}    dom:document.querySelectorAll('i[class="djfont dj-back"]')[0]        #返回icon
 ${locatorB_icon_back00}    dom:document.querySelectorAll('i[class="djfont back"]')[0]        #返回icon
@@ -86,6 +87,8 @@ ${locatorB_popUps_allUncheckedCheckbox}    dom:document.querySelectorAll('.ant-m
 ${locatorB_popUps_allCheckedCheckbox}    dom:document.querySelectorAll('.ant-modal-body span[class="ant-checkbox ant-checkbox-checked"]')    #弹窗的所有被选中checkbox
 ${locatorB_popUps_inputs}    dom:document.querySelectorAll('.ant-modal-body input[class="ant-select-search__field"]')    #弹窗的所有input
 ${locatorB_popUps_checkbox}    dom:document.querySelectorAll('.ant-modal-body .ant-checkbox-input')    #弹窗的所有checkbox
+${locatorB_popUps_icon_up}    dom:document.querySelectorAll('.anticon-up')
+${locatorB_popUps_icon_down}    dom:document.querySelectorAll('.anticon-down')
 ### locator page
 ${locatorB_page_text_totalRecord}    dom:document.querySelectorAll(".ant-pagination-total-text")[0]      #页面分页按钮-"N 条记录"
 ### locator tag
