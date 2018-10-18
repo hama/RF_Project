@@ -71,7 +71,7 @@ taxPrice007
     kwshipping.add_shipping_with_conf_py
 
 taxPrice009
-    [Documentation]    测试税金界面运费设置按钮
+    [Documentation]    测试税金界面税金计算方式提示功能正常
     [Tags]    P0    threshold
     Wait And Mouse Over    ${locatorB_taxPrice_icon_custom}
     Wait Until Page Contains Text     税费 = 税率 x 实付商品价格，例如：实付商品价为$1.00，税率为20%的商品需额外收取税费：1 X 20% = $0.20（如有小数，需四舍五入且保留两位小数）
@@ -100,13 +100,14 @@ taxPrice014
     ...    shipping_area=[{"country_id":"29","zone_ids":"-1"}]
     ...    shipping_name=autotest_shipping001
     kwshipping.add_shipping_with_conf_py    ${conf}
+    Sleep    1
     #添加一个中国的物流信息
     kwshipping.add_shipping_with_conf_py
     Go To Tax Page
     Sleep    5
     #.设置中国税费
     Wait And Click Element    ${locatorB_taxPrice_icon_settingList}[0]
-    Wait And Input Text    ${locatorB_taxPrice_popUp_cityInputList}[0]     60.00
+    Wait And Input Text    ${locatorB_taxPrice_popUp_uniteInput}    60.00
     Wait And Click Element    ${locatorB_taxPrice_popUp_button_save}
     Wait And Click Element    ${locatorB_taxPrice_switch_list}[1]
     Wait Until Page Contains Text   设置成功
