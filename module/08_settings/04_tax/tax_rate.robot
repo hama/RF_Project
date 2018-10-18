@@ -70,11 +70,10 @@ taxPrice007
     #还原中国的物流信息
     kwshipping.add_shipping_with_conf_py
 
-
 taxPrice009
     [Documentation]    测试税金界面税金计算方式提示功能正常
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_taxPrice_icon_custom}
+    Wait And Mouse Over    ${locatorB_taxPrice_icon_custom}
     Wait Until Page Contains Text     税费 = 税率 x 实付商品价格，例如：实付商品价为$1.00，税率为20%的商品需额外收取税费：1 X 20% = $0.20（如有小数，需四舍五入且保留两位小数）
 
 taxPrice011
@@ -134,13 +133,11 @@ taxPrice014
     kwshipping.del_all_shipping_py
     kwshipping.add_shipping_with_conf_py
 
-
 taxPrice017
     [Documentation]    测试城市税金设置
     [Tags]    P0    threshold   smoke
     Wait And Click Element    ${locatorB_taxPrice_icon_set}
     Wait Until Page Contains Text   国家税率
-
 
 taxPrice019
     [Documentation]    测试城市税金设置

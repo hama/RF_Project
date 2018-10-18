@@ -11,6 +11,7 @@ Library           ${CURDIR}/../../lib/customlib/kworder.py
 Library           ${CURDIR}/../../lib/customlib/kwpayment.py
 Library           ${CURDIR}/../../lib/customlib/kwproduct.py
 Library           ${CURDIR}/../../lib/customlib/kwshipping.py
+Library           ${CURDIR}/../../lib/customlib/kwstore.py
 Library           ${CURDIR}/../../lib/customlib/kwtax.py
 Library           ${CURDIR}/../../lib/customlib/lib_utils.py
 Resource          ../variable/var_common.robot
@@ -25,6 +26,7 @@ Resource          kw_product_comment.robot
 Resource          kw_product_management.robot
 Resource          kw_settings_page.robot
 Resource          kw_shipping.robot
+Resource          kw_store.robot
 Resource          kw_tax.robot
 
 *** Keywords ***
@@ -67,6 +69,12 @@ Wait And Click Element
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
     Wait Until Element Is Visible    ${element_locator}     10
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
+
+Wait And Mouse Over
+    [Arguments]    ${element_locator}
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    Wait Until Element Is Visible    ${element_locator}     10
+    Mouse Over    ${element_locator}
 
 Wait Exist And Click Element
     [Arguments]    ${element_locator}    ${timeout}=7s    ${retry_time}=5x
@@ -356,7 +364,7 @@ Wait Alert Should Be Present And Dismiss
     [Arguments]    ${text}    ${timeout}=10
     Alert Should Be Present    ${text}    DISMISS    ${timeout}
 
-    Reload Page And Start Ajax
+Reload Page And Start Ajax
 	[Documentation]    刷新页面并添加监控
 #    [Arguments]    ${sleep_time}=1
 	Reload Page

@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     结账页设置功能测试
-Suite Setup       Login With Default User
-Suite Teardown    Close Test Suite Browser
+Suite Setup       Checkout Page Suite Setup
+Suite Teardown    Checkout Page Suite Teardown
 Test Setup        Checkout Page Test Setup
 Test Teardown     Teardown Test Case
 Force Tags        checkoutPageSetings
