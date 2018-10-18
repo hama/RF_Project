@@ -18,6 +18,30 @@ coupon_code070
     ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityName}
     Should Be Equal    ${text}    activity_auto
 
+coupon_code076
+    [Documentation]    验证新建优惠码界面，优惠类型选择折扣券时可保存成功
+    [Tags]    P0    threshold
+    Select All Coupon Code Tag
+    Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
+    Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_auto
+    Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
+    Wait And Click Element    ${locatorB_couponCodeNew_selectItem_cashCoupon}
+    Wait And Click Element    ${locatorB_button_save00}
+    ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityName}
+    Should Be Equal    ${text}    activity_auto
+
+coupon_code078
+    [Documentation]    验证新建优惠码界面，优惠类型选择代金券时可保存成功
+    [Tags]    P0    threshold
+    Select All Coupon Code Tag
+    Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
+    Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_auto
+    Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
+    Wait And Click Element    ${locatorB_couponCodeNew_selectItem_cashCoupon}
+    Wait And Click Element    ${locatorB_button_save00}
+    ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityName}
+    Should Be Equal    ${text}    activity_auto
+
 coupon_code153
     [Documentation]    验证新建优惠码界面，选择商品窗口，选择商品后，添加按钮可点击
     [Tags]    P0    threshold    smoke

@@ -11,6 +11,9 @@ ${locatorB_couponCodeNew_button_chooseSomeProducts}    dom:document.querySelecto
 ${locatorB_couponCodeNew_icon_continueToAdd}    dom:document.querySelectorAll('[class="anticon anticon-plus"]')    # 添加
 ${locatorB_couponCodeNew_text_hadAdded}    dom:document.querySelectorAll('p[class*="product"]')[0]    #
 ${locatorB_couponCodeNew_input_couponCode}    id:code    #
+${locatorB_couponCodeNew_select_couponStyle}    dom:document.querySelectorAll('[class="ant-select-selection__rendered"]')[0]    #
+${locatorB_couponCodeNew_selectItem_discountCoupon}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[0]    #
+${locatorB_couponCodeNew_selectItem_cashCoupon}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[1]    #
 
 ${locatorB_couponCodeNew_items_listProduct}    ${locatorB_table_listItems}    # 商品列表
 
