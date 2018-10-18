@@ -15,6 +15,7 @@ Library           ${CURDIR}/../../lib/customlib/kwstore.py
 Library           ${CURDIR}/../../lib/customlib/kwtax.py
 Library           ${CURDIR}/../../lib/customlib/lib_utils.py
 Resource          ../variable/var_common.robot
+Resource          kw_ajax.robot
 Resource          kw_browser.robot
 Resource          kw_checkout.robot
 Resource          kw_coupon_code.robot
