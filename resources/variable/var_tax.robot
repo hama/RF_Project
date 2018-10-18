@@ -18,7 +18,7 @@ ${locatorB_taxPrice_icon_set}       dom:document.querySelectorAll('.ant-table-ro
 #.税费设置 center
 ${locatorB_taxPrice_set_taxes}     dom:document.querySelectorAll('.ant-input')[0]     #.税费设置-国家税率设置input
 
-${locatorB_taxPrice_popUp_button_save}      dom:document.querySelectorAll('.ant-btn-primary')[0]     #.税费设置-确定提交按钮
+${locatorB_taxPrice_popUp_button_save}      dom:document.querySelectorAll('[class*="ant-btn-primary"]')[0]     #.税费设置-确定提交按钮
 #   button
 ${locatorB_taxPrice_button_setLogistics}     dom:document.querySelectorAll("button")[0]
 ${locatorB_taxPrice_setting}      dom:document.querySelectorAll(".setting")[0]
@@ -30,10 +30,17 @@ ${locatorB_shipping_button_determine}   dom:document.querySelectorAll('button[da
 ${locatorB_taxPrice_button_shippingSet}    dom:document.querySelectorAll('button[type="button"]')[0]     #物流设置
 
 ${locatorB_shipping_button_btn}    dom:document.querySelectorAll("button")[0]    #.开始设置物流按钮
+
+
 #locator icon
-${locatorC_taxPrice_icon_custom}    dom:document.querySelectorAll("[class*='con_custom']")[0]      #.税费提示问题
+${locatorB_taxPrice_icon_custom}    dom:document.querySelectorAll("[class*='con_custom']")[0]      #.税费提示问题
 
 
+# locator popup
+${locatorB_taxPrice_icon_settingList}    dom:document.querySelectorAll('[class~="setting"]')     #.操作设置税费图标
+${locatorB_taxPrice_popUp_uniteInput}     dom:document.querySelectorAll('[class*="uniteInput"]')[0]     #.税费弹窗.国家税费文本输入框
+${locatorB_taxPrice_popUp_cityInputList}     dom:document.querySelectorAll('[class="ant-input"]')      #.税费弹窗.城市税费文本输入框
+${locatorB_taxPrice_popUp_cancelBut}       dom:document.querySelectorAll('[class~="ant-modal-close"]')[0]      #税费弹窗.取消按钮
 
 
 
