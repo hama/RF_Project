@@ -72,7 +72,7 @@ taxPrice007
 
 
 taxPrice009
-    [Documentation]    测试税金界面运费设置按钮
+    [Documentation]    测试税金界面税金计算方式提示功能正常
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_taxPrice_icon_custom}
     Wait Until Page Contains Text     税费 = 税率 x 实付商品价格，例如：实付商品价为$1.00，税率为20%的商品需额外收取税费：1 X 20% = $0.20（如有小数，需四舍五入且保留两位小数）

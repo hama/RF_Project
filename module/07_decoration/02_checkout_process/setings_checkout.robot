@@ -20,7 +20,6 @@ checkoutPageSetings001
 checkoutPageSetings003
     [Documentation]    测试结账设置界面保存按钮
     [Tags]    P0    threshold   smoke
-
     Wait And Click Element  ${locatorB_checkout_label_buyMembers}
     Wait And Click Element  ${locatorB_checkout_label_customerEmail}
     Sleep   5
@@ -32,9 +31,11 @@ checkoutPageSetings003
     Wait And Click Element  ${locatorB_checkout_linkBut_generateServiceTreaty}
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
-
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf min_height_245e ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
+
 checkoutPageSetings005
     [Documentation]    测试结账设置页面编辑保存
     [Tags]    P0    threshold
