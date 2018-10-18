@@ -87,7 +87,6 @@ else
 		module/02_order/* \
 		module/03_product/* \
 		module/07_decoration/02_checkout_process/setings_checkout.robot \
-		module/08_settings/01_basic_info/store_info.robot \
 		module/08_settings/03_shipping/shipping.robot \
 		module/08_settings/04_tax/tax_rate.robot \
 		module/08_settings/07_file_management/file_management.robot \
