@@ -3,7 +3,7 @@ Resource          kw_common.robot
 
 *** Keywords ***
 Logout
-    Mouse Over    ${locatorB_logout_icon_individualAccount}
+    Wait And Mouse Over    ${locatorB_logout_icon_individualAccount}
     Wait And Click Element    ${locatorB_logout_icon_logout}
 
 Login Testcase Setup
