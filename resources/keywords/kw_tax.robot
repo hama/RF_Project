@@ -3,13 +3,16 @@ Documentation     Checkout Page keyword
 Resource          kw_common.robot
 
 *** keyword ***
-Taxprice Page Test Setup
+Taxprice Page Suite Setup
     [Documentation]    初始化物流信息
-    #初始化物流信息
+    Login With Default User
     kwshipping.del_all_shipping_py
-    #. 调用接口，初始化数据
     kwshipping.add_shipping_with_conf_py
-    Go To Tax Page
 
+Taxprice Page Suite Teardown
+    [Documentation]
+    Close Test Suite Browser
 
+Taxprice Page Test Setup
+	Go To Tax Page
 
