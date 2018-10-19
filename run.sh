@@ -55,7 +55,7 @@ do
 	esac
 done
 
-# 执行customKeyWord.py
+# 执行initevn.py
 if [ "$test_url" -a "$test_account" ]
 then
 	echo 'test_url and test_account'
@@ -92,6 +92,18 @@ else
 		module/08_settings/04_tax/tax_rate.robot \
 		module/08_settings/07_file_management/file_management.robot \
 		module/09_checkout/01_Checkout_Normal_Page/*
+	robot -v is_headless:True --rerunfailed logs/output.xml -d logs/rerun/ \
+		module/00_login/login.robot \
+		module/00_login/logout.robot \
+		module/02_order/* \
+		module/03_product/* \
+		module/07_decoration/02_checkout_process/setings_checkout.robot \
+		module/08_settings/01_basic_info/store.robot \
+		module/08_settings/03_shipping/shipping.robot \
+		module/08_settings/04_tax/tax_rate.robot \
+		module/08_settings/07_file_management/file_management.robot \
+		module/09_checkout/01_Checkout_Normal_Page/*
+	rebot --merge -d logs/ logs/output.xml logs/rerun/output.xml
 fi
 
 # 执行email_utils.py

@@ -8,6 +8,8 @@ Checkout Suite Setup
     Login With Default User
     #初始化物流环境
     kwshipping.del_all_shipping_py
+    kwproduct.del_all_products_py
+    kwshipping.add_shipping_with_conf_py
     kwproduct.add_launched_product_py
     kwcheckout.set_checkout_process_py
     #.开启pc优化
@@ -17,16 +19,15 @@ Checkout Suite Setup
 
 Checkout Suite Teardown
     [Documentation]    每个用例执行结束步骤
-    Close Test Suite Browser
     #还原初始化环境
     kwshipping.del_all_shipping_py
     kwshipping.add_shipping_with_conf_py
+    kwproduct.del_all_products_py
+    Close Test Suite Browser
 
 Checkout Case Setup
     [Documentation]    每个用例执行开始步骤
-    Go To Product Management Page
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
-    Select Window    New
+    Go To First Product C Interface
 
 
 Add Address Common Step
@@ -40,6 +41,7 @@ Add Address Common Step
     Wait And Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
     Wait And Input Text    ${locatorB_checkout_address_phone}    123456789
     Wait And Input Text    ${locatorB_checkout_address_company}    123456789
+    Sleep    4
 
 Add Credit Card Info
 	[Documentation]    添加信用卡公共部分
@@ -50,6 +52,21 @@ Add Credit Card Info
 	Wait And Input Text    ${locatorB_checkout_creditCard_input_number}    43231123123123
 	Wait And Input Text    ${locatorB_checkout_creditCard_input_expireDate}    1231
 	Wait And Input Text    ${locatorB_checkout_creditCard_input_securityCode}    123
+	Sleep    2
 
+Create Specific Coupon Code
+	[Documentation]    添加信用卡公共部分
+	${code}    get_coupon_code_random_code_py
+    &{conf} =    Create Dictionary
+    ...    code=${code}
+    ...    discount_type=1
+    ...    range_type=2
+    ...    range_value=50
+    ...    code_value=10
+    add_doing_coupon_code_py    ${conf}
+    [Return]    ${code}
 
-
+Go To First Product C Interface
+	Go To Product Management Page
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Select Window    New
