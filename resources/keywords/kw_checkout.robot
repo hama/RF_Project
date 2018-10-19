@@ -27,9 +27,7 @@ Checkout Suite Teardown
 
 Checkout Case Setup
     [Documentation]    每个用例执行开始步骤
-    Go To Product Management Page
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
-    Select Window    New
+    Go To First Product C Interface
 
 Add Address Common Step
     [Documentation]    添加地址公共部分
@@ -42,7 +40,7 @@ Add Address Common Step
     Wait And Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
     Wait And Input Text    ${locatorB_checkout_address_phone}    123456789
     Wait And Input Text    ${locatorB_checkout_address_company}    123456789
-    Sleep    2
+    Sleep    4
 
 Add Credit Card Info
 	[Documentation]    添加信用卡公共部分
@@ -66,3 +64,8 @@ Create Specific Coupon Code
     ...    code_value=10
     add_doing_coupon_code_py    ${conf}
     [Return]    ${code}
+
+Go To First Product C Interface
+	Go To Product Management Page
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Select Window    New

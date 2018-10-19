@@ -182,7 +182,6 @@ checkout_082
     Wait And Click Element    ${locatorB_checkout_submit_btn_s}
     Wait Until Page Does Not Contain    SHIPPING
 
-
 checkout_085
     [Documentation]    验证B端运费方案设置重量范围时，C端购买的商品重量满足此重量范围，checkout shipping页面将展示此运费方案 > 运费方案中显示 重量方案1
     [Tags]    P0    threshold    smoke

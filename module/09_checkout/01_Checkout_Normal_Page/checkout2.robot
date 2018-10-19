@@ -18,7 +18,7 @@ checkout_015
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
-    ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+    ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
@@ -46,26 +46,6 @@ checkout_018
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}   $710.40
 
-
-checkout_019
-    [Documentation]    验证checkout shipping页面，商品不收取税费时，价格详情中的tax显示为：+ $0.00  >  1.C端购买商品women进入checkout shipping页面   2.查看价格详情中tax
-    [Tags]    P0    threshold
-    #初始化物流信息
-    kwshipping.del_all_shipping_py
-    #.添加一个不要物流费的商品
-    &{conf}=   Create Dictionary
-    ...    requires_shipping=0
-    kwproduct.add_product_with_conf_py   ${conf}
-    #进入商品详情步骤
-    Go To Product Management Page
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
-    Select Window    New
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
-    Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Text Of Element Should Be Equal With Wait     ${locatorC_checkout_shipping_preferential}    + $0.00
-
 checkout_024
     [Documentation]    验证checkout shipping页面，total显示正常 > "1.C端购买商品进入checkout shipping页面,2.信息填写栏选择国家 中国,3.选择物流方案：方案1,4.使用优惠码AAA001,5.此订单价格为：,,subtotal：$50.00,shipping：+ $2.00,discount code：- $10.00,tax: + $25.00,6.查看价格详情total"
     [Tags]    P0    threshold    smoke          #后面再做调整
@@ -75,7 +55,7 @@ checkout_024
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
-    ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+    ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     #.添加一个物流为中国百分之60的税金
     kwtax.add_default_tax_price_py
@@ -90,27 +70,6 @@ checkout_024
     Wait And Click Element    ${locatorB_checkout_addressClickCoupon_btn}
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $710.40
 
-checkout_080
-    [Documentation]    验证checkout shipping页面，购买的商品不需要物流运输时，选择国家后，shipping delivery栏会出现交付虚拟产品的运费方案  >  1.C端购买商品women进入checkout shipping页面  2.选择国家   3.查看shipping delivery栏
-    [Tags]    P0    threshold
-     #.初始化物流信息
-    kwshipping.del_all_shipping_py
-    &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
-    ...    shipping_name=shipping_yunfei
-    kwshipping.add_shipping_with_conf_py    ${conf}
-    #.添加一个不收税费的商品
-    &{conf}=   Create Dictionary
-    ...    settax=0
-    #进入商品详情步骤
-    Go To Product Management Page
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
-    Select Window    New
-    kwproduct.add_product_with_conf_py   ${conf}
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Add Address Common Step
-    Wait Until Page Contains Locator    ${locatorC_checkout_delivery_shippingLine}
-
 checkout_083
     [Documentation]    验证B端运费方案设置价格范围时，C端购买的商品价格满足此价格范围，checkout shipping页面将展示此运费方案 > 运费方案中显示：价格方案1
     [Tags]    P0    threshold    smoke
@@ -120,7 +79,7 @@ checkout_083
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
-    ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+    ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
@@ -138,7 +97,7 @@ checkout_090
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
-    ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+    ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
@@ -180,7 +139,7 @@ checkout_107
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
-    ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+    ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     #添加是shipping address
     Reload Page And Start Ajax
@@ -221,7 +180,7 @@ checkout_118
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
-    ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+    ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
@@ -229,7 +188,6 @@ checkout_118
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_price}     $10.00
     Wait And Click Element      ${locatorC_checkout_shipping_submitCheckout}
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_payment_shippingMethoda}     + $10.00
-
 
 checkout_119
     [Documentation]    验证购买不需要物流运输的商品进入支付页面时，shipping method显示为Delivery for virtual product  >  1.C端购买商品women进入checkout 支付页面  2.查看payment栏 shipping method
@@ -261,7 +219,7 @@ checkout_163
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
-    ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+    ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     #激活COD货到付款方式
     kwpayment.activate_payment_cod_py
@@ -291,7 +249,7 @@ checkout_168
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
-    ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+    ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     #添加是shipping address
     Reload Page And Start Ajax
@@ -314,7 +272,7 @@ checkout_169
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
-    ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+    ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     #添加是shipping address
     Reload Page And Start Ajax
