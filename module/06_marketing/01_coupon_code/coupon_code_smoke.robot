@@ -60,6 +60,7 @@ coupon_code082
     ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityTime}
     Should Be Equal    ${text}    2018-10-30 20:00:00-\n2018-11-30 20:00:00
 
+
 coupon_code085
     [Documentation]    验证新建优惠码界面，勾选不限结束时间，可保存成功
     [Tags]    P0    threshold
@@ -70,9 +71,9 @@ coupon_code085
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${empty}
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    2018-10-30 20:00:00
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
-    #.判断
+    #.判断元素是否出现，出现者不点，不出现就点击
     ${class} =    Get Element Attribute    ${locatorB_couponCodeNew_selectTime_notEndTimeStart}    class
-    Run Keyword If    '${class}'=='ant-checkbox ant-checkbox-checked'    Wait And Click Element    ${locatorB_couponCodeNew_selectTime_notEndTime}
+    Run Keyword If    '${class}'=='ant-checkbox'    Wait And Click Element    ${locatorB_couponCodeNew_selectTime_notEndTime}
     Wait And Click Element    ${locatorB_button_save00}
     ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityTime}
     Should Be Equal    ${text}    2018-10-30 20:00:00-\n无期限
@@ -104,7 +105,7 @@ coupon_code098
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    2018-10-30 20:00:00
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_num}    ${empty}
-    Wait And Click Element    ${locatorB_couponCodeNew_input_noLimit}
+    Wait And Input Text    ${locatorB_couponCodeNew_text_input_num}    20
     Wait And Click Element    ${locatorB_button_save00}
     ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityName}
     Should Be Equal    ${text}    youhuoquan noLimit
@@ -114,20 +115,18 @@ coupon_code099
     [Tags]    P0    threshold
     Select All Coupon Code Tag
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
-    Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    youhuoquan noLimit
+    Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    youhuiquan num
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_start}
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${empty}
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    2018-10-30 20:00:00
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_num}    ${empty}
-    Wait Until Element Is Visible    ${locatorB_couponCodeNew_selectTime_confirm}     10
-    ${class} =    Get Element Attribute    ${locatorB_couponCodeNew_selectTime_notEndTimeStart}    class
-    Run Keyword If    '${class}'=='ant-checkbox'    Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
 
-    Wait And Click Element    ${locatorB_couponCodeNew_input_noLimit}
+    ${class} =    Get Element Attribute    ${locatorB_couponCodeNew_input_noTotalNum}    class
+    Run Keyword If    '${class}'=='ant-checkbox'    Wait And Click Element    ${locatorB_couponCodeNew_input_noLimit}
     Wait And Click Element    ${locatorB_button_save00}
     ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityName}
-    Should Be Equal    ${text}    youhuoquan noLimit
+    Should Be Equal    ${text}    youhuiquan num
 
 
 coupon_code107
@@ -142,9 +141,120 @@ coupon_code107
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_num}    20
     Wait And Click Element    ${locatorB_button_save00}
-
     ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityName}
-    Should Be Equal    ${text}    youhuoquan num
+    Should Be Equal    ${text}    activity_auto1
+
+coupon_code108
+    [Documentation]    验证新建优惠码界面，每人限用栏，勾选输入框下方的不限时，可保存成功
+    [Tags]    P0    threshold
+    Select All Coupon Code Tag
+    Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
+    Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    youhuiquan num
+    Wait And Click Element    ${locatorB_couponCodeNew_selectTime_start}
+    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${empty}
+    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    2018-10-30 20:00:00
+    Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
+    Wait And Input Text    ${locatorB_couponCodeNew_text_input_num}    ${empty}
+    ${class} =    Get Element Attribute    ${locatorB_couponCodeNew_text_input_toLimited}    class
+    Run Keyword If    '${class}'=='ant-checkbox'    Wait And Click Element    ${locatorB_couponCodeNew_input_limited}
+    Wait And Click Element    ${locatorB_button_save00}
+    ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityName}
+    Should Be Equal    ${text}    youhuiquan num
+
+coupon_code116
+    [Documentation]    验证新建优惠码界面，优惠类型为折扣券，优惠门槛输入框中输入合法内容时，可保存成功
+    [Tags]    P0    threshold
+    Select All Coupon Code Tag
+    Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
+    Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_auto
+    Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
+    Wait And Click Element    ${locatorB_couponCodeNew_selectItem_discountCoupon}
+    Wait And Input Text    ${locatorB_couponCodeNew_text_input_preferential}    2
+    Wait And Click Element    ${locatorB_button_save00}
+    ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityRules}
+    Should Be Equal    ${text}    满2件10% off
+
+coupon_code117
+    [Documentation]    验证新建优惠码界面，优惠类型为折扣券，优惠门槛勾选输入框下方的无门槛时，可保存成功
+    [Tags]    P0    threshold
+    Select All Coupon Code Tag
+    Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
+    Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    折扣券 无门槛
+    Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
+    Wait And Click Element    ${locatorB_couponCodeNew_selectItem_discountCoupon}
+    Wait And Click Element    ${locatorB_couponCodeNew_text_input_notThreshold}
+    Wait And Click Element    ${locatorB_button_save00}
+    ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityRules}
+    Should Be Equal    ${text}    无门槛10% off
+
+coupon_code125
+    [Documentation]    验证新建优惠码界面，优惠类型为折扣券，优惠门槛输入框中输入合法内容时，可保存成功
+    [Tags]    P0    threshold
+    Select All Coupon Code Tag
+    Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
+    Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_auto50
+    Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
+    Wait And Click Element    ${locatorB_couponCodeNew_selectItem_discountCoupon}
+    Wait And Input Text    ${locatorB_couponCodeNew_text_input_discount}    50
+    Wait And Click Element    ${locatorB_button_save00}
+    ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityRules}
+    Should Be Equal    ${text}    无门槛50% off
+
+coupon_code129
+    [Documentation]    验证新建优惠码界面，优惠类型为代金券，优惠门槛输入框中输入合法内容时，可保存成功
+    [Tags]    P0    threshold
+    Select All Coupon Code Tag
+    Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
+    Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_auto
+    Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
+    Wait And Click Element    ${locatorB_couponCodeNew_selectItem_cashCoupon}
+    Wait And Input Text    ${locatorB_couponCodeNew_text_input_preferential}     100
+    Wait And Input Text    ${locatorB_couponCodeNew_text_input_discount}    10
+    Wait And Click Element    ${locatorB_button_save00}
+    ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityRules}
+    Should Be Equal    ${text}    满100USD减10USD
+
+coupon_code130
+    [Documentation]    验证新建优惠码界面，优惠类型为代金券，优惠门槛勾选输入框下方的无门槛时，可保存成功
+    [Tags]    P0    threshold
+    Select All Coupon Code Tag
+    Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
+    Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_auto
+    Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
+    Wait And Click Element    ${locatorB_couponCodeNew_selectItem_cashCoupon}
+    Wait And Input Text    ${locatorB_couponCodeNew_text_input_preferential}     ${empty}
+    Wait And Input Text    ${locatorB_couponCodeNew_text_input_discount}     ${empty}
+    Sleep     2
+    Click Element    ${locatorB_couponCodeNew_text_input_notThreshold}
+    Wait And Click Element    ${locatorB_button_save00}
+    ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityRules}
+    Should Be Equal    ${text}    无门槛减10USD
+
+coupon_code142
+    [Documentation]    验证新建优惠码界面，适用范围，选择全部商品时，可保存成功
+    [Tags]    P0    threshold
+    Select All Coupon Code Tag
+    Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
+    Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_全部商品
+    Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
+    Wait And Click Element    ${locatorB_couponCodeNew_selectItem_cashCoupon}
+    Wait And Click Element    ${locatorB_couponCodeNew_button_allProducts}
+    Wait And Click Element    ${locatorB_button_save00}
+    ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityName}
+    Should Be Equal    ${text}    activity_全部商品
+
+coupon_code144
+    [Documentation]    验证新建优惠码界面，适用范围，选择全部商品时，可保存成功
+    [Tags]    P0    threshold
+    Select All Coupon Code Tag
+    Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
+    Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_部分商品
+    Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
+    Wait And Click Element    ${locatorB_couponCodeNew_selectItem_cashCoupon}
+    Wait And Click Element    ${locatorB_couponCodeNew_button_chooseSomeProducts}
+    Wait And Click Element    ${locatorB_button_save00}
+    ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityName}
+    Should Be Equal    ${text}    activity_部分商品
 
 
 

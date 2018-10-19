@@ -6,14 +6,14 @@ Resource          var_common.robot
 
 ${locatorB_couponCodeNew_input_activityName}    dom:document.querySelectorAll('[id="name"]')[0]   # 活动名称input
 
-${locatorB_couponCodeNew_button_allProducts}    dom:document.querySelectorAll('[class*="ant-btn"]')[0]  # 选择全部商品
-${locatorB_couponCodeNew_button_chooseSomeProducts}    dom:document.querySelectorAll('[class*="btnselproduct"]')    # 选择部分商品
+${locatorB_couponCodeNew_button_allProducts}    dom:document.querySelectorAll('[class*="ant-btn li_checked"]')[0]  # 选择全部商品
+${locatorB_couponCodeNew_button_chooseSomeProducts}    dom:document.querySelectorAll('[class*="btnselproduct"]')[0]    # 选择部分商品
 ${locatorB_couponCodeNew_icon_continueToAdd}    dom:document.querySelectorAll('[class="anticon anticon-plus"]')    # 添加
 ${locatorB_couponCodeNew_text_hadAdded}    dom:document.querySelectorAll('p[class*="product"]')[0]    #
 ${locatorB_couponCodeNew_input_couponCode}    id:code    #
 ${locatorB_couponCodeNew_select_couponStyle}    dom:document.querySelectorAll('[class="ant-select-selection__rendered"]')[0]    #折扣类型，折扣券
-${locatorB_couponCodeNew_selectItem_discountCoupon}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[0]    #
-${locatorB_couponCodeNew_selectItem_cashCoupon}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[1]    #折扣类型，优惠券
+${locatorB_couponCodeNew_selectItem_discountCoupon}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[0]    #折扣类型，折扣券
+${locatorB_couponCodeNew_selectItem_cashCoupon}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[1]    #折扣类型，代金券
 ${locatorB_couponCodeNew_selectTime_start}    dom:document.querySelectorAll('[class="ant-calendar-picker-input ant-input"]')[0]      #.优惠券 活动开始时间选择
 ${locatorB_couponCodeNew_selectTime_end}    dom:document.querySelectorAll('[class="ant-calendar-picker-input ant-input"]')[1]     #.优惠券 活动结束时间选择
 ${locatorB_couponCodeNew_selectTime_startInput}    dom:document.querySelectorAll('[class*="ant-calendar-input"]')[1]      #.优惠券 活动开始时间输入
@@ -24,6 +24,12 @@ ${locatorB_couponCodeNew_selectTime_notEndTimeStart}    dom:document.querySelect
 ${locatorB_couponCodeNew_text_input_promoCode}    dom:document.querySelectorAll('[id="code"]')[0]    #.优惠码输入框
 ${locatorB_couponCodeNew_text_input_num}    dom:document.querySelectorAll('[id="state.total_num"]')[0]       #.优惠券 数量  state.total_num
 ${locatorB_couponCodeNew_input_noLimit}    dom:document.querySelectorAll('[id="state.total_num_unlimited"]')[0]      #.优惠券 数量 不限多选按钮 state.total_num_unlimited
+${locatorB_couponCodeNew_input_noTotalNum}    dom:document.querySelectorAll('[class="ant-checkbox-wrapper"] [class*="ant-checkbox"]')[4]      #.优惠券 数量 不限多选按钮 未选中状态下
+${locatorB_couponCodeNew_text_input_toLimited}    dom:document.querySelectorAll('[class="ant-checkbox-wrapper"] [class*="ant-checkbox"]')[6]      #.优惠券 每人限用    未选中状态下
+${locatorB_couponCodeNew_input_limited}    dom:document.querySelectorAll('[id="state.limit_num_unlimited"]')[0]       #.优惠券 每人限用 多选按钮 state.total_num
+${locatorB_couponCodeNew_text_input_preferential}    dom:document.querySelectorAll('[class*="ant-input range_value"]')[0]      #.优惠门槛 满多少
+${locatorB_couponCodeNew_text_input_notThreshold}    dom:document.querySelectorAll('[class="ant-radio-input"]')[1]     #.优惠门槛 单选 无门槛
+${locatorB_couponCodeNew_text_input_discount}    dom:document.querySelectorAll('[id="code_value"]')[0]      #.折扣比例 输入
 
 ${locatorB_couponCodeNew_items_listProduct}    ${locatorB_table_listItems}    # 商品列表
 
