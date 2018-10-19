@@ -9,6 +9,7 @@ Checkout Suite Setup
     #初始化物流环境
     kwshipping.del_all_shipping_py
     kwproduct.del_all_products_py
+    kwshipping.add_shipping_with_conf_py
     kwproduct.add_launched_product_py
     kwcheckout.set_checkout_process_py
     #.开启pc优化

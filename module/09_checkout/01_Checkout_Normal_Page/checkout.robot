@@ -190,7 +190,7 @@ checkout_085
     kwshipping.del_all_shipping_py
     #.添加一个重量运费的物流
     kwshipping.add_shipping_py    0    1
-    Sleep    2
+    Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     #.选择中国
@@ -204,7 +204,7 @@ checkout_087
     kwshipping.del_all_shipping_py
     #.添加一个重量运费的物流
     kwshipping.add_shipping_py    0    2
-    Sleep    2
+    Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     #.选择中国
@@ -265,24 +265,6 @@ checkout_106
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_total}     $888.00
 
-checkout_109
-    [Documentation]   验证checkout 支付页面，订单详情中tax显示正常  > 1.C端购买商品women 1件进入checkout shipping页面  2.信息填写栏选择国家中国 3.进入支付页面查看价格详情中tax
-    [Tags]    P0    threshold    smoke
-    #初始化物流信息
-    kwshipping.del_all_shipping_py
-    kwshipping.add_shipping_with_conf_py
-    #创建60的税费
-    kwtax.add_default_tax_price_py
-    #添加是shipping address
-    Sleep    2
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
-    #.选择中国
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    #查看商品扣除60%税费后的金额
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $710.40
-
-
 checkout_111
     [Documentation]   验证checkout 支付页面，订单使用优惠码后，价格详情中会显示discount code并显示优惠价格 > 1.C端购买商品women进入checkout shipping页面  2.使用优惠码AAA001  3.进入支付页面查看价格详情
     [Tags]    P0    threshold    smoke
@@ -293,7 +275,6 @@ checkout_111
     Wait And Click Element   ${locatorC_checkout_submit_apply}
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_prices_shippingValue}     - $10.00
 
-
 checkout_113
     [Documentation]   验证checkout 支付页面，订单使用优惠码后，价格详情中会显示discount code并显示优惠价格 > 1.C端购买商品women进入checkout shipping页面  2.使用优惠码AAA001  3.进入支付页面查看价格详情
     [Tags]    P0    threshold
@@ -303,7 +284,6 @@ checkout_113
     Wait And Input Text     ${locatorC_checkout_input_discountCode}     ${code}
     Wait And Click Element   ${locatorC_checkout_submit_apply}
     Add Address Common Step
-    Sleep    2
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_prices_shippingValue}   - $10.00
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_total}     $434.00
 
@@ -330,7 +310,7 @@ checkout_120
     ...    shipping_name=shipping_yunfei
     kwshipping.add_shipping_with_conf_py    ${conf}
     #添加是shipping address
-    Sleep    2
+    Reload Page And Start Ajax
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国   运费价格10
     #添加是shipping address
@@ -347,7 +327,7 @@ checkout_121
     #激活COD货到付款方式
     kwpayment.activate_payment_cod_py
     #添加是shipping address
-    Sleep    2
+    Reload Page And Start Ajax
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国   运费价格10
     #添加是shipping address
@@ -366,7 +346,7 @@ checkout_125
     #关闭credit_card  信用卡支付方式
     kwpayment.inactivate_payment_credit_card_py
     #添加是shipping address
-    Sleep    2
+    Reload Page And Start Ajax
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国   运费价格10
     #添加是shipping address
@@ -395,7 +375,7 @@ checkout_132
     #. 信用卡支付方式
     kwpayment.activate_payment_credit_card_py
     #添加是shipping address
-    Sleep    2
+    Reload Page And Start Ajax
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国
     #添加是shipping address
@@ -475,7 +455,6 @@ checkout_195
     #.选择中国
     #添加是shipping address
     Add Address Common Step
-    Sleep    2
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
@@ -491,7 +470,6 @@ checkout_196
     #.选择中国
     #添加是shipping address
     Add Address Common Step
-    Sleep    2
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}

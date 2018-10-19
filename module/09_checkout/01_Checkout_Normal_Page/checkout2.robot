@@ -20,7 +20,7 @@ checkout_015
     ...    shipping_name=shipping_yunfei
     ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
-    Sleep    2
+    Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
@@ -39,7 +39,7 @@ checkout_018
     kwshipping.add_shipping_with_conf_py    ${conf}
     #创建60的税费
     kwtax.add_default_tax_price_py
-    Sleep    2
+    Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
@@ -80,7 +80,7 @@ checkout_024
     #.添加一个物流为中国百分之60的税金
     kwtax.add_default_tax_price_py
     ${code}    Create Specific Coupon Code
-    Sleep    2
+    Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
@@ -122,7 +122,7 @@ checkout_083
     ...    shipping_name=shipping_yunfei
     ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
-    Sleep    2
+    Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     #.选择中国
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
@@ -140,7 +140,7 @@ checkout_090
     ...    shipping_name=shipping_yunfei
     ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
-    Sleep  5
+    Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     #.选择中国
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
@@ -156,7 +156,7 @@ checkout_097
     ...    shipping_area=[{"country_id":"29","zone_ids":"-1"}]
     ...    shipping_name=autotest_shipping001
     kwshipping.add_shipping_with_conf_py    ${conf}
-    Sleep    2
+    Reload Page And Start Ajax
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #添加是shipping address
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
@@ -183,7 +183,7 @@ checkout_107
     ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     #添加是shipping address
-    Sleep    2
+    Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     #.选择中国   运费价格10
@@ -223,7 +223,7 @@ checkout_118
     ...    shipping_name=shipping_yunfei
     ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
-    Sleep    2
+    Reload Page And Start Ajax
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     Add Address Common Step
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_price}     $10.00
@@ -268,7 +268,7 @@ checkout_163
     #.激活stripe 信用卡支付方式
     kwpayment.activate_payment_credit_card_py
     #添加是shipping address
-    Sleep    5
+    Reload Page And Start Ajax
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国
     #添加是shipping address
@@ -294,7 +294,7 @@ checkout_168
     ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     #添加是shipping address
-    Sleep    2
+    Reload Page And Start Ajax
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国   运费价格10
     #添加是shipping address
@@ -317,7 +317,7 @@ checkout_169
     ...    shipping_plan=[{"name":"frg","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     #添加是shipping address
-    Sleep    2
+    Reload Page And Start Ajax
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国   运费价格10
     #添加是shipping address
@@ -340,7 +340,7 @@ checkout_194
     ...    shipping_plan=[{"name":"方案1","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     #添加是shipping address
-    Sleep    2
+    Reload Page And Start Ajax
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国   运费价格10
     #添加是shipping address
