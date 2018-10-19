@@ -28,6 +28,7 @@ Checkout Case Setup
     Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     Select Window    New
 
+
 Add Address Common Step
     [Documentation]    添加地址公共部分
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123

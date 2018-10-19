@@ -11,9 +11,19 @@ ${locatorB_couponCodeNew_button_chooseSomeProducts}    dom:document.querySelecto
 ${locatorB_couponCodeNew_icon_continueToAdd}    dom:document.querySelectorAll('[class="anticon anticon-plus"]')    # 添加
 ${locatorB_couponCodeNew_text_hadAdded}    dom:document.querySelectorAll('p[class*="product"]')[0]    #
 ${locatorB_couponCodeNew_input_couponCode}    id:code    #
-${locatorB_couponCodeNew_select_couponStyle}    dom:document.querySelectorAll('[class="ant-select-selection__rendered"]')[0]    #
+${locatorB_couponCodeNew_select_couponStyle}    dom:document.querySelectorAll('[class="ant-select-selection__rendered"]')[0]    #折扣类型，折扣券
 ${locatorB_couponCodeNew_selectItem_discountCoupon}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[0]    #
-${locatorB_couponCodeNew_selectItem_cashCoupon}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[1]    #
+${locatorB_couponCodeNew_selectItem_cashCoupon}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[1]    #折扣类型，优惠券
+${locatorB_couponCodeNew_selectTime_start}    dom:document.querySelectorAll('[class="ant-calendar-picker-input ant-input"]')[0]      #.优惠券 活动开始时间选择
+${locatorB_couponCodeNew_selectTime_end}    dom:document.querySelectorAll('[class="ant-calendar-picker-input ant-input"]')[1]     #.优惠券 活动结束时间选择
+${locatorB_couponCodeNew_selectTime_startInput}    dom:document.querySelectorAll('[class*="ant-calendar-input"]')[1]      #.优惠券 活动开始时间输入
+${locatorB_couponCodeNew_selectTime_endInput}    dom:document.querySelectorAll('[class*="ant-calendar-input"]')[1]      #.优惠券 活动结束时间输入
+${locatorB_couponCodeNew_selectTime_confirm}    dom:document.querySelectorAll('[class*="ant-calendar-ok-btn"]')[0]     #.优惠券 选择时间确认按钮
+${locatorB_couponCodeNew_selectTime_notEndTime}    dom:document.querySelectorAll('[id="state.date_end_unlimited"]')[0]    #.不限制结束时间 id="state.date_end_unlimited"
+${locatorB_couponCodeNew_selectTime_notEndTimeStart}    dom:document.querySelectorAll('[class="ant-form-item-children"] [class*="ant-checkbox"]')[1]     #判断按钮是否选中状态  ant-checkbox ant-checkbox-checked
+${locatorB_couponCodeNew_text_input_promoCode}    dom:document.querySelectorAll('[id="code"]')[0]    #.优惠码输入框
+${locatorB_couponCodeNew_text_input_num}    dom:document.querySelectorAll('[id="state.total_num"]')[0]       #.优惠券 数量  state.total_num
+${locatorB_couponCodeNew_input_noLimit}    dom:document.querySelectorAll('[id="state.total_num_unlimited"]')[0]      #.优惠券 数量 不限多选按钮 state.total_num_unlimited
 
 ${locatorB_couponCodeNew_items_listProduct}    ${locatorB_table_listItems}    # 商品列表
 
@@ -27,7 +37,7 @@ ${locatorB_couponCodeNew_text_firstProduct_operation}    ${locatorB_table_listIt
 
 #.locatorB_couponCode
 ${locatorB_couponCode_items_listCoupon}    ${locatorB_table_listItems}    # 列表中的优惠码集合
-${locatorB_couponCode_button_all}    dom:document.querySelectorAll('div[class*="ant-tabs-tab"]')[0]
+${locatorB_couponCode_button_all}    dom:document.querySelectorAll('div[class*="ant-tabs-tab"]')[0]     #全部
 ${locatorB_couponCode_button_before}    dom:document.querySelectorAll('div[class*="ant-tabs-tab"]')[1]   # 未开始
 ${locatorB_couponCode_button_doing}    dom:document.querySelectorAll('div[class*="ant-tabs-tab"]')[2]    # 进行中
 ${locatorB_couponCode_button_finish}    dom:document.querySelectorAll('div[class*="ant-tabs-tab"]')[3]    # 已结束
