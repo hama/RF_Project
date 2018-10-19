@@ -84,6 +84,12 @@ Wait Exist And Click Element
 #    Wait Until Element Is Enabled    ${element_locator}
     Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
 
+Wait Enabled And Click Element
+    [Arguments]    ${element_locator}    ${timeout}=7s    ${retry_time}=5x
+    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    Wait Until Element Is Enabled    ${element_locator}
+    Wait Until Keyword Succeeds    ${timeout}    ${retry_time}    Click Element    ${element_locator}
+
 Sleep And Click Element
     [Arguments]    ${element_locator}    ${sleep_time}=3    ${timeout}=7s    ${retry_time}=5x
     [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试

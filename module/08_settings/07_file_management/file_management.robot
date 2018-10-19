@@ -37,7 +37,7 @@ uploadFile005
     Wait Enabled And Choose File    ${locatorB_upfile_add_btn}    ${file_products_addImg2}    0
     Wait Until Page Contains Locator    ${locatorB_upfile_firstTr_elm}
     ${res}    Execute JavaScript    return document.querySelectorAll('tbody tr td')[2].innerHTML
-    Should Be True    '${res}'=='<div>mv.jpg</div>'
+    Should Be True    '${res}'=='<div>image01.jpg</div>'
     
 uploadFile006
     [Documentation]    "1.在产品界面点击添加按钮,2.查看结果" > 打开本地文件选择窗口
