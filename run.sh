@@ -103,7 +103,12 @@ else
 		module/08_settings/04_tax/tax_rate.robot \
 		module/08_settings/07_file_management/file_management.robot \
 		module/09_checkout/01_Checkout_Normal_Page/*
-	rebot --merge -d logs/ logs/output.xml logs/rerun/output.xml
+
+	if [ -d "logs/rerun" ]; then
+		line=`grep '<suite .*id="s1".*>' output.xml`
+		sed -i "s@<suite.*id=.s1.*>@$line@" logs/rerun/output.xml
+		rebot --merge -d logs/ logs/output.xml logs/rerun/output.xml
+	fi
 fi
 
 # 执行email_utils.py
