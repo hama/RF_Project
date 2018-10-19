@@ -114,7 +114,8 @@ else
 		echo $line
 		echo "before logs/rerun/output.xml"
 		grep '<suite .*id="s1".*>' logs/rerun/output.xml
-		sed -i "s@<suite.*id=.s1.*>@$line@" logs/rerun/output.xml
+		sed -i "3d" logs/rerun/output.xml
+		sed -i '2 i$line' logs/rerun/output.xml
 		echo "after logs/rerun/output.xml"
 		grep '<suite .*id="s1".*>' logs/rerun/output.xml
 		rebot --merge -d logs/ logs/output.xml logs/rerun/output.xml
