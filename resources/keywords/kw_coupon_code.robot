@@ -8,6 +8,7 @@ Coupon Code Suite Setup
     [Documentation]
     Login With Default User
 
+
 Coupon Code Suite Teardown
     [Documentation]
     Close Test Suite Browser

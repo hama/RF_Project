@@ -89,10 +89,11 @@ coupon_code090
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    2018-10-30 20:00:00
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_promoCode}    ${empty}
-    Wait And Input Text    ${locatorB_couponCodeNew_text_input_promoCode}    AAAAAA
+    ${randomcode}     kwcoupon.get_coupon_code_random_code_py
+    Wait And Input Text    ${locatorB_couponCodeNew_text_input_promoCode}    ${randomcode}
     Wait And Click Element    ${locatorB_button_save00}
     ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_couponCode}
-    Should Be Equal    ${text}    AAAAAA
+    Should Be Equal    ${text}    ${randomcode}
 
 coupon_code098
     [Documentation]    验证新建优惠码界面，数量输入框中输入合法内容时，可保存成功
@@ -121,7 +122,6 @@ coupon_code099
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    2018-10-30 20:00:00
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_num}    ${empty}
-
     ${class} =    Get Element Attribute    ${locatorB_couponCodeNew_input_noTotalNum}    class
     Run Keyword If    '${class}'=='ant-checkbox'    Wait And Click Element    ${locatorB_couponCodeNew_input_noLimit}
     Wait And Click Element    ${locatorB_button_save00}
@@ -182,7 +182,7 @@ coupon_code117
     Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    折扣券 无门槛
     Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
     Wait And Click Element    ${locatorB_couponCodeNew_selectItem_discountCoupon}
-    Wait And Click Element    ${locatorB_couponCodeNew_text_input_notThreshold}
+    Wait Exist And Click Element    ${locatorB_couponCodeNew_text_input_notThreshold}
     Wait And Click Element    ${locatorB_button_save00}
     ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityRules}
     Should Be Equal    ${text}    无门槛10% off
@@ -224,8 +224,7 @@ coupon_code130
     Wait And Click Element    ${locatorB_couponCodeNew_selectItem_cashCoupon}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_preferential}     ${empty}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_discount}     ${empty}
-    Sleep     2
-    Click Element    ${locatorB_couponCodeNew_text_input_notThreshold}
+    Wait Exist And Click Element    ${locatorB_couponCodeNew_text_input_notThreshold}
     Wait And Click Element    ${locatorB_button_save00}
     ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityRules}
     Should Be Equal    ${text}    无门槛减10USD
