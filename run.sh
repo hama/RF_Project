@@ -110,10 +110,13 @@ else
 	if [ -d "logs/rerun" ]
 	then
 		line=`grep '<suite .*id="s1".*>' logs/output.xml`
+		echo "line"
 		echo $line
+		echo "before logs/rerun/output.xml"
+		grep '<suite .*id="s1".*>' logs/rerun/output.xml
 		sed -i "s@<suite.*id=.s1.*>@$line@" logs/rerun/output.xml
-		echo "aaaaa"
-		grep '<suite .*id="s1".*>' logs/output.xml
+		echo "after logs/rerun/output.xml"
+		grep '<suite .*id="s1".*>' logs/rerun/output.xml
 		rebot --merge -d logs/ logs/output.xml logs/rerun/output.xml
 		echo "bbbbb"
 	fi
