@@ -83,26 +83,26 @@ else
 	echo 'test_module_default'
     robot -v is_headless:True -d logs/ \
 		module/00_login/login.robot \
-		module/00_login/logout.robot
-#		module/02_order/* \
-#		module/03_product/* \
-#		module/07_decoration/02_checkout_process/setings_checkout.robot \
-#		module/08_settings/01_basic_info/store.robot \
-#		module/08_settings/03_shipping/shipping.robot \
-#		module/08_settings/04_tax/tax_rate.robot \
-#		module/08_settings/07_file_management/file_management.robot \
-#		module/09_checkout/01_Checkout_Normal_Page/*
+		module/00_login/logout.robot \
+		module/02_order/* \
+		module/03_product/* \
+		module/07_decoration/02_checkout_process/setings_checkout.robot \
+		module/08_settings/01_basic_info/store.robot \
+		module/08_settings/03_shipping/shipping.robot \
+		module/08_settings/04_tax/tax_rate.robot \
+		module/08_settings/07_file_management/file_management.robot \
+		module/09_checkout/01_Checkout_Normal_Page/*
 	robot -v is_headless:True --rerunfailed logs/output.xml -d logs/rerun/ \
 		module/00_login/login.robot \
-		module/00_login/logout.robot
-#		module/02_order/* \
-#		module/03_product/* \
-#		module/07_decoration/02_checkout_process/setings_checkout.robot \
-#		module/08_settings/01_basic_info/store.robot \
-#		module/08_settings/03_shipping/shipping.robot \
-#		module/08_settings/04_tax/tax_rate.robot \
-#		module/08_settings/07_file_management/file_management.robot \
-#		module/09_checkout/01_Checkout_Normal_Page/*
+		module/00_login/logout.robot \
+		module/02_order/* \
+		module/03_product/* \
+		module/07_decoration/02_checkout_process/setings_checkout.robot \
+		module/08_settings/01_basic_info/store.robot \
+		module/08_settings/03_shipping/shipping.robot \
+		module/08_settings/04_tax/tax_rate.robot \
+		module/08_settings/07_file_management/file_management.robot \
+		module/09_checkout/01_Checkout_Normal_Page/*
 
 	# 若存在rerun文件夹，即重跑了一遍失败用例。
 	# 则使用当前logs/output.xml文件的<suite>替换logs/rerun/output.xml的
@@ -110,16 +110,9 @@ else
 	if [ -d "logs/rerun" ]
 	then
 		line=`grep '<suite .*id="s1".*>' logs/output.xml`
-		echo "line"
-		echo $line
-		echo "before logs/rerun/output.xml"
-		grep '<suite .*id="s1".*>' logs/rerun/output.xml
 		sed -i "3d" logs/rerun/output.xml
 		sed -i "2a$line" logs/rerun/output.xml
-		echo "after logs/rerun/output.xml"
-		grep '<suite .*id="s1".*>' logs/rerun/output.xml
 		rebot --merge -d logs/ logs/output.xml logs/rerun/output.xml
-		echo "bbbbb"
 	fi
 fi
 
