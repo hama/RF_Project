@@ -113,6 +113,7 @@ else
 		echo $line
 		sed -i "s@<suite.*id=.s1.*>@$line@" logs/rerun/output.xml
 		echo "aaaaa"
+		grep '<suite .*id="s1".*>' logs/output.xml
 		rebot --merge -d logs/ logs/output.xml logs/rerun/output.xml
 		echo "bbbbb"
 	fi
