@@ -322,6 +322,7 @@ reviews037
     Reload Page And Start Ajax
     Select All Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_link_listProductName}[0]
+    Sleep    1
     Wait And Click Element    ${locatorB_productsReviews_switch_listUnpublished}[0]
 	Wait Until Page Contains Locator    ${locatorB_productsReviews_switch_listPublished}
 
@@ -343,6 +344,7 @@ reviews040
     Reload Page And Start Ajax
     Select All Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_link_listProductName}[0]
+    Sleep    2
     Wait And Click Element    ${locatorB_productsReviews_switch_listPublished}[0]
 	Wait Until Page Contains Locator    ${locatorB_productsReviews_switch_listUnpublished}
 
@@ -364,6 +366,7 @@ reviews043
     Reload Page And Start Ajax
     Select All Comment Tag
     Wait And Click Element    ${locatorB_productsReviews_link_listProductName}[0]
+    Sleep    2
     Wait And Click Element Then Confirm    ${locatorB_productsReviews_icon_listDelete}[0]
 	Wait Until Page Not Contains Locator    ${locatorB_productsReviews_text_listProductName}
 
