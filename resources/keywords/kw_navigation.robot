@@ -133,7 +133,6 @@ Go To Employee Account Page
     ...    ELSE    Wait And Click Element    ${locatorB_setting_employee}
     Wait Until Page Contains    ${contextB_account_employeeManagement}
     Location Should Be    ${url_accounts}
-    Sleep    1
 
 Go To Uploadfile Page
     [Documentation]    跳转到 文件管理页面
