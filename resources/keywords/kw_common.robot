@@ -1,5 +1,5 @@
 *** Settings ***
-Library           SeleniumLibrary    run_on_failure=NOTHING    implicit_wait=5.0
+Library           SeleniumLibrary    run_on_failure=NOTHING    implicit_wait=7.0
 Library           OperatingSystem
 Library           DateTime
 Library           ${CURDIR}/../../lib/customlib/kwcart.py
