@@ -18,7 +18,7 @@ ${locatorB_login_input_vcode}    dom:document.querySelectorAll('input[data-robot
 ${locatorB_login_input_inviteCode}    dom:document.querySelectorAll('input[data-robot="ph_invite_code"]')[0]    #.邀请码输入框
 
 ${locatorB_logout_icon_logout}    dom:document.querySelectorAll('a[data-robot="logout"]')[0]    #.退出登录
-${locatorB_logout_icon_individualAccount}    dom:document.querySelectorAll('a[data-robot="individual_account"]')[0]    #.个人账户
+${locatorB_logout_icon_individualAccount}    dom:document.querySelectorAll('[data-robot="individual_account"]')[0]    #.个人账户
 
 
 
