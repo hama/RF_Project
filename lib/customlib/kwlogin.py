@@ -42,6 +42,8 @@ def login_py(**data_config):
     # uid为店铺id
     uid = json.loads(res.content)['data']['id']
     cookie = '; '.join(['='.join(item) for item in res.cookies.items()])
+    print {"home_page_url": home_page_url, "datas_contact": datas_contact, "datas_password": datas_password,
+           "datas_domain": datas_domain}
     print {"cookie": cookie, "uid": uid}
     return {"cookie": cookie, "uid": uid}
 
