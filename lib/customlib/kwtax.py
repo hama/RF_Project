@@ -7,8 +7,8 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def tax_list_py(query_str={}, cookie=init_cookie):
-    url = home_page_url + '/api/tax/list'
+def tax_py(query_str={}, cookie=init_cookie):
+    url = home_page_url + '/api/tax'
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -24,7 +24,7 @@ def add_default_tax_price_py(cookie=init_cookie):
     :return:
     '''
     create_only_one_shipping_py(cookie=cookie)
-    tax_list_data = tax_list_py(cookie=cookie)['content']['data']['list']
+    tax_list_data = tax_py(cookie=cookie)['content']
 
     data = copy.deepcopy(tax_refresh_data)
     data['country_id'] = tax_list_data[0]['country_id']
