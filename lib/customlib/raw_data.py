@@ -298,7 +298,7 @@ comment_data = {
 
 shipping_data = {
     'shipping_name': 'autotest_shipping',
-    'shipping_area': '[{"country_id":"44","zone_ids":"-1"}]',
+    'shipping_area': '[{"country_id":"45","zone_ids":"-1"}]',
     'has_other_country': 0,
     'shipping_plan': '[{"name":"price_fee","shipping_method":"price","range_min":0,'
                      '"range_max":-1,"rate_amount":0,"payment_list":"cod;online;custom;credit_card",'

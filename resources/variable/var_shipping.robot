@@ -23,10 +23,10 @@ ${locatorB_shippingNew_btn_delShipping}    dom:document.querySelectorAll('[id="t
 
 
 # locator shippingNew popUp add country
-${locatorB_shippingNew_popUp_arrow_listArrow}    dom:document.querySelectorAll('li[class*="show_tree"] span[class~="ant-tree-switcher"]')    #.国家列表-箭头list
-${locatorB_shippingNew_popUp_checkbox_firstCountry}    dom:document.querySelectorAll('ul[class~="ant-tree-child-tree"] span[class="ant-tree-checkbox-inner"]')[0]    #.国家列表-第一个国家checkbox
-${locatorB_shippingNew_popUp_checkbox_secondCountry}    dom:document.querySelectorAll('ul[class~="ant-tree-child-tree"] span[class="ant-tree-checkbox-inner"]')[1]    #.国家列表-第一个国家checkbox
-${locatorB_shippingNew_popUp_checkbox_listContinents}    dom:document.querySelectorAll('ul[class~="ant-tree"] > li > span.ant-tree-checkbox > span')    #.国家列表-list of Continents checkbox
+${locatorB_shippingNew_popUp_arrow_listArrow}    dom:document.querySelectorAll('[class*="show_tree"] [class~="ant-tree-switcher"]')    #.国家列表-箭头list
+${locatorB_shippingNew_popUp_checkbox_firstCountry}    dom:document.querySelectorAll('[class*="show_tree"] [class~="ant-tree-child-tree"] span[class="ant-tree-checkbox-inner"]')[0]    #.国家列表-第一个国家checkbox
+${locatorB_shippingNew_popUp_checkbox_secondCountry}    dom:document.querySelectorAll('[class*="show_tree"] [class~="ant-tree-child-tree"] span[class="ant-tree-checkbox-inner"]')[1]    #.国家列表-第一个国家checkbox
+${locatorB_shippingNew_popUp_checkbox_listContinents}    dom:document.querySelectorAll('[class~="ant-tree"] > li > span.ant-tree-checkbox > span')    #.国家列表-list of Continents checkbox
 
 ${locatorB_shippingNew_popUp_input_countryName}    dom:document.querySelectorAll('input[placeholder="国家名"]')[0]    #.添加国家-顶部输入国家输入框
 ${locatorB_shippingNew_popUp_btn_search}    id:test_shipping_country_modal_search_btn    #.添加国家-搜索按钮

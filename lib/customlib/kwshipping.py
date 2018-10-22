@@ -7,49 +7,6 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def add_shipping_py(has_other_country=0, has_freight=0, cookie=init_cookie):
-    """
-    添加中国物流
-    :param has_other_country: 0 = 普通国家 | 1 = 其他国家
-    :param has_freight: 1 = 重量运费  | 2 = 数量运费 | 0 = 价格运费
-    :return: True | False
-    """
-    add_url = home_page_url + "/api/shipping/refresh"
-    if has_other_country != 0: has_other_country = 1
-    has_freight = int(has_freight)
-    if has_freight == 1:
-        shipping_plan = '[{"name":"Freight Standard shipping","shipping_method":"weight","range_min":"0.00", ' \
-                        '"range_max":-1,"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]'
-    elif has_freight == 2:
-        shipping_plan = '[{"name":"Quantity Standard shipping","shipping_method":"quantity","range_min":"0.00",' \
-                        '"range_max":-1,"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]'
-    elif has_freight == 3:
-        shipping_plan = '[{"name":"Freight Standard shipping","shipping_method":"weight","range_min":"0.00",' \
-                        '"range_max":-1,"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card",' \
-                        '"desc":"","range_unit":"g"},{"name":"Quantity Standard shipping",' \
-                        '"shipping_method":"quantity","range_min":"0.00","range_max":-1,"rate_amount":"0.00",' \
-                        '"payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"},{"name": ' \
-                        '"Standard shipping", "shipping_method": "price", "range_min": 0.00, "range_max": -1,' \
-                        '"rate_amount": 10.00,  "payment_list": "cod;online;custom;credit_card", "desc": "","range_unit": "g"}]'
-    else:
-        shipping_plan = '[{"name":"Standard shipping","shipping_method":"price","range_min":0.00,"range_max":-1,' \
-                        '"rate_amount":10.00,"payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]'
-    add_data = {
-        'shipping_name': '自动化测试添加物流',
-        'shipping_area': '[{"country_id":"44","zone_ids":"-1"}]',
-        'has_other_country': has_other_country,
-        'shipping_plan': shipping_plan
-    }
-    try:
-        add_res = requests.post(url=add_url, headers={"cookie": cookie['cookie']}, json=add_data)
-        if json.loads(add_res.content)['state'] == 0:
-            return json.loads(add_res.content)['data']['shipping_id']
-        else:
-            return False
-    except Exception as e:
-        print e
-
-
 def shipping_refresh_py(data, cookie=init_cookie):
     url = home_page_url + "/api/shipping/refresh"
     return do_post(url, data, cookie=cookie)
