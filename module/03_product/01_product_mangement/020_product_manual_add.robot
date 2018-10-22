@@ -153,6 +153,36 @@ products023.2
     Should Be Equal As Integers    ${size}    2
     Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_switch_listDiscontinued}    ${2}
 
+products034
+    [Documentation]    修改包含子产品的商品后保存
+    [Tags]    P0    threshold
+    kwproduct.add_max_product_with_sub_py
+    Reload Page And Start Ajax
+    Select All Product Tag
+    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+    Wait And Input Text    ${locatorB_productsNew_input_title}    newproduct
+    Wait And Click Element    ${locatorB_productsNew_button_save}
+    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
+    Go To Product Management Page
+    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
+    ${productName}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
+    Should Be Equal    '${productName}'    'newproduct'
+
+products035
+    [Documentation]    修改不包含子产品的商品后保存
+    [Tags]    P0    threshold
+    kwproduct.add_launched_product_py
+    Reload Page And Start Ajax
+    Select All Product Tag
+    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+    Wait And Input Text    ${locatorB_productsNew_input_title}    newproduct
+    Wait And Click Element    ${locatorB_productsNew_button_save}
+    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
+    Go To Product Management Page
+    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
+    ${productName}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
+    Should Be Equal    '${productName}'    'newproduct'
+
 products037
     [Documentation]    验证能上架一个或多个商品成功
     [Tags]    P0    threshold
