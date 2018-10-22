@@ -16,7 +16,8 @@ datas_domain = config.get("common_account", "datas_domain")
 datas_invite_code = config.get("common_account", "datas_invite_code")
 db_service_config = json.loads(config.get("common_db", "db_service_config"))
 db_shop_config = json.loads(config.get("common_db", "db_shop_config"))
-myshoplaza_url = 'https://' + datas_domain + '.myshoplaza.com'
+# myshoplaza_url = 'https://' + datas_domain + '.myshoplaza.com'
+myshoplaza_url = 'https://' + datas_domain + '.sandbox-preview.shoplazza.com'
 # myshoplaza_url = 'https://' + datas_domain + '.preview.shoplazza.com'
 
 
