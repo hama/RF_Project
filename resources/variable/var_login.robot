@@ -6,7 +6,7 @@ Resource          var_common.robot
 ${locatorB_login_btn_login}      dom:document.querySelectorAll('button[data-robot="login"]')[0]    #.登陆按钮
 ${locatorB_login_btn_register}    dom:document.querySelectorAll('a[data-robot="register"]')[0]     #.注册按钮
 ${locatorB_login_btn_findpwd}       dom:document.querySelectorAll('a[data-robot="forgotten_pwd"]')[0]     #.忘记密码按钮
-${locatorB_login_btn_employeeLogin}       dom:document.querySelectorAll('a[data-robot="employee_login"]')[0]     #.员工登录按钮
+${locatorB_login_btn_employeeLogin}       dom:document.querySelectorAll('a[data-robot="employee_login"]')[0]   #.员工登录按钮
 ${locatorB_login_btn_sendVcode}       dom:document.querySelectorAll('button[data-robot="send_vcode"]')[0]     #.发送验证码按钮
 ${locatorB_login_input_account}       dom:document.querySelectorAll("input[data-robot='ph_account']")[0]     #.账号输入框
 #${locatorB_login_input_account}       id:account    #.账号输入框

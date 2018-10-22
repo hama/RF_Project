@@ -29,6 +29,7 @@ Checkout Case Setup
     [Documentation]    每个用例执行开始步骤
     Go To First Product C Interface
 
+
 Add Address Common Step
     [Documentation]    添加地址公共部分
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123

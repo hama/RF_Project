@@ -30,8 +30,8 @@ ${locatorC_checkout_input_checkNum}    dom:document.querySelectorAll("input[clas
 #.checkout - address
 ${locatorB_productsMgmt_icon_preview}      dom:document.querySelectorAll('.dj-preview')[0]  #B端商品预览按钮
 
-${locatorB_checkout_addressCoupon_ipt}    dom:document.querySelectorAll("#coupon_code_input")[0]    #.checkout 输入优惠券框
-${locatorB_checkout_addressClickCoupon_btn}    dom:document.querySelectorAll("#coupon_apply")[0]    #.checkout 填写地址页面 - 点击应用优惠券按钮
+${locatorB_checkout_addressCoupon_ipt}    dom:document.querySelectorAll("[id='coupon_code_input']")[0]    #.checkout 输入优惠券框
+${locatorB_checkout_addressClickCoupon_btn}    dom:document.querySelectorAll("[id='coupon_apply']")[0]    #.checkout 填写地址页面 - 点击应用优惠券按钮
 ${locatorB_checkout_address_btn}    dom:document.querySelectorAll(".address_btn")[0]    #.checkout点击by-now后的添加地址按钮
 ${locatorB_checkout_address_first_name}    dom:document.querySelectorAll("input[name='first_name']")[0]    #.添加地址后-first_name输入框
 ${locatorB_checkout_address_last_name}    dom:document.querySelectorAll("input[name='last_name']")[0]    #.添加地址后-last_name输入框

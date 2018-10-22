@@ -87,6 +87,7 @@ checkout_026
     #.获取优惠那一栏的值
     Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll(".checkout-prices-value")[1]    - $10.00
 
+    #门槛无标注，
 checkout_027
     [Documentation]    验证checkout shipping页面输入错误的优惠码时，点击apply，会给出对应提示 > 2.优惠码输入框中输入任意内容：..0001,3.点击apply > 优惠码输入框下方出现错误提示
     [Tags]    P1
@@ -96,6 +97,7 @@ checkout_027
     Wait And Click Element    ${locatorB_checkout_addressClickCoupon_btn}
     Wait Until Page Contains    This discount does not exist.
 
+    #。已实现，用例有标注
 checkout_028
     [Documentation]     验证checkout shipping页面，优惠码输入框中的取消使用优惠码按钮可清空输入框  >  1.输入框中输入本次购买商品可用的优惠码并且点击apply按钮使用   2.点击优惠码输入框中的取消使用按钮
     [Tags]    P0    threshold
@@ -337,6 +339,7 @@ checkout_121
     Wait And Click Element    ${locatorC_checkout_paymentCard_return}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_first_name}
 
+    #。用例标注为二期功能，已实现
 checkout_125
     [Documentation]         验证B端收款渠道中没有开启任何支付方式时，checkout 支付页面payment method栏不显示支付方式，并显示提示文案  >  1.B端收款渠道中关闭所有支付方式  2.C端购买商品进入checkout 支付页面 3.查看payment method栏
     [Tags]    P0    threshold
