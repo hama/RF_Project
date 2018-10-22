@@ -124,7 +124,7 @@ def get_exist_commentsid_py():
 if __name__ == '__main__':
     # add_published_comment_py()
     config01 = {'content': 'content00'}
-    config02 = {'content': 'content01'}
+    # config02 = {'content': 'content01'}
     add_comment_with_conf_py(config01)
-    add_comment_with_conf_py(config02)
+    # add_comment_with_conf_py(config02)
     # print get_latest_commentid_py()

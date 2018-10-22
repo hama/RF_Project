@@ -41,12 +41,10 @@ def set_store_info_with_conf_py(conf={}, cookie=init_cookie):
     key_list = conf.keys()
     if 'name' not in key_list:
         data['name'] = datas_domain
-    if 'store_id' not in key_list:
-        data['store_id'] = store_info_py()['content']['data']['store_id']
-    if 'create_time' not in key_list:
-        data['create_time'] = store_info_py()['content']['data']['create_time']
-    if 'update_time' not in key_list:
-        data['update_time'] = str(int(time.time()))
+    if 'created_at' not in key_list:
+        data['created_at'] = store_info_py()['content']['data']['created_at']
+    if 'updated_at' not in key_list:
+        data['updated_at'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
     return store_update_py(data, cookie=cookie)
 
