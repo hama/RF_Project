@@ -16,7 +16,7 @@ collection001
 	Should Be equal    '${text}'    '商品专辑'
 
 collection007
-    [Documentation]    进入商品专辑界面，查看左上角标题
+    [Documentation]    进入专辑详情页面
     [Tags]    P0    threshold
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
@@ -24,17 +24,19 @@ collection007
 	Wait Until Page Contains Text    商品(0)
 
 collection008
-    [Documentation]    进入商品专辑界面，查看左上角标题
+    [Documentation]    不能同时展开两个专辑详情
     [Tags]    P0    threshold
 	kwcollection.add_collection_with_pic_py
 	kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     # 含2个listDetailOpen的元素
     Count Of Element Should Be Equal With Wait    ${locatorB_productsCollection_icon_listDetailOpen}    ${2}
+    Sleep    1
     # 点击第一个专辑的详情按钮
 	Wait And Click Element    ${locatorB_productsCollection_icon_listDetailOpen}[0]
     Count Of Element Should Be Equal With Wait    ${locatorB_productsCollection_icon_listDetailFold}    ${1}
     Count Of Element Should Be Equal With Wait    ${locatorB_productsCollection_icon_listDetailOpen}    ${1}
+    Sleep    1
     # 点击第二个专辑的详情按钮
     Wait And Click Element    ${locatorB_productsCollection_icon_listDetailOpen}[0]
     Count Of Element Should Be Equal With Wait    ${locatorB_productsCollection_icon_listDetailFold}    ${1}
@@ -46,6 +48,7 @@ collection012
     [Tags]    P0    threshold
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
+    Sleep    1
 	Wait And Click Element    ${locatorB_productsCollection_icon_listDel}[0]
 	Wait Until Page Contains Text     确定删除吗？
 
@@ -54,6 +57,7 @@ collection013
     [Tags]    P0    threshold
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
+    Sleep    1
 	Wait And Click Element    ${locatorB_productsCollection_icon_listDel}[0]
 	Wait And Click Element    ${locatorB_global_alert_confirm}
 	Wait Until Page Contains Text     暂无数据
@@ -73,6 +77,7 @@ collection016
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
 	Wait Exist And Click Element    ${locatorB_productsCollection_checkbox_chooseCategories}
+	Sleep    1
 	Wait And Click Element    ${locatorB_productsCollection_button_delProducts}
 	Wait And Click Element    ${locatorB_global_alert_confirm}
 	Wait Until Page Contains Text     暂无数据
@@ -215,6 +220,7 @@ collection095
     Wait And Click Element    ${locatorB_collectionDetail_icon_quickSearchToShow}
     Wait And Click Element    ${locatorB_collectionDetail_text_quickSearchListItemsName}[0]
     Wait Until Page Contains Text    确定离开当前页面吗？
+    Sleep    1
     Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
     Value Of Element Should Be Equal With Wait    ${locatorB_collectionDetail_input_title}    autotest_title0
 
