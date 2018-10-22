@@ -323,12 +323,12 @@ payment_pay_data = {
     'payment_line': {
         'id': '1',
         'name': 'Cash on Delivery',
-        'desc': None,
-        'tips': None,
-        'logo': None,
+        'desc': '',
+        'tips': '',
+        'logo': '',
         'payment_channel': 'cod',
-        'payment_rate': None,
-        'transaction_fee': None,
+        'payment_rate': '0.0000',
+        'transaction_fee': '0.0000',
         'is_enable': '1',
         'is_active': True,
         'payment_method': 'cod',
@@ -347,7 +347,8 @@ payment_pay_data = {
         'country_code': '',
         'province_code': '',
         'zip': ''
-    }
+    },
+    'checkout_token': 'PYwViKKDF9v0nOuMnuAtCtbOYzooA1J1DrnWh2NuLE4%3D'
 }
 
 place_order_data = {
@@ -402,7 +403,8 @@ place_order_data = {
     "customer_info": {
         "note": "",
         "newsletter": 1
-    }
+    },
+    "checkout_token": "PYwViKKDF9v0nOuMnuAtCtbOYzooA1J1DrnWh2NuLE4%3D"
 }
 
 price_calculate_data = {
@@ -423,14 +425,24 @@ price_calculate_data = {
         ],
         "id": "21"
     },
+    "prices": {
+        "subtotal_price": "444.00",
+        "shipping_price": "0.00",
+        "tax_price": "0.00",
+        "discount_code_price": "0.00",
+        "discount_price": "0.00",
+        "total_price": "444.00",
+        "discount_line_item_price": "0.00"
+    },
     "shipping_address": {
         "country_code": "CN",
-        "province_code": "BE"
+        "province_code": "BJG"
     },
     "discount_code": "",
     "customer_info": {
 
-    }
+    },
+    "checkout_token": "PYwViKKDF9v0nOuMnuAtCtbOYzooA1J1DrnWh2NuLE4%3D"
 }
 
 # /api/payment/method这个接口的编辑数据
@@ -463,7 +475,7 @@ cart_add_data = {
 
 shipping_lines_data = {
     'country_code': 'CN',
-    'province_code': 'BE',
+    'province_code': 'BJG',
     'order_token': '2e043a92-46c5-4f26-953a-88f347cd1e08'
 }
 

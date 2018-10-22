@@ -55,21 +55,21 @@ def checkout_place_order_py(data, cookie=init_cookie):
     return do_post(url, data, cookie=cookie)
 
 
-def get_order_token_py(data, cookie=init_cookie):
-    return checkout_create_py(data, cookie)['content']['data']['order_token']
+def get_tokens_py(data, cookie=init_cookie):
+    return checkout_create_py(data, cookie)['content']['data']
 
 
-def get_order_token_by_productid_py(product_id, cookie=init_cookie):
+def get_tokens_by_productid_py(product_id, cookie=init_cookie):
     '''
     通过productid获取order_token
     1、获取variants_id，2、返回产品的order_token
     :param cookie:
     :return:
     '''
-    return get_order_token_by_productidlist_py([product_id], cookie)
+    return get_tokens_by_productidlist_py([product_id], cookie)
 
 
-def get_order_token_by_productidlist_py(product_id_list, cookie=init_cookie):
+def get_tokens_by_productidlist_py(product_id_list, cookie=init_cookie):
     '''
     通过productidlist获取order_token
     1、获取variants_id，2、返回产品的order_token
@@ -86,7 +86,7 @@ def get_order_token_by_productidlist_py(product_id_list, cookie=init_cookie):
 
         line_item_data['variant_id'] = variant_id
         data['line_items'].append(line_item_data)
-    return get_order_token_py(data, cookie)
+    return get_tokens_py(data, cookie)
 
 
 def add_place_order_with_conf_py(conf={}, cookie=init_cookie):
