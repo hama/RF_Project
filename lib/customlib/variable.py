@@ -10,7 +10,7 @@ path = os.path.join(os.path.dirname(__file__), '../../config/common.ini')
 config.read(path)
 
 home_page_url = config.get("common_url", "home_page_url")
-shop_urn = config.get("common_url", "shop_urn")
+shop_urn = config.get("common_urn", "shop_urn")
 datas_contact = config.get("common_account", "datas_contact")
 datas_password = config.get("common_account", "datas_password")
 datas_domain = config.get("common_account", "datas_domain")
