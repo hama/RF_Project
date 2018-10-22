@@ -32,8 +32,8 @@ ${locatorB_productsMgmt_button_all}    dom:document.querySelectorAll(".ant-radio
 ${locatorB_productsMgmt_button_launched}    dom:document.querySelectorAll(".ant-radio-button-wrapper")[1]    # 商品管理页面，已上架商品
 ${locatorB_productsMgmt_button_discontinued}    dom:document.querySelectorAll(".ant-radio-button-wrapper")[2]    # 商品管理页面，已下架商品
 ${locatorB_productsMgmt_icon_grabProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[0]    #商品列表页的商品抓取按钮
-${locatorB_productsMgmt_icon_migrateProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[1]    #商品列表页的店铺搬迁按钮
-${locatorB_productsMgmt_icon_uploadProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[2]    #商品列表页的上传商品按钮
+${locatorB_productsMgmt_icon_migrateProduct}    dom:document.querySelectorAll(".yijianzhuaqu")[0]    #商品列表页的店铺搬迁按钮
+${locatorB_productsMgmt_icon_uploadProduct}    dom:document.querySelectorAll(".piliangshangchuan")[0]    #商品列表页的上传商品按钮
 ${locatorB_productsMgmt_input_uploadProduct}    dom:document.querySelectorAll('input[type="file"]')[0]   #批量上传商品input
 ${locatorB_productsMgmt_button_toImport}    dom:document.querySelectorAll('button[class="ant-btn middle_btn___2ExQc undefined ant-btn-submit"]')[0]    #开始导入
 ${locatorB_productsMgmt_button_confirmAfterImport}    dom:document.querySelectorAll('button[class="ant-btn middle_btn___2ExQc undefined"]')[0]    # 导入之后的确定按钮
