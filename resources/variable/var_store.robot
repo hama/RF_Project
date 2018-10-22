@@ -20,26 +20,3 @@ ${locatorB_store_select_childCurrency}     dom:document.querySelectorAll('#dj di
 ${locatorB_store_select_childTime}     dom:document.querySelectorAll('#dj div.container_8707.setting_c8ce > div:nth-child(2) div:nth-child(2)  div.ant-form-item-control-wrapper div:nth-child(2) li.ant-select-dropdown-menu-item')    #.时区 下拉选择
 #locator button
 ${contextB_store_storeInfo}    店铺信息
-
-#ant-select-dropdown-menu  ant-select-dropdown-menu-root ant-select-dropdown-menu-vertical
-#ant-select-dropdown-menu-item
-#ant-form-item-children
-#ant-row ant-form-item
-#container
-
-#ant-select-dropdown-menu  ant-select-dropdown-menu-root ant-select-dropdown-menu-vertical
-#ant-select-dropdown-menu-item
-
-
-#class="ant-select-dropdown-menu-item"
-
-#dom:document.querySelectorAll('#dj > form > div.container_8707.setting_c8ce > div:nth-child(1) > div > div:nth-child(2) li')
-#dom:document.querySelectorAll('div.container_8707.setting_c8ce > div:nth-child(2) > div > div:nth-child(2) li.ant-select-dropdown-menu-item')
-#dom:document.querySelectorAll('div.container_8707.setting_c8ce div:nth-child(1) div.ant-form-item-control-wrapper div:nth-child(2) li.ant-select-dropdown-menu-item')
-
-#'div[class="container"] div:nth-child(2) li.ant-select-dropdown-menu-item'
-#dj > form > div.container_8707.setting_c8ce > div:nth-child(2) > div > div:nth-child(2) > div > div.ant-form-item-control-wrapper > div > span > div > div:nth-child(2) > div > div > div > ul > li.ant-select-dropdown-menu-item.ant-select-dropdown-menu-item-selected
-#dj > form > div.container_8707.setting_c8ce > div:nth-child(2) > div > div:nth-child(2) > div > div.ant-form-item-control-wrapper > div > span > div > div:nth-child(2) > div > div > div > ul > li.ant-select-dropdown-menu-item
-#dj > form > div.container_8707.setting_c8ce > div:nth-child(2) > div > div:nth-child(1) > div > div.ant-form-item-control-wrapper > div > span > div > div:nth-child(2) > div > div > div > ul > li:nth-child(1)
-#dj > form > div.container_8707.setting_c8ce > div:nth-child(2) > div > div:nth-child(1) > div > div.ant-form-item-control-wrapper > div > span > div > div:nth-child(2) > div > div > div > ul > li:nth-child(3)
-#dj > form > div.container_8707.setting_c8ce > div:nth-child(2) > div > div:nth-child(1) > div > div.ant-form-item-control-wrapper > div > span > div > div:nth-child(2) > div > div > div > ul > li:nth-child(1)
