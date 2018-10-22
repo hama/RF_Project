@@ -86,6 +86,7 @@ else
 		module/00_login/logout.robot \
 		module/02_order/* \
 		module/03_product/* \
+		module/06_marketing/01_coupon_code/coupon_code_smoke.robot \
 		module/07_decoration/02_checkout_process/setings_checkout.robot \
 		module/08_settings/01_basic_info/store.robot \
 		module/08_settings/03_shipping/shipping.robot \
@@ -97,6 +98,7 @@ else
 		module/00_login/logout.robot \
 		module/02_order/* \
 		module/03_product/* \
+		module/06_marketing/01_coupon_code/coupon_code_smoke.robot \
 		module/07_decoration/02_checkout_process/setings_checkout.robot \
 		module/08_settings/01_basic_info/store.robot \
 		module/08_settings/03_shipping/shipping.robot \
