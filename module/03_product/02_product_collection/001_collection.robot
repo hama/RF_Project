@@ -306,11 +306,6 @@ collection132
 	Wait Until Page Contains Locator     ${locatorB_productsCollection_text_firstCollectionNum}
 	Wait Until Page Contains Locator     ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
 
-# 暂时不写
-#collection152
-#    [Documentation]    删除商品
-#    [Tags]    P0    threshold
-
 collection181
     [Documentation]    未保存点击返回按钮退出
     [Tags]    P0    threshold
