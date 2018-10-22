@@ -23,6 +23,7 @@ myshoplaza_url = 'https://' + datas_domain + '.myshoplaza.com'
 img = "http://120.79.196.159:8000/RF/logs/module/result.png"
 # 获取图片
 imgs = upload_oss_py(img)[0]
+print imgs
 path_img = "//cn.cdn.shoplazza.com/" + upload_oss_py(img)[0]
 image = {"lastModified": "1520929852000", "lastModifiedDate": "2018-03-13T08:30:52.000Z", "name": imgs,
          "originFileObj": {"uid": "rc-upload-1535093594875-2"}, "path": imgs, "percent": "100.00",

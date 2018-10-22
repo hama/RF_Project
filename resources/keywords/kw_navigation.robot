@@ -19,7 +19,6 @@ Go To Dealing Order Page
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_order}
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_order_dealing}
     ...    ELSE    Wait And Click Element    ${locatorB_order_dealing}
-    Sleep    2
     Wait Until Page Contains    待处理订单
     Location Should Be    ${url_order_dealing}
     Sleep    1
@@ -31,7 +30,6 @@ Go To Undeal Order Page
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_order}
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_order_undeal}
     ...    ELSE    Wait And Click Element    ${locatorB_order_undeal}
-    Sleep    2
     Wait Until Page Contains    未完成订单
     Location Should Be    ${url_order_undeal}
     Sleep    1
@@ -43,7 +41,6 @@ Go To Product Management Page
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_products}
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_product_management}
     ...    ELSE    Wait And Click Element    ${locatorB_product_management}
-    Sleep    2
     Wait Until Page Contains    商品管理
     Location Should Be    ${url_products}
     Sleep    1
@@ -55,7 +52,6 @@ Go To Product Collection Page
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_products}
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_product_collection}
     ...    ELSE    Wait And Click Element    ${locatorB_product_collection}
-    Sleep    2
     Wait Until Page Contains    商品专辑
     Location Should Be    ${url_collection}
     Sleep    1
@@ -67,7 +63,6 @@ Go To Product Review Page
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_products}
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_product_reviews}
     ...    ELSE    Wait And Click Element    ${locatorB_product_reviews}
-    Sleep    2
     Wait Until Page Contains    商品评论
     Location Should Be    ${url_reviews}
     Sleep    1
@@ -136,10 +131,8 @@ Go To Employee Account Page
     Run Keyword If    '${attr}'=='False'    Sleep    4
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_employee}
     ...    ELSE    Wait And Click Element    ${locatorB_setting_employee}
-    Sleep    2
     Wait Until Page Contains    ${contextB_account_employeeManagement}
     Location Should Be    ${url_accounts}
-    Sleep    1
 
 Go To Uploadfile Page
     [Documentation]    跳转到 文件管理页面

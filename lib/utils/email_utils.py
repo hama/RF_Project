@@ -19,6 +19,8 @@ relative_path = os.path.join(os.path.dirname(__file__), '../..')
 to_addr = [
     # 'wanglinyun@shoplazza.com',
     # 'xiabing@shoplazza.com',
+    # 'heliwen@shoplazza.com',
+    # 'lijunjie@shoplazza.com',
     'qiansuixin@shoplazza.com',
     'huayacheng@shoplazza.com'
 ]

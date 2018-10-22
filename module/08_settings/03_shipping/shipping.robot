@@ -132,7 +132,7 @@ shipping045
     Wait And Click Element    ${locatorB_shipping_btn_startSet}
     Wait And Click Element    ${locatorB_shippingNew_btn_addPriceShipping}
     Element Attribute Should Be Equal With Wait    ${locatorB_shippingNew_popUp_checkbox_freeShipping}    class    ant-checkbox ant-checkbox-checked
-    Wait Enabled And Click Element    ${locatorB_shippingNew_popUp_checkbox_freeShipping}
+    Sleep And Click Element    ${locatorB_shippingNew_popUp_checkbox_freeShipping}
     Element Attribute Should Be Equal With Wait    ${locatorB_shippingNew_popUp_checkbox_freeShipping}    class    ant-checkbox
 
 shipping046
