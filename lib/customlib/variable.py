@@ -10,6 +10,7 @@ path = os.path.join(os.path.dirname(__file__), '../../config/common.ini')
 config.read(path)
 
 home_page_url = config.get("common_url", "home_page_url")
+shop_urn = config.get("common_url", "shop_urn")
 datas_contact = config.get("common_account", "datas_contact")
 datas_password = config.get("common_account", "datas_password")
 datas_domain = config.get("common_account", "datas_domain")
@@ -17,7 +18,7 @@ datas_invite_code = config.get("common_account", "datas_invite_code")
 db_service_config = json.loads(config.get("common_db", "db_service_config"))
 db_shop_config = json.loads(config.get("common_db", "db_shop_config"))
 # myshoplaza_url = 'https://' + datas_domain + '.myshoplaza.com'
-myshoplaza_url = 'https://' + datas_domain + '.sandbox-preview.shoplazza.com'
+myshoplaza_url = 'https://' + datas_domain + shop_urn
 # myshoplaza_url = 'https://' + datas_domain + '.preview.shoplazza.com'
 
 

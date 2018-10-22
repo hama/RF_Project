@@ -10,23 +10,24 @@ sys.setdefaultencoding('utf-8')
 if __name__ == '__main__':
     # 设置执行入参
     parser = argparse.ArgumentParser(description='manual to this script')
-    parser.add_argument('--url', type=str, default='http://sandbox-admin.shoplazza.com')
+    parser.add_argument('--url', type=str, default='https://sandbox-admin.shoplazza.com')
     parser.add_argument('--user', type=str, default='default')
     args = parser.parse_args()
     # 设置用户信息
     config = ConfigParser.ConfigParser()
     path = os.path.join(os.path.dirname(__file__), '../../config/common.ini')
     config.read(path)
-    if 'https://admin.shoplazza.com' in args.url:
+    if 'https://sandbox-admin.shoplazza.com' in args.url:
         # 美服使用固定账号跑用例
-        config.set("common_account", "datas_invite_code", 'DJ2311')
+        config.set("common_account", "datas_invite_code", 'DJ1024')
+        config.set("common_url", "home_page_url", 'http://sandbox-admin.shoplazza.com')
+        config.set("common_urn", "shop_urn", '.sandbox-preview.shoplazza.com')
+        config.set("common_account", "datas_contact", '17665076519')
+        config.set("common_account", "datas_domain", 'homer')
+
         config.set("common_db", "db_service_config", '{"host": "rm-rj9ww1316miq2j87l.mysql.rds.aliyuncs.com",'
                                                      '"port": 3306,"user": "fortest","password": "fortest@123",'
                                                      '"db": "service","charset": "utf8"}')
-        config.set("common_url", "home_page_url", 'https://admin.shoplazza.com')
-        config.set("common_account", "datas_contact", '15220581724')
-        config.set("common_account", "datas_domain", 'chen')
-        #>修改数据库配置
         config.set("common_db","db_shop_config",'{"host": "rm-rj9f22zpw641v45g9.mysql.rds.aliyuncs.com",'
                                                 '"port": 3306,"user": "lansejiebo","password": "lansejiebo@123",'
                                                 '"db": "shop_","charset": "utf8"}')
