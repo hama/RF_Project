@@ -115,10 +115,12 @@ def get_order_token_by_productidlist_py(product_id_list, cookie=init_cookie):
     data['line_items'] = []
     line_item = {'quantity': 1, 'variant_id': 628, 'note': ''}
     for product_id in product_id_list:
+        line_item_data = copy.deepcopy(line_item)
         query_str = {'product_id': product_id}
         variant_id = product_info_py(query_str, cookie)['content']['data']['variants'][0]['id']
-        line_item['variant_id'] = variant_id
-        data['line_items'].append(line_item)
+
+        line_item_data['variant_id'] = variant_id
+        data['line_items'].append(line_item_data)
     return get_order_token_py(data, cookie)
 
 
