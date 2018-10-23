@@ -21,6 +21,7 @@ def login_py(**data_config):
     """
     if (data_config):
         home_page_url = data_config['url']
+        shop_urn = data_config['shop_urn']
         datas_contact = data_config['contact']
         datas_password = data_config['password']
         datas_domain = data_config['domain']
@@ -30,22 +31,41 @@ def login_py(**data_config):
         config.read(path)
 
         home_page_url = config.get("common_url", "home_page_url")
+        shop_urn = config.get("common_urn", "shop_urn")
         datas_contact = config.get("common_account", "datas_contact")
         datas_password = config.get("common_account", "datas_password")
         datas_domain = config.get("common_account", "datas_domain")
     url = home_page_url + "/api/user/login"
 
     datas = {"contact": datas_contact, "password": datas_password, "username": datas_domain}
-    res = requests.post(url=url, headers={}, data=datas)
-    if res is None or res.status_code != 200:
+    response = requests.post(url=url, headers={}, data=datas)
+    if response is None or response.status_code != 200:
         return False
     # uid为店铺id
-    uid = json.loads(res.content)['data']['id']
-    cookie = '; '.join(['='.join(item) for item in res.cookies.items()])
+    uid = json.loads(response.content)['data']['id']
+    cookie = '; '.join(['='.join(item) for item in response.cookies.items()])
+
+    # 添加C端cookie值ADMIN1024SESSID
+    myshoplaza_url = 'https://' + datas_domain + shop_urn + "/cart/count"
+    cookie = set_c_cookie_py(myshoplaza_url, cookie)
+
     print {"home_page_url": home_page_url, "datas_contact": datas_contact, "datas_password": datas_password,
            "datas_domain": datas_domain}
     print {"cookie": cookie, "uid": uid}
     return {"cookie": cookie, "uid": uid}
+
+
+def set_c_cookie_py(url, cookie):
+    '''
+    通过C对端接口，无登录状态，获取cookie值ADMIN1024SESSID
+    :return:
+    '''
+    try:
+        response_data = requests.get(url=url)
+        cookie = cookie + '; ' + '; '.join(['='.join(item) for item in response_data.cookies.items()])
+        return cookie
+    except Exception as e:
+        return e
 
 
 def sign_up_py(**data_config):

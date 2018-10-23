@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from kwproduct import *
+from kwcustomer import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -139,26 +140,6 @@ def do_price_calculate_with_conf_py(conf={}, cookie=init_cookie):
     return checkout_price_calculate_py(data, cookie)
 
 
-def start_pc_show_py(show=0, cookie=init_cookie):
-    """
-    是否开启PC优化
-    :param show: 默认0 = 关闭 | 1 = 开启
-    :param cookie:
-    :return:
-    """
-    url = home_page_url + "/api/themes/switch-pc"
-    data = {"status": int(show), "theme_id": 1}
-    try:
-        res = requests.post(url=url, headers={"cookie": cookie['cookie']}, json=data)
-        print res.content
-        if json.loads(res.content)['state'] == 0:
-            return True
-        else:
-            return False
-    except Exception as e:
-        print e
-
-
 def get_shipping_lines_with_conf_py(conf={}, cookie=init_cookie):
     '''
     获取shipping_lines
@@ -169,7 +150,7 @@ def get_shipping_lines_with_conf_py(conf={}, cookie=init_cookie):
     data = copy.deepcopy(shipping_lines_data)
     dict_deepupdate(data, conf)
 
-    return checkout_shipping_lines_py(data, cookie)
+    return checkout_shipping_lines_py(data, cookie=cookie)
 
 
 def set_checkout_process_py(conf={}, cookie=init_cookie):
@@ -182,7 +163,8 @@ def set_checkout_process_py(conf={}, cookie=init_cookie):
     data = copy.deepcopy(checkout_save_data)
     dict_deepupdate(data, conf)
 
-    return checkout_save_py(data, cookie)
+    checkout_save_py(data, cookie=cookie)
+    return admin_customers_address_settings_py(data, cookie=cookie)
 
 
 if __name__ == '__main__':

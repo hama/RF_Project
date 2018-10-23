@@ -52,7 +52,7 @@ def orders_finish_py(order_token, fulfillment_id, cookie=init_cookie):
     :return:
     '''
     url = '%s/api/admin/orders/%s/fulfillments/%s/finish' % (home_page_url, order_token, fulfillment_id)
-    return do_patch(url, cookie=cookie)
+    return do_patch(url, {}, cookie=cookie)
 
 
 def orders_cancel_py(order_token, cookie=init_cookie):
@@ -63,7 +63,7 @@ def orders_cancel_py(order_token, cookie=init_cookie):
     :return:
     '''
     url = '%s/api/admin/orders/%s/cancel' % (home_page_url, order_token)
-    return do_patch(url, cookie=cookie)
+    return do_patch(url, {}, cookie=cookie)
 
 
 def del_order_py(order_token, cookie=init_cookie):

@@ -47,9 +47,9 @@ def do_get(url, query_str, cookie):
         return e
 
 
-def do_patch(url, cookie):
+def do_patch(url, data, cookie):
     try:
-        response_data = requests.patch(url=url, headers={"cookie": cookie['cookie']})
+        response_data = requests.patch(url=url, headers={"cookie": cookie['cookie']}, json=data)
         return_data = {}
         logging.info(url + '\n' + response_data.content)
         return_data['content'] = json.loads(response_data.content)
