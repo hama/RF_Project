@@ -154,7 +154,7 @@ Go To Checkout Settings Page
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_decoration}
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_decoration_checkoutSettings}
     ...    ELSE    Wait And Click Element    ${locatorB_decoration_checkoutSettings}
-    Wait Until Page Contains    结账页设置
+    Wait Until Page Contains    交易规则
     Location Should Be    ${url_checkoutSettings}
 
 Go To Application Page

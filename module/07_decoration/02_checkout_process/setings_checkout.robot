@@ -14,35 +14,36 @@ Resource        ../../../resources/keywords/kw_common.robot
 checkoutPageSetings001
     [Documentation]    测试结账设置界面可正常进入
     [Tags]    P0    threshold   smoke
-    
-    Wait Until Page Contains Text   顾客权限
+    Wait Until Page Contains Locator    ${locatorB_checkout_button_nav_tradingRules}
 
 checkoutPageSetings003
     [Documentation]    测试结账设置界面保存按钮
     [Tags]    P0    threshold   smoke
-    Wait And Click Element  ${locatorB_checkout_label_buyMembers}
-    Wait And Click Element  ${locatorB_checkout_label_customerEmail}
-    Sleep   5
-    Click Element  ${locatorB_checkout_radio_name}
-    Click Element  ${locatorB_checkout_radio_companyNameOptional}
-    Click Element  ${locatorB_checkout_radio_emailCodeHidden}
-    Wait And Click Element  ${locatorB_checkout_linkBut_generateRefundTreaty}
-    Wait And Click Element  ${locatorBcheckout_linkBut_generatePolicy}
-    Wait And Click Element  ${locatorB_checkout_linkBut_generateServiceTreaty}
+    Wait And Click Element    ${locatorB_checkout_label_buyMembers}
+    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+    #.点击收货信息元素
+    Sleep    2
+    Click Element    ${locatorB_checkout_radio_name}
+    Click Element    ${locatorB_checkout_radio_companyNameMandatory}
+    Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
+    Click Element    ${locatorB_checkout_radio_phoneCodeMandatory}
+    #.点击服务条约
+    Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
+    Wait And Click Element    ${locatorB_checkout_linkBut_generateRefundTreaty}
+    Wait And Click Element    ${locatorBcheckout_linkBut_generatePolicy}
+    Wait And Click Element    ${locatorB_checkout_linkBut_generateServiceTreaty}
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
-    Reload Page And Start Ajax
+    #.跳转页面，再返回验证
+    Go To Shipping Page
+    Go To Checkout Settings Page
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
-    Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf min_height_245e ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
 
 checkoutPageSetings005
     [Documentation]    测试结账设置页面编辑保存
     [Tags]    P0    threshold
-    Go To Checkout Settings Page
     Wait And Click Element    ${locatorB_checkout_label_loginMembers}
-    Wait And Click Element    ${locatorB_checkout_label_customerPhone}
-    Wait And Click Element    ${locatorB_setting}
     Wait Alert Should Be Present And Accept    页面上有未保存内容，是否确定退出?
 
 checkoutPageSetings008
@@ -50,66 +51,109 @@ checkoutPageSetings008
     [Tags]    P0    threshold   smoke
 
     Wait And Click Element  ${locatorB_checkout_label_notMembers}
-    Wait And Click Element  ${locatorB_checkout_label_customerPhone}
+    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+    Sleep    2
+    Click Element    ${locatorB_checkout_radio_name}
+    Click Element    ${locatorB_checkout_radio_companyNameHidden}
+
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
-    Reload Page And Start Ajax
+    #.跳转页面，再返回验证
+    Go To Shipping Page
+    Go To Checkout Settings Page
     Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
 
 checkoutPageSetings009
      [Documentation]    测试结账设置顾客权限功能>1.点击注册会员与非注册会员均可购买 2.点击保存
      [Tags]    P0    threshold
      Wait And Click Element  ${locatorB_checkout_label_loginMembers}
-     Wait And Click Element  ${locatorB_checkout_label_customerPhone}
+     Wait And Click Element    ${locatorB_checkout_button_nav_information}
+     Sleep    2
+     Click Element    ${locatorB_checkout_radio_name}
+     Click Element    ${locatorB_checkout_radio_companyNameHidden}
+     Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
+
      Wait Exist And Click Element  ${locatorB_checkout_button_save}
      Wait Until Page Contains Text   设置成功
      Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
-     Reload Page And Start Ajax
+     #.跳转页面，再返回验证
+     Go To Shipping Page
+     Go To Checkout Settings Page
      Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
 
 checkoutPageSetings010
      [Documentation]    测试结账设置顾客权限功能>1.点击会员购买  2.点击保存
      [Tags]    P0    threshold
-     Go To Checkout Settings Page
-     Wait And Click Element  ${locatorB_checkout_label_buyMembers}
-     Wait And Click Element  ${locatorB_checkout_label_customerEmailAndPhone}
+     Wait And Click Element  ${locatorB_checkout_label_loginMembers}
+     Wait And Click Element    ${locatorB_checkout_button_nav_information}
+     Sleep    2
+     Click Element    ${locatorB_checkout_radio_name}
+     Click Element    ${locatorB_checkout_radio_companyNameHidden}
+     Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
+     Click Element    ${locatorB_checkout_radio_phoneCodeHidden}
      Wait Exist And Click Element  ${locatorB_checkout_button_save}
      Wait Until Page Contains Text   设置成功
      Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
-     Reload Page And Start Ajax
+     #.跳转页面，再返回验证
+     Go To Shipping Page
+     Go To Checkout Settings Page
      Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
 
 checkoutPageSetings011
-    [Documentation]    测试顾客联系方式设置-邮箱联系方式
+    [Documentation]    测试顾客联系方式设置-邮箱必填
     [Tags]    P0    threshold   smoke
-    Wait And Click Element  ${locatorB_checkout_label_buyMembers}
-    Wait And Click Element  ${locatorB_checkout_label_customerEmail}
+    Wait And Click Element  ${locatorB_checkout_label_loginMembers}
+    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+    Sleep    2
+    Click Element    ${locatorB_checkout_radio_name}
+    Click Element    ${locatorB_checkout_radio_companyNameHidden}
+    #邮箱必选
+    Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
+    Click Element    ${locatorB_checkout_radio_phoneCodeHidden}
+
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
-    Reload Page And Start Ajax
-    Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
-    Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf min_height_245e ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
+    #.跳转页面，再返回验证
+    Go To Shipping Page
+    Go To Checkout Settings Page
+    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+    Count Of Element Should Be Equal With Wait     ${locatorB_checkout_radio_emailCodeMandatory}    class    ant-radio-wrapper ant-radio-wrapper-checked
 
 checkoutPageSetings012
-    [Documentation]    测试顾客联系方式设置-手机联系方式
-    [Tags]    P0    threshold   smoke
-    Wait And Click Element  ${locatorB_checkout_label_notMembers}
-    Wait And Click Element  ${locatorB_checkout_label_customerPhone}
+    [Documentation]    测试顾客联系方式设置-邮箱选填    [Tags]    P0    threshold   smoke
+    Wait And Click Element  ${locatorB_checkout_label_loginMembers}
+    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+    Sleep    2
+    Click Element    ${locatorB_checkout_radio_name}
+    Click Element    ${locatorB_checkout_radio_companyNameHidden}
+    #邮选填
+    Click Element    ${locatorB_checkout_radio_emailCodeOptional}
+    Click Element    ${locatorB_checkout_radio_phoneCodeHidden}
+
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
-    Reload Page And Start Ajax
-    Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
-    Wait Until Page Contains Locator    dom:document.querySelectorAll('[class*="radio_btn_cddf min_height_245e ant-radio-button-wrapper ant-radio-button-wrapper-checked"]')[0]
+    Go To Shipping Page
+    Go To Checkout Settings Page
+    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+
+    Value Of Element Should Be Equal With Wait     ${locatorB_checkout_radio_emailCodeOptional}    required
 
 
 checkoutPageSetings013
-    [Documentation]    测试顾客联系方式设置-手机和邮箱
+    [Documentation]    测试顾客联系方式设置-邮箱隐藏
     [Tags]    P0    threshold   smoke
     Wait And Click Element  ${locatorB_checkout_label_loginMembers}
-    Wait And Click Element  ${locatorB_checkout_label_customerEmailAndPhone}
+    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+    Sleep    2
+    Click Element    ${locatorB_checkout_radio_name}
+    Click Element    ${locatorB_checkout_radio_companyNameHidden}
+    #邮选填
+    Click Element    ${locatorB_checkout_radio_emailCodeHidden}
+    Click Element    ${locatorB_checkout_radio_phoneCodeHidden}
+
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}

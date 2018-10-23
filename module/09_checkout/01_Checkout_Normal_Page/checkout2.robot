@@ -16,7 +16,7 @@ checkout_015
     kwshipping.del_all_shipping_py
     #添加一个价格10 物流
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
     ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
@@ -25,6 +25,7 @@ checkout_015
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}    + $10.00
 
 checkout_018
@@ -34,7 +35,7 @@ checkout_018
     kwshipping.del_all_shipping_py
     #添加一个价格10 物流
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
     kwshipping.add_shipping_with_conf_py    ${conf}
     #创建60的税费
@@ -44,6 +45,7 @@ checkout_018
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}   $710.40
 
 checkout_024
@@ -53,7 +55,7 @@ checkout_024
     kwshipping.del_all_shipping_py
     #添加一个价格10 物流
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
     ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
@@ -65,6 +67,7 @@ checkout_024
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
     Wait And Input Text    ${locatorB_checkout_addressCoupon_ipt}    ${code}
     #.点击应用
     Wait And Click Element    ${locatorB_checkout_addressClickCoupon_btn}
@@ -77,7 +80,7 @@ checkout_083
     kwshipping.del_all_shipping_py
     #.创建运费方案0  中国方案  运费价格0
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
     ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
@@ -86,6 +89,7 @@ checkout_083
     #.选择中国
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
     Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll(".fl")[4]    price_fee
 
 checkout_090
@@ -95,7 +99,7 @@ checkout_090
     kwshipping.del_all_shipping_py
     #.创建运费方案0  中国方案  运费价格0
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
     ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
@@ -103,6 +107,7 @@ checkout_090
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     #.选择中国
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_delivery}    $0.00
 
 checkout_097
@@ -118,15 +123,7 @@ checkout_097
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #添加是shipping address
-    Wait And Input Text    ${locatorB_checkout_address_first_name}    123
-    Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    Bouvet Island
-    Wait And Input Text    ${locatorB_checkout_address_city}    Island
-    Wait And Input Text    ${locatorB_checkout_address_add}    Island123
-    Wait And Input Text    ${locatorB_checkout_address_zip}    123456
-    Wait And Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
-    Wait And Input Text    ${locatorB_checkout_address_phone}    123456789
-    Wait And Input Text    ${locatorB_checkout_address_company}    123456789
+    Add Address Common Step
     Wait And Click Element    ${locatorB_checkout_submit_btn_s}
     Wait Until Page Contains Text   Order summary
 
@@ -137,7 +134,7 @@ checkout_107
     kwshipping.del_all_shipping_py
     #.创建运费方案0  中国方案  运费价格10
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
     ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
@@ -147,6 +144,7 @@ checkout_107
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     #.选择中国   运费价格10
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_prices_shippingValue}    + $10.00
 
 checkout_118
@@ -156,7 +154,7 @@ checkout_118
     kwshipping.del_all_shipping_py
     #.创建运费方案1  中国方案  运费价格10
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
     ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
@@ -174,7 +172,7 @@ checkout_163
     kwshipping.del_all_shipping_py
     #创建一个中国的物流信息
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
     ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
@@ -192,7 +190,7 @@ checkout_163
     Wait And Click Element    ${locatorC_checkout_payment_creditCard}
     #.信用卡信息填写
     Add Credit Card Info
-    Wait And Click Element      ${locatorC_checkout_shipping_submitCheckout}
+    Wait And Click Element      ${locatorC_checkout_shipping_orderSubmit}
     Wait Until Page Contains Text   Payment failure!
     #关闭credit_card  信用卡支付方式
     kwpayment.inactivate_payment_credit_card_py
@@ -204,7 +202,7 @@ checkout_168
     kwshipping.del_all_shipping_py
     #.创建运费方案0  中国方案  运费价格10
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
     ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
@@ -227,7 +225,7 @@ checkout_169
     kwshipping.del_all_shipping_py
     #.创建运费方案0  中国方案  运费价格10
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
     ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
@@ -250,7 +248,7 @@ checkout_194
     kwshipping.del_all_shipping_py
     #.创建运费方案0  中国方案  运费价格10
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
     ...    shipping_plan=[{"name":"方案1","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
@@ -260,5 +258,6 @@ checkout_194
     #.选择中国   运费价格10
     #添加是shipping address
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait Until Page Contains Text   方案1
