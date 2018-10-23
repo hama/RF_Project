@@ -38,7 +38,7 @@ checkout_019
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
     Wait And Select From List By Label     ${locatorC_checkout_inputText_countyCode}    China
-    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
     Text Of Element Should Be Equal With Wait     ${locatorC_checkout_shipping_preferential}    + $0.00
     #商品的初始化
     kwproduct.del_all_products_py
@@ -82,7 +82,7 @@ checkout_109
     Wait And Select From List By Label     ${locatorC_checkout_inputText_countyCode}    China
     Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
     #查看商品扣除60%税费后的金额
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $710.40
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $710.4
 
 checkout_110
     [Documentation]      验证checkout 支付页面，商品不收取税费时，价格详情中的tax显示为：+ $0.00   >  1.C端购买商品women进入checkout 支付页面  2.查看价格详情中tax
