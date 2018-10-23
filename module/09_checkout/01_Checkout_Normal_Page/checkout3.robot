@@ -37,8 +37,12 @@ checkout_019
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_countyCode}    China
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
     Text Of Element Should Be Equal With Wait     ${locatorC_checkout_shipping_preferential}    + $0.00
+    #商品的初始化
+    kwproduct.del_all_products_py
+
 
 checkout_080
     [Documentation]    验证checkout shipping页面，购买的商品不需要物流运输时，选择国家后，shipping delivery栏会出现交付虚拟产品的运费方案  >  1.C端购买商品women进入checkout shipping页面  2.选择国家   3.查看shipping delivery栏
@@ -46,7 +50,7 @@ checkout_080
      #.初始化物流信息
     kwshipping.del_all_shipping_py
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
     kwshipping.add_shipping_with_conf_py    ${conf}
     #.添加一个不收税费的商品
@@ -64,24 +68,30 @@ checkout_109
     [Tags]    P0    threshold    smoke
     #初始化物流信息
     kwshipping.del_all_shipping_py
-    kwshipping.add_shipping_with_conf_py
+    #.添加一个默认运费的物流
+    &{conf}=   Create Dictionary
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
+    ...    shipping_name=shipping_yunfei
+    kwshipping.add_shipping_with_conf_py    ${conf}
     #创建60的税费
     kwtax.add_default_tax_price_py
     Go To First Product C Interface
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     #.选择中国
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_countyCode}    China
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
     #查看商品扣除60%税费后的金额
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $710.40
 
 checkout_110
     [Documentation]      验证checkout 支付页面，商品不收取税费时，价格详情中的tax显示为：+ $0.00   >  1.C端购买商品women进入checkout 支付页面  2.查看价格详情中tax
     [Tags]    P0    threshold
-    #初始化物流信息
+    #.先删除物流
     kwshipping.del_all_shipping_py
+    #.添加一个重量运费的物流
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
     kwshipping.add_shipping_with_conf_py    ${conf}
     #.添加一个不收税费的商品
@@ -101,7 +111,7 @@ checkout_119
     #初始化物流信息
     kwshipping.del_all_shipping_py
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
     kwshipping.add_shipping_with_conf_py    ${conf}
     #.添加一个不需要物流的商品

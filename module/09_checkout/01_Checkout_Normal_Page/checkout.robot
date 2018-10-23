@@ -190,7 +190,11 @@ checkout_085
     #.先删除物流
     kwshipping.del_all_shipping_py
     #.添加一个重量运费的物流
-    kwshipping.add_shipping_py    0    1
+    &{conf}=   Create Dictionary
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
+    ...    shipping_name=shipping_yunfei
+    ...    shipping_plan=[{"name":"dssd","shipping_method":"weight","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+    kwshipping.add_shipping_with_conf_py    ${conf}
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
@@ -204,7 +208,11 @@ checkout_087
     #.先删除物流
     kwshipping.del_all_shipping_py
     #.添加一个重量运费的物流
-    kwshipping.add_shipping_py    0    2
+    &{conf}=   Create Dictionary
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
+    ...    shipping_name=shipping_yunfei
+    ...    shipping_plan=[{"name":"dssd","shipping_method":"quantity","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+    kwshipping.add_shipping_with_conf_py    ${conf}
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
@@ -304,11 +312,13 @@ checkout_120
     [Tags]    P0    threshold
     #激活COD货到付款方式
     kwpayment.activate_payment_cod_py
-    #初始化物流信息
+    #.先删除物流
     kwshipping.del_all_shipping_py
+    #.添加一个重量运费的物流
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"44","zone_ids":"-1"}]
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
+    ...    shipping_plan=[{"name":"dssd","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     #添加是shipping address
     Reload Page And Start Ajax
@@ -353,7 +363,7 @@ checkout_125
     #.选择中国   运费价格10
     #添加是shipping address
     Add Address Common Step
-    Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
+    Wait And Click Element    ${locatorC_checkout_shipping_orderSubmit}
     Wait Until Page Contains Text    Payment method
     #重新开启cod支付方式
     kwpayment.activate_payment_cod_py
@@ -366,7 +376,7 @@ checkout_126
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
-    Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
+    Wait And Click Element    ${locatorC_checkout_shipping_orderSubmit}
     Wait Until Page Contains Text   Payment successful!
 
 checkout_132
@@ -386,7 +396,7 @@ checkout_132
     Wait And Click Element    ${locatorC_checkout_payment_creditCard}
     #.信用卡信息填写
     Add Credit Card Info
-    Wait And Click Element      ${locatorC_checkout_shipping_submitCheckout}
+    Wait And Click Element      ${locatorC_checkout_shipping_orderSubmit}
     Wait Until Page Contains Text   Payment failure!
 
     #关闭信用卡
@@ -396,6 +406,8 @@ checkout_132
 checkout_170
     [Documentation]   验证checkout支付页面，billing address栏选择框可点击以及选择项展示  >   1.点击选择框
     [Tags]    P0    threshold    smoke
+    #. 信用卡支付方式
+    kwpayment.activate_payment_credit_card_py
     #添加是shipping address
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国   运费价格10
@@ -413,9 +425,9 @@ checkout_170
     Wait And Input Text     ${locatorC_checkout_inputText_address1}    中山大学产学研基地
     Wait And Input Text     ${locatorC_checkout_inputText_city}    深圳
     Wait And Select From List By Label     ${locatorC_checkout_inputText_countyCode}    China
-    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    广东
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
     Wait And Input Text     ${locatorC_checkout_inputText_zip}    518000
-    Wait And Click Element      ${locatorC_checkout_shipping_submitCheckout}
+    Wait And Click Element      ${locatorC_checkout_shipping_orderSubmit}
     Wait Until Page Contains Text      Payment successful!
 
 checkout_189
@@ -426,7 +438,7 @@ checkout_189
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
-    Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
+    Wait And Click Element    ${locatorC_checkout_shipping_orderSubmit}
     Wait Until Page Contains Text    Payment successful!
 
 checkout_193
@@ -436,16 +448,7 @@ checkout_193
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #.选择中国
     #添加是shipping address
-    Wait And Input Text    ${locatorB_checkout_address_first_name}    Javen
-    Wait And Input Text    ${locatorB_checkout_address_last_name}    fang
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}     China
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_province}     广东
-    Wait And Input Text    ${locatorB_checkout_address_city}    深圳
-    Wait And Input Text    ${locatorB_checkout_address_add}    南山区
-    Wait And Input Text    ${locatorB_checkout_address_zip}    518000
-    Wait And Input Text    ${locatorB_checkout_address_email}    1dianjiang@shoplazza.com
-    Wait And Input Text    ${locatorB_checkout_address_phone}    18688886666
-    Wait And Input Text    ${locatorB_checkout_address_company}    shoplazza
+    Add Address Common Step
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait Until Page Contains Text    深圳
 
@@ -459,7 +462,7 @@ checkout_195
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
-    Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
+    Wait And Click Element    ${locatorC_checkout_shipping_orderSubmit}
     Wait Until Page Contains Text      Payment successful!
     Wait And Click Element    ${locatorC_checkout_link_viewOrders}
     Wait Until Page Contains Locator    ${locatorC_checkout_link_orderList}
@@ -474,7 +477,7 @@ checkout_196
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
-    Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
+    Wait And Click Element    ${locatorC_checkout_shipping_orderSubmit}
     Wait Until Page Contains Text      Payment successful!
     Wait And Click Element    ${locatorC_checkout_link_continueShopping}
     Wait Until Page Contains Locator    ${locatorC_checkout_homeBanner}

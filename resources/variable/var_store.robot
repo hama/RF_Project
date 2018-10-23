@@ -20,3 +20,5 @@ ${locatorB_store_select_childCurrency}     dom:document.querySelectorAll('#dj di
 ${locatorB_store_select_childTime}     dom:document.querySelectorAll('#dj div.container_8707.setting_c8ce > div:nth-child(2) div:nth-child(2)  div.ant-form-item-control-wrapper div:nth-child(2) li.ant-select-dropdown-menu-item')    #.时区 下拉选择
 #locator button
 ${contextB_store_storeInfo}    店铺信息
+
+
