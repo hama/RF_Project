@@ -22,8 +22,8 @@ if __name__ == '__main__':
         config.set("common_account", "datas_invite_code", 'DJ1024')
         config.set("common_url", "home_page_url", 'http://sandbox-admin.shoplazza.com')
         config.set("common_urn", "shop_urn", '.sandbox-preview.shoplazza.com')
-        config.set("common_account", "datas_contact", '17665076519')
-        config.set("common_account", "datas_domain", 'homer')
+        config.set("common_account", "datas_contact", 'autotest@shoplazza.com')
+        config.set("common_account", "datas_domain", 'autotest')
 
         config.set("common_db", "db_service_config", '{"host": "rm-rj9ww1316miq2j87l.mysql.rds.aliyuncs.com",'
                                                      '"port": 3306,"user": "fortest","password": "fortest@123",'

@@ -279,6 +279,16 @@ Element Attribute Should Be Equal With Wait
     \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
     \    ...    ELSE    Sleep    1
 
+Element Attribute Should Contain With Wait
+    [Arguments]    ${element_locator}    ${attribute}    ${expected}    ${timeout}=10
+    ${times}    Evaluate    ${timeout}-1
+    :FOR    ${i}    IN RANGE    ${timeout}
+    \    ${attr}    Get Element Attribute    ${element_locator}    ${attribute}
+    \    ${status}    Run Keyword And Return Status    Should Contain    '${attr}'    '${expected}'
+    \    Run Keyword If    ${status}    Exit For Loop
+    \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
+    \    ...    ELSE    Sleep    1
+
 Open New And Close Other Windows
 	[Arguments]    ${url}
 	[Documentation]    开启一个指定的新窗口，并关闭其余窗口

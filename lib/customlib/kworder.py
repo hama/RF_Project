@@ -226,16 +226,16 @@ def get_latest_undeal_order_num_py(cookie=init_cookie):
     return get_latest_undeal_order_num_by_num_py(1, cookie=cookie)[0]
 
 
-def add_order_by_order_token_py(order_token, cookie=init_cookie):
+def add_order_by_tokens_py(tokens, cookie=init_cookie):
     '''
     通过order_token添加新订单
     	支付方式	支付状态	物流状态	订单状态
         COD支付	待支付	待发货	进行中
-    :param order_token:
+    :param tokens:
     :param cookie:
     :return:
     '''
-    return add_deading_order_with_conf_py({'order_token': order_token}, cookie=cookie)
+    return add_deading_order_with_conf_py(tokens, cookie=cookie)
 
 
 def add_deading_order_with_delivering_status_py(conf={}, cookie=init_cookie):
@@ -438,11 +438,9 @@ def do_create_raw_order_process_py(conf, cookie=init_cookie):
     key_list = conf.keys()
     if 'order_token' in key_list and 'checkout_token' in key_list:
         # 接受已生成的订单
-        order_token = conf['order_token']
-        checkout_token = conf['checkout_token']
         tokens = {}
-        tokens['order_token'] = order_token
-        tokens['checkout_token'] = checkout_token
+        tokens['order_token'] = conf['order_token']
+        tokens['checkout_token'] = conf['checkout_token']
     else:
         if 'productidlist' in key_list:
             # 指定产品生成订单
@@ -543,9 +541,9 @@ def add_dealing_order_with_products_py(cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    order_token = add_undeal_order_with_products_py(cookie=cookie)
-    add_order_by_order_token_py(order_token, cookie=cookie)
-    return order_token
+    tokens = add_undeal_order_with_products_py(cookie=cookie)
+    add_order_by_tokens_py(tokens, cookie=cookie)
+    return tokens['order_token']
 
 
 def add_dealing_order_with_product_py(cookie=init_cookie):
@@ -557,7 +555,7 @@ def add_dealing_order_with_product_py(cookie=init_cookie):
     :return:
     '''
     tokens = add_undeal_order_with_product_py(cookie=cookie)
-    add_order_by_order_token_py(tokens, cookie=cookie)
+    add_order_by_tokens_py(tokens, cookie=cookie)
     return tokens['order_token']
 
 
