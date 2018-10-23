@@ -231,7 +231,7 @@ checkout_093
     [Tags]    P0    threshold    smoke
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Text   Order summary
-    Wait And Click Element  ${locator_checkout_button_checkoutBack}
+    Wait And Click Element  ${locatorC_checkout_paymentCard_return}
     Wait Until Page Contains Locator    ${locatorB_checkout_by_now_btn}
 
 checkout_094
@@ -430,7 +430,7 @@ checkout_170
     Wait And Input Text     ${locatorC_checkout_inputText_address1}    中山大学产学研基地
     Wait And Input Text     ${locatorC_checkout_inputText_city}    深圳
     Wait And Select From List By Label     ${locatorC_checkout_inputText_countyCode}    China
-    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
     Wait And Input Text     ${locatorC_checkout_inputText_zip}    518000
     Wait And Click Element      ${locatorC_checkout_shipping_orderSubmit}
     Wait Until Page Contains Text      Payment successful!

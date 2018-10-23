@@ -57,6 +57,7 @@ ${locatorC_checkout_button_paymentMethod}    dom:document.querySelectorAll('[cla
 
 ${locatorC_checkout_button_comleteOrder}     dom:document.querySelectorAll('[class*="btn btn-primary payment-footer__btn"]')[0]    #//complete Order 提交按钮
 ${locatorC_checkout_button_completeReturn}     dom:document.querySelectorAll('[class*="checkout-footer__back checkout-back"]')[0]     #.complete return 返回
+
 ${locatorB_checkout_address_error}    dom:document.querySelectorAll(".not_none")[0]    #.添加地址错误类
 ${locatorB_checkout_address_close_address}    dom:document.querySelectorAll(".close_icon")[1]    #.关闭地址按钮
 ${locatorB_checkout_address_buyMesg_elm}    id:instructionToggle    #.买家留言
@@ -115,7 +116,7 @@ ${locatorC_checkout_paymentCard_change}   dom:document.querySelectorAll('[class*
 #${locatorC_checkout_button_completeReturn}    dom:document.querySelectorAll('[class*="checkout-footer__back"]')[0]    #return 返回
 #locatorC checkout method
 ${locatorC_checkout_shipping_method}    dom:document.querySelectorAll('.checkout__prices-table-value')[1]       #shipping  显示物流价格
-${locatorC_checkout_paymentCard_return}    dom:document.querySelectorAll('[class*="payment-footer__back"]')[0]    # payment return 返回
+${locatorC_checkout_paymentCard_return}    dom:document.querySelectorAll('[class*="checkout-footer__back checkout-back"]')[0]    # payment return 返回
 ${locatorC_checkout_shipping_preferential}    dom:document.querySelectorAll('[class*="checkout__prices-table-value"]')[2]    #.订单运费
 ${locatorC_checkout_text_order}     dom:document.querySelectorAll(".item-sku-title")[0]     #.商品标题
 #row checkout-shipping-line__item checkout-shipping-line__item_selected
