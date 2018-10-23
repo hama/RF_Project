@@ -34,24 +34,25 @@ Add Address Common Step
     [Documentation]    添加地址公共部分
     Wait And Input Text    ${locatorB_checkout_address_first_name}    123
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Wait And Input Text    ${locatorB_checkout_address_city}    深圳
     Wait And Input Text    ${locatorB_checkout_address_add}    深圳123
+    Wait And Input Text    ${locatorB_checkout_address_city}    深圳
+    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Label    ${locatorB_checkout_address_select_province}    Beijing
     Wait And Input Text    ${locatorB_checkout_address_zip}    123456
-    Wait And Input Text    ${locatorB_checkout_address_email}    123456@zz.xx
-    Wait And Input Text    ${locatorB_checkout_address_phone}    123456789
-    Wait And Input Text    ${locatorB_checkout_address_company}    123456789
+    Wait And Select From List By Label    ${locatorC_checkout_address_Code}     (+86) China
+    Wait And Input Text    ${locatorB_checkout_address_phone}    15820406699
+    Wait And Input Text    ${locatorB_checkout_address_email}    9988565@qq.com
     Sleep    4
 
 Add Credit Card Info
 	[Documentation]    添加信用卡公共部分
-	Wait And Input Text    ${locatorB_checkout_creditCard_input_name}    aaaaa
-	Wait And Input Text    ${locatorB_checkout_creditCard_input_email}    123456@zz.xx
-	Wait And Input Text    ${locatorB_checkout_creditCard_input_phone}    123456789
-	Wait And Input Text    ${locatorB_checkout_creditCard_input_post}    0000
-	Wait And Input Text    ${locatorB_checkout_creditCard_input_number}    43231123123123
-	Wait And Input Text    ${locatorB_checkout_creditCard_input_expireDate}    1231
-	Wait And Input Text    ${locatorB_checkout_creditCard_input_securityCode}    123
+	Wait And Input Text    ${locatorC_checkout_paymentCard_fristName}    aaaaa
+	Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    123456@zz.xx
+	Wait And Input Text    ${locatorC_checkout_paymentCard_phone}     123456789
+	Wait And Input Text    ${locatorC_checkout_paymentCard_cardPostcode}    0000
+	Wait And Input Text    ${locatorC_checkout_paymentCard_cardNumber}    43231123123123
+	Wait And Input Text    ${locatorC_checkout_paymentCard_cardDate}    1231
+	Wait And Input Text    ${locatorC_checkout_paymentCard_card_code}     123
 	Sleep    2
 
 Create Specific Coupon Code
