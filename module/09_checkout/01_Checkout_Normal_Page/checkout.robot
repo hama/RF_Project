@@ -12,9 +12,11 @@ Resource          ../../../resources/keywords/kw_common.robot
 checkout_001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0    threshold    smoke
-    Wait Until Element Is Visible    ${locatorB_checkout_shippingcart_cartBut}
-    Page Should Contain Image    dom:document.querySelectorAll("img")[0]
-    Page Should Contain Element    dom:document.querySelectorAll("[class*='productdetails-info-title']")[0]
+
+    Wait And Click Element    ${locatorB_checkout_shippingcart_cartBut}
+    Wait And Click Element    ${locatorB_checkout_card_img_btn}
+    Wait And Click Element    ${locatorB_checkout_submit_shippingCart}
+    Wait Until Page Contains    Order summary
 
 checkout_002
     [Documentation]    进入checkout界面 显示购买的商品，地址，
@@ -22,25 +24,25 @@ checkout_002
     #点击商品预览
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Add Address Common Step
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait Until Page Contains Locator    dom:document.querySelectorAll(".addressForm")[0]
+    Wait And Click Element    ${locatorC_checkout_btn_paymentMethod}
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".payment-address__top")[0]
 
 checkout_006
     [Documentation]    验证checkout shipping页面，订单汇总，商品栏，商品标题显示正常
     [Tags]    P0    threshold    smoke
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Add Address Common Step
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
+    Wait And Click Element    ${locatorC_checkout_btn_paymentMethod}
     Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll('[class*="checkout-item__sku-title"]')[0]   autotest_title
 
 checkout_008
     [Documentation]    验证checkout shipping页面，订单汇总商品栏，商品数量显示正常 > "1.C端够买商品women5件进入checkout shipping页面,2.查看订单汇总商品栏，商品数量显示" > 商品数量显示为：X5
     [Tags]    P0    threshold    smoke
     #.输入数量
-    Wait And Input Text    dom:document.querySelectorAll(".qty-num")[0]    5
+    Wait And Input Text    ${locatorC_checkout_qty_input_num}    5
     #,点击立即购买
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll("[class*='checkout-item__quantity']")[0]    X5
+    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll("[class*='checkout-item__quantity']")[0]     × 5
 
 checkout_009
     [Documentation]    验证checkout shipping页面，订单汇总商品栏，商品价格显示正常 >"1.C端购买商品women进入checkout shipping页面,2.查看订单汇总商品栏，商品价格显示" > 商品价格显示为：444USD
@@ -129,7 +131,7 @@ checkout_037
     [Tags]    P0    threshold    smoke
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Add Address Common Step
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
+    Wait And Click Element    ${locatorC_checkout_btn_paymentMethod}
     Wait Until Page Contains    PAYMENT
 
 checkout_070
@@ -158,17 +160,17 @@ checkout_077
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Add Address Common Step
     #.点击展开留言框
-    Wait And Click Element    dom:document.querySelectorAll('[class*="u-lineTitle"]')[0]
-    Wait And Input Text    dom:document.querySelectorAll('[name*="customer_note"]')[0]    请尽快发货
+    Wait And Click Element    dom:document.querySelectorAll('[class*="checkout-instruction__title"]')[0]
+    Wait And Input Text    dom:document.querySelectorAll('[class="checkout-instruction__textarea"]')[0]    请尽快发货
     #.点击提交
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
+    Wait And Click Element    ${locatorC_checkout_btn_paymentMethod}
     Wait Until Page Contains Text   Order summary
 
 checkout_078
     [Documentation]    验证checkout shipping页面，未选择国家时，shipping delivery栏不显示运费方案  >  1.购买任意商品进入checkout shipping页面  2.不选择国家查看shipping delivery栏
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait Until Page Does Not Contain    Please enter a shipping address first
+    Wait Until Page Contains Text    Please enter a shipping address first
 
 checkout_079
     [Documentation]    验证checkout shipping页面，选择国家后，shipping delivery栏会出现此国家对应的运费方案  >  1.C端购买商品women进入checkout shipping页面  2.选择国家中国  3.查看shipping delivery栏
@@ -180,9 +182,10 @@ checkout_079
 checkout_082
     [Documentation]    验证checkout shipping页面，没有可选择物流方案时，payment method 按钮无法点击 > payment method按钮置灰无法点击
     [Tags]    P0    threshold    smoke
+
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Wait Until Page Does Not Contain    SHIPPING
+    Sleep    5
+    Element Attribute Should Contain With Wait     ${locatorC_checkout_btn_paymentMethod}    disabled    ${empty}
 
 checkout_085
     [Documentation]    验证B端运费方案设置重量范围时，C端购买的商品重量满足此重量范围，checkout shipping页面将展示此运费方案 > 运费方案中显示 重量方案1
@@ -234,12 +237,13 @@ checkout_093
 checkout_094
     [Documentation]    验证从购物车进入checkout shipping页面后，点击return可返回购物车 > 1.C端将任意商品加入购物车 2.进入购物车点击checkout按钮进入checkout shipping页面 3.点击return
     [Tags]    P0    threshold    smoke
-    Wait And Click Element  ${locatorB_checkout_product_addToCart}
-    Wait And Click Element  ${locatorB_checkout_shippingcart_cartBut}
-    Wait And Click Element  ${locatorB_checkout_submit_shippingCart}
+
+    Wait And Click Element   ${locatorB_checkout_shippingcart_cartBut}
+    Wait And Click Element   ${locatorB_checkout_card_img_btn}
+    Wait And Click Element   ${locatorB_checkout_submit_shippingCart}
     Wait Until Page Contains Text    Order summary
     #.返回
-    Wait And Click Element  ${locatorC_checkout_paymentCard_return}
+    Wait And Click Element  ${locatorC_checkout_button_completeReturn}
     Wait Until Page Contains Text    Shopping Cart
 
 checkout_096
@@ -248,7 +252,7 @@ checkout_096
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #添加是shipping address
     Add Address Common Step
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
+    Wait And Click Element    ${locatorC_checkout_btn_paymentMethod}
     Wait Until Page Contains Text   Order summary
 
 checkout_098
@@ -306,9 +310,7 @@ checkout_114
     #添加是shipping address
     Add Address Common Step
     Wait And Click Element      ${locatorC_checkout_shipping_submitCheckout}
-    ${firstName}    Get Value   ${locatorB_checkout_address_first_name}
-    Wait And Click Element     ${locatorB_checkout_submit_btn_s}
-    Wait Until Page Contains Text    ${firstName}
+    Text Of Element Should Contain With Wait    dom:document.querySelectorAll(".payment-address__value")[0]    123
 
 checkout_120
     [Documentation]         验证checkout支付页面，payment栏，change按钮可返回到shipping页面  >  1.点击payment栏的change按钮

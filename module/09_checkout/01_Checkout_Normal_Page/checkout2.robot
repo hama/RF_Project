@@ -45,7 +45,7 @@ checkout_018
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
     Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_taxValue}      + $10.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}      + $10.00
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}   $454.00
 
 checkout_024
@@ -124,7 +124,7 @@ checkout_097
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     #添加是shipping address
     Add Address Common Step
-    Wait And Click Element    ${locatorB_checkout_submit_btn_s}
+    Wait And Click Element    ${locatorC_checkout_btn_paymentMethod}
     Wait Until Page Contains Text   Order summary
 
 checkout_107
