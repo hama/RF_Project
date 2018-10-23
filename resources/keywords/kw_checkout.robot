@@ -12,8 +12,6 @@ Checkout Suite Setup
     kwshipping.add_shipping_with_conf_py
     kwproduct.add_launched_product_py
     kwcheckout.set_checkout_process_py
-    #.开启pc优化
-    kwcheckout.start_pc_show_py    1
     #激活COD货到付款方式
     kwpayment.activate_payment_cod_py
 
