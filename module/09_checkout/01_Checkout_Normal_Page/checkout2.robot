@@ -25,7 +25,7 @@ checkout_015
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}    + $10.00
 
 checkout_018
@@ -33,20 +33,20 @@ checkout_018
     [Tags]    P0    threshold    smoke
     #初始化物流信息
     kwshipping.del_all_shipping_py
-    #添加一个价格10 物流
+    #添加一个物流
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
+    ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
-    #创建60的税费
-    kwtax.add_default_tax_price_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}   $710.40
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_taxValue}      + $10.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}   $454.00
 
 checkout_024
     [Documentation]    验证checkout shipping页面，total显示正常 > "1.C端购买商品进入checkout shipping页面,2.信息填写栏选择国家 中国,3.选择物流方案：方案1,4.使用优惠码AAA001,5.此订单价格为：,,subtotal：$50.00,shipping：+ $2.00,discount code：- $10.00,tax: + $25.00,6.查看价格详情total"
@@ -67,7 +67,7 @@ checkout_024
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Input Text    ${locatorB_checkout_address_last_name}    345
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
     Wait And Input Text    ${locatorB_checkout_addressCoupon_ipt}    ${code}
     #.点击应用
     Wait And Click Element    ${locatorB_checkout_addressClickCoupon_btn}
@@ -89,8 +89,8 @@ checkout_083
     #.选择中国
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
-    Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll(".fl")[4]    price_fee
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
+    Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll("[class*='checkout-shipping-line__item'] [class*='text-truncate']")[0]    price_fee
 
 checkout_090
     [Documentation]    验证B端运费方案中，勾选免运费时，checkout shipping页面，运费栏显示的运费价格为$0.00 >1.B端物流方案中添加物流物流，国家：中国，运费：运费1 不限价格 免运费2.C端购买任意商品进入checkout shipping页面 3.国家选择中国4.查看shipping delivery栏运费
@@ -107,7 +107,7 @@ checkout_090
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     #.选择中国
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_delivery}    $0.00
 
 checkout_097
@@ -117,7 +117,7 @@ checkout_097
     kwshipping.del_all_shipping_py
     #创建物流方案中已添加国家：Bouvet Island
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"29","zone_ids":"-1"}]
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=autotest_shipping001
     kwshipping.add_shipping_with_conf_py    ${conf}
     Reload Page And Start Ajax
@@ -144,7 +144,7 @@ checkout_107
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     #.选择中国   运费价格10
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_prices_shippingValue}    + $10.00
 
 checkout_118
@@ -161,7 +161,7 @@ checkout_118
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
     Add Address Common Step
-    Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_price}     $10.00
+    Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_delivery}     $10.00
     Wait And Click Element      ${locatorC_checkout_shipping_submitCheckout}
     Text Of Element Should Be Equal With Wait   ${locatorC_checkout_payment_shippingMethoda}     + $10.00
 
@@ -258,6 +258,6 @@ checkout_194
     #.选择中国   运费价格10
     #添加是shipping address
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
     Wait Until Page Contains Text   方案1

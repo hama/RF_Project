@@ -31,7 +31,7 @@ checkout_006
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Add Address Common Step
     Wait And Click Element    ${locatorB_checkout_submit_btn_s}
-    Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll('[class*="item-sku-title"]')[0]   autotest_title
+    Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll('[class*="checkout-item__sku-title"]')[0]   autotest_title
 
 checkout_008
     [Documentation]    验证checkout shipping页面，订单汇总商品栏，商品数量显示正常 > "1.C端够买商品women5件进入checkout shipping页面,2.查看订单汇总商品栏，商品数量显示" > 商品数量显示为：X5
@@ -40,7 +40,7 @@ checkout_008
     Wait And Input Text    dom:document.querySelectorAll(".qty-num")[0]    5
     #,点击立即购买
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll("[class*='tem-quantity']")[0]    X5
+    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll("[class*='checkout-item__quantity']")[0]    X5
 
 checkout_009
     [Documentation]    验证checkout shipping页面，订单汇总商品栏，商品价格显示正常 >"1.C端购买商品women进入checkout shipping页面,2.查看订单汇总商品栏，商品价格显示" > 商品价格显示为：444USD
@@ -53,7 +53,7 @@ checkout_014
     [Documentation]    验证checkout shipping页面，subtotal显示正常 > "1.C端购买商品women两件进入checkout shipping页面,2.查看价格详情中subtotal" > subtotal为：$444.00
     [Tags]    P0    threshold    smoke
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll("[class='checkout-prices-value']")[0]    $444.00
+    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll("[class='checkout-item__price']")[0]    $444.00
 
 checkout_021
     [Documentation]    验证checkout shipping页面，使用优惠码后，价格详情中会出现discount code并显示优惠价格 > "1.C端购买商品women进入checkout shipping页面，2.使用优惠码AAA001，3.查看价格详情" > 价格详情显示优惠金额
@@ -85,7 +85,7 @@ checkout_026
     #.点击应用
     Wait And Click Element    ${locatorB_checkout_addressClickCoupon_btn}
     #.获取优惠那一栏的值
-    Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll(".checkout-prices-value")[1]    - $10.00
+    Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll("[class='checkout__prices-table-value']")[1]    - $10.00
 
     #门槛无标注，
 checkout_027
@@ -200,7 +200,8 @@ checkout_085
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     #.选择中国
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll(".fl")[4]    Freight Standard shipping
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
+    Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_deliveryName}    Freight Standard shipping
 
 checkout_087
     [Documentation]    验证B端运费方案设置数量范围时，C端购买的商品数量满足此数量范围，checkout shipping页面将展示此运费方案 > "1.C端购买5件商品进入checkout shipping页面,2.选择国家：中国,3.查看shipping delivery栏运费方案" >运费方案中显示 数量方案1
@@ -214,11 +215,13 @@ checkout_087
     ...    shipping_plan=[{"name":"dssd","shipping_method":"quantity","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     Reload Page And Start Ajax
+    Wait And Input Text  ${locatorC_checkout_input_checkNum}     5
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     #.选择中国
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll(".fl")[4]    Quantity Standard shipping
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
+    Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_deliveryName}    dssd
 
 checkout_093
     [Documentation]    验证从商品详情页面buy now进入checkout shipping页面后，点击return可返回商品详情页面 > 1.C端进入任意一个商品详情页面 2.buy now进入checkout shipping页面 3.点击return
@@ -450,7 +453,7 @@ checkout_193
     #添加是shipping address
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
-    Wait Until Page Contains Text    深圳
+    Wait Until Page Contains Text    Beijing
 
 checkout_195
     [Documentation]   验证payment successful页面，view order按钮可跳转到个人中心订单详情页面  >  1.购买商品进入checkout并完成支付进入payment successful页面  2.点击view order按钮
