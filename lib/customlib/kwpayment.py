@@ -110,10 +110,10 @@ def is_binding_account(cookie=init_cookie):
     :return:
     '''
     payment_data = get_exist_expected_payment_data_py('credit_card', cookie=cookie)
-    if isinstance(payment_data, dict):
+    if isinstance(payment_data, dict) and payment_data['channel_list'][0]['account_list'] != []:
         return payment_data['channel_list'][0]['account_list'][0]['client_id']
     else:
-        return payment_data
+        return None
 
 
 def activate_payment_credit_card_py(cookie=init_cookie):

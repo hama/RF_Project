@@ -17,7 +17,7 @@ order006
     [Documentation]     验证C端购买商品进入checkout选择支付方式页面会在B端未完成订单列表中生成订单
     [tags]    P0    threshold    smoke
     ${count00}    kworder.get_undeal_order_count_py
-    kworder.add_undeal_order_with_products_py
+    kworder.add_undead_order_with_to_pay_status_py
     Reload Page And Start Ajax
     ${count01}    kworder.get_undeal_order_count_py
 	${difference}    Evaluate    ${count01}-${count00}
