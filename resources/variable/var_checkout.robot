@@ -44,12 +44,13 @@ ${locatorB_checkout_address_select_province}    dom:document.querySelectorAll('[
 ${locatorB_checkout_address_city}    dom:document.querySelectorAll("input[name='city']")[0]    #.添加地址后选择城市
 ${locatorB_checkout_address_add}    dom:document.querySelectorAll("input[name='address']")[0]    #.添加地址后填写地址
 ${locatorB_checkout_address_zip}    dom:document.querySelectorAll("input[name='zip']")[0]    #.添加地址后zip框
-${locatorB_checkout_address_email}    dom:document.querySelectorAll("input[name='contact_email']")[0]    #.添加地址后email框
+${locatorB_checkout_address_email1}    dom:document.querySelectorAll("input[name='email']")[0]    #.添加地址后email框
 ${locatorB_checkout_address_phone}    dom:document.querySelectorAll("input[name='phone']")[0]    #.添加地址后phone框
 ${locatorB_checkout_address_company}    dom:document.querySelectorAll("input[name='company']")[0]    #.添加地址后copmany框
 ${locatorC_checkout_address_postalCode}     dom:document.querySelectorAll('input[name="address1"]')[0]   #添加apartment
 ${locatorC_checkout_address_Code}    dom:document.querySelectorAll('[id*="shipping_phone_select"]')[0]    #电话区号下拉列表
-
+#contact Email
+${locatorB_checkout_address_email}    dom:document.querySelectorAll("input[name='contact_email']")[0]    #.添加地址后email框
 ${locatorC_checkout_input_special}    dom:document.querySelectorAll('[class="checkout-instruction"]')[0]    #.留言信息
 ${locatorC_checkout_input_specialInstruction}    dom:document.querySelectorAll('[class="checkout-instruction__textarea"]')[0]    #.留言信息输入框
 ${locatorC_checkout_button_paymentMethod}    dom:document.querySelectorAll('[class*="btn btn-primary checkout-footer"]')[0]    #.payment method  提交按钮

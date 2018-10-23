@@ -41,6 +41,7 @@ Add Address Common Step
     Wait And Input Text    ${locatorB_checkout_address_zip}    123456
     Wait And Select From List By Label    ${locatorC_checkout_address_Code}     (+86) China
     Wait And Input Text    ${locatorB_checkout_address_phone}    15820406699
+    Wait And Input Text    ${locatorB_checkout_address_email1}   19988565@qq.com
     Wait And Input Text    ${locatorB_checkout_address_email}    9988565@qq.com
     Sleep    4
 
