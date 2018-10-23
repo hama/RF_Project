@@ -27,6 +27,12 @@ def add_default_tax_price_py(cookie=init_cookie):
 
 
 def set_country_tax_price_py(tax_price, cookie=init_cookie):
+    '''
+    设置国家税费，百分比
+    :param tax_price:
+    :param cookie:
+    :return:
+    '''
     create_only_one_shipping_py(cookie=cookie)
     tax_list_data = tax_py(cookie=cookie)['content']
     # data = copy.deepcopy(tax_batch_data)
