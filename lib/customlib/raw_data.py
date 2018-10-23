@@ -504,16 +504,20 @@ orders_fulfillments_data = {
 }
 
 checkout_save_data = {
-    "customer_authority": 1,
-    "customer_contact": 3,
-    "customer_email": 1,
-    "customer_phone": 1,
-    "customer_name": 2,
-    "company_setting": 2,
-    "postcode_setting": 2,
-    "refund_policy": "",
-    "privacy_policy": "",
-    "server_policy": ""
+    "customer_authority":1,
+    "name":"separate",
+    "company":"optional",
+    "email":"optional",
+    "phone":"optional",
+    "refund_policy":"",
+    "privacy_policy":"",
+    "server_policy":"",
+    "customer_contact":3,
+    "customer_email":1,
+    "customer_phone":1,
+    "customer_name":2,
+    "company_setting":2,
+    "postcode_setting":2
 }
 
 coupon_code_refresh_data = {
