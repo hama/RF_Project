@@ -226,6 +226,19 @@ def get_latest_undeal_order_num_py(cookie=init_cookie):
     return get_latest_undeal_order_num_by_num_py(1, cookie=cookie)[0]
 
 
+def get_productidlist_in_order_py(order_token, cookie=init_cookie):
+    '''
+    通过order_token获取对应order中的productid
+    :param order_token:
+    :param cookie:
+    :return: list
+    '''
+    productidlist_in_order = []
+    for item in query_order_py(order_token, cookie=cookie)['content']['order']['line_items']:
+        productidlist_in_order.append(item['id'])
+    return productidlist_in_order
+
+
 def add_order_by_tokens_py(tokens, cookie=init_cookie):
     '''
     通过order_token添加新订单
@@ -235,7 +248,7 @@ def add_order_by_tokens_py(tokens, cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    return add_deading_order_with_conf_py(tokens, cookie=cookie)
+    return add_deading_order_with_conf_py(tokens, cookie=cookie)['order_token']
 
 
 def add_deading_order_with_delivering_status_py(conf={}, cookie=init_cookie):
@@ -246,7 +259,7 @@ def add_deading_order_with_delivering_status_py(conf={}, cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    return add_deading_order_with_conf_py(conf, cookie=cookie)
+    return add_deading_order_with_conf_py(conf, cookie=cookie)['order_token']
 
 
 def add_deading_order_with_some_delivered_status_py(conf={}, cookie=init_cookie):
@@ -257,10 +270,11 @@ def add_deading_order_with_some_delivered_status_py(conf={}, cookie=init_cookie)
     :param cookie:
     :return:
     '''
-    order_token = add_deading_order_with_conf_py(conf, cookie=cookie)
-    productidlist_in_order = get_productidlist_in_order_py(order_token, cookie=cookie)
+    tokens = add_deading_order_with_conf_py(conf, cookie=cookie)
+    productidlist_in_order = get_productidlist_in_order_py(tokens['order_token'], cookie=cookie)
     conf = {'line_item_ids': [productidlist_in_order[0]]}
-    return shipment_with_conf_py(order_token, conf, cookie=cookie)
+    shipment_with_conf_py(tokens['order_token'], conf, cookie=cookie)
+    return tokens['order_token']
 
 
 def add_deading_order_with_all_delivered_status_py(conf={}, cookie=init_cookie):
@@ -271,10 +285,11 @@ def add_deading_order_with_all_delivered_status_py(conf={}, cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    order_token = add_deading_order_with_conf_py(conf, cookie=cookie)
-    productidlist_in_order = get_productidlist_in_order_py(order_token, cookie=cookie)
+    tokens = add_deading_order_with_conf_py(conf, cookie=cookie)
+    productidlist_in_order = get_productidlist_in_order_py(tokens['order_token'], cookie=cookie)
     conf = {'line_item_ids': productidlist_in_order}
-    return shipment_with_conf_py(order_token, conf, cookie=cookie)
+    shipment_with_conf_py(tokens['order_token'], conf, cookie=cookie)
+    return tokens['order_token']
 
 
 def add_deading_order_with_some_finished_status_py(conf={}, cookie=init_cookie):
@@ -286,13 +301,16 @@ def add_deading_order_with_some_finished_status_py(conf={}, cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    order_token = add_deading_order_with_conf_py(conf, cookie=cookie)
-    productidlist_in_order = get_productidlist_in_order_py(order_token, cookie=cookie)
+    tokens = add_deading_order_with_conf_py(conf, cookie=cookie)
+    productidlist_in_order = get_productidlist_in_order_py(tokens['order_token'], cookie=cookie)
     conf00 = {'line_item_ids': [productidlist_in_order[0]]}
     conf01 = {'line_item_ids': [productidlist_in_order[1]]}
-    fulfillment_id00 = shipment_with_conf_py(order_token, conf00, cookie=cookie)['content']['fulfillment']['id']
-    fulfillment_id01 = shipment_with_conf_py(order_token, conf01, cookie=cookie)['content']['fulfillment']['id']
-    return orders_finish_py(order_token, fulfillment_id01, cookie=cookie)
+    fulfillment_id00 = shipment_with_conf_py(tokens['order_token'], conf00, cookie=cookie)['content']['fulfillment'][
+        'id']
+    fulfillment_id01 = shipment_with_conf_py(tokens['order_token'], conf01, cookie=cookie)['content']['fulfillment'][
+        'id']
+    orders_finish_py(tokens['order_token'], fulfillment_id01, cookie=cookie)
+    return tokens['order_token']
 
 
 def add_deading_order_with_finished_status_py(conf={}, cookie=init_cookie):
@@ -305,11 +323,12 @@ def add_deading_order_with_finished_status_py(conf={}, cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    order_token = add_deading_order_with_conf_py(conf, cookie=cookie)
-    productidlist_in_order = get_productidlist_in_order_py(order_token, cookie=cookie)
+    tokens = add_deading_order_with_conf_py(conf, cookie=cookie)
+    productidlist_in_order = get_productidlist_in_order_py(tokens['order_token'], cookie=cookie)
     conf = {'line_item_ids': productidlist_in_order}
-    fulfillment_id = shipment_with_conf_py(order_token, conf, cookie=cookie)['content']['fulfillment']['id']
-    return orders_finish_py(order_token, fulfillment_id, cookie=cookie)
+    fulfillment_id = shipment_with_conf_py(tokens['order_token'], conf, cookie=cookie)['content']['fulfillment']['id']
+    orders_finish_py(tokens['order_token'], fulfillment_id, cookie=cookie)
+    return tokens['order_token']
 
 
 def add_undead_order_with_to_pay_status_py(cookie=init_cookie):
@@ -320,7 +339,7 @@ def add_undead_order_with_to_pay_status_py(cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    return add_undeal_order_with_products_py(cookie=cookie)
+    return get_tokens_with_products_py(cookie=cookie)['order_token']
 
 
 def add_undead_order_with_pay_fail_status_py(cookie=init_cookie):
@@ -349,7 +368,7 @@ def add_undead_order_with_pay_fail_status_py(cookie=init_cookie):
     payment_pay_conf['payment_line'] = get_expected_payment_line_py('credit_card')
     do_pay_with_conf_py(payment_pay_conf, cookie=cookie)
     config['payment_pay_conf'] = payment_pay_conf
-    return add_deading_order_with_conf_py(config, cookie=cookie)
+    return add_deading_order_with_conf_py(config, cookie=cookie)['order_token']
 
 
 def add_undead_order_with_order_cancel_status_py(cookie=init_cookie):
@@ -360,22 +379,9 @@ def add_undead_order_with_order_cancel_status_py(cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    order_token = add_undeal_order_with_products_py(cookie=cookie)
-    orders_cancel_py(order_token, cookie=cookie)
-    return order_token
-
-
-def get_productidlist_in_order_py(order_token, cookie=init_cookie):
-    '''
-    通过order_token获取对应order中的productid
-    :param order_token:
-    :param cookie:
-    :return: list
-    '''
-    productidlist_in_order = []
-    for item in query_order_py(order_token, cookie=cookie)['content']['order']['line_items']:
-        productidlist_in_order.append(item['id'])
-    return productidlist_in_order
+    tokens = get_tokens_with_products_py(cookie=cookie)
+    orders_cancel_py(tokens['order_token'], cookie=cookie)
+    return tokens['order_token']
 
 
 def add_deading_order_with_conf_py(conf={}, cookie=init_cookie):
@@ -447,7 +453,7 @@ def do_create_raw_order_process_py(conf, cookie=init_cookie):
             tokens = get_tokens_by_productidlist_py(conf['productidlist'], cookie=cookie)
         else:
             # 生成默认订单（含两个max产品）
-            tokens = add_undeal_order_with_products_py(cookie=cookie)
+            tokens = get_tokens_with_products_py(cookie=cookie)
     return tokens
 
 
@@ -541,7 +547,7 @@ def add_dealing_order_with_products_py(cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    tokens = add_undeal_order_with_products_py(cookie=cookie)
+    tokens = get_tokens_with_products_py(cookie=cookie)
     add_order_by_tokens_py(tokens, cookie=cookie)
     return tokens['order_token']
 
@@ -554,7 +560,7 @@ def add_dealing_order_with_product_py(cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    tokens = add_undeal_order_with_product_py(cookie=cookie)
+    tokens = get_tokens_with_product_py(cookie=cookie)
     add_order_by_tokens_py(tokens, cookie=cookie)
     return tokens['order_token']
 
@@ -566,7 +572,28 @@ def add_dealing_order_by_productidlist_py(productidlist, cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    return add_deading_order_with_conf_py({'productidlist': productidlist}, cookie=cookie)
+    return add_deading_order_with_conf_py({'productidlist': productidlist}, cookie=cookie)['order_token']
+
+
+def add_undeal_order_by_productidlist_py(productidlist, cookie=init_cookie):
+    '''
+    通过productidlist创建未完成订单
+    :param productidlist:
+    :param cookie:
+    :return:
+    '''
+    return get_tokens_by_productidlist_py(productidlist, cookie=cookie)['order_token']
+
+
+def add_undeal_order_with_product_py(cookie=init_cookie):
+    '''
+    添加未完成订单(只包含一个产品)
+        支付方式	支付状态	订单状态
+    	无	    待支付	未完成
+    :param cookie:
+    :return: order_token
+    '''
+    return get_tokens_with_product_py(cookie=cookie)['order_token']
 
 
 def add_undeal_order_with_products_py(cookie=init_cookie):
@@ -577,6 +604,18 @@ def add_undeal_order_with_products_py(cookie=init_cookie):
     :param cookie:
     :return:
     '''
+    return get_tokens_with_products_py(cookie=cookie)['order_token']
+
+
+def get_tokens_with_product_py(cookie=init_cookie):
+    count = product_search_py(cookie=cookie)['content']['data']['total']
+    if count == 0:
+        add_max_product_py(cookie=cookie)
+    productid01 = product_search_py(cookie=cookie)['content']['data']['products'][0]['id']
+    return get_tokens_by_productid_py(productid01, cookie=cookie)
+
+
+def get_tokens_with_products_py(cookie=init_cookie):
     count = product_search_py(cookie=cookie)['content']['data']['total']
     if count == 0:
         add_max_product_py(cookie=cookie)
@@ -590,36 +629,25 @@ def add_undeal_order_with_products_py(cookie=init_cookie):
     return get_tokens_by_productidlist_py(productidlist, cookie=cookie)
 
 
-def add_undeal_order_with_product_py(cookie=init_cookie):
-    '''
-    添加未完成订单(只包含一个产品)
-        支付方式	支付状态	订单状态
-    	无	    待支付	未完成
-    :param cookie:
-    :return:
-    '''
-    count = product_search_py(cookie=cookie)['content']['data']['total']
-    if count == 0:
-        add_max_product_py(cookie=cookie)
-    productid01 = product_search_py(cookie=cookie)['content']['data']['products'][0]['id']
-    return get_tokens_by_productid_py(productid01, cookie=cookie)
-
-
-def add_undeal_order_by_productidlist_py(productidlist, cookie=init_cookie):
-    '''
-    通过productidlist创建未完成订单
-    :param productidlist:
-    :param cookie:
-    :return:
-    '''
-    return get_tokens_by_productidlist_py(productidlist, cookie=cookie)
-
-
 if __name__ == '__main__':
+    # print add_undeal_order_with_product_py()
+    # print add_undeal_order_with_products_py()
+    # print add_dealing_order_with_product_py()
+    # print add_dealing_order_with_products_py()
+    # print add_deading_order_with_conf_py()
+    # print add_undead_order_with_to_pay_status_py()
+    # print add_undead_order_with_pay_fail_status_py()
+    # print add_undead_order_with_order_cancel_status_py()
+    # print add_deading_order_with_delivering_status_py()
+    # print add_deading_order_with_some_delivered_status_py()
+    # print add_deading_order_with_all_delivered_status_py()
+    # print add_deading_order_with_some_finished_status_py()
+    print add_deading_order_with_finished_status_py()
+
     # print get_tokens_by_productid_py('602')
     # print get_tokens_by_productidlist_py(['602', '601'])
     # print json.dumps(query_undeal_order_by_num_py())
-    # print add_undeal_order_with_products_py()
+    # print get_tokens_with_products_py()
     # shipping_address = {"first_name": "auto", "last_name": "test"}
     # place_order_conf = {'shipping_address': shipping_address}
     # conf = {'place_order_conf': place_order_conf}
@@ -631,7 +659,7 @@ if __name__ == '__main__':
     # print add_deading_order_with_some_finished_status_py()
     # print payment_list_py()
     # print add_undead_order_with_pay_fail_status_py()
-    print add_dealing_order_with_products_py()
+    # print query_all_dealing_order_py()
     # print payment_list_py()
     # print product_search_py()
     # print add_deading_order_with_delivering_status_py()
