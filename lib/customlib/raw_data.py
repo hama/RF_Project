@@ -370,19 +370,21 @@ place_order_data = {
         "id": "21"
     },
     "shipping_address": {
-        "id":"",
-        "first_name":"firstname",
-        "last_name":"lastname",
-        "phone_area_code":"86",
-        "phone":"18888888888",
-        "country":"China",
-        "country_code":"CN",
-        "province":"Beijing",
-        "province_code":"BJG",
-        "address":"address",
-        "address1":"address1",
-        "zip":"00000",
-        "city":"city"
+        "id": "",
+        "first_name": "firstname",
+        "last_name": "lastname",
+        "phone_area_code": "86",
+        "phone": "18888888888",
+        "company": "company",
+        "email": "12345@shippingaddress.com",
+        "country": "China",
+        "country_code": "CN",
+        "province": "Beijing",
+        "province_code": "BJG",
+        "address": "address",
+        "address1": "address1",
+        "zip": "00000",
+        "city": "city"
     },
     "discount_code": "",
     "prices": {
@@ -397,9 +399,9 @@ place_order_data = {
     "customer_info": {
         "note": "",
         "newsletter": 1,
-        "email":"12345@autotest.com"
+        "email": "12345@customerinfo.com"
     },
-    "save_address":1,
+    "save_address": 1,
     "checkout_token": "PYwViKKDF9v0nOuMnuAtCtbOYzooA1J1DrnWh2NuLE4%3D"
 }
 
@@ -500,20 +502,20 @@ orders_fulfillments_data = {
 }
 
 checkout_save_data = {
-    "customer_authority":1,
-    "name":"separate",
-    "company":"optional",
-    "email":"optional",
-    "phone":"optional",
-    "refund_policy":"",
-    "privacy_policy":"",
-    "server_policy":"",
-    "customer_contact":3,
-    "customer_email":1,
-    "customer_phone":1,
-    "customer_name":2,
-    "company_setting":2,
-    "postcode_setting":2
+    "customer_authority": 1,
+    "name": "separate",
+    "company": "optional",
+    "email": "optional",
+    "phone": "optional",
+    "refund_policy": "",
+    "privacy_policy": "",
+    "server_policy": "",
+    "customer_contact": 3,
+    "customer_email": 1,
+    "customer_phone": 1,
+    "customer_name": 2,
+    "company_setting": 2,
+    "postcode_setting": 2
 }
 
 coupon_code_refresh_data = {

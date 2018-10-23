@@ -640,9 +640,9 @@ if __name__ == '__main__':
     # print add_undead_order_with_order_cancel_status_py()
     # print add_deading_order_with_delivering_status_py()
     # print add_deading_order_with_some_delivered_status_py()
-    # print add_deading_order_with_all_delivered_status_py()
+    print add_deading_order_with_all_delivered_status_py()
     # print add_deading_order_with_some_finished_status_py()
-    print add_deading_order_with_finished_status_py()
+    # print add_deading_order_with_finished_status_py()
 
     # print get_tokens_by_productid_py('602')
     # print get_tokens_by_productidlist_py(['602', '601'])
