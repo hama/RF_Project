@@ -370,25 +370,19 @@ place_order_data = {
         "id": "21"
     },
     "shipping_address": {
-        "first_name": "name",
-        "last_name": "lastname",
-        "address": "addr",
-        "address1": "addr1",
-        "city": "city",
-        "country_code": "CN",
-        "province_code": "BE",
-        "city_code": "",
-        "area": "",
-        "zip": "00000",
-        "email": "12345@autotest.com",
-        "phone": "123456789",
-        "company": "company",
-        "buyer_accepts_marketing": "on",
-        "remember": "on",
-        "customer_note": "",
-        "order_token": "be6cb44f-402a-4728-84a1-c974ead1e97e",
-        "country": "China",
-        "province": "北京"
+        "id":"",
+        "first_name":"firstname",
+        "last_name":"lastname",
+        "phone_area_code":"86",
+        "phone":"18888888888",
+        "country":"China",
+        "country_code":"CN",
+        "province":"Beijing",
+        "province_code":"BJG",
+        "address":"address",
+        "address1":"address1",
+        "zip":"00000",
+        "city":"city"
     },
     "discount_code": "",
     "prices": {
@@ -402,8 +396,10 @@ place_order_data = {
     },
     "customer_info": {
         "note": "",
-        "newsletter": 1
+        "newsletter": 1,
+        "email":"12345@autotest.com"
     },
+    "save_address":1,
     "checkout_token": "PYwViKKDF9v0nOuMnuAtCtbOYzooA1J1DrnWh2NuLE4%3D"
 }
 

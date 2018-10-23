@@ -284,7 +284,7 @@ Element Attribute Should Contain With Wait
     ${times}    Evaluate    ${timeout}-1
     :FOR    ${i}    IN RANGE    ${timeout}
     \    ${attr}    Get Element Attribute    ${element_locator}    ${attribute}
-    \    ${status}    Run Keyword And Return Status    Should Contain    '${attr}'    '${expected}'
+    \    ${status}    Run Keyword And Return Status    Should Contain    ${attr}    ${expected}
     \    Run Keyword If    ${status}    Exit For Loop
     \    Run Keyword If    '${i}'=='${times}'    Should Be True    ${status}
     \    ...    ELSE    Sleep    1

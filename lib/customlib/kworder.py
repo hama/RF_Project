@@ -478,7 +478,7 @@ def do_place_order_process_py(conf, tokens, cookie=init_cookie):
         shipping_lines_conf = copy.deepcopy(shipping_lines_data)
     shipping_lines_conf['order_token'] = tokens['order_token']
     shipping_lines_result = get_shipping_lines_with_conf_py(shipping_lines_conf, cookie=cookie)
-    data_shipping_line = shipping_lines_result['content']['data']['shipping_plan'][0]
+    data_shipping_line = shipping_lines_result['content']['data']['shipping_lines'][0]
     # 2、调计算价格接口
     if 'price_calculate_conf' in key_list:
         price_calculate_conf = conf['price_calculate_conf']
