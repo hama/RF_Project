@@ -12,8 +12,8 @@ def tax_py(query_str={}, cookie=init_cookie):
     return do_get(url, query_str, cookie=cookie)
 
 
-def tax_refresh_py(data, cookie=init_cookie):
-    url = home_page_url + '/api/tax/refresh'
+def tax_batch_py(data, cookie=init_cookie):
+    url = home_page_url + '/api/tax/batch'
     return do_post(url, data, cookie=cookie)
 
 
@@ -23,17 +23,19 @@ def add_default_tax_price_py(cookie=init_cookie):
     :param cookie:
     :return:
     '''
+    return set_country_tax_price_py(60, cookie=cookie)
+
+
+def set_country_tax_price_py(tax_price, cookie=init_cookie):
     create_only_one_shipping_py(cookie=cookie)
     tax_list_data = tax_py(cookie=cookie)['content']
-
-    data = copy.deepcopy(tax_refresh_data)
-    data['country_id'] = tax_list_data[0]['country_id']
-    tax_info = []
-    for tax_data in tax_list_data[0]['zone_list']:
-        tax_info.append({'zone_id': tax_data['zone_id'], 'price': tax_data['price']})
-    data['tax_info'] = json.dumps(tax_info)
-
-    return tax_refresh_py(data, cookie=cookie)
+    # data = copy.deepcopy(tax_batch_data)
+    data = tax_list_data[0]['tax_rates']
+    for i in range(len(data)):
+        if data[i]['province_code'] == 'ALL':
+            data[i]['tax_rate'] = tax_price
+            break
+    return tax_batch_py(data, cookie=cookie)
 
 
 if __name__ == '__main__':
