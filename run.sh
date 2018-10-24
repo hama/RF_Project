@@ -79,6 +79,7 @@ if [ "$test_module" ]
 then
 	echo "$test_module"
     robot -v is_headless:True -d logs/ $test_module
+    robot -v is_headless:True --rerunfailed logs/output.xml -d logs/rerun/ $test_module
 else
 	echo 'test_module_default'
     robot -v is_headless:True -d logs/ \
@@ -105,17 +106,17 @@ else
 		module/08_settings/04_tax/tax_rate.robot \
 		module/08_settings/07_file_management/file_management.robot \
 		module/09_checkout/01_Checkout_Normal_Page/*
+fi
 
-	# 若存在rerun文件夹，即重跑了一遍失败用例。
-	# 则使用当前logs/output.xml文件的<suite>替换logs/rerun/output.xml的
-	# 这样rebot --merge才通过
-	if [ -d "logs/rerun" ]
-	then
-		line=`grep '<suite .*id="s1".*>' logs/output.xml`
-		sed -i "3d" logs/rerun/output.xml
-		sed -i "2a$line" logs/rerun/output.xml
-		rebot --merge -d logs/ logs/output.xml logs/rerun/output.xml
-	fi
+# 若存在rerun文件夹，即重跑了一遍失败用例。
+# 则使用当前logs/output.xml文件的<suite>替换logs/rerun/output.xml的
+# 这样rebot --merge才通过
+if [ -d "logs/rerun" ]
+then
+	line=`grep '<suite .*id="s1".*>' logs/output.xml`
+	sed -i "3d" logs/rerun/output.xml
+	sed -i "2a$line" logs/rerun/output.xml
+	rebot --merge -d logs/ logs/output.xml logs/rerun/output.xml
 fi
 
 # 执行email_utils.py
