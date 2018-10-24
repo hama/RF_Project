@@ -202,8 +202,8 @@ shipping130
     Wait And Click Element    ${locatorB_shippingNew_popUp_checkbox_firstCountry}
     Wait And Click Element    ${locatorB_shippingNew_popUp_checkbox_secondCountry}
     Wait And Click Element    ${locatorB_shippingNew_btn_popUpConfirm}
-    Text Of Element Should Contain With Wait    ${locatorB_shippingNew_text_listCountryName}[0]    阿尔巴尼亚
-    Text Of Element Should Contain With Wait    ${locatorB_shippingNew_text_listCountryName}[1]    安道尔
+    Text Of Element Should Contain With Wait    ${locatorB_shippingNew_text_listCountryName}[0]    阿尔及利亚
+    Text Of Element Should Contain With Wait    ${locatorB_shippingNew_text_listCountryName}[1]    安哥拉
 	Wait And Click Element    ${locatorB_shippingNew_btn_addCountry}
     Wait And Click Element    ${locatorB_shippingNew_popUp_arrow_listArrow}[0]
     Wait And Click Element    ${locatorB_shippingNew_popUp_checkbox_secondCountry}
@@ -218,7 +218,7 @@ shipping131
     Wait And Click Element    ${locatorB_shippingNew_popUp_arrow_listArrow}[0]
     Wait And Click Element    ${locatorB_shippingNew_popUp_checkbox_firstCountry}
     Wait And Click Element    ${locatorB_shippingNew_btn_popUpConfirm}
-    Text Of Element Should Contain With Wait    ${locatorB_shippingNew_text_listCountryName}[0]    阿尔巴尼亚
+    Text Of Element Should Contain With Wait    ${locatorB_shippingNew_text_listCountryName}[0]    阿尔及利亚
     Wait And Click Element Then Confirm    ${locatorB_shippingNew_icon_listDelCountryItem}[0]
 	Count Of Element Should Be Equal With Wait    ${locatorB_shippingNew_text_listCountryName}    ${0}
 

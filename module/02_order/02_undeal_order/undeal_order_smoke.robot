@@ -64,7 +64,7 @@ order149
     Select All Undeal Order Tag
     Wait And Click Element    ${locatorB_orderUndeal_items_listOrder}[0]
     Wait Until Page Contains Text    返回订单列表
-    Wait And Click Element    ${locatorB_icon_back00}
+    Wait And Click Element    ${locatorB_icon_back}
     Wait Until Page Contains Locator    ${locatorB_orderUndeal_items_listOrder}
 
 order152
@@ -103,14 +103,14 @@ order196
     Select All Undeal Order Tag
     Wait And Click Element    ${locatorB_orderUndeal_items_listOrder}[0]
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationLastName}    姓：lastname
-	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationName}    名：name
-	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationPhone}    电话：123456789
-	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationEmail}    邮箱：12345@autotest.com
+	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationName}    名：firstname
+	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationPhone}    电话：18888888888
+	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationEmail}    邮箱：12345@shippingaddress.com
 	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationCountry}    国家：China
-	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationProvince}    省份：北京
+	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationProvince}    省份：Beijing
 	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationCity}    城市：city
-	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationStreet}    街道：addr
-	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationApartment}    寓所：addr1
+	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationStreet}    街道：address
+	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationApartment}    寓所：address1
 	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationCompany}    公司：company
 	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationCode}    邮编：00000
 

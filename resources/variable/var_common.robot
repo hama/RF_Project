@@ -87,8 +87,8 @@ ${locatorB_popUps_allUncheckedCheckbox}    dom:document.querySelectorAll('.ant-m
 ${locatorB_popUps_allCheckedCheckbox}    dom:document.querySelectorAll('.ant-modal-body span[class="ant-checkbox ant-checkbox-checked"]')    #弹窗的所有被选中checkbox
 ${locatorB_popUps_inputs}    dom:document.querySelectorAll('.ant-modal-body input[class="ant-select-search__field"]')    #弹窗的所有input
 ${locatorB_popUps_checkbox}    dom:document.querySelectorAll('.ant-modal-body .ant-checkbox-input')    #弹窗的所有checkbox
-${locatorB_popUps_icon_up}    dom:document.querySelectorAll('.anticon-up')
-${locatorB_popUps_icon_down}    dom:document.querySelectorAll('.anticon-down')
+${locatorB_popUps_icon_up}    dom:document.querySelectorAll('[class="ant-table-tbody"] .anticon-up')
+${locatorB_popUps_icon_down}    dom:document.querySelectorAll('[class="ant-table-tbody"] .anticon-down')
 ### locator page
 ${locatorB_page_text_totalRecord}    dom:document.querySelectorAll(".ant-pagination-total-text")[0]      #页面分页按钮-"N 条记录"
 ### locator tag

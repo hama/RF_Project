@@ -45,8 +45,7 @@ taxPrice007
     kwshipping.add_shipping_with_conf_py
     #创建60的税费
     kwtax.add_default_tax_price_py
-
-    Sleep    5
+    Reload Page And Start Ajax
     #.关闭税费中的第一个国家税费
     Wait And Click Element    ${locatorB_taxPrice_switch_list}[0]
     Wait Until Page Contains Text   设置成功

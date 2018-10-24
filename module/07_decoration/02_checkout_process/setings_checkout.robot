@@ -274,8 +274,6 @@ checkoutPageSetings028
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeHidden}   class    ant-radio-wrapper ant-radio-wrapper-checked
 
-
-
 checkoutPageSetings029
     [Documentation]    测试顾客信息设置-输入退款条约
     [Tags]    P0    threshold   smoke
