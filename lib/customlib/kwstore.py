@@ -38,11 +38,16 @@ def set_store_info_with_conf_py(conf={}, cookie=init_cookie):
     '''
     data = copy.deepcopy(store_update_data)
     dict_deepupdate(data, conf)
+    data_store_info = store_info_py(cookie=cookie)
     key_list = conf.keys()
     if 'name' not in key_list:
         data['name'] = datas_domain
+    if 'store_id' not in key_list:
+        data['store_id'] = data_store_info['content']['data']['store_id']
+    if 'id' not in key_list:
+        data['id'] = data_store_info['content']['data']['id']
     if 'created_at' not in key_list:
-        data['created_at'] = store_info_py()['content']['data']['created_at']
+        data['created_at'] = data_store_info['content']['data']['created_at']
     if 'updated_at' not in key_list:
         data['updated_at'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 

@@ -995,5 +995,7 @@ store_update_data = {
     'id': 25,
     'status': 'open',
     'created_at': '2018-10-20 16:40:10',
-    'updated_at': '2018-10-20 16:40:10'
+    'updated_at': '2018-10-20 16:40:10',
+    "country": "",
+    "province": "ALL"
 }
