@@ -21,8 +21,7 @@ for arg do
 done
 sub_args=${args#*-M}
 # 获取所有入参用例模块
-MODULES=${sub_args%-*}
-echo $MODULES
+MODULES=${sub_args%%-*}
 
 # 判定 getopt 的执行时候有错，错误信息输出到 STDERR
 if [ $? != 0 ]
@@ -48,7 +47,7 @@ do
 			shift
 			;;
 		-M | --module)
-			test_module="$2"
+			test_module="$MODULES"
 			shift 2
 			;;
 		-U | --url)
