@@ -30,4 +30,4 @@ image = {"lastModified": "1520929852000", "lastModifiedDate": "2018-03-13T08:30:
          "originFileObj": {"uid": "rc-upload-1535093594875-2"}, "path": imgs, "percent": "100.00",
          "status": "done", "type": "image/jpeg", "uid": "rc-upload-1535093594875-2", "url": path_img}
 
-init_cookie = login_py()
+init_cookie = Login().login_py()
