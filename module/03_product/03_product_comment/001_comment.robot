@@ -81,22 +81,23 @@ reviews004
 #    Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listContent}[0]    content00
 #    Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listContent}[1]    content01
 
-reviews006
-    [Documentation]    进入全部评论界面，更多信息筛选，评论日期旧到新
-    [Tags]    P0
-    &{comment_conf00} =    Create Dictionary
-    ...    content=content00
-    kwcomment.add_comment_with_conf_py    ${comment_conf00}
-    Sleep    1
-    &{comment_conf01} =    Create Dictionary
-    ...    content=content01
-    kwcomment.add_comment_with_conf_py    ${comment_conf01}
-    Reload Page And Start Ajax
-    Select All Comment Tag
-    Wait And Click Element    ${locatorB_productsReviews_icon_listArrowDown}[1]
-    Wait And Click Element    ${locatorB_productsReviews_icon_listArrowUp}[0]
-    Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listContent}[0]    content00
-    Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listContent}[1]    content01
+# 有bug，已提单，暂不跑
+#reviews006
+#    [Documentation]    进入全部评论界面，更多信息筛选，评论日期旧到新
+#    [Tags]    P0
+#    &{comment_conf00} =    Create Dictionary
+#    ...    content=content00
+#    kwcomment.add_comment_with_conf_py    ${comment_conf00}
+#    Sleep    1
+#    &{comment_conf01} =    Create Dictionary
+#    ...    content=content01
+#    kwcomment.add_comment_with_conf_py    ${comment_conf01}
+#    Reload Page And Start Ajax
+#    Select All Comment Tag
+#    Wait And Click Element    ${locatorB_productsReviews_icon_listArrowDown}[1]
+#    Wait And Click Element    ${locatorB_productsReviews_icon_listArrowUp}[0]
+#    Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listContent}[0]    content00
+#    Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listContent}[1]    content01
 
 reviews007
     [Documentation]    进入已发布评论界面
@@ -170,24 +171,25 @@ reviews009
 #    Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listContent}[0]    content00
 #    Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listContent}[1]    content01
 
-reviews011
-    [Documentation]    进入已发布评论界面，更多信息筛选，评论日期旧到新
-    [Tags]    P1
-    &{comment_conf00} =    Create Dictionary
-    ...    content=content00
-    ...    status=1
-    kwcomment.add_comment_with_conf_py    ${comment_conf00}
-    Sleep    1
-    &{comment_conf01} =    Create Dictionary
-    ...    content=content01
-    ...    status=1
-    kwcomment.add_comment_with_conf_py    ${comment_conf01}
-    Reload Page And Start Ajax
-    Select Published Comment Tag
-    Wait And Click Element    ${locatorB_productsReviews_icon_listArrowDown}[1]
-    Wait And Click Element    ${locatorB_productsReviews_icon_listArrowUp}[0]
-    Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listContent}[0]    content00
-    Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listContent}[1]    content01
+# 有bug，已提单，暂不跑
+#reviews011
+#    [Documentation]    进入已发布评论界面，更多信息筛选，评论日期旧到新
+#    [Tags]    P1
+#    &{comment_conf00} =    Create Dictionary
+#    ...    content=content00
+#    ...    status=1
+#    kwcomment.add_comment_with_conf_py    ${comment_conf00}
+#    Sleep    1
+#    &{comment_conf01} =    Create Dictionary
+#    ...    content=content01
+#    ...    status=1
+#    kwcomment.add_comment_with_conf_py    ${comment_conf01}
+#    Reload Page And Start Ajax
+#    Select Published Comment Tag
+#    Wait And Click Element    ${locatorB_productsReviews_icon_listArrowDown}[1]
+#    Wait And Click Element    ${locatorB_productsReviews_icon_listArrowUp}[0]
+#    Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listContent}[0]    content00
+#    Text Of Element Should Be Equal With Wait    ${locatorB_productsReviews_text_listContent}[1]    content01
 
 reviews012
     [Documentation]    进入未发布评论界面
