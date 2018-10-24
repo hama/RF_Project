@@ -112,29 +112,34 @@ uploadFile014
     Wait Enabled And Choose File    ${locatorB_uploadFile_add_btn}    ${file_products_addImg2}    0
     Wait Until Page Contains Text    上传成功
     Wait Until Page Contains Locator    ${locatorB_uploadFile_firstTr_elm}
+    Wait Until Page Contains Text     image01.jpg
     #.点击删除
     Wait And Click Element    ${locatorB_uploadFile_del_img}
     #.点击取消
     Wait And Click Element    ${locatorB_global_alert_cancel}
     Wait Until Page Contains Locator    ${locatorB_uploadFile_firstTr_elm}
+    Wait Until Page Contains Text     image01.jpg
 
 uploadFile015
     [Documentation]    测试批量删除 > 显示删除
     [Tags]    P1    threshold
-    Go To Uploadfile Page
+    #.添加30个
+    Wait Add Upfile
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    ${locatorB_uploadFile_add_btn}
     #.点击批量选中
     Wait And Click Element    ${locatorB_uploadFile_batchSect_elm}
     #.显示删除 元素
     Wait Until Page Contains Locator    ${locatorB_uploadFile_del_img}
+    #删除所有
+    Wait Del Upfile
 
 uploadFile018
     [Documentation]    测试下一页上一页按钮 > 素材列表切换到下一页
     [Tags]    P1    threshold
     #.添加30个
-    ${res}    Wait Add Upfile
-    Log    ${res}
-    Go To Uploadfile Page
+    Wait Add Upfile
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    ${locatorB_uploadFile_add_btn}
     #.点击下一页
     Wait And Click Element    ${locatorB_uploadFile_nextPge_btn}
@@ -145,9 +150,8 @@ uploadFile019
     [Documentation]    测试下一页上一页按钮 > 素材列表切换到上一页
     [Tags]    P1    threshold
     #.添加30个
-    ${res}    Wait Add Upfile
-    Log    ${res}
-    Go To Uploadfile Page
+    Wait Add Upfile
+    Reload Page And Start Ajax
     Wait Until Page Contains Locator    ${locatorB_uploadFile_add_btn}
     #.点击下一页
     Wait And Click Element    ${locatorB_uploadFile_nextPge_btn}
