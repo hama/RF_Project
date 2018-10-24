@@ -101,14 +101,14 @@ ${locatorB_checkout_Cod_font}    Cash on Delivery    #.货到付款 字体
 
 ${locatorC_checkout_link_change}    dom:document.querySelectorAll('a[class="fr"]')[0]   #change  返回上一步
 ${locatorC_checkout_link_return}     dom:document.querySelectorAll('a[id="checkout-back"]')[0]          #支付页返回按钮
-${locator_checkout_button_checkoutBack}     dom:document.querySelectorAll("#checkout-back")[0]          #
+${locator_checkout_button_checkoutBack}     dom:document.querySelectorAll("#checkout-back")[0]          #.
 ${locatorC_checkout_input_discountCode}     dom:document.querySelectorAll('input[id="coupon_code_input"]')[0]       #优惠码输入框
 ${locatorC_checkout_submit_apply}     dom:document.querySelectorAll('button[id="coupon_apply"]')[0]     #优惠码提交按钮
 ${locatorC_checkout_submit_couponClose}      dom:document.querySelectorAll('[class*="sep-font-close"]')[0]     #取消优惠码按钮
 ${locatorC_checkout_shipping_price}     dom:document.querySelectorAll('span[class="fr"]')[0]     #
 ${locatorC_checkout_shipping_submitCheckout}     dom:document.querySelectorAll('[class*="btn btn-primary checkout-footer"]')[0]        #type="submit"    checkout  提交到shipping method
 ${locatorC_checkout_payment_cashOnDelivery}     dom:document.querySelectorAll('[class*="method__item_selected"]')[0]        #支付方式-货到付款
-${locatorC_checkout_shipping_orderSubmit}      dom:document.querySelectorAll('button[class*="checkout-footer__btn"]')[0]     #order checkout 提交按钮
+${locatorC_checkout_shipping_orderSubmit}      dom:document.querySelectorAll('button[class*="btn-primary payment-footer__btn"]')[0]     #order checkout 提交按钮
 ${locatorC_checkout_shipping_total}    dom:document.querySelectorAll('[class*="checkout-prices"] tfoot td')[1]      #.总金额
 
 
