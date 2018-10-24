@@ -35,7 +35,7 @@ checkoutPageSetings003
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
-    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+    Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
     Element Attribute Should Contain With Wait    ${locatorB_checkout_label_buyMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
 checkoutPageSetings005
@@ -47,7 +47,6 @@ checkoutPageSetings005
 checkoutPageSetings008
     [Documentation]    测试结账设置顾客权限功能>1.点击不开启会员注册  2.点击保存
     [Tags]    P0    threshold   smoke
-
     Wait And Click Element    ${locatorB_checkout_label_notMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     Wait And Click Element    ${locatorB_checkout_radio_name}
@@ -56,6 +55,7 @@ checkoutPageSetings008
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
     Element Attribute Should Contain With Wait     ${locatorB_checkout_label_notMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
 checkoutPageSetings009
@@ -70,6 +70,7 @@ checkoutPageSetings009
      Wait Until Page Contains Text   设置成功
      Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
      Reload Page And Start Ajax
+     Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
      Element Attribute Should Contain With Wait     ${locatorB_checkout_label_loginMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
 checkoutPageSetings010
@@ -85,6 +86,7 @@ checkoutPageSetings010
      Wait Until Page Contains Text    设置成功
      Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
      Reload Page And Start Ajax
+     Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
      Element Attribute Should Contain With Wait     ${locatorB_checkout_label_buyMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
 checkoutPageSetings011
