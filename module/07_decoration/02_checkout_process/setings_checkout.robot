@@ -42,6 +42,7 @@ checkoutPageSetings005
     [Documentation]    测试结账设置页面编辑保存
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_label_loginMembers}
+    Sleep And Click Element    ${locatorB_overview}
     Wait Alert Should Be Present And Accept    页面上有未保存内容，是否确定退出?
 
 checkoutPageSetings008
