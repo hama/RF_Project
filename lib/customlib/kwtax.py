@@ -45,5 +45,6 @@ def set_country_tax_price_py(tax_price, cookie=init_cookie):
 
 
 if __name__ == '__main__':
-    print add_default_tax_price_py()
+    print Login().sign_up_py()
+    # print add_default_tax_price_py()
     # add_max_shipping_py()
