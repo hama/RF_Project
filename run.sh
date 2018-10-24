@@ -129,6 +129,6 @@ fi
 
 #显示除选项外的参数(不包含选项的参数都会排到最后)
 # arg 是 getopt 内置的变量 , 里面的值，就是处理过之后的 $@(命令行传入的参数)
-#for arg do
-#   echo '--> '"$arg" ;
-#done
+for arg do
+   echo '--> '"$arg" ;
+done
