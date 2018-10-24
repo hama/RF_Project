@@ -13,6 +13,13 @@ export PATH=$PATH:/usr/local/bin/
 
 TEMP=`getopt -o eam:u: -l email,account,module:,url: -- "$@"`
 
+#显示除选项外的参数(不包含选项的参数都会排到最后)
+# arg 是 getopt 内置的变量 , 里面的值，就是处理过之后的 $@(命令行传入的参数)
+MODULES=''
+for arg do
+   MODULES="$MODULES"" $arg" ;
+done
+
 # 判定 getopt 的执行时候有错，错误信息输出到 STDERR
 if [ $? != 0 ]
 then
@@ -125,12 +132,3 @@ then
 	echo 'send_email_default'
     python2.7 lib/utils/email_utils.py
 fi
-
-
-#显示除选项外的参数(不包含选项的参数都会排到最后)
-# arg 是 getopt 内置的变量 , 里面的值，就是处理过之后的 $@(命令行传入的参数)
-TEMPAAA=''
-for arg do
-   TEMPAAA="$TEMPAAA"" $arg" ;
-done
-echo '--> '"$TEMPAAA" ;
