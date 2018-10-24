@@ -14,6 +14,7 @@ Resource          var_shipping.robot
 Resource          var_store.robot
 Resource          var_tax.robot
 Resource          var_uploadfile.robot
+Resource          var_application.robot
 
 *** Variables ***
 ### 未分类，需要分类并清理
@@ -23,7 +24,7 @@ ${error_msg}      出错啦！    #.自定义错误提示
 ${locatorB_global_alert_confirm}    dom:document.querySelectorAll('button[data-robot="pop_confirm"]')[0]    #.全局弹窗 确定 按钮
 ${locatorB_global_alert_cancel}    dom:document.querySelectorAll('button[data-robot="pop_cancal"]')[0]    #.全局弹窗 取消 按钮
 ### 菜单栏 locator
-${locatorB_overview}    dom:document.querySelectorAll('span[data-robot="overview"]')[0]    # 导航栏-概览（即主页）
+${locatorB_overview}    dom:document.querySelectorAll('a[href="/"]')[0]    # 导航栏-概览（即主页）
 ${locatorB_order}    dom:document.querySelectorAll('span[data-robot="order"]')[0]    # 导航栏-订单
 ${locatorB_order_dealing}    dom:document.querySelectorAll('a[href="/order/_dealing"]')[0]    # 导航栏-待处理订单
 ${locatorB_order_undeal}    dom:document.querySelectorAll('a[href="/order/_undeal"]')[0]    # 导航栏-未完成订单
@@ -126,7 +127,7 @@ ${user_default_inviteCode}    ${datas_invite_code}
 ### keybord_key
 ${keybord_enter}    \\13
 ### 注册用户
-${register_contact}    gt1zwkp@abctest.com
+${register_contact}    gt1zwkp@autotest.com
 ${register_domain}    gt1zwkp
 ${register_pwd}    ${datas_password}
 

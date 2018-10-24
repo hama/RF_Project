@@ -25,8 +25,8 @@ if __name__ == '__main__':
         config.set("common_account", "datas_contact", 'autotest@shoplazza.com')
         config.set("common_account", "datas_domain", 'autotest')
 
-        config.set("common_db", "db_service_config", '{"host": "rm-rj9ww1316miq2j87l.mysql.rds.aliyuncs.com",'
-                                                     '"port": 3306,"user": "fortest","password": "fortest@123",'
+        config.set("common_db", "db_service_config", '{"host": "rm-wz94y2fc4490zs3424o.mysql.rds.aliyuncs.com",'
+                                                     '"port": 3306,"user": "readonly","password": "shoplaza@123",'
                                                      '"db": "service","charset": "utf8"}')
         config.set("common_db","db_shop_config",'{"host": "rm-rj9f22zpw641v45g9.mysql.rds.aliyuncs.com",'
                                                 '"port": 3306,"user": "lansejiebo","password": "lansejiebo@123",'
@@ -40,7 +40,7 @@ if __name__ == '__main__':
                                            '"port": 3306,"user": "app","password": "8rEdunuH@Fe+",' \
                                            '"db": "service","charset": "utf8"}'
         data_config['home_page_url'] = args.url
-        data_config['datas_contact'] = random_str + "@abctest.com"
+        data_config['datas_contact'] = random_str + "@autotest.com"
         data_config['datas_domain'] = random_str
         data_config['datas_password'] = config.get("common_account", "datas_password")
 

@@ -10,13 +10,11 @@ Shipping Suite Setup
 
 Shipping Suite Teardown
     [Documentation]
-    kwshipping.del_all_shipping_py
     Close Test Suite Browser
 
 Shipping Case Setup
 	[Documentation]
-	kwshipping.del_all_shipping_py
-    Go To Shipping Page
+    Go To Application Page
 
 Shipping Case Teardown
 	[Documentation]

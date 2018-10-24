@@ -158,7 +158,7 @@ Go To Checkout Settings Page
     Location Should Be    ${url_checkoutSettings}
 
 Go To Application Page
-    [Documentation]    跳转到应用市场-网站seo
+    [Documentation]    跳转到应用市场-图片SEO
     Wait And Click Element    ${locatorB_application}
     Wait Until Page Contains    图片SEO
     Wait And Click Element    ${locatorB_application_seoimg}

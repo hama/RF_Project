@@ -109,5 +109,4 @@ def add_finish_coupon_code_py(conf={}, cookie=init_cookie):
 
 if __name__ == '__main__':
     # print coupon_code_random_code_py()
-    print get_c_cookie()
-    # print add_before_coupon_code_py()
+    print add_before_coupon_code_py()
