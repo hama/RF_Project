@@ -26,6 +26,10 @@ BeginnerTutorial003
     ${res}    Execute JavaScript    return document.querySelectorAll('button')[0].innerText
     Should Be True    '${res}'=='已完成'
 
+    #.添加完商品返回新手教程，验证
+    Element Attribute Should Contain With Wait    元素     disabled     ${empty}
+
+
 BeginnerTutorial005
     [Documentation]    测试新手教程页面添加商品栏 > 点击去添加按钮时跳转到商品界面，上传商品后返回新手教程商品栏图标变为√，去添加按钮变为已完成并置灰不可点击
     [Tags]    P1    threshold

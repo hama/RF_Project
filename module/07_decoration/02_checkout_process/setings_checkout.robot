@@ -42,6 +42,7 @@ checkoutPageSetings005
     [Documentation]    测试结账设置页面编辑保存
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_label_loginMembers}
+    Go To Store Page
     Wait Alert Should Be Present And Accept    页面上有未保存内容，是否确定退出?
 
 checkoutPageSetings008
@@ -273,8 +274,6 @@ checkoutPageSetings028
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeHidden}   class    ant-radio-wrapper ant-radio-wrapper-checked
-
-
 
 checkoutPageSetings029
     [Documentation]    测试顾客信息设置-输入退款条约
