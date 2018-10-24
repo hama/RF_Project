@@ -196,7 +196,7 @@ checkout_085
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
-    ...    shipping_plan=[{"name":"dssd","shipping_method":"weight","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+    ...    shipping_plan=[{"name":"Freight Standard shipping","shipping_method":"weight","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
@@ -215,7 +215,7 @@ checkout_087
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
-    ...    shipping_plan=[{"name":"dssd","shipping_method":"quantity","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+    ...    shipping_plan=[{"name":"Freight Standard shipping","shipping_method":"quantity","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     Reload Page And Start Ajax
     Wait And Input Text  ${locatorC_checkout_input_checkNum}     5
@@ -224,14 +224,14 @@ checkout_087
     #.选择中国
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
     Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
-    Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_deliveryName}    dssd
+    Text Of Element Should Be Equal With Wait   ${locatorC_checkout_shipping_deliveryName}    Freight Standard shipping
 
 checkout_093
     [Documentation]    验证从商品详情页面buy now进入checkout shipping页面后，点击return可返回商品详情页面 > 1.C端进入任意一个商品详情页面 2.buy now进入checkout shipping页面 3.点击return
     [Tags]    P0    threshold    smoke
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Text   Order summary
-    Wait And Click Element  ${locator_checkout_button_checkoutBack}
+    Wait And Click Element  ${locatorC_checkout_paymentCard_return}
     Wait Until Page Contains Locator    ${locatorB_checkout_by_now_btn}
 
 checkout_094
@@ -266,7 +266,7 @@ checkout_100
     [Tags]    P0    threshold    smoke
     Wait And Input Text  ${locatorC_checkout_input_checkNum}     5
     Wait And Click Element  ${locatorB_checkout_by_now_btn}
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_itemQuantity}   X5
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_itemQuantity}   × 5
 
 checkout_101
     [Documentation]   验证checkout 支付页面，订单汇总商品栏，商品价格显示正常 > 1.C端购买商品women进入checkout 支付页面  2.查看订单汇总商品栏，商品价格显示
@@ -323,7 +323,7 @@ checkout_120
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
     ...    shipping_name=shipping_yunfei
-    ...    shipping_plan=[{"name":"dssd","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+    ...    shipping_plan=[{"name":"Freight Standard shipping","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
     #添加是shipping address
     Reload Page And Start Ajax
@@ -430,7 +430,7 @@ checkout_170
     Wait And Input Text     ${locatorC_checkout_inputText_address1}    中山大学产学研基地
     Wait And Input Text     ${locatorC_checkout_inputText_city}    深圳
     Wait And Select From List By Label     ${locatorC_checkout_inputText_countyCode}    China
-    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    上海
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
     Wait And Input Text     ${locatorC_checkout_inputText_zip}    518000
     Wait And Click Element      ${locatorC_checkout_shipping_orderSubmit}
     Wait Until Page Contains Text      Payment successful!

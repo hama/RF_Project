@@ -62,8 +62,9 @@ taxPrice007
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     #.选择中国
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
     #查看商品扣除60%税费后的金额
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $444.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $710.40
     #还原初始化物流信息
     kwshipping.del_all_shipping_py
     #还原中国的物流信息
@@ -150,4 +151,5 @@ taxPrice019
     Sleep     2
     Wait And Click Element    ${locatorB_taxPrice_icon_settingList}[0]
     Value Of Element Should Be Equal With Wait     ${locatorB_taxPrice_popUp_cityInputList}[0]    20
+
 
