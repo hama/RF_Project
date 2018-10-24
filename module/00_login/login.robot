@@ -32,8 +32,7 @@ login003
     Wait And Input Text    ${locatorB_login_input_account}    ${contentB_login_errorFormatAccount}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Click Element    ${locatorB_login_btn_login}
-    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Should Be Equal    ${prompt}    请输入正确的邮箱／手机
+    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".ant-form-explain")[0]    请输入正确的邮箱／手机
 
 login004
     [Documentation]    主账号登录失败_账号为空
@@ -41,8 +40,7 @@ login004
     Wait And Input Text    ${locatorB_login_input_account}    ${Empty}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Click Element    ${locatorB_login_btn_login}
-    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Should Be Equal    ${prompt}    请输入正确的邮箱／手机
+    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".ant-form-explain")[0]    请输入正确的邮箱／手机
 
 login005
     [Documentation]    主账号登录失败_错误密码
@@ -50,7 +48,7 @@ login005
     Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${contentB_login_errorPwd}
     Wait And Click Element    ${locatorB_login_btn_login}
-    Wait Until Page Contains Locator    dom:document.querySelectorAll(".anticon-cross-circle")[0]
+    Wait Until Page Contains Locator    dom:document.querySelectorAll(".anticon-exclamation-circle")[0]
     Wait Until Page Contains    用户名或者密码错误
 
 login006
@@ -59,8 +57,7 @@ login006
     Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${Empty}
     Wait And Click Element    ${locatorB_login_btn_login}
-    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Should Be Equal    ${prompt}    请输入密码
+    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".ant-form-explain")[0]    请输入密码
 
 login007
     [Documentation]    员工账号登录_登录成功
@@ -92,8 +89,7 @@ login009
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${contentB_login_errorFormatDomain}
     Wait And Click Element    ${locatorB_login_btn_login}
-    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Should Be Equal    ${prompt}    请输入合法域名
+    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".ant-form-explain")[0]    请输入合法域名
 
 login010
     [Documentation]    员工账号登录失败_域名为空
@@ -103,8 +99,7 @@ login010
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${Empty}
     Wait And Click Element    ${locatorB_login_btn_login}
-    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Should Be Equal    ${prompt}    请输入店铺域名
+    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".ant-form-explain")[0]    请输入店铺域名
 
 login011
     [Documentation]    员工账号登录失败_未注册的手机/邮箱
@@ -123,19 +118,17 @@ login012
     Wait And Input Text    ${locatorB_login_input_account}    ${contentB_login_errorFormatAccount}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
-    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Should Be Equal    ${prompt}    请输入正确的邮箱／手机
+    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".ant-form-explain")[0]    请输入正确的邮箱／手机
 
 login013
     [Documentation]    员工账号登录失败_账号为空
     [Tags]    P2
     Wait And Click Element    ${locatorB_login_btn_employeeLogin}
-    Wait And Input Text    ${locatorB_login_input_account}    123456
     Wait And Input Text    ${locatorB_login_input_account}    ${Empty}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
-    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Should Be Equal    ${prompt}    请输入正确的邮箱／手机
+    Wait And Click Element    ${locatorB_login_btn_login}
+    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".ant-form-explain")[0]    请输入正确的邮箱／手机
 
 login014
     [Documentation]    员工账号登录失败_错误密码
@@ -155,5 +148,4 @@ login015
     Wait And Input Password    ${locatorB_login_input_password}    ${Empty}
     Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
     Wait And Click Element    ${locatorB_login_btn_login}
-    ${prompt}    Get Text    dom:document.querySelectorAll(".ant-form-explain")[0]
-    Should Be Equal    ${prompt}    请输入密码
+    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".ant-form-explain")[0]    请输入密码

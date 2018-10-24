@@ -11,7 +11,17 @@ export PATH=$PATH:/usr/local/bin/
 # $@ 从命令行取出参数列表(不能用用 $* 代替，因为 $* 将所有的参数解释成一个字符串
 #                         而 $@ 是一个参数数组)
 
-TEMP=`getopt -o eam:u: -l email,account,module:,url: -- "$@"`
+TEMP=`getopt -o EAM:U: -l email,account,module:,url: -- "$@"`
+
+#显示除选项外的参数(不包含选项的参数都会排到最后)
+# arg 是 getopt 内置的变量 , 里面的值，就是处理过之后的 $@(命令行传入的参数)
+args=''
+for arg do
+   args="$args"" $arg" ;
+done
+sub_args=${args#*-M}
+# 获取所有入参用例模块
+MODULES=${sub_args%%-*}
 
 # 判定 getopt 的执行时候有错，错误信息输出到 STDERR
 if [ $? != 0 ]
@@ -28,19 +38,19 @@ eval set -- "$TEMP"
 while true
 do
 	case "$1" in
-		-e | --email)
+		-E | --email)
 			send_email='yes'
 			shift
 			;;
-		-a | --account)
+		-A | --account)
 			test_account='new'
 			shift
 			;;
-		-m | --module)
-			test_module="$2"
+		-M | --module)
+			test_module="$MODULES"
 			shift 2
 			;;
-		-u | --url)
+		-U | --url)
 			test_url="$2"
 			shift 2
 			;;
@@ -79,6 +89,7 @@ if [ "$test_module" ]
 then
 	echo "$test_module"
     robot -v is_headless:True -d logs/ $test_module
+    robot -v is_headless:True --rerunfailed logs/output.xml -d logs/rerun/ $test_module
 else
 	echo 'test_module_default'
     robot -v is_headless:True -d logs/ \
@@ -105,17 +116,17 @@ else
 		module/08_settings/04_tax/tax_rate.robot \
 		module/08_settings/07_file_management/file_management.robot \
 		module/09_checkout/01_Checkout_Normal_Page/*
+fi
 
-	# 若存在rerun文件夹，即重跑了一遍失败用例。
-	# 则使用当前logs/output.xml文件的<suite>替换logs/rerun/output.xml的
-	# 这样rebot --merge才通过
-	if [ -d "logs/rerun" ]
-	then
-		line=`grep '<suite .*id="s1".*>' logs/output.xml`
-		sed -i "3d" logs/rerun/output.xml
-		sed -i "2a$line" logs/rerun/output.xml
-		rebot --merge -d logs/ logs/output.xml logs/rerun/output.xml
-	fi
+# 若存在rerun文件夹，即重跑了一遍失败用例。
+# 则使用当前logs/output.xml文件的<suite>替换logs/rerun/output.xml的
+# 这样rebot --merge才通过
+if [ -d "logs/rerun" ]
+then
+	line=`grep '<suite .*id="s1".*>' logs/output.xml`
+	sed -i "3d" logs/rerun/output.xml
+	sed -i "2a$line" logs/rerun/output.xml
+	rebot --merge -d logs/ logs/output.xml logs/rerun/output.xml
 fi
 
 # 执行email_utils.py
@@ -124,10 +135,3 @@ then
 	echo 'send_email_default'
     python2.7 lib/utils/email_utils.py
 fi
-
-
-#显示除选项外的参数(不包含选项的参数都会排到最后)
-# arg 是 getopt 内置的变量 , 里面的值，就是处理过之后的 $@(命令行传入的参数)
-#for arg do
-#   echo '--> '"$arg" ;
-#done
