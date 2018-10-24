@@ -541,7 +541,7 @@
 #         # 过滤无效入参
 #         if len(contact) == 11 and contact.isdigit():
 #             target = 'cell'
-#         elif '@abctest.com' in contact:
+#         elif '@autotest.com' in contact:
 #             target = 'email'
 #         else:
 #             return False
@@ -860,7 +860,7 @@
 #         # 测试服，使用新注册用户跑用例
 #         if args.user == 'new':
 #             random_str = keyWord().salt()
-#             config.set("common_account", "datas_contact", random_str + "@abctest.com")
+#             config.set("common_account", "datas_contact", random_str + "@autotest.com")
 #             config.set("common_account", "datas_domain", random_str)
 #             config.write(open(path, 'w'))
 #             # 注册用户

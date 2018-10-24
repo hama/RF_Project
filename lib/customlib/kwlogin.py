@@ -181,7 +181,7 @@ def del_user_fromdb(contact, **data_config):
     # 过滤无效入参
     if len(contact) == 11 and contact.isdigit():
         target = 'cell'
-    elif '@abctest.com' in contact:
+    elif '@autotest.com' in contact:
         target = 'email'
     else:
         return False
