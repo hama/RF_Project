@@ -19,6 +19,7 @@ MODULES=''
 for arg do
    MODULES="$MODULES"" $arg" ;
 done
+echo "$MODULES"
 
 # 判定 getopt 的执行时候有错，错误信息输出到 STDERR
 if [ $? != 0 ]
