@@ -7,6 +7,7 @@
 UploadFile Suite Setup
     [Documentation]
     Login With Default User
+    kwstore.del_upfiles_py
 
 UploadFile Suite Teardown
     [Documentation]
