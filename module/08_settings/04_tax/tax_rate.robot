@@ -127,7 +127,6 @@ taxPrice014
     Reload Page And Start Ajax
     #.选择中国
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    Bouvet Island
-    #查看商品扣除60%税费后的金额
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $444.00
     #初始化物流信息
     kwshipping.del_all_shipping_py
