@@ -1,5 +1,61 @@
 *** Variables ***
-#.locator
+
+#.locatorC_cart
+${locatorC_cart_button_checkout}    dom:document.querySelectorAll('[class*="checkout"]')[0]   #.购物车-checkout提交按钮
+
+#.locatorC_checkoutShipping
+
+${locatorC_checkoutShipping_text_itemProductTitle}    dom:document.querySelectorAll('[class*="checkout-item__sku-title"]')[0]
+${locatorC_checkoutShipping_text_itemQtyNum}    dom:document.querySelectorAll("[class*='checkout-item__quantity']")[0]
+${locatorC_checkoutShipping_text_itemPrice}    dom:document.querySelectorAll("[class='checkout-item__price']")[0]
+${locatorC_checkoutShipping_text_subtotalPrice}    dom:document.querySelectorAll(".checkout__prices-table-value")[0]
+${locatorC_checkoutShipping_text_shippingPrice}   dom:document.querySelectorAll(".checkout__prices-table-value")[1]      #.运费shipping
+${locatorC_checkoutShipping_text_taxPrice}   dom:document.querySelectorAll(".checkout__prices-table-value")[2]      #.tax
+${locatorC_checkoutShipping_text_totalPrice}    dom:document.querySelectorAll('[class*="checkout-prices"] tfoot td')[1]      #.总金额
+
+
+
+
+${locatorC_checkoutShipping_address_input_firstName}    dom:document.querySelectorAll("input[name='first_name']")[0]    #.添加地址后-first_name输入框
+${locatorC_checkoutShipping_address_input_lastName}    dom:document.querySelectorAll("input[name='last_name']")[0]    #.添加地址后-last_name输入框
+${locatorC_checkoutShipping_address_select_country}    dom:document.querySelectorAll('[id="shipping_country_select"]')[0]    #.添加地址后选择国家下拉框
+${locatorC_checkoutShipping_address_select_province}    dom:document.querySelectorAll('[id="shipping_province_select"]')[0]  #.添加地址后选择省份下拉框
+${locatorC_checkoutShipping_address_select_code}    dom:document.querySelectorAll('[id*="shipping_phone_select"]')[0]    #电话区号下拉列表
+${locatorC_checkoutShipping_address_input_city}    dom:document.querySelectorAll("input[name='city']")[0]    #.添加地址后选择城市
+${locatorC_checkoutShipping_address_input_addr}    dom:document.querySelectorAll("input[name='address']")[0]    #.添加地址后填写地址
+${locatorC_checkoutShipping_address_input_postalCode}    dom:document.querySelectorAll("input[name='zip']")[0]    #.添加地址后zip框
+${locatorC_checkoutShipping_address_input_email}    dom:document.querySelectorAll("input[name='email']")[0]    #.添加地址后email框
+${locatorC_checkoutShipping_address_input_phone}    dom:document.querySelectorAll("input[name='phone']")[0]    #.添加地址后phone框
+${locatorC_checkoutShipping_address_input_company}    dom:document.querySelectorAll("input[name='company']")[0]    #.添加地址后copmany框
+${locatorC_checkoutShipping_address_input_apartment}     dom:document.querySelectorAll('input[name="address1"]')[0]   #添加apartment
+
+
+${locatorC_checkoutShipping_input_contactEmail}    dom:document.querySelectorAll("input[name='contact_email']")[0]    #.添加地址后email框
+${locatorC_checkoutShipping_button_specialInstruction}    dom:document.querySelectorAll('[class="checkout-instruction"]')[0]    #.留言信息
+${locatorC_checkoutShipping_input_specialInstruction}    dom:document.querySelectorAll('[class="checkout-instruction__textarea"]')[0]    #.留言信息输入框
+${locatorC_checkoutShipping_button_paymentMethod}    dom:document.querySelectorAll('[class*="btn btn-primary checkout-footer"]')[0]    #.payment method  提交按钮
+
+${locatorC_checkoutShipping_input_couponCode}    dom:document.querySelectorAll("[id='coupon_code_input']")[0]    #.checkout 输入优惠券框
+${locatorC_checkoutShipping_button_couponApply}    dom:document.querySelectorAll("[id='coupon_apply']")[0]    #.checkout 填写地址页面 - 点击应用优惠券按钮
+
+${locatorC_checkoutShipping_items_listShippingAndDelivery}     dom:document.querySelectorAll('[class*="checkout-shipping-line"] [class*="row checkout-shipping-line__item"]')     #.订单物流信息运费显示
+${locatorC_checkoutShipping_text_listShippingAndDeliveryName}     dom:document.querySelectorAll('[class*="checkout-shipping-line"] [class*="row checkout-shipping-line__item"] [class*="item-name"]')     #.订单物流信息运费显示
+${locatorC_checkoutShipping_text_listShippingAndDeliveryFee}   dom:document.querySelectorAll('[class*="checkout-shipping-line"] [class*="row checkout-shipping-line__item"] [class*="item-desc"]')      #shipping delivery 运费价格
+
+${locatorC_checkoutShipping_button_return}    dom:document.querySelectorAll('a[class~="checkout-back"]')[0]    # return 返回
+
+
+
+
+
+#.locatorC_checkoutPayment
+${locatorC_checkoutPayment_text_itemProductTitle}    ${locatorC_checkoutShipping_text_itemProductTitle}
+${locatorC_checkoutPayment_text_itemQtyNum}    ${locatorC_checkoutShipping_text_itemQtyNum}
+${locatorC_checkoutPayment_text_itemPrice}    ${locatorC_checkoutShipping_text_itemPrice}
+${locatorC_checkoutPayment_text_subtotalPrice}    ${locatorC_checkoutShipping_text_subtotalPrice}
+${locatorC_checkoutPayment_text_shippingPrice}   ${locatorC_checkoutShipping_text_shippingPrice}   #.运费shipping
+${locatorC_checkoutPayment_text_taxPrice}   ${locatorC_checkoutShipping_text_taxPrice}      #.tax
+${locatorC_checkoutPayment_text_totalPrice}    ${locatorC_checkoutShipping_text_totalPrice}      #.总金额
 
 
 
@@ -7,63 +63,35 @@
 
 
 
-${locatorB_checkout_shippingcart_cartBut}    dom:document.querySelectorAll("[class*='btn-primary']")[0]     #.添加购物车按钮
-${locatorB_checkout_by_now_btn}    dom:document.querySelectorAll("[class*='btn-secondary']")[0]    #.by-now按钮
-${locatorC_checkout_btn_paymentMethod}    dom:document.querySelectorAll('[class*="btn-primary checkout-footer__btn"]')[0]    #.点击by-now后的submit按钮
-${locatorB_checkout_submit_shippingCart}    dom:document.querySelectorAll('[class*="checkout"]')[0]   #.购物车-checkout提交按钮
+
+${locatorB_checkout_address_btn}    dom:document.querySelectorAll(".address_btn")[0]    #.checkout点击by-now后的添加地址按钮
+${locatorC_checkout_text_price}    dom:document.querySelectorAll('[class="checkout-item__price"]')[0]    #.商品的单价
+
+
 ${locatorB_checkout_search_btn}    dom:document.querySelectorAll("[class*='sep-font sep-font-search-thin']")[0]    #.checkout搜索按钮
 ${locatorB_checkout_member_btn}     dom:document.querySelectorAll("[class*='sep-font sep-font-user-thin']")[0]    #.checkout个人中心图标按钮
-${locatorB_checkout_card_img_btn}    dom:document.querySelectorAll("[class*='sep-font sep-font-cart-thin']")[0]    #.checkout购物车图标按钮
+
 
 ${locatorB_checkout_user_name}   dom:document.querySelectorAll("[class='text-truncate']")[0]    #.checkout顶部顶部店铺名
-#${locatorB_checkout_selectColor_elm}    dom:document.querySelectorAll(".variant_select_all")[0]    #.checkout主页-选择颜色，尺寸    移动端
-${locatorC_checkout_qty_input_num}    dom:document.querySelectorAll("[class*='form-control product-info__qty_num']")[0]    #商品购买数量输入框
-#${locatorB_checkout_shippingcart_checkoutCart}    dom:document.querySelectorAll("[class*='checkout']")[0]   #.购物车checkout提交按钮
-#.checkout - order
-${locatorB_checkout_shippingcart_cartBut}    dom:document.querySelectorAll("div[class*='footer-add']")[0]     #.c端订单-添加到购物车 add to cart
-#${locatorC_checkout_submit_bynow}    dom:document.querySelectorAll("[class='footer-submit']")[0]     #.c端订单-by-now按钮
+
 #.checkout - input
 ${locatorC_checkout_input_quantity}    dom:document.querySelectorAll("input[data-track-type='input']")[0]     #.购物车购买商品数量输入框
 
 ${locatorC_checkout_icon_cancel}    dom:document.querySelectorAll("[class='sep-font sep-font-close-circle-thin']")[0]    #.取消购物车订单按钮
-${locatorC_checkout_input_checkNum}    dom:document.querySelectorAll("input[class*='info__qty_num']")[0]   #订单页-订单输入数量框
 ${locatorB_checkout_shippingcart_checkoutCart}    dom:document.querySelectorAll("[class*='cart__checkout']")[0]    #.checkout 购物车提交按钮
 
 
 #.checkout - address
-${locatorB_productsMgmt_icon_preview}      dom:document.querySelectorAll('.dj-preview')[0]  #B端商品预览按钮
-${locatorB_checkout_addressCoupon_ipt}    dom:document.querySelectorAll("[id='coupon_code_input']")[0]    #.checkout 输入优惠券框
-${locatorB_checkout_addressClickCoupon_btn}    dom:document.querySelectorAll("[id='coupon_apply']")[0]    #.checkout 填写地址页面 - 点击应用优惠券按钮
-${locatorB_checkout_address_btn}    dom:document.querySelectorAll(".address_btn")[0]    #.checkout点击by-now后的添加地址按钮
-${locatorC_checkout_text_price}    dom:document.querySelectorAll('[class="checkout-item__price"]')[0]    #.商品的单价
 
-${locatorB_checkout_address_first_name}    dom:document.querySelectorAll("input[name='first_name']")[0]    #.添加地址后-first_name输入框
-${locatorB_checkout_address_last_name}    dom:document.querySelectorAll("input[name='last_name']")[0]    #.添加地址后-last_name输入框
-${locatorB_checkout_address_select_country}    dom:document.querySelectorAll('[id="shipping_country_select"]')[0]    #.添加地址后选择国家下拉框
-${locatorB_checkout_address_select_province}    dom:document.querySelectorAll('[id="shipping_province_select"]')[0]  #.添加地址后选择省份下拉框
-${locatorB_checkout_address_city}    dom:document.querySelectorAll("input[name='city']")[0]    #.添加地址后选择城市
-${locatorB_checkout_address_add}    dom:document.querySelectorAll("input[name='address']")[0]    #.添加地址后填写地址
-${locatorB_checkout_address_zip}    dom:document.querySelectorAll("input[name='zip']")[0]    #.添加地址后zip框
-${locatorB_checkout_address_email1}    dom:document.querySelectorAll("input[name='email']")[0]    #.添加地址后email框
-${locatorB_checkout_address_phone}    dom:document.querySelectorAll("input[name='phone']")[0]    #.添加地址后phone框
-${locatorB_checkout_address_company}    dom:document.querySelectorAll("input[name='company']")[0]    #.添加地址后copmany框
-${locatorC_checkout_address_postalCode}     dom:document.querySelectorAll('input[name="address1"]')[0]   #添加apartment
-${locatorC_checkout_address_Code}    dom:document.querySelectorAll('[id*="shipping_phone_select"]')[0]    #电话区号下拉列表
-#contact Email
-${locatorB_checkout_address_email}    dom:document.querySelectorAll("input[name='contact_email']")[0]    #.添加地址后email框
-${locatorC_checkout_input_special}    dom:document.querySelectorAll('[class="checkout-instruction"]')[0]    #.留言信息
-${locatorC_checkout_input_specialInstruction}    dom:document.querySelectorAll('[class="checkout-instruction__textarea"]')[0]    #.留言信息输入框
-${locatorC_checkout_button_paymentMethod}    dom:document.querySelectorAll('[class*="btn btn-primary checkout-footer"]')[0]    #.payment method  提交按钮
+
+
 
 ${locatorC_checkout_button_comleteOrder}     dom:document.querySelectorAll('[class*="btn btn-primary payment-footer__btn"]')[0]    #//complete Order 提交按钮
-${locatorC_checkout_button_completeReturn}     dom:document.querySelectorAll('[class*="checkout-footer__back checkout-back"]')[0]     #.complete return 返回
 
 ${locatorB_checkout_address_error}    dom:document.querySelectorAll(".not_none")[0]    #.添加地址错误类
 ${locatorB_checkout_address_close_address}    dom:document.querySelectorAll(".close_icon")[1]    #.关闭地址按钮
 ${locatorB_checkout_address_buyMesg_elm}    id:instructionToggle    #.买家留言
-${locatorC_checkout_address_offersAndDiscounts}    dom:document.querySelectorAll('.checkbox')[0]    #.订阅优惠活动多选按钮
-${locatorC_checkout_address_saveInformation}    dom:document.querySelectorAll('.checkbox')[1]    #.保存信息多选按钮
-${locatorC_checkout_delivery_shippingLine}     dom:document.querySelectorAll('[class*="checkout-shipping-line__grid"]')[0]     #.订单物流信息运费显示
+
 
 # Billing address
 ${locatorB_checkout_creditCard_input_name}    dom:document.querySelectorAll('[name="first_name"]')[0]    #.Billing address name
@@ -109,25 +137,14 @@ ${locatorC_checkout_shipping_price}     dom:document.querySelectorAll('span[clas
 ${locatorC_checkout_shipping_submitCheckout}     dom:document.querySelectorAll('[class*="btn btn-primary checkout-footer"]')[0]        #type="submit"    checkout  提交到shipping method
 ${locatorC_checkout_payment_cashOnDelivery}     dom:document.querySelectorAll('[class*="method__item_selected"]')[0]        #支付方式-货到付款
 ${locatorC_checkout_shipping_orderSubmit}      dom:document.querySelectorAll('button[class*="btn-primary payment-footer__btn"]')[0]     #order checkout 提交按钮
-${locatorC_checkout_shipping_total}    dom:document.querySelectorAll('[class*="checkout-prices"] tfoot td')[1]      #.总金额
 
 
 ${locatorC_checkout_paymentCard_change}   dom:document.querySelectorAll('[class*="payment-footer__back"]')[0]    #change 返回
-#${locatorC_checkout_button_completeReturn}    dom:document.querySelectorAll('[class*="checkout-footer__back"]')[0]    #return 返回
+#${locatorC_checkoutShipping_button_return}    dom:document.querySelectorAll('[class*="checkout-footer__back"]')[0]    #return 返回
 #locatorC checkout method
 ${locatorC_checkout_shipping_method}    dom:document.querySelectorAll('.checkout__prices-table-value')[1]       #shipping  显示物流价格
-${locatorC_checkout_paymentCard_return}    dom:document.querySelectorAll('[class*="checkout-footer__back checkout-back"]')[0]    # payment return 返回
-${locatorC_checkout_shipping_preferential}    dom:document.querySelectorAll('[class*="checkout__prices-table-value"]')[2]    #.订单运费
 ${locatorC_checkout_text_order}     dom:document.querySelectorAll(".item-sku-title")[0]     #.商品标题
-#row checkout-shipping-line__item checkout-shipping-line__item_selected
-${locatorC_checkout_shipping_deliveryName}   dom:document.querySelectorAll("[class*='checkout-shipping-line__item-name text-truncate']")[0]        #shipping delivery 运费名称
-${locatorC_checkout_shipping_delivery}   dom:document.querySelectorAll("[class*='checkout-shipping-line__item-desc text-truncate']")[0]        #shipping delivery 运费价格
 
-${locatorC_checkout_prices_total}   dom:document.querySelectorAll(".checkout__prices-table tfoot td")[1]   #.商品总价格
-${locatorC_checkout_prices_itemPrice}   dom:document.querySelectorAll(".checkout-item__price")[0]     #商品单价
-${locatorC_checkout_prices_shippingValue}   dom:document.querySelectorAll(".checkout__prices-table-value")[1]      #.运费shipping
-${locatorC_checkout_prices_taxValue}   dom:document.querySelectorAll(".checkout__prices-table-value")[2]     #物流tax 显示
-${locatorC_checkout_prices_itemQuantity}   dom:document.querySelectorAll(".checkout-item__quantity")[0]      #.商品数量显示
 
 
 
@@ -140,7 +157,6 @@ ${locatorC_checkout_inputText_address}    dom:document.querySelectorAll("input[n
 ${locatorC_checkout_inputText_address1}    dom:document.querySelectorAll("input[name='address1']")[0]       #.payment method  /address1 输入框
 ${locatorC_checkout_inputText_city}    dom:document.querySelectorAll("input[name='city']")[0]       #.payment method    /city 城市输入框
 ${locatorC_checkout_inputText_countyCode}    dom:document.querySelectorAll("select[name='country_code']")[0]        #.payment method    /county 国家下拉选择
-${locatorC_checkout_inputText_provinceCode}    dom:document.querySelectorAll("select[name='province_code']")[0]     #.payment method    /province 城市下拉选择
 ${locatorC_checkout_inputText_zip}    dom:document.querySelectorAll("input[name='zip']")[0]        #.payment method    /zip 输入框
 
 #下面的分类过的

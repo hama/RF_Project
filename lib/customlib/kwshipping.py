@@ -78,6 +78,45 @@ def add_max_shipping_py(cookie=init_cookie):
     return shipping_refresh_add_py(data, cookie=cookie)
 
 
+def add_price_fee_shipping_py(rate_amount='10.00', cookie=init_cookie):
+    '''
+    添加只有price_fee的物流
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(shipping_data)
+    data['shipping_plan'] = '[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,' \
+                            '"rate_amount":%s,"payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]' % (
+                                rate_amount)
+    return add_shipping_with_conf_py(data, cookie=cookie)
+
+
+def add_weight_fee_shipping_py(rate_amount='10.00', cookie=init_cookie):
+    '''
+    添加只有weight_fee的物流
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(shipping_data)
+    data['shipping_plan'] = '[{"name":"weight_fee","shipping_method":"weight","range_min":"0.00","range_max":-1,' \
+                            '"rate_amount":%s,"payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]' % (
+                                rate_amount)
+    return add_shipping_with_conf_py(data, cookie=cookie)
+
+
+def add_quantity_fee_shipping_py(rate_amount='10.00', cookie=init_cookie):
+    '''
+    添加只有quantity_fee的物流
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(shipping_data)
+    data['shipping_plan'] = '[{"name":"quantity_fee","shipping_method":"quantity","range_min":"0","range_max":-1,' \
+                            '"rate_amount":%s,"payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]' % (
+                                rate_amount)
+    return add_shipping_with_conf_py(data, cookie=cookie)
+
+
 def del_all_shipping_py(cookie=init_cookie):
     """
     删除全部物流方案
@@ -138,6 +177,6 @@ def num_of_exist_shipping_py(cookie=init_cookie):
 
 
 if __name__ == '__main__':
-    # print del_all_shipping_py()
+    print del_all_shipping_py()
     # print shipping_list_py()
-    print create_only_one_shipping_py()
+    print add_quantity_fee_shipping_py()

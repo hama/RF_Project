@@ -86,14 +86,14 @@ ${locatorB_shipping_country_get_other}    dom:document.querySelectorAll(".name_w
 ${locatorB_shipping_send_address}    class:title___29mch    #.物流界面-发货地址-
 
 
-# add price shipping freight
+# kwshipping.add_price_fee_shipping_py freight
 ${locatorB_shipping_freight_save}    id:test_shipping_edit_modal_sure_btn    #.添加运费- 保存-按钮
 ${locatorB_shipping_freight_cancel_btn}    id:test_shipping_edit_modal_cancel_btn    #. 添加运费-取消-按钮
 ${locatorB_shipping_freight_content_elm}    dom:document.querySelectorAll(".ant-table-tbody")[1]    # 添加价格运费-显示价格运费的地方的元素
 ${locatorB_shipping_freight_error_elm}    class:ant-form-explain    # 添加价格运费- 提示错误文案的元素
 ${locatorB_shipping_freight_free_freight_btn}    return document.querySelectorAll(".ant-checkbox-input")[0].click()    # 添加价格运费-免运费-按钮
 
-# add quantity shipping freight
+# kwshipping.add_quantity_fee_shipping_py freight
 ${locatorB_shipping_quantity_first_input}    dom:document.querySelectorAll("#name")[1]     #.添加数量运费-物流名称输入框
 
 
@@ -101,6 +101,6 @@ ${locatorB_shipping_quantity_first_input}    dom:document.querySelectorAll("#nam
 ${shipping_first_button}    dom:document.querySelectorAll("button")[1]    #.对应 shipping_case 的 button[1]
 ${shipping_first_input}    dom:document.querySelectorAll("#name")[1]    #.对应shipping_case 的 物流名称输入框
 
-# add weight shipping
+# kwshipping.add_weight_fee_shipping_py
 ${locatorB_shipping_weight_first_input}    dom:document.querySelectorAll('#name')[1]    #.添加重量运费-物流名称输入框
 
