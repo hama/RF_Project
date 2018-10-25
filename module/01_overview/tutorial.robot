@@ -23,7 +23,6 @@ BeginnerTutorial003
     kwproduct.add_launched_product_py
     Wait And Click Element    ${locatorB_overview}
     #.添加完商品返回新手教程，验证
-    Sleep    2
     Element Attribute Should Contain With Wait     ${locatorB_button_commodity}    disabled    ${empty}
     Wait Until Page Contains Text    已完成
 
@@ -37,19 +36,20 @@ BeginnerTutorial009
     [Documentation]    测试新手教程页面店铺装饰栏 > 1.点击去装饰,2.在卡片页面编辑卡片并保存,3.返回新手教程页面查看 > 店铺装饰栏图标变为√，去装饰按钮变为已完成并置灰不可点击
     [Tags]    P1    threshold
     Wait And Click Element    ${locatorB_button_decorate}
+    #.打开一个新窗口，聚焦到新窗口操作元素
+    Focus On New Window
     #.点击去装修
-    Sleep    5
-    Wait And Click Element    dom:document.querySelectorAll('[class*="middle_btn"]')[0]
+    Wait And Click Element    ${locatorB_theme_button_editor}
+    #.打开一个新窗口，聚焦到新窗口操作元素
+    Focus On New Window
     #.点击添加卡片
-    Sleep    2
-    Wait And Click Element    dom:document.querySelectorAll('[class*="icon-wrapper"]')[1]
-    Sleep    2
+    # Wait And Click Element    dom:document.querySelectorAll('[class*="icon-wrapper_db8e icon-wrapper__add_f851"]')[1]
     #.点击图文卡片
-    Wait And Click Element    dom:document.querySelectorAll('[class*="card_7e10"]')[0]
+    #Wait And Click Element    dom:document.querySelectorAll('[class*="card_7e10"]')[0]
     #,点击发布
     Wait And Click Element    dom:document.querySelectorAll('[class*="operation-item"]')[2]
     #.点击确定
-    Wait And Click Element    ${locatorB_global_alert_confirm}
+    Wait Alert Should Be Present And Accept    确定要保存吗?
     #.返回B端
     Wait And Click Element    dom:document.querySelectorAll('[class*="go_back"]')[0]
     Wait Until Page Contains    概览
