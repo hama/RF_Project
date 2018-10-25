@@ -51,7 +51,7 @@ Show All Header
     @{list}    Wait And Get Items List From Locator    ${locatorB_popUps_allUncheckedCheckbox}
     :FOR    ${i}    IN    @{list}
     \    Wait And Click Element    ${i}    5    0
-#    \    Sleep    2
+    \    Sleep    0.2
     Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
     Sleep    2
 
@@ -60,7 +60,7 @@ Hide All Header
     @{list}    Wait And Get Items List From Locator    ${locatorB_popUps_allCheckedCheckbox}
     :FOR    ${i}    IN    @{list}
     \    Wait And Click Element    ${i}    5    0
-#    \    Sleep    2
+    \    Sleep    0.2
     Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
     Sleep    2
 
