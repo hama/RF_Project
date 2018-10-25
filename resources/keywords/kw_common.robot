@@ -383,8 +383,9 @@ Wait Alert Should Be Present And Dismiss
 
 Reload Page And Start Ajax
 	[Documentation]    刷新页面并添加监控
-#    [Arguments]    ${sleep_time}=1
+    [Arguments]    ${sleep_time}=1
 	Reload Page
+	Sleep    ${sleep_time}
 	Start Ajax Listener
 #	Sleep    ${sleep_time}
 
