@@ -5,19 +5,21 @@ Resource          kw_common.robot
 *** keyword ***
 
 Shipping Suite Setup
-	[Documentation]
+  [Documentation]
     Login With Default User
 
 Shipping Suite Teardown
     [Documentation]
+    kwshipping.del_all_shipping_py
     Close Test Suite Browser
 
 Shipping Case Setup
-	[Documentation]
-    Go To Application Page
+  [Documentation]
+  kwshipping.del_all_shipping_py
+    Go To Shipping Page
 
 Shipping Case Teardown
-	[Documentation]
+  [Documentation]
     Teardown Test Case
 
 # 由于使用封装的Open New And Close Other Windows方法导致为止chrome错误，且只有shipping模块会报错

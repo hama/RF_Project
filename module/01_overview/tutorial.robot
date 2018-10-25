@@ -38,11 +38,11 @@ BeginnerTutorial009
     [Tags]    P1    threshold
     Wait And Click Element    ${locatorB_button_decorate}
     #.点击去装修
-    Sleep    2
+    Sleep    5
     Wait And Click Element    dom:document.querySelectorAll('[class*="middle_btn"]')[0]
-    Select Window    New
     #.点击添加卡片
-    Wait And Click Element    dom:document.querySelectorAll('[class*="icon-wrapper_db8e icon-wrapper__add_f851"]')[0]
+    Sleep    2
+    Wait And Click Element    dom:document.querySelectorAll('[class*="icon-wrapper"]')[1]
     Sleep    2
     #.点击图文卡片
     Wait And Click Element    dom:document.querySelectorAll('[class*="card_7e10"]')[0]

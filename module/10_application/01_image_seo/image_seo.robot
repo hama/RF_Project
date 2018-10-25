@@ -1,8 +1,8 @@
 *** Settings ***
-Suite Setup       Shipping Suite Setup
-Suite Teardown    Shipping Suite Teardown
-Test Setup        Shipping Case Setup
-Test Teardown     Shipping Case Teardown
+Suite Setup       Login With Default User
+Suite Teardown    Close Test Suite Browser
+Test Setup        Go To Application Page
+Test Teardown     Teardown Test Case
 Force Tags        image seo
 Resource          ../../../resources/keywords/kw_common.robot
 
