@@ -305,6 +305,7 @@ Focus On New Window
 	[Documentation]    聚焦到新窗口（紧跟开窗口动作之后）,并返回新窗口的handle
     @{new_window_handle}    Get Window Handles
     Select Window    ${new_window_handle[-1]}
+    Set Window Size    1440    1080
     [Return]    ${new_window_handle[-1]}
 
 #Click And Page Contains Element With Refresh
@@ -383,8 +384,9 @@ Wait Alert Should Be Present And Dismiss
 
 Reload Page And Start Ajax
 	[Documentation]    刷新页面并添加监控
-#    [Arguments]    ${sleep_time}=1
+    [Arguments]    ${sleep_time}=1
 	Reload Page
+	Sleep    ${sleep_time}
 	Start Ajax Listener
 #	Sleep    ${sleep_time}
 
