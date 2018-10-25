@@ -56,12 +56,12 @@ taxPrice007
     #测试商品购买不收取税费
     Go To First Product C Interface
     #添加是shipping address
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_country}
     #.选择中国
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
     Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $444.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    $444.00
     #还原初始化物流信息
     kwshipping.del_all_shipping_py
     #还原中国的物流信息
@@ -117,18 +117,18 @@ taxPrice014
     #测试商品购买不收取税费
     Go To First Product C Interface
     #添加是shipping address
-    Wait And Click Element    ${locatorB_checkout_by_now_btn}
-    Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_country}
     #.选择中国
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
+    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
     Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
     #查看商品扣除60%税费后的金额
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $710.40
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    $710.40
     Reload Page And Start Ajax
     #.选择中国
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    Bouvet Island
+    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    Bouvet Island
     #查看商品扣除60%税费后的金额
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $444.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    $444.00
     #初始化物流信息
     kwshipping.del_all_shipping_py
     kwshipping.add_shipping_with_conf_py
