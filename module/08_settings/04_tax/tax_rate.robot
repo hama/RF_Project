@@ -100,11 +100,13 @@ taxPrice014
     ...    shipping_area=[{"country_id":"30","zone_ids":"-1"}]
     ...    shipping_name=autotest_shipping001
     kwshipping.add_shipping_with_conf_py    ${conf}
-    Sleep    1
+    #.添加一个的商品
+    &{conf}=   Create Dictionary
+    kwproduct.add_product_with_conf_py   ${conf}
     #添加一个中国的物流信息
     kwshipping.add_shipping_with_conf_py
+    Reload Page And Start Ajax
     Go To Tax Page
-    Sleep    5
     #.设置中国税费
     Wait And Click Element    ${locatorB_taxPrice_icon_settingList}[1]
     Wait And Input Text    ${locatorB_taxPrice_popUp_uniteInput}    60.00
@@ -127,7 +129,7 @@ taxPrice014
     Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
     #查看商品扣除60%税费后的金额
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_shipping_total}    $710.40
-    Sleep    4
+    Reload Page And Start Ajax
     #.选择中国
     Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    Bouvet Island
     #查看商品扣除60%税费后的金额

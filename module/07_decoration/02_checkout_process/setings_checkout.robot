@@ -107,7 +107,8 @@ checkoutPageSetings011
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_phoneCodeMandatory}    class    ant-radio-wrapper ant-radio-wrapper-checked
 
 checkoutPageSetings012
-    [Documentation]    测试顾客联系方式设置-邮箱选填    [Tags]    P0    threshold   smoke
+    [Documentation]    测试顾客联系方式设置-邮箱选填
+    [Tags]    P0    threshold   smoke
     Wait And Click Element     ${locatorB_checkout_label_loginMembers}
     Wait And Click Element     ${locatorB_checkout_button_nav_information}
     Wait And Click Element     ${locatorB_checkout_radio_name}

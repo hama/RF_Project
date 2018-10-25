@@ -8,3 +8,21 @@ ${locatorB_account_button_sendInvite}    dom:document.querySelectorAll('button[c
 
 # context
 ${contextB_account_employeeManagement}    员工管理
+
+
+#.新手教程
+
+${locatorB_button_commodity}    dom:document.querySelectorAll('button[class*="middle_btn"]')[0]     #添加一个商品
+${locatorB_button_decorate}    dom:document.querySelectorAll('button[class*="middle_btn"]')[1]     #装修店面
+${locatorB_button_shipping}    dom:document.querySelectorAll('button[class*="middle_btn"]')[2]     #设置物流方案
+${locatorB_button_collection}    dom:document.querySelectorAll('button[class*="middle_btn"]')[3]     #设置收款方式
+
+
+#.装修店铺
+
+${locatorB_theme_button_editor}    dom:document.querySelectorAll('button[class*="middle_btn"]')[0]     #装修店铺编辑按钮
+
+
+
+
+
