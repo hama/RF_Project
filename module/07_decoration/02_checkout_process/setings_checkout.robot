@@ -285,7 +285,7 @@ checkoutPageSetings029
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
-    Wait Until Page Contains Text    退款条约
+    Wait Until Page Contains Text    退款条约内容
 
 checkoutPageSetings030
     [Documentation]    测试顾客信息设置-输入隐私政策
@@ -296,7 +296,7 @@ checkoutPageSetings030
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
-    Wait Until Page Contains Text    隐私政策
+    Wait Until Page Contains Text    隐私政策内容
 
 checkoutPageSetings031
     [Documentation]    测试顾客信息设置-输入服务条约

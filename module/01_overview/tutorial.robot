@@ -42,10 +42,6 @@ BeginnerTutorial009
     Wait And Click Element    ${locatorB_theme_button_editor}
     #.打开一个新窗口，聚焦到新窗口操作元素
     Focus On New Window
-    #.点击添加卡片
-    # Wait And Click Element    dom:document.querySelectorAll('[class*="icon-wrapper_db8e icon-wrapper__add_f851"]')[1]
-    #.点击图文卡片
-    #Wait And Click Element    dom:document.querySelectorAll('[class*="card_7e10"]')[0]
     #,点击发布
     Wait And Click Element    dom:document.querySelectorAll('[class*="operation-item"]')[2]
     #.点击确定
@@ -119,17 +115,17 @@ BeginnerTutorial015
     kwpayment.inactivate_payment_credit_card_py
 
 
-BeginnerTutorial018
-    [Documentation]    测试新手教程变为概览数据页面 > 所有教程完成是概览页面会变为数据统计页面
-    [Tags]    P1    threshold
-    #.添加支付方式
-    kwpayment.activate_payment_cod_py
-    #.添加商品
-    kwproduct.add_launched_product_py
-    #添加一个物流
-    &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
-    ...    shipping_name=shipping_yunfei
-    kwshipping.add_shipping_with_conf_py    ${conf}
+#BeginnerTutorial018
+#    [Documentation]    测试新手教程变为概览数据页面 > 所有教程完成是概览页面会变为数据统计页面
+#   [Tags]    P1    threshold
+#    #.添加支付方式
+#    kwpayment.activate_payment_cod_py
+#    #.添加商品
+#    kwproduct.add_launched_product_py
+#    #添加一个物流
+#    &{conf}=   Create Dictionary
+#    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
+#    ...    shipping_name=shipping_yunfei
+#    kwshipping.add_shipping_with_conf_py    ${conf}
 
 
