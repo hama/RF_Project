@@ -60,12 +60,12 @@ uploadFile009
     #.切换到 上传文件 栏目
     Wait And Click Element    ${locatorB_uploadFile_upfile_txt}
     Wait Until Page Contains Locator    ${locatorB_uploadFile_add_btn}
-    Wait Enabled And Choose File    ${locatorB_uploadFile_add_btn}    ${file_products_addImg2}    0
+    Wait Enabled And Choose File    ${locatorB_uploadFile_add_btn}    ${file_products_addImg}    0
     Wait Until Page Contains Text    上传成功
     Wait And Click Element     ${locatorB_uploadFile_nav_shippingImg}
     Wait Until Page Contains Locator    ${locatorB_uploadFile_firstTr_elm}
     Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
-    Wait Until Page Contains Text     image01.jpg
+    Wait Until Page Contains Text     image02.jpg
 
 uploadFile011
     [Documentation]    测试素材链接及复制按钮

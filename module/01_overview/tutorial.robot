@@ -54,32 +54,7 @@ BeginnerTutorial009
     Element Attribute Should Contain With Wait     ${locatorB_button_decorate}    disabled    ${empty}
     Wait Until Page Contains Text    已完成
 
-
-BeginnerTutorial011
-    [Documentation]    测试新手教程页面物流栏 > 1.点击去设置按钮,2.查看界面 > 跳转到物流设置界面
-    [Tags]    P1    threshold
-    #.点击去物流页面
-    Wait And Click Element    ${locatorB_button_shipping}
-    Wait Until Page Contains    物流方案
-
-BeginnerTutorial012
-    [Documentation]    测试新手教程页面物流栏 > 添加物流 > 物流栏图标变为√，去设置按钮变为已完成并置灰不可点击
-    [Tags]    P1    threshold
-    #.点击去物流页面
-    Wait And Click Element    ${locatorB_button_shipping}
-    #添加一个物流
-    &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
-    ...    shipping_name=shipping_yunfei
-    kwshipping.add_shipping_with_conf_py    ${conf}
-    Reload Page And Start Ajax
-    Wait And Click Element    ${locatorB_overview}
-    #.添加完商品返回新手教程，验证
-    Sleep    2
-    Element Attribute Should Contain With Wait     ${locatorB_button_shipping}    disabled    ${empty}
-    Wait Until Page Contains Text    已完成
-
-
+#因只要创建完物流方案，系统就会默认开启货到付款的支付方式，所以开启支付方式放到添加物流之前执行
 BeginnerTutorial014
     [Documentation]    测试新手教程页面物流栏 > 1.点击去配置按钮 > 跳转到支付方式设置界面
     [Tags]    P1    threshold
@@ -106,6 +81,33 @@ BeginnerTutorial015
     Wait Until Page Contains Text    已完成
     #关闭credit_card  信用卡支付方式
     kwpayment.inactivate_payment_credit_card_py
+
+BeginnerTutorial011
+    [Documentation]    测试新手教程页面物流栏 > 1.点击去设置按钮,2.查看界面 > 跳转到物流设置界面
+    [Tags]    P1    threshold
+    #.点击去物流页面
+    Wait And Click Element    ${locatorB_button_shipping}
+    Wait Until Page Contains    物流方案
+
+BeginnerTutorial012
+    [Documentation]    测试新手教程页面物流栏 > 添加物流 > 物流栏图标变为√，去设置按钮变为已完成并置灰不可点击
+    [Tags]    P1    threshold
+    #.点击去物流页面
+    Wait And Click Element    ${locatorB_button_shipping}
+    #添加一个物流
+    &{conf}=   Create Dictionary
+    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
+    ...    shipping_name=shipping_yunfei
+    kwshipping.add_shipping_with_conf_py    ${conf}
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_overview}
+    #.添加完商品返回新手教程，验证
+    Sleep    2
+    Element Attribute Should Contain With Wait     ${locatorB_button_shipping}    disabled    ${empty}
+    Wait Until Page Contains Text    已完成
+
+
+
 
 
 #BeginnerTutorial018

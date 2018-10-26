@@ -134,3 +134,7 @@ ${register_pwd}    ${datas_password}
 ### 图片文件
 ${file_products_addImg}    ${CURDIR}/../images/image02.jpg    # 添加商品图片
 ${file_products_addImg2}    ${CURDIR}/../images/image01.jpg    # 添加商品图片
+
+
+# C端
+${locatorC_icon_card}    dom:document.querySelectorAll("[class*='sep-font sep-font-cart-thin']")[0]    #.checkout购物车图标按钮

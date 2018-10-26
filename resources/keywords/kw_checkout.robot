@@ -9,7 +9,7 @@ Checkout Suite Setup
     #初始化物流环境
     kwshipping.del_all_shipping_py
     kwproduct.del_all_products_py
-    kwshipping.add_shipping_with_conf_py
+    kwshipping.create_only_one_shipping_py
     kwproduct.add_launched_product_py
     kwcheckout.set_checkout_process_py
     #激活COD货到付款方式
@@ -19,7 +19,6 @@ Checkout Suite Teardown
     [Documentation]    每个用例执行结束步骤
     #还原初始化环境
     kwshipping.del_all_shipping_py
-    kwshipping.add_shipping_with_conf_py
     kwproduct.del_all_products_py
     Close Test Suite Browser
 
@@ -27,20 +26,33 @@ Checkout Case Setup
     [Documentation]    每个用例执行开始步骤
     Go To First Product C Interface
 
+Checkout2 Case Setup
+    [Documentation]    每个用例执行开始步骤
+    kwshipping.del_all_shipping_py
+    Go To First Product C Interface
+
+Checkout3 Case Setup
+    [Documentation]    每个用例执行开始步骤
+    kwproduct.del_all_products_py
+    kwshipping.del_all_shipping_py
+
 
 Add Address Common Step
     [Documentation]    添加地址公共部分
-    Wait And Input Text    ${locatorB_checkout_address_first_name}    123
-    Wait And Input Text    ${locatorB_checkout_address_last_name}    345
-    Wait And Input Text    ${locatorB_checkout_address_add}    深圳123
-    Wait And Input Text    ${locatorB_checkout_address_city}    深圳
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_country}    China
-    Wait And Select From List By Label    ${locatorB_checkout_address_select_province}    Beijing
-    Wait And Input Text    ${locatorB_checkout_address_zip}    123456
-    Wait And Select From List By Label    ${locatorC_checkout_address_Code}     (+86) China
-    Wait And Input Text    ${locatorB_checkout_address_phone}    15820406699
-    Wait And Input Text    ${locatorB_checkout_address_email1}   19988565@qq.com
-    Wait And Input Text    ${locatorB_checkout_address_email}    9988565@qq.com
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_firstName}    firstName
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_lastName}    lastName
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_addr}    addr
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_city}    city
+    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
+    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_province}    Beijing
+    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_code}     (+86) China
+    Sleep    1
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    123456
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18899999999
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    1234567@email.com
+    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@contactEmail.com
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    company
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    apartment
     Sleep    4
 
 Add Credit Card Info
@@ -69,4 +81,4 @@ Create Specific Coupon Code
 Go To First Product C Interface
 	Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
-    Select Window    New
+    Focus On New Window
