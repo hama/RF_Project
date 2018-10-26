@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+from do_request import *
 from variable import *
 
 reload(sys)

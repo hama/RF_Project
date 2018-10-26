@@ -161,6 +161,20 @@ checkout_107
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutPayment_text_shippingPrice}    + $10.00
 
+checkout_113
+    [Documentation]   验证checkout 支付页面，订单使用优惠码后，价格详情中会显示discount code并显示优惠价格 > 1.C端购买商品women进入checkout shipping页面  2.使用优惠码AAA001  3.进入支付页面查看价格详情
+    [Tags]    P0    threshold
+    kwshipping.add_price_fee_shipping_py
+    ${code}    Create Specific Coupon Code
+    kwtax.add_default_tax_price_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Input Text     ${locatorC_checkout_input_discountCode}     ${code}
+    Wait And Click Element   ${locatorC_checkout_submit_apply}
+    Add Address Common Step
+    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_totalPrice}     $434.00
+
 checkout_118
     [Documentation]   验证checkout 支付页面，payment栏，shipping method显示正常  >  1.购买商品进入checkout shipping页面  2.选择运费方案：运费1   3.进入支付页面查看payment栏，shipping methoda
     [Tags]    P0    threshold    smoke

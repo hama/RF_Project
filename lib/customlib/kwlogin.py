@@ -46,7 +46,7 @@ class Login():
         if 'db_service_config' in key_list:
             self.db_service_config = data_config['db_service_config']
 
-    def login_py(self):
+    def login_b_py(self):
         """
         公共登陆方法
         :return: dict
@@ -61,28 +61,22 @@ class Login():
         uid = json.loads(response_data.content)['data']['id']
         cookie = '; '.join(['='.join(item) for item in response_data.cookies.items()])
 
-        # 添加C端cookie值ADMIN1024SESSID
-        myshoplaza_url = 'https://' + self.datas_domain + self.shop_urn + "/cart/count"
-        cookie = self.set_c_cookie_py(myshoplaza_url, cookie)
-        login_info = {"cookie": cookie, "uid": uid}
-
         print "login_data:" + str({"url": self.home_page_url, "contact": self.datas_contact,
                                    "password": self.datas_password,
-                                   "username": self.datas_domain})
-        print "login_info:" + str(login_info)
-        return login_info
+                                   "username": self.datas_domain, "uid": uid})
+        print "login_b_cookie:" + str(cookie)
+        return cookie
 
-    def set_c_cookie_py(self, url, cookie):
+    def login_c_py(self):
         '''
         通过C对端接口，无登录状态，获取cookie值ADMIN1024SESSID
         :return:
         '''
-        try:
-            response_data = requests.get(url=url)
-            cookie = cookie + '; ' + '; '.join(['='.join(item) for item in response_data.cookies.items()])
-            return cookie
-        except Exception as e:
-            return e
+        url = 'https://' + self.datas_domain + self.shop_urn + "/cart/count"
+        response_data = requests.get(url=url)
+        cookie = '; '.join(['='.join(item) for item in response_data.cookies.items()])
+        print "login_c_cookie:" + str(cookie)
+        return cookie
 
     def sign_up_py(self):
         '''
