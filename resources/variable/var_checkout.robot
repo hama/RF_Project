@@ -34,6 +34,7 @@ ${locatorC_checkoutShipping_input_contactEmail}    dom:document.querySelectorAll
 ${locatorC_checkoutShipping_button_specialInstruction}    dom:document.querySelectorAll('[class="checkout-instruction"]')[0]    #.留言信息
 ${locatorC_checkoutShipping_input_specialInstruction}    dom:document.querySelectorAll('[class="checkout-instruction__textarea"]')[0]    #.留言信息输入框
 ${locatorC_checkoutShipping_button_paymentMethod}    dom:document.querySelectorAll('[class*="btn btn-primary checkout-footer"]')[0]    #.payment method  提交按钮
+${locatorC_checkoutShipping_button_completOrder}    dom:document.querySelectorAll('[class*="btn btn-primary payment-footer"]')[0]    #.completOrder 提交按钮
 
 ${locatorC_checkoutShipping_input_couponCode}    dom:document.querySelectorAll("[id='coupon_code_input']")[0]    #.checkout 输入优惠券框
 ${locatorC_checkoutShipping_button_couponApply}    dom:document.querySelectorAll("[id='coupon_apply']")[0]    #.checkout 填写地址页面 - 点击应用优惠券按钮
@@ -42,8 +43,8 @@ ${locatorC_checkoutShipping_items_listShippingAndDelivery}     dom:document.quer
 ${locatorC_checkoutShipping_text_listShippingAndDeliveryName}     dom:document.querySelectorAll('[class*="checkout-shipping-line"] [class*="row checkout-shipping-line__item"] [class*="item-name"]')     #.订单物流信息运费显示
 ${locatorC_checkoutShipping_text_listShippingAndDeliveryFee}   dom:document.querySelectorAll('[class*="checkout-shipping-line"] [class*="row checkout-shipping-line__item"] [class*="item-desc"]')      #shipping delivery 运费价格
 
-${locatorC_checkoutShipping_button_return}    dom:document.querySelectorAll('a[class~="checkout-back"]')[0]    # return 返回
-
+${locatorC_checkoutShipping_button_return}    dom:document.querySelectorAll('a[class~="checkout-back"]')[0]    #shipping return 返回
+${locatorC_checkoutShipping_button_paymentReturn}    dom:document.querySelectorAll('a[class~="payment-footer__back"]')[0]    #payment return 返回
 
 
 
@@ -58,9 +59,13 @@ ${locatorC_checkoutPayment_text_taxPrice}   ${locatorC_checkoutShipping_text_tax
 ${locatorC_checkoutPayment_text_totalPrice}    ${locatorC_checkoutShipping_text_totalPrice}      #.总金额
 
 
+${locatorC_checkoutPayment_link_paymentChange}    dom:document.querySelectorAll('[class="payment__pc"]')[0]
+#.payment ship to
+${locatorC_checkoutPayment_text_namePhone}    dom:document.querySelectorAll('[class="payment-address__value"]')[0]
 
-
-
+#.shipping method  显示
+${locatorC_checkoutPayment_text_shippingMethod}    dom:document.querySelectorAll('[class*="text-truncate"]')[0]
+${locatorC_checkoutPayment_payment_menthodItem}    dom:document.querySelectorAll('[class*="payment-method__item-grid"]')     #支付方式。[0] 货到付款
 
 
 
@@ -149,9 +154,9 @@ ${locatorC_checkout_input_discountCode}     dom:document.querySelectorAll('input
 ${locatorC_checkout_submit_apply}     dom:document.querySelectorAll('button[id="coupon_apply"]')[0]     #优惠码提交按钮
 ${locatorC_checkout_submit_couponClose}      dom:document.querySelectorAll('[class*="sep-font-close"]')[0]     #取消优惠码按钮
 ${locatorC_checkout_shipping_price}     dom:document.querySelectorAll('span[class="fr"]')[0]     #
-${locatorC_checkout_shipping_submitCheckout}     dom:document.querySelectorAll('[class*="btn btn-primary checkout-footer"]')[0]        #type="submit"    checkout  提交到shipping method
+
 ${locatorC_checkout_payment_cashOnDelivery}     dom:document.querySelectorAll('[class*="method__item_selected"]')[0]        #支付方式-货到付款
-${locatorC_checkout_shipping_orderSubmit}      dom:document.querySelectorAll('button[class*="btn-primary payment-footer__btn"]')[0]     #order checkout 提交按钮
+
 
 
 ${locatorC_checkout_paymentCard_change}   dom:document.querySelectorAll('[class*="payment-footer__back"]')[0]    #change 返回
@@ -164,7 +169,7 @@ ${locatorC_checkout_text_order}     dom:document.querySelectorAll(".item-sku-tit
 
 
 #locatorC Payment Method
-${locatorC_checkout_payment_shippingMethoda}    dom:document.querySelectorAll('[class="payment-prices__table-value"]')[1]      #payment 订单运费数据
+
 ${locatorC_checkout_select_billingAddress}    dom:document.querySelectorAll("select[id='billingSelect']")[0]       #.billingAddress  扩展select
 ${locatorC_checkout_inputText_firstName}    dom:document.querySelectorAll("input[name='first_name']")[0]        #.payment method /first_name输入框
 ${locatorC_checkout_inputText_lastName}    dom:document.querySelectorAll("input[name='last_name']")[0]          #.payment method / last_name输入框
