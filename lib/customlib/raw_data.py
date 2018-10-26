@@ -299,10 +299,13 @@ comment_data = {
 shipping_data = {
     'shipping_name': 'autotest_shipping',
     'shipping_area': '[{"country_id":"45","zone_ids":"-1"}]',
-    'has_other_country': 0,
-    'shipping_plan': '[{"name":"price_fee","shipping_method":"price","range_min":0,'
-                     '"range_max":-1,"rate_amount":0,"payment_list":"cod;online;custom;credit_card",'
-                     '"desc":"","range_unit":"g"}]'
+    'shipping_plan': '[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,'
+                     '"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":""},'
+                     '{"name":"weight_fee","shipping_method":"weight","range_min":"0.00","range_max":-1,'
+                     '"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"},'
+                     '{"name":"quantity_fee","shipping_method":"quantity","range_min":"0","range_max":-1,'
+                     '"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]',
+    'has_other_country': 0
 }
 
 checkout_create_data = {

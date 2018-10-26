@@ -126,3 +126,11 @@ ${file_products_template}    ${CURDIR}/../xlsx/product_template.xlsx    # 添加
 ${file_products_templates}    ${CURDIR}/../xlsx/products_template.xlsx    # 添加多个商品模版文件
 ${file_products_wrong_template}    ${CURDIR}/../xlsx/wrong_format.xlsx    # 添加单个的错误的商品模版文件
 
+
+
+
+
+# C端
+${locatorC_productDetail_button_addToCart}    dom:document.querySelectorAll("div[class*='footer-add']")[0]     #.c端订单-添加到购物车 add to cart
+${locatorC_productDetail_button_buyNow}    dom:document.querySelectorAll("[class*='btn-secondary']")[0]    #.by-now按钮
+${locatorC_productDetail_input_qtyNum}    dom:document.querySelectorAll("[class*='form-control product-info__qty_num']")[0]    #商品购买数量输入框
