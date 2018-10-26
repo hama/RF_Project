@@ -94,7 +94,7 @@ def add_upfiles_py(cookie=init_cookie):
             res_url = home_page_url + "/api/file/info"
             data = {"filename": "aa", "folder": "product", "height": "1125", "size": img[1], "type": "image/jpeg",
                     "url": img[0], "width": "750"}
-            xx = requests.post(url=res_url, headers={"cookie": cookie['cookie']}, json=data)
+            xx = requests.post(url=res_url, headers={"cookie": cookie['b_cookie']}, json=data)
             print xx.text
             if xx.status_code != 200:
                 return False
@@ -110,13 +110,13 @@ def del_upfiles_py(cookie=init_cookie):
     lst_url = home_page_url + "/api/file/list?folder=product&page=1&limit=50"
     # .请求列表的数据
     new_str = ""
-    res = requests.get(url=lst_url, headers={"cookie": cookie['cookie']})
+    res = requests.get(url=lst_url, headers={"cookie": cookie['b_cookie']})
     for x in json.loads(res.content)['data']:
         # res_list.append(str(x['path']))
         new_str += str(x['path']) + ","
     # .请求删除接口
     try:
-        res_data = requests.post(url=del_url, headers={"cookie": cookie['cookie']}, json={"path": new_str})
+        res_data = requests.post(url=del_url, headers={"cookie": cookie['b_cookie']}, json={"path": new_str})
         if json.loads(res_data.content)['state'] != 0:
             return False
         return True
