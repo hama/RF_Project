@@ -6,6 +6,7 @@ Resource          kw_common.robot
 Taxprice Page Suite Setup
     [Documentation]    初始化物流信息
     Login With Default User
+    kwcheckout.set_checkout_process_py
     kwshipping.del_all_shipping_py
     #.添加一个的商品
     &{conf}=   Create Dictionary
