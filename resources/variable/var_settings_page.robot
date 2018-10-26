@@ -55,4 +55,4 @@ ${locatorB_checkout_linkBut_generateServiceTreaty}    dom:document.querySelector
 ${locatorB_checkout_textarea_refundServiceInputBox}    dom:document.querySelectorAll('textarea[class="ant-input"]')[2]      #.服务条约-文本输入框
 
 
-${locatorB_checkout_generateRefundTreaty}   退款条约
+

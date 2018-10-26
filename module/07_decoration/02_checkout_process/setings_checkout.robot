@@ -279,34 +279,40 @@ checkoutPageSetings028
 checkoutPageSetings029
     [Documentation]    测试顾客信息设置-输入退款条约
     [Tags]    P0    threshold   smoke
-    Wait And Click Element      ${locatorB_checkout_button_nav_serviceTerms}
+    Sleep    2
+    Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
     Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     退款条约内容
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
     Wait Until Page Contains Text    退款条约内容
 
 checkoutPageSetings030
     [Documentation]    测试顾客信息设置-输入隐私政策
     [Tags]    P0    threshold
+    Sleep    2
     Wait And Click Element      ${locatorB_checkout_button_nav_serviceTerms}
     Wait And Input Text     ${locatorB_checkout_textarea_policyInputBox}     隐私政策内容
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
     Wait Until Page Contains Text    隐私政策内容
 
 checkoutPageSetings031
     [Documentation]    测试顾客信息设置-输入服务条约
     [Tags]    P0    threshold
+    Sleep    2
     Wait And Click Element      ${locatorB_checkout_button_nav_serviceTerms}
     Wait And Input Text     ${locatorB_checkout_textarea_refundServiceInputBox}     服务条约内容
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
     Wait Until Page Contains Text    服务条约内容
 
 

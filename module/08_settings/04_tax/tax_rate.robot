@@ -117,6 +117,7 @@ taxPrice014
     #测试商品购买不收取税费
     Go To First Product C Interface
     #添加是shipping address
+    Sleep   2
     Wait And Click Element    ${locatorB_checkout_by_now_btn}
     Wait Until Page Contains Locator    ${locatorB_checkout_address_select_country}
     #.选择中国

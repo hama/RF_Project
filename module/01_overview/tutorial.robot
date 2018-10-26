@@ -60,12 +60,6 @@ BeginnerTutorial011
     [Tags]    P1    threshold
     #.点击去物流页面
     Wait And Click Element    ${locatorB_button_shipping}
-    #添加一个物流
-    &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
-    ...    shipping_name=shipping_yunfei
-    kwshipping.add_shipping_with_conf_py    ${conf}
-    Reload Page And Start Ajax
     Wait Until Page Contains    物流方案
 
 BeginnerTutorial012
@@ -79,7 +73,6 @@ BeginnerTutorial012
     ...    shipping_name=shipping_yunfei
     kwshipping.add_shipping_with_conf_py    ${conf}
     Reload Page And Start Ajax
-    Wait Until Page Contains    物流方案
     Wait And Click Element    ${locatorB_overview}
     #.添加完商品返回新手教程，验证
     Sleep    2

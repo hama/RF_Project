@@ -14,8 +14,8 @@ ${locatorB_couponCodeNew_input_couponCode}    id:code    #
 ${locatorB_couponCodeNew_select_couponStyle}    dom:document.querySelectorAll('[class="ant-select-selection__rendered"]')[0]    #折扣类型，折扣券
 ${locatorB_couponCodeNew_selectItem_discountCoupon}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[0]    #折扣类型，折扣券
 ${locatorB_couponCodeNew_selectItem_cashCoupon}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[1]    #折扣类型，代金券
-${locatorB_couponCodeNew_selectTime_start}    dom:document.querySelectorAll('[class="ant-calendar-picker-input ant-input"]')[0]      #.优惠券 活动开始时间选择
-${locatorB_couponCodeNew_selectTime_end}    dom:document.querySelectorAll('[class="ant-calendar-picker-input ant-input"]')[1]     #.优惠券 活动结束时间选择
+${locatorB_couponCodeNew_selectTime_start}    dom:document.querySelectorAll('[class*="ant-calendar-picker-input ant-input"]')[0]      #.优惠券 活动开始时间选择
+${locatorB_couponCodeNew_selectTime_end}    dom:document.querySelectorAll('[class*="ant-calendar-picker-input ant-input"]')[1]     #.优惠券 活动结束时间选择
 ${locatorB_couponCodeNew_selectTime_startInput}    dom:document.querySelectorAll('[class*="ant-calendar-input"]')[1]      #.优惠券 活动开始时间输入
 ${locatorB_couponCodeNew_selectTime_endInput}    dom:document.querySelectorAll('[class*="ant-calendar-input"]')[1]      #.优惠券 活动结束时间输入
 ${locatorB_couponCodeNew_selectTime_confirm}    dom:document.querySelectorAll('[class*="ant-calendar-ok-btn"]')[0]     #.优惠券 选择时间确认按钮

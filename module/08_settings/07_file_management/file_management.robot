@@ -90,6 +90,7 @@ uploadFile012
     Wait Until Page Contains Text     image01.jpg
     Wait Until Page Contains Locator    ${locatorB_uploadFile_firstTr_elm}
     #.点击删除
+    Sleep  2
     Wait And Click Element    ${locatorB_uploadFile_del_img}
     Wait Until Page Contains Locator    ${locatorB_button_save00}
 
@@ -102,6 +103,7 @@ uploadFile013
     Wait Until Page Contains Locator    ${locatorB_uploadFile_firstTr_elm}
     Wait Until Page Contains Text     image01.jpg
     #.点击删除
+    Sleep  2
     Wait And Click Element    ${locatorB_uploadFile_del_img}
     #.点击确定
     Wait And Click Element    ${locatorB_global_alert_confirm}
@@ -116,6 +118,7 @@ uploadFile014
     Wait Until Page Contains Locator    ${locatorB_uploadFile_firstTr_elm}
     Wait Until Page Contains Text     image01.jpg
     #.点击删除
+    Sleep  2
     Wait And Click Element    ${locatorB_uploadFile_del_img}
     #.点击取消
     Wait And Click Element    ${locatorB_global_alert_cancel}
