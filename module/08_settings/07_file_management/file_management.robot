@@ -104,9 +104,7 @@ uploadFile013
     Wait Until Page Contains Text     image01.jpg
     #.点击删除
     Sleep  2
-    Wait And Click Element    ${locatorB_uploadFile_del_img}
-    #.点击确定
-    Wait And Click Element    ${locatorB_global_alert_confirm}
+    Wait And Click Element Then Confirm    ${locatorB_uploadFile_del_img}
     Wait Until Page Not Contains Text     image01.jpg
 
 uploadFile014
@@ -119,9 +117,7 @@ uploadFile014
     Wait Until Page Contains Text     image01.jpg
     #.点击删除
     Sleep  2
-    Wait And Click Element    ${locatorB_uploadFile_del_img}
-    #.点击取消
-    Wait And Click Element    ${locatorB_global_alert_cancel}
+    Wait And Click Element Then Cancel    ${locatorB_uploadFile_del_img}
     Wait Until Page Contains Locator    ${locatorB_uploadFile_firstTr_elm}
     Wait Until Page Contains Text     image01.jpg
 

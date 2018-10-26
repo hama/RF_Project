@@ -156,6 +156,7 @@ Go To Checkout Settings Page
     ...    ELSE    Wait And Click Element    ${locatorB_decoration_checkoutSettings}
     Wait Until Page Contains    交易规则
     Location Should Be    ${url_checkoutSettings}
+    Sleep    2
 
 Go To Application Page
     [Documentation]    跳转到应用市场-图片SEO

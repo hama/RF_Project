@@ -32,13 +32,13 @@ def comments_insert_py(data, cookie=init_cookie):
 def add_published_comment_py(cookie=init_cookie):
     conf = {}
     conf['status'] = '1'
-    add_comment_with_conf_py(conf, cookie)
+    return add_comment_with_conf_py(conf, cookie)
 
 
 def add_unpublished_comment_py(cookie=init_cookie):
     conf = {}
     conf['status'] = '0'
-    add_comment_with_conf_py(conf, cookie)
+    return add_comment_with_conf_py(conf, cookie)
 
 
 def add_comment_with_conf_py(conf={}, cookie=init_cookie):
@@ -122,9 +122,10 @@ def get_exist_commentsid_py():
 
 
 if __name__ == '__main__':
-    # add_published_comment_py()
-    config01 = {'content': 'content00'}
+    # print add_unpublished_comment_py()
+    print add_published_comment_py()
+    # config01 = {'content': 'content00'}
+    # add_comment_with_conf_py(config01)
     # config02 = {'content': 'content01'}
-    add_comment_with_conf_py(config01)
     # add_comment_with_conf_py(config02)
     # print get_latest_commentid_py()
