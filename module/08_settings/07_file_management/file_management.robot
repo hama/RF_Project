@@ -124,8 +124,8 @@ uploadFile014
 uploadFile015
     [Documentation]    测试批量删除 > 显示删除
     [Tags]    P1    threshold
-    #.添加30个
-    Wait Add Upfile
+    add_upfiles_py
+    add_upfiles_py
     Reload Page And Start Ajax
     Wait Until Page Contains Locator    ${locatorB_uploadFile_add_btn}
     #.点击批量选中
@@ -135,29 +135,30 @@ uploadFile015
     #删除所有
     Wait Del Upfile
 
-uploadFile018
-    [Documentation]    测试下一页上一页按钮 > 素材列表切换到下一页
-    [Tags]    P1    threshold
-    #.添加30个
-    Wait Add Upfile
-    Reload Page And Start Ajax
-    Wait Until Page Contains Locator    ${locatorB_uploadFile_add_btn}
-    #.点击下一页
-    Wait And Click Element    ${locatorB_uploadFile_nextPge_btn}
-    #删除所有
-    Wait Del Upfile
-
-uploadFile019
-    [Documentation]    测试下一页上一页按钮 > 素材列表切换到上一页
-    [Tags]    P1    threshold
-    #.添加30个
-    Wait Add Upfile
-    Reload Page And Start Ajax
-    Wait Until Page Contains Locator    ${locatorB_uploadFile_add_btn}
-    #.点击下一页
-    Wait And Click Element    ${locatorB_uploadFile_nextPge_btn}
-    #.点击上一页
-    Wait And Click Element    ${locatorB_uploadFile_prePge_btn}
-    #删除所有
-    Wait Del Upfile
+# 现有方法耗时太长，先不执行，待优化用例
+#uploadFile018
+#    [Documentation]    测试下一页上一页按钮 > 素材列表切换到下一页
+#    [Tags]    P1    threshold
+#    #.添加30个
+#    Wait Add Upfile
+#    Reload Page And Start Ajax
+#    Wait Until Page Contains Locator    ${locatorB_uploadFile_add_btn}
+#    #.点击下一页
+#    Wait And Click Element    ${locatorB_uploadFile_nextPge_btn}
+#    #删除所有
+#    Wait Del Upfile
+#
+#uploadFile019
+#    [Documentation]    测试下一页上一页按钮 > 素材列表切换到上一页
+#    [Tags]    P1    threshold
+#    #.添加30个
+#    Wait Add Upfile
+#    Reload Page And Start Ajax
+#    Wait Until Page Contains Locator    ${locatorB_uploadFile_add_btn}
+#    #.点击下一页
+#    Wait And Click Element    ${locatorB_uploadFile_nextPge_btn}
+#    #.点击上一页
+#    Wait And Click Element    ${locatorB_uploadFile_prePge_btn}
+#    #删除所有
+#    Wait Del Upfile
 
