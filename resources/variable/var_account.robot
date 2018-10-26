@@ -22,7 +22,8 @@ ${locatorB_button_collection}    dom:document.querySelectorAll('button[class*="m
 
 ${locatorB_theme_button_editor}    dom:document.querySelectorAll('button[class*="middle_btn"]')[0]     #装修店铺编辑按钮
 
-
+#.概况
+${locatorB_overview_notPay}      dom:document.querySelectorAll('[class*="overview_block"]')[0]
 
 
 

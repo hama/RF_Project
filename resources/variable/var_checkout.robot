@@ -64,6 +64,21 @@ ${locatorC_checkoutPayment_text_totalPrice}    ${locatorC_checkoutShipping_text_
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ${locatorB_checkout_address_btn}    dom:document.querySelectorAll(".address_btn")[0]    #.checkout点击by-now后的添加地址按钮
 ${locatorC_checkout_text_price}    dom:document.querySelectorAll('[class="checkout-item__price"]')[0]    #.商品的单价
 

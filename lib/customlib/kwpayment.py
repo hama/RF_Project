@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+from do_request import *
 from raw_data import *
 from variable import *
 

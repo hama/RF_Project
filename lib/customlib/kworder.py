@@ -644,8 +644,6 @@ if __name__ == '__main__':
     # print add_deading_order_with_some_finished_status_py()
     # print add_deading_order_with_finished_status_py()
 
-
-
     # print get_tokens_by_productid_py('602')
     # print get_tokens_by_productidlist_py(['602', '601'])
     # print json.dumps(query_undeal_order_by_num_py())

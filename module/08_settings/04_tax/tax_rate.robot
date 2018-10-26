@@ -117,7 +117,10 @@ taxPrice014
     #测试商品购买不收取税费
     Go To First Product C Interface
     #添加是shipping address
+<<<<<<< HEAD
     Sleep   2
+=======
+>>>>>>> d5104eadda84bbdc781b81691e794ddc593c1666
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_country}
     #.选择中国

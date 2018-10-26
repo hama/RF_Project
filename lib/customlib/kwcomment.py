@@ -32,13 +32,13 @@ def comments_insert_py(data, cookie=init_cookie):
 def add_published_comment_py(cookie=init_cookie):
     conf = {}
     conf['status'] = '1'
-    add_comment_with_conf_py(conf, cookie)
+    return add_comment_with_conf_py(conf, cookie=cookie)
 
 
 def add_unpublished_comment_py(cookie=init_cookie):
     conf = {}
     conf['status'] = '0'
-    add_comment_with_conf_py(conf, cookie)
+    return add_comment_with_conf_py(conf, cookie=cookie)
 
 
 def add_comment_with_conf_py(conf={}, cookie=init_cookie):
@@ -74,7 +74,7 @@ def add_comment_with_conf_py(conf={}, cookie=init_cookie):
     else:
         data['img_link'] = []
 
-    return comments_insert_py(data, cookie)
+    return comments_insert_py(data, cookie=cookie)
 
 
 def del_latest_comment_py(cookie=init_cookie):
@@ -82,7 +82,7 @@ def del_latest_comment_py(cookie=init_cookie):
     删除最新评论
     :return: True | False
     """
-    return comments_delete_py(1, cookie)
+    return comments_delete_py(1, cookie=cookie)
 
 
 def del_latest_comments_py(num, cookie=init_cookie):
@@ -92,7 +92,7 @@ def del_latest_comments_py(num, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    return comments_delete_py(num, cookie)
+    return comments_delete_py(num, cookie=cookie)
 
 
 def del_all_comments_py(cookie=init_cookie):
@@ -100,7 +100,7 @@ def del_all_comments_py(cookie=init_cookie):
     删除全部评论
     :return: True | False
     """
-    return comments_delete_py('all', cookie)
+    return comments_delete_py('all', cookie=cookie)
 
 
 def get_latest_commentid_py():
@@ -122,9 +122,10 @@ def get_exist_commentsid_py():
 
 
 if __name__ == '__main__':
-    # add_published_comment_py()
-    config01 = {'content': 'content00'}
+    # print add_unpublished_comment_py()
+    print add_published_comment_py()
+    # config01 = {'content': 'content00'}
+    # add_comment_with_conf_py(config01)
     # config02 = {'content': 'content01'}
-    add_comment_with_conf_py(config01)
     # add_comment_with_conf_py(config02)
     # print get_latest_commentid_py()

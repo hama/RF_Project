@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
-from kwproduct import *
 from kwcustomer import *
+from kwproduct import *
 
 reload(sys)
 sys.setdefaultencoding('utf-8')

@@ -1,7 +1,7 @@
 *** Settings ***
 Suite Setup       Login With Default User
 Suite Teardown    Close Test Suite Browser
-Test Setup        Go To Home Page    #.删除所有的新手教程前置信息
+Test Setup        Go To Home Page    #.进入到主页
 Test Teardown     Teardown Test Case
 Force Tags        Tutorial
 Resource          ../../resources/keywords/kw_common.robot
@@ -20,9 +20,12 @@ BeginnerTutorial003
     [Documentation]    测试新手教程页面添加商品栏 > 点击去添加按钮时跳转到商品界面，添加商品后返回新手教程商品栏图标变为√，去添加按钮变为已完成并置灰不可点击
     [Tags]    P1    threshold
     Wait And Click Element    ${locatorB_button_commodity}
+    Select Window    New
     kwproduct.add_launched_product_py
+    Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_overview}
     #.添加完商品返回新手教程，验证
+    Focus On New Window
     Element Attribute Should Contain With Wait     ${locatorB_button_commodity}    disabled    ${empty}
     Wait Until Page Contains Text    已完成
 
@@ -36,6 +39,7 @@ BeginnerTutorial009
     [Documentation]    测试新手教程页面店铺装饰栏 > 1.点击去装饰,2.在卡片页面编辑卡片并保存,3.返回新手教程页面查看 > 店铺装饰栏图标变为√，去装饰按钮变为已完成并置灰不可点击
     [Tags]    P1    threshold
     Wait And Click Element    ${locatorB_button_decorate}
+    Select Window    New
     #.打开一个新窗口，聚焦到新窗口操作元素
     Focus On New Window
     #.点击去装修
@@ -50,7 +54,7 @@ BeginnerTutorial009
     Wait And Click Element    dom:document.querySelectorAll('[class*="go_back"]')[0]
     Wait Until Page Contains    概览
     Go To Home Page
-    Sleep    2
+    Focus On New Window
     Element Attribute Should Contain With Wait     ${locatorB_button_decorate}    disabled    ${empty}
     Wait Until Page Contains Text    已完成
 
@@ -76,7 +80,7 @@ BeginnerTutorial015
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_overview}
     #.添加完商品返回新手教程，验证
-    Sleep    2
+    Focus On New Window
     Element Attribute Should Contain With Wait     ${locatorB_button_collection}    disabled    ${empty}
     Wait Until Page Contains Text    已完成
     #关闭credit_card  信用卡支付方式
@@ -94,17 +98,12 @@ BeginnerTutorial012
     [Tags]    P1    threshold
     #.点击去物流页面
     Wait And Click Element    ${locatorB_button_shipping}
-    #添加一个物流
-    &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
-    ...    shipping_name=shipping_yunfei
-    kwshipping.add_shipping_with_conf_py    ${conf}
+    Select Window    New
+    kwshipping.add_shipping_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_overview}
-    #.添加完商品返回新手教程，验证
-    Sleep    2
-    Element Attribute Should Contain With Wait     ${locatorB_button_shipping}    disabled    ${empty}
-    Wait Until Page Contains Text    已完成
+    Focus On New Window
+    Wait Until Page Contains Locator     ${locatorB_overview_notPay}
 
 
 
