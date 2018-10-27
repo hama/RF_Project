@@ -57,7 +57,7 @@ ${locatorC_checkoutPayment_text_totalPrice}    ${locatorC_checkoutShipping_text_
 
 ${locatorC_checkoutPayment_link_paymentChange}    dom:document.querySelectorAll('[class="payment__pc"]')[0]
 #.payment ship to
-${locatorC_checkoutPayment_text_namePhone}    dom:document.querySelectorAll('[class="payment-address__value"]')[0]
+${locatorC_checkoutPayment_text_shippingDetail}    dom:document.querySelectorAll('[class="payment-address__value"]')
 
 #.shipping method  显示
 ${locatorC_checkoutPayment_text_shippingMethod}    dom:document.querySelectorAll('[class*="text-truncate"]')[0]

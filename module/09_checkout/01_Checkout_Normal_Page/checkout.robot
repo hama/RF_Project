@@ -235,7 +235,9 @@ checkout_114
     #添加是shipping address
     Add Address Common Step
     Wait And Click Element     ${locatorC_checkoutShipping_button_paymentMethod}
-    Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_namePhone}    firstName
+    Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingDetail}[0]    firstName${SPACE * 2}lastName${SPACE * 2}1234567@email.com${SPACE * 2}18899999999
+    Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingDetail}[1]    firstName${SPACE * 2}lastName${SPACE * 2}1234567@email.com${SPACE * 2}18899999999
+    Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingDetail}[2]    firstName${SPACE * 2}lastName${SPACE * 2}1234567@email.com${SPACE * 2}18899999999
 
 checkout_121
     [Documentation]         验证checkout支付页面，return按钮可返回到shipping页面  >  1.点击return按钮

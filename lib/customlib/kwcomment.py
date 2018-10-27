@@ -122,8 +122,8 @@ def get_exist_commentsid_py():
 
 
 if __name__ == '__main__':
-    # print add_unpublished_comment_py()
-    print add_published_comment_py()
+    print add_unpublished_comment_py()
+    # print add_published_comment_py()
     # config01 = {'content': 'content00'}
     # add_comment_with_conf_py(config01)
     # config02 = {'content': 'content01'}

@@ -1,4 +1,61 @@
 #!/bin/bash
 echo `date` >> ~/cron.log
-docker run -i -v /dev/shm:/dev/shm --rm registry.shoplazza.com/library/uitest:v5 \
-	bash -c "/opt/run_in_docker.sh -u https://sandbox-admin.shoplazza.com -a new -e"
+
+TIMESTAMP=`date "+%Y%m%d%H%M%S"`
+LOG_PATH="/var/log/uitest_log/$TIMESTAMP"
+LOG_PATH_1="$LOG_PATH""/1"
+LOG_PATH_2="$LOG_PATH""/2"
+LOG_PATH_3="$LOG_PATH""/3"
+
+if [ ! -d "/var/log" ]
+then
+	mkdir -p LOG_PATH
+fi
+
+docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_1 --rm registry.shoplazza.com/library/uitest:v5 \
+        bash -c "/opt/run_in_docker.sh -M 'module/02_order/* \
+        module/08_settings/01_basic_info/store.robot \
+        module/08_settings/03_shipping/shipping.robot' \
+        -U https://sandbox-admin.shoplazza.com -A -D $LOG_PATH_1"&
+
+docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_2 --rm registry.shoplazza.com/library/uitest:v5 \
+        bash -c "/opt/run_in_docker.sh -M 'module/03_product/*' \
+        -U https://sandbox-admin.shoplazza.com -A -D $LOG_PATH_2"&
+
+docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_3 --rm registry.shoplazza.com/library/uitest:v5 \
+        bash -c "/opt/run_in_docker.sh -M 'module/00_login/login.robot \
+        module/00_login/logout.robot \
+        module/06_marketing/01_coupon_code/coupon_code_smoke.robot \
+        module/07_decoration/02_checkout_process/setings_checkout.robot \
+        module/09_checkout/01_Checkout_Normal_Page/* \
+        module/08_settings/04_tax/tax_rate.robot \
+        module/08_settings/07_file_management/file_management.robot \
+        ' -U https://sandbox-admin.shoplazza.com -A -D $LOG_PATH_3"&
+
+sleep 600
+
+for i in {1..120}
+do
+	sleep 60
+	COUNT=`docker ps | grep "$TIMESTAMP" | wc -l`
+	if [ "$COUNT" -eq 0 ]
+	then
+		echo `date`
+		rebot -d "$LOG_PATH"/ "$LOG_PATH_1"/output.xml "$LOG_PATH_2"/logout/output.xml
+		rebot -d "$LOG_PATH"/ "$LOG_PATH"/output.xml "$LOG_PATH_3"/logout/output.xml
+		docker run -i --name $LOG_PATH_2 -v /var/log:/var/log --rm registry.shoplazza.com/library/uitest:v5 \
+		        python -c "/opt/shoplaza_robot/lib/utils/email_utils.py --timestamp $TIMESTAMP --log_path $LOG_PATH"&
+		exit 0
+	fi
+done
+
+# in docker
+# 1. create /var/log/`count`/order
+# 2. robot run log -> /var/log/`count`/order
+
+# in this script
+# do merge
+
+# rebot -d logs/ logs/output.xml logs/logout/output.xml
+
+# docker run email send
