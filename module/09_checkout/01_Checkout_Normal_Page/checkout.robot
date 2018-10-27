@@ -236,8 +236,9 @@ checkout_114
     Add Address Common Step
     Wait And Click Element     ${locatorC_checkoutShipping_button_paymentMethod}
     Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingDetail}[0]    firstName${SPACE * 2}lastName${SPACE * 2}1234567@email.com${SPACE * 2}18899999999
-    Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingDetail}[1]    firstName${SPACE * 2}lastName${SPACE * 2}1234567@email.com${SPACE * 2}18899999999
-    Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingDetail}[2]    firstName${SPACE * 2}lastName${SPACE * 2}1234567@email.com${SPACE * 2}18899999999
+    Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingDetail}[1]    ${SPACE * 2}addr city Beijing${SPACE * 2}China
+    Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingDetail}[2]    123456 company
+
 
 checkout_121
     [Documentation]         验证checkout支付页面，return按钮可返回到shipping页面  >  1.点击return按钮
@@ -253,7 +254,7 @@ checkout_121
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentReturn}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_firstName}
 
-# 用例标注为二期功能，  现在为缺陷状态，无提示文案
+
 checkout_125
     [Documentation]         验证B端收款渠道中没有开启任何支付方式时，checkout 支付页面payment method栏不显示支付方式，并显示提示文案  >  1.B端收款渠道中关闭所有支付方式  2.C端购买商品进入checkout 支付页面 3.查看payment method栏
     [Tags]    P0    threshold
@@ -344,7 +345,10 @@ checkout_193
     Wait And Click Element    ${locatorC_checkoutPayment_payment_menthodItem}[0]
     Wait And Click Element    ${locatorC_checkoutShipping_button_completOrder}
     Wait Until Page Contains Text    Payment successful!
-    Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationName}    firstName
+    Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[0]    firstName${SPACE * 2}lastName${SPACE * 2}1234567@email.com${SPACE * 2}18899999999
+    Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[1]    addr${SPACE * 2}city${SPACE * 2}Beijing${SPACE * 2}China
+    Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[2]    123456 company
+    Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[3]    price_fee
 
 checkout_195
     [Documentation]   验证payment successful页面，view order按钮可跳转到个人中心订单详情页面  >  1.购买商品进入checkout并完成支付进入payment successful页面  2.点击view order按钮
