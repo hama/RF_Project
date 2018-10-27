@@ -50,15 +50,19 @@ coupon_code082
     Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_auto1
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_start}
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${empty}
-    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    2018-10-30 20:00:00
+    #.获取当前系统时间
+    ${nowTime}    Get Time
+    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${nowTime}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_end}
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_endInput}    ${empty}
-    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_endInput}    2018-11-30 20:00:00
+    #.拿到的当前系统时间 + 30 天    exclude_millis=yes  时间设置格式
+    ${endTime}    Add Time To Date	  ${nowTime}   30 days    exclude_millis=yes
+    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_endInput}    ${endTime}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Click Element    ${locatorB_button_save00}
     ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityTime}
-    Should Be Equal    ${text}    2018-10-30 20:00:00-\n2018-11-30 20:00:00
+    Should Be Equal    ${text}    ${nowTime}-\n${endTime}
 
 
 coupon_code085
@@ -69,14 +73,15 @@ coupon_code085
     Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_auto1
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_start}
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${empty}
-    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    2018-10-30 20:00:00
+    ${nowTime}    Get Time
+    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${nowTime}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     #.判断元素是否出现，出现者不点，不出现就点击
     ${class} =    Get Element Attribute    ${locatorB_couponCodeNew_selectTime_notEndTimeStart}    class
     Run Keyword If    '${class}'=='ant-checkbox'    Wait And Click Element    ${locatorB_couponCodeNew_selectTime_notEndTime}
     Wait And Click Element    ${locatorB_button_save00}
     ${text} =    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_activityTime}
-    Should Be Equal    ${text}    2018-10-30 20:00:00-\n无期限
+    Should Be Equal    ${text}    ${nowTime}-\n无期限
 
 coupon_code090
     [Documentation]    验证新建优惠码界面，优惠码输入框中输入合法内容可保存成功
@@ -86,7 +91,8 @@ coupon_code090
     Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_auto1
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_start}
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${empty}
-    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    2018-10-30 20:00:00
+    ${nowTime}    Get Time
+    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${nowTime}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_promoCode}    ${empty}
     ${randomcode}     kwcoupon.get_coupon_code_random_code_py
@@ -103,7 +109,8 @@ coupon_code098
     Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    youhuoquan noLimit
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_start}
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${empty}
-    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    2018-10-30 20:00:00
+    ${nowTime}    Get Time
+    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${nowTime}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_num}    ${empty}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_num}    20
@@ -119,7 +126,8 @@ coupon_code099
     Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    youhuiquan num
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_start}
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${empty}
-    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    2018-10-30 20:00:00
+    ${nowTime}    Get Time
+    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${nowTime}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_num}    ${empty}
     ${class} =    Get Element Attribute    ${locatorB_couponCodeNew_input_noTotalNum}    class
@@ -137,7 +145,8 @@ coupon_code107
     Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_auto1
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_start}
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${empty}
-    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    2018-10-30 20:00:00
+    ${nowTime}    Get Time
+    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${nowTime}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_num}    20
     Wait And Click Element    ${locatorB_button_save00}
@@ -152,7 +161,8 @@ coupon_code108
     Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    youhuiquan num
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_start}
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${empty}
-    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    2018-10-30 20:00:00
+    ${nowTime}    Get Time
+    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}    ${nowTime}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_num}    ${empty}
     ${class} =    Get Element Attribute    ${locatorB_couponCodeNew_text_input_toLimited}    class
@@ -312,8 +322,7 @@ coupon_code165
     Select All Coupon Code Tag
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_auto
-    Wait And Click Element    ${locatorB_button_canecl00}
-    Wait And Click Element    ${locatorB_popUps_button_footermiddle}
+    Wait And Click Element Then Confirm     ${locatorB_button_canecl00}
     Wait Until Page Contains Text    新建活动
 
 coupon_code169

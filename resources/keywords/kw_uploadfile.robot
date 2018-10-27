@@ -34,7 +34,7 @@ DelImg
     [Documentation]    删除图片方法
     Wait Until Page Contains Text    商品图
     ${res}    Execute JavaScript    return document.querySelectorAll('tbody tr')[0]===undefined
-    Run keyword If    '${res}'=='False'    Wait And Click Element    ${locatorB_uploadFile_del_img}
+    Run keyword If    '${res}'=='False'    Wait And Click Element    ${locatorB_uploadFile_icon_delImg}
     Run keyword If    '${res}'=='False'    Wait And Click Element    ${locatorB_global_alert_confirm}
     Sleep    2
 
