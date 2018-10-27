@@ -84,10 +84,11 @@ checkout_119
     kwshipping.add_shipping_with_conf_py
     #.添加一个不需要物流的商品
     &{conf}=   Create Dictionary
-    ...    requires_shipping=0
+    ...    setshipping=0
     kwproduct.add_product_with_conf_py   ${conf}
     #进入商品详情步骤
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_items_listShippingAndDelivery}
+    Text Of Element Should Contain With Wait    ${locatorC_checkoutShipping_items_listShippingAndDelivery}[0]    Delivery for virtual product
