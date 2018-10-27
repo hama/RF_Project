@@ -228,7 +228,6 @@ checkout_106
 #    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
 #    Text Of Element Should Be Equal With Wait    ${discount code}    - $10.00
 
-#.这里我只是验证了，shipping to显示的firstname  因这个地方是有空格字符，验证中不能加空格
 checkout_114
     [Documentation]    验证checkout 支付页面，Payment栏，shiP to信息显示正常
     [Tags]    P0    threshold    smoke
@@ -243,18 +242,16 @@ checkout_121
     [Tags]    P0    threshold
     #激活COD货到付款方式
     kwpayment.activate_payment_cod_py
-    #添加是shipping address
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    #.选择中国   运费价格10
-    #添加是shipping address
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     #.点 payment menthod  return
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_button_paymentReturn}
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentReturn}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_firstName}
-# 用例标注为二期功能，  现在我缺陷状态，无提示文案
+
+# 用例标注为二期功能，  现在为缺陷状态，无提示文案
 checkout_125
     [Documentation]         验证B端收款渠道中没有开启任何支付方式时，checkout 支付页面payment method栏不显示支付方式，并显示提示文案  >  1.B端收款渠道中关闭所有支付方式  2.C端购买商品进入checkout 支付页面 3.查看payment method栏
     [Tags]    P0    threshold
@@ -262,16 +259,14 @@ checkout_125
     kwpayment.inactivate_payment_cod_py
     #关闭credit_card  信用卡支付方式
     kwpayment.inactivate_payment_credit_card_py
-    #添加是shipping address
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    #.选择中国   运费价格10
-    #添加是shipping address
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait Until Page Contains Text    Payment method is not available
     #重新开启cod支付方式
     kwpayment.activate_payment_cod_py
+#
 
 checkout_126
     [Documentation]   验证checkout 支付页面，使用COD支付方式可正常支付  >  1.购买商品进入checkout 支付页面  2.选择支付方式COD  3.点击place order按钮
@@ -305,15 +300,10 @@ checkout_132
 checkout_170
     [Documentation]   验证checkout支付页面，billing address栏选择框可点击以及选择项展示  >   1.点击选择框
     [Tags]    P0    threshold    smoke
-    #. 信用卡支付方式
-    kwpayment.activate_payment_credit_card_py
-    #添加是shipping address
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    #.选择中国   运费价格10
-    #添加是shipping address
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
+    Wait And Click Element    ${locatorC_checkoutPayment_payment_menthodItem}[0]
     #点击billing address栏选择框
     Wait And Click Element    ${locatorC_checkout_select_billingAddress}
     Wait And Select From List By Index     ${locatorC_checkout_select_billingAddress}    1
@@ -324,20 +314,22 @@ checkout_170
     Wait And Input Text     ${locatorC_checkout_inputText_address1}    中山大学产学研基地
     Wait And Input Text     ${locatorC_checkout_inputText_city}    深圳
     Wait And Select From List By Label     ${locatorC_checkout_inputText_countyCode}    China
-    Wait And Select From List By Label     ${locatorC_checkoutShipping_address_select_province}    Beijing
+    Wait And Select From List By Label     ${locatorC_checkout_inputText_provinceCode}    Beijing
     Wait And Input Text     ${locatorC_checkout_inputText_zip}    518000
-    Wait And Click Element      ${locatorC_checkoutShipping_button_paymentMethod}
+    Wait And Click Element      ${locatorC_checkoutShipping_button_completOrder}
     Wait Until Page Contains Text      Payment successful!
 
 checkout_189
     [Documentation]   验证checkout支付页面，place order按钮正常  >  1.购买商品进入checkout支付页面  2.选择COD支付   3.点击place order按钮
     [Tags]    P0    threshold    smoke
+    #激活COD货到付款方式
+    kwpayment.activate_payment_cod_py
     #添加是shipping address
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    Wait And Click Element    ${locatorC_checkoutPayment_payment_menthodItem}[0]
+    Wait And Click Element    ${locatorC_checkoutShipping_button_completOrder}
     Wait Until Page Contains Text    Payment successful!
 
 checkout_193
@@ -345,39 +337,35 @@ checkout_193
     [Tags]    P0    threshold
     #添加是shipping address
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    #.选择中国
-    #添加是shipping address
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait Until Page Contains Text    Beijing
+    Wait And Click Element    ${locatorC_checkoutPayment_payment_menthodItem}[0]
+    Wait And Click Element    ${locatorC_checkoutShipping_button_completOrder}
+    Wait Until Page Contains Text    Payment successful!
+    Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationName}    firstName
 
 checkout_195
     [Documentation]   验证payment successful页面，view order按钮可跳转到个人中心订单详情页面  >  1.购买商品进入checkout并完成支付进入payment successful页面  2.点击view order按钮
     [Tags]    P0    threshold    smoke
     #添加是shipping address
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    #.选择中国
-    #添加是shipping address
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait Until Page Contains Text      Payment successful!
+    Wait And Click Element    ${locatorC_checkoutPayment_payment_menthodItem}[0]
+    Wait And Click Element    ${locatorC_checkoutShipping_button_completOrder}
+    Wait Until Page Contains Text    Payment successful!
     Wait And Click Element    ${locatorC_checkout_link_viewOrders}
     Wait Until Page Contains Locator    ${locatorC_checkout_link_orderList}
 
 checkout_196
     [Documentation]   验证payment successful页面，continue shopping按钮可跳转到店铺首页  >  1.购买商品进入checkout并完成支付进入payment successful页面  2.点击continue shopping按钮
     [Tags]    P0    threshold    smoke
-    #添加是shipping address
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    #.选择中国
-    #添加是shipping address
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait Until Page Contains Text      Payment successful!
+    Wait And Click Element    ${locatorC_checkoutPayment_payment_menthodItem}[0]
+    Wait And Click Element    ${locatorC_checkoutShipping_button_completOrder}
+    Wait Until Page Contains Text    Payment successful!
     Wait And Click Element    ${locatorC_checkout_link_continueShopping}
     Wait Until Page Contains Locator    ${locatorC_checkout_homeBanner}
 
