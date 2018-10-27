@@ -23,8 +23,12 @@ sub_args=${args#*-M}
 # 获取所有入参用例模块
 MODULES=${sub_args%%-*}
 
-# log文件路径
-test_log_dir="logs"
+# 默认log文件路径
+FILE_ABS_PATH=$(cd `dirname $0`; pwd)
+TEST_LOG_DIR=$FILE_ABS_PATH/"logs"
+
+
+
 
 # 判定 getopt 的执行时候有错，错误信息输出到 STDERR
 if [ $? != 0 ]
@@ -37,28 +41,31 @@ fi
 # 使用eval 的目的是为了防止参数中有shell命令，被错误的扩展。
 eval set -- "$TEMP"
 
+
+
+
 # 处理具体的选项
 while true
 do
 	case "$1" in
 		-E | --email)
-			send_email='yes'
+			SEND_EMAIL='yes'
 			shift
 			;;
 		-A | --account)
-			test_account='new'
+			TEST_ACCOUNT='new'
 			shift
 			;;
 		-M | --module)
-			test_module="$MODULES"
+			TEST_MODULE="$MODULES"
 			shift 2
 			;;
 		-U | --url)
-			test_url="$2"
+			TEST_URL="$2"
 			shift 2
 			;;
 		-D | --dir)
-			test_log_dir="$2"
+			TEST_LOG_DIR="$2"
 			shift 2
 			;;
 		--)
@@ -72,34 +79,37 @@ do
 	esac
 done
 
-# 执行initevn.py
-if [ "$test_url" -a "$test_account" ]
+
+
+
+# 1、执行initevn.py
+if [ "$TEST_URL" -a "$TEST_ACCOUNT" ]
 then
-	echo 'test_url and test_account'
-    python2.7 lib/customlib/initevn.py --url="$test_url" --user="$test_account"
-elif [ "$test_url" ]
+	echo 'TEST_URL and TEST_ACCOUNT'
+    python2.7 lib/customlib/initevn.py --url="$TEST_URL" --user="$TEST_ACCOUNT"
+elif [ "$TEST_URL" ]
 then
-	echo 'test_url'
-	echo "$test_url"
-    python2.7 lib/customlib/initevn.py --url="$test_url"
-elif [ "$test_account" ]
+	echo 'TEST_URL'
+	echo "$TEST_URL"
+    python2.7 lib/customlib/initevn.py --url="$TEST_URL"
+elif [ "$TEST_ACCOUNT" ]
 then
-	echo 'test_account'
-    python2.7 lib/customlib/initevn.py --user="$test_account"
+	echo 'TEST_ACCOUNT'
+    python2.7 lib/customlib/initevn.py --user="$TEST_ACCOUNT"
 else
-	echo 'not test_url and test_account'
+	echo 'not TEST_URL and TEST_ACCOUNT'
     python2.7 lib/customlib/initevn.py
 fi
 
-# 执行用例
-if [ "$test_module" ]
+# 2、执行用例
+if [ "$TEST_MODULE" ]
 then
-	echo "$test_module"
-    robot -v is_headless:True -d "$test_log_dir"/ $test_module
-    robot -v is_headless:True --rerunfailed "$test_log_dir"/output.xml -d "$test_log_dir"/rerun/ $test_module
+	echo "$TEST_MODULE"
+    robot -v is_headless:True -d "$TEST_LOG_DIR"/ $TEST_MODULE
+    robot -v is_headless:True --rerunfailed "$TEST_LOG_DIR"/output.xml -d "$TEST_LOG_DIR"/rerun/ $TEST_MODULE
 else
-	echo 'test_module_default'
-    robot -v is_headless:True -d "$test_log_dir"/ \
+	echo 'TEST_MODULE_default'
+    robot -v is_headless:True -d "$TEST_LOG_DIR"/ \
 		module/00_login/login.robot \
 		module/00_login/logout.robot \
 		module/02_order/* \
@@ -111,7 +121,7 @@ else
 		module/08_settings/04_tax/tax_rate.robot \
 		module/08_settings/07_file_management/file_management.robot \
 		module/09_checkout/01_Checkout_Normal_Page/*
-	robot -v is_headless:True --rerunfailed "$test_log_dir"/output.xml -d "$test_log_dir"/rerun/ \
+	robot -v is_headless:True --rerunfailed "$TEST_LOG_DIR"/output.xml -d "$TEST_LOG_DIR"/rerun/ \
 		module/00_login/login.robot \
 		module/00_login/logout.robot \
 		module/02_order/* \
@@ -125,20 +135,20 @@ else
 		module/09_checkout/01_Checkout_Normal_Page/*
 fi
 
-# 若存在rerun文件夹，即重跑了一遍失败用例。
-# 则使用当前logs/output.xml文件的<suite>替换logs/rerun/output.xml的
-# 这样rebot --merge才通过
-if [ -d "$test_log_dir/rerun" ]
+# 3、若存在rerun文件夹，即重跑了一遍失败用例。
+#    则使用当前logs/output.xml文件的<suite>替换logs/rerun/output.xml的
+#    这样rebot --merge才通过
+if [ -d "$TEST_LOG_DIR/rerun" ]
 then
 	line=`grep '<suite .*id="s1".*>' logs/output.xml`
-	sed -i "3d" "$test_log_dir"/rerun/output.xml
-	sed -i "2a$line" "$test_log_dir"/rerun/output.xml
-	rebot --merge -d "$test_log_dir"/ "$test_log_dir"/output.xml "$test_log_dir"/rerun/output.xml
+	sed -i "3d" "$TEST_LOG_DIR"/rerun/output.xml
+	sed -i "2a$line" "$TEST_LOG_DIR"/rerun/output.xml
+	rebot --merge -d "$TEST_LOG_DIR"/ "$TEST_LOG_DIR"/output.xml "$TEST_LOG_DIR"/rerun/output.xml
 fi
 
-# 执行email_utils.py
-if [ "$send_email" ]
+# 4、执行email_utils.py
+if [ "$SEND_EMAIL" ]
 then
-	echo 'send_email_default'
-    python2.7 lib/utils/email_utils.py
+	echo 'SEND_EMAIL_default'
+    python2.7 lib/utils/email_utils.py --timestamp "$TIMESTAMP" --log_path "$TEST_LOG_DIR"
 fi
