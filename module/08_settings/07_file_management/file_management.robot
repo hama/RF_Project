@@ -88,11 +88,10 @@ uploadFile012
     Wait Until Page Contains Text    上传成功
     Wait Until Page Contains Locator    ${locatorB_uploadFile_firstTr_elm}
     Wait Until Page Contains Text     image01.jpg
-    Wait Until Page Contains Locator    ${locatorB_uploadFile_firstTr_elm}
     #.点击删除
     Sleep  2
     Wait And Click Element    ${locatorB_uploadFile_del_img}
-    Wait Until Page Contains Locator    ${locatorB_button_save00}
+    Wait Until Page Contains Text    确定删除吗？
 
 uploadFile013
     [Documentation]    测试素材栏删除按钮 > "1.点击删除按钮,2.查看结果" > 点击确认
@@ -104,7 +103,8 @@ uploadFile013
     Wait Until Page Contains Text     image01.jpg
     #.点击删除
     Sleep  2
-    Wait And Click Element Then Confirm    ${locatorB_uploadFile_del_img}
+    Wait And Click Element    ${locatorB_uploadFile_del_img}
+    Wait And Click Element    ${locatorB_global_alert_confirm}
     Wait Until Page Not Contains Text     image01.jpg
 
 uploadFile014
@@ -117,7 +117,8 @@ uploadFile014
     Wait Until Page Contains Text     image01.jpg
     #.点击删除
     Sleep  2
-    Wait And Click Element Then Cancel    ${locatorB_uploadFile_del_img}
+    Wait And Click Element    ${locatorB_uploadFile_del_img}
+    Wait And Click Element    ${locatorB_global_alert_cancel}
     Wait Until Page Contains Locator    ${locatorB_uploadFile_firstTr_elm}
     Wait Until Page Contains Text     image01.jpg
 

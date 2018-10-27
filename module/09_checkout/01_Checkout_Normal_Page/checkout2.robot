@@ -162,7 +162,7 @@ checkout_107
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutPayment_text_shippingPrice}    + $10.00
 
 checkout_113
-    [Documentation]   验证checkout 支付页面，订单使用优惠码后，价格详情中会显示discount code并显示优惠价格 > 1.C端购买商品women进入checkout shipping页面  2.使用优惠码AAA001  3.进入支付页面查看价格详情
+    [Documentation]   验证checkout 支付页面，total显示正常
     [Tags]    P0    threshold
     kwshipping.add_price_fee_shipping_py
     ${code}    Create Specific Coupon Code
@@ -173,63 +173,47 @@ checkout_113
     Wait And Click Element   ${locatorC_checkout_submit_apply}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_totalPrice}     $434.00
+    Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_totalPrice}     $710.40
 
+#设计   是  shipping method 运费方案 1   价格10
 checkout_118
     [Documentation]   验证checkout 支付页面，payment栏，shipping method显示正常  >  1.购买商品进入checkout shipping页面  2.选择运费方案：运费1   3.进入支付页面查看payment栏，shipping methoda
     [Tags]    P0    threshold    smoke
-    #.创建运费方案1  中国方案  运费价格10
     kwshipping.add_price_fee_shipping_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_listShippingAndDeliveryFee}     $10.00
-    Wait And Click Element      ${locatorC_checkout_shipping_submitCheckout}
-    Text Of Element Should Be Equal With Wait   ${locatorC_checkout_payment_shippingMethoda}     + $10.00
+    Wait And Click Element      ${locatorC_checkoutShipping_button_paymentMethod}
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutPayment_text_shippingMethod}     price_fee
 
 checkout_120
     [Documentation]         验证checkout支付页面，payment栏，change按钮可返回到shipping页面  >  1.点击payment栏的change按钮
     [Tags]    P0    threshold
-    #激活COD货到付款方式
-    kwpayment.activate_payment_cod_py
-    #.添加一个重量运费的物流
-    &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
-    ...    shipping_name=shipping_yunfei
-    ...    shipping_plan=[{"name":"Freight Standard shipping","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
-    kwshipping.add_shipping_with_conf_py    ${conf}
-    #添加是shipping address
+    kwshipping.add_price_fee_shipping_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    #.选择中国   运费价格10
     #添加是shipping address
     Add Address Common Step
-    Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
-    Wait Until Page Contains Locator    ${locatorC_checkout_payment_cashOnDelivery}
-    Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
-    Wait And Click Element    ${locatorC_checkout_paymentCard_change}
-    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_country}
+    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    Wait Until Page Contains Locator    ${locatorC_checkoutPayment_link_paymentChange}
+    Wait And Click Element    ${locatorC_checkoutPayment_link_paymentChange}
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_firstName}
 
 checkout_163
     [Documentation]   验证checkout页面，stripe支付信息中输入错误的信用卡号时，订单会支付失败  >  1.stripe支付信息中填写信息： 卡号：4111119987834534 有效日期：11/23  安全码：123 邮编：518000 2.点击place order按钮
     [Tags]    P0    threshold    smoke
-    #创建一个中国的物流信息
     kwshipping.add_price_fee_shipping_py
-    #激活COD货到付款方式
-    kwpayment.activate_payment_cod_py
     #.激活stripe 信用卡支付方式
     kwpayment.activate_payment_credit_card_py
-    #添加是shipping address
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    #.选择中国
-    #添加是shipping address
     Add Address Common Step
-    Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
-    Wait And Click Element    ${locatorC_checkout_payment_creditCard}
+    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    Wait And Click Element    ${locatorC_checkoutPayment_payment_menthodItem}[1]
     #.信用卡信息填写
     Add Credit Card Info
-    Wait And Click Element      ${locatorC_checkout_shipping_orderSubmit}
+    Wait And Click Element      ${locatorC_checkoutShipping_button_completOrder}
     Wait Until Page Contains Text   Payment failure!
     #关闭credit_card  信用卡支付方式
     kwpayment.inactivate_payment_credit_card_py
@@ -237,52 +221,37 @@ checkout_163
 checkout_168
     [Documentation]   验证checkout支付页面，billing address栏选择框可点击以及选择项展示  >   1.点击选择框
     [Tags]    P0    threshold    smoke
-    #.创建运费方案0  中国方案  运费价格10
     kwshipping.add_price_fee_shipping_py
-    #添加是shipping address
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    #.选择中国   运费价格10
-    #添加是shipping address
     Add Address Common Step
-    Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
-    Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
-    #点击billing address栏选择框
-    Wait And Click Element    ${locatorC_checkout_select_billingAddress}
-    Wait And Select From List By index     ${locatorC_checkout_select_billingAddress}    1
-
-checkout_169
-    [Documentation]  验证checkout支付页面，选择new billing address之后，选择框下方会出现信息填写栏  >  1.点击选择框   2.选择new billing address
-    [Tags]    P0    threshold
-    #.创建运费方案0  中国方案  运费价格10
-    kwshipping.add_price_fee_shipping_py
-    #添加是shipping address
-    Reload Page And Start Ajax
-    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    #.选择中国   运费价格10
-    #添加是shipping address
-    Add Address Common Step
-    Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
-    Wait And Click Element    ${locatorC_checkout_payment_cashOnDelivery}
+    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    Wait And Click Element    ${locatorC_checkoutPayment_payment_menthodItem}[0]
     #点击billing address栏选择框
     Wait And Click Element    ${locatorC_checkout_select_billingAddress}
     Wait Until Page Contains Locator     ${locatorC_checkout_select_billingAddress}    1
 
+checkout_169
+    [Documentation]  验证checkout支付页面，选择new billing address之后，选择框下方会出现信息填写栏  >  1.点击选择框   2.选择new billing address
+    [Tags]    P0    threshold
+    kwshipping.add_price_fee_shipping_py
+    Reload Page And Start Ajax
+    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
+    Add Address Common Step
+    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    Wait And Click Element    ${locatorC_checkoutPayment_payment_menthodItem}[0]
+    #点击billing address栏选择框
+    Wait And Click Element    ${locatorC_checkout_select_billingAddress}
+    Wait And Select From List By index     ${locatorC_checkout_select_billingAddress}    1
+
 checkout_194
     [Documentation]   验证payment successful页面，物流方案显示正常  >  1.购买商品进入checkout shipping页面  2.国家选择中国，物流方案选择：方案1 3.完成订单进入payment successful页面  4.查看物流方案
     [Tags]    P0    threshold    smoke
-    #.创建运费方案0  中国方案  运费价格10
-    &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]
-    ...    shipping_name=shipping_yunfei
-    ...    shipping_plan=[{"name":"方案1","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
     kwshipping.add_shipping_with_conf_py    ${conf}
-    #添加是shipping address
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    #.选择中国   运费价格10
-    #添加是shipping address
-    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
-    Wait And Select From List By Label     ${locatorC_checkoutShipping_address_select_province}    Beijing
-    Wait And Click Element    ${locatorC_checkout_shipping_submitCheckout}
-    Wait Until Page Contains Text   方案1
+    Add Address Common Step
+    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    Wait And Click Element    ${locatorC_checkoutPayment_payment_menthodItem}[0]
+    Wait And Click Element    ${locatorC_checkoutShipping_button_completOrder}
+    Wait Until Page Contains Text    price_fee
