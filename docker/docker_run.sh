@@ -7,11 +7,20 @@ LOG_PATH_1="$LOG_PATH""/1"
 LOG_PATH_2="$LOG_PATH""/2"
 LOG_PATH_3="$LOG_PATH""/3"
 
-if [ ! -d "/var/log" ]
+if [ ! -d "$LOG_PATH_1" ]
 then
-	mkdir -p LOG_PATH
+	mkdir -p $LOG_PATH_1
+fi
+if [ ! -d "$LOG_PATH_2" ]
+then
+	mkdir -p $LOG_PATH_2
+fi
+if [ ! -d "$LOG_PATH_3" ]
+then
+	mkdir -p $LOG_PATH_3
 fi
 
+# 开启docker容器跑对应用例,新创建用户
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_1 --rm registry.shoplazza.com/library/uitest:v5 \
         bash -c "/opt/run_in_docker.sh -M 'module/02_order/* \
         module/08_settings/01_basic_info/store.robot \
@@ -32,8 +41,9 @@ docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_3 --
         module/08_settings/07_file_management/file_management.robot \
         ' -U https://sandbox-admin.shoplazza.com -A -D $LOG_PATH_3"&
 
-sleep 600
+sleep 300
 
+# 轮询检查docker容器是否结束,结束则合并报告,发送
 for i in {1..120}
 do
 	sleep 60
@@ -41,10 +51,9 @@ do
 	if [ "$COUNT" -eq 0 ]
 	then
 		echo `date`
-		rebot -d "$LOG_PATH"/ "$LOG_PATH_1"/output.xml "$LOG_PATH_2"/logout/output.xml
-		rebot -d "$LOG_PATH"/ "$LOG_PATH"/output.xml "$LOG_PATH_3"/logout/output.xml
-		docker run -i --name $LOG_PATH_2 -v /var/log:/var/log --rm registry.shoplazza.com/library/uitest:v5 \
-		        python -c "/opt/shoplaza_robot/lib/utils/email_utils.py --timestamp $TIMESTAMP --log_path $LOG_PATH"&
+		rebot -d "$LOG_PATH"/ "$LOG_PATH_1"/output.xml "$LOG_PATH_2"/output.xml "$LOG_PATH_3"/output.xml
+		docker run -i -v /var/log:/var/log --rm registry.shoplazza.com/library/uitest:v5 \
+		        python2.7 -c "/opt/shoplaza_robot/lib/utils/email_utils.py --timestamp $TIMESTAMP --log_path $LOG_PATH"&
 		exit 0
 	fi
 done
