@@ -41,26 +41,20 @@ taxPrice007
     [Tags]    P0    threshold
     #初始化物流信息
     kwshipping.del_all_shipping_py
-    #添加一个中国的物流信息
     kwshipping.add_shipping_with_conf_py
-    #创建60的税费
     kwtax.add_default_tax_price_py
     Reload Page And Start Ajax
-    #.关闭税费中的第一个国家税费
     Wait And Click Element    ${locatorB_taxPrice_switch_list}[0]
     Wait Until Page Contains Text   设置成功
-    #判断是否真的按钮转换了
     Wait Until Page Contains Locator  ${locatorB_taxPrice_switch_list}[0]
-    #添加一个444的商品
     kwproduct.add_launched_product_py
+    Reload Page And Start Ajax
     #测试商品购买不收取税费
     Go To First Product C Interface
     #添加是shipping address
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_country}
-    #.选择中国
-    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
-    Wait And Select From List By Label     ${locatorC_checkoutShipping_address_select_province}    Beijing
+    Add Address Common Step
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    $444.00
     #还原初始化物流信息
     kwshipping.del_all_shipping_py
@@ -97,14 +91,15 @@ taxPrice014
     ...    shipping_area=[{"country_id":"30","zone_ids":"-1"}]
     ...    shipping_name=autotest_shipping001
     kwshipping.add_shipping_with_conf_py    ${conf}
-    #.添加一个的商品
-    &{conf}=   Create Dictionary
-    kwproduct.add_product_with_conf_py   ${conf}
+    kwproduct.add_product_with_conf_py
     #添加一个中国的物流信息
     kwshipping.add_shipping_with_conf_py
     Reload Page And Start Ajax
     Go To Tax Page
     #.设置中国税费
+    Wait And Click Element    ${locatorB_taxPrice_icon_settingList}[0]
+    Wait And Input Text    ${locatorB_taxPrice_popUp_uniteInput}    60.00
+    Wait And Click Element    ${locatorB_taxPrice_popUp_button_save}
     Wait And Click Element    ${locatorB_taxPrice_icon_settingList}[1]
     Wait And Input Text    ${locatorB_taxPrice_popUp_uniteInput}    60.00
     Wait And Click Element    ${locatorB_taxPrice_popUp_button_save}

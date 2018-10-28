@@ -35,6 +35,7 @@ checkoutPageSetings003
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
+    Sleep     2
     Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
     Element Attribute Should Contain With Wait    ${locatorB_checkout_label_buyMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
@@ -155,21 +156,6 @@ checkoutPageSetings021
     [Tags]    P0    threshold   smoke
     Wait And Click Element    ${locatorB_checkout_label_loginMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
-    #.姓名
-    Wait And Click Element    ${locatorB_checkout_radio_name}
-    Wait And Click Element    ${locatorB_checkout_radio_companyNameMandatory}
-    Wait And Click Element    ${locatorB_checkout_radio_phoneCodeHidden}
-    Wait Exist And Click Element  ${locatorB_checkout_button_save}
-    Wait Until Page Contains Text   设置成功
-    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
-    Reload Page And Start Ajax
-    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_name}    class    ant-radio-wrapper ant-radio-wrapper-checked
-
-checkoutPageSetings022
-    [Documentation]    测试顾客信息设置-点击姓和名分开.1.姓名格式勾选姓、名分开填写时点击姓名  2.点击保存
-    [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_label_loginMembers}
-    Wait And Click Element    ${locatorB_checkout_button_nav_information}
     #.姓名 分开写
     Wait And Click Element    ${locatorB_checkout_radio_surnameAndName}
     Wait And Click Element    ${locatorB_checkout_radio_companyNameMandatory}
@@ -179,6 +165,21 @@ checkoutPageSetings022
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_surnameAndName}    class    ant-radio-wrapper ant-radio-wrapper-checked
+
+checkoutPageSetings022
+    [Documentation]    测试顾客信息设置-点击姓和名分开.1.姓名格式勾选姓、名分开填写时点击姓名  2.点击保存
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_checkout_label_loginMembers}
+    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+    #.姓名
+    Wait And Click Element    ${locatorB_checkout_radio_name}
+    Wait And Click Element    ${locatorB_checkout_radio_companyNameMandatory}
+    Wait And Click Element    ${locatorB_checkout_radio_phoneCodeHidden}
+    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+    Wait Until Page Contains Text   设置成功
+    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+    Reload Page And Start Ajax
+    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_name}    class    ant-radio-wrapper ant-radio-wrapper-checked
 
 checkoutPageSetings023
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.公司名点击必填 2.点击保存

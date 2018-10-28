@@ -57,7 +57,7 @@ ${locatorC_checkoutPayment_text_totalPrice}    ${locatorC_checkoutShipping_text_
 
 ${locatorC_checkoutPayment_link_paymentChange}    dom:document.querySelectorAll('[class="payment__pc"]')[0]
 #.payment ship to
-${locatorC_checkoutPayment_text_shippingDetail}    dom:document.querySelectorAll('[class="payment-address__value"]')
+${locatorC_checkoutPayment_text_shippingDetail}    dom:document.querySelectorAll('[class="payment-address__value"]')     #.shipping to 用户地址信息
 
 #.shipping method  显示
 ${locatorC_checkoutPayment_text_shippingMethod}    dom:document.querySelectorAll('[class*="text-truncate"]')[0]
@@ -75,7 +75,7 @@ ${locatorC_checkout_inputText_provinceCode}    dom:document.querySelectorAll("se
 ${locatorC_checkout_inputText_zip}    dom:document.querySelectorAll("input[name='zip']")[0]        #.billingAddress    /zip 输入框
 
 #.locatorC payment successful
-${locatorC_checkout_text_shippingInformationName}   dom:document.querySelectorAll("[class='payment-shipping']")[0]      #.payment successful  shipping information
+${locatorC_checkout_text_shippingInformationDetail}    dom:document.querySelectorAll("[class*='text-truncate']")     #.payment successful  shipping information
 ${locatorC_checkout_link_viewOrders}    dom:document.querySelectorAll("[class*='btn-secondary']")[0]        #.订单成功-订单详情按钮 viewOrders
 ${locatorC_checkout_link_continueShopping}    dom:document.querySelectorAll("[class*='btn-primary']")[0]       #.订单成功-跳转到首页 continue shopping
 #locatorC order yong hu
