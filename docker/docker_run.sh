@@ -53,7 +53,7 @@ do
 		echo `date`
 		rebot -d "$LOG_PATH"/ "$LOG_PATH_1"/output.xml "$LOG_PATH_2"/output.xml "$LOG_PATH_3"/output.xml
 		docker run -i -v /var/log:/var/log --rm registry.shoplazza.com/library/uitest:v5 \
-		        python2.7 -c "/opt/shoplaza_robot/lib/utils/email_utils.py --timestamp $TIMESTAMP --log_path $LOG_PATH"&
+		        bash -c "/opt/run_in_docker.sh -T $TIMESTAMP -D $LOG_PATH"&
 		exit 0
 	fi
 done
