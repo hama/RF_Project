@@ -140,7 +140,7 @@ fi
 #    这样rebot --merge才通过
 if [ -d "$TEST_LOG_DIR/rerun" ]
 then
-	line=`grep '<suite .*id="s1".*>' logs/output.xml`
+	line=`grep '<suite .*id="s1".*>' "$TEST_LOG_DIR"/output.xml`
 	sed -i "3d" "$TEST_LOG_DIR"/rerun/output.xml
 	sed -i "2a$line" "$TEST_LOG_DIR"/rerun/output.xml
 	rebot --merge -d "$TEST_LOG_DIR"/ "$TEST_LOG_DIR"/output.xml "$TEST_LOG_DIR"/rerun/output.xml
