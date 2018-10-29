@@ -13,6 +13,12 @@ order002
     ${text00}    Wait And Get Text    ${locatorB_orderDealing_button_toDeliver}
     Should Be Equal    ${text00}    待发货
 
+order003
+	[Documentation]     验证未完成订单列表可正常进入
+    [tags]    P0    threshold     smoke
+    Wait And Click Element    ${locatorB_order_undeal}
+    Wait Until Page Contains Text    未完成订单
+
 order009
     [Documentation]     验证C端购买商品选择COD支付方式，并且提交成功后会在B端待处理订单中生成新订单
     [tags]    P0    threshold    smoke

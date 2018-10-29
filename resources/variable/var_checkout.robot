@@ -5,6 +5,16 @@ ${locatorC_cart_button_checkout}    dom:document.querySelectorAll('[class*="chec
 
 #.locatorC_checkoutShipping
 
+#order summary
+
+${locatorC_checkoutShipping_locator_order}    dom:document.querySelectorAll('[data-track="item"]')[0]     #。购买的商品列表 元素
+${locatorC_checkoutShipping_locator_address}    dom:document.querySelectorAll('[class="form-container"]')[0]    #.地址  元素
+
+${locatorC_checkoutShipping_locator_special}    dom:document.querySelectorAll('[class="checkout-instruction"]')[0]    #.买家留言  元素
+${locatorC_checkoutShipping_locator_total}    dom:document.querySelectorAll('[class="checkout__prices-table"] tfoot tr')[0]    #.显示总价  元素
+
+
+
 ${locatorC_checkoutShipping_text_itemProductTitle}    dom:document.querySelectorAll('[class*="checkout-item__sku-title"]')[0]
 ${locatorC_checkoutShipping_text_itemQtyNum}    dom:document.querySelectorAll("[class*='checkout-item__quantity']")[0]
 ${locatorC_checkoutShipping_text_itemPrice}    dom:document.querySelectorAll("[class='checkout-item__price']")[0]
@@ -12,7 +22,7 @@ ${locatorC_checkoutShipping_text_subtotalPrice}    dom:document.querySelectorAll
 ${locatorC_checkoutShipping_text_shippingPrice}   dom:document.querySelectorAll(".checkout__prices-table-value")[1]      #.运费shipping
 ${locatorC_checkoutShipping_text_taxPrice}   dom:document.querySelectorAll(".checkout__prices-table-value")[2]      #.tax
 ${locatorC_checkoutShipping_text_totalPrice}    dom:document.querySelectorAll('[class*="checkout-prices"] tfoot td')[1]      #.总金额
-
+${locatorC_checkout_prices_shippingValue}     dom:document.querySelectorAll('[class*="prices-table-value"]')      #.shipping 金额信息显示
 
 
 
