@@ -103,7 +103,7 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
     msg.attach(msgImage)
 
     # 打包文件夹,并添加为附件
-    os.popen('tar -zcvPf %s/robot_log_%s.tar.gz %s/*' % (log_path, timestamp, log_path))
+    os.popen('cd %s; tar -zcvPf ./robot_log_%s.tar.gz ./*' % (log_path, timestamp))
     att = MIMEText(open(log_path + '/robot_log_%s.tar.gz' % timestamp, 'rb').read(), 'base64', 'utf-8')
     att["Content-Type"] = 'application/octet-stream'
     att["Content-Disposition"] = 'attachment; filename="robot_log_%s.tar.gz"' % timestamp
