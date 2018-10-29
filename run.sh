@@ -122,12 +122,15 @@ then
 	then
 		echo "TEST_RERUN"
 	    robot -v is_headless:True --rerunfailed "$TEST_LOG_DIR"/output.xml -d "$TEST_LOG_DIR"/rerun/ $TEST_MODULE
-		# 使用当前logs/output.xml文件的<suite>替换logs/rerun/output.xml的
-		# 这样rebot --merge才通过
-		line=`grep '<suite .*id="s1".*>' "$TEST_LOG_DIR"/output.xml`
-		sed -i "3d" "$TEST_LOG_DIR"/rerun/output.xml
-		sed -i "2a$line" "$TEST_LOG_DIR"/rerun/output.xml
-		rebot --merge -d "$TEST_LOG_DIR"/ -o output.xml "$TEST_LOG_DIR"/output.xml "$TEST_LOG_DIR"/rerun/output.xml
+	    if [ -d "$TEST_LOG_DIR/rerun" ]
+	    then
+			# 使用当前logs/output.xml文件的<suite>替换logs/rerun/output.xml的
+			# 这样rebot --merge才通过
+			line=`grep '<suite .*id="s1".*>' "$TEST_LOG_DIR"/output.xml`
+			sed -i "3d" "$TEST_LOG_DIR"/rerun/output.xml
+			sed -i "2a$line" "$TEST_LOG_DIR"/rerun/output.xml
+			rebot --merge -d "$TEST_LOG_DIR"/ -o output.xml "$TEST_LOG_DIR"/output.xml "$TEST_LOG_DIR"/rerun/output.xml
+		fi
 	else
 		echo 'not TEST_RERUN'
 	fi
