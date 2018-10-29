@@ -13,12 +13,6 @@ order002
     ${text00}    Wait And Get Text    ${locatorB_orderDealing_button_toDeliver}
     Should Be Equal    ${text00}    待发货
 
-order003
-	[Documentation]     验证未完成订单列表可正常进入
-    [tags]    P0    threshold     smoke
-    Wait And Click Element    ${locatorB_order_undeal}
-    Wait Until Page Contains Text    未完成订单
-
 order009
     [Documentation]     验证C端购买商品选择COD支付方式，并且提交成功后会在B端待处理订单中生成新订单
     [tags]    P0    threshold    smoke
@@ -29,11 +23,25 @@ order009
 	${difference}    Evaluate    ${count01}-${count00}
 	Should Be Equal    ${difference}    ${1}
 
+order014
+    [Documentation]    验证进入待处理订单列表时，默认选择第一个tab，全部
+    [tags]    P0    threshold
+    #.待处理-待发货
+    kworder.add_deading_order_with_delivering_status_py
+    #.待处理-部分发货
+    kworder.add_deading_order_with_some_delivered_status_py
+    Reload Page And Start Ajax
+    Select All Dealing Order Tag
+    Element Attribute Should Be Equal With Wait    ${locatorB_orderDealing_button_all}    class    ant-tabs-tab-active ant-tabs-tab
+
 order015
     [Documentation]     验证待处理订单列表中，可通过切换tab查看未发货的订单
     [tags]    P0    threshold    smoke
+    #.待处理-待发货
     kworder.add_deading_order_with_delivering_status_py
+    #。待处理-部分发货
     kworder.add_deading_order_with_some_delivered_status_py
+    #待处理-全部发货
     kworder.add_deading_order_with_all_delivered_status_py
     Reload Page And Start Ajax
     Select To Deliver Dealing Order Tag
@@ -64,6 +72,26 @@ order017
     Select Finished Dealing Order Tag
     ${text00} =    Sleep And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[0]
     Should Be Equal    ${text00}    全部完成
+#######################
+order019
+    [Documentation]     验证待处理订单列表中，可筛选出线上支付订单
+    [tags]    P0    threshold
+    kworder.add_deading_order_with_all_delivered_status_py
+    kworder.add_deading_order_with_finished_status_py
+    Reload Page And Start Ajax
+    Select All Dealing Order Tag
+
+
+
+order037
+    [Documentation]     验证待处理订单列表中，可按照顾客姓名模糊搜索订单
+    [tags]    P0    threshold
+    kworder.add_deading_order_with_all_delivered_status_py
+    Reload Page And Start Ajax
+    Select Finished Dealing Order Tag
+    ${text00} =    Sleep And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[0]
+    Should Be Equal    ${text00}    全部完成
+
 
 order039
     [Documentation]     验证待处理订单列表中，订单编号显示为checkout发起订单时的订单编号
