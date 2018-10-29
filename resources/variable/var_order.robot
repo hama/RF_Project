@@ -35,8 +35,9 @@ ${locatorB_orderDealing_select_financialStatus}    dom:document.querySelectorAll
 ${locatorB_orderDealing_select_shippingStatus}    dom:document.querySelectorAll('[id="fulfillment_status"]')    # 物流状态select
 ${locatorB_orderDealing_select_orderStatus}    dom:document.querySelectorAll('[id="status"]')    # 订单状态select
 
+#.搜索文本框
 
-
+${locatorB_orderDealing_input_codeName}    dom:document.querySelectorAll('[]')
 
 
 # locatorB_orderUndeal

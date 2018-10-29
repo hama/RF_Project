@@ -9,20 +9,26 @@ Force Tags        Checkout
 Resource          ../../../resources/keywords/kw_common.robot
 
 *** Test Cases ***
+
 checkout_001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0    threshold    smoke
     Wait And Click Element    ${locatorC_productDetail_button_addToCart}
     Wait And Click Element    ${locatorC_icon_card}
     Wait And Click Element    ${locatorC_cart_button_checkout}
-    Wait Until Page Contains    Shipping Address
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_order}
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_address}
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_special}
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_total}
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_button_paymentMethod}
 
 checkout_002
     [Documentation]    进入checkout界面 显示购买的商品，地址，
     [Tags]    P0    threshold    smoke
     #点击商品预览
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait Until Page Contains    Shipping Address
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_order}
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_address}
 
 checkout_006
     [Documentation]    验证checkout shipping页面，订单汇总，商品栏，商品标题显示正常
