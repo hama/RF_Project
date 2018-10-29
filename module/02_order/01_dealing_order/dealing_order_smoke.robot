@@ -82,15 +82,19 @@ order019
     Select All Dealing Order Tag
 
 
-
+#####
 order037
     [Documentation]     验证待处理订单列表中，可按照顾客姓名模糊搜索订单
     [tags]    P0    threshold
-    kworder.add_deading_order_with_all_delivered_status_py
+    &{conf}=   Create Dictionary
+    ...    shipping_address={'first_name':'testedOject'}
+    kworder.add_deading_order_with_conf_py     ${conf}
     Reload Page And Start Ajax
     Select Finished Dealing Order Tag
-    ${text00} =    Sleep And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[0]
-    Should Be Equal    ${text00}    全部完成
+
+#####
+
+
 
 
 order039
@@ -161,6 +165,15 @@ order047
     Reload Page And Start Ajax
     ${text} =    Sleep And Get Text    ${locatorB_orderDealing_text_firstOrder_shippingStatus}
 	Should Be Equal    ${text}    待发货
+
+order048
+    [Documentation]     验证在订单详情将此订单部分商品发货时，订单列表中显示的物流状态为：部分发货
+    [tags]    P0    threshold    smoke
+    kworder.add_deading_order_with_some_delivered_status_py
+    Reload Page And Start Ajax
+    ${text} =    Sleep And Get Text    ${locatorB_orderDealing_text_firstOrder_shippingStatus}
+	Should Be Equal    ${text}    部分发货
+
 
 order052
     [Documentation]     验证订单未确认收货前，待处理订单列表中订单住状态显示为：进行中
