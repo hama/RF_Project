@@ -1,5 +1,5 @@
 #!/bin/bash
-echo `date` >> ~/cron.log
+echo "start:"`date` >> ~/cron.log
 
 TIMESTAMP=`date "+%Y%m%d%H%M%S"`
 LOG_PATH="/var/log/uitest_log/$TIMESTAMP"
@@ -25,11 +25,11 @@ docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_1 --
         bash -c "/opt/run_in_docker.sh -M 'module/02_order/* \
         module/08_settings/01_basic_info/store.robot \
         module/08_settings/03_shipping/shipping.robot' \
-        -U https://sandbox-admin.shoplazza.com -A -D $LOG_PATH_1"&
+        -U https://sandbox-admin.shoplazza.com -R -A -D $LOG_PATH_1"&
 
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_2 --rm registry.shoplazza.com/library/uitest:v5 \
         bash -c "/opt/run_in_docker.sh -M 'module/03_product/*' \
-        -U https://sandbox-admin.shoplazza.com -A -D $LOG_PATH_2"&
+        -U https://sandbox-admin.shoplazza.com -R -A -D $LOG_PATH_2"&
 
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_3 --rm registry.shoplazza.com/library/uitest:v5 \
         bash -c "/opt/run_in_docker.sh -M 'module/00_login/login.robot \
@@ -38,8 +38,8 @@ docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_3 --
         module/07_decoration/02_checkout_process/setings_checkout.robot \
         module/09_checkout/01_Checkout_Normal_Page/* \
         module/08_settings/04_tax/tax_rate.robot \
-        module/08_settings/07_file_management/file_management.robot \
-        ' -U https://sandbox-admin.shoplazza.com -A -D $LOG_PATH_3"&
+        module/08_settings/07_file_management/file_management.robot' \
+        -U https://sandbox-admin.shoplazza.com -R -A -D $LOG_PATH_3"&
 
 sleep 300
 
@@ -50,7 +50,7 @@ do
 	COUNT=`docker ps | grep "$TIMESTAMP" | wc -l`
 	if [ "$COUNT" -eq 0 ]
 	then
-		echo `date`
+		echo "send:"`date` >> ~/cron.log
 		rebot -d "$LOG_PATH"/ "$LOG_PATH_1"/output.xml "$LOG_PATH_2"/output.xml "$LOG_PATH_3"/output.xml
 		docker run -i -v /var/log:/var/log --rm registry.shoplazza.com/library/uitest:v5 \
 		        bash -c "/opt/run_in_docker.sh -E -T $TIMESTAMP -D $LOG_PATH"&
@@ -58,6 +58,7 @@ do
 	fi
 done
 
+echo "end:"`date` >> ~/cron.log
 # in docker
 # 1. create /var/log/`count`/order
 # 2. robot run log -> /var/log/`count`/order
