@@ -1,4 +1,5 @@
 #!/bin/bash
+export PATH=$PATH:/usr/local/bin/
 echo "start:"`date` >> ~/cron.log
 
 TIMESTAMP=`date "+%Y%m%d%H%M%S"`
