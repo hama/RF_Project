@@ -23,6 +23,7 @@ to_addr = [
     # 'lijunjie@shoplazza.com',
     'qiansuixin@shoplazza.com',
     'huayacheng@shoplazza.com'
+    'zhouli@shoplazza.com'
 ]
 # . 抄送邮箱
 cc_addr = [
