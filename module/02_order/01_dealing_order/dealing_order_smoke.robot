@@ -26,22 +26,15 @@ order009
 order014
     [Documentation]    验证进入待处理订单列表时，默认选择第一个tab，全部
     [tags]    P0    threshold
-    #.待处理-待发货
     kworder.add_deading_order_with_delivering_status_py
-    #.待处理-部分发货
-    kworder.add_deading_order_with_some_delivered_status_py
     Reload Page And Start Ajax
-    Select All Dealing Order Tag
     Element Attribute Should Be Equal With Wait    ${locatorB_orderDealing_button_all}    class    ant-tabs-tab-active ant-tabs-tab
 
 order015
     [Documentation]     验证待处理订单列表中，可通过切换tab查看未发货的订单
     [tags]    P0    threshold    smoke
-    #.待处理-待发货
     kworder.add_deading_order_with_delivering_status_py
-    #。待处理-部分发货
     kworder.add_deading_order_with_some_delivered_status_py
-    #待处理-全部发货
     kworder.add_deading_order_with_all_delivered_status_py
     Reload Page And Start Ajax
     Select To Deliver Dealing Order Tag
@@ -72,30 +65,6 @@ order017
     Select Finished Dealing Order Tag
     ${text00} =    Sleep And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[0]
     Should Be Equal    ${text00}    全部完成
-#######################
-order019
-    [Documentation]     验证待处理订单列表中，可筛选出线上支付订单
-    [tags]    P0    threshold
-    kworder.add_deading_order_with_all_delivered_status_py
-    kworder.add_deading_order_with_finished_status_py
-    Reload Page And Start Ajax
-    Select All Dealing Order Tag
-
-
-#####
-order037
-    [Documentation]     验证待处理订单列表中，可按照顾客姓名模糊搜索订单
-    [tags]    P0    threshold
-    &{conf}=   Create Dictionary
-    ...    shipping_address={'first_name':'testedOject'}
-    kworder.add_deading_order_with_conf_py     ${conf}
-    Reload Page And Start Ajax
-    Select Finished Dealing Order Tag
-
-#####
-
-
-
 
 order039
     [Documentation]     验证待处理订单列表中，订单编号显示为checkout发起订单时的订单编号
@@ -168,7 +137,7 @@ order047
 
 order048
     [Documentation]     验证在订单详情将此订单部分商品发货时，订单列表中显示的物流状态为：部分发货
-    [tags]    P0    threshold    smoke
+    [tags]    P0    threshold
     kworder.add_deading_order_with_some_delivered_status_py
     Reload Page And Start Ajax
     ${text} =    Sleep And Get Text    ${locatorB_orderDealing_text_firstOrder_shippingStatus}
