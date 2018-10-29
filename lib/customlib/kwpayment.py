@@ -111,7 +111,8 @@ def is_binding_account(cookie=init_cookie):
     :return:
     '''
     payment_data = get_exist_expected_payment_data_py('credit_card', cookie=cookie)
-    if isinstance(payment_data, dict) and payment_data['channel_list'][0]['account_list'] != []:
+    if isinstance(payment_data, dict) and payment_data['channel_list'] != [] \
+            and payment_data['channel_list'][0]['account_list'] != []:
         return payment_data['channel_list'][0]['account_list'][0]['client_id']
     else:
         return None
@@ -162,4 +163,4 @@ def do_pay_with_conf_py(conf={}, cookie=init_cookie):
 if __name__ == '__main__':
     # print activate_payment_cod_py()
     # print inactivate_payment_credit_card_py()
-    print inactivate_payment_credit_card_py()
+    print activate_payment_credit_card_py()
