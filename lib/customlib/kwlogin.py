@@ -94,6 +94,7 @@ class Login():
                  "vcode": datas_vcode, "invite_code": self.datas_invite_code}
         print "sign_up_data:" + str(datas)
         response_data = requests.post(url=url, headers={}, data=datas)
+        print "/api/user/signup"+response_data.content
         if response_data is None or response_data.status_code != 200:
             return False
         else:
@@ -109,6 +110,7 @@ class Login():
         url = self.home_page_url + "/api/user/validate-signup"
         datas = {"contact": self.datas_contact, "username": self.datas_domain}
         response_data = requests.post(url=url, headers={}, data=datas)
+        print "/api/user/validate-signup"+response_data.content
         if response_data is None or response_data.status_code != 200:
             return False
         else:
@@ -129,6 +131,7 @@ class Login():
             sql = "SELECT code FROM user_validate WHERE `contact` = '%s' order by create_time desc limit 1" % (contact)
             curs.execute(sql)
             res = curs.fetchone()[0]
+            print "get_latest_vcode_fromdb"+res
             return res
         except Exception as e:
             print e
