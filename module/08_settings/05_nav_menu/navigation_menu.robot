@@ -6,8 +6,7 @@ Test Setup        navigation Test Setup
 Test Teardown     Teardown Test Case
 Force Tags        navigation_menu
 Resource          ../../../resources/keywords/kw_common.robot
-Resource          ../../../resources/keywords/kw_navmenu.robot
-Resource          ../../../resources/variable/var_navmenu.robot
+
 
 
 *** Test Cases ***
