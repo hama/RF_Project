@@ -11,8 +11,8 @@ if __name__ == '__main__':
     # 设置执行入参
     parser = argparse.ArgumentParser(description='manual to this script')
     parser.add_argument('--url', type=str, default='https://sandbox-admin.shoplazza.com')
-    parser.add_argument('--user', type=str, default='autotest@shoplazza.com')
-    parser.add_argument('--domain', type=str, default='autotest')
+    parser.add_argument('--user', type=str, default='17665076519')
+    parser.add_argument('--domain', type=str, default='homer')
     args = parser.parse_args()
     # 设置用户信息
     config = ConfigParser.ConfigParser()
@@ -45,7 +45,7 @@ if __name__ == '__main__':
         # 注册用户之后等待10s，等用户生效
         time.sleep(10)
     else:
-        # 使用固定账号跑用例
+        # 使用默认账号跑用例
         config.set("common_account", "datas_contact", args.user)
         config.set("common_account", "datas_domain", args.domain)
         config.write(open(path, 'w'))
