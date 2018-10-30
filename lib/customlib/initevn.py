@@ -31,8 +31,8 @@ if __name__ == '__main__':
 
     if 'https://admin.shoplazza.com' in args.url:
         config.set("common_db", "db_service_config",
-                   '{"host": "rm-rj9ww1316miq2j87l.mysql.rds.aliyuncs.com","port": 3306,'
-                   '"user": "fortest","password": "fortest@123","db": "service","charset": "utf8"}')
+                   '{"host": "rm-rj978v5t5e6462r66.mysql.rds.aliyuncs.com","port": 3306,'
+                   '"user": "readonly","password": "readonly@123","db": "service","charset": "utf8"}')
         config.set("common_urn", "shop_urn", '.myshoplaza.com')
     if 'new' in args.user:
         # 使用新注册用户跑用例
