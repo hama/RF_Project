@@ -175,7 +175,6 @@ checkout_113
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_totalPrice}     $710.40
 
-#设计   是  shipping method 运费方案 1   价格10
 checkout_118
     [Documentation]   验证checkout 支付页面，payment栏，shipping method显示正常  >  1.购买商品进入checkout shipping页面  2.选择运费方案：运费1   3.进入支付页面查看payment栏，shipping methoda
     [Tags]    P0    threshold    smoke
@@ -196,27 +195,8 @@ checkout_120
     #添加是shipping address
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait Until Page Contains Locator    ${locatorC_checkoutPayment_link_paymentChange}
-    Wait And Click Element    ${locatorC_checkoutPayment_link_paymentChange}
+    Wait And Click Element    ${locatorC_checkoutPayment_link_change}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_firstName}
-
-checkout_163
-    [Documentation]   验证checkout页面，stripe支付信息中输入错误的信用卡号时，订单会支付失败  >  1.stripe支付信息中填写信息： 卡号：4111119987834534 有效日期：11/23  安全码：123 邮编：518000 2.点击place order按钮
-    [Tags]    P0    threshold    smoke
-    kwshipping.add_price_fee_shipping_py
-    #.激活stripe 信用卡支付方式
-    kwpayment.activate_payment_credit_card_py
-    Reload Page And Start Ajax
-    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait And Click Element    ${locatorC_checkoutPayment_payment_menthodItem}[1]
-    #.信用卡信息填写
-    Add Credit Card Info
-    Wait And Click Element      ${locatorC_checkoutShipping_button_completOrder}
-    Wait Until Page Contains Text   Payment failure!
-    #关闭credit_card  信用卡支付方式
-    kwpayment.inactivate_payment_credit_card_py
 
 checkout_168
     [Documentation]   验证checkout支付页面，billing address栏选择框可点击以及选择项展示  >   1.点击选择框
@@ -226,10 +206,10 @@ checkout_168
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait And Click Element    ${locatorC_checkoutPayment_payment_menthodItem}[0]
+    Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
     #点击billing address栏选择框
-    Wait And Click Element    ${locatorC_checkout_select_billingAddress}
-    Wait Until Page Contains Locator     ${locatorC_checkout_select_billingAddress}    1
+    Wait And Select From List By Label    ${locatorC_checkoutPayment_select_billingAddress}    Same as shipping address
+    Wait And Select From List By Label    ${locatorC_checkoutPayment_select_billingAddress}    New billing address
 
 checkout_169
     [Documentation]  验证checkout支付页面，选择new billing address之后，选择框下方会出现信息填写栏  >  1.点击选择框   2.选择new billing address
@@ -239,10 +219,17 @@ checkout_169
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait And Click Element    ${locatorC_checkoutPayment_payment_menthodItem}[0]
+    Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
     #点击billing address栏选择框
-    Wait And Click Element    ${locatorC_checkout_select_billingAddress}
-    Wait And Select From List By index     ${locatorC_checkout_select_billingAddress}    1
+    Wait And Select From List By Label     ${locatorC_checkoutPayment_select_billingAddress}    New billing address
+    Wait Until Page Contains Locator    ${locatorC_checkoutPayment_input_firstName}
+    Wait Until Page Contains Locator    ${locatorC_checkoutPayment_input_lastName}
+    Wait Until Page Contains Locator    ${locatorC_checkoutPayment_input_address}
+    Wait Until Page Contains Locator    ${locatorC_checkoutPayment_input_address1}
+    Wait Until Page Contains Locator    ${locatorC_checkoutPayment_input_city}
+    Wait Until Page Contains Locator    ${locatorC_checkoutPayment_input_countyCode}
+    Wait Until Page Contains Locator    ${locatorC_checkoutPayment_input_provinceCode}
+    Wait Until Page Contains Locator    ${locatorC_checkoutPayment_input_zip}
 
 checkout_194
     [Documentation]   验证payment successful页面，物流方案显示正常  >  1.购买商品进入checkout shipping页面  2.国家选择中国，物流方案选择：方案1 3.完成订单进入payment successful页面  4.查看物流方案
@@ -252,6 +239,6 @@ checkout_194
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait And Click Element    ${locatorC_checkoutPayment_payment_menthodItem}[0]
-    Wait And Click Element    ${locatorC_checkoutShipping_button_completOrder}
-    Wait Until Page Contains Text    price_fee
+    Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
+    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[3]    price_fee

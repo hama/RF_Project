@@ -32,7 +32,7 @@ checkout_019
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_country}
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_lastName}    345
-    Wait And Select From List By Label     ${locatorC_checkout_inputText_countyCode}    China
+    Wait And Select From List By Label     ${locatorC_checkoutPayment_input_countyCode}    China
     Wait And Select From List By Label     ${locatorC_checkoutShipping_address_select_province}    Beijing
     Text Of Element Should Be Equal With Wait     ${locatorC_checkoutPayment_text_taxPrice}    + $0.00
 
@@ -83,13 +83,11 @@ checkout_119
     [Documentation]    验证购买不需要物流运输的商品进入支付页面时，shipping method显示为Delivery for virtual product  >  1.C端购买商品women进入checkout 支付页面  2.查看payment栏 shipping method
     [Tags]    P0    threshold
     kwshipping.add_shipping_with_conf_py
-    #.添加一个不需要物流的商品
     &{conf}=   Create Dictionary
     ...    setshipping=0
     kwproduct.add_product_with_conf_py   ${conf}
-    #进入商品详情步骤
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_items_listShippingAndDelivery}
-    Text Of Element Should Contain With Wait    ${locatorC_checkoutShipping_items_listShippingAndDelivery}[0]    Delivery for virtual product
+    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingMethod}    Delivery for virtual product
