@@ -158,6 +158,18 @@ Go To Checkout Settings Page
     Location Should Be    ${url_checkoutSettings}
     Sleep    2
 
+Go To navigation menu Page
+    [Documentation]    跳转到店铺装修-菜单导航
+    Wait Until Element Is Visible    ${locatorB_setting}
+    # 若设置按钮没展开，则展开设置按钮
+    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_decorationMenus_expanded}    5
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_decoration}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_decoration_navigationmenu}
+    ...    ELSE    Wait And Click Element    ${locatorB_decoration_navigationmenu}
+    Wait Until Page Contains    菜单导航
+    Location Should Be    ${url_menus}
+    Sleep    2
+
 Go To Application Page
     [Documentation]    跳转到应用市场-图片SEO
     Wait And Click Element    ${locatorB_application}

@@ -367,7 +367,7 @@ def add_undead_order_with_pay_fail_status_py(cookie=init_cookie):
     payment_pay_conf['card_info'] = card_info
     payment_pay_conf['payment_line'] = get_expected_payment_line_py('credit_card')
     do_pay_with_conf_py(payment_pay_conf, cookie=cookie)
-    config['payment_pay_data'] = payment_pay_conf
+    config['payment_pay_conf'] = payment_pay_conf
     return add_deading_order_with_conf_py(config, cookie=cookie)['order_token']
 
 
@@ -478,24 +478,27 @@ def do_place_order_process_py(conf, tokens, cookie=init_cookie):
 
     key_list = conf.keys()
     # 1、调shipping_lines接口
-    shipping_lines_conf = {}
-    if 'shipping_lines_data' in key_list:
-        shipping_lines_conf = conf['shipping_lines_data']
+    if 'shipping_lines_conf' in key_list:
+        shipping_lines_conf = conf['shipping_lines_conf']
+    else:
+        shipping_lines_conf = copy.deepcopy(shipping_lines_data)
     shipping_lines_conf['order_token'] = tokens['order_token']
     shipping_lines_result = get_shipping_lines_with_conf_py(shipping_lines_conf, cookie=cookie)
     data_shipping_line = shipping_lines_result['content']['data']['shipping_lines'][0]
     # 2、调计算价格接口
-    price_calculate_conf = {}
-    if 'price_calculate_data' in key_list:
-        price_calculate_conf = conf['price_calculate_data']
+    if 'price_calculate_conf' in key_list:
+        price_calculate_conf = conf['price_calculate_conf']
+    else:
+        price_calculate_conf = copy.deepcopy(price_calculate_data)
     price_calculate_conf['order_token'] = tokens['order_token']
     price_calculate_conf['checkout_token'] = tokens['checkout_token']
     price_calculate_conf['shipping_line'] = data_shipping_line
     calculate_result = do_price_calculate_with_conf_py(price_calculate_conf, cookie=cookie)
     # 3、调订单地址接口
-    place_order_conf = {}
-    if 'place_order_data' in key_list:
-        place_order_conf = conf['place_order_data']
+    if 'place_order_conf' in key_list:
+        place_order_conf = conf['place_order_conf']
+    else:
+        place_order_conf = copy.deepcopy(place_order_data)
     place_order_conf['order_token'] = tokens['order_token']
     place_order_conf['checkout_token'] = tokens['checkout_token']
     place_order_conf['prices'] = calculate_result['content']['data']['prices']
@@ -521,10 +524,10 @@ def do_pay_process_py(conf, tokens, cookie=init_cookie):
 
     key_list = conf.keys()
     # 4、调付款接口
-    if 'payment_pay_data' in key_list:
-        payment_pay_conf = conf['payment_pay_data']
+    if 'payment_pay_conf' in key_list:
+        payment_pay_conf = conf['payment_pay_conf']
         # 保证payment_line的数据是有效的
-        if not conf['payment_pay_data'].has_key('payment_line'):
+        if not conf['payment_pay_conf'].has_key('payment_line'):
             data_payment_line = get_expected_payment_line_py('cod', cookie=cookie)
             payment_pay_conf['payment_line'] = data_payment_line
     else:
@@ -637,7 +640,7 @@ if __name__ == '__main__':
     # print add_undead_order_with_order_cancel_status_py()
     # print add_deading_order_with_delivering_status_py()
     # print add_deading_order_with_some_delivered_status_py()
-    # print add_deading_order_with_all_delivered_status_py()
+    print add_deading_order_with_all_delivered_status_py()
     # print add_deading_order_with_some_finished_status_py()
     # print add_deading_order_with_finished_status_py()
 
@@ -647,7 +650,7 @@ if __name__ == '__main__':
     # print get_tokens_with_products_py()
     # shipping_address = {"first_name": "auto", "last_name": "test"}
     # place_order_conf = {'shipping_address': shipping_address}
-    # conf = {'place_order_data': place_order_conf}
+    # conf = {'place_order_conf': place_order_conf}
     # print add_deading_order_with_conf_py(conf)
 
     # print shipment_with_conf_py('90e29c86-4780-4fb1-bfb1-36249deb69bc')
@@ -666,5 +669,3 @@ if __name__ == '__main__':
     # print query_dealing_order()
     # print query_undeal_order()
     # print del_order('2e043a92-46c5-4f26-953a-88f347cd1e08')
-    conf = {'place_order_data': {'shipping_address':{'first_name':'testedOject'}}}
-    print add_deading_order_with_conf_py(conf)
