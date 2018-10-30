@@ -1,4 +1,5 @@
 #!/bin/bash
+export PATH=$PATH:/usr/local/bin/
 echo "start:"`date` >> ~/cron.log
 
 TIMESTAMP=`date "+%Y%m%d%H%M%S"`
@@ -53,7 +54,7 @@ do
 		echo "send:"`date` >> ~/cron.log
 		rebot -d "$LOG_PATH"/ "$LOG_PATH_1"/output.xml "$LOG_PATH_2"/output.xml "$LOG_PATH_3"/output.xml
 		docker run -i -v /var/log:/var/log --rm registry.shoplazza.com/library/uitest:v5 \
-		        bash -c "/opt/run_in_docker.sh -E -T $TIMESTAMP -D $LOG_PATH"&
+		        bash -c "/opt/run_in_docker.sh -E -T $TIMESTAMP -D $LOG_PATH"
 		exit 0
 	fi
 done

@@ -36,9 +36,6 @@ ${locatorB_orderDealing_select_shippingStatus}    dom:document.querySelectorAll(
 ${locatorB_orderDealing_select_orderStatus}    dom:document.querySelectorAll('[id="status"]')    # 订单状态select
 
 
-
-
-
 # locatorB_orderUndeal
 ${locatorB_orderUndeal_button_all}    dom:document.querySelectorAll(".ant-tabs-tab")[0]    # 未完成订单，全部
 ${locatorB_orderUndeal_button_toPay}    dom:document.querySelectorAll(".ant-tabs-tab")[1]    # 未完成订单，待支付

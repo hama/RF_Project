@@ -17,7 +17,7 @@ checkout_015
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
 	Add Address Common Step
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}    + $10.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}[1]    + $10.00
 
 checkout_018
     [Documentation]    验证checkout shipping页面，订单详情中tax显示正常 >
@@ -247,7 +247,7 @@ checkout_169
 checkout_194
     [Documentation]   验证payment successful页面，物流方案显示正常  >  1.购买商品进入checkout shipping页面  2.国家选择中国，物流方案选择：方案1 3.完成订单进入payment successful页面  4.查看物流方案
     [Tags]    P0    threshold    smoke
-    kwshipping.add_shipping_with_conf_py    ${conf}
+    kwshipping.add_shipping_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
