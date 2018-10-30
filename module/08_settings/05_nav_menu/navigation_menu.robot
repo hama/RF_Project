@@ -12,7 +12,7 @@ Resource          ../../../resources/keywords/kw_common.robot
 *** Test Cases ***
 
 navigation_menu_001
-    [Documentation]      菜单导航入口
+    [Documentation]      菜单导航入 口
     [Tags]    P0    threshold
     Wait Until Page Contains Text    菜单导航
     Wait Until Page Contains Locator    ${locatorB_menus_button_addMenu}
