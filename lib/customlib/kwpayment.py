@@ -7,7 +7,7 @@ from variable import *
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-
+# 目前只支持ipaylinks和cod
 def payment_method_py(data, cookie=init_cookie):
     """
     收款渠道激活
