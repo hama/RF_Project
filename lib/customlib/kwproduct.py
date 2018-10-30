@@ -15,6 +15,7 @@ def product_search_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     '''
+    time.sleep(0.5)
     url = home_page_url + '/api/product/search'
     return do_get(url, query_str, cookie=cookie)
 

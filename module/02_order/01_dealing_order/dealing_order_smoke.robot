@@ -102,10 +102,10 @@ order041
     &{shipping_address} =    Create Dictionary
     ...    first_name=auto
     ...    last_name=test
-    &{place_order_conf} =    Create Dictionary
+    &{place_order_data} =    Create Dictionary
     ...    shipping_address=&{shipping_address}
     &{conf} =    Create Dictionary
-    ...    place_order_conf=&{place_order_conf}
+    ...    place_order_data=&{place_order_data}
     kworder.add_deading_order_with_conf_py    ${conf}
     Reload Page And Start Ajax
     ${text} =    Sleep And Get Text    ${locatorB_orderDealing_text_firstOrder_receiverName}
