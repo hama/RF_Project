@@ -52,6 +52,7 @@ checkout_080
 checkout_109
     [Documentation]   验证checkout 支付页面，订单详情中tax显示正常  > 1.C端购买商品women 1件进入checkout shipping页面  2.信息填写栏选择国家中国 3.进入支付页面查看价格详情中tax
     [Tags]    P0    threshold    smoke
+    kwproduct.add_product_with_conf_py
     kwshipping.add_shipping_with_conf_py
     Sleep    1
     kwtax.add_default_tax_price_py
