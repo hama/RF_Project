@@ -29,6 +29,11 @@ if __name__ == '__main__':
                '{"host": "rm-rj9f22zpw641v45g9.mysql.rds.aliyuncs.com","port": 3306,"user": "lansejiebo",'
                '"password": "lansejiebo@123","db": "shop_","charset": "utf8"}')
 
+    if 'https://admin.shoplazza.com' in args.url:
+        config.set("common_db", "db_service_config",
+                   '{"host": "rm-rj978v5t5e6462r66.mysql.rds.aliyuncs.com","port": 3306,'
+                   '"user": "readonly","password": "readonly@123","db": "service","charset": "utf8"}')
+        config.set("common_urn", "shop_urn", '.myshoplaza.com')
     if 'new' in args.user:
         # 使用新注册用户跑用例
         random_str = salt_py()
