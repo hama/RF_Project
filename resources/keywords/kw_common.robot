@@ -29,6 +29,7 @@ Resource          kw_settings_page.robot
 Resource          kw_shipping.robot
 Resource          kw_store.robot
 Resource          kw_tax.robot
+Resource          kw_navmenu.robot
 
 *** Keywords ***
 Login With Default User

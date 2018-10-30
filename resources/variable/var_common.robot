@@ -15,6 +15,7 @@ Resource          var_store.robot
 Resource          var_tax.robot
 Resource          var_uploadfile.robot
 Resource          var_application.robot
+Resource          var_navmenu.robot
 
 *** Variables ***
 ### 未分类，需要分类并清理
