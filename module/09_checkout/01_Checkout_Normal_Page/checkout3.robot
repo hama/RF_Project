@@ -55,6 +55,7 @@ checkout_109
     kwshipping.add_shipping_with_conf_py
     Sleep    1
     kwtax.add_default_tax_price_py
+    kwproduct.add_product_with_conf_py
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
