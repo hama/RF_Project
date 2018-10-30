@@ -15,6 +15,7 @@ Resource          ../../../resources/variable/var_navmenu.robot
 navigation_menu_001
     [Documentation]      菜单导航入口
     [Tags]    P0    threshold
+    Wait Until Page Contains Text    菜单导航
     Wait Until Page Contains Locator    ${locatorB_menus_button_addMenu}
 
 navigation_menu_003
@@ -44,7 +45,7 @@ navigation_menu_007
     Wait Until Page Contains Text    菜单目录结构
 
 navigation_menu_008
-    [Documentation]      点击系统菜单右侧的编辑按钮
+    [Documentation]      点击非系统默认菜单右侧的编辑按钮
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_menus_button_addMenu}
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     化妆品系列
@@ -97,7 +98,6 @@ navigation_menu_029
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     新增一个菜单
     Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
     Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}    衣服
-    Wait And Select From List By Clicking      ${locatorB_menusAdd_select_linkPage}[0]    ${locatorB_menus_select_listLinkLi}[0]
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains Text    保存成功
     Go To navigation menu Page
@@ -107,7 +107,7 @@ navigation_menu_029
     Should Be Equal    ${menuDirectory}     衣服
 
 navigation_menu_030
-    [Documentation]      新建一个菜单
+    [Documentation]      新建多个菜单
     [Tags]    P0    threshold
     :FOR    ${i}     IN RANGE   1   3    1
      \   Wait And Click Element    ${locatorB_menus_button_addMenu}
@@ -167,7 +167,7 @@ navigation_menu_058
     Wait And Click Element    ${locatorB_menus_button_addMenu}
     Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
     Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     一级菜单目录
-    Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}     ${locatorB_menusAdd_select_listLinkLi}[1]
+    Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[1]
     Wait And Click Element    ${locatorB_menusAdd_link_addMenuDirectory}
     Wait Until Page Contains Locator    ${locatorB_menusAdd_icon_menuDrag}[1]
     Wait Until Page Contains Locator    ${locatorB_menusAdd_input_menuNavName}[1]
@@ -181,7 +181,7 @@ navigation_menu_059
     Wait And Click Element    ${locatorB_menus_button_addMenu}
     Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
     Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     第一个一级菜单目录
-    Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}     ${locatorB_menusAdd_select_listLinkLi}[1]
+    Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[1]
     Wait And Click Element    ${locatorB_menusAdd_text_addSecondaryDirectory}
     Wait Until Page Contains Locator    ${locatorB_menusAdd_icon_menuDrag}[1]
     Wait Until Page Contains Locator    ${locatorB_menusAdd_input_menuNavName}[1]
@@ -194,16 +194,67 @@ navigation_menu_061
     Wait And Click Element    ${locatorB_menus_button_addMenu}
     Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
     Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     一级菜单目录
-    Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}     ${locatorB_menusAdd_select_listLinkLi}[0]
+    Wait And Click Element    ${locatorB_menusAdd_select_linkPage}
+    Wait Until Page Contains Text     无
+    Wait Until Page Contains Text     首页
+    Wait Until Page Contains Text     专辑详情
+    Wait Until Page Contains Text     商品详情
+    Wait Until Page Contains Text     自定义页面
+    Wait Until Page Contains Text     自定义URL
 
+navigation_menu_064
+    [Documentation]      选择跳转链接为无
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_menus_button_addMenu}
+    Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
+    Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     一级菜单目录
+    Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[0]
+    Text Of Element Should Contain With Wait     ${locatorB_menusAdd_select_linkPageInput}[0]    未选择链接
 
+navigation_menu_065
+    [Documentation]      选择跳转链接为首页
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_menus_button_addMenu}
+    Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
+    Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     一级菜单目录
+    Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[1]
+    Text Of Element Should Contain With Wait     ${locatorB_menusAdd_select_linkPageInput}[0]    首页
 
+navigation_menu_066
+    [Documentation]      选择跳转链接为专辑详情页
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_menus_button_addMenu}
+    Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
+    Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     一级菜单目录
+    Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[2]
+    Wait Until Page Contains Text    专辑选择
 
+navigation_menu_067
+    [Documentation]      选择跳转链接为商品详情页
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_menus_button_addMenu}
+    Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
+    Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     一级菜单目录
+    Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[3]
+    Wait Until Page Contains Text     选择商品
 
+navigation_menu_068
+    [Documentation]      选择跳转链接为自定义页面
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_menus_button_addMenu}
+    Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
+    Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     一级菜单目录
+    Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[4]
+    Wait Until Page Contains Text     页面选择
 
-
-
-
+navigation_menu_069
+    [Documentation]      选择跳转链接为自定义URL
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_menus_button_addMenu}
+    Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
+    Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     一级菜单目录
+    Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[5]
+    Wait Until Page Contains Text     自定义链接
 
 
 

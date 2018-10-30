@@ -26,10 +26,10 @@ ${locatorB_menusAdd_link_addMenuDirectory}    dom:document.querySelectorAll('[cl
 # input
 ${locatorB_menusAdd_input_menuName}    dom:document.querySelectorAll('input[id="title"]')      #.输入菜单名称文本框
 ${locatorB_menusAdd_input_menuNavName}    dom:document.querySelectorAll('input[class*="title_input"]')    #.新建菜单目录结构-导航名称输入
-
 # div select
 ${locatorB_menusAdd_select_linkPage}    dom:document.querySelectorAll('[class*="url_select"]')     #.链接到页面-选择list
 ${locatorB_menusAdd_select_listLinkLi}   dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')    #.链接页面-选择
+${locatorB_menusAdd_select_linkPageInput}    dom:document.querySelectorAll('[class="ant-select-selection-selected-value"]')    #.链接页面-显示
 # text
 ${locatorB_menusAdd_text_addSecondaryDirectory}    dom:document.querySelectorAll('[class*="add_menu_icon"]')     #.添加二级目录
 ${locatorB_menusAdd_text_delDirectory}    dom:document.querySelectorAll('[class*="delete_menu_icon"]')     #.删除二级目录
