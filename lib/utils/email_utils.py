@@ -22,7 +22,7 @@ to_addr = [
     'heliwen@shoplazza.com',
     'lijunjie@shoplazza.com',
     'qiansuixin@shoplazza.com',
-    'huayacheng@shoplazza.com'
+    'huayacheng@shoplazza.com',
     'zhouli@shoplazza.com'
 ]
 # . 抄送邮箱
