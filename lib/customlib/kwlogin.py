@@ -57,13 +57,14 @@ class Login():
         response_data = requests.post(url=url, headers={}, data=datas)
         if response_data is None or response_data.status_code != 200:
             return False
+        print "login_data:" + str({"url": self.home_page_url, "contact": self.datas_contact,
+                                   "password": self.datas_password,
+                                   "username": self.datas_domain})
         # uid为店铺id
         uid = json.loads(response_data.content)['data']['id']
         cookie = '; '.join(['='.join(item) for item in response_data.cookies.items()])
 
-        print "login_data:" + str({"url": self.home_page_url, "contact": self.datas_contact,
-                                   "password": self.datas_password,
-                                   "username": self.datas_domain, "uid": uid})
+
         print "login_b_cookie:" + str(cookie)
         return cookie
 
