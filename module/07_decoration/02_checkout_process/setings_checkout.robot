@@ -28,9 +28,9 @@ checkoutPageSetings003
     Wait And Click Element    ${locatorB_checkout_radio_phoneCodeMandatory}
     #.点击服务条约
     Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
-    Wait And Click Element    ${locatorB_checkout_linkBut_generateRefundTreaty}
-    Wait And Click Element    ${locatorBcheckout_linkBut_generatePolicy}
-    Wait And Click Element    ${locatorB_checkout_linkBut_generateServiceTreaty}
+    Wait And Click Element    ${locatorB_checkout_button_generateRefundTreaty}
+    Wait And Click Element    ${locatorBcheckout_button_generatePolicy}
+    Wait And Click Element    ${locatorB_checkout_button_generateServiceTreaty}
     Wait Exist And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
@@ -42,28 +42,29 @@ checkoutPageSetings003
 checkoutPageSetings005
     [Documentation]    测试结账设置页面编辑保存
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_label_loginMembers}
+    Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Sleep And Click Element    ${locatorB_overview}
     Wait Alert Should Be Present And Accept    页面上有未保存内容，是否确定退出?
 
-checkoutPageSetings008
-    [Documentation]    测试结账设置顾客权限功能>1.点击不开启会员注册  2.点击保存
-    [Tags]    P0    threshold   smoke
-    Wait And Click Element    ${locatorB_checkout_label_notMembers}
-    Wait And Click Element    ${locatorB_checkout_button_nav_information}
-    Wait And Click Element    ${locatorB_checkout_radio_name}
-    Wait And Click Element    ${locatorB_checkout_radio_companyNameHidden}
-    Wait Exist And Click Element  ${locatorB_checkout_button_save}
-    Wait Until Page Contains Text   设置成功
-    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
-    Reload Page And Start Ajax
-    Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
-    Element Attribute Should Contain With Wait     ${locatorB_checkout_label_notMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
+# 功能被屏蔽，暂时不测（10.31）
+#checkoutPageSetings008
+#    [Documentation]    测试结账设置顾客权限功能>1.点击不开启会员注册  2.点击保存
+#    [Tags]    P0    threshold   smoke
+#    Wait And Click Element    ${locatorB_checkout_label_notMembers}
+#    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+#    Wait And Click Element    ${locatorB_checkout_radio_name}
+#    Wait And Click Element    ${locatorB_checkout_radio_companyNameHidden}
+#    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+#    Wait Until Page Contains Text   设置成功
+#    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+#    Reload Page And Start Ajax
+#    Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
+#    Element Attribute Should Contain With Wait     ${locatorB_checkout_label_notMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
 checkoutPageSetings009
      [Documentation]    测试结账设置顾客权限功能>1.点击注册会员与非注册会员均可购买 2.点击保存
      [Tags]    P0    threshold
-     Wait And Click Element  ${locatorB_checkout_label_loginMembers}
+     Wait And Click Element  ${locatorB_checkout_label_registerMembers}
      Wait And Click Element    ${locatorB_checkout_button_nav_information}
      Wait And Click Element   ${locatorB_checkout_radio_name}
      Wait And Click Element    ${locatorB_checkout_radio_companyNameHidden}
@@ -73,7 +74,7 @@ checkoutPageSetings009
      Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
      Reload Page And Start Ajax
      Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
-     Element Attribute Should Contain With Wait     ${locatorB_checkout_label_loginMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
+     Element Attribute Should Contain With Wait     ${locatorB_checkout_label_registerMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
 checkoutPageSetings010
      [Documentation]    测试结账设置顾客权限功能>1.点击会员购买  2.点击保存
@@ -94,7 +95,7 @@ checkoutPageSetings010
 checkoutPageSetings011
     [Documentation]    测试顾客联系方式设置-邮箱必填
     [Tags]    P0    threshold   smoke
-    Wait And Click Element     ${locatorB_checkout_label_loginMembers}
+    Wait And Click Element     ${locatorB_checkout_label_registerMembers}
     Wait And Click Element     ${locatorB_checkout_button_nav_information}
     Wait And Click Element     ${locatorB_checkout_radio_name}
     Wait And Click Element     ${locatorB_checkout_radio_companyNameHidden}
@@ -110,7 +111,7 @@ checkoutPageSetings011
 checkoutPageSetings012
     [Documentation]    测试顾客联系方式设置-邮箱选填
     [Tags]    P0    threshold   smoke
-    Wait And Click Element     ${locatorB_checkout_label_loginMembers}
+    Wait And Click Element     ${locatorB_checkout_label_registerMembers}
     Wait And Click Element     ${locatorB_checkout_button_nav_information}
     Wait And Click Element     ${locatorB_checkout_radio_name}
     Wait And Click Element     ${locatorB_checkout_radio_companyNameHidden}
@@ -126,7 +127,7 @@ checkoutPageSetings012
 checkoutPageSetings013
     [Documentation]    测试顾客联系方式设置-邮箱隐藏
     [Tags]    P0    threshold   smoke
-    Wait And Click Element    ${locatorB_checkout_label_loginMembers}
+    Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     Wait And Click Element    ${locatorB_checkout_radio_name}
     Wait And Click Element    ${locatorB_checkout_radio_companyNameHidden}
@@ -154,7 +155,7 @@ checkoutPageSetings013
 checkoutPageSetings021
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.姓名格式勾选姓名时点击姓、名分开填写  2.点击保存
     [Tags]    P0    threshold   smoke
-    Wait And Click Element    ${locatorB_checkout_label_loginMembers}
+    Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     #.姓名 分开写
     Wait And Click Element    ${locatorB_checkout_radio_surnameAndName}
@@ -169,7 +170,7 @@ checkoutPageSetings021
 checkoutPageSetings022
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.姓名格式勾选姓、名分开填写时点击姓名  2.点击保存
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_label_loginMembers}
+    Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     #.姓名
     Wait And Click Element    ${locatorB_checkout_radio_name}
@@ -184,7 +185,7 @@ checkoutPageSetings022
 checkoutPageSetings023
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.公司名点击必填 2.点击保存
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_label_loginMembers}
+    Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     Wait And Click Element    ${locatorB_checkout_radio_surnameAndName}
     #。公司名
@@ -200,7 +201,7 @@ checkoutPageSetings023
 checkoutPageSetings024
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.公司名点击必填 2.点击保存
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_label_loginMembers}
+    Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     Wait And Click Element    ${locatorB_checkout_radio_surnameAndName}
     #。公司名选填
@@ -216,7 +217,7 @@ checkoutPageSetings024
 checkoutPageSetings025
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.公司名点击隐藏 2.点击保存
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_label_loginMembers}
+    Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     Wait And Click Element    ${locatorB_checkout_radio_surnameAndName}
     #。公司名 隐藏
@@ -232,7 +233,7 @@ checkoutPageSetings025
 checkoutPageSetings026
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.邮件编码点击必填 2.点击保存
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_label_loginMembers}
+    Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     Wait And Click Element    ${locatorB_checkout_radio_surnameAndName}
     Wait And Click Element    ${locatorB_checkout_radio_companyNameHidden}
@@ -248,7 +249,7 @@ checkoutPageSetings026
 checkoutPageSetings027
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.邮件编码点击选填  2.点击保存
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_label_loginMembers}
+    Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     Wait And Click Element    ${locatorB_checkout_radio_surnameAndName}
     Wait And Click Element    ${locatorB_checkout_radio_companyNameHidden}
@@ -264,7 +265,7 @@ checkoutPageSetings027
 checkoutPageSetings028
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.邮件编码点击隐藏 2.点击保存
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_label_loginMembers}
+    Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     Wait And Click Element    ${locatorB_checkout_radio_surnameAndName}
     Wait And Click Element    ${locatorB_checkout_radio_companyNameHidden}

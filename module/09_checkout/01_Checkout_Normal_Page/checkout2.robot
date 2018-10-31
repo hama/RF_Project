@@ -169,8 +169,8 @@ checkout_113
     kwtax.add_default_tax_price_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait And Input Text     ${locatorC_checkout_input_discountCode}     ${code}
-    Wait And Click Element   ${locatorC_checkout_submit_apply}
+    Wait And Input Text     ${locatorC_checkoutShipping_input_discountCode}     ${code}
+    Wait And Click Element   ${locatorC_checkoutShipping_button_apply}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_totalPrice}     $710.40

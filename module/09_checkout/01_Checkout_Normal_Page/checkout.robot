@@ -103,12 +103,11 @@ checkout_028
     [Tags]    P0    threshold
     ${code}    Create Specific Coupon Code
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_country}
-    Wait And Input Text     ${locatorC_checkout_input_discountCode}     ${code}
-    Wait And Click Element   ${locatorC_checkout_submit_apply}
+    Wait And Input Text     ${locatorC_checkoutShipping_input_discountCode}     ${code}
+    Wait And Click Element   ${locatorC_checkoutShipping_button_apply}
     #取消优惠码输入框的优惠码
-    Wait And Click Element   ${locatorC_checkout_submit_couponClose}
-    Wait Until Page Not Contains Text      Wait Until Page Not Contains Text
+    Wait And Click Element   ${locatorC_checkoutShipping_icon_couponClose}
+    Wait Until Page Not Contains Text      This discount does not exist.
 
 checkout_034
     [Documentation]    验证checkout shipping页面，shipping address栏，国家选择框可点击以及国家选择展示 > 1.点击shipping address栏国家选择框 >点击后国家选择框下拉展开，显示所有可选择的国家
@@ -229,8 +228,8 @@ checkout_106
 #    ${code}    Create Specific Coupon Code
 #    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
 #    Add Address Common Step
-#    Wait And Input Text     ${locatorC_checkout_input_discountCode}     ${code}
-#    Wait And Click Element   ${locatorC_checkout_submit_apply}
+#    Wait And Input Text     ${locatorC_checkoutShipping_input_discountCode}     ${code}
+#    Wait And Click Element   ${locatorC_checkoutShipping_button_apply}
 #    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
 #    Text Of Element Should Be Equal With Wait    ${discount code}    - $10.00
 
@@ -279,7 +278,7 @@ checkout_126
     #添加是shipping address
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait And Click Element    ${locatorC_checkoutPayment_icon_bankCard}[0]
+    Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text   Payment successful!
 
