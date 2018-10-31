@@ -58,7 +58,7 @@ Add Address Common Step
 Add Credit Card Info
 	[Documentation]    添加信用卡公共部分
 	Wait And Input Text    ${locatorC_checkout_paymentCard_fristName}    aaaaa
-	Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    123456@zz.xx
+	Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    123456@autotest.com
 	Wait And Input Text    ${locatorC_checkout_paymentCard_phone}     123456789
 	Wait And Input Text    ${locatorC_checkout_paymentCard_cardPostcode}    0000
 	Wait And Input Text    ${locatorC_checkout_paymentCard_cardNumber}    43231123123123
