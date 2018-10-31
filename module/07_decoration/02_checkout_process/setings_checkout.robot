@@ -23,26 +23,14 @@ checkoutPageSetings003
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     #.点击收货信息元素
     Wait And Click Element    ${locatorB_checkout_radio_name}
-    Wait And Click Element    ${locatorB_checkout_radio_companyNameMandatory}
-    Wait And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
-    Wait And Click Element    ${locatorB_checkout_radio_phoneCodeMandatory}
-    #.点击服务条约
-    Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
-    Wait And Click Element    ${locatorB_checkout_button_generateRefundTreaty}
-    Wait And Click Element    ${locatorBcheckout_button_generatePolicy}
-    Wait And Click Element    ${locatorB_checkout_button_generateServiceTreaty}
-    Sleep And Click Element  ${locatorB_checkout_button_save}
+    Sleep And Click Element    ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
-    Reload Page And Start Ajax
-    Sleep     2
-    Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
-    Element Attribute Should Contain With Wait    ${locatorB_checkout_label_buyMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
 checkoutPageSetings005
     [Documentation]    测试结账设置页面编辑保存
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_label_registerMembers}
+    Wait And Click Element    ${locatorB_checkout_label_buyMembers}
     Sleep And Click Element    ${locatorB_overview}
     Wait Alert Should Be Present And Accept    页面上有未保存内容，是否确定退出?
 
@@ -64,14 +52,14 @@ checkoutPageSetings005
 checkoutPageSetings009
      [Documentation]    测试结账设置顾客权限功能>1.点击注册会员与非注册会员均可购买 2.点击保存
      [Tags]    P0    threshold
-     Wait And Click Element  ${locatorB_checkout_label_registerMembers}
+     Wait And Click Element    ${locatorB_checkout_label_registerMembers}
      Wait And Click Element    ${locatorB_checkout_button_nav_information}
-     Wait And Click Element   ${locatorB_checkout_radio_name}
+     Wait And Click Element    ${locatorB_checkout_radio_name}
      Wait And Click Element    ${locatorB_checkout_radio_companyNameHidden}
      Wait And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
-     Sleep And Click Element  ${locatorB_checkout_button_save}
+     Sleep And Click Element    ${locatorB_checkout_button_save}
      Wait Until Page Contains Text   设置成功
-     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
+     Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
      Reload Page And Start Ajax
      Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
      Element Attribute Should Contain With Wait     ${locatorB_checkout_label_registerMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
