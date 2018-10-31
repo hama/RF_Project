@@ -23,15 +23,7 @@ checkoutPageSetings003
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     #.点击收货信息元素
     Wait And Click Element    ${locatorB_checkout_radio_name}
-    Wait And Click Element    ${locatorB_checkout_radio_companyNameMandatory}
-    Wait And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
-    Wait And Click Element    ${locatorB_checkout_radio_phoneCodeMandatory}
-    #.点击服务条约
-    Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
-    Wait And Click Element    ${locatorB_checkout_button_generateRefundTreaty}
-    Wait And Click Element    ${locatorBcheckout_button_generatePolicy}
-    Wait And Click Element    ${locatorB_checkout_button_generateServiceTreaty}
-    Sleep And Click Element  ${locatorB_checkout_button_save}
+    Sleep And Click Element    ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
