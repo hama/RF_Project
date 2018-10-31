@@ -345,7 +345,7 @@ def add_undead_order_with_to_pay_status_py(cookie=init_cookie):
 def add_undead_order_with_pay_fail_status_py(cookie=init_cookie):
     '''
     创建未完成订单的支付状态为：支付失败
-    	线上支付	支付失败	已取消
+    	线上支付	支付失败	未完成
     :param conf:
     :param cookie:
     :return:
@@ -572,27 +572,6 @@ def add_dealing_order_by_productidlist_py(productidlist, cookie=init_cookie):
     return add_deading_order_with_conf_py({'productidlist': productidlist}, cookie=cookie)['order_token']
 
 
-def add_undeal_order_by_productidlist_py(productidlist, cookie=init_cookie):
-    '''
-    通过productidlist创建未完成订单
-    :param productidlist:
-    :param cookie:
-    :return:
-    '''
-    return get_tokens_by_productidlist_py(productidlist, cookie=cookie)['order_token']
-
-
-def add_undeal_order_with_product_py(cookie=init_cookie):
-    '''
-    添加未完成订单(只包含一个产品)
-        支付方式	支付状态	订单状态
-    	无	    待支付	未完成
-    :param cookie:
-    :return: order_token
-    '''
-    return get_tokens_with_product_py(cookie=cookie)['order_token']
-
-
 def add_undeal_order_with_products_py(cookie=init_cookie):
     '''
     添加未完成订单(包含两个产品)
@@ -624,6 +603,27 @@ def get_tokens_with_products_py(cookie=init_cookie):
     productid02 = search_data['content']['data']['products'][1]['id']
     productidlist = [productid01, productid02]
     return get_tokens_by_productidlist_py(productidlist, cookie=cookie)
+
+
+def add_undeal_order_by_productidlist_py(productidlist, cookie=init_cookie):
+    '''
+    通过productidlist创建未完成订单
+    :param productidlist:
+    :param cookie:
+    :return:
+    '''
+    return get_tokens_by_productidlist_py(productidlist, cookie=cookie)['order_token']
+
+
+def add_undeal_order_with_product_py(cookie=init_cookie):
+    '''
+    添加未完成订单(只包含一个产品)
+        支付方式	支付状态	订单状态
+    	无	    待支付	未完成
+    :param cookie:
+    :return: order_token
+    '''
+    return get_tokens_with_product_py(cookie=cookie)['order_token']
 
 
 if __name__ == '__main__':
@@ -666,5 +666,6 @@ if __name__ == '__main__':
     # print query_dealing_order()
     # print query_undeal_order()
     # print del_order('2e043a92-46c5-4f26-953a-88f347cd1e08')
-    conf = {'place_order_data': {'shipping_address':{'first_name':'testedOject'}}}
+    conf = {'place_order_data': {'shipping_address': {'first_name': 'testedOject'}}}
     print add_deading_order_with_conf_py(conf)
+    # add_undead_order_with_pay_fail_status_py()

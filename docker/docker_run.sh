@@ -60,13 +60,25 @@ do
 done
 
 echo "end:"`date` >> ~/cron.log
-# in docker
-# 1. create /var/log/`count`/order
-# 2. robot run log -> /var/log/`count`/order
 
-# in this script
-# do merge
 
-# rebot -d logs/ logs/output.xml logs/logout/output.xml
 
-# docker run email send
+
+# ------------------------docker_run_single.sh------------------------
+##!/bin/bash
+#echo "start:"`date` >> ~/cron.log
+#
+## 开启docker容器跑对应用例,新创建用户
+#docker run -i -v /dev/shm:/dev/shm --rm registry.shoplazza.com/library/uitest:v5 \
+#        bash -c "/opt/run_in_docker.sh -M 'module/00_login/login.robot \
+#                module/00_login/logout.robot \
+#                module/02_order/* \
+#                module/03_product/* \
+#                module/06_marketing/01_coupon_code/coupon_code_smoke.robot \
+#                module/07_decoration/02_checkout_process/setings_checkout.robot \
+#                module/08_settings/01_basic_info/store.robot \
+#                module/08_settings/03_shipping/shipping.robot \
+#                module/08_settings/04_tax/tax_rate.robot \
+#                module/08_settings/07_file_management/file_management.robot \
+#                module/09_checkout/01_Checkout_Normal_Page/*' \
+#        -U https://admin.shoplazza.com -R -E"&

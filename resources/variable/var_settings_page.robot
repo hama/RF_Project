@@ -15,7 +15,7 @@ ${locatorB_checkout_button_save}    dom:document.querySelectorAll('button[type="
 # locator invoicinglabel
 #${locatorB_checkout_text_customerRights}    dom:document.querySelectorAll('p[class="title_bdd1"]')[0]              #顾客权限文字
 ${locatorB_checkout_label_notMembers}    dom:document.querySelectorAll('[class*="radio_btn_cddf"]')[0]    #.顾客权限-不开启会员注册
-${locatorB_checkout_label_loginMembers}    dom:document.querySelectorAll('[class*="radio_btn_cddf"]')[1]    #.顾客权限-注册会员与非会员可以购买
+${locatorB_checkout_label_registerMembers}    dom:document.querySelectorAll('[class*="radio_btn_cddf"]')[1]    #.顾客权限-注册会员与非会员可以购买
 ${locatorB_checkout_label_buyMembers}    dom:document.querySelectorAll('[class*="radio_btn_cddf"]')[2]    #.顾客权限-会员购买
 
 #顾客联系方式
@@ -45,13 +45,13 @@ ${locatorB_checkout_radio_phoneCodeHidden}    dom:document.querySelectorAll('[cl
 ## locator invoicingService
 #服务说明
 #..退款条约
-${locatorB_checkout_linkBut_generateRefundTreaty}    dom:document.querySelectorAll('a[class="input-system-tpl"]')[0]       #.退款条约-生成系统默认模版
+${locatorB_checkout_button_generateRefundTreaty}    dom:document.querySelectorAll('a[class="input-system-tpl"]')[0]       #.退款条约-生成系统默认模版
 ${locatorB_checkout_textarea_refundTreatyInputBox}    dom:document.querySelectorAll('textarea[class="ant-input"]')[0]       #.退款条约-文本输入框
 #..隐私政策
-${locatorBcheckout_linkBut_generatePolicy}    dom:document.querySelectorAll('a[class="input-system-tpl"]')[1]       #.隐私政策-生成系统默认模版
+${locatorBcheckout_button_generatePolicy}    dom:document.querySelectorAll('a[class="input-system-tpl"]')[1]       #.隐私政策-生成系统默认模版
 ${locatorB_checkout_textarea_policyInputBox}    dom:document.querySelectorAll('textarea[class="ant-input"]')[1]      #.隐私政策-文本输入框
 #..服务条约
-${locatorB_checkout_linkBut_generateServiceTreaty}    dom:document.querySelectorAll('a[class="input-system-tpl"]')[2]       #.服务条约-生成系统默认模版
+${locatorB_checkout_button_generateServiceTreaty}    dom:document.querySelectorAll('a[class="input-system-tpl"]')[2]       #.服务条约-生成系统默认模版
 ${locatorB_checkout_textarea_refundServiceInputBox}    dom:document.querySelectorAll('textarea[class="ant-input"]')[2]      #.服务条约-文本输入框
 
 
