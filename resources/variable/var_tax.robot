@@ -13,18 +13,20 @@ ${locatorB_taxPrice_text_methodOfTax}     收税方式
 
 ${locatorB_taxPrice_icon_shippingVender}    dom:document.querySelectorAll('span[class="enterprise_icon___1kAvj"]')[0]         #物流商
 ${locatorB_taxPrice_switch_list}      dom:document.querySelectorAll('.ant-switch')    #运费设置关闭/开启
-${locatorB_taxPrice_icon_set}       dom:document.querySelectorAll('.ant-table-row .djfont')[0]      #.税费设置的第一个国家，设置操作
+${locatorB_taxPrice_icon_setTax}       dom:document.querySelectorAll('.ant-table-row .djfont')[0]      #.税费设置的第一个国家，设置操作
 ${locatorB_taxPrice_switch_notEndStrat}     dom:document.querySelectorAll('[class="ant-switch ant-switch-checked"]')    #.判断开关按钮是否开启状态
 
 #.税费设置 center
 ${locatorB_taxPrice_set_taxes}     dom:document.querySelectorAll('.ant-input')[0]     #.税费设置-国家税率设置input
 
+${locatorB_taxPrice_list_countriesList}       dom:document.querySelectorAll('[class*="ant-table-row-level"]')    #.税费国家列表
+${locatorB_taxPrice_list_countriesListAttribute}       ${locatorB_taxPrice_list_countriesList}[0].querySelectorAll('td')     #.税费国家center 内容
 ${locatorB_taxPrice_popUp_button_save}      dom:document.querySelectorAll('[class*="ant-btn-primary"]')[0]     #.税费设置-确定提交按钮
 #   button
 ${locatorB_taxPrice_button_setLogistics}     dom:document.querySelectorAll("button")[0]
 ${locatorB_taxPrice_setting}      dom:document.querySelectorAll(".setting")[0]
 ${locatorB_taxPrice_span_antSwitch}     dom:document.querySelectorAll("class~=ant-switch")
-${locatorB_shipping_ul_solutionLogistics}   dom:document.querySelectorAll('ul[id="test_shipping_list_0"]')      #.物流列表-第一个列表
+${locatorB_shipping_ul_solutionLogistics}    dom:document.querySelectorAll('ul[id="test_shipping_list_0"]')      #.物流列表-第一个列表
 ${locatorB_shipping_button_deleteLogisticsa}   dom:document.querySelectorAll('button[id="test_shipping_delete_btn"]')       #。物流详细信息-删除该物流方案
 ${locatorB_shipping_button_determine}   dom:document.querySelectorAll('button[data-robot="pop_confirm"]')       #.确定按钮
 
