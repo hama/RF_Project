@@ -26,10 +26,6 @@ checkoutPageSetings003
     Sleep And Click Element    ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
-    Reload Page And Start Ajax
-    Sleep     2
-    Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
-    Element Attribute Should Contain With Wait    ${locatorB_checkout_label_buyMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
 checkoutPageSetings005
     [Documentation]    测试结账设置页面编辑保存
