@@ -13,6 +13,9 @@ ${locatorC_checkoutShipping_locator_address}    dom:document.querySelectorAll('[
 ${locatorC_checkoutShipping_locator_special}    dom:document.querySelectorAll('[class="checkout-instruction"]')[0]    #.买家留言  元素
 ${locatorC_checkoutShipping_locator_total}    dom:document.querySelectorAll('[class="checkout__prices-table"] tfoot tr')[0]    #.显示总价  元素
 
+${locatorC_checkoutShipping_input_discountCode}    dom:document.querySelectorAll('[id="coupon_code_input"]')[0]
+${locatorC_checkoutShipping_button_apply}    dom:document.querySelectorAll('[id="coupon_apply"]')[0]
+${locatorC_checkoutShipping_icon_couponClose}    dom:document.querySelectorAll('[class~="coupon__close"]')[0]
 
 
 ${locatorC_checkoutShipping_text_itemProductTitle}    dom:document.querySelectorAll('[class*="checkout-item__sku-title"]')[0]
