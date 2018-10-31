@@ -83,3 +83,4 @@ Go To First Product C Interface
 	Sleep    20
     Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     Focus On New Window
+    Sleep    1

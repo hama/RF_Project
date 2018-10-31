@@ -47,7 +47,7 @@ ${locatorB_setting_store}    dom:document.querySelectorAll('a[href="/store"]')[0
 ${locatorB_setting_upfile}    dom:document.querySelectorAll('a[href="/uploadFile"]')[0]    # 导航栏-设置-文件管理
 ${locatorB_decoration}    dom:document.querySelectorAll('span[data-robot="decoration"]')[0]    # 导航栏-店铺装修
 ${locatorB_decoration_checkoutSettings}    dom:document.querySelectorAll('a[href="/checkout"]')[0]    # 导航栏-店铺装修-结账流程
-${locatorB_decoration_navigationmenu}    dom:document.querySelectorAll('a[href="/menus"]')[0]    # 导航栏-店铺装修-菜单导航
+${locatorB_decoration_navigationMenu}    dom:document.querySelectorAll('a[href="/menus"]')[0]    # 导航栏-店铺装修-菜单导航
 ${locatorB_application}    dom:document.querySelectorAll('a[href="/tools"]')[0]    #.导航栏-应用市场
 ${locatorB_setting_menus}    dom:document.querySelectorAll(".ant-menu-submenu-title")    # 导航栏-设置-含自菜单的元素
 ${locatorB_application_seoimg}    dom:document.querySelectorAll('.item___3Js4k')[4]    #.应用市场-图片seo
