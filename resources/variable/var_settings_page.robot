@@ -14,9 +14,9 @@ ${locatorB_checkout_button_cancel}     dom:document.querySelectorAll('button[typ
 ${locatorB_checkout_button_save}    dom:document.querySelectorAll('button[type="button"]')[1]   #.保存按钮
 # locator invoicinglabel
 #${locatorB_checkout_text_customerRights}    dom:document.querySelectorAll('p[class="title_bdd1"]')[0]              #顾客权限文字
-#${locatorB_checkout_label_notMembers}    dom:document.querySelectorAll('[class*="radio_btn_cddf"]')[0]    #.顾客权限-不开启会员注册
-${locatorB_checkout_label_registerMembers}    dom:document.querySelectorAll('[class*="radio_btn_cddf"]')[0]    #.顾客权限-注册会员与非会员可以购买
-${locatorB_checkout_label_buyMembers}    dom:document.querySelectorAll('[class*="radio_btn_cddf"]')[1]    #.顾客权限-会员购买
+${locatorB_checkout_label_notMembers}    dom:document.querySelectorAll('[class*="radio_btn_cddf"]')[0]    #.顾客权限-不开启会员注册
+${locatorB_checkout_label_registerMembers}    dom:document.querySelectorAll('[class*="radio_btn_cddf"]')[1]    #.顾客权限-注册会员与非会员可以购买
+${locatorB_checkout_label_buyMembers}    dom:document.querySelectorAll('[class*="radio_btn_cddf"]')[2]    #.顾客权限-会员购买
 
 #顾客联系方式
 ${locatorB_checkout_label_customerEmail}    dom:document.querySelectorAll('.radio_btn_cddf')[3]    #.顾客联系方式-邮箱
