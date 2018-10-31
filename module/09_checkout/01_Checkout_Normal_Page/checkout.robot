@@ -240,7 +240,7 @@ checkout_114
     #添加是shipping address
     Add Address Common Step
     Wait And Click Element     ${locatorC_checkoutShipping_button_paymentMethod}
-    Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingDetail}[0]    firstName${SPACE * 2}lastName${SPACE * 2}1234567@email.com${SPACE * 2}18899999999
+    Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingDetail}[0]    firstName${SPACE * 2}lastName${SPACE * 2}7654321@autotest.com${SPACE * 2}18899999999
     Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingDetail}[1]    ${SPACE * 2}addr city Beijing${SPACE * 2}China
     Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingDetail}[2]    123456 company
 
@@ -342,7 +342,7 @@ checkout_193
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
-    Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[0]    firstName${SPACE * 2}lastName${SPACE * 2}1234567@email.com${SPACE * 2}18899999999
+    Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[0]    firstName${SPACE * 2}lastName${SPACE * 2}7654321@autotest.com${SPACE * 2}18899999999
     Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[1]    addr${SPACE * 2}city${SPACE * 2}Beijing${SPACE * 2}China
     Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[2]    123456 company
     Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[3]    price_fee
