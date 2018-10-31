@@ -15,6 +15,25 @@ taxPrice001
     #加一个判断元素
     Wait Until Page Contains Text    ${locatorB_taxPrice_text_methodOfTax}
 
+taxPrice003
+    [Documentation]    测试没有添加物流时，税金界面的提示，以及前往物流设置的按钮  > 1.新账号进入时不添加物流   2.查看税金界面
+    [Tags]    P0
+    kwshipping.del_all_shipping_py
+    Reload Page And Start Ajax
+    Go To Tax Page
+    Wait Until Page Contains Locator    ${locatorB_taxPrice_button_setLogistics}
+    Text Of Element Should Be Equal With Wait    ${locatorB_taxPrice_button_setLogistics}    前往运费设置
+
+taxPrice004
+    [Documentation]    测试没有添加物流时，税金界面的提示，以及前往物流设置的按钮  > 1.新账号进入时不添加物流   2.查看税金界面
+    [Tags]    P0
+    kwshipping.del_all_shipping_py
+    Reload Page And Start Ajax
+    Go To Tax Page
+    Wait And Click Element    ${locatorB_taxPrice_button_setLogistics}
+    Wait And Click Element    ${locatorB_shipping_btn_startSet}
+    Wait Until Page Contains Text    创建物流
+
 taxPrice005
     [Documentation]    测试在物流中添加的国家会显示在税金列表中
     [Tags]    P0    threshold   smoke
@@ -60,6 +79,29 @@ taxPrice007
     kwshipping.del_all_shipping_py
     #还原中国的物流信息
     kwshipping.add_shipping_with_conf_py
+
+taxPrice008
+    [Documentation]    测试国家栏后面的开启关闭按钮正常
+    [Tags]    P0    threshold
+    #.判断元素是否出现，出现者不点，不出现就点击
+    ${class} =    Get Element Attribute    ${locatorB_taxPrice_switch_notEndStrat}    class
+    Run Keyword If    '${class}'=='ant-checkbox '    Wait And Click Element    ${locatorB_taxPrice_switch_list}
+    ...     Wait Until Page Contains Text   设置成功
+    Wait And Click Element    ${locatorB_taxPrice_icon_settingList}[0]
+    Wait And Input Text    ${locatorB_taxPrice_popUp_uniteInput}    60.00
+    Wait And Click Element    ${locatorB_taxPrice_popUp_button_save}
+    #添加一个444的商品
+    kwproduct.add_launched_product_py
+    #测试商品购买收取60%税费
+    Go To First Product C Interface
+    #添加是shipping address
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_country}
+    #.选择中国
+    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
+    Wait And Select From List By Label     ${locatorC_checkoutShipping_address_select_province}    Beijing
+    #查看商品扣除60%税费后的金额
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    $710.40
 
 taxPrice009
     [Documentation]    测试税金界面税金计算方式提示功能正常
@@ -109,7 +151,6 @@ taxPrice014
     Wait Until Page Contains Locator  ${locatorB_taxPrice_switch_list}[0]
     #添加一个444的商品
     kwproduct.add_launched_product_py
-    #测试商品购买不收取税费
     Go To First Product C Interface
     #添加是shipping address
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}

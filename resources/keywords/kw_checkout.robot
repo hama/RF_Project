@@ -80,5 +80,6 @@ Create Specific Coupon Code
 
 Go To First Product C Interface
 	Go To Product Management Page
+	Sleep    20
     Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     Focus On New Window

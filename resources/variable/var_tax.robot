@@ -14,6 +14,7 @@ ${locatorB_taxPrice_text_methodOfTax}     收税方式
 ${locatorB_taxPrice_icon_shippingVender}    dom:document.querySelectorAll('span[class="enterprise_icon___1kAvj"]')[0]         #物流商
 ${locatorB_taxPrice_switch_list}      dom:document.querySelectorAll('.ant-switch')    #运费设置关闭/开启
 ${locatorB_taxPrice_icon_set}       dom:document.querySelectorAll('.ant-table-row .djfont')[0]      #.税费设置的第一个国家，设置操作
+${locatorB_taxPrice_switch_notEndStrat}     dom:document.querySelectorAll('[class="ant-switch ant-switch-checked"]')    #.判断开关按钮是否开启状态
 
 #.税费设置 center
 ${locatorB_taxPrice_set_taxes}     dom:document.querySelectorAll('.ant-input')[0]     #.税费设置-国家税率设置input
@@ -28,7 +29,6 @@ ${locatorB_shipping_button_deleteLogisticsa}   dom:document.querySelectorAll('bu
 ${locatorB_shipping_button_determine}   dom:document.querySelectorAll('button[data-robot="pop_confirm"]')       #.确定按钮
 
 ${locatorB_taxPrice_button_shippingSet}    dom:document.querySelectorAll('button[type="button"]')[0]     #物流设置
-
 ${locatorB_shipping_button_btn}    dom:document.querySelectorAll("button")[0]    #.开始设置物流按钮
 
 
