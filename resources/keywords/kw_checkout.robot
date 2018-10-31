@@ -49,8 +49,8 @@ Add Address Common Step
     Sleep    1
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    123456
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18899999999
-    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    1234567@email.com
-    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@contactEmail.com
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    1234567@autotest.com
+    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    company
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    apartment
     Sleep    4
@@ -80,6 +80,7 @@ Create Specific Coupon Code
 
 Go To First Product C Interface
 	Go To Product Management Page
+	Reload Page
+	Sleep   2
     Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     Focus On New Window
-    Sleep    1

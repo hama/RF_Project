@@ -97,7 +97,7 @@ checkout_027
     Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
     Wait Until Page Contains    This discount does not exist.
 
-#。已实现，用例有标注
+# 已实现，用例有标注
 checkout_028
     [Documentation]     验证checkout shipping页面，优惠码输入框中的取消使用优惠码按钮可清空输入框  >  1.输入框中输入本次购买商品可用的优惠码并且点击apply按钮使用   2.点击优惠码输入框中的取消使用按钮
     [Tags]    P0    threshold
