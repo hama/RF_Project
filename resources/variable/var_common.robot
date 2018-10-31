@@ -126,6 +126,7 @@ ${user_default_domain}    ${datas_domain}
 ${user_default_inviteCode}    ${datas_invite_code}
 ### keybord_key
 ${keybord_enter}    \\13
+${keybord_delete}    \\46
 ### 注册用户
 ${register_contact}    gt1zwkp@autotest.com
 ${register_domain}    gt1zwkp

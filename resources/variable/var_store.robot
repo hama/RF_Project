@@ -8,6 +8,10 @@ ${locatorB_store_select_currency}    id:currency    #. 店铺货币
 ${locatorB_store_select_timezone}    id:time_zone    #. 店铺时区
 ${locatorB_store_select_country}    id:country_id    #. 店铺国家
 
+${locatorB_store_a_domain}    css:.icon_custom_left_0490.link_c21b    #域名配置
+${locatorB_store_div_favion}    css:div[class*="ant-upload ant-upload-select"]    #网站Favicon
+${locatorB_store_i_delete}    css:i[class="delete_1296"]    #网站Favicon-删除按钮
+
 
 # locator input text
 
