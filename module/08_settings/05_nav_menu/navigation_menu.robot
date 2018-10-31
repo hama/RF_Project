@@ -1,8 +1,8 @@
 *** Settings ***
 Documentation     菜单导航
-Suite Setup       navigation Suite Setup
-Suite Teardown    navigation Suite Teardown
-Test Setup        navigation Test Setup
+Suite Setup       Navigation Suite Setup
+Suite Teardown    Navigation Suite Teardown
+Test Setup        Navigation Test Setup
 Test Teardown     Teardown Test Case
 Force Tags        navigation_menu
 Resource          ../../../resources/keywords/kw_common.robot
@@ -50,7 +50,7 @@ navigation_menu_008
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     化妆品系列
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains Text    保存成功
-    Go To navigation menu Page
+    Go To Navigation Menu Page
     Wait And Click Element    ${locatorB_menusAdd_link_editorMenu}[2]
     ${menuName}     Wait And Get Value     ${locatorB_menusAdd_input_menuName}
     Should Be Equal      ${menuName}      化妆品系列
@@ -63,7 +63,7 @@ navigation_menu_009
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     减肥产品系列
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains Text    保存成功
-    Go To navigation menu Page
+    Go To Navigation Menu Page
     Wait And Click Element    ${locatorB_menus_text_menuListName}
     ${menuName}     Wait And Get Value     ${locatorB_menusAdd_input_menuName}
     Should Be Equal      ${menuName}      减肥产品系列
@@ -75,7 +75,7 @@ navigation_menu_010
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     小吃系列
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains Text    保存成功
-    Go To navigation menu Page
+    Go To Navigation Menu Page
     ${menuName}     Wait And Get Text    ${locatorB_menus_text_menuListName}
     Should Be Equal    ${menuName}     小吃系列
 
@@ -86,7 +86,7 @@ navigation_menu_022
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     菜单删除系列
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains Text    保存成功
-    Go To navigation menu Page
+    Go To Navigation Menu Page
     Wait And Click Element Then Confirm    ${locatorB_menusAdd_link_delMenu}
     Wait Until Page Not Contains Locator    ${locatorB_menus_list_menuList}[2]
 
@@ -99,7 +99,7 @@ navigation_menu_029
     Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}    衣服
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains Text    保存成功
-    Go To navigation menu Page
+    Go To Navigation Menu Page
     ${menuName}     Wait And Get Text    ${locatorB_menus_text_menuListName}
     Should Be Equal    ${menuName}     新增一个菜单
     ${menuDirectory}     Wait And Get Text    ${locatorB_menus_text_levelDirectory}
@@ -114,8 +114,8 @@ navigation_menu_030
      \   Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
      \   Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}    衣服${i}
      \   Wait And Click Element    ${locatorB_button_save00}
-     \   Go To navigation menu Page
-    Go To navigation menu Page
+     \   Go To Navigation Menu Page
+    Go To Navigation Menu Page
     ${menuName}     Wait And Get Text    ${locatorB_menus_text_menuListName}
     Should Be Equal    ${menuName}     新增2个菜单
     ${menuName}     Wait And Get Text    ${locatorB_menus_text_menuListName1}
@@ -128,12 +128,12 @@ navigation_menu_032
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     小吃系列
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains Text    保存成功
-    Go To navigation menu Page
+    Go To Navigation Menu Page
     Wait And Click Element    ${locatorB_menus_list_menuList}[2]
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     ${empty}
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     修改后的小吃系列
     Wait And Click Element    ${locatorB_button_save00}
-    Go To navigation menu Page
+    Go To Navigation Menu Page
     ${menuName}     Wait And Get Text    ${locatorB_menus_text_menuListName}
     Should Be Equal    ${menuName}     修改后的小吃系列
 
@@ -144,7 +144,7 @@ navigation_menu_035
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     小吃系列返回效果
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains Text    保存成功
-    Go To navigation menu Page
+    Go To Navigation Menu Page
     Wait And Click Element    ${locatorB_menus_list_menuList}[2]
     Wait And Click Element    ${locatorB_menusAdd_icon_returnMenu}
     Text Of Element Should Contain With Wait      ${locatorB_menus_list_menuList}[2]    小吃系列返回效果
