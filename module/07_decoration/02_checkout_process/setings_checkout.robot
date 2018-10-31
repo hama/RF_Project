@@ -31,7 +31,7 @@ checkoutPageSetings003
     Wait And Click Element    ${locatorB_checkout_button_generateRefundTreaty}
     Wait And Click Element    ${locatorBcheckout_button_generatePolicy}
     Wait And Click Element    ${locatorB_checkout_button_generateServiceTreaty}
-    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+    Sleep And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
@@ -54,7 +54,7 @@ checkoutPageSetings005
 #    Wait And Click Element    ${locatorB_checkout_button_nav_information}
 #    Wait And Click Element    ${locatorB_checkout_radio_name}
 #    Wait And Click Element    ${locatorB_checkout_radio_companyNameHidden}
-#    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+#    Sleep And Click Element  ${locatorB_checkout_button_save}
 #    Wait Until Page Contains Text   设置成功
 #    Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
 #    Reload Page And Start Ajax
@@ -69,7 +69,7 @@ checkoutPageSetings009
      Wait And Click Element   ${locatorB_checkout_radio_name}
      Wait And Click Element    ${locatorB_checkout_radio_companyNameHidden}
      Wait And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
-     Wait Exist And Click Element  ${locatorB_checkout_button_save}
+     Sleep And Click Element  ${locatorB_checkout_button_save}
      Wait Until Page Contains Text   设置成功
      Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
      Reload Page And Start Ajax
@@ -102,7 +102,7 @@ checkoutPageSetings011
     Wait And Click Element     ${locatorB_checkout_radio_emailCodeMandatory}
     #手机必选
     Wait And Click Element     ${locatorB_checkout_radio_phoneCodeMandatory}
-    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+    Sleep And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
@@ -134,7 +134,7 @@ checkoutPageSetings013
     Wait And Click Element    ${locatorB_checkout_radio_emailCodeHidden}
     #手机选填
     Wait And Click Element    ${locatorB_checkout_radio_phoneCodeHidden}
-    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+    Sleep And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
@@ -161,7 +161,7 @@ checkoutPageSetings021
     Wait And Click Element    ${locatorB_checkout_radio_surnameAndName}
     Wait And Click Element    ${locatorB_checkout_radio_companyNameMandatory}
     Wait And Click Element    ${locatorB_checkout_radio_phoneCodeHidden}
-    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+    Sleep And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
@@ -176,7 +176,7 @@ checkoutPageSetings022
     Wait And Click Element    ${locatorB_checkout_radio_name}
     Wait And Click Element    ${locatorB_checkout_radio_companyNameMandatory}
     Wait And Click Element    ${locatorB_checkout_radio_phoneCodeHidden}
-    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+    Sleep And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
@@ -192,7 +192,7 @@ checkoutPageSetings023
     Wait And Click Element    ${locatorB_checkout_radio_companyNameMandatory}
     Wait And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
     Wait And Click Element    ${locatorB_checkout_radio_phoneCodeHidden}
-    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+    Sleep And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
@@ -208,7 +208,7 @@ checkoutPageSetings024
     Wait And Click Element    ${locatorB_checkout_radio_companyNameOptional}
     Wait And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
     Wait And Click Element    ${locatorB_checkout_radio_phoneCodeHidden}
-    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+    Sleep And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
@@ -224,7 +224,7 @@ checkoutPageSetings025
     Wait And Click Element    ${locatorB_checkout_radio_companyNameHidden}
     Wait And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
     Wait And Click Element    ${locatorB_checkout_radio_phoneCodeHidden}
-    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+    Sleep And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
@@ -240,7 +240,7 @@ checkoutPageSetings026
     #邮箱必填
     Wait And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
     Wait And Click Element    ${locatorB_checkout_radio_phoneCodeHidden}
-    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+    Sleep And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
@@ -256,7 +256,7 @@ checkoutPageSetings027
     #邮箱选填
     Wait And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
     Wait And Click Element    ${locatorB_checkout_radio_phoneCodeHidden}
-    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+    Sleep And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
@@ -272,7 +272,7 @@ checkoutPageSetings028
     #邮箱隐藏
     Wait And Click Element    ${locatorB_checkout_radio_emailCodeHidden}
     Wait And Click Element    ${locatorB_checkout_radio_phoneCodeHidden}
-    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+    Sleep And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
@@ -284,7 +284,7 @@ checkoutPageSetings029
     Sleep    2
     Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
     Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     退款条约内容
-    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+    Sleep And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
@@ -297,7 +297,7 @@ checkoutPageSetings030
     Sleep    2
     Wait And Click Element      ${locatorB_checkout_button_nav_serviceTerms}
     Wait And Input Text     ${locatorB_checkout_textarea_policyInputBox}     隐私政策内容
-    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+    Sleep And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
@@ -310,7 +310,7 @@ checkoutPageSetings031
     Sleep    2
     Wait And Click Element      ${locatorB_checkout_button_nav_serviceTerms}
     Wait And Input Text     ${locatorB_checkout_textarea_refundServiceInputBox}     服务条约内容
-    Wait Exist And Click Element  ${locatorB_checkout_button_save}
+    Sleep And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
