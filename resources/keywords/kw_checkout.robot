@@ -49,7 +49,7 @@ Add Address Common Step
     Sleep    1
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    123456
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18899999999
-    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    1234567@autotest.com
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    7654321@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    company
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    apartment
