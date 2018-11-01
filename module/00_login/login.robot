@@ -10,7 +10,7 @@ Resource          ../../resources/keywords/kw_common.robot
 *** Test Cases ***
 login001
     [Documentation]    主账号登录成功
-    [Tags]    P0    thre
+    [Tags]    P0    threshold
     Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Click Element    ${locatorB_login_btn_login}
@@ -19,7 +19,7 @@ login001
     Wait Until Page Contains Locator    ${locatorB_login_input_account}
 
 login002
-    [Documentation]   号登录失败_未注册账号
+    [Documentation]   主账号登录失败_未注册账号
     [Tags]    P1
     Wait And Input Text    ${locatorB_login_input_account}    ${contentB_login_unregisteredAccount}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
