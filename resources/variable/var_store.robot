@@ -2,15 +2,25 @@
 # locator
 
 ${locatorB_store_input_storeName}    id:name    #.店铺名称-输入框
+${locatorB_store_input_storeName_nameNum}    css:span[class='ant-input-suffix']    #.店铺名称-数字显示
 ${locatorB_store_input_storeEmail}    id:email    #.店铺邮箱-输入框
 ${locatorB_store_store_input_serviceEmail}    id:service_email    #.客服邮箱-输入框
+
 ${locatorB_store_select_currency}    id:currency    #. 店铺货币
+${locatorB_store_select_currency_listIcon}    css:i[class="djfont xiala-choose"]    #. 店铺货币-下拉点击图标
+${locatorB_store_select_currency_listContent}    dom:document.querySelectorAll('#currency ~ div ul li')    #. 店铺货币-下拉列表内容
+
 ${locatorB_store_select_timezone}    id:time_zone    #. 店铺时区
+${locatorB_store_select_timezone_listIcon}    css:#time_zone span[class="ant-select-arrow"]   #. 店铺时区-下拉点击图标
+${locatorB_store_select_timezone_listContent}    dom:document.querySelectorAll('#time_zone ~ div ul li')    #. 店铺时区-下拉列表内容
+
 ${locatorB_store_select_country}    id:country_id    #. 店铺国家
 
-${locatorB_store_a_domain}    css:.icon_custom_left_0490.link_c21b    #域名配置
-${locatorB_store_div_favion}    css:div[class*="ant-upload ant-upload-select"]    #网站Favicon
-${locatorB_store_i_delete}    css:i[class="delete_1296"]    #网站Favicon-删除按钮
+${locatorB_store_a_domain}    css:.icon_custom_left_0490.link_c21b    #.域名配置
+${locatorB_store_a_domain_ant_btn}    css:button[class*="ant-btn middle"]   #.域名配置-"绑定已有域名"按钮
+${locatorB_store_div_favion}    css:div[class*="ant-upload ant-upload-select"]    #.网站Favicon
+${locatorB_store_div_favion_img}    dom:document.querySelectorAll('div[class="image_wrap_546e"] img')    #.网站Favicon-图像
+${locatorB_store_i_delete}    css:i[class="delete_1296"]    #.网站Favicon-删除按钮
 
 
 # locator input text

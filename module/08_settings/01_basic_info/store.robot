@@ -1,10 +1,9 @@
 *** Settings ***
-Library           SeleniumLibrary
-Library           String
 Suite Setup       Store Suite Setup
 Suite Teardown    Store Suite Teardown
 Test Setup        Store Test Setup
 Test Teardown     Teardown Test Case
+Force Tags        store
 Resource          ../../../resources/keywords/kw_common.robot
 
 
@@ -22,7 +21,6 @@ store002
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains    店铺信息更新成功。
     Reload Page
-    Set Selenium Implicit Wait    2
     Value Of Element Should Be Equal With Wait    ${locatorB_store_input_storeName}    zhoulidianpu
 
 store003
@@ -31,7 +29,7 @@ store003
     Clear Element Text    ${locatorB_store_input_storeName}
     Wait And Input Text    ${locatorB_store_input_storeName}    zhoulidianpuzhoulidianpuzhoulidianpuzhoulidianpuzhouli
     Wait And Click Element    ${locatorB_button_save00}
-    Page Should Contain Button    ${locatorB_button_save00}
+    Wait Until Page Contains Locator    ${locatorB_button_save00}
     Page Should Contain    不能超过50个字符
 
 store004
@@ -42,7 +40,6 @@ store004
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains    店铺信息更新成功。
     Reload Page
-    Set Selenium Implicit Wait    2
     Value Of Element Should Be Equal With Wait    ${locatorB_store_input_storeName}    zhoulidianpuzhoulidianpuzhoulidianpuzhoulidianpuzh
 
 store006
@@ -53,9 +50,7 @@ store006
     ${textnum}    Get Length    ${textcon}
     ${textnum_str}=    Convert To String    ${textnum}
     Wait And Input Text    ${locatorB_store_input_storeName}    ${textcon}
-#    ${getnum}    Get Text   css:span[class='ant-input-suffix']
-    Text Of Element Should Contain With Wait    css:span[class='ant-input-suffix']    ${textnum_str}
-#    Should Be Equal    ${getnum}    ${textnum} /50
+    Text Of Element Should Contain With Wait    ${locatorB_store_input_storeName_nameNum}    ${textnum_str}
 
 store007
     [Documentation]    验证‘店铺链接’UI展示正确
@@ -67,7 +62,7 @@ store008
     [Tags]    P1
     Wait And Click Element    ${locatorB_store_a_domain}
     Wait Until Page Contains    店铺主域名
-    Page Should Contain Button    css:button[class*="ant-btn middle"]
+    Wait Until Page Contains Locator    ${locatorB_store_a_domain_ant_btn}
 
 store011
     [Documentation]    店主邮箱输入正确格式的邮箱可保存成功
@@ -77,7 +72,6 @@ store011
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains    店铺信息更新成功。
     Reload Page
-    Set Selenium Implicit Wait    2
     Value Of Element Should Be Equal With Wait    ${locatorB_store_input_storeEmail}    zhouli@shoplazza.com
 
 store012
@@ -86,7 +80,7 @@ store012
     Clear Element Text    ${locatorB_store_input_storeEmail}
     Wait And Input Text    ${locatorB_store_input_storeEmail}    @zhou@shop.com213
     Wait And Click Element    ${locatorB_button_save00}
-    Page Should Contain Button    ${locatorB_button_save00}
+    Wait Until Page Contains Locator    ${locatorB_button_save00}
     Page Should Contain    请输入格式正确的邮箱
 
 store015
@@ -97,7 +91,6 @@ store015
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains    店铺信息更新成功。
     Reload Page
-    Set Selenium Implicit Wait    2
     Value Of Element Should Be Equal With Wait    ${locatorB_store_store_input_serviceEmail}    zhouliservice@shoplazza.com
 
 store016
@@ -106,7 +99,7 @@ store016
     Clear Element Text    ${locatorB_store_store_input_serviceEmail}
     Wait And Input Text    ${locatorB_store_store_input_serviceEmail}    @zhouliserviceshop
     Wait And Click Element    ${locatorB_button_save00}
-    Page Should Contain Button    ${locatorB_button_save00}
+    Wait Until Page Contains Locator    ${locatorB_button_save00}
     Page Should Contain    请输入格式正确的邮箱
 
 store019
@@ -115,13 +108,11 @@ store019
     Wait And Mouse Over    ${locatorB_store_div_favion}
     Set Focus To Element    ${locatorB_store_div_favion}
     Wait And Click Element    ${locatorB_store_i_delete}
-#   Wait And Click Element    css:svg[data-icon="plus"]
     Wait Enabled And Choose File    dom:document.querySelectorAll('input[type="file"]')    ${file_products_addImg}
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains    店铺信息更新成功。
     Reload Page
-    Set Selenium Implicit Wait    2
-    Page Should Contain Element    dom:document.querySelectorAll('div[class="image_wrap_546e"] img')
+    Wait Until Page Contains Locator    ${locatorB_store_div_favion_img}
 
 store022
     [Documentation]    验证‘常规设置-店铺货币’UI展示正确
@@ -150,40 +141,33 @@ store024
 store025.1
     [Documentation]    可选择货币
     [Tags]    P0
-    Wait And Click Element    css:i[class="djfont xiala-choose"]
-    Wait And Click Element    css:#currency ~ div ul li:nth-child(3)    #选择下拉列表中的第三个
-    Wait And Click Element    dom:document.querySelectorAll('button[class*="middle_btn"]')[1]    #点击确定按钮
-    Set Focus To Element    ${locatorB_store_select_currency}
+    Wait And Click Element    ${locatorB_store_select_currency_listIcon}
+#    Wait And Click Element    css:#currency ~ div ul li:nth-child(3)    #选择下拉列表中的第三个
+#    Wait And Click Element    dom:document.querySelectorAll('button[class*="middle_btn"]')[1]    #点击确定按钮
+    Wait And Click Element Then Confirm    ${locatorB_store_select_currency_listContent}[2]
     Text Of Element Should Contain With Wait    ${locatorB_store_select_currency}    GBP
 
 store027
     [Documentation]    选择货币之后，下拉框自动收起
     [Tags]    P0
-    Wait And Click Element    css:i[class="djfont xiala-choose"]
-    Wait And Click Element    css:#currency ~ div ul li:nth-child(4)    #选择店铺货币下拉列表中的第四个
-    Set Focus To Element    css:div[class="ant-modal-content"]   #出现弹窗，下拉列表自动收起
-    Wait And Click Element    dom:document.querySelectorAll('button[class*="middle_btn"]')[1]    #点击确定按钮
-    Set Focus To Element    ${locatorB_store_select_currency}
-    Text Of Element Should Contain With Wait    ${locatorB_store_select_currency}    CAD
+    Wait And Click Element    ${locatorB_store_select_currency_listIcon}
+    Wait And Click Element    ${locatorB_store_select_currency_listContent}[2]    #选择店铺货币下拉列表中的第四个
+    Set Focus To Element    dom:document.querySelectorAll('button[class*="middle_btn"]')[1]   #出现弹窗，下拉列表自动收起
 
 store029.1
     [Documentation]    可选择时区
     [Tags]    P0
-    Wait And Click Element    css:#time_zone span[class="ant-select-arrow"]
-    Wait And Click Element    css:#time_zone ~ div ul li:nth-child(1)    #选择店铺时区下拉列表中的第一个
+    Wait And Click Element    ${locatorB_store_select_timezone_listIcon}
+    Wait And Click Element    ${locatorB_store_select_timezone_listContent}[0]    #选择店铺时区下拉列表中的第一个
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains    店铺信息更新成功。
     Reload Page
-    Set Selenium Implicit Wait    2
     Text Of Element Should Be Equal With Wait    ${locatorB_store_select_timezone}    (GMT - 12:00) 国际日期变更线西
 
 store032
     [Documentation]    选择店铺时区之后下拉框自动收起
     [Tags]    P0
-    Wait And Click Element    css:#time_zone span[class="ant-select-arrow"]
-    Wait And Click Element    css:#time_zone ~ div ul li:nth-child(2)    #选择店铺时区下拉列表中的第二个
-    Page Should Contain Button    ${locatorB_button_save00}
-    Set Selenium Implicit Wait    2
-    Set Focus To Element    ${locatorB_store_select_timezone}
-    Text Of Element Should Be Equal With Wait    ${locatorB_store_select_timezone}   (GMT - 11:00) 美属萨摩亚，中途岛
+    Wait And Click Element    ${locatorB_store_select_timezone_listIcon}
+    Wait And Click Element    ${locatorB_store_select_timezone_listContent}[1]    #选择店铺时区下拉列表中的第二个
+    Wait Until Page Contains Locator    ${locatorB_button_save00}
 
