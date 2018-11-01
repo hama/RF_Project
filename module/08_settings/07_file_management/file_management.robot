@@ -129,7 +129,7 @@ uploadFile014
 uploadFile015
     [Documentation]    测试批量删除 > 1.勾选多个素材 2.查看结果
     [Tags]    P1
-    add_upfiles_py
+    kwstore.add_upfiles_py
     Reload Page And Start Ajax
     Wait Until Page Contains Locator    ${locatorB_uploadFile_upLoad_addFileBtn}
     #.点击批量选中
@@ -142,22 +142,19 @@ uploadFile015
 uploadFile016
     [Documentation]    测试批量删除 > 1.勾选多个素材  2.点击删除   3.点击确认
     [Tags]    P1    threshold
-    add_upfiles_py
+    kwstore.add_upfiles_py
     Reload Page And Start Ajax
     Wait Until Page Contains Locator    ${locatorB_uploadFile_upLoad_addFileBtn}
-    Wait And Click Element    ${locatorB_uploadFile_checkbox_delTheBut}[1]
-    Wait And Click Element    ${locatorB_uploadFile_checkbox_delTheBut}[2]
-    Wait And Click Element    ${locatorB_uploadFile_checkbox_delTheBut}[3]
-    Wait And Click Element    ${locatorB_uploadFile_checkbox_delTheBut}[4]
+    Wait And Click Element    ${locatorB_uploadFile_checkbox_delFutureBut}
     Wait And Click Element Then Confirm    ${locatorB_uploadFile_button_delData}
     #.显示删除 元素
-    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}[0]
+    Wait Until Page Not Contains Locator    ${locatorB_uploadFile_list_firstTr}
     Wait Del Upfile
 
 uploadFile017
     [Documentation]    测试批量删除 > 1.勾选多个素材  2.点击删除  3.点击取消
     [Tags]    P1    threshold
-    add_upfiles_py
+    kwstore.add_upfiles_py
     Reload Page And Start Ajax
     Wait Until Page Contains Locator    ${locatorB_uploadFile_upLoad_addFileBtn}
     #.点击批量选中
