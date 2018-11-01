@@ -53,6 +53,15 @@ uploadFile006
     Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
     Wait Until Page Contains Text     image02.jpg
 
+uploadFile007
+    [Documentation]       测试产品栏  >  1.在产品界面点击添加按钮 2.查看结果
+    [Tags]    P0    threshold
+    Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}    0
+    Wait Until Page Contains Text    上传成功
+    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
+    Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
+    Wait Until Page Contains Text     image01.jpg
+
 uploadFile009
     [Documentation]    测试上传栏 > "1.在上传界面点击添加按钮,2.在本地文件中选择图片3.jpg,3.点击确认" > 显示上传成功，上传栏中显示图片3.jpg
     [Tags]    P0    threshold
@@ -102,7 +111,7 @@ uploadFile013
     Wait Until Page Contains Text     image01.jpg
     #.点击删除
     Sleep  4
-    Wait And Click Element Then Confirm    ${locatorB_uploadFile_icon_delImg}
+    Wait And Click Element Then Confirm    ${locatorB_uploadFile_icon_delImg}[0]
     Wait Until Page Not Contains Text     image01.jpg
 
 uploadFile014
@@ -113,25 +122,52 @@ uploadFile014
     Wait Until Page Contains Text    上传成功
     Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
     Wait Until Page Contains Text     image01.jpg
-    #.点击删除
-    Sleep  4
     Wait And Click Element Then Cancel    ${locatorB_uploadFile_icon_delImg}
     Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
     Wait Until Page Contains Text     image01.jpg
 
 uploadFile015
-    [Documentation]    测试批量删除 > 显示删除
-    [Tags]    P1    threshold
-    add_upfiles_py
+    [Documentation]    测试批量删除 > 1.勾选多个素材 2.查看结果
+    [Tags]    P1
     add_upfiles_py
     Reload Page And Start Ajax
     Wait Until Page Contains Locator    ${locatorB_uploadFile_upLoad_addFileBtn}
     #.点击批量选中
-    Wait And Click Element    ${locatorB_uploadFile_button_delBut}
-    #.显示删除 元素
+    Wait And Click Element    ${locatorB_uploadFile_checkbox_delFutureBut}
     Wait Until Page Contains Locator    ${locatorB_uploadFile_icon_delImg}
+    Wait Until Page Contains Locator    ${locatorB_uploadFile_checkbox_delTheBut}[1]
     #删除所有
     Wait Del Upfile
+
+uploadFile016
+    [Documentation]    测试批量删除 > 1.勾选多个素材  2.点击删除   3.点击确认
+    [Tags]    P1    threshold
+    add_upfiles_py
+    Reload Page And Start Ajax
+    Wait Until Page Contains Locator    ${locatorB_uploadFile_upLoad_addFileBtn}
+    Wait And Click Element    ${locatorB_uploadFile_checkbox_delTheBut}[1]
+    Wait And Click Element    ${locatorB_uploadFile_checkbox_delTheBut}[2]
+    Wait And Click Element    ${locatorB_uploadFile_checkbox_delTheBut}[3]
+    Wait And Click Element    ${locatorB_uploadFile_checkbox_delTheBut}[4]
+    Wait And Click Element Then Confirm    ${locatorB_uploadFile_button_delData}
+    #.显示删除 元素
+    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}[0]
+    Wait Del Upfile
+
+uploadFile017
+    [Documentation]    测试批量删除 > 1.勾选多个素材  2.点击删除  3.点击取消
+    [Tags]    P1    threshold
+    add_upfiles_py
+    Reload Page And Start Ajax
+    Wait Until Page Contains Locator    ${locatorB_uploadFile_upLoad_addFileBtn}
+    #.点击批量选中
+    Wait And Click Element    ${locatorB_uploadFile_checkbox_delFutureBut}
+    Wait And Click Element Then Cancel    ${locatorB_uploadFile_button_delData}
+    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
+    #.显示素材还是在被选中状态
+    Element Attribute Should Be Equal With Wait    ${locatorB_uploadFile_checkbox_state}    class    ant-checkbox ant-checkbox-checked
+    Wait Del Upfile
+
 
 # 现有方法耗时太长，先不执行，待优化用例
 #uploadFile018

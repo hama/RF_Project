@@ -8,6 +8,24 @@ Resource          ../../../resources/keywords/kw_common.robot
 
 *** Test Cases ***
 
+seoImage001
+    [Documentation]     验证‘列表页’展示正确
+    [Tags]    P0    threshold
+    Wait Until Page Contains Locator    ${locatorB_seolmage_icon_imageSeo}
+    Wait Until Page Contains Text    图片SEO
+    Wait Until Page Contains Text    Google图片搜索高度重视图片Alt标签 ，设置商品Alt标签提高网站Goolge图片搜索的排名。
+
+seoImage002
+    [Documentation]     验证‘详情页‘样式显示位置和文案正确
+    [Tags]    P0    threshold
+    Wait Until Page Contains Locator    ${locatorB_seolmage_icon_imageSeo}
+    Wait Until Page Contains Text    图片SEO
+    Wait Until Page Contains Text    Google图片搜索高度重视图片Alt标签 ，设置商品Alt标签提高网站Goolge图片搜索的排名。
+    Wait Until Page Contains Locator    ${locatorB_seolmage_icon_iconImgSeo}
+    Wait Until Page Contains Text    设置ALT文本格式
+    Wait Until Page Contains Locator    ${locatorB_seolmage_but_saveAlt}
+    Wait Until Page Contains Locator    ${locatorB_seolmage_link_viewMore}
+
 seoImage006
     [Documentation]     验证alt文本设置为【商品标题】，可保存成功且生效
     [Tags]    P0    threshold    smoke
