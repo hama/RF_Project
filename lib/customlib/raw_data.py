@@ -379,7 +379,7 @@ place_order_data = {
         "phone_area_code": "86",
         "phone": "18888888888",
         "company": "company",
-        "email": "12345@shippingaddress.com",
+        "email": "12345@autotest.com",
         "country": "China",
         "country_code": "CN",
         "province": "Beijing",
@@ -402,7 +402,7 @@ place_order_data = {
     "customer_info": {
         "note": "",
         "newsletter": 1,
-        "email": "12345@customerinfo.com"
+        "email": "12345@autotest.com"
     },
     "save_address": 1,
     "checkout_token": "PYwViKKDF9v0nOuMnuAtCtbOYzooA1J1DrnWh2NuLE4%3D"

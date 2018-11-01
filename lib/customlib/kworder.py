@@ -353,7 +353,7 @@ def add_undead_order_with_pay_fail_status_py(cookie=init_cookie):
     config = {}
     card_info = {
         "card_first_name": "name ",
-        "card_email": "qiansuixin@shoplazza.com",
+        "card_email": "qiansuixin@autotest.com",
         "card_phone": "123456789011",
         "card_postcode": "0000",
         "card_number": "123123123123123",
