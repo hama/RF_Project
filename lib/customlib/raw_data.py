@@ -402,7 +402,7 @@ place_order_data = {
     "customer_info": {
         "note": "",
         "newsletter": 1,
-        "email": "12345@customerinfo.com"
+        "email": "12345@autotest.com"
     },
     "save_address": 1,
     "checkout_token": "PYwViKKDF9v0nOuMnuAtCtbOYzooA1J1DrnWh2NuLE4%3D"
