@@ -127,3 +127,6 @@ def del_upfiles_py(cookie=init_cookie):
 
 if __name__ == '__main__':
     print set_store_info_with_conf_py()
+
+
+
