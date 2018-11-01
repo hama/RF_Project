@@ -28,11 +28,31 @@ checkoutPageSetings003
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
 
 checkoutPageSetings005
-    [Documentation]    测试结账设置页面编辑保存
+    [Documentation]    测试结账设置页面编辑保存  >  1.修改内容后不保存  2.离开结账设置页面
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_checkout_label_buyMembers}
+    Sleep And Click Element    ${locatorB_overview}
+    Wait Alert Should Be Present And Dismiss   页面上有未保存内容，是否确定退出?
+    Go To Checkout Settings Page
+    Element Attribute Should Contain With Wait     ${locatorB_checkout_label_registerMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
+
+checkoutPageSetings006
+    [Documentation]    测试结账设置页面编辑保存  >  1.未保存内容退出提示框出现  2.点击确认退出
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_label_buyMembers}
     Sleep And Click Element    ${locatorB_overview}
     Wait Alert Should Be Present And Accept    页面上有未保存内容，是否确定退出?
+    Go To Checkout Settings Page
+    Element Attribute Should Contain With Wait     ${locatorB_checkout_label_registerMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
+
+checkoutPageSetings007
+    [Documentation]    测试结账设置页面编辑保存  >  1.未保存内容退出提示框出现 2.点击取消
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_checkout_label_buyMembers}
+    Sleep And Click Element    ${locatorB_overview}
+    Wait Alert Should Be Present And Dismiss    页面上有未保存内容，是否确定退出?
+    Go To Checkout Settings Page
+    Element Attribute Should Contain With Wait     ${locatorB_checkout_label_registerMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
 # 功能被屏蔽，暂时不测（10.31）
 #checkoutPageSetings008

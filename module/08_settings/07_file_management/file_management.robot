@@ -5,7 +5,6 @@ Test Setup        UploadFile Case Setup
 Test Teardown     UploadFile Case Teardown
 Force Tags        uploadFile
 Resource          ../../../resources/keywords/kw_common.robot
-Resource          ../../../resources/keywords/kw_uploadfile.robot
 
 
 *** Test Cases ***
