@@ -22,6 +22,7 @@ store002
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains    店铺信息更新成功。
     Reload Page
+    Set Selenium Implicit Wait    2
     Value Of Element Should Be Equal With Wait    ${locatorB_store_input_storeName}    zhoulidianpu
 
 store003
@@ -41,6 +42,7 @@ store004
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains    店铺信息更新成功。
     Reload Page
+    Set Selenium Implicit Wait    2
     Value Of Element Should Be Equal With Wait    ${locatorB_store_input_storeName}    zhoulidianpuzhoulidianpuzhoulidianpuzhoulidianpuzh
 
 store006
@@ -75,6 +77,7 @@ store011
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains    店铺信息更新成功。
     Reload Page
+    Set Selenium Implicit Wait    2
     Value Of Element Should Be Equal With Wait    ${locatorB_store_input_storeEmail}    zhouli@shoplazza.com
 
 store012
@@ -94,6 +97,7 @@ store015
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains    店铺信息更新成功。
     Reload Page
+    Set Selenium Implicit Wait    2
     Value Of Element Should Be Equal With Wait    ${locatorB_store_store_input_serviceEmail}    zhouliservice@shoplazza.com
 
 store016
@@ -116,7 +120,7 @@ store019
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains    店铺信息更新成功。
     Reload Page
-    Sleep    2
+    Set Selenium Implicit Wait    2
     Page Should Contain Element    dom:document.querySelectorAll('div[class="image_wrap_546e"] img')
 
 store022
@@ -170,6 +174,7 @@ store029.1
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains    店铺信息更新成功。
     Reload Page
+    Set Selenium Implicit Wait    2
     Text Of Element Should Be Equal With Wait    ${locatorB_store_select_timezone}    (GMT - 12:00) 国际日期变更线西
 
 store032
@@ -178,7 +183,7 @@ store032
     Wait And Click Element    css:#time_zone span[class="ant-select-arrow"]
     Wait And Click Element    css:#time_zone ~ div ul li:nth-child(2)    #选择店铺时区下拉列表中的第二个
     Page Should Contain Button    ${locatorB_button_save00}
-    sleep    2
+    Set Selenium Implicit Wait    2
     Set Focus To Element    ${locatorB_store_select_timezone}
     Text Of Element Should Be Equal With Wait    ${locatorB_store_select_timezone}   (GMT - 11:00) 美属萨摩亚，中途岛
 
