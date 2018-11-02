@@ -33,8 +33,6 @@ checkoutPageSetings005
     Wait And Click Element    ${locatorB_checkout_label_buyMembers}
     Sleep And Click Element    ${locatorB_overview}
     Wait Alert Should Be Present And Dismiss   页面上有未保存内容，是否确定退出?
-    Go To Checkout Settings Page
-    Element Attribute Should Contain With Wait     ${locatorB_checkout_label_registerMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
 checkoutPageSetings006
     [Documentation]    测试结账设置页面编辑保存  >  1.未保存内容退出提示框出现  2.点击确认退出
@@ -324,6 +322,17 @@ checkoutPageSetings031
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
     Wait Until Page Contains Text    服务条约内容
+
+
+
+
+
+
+
+
+
+
+
 
 
 
