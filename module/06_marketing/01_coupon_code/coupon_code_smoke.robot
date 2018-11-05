@@ -8,6 +8,58 @@ Force Tags        coupon code
 Resource          ../../../resources/keywords/kw_common.robot
 
 *** Test Cases ***
+
+coupon_code001
+    [Documentation]    验证左侧导航栏可进入优惠码界面
+    [Tags]    P0
+    Wait Until Page Contains Text    优惠码
+
+coupon_code002
+    [Documentation]    验证优惠码界面新建活动课点击
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
+    Wait Until Page Contains Text    优惠码列表
+
+coupon_code003
+    [Documentation]    验证优惠码界面tab全部栏正常  >  1.将tab切换到未开始   2.再点击全部
+    [Tags]    P0
+    Wait And Click Element     ${locatorB_couponCode_button_before}
+    Select All Coupon Code Tag
+    Element Attribute Should Be Equal With Wait    ${locatorB_couponCode_button_all}    class    ant-tabs-tab-active ant-tabs-tab
+
+coupon_code004
+    [Documentation]    验证优惠码界面tab未开始栏正常  >  1.点击未开始
+    [Tags]    P0
+    Wait And Click Element     ${locatorB_couponCode_button_before}
+    Element Attribute Should Be Equal With Wait    ${locatorB_couponCode_button_before}   class    ant-tabs-tab-active ant-tabs-tab
+
+coupon_code005
+    [Documentation]    验证优惠码界面tab进行中栏正常  >  1.点击进行中
+    [Tags]    P0
+    Wait And Click Element     ${locatorB_couponCode_button_doing}
+    Element Attribute Should Be Equal With Wait    ${locatorB_couponCode_button_doing}    class    ant-tabs-tab-active ant-tabs-tab
+
+coupon_code006
+    [Documentation]    验证优惠码界面tab未开始栏正常  >  1.点击已结束
+    [Tags]    P0
+    Wait And Click Element     ${locatorB_couponCode_button_finish}
+    Element Attribute Should Be Equal With Wait    ${locatorB_couponCode_button_finish}   class    ant-tabs-tab-active ant-tabs-tab
+
+coupon_code007
+    [Documentation]    验证优惠码界面搜索输入框可输入内容
+    [Tags]    P0
+    Wait And Click Element     ${locatorB_couponCode_button_before}
+    Element Attribute Should Be Equal With Wait    ${locatorB_couponCode_button_before}   class    ant-tabs-tab-active ant-tabs-tab
+
+coupon_code022
+    [Documentation]    验证优惠码活动列表中点击优惠码活动可进入活动详情
+    [Tags]    P0
+    ${code}    get_coupon_code_random_code_py
+    Reload Page And Start Ajax
+    Select All Coupon Code Tag
+
+
+
 coupon_code070
     [Documentation]    验证新建优惠码界面，活动名称输入框输入合法内容可保存成功
     [Tags]    P0    threshold    smoke

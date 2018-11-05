@@ -30,6 +30,7 @@ Resource          kw_shipping.robot
 Resource          kw_store.robot
 Resource          kw_tax.robot
 Resource          kw_navmenu.robot
+Resource          kw_uploadfile.robot
 
 *** Keywords ***
 Login With Default User
@@ -215,7 +216,7 @@ Wait And Select From List By Value
 
 Wait And Click Element Then Confirm
 	[Arguments]    ${element_locator}
-    [Documentation]
+    [Documentation]      全局 确认弹窗
     Wait And Click Element    ${element_locator}
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_popUps_button_footermiddle}
     Run Keyword If    '${status}'!='False'    Wait And Click Element    ${locatorB_popUps_button_footermiddle}
@@ -223,7 +224,7 @@ Wait And Click Element Then Confirm
 
 Wait And Click Element Then Cancel
 	[Arguments]    ${element_locator}
-    [Documentation]
+    [Documentation]      全局 取消弹窗
     Wait And Click Element    ${element_locator}
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_popUps_button_footerdefault}
     Run Keyword If    '${status}'!='False'    Wait And Click Element    ${locatorB_popUps_button_footerdefault}

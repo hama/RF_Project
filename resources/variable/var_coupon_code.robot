@@ -5,9 +5,10 @@ Resource          var_common.robot
 #.locatorB_couponCodeNew
 
 ${locatorB_couponCodeNew_input_activityName}    dom:document.querySelectorAll('[id="name"]')[0]   # 活动名称input
-
+${locatorB_couponCodeNew_button_addActivity}    dom:document.querySelectorAll('[class*="large_btn"]')[0]     #.新建活动
 ${locatorB_couponCodeNew_button_allProducts}    dom:document.querySelectorAll('[class*="ant-btn li_checked"]')[0]  # 选择全部商品
 ${locatorB_couponCodeNew_button_chooseSomeProducts}    dom:document.querySelectorAll('[class*="btnselproduct"]')[0]    # 选择部分商品
+
 ${locatorB_couponCodeNew_icon_continueToAdd}    dom:document.querySelectorAll('[class="anticon anticon-plus"]')    # 添加
 ${locatorB_couponCodeNew_text_hadAdded}    dom:document.querySelectorAll('p[class*="product"]')[0]    #
 ${locatorB_couponCodeNew_input_couponCode}    id:code    #
@@ -48,6 +49,8 @@ ${locatorB_couponCode_button_before}    dom:document.querySelectorAll('div[class
 ${locatorB_couponCode_button_doing}    dom:document.querySelectorAll('div[class*="ant-tabs-tab"]')[2]    # 进行中
 ${locatorB_couponCode_button_finish}    dom:document.querySelectorAll('div[class*="ant-tabs-tab"]')[3]    # 已结束
 
+#.input
+${locatorB_couponCode_input_enterCouponCode}    dom:document.querySelectorAll('[id="keywords"]')[0]     #.搜索框输入优惠码、编号
 
 
 
