@@ -969,11 +969,11 @@ tax_batch_data = [
 store_update_data = {
     'store_id': 1160,
     'name': 'homer',
-    'email': 'autotest@shoplazza.com',
+    'email': 'autotest@autotest.com',
     'seo_id': 0,
     'currency': 'USD',
     'url': None,
-    'service_email': 'autotest@shoplazza.com',
+    'service_email': 'autotest@autotest.com',
     'icon': {
         'src': '//cdn.shoplazza.com/c9f9562678e0febfde4d739a941484fc.jpg',
         'alt': '',
