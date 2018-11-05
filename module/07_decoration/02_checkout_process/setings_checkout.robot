@@ -45,12 +45,12 @@ checkoutPageSetings006
 
 checkoutPageSetings007
     [Documentation]    测试结账设置页面编辑保存  >  1.未保存内容退出提示框出现 2.点击取消
-    [Tags]    P0    threshold
+    [Tags]    P1    threshold
     Wait And Click Element    ${locatorB_checkout_label_buyMembers}
     Sleep And Click Element    ${locatorB_overview}
     Wait Alert Should Be Present And Dismiss    页面上有未保存内容，是否确定退出?
-    Go To Checkout Settings Page
-    Element Attribute Should Contain With Wait     ${locatorB_checkout_label_registerMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
+    Element Attribute Should Contain With Wait     ${locatorB_checkout_label_buyMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
+    Wait Until Page Contains Locator      ${locatorB_checkout_button_save}
 
 # 功能被屏蔽，暂时不测（10.31）
 #checkoutPageSetings008
