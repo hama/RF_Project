@@ -1,6 +1,11 @@
 #!/bin/bash
 
 export PATH=$PATH:/usr/local/bin/
+
+
+# --------------------配置 host 记录 47.106.30.167 admin.shoplazza.com--------------------
+echo '47.106.30.167 admin.shoplazza.com' >> /etc/hosts
+
 #定义选项， -o 表示短选项 -a 表示支持长选项的简单模式(以 - 开头) -l 表示长选项
 # a 后没有冒号，表示没有参数
 # b 后跟一个冒号，表示有一个必要参数
