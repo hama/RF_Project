@@ -172,6 +172,15 @@ checkoutPageSetings021
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_surnameAndName}    class    ant-radio-wrapper ant-radio-wrapper-checked
+    #.进入C端checkout shipping界面验证
+    Sleep    2
+    Go To First Product C Interface
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_firstName}
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_lastName}
+    #Add Address Common Step
+    #Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+
 
 checkoutPageSetings022
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.姓名格式勾选姓、名分开填写时点击姓名  2.点击保存
@@ -187,9 +196,13 @@ checkoutPageSetings022
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_name}    class    ant-radio-wrapper ant-radio-wrapper-checked
+    #.进入C端checkout shipping界面验证
+    Go To First Product C Interface
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_onlyName}
 
 checkoutPageSetings023
-    [Documentation]    测试顾客信息设置-点击姓和名分开.1.公司名点击必填 2.点击保存
+    [Documentation]    测试顾客信息设置-.1.公司名点击必填 2.点击保存
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
@@ -203,9 +216,17 @@ checkoutPageSetings023
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_companyNameMandatory}    class    ant-radio-wrapper ant-radio-wrapper-checked
+    #.进入C端checkout shipping界面验证
+    Go To First Product C Interface
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Add Address Common Step
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}     ${empty}
+    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    Wait Until Page Contains Text    Please enter your company
+
 
 checkoutPageSetings024
-    [Documentation]    测试顾客信息设置-点击姓和名分开.1.公司名点击必填 2.点击保存
+    [Documentation]    测试顾客信息设置-.1.公司名点击选填 2.点击保存
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
@@ -219,6 +240,14 @@ checkoutPageSetings024
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_companyNameOptional}    class    ant-radio-wrapper ant-radio-wrapper-checked
+    #.进入C端checkout shipping界面验证
+    #Go To First Product C Interface
+    #Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    #Add Address Common Step
+    #Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}     ${empty}
+    #Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    #Wait Until Page Not Contains Text    Please enter your company
+
 
 checkoutPageSetings025
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.公司名点击隐藏 2.点击保存
