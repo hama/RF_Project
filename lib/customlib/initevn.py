@@ -54,4 +54,4 @@ if __name__ == '__main__':
     # --------------------配置国内B端映射 host 记录 47.106.30.167 admin.shoplazza.com--------------------
     # --------------------配置国内C端映射 host 记录 47.106.30.164 random_str.myshoplaza.com--------------------
     os.popen('echo "47.106.30.167 admin.shoplazza.com" >> /etc/hosts')
-    os.popen('echo "47.106.30.164 %s.shoplazza.com" >> /etc/hosts' % (random_str))
+    os.popen('echo "47.106.30.164 %s.myshoplaza.com" >> /etc/hosts' % (random_str))
