@@ -16,7 +16,7 @@ Resource          var_tax.robot
 Resource          var_uploadfile.robot
 Resource          var_application.robot
 Resource          var_navmenu.robot
-
+Resource          var_payment_channel.robot
 *** Variables ***
 ### 未分类，需要分类并清理
 ${home_page}      ${home_page_url}
@@ -120,6 +120,7 @@ ${url_reviews}    ${home_page}/reviews   # reviews
 ${url_seoimage}    ${home_page}/seoImage    #. seoimage
 ${url_uploadFile}    ${home_page}/uploadFile    #. uploadFile
 ${url_checkoutSettings}    ${home_page}/checkout    #. checkout
+${url_pay}    ${home_page}/pay    #. pay
 ${url_menus}    ${home_page}/menus    #.menus
 ### 测试用户
 

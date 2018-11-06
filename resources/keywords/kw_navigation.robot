@@ -196,3 +196,15 @@ Go To Shipping Page By Url
     Sleep    1
     Go To    ${url_shipping}
     Sleep    1
+
+Go To Payment Channel
+    [Documentation]    跳转到 收款渠道页面
+    Wait Until Element Is Visible    ${locatorB_setting}
+    # 若设置按钮没展开，则展开设置按钮
+    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
+    Run Keyword If    '${attr}'=='False'    Sleep    4
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_payment}
+    ...    ELSE    Wait And Click Element    ${locatorB_setting_payment}
+    Wait Until Page Contains    PayPal收款
+    Location Should Be    ${url_pay}
