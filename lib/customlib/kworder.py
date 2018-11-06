@@ -649,7 +649,7 @@ if __name__ == '__main__':
     # place_order_conf = {'shipping_address': shipping_address}
     # conf = {'place_order_data': place_order_conf}
     # print add_deading_order_with_conf_py(conf)
-
+    print get_dealing_order_count_py()
     # print shipment_with_conf_py('90e29c86-4780-4fb1-bfb1-36249deb69bc')
     # print orders_finish_py('90e29c86-4780-4fb1-bfb1-36249deb69bc', '85382d5a-6d8a-4d46-8c50-9407802173ba')
     # print add_deading_order_with_some_delivered_status_py()
@@ -666,6 +666,6 @@ if __name__ == '__main__':
     # print query_dealing_order()
     # print query_undeal_order()
     # print del_order('2e043a92-46c5-4f26-953a-88f347cd1e08')
-    conf = {'place_order_data': {'shipping_address': {'first_name': 'testedOject'}}}
-    print add_deading_order_with_conf_py(conf)
+    # conf = {'place_order_data': {'shipping_address': {'first_name': 'testedOject'}}}
+    # print add_deading_order_with_conf_py(conf)
     # add_undead_order_with_pay_fail_status_py()
