@@ -31,7 +31,7 @@ Resource          kw_store.robot
 Resource          kw_tax.robot
 Resource          kw_navmenu.robot
 Resource          kw_uploadfile.robot
-Resource          kw_collection.robot
+Resource          kw_payment_channel.robot
 
 *** Keywords ***
 Login With Default User

@@ -16,7 +16,7 @@ Resource          var_tax.robot
 Resource          var_uploadfile.robot
 Resource          var_application.robot
 Resource          var_navmenu.robot
-Resource          var_collection.robot
+Resource          var_payment_channel.robot
 *** Variables ***
 ### 未分类，需要分类并清理
 ${home_page}      ${home_page_url}
