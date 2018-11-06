@@ -398,6 +398,11 @@ Select All Items Then Click Batch Menu
     Wait Exist And Click Element    ${locatorB_checkbox00}
     Wait And Click Element    ${locatorB_select_batchOperations}
 
+Go To First Product C Interface
+	Go To Product Management Page
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Focus On New Window
+
 
 
 

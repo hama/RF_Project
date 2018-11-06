@@ -10,7 +10,6 @@ Resource          ../../resources/keywords/kw_common.robot
 register_001
     [Documentation]    注册信息成功
     [Tags]    P0    threshold
-    Del User Fromdb    ${register_contact}
     Wait And Click Element    ${locatorB_login_btn_register}
     Wait And Input Text    ${locatorB_login_input_inviteCode}    ${user_default_inviteCode}
     Wait And input text    ${locatorB_login_input_domain}    ${register_domain}
@@ -19,7 +18,7 @@ register_001
     Wait And input text    ${locatorB_login_input_account}    ${register_contact}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
     Sleep    2
-    ${code}    Get Latest Vcode Fromdb    ${register_contact}
+    ${code}    get_latest_vcode_fromdb    ${register_contact}
     Wait And input text    ${locatorB_login_input_vcode}    ${code}
     Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -50,7 +49,7 @@ register_003
     Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
     Sleep    2
-    ${code}    Get Latest Vcode Fromdb    ${user_default_contact}
+    ${code}    get_latest_vcode_fromdb    ${user_default_contact}
     Wait And input text    ${locatorB_login_input_vcode}    ${code}
     Wait And Click Element    dom:document.querySelectorAll("span[class='ant-checkbox']")[0]    #.点击我接受
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
@@ -67,7 +66,7 @@ register_004
     Wait And input text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Click Element    dom:document.querySelectorAll("button")[0]
     Sleep    2
-    ${code}    Get Latest Vcode Fromdb    ${user_default_contact}
+    ${code}    get_latest_vcode_fromdb    ${user_default_contact}
     Wait And input text    ${locatorB_login_input_vcode}    ${code}
     Wait And Click Element    dom:document.querySelectorAll("button")[1]
     Wait Until Page Contains Locator    dom:document.querySelectorAll("button:disabled")[0]
