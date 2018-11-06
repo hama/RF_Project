@@ -22,7 +22,7 @@ if __name__ == '__main__':
     config.set("common_account", "datas_invite_code", 'DJ1024')
     config.set("common_url", "home_page_url", args.url)
     config.set("common_urn", "shop_urn", '.myshoplaza.com')
-    # --------------------配置 host 记录 47.106.30.167 admin.shoplazza.com--------------------
+    # --------------------配置国内 host 记录 47.106.30.167 admin.shoplazza.com的数据库--------------------
     config.set("common_db", "db_service_config",
                '{"host": "rm-wz909yoadvh82f9x1.mysql.rds.aliyuncs.com","port": 3306,"user": "readonly",'
                '"password": "readonly@123","db": "service","charset": "utf8"}')
@@ -50,3 +50,8 @@ if __name__ == '__main__':
         config.set("common_account", "datas_contact", args.user)
         config.set("common_account", "datas_domain", args.domain)
         config.write(open(path, 'w'))
+
+    # --------------------配置国内B端映射 host 记录 47.106.30.167 admin.shoplazza.com--------------------
+    # --------------------配置国内C端映射 host 记录 47.106.30.164 random_str.myshoplaza.com--------------------
+    os.popen('echo "47.106.30.167 admin.shoplazza.com" >> /etc/hosts')
+    os.popen('echo "47.106.30.164 %s.shoplazza.com" >> /etc/hosts' % (random_str))
