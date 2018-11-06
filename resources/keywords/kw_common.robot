@@ -391,7 +391,7 @@ Reload Page And Start Ajax
 	Sleep    ${sleep_time}
 	Reload Page
 	Start Ajax Listener
-#	Sleep    ${sleep_time}
+	Sleep    5
 
 Select All Items Then Click Batch Menu
     [Documentation]    选中所有items,并且点击批量操作菜单
