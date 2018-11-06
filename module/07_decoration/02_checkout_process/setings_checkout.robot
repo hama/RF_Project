@@ -98,8 +98,8 @@ checkoutPageSetings010
      Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
      Element Attribute Should Contain With Wait     ${locatorB_checkout_label_buyMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
-checkoutPageSetings011
-    [Documentation]    测试顾客联系方式设置-邮箱必填
+checkoutPageSetings011.1
+    [Documentation]       此用例未更新，新增模块
     [Tags]    P0    threshold   smoke
     Wait And Click Element     ${locatorB_checkout_label_registerMembers}
     Wait And Click Element     ${locatorB_checkout_button_nav_information}
@@ -114,8 +114,8 @@ checkoutPageSetings011
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_phoneCodeMandatory}    class    ant-radio-wrapper ant-radio-wrapper-checked
 
-checkoutPageSetings012
-    [Documentation]    测试顾客联系方式设置-邮箱选填
+checkoutPageSetings012.1
+    [Documentation]     此用例未更新，新增模块
     [Tags]    P0    threshold   smoke
     Wait And Click Element     ${locatorB_checkout_label_registerMembers}
     Wait And Click Element     ${locatorB_checkout_button_nav_information}
@@ -130,8 +130,8 @@ checkoutPageSetings012
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_phoneCodeOptional}    class    ant-radio-wrapper ant-radio-wrapper-checked
 
-checkoutPageSetings013
-    [Documentation]    测试顾客联系方式设置-邮箱隐藏
+checkoutPageSetings013.1
+    [Documentation]    此用例未更新，新增模块
     [Tags]    P0    threshold   smoke
     Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
@@ -236,8 +236,8 @@ checkoutPageSetings025
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_companyNameHidden}    class    ant-radio-wrapper ant-radio-wrapper-checked
 
-checkoutPageSetings026
-    [Documentation]    测试顾客信息设置-点击姓和名分开.1.邮件编码点击必填 2.点击保存
+checkoutPageSetings026.1
+    [Documentation]    测试顾客信息设置-点击姓和名分开.1.邮件编码点击必填 2.点击保存      此用例邮件编码为我换成邮件
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
@@ -252,8 +252,8 @@ checkoutPageSetings026
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
 
-checkoutPageSetings027
-    [Documentation]    测试顾客信息设置-点击姓和名分开.1.邮件编码点击选填  2.点击保存
+checkoutPageSetings027.1
+    [Documentation]    测试顾客信息设置-点击姓和名分开.1.邮件编码点击选填  2.点击保存      此用例邮件编码为我换成邮件
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
@@ -268,8 +268,8 @@ checkoutPageSetings027
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeOptional}   class    ant-radio-wrapper ant-radio-wrapper-checked
 
-checkoutPageSetings028
-    [Documentation]    测试顾客信息设置-点击姓和名分开.1.邮件编码点击隐藏 2.点击保存
+checkoutPageSetings028.1
+    [Documentation]    测试顾客信息设置-点击姓和名分开.1.邮件编码点击隐藏 2.点击保存      此用例邮件编码为我换成邮件
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
