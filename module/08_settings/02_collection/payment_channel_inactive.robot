@@ -32,6 +32,7 @@ pay_019
 pay_050
     [Documentation]    验证未激活stripe时，stripe支付栏后面激活按钮可点击
     [Tags]    P0
+    Credit Card Payment Channel Is Closed
     Wait And Click Element    ${locatorB_pay_link_replacePay}
     Wait And Click Element    ${locatorB_pay_button_paymenChoose}[3]
     Sleep  2

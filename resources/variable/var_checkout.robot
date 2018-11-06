@@ -42,6 +42,8 @@ ${locatorC_checkoutShipping_address_input_phone}    dom:document.querySelectorAl
 ${locatorC_checkoutShipping_address_input_company}    dom:document.querySelectorAll("input[name='company']")[0]    #.添加地址后copmany框
 ${locatorC_checkoutShipping_address_input_apartment}     dom:document.querySelectorAll('input[name="address1"]')[0]   #添加apartment
 
+#.验证 只有单一Name时
+${locatorC_checkoutShipping_address_input_onlyName}    dom:document.querySelectorAll("input[name='name']")[0]
 
 ${locatorC_checkoutShipping_input_contactEmail}    dom:document.querySelectorAll("input[name='contact_email']")[0]    #.添加地址后email框
 ${locatorC_checkoutShipping_button_specialInstruction}    dom:document.querySelectorAll('[class="checkout-instruction"]')[0]    #.留言信息
