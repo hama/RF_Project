@@ -71,16 +71,10 @@ checkoutPageSetings009
      [Documentation]    测试结账设置顾客权限功能>1.点击注册会员与非注册会员均可购买 2.点击保存
      [Tags]    P0    threshold
      Wait And Click Element    ${locatorB_checkout_label_registerMembers}
-     Wait And Click Element    ${locatorB_checkout_button_nav_information}
-     Wait And Click Element    ${locatorB_checkout_radio_name}
-     Wait And Click Element    ${locatorB_checkout_radio_companyNameHidden}
-     Wait And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
-     Sleep And Click Element    ${locatorB_checkout_button_save}
-     Wait Until Page Contains Text   设置成功
-     Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
-     Reload Page And Start Ajax
-     Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
      Element Attribute Should Contain With Wait     ${locatorB_checkout_label_registerMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
+     Reload Page And Start Ajax
+     Product Page Detail
+     Wait Until Page Contains Text    Shipping Address
 
 checkoutPageSetings010
      [Documentation]    测试结账设置顾客权限功能>1.点击会员购买  2.点击保存
@@ -98,8 +92,8 @@ checkoutPageSetings010
      Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
      Element Attribute Should Contain With Wait     ${locatorB_checkout_label_buyMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
-checkoutPageSetings011
-    [Documentation]    测试顾客联系方式设置-邮箱必填
+checkoutPageSetings10.1
+    [Documentation]
     [Tags]    P0    threshold   smoke
     Wait And Click Element     ${locatorB_checkout_label_registerMembers}
     Wait And Click Element     ${locatorB_checkout_button_nav_information}

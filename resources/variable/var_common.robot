@@ -142,3 +142,4 @@ ${file_products_addImg2}    ${CURDIR}/../images/image01.jpg    # 添加商品图
 
 # C端
 ${locatorC_icon_card}    dom:document.querySelectorAll("[class*='sep-font-cart-thin']")[0]    #.checkout购物车图标按钮
+${locatorC_button_buynow}    dom:document.querySelectorAll('[class="btn btn-secondary dj_skin_title"]')    #.products->Buy Now按钮

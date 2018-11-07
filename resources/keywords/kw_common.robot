@@ -397,6 +397,23 @@ Select All Items Then Click Batch Menu
     Wait Exist And Click Element    ${locatorB_checkbox00}
     Wait And Click Element    ${locatorB_select_batchOperations}
 
+Long Press Element With Wait
+    [Documentation]    鼠标长按释放
+    [Arguments]    ${locator}    ${sleep_time}=5
+    Wait Until Element Is Visible    ${locator}     10
+    Mouse Down    ${locator}
+    Sleep    ${sleep_time}
+    Mouse Up    ${locator}
+
+Product Page Detail
+    [Documentation]    商品详情页
+    Go To Product Management Page
+    Select All Product Tag
+    Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}
+    Sleep    2
+    Focus On New Window
+    Wait And Click Element    ${locatorC_button_buynow}
+
 
 
 
