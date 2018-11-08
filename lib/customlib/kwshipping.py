@@ -178,6 +178,6 @@ def num_of_exist_shipping_py(cookie=init_cookie):
 
 
 if __name__ == '__main__':
-    print del_all_shipping_py()
+    print add_shipping_with_conf_py()
     # print shipping_list_py()
     print add_quantity_fee_shipping_py()
