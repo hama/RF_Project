@@ -147,6 +147,4 @@ ${locatorC_input_email}    id:userName    #会员登录-email输入框
 
 ${locatorC_products_shippingAddress_payment_button_completeOrder}    dom:document.querySelectorAll('[class="btn btn-primary payment-footer__btn"]')    #payment-->complete order按钮
 
-${locatorC_checkoutShipping_li_refundPolicy}    dom:document.querySelectorAll('[class="checkout-policy__grid-item"]')[0]    #checkoutShipping-->refund policy按钮
-${locatorC_checkoutShipping_li_privacyPolicy}    dom:document.querySelectorAll('[class="checkout-policy__grid-item"]')[1]    #checkoutShipping-->privacy policy按钮
-${locatorC_checkoutShipping_li_termService}    dom:document.querySelectorAll('[class="checkout-policy__grid-item"]')[2]    #checkoutShipping-->terms of service按钮
+${locatorC_checkoutShipping_li_TextPolicy}    dom:document.querySelectorAll('[class="checkout-policy__grid-item"]')    #checkoutShipping-->条约按钮
