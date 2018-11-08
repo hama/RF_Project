@@ -27,6 +27,8 @@ ${locatorB_pay_input_deliveryPayWay}    dom:document.querySelectorAll('[class*="
 ${locatorB_pay_button_save}    dom:document.querySelectorAll('[class*="form_container"] [class*="middle_btn"]')[0]     #.货到付款  保存按钮
 ${locatorB_pay_button_canecl}    dom:document.querySelectorAll('[class*="form_container"] [class*="default_btn"]')[0]     #.货到付款  取消按钮
 
+${locatorB_pay_button_changeNum}    dom:document.querySelectorAll('[class="ant-btn default_btn_4b2a "]')[1]    #信用卡收款-编辑-更换会员号按 钮
+
 #.绑定ipaylinks会员号
 ${locatorB_pay_input_userCard}    dom:document.querySelectorAll('input[id="client_id"]')[0]     #.会员号
 ${locatorB_pay_input_pwsKey}    dom:document.querySelectorAll('input[id="secret_key"]')[0]    #.秘钥
@@ -34,12 +36,8 @@ ${locatorB_pay_input_pwsKey}    dom:document.querySelectorAll('input[id="secret_
 ${locatorB_pay_input_account}    dom:document.querySelectorAll('input[id="account"]')[0]     #.账号
 ${locatorB_pay_input_terminal}    dom:document.querySelectorAll('input[id="client_id"]')[0]    #.客户端ID
 ${locatorB_pay_input_secureCode}    dom:document.querySelectorAll('input[id="secret_key"]')[0]      #.秘钥
-#. button 信用卡选择按钮
 
-${locatorB_pay_button_paymenChoose}    dom:document.querySelectorAll('[class*="credit_wrap"] [class*="middle_btn"]')    #.信用卡选择
-
-#dj > .payment_container_91a0 > div:nth-child(2) div.text_wrap_1c52 button
-
+${locatorB_pay_creditCard_button_ipaylinks}    dom:document.querySelectorAll('[class="ant-btn middle_btn_e01e "]')[0]    #信用卡选择-ipaylinks
 
 
 
