@@ -176,10 +176,10 @@ def dict_deepupdate(json_data, json_conf):
 
 
 if __name__ == '__main__':
-    # time1 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    time1 = time.strftime("%Y%m%d%H%M%S", time.localtime())
     # time.sleep(3)
     # time2 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    # print time1
+    print time1
     # print compare_time_py(time1, time2)
     # dict.update(dict2)
     json_data = {'a': {'a1': 'a1', 'a2': 'a2'}, 'b': [123], 'c': {'c1': [456]}}

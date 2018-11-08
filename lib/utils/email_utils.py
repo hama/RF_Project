@@ -17,7 +17,9 @@ username = "autotest@shoplazza.com"  # .发件人
 password = "AAAaaa111"  # .发件人密码
 # . 收件邮箱
 to_addr = [
-    'zhiliangbu@shoplazza.com'
+    'qiansuixin@shoplazza.com',
+    'zhouli@shoplazza.com'
+    # 'zhiliangbu@shoplazza.com'
 ]
 # . 抄送邮箱
 cc_addr = [
@@ -142,7 +144,7 @@ def send_uireport_email_process(timestamp, log_path):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='email script')
-    parser.add_argument('--timestamp', type=str)
+    parser.add_argument('--timestamp', type=str, default=time.strftime("%Y%m%d%H%M%S", time.localtime()))
     parser.add_argument('--log_path', type=str)
     args = parser.parse_args()
     send_uireport_email_process(args.timestamp, args.log_path)
