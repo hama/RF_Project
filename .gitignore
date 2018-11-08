@@ -3,6 +3,8 @@ logs/
 *.log
 *.pyc
 *.png
+*.jpeg
+*.gif
 *.jpg
 *.html
 *.xml
