@@ -306,6 +306,7 @@ Open New And Close Other Windows
 
 Focus On New Window
 	[Documentation]    聚焦到新窗口（紧跟开窗口动作之后）,并返回新窗口的handle
+	Sleep    1
     @{new_window_handle}    Get Window Handles
     Select Window    ${new_window_handle[-1]}
     Set Window Size    1440    1080
@@ -398,12 +399,16 @@ Select All Items Then Click Batch Menu
     Wait Exist And Click Element    ${locatorB_checkbox00}
     Wait And Click Element    ${locatorB_select_batchOperations}
 
+
+Long Press Element With Wait
+    [Documentation]    鼠标长按释放
+    [Arguments]    ${locator}    ${sleep_time}=5
+    Wait Until Element Is Visible    ${locator}     10
+    Mouse Down    ${locator}
+    Sleep    ${sleep_time}
+    Mouse Up    ${locator}
+
 Go To First Product C Interface
 	Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     Focus On New Window
-
-
-
-
-

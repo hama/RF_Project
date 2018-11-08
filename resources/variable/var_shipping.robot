@@ -20,17 +20,22 @@ ${locatorB_shippingNew_items_listItemsOfPrice}    dom:document.querySelectorAll(
 ${locatorB_shippingNew_icon_listDelCountryItem}    dom:document.querySelectorAll('[id="test_shipping_country_delete_icon"]')    #.
 ${locatorB_shippingNew_btn_delShipping}    dom:document.querySelectorAll('[id="test_shipping_delete_btn"]')    #.
 
+${locatorB_shippingNew_p_title}    css:p[class="title___17jze"]    #弹窗标题
+
 
 
 # locator shippingNew popUp add country
 ${locatorB_shippingNew_popUp_arrow_listArrow}    dom:document.querySelectorAll('[class*="show_tree"] [class~="ant-tree-switcher"]')    #.国家列表-箭头list
-${locatorB_shippingNew_popUp_checkbox_firstCountry}    dom:document.querySelectorAll('[class*="show_tree"] [class~="ant-tree-child-tree"] span[class="ant-tree-checkbox-inner"]')[0]    #.国家列表-第一个国家checkbox
+${locatorB_shippingNew_popUp_checkbox_firstCountry}    dom:document.querySelectorAll('[class*="show_tree"] [class~="ant-tree-child-tree"] span[class="ant-tree-checkbox-inner"]')    #.国家列表-第一个国家checkbox
 ${locatorB_shippingNew_popUp_checkbox_secondCountry}    dom:document.querySelectorAll('[class*="show_tree"] [class~="ant-tree-child-tree"] span[class="ant-tree-checkbox-inner"]')[1]    #.国家列表-第一个国家checkbox
 ${locatorB_shippingNew_popUp_checkbox_listContinents}    dom:document.querySelectorAll('[class~="ant-tree"] > li > span.ant-tree-checkbox > span')    #.国家列表-list of Continents checkbox
+${locatorB_shippingNew_popUp_ul_listContinent}     css:li[class="show_tree___3ecgg"]   #.国家列表-第一列内容
 
 ${locatorB_shippingNew_popUp_input_countryName}    dom:document.querySelectorAll('input[placeholder="国家名"]')[0]    #.添加国家-顶部输入国家输入框
 ${locatorB_shippingNew_popUp_btn_search}    id:test_shipping_country_modal_search_btn    #.添加国家-搜索按钮
 ${locatorB_shippingNew_popUp_checkbox_otherCountry}    dom:document.querySelectorAll('[class="ant-checkbox"]')[0]    #.国家列表-其他国家checkbox
+${locatorB_shippingNew_popUp_span_selectedContent}    css:span[class="country_selected___1wa_o"]    #.添加国家-已选国家个数显示
+${locatorB_shippingNew_popUp_btn_cancel}    dom:document.querySelectorAll('button[class="ant-modal-close"]')[0]    #.添加国家-关闭按钮
 
 # locator shippingNew popUp addPriceShipping
 ${locatorB_shippingNew_popUp_input_shippingName}    dom:document.querySelectorAll('[placeholder="Standard Shipping"]')[0]    # 添加价格运费-物流名称输入框
