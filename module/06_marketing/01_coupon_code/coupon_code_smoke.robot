@@ -155,10 +155,11 @@ coupon_code090.1
     Select All Coupon Code Tag
     Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
     Add Default Coupon Code Text
-    Wait And Input Text    ${locatorB_couponCodeNew_text_input_promoCode}    qazw567
+    ${randomStr}=    kwcoupon.get_coupon_code_random_code_py
+    Wait And Input Text    ${locatorB_couponCodeNew_text_input_promoCode}    ${randomStr}
     Wait And Click Element    ${locatorB_button_save00}
     Sleep    2
-    Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_couponCode}    qazw567
+    Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_couponCode}    ${randomStr}
 
 coupon_code098
     [Documentation]    验证新建优惠码界面，数量输入框中输入合法内容时，可保存成功
@@ -273,7 +274,7 @@ coupon_code129
     Text Of Element Should Contain With Wait    ${locatorB_couponCode_text_firstCoupon_activityRules}    100
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Sleep    2
-    Text Of Element Should Be Equal With Wait    ${locatorB_couponCodeNew_select_couponStyle}    代金劵
+    Text Of Element Should Contain With Wait    ${locatorB_couponCodeNew_select_couponStyle}    代金券
 
 coupon_code130
     [Documentation]    验证新建优惠码界面，优惠类型为代金券，优惠门槛勾选输入框下方的无门槛时，可保存成功
