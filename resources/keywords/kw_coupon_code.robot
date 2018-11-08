@@ -39,11 +39,13 @@ Add Default Coupon Code Text
     Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    优惠码默认值
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_start}
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}     ${Empty}
-    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}     2018-11-20 00:00:00
+    ${startTime}    Get Time
+    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}     ${startTime}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_end}
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_endInput}    ${Empty}
-    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_endInput}    2018-11-21 00:00:00
+    ${EndTime}    Add Time To Date    ${startTime}    20days
+    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_endInput}    ${EndTime}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Click Element    ${locatorB_couponCodeNew_text_p_promoCrandom}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_num}    10
