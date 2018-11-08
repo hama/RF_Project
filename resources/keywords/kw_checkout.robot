@@ -78,7 +78,3 @@ Create Specific Coupon Code
     add_doing_coupon_code_py    ${conf}
     [Return]    ${code}
 
-Go To First Product C Interface
-	Go To Product Management Page
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
-    Focus On New Window

@@ -16,7 +16,7 @@ Resource          var_tax.robot
 Resource          var_uploadfile.robot
 Resource          var_application.robot
 Resource          var_navmenu.robot
-
+Resource          var_payment_channel.robot
 *** Variables ***
 ### 未分类，需要分类并清理
 ${home_page}      ${home_page_url}
@@ -120,6 +120,7 @@ ${url_reviews}    ${home_page}/reviews   # reviews
 ${url_seoimage}    ${home_page}/seoImage    #. seoimage
 ${url_uploadFile}    ${home_page}/uploadFile    #. uploadFile
 ${url_checkoutSettings}    ${home_page}/checkout    #. checkout
+${url_pay}    ${home_page}/pay    #. pay
 ${url_menus}    ${home_page}/menus    #.menus
 ### 测试用户
 
@@ -142,4 +143,10 @@ ${file_products_addImg2}    ${CURDIR}/../images/image01.jpg    # 添加商品图
 
 # C端
 ${locatorC_icon_card}    dom:document.querySelectorAll("[class*='sep-font-cart-thin']")[0]    #.checkout购物车图标按钮
-${locatorC_button_buynow}    dom:document.querySelectorAll('[class="btn btn-secondary dj_skin_title"]')    #.products->Buy Now按钮
+${locatorC_input_email}    id:userName    #会员登录-email输入框
+
+${locatorC_products_shippingAddress_payment_button_completeOrder}    dom:document.querySelectorAll('[class="btn btn-primary payment-footer__btn"]')    #payment-->complete order按钮
+
+${locatorC_checkoutShipping_li_refundPolicy}    dom:document.querySelectorAll('[class="checkout-policy__grid-item"]')[0]    #checkoutShipping-->refund policy按钮
+${locatorC_checkoutShipping_li_privacyPolicy}    dom:document.querySelectorAll('[class="checkout-policy__grid-item"]')[1]    #checkoutShipping-->privacy policy按钮
+${locatorC_checkoutShipping_li_termService}    dom:document.querySelectorAll('[class="checkout-policy__grid-item"]')[2]    #checkoutShipping-->terms of service按钮

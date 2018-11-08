@@ -31,6 +31,7 @@ Resource          kw_store.robot
 Resource          kw_tax.robot
 Resource          kw_navmenu.robot
 Resource          kw_uploadfile.robot
+Resource          kw_payment_channel.robot
 
 *** Keywords ***
 Login With Default User
@@ -305,6 +306,7 @@ Open New And Close Other Windows
 
 Focus On New Window
 	[Documentation]    聚焦到新窗口（紧跟开窗口动作之后）,并返回新窗口的handle
+	Sleep    1
     @{new_window_handle}    Get Window Handles
     Select Window    ${new_window_handle[-1]}
     Set Window Size    1440    1080
@@ -390,12 +392,13 @@ Reload Page And Start Ajax
 	Sleep    ${sleep_time}
 	Reload Page
 	Start Ajax Listener
-#	Sleep    ${sleep_time}
+	Sleep    5
 
 Select All Items Then Click Batch Menu
     [Documentation]    选中所有items,并且点击批量操作菜单
     Wait Exist And Click Element    ${locatorB_checkbox00}
     Wait And Click Element    ${locatorB_select_batchOperations}
+
 
 Long Press Element With Wait
     [Documentation]    鼠标长按释放
@@ -405,16 +408,7 @@ Long Press Element With Wait
     Sleep    ${sleep_time}
     Mouse Up    ${locator}
 
-Product Page Detail
-    [Documentation]    商品详情页
-    Go To Product Management Page
-    Select All Product Tag
-    Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}
-    Sleep    2
+Go To First Product C Interface
+	Go To Product Management Page
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     Focus On New Window
-    Wait And Click Element    ${locatorC_button_buynow}
-
-
-
-
-
