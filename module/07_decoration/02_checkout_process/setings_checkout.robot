@@ -74,7 +74,7 @@ checkoutPageSetings009
      Element Attribute Should Contain With Wait     ${locatorB_checkout_label_registerMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
      Reload Page And Start Ajax
      Go To First Product C Interface
-     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
      Wait Until Page Contains Text    Shipping Address
 
 checkoutPageSetings010
@@ -87,7 +87,7 @@ checkoutPageSetings010
      Element Attribute Should Contain With Wait     ${locatorB_checkout_label_buyMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
      Reload Page And Start Ajax
      Go To First Product C Interface
-     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
      Wait Until Page Contains Locator    ${locatorC_input_email}
 
 checkoutPageSetings011.1
@@ -201,7 +201,7 @@ checkoutPageSetings024
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_companyNameOptional}    class    ant-radio-wrapper ant-radio-wrapper-checked
     #.进入C端checkout shipping界面验证
     Go To First Product C Interface
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}     ${empty}
     Wait Until Page Contains Locator    ${locatorC_products_shippingAddress_payment_button_completeOrder}

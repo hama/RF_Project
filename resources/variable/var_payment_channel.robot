@@ -34,12 +34,8 @@ ${locatorB_pay_input_pwsKey}    dom:document.querySelectorAll('input[id="secret_
 ${locatorB_pay_input_account}    dom:document.querySelectorAll('input[id="account"]')[0]     #.账号
 ${locatorB_pay_input_terminal}    dom:document.querySelectorAll('input[id="client_id"]')[0]    #.客户端ID
 ${locatorB_pay_input_secureCode}    dom:document.querySelectorAll('input[id="secret_key"]')[0]      #.秘钥
-#. button 信用卡选择按钮
 
-${locatorB_pay_button_paymenChoose}    dom:document.querySelectorAll('[class*="credit_wrap"] [class*="middle_btn"]')    #.信用卡选择
-
-#dj > .payment_container_91a0 > div:nth-child(2) div.text_wrap_1c52 button
-
+${locatorB_pay_creditCard_button_ipaylinks}    dom:document.querySelectorAll('[class="ant-btn middle_btn_e01e "]')[0]    #信用卡选择-ipaylinks
 
 
 
