@@ -130,7 +130,7 @@ store023
 store024
     [Documentation]    点击货币选择框，展开下拉框
     [Tags]    P0
-    Wait And Click Element    css:i[class="djfont xiala-choose"]    #点击下拉列表箭头
+    Wait And Click Element    ${locatorB_store_select_currency_listIcon}    #点击下拉列表箭头
     Wait Until Page Contains Text   USD
     Wait Until Page Contains Text   EUR
     Wait Until Page Contains Text   GBP
@@ -142,8 +142,6 @@ store025.1
     [Documentation]    可选择货币
     [Tags]    P0
     Wait And Click Element    ${locatorB_store_select_currency_listIcon}
-#    Wait And Click Element    css:#currency ~ div ul li:nth-child(3)    #选择下拉列表中的第三个
-#    Wait And Click Element    dom:document.querySelectorAll('button[class*="middle_btn"]')[1]    #点击确定按钮
     Wait And Click Element Then Confirm    ${locatorB_store_select_currency_listContent}[2]
     Text Of Element Should Contain With Wait    ${locatorB_store_select_currency}    GBP
 
