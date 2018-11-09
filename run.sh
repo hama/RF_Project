@@ -142,26 +142,27 @@ fi
 # 2、exec testcases
 if [ "$TEST_MODULE" ]
 then
-	echo "$TEST_MODULE"
-    robot -v is_headless:True -d "$TEST_LOG_DIR"/ $TEST_MODULE
-
-    # 3、rerun the failed testcases
-	if [ "$TEST_RERUN" ]
-	then
-		echo "TEST_RERUN"
-	    robot -v is_headless:True --rerunfailed "$TEST_LOG_DIR"/output.xml -d "$TEST_LOG_DIR"/rerun/ $TEST_MODULE
-	    if [ -d "$TEST_LOG_DIR/rerun" ]
-	    then
-			# 使用当前logs/output.xml文件的<suite>替换logs/rerun/output.xml的
-			# 这样rebot --merge才通过
-			line=`grep '<suite .*id="s1".*>' "$TEST_LOG_DIR"/output.xml`
-			sed -i "3d" "$TEST_LOG_DIR"/rerun/output.xml
-			sed -i "2a$line" "$TEST_LOG_DIR"/rerun/output.xml
-			rebot --merge -d "$TEST_LOG_DIR"/ -o output.xml "$TEST_LOG_DIR"/output.xml "$TEST_LOG_DIR"/rerun/output.xml
-		fi
-	else
-		echo 'not TEST_RERUN'
-	fi
+	pass
+#	echo "$TEST_MODULE"
+#    robot -v is_headless:True -d "$TEST_LOG_DIR"/ $TEST_MODULE
+#
+#    # 3、rerun the failed testcases
+#	if [ "$TEST_RERUN" ]
+#	then
+#		echo "TEST_RERUN"
+#	    robot -v is_headless:True --rerunfailed "$TEST_LOG_DIR"/output.xml -d "$TEST_LOG_DIR"/rerun/ $TEST_MODULE
+#	    if [ -d "$TEST_LOG_DIR/rerun" ]
+#	    then
+#			# 使用当前logs/output.xml文件的<suite>替换logs/rerun/output.xml的
+#			# 这样rebot --merge才通过
+#			line=`grep '<suite .*id="s1".*>' "$TEST_LOG_DIR"/output.xml`
+#			sed -i "3d" "$TEST_LOG_DIR"/rerun/output.xml
+#			sed -i "2a$line" "$TEST_LOG_DIR"/rerun/output.xml
+#			rebot --merge -d "$TEST_LOG_DIR"/ -o output.xml "$TEST_LOG_DIR"/output.xml "$TEST_LOG_DIR"/rerun/output.xml
+#		fi
+#	else
+#		echo 'not TEST_RERUN'
+#	fi
 else
 	echo 'not TEST_MODULE'
 #    robot -v is_headless:True -d "$TEST_LOG_DIR"/ \
@@ -191,8 +192,8 @@ else
 fi
 
 # 4、执行email_utils.py
-if [ "$SEND_EMAIL" ]
-then
-	echo 'SEND_EMAIL_DEFAULT'
-    python2.7 lib/utils/email_utils.py --timestamp "$TIMESTAMP" --log_path "$TEST_LOG_DIR"
-fi
+#if [ "$SEND_EMAIL" ]
+#then
+#	echo 'SEND_EMAIL_DEFAULT'
+#    python2.7 lib/utils/email_utils.py --timestamp "$TIMESTAMP" --log_path "$TEST_LOG_DIR"
+#fi
