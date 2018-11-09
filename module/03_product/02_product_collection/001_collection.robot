@@ -486,11 +486,11 @@ collection035
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
     Wait Enabled And Choose File    ${locatorB_collectionDetail_input_addImage}    ${file_products_addImg3}
-    Sleep    20
     Wait And Click Element    ${locatorB_button_save}
     Wait Until Page Contains Text     修改成功
     Go To Product Collection Page
 #    Wait Until Page Contains Locator     ${locatorB_productsCollection_text_firstCollectionNum}
+    sleep    4
     Wait Until Page Contains Locator     ${locatorB_productsCollection_img_listCollectionThumbnails}[0]
 
 collection036

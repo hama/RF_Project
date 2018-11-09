@@ -7,7 +7,7 @@ ${locatorB_store_input_storeEmail}    id:email    #.店铺邮箱-输入框
 ${locatorB_store_store_input_serviceEmail}    id:service_email    #.客服邮箱-输入框
 
 ${locatorB_store_select_currency}    id:currency    #. 店铺货币
-${locatorB_store_select_currency_listIcon}    css:i[class="djfont xiala-choose"]    #. 店铺货币-下拉点击图标
+${locatorB_store_select_currency_listIcon}    dom:document.querySelectorAll('span[class="ant-select-arrow"]')[0]    #. 店铺货币-下拉点击图标
 ${locatorB_store_select_currency_listContent}    dom:document.querySelectorAll('#currency ~ div ul li')    #. 店铺货币-下拉列表内容
 
 ${locatorB_store_select_timezone}    id:time_zone    #. 店铺时区
