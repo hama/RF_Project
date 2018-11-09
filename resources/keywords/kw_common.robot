@@ -7,6 +7,7 @@ Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 Library           ${CURDIR}/../../lib/customlib/kwcollection.py
 Library           ${CURDIR}/../../lib/customlib/kwcomment.py
 Library           ${CURDIR}/../../lib/customlib/kwcoupon.py
+Library           ${CURDIR}/../../lib/customlib/kwfilemanagement.py
 Library           ${CURDIR}/../../lib/customlib/kworder.py
 Library           ${CURDIR}/../../lib/customlib/kwpayment.py
 Library           ${CURDIR}/../../lib/customlib/kwproduct.py

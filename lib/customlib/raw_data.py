@@ -1008,3 +1008,9 @@ store_update_data = {
     "country": "",
     "province": "ALL"
 }
+
+file_list_data = {
+    'folder': 'product',
+    'page': '1',
+    'limit': '10'
+}

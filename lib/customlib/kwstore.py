@@ -80,27 +80,6 @@ def add_upfiles_py(cookie=init_cookie):
         return False
 
 
-def del_upfiles_py(cookie=init_cookie):
-    del_url = home_page_url + "/api/file/remove"
-    res_list = []
-    lst_url = home_page_url + "/api/file/list?folder=product&page=1&limit=50"
-    # .请求列表的数据
-    new_str = ""
-    res = requests.get(url=lst_url, headers={"cookie": cookie['b_cookie']})
-    for x in json.loads(res.content)['data']:
-        # res_list.append(str(x['path']))
-        new_str += str(x['path']) + ","
-    # .请求删除接口
-    try:
-        res_data = requests.post(url=del_url, headers={"cookie": cookie['b_cookie']}, json={"path": new_str})
-        if json.loads(res_data.content)['state'] != 0:
-            return False
-        return True
-    except Exception as e:
-        print e
-        return False
-
-
 if __name__ == '__main__':
     print set_store_info_with_conf_py()
 
