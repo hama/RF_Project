@@ -33,6 +33,7 @@ if __name__ == '__main__':
     #            '"password": "lansejiebo@123","db": "shop_","charset": "utf8"}')
 
     if 'all_china' in args.host:
+        print "!!!!!!!!!!all_china！！！！！！！！！！！！！！！！！！！！！"
         # --------------------配置国内B端映射 host 记录 47.106.30.167 admin.shoplazza.com--------------------
         # --------------------配置国内C端映射 host 记录 47.106.30.164 random_str.myshoplaza.com--------------------
         os.popen('echo "47.106.30.167 admin.shoplazza.com" >> /etc/hosts')
@@ -42,6 +43,7 @@ if __name__ == '__main__':
                    '"password": "readonly@123","db": "service","charset": "utf8"}')
 
     if 'new' in args.user:
+        print "!!!!!!!!!!new！！！！！！！！！！！！！！！！！！！！！"
         # 使用新注册用户跑用例
         config.set("common_account", "datas_contact", random_str + "@autotest.com")
         config.set("common_account", "datas_domain", random_str)
@@ -51,6 +53,7 @@ if __name__ == '__main__':
         # 注册用户之后等待10s，等用户生效
         time.sleep(10)
     else:
+        print "!!!!!!!!!!some account！！！！！！！！！！！！！！！！！！！！！"
         # 使用指定账号跑用例
         config.set("common_account", "datas_contact", args.user)
         config.set("common_account", "datas_domain", args.domain)
