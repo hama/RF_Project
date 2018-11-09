@@ -2,7 +2,7 @@
 export PATH=$PATH:/usr/local/bin/
 echo "start:"`date` >> ~/cron.log
 
-if [ ! $1 ]
+if [ ! -n "$1" ]
 	RUN_SH_IN_DOCKER='run_develop_in_docker.sh'
 
 TIMESTAMP=`date "+%Y%m%d%H%M%S"`
