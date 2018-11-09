@@ -17,7 +17,7 @@ checkout_015
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
 	Add Address Common Step
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}[1]    + $10.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}[1]    + 10.00USD
 
 checkout_018
     [Documentation]    验证checkout shipping页面，订单详情中tax显示正常 >
@@ -28,11 +28,11 @@ checkout_018
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_taxPrice}   + $266.40
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_taxPrice}   + 266.40USD
 
 # 由于未埋点，因此元素不好定位，测试不全面。discount code出现于不出现，导致下标定位失败
 checkout_024
-    [Documentation]    验证checkout shipping页面，total显示正常 > "1.C端购买商品进入checkout shipping页面,2.信息填写栏选择国家 中国,3.选择物流方案：方案1,4.使用优惠码AAA001,5.此订单价格为：,,subtotal：$50.00,shipping：+ $2.00,discount code：- $10.00,tax: + $25.00,6.查看价格详情total"
+    [Documentation]    验证checkout shipping页面，total显示正常 > "1.C端购买商品进入checkout shipping页面,2.信息填写栏选择国家 中国,3.选择物流方案：方案1,4.使用优惠码AAA001,5.此订单价格为：,,subtotal：$50.00,shipping：+ $2.00,discount code：- 10.00USD,tax: + $25.00,6.查看价格详情total"
     [Tags]    P0    threshold    smoke          #后面再做调整
     #添加一个价格10 物流
     kwshipping.add_price_fee_shipping_py
@@ -44,8 +44,8 @@ checkout_024
     Add Address Common Step
     Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${code}
     Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_subtotalPrice}    $444.00
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    $710.40
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_subtotalPrice}    444.00USD
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    710.40USD
 
 checkout_079
     [Documentation]    验证checkout shipping页面，选择国家后，shipping delivery栏会出现此国家对应的运费方案  >  1.C端购买商品women进入checkout shipping页面  2.选择国家中国  3.查看shipping delivery栏
@@ -113,7 +113,7 @@ checkout_087
     Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_listShippingAndDeliveryName}[0]    quantity_fee
 
 checkout_090
-    [Documentation]    验证B端运费方案中，勾选免运费时，checkout shipping页面，运费栏显示的运费价格为$0.00 >1.B端物流方案中添加物流物流，国家：中国，运费：运费1 不限价格 免运费2.C端购买任意商品进入checkout shipping页面 3.国家选择中国4.查看shipping delivery栏运费
+    [Documentation]    验证B端运费方案中，勾选免运费时，checkout shipping页面，运费栏显示的运费价格为0.00USD >1.B端物流方案中添加物流物流，国家：中国，运费：运费1 不限价格 免运费2.C端购买任意商品进入checkout shipping页面 3.国家选择中国4.查看shipping delivery栏运费
     [Tags]    P0    threshold    smoke
     #.创建运费方案0  中国方案  运费价格0
     kwshipping.add_shipping_with_conf_py
@@ -122,7 +122,7 @@ checkout_090
     #.选择中国
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_province}    Beijing
-    Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_listShippingAndDeliveryFee}[0]    $0.00
+    Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_listShippingAndDeliveryFee}[0]    0.00USD
 
 checkout_097
     [Documentation]    验证checkout shipping页面，选择没有省份的国家后，点击payment method可以跳转到支付页面 > 1.shipping address中选择国家Bouvet Island  2.其他输入框输入合法内容 3.点击payment method按钮
@@ -159,7 +159,7 @@ checkout_107
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutPayment_text_shippingPrice}    + $10.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutPayment_text_shippingPrice}    + 10.00USD
 
 checkout_113
     [Documentation]   验证checkout 支付页面，total显示正常
@@ -173,7 +173,7 @@ checkout_113
     Wait And Click Element   ${locatorC_checkoutShipping_button_apply}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_totalPrice}     $710.40
+    Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_totalPrice}     710.40USD
 
 checkout_118
     [Documentation]   验证checkout 支付页面，payment栏，shipping method显示正常  >  1.购买商品进入checkout shipping页面  2.选择运费方案：运费1   3.进入支付页面查看payment栏，shipping methoda
@@ -182,7 +182,7 @@ checkout_118
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_listShippingAndDeliveryFee}     $10.00
+    Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_listShippingAndDeliveryFee}     10.00USD
     Wait And Click Element      ${locatorC_checkoutShipping_button_paymentMethod}
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutPayment_text_shippingMethod}     price_fee
 

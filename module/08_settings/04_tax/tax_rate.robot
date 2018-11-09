@@ -76,7 +76,7 @@ taxPrice007
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_country}
     Add Address Common Step
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    $444.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    444.00USD
     #还原初始化物流信息
     kwshipping.del_all_shipping_py
     kwshipping.add_shipping_with_conf_py
@@ -100,7 +100,7 @@ taxPrice008
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
     Wait And Select From List By Label     ${locatorC_checkoutShipping_address_select_province}    Beijing
     #查看商品扣除60%税费后的金额
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    $710.40
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    710.40USD
 
 taxPrice009
     [Documentation]    测试税金界面税金计算方式提示功能正常
@@ -160,10 +160,10 @@ taxPrice013
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
     Wait And Select From List By Label     ${locatorC_checkoutShipping_address_select_province}    Beijing
     #查看商品扣除60%税费后的金额
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    $710.40
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    710.40USD
     Reload Page And Start Ajax
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    United States
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    $444.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    444.00USD
     #初始化物流信息
     kwshipping.del_all_shipping_py
     kwshipping.add_shipping_with_conf_py
@@ -200,10 +200,10 @@ taxPrice014
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
     Wait And Select From List By Label     ${locatorC_checkoutShipping_address_select_province}    Beijing
     #查看商品扣除60%税费后的金额
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    $710.40
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    710.40USD
     Reload Page And Start Ajax
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    Bouvet Island
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    $444.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    444.00USD
     kwshipping.del_all_shipping_py
     kwshipping.add_shipping_with_conf_py
 
@@ -235,11 +235,11 @@ taxPrice015
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
     Wait And Select From List By Label     ${locatorC_checkoutShipping_address_select_province}    Beijing
     #查看商品扣除60%税费后的金额
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    $488.40
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    488.40USD
     Reload Page And Start Ajax
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    Antigua and Barbuda
     Wait And Select From List By Label     ${locatorC_checkoutShipping_address_select_province}    Saint George
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    $532.80
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    532.80USD
     #初始化物流信息
     kwshipping.del_all_shipping_py
     kwshipping.add_shipping_with_conf_py
@@ -284,12 +284,12 @@ taxPrice018
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
     Wait And Select From List By Label     ${locatorC_checkoutShipping_address_select_province}    Guangdong
     #查看城市税金 20% 商品显示的价格
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    $532.80
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    532.80USD
     Reload Page And Start Ajax
     #查看国家税金 10% 商品显示的价格
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
     Wait And Select From List By Label     ${locatorC_checkoutShipping_address_select_province}    Beijing
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}      $488.40
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}      488.40USD
     #初始化物流信息
     kwshipping.del_all_shipping_py
     kwshipping.add_shipping_with_conf_py
@@ -309,12 +309,12 @@ taxPrice019
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
     Wait And Select From List By Label     ${locatorC_checkoutShipping_address_select_province}    Guangdong
     #查看没有设置税金的城市显示
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    $444.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    444.00USD
     Reload Page And Start Ajax
     #查看设置税金的城市显示
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
     Wait And Select From List By Label     ${locatorC_checkoutShipping_address_select_province}    Beijing
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}      $532.80
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}      532.80USD
 
 taxPrice020
     [Documentation]    测试城市税金设置窗口保存按钮  > 1.点击税金列表中任何一个国家的设置按钮  2.输入城市的税金  3.点击保存
