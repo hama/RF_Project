@@ -34,7 +34,7 @@ ${locatorB_couponCodeNew_input_noLimit}    dom:document.querySelectorAll('[class
 ${locatorB_couponCodeNew_input_noTotalNum}    dom:document.querySelectorAll('[class="ant-checkbox-wrapper"] [class*="ant-checkbox"]')[4]      #.优惠券 数量 不限多选按钮 未选中状态下
 ${locatorB_couponCodeNew_text_input_toLimited}    dom:document.querySelectorAll('[class="ant-checkbox-wrapper"] [class*="ant-checkbox"]')[6]      #.优惠券 每人限用    未选中状态下
 ${locatorB_couponCodeNew_input_limited}    dom:document.querySelectorAll('[class="ant-checkbox-wrapper"] span[class*="ant-checkbox"]')[4]       #.优惠券 每人限用 不限按钮
-${locatorB_couponCodeNew_text_input_preferential}    dom:document.querySelectorAll('[class*="ant-input range_value"]')[0]      #.优惠门槛 满多少
+${locatorB_couponCodeNew_text_input_preferential}    dom:document.querySelectorAll('[class~="range_value"]')[0]      #.优惠门槛 满多少
 ${locatorB_couponCodeNew_text_input_notThreshold}    dom:document.querySelectorAll('[class="ant-radio"]')     #.优惠门槛 单选 无门槛 (未选中)
 ${locatorB_couponCodeNew_text_input_discount}    dom:document.querySelectorAll('[id="code_value"]')[0]      #.折扣比例 输入
 
