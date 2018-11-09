@@ -98,7 +98,6 @@ do
 done
 
 
-arr=( "${arr[@]}" \ "new_element" )
 ARGS=()
 if [ "$TEST_URL" ]
 then
@@ -115,8 +114,8 @@ fi
 
 if [ "$TEST_URL" -o "$TEST_ACCOUNT" -o "$TEST_HOST" ]
 then
-	echo "$ARGS"
-	python2.7 lib/customlib/initevn.py "$ARGS"
+	echo "${ARGS[@]}"
+	python2.7 lib/customlib/initevn.py "${ARGS[@]}"
 else
 	echo 'not TEST_URL and TEST_ACCOUNT and TEST_HOST'
 fi
