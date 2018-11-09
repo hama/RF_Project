@@ -8,7 +8,6 @@ Resource          var_order.robot
 Resource          var_product_collection.robot
 Resource          var_product_comment.robot
 Resource          var_product_management.robot
-Resource          var_seoimage.robot
 Resource          var_settings_page.robot
 Resource          var_shipping.robot
 Resource          var_store.robot
