@@ -47,7 +47,7 @@ def del_all_menus_py(cookie=init_cookie):
     menus_list = menus_url_list_py()['content']['data']['list']
     for menus in menus_list:
         id = menus['id']
-        if id != 'header' and id != 'header':
+        if id != 'header' and id != 'footer':
             menus_delete_py({'id': id}, cookie=cookie)
 
 
