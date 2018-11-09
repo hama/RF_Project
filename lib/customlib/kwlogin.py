@@ -87,7 +87,7 @@ class Login():
 
         url = self.home_page_url + "/api/user/signup"
 
-        time.sleep(10)
+        time.sleep(5)
         datas_vcode = self.get_latest_vcode_fromdb(self.datas_contact)  # 获取验证码
         time.sleep(5)
         datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_domain,
@@ -109,8 +109,8 @@ class Login():
         url = self.home_page_url + "/api/user/validate-signup"
         datas = {"contact": self.datas_contact, "username": self.datas_domain}
         response_data = requests.post(url=url, headers={}, data=datas)
-        print "validate_signup_py:" + str(datas)
-        print "/api/user/validate-signup: "+response_data.content
+        # print "validate_signup_py:" + str(datas)
+        # print "/api/user/validate-signup: "+response_data.content
         if response_data is None or response_data.status_code != 200:
             return False
         else:
@@ -127,7 +127,7 @@ class Login():
             print "db_config_data:" + str(db_config)
             db_config['connect_timeout'] = 30
             conn = pymysql.connect(**db_config)
-            print "get_latest_vcode_fromdb: "+str(conn)
+            # print "get_latest_vcode_fromdb: "+str(conn)
             curs = conn.cursor()
             sql = "SELECT code FROM user_validate WHERE `contact` = '%s' order by create_time desc limit 1" % (contact)
             curs.execute(sql)

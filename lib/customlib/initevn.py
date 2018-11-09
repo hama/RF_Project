@@ -12,8 +12,8 @@ if __name__ == '__main__':
     # 设置执行入参
     parser = argparse.ArgumentParser(description='manual to this script')
     parser.add_argument('--url', type=str, default='https://admin.shoplazza.com')
-    parser.add_argument('--user', type=str, default='17665076519')
-    parser.add_argument('--domain', type=str, default='homer')
+    parser.add_argument('--user', type=str, default='new')
+    parser.add_argument('--domain', type=str, default='GL92fpr')
     parser.add_argument('--host', type=str, default='all_usa')
     args = parser.parse_args()
     # 设置用户信息

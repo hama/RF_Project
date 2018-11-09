@@ -31,11 +31,11 @@ docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_1 --
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/02_order/* \
         module/08_settings/01_basic_info/store.robot \
         module/08_settings/03_shipping/shipping.robot' \
-        -U https://sandbox-admin.shoplazza.com -R -A -D $LOG_PATH_1"&
+        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_1"&
 
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_2 --rm registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/03_product/*' \
-        -U https://sandbox-admin.shoplazza.com -R -A -D $LOG_PATH_2"&
+        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_2"&
 
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_3 --rm registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/00_login/login.robot \
@@ -45,7 +45,7 @@ docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_3 --
         module/09_checkout/01_Checkout_Normal_Page/* \
         module/08_settings/04_tax/tax_rate.robot \
         module/08_settings/07_file_management/file_management.robot' \
-        -U https://sandbox-admin.shoplazza.com -R -A -D $LOG_PATH_3"&
+        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_3"&
 
 sleep 300
 
