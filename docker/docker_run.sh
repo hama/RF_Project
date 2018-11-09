@@ -47,8 +47,7 @@ docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_3 --
         -U https://admin.shoplazza.com -R -A -D $LOG_PATH_3"&
 
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_4 --rm registry.shoplazza.com/library/uitest:v7 \
-        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/03_product/04_seoimg/* \
-        module/03_product/02_product_collection/* \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/03_product/02_product_collection/* \
         module/03_product/03_product_comment/*' \
         -U https://admin.shoplazza.com -R -A -D $LOG_PATH_4"&
 
