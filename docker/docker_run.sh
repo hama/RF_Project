@@ -2,6 +2,9 @@
 export PATH=$PATH:/usr/local/bin/
 echo "start:"`date` >> ~/cron.log
 
+if [ ! $1 ]
+	RUN_SH_IN_DOCKER='run_master_in_docker.sh'
+
 TIMESTAMP=`date "+%Y%m%d%H%M%S"`
 LOG_PATH="/var/log/uitest_log/$TIMESTAMP"
 LOG_PATH_1="$LOG_PATH""/1"
@@ -23,17 +26,17 @@ fi
 
 # 开启docker容器跑对应用例,新创建用户
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_1 --rm registry.shoplazza.com/library/uitest:v5 \
-        bash -c "/opt/run_in_docker.sh -M 'module/02_order/* \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/02_order/* \
         module/08_settings/01_basic_info/store.robot \
         module/08_settings/03_shipping/shipping.robot' \
         -U https://sandbox-admin.shoplazza.com -R -A -D $LOG_PATH_1"&
 
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_2 --rm registry.shoplazza.com/library/uitest:v5 \
-        bash -c "/opt/run_in_docker.sh -M 'module/03_product/*' \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/03_product/*' \
         -U https://sandbox-admin.shoplazza.com -R -A -D $LOG_PATH_2"&
 
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_3 --rm registry.shoplazza.com/library/uitest:v5 \
-        bash -c "/opt/run_in_docker.sh -M 'module/00_login/login.robot \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/00_login/login.robot \
         module/00_login/logout.robot \
         module/06_marketing/01_coupon_code/coupon_code_smoke.robot \
         module/07_decoration/02_checkout_process/setings_checkout.robot \
@@ -70,7 +73,7 @@ echo "end:"`date` >> ~/cron.log
 #
 ## 开启docker容器跑对应用例,新创建用户
 #docker run -i -v /dev/shm:/dev/shm --rm registry.shoplazza.com/library/uitest:v5 \
-#        bash -c "/opt/run_in_docker.sh -M 'module/00_login/login.robot \
+#        bash -c "/opt/run_develop_in_docker.sh -M 'module/00_login/login.robot \
 #                module/00_login/logout.robot \
 #                module/02_order/* \
 #                module/03_product/* \
