@@ -146,7 +146,7 @@ ${file_products_addImg5}    ${CURDIR}/../images/image05.png    # 添加商品图
 
 
 # C端
-${locatorC_icon_card}    dom:document.querySelectorAll("[class*='sep-font-cart-thin']")[0]    #.checkout购物车图标按钮
+${locatorC_icon_card}    dom:document.querySelectorAll("[href="/cart"]")[0]    #.checkout购物车图标按钮
 ${locatorC_input_email}    id:userName    #会员登录-email输入框
 
 ${locatorC_products_shippingAddress_payment_button_completeOrder}    dom:document.querySelectorAll('[class="btn btn-primary payment-footer__btn"]')    #payment-->complete order按钮

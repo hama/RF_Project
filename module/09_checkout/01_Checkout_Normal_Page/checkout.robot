@@ -14,7 +14,7 @@ checkout_001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0    threshold    smoke
     Wait And Click Element    ${locatorC_productDetail_button_addToCart}
-    Wait And Click Element    ${locatorC_icon_card}
+    Sleep And Click Element    ${locatorC_icon_card}
     Wait And Click Element    ${locatorC_cart_button_checkout}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_order}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_address}
@@ -171,7 +171,7 @@ checkout_094
     [Documentation]    验证从购物车进入checkout shipping页面后，点击return可返回购物车 > 1.C端将任意商品加入购物车 2.进入购物车点击checkout按钮进入checkout shipping页面 3.点击return
     [Tags]    P0    threshold    smoke
     Wait And Click Element   ${locatorC_productDetail_button_addToCart}
-    Sleep And Click Element   ${locatorC_icon_card}
+    Sleep And Click Element    ${locatorC_icon_card}
     Wait And Click Element   ${locatorC_cart_button_checkout}
     Wait Until Page Contains Text    Order summary
     #.返回
