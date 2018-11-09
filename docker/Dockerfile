@@ -24,7 +24,8 @@ RUN echo && cd /home  \
 RUN mkdir -p ~/.ssh && mkdir -p /usr/share/zoneinfo/Asia
 
 COPY /chromedriver /usr/local/bin
-COPY /run_in_docker.sh /opt/
+COPY /run_develop_in_docker.sh /opt/
+COPY /run_master_in_docker.sh /opt/
 COPY /id_rsa /root/.ssh/id_rsa
 COPY /known_hosts /root/.ssh/known_hosts
 COPY /Shanghai /usr/share/zoneinfo/Asia/Shanghai

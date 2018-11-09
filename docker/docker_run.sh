@@ -25,17 +25,17 @@ then
 fi
 
 # 开启docker容器跑对应用例,新创建用户
-docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_1 --rm registry.shoplazza.com/library/uitest:v5 \
+docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_1 --rm registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/02_order/* \
         module/08_settings/01_basic_info/store.robot \
         module/08_settings/03_shipping/shipping.robot' \
         -U https://sandbox-admin.shoplazza.com -R -A -D $LOG_PATH_1"&
 
-docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_2 --rm registry.shoplazza.com/library/uitest:v5 \
+docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_2 --rm registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/03_product/*' \
         -U https://sandbox-admin.shoplazza.com -R -A -D $LOG_PATH_2"&
 
-docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_3 --rm registry.shoplazza.com/library/uitest:v5 \
+docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_3 --rm registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/00_login/login.robot \
         module/00_login/logout.robot \
         module/06_marketing/01_coupon_code/coupon_code_smoke.robot \
