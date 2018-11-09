@@ -209,7 +209,7 @@ coupon_code108
     Sleep    2
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Sleep    2
-    Element Attribute Should Be Equal With Wait    ${locatorB_couponCodeNew_input_limited}    class    ant-checkbox ant-checkbox-checked
+    Element Attribute Should Contain With Wait    ${locatorB_couponCodeNew_input_limited}    class    ant-checkbox ant-checkbox-checked
 
 coupon_code116
     [Documentation]    验证新建优惠码界面，优惠类型为 折扣券，优惠门槛 输入框中输入合法内容时，可保存成功

@@ -131,14 +131,15 @@ ${user_default_inviteCode}    ${datas_invite_code}
 ### keybord_key
 ${keybord_enter}    \\13
 ${keybord_delete}    \\46
+${keybord_tab}    \\9
 ### 注册用户
 ${register_contact}    gt1zwkp@autotest.com
 ${register_domain}    gt1zwkp
 ${register_pwd}    ${datas_password}
 
 ### 图片文件
-${file_products_addImg}    ${CURDIR}/../images/image02.jpg    # 添加商品图片
-${file_products_addImg2}    ${CURDIR}/../images/image01.jpg    # 添加商品图片
+${file_products_addImg}    ${CURDIR}/../images/image01.jpg    # 添加商品图片
+${file_products_addImg2}    ${CURDIR}/../images/image02.jpg    # 添加商品图片
 ${file_products_addImg3}    ${CURDIR}/../images/image03.jpeg    # 添加商品图片
 ${file_products_addImg4}    ${CURDIR}/../images/image04.gif    # 添加商品图片
 ${file_products_addImg5}    ${CURDIR}/../images/image05.png    # 添加商品图片

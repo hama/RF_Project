@@ -126,9 +126,12 @@ def activate_payment_credit_card_py(cookie=init_cookie):
     # 确保已绑定credit card账号
     is_binding = is_binding_account(cookie=cookie)
     if is_binding == None:
-        # 绑定credit card账号
-        data00 = copy.deepcopy(payment_channel_data)
+        # 选择指定支付方式
+        data00 = copy.deepcopy(payment_channel_change_channel_data)
         payment_channel_py(data00, cookie=cookie)
+        # 绑定credit card账号
+        data01 = copy.deepcopy(payment_channel_data)
+        payment_channel_py(data01, cookie=cookie)
 
     data = copy.deepcopy(payment_method_activation_data)
     data['method_is_enable'] = 1

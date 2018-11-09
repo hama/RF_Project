@@ -80,12 +80,16 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
     设置邮件格式&内容
     :return:
     '''
+    hosts = os.popen('cat /etc/hosts | grep "aaaaa"').read()
+    if hosts:
+        hosts = '已配/etc/hosts:\n' + hosts
     # 文字
     html = """
-    <p>================截图=====================</p>
+    %s
+    <p>=====================截图=====================</p>
     <img src="cid:image1"/>
-    <p>=========================================</p>
-    """
+    <p>=============================================</p>
+    """ % (hosts)
     msgText = MIMEText(html, 'html', 'utf-8')
     msg.attach(msgText)
 

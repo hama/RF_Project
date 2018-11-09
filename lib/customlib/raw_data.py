@@ -467,6 +467,12 @@ payment_channel_data = {
     "payment_channel": "ipaylinks"
 }
 
+payment_channel_change_channel_data = {
+    "channel_is_enable": "1",
+    "payment_method": "credit_card",
+    "payment_channel": "ipaylinks"
+}
+
 cart_add_data = {
     'product_id': '601',
     'variant_id': '641',
@@ -1001,4 +1007,10 @@ store_update_data = {
     'updated_at': '2018-10-20 16:40:10',
     "country": "",
     "province": "ALL"
+}
+
+file_list_data = {
+    'folder': 'product',
+    'page': '1',
+    'limit': '10'
 }

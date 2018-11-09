@@ -3,7 +3,7 @@ Documentation     菜单导航
 Suite Setup       Navigation Suite Setup
 Suite Teardown    Navigation Suite Teardown
 Test Setup        Navigation Test Setup
-Test Teardown     Teardown Test Case
+Test Teardown     Navigation Test Teardown
 Force Tags        navigation_menu
 Resource          ../../../resources/keywords/kw_common.robot
 
@@ -25,129 +25,95 @@ navigation_menu_003
     Text Of Element Should Contain With Wait    ${locatorB_menus_list_menuList}[0]     顶部导航菜单
     Text Of Element Should Contain With Wait    ${locatorB_menus_list_menuList}[1]     页尾菜单
 
-navigation_menu_004
-    [Documentation]      新增菜单按钮的展示
-    [Tags]    P0    threshold
-    Wait Until Page Contains Locator    ${locatorB_menus_button_addMenu}
-    Text Of Element Should Contain With Wait     ${locatorB_menus_button_addMenu}     新增菜单
-
 navigation_menu_005
-    [Documentation]      新增菜单按钮的展示
+    [Documentation]      点击新增菜单按钮
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_menus_button_addMenu}
+    Wait Until Page Contains Locator    ${locatorB_menusAdd_input_menuName}
     Wait Until Page Contains Locator    ${locatorB_menusAdd_button_addMenuDirectory}
 
 navigation_menu_007
-    [Documentation]      点击系统菜单右侧的编辑按钮
+    [Documentation]      点击系统菜单（顶部导航菜单）右侧的编辑按钮
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_menusAdd_link_editorMenu}[0]
+    Wait Until Page Contains Text    菜单名称
+    Wait Until Page Contains Text    菜单目录结构
+
+navigation_menu_007.1
+    [Documentation]      点击系统菜单（页尾菜单）右侧的编辑按钮
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_menusAdd_link_editorMenu}[1]
+    Wait Until Page Contains Text    菜单名称
     Wait Until Page Contains Text    菜单目录结构
 
 navigation_menu_008
     [Documentation]      点击非系统默认菜单右侧的编辑按钮
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_menus_button_addMenu}
-    Wait And Input Text    ${locatorB_menusAdd_input_menuName}     化妆品系列
-    Wait And Click Element    ${locatorB_button_save00}
-    Wait Until Page Contains Text    保存成功
-    Go To Navigation Menu Page
+    Add Navigation Menu With Wait    化妆品系列
     Wait And Click Element    ${locatorB_menusAdd_link_editorMenu}[2]
-    ${menuName}     Wait And Get Value     ${locatorB_menusAdd_input_menuName}
-    Should Be Equal      ${menuName}      化妆品系列
-
+    Value Of Element Should Be Equal With Wait    ${locatorB_menusAdd_input_menuName}    化妆品系列
 
 navigation_menu_009
     [Documentation]      点击菜单名称
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_menus_button_addMenu}
-    Wait And Input Text    ${locatorB_menusAdd_input_menuName}     减肥产品系列
-    Wait And Click Element    ${locatorB_button_save00}
-    Wait Until Page Contains Text    保存成功
-    Go To Navigation Menu Page
+    Add Navigation Menu With Wait    减肥产品系列
     Wait And Click Element    ${locatorB_menus_text_menuListName}
-    ${menuName}     Wait And Get Value     ${locatorB_menusAdd_input_menuName}
-    Should Be Equal      ${menuName}      减肥产品系列
+    Value Of Element Should Be Equal With Wait    ${locatorB_menusAdd_input_menuName}    减肥产品系列
 
 navigation_menu_010
     [Documentation]      菜单名称较短时展示
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_menus_button_addMenu}
-    Wait And Input Text    ${locatorB_menusAdd_input_menuName}     小吃系列
-    Wait And Click Element    ${locatorB_button_save00}
-    Wait Until Page Contains Text    保存成功
-    Go To Navigation Menu Page
-    ${menuName}     Wait And Get Text    ${locatorB_menus_text_menuListName}
-    Should Be Equal    ${menuName}     小吃系列
+    Add Navigation Menu With Wait    n1
+    Text Of Element Should Be Equal With Wait    ${locatorB_menus_text_menuListName}    n1
 
 navigation_menu_022
     [Documentation]      确认删除非系统菜单
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_menus_button_addMenu}
-    Wait And Input Text    ${locatorB_menusAdd_input_menuName}     菜单删除系列
-    Wait And Click Element    ${locatorB_button_save00}
-    Wait Until Page Contains Text    保存成功
-    Go To Navigation Menu Page
+    Add Navigation Menu With Wait    非系统菜单删除
     Wait And Click Element Then Confirm    ${locatorB_menusAdd_link_delMenu}
     Wait Until Page Not Contains Locator    ${locatorB_menus_list_menuList}[2]
+    Wait Until Page Not Contains Text    非系统菜单删除
 
 navigation_menu_029
     [Documentation]      新建一个菜单
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_menus_button_addMenu}
-    Wait And Input Text    ${locatorB_menusAdd_input_menuName}     新增一个菜单
-    Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
-    Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}    衣服
-    Wait And Click Element    ${locatorB_button_save00}
-    Wait Until Page Contains Text    保存成功
-    Go To Navigation Menu Page
-    ${menuName}     Wait And Get Text    ${locatorB_menus_text_menuListName}
-    Should Be Equal    ${menuName}     新增一个菜单
-    ${menuDirectory}     Wait And Get Text    ${locatorB_menus_text_levelDirectory}
-    Should Be Equal    ${menuDirectory}     衣服
+    Add All Navigation Menu With Wait    新增一个菜单    衣服
+    Text Of Element Should Be Equal With Wait    ${locatorB_menus_text_menuListName}    新增一个菜单
+    Text Of Element Should Be Equal With Wait    ${locatorB_menus_text_levelDirectory}    衣服
 
 navigation_menu_030
     [Documentation]      新建多个菜单
     [Tags]    P0    threshold
-    :FOR    ${i}     IN RANGE   1   3    1
-     \   Wait And Click Element    ${locatorB_menus_button_addMenu}
-     \   Wait And Input Text    ${locatorB_menusAdd_input_menuName}     新增${i}个菜单
-     \   Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
-     \   Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}    衣服${i}
-     \   Wait And Click Element    ${locatorB_button_save00}
-     \   Go To Navigation Menu Page
+    Add All Navigation Menu With Wait    新增第一个菜单    衣服01
+    Add All Navigation Menu With Wait    新增第二个菜单    衣服02
+    Add All Navigation Menu With Wait    新增第三个菜单    衣服03
     Go To Navigation Menu Page
-    ${menuName}     Wait And Get Text    ${locatorB_menus_text_menuListName}
-    Should Be Equal    ${menuName}     新增2个菜单
-    ${menuName}     Wait And Get Text    ${locatorB_menus_text_menuListName1}
-    Should Be Equal    ${menuName}     新增1个菜单
+    Wait Until Page Contains Text    新增第一个菜单
+    Wait Until Page Contains Text    衣服01
+    Wait Until Page Contains Text    新增第二个菜单
+    Wait Until Page Contains Text    衣服02
+    Wait Until Page Contains Text    新增第三个菜单
+    Wait Until Page Contains Text    衣服03
 
 navigation_menu_032
     [Documentation]      保存菜单
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_menus_button_addMenu}
-    Wait And Input Text    ${locatorB_menusAdd_input_menuName}     小吃系列
-    Wait And Click Element    ${locatorB_button_save00}
-    Wait Until Page Contains Text    保存成功
-    Go To Navigation Menu Page
+    Add Navigation Menu With Wait    小吃系列
     Wait And Click Element    ${locatorB_menus_list_menuList}[2]
-    Wait And Input Text    ${locatorB_menusAdd_input_menuName}     ${empty}
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     修改后的小吃系列
     Wait And Click Element    ${locatorB_button_save00}
     Go To Navigation Menu Page
-    ${menuName}     Wait And Get Text    ${locatorB_menus_text_menuListName}
-    Should Be Equal    ${menuName}     修改后的小吃系列
+    Text Of Element Should Be Equal With Wait    ${locatorB_menus_text_levelDirectory}    修改后的小吃系列
 
 navigation_menu_035
     [Documentation]      未更改页面内容点击返回按钮
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_menus_button_addMenu}
-    Wait And Input Text    ${locatorB_menusAdd_input_menuName}     小吃系列返回效果
-    Wait And Click Element    ${locatorB_button_save00}
-    Wait Until Page Contains Text    保存成功
-    Go To Navigation Menu Page
+    Add Navigation Menu With Wait    小吃系列
     Wait And Click Element    ${locatorB_menus_list_menuList}[2]
+    Wait And Input Text    ${locatorB_menusAdd_input_menuName}     修改后的小吃系列
     Wait And Click Element    ${locatorB_menusAdd_icon_returnMenu}
-    Text Of Element Should Contain With Wait      ${locatorB_menus_list_menuList}[2]    小吃系列返回效果
+    Wait Alert Should Be Present And Accept    页面上有未保存内容，是否确定退出?
+    Text Of Element Should Be Equal With Wait      ${locatorB_menus_text_menuListName}    小吃系列
 
 navigation_menu_049
     [Documentation]      点击‘添加菜单目录’按钮
@@ -222,29 +188,38 @@ navigation_menu_065
 navigation_menu_066
     [Documentation]      选择跳转链接为专辑详情页
     [Tags]    P0    threshold
+    kwcollection.del_all_collections_py
+    kwcollection.add_collection_with_pic_py
     Wait And Click Element    ${locatorB_menus_button_addMenu}
     Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
     Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     一级菜单目录
     Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[2]
-    Wait Until Page Contains Text    专辑选择
+    Long Press Element With Wait    ${locatorB_menusAdd_span_collectionText}
+    Wait And Click Element    ${locatorB_menusAdd_button_collectionConfirm}
+    Text Of Element Should Contain With Wait     ${locatorB_menusAdd_select_linkPageInput}[0]    专辑详情
 
 navigation_menu_067
     [Documentation]      选择跳转链接为商品详情页
     [Tags]    P0    threshold
+    kwproduct.del_all_products_py
+    kwproduct.add_launched_product_py
     Wait And Click Element    ${locatorB_menus_button_addMenu}
     Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
     Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     一级菜单目录
     Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[3]
-    Wait Until Page Contains Text     选择商品
+    Long Press Element With Wait    ${locatorB_menusAdd_span_collectionText}
+    Wait And Click Element    ${locatorB_menusAdd_button_collectionConfirm}
+    Text Of Element Should Contain With Wait     ${locatorB_menusAdd_select_linkPageInput}[0]    商品详情
 
-navigation_menu_068
-    [Documentation]      选择跳转链接为自定义页面
-    [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_menus_button_addMenu}
-    Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
-    Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     一级菜单目录
-    Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[4]
-    Wait Until Page Contains Text     页面选择
+#navigation_menu_068
+#    [Documentation]      选择跳转链接为自定义页面
+#    [Tags]    P0    threshold
+#    Wait And Click Element    ${locatorB_menus_button_addMenu}
+#    Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
+#    Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     一级菜单目录
+#    Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[4]
+#    sleep    4
+#    Wait Until Page Contains Text     页面选择
 
 navigation_menu_069
     [Documentation]      选择跳转链接为自定义URL
@@ -253,7 +228,9 @@ navigation_menu_069
     Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
     Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     一级菜单目录
     Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[5]
-    Wait Until Page Contains Text     自定义链接
+    Wait And Input Text    ${locatorB_menusAdd_button_writeUrl}    http://www.xxxxx.com
+    Wait And Click Element    ${locatorB_menusAdd_button_collectionConfirm}
+    Text Of Element Should Contain With Wait     ${locatorB_menusAdd_select_linkPageInput}[0]    自定义URL
 
 
 

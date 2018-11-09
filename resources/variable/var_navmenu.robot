@@ -34,6 +34,13 @@ ${locatorB_menusAdd_select_linkPageInput}    dom:document.querySelectorAll('[cla
 ${locatorB_menusAdd_text_addSecondaryDirectory}    dom:document.querySelectorAll('[class*="add_menu_icon"]')     #.添加二级目录
 ${locatorB_menusAdd_text_delDirectory}    dom:document.querySelectorAll('[class*="delete_menu_icon"]')     #.删除二级目录
 
+#popUp
+${locatorB_menusAdd_select_collection}    dom:document.querySelectorAll("[class='ant-modal-content']")    #. 增加目录 弹窗
+${locatorB_menusAdd_span_collectionText}    dom:document.querySelectorAll(" [class*='ant-radio-group'] [class='ant-radio-inner']")[0]    #. 增加目录 弹窗  第一个内容
+${locatorB_menusAdd_button_collectionConfirm}    ${locatorB_popUps_button_footermiddle}    #. 增加目录 弹窗  添加按钮
+${locatorB_menusAdd_button_writeUrl}    dom:document.querySelectorAll('[class="ant-input"]')[1]    # 增加目录 弹窗 链接地址输入框
+
+
 
 
 
