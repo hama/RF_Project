@@ -7,7 +7,7 @@
 UploadFile Suite Setup
     [Documentation]
     Login With Default User
-    kwstore.del_upfiles_py
+    kwfilemanagement.del_all_file_py
 
 UploadFile Suite Teardown
     [Documentation]
@@ -24,11 +24,6 @@ UploadFile Case Teardown
 
 
 
-
-Common Suite
-    [Documentation]    公共suite
-    Login With Default User
-    Wait Del Upfile
 
 DelImg
     [Documentation]    删除图片方法
