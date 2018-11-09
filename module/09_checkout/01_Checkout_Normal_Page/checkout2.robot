@@ -122,7 +122,7 @@ checkout_090
     #.选择中国
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_province}    Beijing
-    Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_listShippingAndDeliveryFee}[0]    0.00USD
+    Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_listShippingAndDeliveryFee}[0]    $0.00
 
 checkout_097
     [Documentation]    验证checkout shipping页面，选择没有省份的国家后，点击payment method可以跳转到支付页面 > 1.shipping address中选择国家Bouvet Island  2.其他输入框输入合法内容 3.点击payment method按钮
@@ -182,7 +182,7 @@ checkout_118
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_listShippingAndDeliveryFee}     10.00USD
+    Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_listShippingAndDeliveryFee}     $10.00
     Wait And Click Element      ${locatorC_checkoutShipping_button_paymentMethod}
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutPayment_text_shippingMethod}     price_fee
 

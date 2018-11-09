@@ -53,7 +53,7 @@ ${locatorC_checkoutShipping_button_paymentMethod}    dom:document.querySelectorA
 ${locatorC_checkoutShipping_input_couponCode}    dom:document.querySelectorAll("[id='coupon_code_input']")[0]    #.checkout 输入优惠券框
 ${locatorC_checkoutShipping_button_couponApply}    dom:document.querySelectorAll("[id='coupon_apply']")[0]    #.checkout 填写地址页面 - 点击应用优惠券按钮
 
-${locatorC_checkoutShipping_items_listShippingAndDelivery}     dom:document.querySelectorAll('[class*="checkout-shipping-line"] [class*="row checkout-shipping-line__item"]')     #.订单物流信息运费显示
+${locatorC_checkoutShipping_items_listShippingAndDelivery}     dom:document.querySelectorAll('[class*="checkout-shipping-line"] label[class*="checkout-shipping-line__item"]')     #.订单物流信息运费显示
 ${locatorC_checkoutShipping_text_listShippingAndDeliveryName}     dom:document.querySelectorAll('[class*="checkout-shipping-line"] [class*="row checkout-shipping-line__item"] [class*="item-name"]')     #.订单物流信息运费显示
 ${locatorC_checkoutShipping_text_listShippingAndDeliveryFee}   dom:document.querySelectorAll('[class*="checkout-shipping-line"] [class*="row checkout-shipping-line__item"] [class*="item-desc"]')      #shipping delivery 运费价格
 
