@@ -313,7 +313,7 @@ Open New And Close Other Windows
 
 Focus On New Window
 	[Documentation]    聚焦到新窗口（紧跟开窗口动作之后）,并返回新窗口的handle
-	Sleep    3
+	Sleep    1
     @{new_window_handle}    Get Window Handles
     Select Window    ${new_window_handle[-1]}
     Set Window Size    1440    1080
@@ -417,6 +417,5 @@ Long Press Element With Wait
 Go To First Product C Interface
     [Documentation]    从B端，点击第一个商品的预览按钮，进入C端商品详情页
 	Go To Product Management Page
-	Sleep    3
     Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
     Focus On New Window
