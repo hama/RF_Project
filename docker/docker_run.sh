@@ -3,7 +3,7 @@ export PATH=$PATH:/usr/local/bin/
 echo "start:"`date` >> ~/cron.log
 
 if [ ! $1 ]
-	RUN_SH_IN_DOCKER='run_master_in_docker.sh'
+	RUN_SH_IN_DOCKER='run_develop_in_docker.sh'
 
 TIMESTAMP=`date "+%Y%m%d%H%M%S"`
 LOG_PATH="/var/log/uitest_log/$TIMESTAMP"
