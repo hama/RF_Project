@@ -101,15 +101,15 @@ done
 ARGS=()
 if [ "$TEST_URL" ]
 then
-	ARGS=( "${ARGS[@]}" \ --url\ "$TEST_URL" )
+	ARGS=( "${ARGS[@]}" \ --url="$TEST_URL" )
 fi
 if [ "$TEST_ACCOUNT" ]
 then
-	ARGS=( "${ARGS[@]}" \ --user\ "$TEST_ACCOUNT" )
+	ARGS=( "${ARGS[@]}" \ --user="$TEST_ACCOUNT" )
 fi
 if [ "$TEST_HOST" ]
 then
-	ARGS=( "${ARGS[@]}" \ --host\ "$TEST_HOST" )
+	ARGS=( "${ARGS[@]}" \ --host="$TEST_HOST" )
 fi
 
 if [ "$TEST_URL" -o "$TEST_ACCOUNT" -o "$TEST_HOST" ]
@@ -122,19 +122,29 @@ fi
 
 
 # 1、执行initevn.py
-#if [ "$TEST_URL" -a "$TEST_ACCOUNT" ]
+#if [ "$TEST_URL" -a "$TEST_ACCOUNT" -a "$TEST_HOST" ]
 #then
-#	echo 'TEST_URL and TEST_ACCOUNT'
-#    python2.7 lib/customlib/initevn.py --url="$TEST_URL" --user="$TEST_ACCOUNT"
-#elif [ "$TEST_URL" ]
+#	echo 'TEST_URL and TEST_ACCOUNT and TEST_HOST'
+#    python2.7 lib/customlib/initevn.py --url="$TEST_URL" --user="$TEST_ACCOUNT" --host="$TEST_HOST"
+#elif [ ! "$TEST_URL" -a "$TEST_ACCOUNT" -a "$TEST_HOST" ]
 #then
-#	echo 'TEST_URL'
-#	echo "$TEST_URL"
-#    python2.7 lib/customlib/initevn.py --url="$TEST_URL"
-#elif [ "$TEST_ACCOUNT" ]
+#    python2.7 lib/customlib/initevn.py --user="$TEST_ACCOUNT" --host="$TEST_HOST"
+#elif [ "$TEST_URL" -a ! "$TEST_ACCOUNT" -a "$TEST_HOST" ]
 #then
 #	echo 'TEST_ACCOUNT'
 #    python2.7 lib/customlib/initevn.py --user="$TEST_ACCOUNT"
+#elif [ "$TEST_URL" -a "$TEST_ACCOUNT" -a ! "$TEST_HOST" ]
+#then
+#	echo 'TEST_URL and TEST_ACCOUNT and TEST_HOST'
+#    python2.7 lib/customlib/initevn.py --url="$TEST_URL" --user="$TEST_ACCOUNT" --host="$TEST_HOST"
+#elif [ "$TEST_URL" -a "$TEST_ACCOUNT" -a "$TEST_HOST" ]
+#then
+#	echo 'TEST_URL and TEST_ACCOUNT and TEST_HOST'
+#    python2.7 lib/customlib/initevn.py --url="$TEST_URL" --user="$TEST_ACCOUNT" --host="$TEST_HOST"
+#elif [ "$TEST_URL" -a "$TEST_ACCOUNT" -a "$TEST_HOST" ]
+#then
+#	echo 'TEST_URL and TEST_ACCOUNT and TEST_HOST'
+#    python2.7 lib/customlib/initevn.py --url="$TEST_URL" --user="$TEST_ACCOUNT" --host="$TEST_HOST"
 #else
 #	echo 'not TEST_URL and TEST_ACCOUNT'
 #fi
