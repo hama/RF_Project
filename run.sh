@@ -101,15 +101,15 @@ done
 ARGS=()
 if [ "$TEST_URL" ]
 then
-	ARGS=( "${ARGS[@]}" \ --url="$TEST_URL" )
+	ARGS=( "${ARGS[@]}" " --url=$TEST_URL" )
 fi
 if [ "$TEST_ACCOUNT" ]
 then
-	ARGS=( "${ARGS[@]}" \ --user="$TEST_ACCOUNT" )
+	ARGS=( "${ARGS[@]}" " --user=$TEST_ACCOUNT" )
 fi
 if [ "$TEST_HOST" ]
 then
-	ARGS=( "${ARGS[@]}" \ --host="$TEST_HOST" )
+	ARGS=( "${ARGS[@]}" " --host=$TEST_HOST" )
 fi
 
 if [ "$TEST_URL" -o "$TEST_ACCOUNT" -o "$TEST_HOST" ]
