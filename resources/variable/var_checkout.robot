@@ -55,7 +55,7 @@ ${locatorC_checkoutShipping_button_couponApply}    dom:document.querySelectorAll
 
 ${locatorC_checkoutShipping_items_listShippingAndDelivery}     dom:document.querySelectorAll('[class*="checkout-shipping-line"] label[class*="checkout-shipping-line__item"]')     #.订单物流信息运费显示
 ${locatorC_checkoutShipping_text_listShippingAndDeliveryName}     dom:document.querySelectorAll('[class*="checkout-shipping-line"] label[class*="checkout-shipping-line__item"] [class*="item-name"]')     #.订单物流信息运费显示
-${locatorC_checkoutShipping_text_listShippingAndDeliveryFee}   dom:document.querySelectorAll('[class*="checkout-shipping-line"] label[class*="checkout-shipping-line__item"] [class*="item-desc"]')      #shipping delivery 运费价格
+${locatorC_checkoutShipping_text_listShippingAndDeliveryFee}   dom:document.querySelectorAll('[class*="checkout-shipping-line"] label[class*="checkout-shipping-line__item"] [class*="item-amount"]')      #shipping delivery 运费价格
 
 ${locatorC_checkoutShipping_button_return}    dom:document.querySelectorAll('a[class~="checkout-back"]')[0]    #shipping return 返回
 ${locatorC_checkoutShipping_button_paymentReturn}    dom:document.querySelectorAll('a[class~="payment-footer__back"]')[0]    #payment return 返回
