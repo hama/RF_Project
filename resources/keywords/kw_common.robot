@@ -7,6 +7,8 @@ Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 Library           ${CURDIR}/../../lib/customlib/kwcollection.py
 Library           ${CURDIR}/../../lib/customlib/kwcomment.py
 Library           ${CURDIR}/../../lib/customlib/kwcoupon.py
+Library           ${CURDIR}/../../lib/customlib/kwfilemanagement.py
+Library           ${CURDIR}/../../lib/customlib/kwmenus.py
 Library           ${CURDIR}/../../lib/customlib/kworder.py
 Library           ${CURDIR}/../../lib/customlib/kwpayment.py
 Library           ${CURDIR}/../../lib/customlib/kwproduct.py
@@ -29,13 +31,18 @@ Resource          kw_settings_page.robot
 Resource          kw_shipping.robot
 Resource          kw_store.robot
 Resource          kw_tax.robot
+Resource          kw_navmenu.robot
+Resource          kw_uploadfile.robot
+Resource          kw_payment_channel.robot
 
 *** Keywords ***
 Login With Default User
+    [Documentation]    默认登录用户
     New Test Suite Browser And Login    ${user_default_contact}    ${user_default_pwd}    ${user_default_domain}
 
 Login With User
     [Arguments]    ${username}    ${password}    ${domain}
+    [Documentation]    登录用户
     log    Login with ${username}
     Comment    wait until login button is visible
     Wait And Input Text    ${locatorB_login_input_account}    ${username}
@@ -67,7 +74,7 @@ Wait And Input Password
 
 Wait And Mouse Over
     [Arguments]    ${element_locator}
-    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    [Documentation]    鼠标移至指定位置，悬浮
     Wait Until Element Is Visible    ${element_locator}     10
     Mouse Over    ${element_locator}
 
@@ -103,28 +110,28 @@ Sleep ${sleeptime:\d+} Then Click Element ${element_locator}
 
 Wait And Get Text
     [Arguments]    ${element_locator}
-    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    [Documentation]    获取元素文本信息
     Wait Until Element Is Visible    ${element_locator}     10
     ${return}    Get Text    ${element_locator}
     [Return]    ${return}
 
 Sleep And Get Text
     [Arguments]    ${element_locator}    ${sleep_time}=3
-    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    [Documentation]    获取元素文本信息
     Sleep    ${sleep_time}
     ${return}    Get Text    ${element_locator}
     [Return]    ${return}
 
 Wait And Get Value
     [Arguments]    ${element_locator}
-    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    [Documentation]    获取元素的值
     Wait Until Element Is Visible    ${element_locator}     10
     ${return}    Get Value    ${element_locator}
     [Return]    ${return}
 
 Text Of Element Should Be Equal With Wait
 	[Arguments]    ${element_locator}    ${expected_text}    ${timeout}=10
-    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    [Documentation]    元素的文本信息应该等于
     ${times}    Evaluate    ${timeout}-1
     :FOR    ${i}    IN RANGE    ${timeout}
     \    ${text}    Wait And Get Text    ${element_locator}
@@ -135,7 +142,7 @@ Text Of Element Should Be Equal With Wait
 
 Text Of Element Should Contain With Wait
 	[Arguments]    ${element_locator}    ${expected_text}    ${timeout}=10
-    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    [Documentation]    元素的文本信息应该包含
     ${times}    Evaluate    ${timeout}-1
     :FOR    ${i}    IN RANGE    ${timeout}
     \    ${text}    Wait And Get Text    ${element_locator}
@@ -146,7 +153,7 @@ Text Of Element Should Contain With Wait
 
 Value Of Element Should Be Equal With Wait
 	[Arguments]    ${element_locator}    ${expected_value}    ${timeout}=10
-    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    [Documentation]    元素的值应该等于
     ${times}    Evaluate    ${timeout}-1
     :FOR    ${i}    IN RANGE    ${timeout}
     \    ${value}    Wait And Get Value    ${element_locator}
@@ -157,7 +164,7 @@ Value Of Element Should Be Equal With Wait
 
 Location Should Contain With Wait
 	[Arguments]    ${expected_value}    ${timeout}=10
-    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    [Documentation]    地址包含
     ${times}    Evaluate    ${timeout}-1
     :FOR    ${i}    IN RANGE    ${timeout}
     \    ${status}    Run Keyword And Return Status    Location Should Contain    ${expected_value}
@@ -181,7 +188,7 @@ Wait And Select From List By Clicking
 
 Wait And Select From List By Index
 	[Arguments]    ${element_selectbox}    ${index}    ${timeout}=10
-    [Documentation]
+    [Documentation]    通过下标选择元素
     Wait Until Element Is Visible    ${element_selectbox}     10
     ${times}    Evaluate    ${timeout}-1
     :FOR    ${i}    IN RANGE    ${timeout}
@@ -192,7 +199,7 @@ Wait And Select From List By Index
 
 Wait And Select From List By Label
 	[Arguments]    ${element_selectbox}    ${label}    ${timeout}=10
-    [Documentation]
+    [Documentation]    通过文本选择元素
     Wait Until Element Is Visible    ${element_selectbox}     10
     ${times}    Evaluate    ${timeout}-1
     :FOR    ${i}    IN RANGE    ${timeout}
@@ -203,7 +210,7 @@ Wait And Select From List By Label
 
 Wait And Select From List By Value
 	[Arguments]    ${element_selectbox}    ${value}    ${timeout}=10
-    [Documentation]
+    [Documentation]    通过值选择元素
     Wait Until Element Is Visible    ${element_selectbox}     10
     ${times}    Evaluate    ${timeout}-1
     :FOR    ${i}    IN RANGE    ${timeout}
@@ -214,7 +221,7 @@ Wait And Select From List By Value
 
 Wait And Click Element Then Confirm
 	[Arguments]    ${element_locator}
-    [Documentation]
+    [Documentation]      全局 确认弹窗
     Wait And Click Element    ${element_locator}
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_popUps_button_footermiddle}
     Run Keyword If    '${status}'!='False'    Wait And Click Element    ${locatorB_popUps_button_footermiddle}
@@ -222,7 +229,7 @@ Wait And Click Element Then Confirm
 
 Wait And Click Element Then Cancel
 	[Arguments]    ${element_locator}
-    [Documentation]
+    [Documentation]      全局 取消弹窗
     Wait And Click Element    ${element_locator}
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_popUps_button_footerdefault}
     Run Keyword If    '${status}'!='False'    Wait And Click Element    ${locatorB_popUps_button_footerdefault}
@@ -230,21 +237,21 @@ Wait And Click Element Then Cancel
 
 Wait And Make Switch On
 	[Arguments]    ${element_locator}
-    [Documentation]
+    [Documentation]    使switch按钮开启
     Wait Until Element Is Visible    ${element_locator}     10
 	${class} =    Get Element Attribute    ${element_locator}    class
 	Run Keyword If    '${class}'=='ant-switch'    Wait And Click Element    ${element_locator}
 
 Wait And Make Switch Off
 	[Arguments]    ${element_locator}
-    [Documentation]
+    [Documentation]    使switch按钮关闭
     Wait Until Element Is Visible    ${element_locator}     10
 	${class} =    Get Element Attribute    ${element_locator}    class
 	Run Keyword If    '${class}'=='ant-switch ant-switch-checked'    Wait And Click Element    ${element_locator}
 
 Wait Enabled And Choose File
 	[Arguments]    ${element_locator}    ${file}    ${sleep_time}=5
-    [Documentation]    封装的点击方法，等待元素可被点击时，再点击，具备失败重试
+    [Documentation]    上传文件
     Wait Until Element Is Enabled    ${element_locator}    10
     ${NORMAL_PATH}    Normalize Path  ${file}
     Choose File    ${element_locator}    ${NORMAL_PATH}
@@ -259,6 +266,7 @@ Wait Enabled And Choose File
 
 Count Of Element Should Be Equal With Wait
     [Arguments]    ${element_locator}    ${expected}    ${timeout}=10
+    [Documentation]    元素的个数应该等于
 #    ${exec_locator} =	Evaluate	'''${element_locator}'''[4:]
     ${times}    Evaluate    ${timeout}-1
     :FOR    ${i}    IN RANGE    ${timeout}
@@ -271,6 +279,7 @@ Count Of Element Should Be Equal With Wait
 
 Element Attribute Should Be Equal With Wait
     [Arguments]    ${element_locator}    ${attribute}    ${expected}    ${timeout}=10
+    [Documentation]    元素的属性应该等于
     ${times}    Evaluate    ${timeout}-1
     :FOR    ${i}    IN RANGE    ${timeout}
     \    ${attr}    Get Element Attribute    ${element_locator}    ${attribute}
@@ -281,6 +290,7 @@ Element Attribute Should Be Equal With Wait
 
 Element Attribute Should Contain With Wait
     [Arguments]    ${element_locator}    ${attribute}    ${expected}    ${timeout}=10
+    [Documentation]    元素的属性应该包含
     ${times}    Evaluate    ${timeout}-1
     :FOR    ${i}    IN RANGE    ${timeout}
     \    ${attr}    Get Element Attribute    ${element_locator}    ${attribute}
@@ -303,6 +313,7 @@ Open New And Close Other Windows
 
 Focus On New Window
 	[Documentation]    聚焦到新窗口（紧跟开窗口动作之后）,并返回新窗口的handle
+	Sleep    1
     @{new_window_handle}    Get Window Handles
     Select Window    ${new_window_handle[-1]}
     Set Window Size    1440    1080
@@ -353,49 +364,58 @@ Focus On New Window
 #    \    ...     ELSE    Exit For Loop
 
 Wait Until Page Not Contains Locator
-    [Documentation]    等待页面不包含${locator}，包含继续等待直至超时异常，不包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
     [Arguments]    ${locator}    ${timeout}=10
+    [Documentation]    等待页面不包含${locator}，包含继续等待直至超时异常，不包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
     Wait Until Page Does Not Contain Element    ${locator}    ${timeout}
 
 Wait Until Page Contains Locator
-    [Documentation]    等待页面包含${locator}，不包含继续等待直至超时异常，包含即退出。${timeout}：超时时间
     [Arguments]    ${locator}    ${timeout}=10
+    [Documentation]    等待页面包含${locator}，不包含继续等待直至超时异常，包含即退出。${timeout}：超时时间
     Wait Until Page Contains Element    ${locator}    ${timeout}
 
 Wait Until Page Contains Text
-    [Documentation]    等待页面包含${text}，不包含继续等待直至超时异常，包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
     [Arguments]    ${text}    ${timeout}=10
+    [Documentation]    等待页面包含${text}，不包含继续等待直至超时异常，包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
     Wait Until Page Contains    ${text}    ${timeout}
 
 Wait Until Page Not Contains Text
-    [Documentation]    等待页面不包含${text}，包含继续等待直至超时异常，不包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
     [Arguments]    ${text}    ${timeout}=10
+    [Documentation]    等待页面不包含${text}，包含继续等待直至超时异常，不包含即退出。${timeout}：超时时间，${retry_time}：${timeout}时间内尝试次数
     Wait Until Page Does Not Contain    ${text}    ${timeout}
 
 Wait Alert Should Be Present And Accept
-	[Documentation]    告警弹窗${text}
     [Arguments]    ${text}    ${timeout}=10
+	[Documentation]    告警弹窗${text}
     Alert Should Be Present    ${text}    ACCEPT    ${timeout}
 
 Wait Alert Should Be Present And Dismiss
-	[Documentation]    告警弹窗${text}
     [Arguments]    ${text}    ${timeout}=10
+	[Documentation]    告警弹窗${text}
     Alert Should Be Present    ${text}    DISMISS    ${timeout}
 
 Reload Page And Start Ajax
-	[Documentation]    刷新页面并添加监控
     [Arguments]    ${sleep_time}=1
+	[Documentation]    刷新页面并添加监控
 	Sleep    ${sleep_time}
 	Reload Page
 	Start Ajax Listener
-#	Sleep    ${sleep_time}
+	Sleep    5
 
 Select All Items Then Click Batch Menu
     [Documentation]    选中所有items,并且点击批量操作菜单
     Wait Exist And Click Element    ${locatorB_checkbox00}
     Wait And Click Element    ${locatorB_select_batchOperations}
 
+Long Press Element With Wait
+    [Documentation]    鼠标长按释放
+    [Arguments]    ${locator}    ${sleep_time}=5
+    Wait Until Element Is Visible    ${locator}     10
+    Mouse Down    ${locator}
+    Sleep    ${sleep_time}
+    Mouse Up    ${locator}
 
-
-
-
+Go To First Product C Interface
+    [Documentation]    从B端，点击第一个商品的预览按钮，进入C端商品详情页
+	Go To Product Management Page
+    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
+    Focus On New Window

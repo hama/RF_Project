@@ -156,22 +156,20 @@ Go To Checkout Settings Page
     ...    ELSE    Wait And Click Element    ${locatorB_decoration_checkoutSettings}
     Wait Until Page Contains    交易规则
     Location Should Be    ${url_checkoutSettings}
-    Sleep    2
+    Sleep    1
 
-Go To Application Page
-    [Documentation]    跳转到应用市场-图片SEO
-    Wait And Click Element    ${locatorB_application}
-    Wait Until Page Contains    图片SEO
-    Wait And Click Element    ${locatorB_application_seoimg}
-    Location Should Be    ${url_seoimage}
+Go To Navigation Menu Page
+    [Documentation]    跳转到店铺装修-菜单导航
+    Wait Until Element Is Visible    ${locatorB_setting}
+    # 若设置按钮没展开，则展开设置按钮
+    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_decorationMenus_expanded}    5
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_decoration}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_decoration_navigationMenu}
+    ...    ELSE    Wait And Click Element    ${locatorB_decoration_navigationMenu}
+    Wait Until Page Contains    菜单导航
+    Location Should Be    ${url_menus}
+    Sleep    1
 
-Go To Invitaion Page
-    [Documentation]    跳转到 邀请码工具
-    Wait And Click Element    ${locatorB_application}
-    Wait Until Page Contains    邀请码工具
-    Wait And Click Element    ${locatorB_application_invitaion}
-    #Wait Until Page Contains     授权确认
-    #Location Should Be    ${url_invitaion}
 
 Go To Home By Url
     [Documentation]    通过url跳转到主页
@@ -184,3 +182,15 @@ Go To Shipping Page By Url
     Sleep    1
     Go To    ${url_shipping}
     Sleep    1
+
+Go To Payment Channel
+    [Documentation]    跳转到 收款渠道页面
+    Wait Until Element Is Visible    ${locatorB_setting}
+    # 若设置按钮没展开，则展开设置按钮
+    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
+    Run Keyword If    '${attr}'=='False'    Sleep    4
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_payment}
+    ...    ELSE    Wait And Click Element    ${locatorB_setting_payment}
+    Wait Until Page Contains    PayPal收款
+    Location Should Be    ${url_pay}

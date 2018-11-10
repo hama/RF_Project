@@ -19,7 +19,7 @@ login001
     Wait Until Page Contains Locator    ${locatorB_login_input_account}
 
 login002
-    [Documentation]    主账号登录失败_未注册账号
+    [Documentation]   主账号登录失败_未注册账号
     [Tags]    P1
     Wait And Input Text    ${locatorB_login_input_account}    ${contentB_login_unregisteredAccount}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}

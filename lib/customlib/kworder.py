@@ -345,7 +345,7 @@ def add_undead_order_with_to_pay_status_py(cookie=init_cookie):
 def add_undead_order_with_pay_fail_status_py(cookie=init_cookie):
     '''
     创建未完成订单的支付状态为：支付失败
-    	线上支付	支付失败	已取消
+    	线上支付	支付失败	未完成
     :param conf:
     :param cookie:
     :return:
@@ -353,7 +353,7 @@ def add_undead_order_with_pay_fail_status_py(cookie=init_cookie):
     config = {}
     card_info = {
         "card_first_name": "name ",
-        "card_email": "qiansuixin@shoplazza.com",
+        "card_email": "qiansuixin@autotest.com",
         "card_phone": "123456789011",
         "card_postcode": "0000",
         "card_number": "123123123123123",
@@ -572,27 +572,6 @@ def add_dealing_order_by_productidlist_py(productidlist, cookie=init_cookie):
     return add_deading_order_with_conf_py({'productidlist': productidlist}, cookie=cookie)['order_token']
 
 
-def add_undeal_order_by_productidlist_py(productidlist, cookie=init_cookie):
-    '''
-    通过productidlist创建未完成订单
-    :param productidlist:
-    :param cookie:
-    :return:
-    '''
-    return get_tokens_by_productidlist_py(productidlist, cookie=cookie)['order_token']
-
-
-def add_undeal_order_with_product_py(cookie=init_cookie):
-    '''
-    添加未完成订单(只包含一个产品)
-        支付方式	支付状态	订单状态
-    	无	    待支付	未完成
-    :param cookie:
-    :return: order_token
-    '''
-    return get_tokens_with_product_py(cookie=cookie)['order_token']
-
-
 def add_undeal_order_with_products_py(cookie=init_cookie):
     '''
     添加未完成订单(包含两个产品)
@@ -626,6 +605,27 @@ def get_tokens_with_products_py(cookie=init_cookie):
     return get_tokens_by_productidlist_py(productidlist, cookie=cookie)
 
 
+def add_undeal_order_by_productidlist_py(productidlist, cookie=init_cookie):
+    '''
+    通过productidlist创建未完成订单
+    :param productidlist:
+    :param cookie:
+    :return:
+    '''
+    return get_tokens_by_productidlist_py(productidlist, cookie=cookie)['order_token']
+
+
+def add_undeal_order_with_product_py(cookie=init_cookie):
+    '''
+    添加未完成订单(只包含一个产品)
+        支付方式	支付状态	订单状态
+    	无	    待支付	未完成
+    :param cookie:
+    :return: order_token
+    '''
+    return get_tokens_with_product_py(cookie=cookie)['order_token']
+
+
 if __name__ == '__main__':
     # print add_undeal_order_with_product_py()
     # print add_undeal_order_with_products_py()
@@ -649,7 +649,7 @@ if __name__ == '__main__':
     # place_order_conf = {'shipping_address': shipping_address}
     # conf = {'place_order_data': place_order_conf}
     # print add_deading_order_with_conf_py(conf)
-
+    print get_dealing_order_count_py()
     # print shipment_with_conf_py('90e29c86-4780-4fb1-bfb1-36249deb69bc')
     # print orders_finish_py('90e29c86-4780-4fb1-bfb1-36249deb69bc', '85382d5a-6d8a-4d46-8c50-9407802173ba')
     # print add_deading_order_with_some_delivered_status_py()
@@ -666,5 +666,6 @@ if __name__ == '__main__':
     # print query_dealing_order()
     # print query_undeal_order()
     # print del_order('2e043a92-46c5-4f26-953a-88f347cd1e08')
-    conf = {'place_order_data': {'shipping_address':{'first_name':'testedOject'}}}
-    print add_deading_order_with_conf_py(conf)
+    # conf = {'place_order_data': {'shipping_address': {'first_name': 'testedOject'}}}
+    # print add_deading_order_with_conf_py(conf)
+    # add_undead_order_with_pay_fail_status_py()

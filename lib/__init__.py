@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from SeleniumLibrary.base import DynamicCore
-import sys,os
 from lib.customlib import (kwshipping,
                            kwproduct,
                            kwcheckout,

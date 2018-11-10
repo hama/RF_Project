@@ -8,14 +8,14 @@ Resource          var_order.robot
 Resource          var_product_collection.robot
 Resource          var_product_comment.robot
 Resource          var_product_management.robot
-Resource          var_seoimage.robot
 Resource          var_settings_page.robot
 Resource          var_shipping.robot
 Resource          var_store.robot
 Resource          var_tax.robot
 Resource          var_uploadfile.robot
 Resource          var_application.robot
-
+Resource          var_navmenu.robot
+Resource          var_payment_channel.robot
 *** Variables ***
 ### 未分类，需要分类并清理
 ${home_page}      ${home_page_url}
@@ -46,10 +46,9 @@ ${locatorB_setting_store}    dom:document.querySelectorAll('a[href="/store"]')[0
 ${locatorB_setting_upfile}    dom:document.querySelectorAll('a[href="/uploadFile"]')[0]    # 导航栏-设置-文件管理
 ${locatorB_decoration}    dom:document.querySelectorAll('span[data-robot="decoration"]')[0]    # 导航栏-店铺装修
 ${locatorB_decoration_checkoutSettings}    dom:document.querySelectorAll('a[href="/checkout"]')[0]    # 导航栏-店铺装修-结账流程
-${locatorB_application}    dom:document.querySelectorAll('a[href="/tools"]')[0]    #.导航栏-应用市场
+${locatorB_decoration_navigationMenu}    dom:document.querySelectorAll('a[href="/menus"]')[0]    # 导航栏-店铺装修-菜单导航
+${locatorB_application}    dom:document.querySelectorAll('a[href="/app_store"]')[0]    #.导航栏-应用市场
 ${locatorB_setting_menus}    dom:document.querySelectorAll(".ant-menu-submenu-title")    # 导航栏-设置-含自菜单的元素
-${locatorB_application_seoimg}    dom:document.querySelectorAll('.item___3Js4k')[4]    #.应用市场-图片seo
-${locatorB_application_invitaion}    dom:document.querySelectorAll('.item___3Js4k')[0]    #.应用市场-邀请码工具
 
 
 
@@ -118,6 +117,8 @@ ${url_reviews}    ${home_page}/reviews   # reviews
 ${url_seoimage}    ${home_page}/seoImage    #. seoimage
 ${url_uploadFile}    ${home_page}/uploadFile    #. uploadFile
 ${url_checkoutSettings}    ${home_page}/checkout    #. checkout
+${url_pay}    ${home_page}/pay    #. pay
+${url_menus}    ${home_page}/menus    #.menus
 ### 测试用户
 
 ${user_default_contact}    ${datas_contact}    # 默认使用的用户信息，用于跑大部分用例
@@ -126,15 +127,25 @@ ${user_default_domain}    ${datas_domain}
 ${user_default_inviteCode}    ${datas_invite_code}
 ### keybord_key
 ${keybord_enter}    \\13
+${keybord_delete}    \\46
+${keybord_tab}    \\9
 ### 注册用户
 ${register_contact}    gt1zwkp@autotest.com
 ${register_domain}    gt1zwkp
 ${register_pwd}    ${datas_password}
 
 ### 图片文件
-${file_products_addImg}    ${CURDIR}/../images/image02.jpg    # 添加商品图片
-${file_products_addImg2}    ${CURDIR}/../images/image01.jpg    # 添加商品图片
+${file_products_addImg}    ${CURDIR}/../images/image01.jpg    # 添加商品图片
+${file_products_addImg2}    ${CURDIR}/../images/image02.jpg    # 添加商品图片
+${file_products_addImg3}    ${CURDIR}/../images/image03.jpeg    # 添加商品图片
+${file_products_addImg4}    ${CURDIR}/../images/image04.gif    # 添加商品图片
+${file_products_addImg5}    ${CURDIR}/../images/image05.png    # 添加商品图片
 
 
 # C端
-${locatorC_icon_card}    dom:document.querySelectorAll("[class*='sep-font-cart-thin']")[0]    #.checkout购物车图标按钮
+${locatorC_icon_card}    dom:document.querySelectorAll('[class~="d-md-block"] [href="/cart"]')[0]    #.checkout购物车图标按钮
+${locatorC_input_email}    id:userName    #会员登录-email输入框
+
+${locatorC_products_shippingAddress_payment_button_completeOrder}    dom:document.querySelectorAll('[class="btn btn-primary payment-footer__btn"]')    #payment-->complete order按钮
+
+${locatorC_checkoutShipping_li_TextPolicy}    dom:document.querySelectorAll('[class="checkout-policy__grid-item"]')    #checkoutShipping-->条约按钮

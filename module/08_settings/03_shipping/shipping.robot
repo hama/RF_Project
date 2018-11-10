@@ -92,7 +92,9 @@ shipping026
     [Documentation]    点击价格栏添加运费按钮
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_shipping_btn_startSet}
+    sleep    4
     Wait And Click Element    ${locatorB_shippingNew_btn_addPriceShipping}
+    sleep    4
     Text Of Element Should Be Equal With Wait    ${locatorB_popUps_title}    添加基于价格的运费
 
 shipping035
@@ -305,3 +307,116 @@ shipping147.1
     Wait And Input Text    ${locatorB_shippingNew_input_shippingName}    输入中文
     Wait And Click Element Then Cancel    ${locatorB_shippingNew_btn_delShipping}
     Wait Until Page Contains Element    ${locatorB_shippingNew_btn_addCountry}
+
+
+
+#基础信息-物流p0用例（周莉编写）
+shipping013
+    [Documentation]    测试添加国家按钮（双击）
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_shipping_btn_startSet}
+    Sleep    2
+#    Double Click Element    ${locatorB_shippingNew_btn_addCountry}
+    Long Press Element With Wait    ${locatorB_shippingNew_btn_addCountry}
+    Wait Until Page Contains Locator    ${locatorB_shippingNew_p_title}
+    Wait Until Page Contains Text    国家选择
+
+shipping014
+    [Documentation]    测试添加国家按钮（长按）
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_shipping_btn_startSet}
+    Sleep    2
+    Mouse Down    ${locatorB_shippingNew_btn_addCountry}
+    Wait Until Page Not Contains Locator    ${locatorB_shippingNew_p_title}
+    Wait Until Page Not Contains Text    国家选择
+
+shipping015
+    [Documentation]    测试添加国家弹窗界面功能(输入为空)
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_shipping_btn_startSet}
+    Wait And Click Element    ${locatorB_shippingNew_btn_addCountry}
+    Wait And Input Text    ${locatorB_shippingNew_popUp_input_countryName}    ${Empty}
+    Wait Until Page Contains Locator    ${locatorB_shippingNew_popUp_ul_listContinent}
+
+shipping017
+    [Documentation]    测试添加国家弹窗界面功能(输入'中')
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_shipping_btn_startSet}
+    Wait And Click Element    ${locatorB_shippingNew_btn_addCountry}
+    Wait And Input Text    ${locatorB_shippingNew_popUp_input_countryName}    中
+    Wait And Click Element    ${locatorB_shippingNew_popUp_btn_search}
+    Wait Until Page Contains Text    中
+    Wait Until Page Contains Text    其他国家
+
+
+shipping018
+    [Documentation]    测试添加国家弹窗界面功能(输入特殊字符)
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_shipping_btn_startSet}
+    Wait And Click Element    ${locatorB_shippingNew_btn_addCountry}
+    Wait And Input Text    ${locatorB_shippingNew_popUp_input_countryName}    ！%¥@#%……@¥#！……@#¥
+    Wait And Click Element    ${locatorB_shippingNew_popUp_btn_search}
+    Wait Until Page Contains Text    其他国家
+
+shipping019
+    [Documentation]    测试添加国家弹窗界面功能(不勾选显示)
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_shipping_btn_startSet}
+    Wait And Click Element    ${locatorB_shippingNew_btn_addCountry}
+    Wait And Input Text    ${locatorB_shippingNew_popUp_input_countryName}    中国
+    Wait And Click Element    ${locatorB_shippingNew_popUp_btn_search}
+    Set Focus To Element    ${locatorB_shippingNew_popUp_span_selectedContent}
+    Text Of Element Should Contain With Wait    ${locatorB_shippingNew_popUp_span_selectedContent}    已选择0个地区
+
+shipping021
+    [Documentation]    测试添加国家弹窗界面功能
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_shipping_btn_startSet}
+    Wait And Click Element    ${locatorB_shippingNew_btn_addCountry}
+    Wait And Click Element    ${locatorB_shippingNew_popUp_arrow_listArrow}
+    Wait And Click Element    ${locatorB_shippingNew_popUp_checkbox_firstCountry}[0]
+    Wait And Click Element    ${locatorB_shippingNew_popUp_checkbox_firstCountry}[1]
+    Wait And Click Element    ${locatorB_shippingNew_btn_popUpConfirm}
+    Wait Until Page Contains Text    阿尔及利亚
+    Wait Until Page Contains Text    安哥拉
+
+shipping023
+    [Documentation]    测试添加国家弹窗界面功能(勾选其他国家后勾选国家列表中的国家)
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_shipping_btn_startSet}
+    Wait And Click Element    ${locatorB_shippingNew_btn_addCountry}
+    Wait And Input Text    ${locatorB_shippingNew_popUp_input_countryName}    阿尔及利亚
+    Wait And Click Element    ${locatorB_shippingNew_popUp_btn_search}
+    Wait And Click Element    ${locatorB_shippingNew_popUp_checkbox_otherCountry}
+    Wait And Click Element    ${locatorB_shippingNew_popUp_checkbox_firstCountry}[0]
+    Wait And Click Element    ${locatorB_shippingNew_btn_popUpConfirm}
+    Text Of Element Should Contain With Wait    ${locatorB_shippingNew_text_listCountryName}    阿尔及利亚
+
+shipping024
+    [Documentation]    测试添加国家弹窗界面功能(勾选国家后点击窗口的关闭按钮)
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_shipping_btn_startSet}
+    Wait And Click Element    ${locatorB_shippingNew_btn_addCountry}
+    Wait And Input Text    ${locatorB_shippingNew_popUp_input_countryName}    阿尔及利亚
+    Wait And Click Element    ${locatorB_shippingNew_popUp_btn_search}
+    Wait And Click Element    ${locatorB_shippingNew_popUp_checkbox_firstCountry}[0]
+    Wait And Click Element    ${locatorB_shippingNew_popUp_btn_cancel}
+    Wait Until Page Contains Text    暂无数据
+
+shipping025
+    [Documentation]    测试添加国家弹窗界面功能(不勾选国家点击窗口的关闭按钮)
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_shipping_btn_startSet}
+    Wait And Click Element    ${locatorB_shippingNew_btn_addCountry}
+    Wait And Input Text    ${locatorB_shippingNew_popUp_input_countryName}    阿尔及利亚
+    Wait And Click Element    ${locatorB_shippingNew_popUp_btn_search}
+    Wait And Click Element    ${locatorB_shippingNew_popUp_btn_cancel}
+    Wait Until Page Contains Text    暂无数据
+
+shipping027
+    [Documentation]    双击价格栏添加运费按钮
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_shipping_btn_startSet}
+    sleep    2
+    Double Click Element    ${locatorB_shippingNew_btn_addPriceShipping}
+    Text Of Element Should Be Equal With Wait    ${locatorB_popUps_title}    添加基于价格的运费

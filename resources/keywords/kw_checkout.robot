@@ -49,8 +49,8 @@ Add Address Common Step
     Sleep    1
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    123456
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18899999999
-    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    1234567@email.com
-    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@contactEmail.com
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    7654321@autotest.com
+    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    company
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    apartment
     Sleep    4
@@ -58,7 +58,7 @@ Add Address Common Step
 Add Credit Card Info
 	[Documentation]    添加信用卡公共部分
 	Wait And Input Text    ${locatorC_checkout_paymentCard_fristName}    aaaaa
-	Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    123456@zz.xx
+	Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    123456@autotest.com
 	Wait And Input Text    ${locatorC_checkout_paymentCard_phone}     123456789
 	Wait And Input Text    ${locatorC_checkout_paymentCard_cardPostcode}    0000
 	Wait And Input Text    ${locatorC_checkout_paymentCard_cardNumber}    43231123123123
@@ -78,7 +78,3 @@ Create Specific Coupon Code
     add_doing_coupon_code_py    ${conf}
     [Return]    ${code}
 
-Go To First Product C Interface
-	Go To Product Management Page
-    Wait And Click Element    ${locatorB_productsMgmt_icon_preview}
-    Focus On New Window

@@ -3,6 +3,8 @@ logs/
 *.log
 *.pyc
 *.png
+*.jpeg
+*.gif
 *.jpg
 *.html
 *.xml
@@ -10,5 +12,6 @@ logs/
 
 # 开发根据环境自定义文件
 module/Test.robot
+config/common.ini
 **/.DS_Store
 test.sh

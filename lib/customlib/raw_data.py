@@ -379,7 +379,7 @@ place_order_data = {
         "phone_area_code": "86",
         "phone": "18888888888",
         "company": "company",
-        "email": "12345@shippingaddress.com",
+        "email": "12345@autotest.com",
         "country": "China",
         "country_code": "CN",
         "province": "Beijing",
@@ -402,7 +402,7 @@ place_order_data = {
     "customer_info": {
         "note": "",
         "newsletter": 1,
-        "email": "12345@customerinfo.com"
+        "email": "12345@autotest.com"
     },
     "save_address": 1,
     "checkout_token": "PYwViKKDF9v0nOuMnuAtCtbOYzooA1J1DrnWh2NuLE4%3D"
@@ -463,6 +463,12 @@ payment_method_activation_data = {
 payment_channel_data = {
     "client_id": "10000009446",
     "secret_key": "30820122300d06092a864886f70d01010105000382010f003082010a028201010098da23b3f3e679efb33e8171191e165ca1a757e53e74393cd23a0bf9adbbaecdd8224c4666ed421ce6b099e66807e85e4247c07261792a66ccbd71cc8fb7e87c34e2bcf2ffb5df9004488ec3a32353e91cadc56cf980eda1784186c1c270587907e2db749fd904dc39b28670699dd654a6001e0289e2988648ae3fca5e45ed356d1a81a84029357eb017f925c8dc174ce82ac12b8681282abb5e83aef1fa6416f3fba32cb45432f51a700f995ccee4d8a9dea66d31607f14a546011ec44807056f54330389e78b12d355527ab62e904f8918c8f417e0afaf154b772fc5dce7aac4a71426f9a623155484d8c7f73e2511f1866661b3a8083ea087f3162cf3aa090203010001",
+    "payment_method": "credit_card",
+    "payment_channel": "ipaylinks"
+}
+
+payment_channel_change_channel_data = {
+    "channel_is_enable": "1",
     "payment_method": "credit_card",
     "payment_channel": "ipaylinks"
 }
@@ -969,11 +975,11 @@ tax_batch_data = [
 store_update_data = {
     'store_id': 1160,
     'name': 'homer',
-    'email': 'autotest@shoplazza.com',
+    'email': 'autotest@autotest.com',
     'seo_id': 0,
     'currency': 'USD',
     'url': None,
-    'service_email': 'autotest@shoplazza.com',
+    'service_email': 'autotest@autotest.com',
     'icon': {
         'src': '//cdn.shoplazza.com/c9f9562678e0febfde4d739a941484fc.jpg',
         'alt': '',
@@ -1001,4 +1007,10 @@ store_update_data = {
     'updated_at': '2018-10-20 16:40:10',
     "country": "",
     "province": "ALL"
+}
+
+file_list_data = {
+    'folder': 'product',
+    'page': '1',
+    'limit': '10'
 }

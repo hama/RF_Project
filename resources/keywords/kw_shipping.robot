@@ -38,8 +38,11 @@ Shipping Case Teardown
 Add Default Shipping Country
 	[Documentation]    添加默认的物流国家（即第一个大洲的第一个国家），并保存
 	Wait And Click Element    ${locatorB_shippingNew_btn_addCountry}
+	Sleep    0.2
     Wait And Click Element    ${locatorB_shippingNew_popUp_arrow_listArrow}
+	Sleep    0.2
     Wait And Click Element    ${locatorB_shippingNew_popUp_checkbox_firstCountry}
+	Sleep    0.2
     Wait And Click Element    ${locatorB_shippingNew_btn_popUpConfirm}
 
 Add Default Price Shipping

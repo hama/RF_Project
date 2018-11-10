@@ -17,20 +17,13 @@ username = "autotest@shoplazza.com"  # .发件人
 password = "AAAaaa111"  # .发件人密码
 # . 收件邮箱
 to_addr = [
-    'wanglinyun@shoplazza.com',
-    'xiabing@shoplazza.com',
-    'heliwen@shoplazza.com',
-    'lijunjie@shoplazza.com',
     'qiansuixin@shoplazza.com',
-    'huayacheng@shoplazza.com',
     'zhouli@shoplazza.com'
+    # 'zhiliangbu@shoplazza.com'
 ]
 # . 抄送邮箱
 cc_addr = [
-    'zhangliqiong@shoplazza.com',
-    'yupeng@shoplazza.com',
-    'fangbaiyuan@shoplazza.com',
-    'linyingjun@shoplazza.com'
+    # 'yanfa@shoplazza.com'
 ]
 email_service = "smtp.mxhichina.com"
 default_port = 465
@@ -87,12 +80,16 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
     设置邮件格式&内容
     :return:
     '''
+    hosts = os.popen('cat /etc/hosts | grep "aaaaa"').read()
+    if hosts:
+        hosts = '已配/etc/hosts:\n' + hosts
     # 文字
     html = """
-    <p>================截图=====================</p>
+    %s
+    <p>=====================截图=====================</p>
     <img src="cid:image1"/>
-    <p>=========================================</p>
-    """
+    <p>=============================================</p>
+    """ % (hosts)
     msgText = MIMEText(html, 'html', 'utf-8')
     msg.attach(msgText)
 
@@ -151,7 +148,7 @@ def send_uireport_email_process(timestamp, log_path):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='email script')
-    parser.add_argument('--timestamp', type=str)
+    parser.add_argument('--timestamp', type=str, default=time.strftime("%Y%m%d%H%M%S", time.localtime()))
     parser.add_argument('--log_path', type=str)
     args = parser.parse_args()
     send_uireport_email_process(args.timestamp, args.log_path)

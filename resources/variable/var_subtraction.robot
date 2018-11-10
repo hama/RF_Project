@@ -1,7 +1,7 @@
 *** Variables ***
 #.common variable
-${locator_ContentB_comm_email}    171869092@qq.com
-${locator_ContentB_comm_service_email}    liguili5988630@163.com
+${locator_ContentB_comm_email}    171869092@autotest.com
+${locator_ContentB_comm_service_email}    liguili5988630@autotest.com
 
 #.input data
 ${input_count}    10
