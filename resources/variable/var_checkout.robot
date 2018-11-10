@@ -54,8 +54,8 @@ ${locatorC_checkoutShipping_input_couponCode}    dom:document.querySelectorAll("
 ${locatorC_checkoutShipping_button_couponApply}    dom:document.querySelectorAll("[id='coupon_apply']")[0]    #.checkout 填写地址页面 - 点击应用优惠券按钮
 
 ${locatorC_checkoutShipping_items_listShippingAndDelivery}     dom:document.querySelectorAll('[class*="checkout-shipping-line"] label[class*="checkout-shipping-line__item"]')     #.订单物流信息运费显示
-${locatorC_checkoutShipping_text_listShippingAndDeliveryName}     dom:document.querySelectorAll('[class*="checkout-shipping-line"] [class*="row checkout-shipping-line__item"] [class*="item-name"]')     #.订单物流信息运费显示
-${locatorC_checkoutShipping_text_listShippingAndDeliveryFee}   dom:document.querySelectorAll('[class*="checkout-shipping-line"] [class*="row checkout-shipping-line__item"] [class*="item-desc"]')      #shipping delivery 运费价格
+${locatorC_checkoutShipping_text_listShippingAndDeliveryName}     dom:document.querySelectorAll('[class*="checkout-shipping-line"] label[class*="checkout-shipping-line__item"] [class*="item-name"]')     #.订单物流信息运费显示
+${locatorC_checkoutShipping_text_listShippingAndDeliveryFee}   dom:document.querySelectorAll('[class*="checkout-shipping-line"] label[class*="checkout-shipping-line__item"] [class*="item-desc"]')      #shipping delivery 运费价格
 
 ${locatorC_checkoutShipping_button_return}    dom:document.querySelectorAll('a[class~="checkout-back"]')[0]    #shipping return 返回
 ${locatorC_checkoutShipping_button_paymentReturn}    dom:document.querySelectorAll('a[class~="payment-footer__back"]')[0]    #payment return 返回
@@ -97,7 +97,7 @@ ${locatorC_checkout_text_shippingInformationDetail}    dom:document.querySelecto
 ${locatorC_checkout_button_viewOrders}    dom:document.querySelectorAll("[class*='btn-secondary']")[0]        #.订单成功-订单详情按钮 viewOrders
 ${locatorC_checkout_button_continueShopping}    dom:document.querySelectorAll("[class*='btn-primary']")[0]       #.订单成功-跳转到首页 continue shopping
 #locatorC home
-${locatorC_checkout_homeBanner}    dom:document.querySelectorAll("[class*='text-truncate']")[0]       #首页banner图元素模块
+${locatorC_checkout_homeBanner}    dom:document.querySelectorAll('[class~="d-md-block"] [class*="text-truncate"]')[0]       #首页banner图元素模块
 
 
 #locatorC payment  有用

@@ -13,7 +13,7 @@ Resource          ../../../resources/keywords/kw_common.robot
 checkout_001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0    threshold    smoke
-    Wait And Click Element    ${locatorC_productDetail_button_addToCart}
+    Sleep And Click Element    ${locatorC_productDetail_button_addToCart}
     Sleep And Click Element    ${locatorC_icon_card}
     Wait And Click Element    ${locatorC_cart_button_checkout}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_order}
