@@ -235,6 +235,13 @@ Wait And Click Element Then Cancel
     Run Keyword If    '${status}'!='False'    Wait And Click Element    ${locatorB_popUps_button_footerdefault}
     ...    ELSE    Wait And Click Element    ${locatorB_popUps_button_bodydefault}
 
+Wait And Get Element Attribute
+	[Arguments]    ${element_locator}    ${attr}
+    [Documentation]    获取元素属性
+    Wait Until Element Is Visible    ${element_locator}     10
+	${attr_value} =    Get Element Attribute    ${element_locator}    ${attr}
+	[Return]    ${attr_value}
+
 Wait And Make Switch On
 	[Arguments]    ${element_locator}
     [Documentation]    使switch按钮开启

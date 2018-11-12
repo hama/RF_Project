@@ -85,7 +85,7 @@ taxPrice008
     [Documentation]    测试国家栏后面的开启关闭按钮正常
     [Tags]    P0    threshold
     #.判断元素是否出现，出现者不点，不出现就点击
-    ${class} =    Get Element Attribute    ${locatorB_taxPrice_switch_notEndStrat}    class
+    ${class} =    Wait And Get Element Attribute    ${locatorB_taxPrice_switch_notEndStrat}    class
     Run Keyword If    '${class}'=='ant-checkbox'    Wait And Click Element    ${locatorB_taxPrice_switch_list}
     ...     Wait Until Page Contains Text   设置成功
     Wait And Click Element    ${locatorB_taxPrice_icon_settingList}[0]
