@@ -15,7 +15,7 @@ products004
     kwproduct.add_launched_product_py
     Reload Page And Start Ajax
     Select All Product Tag
-	${attr}    Get Element Attribute    ${locatorB_productsMgmt_image_firstProductThumbnails}    class
+	${attr}    Wait And Get Element Attribute    ${locatorB_productsMgmt_image_firstProductThumbnails}    class
 	Should Be equal    '${attr}'    'center___1nHSZ'
 
 products005
@@ -24,7 +24,7 @@ products005
     kwproduct.add_min_product_py
     Reload Page And Start Ajax
     Select All Product Tag
-	${attr}    Get Element Attribute    ${locatorB_productsMgmt_image_firstProductThumbnails}    class
+	${attr}    Wait And Get Element Attribute    ${locatorB_productsMgmt_image_firstProductThumbnails}    class
 	Should Be equal    '${attr}'    ''
 
 products007
@@ -442,7 +442,7 @@ products093
     Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
     Go To Product Management Page
     Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
-    ${attr0} =    Get Element Attribute    ${locatorB_productsMgmt_switch_listLaunched}[0]    class
+    ${attr0} =    Wait And Get Element Attribute    ${locatorB_productsMgmt_switch_listLaunched}[0]    class
     Should Be Equal    '${attr0}'    'ant-switch ant-switch-checked'
 
 products097
@@ -458,7 +458,7 @@ products097
     Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
     Sleep    2
-    ${attr0} =    Get Element Attribute    ${locatorB_productsNew_input_supplier}    value
+    ${attr0} =    Wait And Get Element Attribute    ${locatorB_productsNew_input_supplier}    value
     Should Be Equal    '${attr0}'    'try_to_add_supplier'
 
 products099

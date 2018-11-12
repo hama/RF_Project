@@ -61,8 +61,8 @@ products008
     [Documentation]    验证上下架状态展示正确，上架商品上架开关开启，下架商品，下架开关关闭
     [Tags]    P0
     Select All Product Tag
-    ${attr0} =    Get Element Attribute    ${locatorB_productsMgmt_switch_listDiscontinued}[0]    class
-    ${attr1} =    Get Element Attribute    ${locatorB_productsMgmt_switch_listLaunched}[0]    class
+    ${attr0} =    Wait And Get Element Attribute    ${locatorB_productsMgmt_switch_listDiscontinued}[0]    class
+    ${attr1} =    Wait And Get Element Attribute    ${locatorB_productsMgmt_switch_listLaunched}[0]    class
     Should Be Equal    ${attr0}    ant-switch
     Should Be Equal    ${attr1}    ant-switch ant-switch-checked
 

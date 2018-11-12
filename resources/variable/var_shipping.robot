@@ -20,7 +20,6 @@ ${locatorB_shippingNew_items_listItemsOfPrice}    dom:document.querySelectorAll(
 ${locatorB_shippingNew_icon_listDelCountryItem}    dom:document.querySelectorAll('[id="test_shipping_country_delete_icon"]')    #.
 ${locatorB_shippingNew_btn_delShipping}    dom:document.querySelectorAll('[id="test_shipping_delete_btn"]')    #.
 
-${locatorB_shippingNew_p_title}    css:p[class="title___17jze"]    #弹窗标题
 
 
 

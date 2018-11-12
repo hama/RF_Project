@@ -316,9 +316,8 @@ shipping013
     [Tags]    P0
     Wait And Click Element    ${locatorB_shipping_btn_startSet}
     Sleep    2
-#    Double Click Element    ${locatorB_shippingNew_btn_addCountry}
-    Long Press Element With Wait    ${locatorB_shippingNew_btn_addCountry}
-    Wait Until Page Contains Locator    ${locatorB_shippingNew_p_title}
+    Double Click Element    ${locatorB_shippingNew_btn_addCountry}
+    Wait Until Page Contains Locator    ${locatorB_popUps_title}
     Wait Until Page Contains Text    国家选择
 
 shipping014
@@ -327,7 +326,7 @@ shipping014
     Wait And Click Element    ${locatorB_shipping_btn_startSet}
     Sleep    2
     Mouse Down    ${locatorB_shippingNew_btn_addCountry}
-    Wait Until Page Not Contains Locator    ${locatorB_shippingNew_p_title}
+    Wait Until Page Not Contains Locator    ${locatorB_popUps_title}
     Wait Until Page Not Contains Text    国家选择
 
 shipping015
