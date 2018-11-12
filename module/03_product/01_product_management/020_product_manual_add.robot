@@ -160,6 +160,7 @@ products034
     Reload Page And Start Ajax
     Select All Product Tag
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+    Sleep    2
     Wait And Input Text    ${locatorB_productsNew_input_title}    newproduct
     Wait And Click Element    ${locatorB_productsNew_button_save}
     Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
@@ -175,6 +176,7 @@ products035
     Reload Page And Start Ajax
     Select All Product Tag
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+    Sleep    2
     Wait And Input Text    ${locatorB_productsNew_input_title}    newproduct
     Wait And Click Element    ${locatorB_productsNew_button_save}
     Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
@@ -236,6 +238,7 @@ products047
     Wait Until Page Contains Text    添加成功
     # 进入product中检查是否存在
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+    Sleep    2
     @{tagboxs}    Wait And Get Items List From Locator    ${locatorB_tagboxs}    ${locatorB_tagboxs}[0]
     :FOR    ${tagbox}    IN    @{tagboxs}
     \    ${text}    Wait And Get Text    ${tagbox}
@@ -259,6 +262,7 @@ products047
 #    Wait Until Page Contains Text    移除成功
 #    # 进入product中检查是否存在
 #    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+#    Sleep    2
 #    Wait Until Page Contains Locator    ${locatorB_productsNew_input_tags}
 #    Wait Until Page Not Contains Locator    ${locatorB_tagboxs}
 
@@ -453,6 +457,7 @@ products097
     Go To Product Management Page
     Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+    Sleep    2
     ${attr0} =    Get Element Attribute    ${locatorB_productsNew_input_supplier}    value
     Should Be Equal    '${attr0}'    'try_to_add_supplier'
 
@@ -468,6 +473,7 @@ products099
     Go To Product Management Page
     Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+    Sleep    2
     ${attr0} =    Wait And Get Text    ${locatorB_tagboxs}[0]
     Should Be Equal    '${attr0}'    'try_to_add_tags'
 
@@ -512,6 +518,7 @@ products112
 #    Go To Product Management Page
 #    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
 #    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+#    Sleep    2
 #    Wait Until Page Contains Locator    ${locatorB_productsNew_checkbox_firstSubProduct}
 #
 # 无法点开'增加选项'，暂不实现
@@ -532,6 +539,7 @@ products112
 #    Go To Product Management Page
 #    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
 #    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+#    Sleep    2
 #    Wait Until Page Contains Locator    ${locatorB_productsNew_checkbox_firstSubProduct}
 
 # 元素不好定位，待多福添加robot-data之后，再写此用例
