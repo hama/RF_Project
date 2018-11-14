@@ -86,7 +86,7 @@ uploadFile012
     Wait And Click Element     ${locatorB_uploadFile_nav_upfile}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
     Sleep    2
-    Wait And Click Element    ${locatorB_uploadFile_icon_delImg}[0]
+    Wait And Click Element    ${locatorB_uploadFile_icon_delImg}
     Wait Until Page Contains Text    确定删除吗？
     Wait Until Page Contains Text    删除后将不能找回，请谨慎操作
 
@@ -96,8 +96,9 @@ uploadFile013
     Wait And Click Element     ${locatorB_uploadFile_nav_upfile}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
     Sleep    2
-    Wait And Click Element Then Confirm    ${locatorB_uploadFile_icon_delImg}[0]
+    Wait And Click Element Then Confirm    ${locatorB_uploadFile_icon_delImg}
     Wait Until Page Not Contains Text     image02.jpg
+    Wait Until Page Contains Text    暂无数据
 
 uploadFile014
     [Documentation]    "1.已在素材库界面,2.素材库已有内容,3.网络正常" > 测试素材栏删除按钮 点击取消 > 本次不会删除
@@ -105,7 +106,7 @@ uploadFile014
     Wait And Click Element     ${locatorB_uploadFile_nav_upfile}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
     Sleep    2
-    Wait And Click Element Then Cancel    ${locatorB_uploadFile_icon_delImg}[0]
+    Wait And Click Element Then Cancel    ${locatorB_uploadFile_icon_delImg}
     Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
     Wait Until Page Contains Text     image02.jpg
 
