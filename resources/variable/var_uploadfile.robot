@@ -13,6 +13,7 @@ ${locatorB_uploadFile_icon_delImg}    dom:document.querySelectorAll('[class*="ic
 
 ${locatorB_uploadFile_list_firstTr}    dom:document.querySelectorAll('[class*="nt-table-row-level"]')   #.文件管理- tr 列表 list
 ${locatorB_uploadFile_checkbox_selectAllFiles}    dom:document.querySelectorAll('[class="ant-checkbox-input"]')[0]    #.文件管理- 批量选中
+${locatorB_uploadFile_button_deleteAllFiles}    dom:document.querySelectorAll('[class*="ant-btn small_btn"]')    #批量选中 - 删除按钮
 ${locatorB_uploadFile_page_prePageBut}    dom:document.querySelectorAll('.ant-btn-icon-only')[0]    #.文件管理- 上一页
 ${locatorB_uploadFile_page_nexPageBut}    dom:document.querySelectorAll('.ant-btn-icon-only')[1]    #.文件管理- 下一页
 
@@ -22,3 +23,6 @@ ${locatorB_uploadFile_checkbox_state}    dom:document.querySelectorAll('[class*=
 
 ${locatorB_uploadFile_checkbox_delTheBut}    dom:document.querySelectorAll('input[class*="ant-checkbox"]')    #.文件管理- 单个选择
 ${locatorB_uploadFile_button_delData}    dom:document.querySelectorAll('button[class*="batchSelectTable_btn"]')[0]    #.删除按钮
+
+${locatorB_uploadFile_button_copy}    dom:document.querySelectorAll('[class="ant-btn ant-btn-lg"]')    #. 复制按钮
+${locatorB_uploadFile_input_urlText}    dom:document.querySelectorAll('[class="ant-input ant-input-lg"]')    #. 地址
