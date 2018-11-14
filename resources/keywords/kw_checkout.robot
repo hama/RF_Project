@@ -45,7 +45,9 @@ Add Address Common Step
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_addr}    addr
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_city}    city
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
+    Sleep    1
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_province}    Beijing
+    Sleep    1
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_code}     (+86) China
     Sleep    1
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    123456
@@ -54,7 +56,7 @@ Add Address Common Step
     Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    company
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    apartment
-    Sleep    4
+    Sleep    2
 
 Add Credit Card Info
 	[Documentation]    添加信用卡公共部分
