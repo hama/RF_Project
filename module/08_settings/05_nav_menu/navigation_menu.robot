@@ -69,6 +69,7 @@ navigation_menu_010
 navigation_menu_022
     [Documentation]      确认删除非系统菜单
     [Tags]    P0    threshold
+    Delete All Navigation Menu
     Add Navigation Menu With Wait    非系统菜单删除
     Wait And Click Element Then Confirm    ${locatorB_menusAdd_link_delMenu}
     Wait Until Page Not Contains Locator    ${locatorB_menus_list_menuList}[2]
