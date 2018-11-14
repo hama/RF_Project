@@ -39,6 +39,7 @@ Checkout3 Case Setup
 
 Add Address Common Step
     [Documentation]    添加地址公共部分
+    Sleep    2
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_firstName}    firstName
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_lastName}    lastName
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_addr}    addr
