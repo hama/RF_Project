@@ -211,15 +211,22 @@ navigation_menu_067
     Wait And Click Element    ${locatorB_menusAdd_button_collectionConfirm}
     Text Of Element Should Contain With Wait     ${locatorB_menusAdd_select_linkPageInput}[0]    商品详情
 
-#navigation_menu_068
-#    [Documentation]      选择跳转链接为自定义页面
-#    [Tags]    P0    threshold
-#    Wait And Click Element    ${locatorB_menus_button_addMenu}
-#    Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
-#    Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     一级菜单目录
-#    Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[4]
-#    sleep    4
-#    Wait Until Page Contains Text     页面选择
+navigation_menu_068
+    [Documentation]      选择跳转链接为自定义页面
+    [Tags]    P0    threshold
+    Go To Custom Page
+    Wait And Click Element    ${locatorB_decoration_custom_button_NewPage}
+    Wait And Input Text    ${locatorB_decoration_addPage_input_pageName}    新建页面名称
+    Wait And Click Element    ${locatorB_button_save00}
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
+    Go To Navigation Menu Page
+    Wait And Click Element    ${locatorB_menus_button_addMenu}
+    Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
+    Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     一级菜单目录
+    Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[4]
+    Long Press Element With Wait    ${locatorB_menusAdd_span_collectionText}
+    Wait And Click Element    ${locatorB_menusAdd_button_collectionConfirm}
+    Text Of Element Should Contain With Wait     ${locatorB_menusAdd_select_linkPageInput}[0]    自定义页面
 
 navigation_menu_069
     [Documentation]      选择跳转链接为自定义URL

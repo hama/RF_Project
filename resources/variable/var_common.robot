@@ -48,6 +48,10 @@ ${locatorB_setting_upfile}    dom:document.querySelectorAll('a[href="/uploadFile
 ${locatorB_decoration}    dom:document.querySelectorAll('span[data-robot="decoration"]')[0]    # 导航栏-店铺装修
 ${locatorB_decoration_checkoutSettings}    dom:document.querySelectorAll('a[href="/checkout"]')[0]    # 导航栏-店铺装修-结账流程
 ${locatorB_decoration_navigationMenu}    dom:document.querySelectorAll('a[href="/menus"]')[0]    # 导航栏-店铺装修-菜单导航
+
+${locatorB_decoration_custom_button_NewPage}    dom:document.querySelectorAll('[class*="ant-btn large_btn_"]')    # 导航栏-店铺装修-自定义页面-新建页面按钮
+${locatorB_decoration_addPage_input_pageName}    dom:document.querySelectorAll('[class="ant-input"]')    # 导航栏-店铺装修-自定义页面-页面设置-名称
+
 ${locatorB_application}    dom:document.querySelectorAll('a[href="/tools"]')[0]    #.导航栏-应用市场
 ${locatorB_setting_menus}    dom:document.querySelectorAll(".ant-menu-submenu-title")    # 导航栏-设置-含自菜单的元素
 ${locatorB_application_seoimg}    dom:document.querySelectorAll('.item___3Js4k')[4]    #.应用市场-图片seo
@@ -122,6 +126,7 @@ ${url_uploadFile}    ${home_page}/uploadFile    #. uploadFile
 ${url_checkoutSettings}    ${home_page}/checkout    #. checkout
 ${url_pay}    ${home_page}/pay    #. pay
 ${url_menus}    ${home_page}/menus    #.menus
+${url_page}     ${home_page}/page    #.page
 ### 测试用户
 
 ${user_default_contact}    ${datas_contact}    # 默认使用的用户信息，用于跑大部分用例

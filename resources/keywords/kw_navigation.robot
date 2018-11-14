@@ -208,3 +208,7 @@ Go To Payment Channel
     ...    ELSE    Wait And Click Element    ${locatorB_setting_payment}
     Wait Until Page Contains    PayPal收款
     Location Should Be    ${url_pay}
+
+Go To Custom Page
+    [Documentation]    通过url跳转到 自定义页面
+    Go To    ${url_page}
