@@ -24,7 +24,7 @@ Select Credit Card Of IpayLinks
     [Documentation]    信用卡选择 ipaylinks 收款方式
      Sleep    2
      ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_pay_switch_creditCardSwitch}
-     ${class}=    Run Keyword If    '${status}'=='True'    Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
+     ${class}=    Run Keyword If    '${status}'=='True'    Wait And Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
      Run Keyword If    $class=='ant-switch ant-switch-checked'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
      Sleep    5
      Wait And Click Element    ${locatorB_pay_link_replacePay}
@@ -35,7 +35,7 @@ Select Credit Card Of OceanPayment
     [Documentation]    信用卡选择 钱海 收款方式
     Sleep    2
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_pay_switch_creditCardSwitch}
-    ${class}=    Run Keyword If    '${status}'=='True'    Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
+    ${class}=    Run Keyword If    '${status}'=='True'    Wait And Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
     Run Keyword If    $class=='ant-switch ant-switch-checked'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
     Sleep    5
     Wait And Click Element    ${locatorB_pay_link_replacePay}
@@ -46,7 +46,7 @@ Select Credit Card Of Stripe
     [Documentation]    信用卡选择 stripe 收款方式
     Sleep    2
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_pay_switch_creditCardSwitch}
-    ${class}=    Run Keyword If    '${status}'=='True'    Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
+    ${class}=    Run Keyword If    '${status}'=='True'    Wait And Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
     Run Keyword If    $class=='ant-switch ant-switch-checked'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
     Sleep    5
     Wait And Click Element    ${locatorB_pay_link_replacePay}

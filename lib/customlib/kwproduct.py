@@ -27,6 +27,7 @@ def product_info_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     '''
+    time.sleep(0.5)
     url = home_page_url + '/api/product/info'
     return do_get(url, query_str, cookie=cookie)
 
@@ -226,14 +227,14 @@ def add_max_product_with_sub_py(cookie=init_cookie):
 
 if __name__ == '__main__':
     # print add_max_product_with_sub_py()
-    # product_search_py()
+    # print product_search_py()
     # del_latest_product_py()
-    # del_all_products_py()
+    del_all_products_py()
     # print add_max_product_py()
     # print add_max_product_py()
     # print add_product_with_one_sub_py()
     # product_info_py()
     # print add_launched_product_py()
-    conf = {'settax': 0}
-    add_product_with_conf_py(conf)
+    # conf = {'settax': 0}
+    # add_product_with_conf_py(conf)
     # del_latest_products_py(2)

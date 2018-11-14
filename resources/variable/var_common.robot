@@ -8,7 +8,6 @@ Resource          var_order.robot
 Resource          var_product_collection.robot
 Resource          var_product_comment.robot
 Resource          var_product_management.robot
-Resource          var_seoimage.robot
 Resource          var_settings_page.robot
 Resource          var_shipping.robot
 Resource          var_store.robot
@@ -53,9 +52,9 @@ ${locatorB_decoration_custom_button_NewPage}    dom:document.querySelectorAll('[
 ${locatorB_decoration_addPage_input_pageName}    dom:document.querySelectorAll('[class="ant-input"]')    # 导航栏-店铺装修-自定义页面-页面设置-名称
 
 ${locatorB_application}    dom:document.querySelectorAll('a[href="/tools"]')[0]    #.导航栏-应用市场
+${locatorB_application}    dom:document.querySelectorAll('a[href="/app_store"]')[0]    #.导航栏-应用市场
+
 ${locatorB_setting_menus}    dom:document.querySelectorAll(".ant-menu-submenu-title")    # 导航栏-设置-含自菜单的元素
-${locatorB_application_seoimg}    dom:document.querySelectorAll('.item___3Js4k')[4]    #.应用市场-图片seo
-${locatorB_application_invitaion}    dom:document.querySelectorAll('.item___3Js4k')[0]    #.应用市场-邀请码工具
 
 
 
@@ -151,7 +150,7 @@ ${file_products_addImg5}    ${CURDIR}/../images/image05.png    # 添加商品图
 
 
 # C端
-${locatorC_icon_card}    dom:document.querySelectorAll("[class*='sep-font-cart-thin']")[0]    #.checkout购物车图标按钮
+${locatorC_icon_card}    dom:document.querySelectorAll('[class~="d-md-block"] [href="/cart"]')[0]    #.checkout购物车图标按钮
 ${locatorC_input_email}    id:userName    #会员登录-email输入框
 
 ${locatorC_products_shippingAddress_payment_button_completeOrder}    dom:document.querySelectorAll('[class="btn btn-primary payment-footer__btn"]')    #payment-->complete order按钮

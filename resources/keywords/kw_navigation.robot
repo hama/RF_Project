@@ -170,20 +170,6 @@ Go To Navigation Menu Page
     Location Should Be    ${url_menus}
     Sleep    1
 
-Go To Application Page
-    [Documentation]    跳转到应用市场-图片SEO
-    Wait And Click Element    ${locatorB_application}
-    Wait Until Page Contains    图片SEO
-    Wait And Click Element    ${locatorB_application_seoimg}
-    Location Should Be    ${url_seoimage}
-
-Go To Invitaion Page
-    [Documentation]    跳转到 邀请码工具
-    Wait And Click Element    ${locatorB_application}
-    Wait Until Page Contains    邀请码工具
-    Wait And Click Element    ${locatorB_application_invitaion}
-    #Wait Until Page Contains     授权确认
-    #Location Should Be    ${url_invitaion}
 
 Go To Home By Url
     [Documentation]    通过url跳转到主页

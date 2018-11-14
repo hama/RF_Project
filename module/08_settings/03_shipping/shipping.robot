@@ -311,24 +311,23 @@ shipping147.1
 
 
 #基础信息-物流p0用例（周莉编写）
-shipping013
-    [Documentation]    测试添加国家按钮（双击）
-    [Tags]    P0
-    Wait And Click Element    ${locatorB_shipping_btn_startSet}
-    Sleep    2
+#shipping013
+#    [Documentation]    测试添加国家按钮（双击）
+#    [Tags]    P0
+#    Wait And Click Element    ${locatorB_shipping_btn_startSet}
+#    Sleep    2
 #    Double Click Element    ${locatorB_shippingNew_btn_addCountry}
-    Long Press Element With Wait    ${locatorB_shippingNew_btn_addCountry}
-    Wait Until Page Contains Locator    ${locatorB_shippingNew_p_title}
-    Wait Until Page Contains Text    国家选择
-
-shipping014
-    [Documentation]    测试添加国家按钮（长按）
-    [Tags]    P0
-    Wait And Click Element    ${locatorB_shipping_btn_startSet}
-    Sleep    2
-    Mouse Down    ${locatorB_shippingNew_btn_addCountry}
-    Wait Until Page Not Contains Locator    ${locatorB_shippingNew_p_title}
-    Wait Until Page Not Contains Text    国家选择
+#    Wait Until Page Contains Locator    ${locatorB_popUps_title}
+#    Wait Until Page Contains Text    国家选择
+#
+#shipping014
+#    [Documentation]    测试添加国家按钮（长按）
+#    [Tags]    P0
+#    Wait And Click Element    ${locatorB_shipping_btn_startSet}
+#    Sleep    2
+#    Mouse Down    ${locatorB_shippingNew_btn_addCountry}
+#    Wait Until Page Not Contains Locator    ${locatorB_popUps_title}
+#    Wait Until Page Not Contains Text    国家选择
 
 shipping015
     [Documentation]    测试添加国家弹窗界面功能(输入为空)
@@ -413,10 +412,10 @@ shipping025
     Wait And Click Element    ${locatorB_shippingNew_popUp_btn_cancel}
     Wait Until Page Contains Text    暂无数据
 
-shipping027
-    [Documentation]    双击价格栏添加运费按钮
-    [Tags]    P0
-    Wait And Click Element    ${locatorB_shipping_btn_startSet}
-    sleep    2
-    Double Click Element    ${locatorB_shippingNew_btn_addPriceShipping}
-    Text Of Element Should Be Equal With Wait    ${locatorB_popUps_title}    添加基于价格的运费
+#shipping027
+#    [Documentation]    双击价格栏添加运费按钮
+#    [Tags]    P0
+#    Wait And Click Element    ${locatorB_shipping_btn_startSet}
+#    sleep    2
+#    Double Click Element    ${locatorB_shippingNew_btn_addPriceShipping}
+#    Text Of Element Should Be Equal With Wait    ${locatorB_popUps_title}    添加基于价格的运费

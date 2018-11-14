@@ -13,8 +13,8 @@ Resource          ../../../resources/keywords/kw_common.robot
 checkout_001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0    threshold    smoke
-    Wait And Click Element    ${locatorC_productDetail_button_addToCart}
-    Wait And Click Element    ${locatorC_icon_card}
+    Sleep And Click Element    ${locatorC_productDetail_button_addToCart}
+    Sleep And Click Element    ${locatorC_icon_card}
     Wait And Click Element    ${locatorC_cart_button_checkout}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_order}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_address}
@@ -49,13 +49,13 @@ checkout_009
     [Documentation]    验证checkout shipping页面，订单汇总商品栏，商品价格显示正常 >"1.C端购买商品women进入checkout shipping页面,2.查看订单汇总商品栏，商品价格显示" > 商品价格显示为：444USD
     [Tags]    P0    threshold    smoke
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}   $444.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}   444.00USD
 
 checkout_014
-    [Documentation]    验证checkout shipping页面，subtotal显示正常 > "1.C端购买商品women两件进入checkout shipping页面,2.查看价格详情中subtotal" > subtotal为：$444.00
+    [Documentation]    验证checkout shipping页面，subtotal显示正常 > "1.C端购买商品women两件进入checkout shipping页面,2.查看价格详情中subtotal" > subtotal为：444.00USD
     [Tags]    P0    threshold    smoke
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_itemPrice}    $444.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_itemPrice}    444.00USD
 
 checkout_021
     [Documentation]    验证checkout shipping页面，使用优惠码后，价格详情中会出现discount code并显示优惠价格 > "1.C端购买商品women进入checkout shipping页面，2.使用优惠码AAA001，3.查看价格详情" > 价格详情显示优惠金额
@@ -77,7 +77,7 @@ checkout_025
     Should Be True    '${res}'=='${num}'
 
 checkout_026
-    [Documentation]    验证checkout shipping页面，优惠码输入框后apply按钮可点击>"1.C端购买任意商品进入checkout shipping页面,2.优惠码输入框中输入优惠码AAA006,3.点击apply按钮" > 点击后优惠码使用成功，价格详情中显示discount code： - $10.00
+    [Documentation]    验证checkout shipping页面，优惠码输入框后apply按钮可点击>"1.C端购买任意商品进入checkout shipping页面,2.优惠码输入框中输入优惠码AAA006,3.点击apply按钮" > 点击后优惠码使用成功，价格详情中显示discount code： - 10.00USD
     [Tags]    P0    threshold
     ${code}    Create Specific Coupon Code
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
@@ -85,7 +85,7 @@ checkout_026
     #.点击应用
     Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
     #.获取优惠那一栏的值
-    Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll("[class='checkout__prices-table-value']")[1]    - $10.00
+    Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll("[class='checkout__prices-table-value']")[1]    - 10.00USD
 
     #门槛无标注，
 checkout_027
@@ -157,7 +157,7 @@ checkout_078
     [Documentation]    验证checkout shipping页面，未选择国家时，shipping delivery栏不显示运费方案  >  1.购买任意商品进入checkout shipping页面  2.不选择国家查看shipping delivery栏
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait Until Page Contains Text    Please enter a shipping address first
+    Wait Until Page Contains Text    Please enter address first
 
 checkout_093
     [Documentation]    验证从商品详情页面buy now进入checkout shipping页面后，点击return可返回商品详情页面 > 1.C端进入任意一个商品详情页面 2.buy now进入checkout shipping页面 3.点击return
@@ -171,7 +171,7 @@ checkout_094
     [Documentation]    验证从购物车进入checkout shipping页面后，点击return可返回购物车 > 1.C端将任意商品加入购物车 2.进入购物车点击checkout按钮进入checkout shipping页面 3.点击return
     [Tags]    P0    threshold    smoke
     Wait And Click Element   ${locatorC_productDetail_button_addToCart}
-    Wait And Click Element   ${locatorC_icon_card}
+    Sleep And Click Element    ${locatorC_icon_card}
     Wait And Click Element   ${locatorC_cart_button_checkout}
     Wait Until Page Contains Text    Order summary
     #.返回
@@ -210,7 +210,7 @@ checkout_101
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_itemPrice}   $444.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_itemPrice}   444.00USD
 
 checkout_106
     [Documentation]   验证checkout 支付页面，subtotal显示正常 > 1.C端购买商品women两件进入checkout 支付页面  2.查看价格详情中subtotal
@@ -219,7 +219,7 @@ checkout_106
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_subtotalPrice}     $888.00
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_subtotalPrice}     888.00USD
 
 # discount code不好定位，暂时放着
 #checkout_111
@@ -231,7 +231,7 @@ checkout_106
 #    Wait And Input Text     ${locatorC_checkoutShipping_input_discountCode}     ${code}
 #    Wait And Click Element   ${locatorC_checkoutShipping_button_apply}
 #    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-#    Text Of Element Should Be Equal With Wait    ${discount code}    - $10.00
+#    Text Of Element Should Be Equal With Wait    ${discount code}    - 10.00USD
 
 checkout_114
     [Documentation]    验证checkout 支付页面，Payment栏，shiP to信息显示正常

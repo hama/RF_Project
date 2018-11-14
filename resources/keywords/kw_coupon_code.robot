@@ -7,6 +7,7 @@ Resource          kw_common.robot
 Coupon Code Suite Setup
     [Documentation]
     Login With Default User
+    kwproduct.add_launched_product_py
 
 
 Coupon Code Suite Teardown

@@ -80,9 +80,11 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
     设置邮件格式&内容
     :return:
     '''
-    hosts = os.popen('cat /etc/hosts | grep "aaaaa"').read()
+    hosts = os.popen('cat /etc/hosts | grep "shopla"').read()
     if hosts:
-        hosts = '已配/etc/hosts:\n' + hosts
+        hosts = '!!!国服环境报告!!!\n已配/etc/hosts:' + hosts
+    else:
+        hosts = '!!!美服环境报告!!!'
     # 文字
     html = """
     %s

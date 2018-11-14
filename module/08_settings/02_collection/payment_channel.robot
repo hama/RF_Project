@@ -22,7 +22,7 @@ pay_024
     [Documentation]    验证信用卡支付栏，可开启当前所选的支付方式
     [Tags]    P0    threshold   smoke
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_pay_switch_creditCardSwitch}
-    ${class}=    Run Keyword If    '${status}'=='True'    Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
+    ${class}=    Run Keyword If    '${status}'=='True'    Wait And Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
     Run Keyword If    $class=='ant-switch'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
     Sleep    2
     Element Attribute Should Be Equal With Wait    ${locatorB_pay_switch_creditCardSwitch}    class    ant-switch ant-switch-checked
@@ -86,7 +86,7 @@ pay_058
     [Tags]    P0    threshold   smoke
     Sleep    2
     #.判定支付渠道已处于开启状态
-    ${class}      Get Element Attribute    ${locatorB_pay_switch_codSwitch}    class
+    ${class}      Wait And Get Element Attribute    ${locatorB_pay_switch_codSwitch}    class
     Run Keyword If    '${class}'=='ant-switch'    Wait And Click Element Then Confirm     ${locatorB_pay_switch_codSwitch}
     Element Attribute Should Be Equal With Wait    ${locatorB_pay_switch_codSwitch}    class    ant-switch ant-switch-checked
 
