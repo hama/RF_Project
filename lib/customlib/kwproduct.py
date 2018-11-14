@@ -229,11 +229,11 @@ if __name__ == '__main__':
     # print add_max_product_with_sub_py()
     # print product_search_py()
     # del_latest_product_py()
-    # del_all_products_py()
+    del_all_products_py()
     # print add_max_product_py()
     # print add_max_product_py()
     # print add_product_with_one_sub_py()
-    product_info_py()
+    # product_info_py()
     # print add_launched_product_py()
     # conf = {'settax': 0}
     # add_product_with_conf_py(conf)
