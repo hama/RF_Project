@@ -412,10 +412,10 @@ shipping025
     Wait And Click Element    ${locatorB_shippingNew_popUp_btn_cancel}
     Wait Until Page Contains Text    暂无数据
 
-shipping027
-    [Documentation]    双击价格栏添加运费按钮
-    [Tags]    P0
-    Wait And Click Element    ${locatorB_shipping_btn_startSet}
-    sleep    2
-    Double Click Element    ${locatorB_shippingNew_btn_addPriceShipping}
-    Text Of Element Should Be Equal With Wait    ${locatorB_popUps_title}    添加基于价格的运费
+#shipping027
+#    [Documentation]    双击价格栏添加运费按钮
+#    [Tags]    P0
+#    Wait And Click Element    ${locatorB_shipping_btn_startSet}
+#    sleep    2
+#    Double Click Element    ${locatorB_shippingNew_btn_addPriceShipping}
+#    Text Of Element Should Be Equal With Wait    ${locatorB_popUps_title}    添加基于价格的运费
