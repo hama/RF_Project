@@ -126,6 +126,7 @@ ${url_checkoutSettings}    ${home_page}/checkout    #. checkout
 ${url_pay}    ${home_page}/pay    #. pay
 ${url_menus}    ${home_page}/menus    #.menus
 ${url_page}     ${home_page}/page    #.page
+${url_img_seo}    ${home_page}/app_store    #. img_seo
 ### 测试用户
 
 ${user_default_contact}    ${datas_contact}    # 默认使用的用户信息，用于跑大部分用例
