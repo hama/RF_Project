@@ -15,6 +15,7 @@ UploadFile Suite Teardown
 
 UploadFile Case Setup
     [Documentation]
+    kwfilemanagement.del_all_file_py
     Go To Files Page
 
 UploadFile Case Teardown
