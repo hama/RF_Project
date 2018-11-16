@@ -23,22 +23,33 @@ if __name__ == '__main__':
 
     config.set("common_account", "datas_invite_code", 'DJ1024')
     config.set("common_url", "home_page_url", args.url)
-    config.set("common_urn", "shop_urn", '.myshoplaza.com')
-    config.set("common_db", "db_service_config",
-               '{"host": "rm-rj978v5t5e6462r66.mysql.rds.aliyuncs.com","port": 3306,'
-               '"user": "readonly","password": "readonly@123","db": "service","charset": "utf8"}')
 
     # config.set("common_db", "db_shop_config",
     #            '{"host": "rm-rj9f22zpw641v45g9.mysql.rds.aliyuncs.com","port": 3306,"user": "lansejiebo",'
     #            '"password": "lansejiebo@123","db": "shop_","charset": "utf8"}')
 
-    if 'all_china' in args.host:
-        # --------------------配置国内B端映射 host 记录 47.106.30.167 admin.shoplazza.com--------------------
-        # --------------------配置国内C端映射 host 记录 47.106.30.164 random_str.myshoplaza.com--------------------
-        os.popen('echo "47.106.30.167 admin.shoplazza.com" >> /etc/hosts')
-        os.popen('echo "47.106.30.164 %s.myshoplaza.com" >> /etc/hosts' % (random_str))
+    # 正式服配置
+    if 'admin.shoplazza.com' in args.url:
+        config.set("common_urn", "shop_urn", '.myshoplaza.com')
+        # 国服配置
+        if 'all_china' in args.host:
+            # --------------------配置国内B端映射 host 记录 47.106.30.167 admin.shoplazza.com--------------------
+            # --------------------配置国内C端映射 host 记录 47.106.30.164 random_str.myshoplaza.com--------------------
+            os.popen('echo "47.106.30.167 admin.shoplazza.com" >> /etc/hosts')
+            os.popen('echo "47.106.30.164 %s.myshoplaza.com" >> /etc/hosts' % (random_str))
+            config.set("common_db", "db_service_config",
+                       '{"host": "rm-wz909yoadvh82f9x1.mysql.rds.aliyuncs.com","port": 3306,"user": "readonly",'
+                       '"password": "readonly@123","db": "service","charset": "utf8"}')
+        # 默认美服配置
+        elif 'all_usa' in args.host:
+            config.set("common_db", "db_service_config",
+                       '{"host": "rm-rj978v5t5e6462r66.mysql.rds.aliyuncs.com","port": 3306,'
+                       '"user": "readonly","password": "readonly@123","db": "service","charset": "utf8"}')
+    # 测试服配置
+    elif 'admin1024.shoplazza.com' in args.url:
+        config.set("common_urn", "shop_urn", '.preview.shoplazza.com')
         config.set("common_db", "db_service_config",
-                   '{"host": "rm-wz909yoadvh82f9x1.mysql.rds.aliyuncs.com","port": 3306,"user": "readonly",'
+                   '{"host": "rm-wz90k3o28md7301p3.mysql.rds.aliyuncs.com","port": 3306,"user": "readonly",'
                    '"password": "readonly@123","db": "service","charset": "utf8"}')
 
     if 'new' in args.user:
