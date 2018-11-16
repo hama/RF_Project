@@ -7,10 +7,12 @@ Resource          kw_common.robot
 Go To Home Page
     [Documentation]    跳转到主页
     Wait And Click Element    ${locatorB_overview}
+    Sleep    1
 
 Go To Setting Page
     [Documentation]    跳转到设置页面
     Wait And Click Element    ${locatorB_setting}
+    Sleep    1
 
 Go To Dealing Order Page
     [Documentation]    跳转到待处理订单页面
@@ -76,6 +78,7 @@ Go To Subtraction Page
     ...    ELSE    Wait And Click Element    ${locatorB_marketing_subtraction}
     Wait Until Page Contains    ${locatorB_subtraction_header_text}
     Location Should Be    ${url_subtraction}
+    Sleep    1
 
 Go To Coupon Page
     [Documentation]    跳转营销-优惠券页面
@@ -87,6 +90,7 @@ Go To Coupon Page
     ...    ELSE    Wait And Click Element    ${locatorB_marketing_coupon_code}
     Wait Until Page Contains    ${locatorB_couponLst_couponText}
     Location Should Be    ${url_coupon_code}
+    Sleep    1
 
 Go To Store Page
     [Documentation]    跳转基础信息页面
@@ -99,6 +103,7 @@ Go To Store Page
     ...    ELSE    Wait And Click Element    ${locatorB_setting_store}
     Wait Until Page Contains    ${contextB_store_storeInfo}
     Location Should Be    ${url_coupon_store}
+    Sleep    1
 
 Go To Tax Page
     [Documentation]    跳转到税费页面
@@ -111,6 +116,7 @@ Go To Tax Page
     ...    ELSE    Wait And Click Element    ${locatorB_setting_taxPrice}
     Wait Until Page Contains    收税方式
     Location Should Be    ${url_tax_price}
+    Sleep    1
 
 Go To Shipping Page
     [Documentation]    跳转到物流页面
@@ -122,6 +128,7 @@ Go To Shipping Page
     ...    ELSE    Wait And Click Element    ${locatorB_setting_shipping}
     Wait Until Page Contains    物流方案
     Location Should Be    ${url_shipping}
+    Sleep    1
 
 Go To Employee Account Page
     [Documentation]    跳转员工账号页面
@@ -133,18 +140,20 @@ Go To Employee Account Page
     ...    ELSE    Wait And Click Element    ${locatorB_setting_employee}
     Wait Until Page Contains    ${contextB_account_employeeManagement}
     Location Should Be    ${url_accounts}
+    Sleep    1
 
-Go To Uploadfile Page
+Go To Files Page
     [Documentation]    跳转到 文件管理页面
     Wait Until Element Is Visible    ${locatorB_setting}
     # 若设置按钮没展开，则展开设置按钮
     ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
     Run Keyword If    '${attr}'=='False'    Sleep    4
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_upfile}
-    ...    ELSE    Wait And Click Element    ${locatorB_setting_upfile}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_files}
+    ...    ELSE    Wait And Click Element    ${locatorB_setting_files}
     Wait Until Page Contains    上传文件
-    Location Should Be    ${url_uploadFile}
+    Location Should Be    ${url_files}
+    Sleep    1
 
 Go To Checkout Settings Page
     [Documentation]    跳转到店铺装修-结账流程页面
@@ -194,11 +203,16 @@ Go To Payment Channel
     ...    ELSE    Wait And Click Element    ${locatorB_setting_payment}
     Wait Until Page Contains    PayPal收款
     Location Should Be    ${url_pay}
+    Sleep    1
 
 Go To Custom Page
     [Documentation]    通过url跳转到 自定义页面
+    Sleep    1
     Go To    ${url_page}
+    Sleep    1
 
 Go To Application Page
     [Documentation]    通过url跳转到 图片seo
+    Sleep    1
     Go To    ${url_img_seo}
+    Sleep    1
