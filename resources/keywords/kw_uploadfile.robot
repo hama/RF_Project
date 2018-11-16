@@ -15,7 +15,7 @@ UploadFile Suite Teardown
 
 UploadFile Case Setup
     [Documentation]
-    Go To Uploadfile Page
+    Go To Files Page
 
 UploadFile Case Teardown
     [Documentation]
