@@ -48,25 +48,25 @@ uploadFile006
     Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
     Wait Until Page Contains Text     image01.jpg
 
-uploadFile007
-    [Documentation]       测试产品栏  >  1.在产品界面点击添加按钮 2.查看结果
-    [Tags]    P0    threshold
-    Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
-    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
-    Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
-    Wait Until Page Contains Text     image02.jpg
-
-uploadFile009
-    [Documentation]    测试上传栏 > "1.在上传界面点击添加按钮,2.在本地文件中选择图片3.jpg,3.点击确认" > 显示上传成功，上传栏中显示图片3.jpg
-    [Tags]    P0    threshold
-    #.切换到 上传文件 栏目
-    Wait And Click Element    ${locatorB_uploadFile_nav_upfile}
-    Wait Until Page Contains Locator    ${locatorB_uploadFile_upLoad_addFileBtn}
-    Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg}
-    Wait And Click Element     ${locatorB_uploadFile_nav_productImg}
-    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
-    Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
-    Wait Until Page Contains Text     image01.jpg
+#uploadFile007
+#    [Documentation]       测试产品栏  >  1.在产品界面点击添加按钮 2.查看结果
+#    [Tags]    P0    threshold
+#    Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
+#    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
+#    Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
+#    Wait Until Page Contains Text     image02.jpg
+#
+#uploadFile009
+#    [Documentation]    测试上传栏 > "1.在上传界面点击添加按钮,2.在本地文件中选择图片3.jpg,3.点击确认" > 显示上传成功，上传栏中显示图片3.jpg
+#    [Tags]    P0    threshold
+#    #.切换到 上传文件 栏目
+#    Wait And Click Element    ${locatorB_uploadFile_nav_upfile}
+#    Wait Until Page Contains Locator    ${locatorB_uploadFile_upLoad_addFileBtn}
+#    Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg}
+#    Wait And Click Element     ${locatorB_uploadFile_nav_productImg}
+#    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
+#    Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
+#    Wait Until Page Contains Text     image01.jpg
 
 uploadFile011
     [Documentation]    测试素材链接及复制按钮 >  1.上传一个图片到素材库 2.点击复制按钮  3.新开窗口粘贴  4.进入网页
