@@ -42,7 +42,7 @@ uploadFile005
     Wait Enabled And Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}
     Wait And Click Element    ${locatorB_productsNew_button_save}
     Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
-    Go To Uploadfile Page
+    Go To Files Page
     Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
     Wait Until Page Contains Text     image01.jpg
 
