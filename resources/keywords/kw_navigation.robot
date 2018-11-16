@@ -198,3 +198,7 @@ Go To Payment Channel
 Go To Custom Page
     [Documentation]    通过url跳转到 自定义页面
     Go To    ${url_page}
+
+Go To Application Page
+    [Documentation]    通过url跳转到 图片seo
+    Go To    ${url_img_seo}
