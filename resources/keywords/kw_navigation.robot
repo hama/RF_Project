@@ -204,3 +204,15 @@ Go To Payment Channel
     Wait Until Page Contains    PayPal收款
     Location Should Be    ${url_pay}
     Sleep    1
+
+Go To Custom Page
+    [Documentation]    通过url跳转到 自定义页面
+    Sleep    1
+    Go To    ${url_page}
+    Sleep    1
+
+Go To Application Page
+    [Documentation]    通过url跳转到 图片seo
+    Sleep    1
+    Go To    ${url_img_seo}
+    Sleep    1

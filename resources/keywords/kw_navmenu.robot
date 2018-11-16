@@ -26,6 +26,7 @@ Add Navigation Menu With Wait
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     ${menuName}
     Sleep    2
     Wait And Click Element    ${locatorB_button_save00}
+    Sleep    2
     Wait Until Page Contains Text    保存成功
     Sleep    2
     Go To Navigation Menu Page
@@ -38,6 +39,7 @@ Add All Navigation Menu With Wait
     Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
     Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}    ${Content}
     Wait And Click Element    ${locatorB_button_save00}
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Wait Until Page Contains Text    保存成功
     Sleep    2
     Go To Navigation Menu Page

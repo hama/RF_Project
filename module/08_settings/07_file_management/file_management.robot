@@ -34,85 +34,58 @@ uploadFile004
 uploadFile005
     [Documentation]    "1.在商品编辑界面添加商品并上传图片1.jpg,2.在素材库产品页面查看" > 产品页面显示图片1.jpg
     [Tags]    P0
-    Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
-    Wait And Click Element     ${locatorB_uploadFile_nav_upfile}
-    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
-    Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
-    Wait Until Page Contains Text     image02.jpg
-
-uploadFile006
-    [Documentation]    "1.在产品界面点击添加按钮,2.查看结果" > 打开本地文件选择窗口
-    [Tags]    P0    threshold
-    Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg}
-    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
+    kwproduct.del_all_products_py
+    kwproduct.add_empty_quantity_product_py
+    Go To Product Management Page
+    Wait And Click Element    ${locatorB_productsMgmt_list_firstProduct}
+    Wait And Input Text    ${locatorB_productsNew_input_title}    编辑商品001
+    Wait Enabled And Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
+    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
+    Go To Files Page
     Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
     Wait Until Page Contains Text     image01.jpg
-
-#uploadFile007
-#    [Documentation]       测试产品栏  >  1.在产品界面点击添加按钮 2.查看结果
-#    [Tags]    P0    threshold
-#    Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
-#    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
-#    Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
-#    Wait Until Page Contains Text     image02.jpg
-#
-#uploadFile009
-#    [Documentation]    测试上传栏 > "1.在上传界面点击添加按钮,2.在本地文件中选择图片3.jpg,3.点击确认" > 显示上传成功，上传栏中显示图片3.jpg
-#    [Tags]    P0    threshold
-#    #.切换到 上传文件 栏目
-#    Wait And Click Element    ${locatorB_uploadFile_nav_upfile}
-#    Wait Until Page Contains Locator    ${locatorB_uploadFile_upLoad_addFileBtn}
-#    Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg}
-#    Wait And Click Element     ${locatorB_uploadFile_nav_productImg}
-#    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
-#    Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
-#    Wait Until Page Contains Text     image01.jpg
 
 uploadFile011
     [Documentation]    测试素材链接及复制按钮 >  1.上传一个图片到素材库 2.点击复制按钮  3.新开窗口粘贴  4.进入网页
     [Tags]    P0    threshold
+    Sleep    5
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
-    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
-    ${xurl}    Execute JavaScript    return document.querySelectorAll('tbody tr td div input')[0].value
-    Execute Javascript    window.open("${xurl}")
-    Select Window    New
-    Sleep    2
-    ${data}    Execute Javascript    return document.querySelectorAll('img')[0].src
-    Should Be True    '${data}'<>''
+    Wait And Click Element    ${locatorB_uploadFile_button_copy}
+    Wait Until Page Contains Text    已复制到剪贴板
+    ${Iurl}    Get Value    ${locatorB_uploadFile_input_urlText}
+    Go To    ${Iurl}
+    Focus On New Window
+    ${Surl}    Evaluate    u"${Iurl}".strip('https://')
+    Location Should Contain    ${Surl}
     
 uploadFile012
     [Documentation]    测试素材栏删除按钮 > "1.点击删除按钮,2.查看结果" > 点击删除按钮时弹出二次确认弹窗提示是否删除
     [Tags]    P0    threshold
     Wait And Click Element     ${locatorB_uploadFile_nav_upfile}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
-    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
-    Wait Until Page Contains Text     image02.jpg
-    #.点击删除
-    Sleep  4
-    Wait And Click Element    ${locatorB_uploadFile_icon_delImg}[0]
+    Sleep    2
+    Wait And Click Element    ${locatorB_uploadFile_icon_delImg}
     Wait Until Page Contains Text    确定删除吗？
+    Wait Until Page Contains Text    删除后将不能找回，请谨慎操作
 
 uploadFile013
     [Documentation]    测试素材栏删除按钮 > "1.点击删除按钮,2.查看结果" > 点击确认
     [Tags]    P0    threshold
     Wait And Click Element     ${locatorB_uploadFile_nav_upfile}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
-    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
-    Wait Until Page Contains Text     image02.jpg
-    #.点击删除
-    Sleep  4
-    Wait And Click Element Then Confirm    ${locatorB_uploadFile_icon_delImg}[0]
+    Sleep    2
+    Wait And Click Element Then Confirm    ${locatorB_uploadFile_icon_delImg}
     Wait Until Page Not Contains Text     image02.jpg
+    Wait Until Page Contains Text    暂无数据
 
 uploadFile014
     [Documentation]    "1.已在素材库界面,2.素材库已有内容,3.网络正常" > 测试素材栏删除按钮 点击取消 > 本次不会删除
     [Tags]    P0    threshold
     Wait And Click Element     ${locatorB_uploadFile_nav_upfile}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
-    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
-    Wait Until Page Contains Text     image02.jpg
-    Sleep   2
-    Wait And Click Element Then Cancel    ${locatorB_uploadFile_icon_delImg}[0]
+    Sleep    2
+    Wait And Click Element Then Cancel    ${locatorB_uploadFile_icon_delImg}
     Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
     Wait Until Page Contains Text     image02.jpg
 
@@ -122,12 +95,8 @@ uploadFile015
     Wait And Click Element     ${locatorB_uploadFile_nav_productImg}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
-    #.点击批量选中
     Sleep And Click Element    ${locatorB_uploadFile_checkbox_selectAllFiles}
-    Wait Until Page Contains Locator    ${locatorB_uploadFile_icon_delImg}
-    Wait Until Page Contains Locator    ${locatorB_uploadFile_checkbox_delTheBut}[1]
-    #删除所有
-    kwfilemanagement.del_all_file_py
+    Wait Until Page Contains Locator    ${locatorB_uploadFile_button_deleteAllFiles}
 
 uploadFile016
     [Documentation]    测试批量删除 > 1.勾选多个素材  2.点击删除   3.点击确认
@@ -136,10 +105,9 @@ uploadFile016
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
     Sleep And Click Element    ${locatorB_uploadFile_checkbox_selectAllFiles}
-    Wait And Click Element Then Confirm    ${locatorB_uploadFile_button_delData}
-    #.显示删除 元素
+    Wait And Click Element Then Confirm    ${locatorB_uploadFile_button_deleteAllFiles}
     Wait Until Page Not Contains Locator    ${locatorB_uploadFile_list_firstTr}
-    kwfilemanagement.del_all_file_py
+    Wait Until Page Contains Text    暂无数据
 
 uploadFile017
     [Documentation]    测试批量删除 > 1.勾选多个素材  2.点击删除  3.点击取消
@@ -147,13 +115,10 @@ uploadFile017
     Wait And Click Element     ${locatorB_uploadFile_nav_productImg}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
-    #.点击批量选中
     Sleep And Click Element    ${locatorB_uploadFile_checkbox_selectAllFiles}
-    Wait And Click Element Then Cancel    ${locatorB_uploadFile_button_delData}
+    Wait And Click Element Then Cancel    ${locatorB_uploadFile_button_deleteAllFiles}
     Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
-    #.显示素材还是在被选中状态
     Element Attribute Should Be Equal With Wait    ${locatorB_uploadFile_checkbox_state}    class    ant-checkbox ant-checkbox-checked
-    kwfilemanagement.del_all_file_py
 
 
 # 现有方法耗时太长，先不执行，待优化用例

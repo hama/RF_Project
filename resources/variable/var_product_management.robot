@@ -46,6 +46,8 @@ ${locatorB_productsMgmt_input_name}    dom:document.querySelectorAll(".search_co
 ${locatorB_productsMgmt_button_search}    dom:document.querySelectorAll('button[data-robot="btn_search"]')[0]    # 搜索按钮
 ${locatorB_productsMgmt_icon_preview}    dom:document.querySelectorAll("tbody tr td div div i")[0]    # 商品列表 - 预览按钮
 
+${locatorB_productsMgmt_list_firstProduct}    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    # 商品列表 - 第一个商品的一行
+
 ${locatorB_productsMgmt_image_firstProductThumbnails}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[1].querySelectorAll("img")[0]     #商品列表第一个商品的图片
 ${locatorB_productsMgmt_text_firstProductName}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[2].querySelectorAll("span")[0]    #商品列表第一个商品的商品名称
 ${locatorB_productsMgmt_text_firstProductInventoryQuantity}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[3]    #商品列表第一个商品的库存(只能在Show All Header关键字执行之后使用)

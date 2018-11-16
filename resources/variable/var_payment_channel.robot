@@ -40,7 +40,7 @@ ${locatorB_pay_input_secureCode}    dom:document.querySelectorAll('input[id="sec
 
 ${locatorB_pay_creditCard_button_ipaylinks}    dom:document.querySelectorAll('[class="ant-btn middle_btn_e01e "]')[0]    #信用卡选择-ipaylinks收款
 ${locatorB_pay_creditCard_button_oceanpayment}    dom:document.querySelectorAll('[class="ant-btn middle_btn_e01e "]')[1]    #信用卡选择-钱海收款
-${locatorB_pay_creditCard_button_stripe}    dom:document.querySelectorAll('[class="ant-btn middle_btn_e01e "]')[3]    #信用卡选择-stripe收款
+${locatorB_pay_creditCard_button_stripe}    dom:document.querySelectorAll('[class="ant-btn middle_btn_e01e "]')[2]    #信用卡选择-stripe收款
 
 
 

@@ -3,13 +3,11 @@ Resource          kw_common.robot
 
 *** keyword ***
 Payment Channel Suite Setup
-    Login With Default User
     kwpayment.activate_payment_credit_card_py
-
+    Login With Default User
 
 Payment Channel Suite Teardown
     Close Test Suite Browser
-
 
 Payment Channel Test Setup
 	Go To Payment Channel
@@ -41,6 +39,10 @@ Select Credit Card Of OceanPayment
     Wait And Click Element    ${locatorB_pay_link_replacePay}
     Wait And Click Element     ${locatorB_pay_creditCard_button_oceanpayment}
     Wait Until Page Contains Text     钱海
+    Wait And Click Element    ${locatorB_pay_button_creditCardActivation}
+    ${is_changeButton}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_pay_button_changeNum}
+    Run Keyword If    '${is_changeButton}'=='False'    Run Keywords    Wait And Input Text  ${locatorB_pay_input_account}  150260    AND    Wait And Input Text  ${locatorB_pay_input_terminal}  15026001    AND    Wait And Input Text  ${locatorB_pay_input_secureCode}  12345678    AND    Wait And Click Element  ${locatorB_pay_button_bindingMembers}    AND  Wait Until Page Not Contains Locator  ${locatorB_pay_button_bindingMembers}
+    ...    else    Wait And Click Element    ${locatorB_pay_button_creditCardActivation}
 
 Select Credit Card Of Stripe
     [Documentation]    信用卡选择 stripe 收款方式
