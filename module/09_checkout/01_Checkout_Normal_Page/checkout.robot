@@ -410,7 +410,7 @@ checkout_111
     Add Address Common Step
     Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${getCode}
     Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
-    Wait Until Page Contains Text    Discount code:	- 10.00USD
+    Wait Until Page Contains Text    - 10.00USD
 
 checkout_124
     [Documentation]    验证checkout支付页面，支付方式显示正常
@@ -427,8 +427,14 @@ checkout_124
 checkout_130
     [Documentation]    验证checkout支付页面，选择ipaylinks支付时，支付方式栏下方会展开显示支付信息填写栏
     [Tags]    P0
+    [Setup]    Go To Payment Channel
     kwpayment.activate_payment_credit_card_py
+    Select Credit Card Of IpayLinks
+    ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_pay_switch_creditCardSwitch}
+    ${class}=    Run Keyword If    '${status}'=='True'    Wait And Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
+    Run Keyword If    $class=='ant-switch'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
     Reload Page And Start Ajax
+    Go To First Product C Interface
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
@@ -439,7 +445,12 @@ checkout_131
     [Documentation]    验证checkout支付页面，使用ipaylinks可正常支付
     [Tags]    P0
     kwpayment.activate_payment_credit_card_py
+    Select Credit Card Of IpayLinks
+    ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_pay_switch_creditCardSwitch}
+    ${class}=    Run Keyword If    '${status}'=='True'    Wait And Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
+    Run Keyword If    $class=='ant-switch'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
     Reload Page And Start Ajax
+    Go To First Product C Interface
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
