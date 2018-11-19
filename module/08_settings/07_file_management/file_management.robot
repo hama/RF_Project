@@ -31,20 +31,20 @@ uploadFile004
     Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
     Wait Until Page Contains Text     image02.jpg
 
-uploadFile005
-    [Documentation]    "1.在商品编辑界面添加商品并上传图片1.jpg,2.在素材库产品页面查看" > 产品页面显示图片1.jpg
-    [Tags]    P0
-    kwproduct.del_all_products_py
-    kwproduct.add_empty_quantity_product_py
-    Go To Product Management Page
-    Wait And Click Element    ${locatorB_productsMgmt_list_firstProduct}
-    Wait And Input Text    ${locatorB_productsNew_input_title}    编辑商品001
-    Wait Enabled And Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}
-    Wait And Click Element    ${locatorB_productsNew_button_save}
-    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
-    Go To Files Page
-    Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
-    Wait Until Page Contains Text     image01.jpg
+#uploadFile005
+#    [Documentation]    "1.在商品编辑界面添加商品并上传图片1.jpg,2.在素材库产品页面查看" > 产品页面显示图片1.jpg
+#    [Tags]    P0
+#    kwproduct.del_all_products_py
+#    kwproduct.add_empty_quantity_product_py
+#    Go To Product Management Page
+#    Wait And Click Element    ${locatorB_productsMgmt_list_firstProduct}
+#    Wait And Input Text    ${locatorB_productsNew_input_title}    编辑商品001
+#    Wait Enabled And Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}
+#    Wait And Click Element    ${locatorB_productsNew_button_save}
+#    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
+#    Go To Files Page
+#    Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
+#    Wait Until Page Contains Text     image01.jpg
 
 uploadFile011
     [Documentation]    测试素材链接及复制按钮 >  1.上传一个图片到素材库 2.点击复制按钮  3.新开窗口粘贴  4.进入网页
