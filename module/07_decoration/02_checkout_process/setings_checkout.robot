@@ -120,7 +120,7 @@ checkoutPageSetings012.1
     Add Address Common Step
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    ${Empty}
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait Until Page Contains Locator    ${locatorC_products_shippingAddress_payment_button_completeOrder}
+    Wait Until Page Contains Locator    ${locatorC_checkout_button_completeOrder}
 
 checkoutPageSetings013.1
     [Documentation]    此用例未更新，新增模块-->手机隐藏
@@ -205,7 +205,7 @@ checkoutPageSetings024
     Add Address Common Step
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}     ${empty}
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait Until Page Contains Locator    ${locatorC_products_shippingAddress_payment_button_completeOrder}
+    Wait Until Page Contains Locator    ${locatorC_checkout_button_completeOrder}
 
 checkoutPageSetings025
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.公司名点击 隐藏 2.点击保存
@@ -249,7 +249,7 @@ checkoutPageSetings027.1
     Add Address Common Step
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    ${Empty}
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait Until Page Contains Locator    ${locatorC_products_shippingAddress_payment_button_completeOrder}
+    Wait Until Page Contains Locator    ${locatorC_checkout_button_completeOrder}
 
 checkoutPageSetings028.1
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.邮箱隐藏 2.点击保存
