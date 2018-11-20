@@ -31,14 +31,6 @@ uploadFile004
     Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
     Wait Until Page Contains Text     image02.jpg
 
-uploadFile005
-    [Documentation]    "1.在商品编辑界面添加商品并上传图片1.jpg,2.在素材库产品页面查看" > 产品页面显示图片1.jpg
-    [Tags]    P0
-    Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
-    Wait And Click Element     ${locatorB_uploadFile_nav_upfile}
-    Wait Until Page Contains Locator    ${locatorB_uploadFile_list_firstTr}
-    Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
-    Wait Until Page Contains Text     image02.jpg
 
 uploadFile006
     [Documentation]    "1.在产品界面点击添加按钮,2.查看结果" > 打开本地文件选择窗口
