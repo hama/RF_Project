@@ -28,6 +28,10 @@ Select Credit Card Of IpayLinks
      Wait And Click Element    ${locatorB_pay_link_replacePay}
      Wait And Click Element    ${locatorB_pay_creditCard_button_ipaylinks}
      Wait Until Page Contains Text    iPayLinks
+     Wait And Click Element    ${locatorB_pay_button_creditCardActivation}
+     Wait And Click Element    ${locatorB_pay_button_changeNum}
+     ${is_changeButton}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_pay_button_changeNum}
+     Run Keyword If    '${is_changeButton}'=='True'    Run Keywords    Wait And Input Text  ${locatorB_pay_input_userCard}  10000009446    AND    Wait And Input Text  ${locatorB_pay_input_pwsKey}  ${locatorB_pay_input_pwsKeyText}  AND    Wait And Click Element  ${locatorB_pay_button_bindingMembers}    AND  Wait Until Page Not Contains Locator  ${locatorB_pay_button_bindingMembers}
 
 Select Credit Card Of OceanPayment
     [Documentation]    信用卡选择 钱海 收款方式

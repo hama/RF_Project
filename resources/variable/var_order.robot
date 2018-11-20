@@ -81,7 +81,7 @@ ${locatorB_orderDetail_tag_firstProduct_shipPartiallyFinished}    dom:document.q
 ${locatorB_orderDetail_text_payway}    dom:document.querySelectorAll('[class*="payway"]')[0]    # 订单详情页第一个商品的支付方式
 ${locatorB_orderDetail_text_shipway}    dom:document.querySelectorAll('[class*="payway"]')[1]    # 订单详情页第一个商品的物流方案
 
-${locatorB_orderDetail_i_receiveInformation}    dom:document.querySelectorAll('[data-robot="order_details_edit_addr_info"]')    #订单详情页 收货信息 编辑按钮
+${locatorB_orderDetail_icon_receiveInformation}    dom:document.querySelectorAll('[data-robot="order_details_edit_addr_info"]')    #订单详情页 收货信息 编辑按钮
 ${locatorB_orderDetail_button_save}    dom:document.querySelectorAll("[data-robot='save']")    #订单详情页 收货信息 保存按钮
 
 ${locatorB_orderDetail_text_deliveryInformation}    dom:document.querySelectorAll('[class*="info_list"] [class*="info_item"]')    # 订单详情页收货信息
