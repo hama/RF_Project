@@ -316,7 +316,7 @@ checkout_086
     Wait And Click Element    ${locatorB_productsMgmt_list_firstProduct}
     Wait And Input Text    ${locatorB_productsNew_input_title}    编辑商品重量002
     Wait And Input Text    ${locatorB_productsNew_input_weight}    10
-    Wait And Click Element    ${locatorB_productsNew_button_save}
+    Sleep And Click Element    ${locatorB_productsNew_button_save}
     Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
     Go To First Product C Interface
     Reload Page And Start Ajax
