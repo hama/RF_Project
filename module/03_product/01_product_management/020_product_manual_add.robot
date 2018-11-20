@@ -48,14 +48,6 @@ products009
 	${status}    Evaluate    '${createTime}'=='${time1}' or '${createTime}'=='${time2}'
 	Should Be True    ${status}
 
-products011
-    [Documentation]    无SKU时，SKU展示空白
-    [Tags]    P0
-    kwproduct.add_min_product_py
-    Reload Page And Start Ajax
-    Select All Product Tag
-	${sku}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductSku}
-	Should Be Equal    '${sku}'    ''
 
 products014
     [Documentation]    验证点击‘全部’无结果
@@ -388,21 +380,6 @@ products080
     ${productName}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
 	Should Be Equal    '${productName}'    'compareone'
 
-products081
-	[Documentation]    可通过模糊搜索SKU，搜索出商品
-    [Tags]    P0    threshold
-    kwproduct.add_launched_product_py
-    &{product_conf01} =    Create Dictionary
-    ...    sku=123456
-    ...    title=compareone
-    kwproduct.add_product_with_conf_py    ${product_conf01}
-    Reload Page And Start Ajax
-    Select All Product Tag
-    Wait And Input Text    ${locatorB_productsMgmt_input_name}    123456
-    Wait And Click Element    ${locatorB_productsMgmt_button_search}
-    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
-    ${productName}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
-	Should Be Equal    '${productName}'    'compareone'
 
 products082
 	[Documentation]    可通过标签搜索出商品
