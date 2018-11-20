@@ -404,7 +404,7 @@ checkout_111
     [Tags]    P0
     [Setup]    Go To Coupon Page
     Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
-    Add Default Coupon Code Text
+    Add Default Coupon Code Textrobot
     Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    优惠码AAA001
     Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
     Wait And Click Element    ${locatorB_couponCodeNew_selectItem_cashCoupon}
@@ -452,6 +452,7 @@ checkout_130
 checkout_131
     [Documentation]    验证checkout支付页面，使用ipaylinks可正常支付
     [Tags]    P0
+    [Setup]    Go To Payment Channel
     kwpayment.activate_payment_credit_card_py
     Select Credit Card Of IpayLinks
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_pay_switch_creditCardSwitch}
@@ -494,14 +495,7 @@ checkout_157
     kwpayment.activate_payment_credit_card_py
     Select Credit Card Of OceanPayment
     ${class}=    Wait And Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
-    Run Keyword If    $class=='ant-switch'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
-    Wait And Click Element    ${locatorB_pay_button_creditCardActivation}
-    sleep   2
-    Wait And Click Element    ${locatorB_pay_button_changeNum}
-    ${numContent}    Sleep And Get Text    ${locatorB_pay_input_account}
-    Run Keyword If    $numContent!='150260'    Run Keywords    Wait And Input Text  ${locatorB_pay_input_account}  150260    AND    Wait And Input Text  ${locatorB_pay_input_terminal}  15026001    AND    Wait And Input Text  ${locatorB_pay_input_secureCode}  12345678    AND    Wait And Click Element  ${locatorB_pay_button_bindingMembers}    AND  Wait Until Page Not Contains Locator  ${locatorB_pay_button_bindingMembers}
-    ...    else    Wait And Click Element    ${locatorB_pay_button_creditCardActivation}
-    Sleep    5
+    Run Keyword If    '${class}'=='ant-switch'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
     Go To First Product C Interface
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
@@ -516,6 +510,14 @@ checkout_157
 checkout_198
     [Documentation]    验证payment failure页面，cancel order按钮可点击
     [Tags]    P0
+    [Setup]    Go To Payment Channel
+    kwpayment.activate_payment_credit_card_py
+    Select Credit Card Of IpayLinks
+    ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_pay_switch_creditCardSwitch}
+    ${class}=    Run Keyword If    '${status}'=='True'    Wait And Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
+    Run Keyword If    $class=='ant-switch'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
+    Reload Page And Start Ajax
+    Go To First Product C Interface
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
@@ -531,6 +533,14 @@ checkout_198
 checkout_199
     [Documentation]    验证payment failure页面，pay again按钮可点击
     [Tags]    P0
+    [Setup]    Go To Payment Channel
+    kwpayment.activate_payment_credit_card_py
+    Select Credit Card Of IpayLinks
+    ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_pay_switch_creditCardSwitch}
+    ${class}=    Run Keyword If    '${status}'=='True'    Wait And Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
+    Run Keyword If    $class=='ant-switch'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
+    Reload Page And Start Ajax
+    Go To First Product C Interface
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
