@@ -9,7 +9,6 @@ Force Tags        Checkout
 Resource          ../../../resources/keywords/kw_common.robot
 
 *** Test Cases ***
-
 #checkout_001
 #    [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
 #    [Tags]    P0    threshold    smoke
@@ -399,26 +398,26 @@ checkout_110
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutPayment_text_taxPrice}    + 0.00USD
 
-checkout_111
-    [Documentation]    验证checkout 支付页面，订单使用优惠码后，价格详情中会显示discount code并显示优惠价格
-    [Tags]    P0
-    [Setup]    Go To Coupon Page
-    Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
-    Add Default Coupon Code Textrobot
-    Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    优惠码AAA001
-    Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
-    Wait And Click Element    ${locatorB_couponCodeNew_selectItem_cashCoupon}
-    Wait And Input Text    ${locatorB_couponCodeNew_text_input_preferential}    50
-    Wait And Input Text    ${locatorB_couponCodeNew_text_input_discount}    10
-    Wait And Click Element    ${locatorB_button_save00}
-    ${getCode}=    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_couponCode}
-    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
-    Go To First Product C Interface
-    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${getCode}
-    Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
-    Wait Until Page Contains Text    - 10.00USD
+#checkout_111
+#    [Documentation]    验证checkout 支付页面，订单使用优惠码后，价格详情中会显示discount code并显示优惠价格
+#    [Tags]    P0
+#    [Setup]    Go To Coupon Page
+#    Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
+#    Add Default Coupon Code Textrobot
+#    Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    优惠码AAA001
+#    Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
+#    Wait And Click Element    ${locatorB_couponCodeNew_selectItem_cashCoupon}
+#    Wait And Input Text    ${locatorB_couponCodeNew_text_input_preferential}    50
+#    Wait And Input Text    ${locatorB_couponCodeNew_text_input_discount}    10
+#    Wait And Click Element    ${locatorB_button_save00}
+#    ${getCode}=    Sleep And Get Text    ${locatorB_couponCode_text_firstCoupon_couponCode}
+#    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
+#    Go To First Product C Interface
+#    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${getCode}
+#    Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
+#    Wait Until Page Contains Text    - 10.00USD
 
 checkout_124
     [Documentation]    验证checkout支付页面，支付方式显示正常
@@ -464,13 +463,13 @@ checkout_131
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait And Click Element    ${locatorC_checkoutPayment_icon_bankCard}
-    Wait And Input Text    ${locatorC_checkout_paymentCard_fristName}    Javen fang
-    Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    dianjiang@shoplazza.com
+    Wait And Input Text    ${locatorC_checkout_paymentCard_fristName}    Ting jack
+    Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    fan-da@zenmax.com
     Wait And Input Text    ${locatorC_checkout_paymentCard_phone}    18688886666
     Wait And Input Text    ${locatorC_checkout_paymentCard_cardPostcode}    518000
     Wait And Input Text    ${locatorC_checkout_paymentCard_cardNumber}    4111119987834534
-    Wait And Input Text    ${locatorC_checkout_paymentCard_cardDate}    1123
-    Wait And Input Text    ${locatorC_checkout_paymentCard_card_code}    123
+    Wait And Input Text    ${locatorC_checkout_paymentCard_cardDate}    1124
+    Wait And Input Text    ${locatorC_checkout_paymentCard_card_code}    869
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text   Payment successful!
 
@@ -697,7 +696,7 @@ checkout_227
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     Wait And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
     ${is_exist}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
-    Run Keyword If   '${is_exist}'=='True'    Wait And Click Element     ${locatorB_checkout_button_save}
+    Run Keyword If   '${is_exist}'=='True'    Wait Andpython Click Element     ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeOptional}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
