@@ -27,28 +27,6 @@ products002
     Should Be Equal As Integers    ${size}    2
 
 
-products003
-    [Documentation]    验证列表中展示的商品数据正确
-    [Tags]    P0
-    Select All Product Tag
-    # 添加完所有表头之后再进行表头信息的检验
-    Wait Until Page Contains Locator    dom:document.querySelectorAll('th[class="ant-table-selection-column"]')[0]
-    Wait Until Page Contains Text    商品图片
-    Wait Until Page Contains Text    商品名称
-    Wait Until Page Contains Text    库存
-    Wait Until Page Contains Text    SKU
-    Wait Until Page Contains Text    浏览量
-    Wait Until Page Contains Text    销量
-    Wait Until Page Contains Text    上架
-    Wait Until Page Contains Text    操作
-    Wait Until Page Contains Text    创建时间
-    # 检测商品信息
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_icon_listPreview}[0]
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_icon_listDelete}[0]
-    # 图片
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_image_firstProductThumbnails}
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_button_editTableHead}
-
 products006
     [Documentation]    验证商品有库存时，库存展示正确
     [Tags]    P0    threshold
@@ -66,14 +44,6 @@ products008
     Should Be Equal    ${attr0}    ant-switch
     Should Be Equal    ${attr1}    ant-switch ant-switch-checked
 
-products010
-    [Documentation]    验证显示的所有商品的sku是否显示正确
-    [Tags]    P0
-    #判断当前页所有商品状态
-    ${sku0}    Wait And Get Text    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[4].querySelectorAll("span")[0]
-    ${sku1}    Wait And Get Text    dom:document.querySelectorAll(".ant-table-tbody tr")[1].querySelectorAll("td")[4].querySelectorAll("span")[0]
-    Should Be Equal As Strings    ${sku0}    autotest_sku
-    Should Be Equal As Strings    ${sku1}    autotest_sku
 
 products017
     [Documentation]    验证点击预览icon正确跳转到卡片C端
