@@ -391,6 +391,14 @@ checkout_099
 	Wait Until Page Contains Text    Color:
 	Wait Until Page Contains Text    Size:
 
+checkout_110
+    [Documentation]    验证checkout 支付页面，商品不收取税费时，价格详情中的tax显示为：+ $0.00
+    [Tags]    P0
+    kwtax.set_country_tax_price_py    0
+    Reload Page And Start Ajax
+    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutPayment_text_taxPrice}    + 0.00USD
+
 checkout_111
     [Documentation]    验证checkout 支付页面，订单使用优惠码后，价格详情中会显示discount code并显示优惠价格
     [Tags]    P0
