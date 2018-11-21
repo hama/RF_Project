@@ -27,7 +27,7 @@ Select Credit Card Of IpayLinks
      Sleep    5
      Wait And Click Element    ${locatorB_pay_link_replacePay}
      Wait And Click Element    ${locatorB_pay_creditCard_button_ipaylinks}
-     Wait Until Page Contains Text    iPayLinks
+     Wait Until Page Contains Text    信用卡收款
      Wait And Click Element    ${locatorB_pay_button_creditCardActivation}
      Wait And Click Element    ${locatorB_pay_button_changeNum}
      ${is_changeButton}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_pay_button_changeNum}
@@ -42,7 +42,7 @@ Select Credit Card Of OceanPayment
     Sleep    5
     Wait And Click Element    ${locatorB_pay_link_replacePay}
     Wait And Click Element     ${locatorB_pay_creditCard_button_oceanpayment}
-    Wait Until Page Contains Text     钱海
+    Wait Until Page Contains Text    信用卡收款
     Wait And Click Element    ${locatorB_pay_button_creditCardActivation}
     ${is_changeButton}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_pay_button_changeNum}
     Run Keyword If    '${is_changeButton}'=='False'    Run Keywords    Wait And Input Text  ${locatorB_pay_input_account}  150260    AND    Wait And Input Text  ${locatorB_pay_input_terminal}  15026001    AND    Wait And Input Text  ${locatorB_pay_input_secureCode}  12345678    AND    Wait And Click Element  ${locatorB_pay_button_bindingMembers}    AND  Wait Until Page Not Contains Locator  ${locatorB_pay_button_bindingMembers}
@@ -57,6 +57,6 @@ Select Credit Card Of Stripe
     Sleep    5
     Wait And Click Element    ${locatorB_pay_link_replacePay}
     Wait And Click Element     ${locatorB_pay_creditCard_button_stripe}
-    Wait Until Page Contains Text     stripe
+    Wait Until Page Contains Text     信用卡收款
 
 
