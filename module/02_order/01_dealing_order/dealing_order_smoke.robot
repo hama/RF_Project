@@ -386,4 +386,74 @@ order275
 
 
 
+#周莉编写
+order001
+    [Documentation]    验证B端订单菜单栏可正常展开
+    [Tags]    P0    threshold
+    Wait Until Page Contains Text    待处理订单
+    Wait Until Page Contains Text    未完成订单
+
+order034
+    [Documentation]    验证待处理订单列表中，搜索按钮可点击
+    [Tags]    P0
+    kworder.add_deading_order_with_delivering_status_py
+    ${orderNum}=    kworder.get_latest_dealing_order_num_py
+    Wait And Input Text    ${locatorB_order_input_searchText}    ${orderNum}
+    Wait And Click Element    ${locatorB_order_button_searchBtn}
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDealing_text_firstOrder_orderNum}    ${orderNum}
+
+order045
+    [Documentation]    验证在C端使用线上支付支付成功的订单，待处理顶大列表中，支付状态显示为已支付
+    [Tags]    P0
+    kworder.add_deading_order_with_finished_status_py
+    Reload Page And Start Ajax
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDealing_text_firstOrder_paymentStatus}    已支付
+
+order049
+    [Documentation]    验证在订单详情中将此订单所有商品发货后，订单列表中显示的物流状态为：全部发货
+    [Tags]    P0
+    kworder.add_deading_order_with_all_delivered_status_py
+    Reload Page And Start Ajax
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDealing_text_firstOrder_shippingStatus}    全部发货
+
+order050
+    [Documentation]    验证在订单详情中将此订单商品全部分开发货并且部分商品确认收货后，订单列表中显示的物流状态为：部分完成
+    [Tags]    P0
+    kworder.add_deading_order_with_some_finished_status_py
+    Reload Page And Start Ajax
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDealing_text_firstOrder_shippingStatus}    部分完成
+
+order051
+    [Documentation]    验证在订单详情中将此订单商品发货后全部确认收货，订单列表中的物流状态为：全部完成
+    [Tags]    P0
+    kworder.add_deading_order_with_finished_status_py
+    Reload Page And Start Ajax
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDealing_text_firstOrder_shippingStatus}    全部完成
+
+order053
+    [Documentation]     验证订单详情确认收货后，待处理订单列表中，订单状态显示为：已完成
+    [Tags]    P0
+    kworder.add_deading_order_with_finished_status_py
+    Reload Page And Start Ajax
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDealing_text_firstOrder_orderStatus}    已完成
+
+order056
+    [Documentation]     验证待处理订单列表，未发货栏下，支付方式筛选框可展开以及筛选项显示
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_orderDealing_button_toDeliver}
+    Reload Page And Start Ajax
+    Sleep And Click Element    ${locatorB_orderDealing_select_paymentMethod}
+    Wait Until Page Contains Text    全部
+    Wait Until Page Contains Text    线上支付
+    Wait Until Page Contains Text    COD支付
+
+
+
+
+
+
+
+
+
+
 
