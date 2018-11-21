@@ -384,6 +384,22 @@ def add_undead_order_with_order_cancel_status_py(cookie=init_cookie):
     return tokens['order_token']
 
 
+def add_undead_order_with_pay_cod_py(conf={}, cookie=init_cookie):
+    '''
+    创建未完成订单的订单状态为：已取消
+    	cod	支付取消	已取消
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    tokens = add_deading_order_with_conf_py(conf, cookie=cookie)
+    productidlist_in_order = get_productidlist_in_order_py(tokens['order_token'], cookie=cookie)
+    conf = {'line_item_ids': productidlist_in_order}
+    shipment_with_conf_py(tokens['order_token'], conf, cookie=cookie)
+    orders_cancel_py(tokens['order_token'], cookie=cookie)
+    return tokens['order_token']
+
+
 def add_deading_order_with_conf_py(conf={}, cookie=init_cookie):
     '''
     通过conf添加新订单
