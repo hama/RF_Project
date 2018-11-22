@@ -85,6 +85,7 @@ order040
     ${order_token}    kworder.add_dealing_order_with_products_py
 	# 创建订单的时间戳
     ${createtime1}    Get Time
+    Sleep    5
     Reload Page And Start Ajax
     ${tmptime} =    Sleep And Get Text    ${locatorB_orderDealing_text_firstOrder_date}
     ${createtime2} =    Convert Date    ${tmptime}    result_format=%Y-%m-%d %H:%M:%S
