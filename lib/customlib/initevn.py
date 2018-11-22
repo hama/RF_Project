@@ -45,6 +45,13 @@ if __name__ == '__main__':
             config.set("common_db", "db_service_config",
                        '{"host": "rm-rj978v5t5e6462r66.mysql.rds.aliyuncs.com","port": 3306,'
                        '"user": "readonly","password": "readonly@123","db": "service","charset": "utf8"}')
+        # preview环境配置
+        elif 'all_preview' in args.host:
+            os.popen('echo "39.108.38.125 admin.shoplazza.com" >> /etc/hosts')
+            os.popen('echo "39.108.39.224 %s.myshoplaza.com" >> /etc/hosts' % (random_str))
+            config.set("common_db", "db_service_config",
+                       '{"host": "rm-wz9x2w88ltj8c94cf.mysql.rds.aliyuncs.com","port": 3306,'
+                       '"user": "readonly","password": "readonly@123","db": "service","charset": "utf8"}')
     # 测试服配置
     elif 'admin1024.shoplazza.com' in args.url:
         config.set("common_urn", "shop_urn", '.preview.shoplazza.com')
