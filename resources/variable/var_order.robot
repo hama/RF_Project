@@ -72,7 +72,8 @@ ${locatorB_orderDetail_tag_shipFinished}    dom:document.querySelectorAll('div[c
 ${locatorB_orderDetail_tag_shippartiallyShipped}    dom:document.querySelectorAll('div[class*="tag_ship_status_partially_shipped"]')    # tag：部分发货
 
 
-${locatorB_orderDetail_text_listProductName}    dom:document.querySelectorAll("[data-robot='order_details_product_name']")    # 订单详情页商品名list  订单详情第一个商品链接
+#${locatorB_orderDetail_text_listProductName}    dom:document.querySelectorAll("[data-robot='order_details_product_name']")    # 订单详情页商品名list  订单详情第一个商品链接
+${locatorB_orderDetail_text_listProductName}    dom:document.querySelectorAll('a[class="name_ed39"]')    # 订单详情页商品名list  订单详情第一个商品链接
 ${locatorB_orderDetail_text_firstProductSku}    dom:document.querySelectorAll('div[class="info_item_1ee2"]')[1]    # 订单详情页第一个商品的sku
 ${locatorB_orderDetail_text_firstProductVendor}    dom:document.querySelectorAll('div[class="info_item_1ee2"]')[2]    # 订单详情页第一个商品的供应商
 ${locatorB_orderDetail_text_firstProductPriceAndNum}    dom:document.querySelectorAll('div[class="num_e8aa"]')[0]    # 订单详情页第一个商品的单价及数量
