@@ -62,7 +62,7 @@ ${locatorB_couponCode_input_enterCouponCode}    dom:document.querySelectorAll('[
 
 ${locatorB_couponCode_text_firstCoupon_activityNum}    ${locatorB_table_listItems}[0].querySelectorAll("td")[0]    #第一个优惠码的，优惠码编号
 ${locatorB_couponCode_text_firstCoupon_activityName}    ${locatorB_table_listItems}[0].querySelectorAll("td")[1]    #第一个优惠码的，
-${locatorB_couponCode_text_firstCoupon_couponCode}    ${locatorB_table_listItems}[0].querySelectorAll("td")[2]    #第一个优惠码的，
+${locatorB_couponCode_text_firstCoupon_couponCode}    dom:document.querySelectorAll('[class="ant-table-row ant-table-row-level-0"] td:nth-child(3)')[0]   #第一个优惠码的，
 ${locatorB_couponCode_text_firstCoupon_activityTime}    ${locatorB_table_listItems}[0].querySelectorAll("td")[3]    #第一个优惠码的，
 ${locatorB_couponCode_text_firstCoupon_activityRules}    ${locatorB_table_listItems}[0].querySelectorAll("td")[4]    #第一个优惠码的，
 ${locatorB_couponCode_text_firstCoupon_activityRange}    ${locatorB_table_listItems}[0].querySelectorAll("td")[5]    #第一个优惠码的，

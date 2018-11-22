@@ -643,6 +643,7 @@ def add_undeal_order_with_product_py(cookie=init_cookie):
 
 
 if __name__ == '__main__':
+    print add_undead_order_with_pay_fail_status_py()
     # print add_undeal_order_with_product_py()
     # print add_undeal_order_with_products_py()
     # print add_dealing_order_with_product_py()
