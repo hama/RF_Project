@@ -9,156 +9,6 @@ Force Tags        Checkout
 Resource          ../../../resources/keywords/kw_common.robot
 
 *** Test Cases ***
-
-checkout_001
-    [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
-    [Tags]    P0    threshold    smoke
-    Sleep And Click Element    ${locatorC_productDetail_button_addToCart}
-    Sleep And Click Element    ${locatorC_icon_card}
-    Wait And Click Element    ${locatorC_cart_button_checkout}
-    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_order}
-    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_address}
-    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_special}
-    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_total}
-    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_button_paymentMethod}
-
-checkout_002
-    [Documentation]    进入checkout界面 显示购买的商品，地址，
-    [Tags]    P0    threshold    smoke
-    #点击商品预览
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_order}
-    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_address}
-
-checkout_006
-    [Documentation]    验证checkout shipping页面，订单汇总，商品栏，商品标题显示正常
-    [Tags]    P0    threshold    smoke
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_itemProductTitle}   autotest_title
-
-checkout_008
-    [Documentation]    验证checkout shipping页面，订单汇总商品栏，商品数量显示正常 > "1.C端够买商品women5件进入checkout shipping页面,2.查看订单汇总商品栏，商品数量显示" > 商品数量显示为：X5
-    [Tags]    P0    threshold    smoke
-    #.输入数量
-    Wait And Input Text    ${locatorC_productDetail_input_qtyNum}    5
-    #,点击立即购买
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_itemQtyNum}     × 5
-
-checkout_009
-    [Documentation]    验证checkout shipping页面，订单汇总商品栏，商品价格显示正常 >"1.C端购买商品women进入checkout shipping页面,2.查看订单汇总商品栏，商品价格显示" > 商品价格显示为：444USD
-    [Tags]    P0    threshold    smoke
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}   444.00USD
-
-checkout_014
-    [Documentation]    验证checkout shipping页面，subtotal显示正常 > "1.C端购买商品women两件进入checkout shipping页面,2.查看价格详情中subtotal" > subtotal为：444.00USD
-    [Tags]    P0    threshold    smoke
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_itemPrice}    444.00USD
-
-checkout_021
-    [Documentation]    验证checkout shipping页面，使用优惠码后，价格详情中会出现discount code并显示优惠价格 > "1.C端购买商品women进入checkout shipping页面，2.使用优惠码AAA001，3.查看价格详情" > 价格详情显示优惠金额
-    [Tags]    P0    threshold    smoke
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-	${code}    Create Specific Coupon Code
-    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${code}
-    Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
-    Wait Until Page Contains    Discount code
-
-checkout_025
-    [Documentation]    验证checkout shipping页面，优惠码输入框中可输入内容 > "1.点击优惠码输入框,2.输入内容：AAA003" > 优惠码输入框中显示输入的内容：AAA003
-    [Tags]    P1
-    ${num}    Set Variable    AAA003
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    #.在优惠码输入框中输入AAA003
-    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${num}
-    ${res}    Get Value    ${locatorC_checkoutShipping_input_couponCode}
-    Should Be True    '${res}'=='${num}'
-
-checkout_026
-    [Documentation]    验证checkout shipping页面，优惠码输入框后apply按钮可点击>"1.C端购买任意商品进入checkout shipping页面,2.优惠码输入框中输入优惠码AAA006,3.点击apply按钮" > 点击后优惠码使用成功，价格详情中显示discount code： - 10.00USD
-    [Tags]    P0    threshold
-    ${code}    Create Specific Coupon Code
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${code}
-    #.点击应用
-    Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
-    #.获取优惠那一栏的值
-    Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll("[class='checkout__prices-table-value']")[1]    - 10.00USD
-
-    #门槛无标注，
-checkout_027
-    [Documentation]    验证checkout shipping页面输入错误的优惠码时，点击apply，会给出对应提示 > 2.优惠码输入框中输入任意内容：..0001,3.点击apply > 优惠码输入框下方出现错误提示
-    [Tags]    P1
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ..0001
-    #.点击应用
-    Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
-    Wait Until Page Contains    This discount does not exist.
-
-# 已实现，用例有标注
-checkout_028
-    [Documentation]     验证checkout shipping页面，优惠码输入框中的取消使用优惠码按钮可清空输入框  >  1.输入框中输入本次购买商品可用的优惠码并且点击apply按钮使用   2.点击优惠码输入框中的取消使用按钮
-    [Tags]    P0    threshold
-    ${code}    Create Specific Coupon Code
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait And Input Text     ${locatorC_checkoutShipping_input_discountCode}     ${code}
-    Wait And Click Element   ${locatorC_checkoutShipping_button_apply}
-    #取消优惠码输入框的优惠码
-    Wait And Click Element   ${locatorC_checkoutShipping_icon_couponClose}
-    Wait Until Page Not Contains Text      This discount does not exist.
-
-checkout_034
-    [Documentation]    验证checkout shipping页面，shipping address栏，国家选择框可点击以及国家选择展示 > 1.点击shipping address栏国家选择框 >点击后国家选择框下拉展开，显示所有可选择的国家
-    [Tags]    P0    threshold    smoke
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait And Click Element    ${locatorC_checkoutShipping_address_select_country}
-
-checkout_035
-    [Documentation]    验证checkout shipping页面，shipping address栏，省份选择框可点击以及省份选择展示  > "1.点击国家选择框选择中国,2.点击省份选择框" > 点击后城市选择框下拉展开，显示中国的所有省份
-    [Tags]    P0    threshold    smoke
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
-    Wait And Click Element    ${locatorC_checkoutShipping_address_select_province}
-
-checkout_037
-    [Documentation]    验证checkout shipping页面，shipping address栏输入正确的信息，可以提交成功 > 输入地址 > 提交成功，页面跳转到支付页面
-    [Tags]    P0    threshold    smoke
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait Until Page Contains    PAYMENT
-
-checkout_073
-    [Documentation]    验证checkout shipping页面，点击买家留言栏，可展开买家留言输入框 > 1.点击special instruction栏 > 点击后展开买家留言输入框
-    [Tags]    P0    threshold    smoke
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait And Click Element    ${locatorC_checkoutShipping_button_specialInstruction}
-    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_input_specialInstruction}
-
-checkout_077
-    [Documentation]    验证checkout shipping页面，买家留言输入框输入的内容，会同步到B端订单详情 > "1.C端发起新订单AAA00111进入checkout shipping页面,2.买家留言输入框中输入内容：请尽快发货,3.完成订单进入B端订单AAA00111详情,4.查看订单详情页面买家留言" > 买家留言内容显示为：请尽快发货
-    [Tags]    P0    threshold    smoke
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    #.点击展开留言框
-    Wait And Click Element    ${locatorC_checkoutShipping_button_specialInstruction}
-    Wait And Input Text    ${locatorC_checkoutShipping_input_specialInstruction}    请尽快发货
-    #.点击提交
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait Until Page Contains Text   Order summary
-    Go To Home By Url
-    Go To Undeal Order Page
-    Wait And Click Element    ${locatorB_orderUndeal_items_listOrder}[0]
-    Wait Until Page Contains Text    请尽快发货
-
-checkout_078
-    [Documentation]    验证checkout shipping页面，未选择国家时，shipping delivery栏不显示运费方案  >  1.购买任意商品进入checkout shipping页面  2.不选择国家查看shipping delivery栏
-    [Tags]    P0    threshold
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait Until Page Contains Text    Please enter address first
-
 checkout_093
     [Documentation]    验证从商品详情页面buy now进入checkout shipping页面后，点击return可返回商品详情页面 > 1.C端进入任意一个商品详情页面 2.buy now进入checkout shipping页面 3.点击return
     [Tags]    P0    threshold    smoke
@@ -191,9 +41,13 @@ checkout_098
     [Documentation]    验证checkout 支付页面，订单汇总，商品栏，商品标题显示正常 > 1.C端购买商品women进入checkout支付页面  2.查看订单汇总，商品栏，商品标题
     [Tags]    P0    threshold    smoke
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
+    ${productName}=    Get Text    ${locatorC_checkoutShipping_text_itemProductTitle}
+    ${tatalPrice}=    Get Text    ${locatorC_checkoutShipping_text_totalPrice}
     Add Address Common Step
 	Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Text Of Element Should Be Equal With Wait   ${locatorC_checkoutPayment_text_itemProductTitle}    autotest_title
+	sleep    10
+    Text Of Element Should Be Equal With Wait   ${locatorC_checkoutPayment_text_itemProductTitle}    ${productName}
+    Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_totalPrice}    ${tatalPrice}
 
 checkout_100
     [Documentation]   验证checkout 支付页面，订单汇总商品栏，商品数量显示正常 > 1.C端够买商品women5件进入checkout 支付页 2.查看订单汇总商品栏，商品数量显示
@@ -371,9 +225,3 @@ checkout_196
     Wait Until Page Contains Text    Payment successful!
     Wait And Click Element    ${locatorC_checkout_button_continueShopping}
     Text Of Element Should Contain With Wait    ${locatorC_checkout_homeBanner}    ${user_default_domain}
-
-
-
-
-
-   

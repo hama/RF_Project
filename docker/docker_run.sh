@@ -16,6 +16,15 @@ LOG_PATH_4="$LOG_PATH""/4"
 LOG_PATH_5="$LOG_PATH""/5"
 LOG_PATH_6="$LOG_PATH""/6"
 LOG_PATH_7="$LOG_PATH""/7"
+LOG_PATH_8="$LOG_PATH""/8"
+LOG_PATH_9="$LOG_PATH""/9"
+LOG_PATH_10="$LOG_PATH""/10"
+LOG_PATH_11="$LOG_PATH""/11"
+LOG_PATH_12="$LOG_PATH""/12"
+LOG_PATH_13="$LOG_PATH""/13"
+LOG_PATH_14="$LOG_PATH""/14"
+LOG_PATH_15="$LOG_PATH""/15"
+LOG_PATH_16="$LOG_PATH""/16"
 
 #if [ ! -d "$LOG_PATH_1" ]
 #then
@@ -32,38 +41,74 @@ LOG_PATH_7="$LOG_PATH""/7"
 
 # 开启docker容器跑对应用例,新创建用户
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_1 --rm registry.shoplazza.com/library/uitest:v7 \
-        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/00_login/login.robot \
-        module/00_login/logout.robot \
-        module/02_order/*' \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/02_order/01_dealing_order/dealing_order_smoke01.robot' \
         -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_1"&
 
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_2 --rm registry.shoplazza.com/library/uitest:v7 \
-        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/08_settings/01_basic_info/store.robot \
-        module/08_settings/03_shipping/shipping.robot' \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/02_order/01_dealing_order/dealing_order_smoke02.robot' \
         -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_2"&
 
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_3 --rm registry.shoplazza.com/library/uitest:v7 \
-        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/03_product/01_product_management/*' \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/00_login/login.robot \
+        module/00_login/logout.robot \
+        module/02_order/02_undeal_order/undeal_order_smoke.robot \
+        module/08_settings/01_basic_info/store.robot' \
         -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_3"&
 
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_4 --rm registry.shoplazza.com/library/uitest:v7 \
-        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/03_product/02_product_collection/* \
-        module/03_product/03_product_comment/*' \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/08_settings/03_shipping/shipping01.robot \
+        module/03_product/01_product_management/003_Product_List.robot' \
         -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_4"&
 
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_5 --rm registry.shoplazza.com/library/uitest:v7 \
-        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/07_decoration/02_checkout_process/setings_checkout.robot' \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/08_settings/03_shipping/shipping02.robot \
+        module/09_checkout/01_Checkout_Normal_Page/checkout3.robot' \
         -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_5"&
 
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_6 --rm registry.shoplazza.com/library/uitest:v7 \
-        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/06_marketing/01_coupon_code/coupon_code_smoke.robot \
-        module/09_checkout/01_Checkout_Normal_Page/*' \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/03_product/020_product_manual_add01.robot' \
         -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_6"&
 
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_7 --rm registry.shoplazza.com/library/uitest:v7 \
-        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/08_settings/04_tax/tax_rate.robot \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/03_product/020_product_manual_add02.robot \
         module/08_settings/07_file_management/file_management.robot' \
         -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_7"&
+
+docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_8 --rm registry.shoplazza.com/library/uitest:v7 \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/03_product/02_product_collection/001_collection01.robot' \
+        -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_8"&
+
+docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_9 --rm registry.shoplazza.com/library/uitest:v7 \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/03_product/02_product_collection/001_collection02.robot' \
+        -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_9"&
+
+docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_10 --rm registry.shoplazza.com/library/uitest:v7 \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/03_product/03_product_comment/001_comment.robot' \
+        -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_10"&
+
+docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_11 --rm registry.shoplazza.com/library/uitest:v7 \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/07_decoration/02_checkout_process/setings_checkout01.robot' \
+        -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_11"&
+
+docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_12 --rm registry.shoplazza.com/library/uitest:v7 \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/07_decoration/02_checkout_process/setings_checkout02.robot' \
+        -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_12"&
+
+docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_13 --rm registry.shoplazza.com/library/uitest:v7 \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/09_checkout/01_Checkout_Normal_Page/checkout_01.robot' \
+        -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_13"&
+
+docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_14 --rm registry.shoplazza.com/library/uitest:v7 \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/09_checkout/01_Checkout_Normal_Page/checkout_02.robot' \
+        -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_14"&
+
+docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_15 --rm registry.shoplazza.com/library/uitest:v7 \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/09_checkout/01_Checkout_Normal_Page/checkout2.robot' \
+        -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_15"&
+
+docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_16 --rm registry.shoplazza.com/library/uitest:v7 \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/08_settings/04_tax/tax_rate.robot' \
+        -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_16"&
 
 sleep 300
 
@@ -76,7 +121,9 @@ do
 	then
 		echo "send:"`date` >> ~/cron.log
 		rebot -d "$LOG_PATH"/ "$LOG_PATH_1"/output.xml "$LOG_PATH_2"/output.xml "$LOG_PATH_3"/output.xml \
-			"$LOG_PATH_4"/output.xml "$LOG_PATH_5"/output.xml "$LOG_PATH_6"/output.xml "$LOG_PATH_7"/output.xml
+			"$LOG_PATH_4"/output.xml "$LOG_PATH_5"/output.xml "$LOG_PATH_6"/output.xml "$LOG_PATH_7"/output.xml \
+			"$LOG_PATH_8"/output.xml "$LOG_PATH_9"/output.xml "$LOG_PATH_10"/output.xml "$LOG_PATH_11"/output.xml \
+			"$LOG_PATH_12"/output.xml "$LOG_PATH_13"/output.xml "$LOG_PATH_14"/output.xml "$LOG_PATH_15"/output.xml "$LOG_PATH_16"/output.xml \
 		docker run -i -v /var/log:/var/log --rm registry.shoplazza.com/library/uitest:v7 \
 			bash -c "/opt/$RUN_SH_IN_DOCKER -E -T $TIMESTAMP -D $LOG_PATH"
 		exit 0

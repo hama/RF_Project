@@ -61,13 +61,13 @@ ${locatorC_checkoutShipping_button_return}    dom:document.querySelectorAll('a[c
 ${locatorC_checkoutShipping_button_paymentReturn}    dom:document.querySelectorAll('a[class~="payment-footer__back"]')[0]    #payment return 返回
 
 #.locatorC_checkoutPayment
-${locatorC_checkoutPayment_text_itemProductTitle}    ${locatorC_checkoutShipping_text_itemProductTitle}
+${locatorC_checkoutPayment_text_itemProductTitle}    dom:document.querySelectorAll('[class*="payment-item__sku-title"]')[0]
 ${locatorC_checkoutPayment_text_itemQtyNum}    ${locatorC_checkoutShipping_text_itemQtyNum}
 ${locatorC_checkoutPayment_text_itemPrice}    ${locatorC_checkoutShipping_text_itemPrice}
 ${locatorC_checkoutPayment_text_subtotalPrice}    ${locatorC_checkoutShipping_text_subtotalPrice}
 ${locatorC_checkoutPayment_text_shippingPrice}   ${locatorC_checkoutShipping_text_shippingPrice}   #.运费shipping
 ${locatorC_checkoutPayment_text_taxPrice}   ${locatorC_checkoutShipping_text_taxPrice}      #.tax
-${locatorC_checkoutPayment_text_totalPrice}    ${locatorC_checkoutShipping_text_totalPrice}      #.总金额
+${locatorC_checkoutPayment_text_totalPrice}    dom:document.querySelectorAll('tfoot')[0]      #.总金额
 
 ${locatorC_checkoutPayment_button_completeOrder}    dom:document.querySelectorAll('[class*="btn btn-primary payment-footer"]')[0]    #.completOrder 提交按钮
 
@@ -96,6 +96,11 @@ ${locatorC_checkoutPayment_input_zip}    dom:document.querySelectorAll("input[na
 ${locatorC_checkout_text_shippingInformationDetail}    dom:document.querySelectorAll("[class*='text-truncate']")     #.payment successful  shipping information
 ${locatorC_checkout_button_viewOrders}    dom:document.querySelectorAll("[class*='btn-secondary']")[0]        #.订单成功-订单详情按钮 viewOrders
 ${locatorC_checkout_button_continueShopping}    dom:document.querySelectorAll("[class*='btn-primary']")[0]       #.订单成功-跳转到首页 continue shopping
+
+#.locatorC payment failure
+${locatorC_checkout_button_cancelOrder}    dom:document.querySelectorAll('[id="payment__order_cancel"]')    #.订单失败-订单cancel order按钮
+${locatorC_checkout_button_payAgain}    dom:document.querySelectorAll('[id="payment__order_repay"]')    #.订单失败-订单pay again按钮
+
 #locatorC home
 ${locatorC_checkout_homeBanner}    dom:document.querySelectorAll('[class~="d-md-block"] [class*="text-truncate"]')[0]       #首页banner图元素模块
 
