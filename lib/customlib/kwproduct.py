@@ -30,14 +30,14 @@ def products_post_py(data, cookie=init_cookie):
     return do_post(url, data, cookie=cookie)
 
 
-def products_patch_py(data, cookie=init_cookie):
+def products_patch_py(data, product_id, cookie=init_cookie):
     '''
     修改商品
     :param query_str:
     :param cookie:
     :return:
     '''
-    url = home_page_url + '/api/admin/products'
+    url = '%s/api/admin/products/%s' % (home_page_url, product_id)
     return do_patch(url, data, cookie=cookie)
 
 
@@ -156,7 +156,7 @@ def add_product_with_conf_py(conf={}, cookie=init_cookie):
     :return:
     '''
     data = copy.deepcopy(product_max_data)
-
+    dict_deepupdate(data, conf)
     key_list = conf.keys()
     if 'images' not in key_list:
         data['images'] = [{'id': '', 'image': image}]
