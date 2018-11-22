@@ -47,7 +47,13 @@ ${locatorB_setting_files}    dom:document.querySelectorAll('a[href="/files"]')[0
 ${locatorB_decoration}    dom:document.querySelectorAll('span[data-robot="decoration"]')[0]    # 导航栏-店铺装修
 ${locatorB_decoration_checkoutSettings}    dom:document.querySelectorAll('a[href="/checkout"]')[0]    # 导航栏-店铺装修-结账流程
 ${locatorB_decoration_navigationMenu}    dom:document.querySelectorAll('a[href="/menus"]')[0]    # 导航栏-店铺装修-菜单导航
+
+${locatorB_decoration_custom_button_NewPage}    dom:document.querySelectorAll('[class*="ant-btn large_btn_"]')    # 导航栏-店铺装修-自定义页面-新建页面按钮
+${locatorB_decoration_addPage_input_pageName}    dom:document.querySelectorAll('[class="ant-input"]')    # 导航栏-店铺装修-自定义页面-页面设置-名称
+
+${locatorB_application}    dom:document.querySelectorAll('a[href="/tools"]')[0]    #.导航栏-应用市场
 ${locatorB_application}    dom:document.querySelectorAll('a[href="/app_store"]')[0]    #.导航栏-应用市场
+
 ${locatorB_setting_menus}    dom:document.querySelectorAll(".ant-menu-submenu-title")    # 导航栏-设置-含自菜单的元素
 
 
@@ -119,6 +125,8 @@ ${url_files}    ${home_page}/files    #. uploadFile
 ${url_checkoutSettings}    ${home_page}/checkout    #. checkout
 ${url_pay}    ${home_page}/pay    #. pay
 ${url_menus}    ${home_page}/menus    #.menus
+${url_page}     ${home_page}/page    #.page
+${url_img_seo}    ${home_page}/app_store    #. img_seo
 ### 测试用户
 
 ${user_default_contact}    ${datas_contact}    # 默认使用的用户信息，用于跑大部分用例
@@ -149,3 +157,6 @@ ${locatorC_input_email}    id:userName    #会员登录-email输入框
 ${locatorC_products_shippingAddress_payment_button_completeOrder}    dom:document.querySelectorAll('[class="btn btn-primary payment-footer__btn"]')    #payment-->complete order按钮
 
 ${locatorC_checkoutShipping_li_TextPolicy}    dom:document.querySelectorAll('[class="checkout-policy__grid-item"]')    #checkoutShipping-->条约按钮
+
+${locatorC_checkoutShipping_label_preActis}    dom:document.querySelectorAll('[data-track-type="input"]')[0]    #checkoutShipping-->优惠活动通知勾选
+

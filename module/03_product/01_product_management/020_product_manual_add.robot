@@ -48,6 +48,14 @@ products009
 	${status}    Evaluate    '${createTime}'=='${time1}' or '${createTime}'=='${time2}'
 	Should Be True    ${status}
 
+#products011
+#    [Documentation]    无SKU时，SKU展示空白
+#    [Tags]    P0
+#    kwproduct.add_min_product_py
+#    Reload Page And Start Ajax
+#    Select All Product Tag
+#	${sku}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductSku}
+#	Should Be Equal    '${sku}'    ''
 
 products014
     [Documentation]    验证点击‘全部’无结果

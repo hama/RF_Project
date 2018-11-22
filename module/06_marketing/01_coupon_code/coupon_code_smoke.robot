@@ -110,15 +110,18 @@ coupon_code082
     Add Default Coupon Code Text
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_start}
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}     ${Empty}
-    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}     2018-11-20 00:00:00
+    ${startTime1}    Get Time
+    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}     ${startTime1}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_end}
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_endInput}    ${Empty}
-    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_endInput}    2018-12-30 20:00:00
+    ${EndTime1}    Add Time To Date    ${startTime1}    20days
+    ${EndTime2}    Evaluate    u"${EndTime1}".strip('.000')
+    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_endInput}    ${EndTime1}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Click Element    ${locatorB_button_save00}
     Sleep    2
-    Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_activityTime}    2018-11-20 00:00:00-\n2018-12-30 20:00:00
+    Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_activityTime}    ${startTime1}-\n${EndTime2}
 
 
 coupon_code085
@@ -129,12 +132,13 @@ coupon_code085
     Add Default Coupon Code Text
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_start}
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}     ${Empty}
-    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}     2018-11-20 00:00:00
+    ${startTime1}    Get Time
+    Wait And Input Text    ${locatorB_couponCodeNew_selectTime_startInput}     ${startTime1}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Long Press Element With Wait    ${locatorB_couponCodeNew_selectTime_notEndTime}
     Wait And Click Element    ${locatorB_button_save00}
     Sleep    2
-    Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_activityTime}    2018-11-20 00:00:00-\n无期限
+    Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_activityTime}    ${startTime1}-\n无期限
 
 coupon_code090
     [Documentation]    验证新建优惠码界面，优惠码输入框中 输入合法内容 可保存成功(随机生成)
