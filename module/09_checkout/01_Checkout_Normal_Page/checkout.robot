@@ -713,8 +713,6 @@ checkout_227
     [Setup]    Go To Checkout Settings Page
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     Wait And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
-    ${is_exist}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
-    Run Keyword If   '${is_exist}'=='True'    Wait And Click Element     ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeOptional}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
@@ -728,8 +726,6 @@ checkout_230
     [Setup]    Go To Checkout Settings Page
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     Wait And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
-    ${is_exist}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
-    Run Keyword If   '${is_exist}'=='True'    Wait And Click Element     ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeOptional}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
