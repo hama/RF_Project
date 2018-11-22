@@ -13,6 +13,11 @@ ${locatorB_orderDealing_button_finished}    dom:document.querySelectorAll(".ant-
 
 ${locatorB_orderDealing_items_listOrder}    ${locatorB_table_listItems}    # 列表中的订单集合
 
+${locatorB_orderDealing_items_listNumber}    dom:document.querySelectorAll('[id="order_list"] li')[0]    # 列表中订单总数量
+${locatorB_orderDealing_items_listChangePage}     dom:document.querySelectorAll('[class*="ant-pagination-options-size-"]')[0]    # 列表中订单页数显示选择
+${locatorB_orderDealing_items_selectPage}    dom:document.querySelectorAll('[role="option"]')    # 列表中订单页数选择项
+
+
 ${locatorB_orderDealing_text_firstOrder_orderNum}    ${locatorB_table_listItems}[0].querySelectorAll("td")[1]    #待处理订单第一个订单的，订单编号
 ${locatorB_orderDealing_text_firstOrder_date}    ${locatorB_table_listItems}[0].querySelectorAll("td")[2]    #待处理订单第一个订单的，日期
 ${locatorB_orderDealing_text_firstOrder_receiverName}    ${locatorB_table_listItems}[0].querySelectorAll("td")[3]    #待处理订单第一个订单的，收货人姓名
@@ -49,8 +54,8 @@ ${locatorB_orderUndeal_text_orderStatus}    dom:document.querySelectorAll('label
 ${locatorB_orderUndeal_text_firstOrder_orderNum}    ${locatorB_table_listItems}[0].querySelectorAll("td")[1]    #未完成订单第一个订单的，订单编号
 ${locatorB_orderUndeal_text_firstOrder_date}    ${locatorB_table_listItems}[0].querySelectorAll("td")[2]    #未完成订单第一个订单的，日期
 ${locatorB_orderUndeal_text_firstOrder_receiverName}    ${locatorB_table_listItems}[0].querySelectorAll("td")[3]    #未完成订单第一个订单的，收货人姓名
-${locatorB_orderUndeal_text_firstOrder_paymentMethod}    ${locatorB_table_listItems}[0].querySelectorAll("td")[4]    #未完成订单第一个订单的，支付方式
-${locatorB_orderUndeal_text_firstOrder_paymentStatus}    ${locatorB_table_listItems}[0].querySelectorAll("td")[5]    #未完成订单第一个订单的，支付状态
+${locatorB_orderUndeal_text_firstOrder_paymentMethod}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(5)')    #未完成订单第一个订单的，支付方式
+${locatorB_orderUndeal_text_firstOrder_paymentStatus}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(6)')    #未完成订单第一个订单的，支付状态
 ${locatorB_orderUndeal_text_firstOrder_orderStatus}    ${locatorB_table_listItems}[0].querySelectorAll("td")[7]    #未完成订单第一个订单的，订单状态
 ${locatorB_orderUndeal_text_firstOrder_orderSumPrice}    ${locatorB_table_listItems}[0].querySelectorAll("td")[8]    #未完成订单第一个订单的，订单总价
 

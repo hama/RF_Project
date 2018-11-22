@@ -85,6 +85,7 @@ order040
     ${order_token}    kworder.add_dealing_order_with_products_py
 	# 创建订单的时间戳
     ${createtime1}    Get Time
+    Sleep    10
     Reload Page And Start Ajax
     ${tmptime} =    Sleep And Get Text    ${locatorB_orderDealing_text_firstOrder_date}
     ${createtime2} =    Convert Date    ${tmptime}    result_format=%Y-%m-%d %H:%M:%S
@@ -93,7 +94,7 @@ order040
 	${order_num01}    kworder.get_order_num_by_order_token_py    ${order_token}
 	Should Be Equal    ${order_num00}    ${order_num01}
 	${result} =    lib_utils.compare_time_py    ${createtime1}    ${createtime2}
-	${status} =    Evaluate    0<${result}<10
+	${status} =    Evaluate    0<${result}<30
 	Should Be Equal    '${status}'    'True'
 
 order041
@@ -446,6 +447,84 @@ order056
     Wait Until Page Contains Text    全部
     Wait Until Page Contains Text    线上支付
     Wait Until Page Contains Text    COD支付
+
+order057
+    [Documentation]    验证待处理订单列表，未发货栏下，支付状态筛选框可展开以及筛选项显示
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_orderDealing_button_toDeliver}
+    Reload Page And Start Ajax
+    Sleep And Click Element    ${locatorB_orderDealing_select_financialStatus}
+    Wait Until Page Contains Text    全部
+    Wait Until Page Contains Text    待支付
+    Wait Until Page Contains Text    已支付
+
+order058
+    [Documentation]    验证待处理订单列表，未发货栏下，物流状态筛选框可展开以及筛选项显示
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_orderDealing_button_toDeliver}
+    Reload Page And Start Ajax
+    Sleep And Click Element    ${locatorB_orderDealing_select_shippingStatus}
+    Wait Until Page Contains Text    全部
+    Wait Until Page Contains Text    待发货
+    Wait Until Page Contains Text    部分发货
+
+order075
+    [Documentation]    验证待处理订单列表，已完成栏下含有搜索框：支付方式、物流状态
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_orderDealing_button_finished}
+    Reload Page And Start Ajax
+    Sleep And Click Element    ${locatorB_orderDealing_select_paymentMethod}
+    Wait Until Page Contains Text    线上支付
+    Sleep And Click Element    ${locatorB_orderDealing_select_shippingStatus}
+    Wait Until Page Contains Text    全部发货
+
+order076
+    [Documentation]    验证待处理订单列表，已完成栏下，支付方式筛选框可展开以及筛选项展示
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_orderDealing_button_finished}
+    Reload Page And Start Ajax
+    Sleep And Click Element    ${locatorB_orderDealing_select_paymentMethod}
+    Wait Until Page Contains Text    全部
+    Wait Until Page Contains Text    线上支付
+    Wait Until Page Contains Text    COD支付
+
+order077
+    [Documentation]     验证待处理订单列表，已完成栏下，物流状态筛选框可展开以及筛选项展示
+    [Tags]    P0
+    Wait And Click Element    ${locatorB_orderDealing_button_finished}
+    Reload Page And Start Ajax
+    Sleep And Click Element    ${locatorB_orderDealing_select_shippingStatus}
+    Wait Until Page Contains Text    全部
+    Wait Until Page Contains Text    待发货
+    Wait Until Page Contains Text    部分发货
+    Wait Until Page Contains Text    全部发货
+    Wait Until Page Contains Text    部分完成
+    Wait Until Page Contains Text    全部完成
+    Wait Until Page Contains Text    无
+    Wait Until Page Contains Text    已取消
+
+order091
+    [Documentation]    验证待处理订单列表中，页脚左边的数量显示为：当前列表中订单总数
+    [Tags]    P0
+    Reload Page And Start Ajax
+    Sleep    10
+    ${orderCount}=   kworder.get_dealing_order_count_py
+    ${orderCountStr}=    Convert To String    ${orderCount}
+    Text Of Element Should Contain With Wait    ${locatorB_orderDealing_items_listNumber}    ${orderCountStr}
+
+order093
+    [Documentation]    验证待处理订单列表中，可切换每页显示的订单条数
+    [Tags]    P0
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_orderDealing_items_listChangePage}
+    Wait And Click Element    ${locatorB_orderDealing_items_selectPage}[1]
+    Sleep    10
+    ${orderCount}=    Get Element Count    ${locatorB_orderDealing_items_listOrder}
+    Should Be True    $orderCount<=20
+
+
+
+
 
 
 
