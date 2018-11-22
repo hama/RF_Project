@@ -16,7 +16,10 @@ def do_post(url, data, cookie):
         response_data = requests.post(url=url, headers={"cookie": get_cookie(url, cookie)}, json=data)
         return_data = {}
         logging.info(url + '\nrequest_data:' + str(data) + '\n\nresponse_data:' + response_data.content)
-        return_data['content'] = json.loads(response_data.content)
+        if response_data.content == '':
+            return_data['content'] = response_data.content
+        else:
+            return_data['content'] = json.loads(response_data.content)
         if response_data.status_code == 200:
             return_data['result'] = 'success'
         else:
@@ -28,10 +31,16 @@ def do_post(url, data, cookie):
 
 def do_get(url, query_str, cookie):
     try:
-        response_data = requests.get(url=url, headers={"cookie": get_cookie(url, cookie)}, params=query_str)
+        if isinstance(query_str, unicode) or isinstance(query_str, str):
+            response_data = requests.get(url='%s/%s' % (url, query_str), headers={"cookie": get_cookie(url, cookie)})
+        elif isinstance(query_str, dict):
+            response_data = requests.get(url=url, headers={"cookie": get_cookie(url, cookie)}, params=query_str)
         return_data = {}
         logging.info(url + '\nrequest_data:' + str(query_str) + '\n\nresponse_data:' + response_data.content)
-        return_data['content'] = json.loads(response_data.content)
+        if response_data.content == '':
+            return_data['content'] = response_data.content
+        else:
+            return_data['content'] = json.loads(response_data.content)
         if response_data.status_code == 200:
             return_data['result'] = 'success'
         else:
@@ -46,7 +55,10 @@ def do_patch(url, data, cookie):
         response_data = requests.patch(url=url, headers={"cookie": get_cookie(url, cookie)}, json=data)
         return_data = {}
         logging.info(url + '\nrequest_data:' + str(data) + '\n\nresponse_data:' + response_data.content)
-        return_data['content'] = json.loads(response_data.content)
+        if response_data.content == '':
+            return_data['content'] = response_data.content
+        else:
+            return_data['content'] = json.loads(response_data.content)
         if response_data.status_code == 200:
             return_data['result'] = 'success'
         else:
@@ -61,7 +73,10 @@ def do_delete(url, cookie):
         response_data = requests.delete(url=url, headers={"cookie": get_cookie(url, cookie)})
         return_data = {}
         logging.info(url + '\nresponse_data:' + response_data.content)
-        return_data['content'] = json.loads(response_data.content)
+        if response_data.content == '':
+            return_data['content'] = response_data.content
+        else:
+            return_data['content'] = json.loads(response_data.content)
         if response_data.status_code == 200:
             return_data['result'] = 'success'
         else:
