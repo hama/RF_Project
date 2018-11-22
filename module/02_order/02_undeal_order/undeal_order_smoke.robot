@@ -115,54 +115,54 @@ order196
 
 
 
-#周莉编写
-order095
-    [Documentation]    验证C端未完成支付的订单，在B端未完成列表中显示的支付方式为：无
-    [Tags]    P0
-    kworder.add_undead_order_with_to_pay_status_py
-    ${orderID}=    kworder.get_latest_undeal_order_num_py
-    Reload Page And Start Ajax
-    Wait And Input Text    ${locatorB_order_input_searchText}    ${orderID}
-    Wait And Click Element    ${locatorB_order_button_searchBtn}
-    Text Of Element Should Be Equal With Wait    ${locatorB_orderUndeal_text_firstOrder_paymentMethod}    无
-
-order096
-    [Documentation]    验证C端使用线上支付并且支付失败的订单，B端未完成列表中的支付方式显示为线上支付
-    [Tags]    P0
-    kworder.add_undead_order_with_pay_fail_status_py
-    ${orderID}=    kworder.get_latest_undeal_order_num_py
-    Reload Page And Start Ajax
-    Wait And Input Text    ${locatorB_order_input_searchText}    ${orderID}
-    Wait And Click Element    ${locatorB_order_button_searchBtn}
-    Text Of Element Should Be Equal With Wait    ${locatorB_orderUndeal_text_firstOrder_paymentMethod}    线上支付
-
-order097
-    [Documentation]    验证C端使用COD支付并且支付失败的订单，B端未完成列表中的支付方式显示为COD支付
-    [Tags]    P0
-    kworder.add_undead_order_with_pay_cod_py
-    ${orderID}=    kworder.get_latest_undeal_order_num_py
-    Reload Page And Start Ajax
-    Wait And Input Text    ${locatorB_order_input_searchText}    ${orderID}
-    Wait And Click Element    ${locatorB_order_button_searchBtn}
-    Text Of Element Should Be Equal With Wait    ${locatorB_orderUndeal_text_firstOrder_paymentMethod}    COD支付
-
-order098
-    [Documentation]    验证C端未选择支付方式的订单，B端未完成订单列表中，显示的支付状态为：待支付
-    [Tags]    P0
-    kworder.add_undead_order_with_to_pay_status_py
-    ${orderID}=    kworder.get_latest_undeal_order_num_py
-    Reload Page And Start Ajax
-    Wait And Input Text    ${locatorB_order_input_searchText}    ${orderID}
-    Wait And Click Element    ${locatorB_order_button_searchBtn}
-    Text Of Element Should Be Equal With Wait    ${locatorB_orderUndeal_text_firstOrder_paymentStatus}    待支付
-
-order101
-    [Documentation]    验证C端未支付的订单，在个人中心取消此订单时，B端未完成列表中显示的支付状态为：支付取消
-    [Tags]    P0
-    kworder.add_undead_order_with_pay_cod_py
-    ${orderID}=    kworder.get_latest_undeal_order_num_py
-    Reload Page And Start Ajax
-    Wait And Input Text    ${locatorB_order_input_searchText}    ${orderID}
-    Wait And Click Element    ${locatorB_order_button_searchBtn}
-    Text Of Element Should Be Equal With Wait    ${locatorB_orderUndeal_text_firstOrder_paymentStatus}    支付取消
+##周莉编写
+#order095
+#    [Documentation]    验证C端未完成支付的订单，在B端未完成列表中显示的支付方式为：无
+#    [Tags]    P0
+#    kworder.add_undead_order_with_to_pay_status_py
+#    ${orderID}=    kworder.get_latest_undeal_order_num_py
+#    Reload Page And Start Ajax
+#    Wait And Input Text    ${locatorB_order_input_searchText}    ${orderID}
+#    Wait And Click Element    ${locatorB_order_button_searchBtn}
+#    Text Of Element Should Be Equal With Wait    ${locatorB_orderUndeal_text_firstOrder_paymentMethod}    无
+#
+#order096
+#    [Documentation]    验证C端使用线上支付并且支付失败的订单，B端未完成列表中的支付方式显示为线上支付
+#    [Tags]    P0
+#    kworder.add_undead_order_with_pay_fail_status_py
+#    ${orderID}=    kworder.get_latest_undeal_order_num_py
+#    Reload Page And Start Ajax
+#    Wait And Input Text    ${locatorB_order_input_searchText}    ${orderID}
+#    Wait And Click Element    ${locatorB_order_button_searchBtn}
+#    Text Of Element Should Be Equal With Wait    ${locatorB_orderUndeal_text_firstOrder_paymentMethod}    线上支付
+#
+#order097
+#    [Documentation]    验证C端使用COD支付并且支付失败的订单，B端未完成列表中的支付方式显示为COD支付
+#    [Tags]    P0
+#    kworder.add_undead_order_with_pay_cod_py
+#    ${orderID}=    kworder.get_latest_undeal_order_num_py
+#    Reload Page And Start Ajax
+#    Wait And Input Text    ${locatorB_order_input_searchText}    ${orderID}
+#    Wait And Click Element    ${locatorB_order_button_searchBtn}
+#    Text Of Element Should Be Equal With Wait    ${locatorB_orderUndeal_text_firstOrder_paymentMethod}    COD支付
+#
+#order098
+#    [Documentation]    验证C端未选择支付方式的订单，B端未完成订单列表中，显示的支付状态为：待支付
+#    [Tags]    P0
+#    kworder.add_undead_order_with_to_pay_status_py
+#    ${orderID}=    kworder.get_latest_undeal_order_num_py
+#    Reload Page And Start Ajax
+#    Wait And Input Text    ${locatorB_order_input_searchText}    ${orderID}
+#    Wait And Click Element    ${locatorB_order_button_searchBtn}
+#    Text Of Element Should Be Equal With Wait    ${locatorB_orderUndeal_text_firstOrder_paymentStatus}    待支付
+#
+#order101
+#    [Documentation]    验证C端未支付的订单，在个人中心取消此订单时，B端未完成列表中显示的支付状态为：支付取消
+#    [Tags]    P0
+#    kworder.add_undead_order_with_pay_cod_py
+#    ${orderID}=    kworder.get_latest_undeal_order_num_py
+#    Reload Page And Start Ajax
+#    Wait And Input Text    ${locatorB_order_input_searchText}    ${orderID}
+#    Wait And Click Element    ${locatorB_order_button_searchBtn}
+#    Text Of Element Should Be Equal With Wait    ${locatorB_orderUndeal_text_firstOrder_paymentStatus}    支付取消
 
