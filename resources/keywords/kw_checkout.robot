@@ -10,7 +10,7 @@ Checkout Suite Setup
     kwshipping.del_all_shipping_py
     kwproduct.del_all_products_py
     kwshipping.create_only_one_shipping_py
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     kwcheckout.set_checkout_process_py
     #激活COD货到付款方式
     kwpayment.activate_payment_cod_py
@@ -40,7 +40,7 @@ Checkout3 Case Setup
 
 Checkout2 Child Case Setup
     kwshipping.del_all_shipping_py
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
 
 Add Address Common Step
     [Documentation]    添加地址公共部分

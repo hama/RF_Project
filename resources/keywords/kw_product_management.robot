@@ -8,7 +8,7 @@ Product Management Suite Setup Add Two Products
     [Documentation]    product
     Login With Default User
     kwproduct.del_all_products_py
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     Sleep    1   # 为构造两个产品创建时间不同
     kwproduct.add_discontinued_product_py
     Go To Product Management Page
