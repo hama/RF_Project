@@ -179,15 +179,54 @@ comment_data = {
 }
 
 shipping_data = {
-    'shipping_name': 'autotest_shipping',
-    'shipping_area': '[{"country_id":"45","zone_ids":"-1"}]',
-    'shipping_plan': '[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,'
-                     '"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":""},'
-                     '{"name":"weight_fee","shipping_method":"weight","range_min":"0.00","range_max":-1,'
-                     '"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"},'
-                     '{"name":"quantity_fee","shipping_method":"quantity","range_min":"0","range_max":-1,'
-                     '"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]',
-    'has_other_country': 0
+    "name": "autotest_shipping",
+    "areas": [
+        {
+            "country_code": "CN",
+            "country_name": "中国",
+            "province_codes": [
+                "ALL"
+            ]
+        }
+    ],
+    "plans": [
+        {
+            "name": "price_fee",
+            "desc": "price_fee_description",
+            "rule_type": "price",
+            "rule_range_min": 0,
+            "rule_range_max": 0,
+            "rule_range_infinite": True,
+            "rule_range_unit": "USD",
+            "support_cod": False,
+            "rate_type": "normal",
+            "rate_amount": "10"
+        },
+        {
+            "name": "quantity_fee",
+            "desc": "quantity_fee_description",
+            "rule_type": "quantity",
+            "rule_range_min": 0,
+            "rule_range_max": 0,
+            "rule_range_infinite": True,
+            "rule_range_unit": "件",
+            "support_cod": False,
+            "rate_type": "normal",
+            "rate_amount": "20"
+        },
+        {
+            "name": "weight_fee",
+            "desc": "weight_fee_description",
+            "rule_type": "weight",
+            "rule_range_min": 0,
+            "rule_range_max": 0,
+            "rule_range_infinite": True,
+            "support_cod": False,
+            "rate_type": "normal",
+            "rate_amount": "30",
+            "rule_range_unit": "g"
+        }
+    ]
 }
 
 checkout_create_data = {

@@ -80,7 +80,7 @@ shipping142
 shipping145
     [Documentation]    测试物流详情界面可修改内容
     [Tags]    P0    threshold
-    kwshipping.add_max_shipping_py
+    kwshipping.add_shipping_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_shipping_items_listShippingItems}[0]
     Wait And Input Text    ${locatorB_shippingNew_input_shippingName}    123
@@ -93,7 +93,7 @@ shipping145
 shipping146
     [Documentation]    测试物流详情界面可修改内容
     [Tags]    P0    threshold
-    kwshipping.add_max_shipping_py
+    kwshipping.add_shipping_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_shipping_items_listShippingItems}[0]
     Wait And Input Text    ${locatorB_shippingNew_input_shippingName}    输入中文
@@ -105,7 +105,7 @@ shipping146
 shipping146.1
     [Documentation]    测试物流详情界面可修改内容
     [Tags]    P0    threshold
-    kwshipping.add_max_shipping_py
+    kwshipping.add_shipping_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_shipping_items_listShippingItems}[0]
     Wait And Input Text    ${locatorB_shippingNew_input_shippingName}    输入中文
@@ -116,7 +116,7 @@ shipping146.1
 shipping147
     [Documentation]    测试物流详情界面可修改内容
     [Tags]    P0    threshold
-    kwshipping.add_max_shipping_py
+    kwshipping.add_shipping_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_shipping_items_listShippingItems}[0]
     Wait And Input Text    ${locatorB_shippingNew_input_shippingName}    输入中文
@@ -127,7 +127,7 @@ shipping147
 shipping147.1
     [Documentation]    测试物流详情界面可修改内容
     [Tags]    P0    threshold
-    kwshipping.add_max_shipping_py
+    kwshipping.add_shipping_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_shipping_items_listShippingItems}[0]
     Wait And Input Text    ${locatorB_shippingNew_input_shippingName}    输入中文

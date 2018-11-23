@@ -8,20 +8,125 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def shipping_refresh_py(data, cookie=init_cookie):
-    url = home_page_url + "/api/shipping/refresh"
-    return do_post(url, data, cookie=cookie)
-
-
-def shipping_list_py(cookie=init_cookie):
+def shippings_get_py(query_str={}, cookie=init_cookie):
     '''
-    查询物流列表信息
+    获取物流列表
+    :param query_str:
     :param cookie:
     :return:
     '''
-    url = home_page_url + '/api/shipping/list'
-    query_str = {}
+    url = '%s/api/shippings' % (home_page_url)
     return do_get(url, query_str, cookie=cookie)
+
+
+def shippings_id_get_py(shipping_id, cookie=init_cookie):
+    '''
+    获取物流详情
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/shippings/%s' % (home_page_url, shipping_id)
+    return do_get(url, {}, cookie=cookie)
+
+
+def shippings_country_py(query_str={}, cookie=init_cookie):
+    '''
+    获取物流国家列表
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/shippings/%s/country' % (home_page_url, query_str)
+    return do_get(url, query_str, cookie=cookie)
+
+
+def shippings_id_country_py(shipping_id, cookie=init_cookie):
+    '''
+    根据物流id获取物流国家列表
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/shippings/%s/country' % (home_page_url, shipping_id)
+    return do_get(url, {}, cookie=cookie)
+
+
+def shippings_id_country_code_province_py(shipping_id, code, cookie=init_cookie):
+    '''
+    根据国家code获取物流省份列表
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/shippings/%s/country/%s/province' % (home_page_url, shipping_id, code)
+    return do_get(url, {}, cookie=cookie)
+
+
+def shippings_country_code_province_py(code, cookie=init_cookie):
+    '''
+    根据国家code获取物流省份列表
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/shippings/country/%s/province' % (home_page_url, code)
+    return do_get(url, {}, cookie=cookie)
+
+
+def shippings_country_selectable_py(query_str={}, cookie=init_cookie):
+    '''
+    根据国家codes获取可选物流省份状态
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/shippings/country/selectable' % (home_page_url)
+    return do_get(url, query_str, cookie=cookie)
+
+
+def shippings_id_country_selectable_py(shipping_id, query_str={}, cookie=init_cookie):
+    '''
+    根据国家codes及物流id获取可选物流省份状态
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/shippings/%s/country/selectable' % (home_page_url, shipping_id)
+    return do_get(url, query_str, cookie=cookie)
+
+
+def shippings_delete_py(shipping_id, cookie=init_cookie):
+    '''
+    删除物流方案
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/shippings/%s' % (home_page_url, shipping_id)
+    return do_delete(url, cookie=cookie)
+
+
+def shippings_post_py(data, cookie=init_cookie):
+    '''
+    添加物流方案
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/shippings' % (home_page_url)
+    return do_post(url, data, cookie=cookie)
+
+
+def shippings_put_py(shipping_id, data, cookie=init_cookie):
+    '''
+    修改物流方案
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/shippings/%s' % (home_page_url, shipping_id)
+    return do_put(url, data, cookie=cookie)
 
 
 def add_shipping_with_conf_py(conf={}, cookie=init_cookie):
@@ -33,76 +138,56 @@ def add_shipping_with_conf_py(conf={}, cookie=init_cookie):
     '''
     data = copy.deepcopy(shipping_data)
     dict_deepupdate(data, conf)
-    # key_list = conf.keys()
-    # if 'shipping_name' in key_list:
-    #     data['shipping_name'] = conf['shipping_name']
-    # if 'shipping_area' in key_list:
-    #     data['shipping_area'] = conf['shipping_area']
-    # if 'shipping_plan' in key_list:
-    #     data['shipping_plan'] = conf['shipping_plan']
-    # if 'has_other_country' in key_list:
-    #     data['has_other_country'] = conf['has_other_country']
-    if data['has_other_country'] == 1:
-        data['shipping_area'] = []
 
-    return shipping_refresh_add_py(data, cookie=cookie)['content']['data']['shipping_id']
+    return shippings_post_py(data, cookie=cookie)['content']['id']
 
 
-def shipping_refresh_add_py(data, cookie=init_cookie):
-    '''
-    添加物流
-    :param data:
-    :param cookie:
-    :return:
-    '''
-    return shipping_refresh_py(data, cookie=cookie)
-
-
-def shipping_refresh_del_py(shipping_id, cookie=init_cookie):
-    '''
-    删除物流
-    :param shipping_id:
-    :param cookie:
-    :return:
-    '''
-    data = {"shipping_id": shipping_id, "is_enable": 0}
-    return shipping_refresh_py(data, cookie=cookie)
-
-
-def add_max_shipping_py(cookie=init_cookie):
-    '''
-    添加max物流，即所有可填项都填
-    :param cookie:
-    :return:
-    '''
-    data = copy.deepcopy(shipping_data)
-    return shipping_refresh_add_py(data, cookie=cookie)
-
-
-def add_price_fee_shipping_py(rate_amount='10.00', cookie=init_cookie):
+def add_price_fee_shipping_py(rate_amount='10', cookie=init_cookie):
     '''
     添加只有price_fee的物流
     :param cookie:
     :return:
     '''
     data = copy.deepcopy(shipping_data)
-    data['shipping_plan'] = '[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,' \
-                            '"rate_amount":%s,"payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]' % (
-                                rate_amount)
-    return add_shipping_with_conf_py(data, cookie=cookie)
+    data['plans'] = [
+        {
+            "name": "price_fee",
+            "desc": "price_fee_description",
+            "rule_type": "price",
+            "rule_range_min": 0,
+            "rule_range_max": 0,
+            "rule_range_infinite": True,
+            "rule_range_unit": "USD",
+            "support_cod": False,
+            "rate_type": "normal",
+            "rate_amount": rate_amount
+        }
+    ]
+    return shippings_post_py(data, cookie=cookie)
 
 
-def add_weight_fee_shipping_py(rate_amount='10.00', cookie=init_cookie):
+def add_weight_fee_shipping_py(rate_amount='10', cookie=init_cookie):
     '''
     添加只有weight_fee的物流
     :param cookie:
     :return:
     '''
     data = copy.deepcopy(shipping_data)
-    data['shipping_plan'] = '[{"name":"weight_fee","shipping_method":"weight","range_min":"0.00","range_max":-1,' \
-                            '"rate_amount":%s,"payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]' % (
-                                rate_amount)
-    return add_shipping_with_conf_py(data, cookie=cookie)
+    data['plans'] = [
+        {
+            "name": "weight_fee",
+            "desc": "weight_fee_description",
+            "rule_type": "weight",
+            "rule_range_min": 0,
+            "rule_range_max": 0,
+            "rule_range_infinite": True,
+            "support_cod": False,
+            "rate_type": "normal",
+            "rate_amount": rate_amount,
+            "rule_range_unit": "g"
+        }
+    ]
+    return shippings_post_py(data, cookie=cookie)
 
 
 def add_quantity_fee_shipping_py(rate_amount='10.00', cookie=init_cookie):
@@ -112,10 +197,21 @@ def add_quantity_fee_shipping_py(rate_amount='10.00', cookie=init_cookie):
     :return:
     '''
     data = copy.deepcopy(shipping_data)
-    data['shipping_plan'] = '[{"name":"quantity_fee","shipping_method":"quantity","range_min":"0","range_max":-1,' \
-                            '"rate_amount":%s,"payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]' % (
-                                rate_amount)
-    return add_shipping_with_conf_py(data, cookie=cookie)
+    data['plans'] = [
+        {
+            "name": "quantity_fee",
+            "desc": "quantity_fee_description",
+            "rule_type": "quantity",
+            "rule_range_min": 0,
+            "rule_range_max": 0,
+            "rule_range_infinite": True,
+            "rule_range_unit": "件",
+            "support_cod": False,
+            "rate_type": "normal",
+            "rate_amount": rate_amount
+        }
+    ]
+    return shippings_post_py(data, cookie=cookie)
 
 
 def del_all_shipping_py(cookie=init_cookie):
@@ -123,30 +219,9 @@ def del_all_shipping_py(cookie=init_cookie):
     删除全部物流方案
     :return: True | False
     """
-    return keep_certain_shipping_py(cookie=cookie)
-
-
-def keep_latest_shipping_py(cookie=init_cookie):
-    """
-    保留最新的那条物流方案
-    :return: True | False
-    """
-    return keep_certain_shipping_py([1], cookie=cookie)
-
-
-def keep_certain_shipping_py(num_list=[], cookie=init_cookie):
-    """
-    保留某些物流方案
-    :return: True | False
-    """
-    if num_of_exist_shipping_py(cookie=cookie) == 0:
-        return {'result': 'success', 'content': 'there are not shipping to be deleted'}
-    shipping_list_data = shipping_list_py(cookie=cookie)['content']['data']
-    for i in range(len(shipping_list_data)):
-        if i + 1 in num_list:
-            continue
-        shipping_refresh_del_py(shipping_list_data[i]['shipping_id'], cookie=cookie)
-    return {'result': 'success', 'content': 'assigned shipping had been deleted'}
+    shippings_list = shippings_get_py(cookie=cookie)['content']
+    for shipping in shippings_list:
+        shippings_delete_py(shipping['id'], cookie=cookie)
 
 
 def create_only_one_shipping_py(conf={}, cookie=init_cookie):
@@ -159,7 +234,7 @@ def create_only_one_shipping_py(conf={}, cookie=init_cookie):
     """
     num = num_of_exist_shipping_py(cookie=cookie)
     if num == 1:
-        return shipping_list_py(cookie=cookie)['content']['data'][0]['shipping_id']
+        return shippings_get_py(cookie=cookie)['content'][0]['id']
     elif num > 1:
         del_all_shipping_py(cookie=cookie)
     return add_shipping_with_conf_py(conf, cookie=cookie)
@@ -167,17 +242,14 @@ def create_only_one_shipping_py(conf={}, cookie=init_cookie):
 
 def num_of_exist_shipping_py(cookie=init_cookie):
     '''
-    判断是否存在物流方案
+    存在物流方案的个数
     :return: 存在物流的个数
     '''
-    data = shipping_list_py(cookie=cookie)
-    if 'data' in data['content']:
-        return len(data['content']['data'])
-    else:
-        return 0
+    data = shippings_get_py(cookie=cookie)
+    return len(data['content'])
 
 
 if __name__ == '__main__':
-    print add_shipping_with_conf_py()
-    # print shipping_list_py()
+    print del_all_shipping_py()
+    print add_price_fee_shipping_py()
     # print add_quantity_fee_shipping_py()

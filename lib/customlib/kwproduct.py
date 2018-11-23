@@ -10,13 +10,24 @@ sys.setdefaultencoding('utf-8')
 
 def products_get_py(query_str={}, cookie=init_cookie):
     '''
-    商品列表/商品详情
+    商品列表
     :param query_str:
     :param cookie:
     :return:
     '''
-    url = home_page_url + '/api/admin/products'
+    url = '%s/api/admin/products' % (home_page_url)
     return do_get(url, query_str, cookie=cookie)
+
+
+def products_id_get_py(product_id, cookie=init_cookie):
+    '''
+    商品详情
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/admin/products/%s' % (home_page_url, product_id)
+    return do_get(url, {}, cookie=cookie)
 
 
 def products_post_py(data, cookie=init_cookie):
@@ -125,7 +136,7 @@ def get_product_detail_py(product_id, cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    return products_get_py(product_id, cookie=cookie)
+    return products_id_get_py(product_id, cookie=cookie)
 
 
 def add_min_product_py(cookie=init_cookie):
@@ -241,12 +252,12 @@ if __name__ == '__main__':
     # print get_product_detail_py(add_max_product_py())
     # print add_product_with_conf_py()
     # print del_latest_product_py()
-    # print del_all_products_py()
+    print del_all_products_py()
     # print publish_all_products_py()
     # print unpublish_all_products_py()
     # print get_all_products_count_py()
     # print get_latest_productid_py()
-    print get_exist_productsid_py()
+    # print products_get_py()
 
     # conf = {'settax': 0}
     # add_product_with_conf_py(conf)

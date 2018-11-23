@@ -43,13 +43,24 @@ def collections_patch_py(data, collection_id, cookie=init_cookie):
 
 def collections_get_py(query_str={}, cookie=init_cookie):
     '''
-    商品专辑列表/商品专辑详情
+    商品专辑列表
     :param query_str:
     :param cookie:
     :return:
     '''
-    url = home_page_url + '/api/admin/collections'
+    url = '%s/api/admin/collections' % (home_page_url)
     return do_get(url, query_str, cookie=cookie)
+
+
+def collections_id_get_py(collection_id, cookie=init_cookie):
+    '''
+    商品专辑详情
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/admin/collections/%s' % (home_page_url, collection_id)
+    return do_get(url, {}, cookie=cookie)
 
 
 def collections_query_py(data, cookie=init_cookie):
@@ -145,7 +156,7 @@ def get_exist_productsid_py(cookie=init_cookie):
 if __name__ == '__main__':
     # add_collection_with_conf_py()
     # time.sleep(2)
-    print get_all_collections_count_py()
+    print collections_get_py('f872586b-005d-4999-be78-d5f7c28c0ef6')
     # print get_all_collections_count_py()
     # del_latest_collection_py()
     # del_all_collections_py()
