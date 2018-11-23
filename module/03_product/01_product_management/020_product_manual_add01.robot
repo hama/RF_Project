@@ -12,7 +12,7 @@ Resource          ../../../resources/keywords/kw_common.robot
 products004
     [Documentation]    上架商品图片展示商品主图
     [Tags]    P0    threshold
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     Reload Page And Start Ajax
     Select All Product Tag
 	${attr}    Wait And Get Element Attribute    ${locatorB_productsMgmt_image_firstProductThumbnails}    class
@@ -94,9 +94,9 @@ products020
 products021.1
     [Documentation]    验证展示的上架商品排序正确
     [Tags]    P0    threshold
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     Sleep    1
-	kwproduct.add_launched_product_py
+	kwproduct.add_max_product_py
 	Reload Page And Start Ajax
     Select Launched Product Tag
     ${item1_createtime}=    Wait And Get Text    ${locatorB_productsMgmt_text_listCreateTime}[0]
@@ -108,8 +108,8 @@ products021.1
 products021.2
     [Documentation]    验证展示的上架商品数量正确
     [Tags]    P0    threshold
-    kwproduct.add_launched_product_py
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
+    kwproduct.add_max_product_py
     kwproduct.add_discontinued_product_py
     Reload Page And Start Ajax
     Select Launched Product Tag
@@ -145,7 +145,7 @@ products023.2
     [Tags]    P0    threshold
     kwproduct.add_discontinued_product_py
     kwproduct.add_discontinued_product_py
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     Reload Page And Start Ajax
     Select Discontinued Product Tag
     ${total_record}    Wait And Get Text    ${locatorB_page_text_totalRecord}
@@ -172,7 +172,7 @@ products034
 products035
     [Documentation]    修改不包含子产品的商品后保存
     [Tags]    P0    threshold
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     Reload Page And Start Ajax
     Select All Product Tag
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
@@ -200,8 +200,8 @@ products037
 products039
     [Documentation]    验证能下架一个或多个商品成功
     [Tags]    P0    threshold
-    kwproduct.add_launched_product_py
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
+    kwproduct.add_max_product_py
     Reload Page And Start Ajax
     Select All Product Tag
 	Select All Items Then Click Batch Menu
@@ -212,8 +212,8 @@ products039
 products041
     [Documentation]    验证能够成功批量删除商品
     [Tags]    P0    threshold
-    kwproduct.add_launched_product_py
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
+    kwproduct.add_max_product_py
     Reload Page And Start Ajax
     Select All Product Tag
 	Select All Items Then Click Batch Menu
@@ -225,7 +225,7 @@ products041
 products047
 	[Documentation]    验证能成功添加新建的标签
     [Tags]    P0    threshold
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     Reload Page And Start Ajax
     Select All Product Tag
     Select All Items Then Click Batch Menu

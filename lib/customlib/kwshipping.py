@@ -158,7 +158,7 @@ def add_price_fee_shipping_py(rate_amount='10', cookie=init_cookie):
             "rule_range_max": 0,
             "rule_range_infinite": True,
             "rule_range_unit": "USD",
-            "support_cod": False,
+            "support_cod": True,
             "rate_type": "normal",
             "rate_amount": rate_amount
         }
@@ -181,7 +181,7 @@ def add_weight_fee_shipping_py(rate_amount='10', cookie=init_cookie):
             "rule_range_min": 0,
             "rule_range_max": 0,
             "rule_range_infinite": True,
-            "support_cod": False,
+            "support_cod": True,
             "rate_type": "normal",
             "rate_amount": rate_amount,
             "rule_range_unit": "g"
@@ -206,7 +206,7 @@ def add_quantity_fee_shipping_py(rate_amount='10.00', cookie=init_cookie):
             "rule_range_max": 0,
             "rule_range_infinite": True,
             "rule_range_unit": "件",
-            "support_cod": False,
+            "support_cod": True,
             "rate_type": "normal",
             "rate_amount": rate_amount
         }

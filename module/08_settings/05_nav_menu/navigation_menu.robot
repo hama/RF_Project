@@ -205,7 +205,7 @@ navigation_menu_067
     [Documentation]      选择跳转链接为商品详情页
     [Tags]    P0    threshold
     kwproduct.del_all_products_py
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     Wait And Click Element    ${locatorB_menus_button_addMenu}
     Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
     Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}[0]     一级菜单目录

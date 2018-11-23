@@ -21,7 +21,7 @@ BeginnerTutorial003
     [Tags]    P1    threshold
     Wait And Click Element    ${locatorB_button_commodity}
     Select Window    New
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_overview}
     #.添加完商品返回新手教程，验证
@@ -115,7 +115,7 @@ BeginnerTutorial012
 #    #.添加支付方式
 #    kwpayment.activate_payment_cod_py
 #    #.添加商品
-#    kwproduct.add_launched_product_py
+#    kwproduct.add_max_product_py
 #    #添加一个物流
 #    &{conf}=   Create Dictionary
 #    ...    shipping_area=[{"country_id":"45","zone_ids":"-1"}]

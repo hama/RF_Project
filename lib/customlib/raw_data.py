@@ -198,7 +198,7 @@ shipping_data = {
             "rule_range_max": 0,
             "rule_range_infinite": True,
             "rule_range_unit": "USD",
-            "support_cod": False,
+            "support_cod": True,
             "rate_type": "normal",
             "rate_amount": "10"
         },
@@ -210,7 +210,7 @@ shipping_data = {
             "rule_range_max": 0,
             "rule_range_infinite": True,
             "rule_range_unit": "件",
-            "support_cod": False,
+            "support_cod": True,
             "rate_type": "normal",
             "rate_amount": "20"
         },
@@ -221,7 +221,7 @@ shipping_data = {
             "rule_range_min": 0,
             "rule_range_max": 0,
             "rule_range_infinite": True,
-            "support_cod": False,
+            "support_cod": True,
             "rate_type": "normal",
             "rate_amount": "30",
             "rule_range_unit": "g"
