@@ -6,6 +6,157 @@ sys.setdefaultencoding('utf-8')
 
 # 含子商品的商品数据（max）
 product_max_data_with_sub = {
+    "id": "",
+    "title": "autotest_title",
+    "brief": "autotest_subtitle",
+    "description": "autotest_description",
+    "published": True,
+    "published_at": "",
+    "need_variant_image": True,
+    "requires_shipping": True,
+    "taxable": True,
+    "collection_ids": [
+
+    ],
+    "vendor": "autotest_supplier",
+    "vendor_url": "https://autotest.com",
+    "seo_title": "autotest_title",
+    "seo_keywords": [
+        "autotest_seo"
+    ],
+    "seo_url": "",
+    "handle": "autotest_title",
+    "seo_description": "autotest_description",
+    "tags": [
+        "auto_tag"
+    ],
+    "has_only_default_variant": False,
+    "inventory_tracking": True,
+    "inventory_policy": "continue",
+    "images": [
+        {
+            "id": "",
+            "image": {
+                "path": "9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "alt": "",
+                "aspect_ratio": "1.3333333333333333",
+                "height": "504",
+                "src": "//cdn.shoplazza.com/9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "width": "672",
+                "size": "53455"
+            }
+        }
+    ],
+    "options": [
+        {
+            "name": "color",
+            "values": [
+                "red",
+                "black"
+            ]
+        },
+        {
+            "name": "size",
+            "values": [
+                "min",
+                "max"
+            ]
+        }
+    ],
+    "variants": [
+        {
+            "image": {
+                "path": "9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "alt": "",
+                "aspect_ratio": "1.3333333333333333",
+                "height": "504",
+                "src": "//cdn.shoplazza.com/9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "width": "672",
+                "size": "53455"
+            },
+            "id": "",
+            "price": "10",
+            "compare_at_price": "20",
+            "weight": "11",
+            "weight_unit": "kg",
+            "inventory_quantity": "999",
+            "sku": "",
+            "barcode": "",
+            "option1": "red",
+            "option2": "min",
+            "option3": "",
+            "_key": '{"color":"red","size":"min"}'
+        },
+        {
+            "image": {
+                "path": "9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "alt": "",
+                "aspect_ratio": "1.3333333333333333",
+                "height": "504",
+                "src": "//cdn.shoplazza.com/9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "width": "672",
+                "size": "53455"
+            },
+            "id": "",
+            "price": "10",
+            "compare_at_price": "20",
+            "weight": "11",
+            "weight_unit": "kg",
+            "inventory_quantity": "999",
+            "sku": "",
+            "barcode": "",
+            "option1": "red",
+            "option2": "max",
+            "option3": "",
+            "_key": '{"color":"red","size":"max"}'
+        },
+        {
+            "image": {
+                "path": "9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "alt": "",
+                "aspect_ratio": "1.3333333333333333",
+                "height": "504",
+                "src": "//cdn.shoplazza.com/9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "width": "672",
+                "size": "53455"
+            },
+            "id": "",
+            "price": "10",
+            "compare_at_price": "20",
+            "weight": "11",
+            "weight_unit": "kg",
+            "inventory_quantity": "999",
+            "sku": "",
+            "barcode": "",
+            "option1": "black",
+            "option2": "min",
+            "option3": "",
+            "_key": '{"color":"black","size":"min"}'
+        },
+        {
+            "image": {
+                "path": "9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "alt": "",
+                "aspect_ratio": "1.3333333333333333",
+                "height": "504",
+                "src": "//cdn.shoplazza.com/9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "width": "672",
+                "size": "53455"
+            },
+            "id": "",
+            "price": "10",
+            "compare_at_price": "20",
+            "weight": "11",
+            "weight_unit": "kg",
+            "inventory_quantity": "999",
+            "sku": "",
+            "barcode": "",
+            "option1": "black",
+            "option2": "max",
+            "option3": "",
+            "_key": '{"color":"black","size":"max"}'
+        }
+    ]
 }
 
 # 商品数据（max）

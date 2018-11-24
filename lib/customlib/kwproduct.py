@@ -248,11 +248,11 @@ def add_max_product_with_sub_py(cookie=init_cookie):
 
 if __name__ == '__main__':
     # print add_min_product_py()
-    # print add_max_product_py()
+    print add_max_product_py()
     # print get_product_detail_py(add_max_product_py())
     # print add_product_with_conf_py()
     # print del_latest_product_py()
-    print del_all_products_py()
+    # print del_all_products_py()
     # print publish_all_products_py()
     # print unpublish_all_products_py()
     # print get_all_products_count_py()
