@@ -171,6 +171,9 @@ def dict_deepupdate(json_data, json_conf):
         for key, values in json_conf.items():
             if isinstance(values, dict):
                 dict_deepupdate(json_data[key], values)
+            elif isinstance(values, list):
+                for i in range(len(values)):
+                    dict_deepupdate(json_data[key][i], values[i])
             else:
                 json_data[key] = values
 

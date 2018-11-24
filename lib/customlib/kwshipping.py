@@ -142,7 +142,7 @@ def add_shipping_with_conf_py(conf={}, cookie=init_cookie):
     return shippings_post_py(data, cookie=cookie)['content']['id']
 
 
-def add_price_fee_shipping_py(rate_amount='10', cookie=init_cookie):
+def add_price_fee_shipping_py(conf={}, cookie=init_cookie):
     '''
     添加只有price_fee的物流
     :param cookie:
@@ -160,13 +160,14 @@ def add_price_fee_shipping_py(rate_amount='10', cookie=init_cookie):
             "rule_range_unit": "USD",
             "support_cod": True,
             "rate_type": "normal",
-            "rate_amount": rate_amount
+            "rate_amount": '10'
         }
     ]
+    dict_deepupdate(data, conf)
     return shippings_post_py(data, cookie=cookie)
 
 
-def add_weight_fee_shipping_py(rate_amount='10', cookie=init_cookie):
+def add_weight_fee_shipping_py(conf={}, cookie=init_cookie):
     '''
     添加只有weight_fee的物流
     :param cookie:
@@ -183,14 +184,15 @@ def add_weight_fee_shipping_py(rate_amount='10', cookie=init_cookie):
             "rule_range_infinite": True,
             "support_cod": True,
             "rate_type": "normal",
-            "rate_amount": rate_amount,
+            "rate_amount": '10',
             "rule_range_unit": "g"
         }
     ]
+    dict_deepupdate(data, conf)
     return shippings_post_py(data, cookie=cookie)
 
 
-def add_quantity_fee_shipping_py(rate_amount='10.00', cookie=init_cookie):
+def add_quantity_fee_shipping_py(conf={}, cookie=init_cookie):
     '''
     添加只有quantity_fee的物流
     :param cookie:
@@ -208,9 +210,10 @@ def add_quantity_fee_shipping_py(rate_amount='10.00', cookie=init_cookie):
             "rule_range_unit": "件",
             "support_cod": True,
             "rate_type": "normal",
-            "rate_amount": rate_amount
+            "rate_amount": '10'
         }
     ]
+    dict_deepupdate(data, conf)
     return shippings_post_py(data, cookie=cookie)
 
 
@@ -251,5 +254,5 @@ def num_of_exist_shipping_py(cookie=init_cookie):
 
 if __name__ == '__main__':
     print del_all_shipping_py()
-    print add_price_fee_shipping_py()
+    print add_price_fee_shipping_py({'plans': [{'rule_range_min': '5000.00'}]})
     # print add_quantity_fee_shipping_py()

@@ -200,7 +200,7 @@ shipping_data = {
             "rule_range_unit": "USD",
             "support_cod": True,
             "rate_type": "normal",
-            "rate_amount": "10"
+            "rate_amount": "0"
         },
         {
             "name": "quantity_fee",
@@ -212,7 +212,7 @@ shipping_data = {
             "rule_range_unit": "件",
             "support_cod": True,
             "rate_type": "normal",
-            "rate_amount": "20"
+            "rate_amount": "0"
         },
         {
             "name": "weight_fee",
@@ -223,7 +223,7 @@ shipping_data = {
             "rule_range_infinite": True,
             "support_cod": True,
             "rate_type": "normal",
-            "rate_amount": "30",
+            "rate_amount": "0",
             "rule_range_unit": "g"
         }
     ]
