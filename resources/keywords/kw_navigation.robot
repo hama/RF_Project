@@ -144,13 +144,13 @@ Go To Employee Account Page
 
 Go To Files Page
     [Documentation]    跳转到 文件管理页面
-    Wait Until Element Is Visible    ${locatorB_setting}
+    Wait Until Element Is Visible    ${locatorB_systemSetting}
     # 若设置按钮没展开，则展开设置按钮
-    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
+    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_systemSettingMenus_expanded}    5
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_systemSetting}
     Run Keyword If    '${attr}'=='False'    Sleep    4
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_files}
-    ...    ELSE    Wait And Click Element    ${locatorB_setting_files}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_systemSetting_files}
+    ...    ELSE    Wait And Click Element    ${locatorB_systemSetting_files}
     Wait Until Page Contains    上传文件
 #    Location Should Be    ${url_files}
     Sleep    1
@@ -159,10 +159,10 @@ Go To Checkout Settings Page
     [Documentation]    跳转到店铺装修-结账流程页面
     Wait Until Element Is Visible    ${locatorB_setting}
     # 若设置按钮没展开，则展开设置按钮
-    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_decorationMenus_expanded}    5
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_decoration}
-    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_decoration_checkoutSettings}
-    ...    ELSE    Wait And Click Element    ${locatorB_decoration_checkoutSettings}
+    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_settingMenus_expanded}    5
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_setting_checkoutSettings}
+    ...    ELSE    Wait And Click Element    ${locatorB_setting_checkoutSettings}
     Wait Until Page Contains    交易规则
 #    Location Should Be    ${url_checkoutSettings}
     Sleep    1

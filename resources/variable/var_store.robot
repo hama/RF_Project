@@ -20,7 +20,7 @@ ${locatorB_store_a_domain}    css:.icon_custom_left_0490.link_c21b    #.域名�
 ${locatorB_store_a_domain_ant_btn}    css:button[class*="ant-btn middle"]   #.域名配置-"绑定已有域名"按钮
 ${locatorB_store_div_favion}    css:div[class*="ant-upload ant-upload-select"]    #.网站Favicon
 ${locatorB_store_div_favion_img}    dom:document.querySelectorAll('div[class="image_wrap_546e"] img')    #.网站Favicon-图像
-${locatorB_store_i_delete}    css:i[class="delete_1296"]    #.网站Favicon-删除按钮
+${locatorB_store_i_dFelete}    dom:document.querySelectorAll('i[class*="delete_1296"]')   #.网站Favicon-删除按钮
 
 
 # locator input text

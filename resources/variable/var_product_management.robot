@@ -44,7 +44,7 @@ ${locatorB_productsMgmt_input_minPrice}    dom:document.querySelectorAll(".searc
 ${locatorB_productsMgmt_input_maxPrice}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[1]    #"最高售价"输入框
 ${locatorB_productsMgmt_input_name}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[2]    #"商品名称/商品SKU/标签"输入框
 ${locatorB_productsMgmt_button_search}    dom:document.querySelectorAll('button[data-robot="btn_search"]')[0]    # 搜索按钮
-${locatorB_productsMgmt_icon_preview}    dom:document.querySelectorAll("tbody tr td div div i")[0]    # 商品列表 - 预览按钮
+${locatorB_productsMgmt_icon_preview}    dom:document.querySelectorAll("i[class~='dj-preview']")[0]    # 商品列表 - 预览按钮
 
 ${locatorB_productsMgmt_list_firstProduct}    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    # 商品列表 - 第一个商品的一行
 

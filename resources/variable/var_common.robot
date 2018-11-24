@@ -43,9 +43,10 @@ ${locatorB_setting_taxPrice}    dom:document.querySelectorAll('a[href="/taxPrice
 ${locatorB_setting_payment}    dom:document.querySelectorAll('a[href="/pay"]')[0]    # 导航栏-设置-收款渠道
 ${locatorB_setting_employee}    dom:document.querySelectorAll('a[href="/accounts"]')[0]    # 导航栏-设置-员工账号
 ${locatorB_setting_store}    dom:document.querySelectorAll('a[href="/store"]')[0]    # 导航栏-设置-基础信息
-${locatorB_setting_files}    dom:document.querySelectorAll('a[href="/files"]')[0]    # 导航栏-设置-文件管理
+${locatorB_setting_checkoutSettings}    dom:document.querySelectorAll('a[href="/checkout"]')[0]    # 导航栏-店铺装修-结账流程
+${locatorB_systemSetting}    dom:document.querySelectorAll('span[data-robot="system_setting"]')[0]    # 导航栏-系统设置
+${locatorB_systemSetting_files}    dom:document.querySelectorAll('a[href="/files"]')[0]    # 导航栏-设置-文件管理
 ${locatorB_decoration}    dom:document.querySelectorAll('span[data-robot="decoration"]')[0]    # 导航栏-店铺装修
-${locatorB_decoration_checkoutSettings}    dom:document.querySelectorAll('a[href="/checkout"]')[0]    # 导航栏-店铺装修-结账流程
 ${locatorB_decoration_navigationMenu}    dom:document.querySelectorAll('a[href="/menus"]')[0]    # 导航栏-店铺装修-菜单导航
 
 ${locatorB_decoration_custom_button_NewPage}    dom:document.querySelectorAll('[class*="ant-btn large_btn_"]')    # 导航栏-店铺装修-自定义页面-新建页面按钮
@@ -63,6 +64,7 @@ ${isExistB_setting_productMenus_expanded}    dom:document.querySelectorAll('div[
 ${isExistB_setting_marketingMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="marketing"]')[0]    # 判断marketing菜单展开的元素是否存在
 ${isExistB_setting_decorationMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="decoration"]')[0]    # 判断decoration菜单展开的元素是否存在
 ${isExistB_setting_settingMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="setting"]')[0]    # 判断setting菜单展开的元素是否存在
+${isExistB_setting_systemSettingMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="system_setting"]')[0]    # system_setting
 
 
 ### locator selects
