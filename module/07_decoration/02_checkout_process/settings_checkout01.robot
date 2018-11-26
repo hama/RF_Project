@@ -4,19 +4,19 @@ Suite Setup       Checkout Page Suite Setup
 Suite Teardown    Checkout Page Suite Teardown
 Test Setup        Checkout Page Test Setup
 Test Teardown     Teardown Test Case
-Force Tags        checkoutPageSetings
+Force Tags        checkoutPageSettings
 
 Resource        ../../../resources/keywords/kw_common.robot
 
 
 *** Test cases ***
 
-checkoutPageSetings001
+checkoutPageSettings001
     [Documentation]    测试结账设置界面可正常进入
     [Tags]    P0    threshold   smoke
     Wait Until Page Contains Locator    ${locatorB_checkout_button_nav_tradingRules}
 
-checkoutPageSetings003
+checkoutPageSettings003
     [Documentation]    测试结账设置界面保存按钮
     [Tags]    P0    threshold   smoke
     Wait And Click Element    ${locatorB_checkout_label_buyMembers}
@@ -27,14 +27,14 @@ checkoutPageSetings003
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
 
-checkoutPageSetings005
+checkoutPageSettings005
     [Documentation]    测试结账设置页面编辑保存  >  1.修改内容后不保存  2.离开结账设置页面
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_label_buyMembers}
     Sleep And Click Element    ${locatorB_overview}
     Wait Alert Should Be Present And Dismiss   页面上有未保存内容，是否确定退出?
 
-checkoutPageSetings006
+checkoutPageSettings006
     [Documentation]    测试结账设置页面编辑保存  >  1.未保存内容退出提示框出现  2.点击确认退出
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_label_buyMembers}
@@ -43,7 +43,7 @@ checkoutPageSetings006
     Go To Checkout Settings Page
     Element Attribute Should Contain With Wait     ${locatorB_checkout_label_registerMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
-checkoutPageSetings007
+checkoutPageSettings007
     [Documentation]    测试结账设置页面编辑保存  >  1.未保存内容退出提示框出现 2.点击取消
     [Tags]    P1    threshold
     Wait And Click Element    ${locatorB_checkout_label_buyMembers}
@@ -53,7 +53,7 @@ checkoutPageSetings007
     Wait Until Page Contains Locator      ${locatorB_checkout_button_save}
 
 # 功能被屏蔽，暂时不测（10.31）
-#checkoutPageSetings008
+#checkoutPageSettings008
 #    [Documentation]    测试结账设置顾客权限功能>1.点击不开启会员注册  2.点击保存
 #    [Tags]    P0    threshold   smoke
 #    Wait And Click Element    ${locatorB_checkout_label_notMembers}
@@ -67,7 +67,7 @@ checkoutPageSetings007
 #    Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
 #    Element Attribute Should Contain With Wait     ${locatorB_checkout_label_notMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
-checkoutPageSetings009
+checkoutPageSettings009
      [Documentation]    测试结账设置顾客权限功能>1.点击注册会员与非注册会员均可购买 2.点击保存
      [Tags]    P0    threshold
      Wait And Click Element    ${locatorB_checkout_label_registerMembers}
@@ -77,7 +77,7 @@ checkoutPageSetings009
      Wait And Click Element    ${locatorC_productDetail_button_buyNow}
      Wait Until Page Contains Text    Shipping Address
 
-checkoutPageSetings010
+checkoutPageSettings010
      [Documentation]    测试结账设置顾客权限功能>1.点击会员购买  2.点击保存
      [Tags]    P0    threshold
      Wait And Click Element    ${locatorB_checkout_label_buyMembers}
@@ -90,7 +90,7 @@ checkoutPageSetings010
      Wait And Click Element    ${locatorC_productDetail_button_buyNow}
      Wait Until Page Contains Locator    ${locatorC_input_email}
 
-checkoutPageSetings011.1
+checkoutPageSettings011.1
     [Documentation]       此用例未更新，新增模块--->手机必选
     [Tags]    P0    threshold   smoke
     Wait And Click Element     ${locatorB_checkout_label_registerMembers}
@@ -107,7 +107,7 @@ checkoutPageSetings011.1
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait Until Page Contains Text    Please enter your phone
 
-checkoutPageSetings012.1
+checkoutPageSettings012.1
     [Documentation]     此用例未更新，新增模块--->手机选填
     [Tags]    P0    threshold   smoke
     Wait And Click Element     ${locatorB_checkout_label_registerMembers}
@@ -122,7 +122,7 @@ checkoutPageSetings012.1
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait Until Page Contains Locator    ${locatorC_checkout_button_completeOrder}
 
-checkoutPageSetings013.1
+checkoutPageSettings013.1
     [Documentation]    此用例未更新，新增模块-->手机隐藏
     [Tags]    P0    threshold   smoke
     Wait And Click Element    ${locatorB_checkout_label_registerMembers}
@@ -137,7 +137,7 @@ checkoutPageSetings013.1
     Wait Until Page Not Contains Locator    ${locatorC_checkoutShipping_address_input_phone}
 
 #...
-# checkoutPageSetings018
+# checkoutPageSettings018
 #    [Documentation]    测试顾客联系方式设置-手机和邮箱-必填项都取消
 #    [Tags]    P0    threshold   smoke
 #    Wait And Click Element  ${locatorB_checkout_label_notMembers}
