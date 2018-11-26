@@ -18,7 +18,6 @@ Resource          var_navmenu.robot
 Resource          var_payment_channel.robot
 *** Variables ***
 ### 未分类，需要分类并清理
-${home_page}      ${home_page_url}
 ${error_msg}      出错啦！    #.自定义错误提示
 
 ${locatorB_global_alert_confirm}    dom:document.querySelectorAll('button[data-robot="pop_confirm"]')[0]    #.全局弹窗 确定 按钮
@@ -108,6 +107,7 @@ ${locatorB_table_listItems}    dom:document.querySelectorAll(".ant-table-row")  
 ${locatorB_select_batchOperations}    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]    #批量操作下拉框
 ${locatorB_couponLst_couponText}    全部
 ### 页面模块 url
+${home_page}      ${home_page_url}
 ${url_home_page}    ${home_page}/    # home page
 ${url_order}      ${home_page}/order    # order page
 ${url_order_dealing}      ${home_page}/order/_dealing
@@ -118,7 +118,7 @@ ${url_tax_price}    ${home_page}/taxPrice    # tax price
 ${url_shipping}    ${home_page}/shipping    # shipping
 ${url_subtraction}    ${home_page}/subtraction    # subtraction
 ${url_coupon_code}    ${home_page}/coupon_code    # coupon
-${url_coupon_store}    ${home_page}/store    # store
+${url_store}    ${home_page}/store    # store
 ${url_accounts}    ${home_page}/accounts   # accounts
 ${url_collection}    ${home_page}/collection   # collection
 ${url_reviews}    ${home_page}/reviews   # reviews

@@ -123,7 +123,7 @@ do
 		rebot -d "$LOG_PATH"/ "$LOG_PATH_1"/output.xml "$LOG_PATH_2"/output.xml "$LOG_PATH_3"/output.xml \
 			"$LOG_PATH_4"/output.xml "$LOG_PATH_5"/output.xml "$LOG_PATH_6"/output.xml "$LOG_PATH_7"/output.xml \
 			"$LOG_PATH_8"/output.xml "$LOG_PATH_9"/output.xml "$LOG_PATH_10"/output.xml "$LOG_PATH_11"/output.xml \
-			"$LOG_PATH_12"/output.xml "$LOG_PATH_13"/output.xml "$LOG_PATH_14"/output.xml "$LOG_PATH_15"/output.xml "$LOG_PATH_16"/output.xml \
+			"$LOG_PATH_12"/output.xml "$LOG_PATH_13"/output.xml "$LOG_PATH_14"/output.xml "$LOG_PATH_15"/output.xml "$LOG_PATH_16"/output.xml
 		docker run -i -v /var/log:/var/log --rm registry.shoplazza.com/library/uitest:v7 \
 			bash -c "/opt/$RUN_SH_IN_DOCKER -E -T $TIMESTAMP -D $LOG_PATH"
 		exit 0
