@@ -7,7 +7,7 @@ Application Suite Setup
     Login With Default User
 
 Application Case Setup
-    Go To Application Page
+    Go To Application Page By Url
 
 Application Suite Teardown
     Close Test Suite Browser

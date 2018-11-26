@@ -53,7 +53,7 @@ Login With User
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_login_input_domain}    2
     Run Keyword If    '${status}'=='${True}'    Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
     Run Keyword If    '${status}'=='${True}'    Wait And Click Element    ${locatorB_login_btn_login}
-    Wait Until Page Contains Locator    ${locatorB_setting}
+    Wait Until Page Contains Locator    ${locatorB_logout_icon_individualAccount}
     log    Login Success
     Comment    close new_user's pop
     ${close}=    Execute JavaScript    return document.querySelectorAll('.ant-modal-close-x')[0]===undefined

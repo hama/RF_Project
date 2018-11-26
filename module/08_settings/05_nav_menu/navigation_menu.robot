@@ -217,7 +217,7 @@ navigation_menu_067
 navigation_menu_068
     [Documentation]      选择跳转链接为自定义页面
     [Tags]    P0    threshold
-    Go To Custom Page
+    Go To Custom Page By Url
     Wait And Click Element    ${locatorB_decoration_custom_button_NewPage}
     Wait And Input Text    ${locatorB_decoration_addPage_input_pageName}    新建页面名称
     Wait And Click Element    ${locatorB_button_save00}
