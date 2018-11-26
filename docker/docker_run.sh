@@ -87,11 +87,11 @@ docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_10 -
         -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_10"&
 
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_11 --rm registry.shoplazza.com/library/uitest:v7 \
-        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/07_decoration/02_checkout_process/setings_checkout01.robot' \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/07_decoration/02_checkout_process/settings_checkout01.robot' \
         -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_11"&
 
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_12 --rm registry.shoplazza.com/library/uitest:v7 \
-        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/07_decoration/02_checkout_process/setings_checkout02.robot' \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/07_decoration/02_checkout_process/settings_checkout02.robot' \
         -H all_china -U https://admin.shoplazza.com -R -A -D $LOG_PATH_12"&
 
 docker run -i -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_13 --rm registry.shoplazza.com/library/uitest:v7 \
