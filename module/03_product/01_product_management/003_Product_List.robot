@@ -72,8 +72,8 @@ products008
 #    #判断当前页所有商品状态
 #    ${sku0}    Wait And Get Text    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[4].querySelectorAll("span")[0]
 #    ${sku1}    Wait And Get Text    dom:document.querySelectorAll(".ant-table-tbody tr")[1].querySelectorAll("td")[4].querySelectorAll("span")[0]
-#    Should Be Equal As Strings    ${sku0}    autotest_sku
-#    Should Be Equal As Strings    ${sku1}    autotest_sku
+#    Should Be Equal As Strings    ${sku0}    autotestsku
+#    Should Be Equal As Strings    ${sku1}    autotestsku
 
 products017
     [Documentation]    验证点击预览icon正确跳转到卡片C端

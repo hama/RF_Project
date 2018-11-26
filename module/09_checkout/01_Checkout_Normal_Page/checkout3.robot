@@ -17,16 +17,19 @@ checkout_007
     #进入商品详情步骤
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait Until Page Contains Text    Color:red
-    Wait Until Page Contains Text    Size:min
+    Wait Until Page Contains Text    color:red
+    Wait Until Page Contains Text    size:min
 
 checkout_019
     [Documentation]    验证checkout shipping页面，商品不收取税费时，价格详情中的tax显示为：+ 0.00USD  >  1.C端购买商品women进入checkout shipping页面   2.查看价格详情中tax
     [Tags]    P0    threshold
     #.添加一个不要物流费的商品
     &{conf}=   Create Dictionary
-    ...    requires_shipping=0
+    ...    taxable=${False}
     kwproduct.add_product_with_conf_py   ${conf}
+    kwshipping.add_shipping_with_conf_py
+    Sleep    1
+    kwtax.add_default_tax_price_py
     #进入商品详情步骤
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
@@ -41,8 +44,9 @@ checkout_080
     [Tags]    P0    threshold
     #.添加一个不收税费的商品
     &{conf}=   Create Dictionary
-    ...    setshipping=0
+    ...    requires_shipping=${False}
     kwproduct.add_product_with_conf_py   ${conf}
+    kwshipping.add_shipping_with_conf_py
     #进入商品详情步骤
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
@@ -70,7 +74,7 @@ checkout_110
     Sleep    1
     kwtax.add_default_tax_price_py
     &{conf}=   Create Dictionary
-    ...    settax=0
+    ...    taxable=${False}
     kwproduct.add_product_with_conf_py   ${conf}
     #进入商品详情步骤
     Go To First Product C Interface
@@ -84,7 +88,7 @@ checkout_119
     [Tags]    P0    threshold
     kwshipping.add_shipping_with_conf_py
     &{conf}=   Create Dictionary
-    ...    setshipping=0
+    ...    requires_shipping=${False}
     kwproduct.add_product_with_conf_py   ${conf}
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}

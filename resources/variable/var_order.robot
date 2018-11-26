@@ -13,6 +13,11 @@ ${locatorB_orderDealing_button_finished}    dom:document.querySelectorAll(".ant-
 
 ${locatorB_orderDealing_items_listOrder}    ${locatorB_table_listItems}    # 列表中的订单集合
 
+${locatorB_orderDealing_items_listNumber}    dom:document.querySelectorAll('[id="order_list"] li')[0]    # 列表中订单总数量
+${locatorB_orderDealing_items_listChangePage}     dom:document.querySelectorAll('[class*="ant-pagination-options-size-"]')[0]    # 列表中订单页数显示选择
+${locatorB_orderDealing_items_selectPage}    dom:document.querySelectorAll('[role="option"]')    # 列表中订单页数选择项
+
+
 ${locatorB_orderDealing_text_firstOrder_orderNum}    ${locatorB_table_listItems}[0].querySelectorAll("td")[1]    #待处理订单第一个订单的，订单编号
 ${locatorB_orderDealing_text_firstOrder_date}    ${locatorB_table_listItems}[0].querySelectorAll("td")[2]    #待处理订单第一个订单的，日期
 ${locatorB_orderDealing_text_firstOrder_receiverName}    ${locatorB_table_listItems}[0].querySelectorAll("td")[3]    #待处理订单第一个订单的，收货人姓名
@@ -30,7 +35,7 @@ ${locatorB_orderDealing_text_shippingStatus}    dom:document.querySelectorAll('l
 ${locatorB_orderDealing_text_orderStatus}    dom:document.querySelectorAll('label[for="status"]')    # 订单状态
 
 
-${locatorB_orderDealing_select_paymentMethod}    dom:document.querySelectorAll('[id="payment_method"]')    # 支付方式select
+${locatorB_orderDealing_select_paymentMethod}    dom:document.querySelectorAll('[id="payment_method"]')  # 支付方式select
 ${locatorB_orderDealing_select_financialStatus}    dom:document.querySelectorAll('[id="financial_status"]')    # 支付状态select
 ${locatorB_orderDealing_select_shippingStatus}    dom:document.querySelectorAll('[id="fulfillment_status"]')    # 物流状态select
 ${locatorB_orderDealing_select_orderStatus}    dom:document.querySelectorAll('[id="status"]')    # 订单状态select
@@ -49,8 +54,8 @@ ${locatorB_orderUndeal_text_orderStatus}    dom:document.querySelectorAll('label
 ${locatorB_orderUndeal_text_firstOrder_orderNum}    ${locatorB_table_listItems}[0].querySelectorAll("td")[1]    #未完成订单第一个订单的，订单编号
 ${locatorB_orderUndeal_text_firstOrder_date}    ${locatorB_table_listItems}[0].querySelectorAll("td")[2]    #未完成订单第一个订单的，日期
 ${locatorB_orderUndeal_text_firstOrder_receiverName}    ${locatorB_table_listItems}[0].querySelectorAll("td")[3]    #未完成订单第一个订单的，收货人姓名
-${locatorB_orderUndeal_text_firstOrder_paymentMethod}    ${locatorB_table_listItems}[0].querySelectorAll("td")[4]    #未完成订单第一个订单的，支付方式
-${locatorB_orderUndeal_text_firstOrder_paymentStatus}    ${locatorB_table_listItems}[0].querySelectorAll("td")[5]    #未完成订单第一个订单的，支付状态
+${locatorB_orderUndeal_text_firstOrder_paymentMethod}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(5)')    #未完成订单第一个订单的，支付方式
+${locatorB_orderUndeal_text_firstOrder_paymentStatus}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(6)')    #未完成订单第一个订单的，支付状态
 ${locatorB_orderUndeal_text_firstOrder_orderStatus}    ${locatorB_table_listItems}[0].querySelectorAll("td")[7]    #未完成订单第一个订单的，订单状态
 ${locatorB_orderUndeal_text_firstOrder_orderSumPrice}    ${locatorB_table_listItems}[0].querySelectorAll("td")[8]    #未完成订单第一个订单的，订单总价
 
@@ -82,7 +87,7 @@ ${locatorB_orderDetail_tag_firstProduct_shipPartiallyFinished}    dom:document.q
 ${locatorB_orderDetail_text_payway}    dom:document.querySelectorAll('[class*="payway"]')[0]    # 订单详情页第一个商品的支付方式
 ${locatorB_orderDetail_text_shipway}    dom:document.querySelectorAll('[class*="payway"]')[1]    # 订单详情页第一个商品的物流方案
 
-${locatorB_orderDetail_i_receiveInformation}    dom:document.querySelectorAll('[data-robot="order_details_edit_addr_info"]')    #订单详情页 收货信息 编辑按钮
+${locatorB_orderDetail_icon_receiveInformation}    dom:document.querySelectorAll('[data-robot="order_details_edit_addr_info"]')    #订单详情页 收货信息 编辑按钮
 ${locatorB_orderDetail_button_save}    dom:document.querySelectorAll("[data-robot='save']")    #订单详情页 收货信息 保存按钮
 
 ${locatorB_orderDetail_text_deliveryInformation}    dom:document.querySelectorAll('[class*="info_list"] [class*="info_item"]')    # 订单详情页收货信息
@@ -115,6 +120,12 @@ ${locatorB_orderDetail_button_toDelivery}    dom:document.querySelectorAll('[cla
 ${locatorB_orderDetail_arrow_toExpand}    dom:document.querySelectorAll('[class*="arrow_expand"]')    # 箭头to展开
 ${locatorB_orderDetail_arrow_toCollapse}    dom:document.querySelectorAll('[class*="arrow_collapse"]')    # 箭头to收起
 
+${locatorB_orderDetail_input_popUp_LogNum}    dom:document.querySelectorAll('[class="ant-input input_e5c2"]')    #.去发货-》添加运单-》运单号输入框
+${locatorB_orderDetail_select_popUp_LogMag}    dom:document.querySelectorAll('[class="ant-select-selection__rendered"]')    #.去发货-》添加运单-》物流商
+${locatorB_orderDetail_select_popUp_LogOther}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')    #.去发货-》添加运单-》物流商选择其他
+${locatorB_orderDetail_button_popUp_save}    dom:document.querySelectorAll('[class="ant-btn middle_btn_e01e "]')    #.去发货-》添加运单-》保存按钮
+
+${locatorB_orderDetail_icon_Returnlist}    dom:document.querySelectorAll('[class*="header_left_"]')    #.去发货-》返回订单列表
 
 
 #${locatorB_order_already_pay_btn}    dom:document.querySelectorAll(".ant-radio-button-wrapper span")[5]    #.订单-待付款 按钮
@@ -127,8 +138,12 @@ ${locatorB_orderDetail_arrow_toCollapse}    dom:document.querySelectorAll('[clas
 #${locatorB_order_detail_element}    dom:document.querySelectorAll(".header_left___3RMen span")[0]    #.订单详情顶部元素
 #${locatorB_order_list_first_tr}    dom:document.querySelectorAll("table tbody tr")[0]    #.订单列表table第一个tr
 #${locatorB_order_dateil_update_send}    dom:document.querySelectorAll(".header_left___2PRCj")[0]    #.订单详情-更新运单号
+
 ${locatorB_order_dateil_cencel_send}    dom:document.querySelectorAll('[data-robot="cancel_shipping"]')   #.订单详情-取消本次发货
 ${locatorB_order_button_search}    dom:document.querySelectorAll('[data-robot="order_search_btn"]')    #.订单列表搜索按钮
+${locatorB_order_input_searchText}    dom:document.querySelectorAll('[id="keyword"]')    #. 订单搜索输入框
+${locatorB_order_button_searchBtn}    dom:document.querySelectorAll('[class="ant-btn confirm_btn_c2c3 "]')   #. 订单搜索按钮
+
 #${locatorB_order_list_api}    ${home_page}/api/order/list?start_create_time=1521561600&end_create_time=1529596799&page=0&size=20    #.订单列表api
 #${locatorB_order_list_export}    dom:document.querySelectorAll(".export___22t6f")[0]    #.订单列表 导出按钮
 #${locatorB_start_time}     1521561600    #.开始时间

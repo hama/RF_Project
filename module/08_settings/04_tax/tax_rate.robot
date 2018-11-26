@@ -69,7 +69,7 @@ taxPrice007
     Wait And Click Element    ${locatorB_taxPrice_switch_list}[0]
     Wait Until Page Contains Text   设置成功
     Wait Until Page Contains Locator  ${locatorB_taxPrice_switch_list}[0]
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     Reload Page And Start Ajax
     #测试商品购买不收取税费
     Go To First Product C Interface
@@ -92,7 +92,7 @@ taxPrice008
     Wait And Input Text    ${locatorB_taxPrice_popUp_uniteInput}    60.00
     Wait And Click Element    ${locatorB_taxPrice_popUp_button_save}
     #添加一个444的商品
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     #测试商品购买收取60%税费
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
@@ -134,7 +134,7 @@ taxPrice013
     #初始化物流信息
     kwshipping.del_all_shipping_py
     #添加一个444的商品
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     #再次添加一个美国的物流信息
     &{conf}=   Create Dictionary
     ...    shipping_area=[{"country_id":"226","zone_ids":"-1"}]
@@ -193,7 +193,7 @@ taxPrice014
     #判断是否真的按钮转换了
     Wait Until Page Contains Locator  ${locatorB_taxPrice_switch_list}[0]
     #添加一个444的商品
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_country}
@@ -228,7 +228,7 @@ taxPrice015
     Wait And Input Text    ${locatorB_taxPrice_popUp_uniteInput}    10.00
     Wait And Click Element    ${locatorB_taxPrice_popUp_button_save}
     #添加一个444的商品
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_country}
@@ -277,7 +277,7 @@ taxPrice018
     Wait And Input Text    ${locatorB_taxPrice_popUp_cityInputList}[5]    20.00
     Wait And Click Element    ${locatorB_taxPrice_popUp_button_save}
     #添加一个444的商品
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_country}
@@ -302,7 +302,7 @@ taxPrice019
     Wait And Input Text    ${locatorB_taxPrice_popUp_cityInputList}[1]    20.00
     Wait And Click Element    ${locatorB_taxPrice_popUp_button_save}
     #添加一个444的商品
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_country}

@@ -60,9 +60,12 @@ checkout_079
 checkout_082
     [Documentation]    验证checkout shipping页面，没有可选择物流方案时，payment method 按钮无法点击 > payment method按钮置灰无法点击
     [Tags]    P0    threshold    smoke
+    &{plan}=   Create Dictionary
+    ...    rule_range_min=5000
+    @{plans}=    Create List    ${plan}
     &{conf}=   Create Dictionary
-    ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"5000.00","range_max":-1,"rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
-    kwshipping.add_shipping_with_conf_py    ${conf}
+    ...    plans=${plans}
+    kwshipping.add_price_fee_shipping_py    ${conf}
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
@@ -73,9 +76,13 @@ checkout_082
 checkout_083
     [Documentation]    验证B端运费方案设置价格范围时，C端购买的商品价格满足此价格范围，checkout shipping页面将展示此运费方案 > 运费方案中显示：价格方案1
     [Tags]    P0    threshold    smoke
+    &{plan}=   Create Dictionary
+    ...    rule_range_min=50
+    ...    rule_range_max=5000
+    @{plans}=    Create List    ${plan}
     &{conf}=   Create Dictionary
-    ...    shipping_plan=[{"name":"price_fee","shipping_method":"price","range_min":"50.00","range_max":"5000.00","rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
-    kwshipping.add_shipping_with_conf_py    ${conf}
+    ...    plans=${plans}
+    kwshipping.add_price_fee_shipping_py    ${conf}
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     #.选择中国
@@ -87,9 +94,13 @@ checkout_083
 checkout_085
     [Documentation]    验证B端运费方案设置重量范围时，C端购买的商品重量满足此重量范围，checkout shipping页面将展示此运费方案 > 运费方案中显示 重量方案1
     [Tags]    P0    threshold    smoke
+    &{plan}=   Create Dictionary
+    ...    rule_range_min=50
+    ...    rule_range_max=70
+    @{plans}=    Create List    ${plan}
     &{conf}=   Create Dictionary
-    ...    shipping_plan=[{"name":"weight_fee","shipping_method":"weight","range_min":"50.00","range_max":"70.00","rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"kg"}]
-    kwshipping.add_shipping_with_conf_py    ${conf}
+    ...    plans=${plans}
+    kwshipping.add_weight_fee_shipping_py    ${conf}
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     #.选择中国
@@ -101,9 +112,13 @@ checkout_087
     [Documentation]    验证B端运费方案设置数量范围时，C端购买的商品数量满足此数量范围，checkout shipping页面将展示此运费方案 > "1.C端购买5件商品进入checkout shipping页面,2.选择国家：中国,3.查看shipping delivery栏运费方案" >运费方案中显示 数量方案1
     [Tags]    P0    threshold    smoke
     #.添加一个重量运费的物流
+    &{plan}=   Create Dictionary
+    ...    rule_range_min=5
+    ...    rule_range_max=7
+    @{plans}=    Create List    ${plan}
     &{conf}=   Create Dictionary
-    ...    shipping_plan=[{"name":"quantity_fee","shipping_method":"quantity","range_min":"5.00","range_max":"7.00","rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
-    kwshipping.add_shipping_with_conf_py    ${conf}
+    ...    plans=${plans}
+    kwshipping.add_quantity_fee_shipping_py    ${conf}
     Reload Page And Start Ajax
     Wait And Input Text  ${locatorC_productDetail_input_qtyNum}     5
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
@@ -127,8 +142,12 @@ checkout_090
 checkout_097
     [Documentation]    验证checkout shipping页面，选择没有省份的国家后，点击payment method可以跳转到支付页面 > 1.shipping address中选择国家Bouvet Island  2.其他输入框输入合法内容 3.点击payment method按钮
     [Tags]    P0    threshold    smoke
+    &{area}=   Create Dictionary
+    ...    country_code=BV
+    ...    country_name=布韦岛
+    @{areas}=    Create List    ${area}
     &{conf}=   Create Dictionary
-    ...    shipping_area=[{"country_id":"30","zone_ids":"-1"}]
+    ...    areas=${areas}
     kwshipping.add_shipping_with_conf_py    ${conf}
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -238,7 +257,123 @@ checkout_194
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
+    ${shipping_method_name}=    Wait And Get Text    ${locatorC_checkoutShipping_text_listShippingAndDeliveryName}
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
-    Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[3]    price_fee
+    Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[3]    ${shipping_method_name}
+
+
+
+##周莉编写
+#checkout_016
+#    [Documentation]    验证checkout shipping页面，未选择物流方案时，价格详情中shipping显示为：free
+#    [Tags]    P0
+#    Reload Page And Start Ajax
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}[1]    free
+#
+#checkout_017
+#    [Documentation]    验证checkout shipping页面， 选择的物流方案运费价格为0时，价格详情中shipping显示为free
+#    [Tags]    P0
+#    kwshipping.add_price_fee_shipping_py    0
+#    Reload Page And Start Ajax
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}[1]    free
+#
+#checkout_081
+#    [Documentation]   验证checkout shipping页面，没有可选的物流方案时，物流栏会提示：Shipping method is not available
+#    [Tags]    P0
+#    [Setup]    Checkout2 Child Case Setup
+#    &{conf}=    Create Dictionary
+#    ...    shipping_plan=[{"name":"quantity_fee","shipping_method":"price","range_min":"100.00","range_max":"600.00","rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+#    kwshipping.add_shipping_with_conf_py    ${conf}
+#    Go To Product Management Page
+#    Wait And Click Element    ${locatorB_productsMgmt_list_firstProduct}
+#    Wait And Input Text    ${locatorB_productsNew_input_title}    编辑商品001
+#    Wait And Input Text    ${locatorB_productsNew_input_salePrice}    10
+#    Sleep And Click Element    ${locatorB_productsNew_button_save}
+#    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
+#    Go To First Product C Interface
+#    Reload Page And Start Ajax
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Wait Until Page Contains Text   Shipping method is not available
+#
+#checkout_084
+#    [Documentation]    验证B端运费方案设置价格范围时，C端购买的商品价格不满足此价格范围，checkout shipping页面将不展示此运费方案
+#    [Tags]    P0
+#    [Setup]    Checkout2 Child Case Setup
+#    &{conf}=    Create Dictionary
+#    ...    shipping_plan=[{"name":"价格方案1","shipping_method":"price","range_min":"20.00","range_max":"60.00","rate_amount":"10.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+#    kwshipping.add_shipping_with_conf_py    ${conf}
+#    ${shippingNum}=    kwshipping.num_of_exist_shipping_py
+#    Should Be True    $shippingNum==1
+#    Go To Product Management Page
+#    Wait And Click Element    ${locatorB_productsMgmt_list_firstProduct}
+#    Wait And Input Text    ${locatorB_productsNew_input_title}    编辑商品001
+#    Wait And Input Text    ${locatorB_productsNew_input_salePrice}    10
+#    Sleep And Click Element    ${locatorB_productsNew_button_save}
+#    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
+#    Go To First Product C Interface
+#    Reload Page And Start Ajax
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Wait Until Page Not Contains Text    价格方案1
+#    Wait Until Page Contains Text   Shipping method is not available
+#
+#checkout_086
+#    [Documentation]    验证B端运费方案设置重量范围时，C端购买的商品重量不满足此重量范围，checkout shipping页面将不展示此运费方案
+#    [Tags]    P0
+#    [Setup]    Checkout2 Child Case Setup
+#    &{conf}=    Create Dictionary
+#    ...    shipping_plan=[{"name":"重量方案1","shipping_method":"weight","range_min":"20.00","range_max":"60.00","rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+#    kwshipping.add_shipping_with_conf_py    ${conf}
+#    Go To Product Management Page
+#    Wait And Click Element    ${locatorB_productsMgmt_list_firstProduct}
+#    Wait And Input Text    ${locatorB_productsNew_input_title}    编辑商品重量002
+#    Wait And Input Text    ${locatorB_productsNew_input_weight}    10
+#    Sleep And Click Element    ${locatorB_productsNew_button_save}
+#    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
+#    Go To First Product C Interface
+#    Reload Page And Start Ajax
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Wait Until Page Not Contains Text    重量方案1
+#    Wait Until Page Contains Text   Shipping method is not available
+#
+#checkout_088
+#    [Documentation]    验证B端运费方案设置数量范围时，C端购买的商品数量不满足此数量范围，checkout shipping页面将不展示此运费方案
+#    [Tags]    P0
+#    [Setup]    Checkout2 Child Case Setup
+#    &{conf}=    Create Dictionary
+#    ...    shipping_plan=[{"name":"数量方案1","shipping_method":"quantity","range_min":"3","range_max":"9","rate_amount":"0","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+#    kwshipping.add_shipping_with_conf_py    ${conf}
+#    Go To First Product C Interface
+#    Reload Page And Start Ajax
+#    Wait And Input Text    ${locatorC_productDetail_input_qtyNum}    1
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Wait Until Page Not Contains Text    数量方案1
+#    Wait Until Page Contains Text   Shipping method is not available
+#
+#checkout_091
+#    [Documentation]    验证B端运费方案中，设置运费价格时，checkout shipping页面，运费栏运费价格显示对应的价格
+#    [Tags]    P0
+#    &{conf}=    Create Dictionary
+#    ...    shipping_plan=[{"name":"运费方案1","shipping_method":"price","range_min":"0.00","range_max":-1,"rate_amount":"6.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]
+#    kwshipping.add_shipping_with_conf_py    ${conf}
+#    Reload Page And Start Ajax
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}[1]    + 6.00USD
+
+
+
+
+
+
+
+

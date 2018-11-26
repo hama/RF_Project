@@ -33,6 +33,8 @@ ${locatorB_pay_button_changeNum}    dom:document.querySelectorAll('[class="ant-b
 #.绑定ipaylinks会员号
 ${locatorB_pay_input_userCard}    dom:document.querySelectorAll('input[id="client_id"]')[0]     #.会员号
 ${locatorB_pay_input_pwsKey}    dom:document.querySelectorAll('input[id="secret_key"]')[0]    #.秘钥
+#.秘钥内容
+${locatorB_pay_input_pwsKeyText}    30820122300d06092a864886f70d01010105000382010f003082010a028201010098da23b3f3e679efb33e8171191e165ca1a757e53e74393cd23a0bf9adbbaecdd8224c4666ed421ce6b099e66807e85e4247c07261792a66ccbd71cc8fb7e87c34e2bcf2ffb5df9004488ec3a32353e91cadc56cf980eda1784186c1c270587907e2db749fd904dc39b28670699dd654a6001e0289e2988648ae3fca5e45ed356d1a81a84029357eb017f925c8dc174ce82ac12b8681282abb5e83aef1fa6416f3fba32cb45432f51a700f995ccee4d8a9dea66d31607f14a546011ec44807056f54330389e78b12d355527ab62e904f8918c8f417e0afaf154b772fc5dce7aac4a71426f9a623155484d8c7f73e2511f1866661b3a8083ea087f3162cf3aa090203010001
 #. 绑定钱海账号
 ${locatorB_pay_input_account}    dom:document.querySelectorAll('input[id="account"]')[0]     #.账号
 ${locatorB_pay_input_terminal}    dom:document.querySelectorAll('input[id="client_id"]')[0]    #.客户端ID

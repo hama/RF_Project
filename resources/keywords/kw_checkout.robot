@@ -10,7 +10,7 @@ Checkout Suite Setup
     kwshipping.del_all_shipping_py
     kwproduct.del_all_products_py
     kwshipping.create_only_one_shipping_py
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     kwcheckout.set_checkout_process_py
     #激活COD货到付款方式
     kwpayment.activate_payment_cod_py
@@ -24,11 +24,13 @@ Checkout Suite Teardown
 
 Checkout Case Setup
     [Documentation]    每个用例执行开始步骤
+    Sleep    5
     Go To First Product C Interface
 
 Checkout2 Case Setup
     [Documentation]    每个用例执行开始步骤
     kwshipping.del_all_shipping_py
+    Sleep    5
     Go To First Product C Interface
 
 Checkout3 Case Setup
@@ -36,6 +38,9 @@ Checkout3 Case Setup
     kwproduct.del_all_products_py
     kwshipping.del_all_shipping_py
 
+Checkout2 Child Case Setup
+    kwshipping.del_all_shipping_py
+    kwproduct.add_max_product_py
 
 Add Address Common Step
     [Documentation]    添加地址公共部分
@@ -56,6 +61,27 @@ Add Address Common Step
     Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    company
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    apartment
+    Sleep    2
+
+Add Address SepCommon Step
+    [Documentation]    添加地址公共部分
+    Sleep    2
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_firstName}    Javen
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_lastName}    fang
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_addr}    南山区
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_city}    深圳
+    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
+    Sleep    1
+    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_province}    Guangdong
+    Sleep    1
+    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_code}     (+86) China
+    Sleep    1
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    518000
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18688886666
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    dianjiang@shoplazza.com
+    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@shoplazza.com
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    shoplazza
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    中山大学产学研基地
     Sleep    2
 
 Add Credit Card Info

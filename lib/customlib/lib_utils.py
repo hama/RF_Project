@@ -171,6 +171,28 @@ def dict_deepupdate(json_data, json_conf):
         for key, values in json_conf.items():
             if isinstance(values, dict):
                 dict_deepupdate(json_data[key], values)
+            elif isinstance(values, list):
+                # 1、json_data不包含key,直接赋值
+                # 2、values中都为str/unicode类型的数据,直接赋值
+                # 3、json_data[key]列表为空,直接赋值
+                if key not in json_data \
+                        or len(json_data[key]) == 0 \
+                        or isinstance(values[0], str) \
+                        or isinstance(values[0], unicode):
+                    json_data[key] = values
+                    continue
+                # 确保raw_data与conf_data元素个数匹配
+                values_num = len(values)
+                list_num = len(json_data[key])
+                if list_num > values_num:
+                    for i in range(len(list_num - values_num)):
+                        json_data[key].pop()
+                elif list_num < values_num:
+                    for i in range(len(values_num - list_num)):
+                        json_data[key].append(json_data[key][0])
+                # 给对应key赋值
+                for i in range(len(values)):
+                    dict_deepupdate(json_data[key][i], values[i])
             else:
                 json_data[key] = values
 
