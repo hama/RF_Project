@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 import json
 import logging
-import sys
+import sys,time
 
 import requests
 
@@ -49,6 +49,8 @@ def do_put(url, data, cookie):
 
 def do_get(url, query_str, cookie):
     try:
+        # 加入查询前等待时长
+        time.sleep(0.2)
         response_data = requests.get(url=url, headers={"cookie": get_cookie(url, cookie)}, params=query_str)
         return_data = {}
         logging.info(url + '\nrequest_data:' + str(query_str) + '\n\nresponse_data:' + response_data.content)
