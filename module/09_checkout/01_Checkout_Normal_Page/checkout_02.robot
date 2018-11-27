@@ -41,8 +41,8 @@ checkout_098
     [Documentation]    验证checkout 支付页面，订单汇总，商品栏，商品标题显示正常 > 1.C端购买商品women进入checkout支付页面  2.查看订单汇总，商品栏，商品标题
     [Tags]    P0    threshold    smoke
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    ${productName}=    Get Text    ${locatorC_checkoutShipping_text_itemProductTitle}
-    ${tatalPrice}=    Get Text    ${locatorC_checkoutShipping_text_totalPrice}
+    ${productName}=    Wait And Get Text    ${locatorC_checkoutShipping_text_itemProductTitle}
+    ${tatalPrice}=    Wait And Get Text    ${locatorC_checkoutShipping_text_totalPrice}
     Add Address Common Step
 	Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
 	sleep    10
@@ -150,7 +150,7 @@ checkout_132
     #.信用卡信息填写
     Add Credit Card Info
     Wait And Click Element      ${locatorC_checkoutPayment_button_completeOrder}
-    Wait Until Page Contains Text   Payment failure!
+    Wait Until Page Contains Text   Payment failure
     #关闭credit_card  信用卡支付方式
     kwpayment.inactivate_payment_credit_card_py
 
@@ -192,6 +192,7 @@ checkout_193
     #添加是shipping address
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
+    ${shipping_method_name}=    Wait And Get Text    ${locatorC_checkoutShipping_text_listShippingAndDeliveryName}
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
@@ -199,7 +200,7 @@ checkout_193
     Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[0]    firstName${SPACE * 2}lastName${SPACE * 2}7654321@autotest.com${SPACE * 2}18899999999
     Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[1]    addr${SPACE * 2}city${SPACE * 2}Beijing${SPACE * 2}China
     Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[2]    123456 company
-    Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[3]    price_fee
+    Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[3]    ${shipping_method_name}
 
 checkout_195
     [Documentation]   验证payment successful页面，view order按钮可跳转到个人中心订单详情页面  >  1.购买商品进入checkout并完成支付进入payment successful页面  2.点击view order按钮

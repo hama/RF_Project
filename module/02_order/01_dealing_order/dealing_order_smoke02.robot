@@ -87,7 +87,7 @@ order177
     Reload Page And Start Ajax
     Select All Dealing Order Tag
     Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
-    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_firstProductSku}    SKU: autotest_sku
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_firstProductSku}    SKU: autotestsku
 
 order178
     [Documentation]     验证订单详情页面，商品栏，供应商可正常显示
@@ -96,7 +96,7 @@ order178
     Reload Page And Start Ajax
     Select All Dealing Order Tag
     Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
-    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_firstProductVendor}    供应商: autotest_vendor
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_firstProductVendor}    供应商: autotest_supplier
 
 order179
     [Documentation]     验证订单详情页面，商品单价及数量显示正常

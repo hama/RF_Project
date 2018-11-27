@@ -13,7 +13,7 @@ Resource          ../../../resources/keywords/kw_common.robot
 #products052
 #	[Documentation]    验证可成功移除已有标签
 #    [Tags]    P0    threshold
-#    kwproduct.add_launched_product_py
+#    kwproduct.add_max_product_py
 #    Reload Page And Start Ajax
 #    Select All Product Tag
 #    Select All Items Then Click Batch Menu
@@ -32,7 +32,7 @@ Resource          ../../../resources/keywords/kw_common.robot
 products055
 	[Documentation]    验证可成功加入一个或多个专辑
     [Tags]    P0    threshold
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     del_all_collections_py
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
@@ -50,7 +50,7 @@ products055
 products063
 	[Documentation]    验证可成功将商品从已加入的专辑中移除
     [Tags]    P0    threshold
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     kwcollection.add_collection_with_pic_py
     kwcollection.add_collection_without_pic_py
     Reload Page And Start Ajax
@@ -82,7 +82,7 @@ products063
 #products070
 #	[Documentation]    验证可全部取消自定义列表内容
 #    [Tags]    P0    threshold
-#    kwproduct.add_launched_product_py
+#    kwproduct.add_max_product_py
 #    Reload Page And Start Ajax
 #    Select All Product Tag
 #    Hide All Header
@@ -139,7 +139,7 @@ products078
 products080
 	[Documentation]    可模糊搜索出商品名称包含该单词的商品
     [Tags]    P0    threshold
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     &{product_conf01} =    Create Dictionary
     ...    title=compareone
     kwproduct.add_product_with_conf_py    ${product_conf01}
@@ -155,7 +155,7 @@ products080
 products082
 	[Documentation]    可通过标签搜索出商品
     [Tags]    P0    threshold
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     @{tags} =    Create List    'color'
     &{product_conf01} =    Create Dictionary
     ...    tags=@{tags}

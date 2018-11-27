@@ -17,13 +17,13 @@ username = "autotest@shoplazza.com"  # .发件人
 password = "AAAaaa111"  # .发件人密码
 # . 收件邮箱
 to_addr = [
-    # 'qiansuixin@shoplazza.com',
-    # 'zhouli@shoplazza.com'
-    'zhiliangbu@shoplazza.com'
+    'qiansuixin@shoplazza.com',
+    'zhouli@shoplazza.com'
+    # 'zhiliangbu@shoplazza.com'
 ]
 # . 抄送邮箱
 cc_addr = [
-    'yanfa@shoplazza.com'
+    # 'yanfa@shoplazza.com'
 ]
 email_service = "smtp.mxhichina.com"
 default_port = 465
@@ -82,7 +82,7 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
     '''
     hosts = os.popen('cat /etc/hosts | grep "shopla"').read()
     if hosts:
-        hosts = '!!!国服环境报告!!!\n已配/etc/hosts:' + hosts
+        hosts = '!!!preview环境报告!!!\n已配/etc/hosts:' + hosts
     else:
         hosts = '!!!美服环境报告!!!'
     # 文字

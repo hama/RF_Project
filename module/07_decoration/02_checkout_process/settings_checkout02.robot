@@ -4,13 +4,13 @@ Suite Setup       Checkout Page Suite Setup
 Suite Teardown    Checkout Page Suite Teardown
 Test Setup        Checkout Page Test Setup
 Test Teardown     Teardown Test Case
-Force Tags        checkoutPageSetings
+Force Tags        checkoutPageSettings
 
 Resource        ../../../resources/keywords/kw_common.robot
 
 
 *** Test cases ***
-checkoutPageSetings021
+checkoutPageSettings021
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.姓名格式勾选姓名时 点击 姓、名分开填写  2.点击保存
     [Tags]    P0    threshold   smoke
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
@@ -23,7 +23,7 @@ checkoutPageSetings021
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_firstName}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_lastName}
 
-checkoutPageSetings022
+checkoutPageSettings022
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.姓名格式勾选姓、名分开填写时 点击 姓名  2.点击保存
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
@@ -37,7 +37,7 @@ checkoutPageSetings022
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_onlyName}
 
-checkoutPageSetings023
+checkoutPageSettings023
     [Documentation]    测试顾客信息设置-.1.公司名点击 必填 2.点击保存
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
@@ -54,7 +54,7 @@ checkoutPageSetings023
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait Until Page Contains Text    Please enter your company
 
-checkoutPageSetings024
+checkoutPageSettings024
     [Documentation]    测试顾客信息设置-.1.公司名点击 选填 2.点击保存
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
@@ -69,7 +69,7 @@ checkoutPageSetings024
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait Until Page Contains Locator    ${locatorC_checkout_button_completeOrder}
 
-checkoutPageSetings025
+checkoutPageSettings025
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.公司名点击 隐藏 2.点击保存
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
@@ -82,7 +82,7 @@ checkoutPageSetings025
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Not Contains Locator    ${locatorC_checkoutShipping_address_input_company}
 
-#checkoutPageSetings026.1
+#checkoutPageSettings026.1
 #    [Documentation]    测试顾客信息设置-点击姓和名分开.1.邮箱必填 2.点击保存
 #    [Tags]    P0    threshold
 #    Wait And Click Element    ${locatorB_checkout_button_nav_information}
@@ -99,7 +99,7 @@ checkoutPageSetings025
 #    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
 #    Wait Until Page Contains Text    Please enter your email
 
-checkoutPageSetings027.1
+checkoutPageSettings027.1
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.y邮箱选填  2.点击保存
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
@@ -113,7 +113,7 @@ checkoutPageSetings027.1
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait Until Page Contains Locator    ${locatorC_checkout_button_completeOrder}
 
-checkoutPageSetings028.1
+checkoutPageSettings028.1
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.邮箱隐藏 2.点击保存
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
@@ -126,7 +126,7 @@ checkoutPageSetings028.1
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Not Contains Locator    ${locatorC_checkoutShipping_address_input_email}
 
-checkoutPageSetings029
+checkoutPageSettings029
     [Documentation]    测试顾客信息设置-输入退款条约
     [Tags]    P0    threshold   smoke
     Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
@@ -141,7 +141,7 @@ checkoutPageSetings029
     Wait Until Page Contains Text    退款条约内容
 
 
-checkoutPageSetings030
+checkoutPageSettings030
     [Documentation]    测试顾客信息设置-输入隐私政策
     [Tags]    P0    threshold
     Wait And Click Element      ${locatorB_checkout_button_nav_serviceTerms}
@@ -155,7 +155,7 @@ checkoutPageSetings030
     Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
     Wait Until Page Contains Text    隐私政策内容
 
-checkoutPageSetings031
+checkoutPageSettings031
     [Documentation]    测试顾客信息设置-输入服务条约
     [Tags]    P0    threshold
     Wait And Click Element      ${locatorB_checkout_button_nav_serviceTerms}

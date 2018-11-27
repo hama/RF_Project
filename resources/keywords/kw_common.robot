@@ -1,6 +1,7 @@
 *** Settings ***
 Library           SeleniumLibrary    run_on_failure=NOTHING    implicit_wait=7.0
 Library           OperatingSystem
+Library           Collections
 Library           DateTime
 Library           ${CURDIR}/../../lib/customlib/kwcart.py
 Library           ${CURDIR}/../../lib/customlib/kwcheckout.py

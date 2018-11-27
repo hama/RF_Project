@@ -6,283 +6,316 @@ sys.setdefaultencoding('utf-8')
 
 # 含子商品的商品数据（max）
 product_max_data_with_sub = {
-    "has_only_default_variant": False,
-    "variants": [
-        {
-            "option": [
-                {
-                    "option": "Color",
-                    "option_value": "red"
-                },
-                {
-                    "option": "Size",
-                    "option_value": "min"
-                }
-            ],
-            "price": 99,
-            "compare_at_price": 199,
-            "weight": "666",
-            "weight_unit": "kg",
-            "sku": "autotest_sku",
-            "barcode": "autotest_barcode",
-            "sales": 0,
-            "inventory_management": True,
-            "requires_shipping": 1,
-            "taxable": 1,
-            "inventory_policy": "continue"
-        },
-        {
-            "option": [
-                {
-                    "option": "Color",
-                    "option_value": "red"
-                },
-                {
-                    "option": "Size",
-                    "option_value": "mid"
-                }
-            ],
-            "price": 99,
-            "compare_at_price": 199,
-            "weight": "666",
-            "weight_unit": "kg",
-            "sku": "autotest_sku",
-            "barcode": "autotest_barcode",
-            "sales": 0,
-            "inventory_management": True,
-            "requires_shipping": 1,
-            "taxable": 1,
-            "inventory_policy": "continue"
-        },
-        {
-            "option": [
-                {
-                    "option": "Color",
-                    "option_value": "black"
-                },
-                {
-                    "option": "Size",
-                    "option_value": "min"
-                }
-            ],
-            "price": 99,
-            "compare_at_price": 199,
-            "weight": "666",
-            "weight_unit": "kg",
-            "sku": "autotest_sku",
-            "barcode": "autotest_barcode",
-            "sales": 0,
-            "inventory_management": True,
-            "requires_shipping": 1,
-            "taxable": 1,
-            "inventory_policy": "continue"
-        },
-        {
-            "option": [
-                {
-                    "option": "Color",
-                    "option_value": "black"
-                },
-                {
-                    "option": "Size",
-                    "option_value": "mid"
-                }
-            ],
-            "price": 99,
-            "compare_at_price": 199,
-            "weight": "666",
-            "weight_unit": "kg",
-            "sku": "autotest_sku",
-            "barcode": "autotest_barcode",
-            "sales": 0,
-            "inventory_management": True,
-            "requires_shipping": 1,
-            "taxable": 1,
-            "inventory_policy": "continue"
-        }
-    ],
-    "status": 1,
-    "meta_title": "autotest_title",
-    "meta_description": "autotest_description",
-    "meta_keyword": "autotest_seo",
-    "url": "/products/autotest_title",
-    "barcode": "autotest_barcode",
+    "id": "",
     "title": "autotest_title",
     "brief": "autotest_subtitle",
-    "description": "<p>autotest_description</p>",
-    "images": [
-        {
-            "lastModified": 1530100037585,
-            "lastModifiedDate": "2018-06-27T11:47:17.585Z",
-            "name": "20180627194715.png",
-            "size": 25125,
-            "type": "image/png",
-            "uid": "rc-upload-1536560132310-2",
-            "response": {
-                "url": "//cn.cdn.shoplazza.com/7ca156ec405c3c93b6742ca037978ecf.png",
-                "path": "7ca156ec405c3c93b6742ca037978ecf.png"
-            },
-            "percent": 100,
-            "originFileObj": {
-                "uid": "rc-upload-1536560132310-2"
-            },
-            "status": "done",
-            "url": "//cn.cdn.shoplazza.com/7ca156ec405c3c93b6742ca037978ecf.png",
-            "path": "7ca156ec405c3c93b6742ca037978ecf.png"
-        }
-    ],
-    "price": 99,
-    "compare_at_price": 199,
-    "product_type_id": 12,
-    "product_type_cascade": [
-        10,
-        11,
-        12
+    "description": "autotest_description",
+    "published": True,
+    "published_at": "",
+    "need_variant_image": True,
+    "requires_shipping": True,
+    "taxable": True,
+    "collection_ids": [
+
     ],
     "vendor": "autotest_supplier",
-    "tags": [
-        "autotest_tag"
+    "vendor_url": "https://autotest.com",
+    "seo_title": "autotest_title",
+    "seo_keywords": [
+        "autotest_seo"
     ],
-    "options_with_values": [
+    "seo_url": "",
+    "handle": "autotest_title",
+    "seo_description": "autotest_description",
+    "tags": [
+        "auto_tag"
+    ],
+    "has_only_default_variant": False,
+    "inventory_tracking": True,
+    "inventory_policy": "continue",
+    "images": [
         {
-            "name": "Color",
+            "id": "",
+            "image": {
+                "path": "9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "alt": "",
+                "aspect_ratio": "1.3333333333333333",
+                "height": "504",
+                "src": "//cdn.shoplazza.com/9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "width": "672",
+                "size": "53455"
+            }
+        }
+    ],
+    "options": [
+        {
+            "name": "color",
             "values": [
                 "red",
                 "black"
             ]
         },
         {
-            "name": "Size",
+            "name": "size",
             "values": [
                 "min",
-                "mid"
+                "max"
             ]
         }
     ],
-    "options": [
-        "Color",
-        "Size"
-    ],
-    "size_guide": "<p>autotest_<span lang=\"en\">sizechart</span></p>"
+    "variants": [
+        {
+            "image": {
+                "path": "9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "alt": "",
+                "aspect_ratio": "1.3333333333333333",
+                "height": "504",
+                "src": "//cdn.shoplazza.com/9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "width": "672",
+                "size": "53455"
+            },
+            "id": "",
+            "price": "10",
+            "compare_at_price": "20",
+            "weight": "11",
+            "weight_unit": "kg",
+            "inventory_quantity": "999",
+            "sku": "",
+            "barcode": "",
+            "option1": "red",
+            "option2": "min",
+            "option3": "",
+            "_key": '{"color":"red","size":"min"}'
+        },
+        {
+            "image": {
+                "path": "9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "alt": "",
+                "aspect_ratio": "1.3333333333333333",
+                "height": "504",
+                "src": "//cdn.shoplazza.com/9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "width": "672",
+                "size": "53455"
+            },
+            "id": "",
+            "price": "10",
+            "compare_at_price": "20",
+            "weight": "11",
+            "weight_unit": "kg",
+            "inventory_quantity": "999",
+            "sku": "",
+            "barcode": "",
+            "option1": "red",
+            "option2": "max",
+            "option3": "",
+            "_key": '{"color":"red","size":"max"}'
+        },
+        {
+            "image": {
+                "path": "9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "alt": "",
+                "aspect_ratio": "1.3333333333333333",
+                "height": "504",
+                "src": "//cdn.shoplazza.com/9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "width": "672",
+                "size": "53455"
+            },
+            "id": "",
+            "price": "10",
+            "compare_at_price": "20",
+            "weight": "11",
+            "weight_unit": "kg",
+            "inventory_quantity": "999",
+            "sku": "",
+            "barcode": "",
+            "option1": "black",
+            "option2": "min",
+            "option3": "",
+            "_key": '{"color":"black","size":"min"}'
+        },
+        {
+            "image": {
+                "path": "9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "alt": "",
+                "aspect_ratio": "1.3333333333333333",
+                "height": "504",
+                "src": "//cdn.shoplazza.com/9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "width": "672",
+                "size": "53455"
+            },
+            "id": "",
+            "price": "10",
+            "compare_at_price": "20",
+            "weight": "11",
+            "weight_unit": "kg",
+            "inventory_quantity": "999",
+            "sku": "",
+            "barcode": "",
+            "option1": "black",
+            "option2": "max",
+            "option3": "",
+            "_key": '{"color":"black","size":"max"}'
+        }
+    ]
 }
 
 # 商品数据（max）
 product_max_data = {
-    'has_only_default_variant': True,
-    'variants': [
+    "id": "",
+    "title": "autotest_title",
+    "brief": "autotest_subtitle",
+    "description": "autotest_description",
+    "published": True,
+    "published_at": "",
+    "need_variant_image": False,
+    "requires_shipping": True,
+    "taxable": True,
+    "collection_ids": [
+
+    ],
+    "vendor": "autotest_supplier",
+    "vendor_url": "https://autotest.com",
+    "seo_title": "autotest_title",
+    "seo_keywords": [
+        "autotest_seo"
+    ],
+    "seo_url": "",
+    "handle": "autotest_title",
+    "seo_description": "autotest_description",
+    "tags": [
+        "auto_tag"
+    ],
+    "has_only_default_variant": True,
+    "inventory_tracking": True,
+    "inventory_policy": "continue",
+    "images": [
         {
-            'inventory_management': True,
-            'requires_shipping': 1,
-            'taxable': 1,
-            'inventory_policy': 'continue',
-            'inventory_quantity': 99,
-            'weight': '66',
-            'weight_unit': 'kg',
-            'sku': 'autotest_sku',
-            'price': 444,
-            'barcode': 'autotest_barcode',
-            'compare_at_price': 888
+            "id": "",
+            "image": {
+                "path": "9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "alt": "",
+                "aspect_ratio": "1.3333333333333333",
+                "height": "504",
+                "src": "//cdn.shoplazza.com/9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "width": "672",
+                "size": "53455"
+            }
         }
     ],
-    'status': 1,
-    'meta_title': 'autotest_title',
-    'meta_description': 'autotest_description',
-    'meta_keyword': 'autotest_seo_keyword',
-    'url': '/products/autotest_title',
-    'barcode': 'autotest_barcode',
-    'title': 'autotest_title',
-    'description': '<pre>autotest_description</pre>',
-    'tags': [
-        'autotest_tag'
+    "options": [
+
     ],
-    'vendor': 'autotest_vendor',
-    'price': 444,
-    'compare_at_price': 888,
-    'product_type_id': 12,
-    'product_type_cascade': [
-        10,
-        11,
-        12
-    ],
-    'size_guide': '<pre>autotest_sizechart</pre>',
-    'brief': 'autotest_subtitle',
-    'images': [
+    "variants": [
         {
-            'lastModified': 1530156021840,
-            'lastModifiedDate': '2018-06-28T03:20:21.840Z',
-            'name': '20180628111909.png',
-            'size': 235800,
-            'type': 'image/png',
-            'uid': 'rc-upload-1536632965111-18',
-            'response': {
-                'url': '//cn.cdn.shoplazza.com/a20f04b90aa1df9da8b6dcf35d03cbbd.png',
-                'path': 'a20f04b90aa1df9da8b6dcf35d03cbbd.png'
-            },
-            'percent': 100,
-            'originFileObj': {
-                'uid': 'rc-upload-1536632965111-18'
-            },
-            'status': 'done',
-            'url': '//cn.cdn.shoplazza.com/a20f04b90aa1df9da8b6dcf35d03cbbd.png',
-            'path': 'a20f04b90aa1df9da8b6dcf35d03cbbd.png'
+            "compare_at_price": "888",
+            "barcode": "123456",
+            "sku": "autotestsku",
+            "inventory_quantity": "77",
+            "weight": "123",
+            "price": "444",
+            "id": "",
+            "image": None,
+            "weight_unit": "kg",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "_key": "{}"
         }
     ]
 }
 
 # 商品数据（min）
 product_min_data = {
-    'has_only_default_variant': True,
-    'variants': [
+    "id": "",
+    "title": "autotest_title",
+    "brief": "",
+    "description": "",
+    "published": False,
+    "published_at": "",
+    "need_variant_image": False,
+    "requires_shipping": False,
+    "taxable": False,
+    "collection_ids": [
+
+    ],
+    "vendor": "",
+    "vendor_url": "",
+    "seo_title": "autotest_title",
+    "seo_keywords": [
+
+    ],
+    "seo_url": "",
+    "handle": "autotest_title",
+    "seo_description": "",
+    "tags": [
+
+    ],
+    "has_only_default_variant": True,
+    "inventory_tracking": False,
+    "inventory_policy": "continue",
+    "images": [
         {
-            'inventory_management': False,
-            'requires_shipping': 1,
-            'taxable': 0,
-            'inventory_policy': 'deny',
-            'inventory_quantity': 0,
-            'weight': '66',
-            'weight_unit': 'kg',
-            'sku': '',
-            'price': 444,
-            'barcode': ''
+            "id": "",
+            "image": {
+                "path": "9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "alt": "",
+                "aspect_ratio": "1.3333333333333333",
+                "height": "504",
+                "src": "//cdn.shoplazza.com/9b83ab55dd5078df84f05a51f912b063.jpeg",
+                "width": "672",
+                "size": "53455"
+            }
         }
     ],
-    'status': 0,
-    'meta_title': 'autotest_title',
-    'meta_description': '',
-    'meta_keyword': '',
-    'url': '/products/autotest_title',
-    'barcode': '',
-    'title': 'autotest_title',
-    'price': 444,
-    'images': []
+    "options": [
+
+    ],
+    "variants": [
+        {
+            "compare_at_price": "888",
+            "price": "444",
+            "id": "",
+            "image": None,
+            "weight": "",
+            "weight_unit": "kg",
+            "inventory_quantity": "",
+            "sku": "",
+            "barcode": "",
+            "option1": "",
+            "option2": "",
+            "option3": "",
+            "_key": "{}"
+        }
+    ]
 }
 
 collecion_data = {
-    'title': 'autotest_collection_name',
-    'description': 'autotest_collection_description',
-    'meta_title': 'autotest_collection_name',
-    'meta_description': 'autotest_collection_description',
-    'url': '/collections/autotest_collection_name',
-    'meta_keyword': 'autotest_collection_seo',
-    'image': {
-        'lastModified': 1530152476341,
-        'lastModifiedDate': '2018-06-28T02:21:16.341Z',
-        'name': '20180628102113.png',
-        'size': 272978,
-        'type': 'image/png',
-        'uid': 'rc-upload-1536908807832-2',
-        'response': {
-            'url': '//cdn.shoplazza.com/eee022100e586e73a103e94890dcc212.png',
-            'path': 'eee022100e586e73a103e94890dcc212.png'
-        },
-        'percent': 100,
-        'originFileObj': {
-            'uid': 'rc-upload-1536908807832-2'
-        },
-        'status': 'done',
-        'url': '//cdn.shoplazza.com/eee022100e586e73a103e94890dcc212.png',
-        'path': 'eee022100e586e73a103e94890dcc212.png'
-    }
+    "id": "",
+    "title": "autotest_collection_name",
+    "description": "autotest_collection_description",
+    "image": {
+        "path": "9b83ab55dd5078df84f05a51f912b063.jpeg",
+        "alt": "",
+        "aspect_ratio": "1.3333333333333333",
+        "height": "504",
+        "src": "//cdn.shoplazza.com/9b83ab55dd5078df84f05a51f912b063.jpeg",
+        "width": "672",
+        "size": "53455"
+    },
+    "seo_title": "autotest_collection_name",
+    "seo_url": "",
+    "handle": "autotest_collection_name",
+    "seo_description": "autotest_collection_description",
+    "seo_keywords": [
+        "autotest_collection_seo"
+    ],
+    "products": [
+
+    ],
+    "_": 1542884025491,
+    "product_ids": [
+
+    ]
 }
 
 comment_data = {
@@ -297,15 +330,54 @@ comment_data = {
 }
 
 shipping_data = {
-    'shipping_name': 'autotest_shipping',
-    'shipping_area': '[{"country_id":"45","zone_ids":"-1"}]',
-    'shipping_plan': '[{"name":"price_fee","shipping_method":"price","range_min":"0.00","range_max":-1,'
-                     '"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":""},'
-                     '{"name":"weight_fee","shipping_method":"weight","range_min":"0.00","range_max":-1,'
-                     '"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"},'
-                     '{"name":"quantity_fee","shipping_method":"quantity","range_min":"0","range_max":-1,'
-                     '"rate_amount":"0.00","payment_list":"cod;online;custom;credit_card","desc":"","range_unit":"g"}]',
-    'has_other_country': 0
+    "name": "autotest_shipping",
+    "areas": [
+        {
+            "country_code": "CN",
+            "country_name": "中国",
+            "province_codes": [
+                "ALL"
+            ]
+        }
+    ],
+    "plans": [
+        {
+            "name": "price_fee",
+            "desc": "price_fee_description",
+            "rule_type": "price",
+            "rule_range_min": 0,
+            "rule_range_max": 0,
+            "rule_range_infinite": True,
+            "rule_range_unit": "USD",
+            "support_cod": True,
+            "rate_type": "normal",
+            "rate_amount": "0"
+        },
+        {
+            "name": "quantity_fee",
+            "desc": "quantity_fee_description",
+            "rule_type": "quantity",
+            "rule_range_min": 0,
+            "rule_range_max": 0,
+            "rule_range_infinite": True,
+            "rule_range_unit": "件",
+            "support_cod": True,
+            "rate_type": "normal",
+            "rate_amount": "0"
+        },
+        {
+            "name": "weight_fee",
+            "desc": "weight_fee_description",
+            "rule_type": "weight",
+            "rule_range_min": 0,
+            "rule_range_max": 0,
+            "rule_range_infinite": True,
+            "support_cod": True,
+            "rate_type": "normal",
+            "rate_amount": "0",
+            "rule_range_unit": "g"
+        }
+    ]
 }
 
 checkout_create_data = {
@@ -550,427 +622,6 @@ coupon_code_refresh_data = {
     "product_num": "",
     "stock_num": ""
 }
-
-tax_batch_data = [
-    {
-        "id": "868",
-        "country_code": "CN",
-        "province_code": "ALL",
-        "province_info": [
-
-        ],
-        "tax_rate": "60",
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "ANH",
-        "province_info": {
-            "province_id": "461",
-            "name": "Anhui",
-            "cn_name": "安徽",
-            "code": "ANH"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "BJG",
-        "province_info": {
-            "province_id": "462",
-            "name": "Beijing",
-            "cn_name": "北京",
-            "code": "BJG"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "CQG",
-        "province_info": {
-            "province_id": "463",
-            "name": "Chongqing",
-            "cn_name": "重庆",
-            "code": "CQG"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "FJN",
-        "province_info": {
-            "province_id": "464",
-            "name": "Fujian",
-            "cn_name": "福建",
-            "code": "FJN"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "GSU",
-        "province_info": {
-            "province_id": "465",
-            "name": "Gansu",
-            "cn_name": "甘肃",
-            "code": "GSU"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "GDG",
-        "province_info": {
-            "province_id": "466",
-            "name": "Guangdong",
-            "cn_name": "广东",
-            "code": "GDG"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "GXI",
-        "province_info": {
-            "province_id": "467",
-            "name": "Guangxi",
-            "cn_name": "广西",
-            "code": "GXI"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "GZU",
-        "province_info": {
-            "province_id": "468",
-            "name": "Guizhou",
-            "cn_name": "贵州",
-            "code": "GZU"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "HNN",
-        "province_info": {
-            "province_id": "469",
-            "name": "Hainan",
-            "cn_name": "海南",
-            "code": "HNN"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "HBE",
-        "province_info": {
-            "province_id": "470",
-            "name": "Hebei",
-            "cn_name": "河北",
-            "code": "HBE"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "HLJ",
-        "province_info": {
-            "province_id": "471",
-            "name": "Heilongjiang",
-            "cn_name": "黑龙江",
-            "code": "HLJ"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "HNA",
-        "province_info": {
-            "province_id": "472",
-            "name": "Henan",
-            "cn_name": "河南",
-            "code": "HNA"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "HKG",
-        "province_info": {
-            "province_id": "473",
-            "name": "Hongkong SAR",
-            "cn_name": "香港",
-            "code": "HKG"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "HUB",
-        "province_info": {
-            "province_id": "474",
-            "name": "Hubei",
-            "cn_name": "湖北",
-            "code": "HUB"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "HUN",
-        "province_info": {
-            "province_id": "475",
-            "name": "Hunan",
-            "cn_name": "湖南",
-            "code": "HUN"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "IMO",
-        "province_info": {
-            "province_id": "476",
-            "name": "Inner Mongolia",
-            "cn_name": "内蒙古",
-            "code": "IMO"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "JSU",
-        "province_info": {
-            "province_id": "477",
-            "name": "Jiangsu",
-            "cn_name": "江苏",
-            "code": "JSU"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "JXI",
-        "province_info": {
-            "province_id": "478",
-            "name": "Jiangxi",
-            "cn_name": "江西",
-            "code": "JXI"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "JLI",
-        "province_info": {
-            "province_id": "479",
-            "name": "Jilin",
-            "cn_name": "吉林",
-            "code": "JLI"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "LNG",
-        "province_info": {
-            "province_id": "480",
-            "name": "Liaoning",
-            "cn_name": "辽宁",
-            "code": "LNG"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "MAC",
-        "province_info": {
-            "province_id": "481",
-            "name": "Macao SAR",
-            "cn_name": "澳门",
-            "code": "MAC"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "NXA",
-        "province_info": {
-            "province_id": "482",
-            "name": "Ningxia",
-            "cn_name": "宁夏",
-            "code": "NXA"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "QHI",
-        "province_info": {
-            "province_id": "483",
-            "name": "Qinghai",
-            "cn_name": "青海",
-            "code": "QHI"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "SAX",
-        "province_info": {
-            "province_id": "484",
-            "name": "Shaanxi",
-            "cn_name": "陕西",
-            "code": "SAX"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "SAD",
-        "province_info": {
-            "province_id": "485",
-            "name": "Shandong",
-            "cn_name": "山东",
-            "code": "SAD"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "SHA",
-        "province_info": {
-            "province_id": "486",
-            "name": "Shanghai",
-            "cn_name": "上海",
-            "code": "SHA"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "SHX",
-        "province_info": {
-            "province_id": "487",
-            "name": "Shanxi",
-            "cn_name": "山西",
-            "code": "SHX"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "SIC",
-        "province_info": {
-            "province_id": "488",
-            "name": "Sichuan",
-            "cn_name": "四川",
-            "code": "SIC"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "TWA",
-        "province_info": {
-            "province_id": "489",
-            "name": "Taiwan",
-            "cn_name": "台湾",
-            "code": "TWA"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "TJN",
-        "province_info": {
-            "province_id": "490",
-            "name": "Tianjin",
-            "cn_name": "天津",
-            "code": "TJN"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "TBT",
-        "province_info": {
-            "province_id": "491",
-            "name": "Tibet",
-            "cn_name": "西藏",
-            "code": "TBT"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "XJG",
-        "province_info": {
-            "province_id": "492",
-            "name": "Xinjiang",
-            "cn_name": "新疆",
-            "code": "XJG"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "YUN",
-        "province_info": {
-            "province_id": "493",
-            "name": "Yunnan",
-            "cn_name": "云南",
-            "code": "YUN"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    },
-    {
-        "country_code": "CN",
-        "province_code": "ZHE",
-        "province_info": {
-            "province_id": "494",
-            "name": "Zhejiang",
-            "cn_name": "浙江",
-            "code": "ZHE"
-        },
-        "tax_rate": 0,
-        "status": "open"
-    }
-]
 
 store_update_data = {
     'store_id': 1160,

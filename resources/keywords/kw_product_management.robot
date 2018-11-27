@@ -8,7 +8,7 @@ Product Management Suite Setup Add Two Products
     [Documentation]    product
     Login With Default User
     kwproduct.del_all_products_py
-    kwproduct.add_launched_product_py
+    kwproduct.add_max_product_py
     Sleep    1   # 为构造两个产品创建时间不同
     kwproduct.add_discontinued_product_py
     Go To Product Management Page
@@ -66,10 +66,17 @@ Hide All Header
 
 Fill In Required Items When Create Product
 	Wait And Input Text    ${locatorB_productsNew_input_title}    newproduct
-    Wait And Input Text    ${locatorB_productsNew_input_salePrice}    99
-    Wait And Input Text    ${locatorB_productsNew_input_weight}    66
-    Wait And Make Switch On    ${locatorB_productsNew_switch_status}
-    Wait Enabled And Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}
+	Wait And Click Element    ${locatorB_productsNew_button_NextStep}
+	Wait Enabled And Choose File    ${locatorB_productsNew_input_imageUp}    ${file_products_addImg}
+	Sleep    5
+    Wait And Input Text    ${locatorB_productsNew_input_salePrice}    100
+    Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    199
+
+Add Product Second Step
+    [Documentation]    商品管理 - 图片上传和款式设置页面
+    [Arguments]    ${TitleName}
+    Wait And Input Text    ${locatorB_productsNew_input_title}    ${TitleName}
+    Wait And Click Element    ${locatorB_productsNew_button_NextStep}
 
 Fill All Items When Create Product
     Wait And Input Text    ${locatorB_productsNew_input_title}    newproduct
@@ -87,13 +94,19 @@ Fill All Items When Create Product
     Wait And Click Element    ${locatorB_productsNew_button_NextStep}
     Select Follow Stock
     Wait And Input Text    ${locatorB_productsNew_input_salePrice}    199
+    Sleep    1
     Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    299
+    Sleep    1
     Wait And Input Text    ${locatorB_productsNew_input_weight}    10
+    Sleep    1
     Wait And Input Text    ${locatorB_productsNew_input_stock}    400
+    Sleep    1
     Wait And Input Text    ${locatorB_productsNew_input_sku}    qazwsxedc
+    Sleep    1
     Wait And Input Text    ${locatorB_productsNew_input_barcode}    qwertyuiop
+    Sleep    1
     Wait Enabled And Choose File    ${locatorB_productsNew_input_imageUp}    ${file_products_addImg}
-    Sleep    5
+    Sleep    1
 
 Add One Product Style
     [Documentation]    添加商品款式

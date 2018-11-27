@@ -26,9 +26,11 @@ img = "http://120.79.196.159:8000/RF/logs/module/result.png"
 # 获取图片
 imgs = upload_oss_py(img)[0]
 path_img = "//cn.cdn.shoplazza.com/" + upload_oss_py(img)[0]
-image = {"lastModified": "1520929852000", "lastModifiedDate": "2018-03-13T08:30:52.000Z", "name": imgs,
-         "originFileObj": {"uid": "rc-upload-1535093594875-2"}, "path": imgs, "percent": "100.00",
-         "status": "done", "type": "image/jpeg", "uid": "rc-upload-1535093594875-2", "url": path_img}
+# image = {"lastModified": "1520929852000", "lastModifiedDate": "2018-03-13T08:30:52.000Z", "name": imgs,
+#          "originFileObj": {"uid": "rc-upload-1535093594875-2"}, "path": imgs, "percent": "100.00",
+#          "status": "done", "type": "image/jpeg", "uid": "rc-upload-1535093594875-2", "url": path_img}
+image = {"path": imgs, "alt": "", "aspect_ratio": "1.3333333333333333", "height": "504", "src": path_img,
+         "width": "672", "size": "53455"}
 
 login = Login()
 init_cookie = {'b_cookie': login.login_b_py(), 'c_cookie': login.login_c_py()}

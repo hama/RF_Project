@@ -8,93 +8,135 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def product_search_py(query_str={}, cookie=init_cookie):
+def products_get_py(query_str={}, cookie=init_cookie):
     '''
-    查询产品列表信息
+    商品列表
     :param query_str:
     :param cookie:
     :return:
     '''
-    time.sleep(0.5)
-    url = home_page_url + '/api/product/search'
+    url = '%s/api/admin/products' % (home_page_url)
     return do_get(url, query_str, cookie=cookie)
 
 
-def product_info_py(query_str={}, cookie=init_cookie):
+def products_id_get_py(product_id, cookie=init_cookie):
     '''
-    查询产品信息
+    商品详情
     :param query_str:
     :param cookie:
     :return:
     '''
-    time.sleep(0.5)
-    url = home_page_url + '/api/product/info'
-    return do_get(url, query_str, cookie=cookie)
+    url = '%s/api/admin/products/%s' % (home_page_url, product_id)
+    return do_get(url, {}, cookie=cookie)
 
 
-def product_add_py(data, cookie=init_cookie):
-    """
-    添加商品
-    :return: True | False
-    """
-    url = home_page_url + "/api/product/add"
+def products_post_py(data, cookie=init_cookie):
+    '''
+    创建商品
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = home_page_url + '/api/admin/products'
     return do_post(url, data, cookie=cookie)
 
 
-def product_updatestatus_py(product_list, status, cookie=init_cookie):
-    """
-    更改商品状态
-    :param product_list:
-    :param status: -1 = 删除商品（非数据库） | 0 = 设置下架 | 1 = 设置上架
+def products_patch_py(data, product_id, cookie=init_cookie):
+    '''
+    修改商品
+    :param query_str:
+    :param cookie:
     :return:
-    """
-    exist_products_id = get_exist_productsid_py()
-    if isinstance(product_list, str) and product_list == 'all':
-        product_list = exist_products_id
-    elif isinstance(product_list, int):
-        num = product_list
-        product_list = exist_products_id[:num]
+    '''
+    url = '%s/api/admin/products/%s' % (home_page_url, product_id)
+    return do_patch(url, data, cookie=cookie)
 
-    url = home_page_url + "/api/product/updatestatus"
-    data = {"product_ids": product_list, "status": status}
+
+def products_delete_py(product_id, cookie=init_cookie):
+    '''
+    删除商品
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/admin/products/%s' % (home_page_url, product_id)
+    return do_delete(url, cookie=cookie)
+
+
+def products_publish_py(data, cookie=init_cookie):
+    '''
+    上架商品
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = home_page_url + '/api/admin/products/:id/publish'
     return do_post(url, data, cookie=cookie)
 
 
-def add_discontinued_product_py(cookie=init_cookie):
+def products_unpublish_py(data, cookie=init_cookie):
     '''
-    添加未上架商品
+    下架商品
+    :param query_str:
     :param cookie:
     :return:
     '''
-    data = copy.deepcopy(product_max_data)
-    data['images'] = [image]
-    data['status'] = 0
-
-    return product_add_py(data, cookie=cookie)['content']['data']['product_id']
+    url = home_page_url + '/api/admin/products/:id/unpublish'
+    return do_post(url, data, cookie=cookie)
 
 
-def add_launched_product_py(cookie=init_cookie):
+def products_batch_delete_py(data, cookie=init_cookie):
     '''
-    添加已上架商品
+    批量删除商品
+    :param query_str:
     :param cookie:
     :return:
     '''
-    data = copy.deepcopy(product_max_data)
-    data['images'] = [image]
-    data['status'] = 1
-
-    return product_add_py(data, cookie=cookie)['content']['data']['product_id']
+    url = home_page_url + '/api/admin/products/batch_delete'
+    return do_post(url, data, cookie=cookie)
 
 
-def add_empty_quantity_product_py(cookie=init_cookie):
+def products_batch_publish_py(data, cookie=init_cookie):
     '''
-    添加min商品，除必填项（标题、售价、重量）其余不填，保存默认
+    批量上架商品
+    :param query_str:
     :param cookie:
     :return:
     '''
-    data = copy.deepcopy(product_min_data)
-    data['variants'][0]['inventory_management'] = True
-    return product_add_py(data, cookie=cookie)['content']['data']['product_id']
+    url = home_page_url + '/api/admin/products/batch_publish'
+    return do_post(url, data, cookie=cookie)
+
+
+def products_batch_unpublish_py(data, cookie=init_cookie):
+    '''
+    批量下架商品
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = home_page_url + '/api/admin/products/batch_unpublish'
+    return do_post(url, data, cookie=cookie)
+
+
+def products_query_py(data, cookie=init_cookie):
+    '''
+    检索商品
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = home_page_url + '/api/admin/products/query'
+    return do_post(url, data, cookie=cookie)
+
+
+def get_product_detail_py(product_id, cookie=init_cookie):
+    '''
+    通过商品id查询商品详情
+    :param product_id:
+    :param cookie:
+    :return:
+    '''
+    return products_id_get_py(product_id, cookie=cookie)
 
 
 def add_min_product_py(cookie=init_cookie):
@@ -103,7 +145,9 @@ def add_min_product_py(cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    return product_add_py(product_min_data, cookie=cookie)['content']['data']['product_id']
+    data = copy.deepcopy(product_min_data)
+    data['images'] = [{'id': '', 'image': image}]
+    return products_post_py(data, cookie=cookie)['content']['product']['id']
 
 
 def add_max_product_py(cookie=init_cookie):
@@ -112,7 +156,7 @@ def add_max_product_py(cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    return add_launched_product_py(cookie=cookie)
+    return add_product_with_conf_py(cookie=cookie)
 
 
 def add_product_with_conf_py(conf={}, cookie=init_cookie):
@@ -123,40 +167,12 @@ def add_product_with_conf_py(conf={}, cookie=init_cookie):
     :return:
     '''
     data = copy.deepcopy(product_max_data)
-
+    dict_deepupdate(data, conf)
     key_list = conf.keys()
-    if 'title' in key_list:
-        data['meta_title'] = conf['title']
-        data['title'] = conf['title']
-        data['url'] = '/products/' + conf['title']
-    if 'subtitle' in key_list:
-        data['brief'] = conf['subtitle']
-    if 'status' in key_list:
-        data['status'] = conf['status']
-    if 'saleprice' in key_list:
-        data['price'] = conf['saleprice']
-        data['variants'][0]['price'] = conf['saleprice']
-    if 'rawprice' in key_list:
-        data['compare_at_price'] = conf['rawprice']
-        data['variants'][0]['compare_at_price'] = conf['rawprice']
-    if 'settax' in key_list:
-        data['variants'][0]['taxable'] = conf['settax']
-    if 'weight' in key_list:
-        data['variants'][0]['weight'] = conf['weight']
-    if 'sku' in key_list:
-        data['variants'][0]['sku'] = conf['sku']
-    if 'setshipping' in key_list:
-        data['variants'][0]['requires_shipping'] = conf['setshipping']
-    if 'tags' in key_list:
-        data['tags'] = conf['tags']
-    if 'images' in key_list and conf['images'] == 'yes':
-        data['images'] = [image]
-    elif 'images' in key_list and conf['images'] == 'no':
-        data['images'] = []
-    else:
-        data['images'] = [image]
+    if 'images' not in key_list:
+        data['images'] = [{'id': '', 'image': image}]
 
-    return product_add_py(data, cookie=cookie)['content']['data']['product_id']
+    return products_post_py(data, cookie=cookie)['content']['product']['id']
 
 
 def del_latest_product_py(cookie=init_cookie):
@@ -164,17 +180,8 @@ def del_latest_product_py(cookie=init_cookie):
     删除最新商品
     :return: True | False
     """
-    product_updatestatus_py(1, -1, cookie=cookie)
-
-
-def del_latest_products_py(num, cookie=init_cookie):
-    """
-    删除最新商品s
-    :param num:
-    :param cookie:
-    :return:
-    """
-    product_updatestatus_py(num, -1, cookie=cookie)
+    product_id = get_latest_productid_py(cookie=cookie)
+    return products_delete_py(product_id, cookie=cookie)
 
 
 def del_all_products_py(cookie=init_cookie):
@@ -182,34 +189,48 @@ def del_all_products_py(cookie=init_cookie):
     删除全部商品
     :return: True | False
     """
-    product_updatestatus_py('all', -1, cookie=cookie)
+    product_ids = get_exist_productsid_py(cookie=cookie)
+    return products_batch_delete_py({'ids': product_ids}, cookie=cookie)
+
+
+def publish_all_products_py(cookie=init_cookie):
+    """
+    全部商品上线
+    :return: True | False
+    """
+    product_ids = get_exist_productsid_py(cookie=cookie)
+    return products_batch_publish_py({'ids': product_ids}, cookie=cookie)
+
+
+def unpublish_all_products_py(cookie=init_cookie):
+    """
+    全部商品下线
+    :return: True | False
+    """
+    product_ids = get_exist_productsid_py(cookie=cookie)
+    return products_batch_unpublish_py({'ids': product_ids}, cookie=cookie)
 
 
 def get_all_products_count_py(cookie=init_cookie):
-    return product_search_py({}, cookie=cookie)['content']['data']['total']
+    return products_get_py(cookie=cookie)['content']['count']
 
 
 def get_latest_productid_py(cookie=init_cookie):
-    query_str = copy.deepcopy(query_list_data)
-    products_list = product_search_py(query_str, cookie=cookie)['content']['data']['products']
+    products_list = products_get_py(cookie=cookie)['content']['products']
     try:
         return products_list[0]['id']
     except Exception as e:
         return 1
 
 
-def get_oldest_productid_py(cookie=init_cookie):
-    query_str = copy.deepcopy(query_list_data)
-    products_list = product_search_py(query_str, cookie=cookie)['content']['data']['products']
-    try:
-        return products_list[-1]['id']
-    except Exception as e:
-        return 1
-
-
 def get_exist_productsid_py(cookie=init_cookie):
-    query_str = copy.deepcopy(query_list_data)
-    products_list = product_search_py(query_str, cookie=cookie)['content']['data']['products']
+    '''
+    返回存在的所有商品id
+    :param cookie:
+    :return:
+    '''
+    # query_str = copy.deepcopy(query_list_data)
+    products_list = products_get_py(cookie=cookie)['content']['products']
     products_id = []
     for product in products_list:
         products_id.append(product['id'])
@@ -222,19 +243,37 @@ def add_max_product_with_sub_py(cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    return product_add_py(product_max_data_with_sub, cookie=cookie)
+    return products_post_py(product_max_data_with_sub, cookie=cookie)['content']['product']['id']
+
+
+def add_subproduct_with_conf_py(conf={}, cookie=init_cookie):
+    '''
+    通过conf（dict数据类型）配置来添加产品(含子商品)
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(product_max_data_with_sub)
+    dict_deepupdate(data, conf)
+    key_list = conf.keys()
+    if 'images' not in key_list:
+        data['images'] = [{'id': '', 'image': image}]
+
+    return products_post_py(data, cookie=cookie)['content']['product']['id']
 
 
 if __name__ == '__main__':
-    # print add_max_product_with_sub_py()
-    # print product_search_py()
-    # del_latest_product_py()
-    del_all_products_py()
-    # print add_max_product_py()
-    # print add_max_product_py()
-    # print add_product_with_one_sub_py()
-    # product_info_py()
-    # print add_launched_product_py()
+    # print add_min_product_py()
+    conf = {'variants': [{"price": "45", "compare_at_price": "70"}, {"price": "90", "compare_at_price": "710"}]}
+    print add_subproduct_with_conf_py(conf)
+    # print get_product_detail_py(add_max_product_py())
+    # print add_product_with_conf_py()
+    # print del_latest_product_py()
+    # print del_all_products_py()
+    # print publish_all_products_py()
+    # print unpublish_all_products_py()
+    # print get_all_products_count_py()
+    # print get_latest_productid_py()
+    # print products_get_py()
+
     # conf = {'settax': 0}
     # add_product_with_conf_py(conf)
-    # del_latest_products_py(2)

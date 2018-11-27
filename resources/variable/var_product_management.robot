@@ -4,6 +4,7 @@ Resource          var_common.robot
 *** Variables ***
 # locator_productsMgmt
 ${locatorB_productsMgmt_button_addSomePro}    dom:document.querySelectorAll('[class*="ant-btn middle_btn"]')[0]    # 商品管理 - 无数据 - 新建商品 按钮
+${locatorB_productsMgmt_button_addNewProduct}    dom:document.querySelectorAll('[class*="ant-btn large_btn"]')    # 商品管理 - 右上角 - 新建商品 按钮
 ${locatorB_productsMgmt_tab_ProductAll}    dom:document.querySelectorAll('[role="tab"]')[0]    # 商品管理 - 全部tab
 ${locatorB_productsMgmt_tab_ProductOn}    dom:document.querySelectorAll('[role="tab"]')[1]    # 商品管理 - 已上架tab
 ${locatorB_productsMgmt_tab_ProductDown}    dom:document.querySelectorAll('[role="tab"]')[2]    # 商品管理 - 已下架tab
@@ -12,15 +13,16 @@ ${locatorB_productsMgmt_button_ProductSelect}    dom:document.querySelectorAll('
 ${locatorB_productsMgmt_button_SelectReset}    dom:document.querySelectorAll('[class*="ant-btn small"]')[0]    # 商品管理 - 重置按钮
 
 ${locatorB_productsMgmt_checkbox_chooseProducets}    dom:document.querySelectorAll('[class="ant-table-selection"] [class="ant-checkbox"]')    #商品管理 - 商品列表 - 全选复选框
-
+${locatorB_productsMgmt_button_BatchDelete}    dom:document.querySelectorAll('[class*="ant-btn small"]')[1]    #商品管理 - 商品列表 - 批量删除 按钮
 ${locatorB_productsMgmt_button_BatchOn}    dom:document.querySelectorAll('[class*="ant-btn small"]')[2]    #商品管理 - 商品列表 - 批量上架 按钮
 ${locatorB_productsMgmt_button_BatchDown}    dom:document.querySelectorAll('[class*="ant-btn small"]')[3]    #商品管理 - 商品列表 - 批量下架 按钮
 
 ${locatorB_productsMgmt_list_firstProduct}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr')    #商品管理 - 商品列表第一行
-${locatorB_productsMgmt_icon_firstpreview}    dom:document.querySelectorAll('[class*="djfont dj-preview"]')    #商品管理 - 商品列表第一行 - 预览图标
-${locatorB_productsMgmt_icon_firstdelete}    dom:document.querySelectorAll('[class*="djfont delete"]')    #商品管理 - 商品列表第一行 - 删除图标
-${locatorB_productsMgmt_text_firstProductName}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(4)')    #商品管理 - 商品列表第一行 - 商品名称
-${locatorB_productsMgmt_button_ProductUpDown}    dom:document.querySelectorAll('[class="ant-switch"]')    #商品管理 - 商品列表第一行 - 是否上架
+${locatorB_productsMgmt_icon_firstpreview}    dom:document.querySelectorAll('[class*="djfont dj-preview"]')[0]    #商品管理 - 商品列表第一行 - 预览图标
+${locatorB_productsMgmt_icon_firstdelete}    dom:document.querySelectorAll('[class*="djfont delete"]')[0]    #商品管理 - 商品列表第一行 - 删除图标
+${locatorB_productsMgmt_image_firstProductImage}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(3)')[0]    #商品管理 - 商品列表第一行 - 商品图片
+${locatorB_productsMgmt_text_firstProductName}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(4)')[0]    #商品管理 - 商品列表第一行 - 商品名称
+${locatorB_productsMgmt_button_ProductUpDown}    dom:document.querySelectorAll('[class*="ant-switch"]')    #商品管理 - 商品列表第一行 - 是否上架
 
 
 ${locatorB_productsNew_button_productList}    dom:document.querySelectorAll('[class="djfont dj-back"]')    # 进入新增/编辑页面的后退按钮
@@ -104,6 +106,7 @@ ${locatorB_productsNew_button_styleCancel}    dom:document.querySelectorAll('[cl
 ${locatorB_productsNew_button_styleSure}    dom:document.querySelectorAll('[class*="ant-btn middle_btn_"]')    #添加款式页面 - 确认按钮
 ${locatorB_productsNew_icon_closestyle}    dom:document.querySelectorAll('[class="ant-drawer-close-x"]')     # 添加款式页面 关闭图标（x）
 ${locatorB_productsNew_button_save}    ${locatorB_button_save00}     # 保存按钮
+
 
 # C端
 ${locatorC_productDetail_button_addToCart}    dom:document.querySelectorAll("[data-click='addToCart']")[0]     #.c端订单-添加到购物车 add to cart

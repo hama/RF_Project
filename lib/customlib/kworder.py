@@ -296,7 +296,7 @@ def add_deading_order_with_some_finished_status_py(conf={}, cookie=init_cookie):
     '''
     创建待处理订单的
     发货状态：部分完成
-    	COD支付	已支付	部分完成	进行中
+    	COD支付	待支付	部分完成	进行中
     :param conf:
     :param cookie:
     :return:
@@ -600,23 +600,26 @@ def add_undeal_order_with_products_py(cookie=init_cookie):
 
 
 def get_tokens_with_product_py(cookie=init_cookie):
-    count = product_search_py(cookie=cookie)['content']['data']['total']
+    count = get_all_products_count_py(cookie=cookie)
     if count == 0:
         add_max_product_py(cookie=cookie)
-    productid01 = product_search_py(cookie=cookie)['content']['data']['products'][0]['id']
+        time.sleep(0.5)
+    productid01 = get_latest_productid_py(cookie=cookie)
     return get_tokens_by_productid_py(productid01, cookie=cookie)
 
 
 def get_tokens_with_products_py(cookie=init_cookie):
-    count = product_search_py(cookie=cookie)['content']['data']['total']
+    count = get_all_products_count_py(cookie=cookie)
     if count == 0:
         add_max_product_py(cookie=cookie)
         add_max_product_py(cookie=cookie)
+        time.sleep(0.5)
     elif count == 1:
         add_max_product_py(cookie=cookie)
-    search_data = product_search_py(cookie=cookie)
-    productid01 = search_data['content']['data']['products'][0]['id']
-    productid02 = search_data['content']['data']['products'][1]['id']
+        time.sleep(0.5)
+    search_data = get_exist_productsid_py(cookie=cookie)
+    productid01 = search_data[0]
+    productid02 = search_data[1]
     productidlist = [productid01, productid02]
     return get_tokens_by_productidlist_py(productidlist, cookie=cookie)
 
@@ -643,7 +646,7 @@ def add_undeal_order_with_product_py(cookie=init_cookie):
 
 
 if __name__ == '__main__':
-    print add_undead_order_with_pay_fail_status_py()
+    # print add_undead_order_with_pay_fail_status_py()
     # print add_undeal_order_with_product_py()
     # print add_undeal_order_with_products_py()
     # print add_dealing_order_with_product_py()
@@ -656,7 +659,7 @@ if __name__ == '__main__':
     # print add_deading_order_with_some_delivered_status_py()
     # print add_deading_order_with_all_delivered_status_py()
     # print add_deading_order_with_some_finished_status_py()
-    # print add_deading_order_with_finished_status_py()
+    print add_deading_order_with_finished_status_py()
 
     # print get_tokens_by_productid_py('602')
     # print get_tokens_by_productidlist_py(['602', '601'])
@@ -666,7 +669,7 @@ if __name__ == '__main__':
     # place_order_conf = {'shipping_address': shipping_address}
     # conf = {'place_order_data': place_order_conf}
     # print add_deading_order_with_conf_py(conf)
-    print get_dealing_order_count_py()
+    # print add_dealing_order_with_products_py()
     # print shipment_with_conf_py('90e29c86-4780-4fb1-bfb1-36249deb69bc')
     # print orders_finish_py('90e29c86-4780-4fb1-bfb1-36249deb69bc', '85382d5a-6d8a-4d46-8c50-9407802173ba')
     # print add_deading_order_with_some_delivered_status_py()
@@ -678,7 +681,7 @@ if __name__ == '__main__':
     # print product_search_py()
     # print add_deading_order_with_delivering_status_py()
     # print get_latest_undeal_order_num_py()
-    # productid = add_launched_product_py()\
+    # productid = add_max_product_py()\
     # print add_order_by_productid_py(productid)
     # print query_dealing_order()
     # print query_undeal_order()
