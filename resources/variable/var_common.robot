@@ -23,7 +23,7 @@ ${error_msg}      出错啦！    #.自定义错误提示
 ${locatorB_global_alert_confirm}    dom:document.querySelectorAll('button[data-robot="pop_confirm"]')[0]    #.全局弹窗 确定 按钮
 ${locatorB_global_alert_cancel}    dom:document.querySelectorAll('button[data-robot="pop_cancal"]')[0]    #.全局弹窗 取消 按钮
 ### 菜单栏 locator
-${locatorB_overview}    dom:document.querySelectorAll('a[href="/"]')[0]    # 导航栏-概览（即主页）
+${locatorB_overview}    dom:document.querySelectorAll('[class="ant-layout-sider-children"] li:nth-child(1)')[0]    # 导航栏-概览（即主页）
 ${locatorB_order}    dom:document.querySelectorAll('span[data-robot="order"]')[0]    # 导航栏-订单
 ${locatorB_order_dealing}    dom:document.querySelectorAll('a[href="/order/_dealing"]')[0]    # 导航栏-待处理订单
 ${locatorB_order_undeal}    dom:document.querySelectorAll('a[href="/order/_undeal"]')[0]    # 导航栏-未完成订单
