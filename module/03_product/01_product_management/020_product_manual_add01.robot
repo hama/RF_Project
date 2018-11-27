@@ -16,19 +16,19 @@ products004
     Wait Until Page Contains Text    新建商品
     Wait Until Page Contains Locator    ${locatorB_productsNew_input_title}
 
-products005
-    [Documentation]    进入已添加商品的商品管理页面
-    [Tags]    P0    threshold
-    kwproduct.add_max_product_py
-    Reload Page And Start Ajax
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_button_addNewProduct}
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_tab_ProductAll}
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_tab_ProductOn}
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_tab_ProductDown}
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_input_ProductSelect}
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_button_ProductSelect}
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_button_SelectReset}
-    Wait Until Page Contains Locator    ${locatorB_productsMgmt_list_firstProduct}
+#products005
+#    [Documentation]    进入已添加商品的商品管理页面
+#    [Tags]    P0    threshold
+#    kwproduct.add_max_product_py
+#    Reload Page And Start Ajax
+#    Wait Until Page Contains Locator    ${locatorB_productsMgmt_button_addNewProduct}
+#    Wait Until Page Contains Locator    ${locatorB_productsMgmt_tab_ProductAll}
+#    Wait Until Page Contains Locator    ${locatorB_productsMgmt_tab_ProductOn}
+#    Wait Until Page Contains Locator    ${locatorB_productsMgmt_tab_ProductDown}
+#    Wait Until Page Contains Locator    ${locatorB_productsMgmt_input_ProductSelect}
+#    Wait Until Page Contains Locator    ${locatorB_productsMgmt_button_ProductSelect}
+#    Wait Until Page Contains Locator    ${locatorB_productsMgmt_button_SelectReset}
+#    Wait Until Page Contains Locator    ${locatorB_productsMgmt_list_firstProduct}
 
 product006
     [Documentation]  新建商品页面展示(展示返回商品管理，下一步按钮，商品标题输入框，商品副标题输入框，富文本框，基本属性，专辑，标签，供应商，SEO)
