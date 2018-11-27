@@ -71,28 +71,50 @@ Fill In Required Items When Create Product
     Wait And Make Switch On    ${locatorB_productsNew_switch_status}
     Wait Enabled And Choose File    ${locatorB_productsNew_input_addImage}    ${file_products_addImg}
 
+Fill All Items When Create Product
+    Wait And Input Text    ${locatorB_productsNew_input_title}    newproduct
+    Wait And Input Text    ${locatorB_productsNew_input_subTitle}    newproduct subtitle
+#    Wait And Input Text    ${locatorB_productsNew_input_desc}    newproduct desc
+    Wait And Click Element    ${locatorB_productsNew_button_productOn}
+    Wait And Click Element    ${locatorB_productsNew_button_productShipping}
+    Wait And Click Element    ${locatorB_productsNew_button_productTax}
+    Wait And Click Element    ${locatorB_productsNew_span_SelectCollection}
+    Wait And Click Element    ${locatorB_productsNew_textarea_firstCollCheckbox}
+    Wait And Click Element    ${locatorB_productsNew_button_addCollectionSave}
+    Wait And Input Text    ${locatorB_productsNew_input_tags}    标签输入001
+    Wait And Input Text    ${locatorB_productsNew_input_supplier}    供应商输入001
+    Wait And Input Text    ${locatorB_productsNew_input_url}     http://xxx.xxxx
+    Wait And Click Element    ${locatorB_productsNew_button_NextStep}
+    Select Follow Stock
+    Wait And Input Text    ${locatorB_productsNew_input_salePrice}    199
+    Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    299
+    Wait And Input Text    ${locatorB_productsNew_input_weight}    10
+    Wait And Input Text    ${locatorB_productsNew_input_stock}    400
+    Wait And Input Text    ${locatorB_productsNew_input_sku}    qazwsxedc
+    Wait And Input Text    ${locatorB_productsNew_input_barcode}    qwertyuiop
+    Wait Enabled And Choose File    ${locatorB_productsNew_input_imageUp}    ${file_products_addImg}
+    Sleep    5
 
+Add One Product Style
+    [Documentation]    添加商品款式
+    [Arguments]    ${NameNum}    ${styleName}    ${ContentNum}    ${StyleContent}
+    Wait And Input Text    ${locatorB_productsNew_input_StyleName}[${NameNum}]    ${styleName}
+    Wait And Input Text    ${locatorB_productsNew_input_StyleContent}[${ContentNum}]    ${StyleContent}
 
+Select Follow Stock
+    [Documentation]   款式设置 - 勾选 跟踪库存
+    ${class}=    Wait And Get Element Attribute    ${locatorB_productsNew_checkbox_followNumber}    class
+    Run Keyword If    $class=='ant-checkbox'    Wait And Click Element    ${locatorB_productsNew_checkbox_followNumber}
 
+Select Need Picture
+    [Documentation]    款式设置 - 勾选 - 需要配图
+    ${class}=    Wait And Get Element Attribute    ${locatorB_productsNew_input_needPicture}    class
+    Run Keyword If    $class=='ant-checkbox'    Wait And Click Element    ${locatorB_productsNew_input_needPicture}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Select Add Some Style
+    [Documentation]    款式设置 - 勾选 - 添加多个款式
+    ${class}=    Wait And Get Element Attribute    ${locatorB_productsNew_radio_moreStyle}    class
+    Run Keyword If    $class=='ant-radio'    Wait And Click Element    ${locatorB_productsNew_radio_moreStyle}
 
 
 Add Product

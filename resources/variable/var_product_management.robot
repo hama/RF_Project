@@ -2,135 +2,108 @@
 Resource          var_common.robot
 
 *** Variables ***
-# api
-${apiB_products_add}    ${home_page}/api/product/add    # 保存商品
-${apiB_products_upload}    ${home_page}/api/file/upload    # 上传图片
-${apiB_products_addProductsType}    ${home_page}/productType    # 增加商品分类
-${apiB_products_list}    ${home_page}/api/product/search?page=0&limit=20    # 获取商品列表
-${apiB_products_list_shelf}    ${home_page}/api/product/search?status=1&page=0&limit=20    # 选择所有上架商品
-${apiB_products_list_drop}    ${home_page}/api/product/search?status=0&page=0&limit=20    # 选择所有下架商品
-${apiB_products_update_status}    ${home_page}/api/product/updatestatus    # 上架/下架 更新状态
-# locator_products
-${locatorB_products_popUps_content}      dom:document.querySelectorAll(".ant-modal-content")[0]      #弹窗_content
-${locatorB_products_popUps_body}    dom:document.querySelectorAll(".ant-modal-body")[0]    #弹窗_body
-${locatorB_products_button_cancel}    ${locatorB_popUps_button_bodydefault}    #商品弹窗-默认按钮
-${locatorB_products_button_confirm}    ${locatorB_popUps_button_bodymiddle}    #商品弹窗-确定按钮
-
 # locator_productsMgmt
-${locatorB_productsMgmt_button_addProduct}    ${locatorB_button_add}    #商品列表页的新增商品按钮
-${locatorB_productsMgmt_checkbox_chooseProducets}    ${locatorB_checkbox00}    #点击checkbox按钮，选中当前页面所有商品
-${locatorB_productsMgmt_checkbox_chooseFirstProduct}    ${locatorB_checkbox01}    #点击checkbox按钮，选中当前页面第一个商品
-${locatorB_productsMgmt_select_batchOperations}    ${locatorB_select_batchOperations}    #批量操作下拉框
-${locatorB_productsMgmt_select_launch}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[0]    #下拉框-上架
-${locatorB_productsMgmt_select_discontinue}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[1]    #下拉框-下架
-${locatorB_productsMgmt_select_batchDel}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[2]    #下拉框-删除商品
-${locatorB_productsMgmt_select_addTags}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[3]    #下拉框-添加标签
-${locatorB_productsMgmt_select_delTags}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[4]    #下拉框-移除标签
-${locatorB_productsMgmt_select_addtoCategory}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[5]    #下拉框-添加到专辑
-${locatorB_productsMgmt_select_delfromCategory}    dom:document.querySelectorAll(".ant-select-dropdown-menu-item")[6]    #下拉框-从专辑移除
-${locatorB_productsMgmt_button_all}    dom:document.querySelectorAll(".ant-radio-button-wrapper")[0]    # 商品管理页面，全部商品
-${locatorB_productsMgmt_button_launched}    dom:document.querySelectorAll(".ant-radio-button-wrapper")[1]    # 商品管理页面，已上架商品
-${locatorB_productsMgmt_button_discontinued}    dom:document.querySelectorAll(".ant-radio-button-wrapper")[2]    # 商品管理页面，已下架商品
-${locatorB_productsMgmt_icon_grabProduct}    dom:document.querySelectorAll(".icon_custom_left___GO944")[0]    #商品列表页的商品抓取按钮
-${locatorB_productsMgmt_icon_migrateProduct}    dom:document.querySelectorAll(".yijianzhuaqu")[0]    #商品列表页的店铺搬迁按钮
-${locatorB_productsMgmt_icon_uploadProduct}    dom:document.querySelectorAll(".piliangshangchuan")[0]    #商品列表页的上传商品按钮
-${locatorB_productsMgmt_input_uploadProduct}    dom:document.querySelectorAll('input[type="file"]')[0]   #批量上传商品input
-${locatorB_productsMgmt_button_toImport}    dom:document.querySelectorAll('button[class="ant-btn middle_btn___2ExQc undefined ant-btn-submit"]')[0]    #开始导入
-${locatorB_productsMgmt_button_confirmAfterImport}    dom:document.querySelectorAll('button[class="ant-btn middle_btn___2ExQc undefined"]')[0]    # 导入之后的确定按钮
+${locatorB_productsMgmt_button_addSomePro}    dom:document.querySelectorAll('[class*="ant-btn middle_btn"]')[0]    # 商品管理 - 无数据 - 新建商品 按钮
+${locatorB_productsMgmt_tab_ProductAll}    dom:document.querySelectorAll('[role="tab"]')[0]    # 商品管理 - 全部tab
+${locatorB_productsMgmt_tab_ProductOn}    dom:document.querySelectorAll('[role="tab"]')[1]    # 商品管理 - 已上架tab
+${locatorB_productsMgmt_tab_ProductDown}    dom:document.querySelectorAll('[role="tab"]')[2]    # 商品管理 - 已下架tab
+${locatorB_productsMgmt_input_ProductSelect}    dom:document.querySelectorAll('[id="keyword"]')    # 商品管理 - 搜索输入框
+${locatorB_productsMgmt_button_ProductSelect}    dom:document.querySelectorAll('[class*="ant-btn confirm"]')[0]    # 商品管理 - 搜索按钮
+${locatorB_productsMgmt_button_SelectReset}    dom:document.querySelectorAll('[class*="ant-btn small"]')[0]    # 商品管理 - 重置按钮
 
-${locatorB_productsMgmt_button_editTableHead}    dom:document.querySelectorAll(".edit_head___2-5Ey")[0]     #编辑表头
-${locatorB_productsMgmt_tabindex_firstSwitch}    dom:document.querySelectorAll(".ant-switch")[0]    # 列表第一个商品的上架按钮
-${locatorB_productsMgmt_input_minPrice}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[0]    #"最低售价"输入框
-${locatorB_productsMgmt_input_maxPrice}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[1]    #"最高售价"输入框
-${locatorB_productsMgmt_input_name}    dom:document.querySelectorAll(".search_content___DTTXj .search_li___3f16J .ant-input")[2]    #"商品名称/商品SKU/标签"输入框
-${locatorB_productsMgmt_button_search}    dom:document.querySelectorAll('button[data-robot="btn_search"]')[0]    # 搜索按钮
-${locatorB_productsMgmt_icon_preview}    dom:document.querySelectorAll("tbody tr td div div i")[0]    # 商品列表 - 预览按钮
+${locatorB_productsMgmt_checkbox_chooseProducets}    dom:document.querySelectorAll('[class="ant-table-selection"] [class="ant-checkbox"]')    #商品管理 - 商品列表 - 全选复选框
 
-${locatorB_productsMgmt_list_firstProduct}    dom:document.querySelectorAll(".ant-table-tbody tr")[0]    # 商品列表 - 第一个商品的一行
+${locatorB_productsMgmt_button_BatchOn}    dom:document.querySelectorAll('[class*="ant-btn small"]')[2]    #商品管理 - 商品列表 - 批量上架 按钮
+${locatorB_productsMgmt_button_BatchDown}    dom:document.querySelectorAll('[class*="ant-btn small"]')[3]    #商品管理 - 商品列表 - 批量下架 按钮
 
-${locatorB_productsMgmt_image_firstProductThumbnails}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[1].querySelectorAll("img")[0]     #商品列表第一个商品的图片
-${locatorB_productsMgmt_text_firstProductName}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[2].querySelectorAll("span")[0]    #商品列表第一个商品的商品名称
-${locatorB_productsMgmt_text_firstProductInventoryQuantity}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[3]    #商品列表第一个商品的库存(只能在Show All Header关键字执行之后使用)
-${locatorB_productsMgmt_text_firstProductSku}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[4]    #商品列表第一个商品的SKU(只能在Show All Header关键字执行之后使用)
-${locatorB_productsMgmt_text_firstProductViews}    dom:document.querySelectorAll(".ant-table-tbody tr")[0].querySelectorAll("td")[5]    #商品列表第一个商品的浏览量(只能在Show All Header关键字执行之后使用)
-${locatorB_productsMgmt_text_tagInPopUps}    dom:document.querySelectorAll('[class="des1___37crS"]')[0]    # 批量添加标签中的标签text
-${locatorB_productsMgmt_icon_listPreview}    dom:document.querySelectorAll("i[class*='preview']")    #所有条目的预览icon,第0个为第一条商品的
-${locatorB_productsMgmt_icon_listDelete}    dom:document.querySelectorAll("i[class*='delete']")    #所有条目的删除icon,第0个为第一条商品的
-${locatorB_productsMgmt_text_listCreateTime}    dom:document.querySelectorAll('td[class="vendor___2VuW9"]')    #所有条目的创建时间，第0个为第一条商品的
-${locatorB_productsMgmt_switch_listLaunched}    dom:document.querySelectorAll('span[class="ant-switch ant-switch-checked"]')    #所有上架条目的switch按钮
-${locatorB_productsMgmt_switch_listDiscontinued}    dom:document.querySelectorAll('span[class="ant-switch"]')    #所有下架条目的switch按钮
+${locatorB_productsMgmt_list_firstProduct}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr')    #商品管理 - 商品列表第一行
+${locatorB_productsMgmt_icon_firstpreview}    dom:document.querySelectorAll('[class*="djfont dj-preview"]')    #商品管理 - 商品列表第一行 - 预览图标
+${locatorB_productsMgmt_icon_firstdelete}    dom:document.querySelectorAll('[class*="djfont delete"]')    #商品管理 - 商品列表第一行 - 删除图标
+${locatorB_productsMgmt_text_firstProductName}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(4)')    #商品管理 - 商品列表第一行 - 商品名称
+${locatorB_productsMgmt_button_ProductUpDown}    dom:document.querySelectorAll('[class="ant-switch"]')    #商品管理 - 商品列表第一行 - 是否上架
 
 
-${locatorB_productsMgmt_popUps_firstInput}    ${locatorB_popUps_inputs}[0]    # 弹窗第一个输入框
-${locatorB_productsMgmt_textlist_itemsTitle}    dom:document.querySelectorAll('thead[class="ant-table-thead"] th')    # 商品列表的所有title
+${locatorB_productsNew_button_productList}    dom:document.querySelectorAll('[class="djfont dj-back"]')    # 进入新增/编辑页面的后退按钮
+${locatorB_productsNew_button_NextStep}    dom:document.querySelectorAll('[class*="next_step"]')    #进入新增/编辑页面的下一步按钮
+${locatorB_productsNew_button_cancel}    dom:document.querySelectorAll('[class*="ant-btn default_btn"]')[0]    #进入新增/编辑页面的取消按钮
 
-# locator_productsType
-${locatorB_productType_button_saveBtn}    id:test_save_btn    # 商品分类-保存按钮
-# locator_productsNew
-#${locatorB_productsMgmt_switch_listDiscontinued}    dom:document.querySelectorAll('div[class="ant-select-selection__rendered"]')[0]    #所有下架条目的switch按钮
-${locatorB_productsNew_button_back}    class:back    # 进入编辑页面的后退按钮
-${locatorB_productsNew_button_uploadBtn}    id:test_upload_btn    # 上传商品图片按钮
-${locatorB_productsNew_switch_status}    dom:document.querySelectorAll('span[data-robot="products_status"]')[0]    # 商品状态按钮
-${locatorB_productsNew_input_tags}    id:tags    # 添加标签按钮
-${locatorB_productsNew_input_addImage}    dom:document.querySelectorAll('input[type="file"]')[0]   # 选择文件上传
-${locatorB_productsNew_img_firstImage}    dom:document.querySelectorAll('img[class="center___1nHSZ"]')[0]    # 选择第一张图片
-${locatorB_productsNew_input_title}    id:__title    # 添加商品页面-标题按钮
-${locatorB_productsNew_input_subTitle}    id:__brief    # 添加商品页面-副标题按钮
-${locatorB_productsNew_input_desc}    dom:document.querySelectorAll('div[class="fr-element fr-view"] p')[0]    # 添加商品页面-副标题按钮
-${locatorB_productsNew_input_salePrice}    id:price    # 添加商品页面-价格输入框
-${locatorB_productsNew_input_rawPrice}    id:compare_at_price    # 添加商品页面-原价格输入框
-${locatorB_productsNew_input_weight}    id:weight    # 添加商品页面-重量输入
-${locatorB_productsNew_input_sku}    id:sku    # 添加商品页面-Sku
-${locatorB_productsNew_input_barcode}    id:barcode    # 添加商品页面-条形码
-${locatorB_productsNew_input_supplier}    dom:document.querySelectorAll(".ant-input")[1]    # 添加供应商
-${locatorB_productsNew_input_productType}    id:product_type_cascade    #商品专辑页的新增专辑按钮
-${locatorB_productsNew_cascader_chooseCategoryItem}    dom:document.querySelectorAll(".ant-cascader-menu-item")[0]    # 选择商品分类子项
-${locatorB_productsNew_button_save}    ${locatorB_button_save}    #保存按钮
-${locatorB_productsNew_button_setting}    dom:document.querySelectorAll('button[data-robot="products_setting"]')[0]    #设置按钮
-${locatorB_productsNew_dropdown_addItems}    dom:document.querySelectorAll('button[class="ant-btn ant-dropdown-trigger"]')[0]
-${locatorB_productsNew_dropdown_customize}    dom:document.querySelectorAll('li[class="ant-dropdown-menu-item"]')[0]
-${locatorB_productsNew_input_firstStyleCategory}    id:option_0    # 第一个款式分类输入框
-${locatorB_productsNew_input_firstSubStyleCategory}    id:option_values_4  # 第一个款式分类sub输入框
-${locatorB_productsNew_checkbox_firstSubProduct}    dom:document.querySelectorAll('label[class="ant-checkbox-wrapper"]')[1]  # 第一个subproduct
-${locatorB_productsNew_icon_editSEO}    dom:document.querySelectorAll('a[class="icon_custom_left___GO944 gap___1qNPB"]')[0]  # 编辑SEO
-${locatorB_productsNew_input_homeTitle}    dom:document.querySelectorAll('input[class="autosize-input___MJu1O"]')[0]  # 主页标题输入框
-${locatorB_productsNew_textarea_homeSEODesc}    dom:document.querySelectorAll('textarea[class="ant-input text_area___BhZLp"]')[0]  # 主页SEO描述
-${locatorB_productsNew_input_homeSEOLink}    dom:document.querySelectorAll('input[class="autosize-input___MJu1O"]')[1]  #
-${locatorB_productsNew_input_homeSEOKeyword}    dom:document.querySelectorAll('input[class="ant-select-search__field"]')[0]  #
+${locatorB_productsNew_input_title}    dom:document.querySelectorAll('[id="product.title"]')    # 添加商品页面-标题输入
+${locatorB_productsNew_input_subTitle}    dom:document.querySelectorAll('[id="product.brief"]')    # 添加商品页面-副标题输入
+${locatorB_productsNew_input_desc}    dom:document.querySelectorAll('[class*="mce-edit-area"]')    # 添加商品页面-描述
+${locatorB_productsNew_input_tags}    dom:document.querySelectorAll('input[id="product.tags"]')    # 添加标签输入
+${locatorB_productsNew_input_supplier}    dom:document.querySelectorAll('[id="product.vendor"]')    # 添加供应商输入
+${locatorB_productsNew_input_url}    dom:document.querySelectorAll('[id="product.vendor_url"]')     # 添加url输入
+${locatorB_productsNew_button_productOn}    dom:document.querySelectorAll('[id="product.published"]')    # 商品上架按钮
+${locatorB_productsNew_button_productShipping}    dom:document.querySelectorAll('[id="product.requires_shipping"]')    # 商品 需要物流 按钮
+${locatorB_productsNew_button_productTax}    dom:document.querySelectorAll('[id="product.taxable"]')    # 商品 对此商品收税 按钮
 
-# locator_productsMobile
-${locatorC_products_icon_cart}    dom:document.querySelectorAll('i[class*="cart"]')[0]    #C端，购物车
+${locatorB_productsNew_span_SelectCollection}    dom:document.querySelectorAll('[class*="icon_custom_left"]')[0]    # 商品 选择专辑 按钮
+${locatorB_productsNew_input_selectCollName}    dom:document.querySelectorAll('[class="ant-input"]')[4]    # 专辑选择 - 专辑名称搜索输入框
+${locatorB_productsNew_button_selectCollbtn}    dom:document.querySelectorAll('[class*="ant-btn confirm_btn_c2c3"]')    # 专辑选择 - 专辑名称搜索按钮
+${locatorB_productsNew_button_newCollection}    dom:document.querySelectorAll('[class*="ant-btn small_"]')[0]    # 专辑选择 - 新建专辑按钮
+${locatorB_productsNew_input_newCollectionName}    dom:document.querySelectorAll('[id="collectionTitle"]')    #新建专辑 - 专辑名称
+${locatorB_productsNew_link_newCollection}    dom:document.querySelectorAll('[class*="link_"]')    #专辑选择 - 新建 文本链接
+${locatorB_productsNew_checkbox_CollectionAll}    dom:document.querySelectorAll('[class="ant-checkbox-input"]')[0]    #专辑选择 - 全选框
+${locatorB_productsNew_button_addCollectionSave}    dom:document.querySelectorAll('[class="ant-drawer-footer"] [class*="ant-btn middle_btn"]')    # 专辑选择 - 确定按钮
+${locatorB_productsNew_icon_closeCollection}    dom:document.querySelectorAll('[class="ant-drawer-close-x"]')    # 专辑选择 - 关闭窗口按钮（x）
 
-# content
-${contentB_products_all}    全部
-${contentB_products_empty}    暂无数据
-${contentB_products_new}    新建商品
-${contentB_products_title}    全部
-${contentB_products_addTitle}    此处为商品标题
-${contentB_products_addSubTitle}    此处为商品副标题
-${contentB_products_addPrice}    999
-${contentB_products_addRawPrice}    9999
-${contentB_products_addWeight}    1
-${contentB_products_addSku}    100
-${contentB_products_addBarcode}    9787115470416
-${contentB_products_addSupplier}    供应商A
-${contentB_products_input_price}    请输入价格
-${contentB_products_AddTags}    TagA
-${contentB_products_tips_save_ok}    保存成功
-${contentB_products_tips_select_products}    请至少选择一个商品
-${contentB_products_tips_saving}    页面有未保存内容
-${contentB_payment_failed}     Order submission failed
-${contentB_products_tips_shelf}    是否上架
-${contentB_products_tips_shelf_ok}    上架成功
-
-# file
-${file_products_template}    ${CURDIR}/../xlsx/product_template.xlsx    # 添加单个商品模版文件
-${file_products_templates}    ${CURDIR}/../xlsx/products_template.xlsx    # 添加多个商品模版文件
-${file_products_wrong_template}    ${CURDIR}/../xlsx/wrong_format.xlsx    # 添加单个的错误的商品模版文件
+${locatorB_productsNew_textarea_firstCollCheckbox}     dom:document.querySelectorAll('[class="ant-table-tbody"] tr td')[0]    # 专辑选择 - 第一个专辑 - 复选框
+${locatorB_productsNew_image_firstPicture}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td')[1]    # 专辑选择 - 第一个专辑 - 图片
+${locatorB_productsNew_text_firstCollName}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td')[2]    # 专辑选择 - 第一个专辑 - 专辑名称
+${locatorB_productsNew_text_firstCollTime}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td')[3]    # 专辑选择 - 第一个专辑 - 创建时间
 
 
+${locatorB_productsNew_icon_seoEdit}    dom:document.querySelectorAll('[class*="icon_custom_left"]')[3]    # 商品 编辑seo
+${locatorB_productsNew_icon_viewCollect}    dom:document.querySelectorAll('[class*="icon_custom_left"]')[2]    # 商品 查看收录
+${locatorB_productsNew_icon_commit}    dom:document.querySelectorAll('[class*="icon_custom_left"]')[1]    # 商品 手动提交
 
+${locatorB_productsNew_button_LastStep}    dom:document.querySelectorAll('[class*="ant-btn default_btn"]')[1]    # 进入新增/编辑页面的上一步按钮
+${locatorB_productsNew_list_picture}    dom:document.querySelectorAll('[class="img-container_cf00"]')   # 图片展示显示
+${locatorB_productsNew_icon_DeletePictureAll}    dom:document.querySelectorAll('[class*="icon_custom_left_"]')    # 移除所有图片 图标
+${locatorB_productsNew_button_uploadBtn}    dom:document.querySelectorAll('[class*="djfont dj-add icon_"]')[0]    # 上传商品图片按钮
+${locatorB_productsNew_input_imageUp}    dom:document.querySelectorAll('[type="file"]')    #图片文件上传
+${locatorB_productsNew_icon_imageDelete}    dom:document.querySelectorAll('[class="djfont dj-not_found"]')    #图片删除图标
+${locatorB_productsNew_icon_imagePreview}    dom:document.querySelectorAll('[class="djfont dj-preview"]')[1]    #图片预览图标
 
+${locatorB_productsNew_input_salePrice}    dom:document.querySelectorAll('[id="product.variants[0].price"]')    # 添加商品页面-售价输入框
+${locatorB_productsNew_input_rawPrice}    dom:document.querySelectorAll('[id="product.variants[0].compare_at_price"]')    # 添加商品页面-原价格输入框
+${locatorB_productsNew_input_weight}    dom:document.querySelectorAll('[id="product.variants[0].weight"]')    # 添加商品页面-重量输入
+${locatorB_productsNew_input_sku}    dom:document.querySelectorAll('[id="product.variants[0].sku"]')    # 添加商品页面-Sku
+${locatorB_productsNew_input_barcode}    dom:document.querySelectorAll('[id="product.variants[0].barcode"]')    # 添加商品页面-条形码
+${locatorB_productsNew_input_stock}    dom:document.querySelectorAll('[id="product.variants[0].inventory_quantity"]')    # 添加商品页面-库存
+
+${locatorB_productsNew_radio_OneStyle}    dom:document.querySelectorAll('[class*="ant-radio"]')[4]    # 单一款式选择
+${locatorB_productsNew_radio_moreStyle}    dom:document.querySelectorAll('[class*="ant-radio"]')[6]    # 添加多个款式选择
+${locatorB_productsNew_input_needPicture}    dom:document.querySelectorAll('[class*="ant-form-item-control"] span[class*="ant-checkbox"]')[0]    # 需要配图选择
+${locatorB_productsNew_checkbox_followNumber}    dom:document.querySelectorAll('[class*="ant-form-item-control"] span[class*="ant-checkbox"]')[2]    #跟踪库存
+${locatorB_productsNew_input_followText}    dom:document.querySelectorAll('[class*="ant-select-selection"]')[0]     # 库存选择框
+${locatorB_productsNew_select_ContentOne}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[0]    # 跟踪库存 - 库存为0时不允许购买
+${locatorB_productsNew_select_ContentTwo}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[1]    # 跟踪库存 - 库存为0允许购买
+${locatorB_productsNew_select_ContentThere}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[2]    # 跟踪库存 - 库存为0自动下架
+${locatorB_productsNew_button_IndependentStyle}    dom:document.querySelectorAll('[class*="ant-btn small_btn_"]')[0]    # 独立款式 按钮
+${locatorB_productsNew_button_changeStyle}    dom:document.querySelectorAll('[class*="ant-btn small_btn_"]')[1]    # 款式修改 按钮
+${locatorB_productsNew_image_StylePic}    dom:document.querySelectorAll('[class="ant-form-item-children"] [class*="img-container img-container"]')    # 批量修改 - 图片上传
+${locatorB_productsNew_button_PictureUp}     dom:document.querySelectorAll('[class="popover-imgs popover-imgs__bottomLeft "] [class*="ant-btn middle_btn"]')    # 批量修改 - 图片 - 上传按钮
+${locatorB_productsNew_checkbox_AllStyle}    dom:document.querySelectorAll('[class="ant-table-thead"] span[class*="ant-checkbox"]')[0]     # 款式 - 全选复选框
+${locatorB_productsNew_button_batchEdit}    dom:document.querySelectorAll('[class="dj-table__header-bar"] [class*="ant-btn small_btn"]')[0]     # 款式 - 批量修改
+${locatorB_productsNew_button_batchDelete}    dom:document.querySelectorAll('[class="dj-table__header-bar"] [class*="ant-btn small_btn"]')[1]    # 款式 - 批量删除
+
+${locatorB_productsNew_icon_AddstyleListPic}    dom:document.querySelectorAll('td [class*="img-container img-container"]')    # 款式 - 添加图片（+）图标
+${locatorB_productsNew_popUp_styleListPic}    dom:document.querySelectorAll('[class*="popover-imgs popover-imgs__"]')    # 款式 - 添加图片（+）图标 - 图片
+${locatorB_productsNew_input_styleEditPrice}     dom:document.querySelectorAll('[id="price"]')    # 批量修改款式 - 售价输入框
+${locatorB_productsNew_input_styleEditComparePrice}    dom:document.querySelectorAll('[id="compare_at_price"]')    # 批量修改款式 - 原价输入框
+${locatorB_productsNew_input_styleEditWeight}    dom:document.querySelectorAll('[id="weight"]')    # 批量修改款式 - 重量输入框
+${locatorB_productsNew_input_styleEditQuantity}    dom:document.querySelectorAll('[id="inventory_quantity"]')    # 批量修改款式 - 库存输入框
+
+${locatorB_productsNew_button_addStyle}    dom:document.querySelectorAll('[class*="ant-btn middle_btn"]')[2]    # 添加款式按钮
+${locatorB_productsNew_input_StyleName}    dom:document.querySelectorAll('[id*="name"]')    # 款式名称输入
+${locatorB_productsNew_input_StyleContent}    dom:document.querySelectorAll('input[id*="values"]')  #款式值输入
+${locatorB_productsNew_button_productAttribute}    dom:document.querySelectorAll('[class="addoption_8be3"]')    # 创建商品属性 按钮
+${locatorB_productsNew_icon_styleInputCancel}     dom:document.querySelectorAll('[class="option__remove_f522"]')[0]    #款式名称输入框-》删除图标
+${locatorB_productsNew_button_styleCancel}    dom:document.querySelectorAll('[class*="ant-btn default_btn_"]')[3]    #添加款式页面 - 取消按钮
+${locatorB_productsNew_button_styleSure}    dom:document.querySelectorAll('[class*="ant-btn middle_btn_"]')    #添加款式页面 - 确认按钮
+${locatorB_productsNew_icon_closestyle}    dom:document.querySelectorAll('[class="ant-drawer-close-x"]')     # 添加款式页面 关闭图标（x）
+${locatorB_productsNew_button_save}    ${locatorB_button_save00}     # 保存按钮
 
 # C端
 ${locatorC_productDetail_button_addToCart}    dom:document.querySelectorAll("[data-click='addToCart']")[0]     #.c端订单-添加到购物车 add to cart
