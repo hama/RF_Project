@@ -150,7 +150,7 @@ checkout_132
     #.信用卡信息填写
     Add Credit Card Info
     Wait And Click Element      ${locatorC_checkoutPayment_button_completeOrder}
-    Wait Until Page Contains Text   Payment failure!
+    Wait Until Page Contains Text   Payment failure
     #关闭credit_card  信用卡支付方式
     kwpayment.inactivate_payment_credit_card_py
 
