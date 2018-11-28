@@ -185,10 +185,10 @@ def dict_deepupdate(json_data, json_conf):
                 values_num = len(values)
                 list_num = len(json_data[key])
                 if list_num > values_num:
-                    for i in range(len(list_num - values_num)):
+                    for i in range(list_num - values_num):
                         json_data[key].pop()
                 elif list_num < values_num:
-                    for i in range(len(values_num - list_num)):
+                    for i in range(values_num - list_num):
                         json_data[key].append(json_data[key][0])
                 # 给对应key赋值
                 for i in range(len(values)):

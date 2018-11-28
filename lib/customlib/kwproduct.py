@@ -246,9 +246,25 @@ def add_max_product_with_sub_py(cookie=init_cookie):
     return products_post_py(product_max_data_with_sub, cookie=cookie)['content']['product']['id']
 
 
+def add_subproduct_with_conf_py(conf={}, cookie=init_cookie):
+    '''
+    通过conf（dict数据类型）配置来添加产品(含子商品)
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(product_max_data_with_sub)
+    dict_deepupdate(data, conf)
+    key_list = conf.keys()
+    if 'images' not in key_list:
+        data['images'] = [{'id': '', 'image': image}]
+
+    return products_post_py(data, cookie=cookie)['content']['product']['id']
+
+
 if __name__ == '__main__':
     # print add_min_product_py()
-    print add_max_product_py()
+    conf = {'variants': [{"price": "45", "compare_at_price": "70"}, {"price": "90", "compare_at_price": "710"}]}
+    print add_subproduct_with_conf_py(conf)
     # print get_product_detail_py(add_max_product_py())
     # print add_product_with_conf_py()
     # print del_latest_product_py()
