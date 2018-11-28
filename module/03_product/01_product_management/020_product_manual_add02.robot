@@ -9,344 +9,493 @@ Resource          ../../../resources/keywords/kw_common.robot
 
 
 *** Test Cases ***
-# 有bug，已提单，暂不跑
-#products052
-#	[Documentation]    验证可成功移除已有标签
-#    [Tags]    P0    threshold
-#    kwproduct.add_max_product_py
-#    Reload Page And Start Ajax
-#    Select All Product Tag
-#    Select All Items Then Click Batch Menu
-#    Wait And Click Element    ${locatorB_productsMgmt_select_delTags}
-#    @{antTags}    Wait And Get Items List From Locator    ${locatorB_antTags}    ${locatorB_popUps_button_footermiddle}
-#    :FOR    ${antTag}    IN    @{antTags}
-#    \    Wait And Click Element    ${antTag}
-#    Wait And Click Element    ${locatorB_popUps_button_footermiddle}
-#    Wait Until Page Contains Text    移除成功
-#    # 进入product中检查是否存在
-#    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
-#    Sleep    2
-#    Wait Until Page Contains Locator    ${locatorB_productsNew_input_tags}
-#    Wait Until Page Not Contains Locator    ${locatorB_tagboxs}
+product180
+    [Documentation]    款式设置选择'添加多个款式‘且勾选需要配图
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Add Some Style
+    Select Need Picture
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    x1    0    x1\n
+    Wait And Click Element     ${locatorB_productsNew_button_styleSure}[3]
+    Wait Until Page Contains Locator    ${locatorB_productsNew_icon_AddstyleListPic}
 
-products055
-	[Documentation]    验证可成功加入一个或多个专辑
+product183
+    [Documentation]    多款式-添加一个商品款式名称
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Add Some Style
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    color1    0    款式1\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    Wait Until Page Contains Text    color1
+
+product184
+    [Documentation]    多款式-添加两个商品款式名称
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Add Some Style
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    color1    0    款式1\n
+    Wait And Click Element    ${locatorB_productsNew_button_productAttribute}
+    Add One Product Style    1    color2    1    款式2\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    Wait Until Page Contains Text    color1
+    Wait Until Page Contains Text    color2
+
+product185
+    [Documentation]    多款式-添加三个商品属性
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Add Some Style
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    color1    0    款式1\n
+    Wait And Click Element    ${locatorB_productsNew_button_productAttribute}
+    Add One Product Style    1    color2    1    款式2\n
+    Wait And Click Element    ${locatorB_productsNew_button_productAttribute}
+    Add One Product Style    2    color3    2    款式3\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    Wait Until Page Contains Text    color1
+    Wait Until Page Contains Text    color2
+    Wait Until Page Contains Text    color3
+
+product188
+    [Documentation]    多款式-添加一个属性单个款式
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Add Some Style
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    xx    0    yy\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    Wait Until Page Contains Text    yy
+
+product189
+    [Documentation]    多款式-添加一个款式名称多个款式
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Add Some Style
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    xx    0    x1\ny1\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    Wait Until Page Contains Text    x1
+    Wait Until Page Contains Text    y1
+
+product190
+    [Documentation]    多款式-添加多个属性多个款式
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Add Some Style
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    xxx    0    x1\ny1\n
+    Wait And Click Element    ${locatorB_productsNew_button_productAttribute}
+    Add One Product Style    1    xxxx    1    a1\nb1\nc1\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    Wait Until Page Contains Text    x1
+    Wait Until Page Contains Text    y1
+    Wait Until Page Contains Text    a1
+    Wait Until Page Contains Text    b1
+    Wait Until Page Contains Text    c1
+
+product197
+    [Documentation]    多款式-添加‘独立款式’
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Add Some Style
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    x1    0    x1\n
+    Wait And Click Element    ${locatorB_productsNew_button_productAttribute}
+    Add One Product Style    1    a1    1    a1\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    Wait And Click Element    ${locatorB_productsNew_button_IndependentStyle}
+    Wait And Input Text    ${locatorB_productsNew_input_StyleContent}[0]    x1修改\n
+    Wait And Input Text    ${locatorB_productsNew_input_StyleContent}[1]    a1修改\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[2]
+    Wait Until Page Contains Text    x1修改
+    Wait Until Page Contains Text    a1修改
+
+product200
+    [Documentation]    多款式-修改款式
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Add Some Style
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    x1    0    x1\n
+    Wait And Click Element    ${locatorB_productsNew_button_productAttribute}
+    Add One Product Style    1    a1    1    a1\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    Wait And Click Element    ${locatorB_productsNew_button_changeStyle}
+    Wait And Click Element    ${locatorB_productsNew_button_productAttribute}
+    Add One Product Style    2    c1    2    c1\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[2]
+    Wait Until Page Contains Text    x1
+    Wait Until Page Contains Text    a1
+    Wait Until Page Contains Text    c1
+
+product203
+    [Documentation]    多款式-批量删除全部款式
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Add Some Style
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    x1    0    x1\n
+    Wait And Click Element    ${locatorB_productsNew_button_productAttribute}
+    Add One Product Style    1    a1    1    a1\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    sleep    10
+    ${class}    Wait And Get Element Attribute    ${locatorB_productsNew_checkbox_AllStyle}    class
+    Run Keyword If    $class=='ant-checkbox'    Wait And Click Element    ${locatorB_productsNew_checkbox_AllStyle}
+    Wait And Click Element     ${locatorB_productsNew_button_batchDelete}
+    Wait Until Page Contains Locator    ${locatorB_productsNew_button_addStyle}
+
+product204
+    [Documentation]    多款式-点击‘批量修改’
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Follow Stock
+    Select Add Some Style
+    Select Need Picture
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    x1    0    x1\n
+    Wait And Click Element    ${locatorB_productsNew_button_productAttribute}
+    Add One Product Style    1    a1    1    a1\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    ${class}    Wait And Get Element Attribute    ${locatorB_productsNew_checkbox_AllStyle}    class
+    Run Keyword If    $class=='ant-checkbox'    Wait And Click Element    ${locatorB_productsNew_checkbox_AllStyle}
+    Wait And Click Element     ${locatorB_productsNew_button_batchEdit}
+    Wait Until Page Contains Text    已选中1个SKU
+    Wait Until Page Contains Text    售价
+    Wait Until Page Contains Text    原价
+    Wait Until Page Contains Text    重量
+
+product208
+    [Documentation]    多款式-批量修改全部款式
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Follow Stock
+    Select Add Some Style
+    Select Need Picture
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    x1    0    x1\n
+    Wait And Click Element    ${locatorB_productsNew_button_productAttribute}
+    Add One Product Style    1    a1    1    a1\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    Wait Enabled And Choose File    ${locatorB_productsNew_input_imageUp}    ${file_products_addImg}
+    Wait And Click Element    ${locatorB_productsNew_checkbox_AllStyle}
+    Wait And Click Element    ${locatorB_productsNew_button_batchEdit}
+    Wait And Input Text    ${locatorB_productsNew_input_styleEditPrice}    120
+    Wait And Input Text    ${locatorB_productsNew_input_styleEditComparePrice}    124
+    Wait And Input Text    ${locatorB_productsNew_input_styleEditWeight}    2
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[2]
+    Value Of Element Should Be Equal With Wait    ${locatorB_productsNew_input_salePrice}    120
+    Value Of Element Should Be Equal With Wait    ${locatorB_productsNew_input_rawPrice}    124
+
+product210
+    [Documentation]    多款式-批量修改弹框点击’上传‘图片
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Add Some Style
+    Select Need Picture
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    x1    0    x1\n
+    Wait And Click Element    ${locatorB_productsNew_button_productAttribute}
+    Add One Product Style    1    a1    1    a1\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    ${class}    Wait And Get Element Attribute    ${locatorB_productsNew_checkbox_AllStyle}    class
+    Run Keyword If    $class=='ant-checkbox'    Wait And Click Element    ${locatorB_productsNew_checkbox_AllStyle}
+    Wait And Click Element     ${locatorB_productsNew_button_batchEdit}
+    Wait And Click Element    ${locatorB_productsNew_image_StylePic}
+    Wait And Click Element    ${locatorB_productsNew_button_PictureUp}
+
+product213
+    [Documentation]    多款式-已上传图片时子产品列表点击添加图片按钮
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Wait Enabled And Choose File    ${locatorB_productsNew_input_imageUp}    ${file_products_addImg}
+    Select Add Some Style
+    Select Need Picture
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    x1    0    x1\n
+    Wait And Click Element    ${locatorB_productsNew_button_productAttribute}
+    Add One Product Style    1    a1    1    a1\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    Wait And Click Element    ${locatorB_productsNew_icon_AddstyleListPic}
+    Wait And Click Element    ${locatorB_productsNew_popUp_styleListPic}
+
+product216
+    [Documentation]    商品列表-已存在商品时‘全部’商品展示
     [Tags]    P0    threshold
     kwproduct.add_max_product_py
-    del_all_collections_py
+    kwproduct.add_min_product_py
+    kwproduct.add_min_product_py
+    kwproduct.add_max_product_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsMgmt_tab_ProductAll}
+    ${productNum}=    kwproduct.get_all_products_count_py
+    Should Be True    ${productNum}==${4}
+
+product218
+    [Documentation]    商品列表-存在上架商品时‘上架’商品展示
+    [Tags]    P0    threshold
+    kwproduct.add_max_product_py
+    kwproduct.add_max_product_py
+    kwproduct.add_max_product_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsMgmt_tab_ProductOn}
+    ${productNum}=    kwproduct.get_all_products_count_py
+    Should Be True    ${productNum}==${3}
+
+product220
+    [Documentation]    商品列表-存在下架商品时‘下架’商品展示
+    [Tags]    P0    threshold
+    kwproduct.add_min_product_py
+    kwproduct.add_min_product_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsMgmt_tab_ProductDown}
+    ${productNum}=    kwproduct.get_all_products_count_py
+    Should Be True    ${productNum}==${2}
+
+product222
+    [Documentation]    商品列表-批量删除当前页全部商品
+    [Tags]    P0    threshold
+    kwproduct.add_min_product_py
+    kwproduct.add_min_product_py
+    kwproduct.add_min_product_py
+    kwproduct.add_max_product_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseProducets}
+    Sleep    5
+    Wait And Click Element Then Confirm    ${locatorB_productsMgmt_button_BatchDelete}
+    Reload Page And Start Ajax
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_button_addSomePro}
+
+products0225
+    [Documentation]    商品列表-批量上架当前页全部商品
+    [Tags]    P0
+    kwproduct.add_min_product_py
+    kwproduct.add_min_product_py
+    kwproduct.add_min_product_py
+    kwproduct.add_max_product_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseProducets}
+    Sleep    5
+    Wait And Click Element Then Confirm    ${locatorB_productsMgmt_button_BatchOn}
+    Reload Page And Start Ajax
+    Element Attribute Should Be Equal With Wait    ${locatorB_productsMgmt_button_ProductUpDown}    class    ant-switch ant-switch-checked
+
+product229
+    [Documentation]    商品列表-批量下架当前页全部商品
+    [Tags]    P0    threshold
+    kwproduct.add_max_product_py
+    kwproduct.add_max_product_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseProducets}
+    Sleep    5
+	Wait And Click Element Then Confirm    ${locatorB_productsMgmt_button_BatchDown}
+	Reload Page And Start Ajax
+	Element Attribute Should Be Equal With Wait    ${locatorB_productsMgmt_button_ProductUpDown}    class    ant-switch
+
+product234
+    [Documentation]    商品列表商品展示
+    [Tags]    P0    threshold
+    kwproduct.add_max_product_py
+    Reload Page And Start Ajax
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_checkbox_chooseProducets}
+    Wait Until Page Contains Text    操作
+    Wait Until Page Contains Text    商品图片
+    Wait Until Page Contains Text    商品名称
+    Wait Until Page Contains Text    售价
+    Wait Until Page Contains Text    原价
+    Wait Until Page Contains Text    库存
+    Wait Until Page Contains Text    SKU
+    Wait Until Page Contains Text    是否上架
+    Wait Until Page Contains Text    所属专辑
+    Wait Until Page Contains Text    最后修改时间
+
+product235
+    [Documentation]    商品列表-点击商品主图
+    [Tags]    P0    threshold
+    kwproduct.add_max_product_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsMgmt_image_firstProductImage}
+    Wait Until Page Contains Text    基本信息
+    Wait Until Page Contains Text    基本属性
+
+product237
+    [Documentation]    商品列表-点击商品名称
+    [Tags]    P0    threshold
+    kwproduct.add_max_product_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+    Wait Until Page Contains Text    基本信息
+    Wait Until Page Contains Text    基本属性
+
+product238
+    [Documentation]    商品列表-点击预览icon
+    [Tags]    P0    threshold
+    kwproduct.add_max_product_py
+    Reload Page And Start Ajax
+    ${productTitle}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
+    Wait And Click Element    ${locatorB_productsMgmt_icon_firstpreview}
+    Wait Until Page Contains Text    ${productTitle}
+
+product239
+    [Documentation]    商品列表-点击删除icon
+    [Tags]    P0    threshold
+    kwproduct.add_min_product_py
+    Reload Page And Start Ajax
+    Sleep    5
+    Wait And Click Element Then Confirm    ${locatorB_productsMgmt_icon_firstdelete}
+    Reload Page And Start Ajax
+    Wait Until Page Contains Text    新建并上架你的商品
+    Wait Until Page Contains Text    新建并上架你的第一件商品，上架完你的优质商品后，用户才可以在你的网站上进行购物。
+    Wait Until Page Contains Locator    ${locatorB_productsMgmt_button_addSomePro}
+
+product260
+    [Documentation]    商品列表-上架商品
+    [Tags]    P0    threshold
+    kwproduct.add_min_product_py
+    Reload Page And Start Ajax
+    Wait And Click Element Then Confirm    ${locatorB_productsMgmt_button_ProductUpDown}[0]
+    Reload Page And Start Ajax
+    Element Attribute Should Be Equal With Wait    ${locatorB_productsMgmt_button_ProductUpDown}[0]    class    ant-switch ant-switch-checked
+
+product261
+    [Documentation]    商品列表-下架商品
+    [Tags]    P0    threshold
+    kwproduct.add_max_product_py
+    Reload Page And Start Ajax
+    Wait And Click Element Then Confirm    ${locatorB_productsMgmt_button_ProductUpDown}[0]
+    Reload Page And Start Ajax
+    Element Attribute Should Be Equal With Wait    ${locatorB_productsMgmt_button_ProductUpDown}[0]    class    ant-switch
+
+products269
+    [Documentation]    商品列表-修改商品所属专辑
+    [Tags]    P0    threshold
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
-    Select All Product Tag
-    Select All Items Then Click Batch Menu
-    Wait And Click Element    ${locatorB_productsMgmt_select_addtoCategory}
-    Wait And Click Element    ${locatorB_popUps_allCheckbox}
-    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
-    Wait Until Page Contains Text    添加成功
-    # 进入Collection中检查是否存在
-    Go To Product Collection Page
-    Wait And Click Element    ${locatorB_productsCollection_text_firstCollectionNum}
-    Wait Until Page Contains Text    专辑商品(1)
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Wait And Click Element    ${locatorB_productsNew_span_SelectCollection}
+    Sleep    5
+    Wait And Click Element    ${locatorB_productsNew_button_newCollection}
+    Wait And Input Text    ${locatorB_productsNew_input_newCollectionName}    xinjianshanpinzhuanji
+    Wait And Click Element    ${locatorB_productsNew_button_addCollectionSave}
+    Wait Until Page Contains Text    xinjianshanpinzhuanji
 
-products063
-	[Documentation]    验证可成功将商品从已加入的专辑中移除
+product270
+    [Documentation]    全部-输入内容进行搜索
     [Tags]    P0    threshold
     kwproduct.add_max_product_py
-    kwcollection.add_collection_with_pic_py
-    kwcollection.add_collection_without_pic_py
+    kwproduct.add_min_product_py
     Reload Page And Start Ajax
-    # 通过批量操作给商品添加入专辑1与专辑2
-    Select All Product Tag
-    Select All Items Then Click Batch Menu
-    Wait And Click Element    ${locatorB_productsMgmt_select_addtoCategory}
-    @{checkboxs}    Wait And Get Items List From Locator    ${locatorB_popUps_allCheckbox}    ${locatorB_popUps_allCheckbox}[0]
-    :FOR    ${checkbox}    IN    @{checkboxs}
-    \    Wait And Click Element    ${checkbox}
-    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
-    Wait Until Page Contains Text    添加成功
-	# 批量删除专辑
-    Select All Items Then Click Batch Menu
-    Wait And Click Element    ${locatorB_productsMgmt_select_delfromCategory}
-	@{checkboxs}    Wait And Get Items List From Locator    ${locatorB_popUps_allCheckbox}    ${locatorB_popUps_allCheckbox}[0]
-    :FOR    ${checkbox}    IN    @{checkboxs}
-    \    Wait And Click Element    ${checkbox}
-    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
-    Wait Until Page Contains Text    移除成功
-    # 进入Collection中检查是否存在
-    Go To Product Collection Page
-    Wait And Click Element    ${locatorB_productsCollection_text_listCollectionNum}[0]
-    Wait Until Page Contains Text    专辑商品(0)
-    Go To Product Collection Page
-    Wait And Click Element    ${locatorB_productsCollection_text_listCollectionNum}[1]
-    Wait Until Page Contains Text    专辑商品(0)
+    Wait And Click Element    ${locatorB_productsMgmt_tab_ProductAll}
+    ${firstproName}=    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
+    Wait And Input Text    ${locatorB_productsMgmt_input_ProductSelect}    ${firstproName}
+    Wait And Click Element    ${locatorB_productsMgmt_button_ProductSelect}
+    Text Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_text_firstProductName}    ${firstproName}
 
-#products070
-#	[Documentation]    验证可全部取消自定义列表内容
+product272
+    [Documentation]    多款式批量修改商品售价
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Follow Stock
+    Select Add Some Style
+    Select Need Picture
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    x1    0    x1\n
+    Wait And Click Element    ${locatorB_productsNew_button_productAttribute}
+    Add One Product Style    1    a1    1    a1\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    Wait And Click Element    ${locatorB_productsNew_checkbox_AllStyle}
+    Wait And Click Element    ${locatorB_productsNew_button_batchEdit}
+    Wait And Input Text    ${locatorB_productsNew_input_styleEditPrice}    120
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[2]
+    Value Of Element Should Be Equal With Wait    ${locatorB_productsNew_input_salePrice}    120
+
+product273
+    [Documentation]    多款式批量修改商品原价
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Follow Stock
+    Select Add Some Style
+    Select Need Picture
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    x1    0    x1\n
+    Wait And Click Element    ${locatorB_productsNew_button_productAttribute}
+    Add One Product Style    1    a1    1    a1\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    Wait And Click Element    ${locatorB_productsNew_checkbox_AllStyle}
+    Wait And Click Element    ${locatorB_productsNew_button_batchEdit}
+    Wait And Input Text    ${locatorB_productsNew_input_styleEditComparePrice}    120
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[2]
+    Value Of Element Should Be Equal With Wait    ${locatorB_productsNew_input_rawPrice}    120
+
+product275
+    [Documentation]    多款式批量修改重量
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Follow Stock
+    Select Add Some Style
+    Select Need Picture
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    x1    0    x1\n
+    Wait And Click Element    ${locatorB_productsNew_button_productAttribute}
+    Add One Product Style    1    a1    1    a1\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    Wait And Click Element    ${locatorB_productsNew_checkbox_AllStyle}
+    Wait And Click Element    ${locatorB_productsNew_button_batchEdit}
+    Wait And Input Text    ${locatorB_productsNew_input_styleEditWeight}    2
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[2]
+    Value Of Element Should Be Equal With Wait    ${locatorB_productsNew_input_weight}    2
+
+product276
+    [Documentation]    多款式批量修改库存
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Follow Stock
+    Select Add Some Style
+    Select Need Picture
+    Wait And Click Element    ${locatorB_productsNew_button_addStyle}
+    Add One Product Style    0    x1    0    x1\n
+    Wait And Click Element    ${locatorB_productsNew_button_productAttribute}
+    Add One Product Style    1    a1    1    a1\n
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[3]
+    Wait And Click Element    ${locatorB_productsNew_checkbox_AllStyle}
+    Wait And Click Element    ${locatorB_productsNew_button_batchEdit}
+    Wait And Input Text    ${locatorB_productsNew_input_styleEditQuantity}    124
+    sleep    5
+    Wait And Click Element    ${locatorB_productsNew_button_styleSure}[2]
+    Value Of Element Should Be Equal With Wait    ${locatorB_productsNew_input_stock}    124
+
+#图片上传无法实现，原因未知
+#product279
+#    [Documentation]    新建一个填写了所有必填项和非必填项的商品
 #    [Tags]    P0    threshold
-#    kwproduct.add_max_product_py
+#    kwcollection.add_collection_with_pic_py
 #    Reload Page And Start Ajax
-#    Select All Product Tag
-#    Hide All Header
-#	Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_textlist_itemsTitle}    ${5}
-#    Show All Header
-#	Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_textlist_itemsTitle}    ${11}
-
-products076
-	[Documentation]    输入最低价格，搜索大于等于该价格商品
-    [Tags]    P0    threshold
-    &{product_conf01} =    Create Dictionary
-    ...    saleprice=1
-    kwproduct.add_product_with_conf_py    ${product_conf01}
-    &{product_conf02} =    Create Dictionary
-    ...    saleprice=199
-    kwproduct.add_product_with_conf_py    ${product_conf02}
-    Reload Page And Start Ajax
-    Select All Product Tag
-    Wait And Input Text    ${locatorB_productsMgmt_input_minPrice}    99
-    Wait And Click Element    ${locatorB_productsMgmt_button_search}
-    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
-
-products077
-	[Documentation]    输入最低价格，搜索大于等于该价格商品
-    [Tags]    P0    threshold
-    &{product_conf01} =    Create Dictionary
-    ...    saleprice=1
-    kwproduct.add_product_with_conf_py    ${product_conf01}
-    &{product_conf02} =    Create Dictionary
-    ...    saleprice=199
-    kwproduct.add_product_with_conf_py    ${product_conf02}
-    Reload Page And Start Ajax
-    Select All Product Tag
-    Wait And Input Text    ${locatorB_productsMgmt_input_maxPrice}    99
-    Wait And Click Element    ${locatorB_productsMgmt_button_search}
-    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
-
-products078
-	[Documentation]    输入最低价格10，最高价格90，搜索价格在10~90之间的商品
-    [Tags]    P0    threshold
-    &{product_conf01} =    Create Dictionary
-    ...    saleprice=1
-    kwproduct.add_product_with_conf_py    ${product_conf01}
-    &{product_conf02} =    Create Dictionary
-    ...    saleprice=199
-    kwproduct.add_product_with_conf_py    ${product_conf02}
-    Reload Page And Start Ajax
-    Select All Product Tag
-    Wait And Input Text    ${locatorB_productsMgmt_input_minPrice}    10
-    Wait And Input Text    ${locatorB_productsMgmt_input_maxPrice}    99
-    Wait And Click Element    ${locatorB_productsMgmt_button_search}
-    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${0}
-
-products080
-	[Documentation]    可模糊搜索出商品名称包含该单词的商品
-    [Tags]    P0    threshold
-    kwproduct.add_max_product_py
-    &{product_conf01} =    Create Dictionary
-    ...    title=compareone
-    kwproduct.add_product_with_conf_py    ${product_conf01}
-    Reload Page And Start Ajax
-    Select All Product Tag
-    Wait And Input Text    ${locatorB_productsMgmt_input_name}    compare
-    Wait And Click Element    ${locatorB_productsMgmt_button_search}
-    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
-    ${productName}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
-	Should Be Equal    '${productName}'    'compareone'
-
-
-products082
-	[Documentation]    可通过标签搜索出商品
-    [Tags]    P0    threshold
-    kwproduct.add_max_product_py
-    @{tags} =    Create List    'color'
-    &{product_conf01} =    Create Dictionary
-    ...    tags=@{tags}
-    ...    title=compareone
-    kwproduct.add_product_with_conf_py    ${product_conf01}
-    Reload Page And Start Ajax
-    Select All Product Tag
-    Wait And Input Text    ${locatorB_productsMgmt_input_name}    color
-    Wait And Click Element    ${locatorB_productsMgmt_button_search}
-    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
-    ${productName}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
-	Should Be Equal    '${productName}'    'compareone'
-
-products084
-	[Documentation]    验证只输入必填项可正常添加商品
-    [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
-    Fill In Required Items When Create Product
-    Wait And Click Element    ${locatorB_productsNew_button_save}
-    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
-    Go To Product Management Page
-    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
-    ${productName}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
-    Should Be Equal    '${productName}'    'newproduct'
-
-products093
-	[Documentation]    验证可将商品上架
-    [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
-    Fill In Required Items When Create Product
-    Wait And Click Element    ${locatorB_productsNew_button_save}
-    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
-    Go To Product Management Page
-    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
-    ${attr0} =    Wait And Get Element Attribute    ${locatorB_productsMgmt_switch_listLaunched}[0]    class
-    Should Be Equal    '${attr0}'    'ant-switch ant-switch-checked'
-
-products097
-	[Documentation]    验证可正常添加供应商
-    [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
-    Fill In Required Items When Create Product
-    Wait And Input Text    ${locatorB_productsNew_input_supplier}    try_to_add_supplier
-    Press Key    ${locatorB_productsNew_input_supplier}    ${keybord_enter}
-    Wait And Click Element    ${locatorB_productsNew_button_save}
-    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
-    Go To Product Management Page
-    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
-    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
-    Sleep    2
-    ${attr0} =    Wait And Get Element Attribute    ${locatorB_productsNew_input_supplier}    value
-    Should Be Equal    '${attr0}'    'try_to_add_supplier'
-
-products099
-	[Documentation]    验证可正常添加单个标签
-    [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
-    Fill In Required Items When Create Product
-    Wait And Input Text    ${locatorB_productsNew_input_tags}    try_to_add_tags
-    Press Key    ${locatorB_productsNew_input_tags}    ${keybord_enter}
-    Wait And Click Element    ${locatorB_productsNew_button_save}
-    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
-    Go To Product Management Page
-    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
-    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
-    Sleep    2
-    ${attr0} =    Wait And Get Text    ${locatorB_tagboxs}[0]
-    Should Be Equal    '${attr0}'    'try_to_add_tags'
-
-products112
-	[Documentation]    验证可上传一张图片
-    [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
-    Fill In Required Items When Create Product
-    Wait And Click Element    ${locatorB_productsNew_button_save}
-    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
-    Go To Product Management Page
-    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
-    ${productName}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
-    Should Be Equal    '${productName}'    'newproduct'
-
-# 含点击‘编辑图片alt'icon，暂不实现
-#products119
-#	[Documentation]    验证可编辑图片alt
-#    [Tags]    P0    threshold
-#    Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
-#    Wait Enabled And Choose File    ${locatorB_productsNew_input_addImage}    ${img_file}
-#	Mouse Over    ${locatorB_productsNew_img_firstImage}
-#	Wait And Click Element
-
-# 无法点开'增加选项'，暂不实现
-#products122
-#	[Documentation]    验证可添加子产品
-#    [Tags]    P1    threshold
-#    Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
-#    Fill In Required Items When Create Product
-#    Execute JavaScript    document.querySelectorAll('button[data-robot="products_setting"]')[0].scrollIntoView()
-#    Sleep    2
-#    Wait And Click Element    ${locatorB_productsNew_button_setting}
-#    Wait And Click Element    ${locatorB_productsNew_dropdown_addItems}
-#    Wait And Click Element    ${locatorB_productsNew_dropdown_customize}
-#    Wait And Input Text    ${locatorB_productsNew_input_firstStyleCategory}    firstStyleCategory
-#    Wait And Input Text    ${locatorB_productsNew_input_firstSubStyleCategory}    firstSubStyleCategory
-#	Press Key    ${locatorB_productsNew_input_firstSubStyleCategory}    ${keybord_enter}
-#    Wait Until Page Contains Locator    ${locatorB_productsNew_checkbox_firstSubProduct}
+#    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+#    Fill All Items When Create Product
+#    Sleep    5
 #    Wait And Click Element    ${locatorB_productsNew_button_save}
-#    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
-#    Go To Product Management Page
-#    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
-#    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
-#    Sleep    2
-#    Wait Until Page Contains Locator    ${locatorB_productsNew_checkbox_firstSubProduct}
-#
-# 无法点开'增加选项'，暂不实现
-#products123
-#	[Documentation]    验证可自定义选项
-#    [Tags]    P1    threshold
-#    Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
-#    Fill In Required Items When Create Product
-#    Wait And Click Element    ${locatorB_productsNew_button_setting}
-#    Wait And Click Element    ${locatorB_productsNew_dropdown_addItems}
-#    Wait And Click Element    ${locatorB_productsNew_dropdown_customize}
-#    Wait And Input Text    ${locatorB_productsNew_input_firstStyleCategory}    firstStyleCategory
-#    Wait And Input Text    ${locatorB_productsNew_input_firstSubStyleCategory}    firstSubStyleCategory
-#	Press Key    ${locatorB_productsNew_input_firstSubStyleCategory}    ${keybord_enter}
-#    Wait Until Page Contains Locator    ${locatorB_productsNew_checkbox_firstSubProduct}
-#    Wait And Click Element    ${locatorB_productsNew_button_save}
-#    Wait Until Page Not Contains Locator    ${locatorB_productsNew_button_save}
-#    Go To Product Management Page
-#    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
-#    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
-#    Sleep    2
-#    Wait Until Page Contains Locator    ${locatorB_productsNew_checkbox_firstSubProduct}
-
-# 元素不好定位，待多福添加robot-data之后，再写此用例
-#products124
-#	[Documentation]    验证可编辑SEO,成功保存
-#    [Tags]    P1    threshold
-#    Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}
-#    Fill In Required Items When Create Product
-#    Wait And Click Element    ${locatorB_productsNew_icon_editSEO}
-#    Wait And Input Text    ${locatorB_productsNew_input_homeTitle}    homeTitle
-#    Wait And Input Text    ${locatorB_productsNew_textarea_homeSEODesc}    homeSEODesc
-#    Wait And Input Text    ${locatorB_productsNew_input_homeSEOLink}    homeSEOLink
-#    Wait And Input Text    ${locatorB_productsNew_input_homeSEOKeyword}    homeSEOKeyword
-#	Press Key    ${locatorB_productsNew_input_homeSEOKeyword}    ${keybord_enter}
-#	Sleep    20
-
-# 有bug，已提单，暂不跑
-#products128
-#	[Documentation]    验证可批量上传商品
-#    [Tags]    P0    threshold
-#    Wait And Click Element    ${locatorB_productsMgmt_icon_uploadProduct}
-#    Wait Enabled And Choose File    ${locatorB_productsMgmt_input_uploadProduct}    ${file_products_template}
-#    Wait And Click Element    ${locatorB_productsMgmt_button_toImport}
-#    Wait Until Page Contains Text    导入完成    30
-#    Wait And Click Element    ${locatorB_productsMgmt_button_confirmAfterImport}
-#    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_icon_listPreview}    ${1}
-#    ${productName}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductName}
-#    Should Be Equal    '${productName}'    'Example T-Shirt'
-
-products129
-	[Documentation]    验证上传不合格的商品文件，无法上传
-    [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_productsMgmt_icon_uploadProduct}
-    Wait Enabled And Choose File    ${locatorB_productsMgmt_input_uploadProduct}    ${file_products_wrong_template}
-    Wait Until Page Contains Text    其中格式正确的有0条
-
-# 有bug，并且之后需要重构
-#products187
-#	[Documentation]    不可批量上架无图片商品
-#    [Tags]    P0    threshold
-#    kwproduct.add_min_product_py
+#    Sleep    5
+#    Wait And Click Element    ${locatorB_productsNew_button_productList}
 #    Reload Page And Start Ajax
-#    Select All Product Tag
-#    Select All Items Then Click Batch Menu
-#    Wait And Click Element Then Confirm    ${locatorB_productsMgmt_select_launch}
-#    Wait Until Page Contains Text    全部商品上架失败：缺少图片
-#    Count Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_switch_listLaunched}    ${0}
-
-# 有bug，已提单，暂不跑
-#products188
-#	[Documentation]    浏览量增加
-#    [Tags]    P0    threshold
-#    kwproduct.add_max_product_py
-#    Reload Page And Start Ajax
-#    Wait And Click Element    ${locatorB_productsMgmt_icon_listPreview}[0]
-#    Sleep    2
-#    Open New And Close Other Windows    ${home_page}
-#    Go To Product Management Page
-#    Select All Product Tag
-#    ${text}    Wait And Get Text    ${locatorB_productsMgmt_text_firstProductViews}
-#    Should Be equal    '${text}'    '1'
+#    Wait Until Page Contains Locator    ${locatorB_productsMgmt_list_firstProduct}
 
