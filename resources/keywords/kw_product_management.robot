@@ -129,6 +129,11 @@ Select Add Some Style
     ${class}=    Wait And Get Element Attribute    ${locatorB_productsNew_radio_moreStyle}    class
     Run Keyword If    $class=='ant-radio'    Wait And Click Element    ${locatorB_productsNew_radio_moreStyle}
 
+Select Add Single Style
+    [Documentation]    款式设置 - 勾选 - 添加单一款式
+    ${class}=    Wait And Get Element Attribute    ${locatorB_productsNew_radio_OneStyle}    class
+    Run Keyword If    $class=='ant-radio'    Wait And Click Element    ${locatorB_productsNew_radio_OneStyle}
+
 
 Add Product
     [Documentation]    添加下架商品以做测试
