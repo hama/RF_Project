@@ -120,7 +120,7 @@ ${url_subtraction}    ${home_page}/subtraction    # subtraction
 ${url_coupon_code}    ${home_page}/coupon_code    # coupon
 ${url_store}    ${home_page}/store    # store
 ${url_accounts}    ${home_page}/accounts   # accounts
-${url_collection}    ${home_page}/collection   # collection
+${url_collection}    ${home_page}/collections   # collection
 ${url_reviews}    ${home_page}/reviews   # reviews
 ${url_seoimage}    ${home_page}/seoImage    #. seoimage
 ${url_files}    ${home_page}/files    #. uploadFile

@@ -8,7 +8,6 @@ Force Tags        coupon code
 Resource          ../../../resources/keywords/kw_common.robot
 
 *** Test Cases ***
-
 coupon_code001
     [Documentation]    验证左侧导航栏可进入优惠码界面
     [Tags]    P0
@@ -123,7 +122,6 @@ coupon_code082
     Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_activityTime}    ${startTime1}-\n${EndTime2}
 
-
 coupon_code085
     [Documentation]    验证新建优惠码界面，勾选不限结束时间，可保存成功
     [Tags]    P0    threshold
@@ -187,7 +185,6 @@ coupon_code099
     Sleep    2
     Text Of Element Should Contain With Wait    ${locatorB_couponCode_text_firstCoupon_beenUsedAndUnUsed}    不限
 
-
 coupon_code107
     [Documentation]    验证新建优惠码界面，每人限用输入框中输入合法内容时，可保存成功
     [Tags]    P0    threshold
@@ -200,7 +197,6 @@ coupon_code107
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Sleep    2
     Value Of Element Should Be Equal With Wait      ${locatorB_couponCodeNew_text_input_Mannum}    20
-
 
 coupon_code108
     [Documentation]    验证新建优惠码界面，每人限用栏，勾选输入框下方的不限时，可保存成功
@@ -247,10 +243,21 @@ coupon_code117
     Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCodeNew_select_couponStyle}    折扣券
 
+coupon_code124
+    [Documentation]    验证新建优惠码界面，优惠类型为折扣券时，折扣比例输入框可输入内容
+    [Tags]    P0    threshold
+    Select All Coupon Code Tag
+    Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
+    Add Default Coupon Code Text
+    Wait And Click Element   ${locatorB_couponCodeNew_select_couponStyle}
+    Wait And Click Element    ${locatorB_couponCodeNew_selectItem_discountCoupon}
+    Wait And Input Text    ${locatorB_couponCodeNew_text_input_discount}    123qwe测试！@
+    Wait And Click Element    ${locatorB_couponCodeNew_text_input_preferential}
+    Value Of Element Should Be Equal With Wait    ${locatorB_couponCodeNew_text_input_discount}    123qwe测试！@
 
 coupon_code125
     [Documentation]    验证新建优惠码界面，优惠类型为折扣券时，折扣比例输入框中输入合法内容，可保存
-    [Tags]    P0    threshold
+    [Tags]    P0
     Select All Coupon Code Tag
     Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
     Add Default Coupon Code Text
@@ -296,6 +303,20 @@ coupon_code130
     Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCodeNew_select_couponStyle}    代金券
 
+coupon_code138
+    [Documentation]    验证新建优惠码界面，优惠类型为代金券，优惠金额输入框中输入合法内容时，可保存成功
+    [Tags]    P0    threshold
+    Select All Coupon Code Tag
+    Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
+    Add Default Coupon Code Text
+    Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
+    Wait And Click Element    ${locatorB_couponCodeNew_selectItem_cashCoupon}
+    Wait And Input Text    ${locatorB_couponCodeNew_text_input_discount}     100
+    Wait And Click Element    ${locatorB_button_save00}
+    Sleep    2
+    Wait Until Page Contains Text    保存成功
+    Text Of Element Should Contain With Wait    ${locatorB_couponCode_text_firstCoupon_activityRules}    100
+
 coupon_code142
     [Documentation]    验证新建优惠码界面，适用范围，选择全部商品时，可保存成功
     [Tags]    P0    threshold
@@ -335,6 +356,31 @@ coupon_code153
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCodeNew_text_hadAdded}    已选择1件商品
     Wait And Click Element    ${locatorB_couponCodeNew_button_chooseSomeProducts}
     Wait And Click Element    ${locatorB_couponCodeNew_icon_continueToAdd}
+
+coupon_code154
+    [Documentation]    验证新建优惠码界面，选择商品窗口，商品过多时，点击加载更多可显示更多商品
+    [Tags]    P0    threshold
+    :FOR    ${ONE}    IN RANGE    21
+    \    kwproduct.add_max_product_py
+    Reload Page And Start Ajax
+    Select All Coupon Code Tag
+    Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
+    Add Default Coupon Code Text
+    Wait And Click Element    ${locatorB_couponCodeNew_button_chooseSomeProducts}
+    Wait And Click Element    ${locatorB_couponCodeNew_icon_continueToAdd}
+    Wait And Click Element    ${locatorB_couponCodeNew_text_button_defaultMore}
+
+coupon_code155
+    [Documentation]    验证新建优惠码界面，选择商品窗口，商品可展开
+    [Tags]    P0    threshold
+    kwproduct.add_max_product_py
+    Select All Coupon Code Tag
+    Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
+    Add Default Coupon Code Text
+    Wait And Click Element    ${locatorB_couponCodeNew_button_chooseSomeProducts}
+    Wait And Click Element    ${locatorB_couponCodeNew_icon_continueToAdd}
+    Wait And Click Element    ${locatorB_couponCodeNew_text_icon_anticonDown}
+    Wait Until Page Contains Locator    ${locatorB_couponCodeNew_text_icon_anticonUp}
 
 coupon_code164
     [Documentation]    验证活动编辑界面，修改任何内容可触发保存和取消按钮（活动未开始）

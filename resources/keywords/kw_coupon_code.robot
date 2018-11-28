@@ -51,7 +51,7 @@ Add Default Coupon Code Text
     Wait And Click Element    ${locatorB_couponCodeNew_text_p_promoCrandom}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_num}    10
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_Mannum}    2
-    Wait And Input Text    ${locatorB_couponCodeNew_text_input_preferential}    20
+    Wait And Input Text    ${locatorB_couponCodeNew_text_input_preferential}    200
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_discount}    10
     Wait And Click Element    ${locatorB_couponCodeNew_button_allProducts}
 
