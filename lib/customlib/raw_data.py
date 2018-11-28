@@ -534,7 +534,13 @@ payment_method_activation_data = {
 
 payment_channel_data = {
     "client_id": "10000009446",
-    "secret_key": "30820122300d06092a864886f70d01010105000382010f003082010a028201010098da23b3f3e679efb33e8171191e165ca1a757e53e74393cd23a0bf9adbbaecdd8224c4666ed421ce6b099e66807e85e4247c07261792a66ccbd71cc8fb7e87c34e2bcf2ffb5df9004488ec3a32353e91cadc56cf980eda1784186c1c270587907e2db749fd904dc39b28670699dd654a6001e0289e2988648ae3fca5e45ed356d1a81a84029357eb017f925c8dc174ce82ac12b8681282abb5e83aef1fa6416f3fba32cb45432f51a700f995ccee4d8a9dea66d31607f14a546011ec44807056f54330389e78b12d355527ab62e904f8918c8f417e0afaf154b772fc5dce7aac4a71426f9a623155484d8c7f73e2511f1866661b3a8083ea087f3162cf3aa090203010001",
+    "secret_key": "30820122300d06092a864886f70d01010105000382010f003082010a028201010098da23b3f3e679efb33e8171191"
+                  "e165ca1a757e53e74393cd23a0bf9adbbaecdd8224c4666ed421ce6b099e66807e85e4247c07261792a66ccbd71cc"
+                  "8fb7e87c34e2bcf2ffb5df9004488ec3a32353e91cadc56cf980eda1784186c1c270587907e2db749fd904dc39b28"
+                  "670699dd654a6001e0289e2988648ae3fca5e45ed356d1a81a84029357eb017f925c8dc174ce82ac12b8681282abb"
+                  "5e83aef1fa6416f3fba32cb45432f51a700f995ccee4d8a9dea66d31607f14a546011ec44807056f54330389e78b1"
+                  "2d355527ab62e904f8918c8f417e0afaf154b772fc5dce7aac4a71426f9a623155484d8c7f73e2511f1866661b3a8"
+                  "083ea087f3162cf3aa090203010001",
     "payment_method": "credit_card",
     "payment_channel": "ipaylinks"
 }
@@ -664,4 +670,24 @@ file_list_data = {
     'folder': 'product',
     'page': '1',
     'limit': '10'
+}
+
+rebate_list_data = {
+    'keywords': '',
+    'type': '-1',
+    'progress': '1',
+    'page': '1'
+}
+
+rebate_refresh_data = {
+    "id": "",
+    "name": "auto_rebate",
+    "date_start": "2018-11-28 19:00:00",
+    "date_end": "-1",
+    "range_type": "1",
+    "incr_count": 0,
+    "product_scope": 1,
+    "product_list": "-1",
+    "rule_list": '[{"range_unit":"price","range_value":"100","rate_amount":"20","rate_shipping":0,"checked":false},'
+                 '{"range_value":"200","rate_amount":"50","rate_shipping":0,"checked":false,"range_unit":"price"}]'
 }
