@@ -54,6 +54,7 @@ collection017
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
+    Sleep    2
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    中文english$%*&(123
     Value Of Element Should Be Equal With Wait    ${locatorB_CollectionsNew_inoput_CollectionName}    中文english$%*&(123
@@ -67,6 +68,7 @@ collection019
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
+    Sleep    2
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    中文字符123456中文字符123456中文字符123456
     Value Of Element Should Be Equal With Wait    ${locatorB_CollectionsNew_inoput_CollectionName}    中文字符123456中文字符123456中文字符123456
@@ -80,6 +82,7 @@ collection025
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
+    Sleep    2
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文english$%*&(123
     Text Of Element Should Be Equal With Wait    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文english$%*&(123
@@ -93,6 +96,7 @@ collection026
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
+    Sleep    2
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456
     Text Of Element Should Be Equal With Wait    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456
@@ -126,6 +130,7 @@ collection079
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
+    Sleep    2
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文english$%*&(123
     Wait And Click Element    ${locatorB_CollectionsNew_icon_Collectionlist}
@@ -151,6 +156,7 @@ collection081
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
+    Sleep    2
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    中文english$%*&(123
     Wait And Click Element    ${locatorB_CollectionsNew_icon_Collectionlist}
@@ -203,6 +209,7 @@ collection134
     \    kwproduct.add_max_product_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_button_addOneCollection}
+    Sleep    2
     Wait And Click Element    ${locatorB_CollectionsNew_button_addProduct}
     Wait And Click Element    ${locatorB_CollectionsNew_checkbox_firstProduct}
     Wait And Click Element    ${locatorB_CollectionsNew_button_Productaddfoot}
