@@ -674,20 +674,32 @@ file_list_data = {
 
 rebate_list_data = {
     'keywords': '',
-    'type': '-1',
-    'progress': '1',
-    'page': '1'
+    'type': -1,
+    'progress': 1,
+    'page': 1
+}
+
+rebate_select_product_data = {
+    'collection_id': -1,
+    'title': '',
+    'status': -1,
+    'page': '0',
+    'limit': 20,
+    'date_start': 1543404914,
+    'date_end': -1,
+    'discount_id': -1
 }
 
 rebate_refresh_data = {
     "id": "",
     "name": "auto_rebate",
-    "date_start": "2018-11-28 19:00:00",
+    "date_start": "2018-11-28 19:35:14",
     "date_end": "-1",
     "range_type": "1",
-    "incr_count": 0,
-    "product_scope": 1,
-    "product_list": "-1",
-    "rule_list": '[{"range_unit":"price","range_value":"100","rate_amount":"20","rate_shipping":0,"checked":false},'
-                 '{"range_value":"200","rate_amount":"50","rate_shipping":0,"checked":false,"range_unit":"price"}]'
+    "incr_count": 1,
+    "product_scope": 3,
+    "product_list": '{"product":[{"product_id":"1c56caba-b9cd-4b44-b35d-c91c009b727d","sub_product_id":[]}]}',
+    "is_enable": "",
+    "product_num": "",
+    "rule_list": '[{"range_unit":"price","range_value":"100","rate_amount":"20","rate_shipping":0,"checked":false}]'
 }
