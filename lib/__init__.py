@@ -5,7 +5,6 @@ from lib.customlib import (kwshipping,
                            kwcheckout,
                            kwcollection,
                            kwlogin,
-                           kwmarketing_will_be_del,
                            kwpayment,
                            kwstore,
                            kwtax)
