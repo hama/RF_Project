@@ -703,3 +703,37 @@ rebate_refresh_data = {
     "product_num": "",
     "rule_list": '[{"range_unit":"price","range_value":"100","rate_amount":"20","rate_shipping":0,"checked":false}]'
 }
+
+popups_data = {
+    "starts_at": "1543440306",
+    "ends_at": -1,
+    "name": "Subscribe for Newsletter",
+    "theme": "template1",
+    "type": "1",
+    "pages_type": 1,
+    "page_list": [
+
+    ],
+    "page_list_selected": [
+
+    ],
+    "page_list_user_defined": [
+
+    ],
+    "title_before": "Autotest_before_subscription",
+    "description_before": "Join our email list to receive updates and exclusive offers directly in your inbox.",
+    "title_after": "Autotest_after_subscription",
+    "description_after": "We look forward to keeping you posted.",
+    "frequency_type": 1,
+    "frequency_num": 1,
+    "target_user": 1,
+    "bg_color": "rgba(255, 255, 255, 1)",
+    "title_color": "rgba(0, 0, 0, 1)",
+    "description_color": "rgba(99, 99, 99, 1)",
+    "btn_bg_color": "rgba(0, 0, 0, 1)",
+    "close_link_color": "rgba(0, 0, 0, 1)",
+    "error_msg_color": "rgba(225, 32, 32, 1)",
+    "btn_text_color": "rgba(255, 255, 255, 1)",
+    "end_unlimited": True,
+    "source": "prototype"
+}
