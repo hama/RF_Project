@@ -118,7 +118,7 @@ def shippings_post_py(data, cookie=init_cookie):
     return do_post(url, data, cookie=cookie)
 
 
-def shippings_put_py(shipping_id, data, cookie=init_cookie):
+def shippings_put_py(data, shipping_id, cookie=init_cookie):
     '''
     修改物流方案
     :param query_str:

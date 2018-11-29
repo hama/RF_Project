@@ -534,7 +534,13 @@ payment_method_activation_data = {
 
 payment_channel_data = {
     "client_id": "10000009446",
-    "secret_key": "30820122300d06092a864886f70d01010105000382010f003082010a028201010098da23b3f3e679efb33e8171191e165ca1a757e53e74393cd23a0bf9adbbaecdd8224c4666ed421ce6b099e66807e85e4247c07261792a66ccbd71cc8fb7e87c34e2bcf2ffb5df9004488ec3a32353e91cadc56cf980eda1784186c1c270587907e2db749fd904dc39b28670699dd654a6001e0289e2988648ae3fca5e45ed356d1a81a84029357eb017f925c8dc174ce82ac12b8681282abb5e83aef1fa6416f3fba32cb45432f51a700f995ccee4d8a9dea66d31607f14a546011ec44807056f54330389e78b12d355527ab62e904f8918c8f417e0afaf154b772fc5dce7aac4a71426f9a623155484d8c7f73e2511f1866661b3a8083ea087f3162cf3aa090203010001",
+    "secret_key": "30820122300d06092a864886f70d01010105000382010f003082010a028201010098da23b3f3e679efb33e8171191"
+                  "e165ca1a757e53e74393cd23a0bf9adbbaecdd8224c4666ed421ce6b099e66807e85e4247c07261792a66ccbd71cc"
+                  "8fb7e87c34e2bcf2ffb5df9004488ec3a32353e91cadc56cf980eda1784186c1c270587907e2db749fd904dc39b28"
+                  "670699dd654a6001e0289e2988648ae3fca5e45ed356d1a81a84029357eb017f925c8dc174ce82ac12b8681282abb"
+                  "5e83aef1fa6416f3fba32cb45432f51a700f995ccee4d8a9dea66d31607f14a546011ec44807056f54330389e78b1"
+                  "2d355527ab62e904f8918c8f417e0afaf154b772fc5dce7aac4a71426f9a623155484d8c7f73e2511f1866661b3a8"
+                  "083ea087f3162cf3aa090203010001",
     "payment_method": "credit_card",
     "payment_channel": "ipaylinks"
 }
@@ -664,4 +670,70 @@ file_list_data = {
     'folder': 'product',
     'page': '1',
     'limit': '10'
+}
+
+rebate_list_data = {
+    'keywords': '',
+    'type': -1,
+    'progress': 1,
+    'page': 1
+}
+
+rebate_select_product_data = {
+    'collection_id': -1,
+    'title': '',
+    'status': -1,
+    'page': '0',
+    'limit': 20,
+    'date_start': 1543404914,
+    'date_end': -1,
+    'discount_id': -1
+}
+
+rebate_refresh_data = {
+    "id": "",
+    "name": "auto_rebate",
+    "date_start": "2018-11-28 19:35:14",
+    "date_end": "-1",
+    "range_type": "1",
+    "incr_count": 1,
+    "product_scope": 3,
+    "product_list": '{"product":[{"product_id":"1c56caba-b9cd-4b44-b35d-c91c009b727d","sub_product_id":[]}]}',
+    "is_enable": "",
+    "product_num": "",
+    "rule_list": '[{"range_unit":"price","range_value":"100","rate_amount":"20","rate_shipping":0,"checked":false}]'
+}
+
+popups_data = {
+    "starts_at": "1543440306",
+    "ends_at": -1,
+    "name": "Subscribe for Newsletter",
+    "theme": "template1",
+    "type": "1",
+    "pages_type": 1,
+    "page_list": [
+
+    ],
+    "page_list_selected": [
+
+    ],
+    "page_list_user_defined": [
+
+    ],
+    "title_before": "Autotest_before_subscription",
+    "description_before": "Join our email list to receive updates and exclusive offers directly in your inbox.",
+    "title_after": "Autotest_after_subscription",
+    "description_after": "We look forward to keeping you posted.",
+    "frequency_type": 1,
+    "frequency_num": 1,
+    "target_user": 1,
+    "bg_color": "rgba(255, 255, 255, 1)",
+    "title_color": "rgba(0, 0, 0, 1)",
+    "description_color": "rgba(99, 99, 99, 1)",
+    "btn_bg_color": "rgba(0, 0, 0, 1)",
+    "close_link_color": "rgba(0, 0, 0, 1)",
+    "error_msg_color": "rgba(225, 32, 32, 1)",
+    "btn_text_color": "rgba(255, 255, 255, 1)",
+    "end_unlimited": True,
+    "source": "prototype"
 }
