@@ -38,6 +38,10 @@ ${locatorB_couponCodeNew_text_input_preferential}    dom:document.querySelectorA
 ${locatorB_couponCodeNew_text_input_notThreshold}    dom:document.querySelectorAll('[class="ant-radio"]')     #.优惠门槛 单选 无门槛 (未选中)
 ${locatorB_couponCodeNew_text_input_discount}    dom:document.querySelectorAll('[id="code_value"]')[0]      #.折扣比例 输入
 
+${locatorB_couponCodeNew_text_button_defaultMore}    dom:document.querySelectorAll('[class*="ant-btn default"]')[1]    # 部分商品 - 选择商品 - 加载更多 按钮
+${locatorB_couponCodeNew_text_icon_anticonDown}    dom:document.querySelectorAll('[class*="anticon anticon-down"]')[0]    # 部分商品 - 选择商品 - 第一个商品 - 关闭 箭头
+${locatorB_couponCodeNew_text_icon_anticonUp}    dom:document.querySelectorAll('[class*="anticon anticon-up"]')[0]    # 部分商品 - 选择商品 - 第一个商品 - 展开 箭头
+
 ${locatorB_couponCodeNew_items_listProduct}    ${locatorB_table_listItems}    # 商品列表
 
 ${locatorB_couponCodeNew_img_firstProduct_picture}    ${locatorB_table_listItems}[0].querySelectorAll("td")[0]
