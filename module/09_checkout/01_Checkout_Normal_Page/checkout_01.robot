@@ -343,7 +343,7 @@ checkout_078
 #    [Documentation]    验证B端结账流程中退款条约输入内容后，C端shipping页面和payment页面会底部会显示refund policy按钮
 #    [Tags]    P0
 #    [Setup]    Go To Checkout Settings Page
-#    Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
+#    Go To ServiceTerms Table
 #    Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     退款条约测试文本
 #    Sleep And Click Element    ${locatorB_checkout_button_save}
 #    Reload Page And Start Ajax
@@ -358,7 +358,7 @@ checkout_078
 #    [Documentation]    验证checkout shipping页面和payment页面底部refund policy按钮可点击以及内容展示
 #    [Tags]    P0
 #    [Setup]    Go To Checkout Settings Page
-#    Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
+#    Go To ServiceTerms Table
 #    Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     退款条约测试文本123
 #    Sleep And Click Element    ${locatorB_checkout_button_save}
 #    Reload Page And Start Ajax
@@ -433,7 +433,7 @@ checkout_078
 #    [Documentation]    验证C端未登录个人中心，B端结账流程收货信息中邮箱为必填时，C端checkout shipping页面contact email栏会显示两个选择项，使用收货邮箱以及添加新邮箱
 #    [Tags]    P0
 #    [Setup]    Go To Checkout Settings Page
-#    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+#    Go To Information Table
 #    Wait And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
 #    Sleep And Click Element    ${locatorB_checkout_button_save}
 #    Reload Page And Start Ajax
@@ -447,7 +447,7 @@ checkout_078
 #    [Documentation]    验证C端未登录个人中心，B端结账流程收货信息中邮箱为必填时，C端checkout shipping页面contact email栏same as shipping email above可勾选
 #    [Tags]    P0
 #    [Setup]    Go To Checkout Settings Page
-#    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+#    Go To Information Table
 #    Wait And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
 #    Wait And Click Element    ${locatorB_checkout_button_save}
 #    Reload Page And Start Ajax
@@ -463,7 +463,7 @@ checkout_078
 #    [Documentation]    验证C端未登录个人中心，B端结账流程收货信息中邮箱为必填时，C端checkout shipping页面contact email栏new email可勾选
 #    [Tags]    P0
 #    [Setup]    Go To Checkout Settings Page
-#    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+#    Go To Information Table
 #    Wait And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
 #    Sleep And Click Element    ${locatorB_checkout_button_save}
 #    Reload Page And Start Ajax
@@ -479,7 +479,7 @@ checkout_078
 #    [Documentation]    验证C端未登录个人中心，B端结账流程收货信息中邮箱为必填时，C端checkout shipping页面contact email栏勾选new email后，new email后的输入框输入正确的内容
 #    [Tags]    P0
 #    [Setup]    Go To Checkout Settings Page
-#    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+#    Go To Information Table
 #    Wait And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
 #    Sleep And Click Element    ${locatorB_checkout_button_save}
 #    Reload Page And Start Ajax
@@ -496,7 +496,7 @@ checkout_078
 #    [Documentation]    验证C端未登录个人中心，B端结账流程收货信息中邮箱为选填，C端checkout shipping页面contact email栏只显示一个邮箱输入框
 #    [Tags]    P0
 #    [Setup]    Go To Checkout Settings Page
-#    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+#    Go To Information Table
 #    Wait And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
 #    Reload Page And Start Ajax
 #    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeOptional}   class    ant-radio-wrapper ant-radio-wrapper-checked
@@ -509,7 +509,7 @@ checkout_078
 #    [Documentation]    验证C端未登录个人中心，B端结账流程收货信息中邮箱为选填，C端checkout shipping页面contact email栏contact email输入框输入正确的内容可提交成功
 #    [Tags]    P0
 #    [Setup]    Go To Checkout Settings Page
-#    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+#    Go To Information Table
 #    Wait And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
 #    Reload Page And Start Ajax
 #    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeOptional}   class    ant-radio-wrapper ant-radio-wrapper-checked
