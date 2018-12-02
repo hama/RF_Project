@@ -21,3 +21,14 @@ Checkout Page Test Setup
     kwcheckout.set_checkout_process_py
     Go To Checkout Settings Page
 
+Go To BuyMembers Label
+	Wait And Click Element    ${locatorB_checkout_label_buyMembers}
+    Sleep    1
+
+Go To RegisterMembers Label
+	Wait And Click Element    ${locatorB_checkout_label_registerMembers}
+	Sleep    1
+
+Go To NotMembers Label
+	Wait And Click Element    ${locatorB_checkout_label_notMembers}
+	Sleep    1

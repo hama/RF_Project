@@ -19,7 +19,7 @@ checkoutPageSettings001
 checkoutPageSettings003
     [Documentation]    测试结账设置界面保存按钮
     [Tags]    P0    threshold   smoke
-    Wait And Click Element    ${locatorB_checkout_label_buyMembers}
+    Go To BuyMembers Label
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     #.点击收货信息元素
     Wait And Click Element    ${locatorB_checkout_radio_name}
@@ -30,14 +30,14 @@ checkoutPageSettings003
 checkoutPageSettings005
     [Documentation]    测试结账设置页面编辑保存  >  1.修改内容后不保存  2.离开结账设置页面
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_label_buyMembers}
+    Go To BuyMembers Label
     Sleep And Click Element    ${locatorB_overview}
     Wait Alert Should Be Present And Dismiss   页面上有未保存内容，是否确定退出?
 
 checkoutPageSettings006
     [Documentation]    测试结账设置页面编辑保存  >  1.未保存内容退出提示框出现  2.点击确认退出
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_label_buyMembers}
+    Go To BuyMembers Label
     Sleep And Click Element    ${locatorB_overview}
     Wait Alert Should Be Present And Accept    页面上有未保存内容，是否确定退出?
     Go To Checkout Settings Page
@@ -46,7 +46,7 @@ checkoutPageSettings006
 checkoutPageSettings007
     [Documentation]    测试结账设置页面编辑保存  >  1.未保存内容退出提示框出现 2.点击取消
     [Tags]    P1    threshold
-    Wait And Click Element    ${locatorB_checkout_label_buyMembers}
+    Go To BuyMembers Label
     Sleep And Click Element    ${locatorB_overview}
     Wait Alert Should Be Present And Dismiss    页面上有未保存内容，是否确定退出?
     Element Attribute Should Contain With Wait     ${locatorB_checkout_label_buyMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
@@ -56,7 +56,7 @@ checkoutPageSettings007
 #checkoutPageSettings008
 #    [Documentation]    测试结账设置顾客权限功能>1.点击不开启会员注册  2.点击保存
 #    [Tags]    P0    threshold   smoke
-#    Wait And Click Element    ${locatorB_checkout_label_notMembers}
+#    Go To NotMembers Label
 #    Wait And Click Element    ${locatorB_checkout_button_nav_information}
 #    Wait And Click Element    ${locatorB_checkout_radio_name}
 #    Wait And Click Element    ${locatorB_checkout_radio_companyNameHidden}
@@ -70,7 +70,7 @@ checkoutPageSettings007
 checkoutPageSettings009
      [Documentation]    测试结账设置顾客权限功能>1.点击注册会员与非注册会员均可购买 2.点击保存
      [Tags]    P0    threshold
-     Wait And Click Element    ${locatorB_checkout_label_registerMembers}
+     Go To RegisterMembers Label
      Element Attribute Should Contain With Wait     ${locatorB_checkout_label_registerMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
      Reload Page And Start Ajax
      Go To First Product C Interface
@@ -80,7 +80,7 @@ checkoutPageSettings009
 checkoutPageSettings010
      [Documentation]    测试结账设置顾客权限功能>1.点击会员购买  2.点击保存
      [Tags]    P0    threshold
-     Wait And Click Element    ${locatorB_checkout_label_buyMembers}
+     Go To BuyMembers Label
      Sleep    2
      Wait And Click Element    ${locatorB_checkout_button_save}
      Wait Until Page Contains Text    设置成功
@@ -93,7 +93,7 @@ checkoutPageSettings010
 checkoutPageSettings011.1
     [Documentation]       此用例未更新，新增模块--->手机必选
     [Tags]    P0    threshold   smoke
-    Wait And Click Element     ${locatorB_checkout_label_registerMembers}
+    Go To RegisterMembers Label
     Wait And Click Element     ${locatorB_checkout_button_nav_information}
     Wait And Click Element     ${locatorB_checkout_radio_phoneCodeMandatory}
     Sleep And Click Element  ${locatorB_checkout_button_save}
@@ -110,7 +110,7 @@ checkoutPageSettings011.1
 checkoutPageSettings012.1
     [Documentation]     此用例未更新，新增模块--->手机选填
     [Tags]    P0    threshold   smoke
-    Wait And Click Element     ${locatorB_checkout_label_registerMembers}
+    Go To RegisterMembers Label
     Wait And Click Element     ${locatorB_checkout_button_nav_information}
     Wait And Click Element     ${locatorB_checkout_radio_phoneCodeOptional}
     Reload Page And Start Ajax
@@ -125,7 +125,7 @@ checkoutPageSettings012.1
 checkoutPageSettings013.1
     [Documentation]    此用例未更新，新增模块-->手机隐藏
     [Tags]    P0    threshold   smoke
-    Wait And Click Element    ${locatorB_checkout_label_registerMembers}
+    Go To RegisterMembers Label
     Wait And Click Element    ${locatorB_checkout_button_nav_information}
     Wait And Click Element    ${locatorB_checkout_radio_phoneCodeHidden}
     Sleep And Click Element  ${locatorB_checkout_button_save}
