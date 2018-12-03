@@ -55,3 +55,8 @@ Add Default Coupon Code Text
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_discount}    10
     Wait And Click Element    ${locatorB_couponCodeNew_button_allProducts}
 
+Wait And Click Coupon Confirm
+    [Documentation]    等待2秒后，点击保存按钮
+    Sleep    2
+    Wait And Click Element    ${locatorB_button_save00}
+    Sleep    2

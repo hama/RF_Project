@@ -64,14 +64,14 @@ ${locatorB_couponCode_input_enterCouponCode}    dom:document.querySelectorAll('[
 
 
 
-${locatorB_couponCode_text_firstCoupon_activityNum}    ${locatorB_table_listItems}[0].querySelectorAll("td")[0]    #第一个优惠码的，优惠码编号
-${locatorB_couponCode_text_firstCoupon_activityName}    ${locatorB_table_listItems}[0].querySelectorAll("td")[1]    #第一个优惠码的，
-${locatorB_couponCode_text_firstCoupon_couponCode}    dom:document.querySelectorAll('[class="ant-table-row ant-table-row-level-0"] td:nth-child(3)')[0]   #第一个优惠码的，
-${locatorB_couponCode_text_firstCoupon_activityTime}    ${locatorB_table_listItems}[0].querySelectorAll("td")[3]    #第一个优惠码的，
-${locatorB_couponCode_text_firstCoupon_activityRules}    ${locatorB_table_listItems}[0].querySelectorAll("td")[4]    #第一个优惠码的，
-${locatorB_couponCode_text_firstCoupon_activityRange}    ${locatorB_table_listItems}[0].querySelectorAll("td")[5]    #第一个优惠码的，
-${locatorB_couponCode_text_firstCoupon_beenUsedAndUnUsed}    ${locatorB_table_listItems}[0].querySelectorAll("td")[6]    #第一个优惠码的，
-${locatorB_couponCode_text_firstCoupon_createTime}    ${locatorB_table_listItems}[0].querySelectorAll("td")[7]    #第一个优惠码的，优惠码状态
-${locatorB_couponCode_tag_firstCoupon_activityStatus}    ${locatorB_table_listItems}[0].querySelectorAll("td")[8]    #第一个优惠码的，活动状态
+${locatorB_couponCode_text_firstCoupon_activityNum}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(1)')[0]    #第一个优惠码 - 活动编号
+${locatorB_couponCode_text_firstCoupon_activityName}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(2)')[0]    #第一个优惠码 - 活动名称
+${locatorB_couponCode_text_firstCoupon_couponCode}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(3)')[0]   #第一个优惠码 - 优惠码
+${locatorB_couponCode_text_firstCoupon_activityTime}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(4)')[0]    #第一个优惠码 - 活动时间
+${locatorB_couponCode_text_firstCoupon_activityRules}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(5)')[0]    #第一个优惠码 - 优惠规则
+${locatorB_couponCode_text_firstCoupon_activityRange}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(6)')[0]    #第一个优惠码 - 活动范围
+${locatorB_couponCode_text_firstCoupon_beenUsedAndUnUsed}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(7)')[0]    #第一个优惠码 - 已使用/剩余库存
+${locatorB_couponCode_text_firstCoupon_createTime}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(8)')[0]    #第一个优惠码 - 创建时间
+${locatorB_couponCode_tag_firstCoupon_activityStatus}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(9)')[0]    #第一个优惠码 - 活动状态
 ${locatorB_couponCode_icon_firstCoupon_preview}        #第一个优惠码的，优惠码总价
 ${locatorB_couponCode_icon_firstCoupon_stop}        #第一个优惠码的，优惠码总价
