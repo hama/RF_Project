@@ -411,12 +411,13 @@ Wait Alert Should Be Present And Dismiss
     Alert Should Be Present    ${text}    DISMISS    ${timeout}
 
 Reload Page And Start Ajax
-    [Arguments]    ${sleep_time}=1
+    [Arguments]    ${sleep_time}=2
 	[Documentation]    刷新页面并添加监控
 	Sleep    ${sleep_time}
 	Reload Page
+	Sleep    1
 	Start Ajax Listener
-	Sleep    5
+	Sleep    2
 
 Select All Items Then Click Batch Menu
     [Documentation]    选中所有items,并且点击批量操作菜单
