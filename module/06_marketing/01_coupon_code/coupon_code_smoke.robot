@@ -207,6 +207,7 @@ coupon_code108
     Long Press Element With Wait    ${locatorB_couponCodeNew_input_limited}
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Not Contains Locator    ${locatorB_button_save00}
+    Sleep    20
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Sleep    2
     Element Attribute Should Contain With Wait    ${locatorB_couponCodeNew_input_limited}    class    ant-checkbox ant-checkbox-checked

@@ -263,13 +263,13 @@ def add_subproduct_with_conf_py(conf={}, cookie=init_cookie):
 
 
 if __name__ == '__main__':
-    # print add_min_product_py()
+    print add_min_product_py()
     # conf = {'variants': [{"price": "45", "compare_at_price": "70"}, {"price": "90", "compare_at_price": "710"}]}
     # print add_subproduct_with_conf_py(conf)
     # print get_product_detail_py(add_max_product_py())
     # print add_product_with_conf_py()
     # print del_latest_product_py()
-    print del_all_products_py()
+    # print del_all_products_py()
     # print publish_all_products_py()
     # print unpublish_all_products_py()
     # print get_all_products_count_py()
