@@ -81,8 +81,10 @@ coupon_code076
     Add Default Coupon Code Text
     Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
     Wait And Click Element    ${locatorB_couponCodeNew_selectItem_discountCoupon}
+    Sleep    0.5
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Not Contains Locator    ${locatorB_button_save00}
+    Sleep    1
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityNum}
     Sleep    1
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCodeNew_select_couponStyle}    折扣券
