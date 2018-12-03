@@ -27,7 +27,7 @@ ${locatorB_couponCodeNew_selectTime_confirm}    dom:document.querySelectorAll('[
 ${locatorB_couponCodeNew_selectTime_notEndTime}    dom:document.querySelectorAll('[class="ant-checkbox-wrapper"] span[class*="ant-checkbox"]')[0]    #.不限制结束时间 id="state.date_end_unlimited"
 ${locatorB_couponCodeNew_selectTime_notEndTimeStart}    dom:document.querySelectorAll('[class="ant-form-item-children"] [class*="ant-checkbox"]')[1]     #判断按钮是否选中状态  ant-checkbox ant-checkbox-checked
 ${locatorB_couponCodeNew_text_input_promoCode}    dom:document.querySelectorAll('[id="code"]')[0]    #.优惠码输入框
-${locatorB_couponCodeNew_text_p_promoCrandom}    dom:document.querySelectorAll('p[class="random_89fd"]')    #随机生成
+${locatorB_couponCodeNew_text_p_promoCrandom}    dom:document.querySelectorAll('p[class="random_89fd"]')[0]    #随机生成
 ${locatorB_couponCodeNew_text_input_num}    dom:document.querySelectorAll('[id="state.total_num"]')[0]       #.优惠券 数量  state.total_num
 ${locatorB_couponCodeNew_text_input_Mannum}    dom:document.querySelectorAll('[id="state.limit_num"]')    #每人限用
 ${locatorB_couponCodeNew_input_noLimit}    dom:document.querySelectorAll('[class="ant-checkbox-wrapper"] span[class*="ant-checkbox"]')[2]      #.优惠券 数量 不限按钮

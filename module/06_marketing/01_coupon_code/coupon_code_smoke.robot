@@ -139,6 +139,7 @@ coupon_code090
     Select All Coupon Code Tag
     Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
     Add Default Coupon Code Text
+    Sleep    1
     Wait And Click Element    ${locatorB_couponCodeNew_text_p_promoCrandom}
     Sleep    2
     ${conpontext}    Get Value    ${locatorB_couponCodeNew_text_input_promoCode}
@@ -392,7 +393,7 @@ coupon_code165
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_auto
     Wait And Click Element Then Confirm     ${locatorB_button_canecl00}
-    Wait Until Page Not Contains Locator    ${locatorB_button_canecl00}
+    Wait Until Page Contains Locator    ${locatorB_couponCode_text_firstCoupon_activityName}
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_activityName}    ${activityName}
 
 coupon_code169

@@ -305,8 +305,7 @@ product229
     Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseProducets}
     Sleep    5
 	Wait And Click Element Then Confirm    ${locatorB_productsMgmt_button_BatchDown}
-#	Reload Page And Start Ajax
-	Sleep    1
+	Reload Page And Start Ajax
 	Element Attribute Should Be Equal With Wait    ${locatorB_productsMgmt_button_ProductUpDown}    class    ant-switch
 
 product234
