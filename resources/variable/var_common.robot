@@ -16,6 +16,7 @@ Resource          var_uploadfile.robot
 Resource          var_application.robot
 Resource          var_navmenu.robot
 Resource          var_payment_channel.robot
+Resource          var_subtraction.robot
 *** Variables ***
 ### 未分类，需要分类并清理
 ${error_msg}      出错啦！    #.自定义错误提示
@@ -139,6 +140,7 @@ ${user_default_inviteCode}    ${datas_invite_code}
 ${keybord_enter}    \\13
 ${keybord_delete}    \\46
 ${keybord_tab}    \\9
+${keybord_space}    \\32
 ### 注册用户
 ${register_contact}    gt1zwkp@autotest.com
 ${register_domain}    gt1zwkp
