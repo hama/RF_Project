@@ -3,6 +3,7 @@ Library           SeleniumLibrary    run_on_failure=NOTHING    implicit_wait=7.0
 Library           OperatingSystem
 Library           Collections
 Library           DateTime
+Library           String
 Library           ${CURDIR}/../../lib/customlib/kwcart.py
 Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 Library           ${CURDIR}/../../lib/customlib/kwcollection.py
@@ -17,6 +18,7 @@ Library           ${CURDIR}/../../lib/customlib/kwshipping.py
 Library           ${CURDIR}/../../lib/customlib/kwstore.py
 Library           ${CURDIR}/../../lib/customlib/kwtax.py
 Library           ${CURDIR}/../../lib/customlib/lib_utils.py
+Library           ${CURDIR}/../../lib/customlib/kwrebate.py
 Resource          ../variable/var_common.robot
 Resource          kw_ajax.robot
 Resource          kw_browser.robot
@@ -35,6 +37,7 @@ Resource          kw_tax.robot
 Resource          kw_navmenu.robot
 Resource          kw_uploadfile.robot
 Resource          kw_payment_channel.robot
+Resource          kw_subtraction.robot
 
 *** Keywords ***
 Login With Default User

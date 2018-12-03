@@ -14,7 +14,7 @@ ${locatorB_menusAdd_icon_menuDrag}    dom:document.querySelectorAll('[class*="mo
 # locator content
 ${locatorB_menus_list_menuList}    dom:document.querySelectorAll('[class*="menu_list_row"]')     #.菜单导航列表
 
-${locatorB_menus_text_menuListName}   ${locatorB_menus_list_menuList}[2].querySelectorAll('[class*="menu_list_col"]')[0]    #.菜单名称序列 第三列
+${locatorB_menus_text_menuListName}   dom:document.querySelectorAll('div[class*="menu_list_row"]:nth-child(3) div')[0]    #.菜单列表 - 第三列菜单 - 菜单名称
 ${locatorB_menus_text_menuListName1}   ${locatorB_menus_list_menuList}[3].querySelectorAll('[class*="menu_list_col"]')[0]    #.菜单名称序列 第四列
 ${locatorB_menus_text_levelDirectory}   ${locatorB_menus_list_menuList}[2].querySelectorAll('[class*="menu_list_col"]')[1]    #.菜单一级目录序列
 
