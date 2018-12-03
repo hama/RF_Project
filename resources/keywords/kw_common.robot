@@ -431,4 +431,4 @@ Go To First Product C Interface
     Wait And Click Element    ${locatorB_productsMgmt_icon_firstpreview}
     Focus On New Window
     Start Ajax Listener
-    Sleep    10
+    Sleep    2

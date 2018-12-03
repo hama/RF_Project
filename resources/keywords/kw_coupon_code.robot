@@ -59,4 +59,5 @@ Wait And Click Coupon Confirm
     [Documentation]    等待2秒后，点击保存按钮
     Sleep    2
     Wait And Click Element    ${locatorB_button_save00}
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Sleep    2

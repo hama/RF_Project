@@ -9,7 +9,6 @@ fi
 
 TIMESTAMP=`date "+%Y%m%d%H%M%S"`
 LOG_PATH="/var/log/uitest_log/$TIMESTAMP"
-<<<<<<< HEAD
 LOG_PATH_1="$LOG_PATH""/1"
 LOG_PATH_2="$LOG_PATH""/2"
 LOG_PATH_3="$LOG_PATH""/3"
