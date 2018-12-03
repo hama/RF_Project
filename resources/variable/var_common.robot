@@ -23,41 +23,44 @@ ${error_msg}      出错啦！    #.自定义错误提示
 
 ${locatorB_global_alert_confirm}    dom:document.querySelectorAll('button[data-robot="pop_confirm"]')[0]    #.全局弹窗 确定 按钮
 ${locatorB_global_alert_cancel}    dom:document.querySelectorAll('button[data-robot="pop_cancal"]')[0]    #.全局弹窗 取消 按钮
-### 菜单栏 locator
-${locatorB_overview}    dom:document.querySelectorAll('[class="ant-layout-sider-children"] li:nth-child(1)')[0]    # 导航栏-概览（即主页）
-${locatorB_order}    dom:document.querySelectorAll('span[data-robot="order"]')[0]    # 导航栏-订单
-${locatorB_order_dealing}    dom:document.querySelectorAll('a[href="/order/_dealing"]')[0]    # 导航栏-待处理订单
-${locatorB_order_undeal}    dom:document.querySelectorAll('a[href="/order/_undeal"]')[0]    # 导航栏-未完成订单
-${locatorB_products}    dom:document.querySelectorAll('span[data-robot="products"]')[0]    # 导航栏-商品
-${locatorB_product_management}    dom:document.querySelectorAll('a[href="/products"]')[0]    # 导航栏-商品管理
-${locatorB_product_collection}    dom:document.querySelectorAll('a[href="/collection"]')[0]    # 导航栏-商品专辑
-${locatorB_product_reviews}    dom:document.querySelectorAll('a[href="/reviews"]')[0]    # 导航栏-商品评论
-${locatorB_marketing}    dom:document.querySelectorAll('span[data-robot="marketing"]')[0]    # 导航栏-营销
-${locatorB_marketing_subtraction}    dom:document.querySelectorAll('a[href="/subtraction"]')[0]    # 导航栏-营销-满减活动
-${locatorB_marketing_coupon_code}    dom:document.querySelectorAll('a[href="/coupon_code"]')[0]    # 导航栏-营销-优惠券
-${locatorB_store}    dom:document.querySelectorAll('span[data-robot="decoration"]')[0]    #.导航栏-店铺
-${locatorB_setting}    dom:document.querySelectorAll('span[data-robot="setting"]')[0]    # 导航栏-设置
-${locatorB_setting_menus}    dom:document.querySelectorAll(".ant-menu-submenu-title")    # 导航栏-设置-含自菜单的元素
-${locatorB_setting_shipping}    dom:document.querySelectorAll('a[href="/shipping"]')[0]    # 导航栏-设置-物流
-${locatorB_setting_taxPrice}    dom:document.querySelectorAll('a[href="/taxPrice"]')[0]    # 导航栏-设置-税费
-${locatorB_setting_payment}    dom:document.querySelectorAll('a[href="/pay"]')[0]    # 导航栏-设置-收款渠道
-${locatorB_setting_employee}    dom:document.querySelectorAll('a[href="/accounts"]')[0]    # 导航栏-设置-员工账号
-${locatorB_setting_store}    dom:document.querySelectorAll('a[href="/store"]')[0]    # 导航栏-设置-基础信息
-${locatorB_setting_checkoutSettings}    dom:document.querySelectorAll('a[href="/checkout"]')[0]    # 导航栏-店铺装修-结账流程
-${locatorB_systemSetting}    dom:document.querySelectorAll('span[data-robot="system_setting"]')[0]    # 导航栏-系统设置
-${locatorB_systemSetting_files}    dom:document.querySelectorAll('a[href="/files"]')[0]    # 导航栏-设置-文件管理
-${locatorB_decoration}    dom:document.querySelectorAll('span[data-robot="decoration"]')[0]    # 导航栏-店铺装修
-${locatorB_decoration_navigationMenu}    dom:document.querySelectorAll('a[href="/menus"]')[0]    # 导航栏-店铺装修-菜单导航
 
+### 菜单栏 locator
+${locatorB_overview}    dom:document.querySelectorAll('[data-robot="overview"]')    # 导航栏-概览（即主页）
+### 菜单栏 - 订单
+${locatorB_order}    dom:document.querySelectorAll('[data-robot="order"]')    # 导航栏-订单
+${locatorB_order_dealing}    dom:document.querySelectorAll('[data-robot="order_dealing"]')    # 导航栏-待处理订单
+${locatorB_order_undeal}    dom:document.querySelectorAll('[data-robot="order_undeal"]')    # 导航栏-未完成订单
+### 菜单栏 - 商品
+${locatorB_products}    dom:document.querySelectorAll('[data-robot="products"]')    # 导航栏-商品
+${locatorB_product_management}    dom:document.querySelectorAll('[data-robot="products_mgmt"]')    # 导航栏-商品管理
+${locatorB_product_collection}    dom:document.querySelectorAll('[data-robot="products_colletion"]')    # 导航栏-商品专辑
+
+#${locatorB_product_reviews}    dom:document.querySelectorAll('a[href="/reviews"]')[0]    # 导航栏-商品评论
+
+### 菜单栏 - 营销
+${locatorB_marketing}    dom:document.querySelectorAll('[data-robot="marketing"]')    # 导航栏-营销
+${locatorB_marketing_subtraction}    dom:document.querySelectorAll('[data-robot="marketing_substraction"]')    # 导航栏-营销-满减活动
+${locatorB_marketing_coupon_code}    dom:document.querySelectorAll('[data-robot="marketing_promo_code"]')    # 导航栏-营销-优惠券
+### 菜单栏 - 店铺装修
+${locatorB_decoration}    dom:document.querySelectorAll('[data-robot="decoration"]')    #.导航栏-店铺装修
+${locatorB_decoration_navigationMenu}    dom:document.querySelectorAll('[data-robot="menus"]')    # 导航栏-店铺装修-菜单导航
 ${locatorB_decoration_custom_button_NewPage}    dom:document.querySelectorAll('[class*="ant-btn large_btn_"]')    # 导航栏-店铺装修-自定义页面-新建页面按钮
 ${locatorB_decoration_addPage_input_pageName}    dom:document.querySelectorAll('[class="ant-input"]')    # 导航栏-店铺装修-自定义页面-页面设置-名称
+### 菜单栏 - 应用市场
+${locatorB_application}    dom:document.querySelectorAll('[data-robot="application"]')    #.导航栏-应用市场
+### 菜单栏 - 店铺设置
+${locatorB_setting}    dom:document.querySelectorAll('[data-robot="setting"]')    # 导航栏-店铺设置
+${locatorB_setting_store}    dom:document.querySelectorAll('[data-robot="setting_base_info"]')    # 导航栏-店铺设置-基础信息
+${locatorB_setting_shipping}    dom:document.querySelectorAll('[data-robot="setting_shipping"]')    # 导航栏-店铺设置-物流
+${locatorB_setting_taxPrice}    dom:document.querySelectorAll('[data-robot="setting_tax"]')    # 导航栏-店铺设置-税费
+${locatorB_setting_payment}    dom:document.querySelectorAll('[data-robot="setting_payment"]')    # 导航栏-设置-收款渠道
+${locatorB_setting_checkoutSettings}    dom:document.querySelectorAll('[data-robot="decoration_checkout"]')    # 导航栏-店铺设置-交易设置
+### 菜单栏 - 后台设置
+${locatorB_systemSetting}    dom:document.querySelectorAll('[data-robot="system_setting"]')    # 导航栏-后台设置
+${locatorB_systemSetting_files}    dom:document.querySelectorAll('[data-robot="setting_library"]')    # 导航栏-设置-文件管理
 
-${locatorB_application}    dom:document.querySelectorAll('a[href="/tools"]')[0]    #.导航栏-应用市场
-${locatorB_application}    dom:document.querySelectorAll('a[href="/app_store"]')[0]    #.导航栏-应用市场
-
-${locatorB_setting_menus}    dom:document.querySelectorAll(".ant-menu-submenu-title")    # 导航栏-设置-含自菜单的元素
-
-
+#${locatorB_setting_menus}    dom:document.querySelectorAll(".ant-menu-submenu-title")    # 导航栏-设置-含自菜单的元素
+#${locatorB_setting_employee}    dom:document.querySelectorAll('a[href="/accounts"]')[0]    # 导航栏-设置-员工账号
 
 ${isExistB_setting_orderMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="order"]')[0]    # 判断order菜单展开的元素是否存在
 ${isExistB_setting_productMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="products"]')[0]    # 判断product菜单展开的元素是否存在
@@ -115,7 +118,7 @@ ${url_order_dealing}      ${home_page}/order/_dealing
 ${url_order_undeal}      ${home_page}/order/_undeal
 ${url_products}    ${home_page}/products    # products page
 ${url_marketing}    ${home_page}/subtraction    # marketing page
-${url_tax_price}    ${home_page}/taxPrice    # tax price
+${url_tax_price}    ${home_page}/tax    # tax price
 ${url_shipping}    ${home_page}/shipping    # shipping
 ${url_subtraction}    ${home_page}/subtraction    # subtraction
 ${url_coupon_code}    ${home_page}/coupon_code    # coupon
@@ -129,7 +132,7 @@ ${url_checkoutSettings}    ${home_page}/checkout    #. checkout
 ${url_pay}    ${home_page}/pay    #. pay
 ${url_menus}    ${home_page}/menus    #.menus
 ${url_page}     ${home_page}/page    #.page
-${url_img_seo}    ${home_page}/app_store    #. img_seo
+${url_img_seo}    ${home_page}/app_store/img_seo    #. img_seo
 ### 测试用户
 
 ${user_default_contact}    ${datas_contact}    # 默认使用的用户信息，用于跑大部分用例

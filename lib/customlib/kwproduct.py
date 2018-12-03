@@ -230,7 +230,8 @@ def get_exist_productsid_py(cookie=init_cookie):
     :return:
     '''
     # query_str = copy.deepcopy(query_list_data)
-    products_list = products_get_py(cookie=cookie)['content']['products']
+    count = get_all_products_count_py(cookie=cookie)
+    products_list = products_get_py({'page': 1, 'per_page': count}, cookie=cookie)['content']['products']
     products_id = []
     for product in products_list:
         products_id.append(product['id'])
@@ -263,17 +264,17 @@ def add_subproduct_with_conf_py(conf={}, cookie=init_cookie):
 
 if __name__ == '__main__':
     # print add_min_product_py()
-    conf = {'variants': [{"price": "45", "compare_at_price": "70"}, {"price": "90", "compare_at_price": "710"}]}
-    print add_subproduct_with_conf_py(conf)
+    # conf = {'variants': [{"price": "45", "compare_at_price": "70"}, {"price": "90", "compare_at_price": "710"}]}
+    # print add_subproduct_with_conf_py(conf)
     # print get_product_detail_py(add_max_product_py())
     # print add_product_with_conf_py()
     # print del_latest_product_py()
-    # print del_all_products_py()
+    print del_all_products_py()
     # print publish_all_products_py()
     # print unpublish_all_products_py()
     # print get_all_products_count_py()
     # print get_latest_productid_py()
-    # print products_get_py()
+    print len(get_exist_productsid_py())
 
     # conf = {'settax': 0}
     # add_product_with_conf_py(conf)

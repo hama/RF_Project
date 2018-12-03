@@ -70,7 +70,7 @@ coupon_code070
     Add Default Coupon Code Text
     Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    活动1
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_activityName}    活动1
 
 coupon_code076
@@ -82,7 +82,7 @@ coupon_code076
     Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
     Wait And Click Element    ${locatorB_couponCodeNew_selectItem_discountCoupon}
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityNum}
     Sleep    1
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCodeNew_select_couponStyle}    折扣券
@@ -96,7 +96,7 @@ coupon_code078
     Wait And Click Element    ${locatorB_couponCodeNew_select_couponStyle}
     Wait And Click Element    ${locatorB_couponCodeNew_selectItem_cashCoupon}
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityNum}
     Sleep    1
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCodeNew_select_couponStyle}    代金券
@@ -119,7 +119,7 @@ coupon_code082
     Wait And Input Text    ${locatorB_couponCodeNew_selectTime_endInput}    ${EndTime1}
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_activityTime}    ${startTime1}-\n${EndTime2}
 
 coupon_code085
@@ -135,7 +135,7 @@ coupon_code085
     Wait And Click Element    ${locatorB_couponCodeNew_selectTime_confirm}
     Long Press Element With Wait    ${locatorB_couponCodeNew_selectTime_notEndTime}
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_activityTime}    ${startTime1}-\n无期限
 
 coupon_code090
@@ -148,7 +148,7 @@ coupon_code090
     Sleep    2
     ${conpontext}    Get Value    ${locatorB_couponCodeNew_text_input_promoCode}
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_couponCode}    ${conpontext}
 
 coupon_code090.1
@@ -160,7 +160,7 @@ coupon_code090.1
     ${randomStr}=    kwcoupon.get_coupon_code_random_code_py
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_promoCode}    ${randomStr}
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_couponCode}    ${randomStr}
 
 coupon_code098
@@ -171,7 +171,7 @@ coupon_code098
     Add Default Coupon Code Text
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_num}    100
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Text Of Element Should Contain With Wait    ${locatorB_couponCode_text_firstCoupon_beenUsedAndUnUsed}    100
 
 coupon_code099
@@ -182,7 +182,7 @@ coupon_code099
     Add Default Coupon Code Text
     Long Press Element With Wait    ${locatorB_couponCodeNew_input_noLimit}
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Text Of Element Should Contain With Wait    ${locatorB_couponCode_text_firstCoupon_beenUsedAndUnUsed}    不限
 
 coupon_code107
@@ -193,7 +193,7 @@ coupon_code107
     Add Default Coupon Code Text
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_Mannum}    20
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Sleep    2
     Value Of Element Should Be Equal With Wait      ${locatorB_couponCodeNew_text_input_Mannum}    20
@@ -206,7 +206,7 @@ coupon_code108
     Add Default Coupon Code Text
     Long Press Element With Wait    ${locatorB_couponCodeNew_input_limited}
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Sleep    2
     Element Attribute Should Contain With Wait    ${locatorB_couponCodeNew_input_limited}    class    ant-checkbox ant-checkbox-checked
@@ -221,7 +221,7 @@ coupon_code116
     Wait And Click Element    ${locatorB_couponCodeNew_selectItem_discountCoupon}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_preferential}    3
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCodeNew_select_couponStyle}    折扣券
@@ -237,7 +237,7 @@ coupon_code117
     Wait And Click Element    ${locatorB_couponCodeNew_selectItem_discountCoupon}
     Long Press Element With Wait    ${locatorB_couponCodeNew_text_input_notThreshold}
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Text Of Element Should Contain With Wait    ${locatorB_couponCode_text_firstCoupon_activityRules}    无门槛
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Sleep    2
@@ -265,7 +265,7 @@ coupon_code125
     Wait And Click Element    ${locatorB_couponCodeNew_selectItem_discountCoupon}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_discount}    8
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Text Of Element Should Contain With Wait    ${locatorB_couponCode_text_firstCoupon_activityRules}    8
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Sleep    2
@@ -281,7 +281,7 @@ coupon_code129
     Wait And Click Element    ${locatorB_couponCodeNew_selectItem_cashCoupon}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_preferential}     100
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Text Of Element Should Contain With Wait    ${locatorB_couponCode_text_firstCoupon_activityRules}    100
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Sleep    2
@@ -297,7 +297,7 @@ coupon_code130
     Wait And Click Element    ${locatorB_couponCodeNew_selectItem_cashCoupon}
     Long Press Element With Wait    ${locatorB_couponCodeNew_text_input_notThreshold}
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Text Of Element Should Contain With Wait    ${locatorB_couponCode_text_firstCoupon_activityRules}    无门槛
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Sleep    2
@@ -313,7 +313,7 @@ coupon_code138
     Wait And Click Element    ${locatorB_couponCodeNew_selectItem_cashCoupon}
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_discount}     100
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Wait Until Page Contains Text    保存成功
     Text Of Element Should Contain With Wait    ${locatorB_couponCode_text_firstCoupon_activityRules}    100
 
@@ -324,7 +324,7 @@ coupon_code142
     Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
     Add Default Coupon Code Text
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_activityRange}    全场
 
 coupon_code144
@@ -339,7 +339,7 @@ coupon_code144
     Wait And Click Element    ${locatorB_couponCodeNew_span_button_chooseProductSure}
     Sleep    2
     Wait And Click Element    ${locatorB_button_save00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Text Of Element Should Contain With Wait    ${locatorB_couponCode_text_firstCoupon_activityRange}    部分商品 (1件)
 
 coupon_code153
@@ -411,7 +411,7 @@ coupon_code165
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_auto
     Wait And Click Element Then Confirm     ${locatorB_button_canecl00}
-    Sleep    2
+    Wait Until Page Not Contains Locator    ${locatorB_button_canecl00}
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_activityName}    ${activityName}
 
 coupon_code169

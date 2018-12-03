@@ -13,7 +13,8 @@ Resource        ../../../resources/keywords/kw_common.robot
 checkoutPageSettings021
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.姓名格式勾选姓名时 点击 姓、名分开填写  2.点击保存
     [Tags]    P0    threshold   smoke
-    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+    Go To TradingRules Table
+    Go To Information Table
     Wait And Click Element    ${locatorB_checkout_radio_surnameAndName}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_surnameAndName}    class    ant-radio-wrapper ant-radio-wrapper-checked
@@ -26,7 +27,7 @@ checkoutPageSettings021
 checkoutPageSettings022
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.姓名格式勾选姓、名分开填写时 点击 姓名  2.点击保存
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+    Go To Information Table
     Wait And Click Element    ${locatorB_checkout_radio_name}
     Sleep And Click Element  ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
@@ -40,7 +41,7 @@ checkoutPageSettings022
 checkoutPageSettings023
     [Documentation]    测试顾客信息设置-.1.公司名点击 必填 2.点击保存
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+    Go To Information Table
     Wait And Click Element    ${locatorB_checkout_radio_companyNameMandatory}
     Sleep And Click Element    ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
@@ -57,7 +58,7 @@ checkoutPageSettings023
 checkoutPageSettings024
     [Documentation]    测试顾客信息设置-.1.公司名点击 选填 2.点击保存
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+    Go To Information Table
     Wait And Click Element    ${locatorB_checkout_radio_companyNameOptional}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_companyNameOptional}    class    ant-radio-wrapper ant-radio-wrapper-checked
@@ -72,7 +73,7 @@ checkoutPageSettings024
 checkoutPageSettings025
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.公司名点击 隐藏 2.点击保存
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+    Go To Information Table
     Wait And Click Element    ${locatorB_checkout_radio_companyNameHidden}
     Sleep And Click Element    ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
@@ -85,7 +86,7 @@ checkoutPageSettings025
 #checkoutPageSettings026.1
 #    [Documentation]    测试顾客信息设置-点击姓和名分开.1.邮箱必填 2.点击保存
 #    [Tags]    P0    threshold
-#    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+#    Go To Information Table
 #    Wait And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
 #    Sleep And Click Element    ${locatorB_checkout_button_save}
 #    Wait Until Page Contains Text   设置成功
@@ -102,7 +103,7 @@ checkoutPageSettings025
 checkoutPageSettings027.1
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.y邮箱选填  2.点击保存
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+    Go To Information Table
     Wait And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeOptional}   class    ant-radio-wrapper ant-radio-wrapper-checked
@@ -116,7 +117,7 @@ checkoutPageSettings027.1
 checkoutPageSettings028.1
     [Documentation]    测试顾客信息设置-点击姓和名分开.1.邮箱隐藏 2.点击保存
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+    Go To Information Table
     Wait And Click Element    ${locatorB_checkout_radio_emailCodeHidden}
     Sleep And Click Element    ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
@@ -129,7 +130,7 @@ checkoutPageSettings028.1
 checkoutPageSettings029
     [Documentation]    测试顾客信息设置-输入退款条约
     [Tags]    P0    threshold   smoke
-    Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
+    Go To ServiceTerms Table
     Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     退款条约内容
     Sleep And Click Element    ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
@@ -144,7 +145,7 @@ checkoutPageSettings029
 checkoutPageSettings030
     [Documentation]    测试顾客信息设置-输入隐私政策
     [Tags]    P0    threshold
-    Wait And Click Element      ${locatorB_checkout_button_nav_serviceTerms}
+    Go To ServiceTerms Table
     Wait And Input Text     ${locatorB_checkout_textarea_policyInputBox}     隐私政策内容
     Sleep And Click Element    ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
@@ -158,7 +159,7 @@ checkoutPageSettings030
 checkoutPageSettings031
     [Documentation]    测试顾客信息设置-输入服务条约
     [Tags]    P0    threshold
-    Wait And Click Element      ${locatorB_checkout_button_nav_serviceTerms}
+    Go To ServiceTerms Table
     Wait And Input Text     ${locatorB_checkout_textarea_refundServiceInputBox}     服务条约内容
     Sleep And Click Element    ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功

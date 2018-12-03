@@ -54,11 +54,12 @@ collection017
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
-    Sleep    2
+    Sleep    3
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    中文english$%*&(123
     Value Of Element Should Be Equal With Wait    ${locatorB_CollectionsNew_inoput_CollectionName}    中文english$%*&(123
     Wait And Click Element    ${locatorB_CollectionsNew_button_CollectionSave}
+    Wait Until Page Not Contains Locator    ${locatorB_CollectionsNew_button_CollectionSave}
     Reload Page And Start Ajax
     Text Of Element Should Be Equal With Wait    ${locatorB_CollectionsMgmt_text_firstCollectionName}    中文english$%*&(123
 
@@ -68,11 +69,12 @@ collection019
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
-    Sleep    2
+    Sleep    3
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    中文字符123456中文字符123456中文字符123456
     Value Of Element Should Be Equal With Wait    ${locatorB_CollectionsNew_inoput_CollectionName}    中文字符123456中文字符123456中文字符123456
     Wait And Click Element    ${locatorB_CollectionsNew_button_CollectionSave}
+    Wait Until Page Not Contains Locator    ${locatorB_CollectionsNew_button_CollectionSave}
     Reload Page And Start Ajax
     Text Of Element Should Be Equal With Wait    ${locatorB_CollectionsMgmt_text_firstCollectionName}    中文字符123456中文字符123456中文字符123456
 
@@ -82,11 +84,12 @@ collection025
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
-    Sleep    2
+    Sleep    3
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文english$%*&(123
     Text Of Element Should Be Equal With Wait    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文english$%*&(123
     Wait And Click Element    ${locatorB_CollectionsNew_button_CollectionSave}
+    Wait Until Page Not Contains Locator    ${locatorB_CollectionsNew_button_CollectionSave}
     Reload Page And Start Ajax
     Text Of Element Should Be Equal With Wait    ${locatorB_CollectionsMgmt_text_firstCollectionDesc}    中文english$%*&(123
 
@@ -96,11 +99,12 @@ collection026
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
-    Sleep    2
+    Sleep    3
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456
     Text Of Element Should Be Equal With Wait    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456
     Wait And Click Element    ${locatorB_CollectionsNew_button_CollectionSave}
+    Wait Until Page Not Contains Locator    ${locatorB_CollectionsNew_button_CollectionSave}
     Reload Page And Start Ajax
     Text Of Element Should Be Equal With Wait    ${locatorB_CollectionsMgmt_text_firstCollectionDesc}    中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456
 
@@ -130,7 +134,7 @@ collection079
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
-    Sleep    2
+    Sleep    3
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文english$%*&(123
     Wait And Click Element    ${locatorB_CollectionsNew_icon_Collectionlist}
@@ -156,7 +160,7 @@ collection081
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
-    Sleep    2
+    Sleep    3
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    中文english$%*&(123
     Wait And Click Element    ${locatorB_CollectionsNew_icon_Collectionlist}
@@ -170,6 +174,7 @@ collection105
     Wait And Click Element    ${locatorB_CollectionsMgmt_button_addOneCollection}
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    中文english$%*&(123
     Wait And Click Element    ${locatorB_CollectionsNew_button_CollectionSave}
+    Wait Until Page Not Contains Locator    ${locatorB_CollectionsNew_button_CollectionSave}
     Reload Page And Start Ajax
     Text Of Element Should Be Equal With Wait    ${locatorB_CollectionsMgmt_text_firstCollectionName}    中文english$%*&(123
 
@@ -179,6 +184,7 @@ collection107
     Wait And Click Element    ${locatorB_CollectionsMgmt_button_addOneCollection}
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    中文字符123456中文字符123456中文字符123456
     Wait And Click Element    ${locatorB_CollectionsNew_button_CollectionSave}
+    Wait Until Page Not Contains Locator    ${locatorB_CollectionsNew_button_CollectionSave}
     Reload Page And Start Ajax
     Text Of Element Should Be Equal With Wait    ${locatorB_CollectionsMgmt_text_firstCollectionName}    中文字符123456中文字符123456中文字符123456
 
@@ -189,6 +195,7 @@ collection113
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    测试专辑描述
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文english$%*&(123
     Wait And Click Element    ${locatorB_CollectionsNew_button_CollectionSave}
+    Wait Until Page Not Contains Locator    ${locatorB_CollectionsNew_button_CollectionSave}
     Reload Page And Start Ajax
     Text Of Element Should Be Equal With Wait    ${locatorB_CollectionsMgmt_text_firstCollectionDesc}    中文english$%*&(123
 
@@ -199,6 +206,7 @@ collection114
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    测试专辑描述长度
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456
     Wait And Click Element    ${locatorB_CollectionsNew_button_CollectionSave}
+    Wait Until Page Not Contains Locator    ${locatorB_CollectionsNew_button_CollectionSave}
     Reload Page And Start Ajax
     Text Of Element Should Be Equal With Wait    ${locatorB_CollectionsMgmt_text_firstCollectionDesc}    中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456
 
@@ -209,7 +217,7 @@ collection134
     \    kwproduct.add_max_product_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_button_addOneCollection}
-    Sleep    2
+    Sleep    3
     Wait And Click Element    ${locatorB_CollectionsNew_button_addProduct}
     Wait And Click Element    ${locatorB_CollectionsNew_checkbox_firstProduct}
     Wait And Click Element    ${locatorB_CollectionsNew_button_Productaddfoot}
