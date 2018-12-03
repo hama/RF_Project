@@ -102,7 +102,9 @@ navigation_menu_032
     Add Navigation Menu With Wait    小吃系列
     Wait And Click Element    ${locatorB_menus_list_menuList}[2]
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     修改后的小吃系列
+    Sleep    2
     Wait And Click Element    ${locatorB_button_save00}
+    Sleep    2
     Wait Until Page Not Contains Locator     ${locatorB_button_save00}
     Go To Navigation Menu Page
     Text Of Element Should Be Equal With Wait    ${locatorB_menus_text_menuListName}    修改后的小吃系列

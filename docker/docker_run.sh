@@ -9,19 +9,33 @@ fi
 
 TIMESTAMP=`date "+%Y%m%d%H%M%S"`
 LOG_PATH="/var/log/uitest_log/$TIMESTAMP"
-LOG_PATH_1="$LOG_PATH/1"
-LOG_PATH_2="$LOG_PATH/2"
-LOG_PATH_3="$LOG_PATH/3"
-LOG_PATH_4="$LOG_PATH/4"
-LOG_PATH_5="$LOG_PATH/5"
-LOG_PATH_6="$LOG_PATH/6"
-LOG_PATH_7="$LOG_PATH/7"
-LOG_PATH_8="$LOG_PATH/8"
-LOG_PATH_9="$LOG_PATH/9"
-LOG_PATH_10="$LOG_PATH/10"
-LOG_PATH_11="$LOG_PATH/11"
-LOG_PATH_12="$LOG_PATH/12"
-LOG_PATH_13="$LOG_PATH/13"
+LOG_PATH_1="$LOG_PATH""/1"
+LOG_PATH_2="$LOG_PATH""/2"
+LOG_PATH_3="$LOG_PATH""/3"
+LOG_PATH_4="$LOG_PATH""/4"
+LOG_PATH_5="$LOG_PATH""/5"
+LOG_PATH_6="$LOG_PATH""/6"
+LOG_PATH_7="$LOG_PATH""/7"
+LOG_PATH_8="$LOG_PATH""/8"
+LOG_PATH_9="$LOG_PATH""/9"
+LOG_PATH_10="$LOG_PATH""/10"
+LOG_PATH_11="$LOG_PATH""/11"
+LOG_PATH_12="$LOG_PATH""/12"
+LOG_PATH_13="$LOG_PATH""/13"
+
+
+#if [ ! -d "$LOG_PATH_1" ]
+#then
+#	mkdir -p $LOG_PATH_1
+#fi
+#if [ ! -d "$LOG_PATH_2" ]
+#then
+#	mkdir -p $LOG_PATH_2
+#fi
+#if [ ! -d "$LOG_PATH_3" ]
+#then
+#	mkdir -p $LOG_PATH_3
+#fi
 
 # 开启docker容器跑对应用例,新创建用户
 docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_1  registry.shoplazza.com/library/uitest:v7 \
