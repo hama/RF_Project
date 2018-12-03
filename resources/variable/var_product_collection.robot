@@ -16,7 +16,7 @@ ${locatorB_CollectionsMgmt_text_firstCollectionNum}    dom:document.querySelecto
 ${locatorB_CollectionsMgmt_text_firstCollEditTime}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(7)')[0]     #商品专辑 - 第一个专辑 - 修改时间
 
 # locator_CollectionsNew
-${locatorB_CollectionsNew_button_CollectionSave}    ${locatorB_button_save00}    #专辑详情 - 保存按钮
+${locatorB_CollectionsNew_button_CollectionSave}    dom:document.querySelectorAll('[class*="saveButton"] button[class*="middle_btn"]')[0]    #专辑详情 - 保存按钮
 ${locatorB_CollectionsNew_button_CollectionCancel}    ${locatorB_button_canecl00}    #专辑详情 - 取消按钮
 ${locatorB_CollectionsNew_icon_Collectionlist}    dom:document.querySelectorAll('[class="djfont dj-back"]')    #专辑详情 - 返回专辑列表 图标
 ${locatorB_CollectionsNew_icon_CollectionPreview}     dom:document.querySelectorAll('[class*="djfont dj-preview"]')[0]    #专辑详情 - 预览页面 图标

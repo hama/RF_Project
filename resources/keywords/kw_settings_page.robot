@@ -21,3 +21,18 @@ Checkout Page Test Setup
     kwcheckout.set_checkout_process_py
     Go To Checkout Settings Page
 
+Go To TradingRules Table
+	Sleep    1
+    Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
+    Sleep    1
+
+Go To Information Table
+	Sleep    1
+    Wait And Click Element    ${locatorB_checkout_button_nav_information}
+    Sleep    1
+
+Go To ServiceTerms Table
+	Sleep    1
+    Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
+    Sleep    1
+

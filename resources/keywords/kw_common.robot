@@ -3,6 +3,7 @@ Library           SeleniumLibrary    run_on_failure=NOTHING    implicit_wait=7.0
 Library           OperatingSystem
 Library           Collections
 Library           DateTime
+Library           String
 Library           ${CURDIR}/../../lib/customlib/kwcart.py
 Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 Library           ${CURDIR}/../../lib/customlib/kwcollection.py
@@ -17,6 +18,7 @@ Library           ${CURDIR}/../../lib/customlib/kwshipping.py
 Library           ${CURDIR}/../../lib/customlib/kwstore.py
 Library           ${CURDIR}/../../lib/customlib/kwtax.py
 Library           ${CURDIR}/../../lib/customlib/lib_utils.py
+Library           ${CURDIR}/../../lib/customlib/kwrebate.py
 Resource          ../variable/var_common.robot
 Resource          kw_ajax.robot
 Resource          kw_browser.robot
@@ -35,6 +37,7 @@ Resource          kw_tax.robot
 Resource          kw_navmenu.robot
 Resource          kw_uploadfile.robot
 Resource          kw_payment_channel.robot
+Resource          kw_subtraction.robot
 
 *** Keywords ***
 Login With Default User
@@ -277,6 +280,8 @@ Count Of Element Should Be Equal With Wait
     [Documentation]    元素的个数应该等于
 #    ${exec_locator} =	Evaluate	'''${element_locator}'''[4:]
     ${times}    Evaluate    ${timeout}-1
+    ${elementIsStandby}    Run Keyword And Return Status    Wait Until Element Is Enabled    ${element_locator}    3
+    Run Keyword If    '${elementIsStandby}'!='True'    Sleep    3
     :FOR    ${i}    IN RANGE    ${timeout}
 #    \    ${len}    Get List Length    ${exec_locator}
     \    ${len}    Get Element Count    ${element_locator}
@@ -289,6 +294,8 @@ Element Attribute Should Be Equal With Wait
     [Arguments]    ${element_locator}    ${attribute}    ${expected}    ${timeout}=10
     [Documentation]    元素的属性应该等于
     ${times}    Evaluate    ${timeout}-1
+    ${elementIsStandby}    Run Keyword And Return Status    Wait Until Element Is Enabled    ${element_locator}    3
+    Run Keyword If    '${elementIsStandby}'!='True'    Sleep    3
     :FOR    ${i}    IN RANGE    ${timeout}
     \    ${attr}    Get Element Attribute    ${element_locator}    ${attribute}
     \    ${status}    Run Keyword And Return Status    Should Be equal    '${attr}'    '${expected}'
@@ -300,6 +307,8 @@ Element Attribute Should Contain With Wait
     [Arguments]    ${element_locator}    ${attribute}    ${expected}    ${timeout}=10
     [Documentation]    元素的属性应该包含
     ${times}    Evaluate    ${timeout}-1
+    ${elementIsStandby}    Run Keyword And Return Status    Wait Until Element Is Enabled    ${element_locator}    3
+	Run Keyword If    '${elementIsStandby}'!='True'    Sleep    3
     :FOR    ${i}    IN RANGE    ${timeout}
     \    ${attr}    Get Element Attribute    ${element_locator}    ${attribute}
     \    ${status}    Run Keyword And Return Status    Should Contain    ${attr}    ${expected}
@@ -402,12 +411,13 @@ Wait Alert Should Be Present And Dismiss
     Alert Should Be Present    ${text}    DISMISS    ${timeout}
 
 Reload Page And Start Ajax
-    [Arguments]    ${sleep_time}=1
+    [Arguments]    ${sleep_time}=2
 	[Documentation]    刷新页面并添加监控
 	Sleep    ${sleep_time}
 	Reload Page
+	Sleep    1
 	Start Ajax Listener
-	Sleep    5
+	Sleep    2
 
 Select All Items Then Click Batch Menu
     [Documentation]    选中所有items,并且点击批量操作菜单
