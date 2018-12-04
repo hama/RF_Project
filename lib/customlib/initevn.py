@@ -21,7 +21,7 @@ if __name__ == '__main__':
     path = os.path.join(os.path.dirname(__file__), '../../config/common.ini')
     config.read(path)
 
-    config.set("common_account", "datas_invite_code", 'DJ1024')
+    config.set("common_account", "datas_invite_code", 'DJ2048')
     config.set("common_url", "home_page_url", args.url)
 
     # config.set("common_db", "db_shop_config",
