@@ -110,7 +110,7 @@ store019
     Wait And Click Element    ${locatorB_store_i_delete}
     Wait Enabled And Choose File    dom:document.querySelectorAll('input[type="file"]')    ${file_products_addImg}
     Wait And Click Element    ${locatorB_button_save00}
-    Wait Until Page Contains    店铺信息更新成功。
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Reload Page
     Wait Until Page Contains Locator    ${locatorB_store_div_favion_img}
 
