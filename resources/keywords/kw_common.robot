@@ -280,6 +280,8 @@ Count Of Element Should Be Equal With Wait
     [Documentation]    元素的个数应该等于
 #    ${exec_locator} =	Evaluate	'''${element_locator}'''[4:]
     ${times}    Evaluate    ${timeout}-1
+    ${elementIsStandby}    Run Keyword And Return Status    Wait Until Element Is Enabled    ${element_locator}    3
+    Run Keyword If    '${elementIsStandby}'!='True'    Sleep    3
     :FOR    ${i}    IN RANGE    ${timeout}
 #    \    ${len}    Get List Length    ${exec_locator}
     \    ${len}    Get Element Count    ${element_locator}
@@ -292,6 +294,8 @@ Element Attribute Should Be Equal With Wait
     [Arguments]    ${element_locator}    ${attribute}    ${expected}    ${timeout}=10
     [Documentation]    元素的属性应该等于
     ${times}    Evaluate    ${timeout}-1
+    ${elementIsStandby}    Run Keyword And Return Status    Wait Until Element Is Enabled    ${element_locator}    3
+    Run Keyword If    '${elementIsStandby}'!='True'    Sleep    3
     :FOR    ${i}    IN RANGE    ${timeout}
     \    ${attr}    Get Element Attribute    ${element_locator}    ${attribute}
     \    ${status}    Run Keyword And Return Status    Should Be equal    '${attr}'    '${expected}'
@@ -303,6 +307,8 @@ Element Attribute Should Contain With Wait
     [Arguments]    ${element_locator}    ${attribute}    ${expected}    ${timeout}=10
     [Documentation]    元素的属性应该包含
     ${times}    Evaluate    ${timeout}-1
+    ${elementIsStandby}    Run Keyword And Return Status    Wait Until Element Is Enabled    ${element_locator}    3
+	Run Keyword If    '${elementIsStandby}'!='True'    Sleep    3
     :FOR    ${i}    IN RANGE    ${timeout}
     \    ${attr}    Get Element Attribute    ${element_locator}    ${attribute}
     \    ${status}    Run Keyword And Return Status    Should Contain    ${attr}    ${expected}
