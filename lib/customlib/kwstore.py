@@ -8,24 +8,35 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def store_update_py(data, cookie=init_cookie):
+def store_post_py(data, cookie=init_cookie):
     '''
     更新店铺信息
     :param data:
     :param cookie:
     :return:
     '''
-    url = home_page_url + "/api/store/update"
+    url = home_page_url + "/api/store"
     return do_post(url, data, cookie=cookie)
 
 
-def store_info_py(cookie=init_cookie):
+def store_get_py(cookie=init_cookie):
     '''
     获取店铺信息
     :param cookie:
     :return:
     '''
-    url = home_page_url + "/api/store/info"
+    url = home_page_url + "/api/store"
+    query_str = {}
+    return do_get(url, query_str, cookie=cookie)
+
+
+def store_guide_setting_py(cookie=init_cookie):
+    '''
+    获取店铺教程配置信息
+    :param cookie:
+    :return:
+    '''
+    url = home_page_url + "/api/store/guide-setting"
     query_str = {}
     return do_get(url, query_str, cookie=cookie)
 
@@ -37,22 +48,22 @@ def set_store_info_with_conf_py(conf={}, cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    data = copy.deepcopy(store_update_data)
+    data = copy.deepcopy(store_data)
     dict_deepupdate(data, conf)
-    data_store_info = store_info_py(cookie=cookie)
+    data_store_info = store_get_py(cookie=cookie)
     key_list = conf.keys()
     if 'name' not in key_list:
         data['name'] = datas_domain
     if 'store_id' not in key_list:
-        data['store_id'] = data_store_info['content']['data']['store_id']
+        data['store_id'] = data_store_info['content']['store_id']
     if 'id' not in key_list:
-        data['id'] = data_store_info['content']['data']['id']
+        data['id'] = data_store_info['content']['id']
     if 'created_at' not in key_list:
-        data['created_at'] = data_store_info['content']['data']['created_at']
+        data['created_at'] = data_store_info['content']['created_at']
     if 'updated_at' not in key_list:
         data['updated_at'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
-    return store_update_py(data, cookie=cookie)
+    return store_post_py(data, cookie=cookie)
 
 
 def add_upfiles_py(cookie=init_cookie):
@@ -81,7 +92,5 @@ def add_upfiles_py(cookie=init_cookie):
 
 
 if __name__ == '__main__':
+    print store_get_py()
     print set_store_info_with_conf_py()
-
-
-
