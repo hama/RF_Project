@@ -19,7 +19,7 @@ store002
     Clear Element Text    ${locatorB_store_input_storeName}
     Wait And Input Text    ${locatorB_store_input_storeName}    zhoulidianpu
     Wait And Click Element    ${locatorB_button_save00}
-    Wait Until Page Contains    店铺信息更新成功。
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Reload Page And Start Ajax
     Value Of Element Should Be Equal With Wait    ${locatorB_store_input_storeName}    zhoulidianpu
 
@@ -38,7 +38,7 @@ store004
     Clear Element Text    ${locatorB_store_input_storeName}
     Wait And Input Text    ${locatorB_store_input_storeName}    zhoulidianpuzhoulidianpuzhoulidianpuzhoulidianpuzh
     Wait And Click Element    ${locatorB_button_save00}
-    Wait Until Page Contains    店铺信息更新成功。
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Reload Page And Start Ajax
     Value Of Element Should Be Equal With Wait    ${locatorB_store_input_storeName}    zhoulidianpuzhoulidianpuzhoulidianpuzhoulidianpuzh
 
@@ -70,7 +70,7 @@ store011
     Clear Element Text    ${locatorB_store_input_storeEmail}
     Wait And Input Text    ${locatorB_store_input_storeEmail}    zhouli@shoplazza.com
     Wait And Click Element    ${locatorB_button_save00}
-    Wait Until Page Contains    店铺信息更新成功。
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Reload Page And Start Ajax
     Value Of Element Should Be Equal With Wait    ${locatorB_store_input_storeEmail}    zhouli@shoplazza.com
 
@@ -89,7 +89,7 @@ store015
     Clear Element Text    ${locatorB_store_store_input_serviceEmail}
     Wait And Input Text    ${locatorB_store_store_input_serviceEmail}    zhouliservice@shoplazza.com
     Wait And Click Element    ${locatorB_button_save00}
-    Wait Until Page Contains    店铺信息更新成功。
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Reload Page And Start Ajax
     Value Of Element Should Be Equal With Wait    ${locatorB_store_store_input_serviceEmail}    zhouliservice@shoplazza.com
 
@@ -158,7 +158,7 @@ store029.1
     Wait And Click Element    ${locatorB_store_select_timezone_listIcon}
     Wait And Click Element    ${locatorB_store_select_timezone_listContent}[0]    #选择店铺时区下拉列表中的第一个
     Wait And Click Element    ${locatorB_button_save00}
-    Wait Until Page Contains    店铺信息更新成功。
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Reload Page And Start Ajax
     Text Of Element Should Be Equal With Wait    ${locatorB_store_select_timezone}    (GMT - 12:00) 国际日期变更线西
 

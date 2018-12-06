@@ -23,6 +23,7 @@ Add Navigation Menu With Wait
     [Documentation]    添加一个菜单,只输入菜单名称
     [Arguments]    ${menuName}
     Wait And Click Element    ${locatorB_menus_button_addMenu}
+    Sleep    1
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     ${menuName}
     Sleep    2
     Wait And Click Element    ${locatorB_button_save00}

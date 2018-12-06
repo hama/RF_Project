@@ -54,7 +54,7 @@ Login With User
     Wait And Click Element    ${locatorB_login_btn_login}
     Comment    wait until domain input text element is visible
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_login_input_domain}    2
-    Run Keyword If    '${status}'=='${True}'    Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
+    Run Keyword If    '${status}'=='${True}'    Wait And Input Text    ${locatorB_login_input_domain}    ${domain}
     Run Keyword If    '${status}'=='${True}'    Wait And Click Element    ${locatorB_login_btn_login}
     Wait Until Page Contains Locator    ${locatorB_logout_icon_individualAccount}
     log    Login Success
@@ -416,7 +416,7 @@ Reload Page And Start Ajax
 	Sleep    ${sleep_time}
 	Reload Page
 	Sleep    1
-	Start Ajax Listener
+#	Start Ajax Listener
 	Sleep    2
 
 Select All Items Then Click Batch Menu
