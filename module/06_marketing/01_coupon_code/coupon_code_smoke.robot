@@ -173,7 +173,7 @@ coupon_code099
     Select All Coupon Code Tag
     Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
     Add Default Coupon Code Text
-    Long Press Element With Wait    ${locatorB_couponCodeNew_input_noLimit}
+     Wait Exist And Click Element    ${locatorB_couponCodeNew_input_noLimit}
     Wait And Click Coupon Confirm
     Text Of Element Should Contain With Wait    ${locatorB_couponCode_text_firstCoupon_beenUsedAndUnUsed}    不限
 
@@ -195,11 +195,11 @@ coupon_code108
     Select All Coupon Code Tag
     Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
     Add Default Coupon Code Text
-    Long Press Element With Wait    ${locatorB_couponCodeNew_input_limited}
+    Wait Exist And Click Element   ${locatorB_couponCodeNew_input_limited}
     Wait And Click Coupon Confirm
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Sleep    2
-    Element Attribute Should Contain With Wait    ${locatorB_couponCodeNew_input_limited}    class    ant-checkbox ant-checkbox-checked
+    Value Of Element Should Be Equal With Wait    ${locatorB_couponCodeNew_text_input_Mannum}    ${Empty}
 
 coupon_code116
     [Documentation]    验证新建优惠码界面，优惠类型为 折扣券，优惠门槛 输入框中输入合法内容时，可保存成功
