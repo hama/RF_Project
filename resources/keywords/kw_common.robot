@@ -416,7 +416,7 @@ Reload Page And Start Ajax
 	Sleep    ${sleep_time}
 	Reload Page
 	Sleep    1
-	Start Ajax Listener
+#	Start Ajax Listener
 	Sleep    2
 
 Select All Items Then Click Batch Menu
