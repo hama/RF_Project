@@ -139,8 +139,6 @@ coupon_code090
     Select All Coupon Code Tag
     Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
     Add Default Coupon Code Text
-    Sleep    1
-    Wait And Click Element    ${locatorB_couponCodeNew_text_p_promoCrandom}
     Sleep    2
     ${conpontext}    Get Value    ${locatorB_couponCodeNew_text_input_promoCode}
     Wait And Click Coupon Confirm
