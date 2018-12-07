@@ -182,7 +182,62 @@ def add_finish_rebate_py(conf={}, cookie=init_cookie):
     return add_rebate_with_conf_py(conf, cookie=cookie)
 
 
+def end_all_rebates_py(cookie=init_cookie):
+    '''
+    结束所有活动
+    :param cookie:
+    :return:
+    '''
+    rebates_id = get_exist_doing_rebatesid_py(cookie=cookie)
+    for rebate_id in rebates_id:
+        rebate_end_py({'rebate_id': rebate_id}, cookie=cookie)
+
+
+def get_all_rebates_count_py(conf={}, cookie=init_cookie):
+    '''
+    获取rebates总数
+    :param conf: {progress=0|1|2|3}
+    :param cookie:
+    :return:
+    '''
+    return rebate_list_py(conf, cookie=cookie)['content']['total']
+
+
+def get_exist_rebatesid_py(progress, cookie=init_cookie):
+    '''
+    返回存在的满减活动的id
+    :param progress: 0|1|2|3
+    :param cookie:
+    :return:
+    '''
+    # query_str = copy.deepcopy(query_list_data)
+    count = get_all_rebates_count_py({'progress': progress}, cookie=cookie)
+    products_list = rebate_list_py({'page': 1, 'size': count, 'progress': progress}, cookie=cookie)['content']['data']
+    products_id = []
+    for product in products_list:
+        products_id.append(product['id'])
+    return products_id
+
+
+def get_exist_all_rebatesid_py(cookie=init_cookie):
+    '''
+    返回存在的所有满减活动的id
+    :param cookie:
+    :return:
+    '''
+    return get_exist_rebatesid_py(0, cookie=cookie)
+
+
+def get_exist_doing_rebatesid_py(cookie=init_cookie):
+    '''
+    返回存在的正在进行满减活动的id
+    :param cookie:
+    :return:
+    '''
+    return get_exist_rebatesid_py(2, cookie=cookie)
+
+
 if __name__ == '__main__':
-    # add_max_product_py()
-    print add_before_rebate_py()
+    # add_doing_rebate_py()
+    print end_all_rebates_py()
     # print rebate_select_product_py()
