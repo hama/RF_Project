@@ -133,18 +133,16 @@ coupon_code085
     Wait And Click Coupon Confirm
     Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_activityTime}    ${startTime1}-\n无期限
 
-#coupon_code090
-#    [Documentation]    验证新建优惠码界面，优惠码输入框中 输入合法内容 可保存成功(随机生成)
-#    [Tags]    P0    threshold
-#    Select All Coupon Code Tag
-#    Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
-#    Add Default Coupon Code Text
-#    Sleep    1
-#    Wait And Click Element    ${locatorB_couponCodeNew_text_p_promoCrandom}
-#    Sleep    2
-#    ${conpontext}    Get Value    ${locatorB_couponCodeNew_text_input_promoCode}
-#    Wait And Click Coupon Confirm
-#    Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_couponCode}    ${conpontext}
+coupon_code090
+    [Documentation]    验证新建优惠码界面，优惠码输入框中 输入合法内容 可保存成功(随机生成)
+    [Tags]    P0    threshold
+    Select All Coupon Code Tag
+    Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
+    Add Default Coupon Code Text
+    Sleep    2
+    ${conpontext}    Get Value    ${locatorB_couponCodeNew_text_input_promoCode}
+    Wait And Click Coupon Confirm
+    Text Of Element Should Be Equal With Wait    ${locatorB_couponCode_text_firstCoupon_couponCode}    ${conpontext}
 
 coupon_code090.1
     [Documentation]    验证新建优惠码界面，优惠码输入框中 输入合法内容 可保存成功(手动输入)
