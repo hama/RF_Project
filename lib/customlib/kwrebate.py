@@ -200,7 +200,11 @@ def get_all_rebates_count_py(conf={}, cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    return rebate_list_py(conf, cookie=cookie)['content']['total']
+    rebate_list = rebate_list_py(conf, cookie=cookie)['content']
+    if rebate_list['state'] == 0:
+        return rebate_list['total']
+    elif rebate_list['state'] == 2:
+        return 0
 
 
 def get_exist_rebatesid_py(progress, cookie=init_cookie):
@@ -212,6 +216,8 @@ def get_exist_rebatesid_py(progress, cookie=init_cookie):
     '''
     # query_str = copy.deepcopy(query_list_data)
     count = get_all_rebates_count_py({'progress': progress}, cookie=cookie)
+    if count == 0:
+        return []
     products_list = rebate_list_py({'page': 1, 'size': count, 'progress': progress}, cookie=cookie)['content']['data']
     products_id = []
     for product in products_list:
@@ -238,6 +244,6 @@ def get_exist_doing_rebatesid_py(cookie=init_cookie):
 
 
 if __name__ == '__main__':
-    # add_doing_rebate_py()
-    print end_all_rebates_py()
+    add_doing_rebate_py()
+    # print get_exist_doing_rebatesid_py()
     # print rebate_select_product_py()
