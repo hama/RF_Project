@@ -108,8 +108,10 @@ store019
     Wait And Mouse Over    ${locatorB_store_div_favion}
     Set Focus To Element    ${locatorB_store_div_favion}
     Wait And Click Element    ${locatorB_store_i_delete}
+    Sleep And Click Element    ${locatorB_button_save00}
+    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Wait Enabled And Choose File    dom:document.querySelectorAll('input[type="file"]')    ${file_products_addImg}
-    Wait And Click Element    ${locatorB_button_save00}
+    Sleep And Click Element    ${locatorB_button_save00}
     Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Reload Page And Start Ajax
     Wait Until Page Contains Locator    ${locatorB_store_div_favion_img}
