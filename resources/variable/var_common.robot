@@ -40,6 +40,7 @@ ${locatorB_product_collection}    dom:document.querySelectorAll('[data-robot="pr
 ### 菜单栏 - 营销
 ${locatorB_marketing}    dom:document.querySelectorAll('[data-robot="marketing"]')    # 导航栏-营销
 ${locatorB_marketing_subtraction}    dom:document.querySelectorAll('[data-robot="marketing_substraction"]')    # 导航栏-营销-满减活动
+${locatorB_subtraction_header_text}    满减/满折活动是提升订单连带率和客单价最有效的方式之一
 ${locatorB_marketing_coupon_code}    dom:document.querySelectorAll('[data-robot="marketing_promo_code"]')    # 导航栏-营销-优惠券
 ### 菜单栏 - 店铺装修
 ${locatorB_decoration}    dom:document.querySelectorAll('[data-robot="decoration"]')    #.导航栏-店铺装修
