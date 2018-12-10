@@ -698,6 +698,16 @@ rebate_refresh_data = {
     "rule_list": '[{"range_unit":"price","range_value":"100","rate_amount":"20","rate_shipping":0,"checked":false}]'
 }
 
+
+customer_data = {
+    "first_name": "firstname",
+    "last_name": "lastname",
+    "email": "1111@autotest.com",
+    "phone": "18888888888",
+    "phone_area_code": "CN_86",
+    "newsletter": True
+}
+
 popups_data = {
     "starts_at": "1543440306",
     "ends_at": -1,
