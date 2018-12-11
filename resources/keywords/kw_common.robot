@@ -19,6 +19,7 @@ Library           ${CURDIR}/../../lib/customlib/kwstore.py
 Library           ${CURDIR}/../../lib/customlib/kwtax.py
 Library           ${CURDIR}/../../lib/customlib/lib_utils.py
 Library           ${CURDIR}/../../lib/customlib/kwrebate.py
+Library           ${CURDIR}/../../lib/customlib/kwcustomer.py
 Resource          ../variable/var_common.robot
 Resource          kw_ajax.robot
 Resource          kw_browser.robot
@@ -38,6 +39,7 @@ Resource          kw_navmenu.robot
 Resource          kw_uploadfile.robot
 Resource          kw_payment_channel.robot
 Resource          kw_subtraction.robot
+Resource          kw_customer.robot
 
 *** Keywords ***
 Login With Default User
