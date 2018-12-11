@@ -17,6 +17,7 @@ Resource          var_application.robot
 Resource          var_navmenu.robot
 Resource          var_payment_channel.robot
 Resource          var_subtraction.robot
+Resource          var_customer.robot
 *** Variables ***
 ### 未分类，需要分类并清理
 ${error_msg}      出错啦！    #.自定义错误提示
@@ -36,6 +37,10 @@ ${locatorB_product_management}    dom:document.querySelectorAll('[data-robot="pr
 ${locatorB_product_collection}    dom:document.querySelectorAll('[data-robot="products_colletion"]')    # 导航栏-商品专辑
 
 #${locatorB_product_reviews}    dom:document.querySelectorAll('a[href="/reviews"]')[0]    # 导航栏-商品评论
+
+### 菜单栏 - 顾客
+${locatorB_customers}    dom:document.querySelectorAll('[data-robot="customer"]')[0]    # 导航栏-顾客
+${locatorB_customers_management}    dom:document.querySelectorAll('[data-robot="customer_manage"]')    # 导航栏-顾客管理
 
 ### 菜单栏 - 营销
 ${locatorB_marketing}    dom:document.querySelectorAll('[data-robot="marketing"]')    # 导航栏-营销
@@ -65,6 +70,7 @@ ${locatorB_systemSetting_files}    dom:document.querySelectorAll('[data-robot="s
 
 ${isExistB_setting_orderMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="order"]')[0]    # 判断order菜单展开的元素是否存在
 ${isExistB_setting_productMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="products"]')[0]    # 判断product菜单展开的元素是否存在
+${isExistB_setting_customerMenus_expanded}    dom:document.querySelectorAll('[data-robot="customer"] [class*="djfont dj-shouqi menu__arrow"]')[0]    # 判断customer菜单展开的元素是否存在
 ${isExistB_setting_marketingMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="marketing"]')[0]    # 判断marketing菜单展开的元素是否存在
 ${isExistB_setting_decorationMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="decoration"]')[0]    # 判断decoration菜单展开的元素是否存在
 ${isExistB_setting_settingMenus_expanded}    dom:document.querySelectorAll('div[aria-expanded="true"] span[data-robot="setting"]')[0]    # 判断setting菜单展开的元素是否存在
