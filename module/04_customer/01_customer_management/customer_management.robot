@@ -18,7 +18,6 @@ customer006
     Customer Register C Interface    lily    jane    qazwsx123@qq.com    qazwsx123
     Wait And Click Element    ${locatorC_customerRegister_checkbox_checkboxRegister}
     Wait And Click Element    ${locatorC_customerRegister_button_RegisterBtn}
-    Wait Until Page Not Contains Locator    ${locatorC_customerRegister_button_RegisterBtn}
     Wait Until Page Contains Text    Congratulations! You have successfully registered
     Go To    https://admin.shoplazza.com/customers
     Reload Page And Start Ajax
