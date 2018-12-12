@@ -18,8 +18,8 @@ Checkout Suite Setup
 Checkout Suite Teardown
     [Documentation]    每个用例执行结束步骤
     #还原初始化环境
-    kwshipping.del_all_shipping_py
-    kwproduct.del_all_products_py
+#    kwshipping.del_all_shipping_py
+#    kwproduct.del_all_products_py
     Close Test Suite Browser
 
 Checkout Case Setup
@@ -96,7 +96,7 @@ Add Credit Card Info
 	Sleep    2
 
 Create Specific Coupon Code
-	[Documentation]    添加信用卡公共部分
+	[Documentation]    添加一个 优惠规则为满50减10USD 优惠码
 	${code}    get_coupon_code_random_code_py
     &{conf} =    Create Dictionary
     ...    code=${code}
