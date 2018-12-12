@@ -1,5 +1,12 @@
 *** Variables ***
 
+#.locatorC_orderDetail
+${locatorC_orderDetail_text_productTitle}    dom:document.querySelectorAll('[class*="product-info__header_title"]')[0]    # 商品详情页 - 商品标题
+${locatorC_orderDetail_text_productPrice}    dom:document.querySelectorAll('[class*="product-info__header_price-wrapper-left"] span')[0]    # 商品详情页 - 商品价格
+
+${locatorC_orderDetail_icon_addProductNum}     dom:document.querySelectorAll('[class*="btn product-info__qty_btn"]')[1]    # 商品详情页 - 商品数量 '+' 图标
+${locatorC_orderDetail_text_ProductNum}     dom:document.querySelectorAll('[class*="form-control"]')[1]    # 商品详情页 - 商品数量显示
+
 #.locatorC_cart
 ${locatorC_cart_button_checkout}    dom:document.querySelectorAll('[class*="checkout"]')[0]   #.购物车-checkout提交按钮
 
@@ -8,6 +15,7 @@ ${locatorC_cart_button_checkout}    dom:document.querySelectorAll('[class*="chec
 #order summary
 
 ${locatorC_checkoutShipping_locator_order}    dom:document.querySelectorAll('[data-track="item"]')[0]     #。购买的商品列表 元素
+${locatorC_checkoutShipping_text_Subtotal}    dom:document.querySelectorAll('[class="checkout__prices-table"] tr td:nth-child(2)')[0]    # .subtotal价格显示
 ${locatorC_checkoutShipping_locator_address}    dom:document.querySelectorAll('[class="form-container"]')[0]    #.地址  元素
 
 ${locatorC_checkoutShipping_locator_special}    dom:document.querySelectorAll('[class="checkout-instruction"]')[0]    #.买家留言  元素
@@ -48,7 +56,7 @@ ${locatorC_checkoutShipping_address_input_onlyName}    dom:document.querySelecto
 ${locatorC_checkoutShipping_input_contactEmail}    dom:document.querySelectorAll("input[name='contact_email']")[0]    #.添加地址后email框
 ${locatorC_checkoutShipping_button_specialInstruction}    dom:document.querySelectorAll('[class="checkout-instruction"]')[0]    #.留言信息
 ${locatorC_checkoutShipping_input_specialInstruction}    dom:document.querySelectorAll('[class="checkout-instruction__textarea"]')[0]    #.留言信息输入框
-${locatorC_checkoutShipping_button_paymentMethod}    dom:document.querySelectorAll('[class*="btn btn-primary checkout-footer"]')[0]    #.payment method  提交按钮
+${locatorC_checkoutShipping_button_paymentMethod}    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]    #.payment method  提交按钮
 
 ${locatorC_checkoutShipping_input_couponCode}    dom:document.querySelectorAll("[id='coupon_code_input']")[0]    #.checkout 输入优惠券框
 ${locatorC_checkoutShipping_button_couponApply}    dom:document.querySelectorAll("[id='coupon_apply']")[0]    #.checkout 填写地址页面 - 点击应用优惠券按钮
