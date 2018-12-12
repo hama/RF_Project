@@ -455,7 +455,7 @@ place_order_data = {
         "country": "China",
         "country_code": "CN",
         "province": "Beijing",
-        "province_code": "BJG",
+        "province_code": "CN-BJ",
         "address": "address",
         "address1": "address1",
         "zip": "00000",
@@ -560,7 +560,7 @@ cart_add_data = {
 
 shipping_lines_data = {
     'country_code': 'CN',
-    'province_code': 'BJG',
+    'province_code': 'CN-BJ',
     'order_token': '2e043a92-46c5-4f26-953a-88f347cd1e08'
 }
 
