@@ -102,8 +102,8 @@ ${locatorC_checkoutPayment_input_zip}    dom:document.querySelectorAll("input[na
 
 #.locatorC payment successful
 ${locatorC_checkout_text_shippingInformationDetail}    dom:document.querySelectorAll("[class*='text-truncate']")     #.payment successful  shipping information
-${locatorC_checkout_button_viewOrders}    dom:document.querySelectorAll("[class*='btn-secondary']")[0]        #.订单成功-订单详情按钮 viewOrders
-${locatorC_checkout_button_continueShopping}    dom:document.querySelectorAll("[class*='btn-primary']")[0]       #.订单成功-跳转到首页 continue shopping
+${locatorC_checkout_button_viewOrders}    dom:document.querySelectorAll('[class*="btn-checkout-secondary"]')[0]        #.订单成功-订单详情按钮 viewOrders
+${locatorC_checkout_button_continueShopping}    dom:document.querySelectorAll('[class*="btn-checkout-primary"]')[0]       #.订单成功-跳转到首页 continue shopping
 
 #.locatorC payment failure
 ${locatorC_checkout_button_cancelOrder}    dom:document.querySelectorAll('[id="payment__order_cancel"]')    #.订单失败-订单cancel order按钮
