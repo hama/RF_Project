@@ -121,13 +121,13 @@ checkout_035
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
     Wait And Click Element    ${locatorC_checkoutShipping_address_select_province}
 
-checkout_037
-    [Documentation]    验证checkout shipping页面，shipping address栏输入正确的信息，可以提交成功 > 输入地址 > 提交成功，页面跳转到支付页面
-    [Tags]    P0    threshold    smoke
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait Until Page Contains    PAYMENT
+#checkout_037
+#    [Documentation]    验证checkout shipping页面，shipping address栏输入正确的信息，可以提交成功 > 输入地址 > 提交成功，页面跳转到支付页面
+#    [Tags]    P0    threshold    smoke
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+#    Wait Until Page Contains    PAYMENT
 
 checkout_073
     [Documentation]    验证checkout shipping页面，点击买家留言栏，可展开买家留言输入框 > 1.点击special instruction栏 > 点击后展开买家留言输入框

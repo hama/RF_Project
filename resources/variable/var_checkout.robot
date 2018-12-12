@@ -77,7 +77,7 @@ ${locatorC_checkoutPayment_text_shippingPrice}   ${locatorC_checkoutShipping_tex
 ${locatorC_checkoutPayment_text_taxPrice}   ${locatorC_checkoutShipping_text_taxPrice}      #.tax
 ${locatorC_checkoutPayment_text_totalPrice}    dom:document.querySelectorAll('tfoot')[0]      #.总金额
 
-${locatorC_checkoutPayment_button_completeOrder}    dom:document.querySelectorAll('[class*="btn btn-primary payment-footer"]')[0]    #.completOrder 提交按钮
+${locatorC_checkoutPayment_button_completeOrder}    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]    #.completOrder 提交按钮
 
 
 ${locatorC_checkoutPayment_link_change}    dom:document.querySelectorAll('[class="payment__pc"]')[0]
