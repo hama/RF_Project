@@ -455,7 +455,7 @@ place_order_data = {
         "country": "China",
         "country_code": "CN",
         "province": "Beijing",
-        "province_code": "BJG",
+        "province_code": "CN-BJ",
         "address": "address",
         "address1": "address1",
         "zip": "00000",
@@ -560,7 +560,7 @@ cart_add_data = {
 
 shipping_lines_data = {
     'country_code': 'CN',
-    'province_code': 'BJG',
+    'province_code': 'CN-BJ',
     'order_token': '2e043a92-46c5-4f26-953a-88f347cd1e08'
 }
 
@@ -696,6 +696,16 @@ rebate_refresh_data = {
     "is_enable": "",
     "product_num": "",
     "rule_list": '[{"range_unit":"price","range_value":"100","rate_amount":"20","rate_shipping":0,"checked":false}]'
+}
+
+
+customer_data = {
+    "first_name": "firstname",
+    "last_name": "lastname",
+    "email": "1111@autotest.com",
+    "phone": "18888888888",
+    "phone_area_code": "CN_86",
+    "newsletter": True
 }
 
 popups_data = {

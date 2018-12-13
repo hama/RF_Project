@@ -75,6 +75,18 @@ Go To Product Collection Page
 ##    Location Should Be    ${url_reviews}
 #    Sleep    1
 
+Go To Customer Page
+    [Documentation]    跳转到顾客管理页面
+    Sleep    5
+    Wait Until Element Is Visible    ${locatorB_customers}
+    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${isExistB_setting_customerMenus_expanded}     5
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_customers}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_customers_management}
+    ...    ELSE    Wait And Click Element    ${locatorB_customers_management}
+    Wait Until Page Contains    顾客管理
+    Sleep    1
+
+
 Go To Subtraction Page
     [Documentation]    跳转营销-满减活动页面
 #    Go To Subtraction Page By Url

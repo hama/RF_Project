@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from do_request import *
+from raw_data import *
 from variable import *
 
 reload(sys)
@@ -172,6 +173,22 @@ def get_all_customers_count_py(cookie=init_cookie):
     return customers_get_py(cookie=cookie)['content']['count']
 
 
+def add_customer_with_conf_py(conf={}, cookie=init_cookie):
+    '''
+    通过conf（dict数据类型）配置来添加用户
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(customer_data)
+    dict_deepupdate(data, conf)
+    key_list = conf.keys()
+    if 'email' not in key_list:
+        data['email'] = salt_py() + '@autotest.com'
+
+    return customers_post_py(data, cookie=cookie)['content']
+
+
 if __name__ == '__main__':
-    print del_all_customers_py()
-    print customers_get_py()
+    # print del_all_customers_py()
+    print add_customer_with_conf_py()
