@@ -96,7 +96,7 @@ Add Credit Card Info
 	Sleep    2
 
 Create Specific Coupon Code
-	[Documentation]    添加信用卡公共部分
+	[Documentation]    添加一个 优惠规则为满50减10USD 优惠码
 	${code}    get_coupon_code_random_code_py
     &{conf} =    Create Dictionary
     ...    code=${code}
