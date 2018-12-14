@@ -55,10 +55,10 @@ coupon_code022
     [Documentation]    验证优惠码活动列表中 点击 优惠码活动 可进入活动详情
     [Tags]    P0
     sleep    2
-    ${CodeContent}    Get Text     ${locatorB_couponCode_text_firstCoupon_couponCode}
+    ${CodeContent}    Wait And Get Text     ${locatorB_couponCode_text_firstCoupon_couponCode}
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_couponCode}
     Wait And Click Element    ${locatorB_couponCodeNew_text_input_promoCode}
-    ${InputCodeContent}    Get Value     ${locatorB_couponCodeNew_text_input_promoCode}
+    ${InputCodeContent}    Wait And Get Value     ${locatorB_couponCodeNew_text_input_promoCode}
     Should Be True    $CodeContent==$InputCodeContent
     Wait Until Page Contains Text    返回优惠码列表
 
@@ -387,7 +387,7 @@ coupon_code165
     [Tags]    P0    threshold    smoke
     Select All Coupon Code Tag
     Sleep    2
-    ${activityName}    Get Text    ${locatorB_couponCode_text_firstCoupon_activityName}
+    ${activityName}    Wait And Get Text    ${locatorB_couponCode_text_firstCoupon_activityName}
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_auto
     Wait And Click Element Then Confirm     ${locatorB_button_canecl00}

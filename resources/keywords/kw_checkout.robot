@@ -18,8 +18,8 @@ Checkout Suite Setup
 Checkout Suite Teardown
     [Documentation]    每个用例执行结束步骤
     #还原初始化环境
-    kwshipping.del_all_shipping_py
-    kwproduct.del_all_products_py
+#    kwshipping.del_all_shipping_py
+#    kwproduct.del_all_products_py
     Close Test Suite Browser
 
 Checkout Case Setup
@@ -83,6 +83,19 @@ Add Address SepCommon Step
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    shoplazza
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    中山大学产学研基地
     Sleep    2
+
+Add New Billing Address Step
+    Sleep    1
+    Wait And Input Text    ${locatorC_checkoutPayment_input_firstName}    javen
+    Wait And Input Text    ${locatorC_checkoutPayment_input_lastName}    fang
+    Wait And Input Text    ${locatorC_checkoutPayment_input_address}    南山区
+    Wait And Input Text    ${locatorC_checkoutPayment_input_address1}    中山大学产学研基地
+    Wait And Input Text    ${locatorC_checkoutPayment_input_city}    深圳
+    Wait And Select From List By Label    ${locatorC_checkoutPayment_input_countyCode}    China
+    Sleep    1
+    Wait And Select From List By Label    ${locatorC_checkoutPayment_input_provinceCode}    广东
+    Sleep    1
+    Wait And Input Text    ${locatorC_checkoutPayment_input_zip}    518000
 
 Add Credit Card Info
 	[Documentation]    添加信用卡公共部分

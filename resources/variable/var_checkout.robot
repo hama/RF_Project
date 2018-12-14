@@ -43,6 +43,8 @@ ${locatorC_checkoutShipping_address_select_country}    dom:document.querySelecto
 ${locatorC_checkoutShipping_address_select_province}    dom:document.querySelectorAll('[id="shipping_province_select"]')[0]  #.添加地址后选择省份下拉框
 ${locatorC_checkoutShipping_address_select_code}    dom:document.querySelectorAll('[id*="shipping_phone_select"]')[0]    #电话区号下拉列表
 ${locatorC_checkoutShipping_address_input_city}    dom:document.querySelectorAll("input[name='city']")[0]    #.添加地址后选择城市
+${locatorC_checkoutShipping_address_select_city}    dom:document.querySelectorAll('[id="shipping_city"]')[0]    #.添加地址后城市 选择框
+${locatorC_checkoutShipping_address_input_area}     dom:document.querySelectorAll('[name="area"]')[0]    #.添加地址后area输入框
 ${locatorC_checkoutShipping_address_input_addr}    dom:document.querySelectorAll("input[name='address']")[0]    #.添加地址后填写地址
 ${locatorC_checkoutShipping_address_input_postalCode}    dom:document.querySelectorAll("input[name='zip']")[0]    #.添加地址后zip框
 ${locatorC_checkoutShipping_address_input_email}    dom:document.querySelectorAll("input[name='email']")[0]    #.添加地址后email框
@@ -91,14 +93,16 @@ ${locatorC_checkoutPayment_icon_cash}    dom:document.querySelectorAll('[class~=
 
 #locatorC Billing address
 ${locatorC_checkoutPayment_select_billingAddress}    dom:document.querySelectorAll("select[id='billingSelect']")[0]       #.billingAddress  扩展select
-${locatorC_checkoutPayment_input_firstName}    dom:document.querySelectorAll("input[name='first_name']")[0]        #.billingAddress /first_name输入框
-${locatorC_checkoutPayment_input_lastName}    dom:document.querySelectorAll("input[name='last_name']")[0]          #.billingAddress / last_name输入框
-${locatorC_checkoutPayment_input_address}    dom:document.querySelectorAll("input[name='address']")[0]     #.billingAddress   /address 输入框
-${locatorC_checkoutPayment_input_address1}    dom:document.querySelectorAll("input[name='address1']")[0]       #.billingAddress /address1 输入框
-${locatorC_checkoutPayment_input_city}    dom:document.querySelectorAll("input[name='city']")[0]       #.billingAddress    /city 城市输入框
-${locatorC_checkoutPayment_input_countyCode}    dom:document.querySelectorAll("select[name='country_code']")[0]        #.billingAddress    /county 国家下拉选择
-${locatorC_checkoutPayment_input_provinceCode}    dom:document.querySelectorAll("select[name='province_code']")[0]        #.billingAddress   /province  省份下拉选择
-${locatorC_checkoutPayment_input_zip}    dom:document.querySelectorAll("input[name='zip']")[0]        #.billingAddress    /zip 输入框
+${locatorC_checkoutPayment_select_sameBillingAddress}    dom:document.querySelectorAll('[id="billingSelect"] option:nth-child(1)')[0]    #.billingAddress - Same as shipping address
+${locatorC_checkoutPayment_select_newBillingAddress}    dom:document.querySelectorAll('[id="billingSelect"] option:nth-child(2)')[0]    #.billingAddress - New billing address
+${locatorC_checkoutPayment_input_firstName}    dom:document.querySelectorAll("input[name='first_name']")[1]        #.billingAddress /first_name输入框
+${locatorC_checkoutPayment_input_lastName}    dom:document.querySelectorAll("input[name='last_name']")[1]          #.billingAddress / last_name输入框
+${locatorC_checkoutPayment_input_address}    dom:document.querySelectorAll("input[name='address']")[1]     #.billingAddress   /address 输入框
+${locatorC_checkoutPayment_input_address1}    dom:document.querySelectorAll("input[name='address1']")[1]       #.billingAddress /address1 输入框
+${locatorC_checkoutPayment_input_city}    dom:document.querySelectorAll("input[name='city']")[1]       #.billingAddress    /city 城市输入框
+${locatorC_checkoutPayment_input_countyCode}    dom:document.querySelectorAll("select[name='country_code']")[1]        #.billingAddress    /county 国家下拉选择
+${locatorC_checkoutPayment_input_provinceCode}    dom:document.querySelectorAll("select[name='province_code']")[1]        #.billingAddress   /province  省份下拉选择
+${locatorC_checkoutPayment_input_zip}    dom:document.querySelectorAll("input[name='zip']")[1]        #.billingAddress    /zip 输入框
 
 #.locatorC payment successful
 ${locatorC_checkout_text_shippingInformationDetail}    dom:document.querySelectorAll("[class*='text-truncate']")     #.payment successful  shipping information
