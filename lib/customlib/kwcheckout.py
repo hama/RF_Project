@@ -165,6 +165,19 @@ def set_checkout_process_py(conf={}, cookie=init_cookie):
     checkout_save_py(data, cookie=cookie)
     return admin_customers_address_settings_py(data, cookie=cookie)
 
+def set_singel_checkout_process_py(conf={}, cookie=init_cookie):
+    '''
+    设置checkout单页
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(setting_checkout_data)
+    dict_deepupdate(data, conf)
+
+    checkout_save_py(data, cookie=cookie)
+    return admin_customers_address_settings_py(data, cookie=cookie)
+
 
 if __name__ == '__main__':
     # print json.dumps(checkout_shipping_lines_py(shipping_lines_data))

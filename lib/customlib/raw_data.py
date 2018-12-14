@@ -768,3 +768,9 @@ popups_data = {
     "end_unlimited": True,
     "source": "prototype"
 }
+
+setting_checkout_data = {
+    "customer_authority":"all",
+    "checkout_page_type":"single",
+    "address_setting":{"email":"optional","name":"separate","phone":"optional","company":"optional"}
+}
