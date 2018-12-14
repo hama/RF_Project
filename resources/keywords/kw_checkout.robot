@@ -15,30 +15,69 @@ Checkout Suite Setup
     #激活COD货到付款方式
     kwpayment.activate_payment_cod_py
 
+    kwproduct.add_max_product_py
+    kwshipping.add_price_fee_shipping_py
+    Go To Checkout Settings Page
+    Reload Page And Start Ajax
+    ${class}=    Wait And Get Element Attribute    ${locatorB_checkout_label_singelPayment}    class
+    Run Keyword If    '${class}'=='radio_btn_cddf ant-radio-button-wrapper'    Run Keywords    Wait And Click Element    ${locatorB_checkout_label_singelPayment}    And    Wait And Click Element    ${locatorB_checkout_button_save}
+
 Checkout Suite Teardown
     [Documentation]    每个用例执行结束步骤
     #还原初始化环境
-#    kwshipping.del_all_shipping_py
-#    kwproduct.del_all_products_py
+    kwshipping.del_all_shipping_py
+    kwproduct.del_all_products_py
     Close Test Suite Browser
 
 Checkout Case Setup
     [Documentation]    每个用例执行开始步骤
+
+    kwproduct.add_max_product_py
+    kwshipping.add_price_fee_shipping_py
+    Go To Checkout Settings Page
+    Reload Page And Start Ajax
+    ${class}=    Wait And Get Element Attribute    ${locatorB_checkout_label_singelPayment}    class
+    Run Keyword If    '${class}'=='radio_btn_cddf ant-radio-button-wrapper'    Run Keywords    Wait And Click Element    ${locatorB_checkout_label_singelPayment}    And    Wait And Click Element    ${locatorB_checkout_button_save}
+
     Sleep    5
     Go To First Product C Interface
 
 Checkout2 Case Setup
     [Documentation]    每个用例执行开始步骤
+
+    kwproduct.add_max_product_py
+    kwshipping.add_price_fee_shipping_py
+    Go To Checkout Settings Page
+    Reload Page And Start Ajax
+    ${class}=    Wait And Get Element Attribute    ${locatorB_checkout_label_singelPayment}    class
+    Run Keyword If    '${class}'=='radio_btn_cddf ant-radio-button-wrapper'    Run Keywords    Wait And Click Element    ${locatorB_checkout_label_singelPayment}    And    Wait And Click Element    ${locatorB_checkout_button_save}
+
     kwshipping.del_all_shipping_py
     Sleep    5
     Go To First Product C Interface
 
 Checkout3 Case Setup
     [Documentation]    每个用例执行开始步骤
+
+    kwproduct.add_max_product_py
+    kwshipping.add_price_fee_shipping_py
+    Go To Checkout Settings Page
+    Reload Page And Start Ajax
+    ${class}=    Wait And Get Element Attribute    ${locatorB_checkout_label_singelPayment}    class
+    Run Keyword If    '${class}'=='radio_btn_cddf ant-radio-button-wrapper'    Run Keywords    Wait And Click Element    ${locatorB_checkout_label_singelPayment}    And    Wait And Click Element    ${locatorB_checkout_button_save}
+
     kwproduct.del_all_products_py
     kwshipping.del_all_shipping_py
 
 Checkout2 Child Case Setup
+
+    kwproduct.add_max_product_py
+    kwshipping.add_price_fee_shipping_py
+    Go To Checkout Settings Page
+    Reload Page And Start Ajax
+    ${class}=    Wait And Get Element Attribute    ${locatorB_checkout_label_singelPayment}    class
+    Run Keyword If    '${class}'=='radio_btn_cddf ant-radio-button-wrapper'    Run Keywords    Wait And Click Element    ${locatorB_checkout_label_singelPayment}    And    Wait And Click Element    ${locatorB_checkout_button_save}
+
     kwshipping.del_all_shipping_py
     kwproduct.add_max_product_py
 
@@ -58,7 +97,8 @@ Add Address Common Step
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    123456
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18899999999
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    7654321@autotest.com
-    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@autotest.com
+    ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_input_contactEmail}
+    Run Keyword If    $class=='True'    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    company
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    apartment
     Sleep    2

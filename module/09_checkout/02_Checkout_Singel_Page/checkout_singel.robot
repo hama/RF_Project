@@ -183,7 +183,7 @@ checkout_092
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    Wait And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
+    Sleep And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
     Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@shoplazza.com
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
@@ -296,9 +296,9 @@ checkout_163
     Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text   Payment successful!
 
-checkout_184
-    [Documentation]    验证checkout页面，买家留言输入框输入的内容，会同步到B端订单详情
-    [Tags]    P0    threshold
+#checkout_184
+#    [Documentation]    验证checkout页面，买家留言输入框输入的内容，会同步到B端订单详情
+#    [Tags]    P0    threshold
 
 
 checkout_185
@@ -326,6 +326,10 @@ checkout_189
     [Setup]    Go To Checkout Settings Page
     Go To ServiceTerms Table
     Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     退款条约测试文本
+    Wait And Input Text     ${locatorB_checkout_textarea_policyInputBox}     a
+    Press Key    ${locatorB_checkout_textarea_policyInputBox}    ${keybord_delete}
+    Wait And Input Text     ${locatorB_checkout_textarea_refundServiceInputBox}     服
+    Press Key    ${locatorB_checkout_textarea_refundServiceInputBox}    ${keybord_delete}
     Sleep And Click Element    ${locatorB_checkout_button_save}
     Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
@@ -333,7 +337,7 @@ checkout_189
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_li_TextPolicy}
-    Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}[0]
+    Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
     Wait Until Page Contains Text    退款条约测试文本
 
 checkout_191
@@ -341,14 +345,18 @@ checkout_191
     [Tags]    P0   threshold
     [Setup]    Go To Checkout Settings Page
     Go To ServiceTerms Table
+    Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     a
+    Press Key    ${locatorB_checkout_textarea_refundTreatyInputBox}    ${keybord_delete}
     Wait And Input Text     ${locatorB_checkout_textarea_policyInputBox}     隐私政策测试文本
+    Wait And Input Text     ${locatorB_checkout_textarea_refundServiceInputBox}     退
+    Press Key    ${locatorB_checkout_textarea_refundServiceInputBox}    ${keybord_delete}
     Sleep And Click Element    ${locatorB_checkout_button_save}
     Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
-    Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}[1]
+    Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
     Wait Until Page Contains Text    隐私政策测试文本
 
 checkout_193
@@ -356,6 +364,10 @@ checkout_193
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Go To ServiceTerms Table
+    Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     a
+    Press Key    ${locatorB_checkout_textarea_refundTreatyInputBox}    ${keybord_delete}
+    Wait And Input Text     ${locatorB_checkout_textarea_policyInputBox}     a
+    Press Key    ${locatorB_checkout_textarea_policyInputBox}    ${keybord_delete}
     Wait And Input Text     ${locatorB_checkout_textarea_refundServiceInputBox}     服务条约测试文本
     Sleep And Click Element    ${locatorB_checkout_button_save}
     Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
@@ -363,7 +375,7 @@ checkout_193
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
-    Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}[3]
+    Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
     Wait Until Page Contains Text    服务条约测试文本
 
 checkout_197
