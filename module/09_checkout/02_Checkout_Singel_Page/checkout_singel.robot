@@ -124,12 +124,14 @@ checkout_085
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Sleep    2
+    Sleep And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
     Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
-    Run Keyword If    '${status]'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status}'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Reload Page And Start Ajax
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_label_NewcontactEamil}
@@ -140,9 +142,10 @@ checkout_087
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Sleep    2
+    Sleep And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
     Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
-    Run Keyword If    '${status]'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status}'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
@@ -158,9 +161,10 @@ checkout_088
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Sleep    2
+    Sleep And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
     Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
-    Run Keyword If    '${status]'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status}'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
@@ -175,16 +179,18 @@ checkout_092
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Sleep    2
+    Sleep And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
     Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
-    Run Keyword If    '${status]'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status}'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
     Sleep And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
+    Add Address Common Step
     Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@shoplazza.com
+    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
 
@@ -193,15 +199,17 @@ checkout_096
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Sleep    2
+    Sleep And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
     Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
-    Run Keyword If    '${status]'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status}'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Sleep And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
     Add Address Common Step
-    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@shoplazza.com
+    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
 
