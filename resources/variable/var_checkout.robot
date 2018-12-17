@@ -100,8 +100,8 @@ ${locatorC_checkoutPayment_input_lastName}    dom:document.querySelectorAll("inp
 ${locatorC_checkoutPayment_input_address}    dom:document.querySelectorAll("input[name='address']")[1]     #.billingAddress   /address 输入框
 ${locatorC_checkoutPayment_input_address1}    dom:document.querySelectorAll("input[name='address1']")[1]       #.billingAddress /address1 输入框
 ${locatorC_checkoutPayment_input_city}    dom:document.querySelectorAll("input[name='city']")[1]       #.billingAddress    /city 城市输入框
-${locatorC_checkoutPayment_input_countyCode}    dom:document.querySelectorAll("select[name='country_code']")[1]        #.billingAddress    /county 国家下拉选择
-${locatorC_checkoutPayment_input_provinceCode}    dom:document.querySelectorAll("select[name='province_code']")[1]        #.billingAddress   /province  省份下拉选择
+${locatorC_checkoutPayment_input_countyCode}    dom:document.querySelectorAll('[id="shipping_country"]')[0]        #.billingAddress    /county 国家下拉选择
+${locatorC_checkoutPayment_input_provinceCode}    dom:document.querySelectorAll('[id="shipping_province"]')[0]        #.billingAddress   /province  省份下拉选择
 ${locatorC_checkoutPayment_input_zip}    dom:document.querySelectorAll("input[name='zip']")[1]        #.billingAddress    /zip 输入框
 
 #.locatorC payment successful

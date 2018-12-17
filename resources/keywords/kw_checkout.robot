@@ -99,9 +99,9 @@ Add New Billing Address Step
     Wait And Input Text    ${locatorC_checkoutPayment_input_address1}    中山大学产学研基地
     Wait And Input Text    ${locatorC_checkoutPayment_input_city}    深圳
     Wait And Select From List By Label    ${locatorC_checkoutPayment_input_countyCode}    China
-    Sleep    1
-    Wait And Select From List By Label    ${locatorC_checkoutPayment_input_provinceCode}    guangdong
-    Sleep    1
+    Sleep    2
+    Wait And Select From List By Label    ${locatorC_checkoutPayment_input_provinceCode}    Guangdong
+    Sleep    2
     Wait And Input Text    ${locatorC_checkoutPayment_input_zip}    518000
 
 Add Credit Card Info

@@ -149,6 +149,7 @@ checkout_087
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
@@ -168,6 +169,7 @@ checkout_088
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Click Element    ${locatorC_checkoutShipping_label_SamecontactEamil}
     Wait And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
@@ -186,6 +188,7 @@ checkout_092
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Sleep And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
     Add Address Common Step
@@ -206,6 +209,7 @@ checkout_096
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Sleep And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
     Add Address Common Step
@@ -262,6 +266,7 @@ checkout_127
     Run Keyword If    $class=='ant-switch'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
     Reload Page And Start Ajax
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutPayment_icon_bankCard}
@@ -302,6 +307,7 @@ checkout_163
     Sleep And Click ELement    ${locatorC_checkoutPayment_select_billingAddress}
     Wait And Click Element    ${locatorC_checkoutPayment_select_newBillingAddress}
     Add New Billing Address Step
+    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text   Payment successful!
 
@@ -339,6 +345,7 @@ checkout_189
     Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_li_TextPolicy}
@@ -360,6 +367,7 @@ checkout_191
     Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
@@ -380,6 +388,7 @@ checkout_193
     Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
@@ -391,7 +400,7 @@ checkout_197
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
     Wait Until Page Contains Text    Javen
     Wait Until Page Contains Text    fang
@@ -413,6 +422,7 @@ checkout_199
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
+    Sleep    2
     Wait And Click Element    ${locatorC_checkout_button_viewOrders}
     Wait Until Page Contains Text    Order Details
 
@@ -422,8 +432,9 @@ checkout_200
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
+    Sleep    2
     Wait And Click Element    ${locatorC_checkout_button_continueShopping}
     Wait Until Page Contains Text    We Offer Free Shipping Worldwide.
 
