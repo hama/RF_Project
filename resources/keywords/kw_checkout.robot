@@ -14,6 +14,7 @@ Checkout Suite Setup
     kwcheckout.set_checkout_process_py
     #激活COD货到付款方式
     kwpayment.activate_payment_cod_py
+    kwcheckout.set_single_page_checkout_process_py
 
 Checkout Suite Teardown
     [Documentation]    每个用例执行结束步骤
@@ -24,24 +25,25 @@ Checkout Suite Teardown
 
 Checkout Case Setup
     [Documentation]    每个用例执行开始步骤
+    kwcheckout.set_single_page_checkout_process_py
     Sleep    5
     Go To First Product C Interface
 
 Checkout2 Case Setup
     [Documentation]    每个用例执行开始步骤
-    kwcheckout.set_singel_checkout_process_py
+    kwcheckout.set_single_page_checkout_process_py
     kwshipping.del_all_shipping_py
     Sleep    5
     Go To First Product C Interface
 
 Checkout3 Case Setup
     [Documentation]    每个用例执行开始步骤
-    kwcheckout.set_singel_checkout_process_py
+    kwcheckout.set_single_page_checkout_process_py
     kwproduct.del_all_products_py
     kwshipping.del_all_shipping_py
 
 Checkout2 Child Case Setup
-    kwcheckout.set_singel_checkout_process_py
+    kwcheckout.set_single_page_checkout_process_py
     kwshipping.del_all_shipping_py
     kwproduct.add_max_product_py
 
