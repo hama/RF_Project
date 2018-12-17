@@ -615,21 +615,15 @@ orders_fulfillments_data = {
     "tracking_company_code": "-1"
 }
 
-checkout_save_data = {
-    "customer_authority": 1,
-    "name": "separate",
-    "company": "optional",
-    "email": "optional",
-    "phone": "optional",
-    "refund_policy": "",
-    "privacy_policy": "",
-    "server_policy": "",
-    "customer_contact": 3,
-    "customer_email": 1,
-    "customer_phone": 1,
-    "customer_name": 2,
-    "company_setting": 2,
-    "postcode_setting": 2
+checkout_settings_data = {
+    "customer_authority": "all",
+    "checkout_page_type": "normal",
+    "address_setting": {
+        "email": "optional",
+        "name": "separate",
+        "phone": "optional",
+        "company": "optional"
+    }
 }
 
 coupon_code_refresh_data = {
@@ -724,7 +718,6 @@ rebate_refresh_data = {
     "product_num": "",
     "rule_list": '[{"range_unit":"price","range_value":"100","rate_amount":"20","rate_shipping":0,"checked":false}]'
 }
-
 
 customer_data = {
     "first_name": "firstname",

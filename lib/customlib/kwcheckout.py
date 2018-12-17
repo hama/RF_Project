@@ -1,6 +1,5 @@
 # -*- coding:utf-8 -*-
 
-from kwcustomer import *
 from kwproduct import *
 
 reload(sys)
@@ -10,6 +9,16 @@ sys.setdefaultencoding('utf-8')
 def checkout_save_py(data, cookie=init_cookie):
     url = home_page_url + "/api/checkout/save"
     return do_post(url, data, cookie=cookie)
+
+
+def checkout_settings_post_py(data, cookie=init_cookie):
+    url = home_page_url + "/api/checkout/settings"
+    return do_post(url, data, cookie=cookie)
+
+
+def checkout_settings_get_py(query_str={}, cookie=init_cookie):
+    url = home_page_url + "/api/checkout/settings"
+    return do_get(url, query_str, cookie=cookie)
 
 
 def checkout_create_py(data, cookie=init_cookie):
@@ -159,11 +168,14 @@ def set_checkout_process_py(conf={}, cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    data = copy.deepcopy(checkout_save_data)
+    data = copy.deepcopy(checkout_settings_data)
     dict_deepupdate(data, conf)
 
-    checkout_save_py(data, cookie=cookie)
-    return admin_customers_address_settings_py(data, cookie=cookie)
+    return checkout_settings_post_py(data, cookie=cookie)
+
+
+def set_single_page_checkout_process_py(cookie=init_cookie):
+    return set_checkout_process_py({'checkout_page_type': 'single'}, cookie=cookie)
 
 if __name__ == '__main__':
     # print json.dumps(checkout_shipping_lines_py(shipping_lines_data))
