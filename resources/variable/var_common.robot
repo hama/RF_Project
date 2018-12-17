@@ -31,6 +31,7 @@ ${locatorB_overview}    dom:document.querySelectorAll('[data-robot="overview"]')
 ${locatorB_order}    dom:document.querySelectorAll('[data-robot="order"]')    # 导航栏-订单
 ${locatorB_order_dealing}    dom:document.querySelectorAll('[data-robot="order_dealing"]')    # 导航栏-待处理订单
 ${locatorB_order_undeal}    dom:document.querySelectorAll('[data-robot="order_undeal"]')    # 导航栏-未完成订单
+${locatorB_order_postSale}    dom:document.querySelectorAll('[data-robot="order_post_sale"]')[0]    # 导航栏-售后订单
 ### 菜单栏 - 商品
 ${locatorB_products}    dom:document.querySelectorAll('[data-robot="products"]')    # 导航栏-商品
 ${locatorB_product_management}    dom:document.querySelectorAll('[data-robot="products_mgmt"]')    # 导航栏-商品管理

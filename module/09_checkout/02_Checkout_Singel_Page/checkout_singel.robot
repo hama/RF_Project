@@ -142,7 +142,6 @@ checkout_087
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Sleep    2
-    Sleep And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
     Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
     Run Keyword If    '${status}'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
@@ -162,7 +161,6 @@ checkout_088
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Sleep    2
-    Sleep And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
     Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
     Run Keyword If    '${status}'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
@@ -171,6 +169,7 @@ checkout_088
     Go To First Product C Interface
     Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_checkoutShipping_label_SamecontactEamil}
     Wait And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
     Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    12345678@qq.com
@@ -181,7 +180,6 @@ checkout_092
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Sleep    2
-    Sleep And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
     Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
     Run Keyword If    '${status}'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
@@ -190,6 +188,7 @@ checkout_092
     Go To First Product C Interface
     Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
     Add Address Common Step
     Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@shoplazza.com
@@ -202,7 +201,6 @@ checkout_096
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Sleep    2
-    Sleep And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
     Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
     Run Keyword If    '${status}'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
@@ -211,6 +209,7 @@ checkout_096
     Go To First Product C Interface
     Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
     Add Address Common Step
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
@@ -259,8 +258,9 @@ checkout_127
     [Documentation]    验证checkout页面，使用ipaylinks支付，填写错误的信用卡号时，页面会跳转到支付失败页面
     [Tags]    P0    threshold
     [Setup]    Go To Payment Channel
-    Sleep    2
     kwpayment.activate_payment_credit_card_py
+    Reload Page And Start Ajax
+    Sleep    2
     Select Credit Card Of IpayLinks
     ${class}=    Wait And Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
     Run Keyword If    $class=='ant-switch'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
@@ -309,6 +309,7 @@ checkout_163
     Add New Billing Address Step
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Sleep    2
     Wait Until Page Contains Text   Payment successful!
 
 checkout_185
