@@ -92,7 +92,7 @@ Add Address SepCommon Step
     Sleep    2
 
 Add New Billing Address Step
-    Sleep    1
+    Sleep    2
     Wait And Input Text    ${locatorC_checkoutPayment_input_firstName}    javen
     Wait And Input Text    ${locatorC_checkoutPayment_input_lastName}    fang
     Wait And Input Text    ${locatorC_checkoutPayment_input_address}    南山区
@@ -100,7 +100,7 @@ Add New Billing Address Step
     Wait And Input Text    ${locatorC_checkoutPayment_input_city}    深圳
     Wait And Select From List By Label    ${locatorC_checkoutPayment_input_countyCode}    China
     Sleep    1
-    Wait And Select From List By Label    ${locatorC_checkoutPayment_input_provinceCode}    广东
+    Wait And Select From List By Label    ${locatorC_checkoutPayment_input_provinceCode}    guangdong
     Sleep    1
     Wait And Input Text    ${locatorC_checkoutPayment_input_zip}    518000
 

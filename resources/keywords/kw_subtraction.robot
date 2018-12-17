@@ -24,6 +24,7 @@ Subtraction Suite Teardown
 
 Add Fill Rebate Activity
     [Documentation]    添加一个满减活动
+    Sleep    2
     Wait And Input Text    ${locatorB_subtractionNew_input_ActivityName}    满减活动001
     ${STime}=    Get Time
     Set Global Variable    ${StartTime}    ${STime}

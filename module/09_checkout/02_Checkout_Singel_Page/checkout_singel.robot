@@ -123,10 +123,10 @@ checkout_085
     [Documentation]    验证C端未登录个人中心，B端结账流程联系方式选择为需要填写邮箱时，C端checkout页面contact email栏会显示两个选择项，使用收货邮箱以及添加新邮箱
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
-    Wait And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
-    Wait And Click Element    ${locatorB_checkout_button_save}
+    Sleep    2
     Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
-    Wait And Click Element    ${locatorB_checkout_button_save}
+    ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status]'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
@@ -139,10 +139,10 @@ checkout_087
     [Documentation]    验证checkout页面contact email栏same as shipping email above可勾选
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
-    Wait And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
-    Wait And Click Element    ${locatorB_checkout_button_save}
+    Sleep    2
     Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
-    Wait And Click Element    ${locatorB_checkout_button_save}
+    ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status]'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
@@ -157,10 +157,10 @@ checkout_088
     [Documentation]    验证checkout页面contact email栏new email可勾选
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
-    Wait And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
-    Wait And Click Element    ${locatorB_checkout_button_save}
+    Sleep    2
     Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
-    Wait And Click Element    ${locatorB_checkout_button_save}
+    ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status]'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
@@ -174,10 +174,10 @@ checkout_092
     [Documentation]    验证checkout页面contact email栏勾选new email后，new email后的输入框输入正确的内容可提交成功
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
-    Wait And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
-    Wait And Click Element    ${locatorB_checkout_button_save}
+    Sleep    2
     Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
-    Wait And Click Element    ${locatorB_checkout_button_save}
+    ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status]'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
@@ -192,10 +192,10 @@ checkout_096
     [Documentation]    验证C端未登录个人中心，B端结账流程联系方式选择需要填写手机时，C端checkout页面contact email栏contact email输入框输入正确的内容可提交成功
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
-    Wait And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
-    Wait And Click Element    ${locatorB_checkout_button_save}
+    Sleep    2
     Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
-    Wait And Click Element    ${locatorB_checkout_button_save}
+    ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status]'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
@@ -220,33 +220,34 @@ checkout_099
     Wait Until Page Contains Text    quantity_fee
     Wait Until Page Contains Text    weight_fee
 
-checkout_126
-    [Documentation]    验证checkout页面，使用ipaylinks可正常支付
-    [Tags]    P0    threshold
-    [Setup]    Go To Payment Channel
-    kwpayment.activate_payment_credit_card_py
-    Select Credit Card Of IpayLinks
-    ${class}=    Wait And Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
-    Run Keyword If    $class=='ant-switch'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
-    Reload Page And Start Ajax
-    Go To First Product C Interface
-    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    Wait And Click Element    ${locatorC_checkoutPayment_icon_bankCard}
-    Wait And Input Text    ${locatorC_checkout_paymentCard_fristName}    Javen fang
-    Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    dianjiang@shoplazza.com
-    Wait And Input Text    ${locatorC_checkout_paymentCard_phone}    18688886666
-    Wait And Input Text    ${locatorC_checkout_paymentCard_cardPostcode}    518000
-    Wait And Input Text    ${locatorC_checkout_paymentCard_cardNumber}    4111119987834534
-    Wait And Input Text    ${locatorC_checkout_paymentCard_cardDate}    1123
-    Wait And Input Text    ${locatorC_checkout_paymentCard_card_code}    123
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
-    Wait Until Page Contains Text   Payment successful!
+#checkout_126
+#    [Documentation]    验证checkout页面，使用ipaylinks可正常支付
+#    [Tags]    P0    threshold
+#    [Setup]    Go To Payment Channel
+#    kwpayment.activate_payment_credit_card_py
+#    Select Credit Card Of IpayLinks
+#    ${class}=    Wait And Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
+#    Run Keyword If    $class=='ant-switch'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
+#    Reload Page And Start Ajax
+#    Go To First Product C Interface
+#    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Wait And Click Element    ${locatorC_checkoutPayment_icon_bankCard}
+#    Wait And Input Text    ${locatorC_checkout_paymentCard_fristName}    Javen fang
+#    Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    dianjiang@shoplazza.com
+#    Wait And Input Text    ${locatorC_checkout_paymentCard_phone}    18688886666
+#    Wait And Input Text    ${locatorC_checkout_paymentCard_cardPostcode}    518000
+#    Wait And Input Text    ${locatorC_checkout_paymentCard_cardNumber}    4111119987834534
+#    Wait And Input Text    ${locatorC_checkout_paymentCard_cardDate}    1123
+#    Wait And Input Text    ${locatorC_checkout_paymentCard_card_code}    123
+#    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+#    Wait Until Page Contains Text   Payment successful!
 
 checkout_127
     [Documentation]    验证checkout页面，使用ipaylinks支付，填写错误的信用卡号时，页面会跳转到支付失败页面
     [Tags]    P0    threshold
     [Setup]    Go To Payment Channel
+    Sleep    2
     kwpayment.activate_payment_credit_card_py
     Select Credit Card Of IpayLinks
     ${class}=    Wait And Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
@@ -296,11 +297,6 @@ checkout_163
     Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text   Payment successful!
 
-#checkout_184
-#    [Documentation]    验证checkout页面，买家留言输入框输入的内容，会同步到B端订单详情
-#    [Tags]    P0    threshold
-
-
 checkout_185
     [Documentation]    验证从商品详情页面buy now进入checkout页面后，点击return可返回商品详情页面
     [Tags]    P0    threshold
@@ -325,6 +321,7 @@ checkout_189
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Go To ServiceTerms Table
+    Sleep    2
     Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     退款条约测试文本
     Wait And Input Text     ${locatorB_checkout_textarea_policyInputBox}     a
     Press Key    ${locatorB_checkout_textarea_policyInputBox}    ${keybord_delete}
@@ -345,6 +342,7 @@ checkout_191
     [Tags]    P0   threshold
     [Setup]    Go To Checkout Settings Page
     Go To ServiceTerms Table
+    Sleep    2
     Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     a
     Press Key    ${locatorB_checkout_textarea_refundTreatyInputBox}    ${keybord_delete}
     Wait And Input Text     ${locatorB_checkout_textarea_policyInputBox}     隐私政策测试文本
@@ -364,6 +362,7 @@ checkout_193
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Go To ServiceTerms Table
+    Sleep    2
     Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     a
     Press Key    ${locatorB_checkout_textarea_refundTreatyInputBox}    ${keybord_delete}
     Wait And Input Text     ${locatorB_checkout_textarea_policyInputBox}     a
@@ -383,6 +382,7 @@ checkout_197
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
+    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
     Wait Until Page Contains Text    Javen
@@ -402,6 +402,7 @@ checkout_199
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
+    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
     Wait And Click Element    ${locatorC_checkout_button_viewOrders}
@@ -412,6 +413,7 @@ checkout_200
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
+    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
     Wait And Click Element    ${locatorC_checkout_button_continueShopping}

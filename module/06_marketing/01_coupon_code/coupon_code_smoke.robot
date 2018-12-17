@@ -146,7 +146,7 @@ coupon_code090
 
 coupon_code090.1
     [Documentation]    验证新建优惠码界面，优惠码输入框中 输入合法内容 可保存成功(手动输入)
-    [Tags]    P0    threshold
+    [Tags]    P0
     Select All Coupon Code Tag
     Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
     Add Default Coupon Code Text
@@ -373,7 +373,7 @@ coupon_code164
 
 coupon_code164.1
     [Documentation]    验证活动编辑界面，修改任何内容可触发保存和取消按钮（活动进行中）
-    [Tags]    P0    threshold    smoke
+    [Tags]    P0
     kwcoupon.add_doing_coupon_code_py
     Reload Page And Start Ajax
     Select All Coupon Code Tag

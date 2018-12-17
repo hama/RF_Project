@@ -16,6 +16,7 @@ checkout_013
     @{plans}=    Create List    ${dict}
     &{conf}=    Create Dictionary    plans=${plans}
     kwshipping.add_price_fee_shipping_py    ${conf}
+    kwrebate.end_all_rebates_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
@@ -32,7 +33,6 @@ checkout_036
     Sleep    1
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_province}    Aceh
     Sleep    1
-    Wait Until Page Not Contains Locator    ${locatorC_checkoutShipping_address_input_city}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_city}
 
 checkout_037
@@ -54,6 +54,7 @@ checkout_102
     &{conf}=    Create Dictionary    plans=${plans}
     kwshipping.add_price_fee_shipping_py    ${conf}
     Go To Product Management Page
+    Sleep    2
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
     Fill In Required Items When Create Product
     Wait And Input Text    ${locatorB_productsNew_input_salePrice}    10
@@ -77,6 +78,7 @@ checkout_103
     kwshipping.add_price_fee_shipping_py    ${conf}
     Reload Page And Start Ajax
     Go To Product Management Page
+    Sleep    2
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
     Fill In Required Items When Create Product
     Wait And Input Text    ${locatorB_productsNew_input_salePrice}    30
@@ -96,6 +98,7 @@ checkout_105
     kwshipping.add_weight_fee_shipping_py    ${conf}
     Reload Page And Start Ajax
     Go To Product Management Page
+    Sleep    2
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
     Fill In Required Items When Create Product
     Wait And Input Text    ${locatorB_productsNew_input_weight}    30
@@ -159,15 +162,16 @@ checkout_121
     [Documentation]    验证checkout页面，使用COD支付方式可正常支付
     [Tags]    P0    threshold
     [Setup]    Checkout2 Child Case Setup
-    Go To Payment Channel
     kwshipping.add_shipping_with_conf_py
     kwpayment.activate_payment_cod_py
+    Go To Payment Channel
     Sleep    2
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_pay_switch_creditCardSwitch}
     ${class}=    Run Keyword If    '${status}'=='True'    Wait And Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
     Run Keyword If    $class=='ant-switch ant-switch-checked'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
     Reload Page And Start Ajax
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
@@ -183,6 +187,7 @@ checkout_160
     kwshipping.add_price_fee_shipping_py    ${conf}
     Go To Shipping Page
     Reload Page And Start Ajax
+    Sleep    2
     Wait And Click Element    ${locatorB_shipping_button_EidtShipping}
     Wait And Click Element    ${locatorB_priceSettings_icon_EidtShipping}
     ${class}=    Wait And Get Element Attribute    ${locatorB_priceSettings_checkbox_supportCOD}    class

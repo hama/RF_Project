@@ -15,8 +15,10 @@ checkout_016
     kwproduct.add_max_product_py
     kwshipping.add_price_fee_shipping_py
     kwtax.add_default_tax_price_py
+    kwrebate.end_all_rebates_py
     Go To First Product C Interface
     Reload Page And Start Ajax
+    Sleep    2
     ${price1}=    Wait And Get Text    ${locatorC_orderDetail_text_productPrice}
     ${price2}=    Evaluate    u"${price1}".strip('$')
     ${price}=    Convert To Number    ${price2}
@@ -31,8 +33,10 @@ checkout_017
     kwproduct.add_max_product_py
     kwshipping.add_price_fee_shipping_py
     kwtax.set_country_tax_price_py    0
+    kwrebate.end_all_rebates_py
     Go To First Product C Interface
     Reload Page And Start Ajax
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[2]    + 0.00USD
@@ -44,12 +48,14 @@ checkout_021
     kwshipping.add_price_fee_shipping_py
     kwproduct.add_max_product_py
     Go To Subtraction Page
+    Sleep    2
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
     Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Go To First Product C Interface
     Reload Page And Start Ajax
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[1]    - 20.00USD
@@ -65,12 +71,14 @@ checkout_022
     kwshipping.add_price_fee_shipping_py    ${conf}
     kwtax.set_country_tax_price_py    50
     Go To Subtraction Page
+    Sleep    2
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
     Wait And Input Text    ${locatorB_subtractionNew_input_cutPrice}     10
     Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Go To First Product C Interface
+    Sleep    2
     ${price1}=    Wait And Get Text    ${locatorC_orderDetail_text_productPrice}
     ${price}=    Evaluate    u"${price1}".strip('$')
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
@@ -89,10 +97,12 @@ checkout_039
     kwshipping.add_price_fee_shipping_py
     Reload Page And Start Ajax
     Go To Payment Channel
+    Sleep    2
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_pay_switch_creditCardSwitch}
     ${class}=    Run Keyword If    '${status}'=='True'    Wait And Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
     Run Keyword If    $class=='ant-switch ant-switch-checked'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
@@ -105,11 +115,13 @@ checkout_100
     kwshipping.add_price_fee_shipping_py
     Go To Product Management Page
     Reload Page And Start Ajax
+    Sleep    2
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
     Wait And Click Element    ${locatorB_productsNew_button_productShipping}
     Sleep And Click Element    ${locatorB_productsNew_button_NextStep}
     Sleep And Click Element    ${locatorB_productsNew_button_save}
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Wait Until Page Contains Text    Delivery for virtual product
@@ -124,6 +136,7 @@ checkout_113
     kwproduct.add_max_product_py
     Go To Shipping Page
     Reload Page And Start Ajax
+    Sleep    2
     Edit Default Weight Shipping
     Wait And Click Element   ${locatorB_button_save00}
     Go To Product Management Page
@@ -132,6 +145,7 @@ checkout_113
     Wait And Input Text    ${locatorB_productsNew_input_weight}    30
     Sleep And Click Element    ${locatorB_productsNew_button_save}
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait Until Page Contains Text    重量方案1
@@ -145,10 +159,12 @@ checkout_202
     kwshipping.add_price_fee_shipping_py
     Reload Page And Start Ajax
     Go To Payment Channel
+    Sleep    2
     Select Credit Card Of IpayLinks
     kwpayment.activate_payment_credit_card_py
     Reload Page And Start Ajax
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Add Credit Card Info
@@ -165,10 +181,12 @@ checkout_203
     kwshipping.add_price_fee_shipping_py
     Reload Page And Start Ajax
     Go To Payment Channel
+    Sleep    2
     Select Credit Card Of IpayLinks
     kwpayment.activate_payment_credit_card_py
     Reload Page And Start Ajax
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Add Credit Card Info
@@ -186,10 +204,12 @@ checkout_205
     kwshipping.add_price_fee_shipping_py
     Reload Page And Start Ajax
     Go To Payment Channel
+    Sleep    2
     Select Credit Card Of IpayLinks
     kwpayment.activate_payment_credit_card_py
     Reload Page And Start Ajax
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Add Credit Card Info
@@ -216,10 +236,12 @@ checkout_206
     kwshipping.add_price_fee_shipping_py
     Reload Page And Start Ajax
     Go To Payment Channel
+    Sleep    2
     Select Credit Card Of IpayLinks
     kwpayment.activate_payment_credit_card_py
     Reload Page And Start Ajax
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Add Credit Card Info
@@ -235,9 +257,11 @@ checkout_211
     kwshipping.add_price_fee_shipping_py
     Go To Checkout Settings Page
     Reload Page And Start Ajax
+    Sleep    2
     ${class}=    Wait And Get Element Attribute    ${locatorB_checkout_label_singelPayment}    class
     Run Keyword If    '${class}'=='radio_btn_cddf ant-radio-button-wrapper'    Run Keywords    Wait And Click Element    ${locatorB_checkout_label_singelPayment}    And    Wait And Click Element    ${locatorB_checkout_button_save}
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Text    Order summary
     Wait Until Page Contains Text    Shipping Address
@@ -255,9 +279,11 @@ checkout_212
     kwshipping.add_price_fee_shipping_py
     Go To Checkout Settings Page
     Reload Page And Start Ajax
+    Sleep    2
     ${class}=    Wait And Get Element Attribute    ${locatorB_checkout_label_doublePayment}    class
     Run Keyword If    '${class}'=='radio_btn_cddf ant-radio-button-wrapper'    Run Keywords    Wait And Click Element    ${locatorB_checkout_label_doublePayment}    AND    Wait And Click Element    ${locatorB_checkout_button_save}
     Go To First Product C Interface
+    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Text    Order summary
     Wait Until Page Contains Text    Shipping Address
