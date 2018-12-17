@@ -22,7 +22,7 @@ LOG_PATH_10="$LOG_PATH""/10"
 LOG_PATH_11="$LOG_PATH""/11"
 LOG_PATH_12="$LOG_PATH""/12"
 LOG_PATH_13="$LOG_PATH""/13"
-
+LOG_PATH_14="$LOG_PATH""/14"
 
 #if [ ! -d "$LOG_PATH_1" ]
 #then
@@ -95,6 +95,10 @@ docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_13  
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/08_settings/05_nav_menu/navigation_menu.robot' \
         -U https://admin.shoplazza.com -R -A -D $LOG_PATH_13"
 
+docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --name "$TIMESTAMP"_14  registry.shoplazza.com/library/uitest:v7 \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/06_marketing/02_subtraction/subtraction.robot' \
+        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_14"
+
 sleep 300
 
 # 轮询检查docker容器是否结束,结束则合并报告,发送
@@ -108,7 +112,7 @@ do
                 rebot -d "$LOG_PATH"/ "$LOG_PATH_1"/output.xml "$LOG_PATH_2"/output.xml "$LOG_PATH_3"/output.xml \
                         "$LOG_PATH_4"/output.xml "$LOG_PATH_5"/output.xml "$LOG_PATH_6"/output.xml "$LOG_PATH_7"/output.xml \
                         "$LOG_PATH_8"/output.xml "$LOG_PATH_9"/output.xml "$LOG_PATH_10"/output.xml "$LOG_PATH_11"/output.xml \
-                        "$LOG_PATH_12"/output.xml "$LOG_PATH_13"/output.xml
+                        "$LOG_PATH_12"/output.xml "$LOG_PATH_13"/output.xml "$LOG_PATH_14"/output.xml
                 docker run -d -v /var/log:/var/log  registry.shoplazza.com/library/uitest:v7 \
                         bash -c "/opt/$RUN_SH_IN_DOCKER -E -T $TIMESTAMP -D $LOG_PATH"
                 exit 0

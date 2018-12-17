@@ -14,7 +14,6 @@ Checkout Suite Setup
     kwcheckout.set_checkout_process_py
     #激活COD货到付款方式
     kwpayment.activate_payment_cod_py
-    kwcheckout.set_singel_checkout_process_py
 
 Checkout Suite Teardown
     [Documentation]    每个用例执行结束步骤
@@ -26,7 +25,6 @@ Checkout Suite Teardown
 Checkout Case Setup
     [Documentation]    每个用例执行开始步骤
     Sleep    5
-    kwcheckout.set_singel_checkout_process_py
     Go To First Product C Interface
 
 Checkout2 Case Setup
