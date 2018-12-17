@@ -23,6 +23,17 @@ collection007
     Wait And Mouse Over    ${locatorB_CollectionsMgmt_icon_firstPreview}
     Wait Until Page Contains Text    预览
 
+collection008
+    [Documentation]    从专辑列表进入C端专辑详情页面
+    [Tags]    P1    threshold
+    kwcollection.add_collection_with_pic_py
+    Reload Page And Start Ajax
+    Sleep    5
+    ${collectionName}=    Wait And Get Text    ${locatorB_CollectionsMgmt_text_firstCollectionName}
+    Wait And Click Element    ${locatorB_CollectionsMgmt_icon_firstPreview}
+    Focus On New Window
+    Wait Until Page Contains Text    ${collectionName}
+
 collection009
     [Documentation]    hover删除图标
     [Tags]    P0    threshold
@@ -168,6 +179,18 @@ collection081
     Value Of Element Should Be Equal With Wait    ${locatorB_CollectionsNew_inoput_CollectionName}    中文english$%*&(123
     Wait Until Page Contains Text    专辑详情
 
+collection097
+    [Documentation]    从专辑详情进入C端专辑详情页面
+    [Tags]    P1    threshold
+    kwcollection.add_collection_with_pic_py
+    Reload Page And Start Ajax
+    Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
+    Sleep    5
+    ${collectionName}=    Wait And Get Value    ${locatorB_CollectionsNew_inoput_CollectionName}
+    Wait And Click Element    ${locatorB_CollectionsNew_icon_CollectionPreview}
+    Focus On New Window
+    Wait Until Page Contains Text    ${collectionName}
+
 collection105
     [Documentation]    专辑名称输入混合（包括中英文，特殊符号，数字）字符
     [Tags]    P0    threshold
@@ -263,26 +286,3 @@ collection180
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    ${collectionName}
     Wait And Click Element    ${locatorB_CollectionsNew_button_CollectionSave}
     Wait Until Page Contains Text    Title已经被使用
-
-collection008
-    [Documentation]    从专辑列表进入C端专辑详情页面
-    [Tags]    P1    threshold
-    kwcollection.add_collection_with_pic_py
-    Reload Page And Start Ajax
-    Sleep    5
-    ${collectionName}=    Wait And Get Text    ${locatorB_CollectionsMgmt_text_firstCollectionName}
-    Wait And Click Element    ${locatorB_CollectionsMgmt_icon_firstPreview}
-    Focus On New Window
-    Wait Until Page Contains Text    ${collectionName}
-
-collection097
-    [Documentation]    从专辑详情进入C端专辑详情页面
-    [Tags]    P1    threshold
-    kwcollection.add_collection_with_pic_py
-    Reload Page And Start Ajax
-    Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
-    Sleep    5
-    ${collectionName}=    Wait And Get Value    ${locatorB_CollectionsNew_inoput_CollectionName}
-    Wait And Click Element    ${locatorB_CollectionsNew_icon_CollectionPreview}
-    Focus On New Window
-    Wait Until Page Contains Text    ${collectionName}

@@ -148,7 +148,7 @@ ${user_default_domain}    ${datas_domain}
 ${user_default_inviteCode}    ${datas_invite_code}
 ### keybord_key
 ${keybord_enter}    \\13
-${keybord_delete}    \\46
+${keybord_delete}    \\8
 ${keybord_tab}    \\9
 ${keybord_space}    \\32
 ### 注册用户

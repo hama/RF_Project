@@ -14,6 +14,7 @@ Checkout Suite Setup
     kwcheckout.set_checkout_process_py
     #激活COD货到付款方式
     kwpayment.activate_payment_cod_py
+    kwcheckout.set_single_page_checkout_process_py
 
 Checkout Suite Teardown
     [Documentation]    每个用例执行结束步骤
@@ -24,21 +25,25 @@ Checkout Suite Teardown
 
 Checkout Case Setup
     [Documentation]    每个用例执行开始步骤
+    kwcheckout.set_single_page_checkout_process_py
     Sleep    5
     Go To First Product C Interface
 
 Checkout2 Case Setup
     [Documentation]    每个用例执行开始步骤
+    kwcheckout.set_single_page_checkout_process_py
     kwshipping.del_all_shipping_py
     Sleep    5
     Go To First Product C Interface
 
 Checkout3 Case Setup
     [Documentation]    每个用例执行开始步骤
+    kwcheckout.set_single_page_checkout_process_py
     kwproduct.del_all_products_py
     kwshipping.del_all_shipping_py
 
 Checkout2 Child Case Setup
+    kwcheckout.set_single_page_checkout_process_py
     kwshipping.del_all_shipping_py
     kwproduct.add_max_product_py
 
@@ -58,7 +63,8 @@ Add Address Common Step
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    123456
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18899999999
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    7654321@autotest.com
-    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@autotest.com
+    ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_input_contactEmail}
+    Run Keyword If    '${status}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    company
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    apartment
     Sleep    2
@@ -79,10 +85,24 @@ Add Address SepCommon Step
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    518000
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18688886666
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    dianjiang@shoplazza.com
-    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@shoplazza.com
+    ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_input_contactEmail}
+    Run Keyword If    '${status}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@shoplazza.com
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    shoplazza
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    中山大学产学研基地
     Sleep    2
+
+Add New Billing Address Step
+    Sleep    2
+    Wait And Input Text    ${locatorC_checkoutPayment_input_firstName}    javen
+    Wait And Input Text    ${locatorC_checkoutPayment_input_lastName}    fang
+    Wait And Input Text    ${locatorC_checkoutPayment_input_address}    南山区
+    Wait And Input Text    ${locatorC_checkoutPayment_input_address1}    中山大学产学研基地
+    Wait And Input Text    ${locatorC_checkoutPayment_input_city}    深圳
+    Wait And Select From List By Label    ${locatorC_checkoutPayment_input_countyCode}    China
+    Sleep    2
+    Wait And Select From List By Label    ${locatorC_checkoutPayment_input_provinceCode}    Guangdong
+    Sleep    2
+    Wait And Input Text    ${locatorC_checkoutPayment_input_zip}    518000
 
 Add Credit Card Info
 	[Documentation]    添加信用卡公共部分

@@ -50,3 +50,18 @@ Add Default Price Shipping
 	Wait And Click Element    ${locatorB_shippingNew_btn_addPriceShipping}
     Wait And Input Text    ${locatorB_shippingNew_popUp_input_shippingName}    autotest_shipping_name
     Wait And Click Element    ${locatorB_shippingNew_popUp_btn_save}
+
+Edit Default Weight Shipping
+    [Documentation]    修改重量物流的首重、续重、单位kg
+    Wait And Click Element    ${locatorB_shipping_button_EidtShipping}
+    Wait And Click Element    ${locatorB_priceSettings_icon_EidtShipping}
+    Wait And Click Element    ${locatorB_priceSettings_radio_firstWeight}
+    Wait And Input Text    ${locatorB_priceSettings_input_firstWeightPrice}    10
+    Wait And Input Text    ${locatorB_priceSettings_input_firstWeightRange}    10
+    Wait And Click Element    ${locatorB_priceSettings_select_firstWeightUnit}
+    Wait And Click Element    ${locatorB_priceSettings_input_firstWeightUnit}
+    Wait And Input Text    ${locatorB_priceSettings_input_continuousWeightPrice}    2
+    Wait And Input Text    ${locatorB_priceSettings_input_continuousWeightRange}    1
+    Wait And Click Element    ${locatorB_priceSettings_select_continuousWeightUnit}
+    Wait And Click Element    ${locatorB_priceSettings_input_continuousWeightUnit}
+    Sleep And Click Element    ${locatorB_priceSettings_button_popUpsave}
