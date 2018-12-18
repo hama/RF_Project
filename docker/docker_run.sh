@@ -40,64 +40,64 @@ LOG_PATH_14="$LOG_PATH""/14"
 # 开启docker容器跑对应用例,新创建用户
 docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_1  registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/02_order/01_dealing_order/dealing_order_smoke01.robot' \
-        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_1"
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_1"
 
 docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_2  registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/02_order/01_dealing_order/dealing_order_smoke02.robot' \
-        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_2"
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_2"
 
 docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_3  registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/00_login/login.robot \
         module/00_login/logout.robot \
         module/03_product/01_product_management/020_product_manual_add01.robot' \
-        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_3"
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_3"
 
 docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_4  registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/03_product/01_product_management/020_product_manual_add02.robot' \
-        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_4"
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_4"
 
 docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_5  registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/03_product/02_product_collection/001_collection01.robot' \
-        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_5"
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_5"
 
 docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_6  registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/07_decoration/02_checkout_process/settings_checkout01.robot' \
-        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_6"
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_6"
 
 docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_7  registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/07_decoration/02_checkout_process/settings_checkout02.robot \
         module/02_order/02_undeal_order/undeal_order_smoke.robot' \
-        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_7"
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_7"
 
 docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_8  registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/09_checkout/01_Checkout_Normal_Page/checkout_01.robot \
         module/08_settings/01_basic_info/store.robot' \
-        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_8"
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_8"
 
 docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_9  registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/09_checkout/01_Checkout_Normal_Page/checkout_02.robot' \
-        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_9"
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_9"
 
 docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_10  registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/09_checkout/01_Checkout_Normal_Page/checkout2.robot' \
-        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_10"
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_10"
 
 docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_11  registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/08_settings/07_file_management/file_management.robot \
         module/09_checkout/01_Checkout_Normal_Page/checkout3.robot' \
-        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_11"
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_11"
 
 docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_12  registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/06_marketing/01_coupon_code/coupon_code_smoke.robot' \
-        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_12"
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_12"
 
 docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_13  registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/08_settings/05_nav_menu/navigation_menu.robot' \
-        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_13"
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_13"
 
 docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_14  registry.shoplazza.com/library/uitest:v7 \
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/06_marketing/02_subtraction/subtraction.robot' \
-        -U https://admin.shoplazza.com -R -A -D $LOG_PATH_14"
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_14"
 
 sleep 300
 
@@ -114,7 +114,7 @@ do
                         "$LOG_PATH_8"/output.xml "$LOG_PATH_9"/output.xml "$LOG_PATH_10"/output.xml "$LOG_PATH_11"/output.xml \
                         "$LOG_PATH_12"/output.xml "$LOG_PATH_13"/output.xml "$LOG_PATH_14"/output.xml
                 docker run -d -v /var/log:/var/log --rm  registry.shoplazza.com/library/uitest:v7 \
-                        bash -c "/opt/$RUN_SH_IN_DOCKER -E -T $TIMESTAMP -D $LOG_PATH"
+                        bash -c "/opt/$RUN_SH_IN_DOCKER -H pre_release -E -T $TIMESTAMP -D $LOG_PATH"
                 exit 0
         fi
 done
