@@ -33,7 +33,7 @@ uploadFile004
 
 #uploadFile005
 #    [Documentation]    "1.在商品编辑界面添加商品并上传图片1.jpg,2.在素材库产品页面查看" > 产品页面显示图片1.jpg
-#    [Tags]    P0
+#    [Tags]    P0    threshold
 #    kwproduct.del_all_products_py
 #    kwproduct.add_empty_quantity_product_py
 #    Go To Product Management Page
@@ -91,7 +91,7 @@ uploadFile014
 
 uploadFile015
     [Documentation]    测试批量删除 > 1.勾选多个素材 2.查看结果
-    [Tags]    P1
+    [Tags]    P1    threshold
     Wait And Click Element     ${locatorB_uploadFile_nav_productImg}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
@@ -100,7 +100,7 @@ uploadFile015
 
 uploadFile016
     [Documentation]    测试批量删除 > 1.勾选多个素材  2.点击删除   3.点击确认
-    [Tags]    P1    threshold
+    [Tags]    P1
     Wait And Click Element     ${locatorB_uploadFile_nav_productImg}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
@@ -111,7 +111,7 @@ uploadFile016
 
 uploadFile017
     [Documentation]    测试批量删除 > 1.勾选多个素材  2.点击删除  3.点击取消
-    [Tags]    P1    threshold
+    [Tags]    P1
     Wait And Click Element     ${locatorB_uploadFile_nav_productImg}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}

@@ -177,7 +177,6 @@ def set_checkout_process_py(conf={}, cookie=init_cookie):
 def set_single_page_checkout_process_py(cookie=init_cookie):
     return set_checkout_process_py({'checkout_page_type': 'single'}, cookie=cookie)
 
-
 if __name__ == '__main__':
     # print json.dumps(checkout_shipping_lines_py(shipping_lines_data))
     print set_checkout_process_py()
