@@ -168,7 +168,7 @@ checkout_202
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Add Credit Card Info
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment failure
     Wait And Click Element    ${locatorC_checkout_button_cancelOrder}
     Wait Until Page Contains Text    We Offer Free Shipping Worldwide
@@ -190,7 +190,7 @@ checkout_203
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Add Credit Card Info
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment failure
     Wait And Click Element    ${locatorC_checkout_button_payAgain}
     Wait Until Page Contains Text    Payment method
@@ -213,7 +213,7 @@ checkout_205
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Add Credit Card Info
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment failure
     Wait And Click Element    ${locatorC_checkout_button_payAgain}
     Wait Until Page Contains Text    Javen
@@ -245,7 +245,7 @@ checkout_206
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Add Credit Card Info
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment failure
     Wait And Click Element    ${locatorC_checkout_button_payAgain}
     Wait Until Page Contains Text    price_fee

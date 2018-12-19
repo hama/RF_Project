@@ -400,7 +400,6 @@ checkout_197
     Wait Until Page Contains Text    Payment successful!
     Wait Until Page Contains Text    Javen
     Wait Until Page Contains Text    fang
-    Wait Until Page Contains Text    dianjiang@shoplazza.com
     Wait Until Page Contains Text    18688886666
     Wait Until Page Contains Text    中山大学产学研基地
     Wait Until Page Contains Text    南山区
