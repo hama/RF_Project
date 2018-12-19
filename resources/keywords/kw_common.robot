@@ -417,7 +417,7 @@ Reload Page And Start Ajax
 	[Documentation]    刷新页面并添加监控
 	Sleep    ${sleep_time}
 	Reload Page
-	Sleep    1
+#	Sleep    1
 #	Start Ajax Listener
 	Sleep    2
 

@@ -54,7 +54,6 @@ coupon_code007
 coupon_code022
     [Documentation]    验证优惠码活动列表中 点击 优惠码活动 可进入活动详情
     [Tags]    P0
-    sleep    2
     ${CodeContent}    Wait And Get Text     ${locatorB_couponCode_text_firstCoupon_couponCode}
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_couponCode}
     Wait And Click Element    ${locatorB_couponCodeNew_text_input_promoCode}
@@ -386,7 +385,6 @@ coupon_code165
     [Documentation]    验证新建优惠码界面，取消按钮可撤销操作
     [Tags]    P0    threshold    smoke
     Select All Coupon Code Tag
-    Sleep    2
     ${activityName}    Wait And Get Text    ${locatorB_couponCode_text_firstCoupon_activityName}
     Wait And Click Element    ${locatorB_couponCode_text_firstCoupon_activityName}
     Wait And Input Text    ${locatorB_couponCodeNew_input_activityName}    activity_auto
@@ -398,8 +396,7 @@ coupon_code169
     [Documentation]    验证新建优惠码，优惠码不可重复
     [Tags]    P0    threshold    smoke
     Select All Coupon Code Tag
-    Sleep    2
-    ${couponCode}    Get Text    ${locatorB_couponCode_text_firstCoupon_couponCode}
+    ${couponCode}    Wait And Get Text    ${locatorB_couponCode_text_firstCoupon_couponCode}
     Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
     Add Default Coupon Code Text
     Wait And Input Text    ${locatorB_couponCodeNew_text_input_promoCode}    ${couponCode}
