@@ -157,7 +157,6 @@ checkout_202
     kwpayment.activate_payment_credit_card_py
     kwproduct.add_max_product_py
     kwshipping.add_price_fee_shipping_py
-    Reload Page And Start Ajax
     Go To Payment Channel
     Sleep    2
     Select Credit Card Of IpayLinks
@@ -179,7 +178,6 @@ checkout_203
     kwpayment.activate_payment_credit_card_py
     kwproduct.add_max_product_py
     kwshipping.add_price_fee_shipping_py
-    Reload Page And Start Ajax
     Go To Payment Channel
     Sleep    2
     Select Credit Card Of IpayLinks
@@ -202,7 +200,6 @@ checkout_205
     kwpayment.activate_payment_credit_card_py
     kwproduct.add_max_product_py
     kwshipping.add_price_fee_shipping_py
-    Reload Page And Start Ajax
     Go To Payment Channel
     Sleep    2
     Select Credit Card Of IpayLinks
@@ -218,7 +215,6 @@ checkout_205
     Wait And Click Element    ${locatorC_checkout_button_payAgain}
     Wait Until Page Contains Text    Javen
     Wait Until Page Contains Text    fang
-    Wait Until Page Contains Text    dianjiang@shoplazza.com
     Wait Until Page Contains Text    18688886666
     Wait Until Page Contains Text    中山大学产学研基地
     Wait Until Page Contains Text    南山区
@@ -236,7 +232,6 @@ checkout_206
     kwshipping.add_price_fee_shipping_py
     Reload Page And Start Ajax
     Go To Payment Channel
-    Sleep    2
     Select Credit Card Of IpayLinks
     kwpayment.activate_payment_credit_card_py
     Reload Page And Start Ajax
