@@ -260,11 +260,6 @@ checkout_127
     [Setup]    Go To Payment Channel
     kwpayment.activate_payment_credit_card_py
     Reload Page And Start Ajax
-    Sleep    2
-    Select Credit Card Of IpayLinks
-    ${class}=    Wait And Get Element Attribute    ${locatorB_pay_switch_creditCardSwitch}    class
-    Run Keyword If    $class=='ant-switch'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
-    Reload Page And Start Ajax
     Go To First Product C Interface
     Sleep    2
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
