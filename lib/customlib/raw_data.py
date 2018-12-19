@@ -619,9 +619,9 @@ checkout_settings_data = {
     "customer_authority": "all",
     "checkout_page_type": "normal",
     "address_setting": {
-        "email": "optional",
+        "email": "hidden",
         "name": "separate",
-        "phone": "optional",
+        "phone": "required",
         "company": "optional"
     }
 }

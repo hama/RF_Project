@@ -15,7 +15,7 @@ store001
 
 store002
     [Documentation]    店铺名称可保存小于50个字符
-    [Tags]    P0
+    [Tags]    P0    threshold
     Clear Element Text    ${locatorB_store_input_storeName}
     Wait And Input Text    ${locatorB_store_input_storeName}    zhoulidianpu
     Wait And Click Element    ${locatorB_button_save00}
@@ -34,7 +34,7 @@ store003
 
 store004
     [Documentation]    店铺名称可保存50个字符
-    [Tags]    P0
+    [Tags]    P0    threshold
     Clear Element Text    ${locatorB_store_input_storeName}
     Wait And Input Text    ${locatorB_store_input_storeName}    zhoulidianpuzhoulidianpuzhoulidianpuzhoulidianpuzh
     Wait And Click Element    ${locatorB_button_save00}
@@ -66,7 +66,7 @@ store008
 
 store011
     [Documentation]    店主邮箱输入正确格式的邮箱可保存成功
-    [Tags]    P0
+    [Tags]    P0    threshold
     Clear Element Text    ${locatorB_store_input_storeEmail}
     Wait And Input Text    ${locatorB_store_input_storeEmail}    zhouli@shoplazza.com
     Wait And Click Element    ${locatorB_button_save00}
@@ -123,7 +123,7 @@ store022
     Text Of Element Should Contain With Wait    ${locatorB_store_select_currency}    USD
     Wait Until Page Contains    店铺正常运营之后，更改货币将影响您店铺的商品价格、订单和数据等信息，请谨慎操作
 
-store023
+store027
     [Documentation]    验证‘常规设置-店铺时区’UI展示正确
     [Tags]    P0
     Set Focus To Element    ${locatorB_store_select_timezone}
@@ -166,7 +166,7 @@ store029.1
 
 store032
     [Documentation]    选择店铺时区之后下拉框自动收起
-    [Tags]    P0
+    [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_store_select_timezone_listIcon}
     Wait And Click Element    ${locatorB_store_select_timezone_listContent}[1]    #选择店铺时区下拉列表中的第二个
     Wait Until Page Contains Locator    ${locatorB_button_save00}

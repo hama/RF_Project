@@ -245,3 +245,29 @@ shipping025
 #    sleep    2
 #    Double Click Element    ${locatorB_shippingNew_btn_addPriceShipping}
 #    Text Of Element Should Be Equal With Wait    ${locatorB_popUps_title}    添加基于价格的运费
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

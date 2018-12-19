@@ -15,8 +15,7 @@ activitie_001
     kwrebate.add_doing_rebate_py
     kwrebate.add_finish_rebate_py
     Reload Page And Start Ajax
-    Wait And Click Element    ${locatorB_subtractionsMain_tab_ActivityNoStart}
-    Wait And Click Element    ${locatorB_subtractionsMain_tab_ActivityAll}
+    Sleep And Click Element    ${locatorB_subtractionsMain_tab_ActivityAll}
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityStatus}[0]   已结束
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityStatus}[1]    进行中
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityStatus}[2]    未开始

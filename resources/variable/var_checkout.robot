@@ -95,14 +95,14 @@ ${locatorC_checkoutPayment_icon_cash}    dom:document.querySelectorAll('[class~=
 ${locatorC_checkoutPayment_select_billingAddress}    dom:document.querySelectorAll("select[id='billingSelect']")[0]       #.billingAddress  扩展select
 ${locatorC_checkoutPayment_select_sameBillingAddress}    dom:document.querySelectorAll('[id="billingSelect"] option:nth-child(1)')[0]    #.billingAddress - Same as shipping address
 ${locatorC_checkoutPayment_select_newBillingAddress}    dom:document.querySelectorAll('[id="billingSelect"] option:nth-child(2)')[0]    #.billingAddress - New billing address
-${locatorC_checkoutPayment_input_firstName}    dom:document.querySelectorAll("input[name='first_name']")[1]        #.billingAddress /first_name输入框
-${locatorC_checkoutPayment_input_lastName}    dom:document.querySelectorAll("input[name='last_name']")[1]          #.billingAddress / last_name输入框
-${locatorC_checkoutPayment_input_address}    dom:document.querySelectorAll("input[name='address']")[1]     #.billingAddress   /address 输入框
-${locatorC_checkoutPayment_input_address1}    dom:document.querySelectorAll("input[name='address1']")[1]       #.billingAddress /address1 输入框
-${locatorC_checkoutPayment_input_city}    dom:document.querySelectorAll("input[name='city']")[1]       #.billingAddress    /city 城市输入框
+${locatorC_checkoutPayment_input_firstName}    dom:document.querySelectorAll("input[name='first_name']")        #.billingAddress /first_name输入框
+${locatorC_checkoutPayment_input_lastName}    dom:document.querySelectorAll("input[name='last_name']")          #.billingAddress / last_name输入框
+${locatorC_checkoutPayment_input_address}    dom:document.querySelectorAll("input[name='address']")     #.billingAddress   /address 输入框
+${locatorC_checkoutPayment_input_address1}    dom:document.querySelectorAll("input[name='address1']")       #.billingAddress /address1 输入框
+${locatorC_checkoutPayment_input_city}    dom:document.querySelectorAll("input[name='city']")       #.billingAddress    /city 城市输入框
 ${locatorC_checkoutPayment_input_countyCode}    dom:document.querySelectorAll('[id="shipping_country"]')[0]        #.billingAddress    /county 国家下拉选择
 ${locatorC_checkoutPayment_input_provinceCode}    dom:document.querySelectorAll('[id="shipping_province"]')[0]        #.billingAddress   /province  省份下拉选择
-${locatorC_checkoutPayment_input_zip}    dom:document.querySelectorAll("input[name='zip']")[1]        #.billingAddress    /zip 输入框
+${locatorC_checkoutPayment_input_zip}    dom:document.querySelectorAll("input[name='zip']")        #.billingAddress    /zip 输入框
 
 #.locatorC payment successful
 ${locatorC_checkout_text_shippingInformationDetail}    dom:document.querySelectorAll("[class*='text-truncate']")     #.payment successful  shipping information

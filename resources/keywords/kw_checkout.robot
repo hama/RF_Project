@@ -62,7 +62,8 @@ Add Address Common Step
     Sleep    1
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    123456
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18899999999
-    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    7654321@autotest.com
+    ${statusemail}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_email}
+    Run Keyword If    '${statusemail}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    7654321@autotest.com
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_input_contactEmail}
     Run Keyword If    '${status}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    company
@@ -103,6 +104,19 @@ Add New Billing Address Step
     Wait And Select From List By Label    ${locatorC_checkoutPayment_input_provinceCode}    Guangdong
     Sleep    2
     Wait And Input Text    ${locatorC_checkoutPayment_input_zip}    518000
+
+Add Singel New Billing Address Step
+    Sleep    2
+    Wait And Input Text    ${locatorC_checkoutPayment_input_firstName}[1]    javen
+    Wait And Input Text    ${locatorC_checkoutPayment_input_lastName}[1]    fang
+    Wait And Input Text    ${locatorC_checkoutPayment_input_address}[1]    南山区
+    Wait And Input Text    ${locatorC_checkoutPayment_input_address1}[1]    中山大学产学研基地
+    Wait And Input Text    ${locatorC_checkoutPayment_input_city}[1]    深圳
+    Wait And Select From List By Label    ${locatorC_checkoutPayment_input_countyCode}    China
+    Sleep    2
+    Wait And Select From List By Label    ${locatorC_checkoutPayment_input_provinceCode}    Guangdong
+    Sleep    2
+    Wait And Input Text    ${locatorC_checkoutPayment_input_zip}[1]    518000
 
 Add Credit Card Info
 	[Documentation]    添加信用卡公共部分
