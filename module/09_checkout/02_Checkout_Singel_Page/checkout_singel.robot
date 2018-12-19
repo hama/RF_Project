@@ -301,7 +301,7 @@ checkout_163
     Add Address Common Step
     Sleep And Click ELement    ${locatorC_checkoutPayment_select_billingAddress}
     Wait And Click Element    ${locatorC_checkoutPayment_select_newBillingAddress}
-    Add New Billing Address Step
+    Add Singel New Billing Address Step
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Sleep    2
@@ -416,7 +416,7 @@ checkout_199
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
     Sleep    2
     Wait And Click Element    ${locatorC_checkout_button_viewOrders}

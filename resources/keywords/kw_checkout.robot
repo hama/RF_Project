@@ -105,6 +105,19 @@ Add New Billing Address Step
     Sleep    2
     Wait And Input Text    ${locatorC_checkoutPayment_input_zip}    518000
 
+Add Singel New Billing Address Step
+    Sleep    2
+    Wait And Input Text    ${locatorC_checkoutPayment_input_firstName}[1]    javen
+    Wait And Input Text    ${locatorC_checkoutPayment_input_lastName}[1]    fang
+    Wait And Input Text    ${locatorC_checkoutPayment_input_address}[1]    南山区
+    Wait And Input Text    ${locatorC_checkoutPayment_input_address1}[1]    中山大学产学研基地
+    Wait And Input Text    ${locatorC_checkoutPayment_input_city}[1]    深圳
+    Wait And Select From List By Label    ${locatorC_checkoutPayment_input_countyCode}    China
+    Sleep    2
+    Wait And Select From List By Label    ${locatorC_checkoutPayment_input_provinceCode}    Guangdong
+    Sleep    2
+    Wait And Input Text    ${locatorC_checkoutPayment_input_zip}[1]    518000
+
 Add Credit Card Info
 	[Documentation]    添加信用卡公共部分
 	Wait And Input Text    ${locatorC_checkout_paymentCard_fristName}    aaaaa
