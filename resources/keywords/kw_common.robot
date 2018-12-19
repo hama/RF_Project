@@ -64,6 +64,10 @@ Login With User
     ${close}=    Execute JavaScript    return document.querySelectorAll('.ant-modal-close-x')[0]===undefined
     Run Keyword If    '${close}'=='${False}'    Wait And Click Element    dom:document.querySelectorAll('.ant-modal-close-x')[0]
 
+Check ${caseLevel} Point ${caseNum} By ${checkStatements}
+    [Documentation]    通过checkStatments，检测级别为caseLevel的点（用例标号为caseNum）
+	Run Keyword If    '${caseLevel}' in '${checkLevel}'    ${checkStatements}
+
 Wait And Input Text
     [Arguments]    ${element_locator}    ${text}    ${timeout}=3s    ${retry_time}=3x
     [Documentation]    封装的输入方法，等待元素可被输入时，再输入

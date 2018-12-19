@@ -45,6 +45,10 @@ Open Test Browser
     [Arguments]    ${url}
     [Documentation]    仅打开浏览器，不登录
     log    Begin Open Browser Window
+	#    若无${checkLevel}变量，设置${checkLevel}为P0P1P2P3
+    ${status}    Run Keyword And Return Status    Variable Should Exist    ${checkLevel}
+    Run Keyword If    ${status}==False    Set Global Variable    ${checkLevel}    P0P1P2P3
+	#    判断是否开启无头浏览器
     Run Keyword If    '${is_headless}'=='${true}'    Open Headless Chrome    ${url}
     ...    ELSE    Open Browser    ${url}    chrome
     # 载入jquery，可使用jquery的selector去定位元素
