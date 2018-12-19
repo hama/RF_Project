@@ -85,7 +85,8 @@ Add Address SepCommon Step
     Sleep    1
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    518000
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18688886666
-    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    dianjiang@shoplazza.com
+    ${statusemail}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_email}
+    Run Keyword If    '${statusemail}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    dianjiang@shoplazza.com
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_input_contactEmail}
     Run Keyword If    '${status}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@shoplazza.com
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    shoplazza

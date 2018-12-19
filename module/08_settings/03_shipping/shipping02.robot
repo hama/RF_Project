@@ -258,16 +258,78 @@ shipping025
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+#shipping_group001
+#    [Documentation]    shipping_group001检查
+#    [Tags]    group
+#    Sleep And Click Element    dom:document.querySelectorAll('[role="tab"]')[1]
+#    Sleep And Click Element    dom:document.querySelectorAll('[class*="ant-btn middle_btn"]')[1]
+#    Wait And Mouse Over    dom:document.querySelectorAll('[class*="logo_area"]')[0]
+#    Sleep And Click Element    dom:document.querySelectorAll('[class*="ant-btn middle_btn_e01e btn_add"]')[0]
+#
+#    Check P1 Point shipping001 By shippinggroup001
+#    Check P1 Point shipping002 By shippinggroup002
+#    Check P1 Point shipping003 By shippinggroup003
+#    Check P0 Point shipping004 By shippinggroup004
+#    Check P0 Point shipping005 By shippinggroup005
+#    Check P0 Point shipping006 By shippinggroup006
+#    Check P0 Point shipping007 By shippinggroup007
+#
+#
+#*** Key Words ***
+#shippinggroup001
+#    [Documentation]      验证添加汉邮物流商弹窗中，货代名称输入框不可为空
+#     Wait And Input Text     dom:document.querySelectorAll('[id="channel_name"]')[0]    ${Empty}
+#     Wait And Input Text     dom:document.querySelectorAll('[id="client_id"]')[0]    1234567890
+#     Wait And Input Text     dom:document.querySelectorAll('[id="secret_key"]')[0]    1234567890asdasdasdasd
+#     Wait And Click Element    dom:document.querySelectorAll('[class="ant-btn middle_btn_e01e undefined confirm_btn_fbba"]')[0]
+#     Wait Until Page Contains Text    请输入货代名称
+#
+#
+#shippinggroup002
+#    [Documentation]      验证添加汉邮物流商弹窗中，账户ID输入框不可为空
+#     Wait And Input Text     dom:document.querySelectorAll('[id="channel_name"]')[0]    1231231231231
+#     Wait And Input Text     dom:document.querySelectorAll('[id="client_id"]')[0]    1
+#     Press Key     dom:document.querySelectorAll('[id="client_id"]')[0]    \\8
+#     Wait And Input Text     dom:document.querySelectorAll('[id="secret_key"]')[0]    1234567890asdasdasdasd
+#     Wait And Click Element    dom:document.querySelectorAll('[class="ant-btn middle_btn_e01e undefined confirm_btn_fbba"]')[0]
+#     Wait Until Page Contains Text    请输入账户ID
+#
+#
+#shippinggroup003
+#    [Documentation]      验证添加汉邮物流商弹窗中，账户密钥输入框不可为空
+#     Wait And Input Text     dom:document.querySelectorAll('[id="channel_name"]')[0]    1231231231231
+#     Wait And Input Text     dom:document.querySelectorAll('[id="client_id"]')[0]    sdasda12312312
+#     Wait And Input Text     dom:document.querySelectorAll('[id="client_id"]')[0]    1
+#     Press Key     dom:document.querySelectorAll('[id="client_id"]')[0]    \\8
+#     Wait And Click Element    dom:document.querySelectorAll('[class="ant-btn middle_btn_e01e undefined confirm_btn_fbba"]')[0]
+#     Wait Until Page Contains Text    请输入账户密钥
+#
+#
+#shippinggroup004
+#    [Documentation]      验证添加汉邮物流商弹窗中，账户ID输入框输入错误内容不可添加
+#     Wait And Input Text     dom:document.querySelectorAll('[id="channel_name"]')[0]    1231231231231
+#     Wait And Input Text     dom:document.querySelectorAll('[id="client_id"]')[0]    asdasdas4345345
+#     Wait And Input Text     dom:document.querySelectorAll('[id="secret_key"]')[0]     asdasdas4345345wqewqeqw
+#     Sleep And Click Element    dom:document.querySelectorAll('[class="ant-btn middle_btn_e01e undefined confirm_btn_fbba"]')[0]
+#     Wait Until Page Contains Text    输入的账户ID或密钥有误，请重新输入
+#
+#
+#shippinggroup005
+#    [Documentation]      验证添加汉邮物流商弹窗中，账户密钥输入框输入错误内容不可添加
+#     Wait And Input Text     dom:document.querySelectorAll('[id="channel_name"]')[0]    1231231231231
+#     Wait And Input Text     dom:document.querySelectorAll('[id="client_id"]')[0]    asdasdas4345345
+#     Wait And Input Text     dom:document.querySelectorAll('[id="secret_key"]')[0]     asdasdas4345345wqewqeqw
+#     Sleep And Click Element    dom:document.querySelectorAll('[class="ant-btn middle_btn_e01e undefined confirm_btn_fbba"]')[0]
+#     Wait Until Page Contains Text    输入的账户ID或密钥有误，请重新输入
+#
+#
+#shippinggroup006
+#    [Documentation]      验证添加汉邮物流商弹窗中，查看官网了解更多 文本连接可点击
+#     Wait And Click Element    dom:document.querySelectorAll('[href=" http://uaibest.com/"]')[0]
+#     Focus On New Window
+#     Location Should Be    http://uaibest.com/
+#
+#shippinggroup007
+#    [Documentation]      验证添加汉邮物流商弹窗中，弹窗可关闭
+#     Wait And Click Element    dom:document.querySelectorAll('[class="ant-drawer-close-x"]')[1]
+#     Wait Until Page Not Contains Text     添加物流商

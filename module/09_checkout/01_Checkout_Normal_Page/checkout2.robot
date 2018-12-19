@@ -150,6 +150,7 @@ checkout_097
     &{conf}=   Create Dictionary
     ...    areas=${areas}
     kwshipping.add_shipping_with_conf_py    ${conf}
+    kwcheckout.set_checkout_process_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     #添加是shipping address
@@ -161,7 +162,7 @@ checkout_097
     Sleep    1
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    123456
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18899999999
-    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    7654321@autotest.com
+#    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    7654321@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    company
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    apartment
