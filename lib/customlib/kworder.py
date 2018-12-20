@@ -365,7 +365,8 @@ def add_undead_order_with_pay_fail_status_py(cookie=init_cookie):
     activate_payment_credit_card_py(cookie=cookie)
     payment_pay_conf = copy.deepcopy(payment_pay_data)
     payment_pay_conf['card_info'] = card_info
-    payment_pay_conf['payment_line'] = get_expected_payment_line_py('credit_card')
+    payment_pay_conf['payment_line'] = get_expected_payment_line_py(
+        {'payment_method': 'credit_card', 'payment_channel': 'ipaylinks'}, cookie=cookie)
     do_pay_with_conf_py(payment_pay_conf, cookie=cookie)
     config['payment_pay_data'] = payment_pay_conf
     return add_deading_order_with_conf_py(config, cookie=cookie)['order_token']
@@ -541,11 +542,13 @@ def do_pay_process_py(conf, tokens, cookie=init_cookie):
         payment_pay_conf = conf['payment_pay_data']
         # 保证payment_line的数据是有效的
         if not conf['payment_pay_data'].has_key('payment_line'):
-            data_payment_line = get_expected_payment_line_py('cod', cookie=cookie)
+            data_payment_line = get_expected_payment_line_py({'payment_method': 'cod', 'payment_channel': 'cod'},
+                                                             cookie=cookie)
             payment_pay_conf['payment_line'] = data_payment_line
     else:
         payment_pay_conf = copy.deepcopy(payment_pay_data)
-        data_payment_line = get_expected_payment_line_py('cod', cookie=cookie)
+        data_payment_line = get_expected_payment_line_py({'payment_method': 'cod', 'payment_channel': 'cod'},
+                                                         cookie=cookie)
         payment_pay_conf['payment_line'] = data_payment_line
     payment_pay_conf['order_token'] = tokens['order_token']
     payment_pay_conf['checkout_token'] = tokens['checkout_token']

@@ -423,17 +423,13 @@ checkout_create_data = {
 payment_pay_data = {
     'order_token': 'be6cb44f-402a-4728-84a1-c974ead1e97e',
     'payment_line': {
-        'id': '1',
+        'id': '058693de-bd49-420d-a54c-e9b5825f77a9',
         'name': 'Cash on Delivery',
         'desc': '',
         'tips': '',
-        'logo': '',
-        'payment_channel': 'cod',
-        'payment_rate': '0.0000',
-        'transaction_fee': '0.0000',
-        'is_enable': '1',
-        'is_active': True,
+        'status': 'open',
         'payment_method': 'cod',
+        'payment_channel': 'cod',
         'public_key': None
     },
     'card_info': {
@@ -556,7 +552,7 @@ payment_method_edit_data = {
 # /api/payment/method这个接口的激活数据
 payment_method_activation_data = {
     "payment_method": "cod",
-    "method_is_enable": 0
+    "status": "open"
 }
 
 payment_channel_data = {
@@ -573,7 +569,7 @@ payment_channel_data = {
 }
 
 payment_channel_change_channel_data = {
-    "channel_is_enable": "1",
+    "status": "open",
     "payment_method": "credit_card",
     "payment_channel": "ipaylinks"
 }
@@ -763,7 +759,7 @@ popups_data = {
 }
 
 setting_checkout_data = {
-    "customer_authority":"all",
-    "checkout_page_type":"single",
-    "address_setting":{"email":"optional","name":"separate","phone":"optional","company":"optional"}
+    "customer_authority": "all",
+    "checkout_page_type": "single",
+    "address_setting": {"email": "optional", "name": "separate", "phone": "optional", "company": "optional"}
 }
