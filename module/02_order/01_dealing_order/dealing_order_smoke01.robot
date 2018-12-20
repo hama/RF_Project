@@ -7,6 +7,13 @@ Force Tags        Order
 Resource          ../../../resources/keywords/kw_common.robot
 
 *** Test Cases ***
+order001
+    [Documentation]    验证B端订单菜单栏可正常展开
+    [Tags]    P0    threshold
+    Text Of Element Should Contain With Wait    ${locatorB_order_dealing}    待处理订单
+    Text Of Element Should Contain With Wait    ${locatorB_order_undeal}    未完成订单
+    Text Of Element Should Contain With Wait    ${locatorB_order_postSale}    售后订单
+
 order002
 	[Documentation]     验证在菜单栏点击订单时，默认选中并进入订单的第一个子菜单：待处理订单
     [tags]    P0    threshold    smoke
@@ -25,7 +32,7 @@ order009
 
 order014
     [Documentation]    验证进入待处理订单列表时，默认选择第一个tab，全部
-    [tags]    P0    threshold
+    [tags]    P0
     kworder.add_deading_order_with_delivering_status_py
     Reload Page And Start Ajax
     Element Attribute Should Be Equal With Wait    ${locatorB_orderDealing_button_all}    class    ant-tabs-tab-active ant-tabs-tab
@@ -65,6 +72,8 @@ order017
     Select Finished Dealing Order Tag
     ${text00} =    Sleep And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[0]
     Should Be Equal    ${text00}    全部完成
+
+
 
 order039
     [Documentation]     验证待处理订单列表中，订单编号显示为checkout发起订单时的订单编号
@@ -210,11 +219,11 @@ order087
 
 
 ##周莉编写
-#order001
-#    [Documentation]    验证B端订单菜单栏可正常展开
-#    [Tags]    P0    threshold
-#    Wait Until Page Contains Text    待处理订单
-#    Wait Until Page Contains Text    未完成订单
+#order004
+#    [Documentation]     验证售后订单列表可正常进入
+#    [tags]    P0    threshold
+#    Wait Until Page Contains Text    售后订单
+#    Wait Until Page Contains Text    售后时间
 #
 #order034
 #    [Documentation]    验证待处理订单列表中，搜索按钮可点击

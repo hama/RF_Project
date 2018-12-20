@@ -15,8 +15,7 @@ activitie_001
     kwrebate.add_doing_rebate_py
     kwrebate.add_finish_rebate_py
     Reload Page And Start Ajax
-    Wait And Click Element    ${locatorB_subtractionsMain_tab_ActivityNoStart}
-    Wait And Click Element    ${locatorB_subtractionsMain_tab_ActivityAll}
+    Sleep And Click Element    ${locatorB_subtractionsMain_tab_ActivityAll}
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityStatus}[0]   已结束
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityStatus}[1]    进行中
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityStatus}[2]    未开始
@@ -147,12 +146,14 @@ activitie_022
 activitie_053
     [Documentation]    未开始活动，可以删除
     [Tags]    P1    threshold
+    kwrebate.add_finish_rebate_py
     kwrebate.add_before_rebate_py
     Reload Page And Start Ajax
-    ${beforeActivityID}=    Sleep And Get Text    ${locatorB_subtractionsMain_text_firstActivityID}
+    Wait Until Page Contains Locator    ${locatorB_subtractionsMain_icon_firstActivityPreview}
+    ${beforeActivityID}=    Get Text    ${locatorB_subtractionsMain_text_firstActivityID}
     Wait And Click Element Then Confirm    ${locatorB_subtractionsMain_icon_firstActivityDelete}
     Reload Page And Start Ajax
-    ${afterActivityID}=    Sleep And Get Text    ${locatorB_subtractionsMain_text_firstActivityID}
+    ${afterActivityID}=    Get Text    ${locatorB_subtractionsMain_text_firstActivityID}
     Should Be True    $beforeActivityID!=$afterActivityID
 
 activitie_066

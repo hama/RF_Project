@@ -141,6 +141,17 @@ def add_shipping_with_conf_py(conf={}, cookie=init_cookie):
 
     return shippings_post_py(data, cookie=cookie)['content']['id']
 
+def add_ID_price_fee_shipping_py(conf={}, cookie=init_cookie):
+    '''
+    通过conf添加物流
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(ID_shipping_data)
+    dict_deepupdate(data, conf)
+
+    return shippings_post_py(data, cookie=cookie)['content']['id']
 
 def add_price_fee_shipping_py(conf={}, cookie=init_cookie):
     '''
@@ -165,7 +176,6 @@ def add_price_fee_shipping_py(conf={}, cookie=init_cookie):
     ]
     dict_deepupdate(data, conf)
     return shippings_post_py(data, cookie=cookie)
-
 
 def add_weight_fee_shipping_py(conf={}, cookie=init_cookie):
     '''
@@ -253,7 +263,7 @@ def num_of_exist_shipping_py(cookie=init_cookie):
 
 
 if __name__ == '__main__':
-    add_shipping_with_conf_py()
-    print del_all_shipping_py()
-    print add_price_fee_shipping_py({'plans': [{'rule_range_min': '5000.00'}]})
+    add_quantity_fee_shipping_py()
+    # print del_all_shipping_py()
+    # print add_price_fee_shipping_py({'plans': [{'rule_range_min': '5000.00'}]})
     # print add_quantity_fee_shipping_py()

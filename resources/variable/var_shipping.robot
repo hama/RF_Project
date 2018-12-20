@@ -8,6 +8,24 @@ ${locatorB_shipping_btn_startSet}    dom:document.querySelectorAll("button")[1] 
 ${locatorB_shipping_items_listShippingItems}    dom:document.querySelectorAll('ul[id*="test_shipping_list"]')    #.list物流方案
 ${locatorB_shipping_text_listShippingItemsName}    dom:document.querySelectorAll('[id*="test_shipping_list"] [class*="title"]')  # 物流方案名
 
+${locatorB_shipping_button_EidtShipping}    dom:document.querySelectorAll('[href*="/shipping"]')[0]    # 物流 - 编辑方案 按钮
+${locatorB_priceSettings_icon_EidtShipping}    dom:document.querySelectorAll('[class*="icon_edit"]')[0]    # 运费设置 - 编辑 按钮
+${locatorB_priceSettings_checkbox_supportCOD}    dom:document.querySelectorAll('span[class*="ant-checkbox"]')[0]    # 运费设置 - 支持货到付款 复选框
+
+${locatorB_priceSettings_radio_firstWeight}    dom:document.querySelectorAll('span[class*="ant-radio"]')[2]    # 运费设置 - 首重+续重 单选项
+
+${locatorB_priceSettings_input_firstWeightPrice}    dom:document.querySelectorAll('[id="rate_amount"]')    # 运费设置 - 首重运费 输入框
+${locatorB_priceSettings_input_firstWeightRange}    dom:document.querySelectorAll('[id="rate_first_range"]')    # 运费设置 - 首重范围 输入框
+${locatorB_priceSettings_select_firstWeightUnit}    dom:document.querySelectorAll('[id="rate_first_unit"]')[0]    # 运费设置 - 首重单位选择框
+${locatorB_priceSettings_input_firstWeightUnit}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[1]    # 运费设置 - 首重单位kg
+
+${locatorB_priceSettings_input_continuousWeightPrice}    dom:document.querySelectorAll('[id="rate_additional_amount"]')    # 运费设置 - 续重运费 输入框
+${locatorB_priceSettings_input_continuousWeightRange}    dom:document.querySelectorAll('[id="rate_additional_range"]')    # 运费设置 - 续重范围 输入框
+${locatorB_priceSettings_select_continuousWeightUnit}    dom:document.querySelectorAll('[id="rate_additional_unit"]')[0]     # 运费设置 - 续重单位选择框
+${locatorB_priceSettings_input_continuousWeightUnit}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[5]    # 运费设置 - 续重单位kg
+
+${locatorB_priceSettings_button_popUpsave}    dom:document.querySelectorAll('[class*="ant-btn middle_btn"]')[1]    # 运费设置 -  保存 按钮
+
 # locator shippingNew
 ${locatorB_shippingNew_input_shippingName}    dom:document.querySelectorAll('input[data-robot="shipping_ph_name"]')[0]    #.输入物流名称框
 ${locatorB_shippingNew_btn_addCountry}    dom:document.querySelectorAll('button[data-robot="shipping_add_country"]')[0]    # 设置物流-添加国家按钮
@@ -107,4 +125,6 @@ ${shipping_first_input}    dom:document.querySelectorAll("#name")[1]    #.对应
 
 # kwshipping.add_weight_fee_shipping_py
 ${locatorB_shipping_weight_first_input}    dom:document.querySelectorAll('#name')[1]    #.添加重量运费-物流名称输入框
+
+
 

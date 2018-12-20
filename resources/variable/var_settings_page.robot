@@ -4,8 +4,8 @@
 
 #.新增元素  locator nav
 ${locatorB_checkout_button_nav_tradingRules}     dom:document.querySelectorAll('[class="ant-tabs-nav ant-tabs-nav-animated"] [class*="ant-tabs-tab"]')[0]   #交易规则
-${locatorB_checkout_button_nav_information}     dom:document.querySelectorAll('[class="ant-tabs-nav ant-tabs-nav-animated"] [class*="ant-tabs-tab"]')[1]   #收货信息
-${locatorB_checkout_button_nav_serviceTerms}     dom:document.querySelectorAll('[class="ant-tabs-nav ant-tabs-nav-animated"] [class*="ant-tabs-tab"]')[2]    #服务条款
+#${locatorB_checkout_button_nav_information}     dom:document.querySelectorAll('[class="ant-tabs-nav ant-tabs-nav-animated"] [class*="ant-tabs-tab"]')[1]   #收货信息
+${locatorB_checkout_button_nav_serviceTerms}     dom:document.querySelectorAll('[class="ant-tabs-nav ant-tabs-nav-animated"] [class*="ant-tabs-tab"]')[1]    #服务条款
 
 #.checkout_caef div.ant-tabs-bar div:nth-child(1) > div.ant-tabs-tab-active.ant-tabs-tab
 
@@ -53,6 +53,11 @@ ${locatorB_checkout_textarea_policyInputBox}    dom:document.querySelectorAll('t
 #..服务条约
 ${locatorB_checkout_button_generateServiceTreaty}    dom:document.querySelectorAll('a[class="input-system-tpl"]')[2]       #.服务条约-生成系统默认模版
 ${locatorB_checkout_textarea_refundServiceInputBox}    dom:document.querySelectorAll('textarea[class="ant-input"]')[2]      #.服务条约-文本输入框
+
+#..结账页形式
+${locatorB_checkout_label_singelPayment}    dom:document.querySelectorAll('[class="ant-row"] [class*="radio_btn_cddf ant-radio-button-wrapper"]')[3]    # 交易设置 - 结账页形式 - 单结账页
+${locatorB_checkout_label_doublePayment}    dom:document.querySelectorAll('[class="ant-row"] [class*="radio_btn_cddf ant-radio-button-wrapper"]')[4]    # 交易设置 - 结账页形式 - 双结账页
+
 
 
 

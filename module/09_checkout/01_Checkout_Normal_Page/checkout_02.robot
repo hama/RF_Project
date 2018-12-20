@@ -40,12 +40,14 @@ checkout_096
 checkout_098
     [Documentation]    验证checkout 支付页面，订单汇总，商品栏，商品标题显示正常 > 1.C端购买商品women进入checkout支付页面  2.查看订单汇总，商品栏，商品标题
     [Tags]    P0    threshold    smoke
+    kwcheckout.set_checkout_process_py
+    Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     ${productName}=    Wait And Get Text    ${locatorC_checkoutShipping_text_itemProductTitle}
     ${tatalPrice}=    Wait And Get Text    ${locatorC_checkoutShipping_text_totalPrice}
     Add Address Common Step
 	Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-	sleep    10
+	sleep    5
     Text Of Element Should Be Equal With Wait   ${locatorC_checkoutPayment_text_itemProductTitle}    ${productName}
     Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_totalPrice}    ${tatalPrice}
 
@@ -90,18 +92,28 @@ checkout_106
 checkout_114
     [Documentation]    验证checkout 支付页面，Payment栏，shiP to信息显示正常
     [Tags]    P0    threshold    smoke
+    kwcheckout.set_checkout_process_py
+    Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     #添加是shipping address
     Add Address Common Step
     Wait And Click Element     ${locatorC_checkoutShipping_button_paymentMethod}
-    Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingDetail}[0]    firstName${SPACE * 2}lastName${SPACE * 2}7654321@autotest.com${SPACE * 2}18899999999
-    Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingDetail}[1]    ${SPACE * 2}addr city Beijing${SPACE * 2}China
-    Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingDetail}[2]    123456 company
+    Wait Until Page Contains Text    firstName
+    Wait Until Page Contains Text    lastName
+    Wait Until Page Contains Text    18899999999
+    Wait Until Page Contains Text    addr
+    Wait Until Page Contains Text    city
+    Wait Until Page Contains Text    Beijing
+    Wait Until Page Contains Text    China
+    Wait Until Page Contains Text    123456
+    Wait Until Page Contains Text    company
 
 
 checkout_121
     [Documentation]         验证checkout支付页面，return按钮可返回到shipping页面  >  1.点击return按钮
     [Tags]    P0    threshold
+    kwcheckout.set_checkout_process_py
+    Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
@@ -128,12 +140,14 @@ checkout_125
 checkout_126
     [Documentation]   验证checkout 支付页面，使用COD支付方式可正常支付  >  1.购买商品进入checkout 支付页面  2.选择支付方式COD  3.点击place order按钮
     [Tags]    P0    threshold    smoke
+    kwcheckout.set_checkout_process_py
+    Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     #添加是shipping address
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text   Payment successful!
 
 checkout_132
@@ -157,6 +171,8 @@ checkout_132
 checkout_170
     [Documentation]   验证checkout支付页面，billing address栏选择框可点击以及选择项展示  >   1.点击选择框
     [Tags]    P0    threshold    smoke
+    kwcheckout.set_checkout_process_py
+    Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
@@ -164,40 +180,37 @@ checkout_170
     #点击billing address栏选择框
     Wait And Select From List By Label     ${locatorC_checkoutPayment_select_billingAddress}    New billing address
     #添加Billing address
-    Wait And Input Text     ${locatorC_checkoutPayment_input_firstName}    aven
-    Wait And Input Text     ${locatorC_checkoutPayment_input_lastName}     fang
-    Wait And Input Text     ${locatorC_checkoutPayment_input_address}    南山区
-    Wait And Input Text     ${locatorC_checkoutPayment_input_address1}    中山大学产学研基地
-    Wait And Input Text     ${locatorC_checkoutPayment_input_city}    深圳
-    Wait And Select From List By Label     ${locatorC_checkoutPayment_input_countyCode}    China
-    Wait And Select From List By Label     ${locatorC_checkoutPayment_input_provinceCode}    Beijing
-    Wait And Input Text     ${locatorC_checkoutPayment_input_zip}    518000
-    Wait And Click Element      ${locatorC_checkoutPayment_button_completeOrder}
+    Add New Billing Address Step
+    Sleep And Click Element      ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text      Payment successful!
 
 checkout_189
     [Documentation]   验证checkout支付页面，place order按钮正常  >  1.购买商品进入checkout支付页面  2.选择COD支付   3.点击place order按钮
     [Tags]    P0    threshold    smoke
+    kwcheckout.set_checkout_process_py
+    Reload Page And Start Ajax
     #添加是shipping address
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
 
 checkout_193
     [Documentation]   验证payment successful页面，shipping information显示正常  >  1.购买商品进入checkout shipping页面 2.填写信息：first name：Javen last name：fang address：南山区 apartment：中山大学产学研基地 city：深圳 country：China province：广东 postal code：518000 email：dianjiang@shoplazza.com phone：18688886666 company：shoplazza 3.完成订单进入payment successful 页面查看shipping information
     [Tags]    P0    threshold
+    kwcheckout.set_checkout_process_py
+    Reload Page And Start Ajax
     #添加是shipping address
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     ${shipping_method_name}=    Wait And Get Text    ${locatorC_checkoutShipping_text_listShippingAndDeliveryName}
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
-    Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[0]    firstName${SPACE * 2}lastName${SPACE * 2}7654321@autotest.com${SPACE * 2}18899999999
+    Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[0]    firstName${SPACE * 2}lastName${SPACE * 4}18899999999
     Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[1]    addr${SPACE * 2}city${SPACE * 2}Beijing${SPACE * 2}China
     Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[2]    123456 company
     Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[3]    ${shipping_method_name}
@@ -205,12 +218,14 @@ checkout_193
 checkout_195
     [Documentation]   验证payment successful页面，view order按钮可跳转到个人中心订单详情页面  >  1.购买商品进入checkout并完成支付进入payment successful页面  2.点击view order按钮
     [Tags]    P0    threshold    smoke
+    kwcheckout.set_checkout_process_py
+    Reload Page And Start Ajax
     #添加是shipping address
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
     Wait And Click Element    ${locatorC_checkout_button_viewOrders}
     Wait Until Page Contains Text    Order Details
@@ -218,11 +233,13 @@ checkout_195
 checkout_196
     [Documentation]   验证payment successful页面，continue shopping按钮可跳转到店铺首页  >  1.购买商品进入checkout并完成支付进入payment successful页面  2.点击continue shopping按钮
     [Tags]    P0    threshold    smoke
+    kwcheckout.set_checkout_process_py
+    Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
     Wait And Click Element    ${locatorC_checkout_button_continueShopping}
     Text Of Element Should Contain With Wait    ${locatorC_checkout_homeBanner}    ${user_default_domain}

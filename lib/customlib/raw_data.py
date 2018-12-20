@@ -380,6 +380,33 @@ shipping_data = {
     ]
 }
 
+ID_shipping_data = {
+    "name": "autotest_shipping",
+    "areas": [
+        {
+            "country_code": "ID",
+            "country_name": "印度尼西亚",
+            "province_codes": [
+                "ALL"
+            ]
+        }
+    ],
+    "plans": [
+        {
+            "name": "price_fee",
+            "desc": "price_fee_description",
+            "rule_type": "price",
+            "rule_range_min": 0,
+            "rule_range_max": 0,
+            "rule_range_infinite": True,
+            "rule_range_unit": "USD",
+            "support_cod": True,
+            "rate_type": "normal",
+            "rate_amount": "0"
+        }
+    ]
+}
+
 checkout_create_data = {
     'line_items': [
         {
@@ -588,21 +615,15 @@ orders_fulfillments_data = {
     "tracking_company_code": "-1"
 }
 
-checkout_save_data = {
-    "customer_authority": 1,
-    "name": "separate",
-    "company": "optional",
-    "email": "optional",
-    "phone": "optional",
-    "refund_policy": "",
-    "privacy_policy": "",
-    "server_policy": "",
-    "customer_contact": 3,
-    "customer_email": 1,
-    "customer_phone": 1,
-    "customer_name": 2,
-    "company_setting": 2,
-    "postcode_setting": 2
+checkout_settings_data = {
+    "customer_authority": "all",
+    "checkout_page_type": "normal",
+    "address_setting": {
+        "email": "hidden",
+        "name": "separate",
+        "phone": "required",
+        "company": "optional"
+    }
 }
 
 coupon_code_refresh_data = {
@@ -698,7 +719,6 @@ rebate_refresh_data = {
     "rule_list": '[{"range_unit":"price","range_value":"100","rate_amount":"20","rate_shipping":0,"checked":false}]'
 }
 
-
 customer_data = {
     "first_name": "firstname",
     "last_name": "lastname",
@@ -740,4 +760,10 @@ popups_data = {
     "btn_text_color": "rgba(255, 255, 255, 1)",
     "end_unlimited": True,
     "source": "prototype"
+}
+
+setting_checkout_data = {
+    "customer_authority":"all",
+    "checkout_page_type":"single",
+    "address_setting":{"email":"optional","name":"separate","phone":"optional","company":"optional"}
 }

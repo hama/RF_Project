@@ -60,6 +60,7 @@ checkout_079
 checkout_082
     [Documentation]    验证checkout shipping页面，没有可选择物流方案时，payment method 按钮无法点击 > payment method按钮置灰无法点击
     [Tags]    P0    threshold    smoke
+    kwcheckout.set_checkout_process_py
     &{plan}=   Create Dictionary
     ...    rule_range_min=5000
     @{plans}=    Create List    ${plan}
@@ -149,6 +150,7 @@ checkout_097
     &{conf}=   Create Dictionary
     ...    areas=${areas}
     kwshipping.add_shipping_with_conf_py    ${conf}
+    kwcheckout.set_checkout_process_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     #添加是shipping address
@@ -160,7 +162,7 @@ checkout_097
     Sleep    1
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    123456
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18899999999
-    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    7654321@autotest.com
+#    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    7654321@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    company
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    apartment
@@ -197,6 +199,7 @@ checkout_113
 checkout_118
     [Documentation]   验证checkout 支付页面，payment栏，shipping method显示正常  >  1.购买商品进入checkout shipping页面  2.选择运费方案：运费1   3.进入支付页面查看payment栏，shipping methoda
     [Tags]    P0    threshold    smoke
+    kwcheckout.set_checkout_process_py
     kwshipping.add_price_fee_shipping_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -208,6 +211,7 @@ checkout_118
 checkout_120
     [Documentation]         验证checkout支付页面，payment栏，change按钮可返回到shipping页面  >  1.点击payment栏的change按钮
     [Tags]    P0    threshold
+    kwcheckout.set_checkout_process_py
     kwshipping.add_price_fee_shipping_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -220,6 +224,7 @@ checkout_120
 checkout_168
     [Documentation]   验证checkout支付页面，billing address栏选择框可点击以及选择项展示  >   1.点击选择框
     [Tags]    P0    threshold    smoke
+    kwcheckout.set_checkout_process_py
     kwshipping.add_price_fee_shipping_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -233,6 +238,7 @@ checkout_168
 checkout_169
     [Documentation]  验证checkout支付页面，选择new billing address之后，选择框下方会出现信息填写栏  >  1.点击选择框   2.选择new billing address
     [Tags]    P0    threshold
+    kwcheckout.set_checkout_process_py
     kwshipping.add_price_fee_shipping_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -253,6 +259,7 @@ checkout_169
 checkout_194
     [Documentation]   验证payment successful页面，物流方案显示正常  >  1.购买商品进入checkout shipping页面  2.国家选择中国，物流方案选择：方案1 3.完成订单进入payment successful页面  4.查看物流方案
     [Tags]    P0    threshold    smoke
+    kwcheckout.set_checkout_process_py
     kwshipping.add_shipping_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -260,7 +267,7 @@ checkout_194
     ${shipping_method_name}=    Wait And Get Text    ${locatorC_checkoutShipping_text_listShippingAndDeliveryName}
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[3]    ${shipping_method_name}
 
 
