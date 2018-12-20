@@ -50,7 +50,7 @@ product007
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
     Fill In Required Items When Create Product
-    Wait And Click Element    ${locatorB_productsNew_button_save}
+    Sleep And Click Element    ${locatorB_productsNew_button_save}
     Sleep    5
     Wait And Click Element    ${locatorB_productsNew_button_productList}
     Text Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_text_firstProductName}    newproduct

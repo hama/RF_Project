@@ -71,6 +71,7 @@ Fill In Required Items When Create Product
 	Sleep    5
     Wait And Input Text    ${locatorB_productsNew_input_salePrice}    100
     Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    199
+    Sleep    1
 
 Add Product Second Step
     [Documentation]    商品管理 - 图片上传和款式设置页面
