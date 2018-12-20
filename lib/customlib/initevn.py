@@ -31,6 +31,8 @@ if __name__ == '__main__':
     # 正式服配置
     if 'admin.shoplazza.com' in args.url:
         config.set("common_urn", "shop_urn", '.myshoplaza.com')
+        # 过滤神策数据
+        os.popen('echo "0.0.0.0 shence.shoplazza.com" >> /etc/hosts')
         # 国服配置
         if 'all_china' in args.host:
             # --------------------配置国内B端映射 host 记录 47.106.30.167 admin.shoplazza.com--------------------
@@ -54,6 +56,8 @@ if __name__ == '__main__':
                        '"user": "readonly","password": "readonly@123","db": "service","charset": "utf8"}')
     # 测试服配置
     elif 'admin1024.shoplazza.com' in args.url:
+        # 过滤神策数据
+        os.popen('echo "0.0.0.0 dev-shence.shoplazza.com" >> /etc/hosts')
         config.set("common_urn", "shop_urn", '.preview.shoplazza.com')
         config.set("common_db", "db_service_config",
                    '{"host": "rm-wz90k3o28md7301p3.mysql.rds.aliyuncs.com","port": 3306,"user": "readonly",'
