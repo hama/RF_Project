@@ -245,5 +245,5 @@ def get_exist_doing_rebatesid_py(cookie=init_cookie):
 
 if __name__ == '__main__':
     add_doing_rebate_py()
-    # print get_exist_doing_rebatesid_py()
+    #print get_exist_doing_rebatesid_py()
     # print rebate_select_product_py()
