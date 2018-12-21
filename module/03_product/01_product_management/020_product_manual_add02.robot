@@ -9,6 +9,16 @@ Resource          ../../../resources/keywords/kw_common.robot
 
 
 *** Test Cases ***
+product179
+    [Documentation]    款式设置选择'添加多个款式‘
+    [Tags]    P1    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Select Add Some Style
+    Element Attribute Should Contain With Wait    ${locatorB_productsNew_radio_moreStyle}    class    ant-radio ant-radio-checked
+    Wait Until Page Contains Locator    ${locatorB_productsNew_input_needPicture}
+    Wait Until Page Contains Locator    ${locatorB_productsNew_button_addStyle}
+
 product180
     [Documentation]    款式设置选择'添加多个款式‘且勾选需要配图
     [Tags]    P0    threshold
