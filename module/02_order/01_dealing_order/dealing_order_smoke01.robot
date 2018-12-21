@@ -23,6 +23,7 @@ order002
 order004
     [Documentation]     验证售后订单列表可正常进入
     [tags]    P0    threshold
+    Sleep And Click Element    ${locatorB_order_postSale}
     Wait Until Page Contains Text    售后订单
     Wait Until Page Contains Text    售后时间
 
