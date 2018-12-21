@@ -307,6 +307,22 @@ checkout_163
     Sleep    2
     Wait Until Page Contains Text   Payment successful!
 
+checkout_184
+    [Documentation]    验证checkout页面，买家留言输入框输入的内容，会同步到B端订单详情
+    [Tags]    P0    threshold
+    Sleep    2
+    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
+    Add Address Common Step
+    Sleep And Click Element    ${locatorC_checkoutShipping_button_specialInstruction}
+    Wait And Input Text    ${locatorC_checkoutShipping_input_specialInstruction}    请尽快发货
+    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Go To    https://admin.shoplazza.com/order/_dealing
+    Focus On New Window
+    Go To Dealing Order Page
+    Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
+    Wait Until Page Contains Text    请尽快发货
+
 checkout_185
     [Documentation]    验证从商品详情页面buy now进入checkout页面后，点击return可返回商品详情页面
     [Tags]    P0    threshold

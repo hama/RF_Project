@@ -31,6 +31,7 @@ ${locatorB_productsNew_button_cancel}    dom:document.querySelectorAll('[class*=
 
 ${locatorB_productsNew_input_title}    dom:document.querySelectorAll('[id="product.title"]')    # 添加商品页面-标题输入
 ${locatorB_productsNew_input_subTitle}    dom:document.querySelectorAll('[id="product.brief"]')    # 添加商品页面-副标题输入
+${locatorB_productsNew_span_subTitleNum}    dom:document.querySelectorAll('[id="product.brief"] + span')[0]    # 添加商品页面-副标题字体显示
 ${locatorB_productsNew_input_desc}    dom:document.querySelectorAll('[class*="mce-edit-area"]')    # 添加商品页面-描述
 ${locatorB_productsNew_input_tags}    dom:document.querySelectorAll('input[id="product.tags"]')    # 添加标签输入
 ${locatorB_productsNew_input_supplier}    dom:document.querySelectorAll('[id="product.vendor"]')    # 添加供应商输入
