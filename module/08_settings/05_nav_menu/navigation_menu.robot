@@ -104,7 +104,7 @@ menu032
     Wait And Click Element    ${locatorB_menus_list_menuList}[2]
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     修改后的小吃系列
     Sleep    2
-    Wait And Click Element    ${locatorB_button_save00}
+    Sleep And Click Element    ${locatorB_button_save00}
     Sleep    2
     Wait Until Page Not Contains Locator     ${locatorB_button_save00}
     Go To Navigation Menu Page
@@ -223,7 +223,7 @@ menu068
     Go To Custom Page By Url
     Wait And Click Element    ${locatorB_decoration_custom_button_NewPage}
     Wait And Input Text    ${locatorB_decoration_addPage_input_pageName}    新建页面名称
-    Wait And Click Element    ${locatorB_button_save00}
+    Sleep And Click Element    ${locatorB_button_save00}
     Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Go To Navigation Menu Page
     Wait And Click Element    ${locatorB_menus_button_addMenu}

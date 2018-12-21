@@ -80,6 +80,15 @@ product017
     Wait Until Page Contains Text    图片
     Wait Until Page Contains Text    款式设置
 
+product022
+    [Documentation]    新建商品页面副标题输入少于255个字符的内容
+    [Tags]    P0    threshold
+    Sleep    2
+    Sleep And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Wait And Input Text    ${locatorB_productsNew_input_subTitle}    newproductsubtitlenewproductsubtitle
+    Value Of Element Should Be Equal With Wait    ${locatorB_productsNew_input_subTitle}    newproductsubtitlenewproductsubtitle
+    Text Of Element Should Contain With Wait    ${locatorB_productsNew_span_subTitleNum}    36 /255
+
 product024
     [Documentation]    新建商品页面输入副标题后点击下一步
     [Tags]    P0    threshold
