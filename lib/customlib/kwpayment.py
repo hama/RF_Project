@@ -156,7 +156,8 @@ def activate_payment_cod_py(cookie=init_cookie):
     激活支付方式 cod
     :return: True | False
     """
-    payment_methods_id = get_exist_expected_payment_method_id_py('cod', cookie=cookie)
+    expected = {'payment_method': 'cod', "payment_channel": 'cod'}
+    payment_methods_id = get_exist_expected_payment_method_id_py(expected, cookie=cookie)
     if 'add it' in payment_methods_id:
         data = {'method_status': 'open', 'payment_method': 'cod', 'payment_channel': 'cod'}
         return payment_channels_post_py(data, cookie=cookie)
@@ -168,7 +169,8 @@ def inactivate_payment_cod_py(cookie=init_cookie):
     去激活支付方式 cod
     :return: True | False
     """
-    payment_methods_id = get_exist_expected_payment_method_id_py('cod', cookie=cookie)
+    expected = {'payment_method': 'cod', "payment_channel": 'cod'}
+    payment_methods_id = get_exist_expected_payment_method_id_py(expected, cookie=cookie)
     return payment_methods_patch_py({"status": "close"}, payment_methods_id, cookie=cookie)
 
 
@@ -186,39 +188,23 @@ def is_binding_account(expect, cookie=init_cookie):
     return None
 
 
-def get_certain_payment_channel_id(expected, cookie=init_cookie):
-    '''
-    获取指定payment_channel的id
-    :param expected:
-    :param cookie:
-    :return:
-    '''
-    channels_list = payment_channels_get_py(cookie=cookie)['content']
-    for channel in channels_list:
-        if channel['payment_channel'] == expected:
-            return channel['id']
-    return 'Can not get payment channel id'
-
-
 def activate_payment_credit_card_py(payment_channel='ipaylinks', cookie=init_cookie):
     """
     激活支付方式 credit_card
     :return: True | False
     """
-    payment_methods_id = get_exist_expected_payment_method_id_py('credit_card', cookie=cookie)
+    expected = {'payment_method': 'credit_card', "payment_channel": payment_channel}
+    payment_methods_id = get_exist_expected_payment_method_id_py(expected, cookie=cookie)
     # 确保已绑定credit card账号
-    is_binding = is_binding_account({'payment_method': 'credit_card', 'payment_channel': payment_channel},
-                                    cookie=cookie)
+    is_binding = is_binding_account(expected, cookie=cookie)
     if is_binding == None:
         payment_methods_post_py({'payment_method': "credit_card"}, cookie=cookie)
         # 选择指定支付方式
-        payment_channel_id = \
-            payment_channels_post_py({"payment_method": "credit_card", "payment_channel": payment_channel},
-                                     cookie=cookie)['content']['id']
+        payment_channel_id = payment_channels_post_py(expected, cookie=cookie)['content']['id']
         # 绑定credit card账号
         data = copy.deepcopy(payment_channel_data)
         payment_channels_put_py(data, payment_channel_id, cookie=cookie)
-        payment_methods_id = get_exist_expected_payment_method_id_py('credit_card', cookie=cookie)
+        payment_methods_id = get_exist_expected_payment_method_id_py(expected, cookie=cookie)
     return payment_methods_patch_py({"status": "open"}, payment_methods_id, cookie=cookie)
 
 
@@ -227,7 +213,8 @@ def inactivate_payment_credit_card_py(cookie=init_cookie):
     去激活支付方式 credit_card
     :return: True | False
     """
-    payment_methods_id = get_exist_expected_payment_method_id_py('credit_card', cookie=cookie)
+    expected = {'payment_method': 'credit_card', "payment_channel": 'ipaylinks'}
+    payment_methods_id = get_exist_expected_payment_method_id_py(expected, cookie=cookie)
     return payment_methods_patch_py({"status": "close"}, payment_methods_id, cookie=cookie)
 
 
@@ -246,5 +233,5 @@ def do_pay_with_conf_py(conf={}, cookie=init_cookie):
 
 if __name__ == '__main__':
     # print activate_payment_cod_py()
-    print activate_payment_credit_card_py()
+    print activate_payment_cod_py()
     # print inactivate_payment_cod_py()
