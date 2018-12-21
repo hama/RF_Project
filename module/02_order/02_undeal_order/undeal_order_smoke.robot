@@ -56,6 +56,17 @@ order131
     ${text00} =    Sleep And Get Text    ${locatorB_orderUndeal_text_firstOrder_orderStatus}
     Should Be Equal    ${text00}    已取消
 
+order133
+    [Documentation]    验证未完成订单列表中，搜索按钮可点击
+    [Tags]    P0    threshold
+    kworder.add_undead_order_with_pay_fail_status_py
+    kworder.add_undead_order_with_to_pay_status_py
+    Reload Page And Start Ajax
+    ${orderNum}=    kworder.get_latest_undeal_order_num_py
+    Wait And Input Text    ${locatorB_order_input_searchText}    ${orderNum}
+    Wait And Click Element    ${locatorB_order_button_searchBtn}
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderUndeal_text_firstOrder_orderNum}    ${orderNum}
+
 order149
     [Documentation]     验证未完成订单列表中的订单详情页面，左上角返回按钮可返回到未完成订单列表
     [tags]    P0    threshold    smoke

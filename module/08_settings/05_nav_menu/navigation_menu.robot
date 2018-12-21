@@ -9,15 +9,16 @@ Resource          ../../../resources/keywords/kw_common.robot
 
 
 
-*** Test Cases ***
 
-navigation_menu_001
+
+*** Test Cases ***
+menu001
     [Documentation]      菜单导航入 口
-    [Tags]    P0    threshold
+    [Tags]    P1    threshold
     Wait Until Page Contains Text    菜单导航
     Wait Until Page Contains Locator    ${locatorB_menus_button_addMenu}
 
-navigation_menu_003
+menu003
     [Documentation]      默认的菜单导航展示
     [Tags]    P0    threshold
     Wait Until Page Contains Text    你可以在此设置菜单，装修店铺顶部导航、页尾时，可手动关联对应的菜单
@@ -25,48 +26,48 @@ navigation_menu_003
     Text Of Element Should Contain With Wait    ${locatorB_menus_list_menuList}[0]     顶部导航菜单
     Text Of Element Should Contain With Wait    ${locatorB_menus_list_menuList}[1]     页尾菜单
 
-navigation_menu_005
+menu005
     [Documentation]      点击新增菜单按钮
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_menus_button_addMenu}
     Wait Until Page Contains Locator    ${locatorB_menusAdd_input_menuName}
     Wait Until Page Contains Locator    ${locatorB_menusAdd_button_addMenuDirectory}
 
-navigation_menu_007
+menu007
     [Documentation]      点击系统菜单（顶部导航菜单）右侧的编辑按钮
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_menusAdd_link_editorMenu}[0]
     Wait Until Page Contains Text    菜单名称
     Wait Until Page Contains Text    菜单目录结构
 
-navigation_menu_007.1
+menu007.1
     [Documentation]      点击系统菜单（页尾菜单）右侧的编辑按钮
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_menusAdd_link_editorMenu}[1]
     Wait Until Page Contains Text    菜单名称
     Wait Until Page Contains Text    菜单目录结构
 
-navigation_menu_008
+menu008
     [Documentation]      点击非系统默认菜单右侧的编辑按钮
     [Tags]    P0    threshold
     Add Navigation Menu With Wait    化妆品系列
     Wait And Click Element    ${locatorB_menusAdd_link_editorMenu}[2]
     Value Of Element Should Be Equal With Wait    ${locatorB_menusAdd_input_menuName}    化妆品系列
 
-navigation_menu_009
+menu009
     [Documentation]      点击菜单名称
     [Tags]    P0    threshold
     Add Navigation Menu With Wait    减肥产品系列
     Wait And Click Element    ${locatorB_menus_text_menuListName}
     Value Of Element Should Be Equal With Wait    ${locatorB_menusAdd_input_menuName}    减肥产品系列
 
-navigation_menu_010
+menu010
     [Documentation]      菜单名称较短时展示
     [Tags]    P0    threshold
     Add Navigation Menu With Wait    n1
     Text Of Element Should Be Equal With Wait    ${locatorB_menus_text_menuListName}    n1
 
-navigation_menu_022
+menu022
     [Documentation]      确认删除非系统菜单
     [Tags]    P0    threshold
     Delete All Navigation Menu
@@ -75,14 +76,14 @@ navigation_menu_022
     Wait Until Page Not Contains Locator    ${locatorB_menus_list_menuList}[2]
     Wait Until Page Not Contains Text    非系统菜单删除
 
-navigation_menu_029
+menu029
     [Documentation]      新建一个菜单
     [Tags]    P0    threshold
     Add All Navigation Menu With Wait    新增一个菜单    衣服
     Text Of Element Should Be Equal With Wait    ${locatorB_menus_text_menuListName}    新增一个菜单
     Text Of Element Should Be Equal With Wait    ${locatorB_menus_text_levelDirectory}    衣服
 
-navigation_menu_030
+menu030
     [Documentation]      新建多个菜单
     [Tags]    P0    threshold
     Add All Navigation Menu With Wait    新增第一个菜单    衣服01
@@ -96,8 +97,8 @@ navigation_menu_030
     Wait Until Page Contains Text    新增第三个菜单
     Wait Until Page Contains Text    衣服03
 
-navigation_menu_032
-    [Documentation]      保存菜单
+menu032
+    [Documentation]      修改菜单
     [Tags]    P0    threshold
     Add Navigation Menu With Wait    小吃系列
     Wait And Click Element    ${locatorB_menus_list_menuList}[2]
@@ -109,9 +110,9 @@ navigation_menu_032
     Go To Navigation Menu Page
     Text Of Element Should Be Equal With Wait    ${locatorB_menus_text_menuListName}    修改后的小吃系列
 
-navigation_menu_035
+menu035
     [Documentation]      未更改页面内容点击返回按钮
-    [Tags]    P0    threshold
+    [Tags]    P2    threshold
     Add Navigation Menu With Wait    小吃系列
     Wait And Click Element    ${locatorB_menus_list_menuList}[2]
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     修改后的小吃系列
@@ -120,9 +121,9 @@ navigation_menu_035
     Sleep    2
     Text Of Element Should Be Equal With Wait      ${locatorB_menus_text_menuListName}    小吃系列
 
-navigation_menu_049
+menu049
     [Documentation]      点击‘添加菜单目录’按钮
-    [Tags]    P0    threshold
+    [Tags]    P1    threshold
     Wait And Click Element    ${locatorB_menus_button_addMenu}
     Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
     Wait Until Page Contains Locator    ${locatorB_menusAdd_icon_menuDrag}[0]
@@ -131,7 +132,7 @@ navigation_menu_049
     Wait Until Page Contains Locator    ${locatorB_menusAdd_text_addSecondaryDirectory}[0]
     Wait Until Page Contains Locator    ${locatorB_menusAdd_text_delDirectory}[0]
 
-navigation_menu_058
+menu058
     [Documentation]      点击一级目录下的‘添加菜单目录’
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_menus_button_addMenu}
@@ -145,7 +146,7 @@ navigation_menu_058
     Wait Until Page Contains Locator    ${locatorB_menusAdd_text_addSecondaryDirectory}[1]
     Wait Until Page Contains Locator    ${locatorB_menusAdd_text_delDirectory}[1]
 
-navigation_menu_059
+menu059
     [Documentation]      点击一级菜单目录右侧的’添加‘icon
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_menus_button_addMenu}
@@ -158,7 +159,7 @@ navigation_menu_059
     Wait Until Page Contains Locator    ${locatorB_menusAdd_select_linkPage}[1]
     Wait Until Page Contains Locator    ${locatorB_menusAdd_text_delDirectory}[1]
 
-navigation_menu_061
+menu061
     [Documentation]      链接弹框展示内容正确
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_menus_button_addMenu}
@@ -172,7 +173,7 @@ navigation_menu_061
     Wait Until Page Contains Text     自定义页面
     Wait Until Page Contains Text     自定义URL
 
-navigation_menu_064
+menu064
     [Documentation]      选择跳转链接为无
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_menus_button_addMenu}
@@ -181,7 +182,7 @@ navigation_menu_064
     Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[0]
     Text Of Element Should Contain With Wait     ${locatorB_menusAdd_select_linkPageInput}[0]    未选择链接
 
-navigation_menu_065
+menu065
     [Documentation]      选择跳转链接为首页
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_menus_button_addMenu}
@@ -190,7 +191,7 @@ navigation_menu_065
     Wait And Select From List By Clicking    ${locatorB_menusAdd_select_linkPage}[0]     ${locatorB_menusAdd_select_listLinkLi}[1]
     Text Of Element Should Contain With Wait     ${locatorB_menusAdd_select_linkPageInput}[0]    首页
 
-navigation_menu_066
+menu066
     [Documentation]      选择跳转链接为专辑详情页
     [Tags]    P0    threshold
     kwcollection.del_all_collections_py
@@ -203,7 +204,7 @@ navigation_menu_066
     Wait And Click Element    ${locatorB_menusAdd_button_collectionConfirm}
     Text Of Element Should Contain With Wait     ${locatorB_menusAdd_select_linkPageInput}[0]    专辑详情
 
-navigation_menu_067
+menu067
     [Documentation]      选择跳转链接为商品详情页
     [Tags]    P0    threshold
     kwproduct.del_all_products_py
@@ -216,7 +217,7 @@ navigation_menu_067
     Wait And Click Element    ${locatorB_menusAdd_button_collectionConfirm}
     Text Of Element Should Contain With Wait     ${locatorB_menusAdd_select_linkPageInput}[0]    商品详情
 
-navigation_menu_068
+menu068
     [Documentation]      选择跳转链接为自定义页面
     [Tags]    P0    threshold
     Go To Custom Page By Url
@@ -233,7 +234,7 @@ navigation_menu_068
     Wait And Click Element    ${locatorB_menusAdd_button_collectionConfirm}
     Text Of Element Should Contain With Wait     ${locatorB_menusAdd_select_linkPageInput}[0]    自定义页面
 
-navigation_menu_069
+menu069
     [Documentation]      选择跳转链接为自定义URL
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_menus_button_addMenu}
