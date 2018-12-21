@@ -549,12 +549,6 @@ payment_method_edit_data = {
     "payment_method": "cod"
 }
 
-# /api/payment/method这个接口的激活数据
-payment_method_activation_data = {
-    "payment_method": "cod",
-    "status": "open"
-}
-
 payment_channel_data = {
     "client_id": "10000009446",
     "secret_key": "30820122300d06092a864886f70d01010105000382010f003082010a028201010098da23b3f3e679efb33e8171191"
@@ -564,12 +558,6 @@ payment_channel_data = {
                   "5e83aef1fa6416f3fba32cb45432f51a700f995ccee4d8a9dea66d31607f14a546011ec44807056f54330389e78b1"
                   "2d355527ab62e904f8918c8f417e0afaf154b772fc5dce7aac4a71426f9a623155484d8c7f73e2511f1866661b3a8"
                   "083ea087f3162cf3aa090203010001",
-    "payment_method": "credit_card",
-    "payment_channel": "ipaylinks"
-}
-
-payment_channel_change_channel_data = {
-    "status": "open",
     "payment_method": "credit_card",
     "payment_channel": "ipaylinks"
 }
