@@ -21,7 +21,7 @@ ${locatorB_orderDealing_items_selectPage}    dom:document.querySelectorAll('[rol
 ${locatorB_orderDealing_text_firstOrder_orderNum}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(2)')[0]    #待处理订单第一个订单的，订单编号
 ${locatorB_orderDealing_text_firstOrder_date}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(3)')[0]    #待处理订单第一个订单的，日期
 ${locatorB_orderDealing_text_firstOrder_receiverName}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(4)')[0]    #待处理订单第一个订单的，收货人姓名
-${locatorB_orderDealing_text_firstOrder_paymentMethod}    $dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(5)')[0]    #待处理订单第一个订单的，支付方式
+${locatorB_orderDealing_text_firstOrder_paymentMethod}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(5)')[0]    #待处理订单第一个订单的，支付方式
 ${locatorB_orderDealing_text_firstOrder_paymentStatus}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(6)')[0]    #待处理订单第一个订单的，支付状态
 ${locatorB_orderDealing_text_firstOrder_shippingStatus}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(7)')[0]    #待处理订单第一个订单的，物流状态
 ${locatorB_orderDealing_text_firstOrder_orderStatus}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(8)')[0]    #待处理订单第一个订单的，订单状态
