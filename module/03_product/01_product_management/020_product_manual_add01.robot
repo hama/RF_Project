@@ -38,7 +38,7 @@ product006
     Wait Until Page Contains Locator    ${locatorB_productsNew_button_NextStep}
     Wait Until Page Contains Locator    ${locatorB_productsNew_input_title}
     Wait Until Page Contains Locator    ${locatorB_productsNew_input_subTitle}
-    Wait Until Page Contains Locator    ${locatorB_productsNew_input_desc}
+    Wait Until Page Contains Locator    ${locatorB_productsNew_iframe_desc}
     Wait Until Page Contains Text    基本属性
     Wait Until Page Contains Locator    ${locatorB_productsNew_span_SelectCollection}
     Wait Until Page Contains Locator    ${locatorB_productsNew_input_tags}
@@ -182,7 +182,8 @@ product085
     [Tags]    P1    threshold
     Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
     Wait And Input Text    ${locatorB_productsNew_input_title}    newproduct title
-    Text Of Element Should Contain With Wait    ${locatorB_productsNew_text_seouUrl}    ${user_default_domain}
+    ${user_domain}=    Convert To Lowercase    ${user_default_domain}
+    Text Of Element Should Contain With Wait    ${locatorB_productsNew_text_seouUrl}    ${user_domain}
     Text Of Element Should Contain With Wait    ${locatorB_productsNew_text_seouUrl}    products
     Text Of Element Should Contain With Wait    ${locatorB_productsNew_text_seouUrl}    newproduct title
 

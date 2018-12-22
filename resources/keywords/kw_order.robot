@@ -16,6 +16,7 @@ Dealing Order Suite Teardown
 
 Dealing Order Case Setup
     [Documentation]
+    kwshipping.del_all_shipping_py
     Go To Dealing Order Page
     
 
