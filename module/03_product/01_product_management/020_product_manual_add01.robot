@@ -38,7 +38,7 @@ product006
     Wait Until Page Contains Locator    ${locatorB_productsNew_button_NextStep}
     Wait Until Page Contains Locator    ${locatorB_productsNew_input_title}
     Wait Until Page Contains Locator    ${locatorB_productsNew_input_subTitle}
-    Wait Until Page Contains Locator    ${locatorB_productsNew_input_desc}
+    Wait Until Page Contains Locator    ${locatorB_productsNew_iframe_desc}
     Wait Until Page Contains Text    基本属性
     Wait Until Page Contains Locator    ${locatorB_productsNew_span_SelectCollection}
     Wait Until Page Contains Locator    ${locatorB_productsNew_input_tags}
@@ -82,7 +82,7 @@ product017
 
 product022
     [Documentation]    新建商品页面副标题输入少于255个字符的内容
-    [Tags]    P0    threshold
+    [Tags]    P1    threshold
     Sleep    2
     Sleep And Click Element    ${locatorB_productsMgmt_button_addSomePro}
     Wait And Input Text    ${locatorB_productsNew_input_subTitle}    newproductsubtitlenewproductsubtitle
@@ -96,6 +96,18 @@ product024
     Wait And Input Text    ${locatorB_productsNew_input_title}    newproduct title
     Wait And Input Text    ${locatorB_productsNew_input_subTitle}    newproduct subtitle
     Wait And Click Element    ${locatorB_productsNew_button_NextStep}
+    Wait Until Page Contains Text    图片
+    Wait Until Page Contains Text    款式设置
+
+product026
+    [Documentation]    富文本框输入内容点击下一步
+    [Tags]    P1    threshold
+    Sleep And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Wait And Input Text    ${locatorB_productsNew_input_title}    newproduct title
+    Select Frame    ${locatorB_productsNew_iframe_desc}
+    Wait And Input Text    ${locatorB_productsNew_input_desc}    富文本输入内容
+    Unselect Frame
+    Sleep And Click Element    ${locatorB_productsNew_button_NextStep}
     Wait Until Page Contains Text    图片
     Wait Until Page Contains Text    款式设置
 
@@ -165,6 +177,16 @@ product071
     Wait And Input Text    ${locatorB_productsNew_input_supplier}    供应商输入测试供应商输入测试供应商输入测
     Value Of Element Should Be Equal With Wait    ${locatorB_productsNew_input_supplier}    供应商输入测试供应商输入测试供应商输入测
 
+product085
+    [Documentation]    新建商品页面输入商品标题后SEO链接默认展示
+    [Tags]    P1    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Wait And Input Text    ${locatorB_productsNew_input_title}    newproduct title
+    ${user_domain}=    Convert To Lowercase    ${user_default_domain}
+    Text Of Element Should Contain With Wait    ${locatorB_productsNew_text_seouUrl}    ${user_domain}
+    Text Of Element Should Contain With Wait    ${locatorB_productsNew_text_seouUrl}    products
+    Text Of Element Should Contain With Wait    ${locatorB_productsNew_text_seouUrl}    newproduct title
+
 product104
     [Documentation]    hover图片点击删除icon
     [Tags]    P0    threshold
@@ -226,6 +248,16 @@ product116
     Wait Enabled And Choose File    ${locatorB_productsNew_input_imageUp}    ${file_products_addImg3}
     Wait And Click Element Then Confirm    ${locatorB_productsNew_icon_DeletePictureAll}
     Wait Until Page Not Contains Locator    ${locatorB_productsNew_list_picture}
+
+product118
+    [Documentation]    未上传图片点击保存
+    [Tags]    P1    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Wait And Input Text    ${locatorB_productsNew_input_salePrice}    100
+    Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    199
+    Sleep And Click Element    ${locatorB_productsNew_button_save}
+    Wait Until Page Contains Text    请上传图片
 
 product121
     [Documentation]   选择‘单一款式’时款式列表的展示
@@ -306,6 +338,17 @@ product136
     Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    9999
     Wait And Click Element    ${locatorB_productsNew_input_weight}
     Value Of Element Should Be Equal With Wait    ${locatorB_productsNew_input_rawPrice}    9999
+
+product139
+    [Documentation]    重量单位下拉框展示
+    [Tags]    P1    threshold
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Add Product Second Step    newproduct title
+    Sleep And Click Element    ${locatorB_productsNew_select_weightUnit}
+    Wait Until Page Contains Text    kg
+    Wait Until Page Contains Text    g
+    Wait Until Page Contains Text    lb
+    Wait Until Page Contains Text    oz
 
 product144
     [Documentation]    重量输入小于1000的整数

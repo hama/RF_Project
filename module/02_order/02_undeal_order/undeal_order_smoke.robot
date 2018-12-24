@@ -116,7 +116,7 @@ order196
 	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationName}    名：firstname
 	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationPhone}    电话：18888888888
 	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationEmail}    邮箱：12345@autotest.com
-	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationCountry}    国家：China
+	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationCountry}    国家/地区：China
 	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationProvince}    省份：Beijing
 	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationCity}    城市：city
 	Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_deliveryInformationStreet}    街道：address

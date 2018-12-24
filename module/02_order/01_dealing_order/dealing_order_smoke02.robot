@@ -48,7 +48,7 @@ order150
     Select All Dealing Order Tag
     Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
     Sleep    2    # 需要等待数据加载
-    ${order_num01}    Wait And Get Text    ${locatorB_orderDetail_text_orderNum}
+    ${order_num01}    Sleep And Get Text    ${locatorB_orderDetail_text_orderNum}
     ${order_num00}    kworder.get_latest_dealing_order_num_py
 	Should Be Equal    ${order_num00}    ${order_num01}
 
@@ -141,7 +141,7 @@ order184
     Sleep    1
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    ${subPrice01}=    Wait And Get Text    ${locatorC_checkout_prices_shippingValue}[0]
+    ${subPrice01}=    Sleep And Get Text    ${locatorC_checkout_prices_shippingValue}[0]
     ${subPrice}=    Evaluate    u"${subPrice01}".strip('USD')
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
@@ -167,7 +167,7 @@ order185
     Sleep    1
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    ${disPrice}=    Wait And Get Text    ${locatorC_checkout_prices_shippingValue}[1]
+    ${disPrice}=    Sleep And Get Text    ${locatorC_checkout_prices_shippingValue}[1]
     ${disPrice01}=    Evaluate    u"${disPrice}".strip('USD')
     ${discountPrice}=    Evaluate    u"${disPrice01}".strip('- ')
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
@@ -194,7 +194,7 @@ order186
     Sleep    1
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    ${shipPrice}=    Wait And Get Text    ${locatorC_checkout_prices_shippingValue}[2]
+    ${shipPrice}=    Sleep And Get Text    ${locatorC_checkout_prices_shippingValue}[2]
     ${shipPrice01}=    Evaluate    u"${shipPrice}".strip('USD')
     ${shippingPrice}=    Evaluate    u"${shipPrice01}".strip('+ ')
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
@@ -221,7 +221,7 @@ order187
     Sleep    1
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    ${taxPrice01}=    Wait And Get Text    ${locatorC_checkout_prices_shippingValue}[3]
+    ${taxPrice01}=    Sleep And Get Text    ${locatorC_checkout_prices_shippingValue}[3]
     ${taxPrice02}=    Evaluate    u"${taxPrice01}".strip('USD')
     ${taxPrice}=    Evaluate    u"${taxPrice02}".strip('+ ')
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
@@ -248,7 +248,7 @@ order188
     Sleep    1
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    ${totalPrice01}=    Wait And Get Text    ${locatorC_checkoutPayment_text_totalPrice}
+    ${totalPrice01}=    Sleep And Get Text    ${locatorC_checkoutPayment_text_totalPrice}
     ${totalPrice02}=    Evaluate    u"${totalPrice01}".strip('USD')
     ${totalPrice}=    Evaluate    u"${totalPrice02}".strip('Total: ')
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
@@ -301,7 +301,7 @@ order235
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationName}    名：firstname
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationPhone}    电话：18888888888
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationEmail}    邮箱：12345@autotest.com
-    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationCountry}    国家：China
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationCountry}    国家/地区：China
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationProvince}    省份：Beijing
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationCity}    城市：city
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationStreet}    街道：address

@@ -22,27 +22,41 @@ Navigation Test Teardown
 Add Navigation Menu With Wait
     [Documentation]    添加一个菜单,只输入菜单名称
     [Arguments]    ${menuName}
-    Wait And Click Element    ${locatorB_menus_button_addMenu}
+    Capture Page Screenshot
+    Sleep And Click Element    ${locatorB_menus_button_addMenu}
+    Capture Page Screenshot
     Sleep    1
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     ${menuName}
+    Capture Page Screenshot
     Sleep    2
     Sleep And Click Element    ${locatorB_button_save00}
+    Capture Page Screenshot
     Sleep    2
     Wait Until Page Not Contains Locator    ${locatorB_button_save00}
+    Capture Page Screenshot
     Go To Navigation Menu Page
+    Capture Page Screenshot
 
 Add All Navigation Menu With Wait
     [Documentation]    添加一个菜单,输入菜单名称和目录
     [Arguments]    ${menuName}    ${Content}
-    Wait And Click Element    ${locatorB_menus_button_addMenu}
+    Capture Page Screenshot
+    Sleep And Click Element    ${locatorB_menus_button_addMenu}
+    Capture Page Screenshot
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     ${menuName}
+    Capture Page Screenshot
     Wait And Click Element    ${locatorB_menusAdd_button_addMenuDirectory}
+    Capture Page Screenshot
     Wait And Input Text    ${locatorB_menusAdd_input_menuNavName}    ${Content}
+    Capture Page Screenshot
     Sleep    2
     Sleep And Click Element    ${locatorB_button_save00}
+    Capture Page Screenshot
     Sleep    2
     Wait Until Page Not Contains Locator    ${locatorB_button_save00}
+    Capture Page Screenshot
     Go To Navigation Menu Page
+    Capture Page Screenshot
 
 Delete All Navigation Menu
     [Documentation]    删除所有菜单
