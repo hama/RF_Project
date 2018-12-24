@@ -23,6 +23,10 @@ LOG_PATH_11="$LOG_PATH""/11"
 LOG_PATH_12="$LOG_PATH""/12"
 LOG_PATH_13="$LOG_PATH""/13"
 LOG_PATH_14="$LOG_PATH""/14"
+LOG_PATH_15="$LOG_PATH""/15"
+LOG_PATH_15="$LOG_PATH""/16"
+LOG_PATH_15="$LOG_PATH""/17"
+
 
 #if [ ! -d "$LOG_PATH_1" ]
 #then
@@ -99,6 +103,18 @@ docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"
         bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/06_marketing/02_subtraction/subtraction.robot' \
         -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_14"
 
+docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_15  registry.shoplazza.com/library/uitest:v7 \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/09_checkout/02_Checkout_Singel_Page/checkout_singel.robot' \
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_15"
+
+docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_16  registry.shoplazza.com/library/uitest:v7 \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/09_checkout/02_Checkout_Singel_Page/checkout_singel2.robot' \
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_16"
+
+docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name "$TIMESTAMP"_17  registry.shoplazza.com/library/uitest:v7 \
+        bash -c "/opt/$RUN_SH_IN_DOCKER -M 'module/09_checkout/02_Checkout_Singel_Page/checkout_singel3.robot' \
+        -H pre_release -U https://admin.shoplazza.com -R -A -D $LOG_PATH_17"
+
 sleep 300
 
 # 轮询检查docker容器是否结束,结束则合并报告,发送
@@ -112,7 +128,8 @@ do
                 rebot -d "$LOG_PATH"/ "$LOG_PATH_1"/output.xml "$LOG_PATH_2"/output.xml "$LOG_PATH_3"/output.xml \
                         "$LOG_PATH_4"/output.xml "$LOG_PATH_5"/output.xml "$LOG_PATH_6"/output.xml "$LOG_PATH_7"/output.xml \
                         "$LOG_PATH_8"/output.xml "$LOG_PATH_9"/output.xml "$LOG_PATH_10"/output.xml "$LOG_PATH_11"/output.xml \
-                        "$LOG_PATH_12"/output.xml "$LOG_PATH_13"/output.xml "$LOG_PATH_14"/output.xml
+                        "$LOG_PATH_12"/output.xml "$LOG_PATH_13"/output.xml "$LOG_PATH_14"/output.xml "$LOG_PATH_15"/output.xml \
+                        "$LOG_PATH_16"/output.xml "$LOG_PATH_17"/output.xml
 
                 docker run -d -v /var/log:/var/log --rm  registry.shoplazza.com/library/uitest:v7 \
                         bash -c "/opt/$RUN_SH_IN_DOCKER -H pre_release -E -T $TIMESTAMP -D $LOG_PATH"

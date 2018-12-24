@@ -407,6 +407,13 @@ ID_shipping_data = {
     ]
 }
 
+shipping_merchant_data = {
+    "channel_name":"汉邮",
+    "client_id":"SHOPLAZZA",
+    "secret_key":"cf73b069ff5349d19d9a40583d26283e",
+    "name":"hanyou"
+}
+
 checkout_create_data = {
     'line_items': [
         {
