@@ -423,17 +423,13 @@ checkout_create_data = {
 payment_pay_data = {
     'order_token': 'be6cb44f-402a-4728-84a1-c974ead1e97e',
     'payment_line': {
-        'id': '1',
+        'id': '058693de-bd49-420d-a54c-e9b5825f77a9',
         'name': 'Cash on Delivery',
         'desc': '',
         'tips': '',
-        'logo': '',
-        'payment_channel': 'cod',
-        'payment_rate': '0.0000',
-        'transaction_fee': '0.0000',
-        'is_enable': '1',
-        'is_active': True,
+        'status': 'open',
         'payment_method': 'cod',
+        'payment_channel': 'cod',
         'public_key': None
     },
     'card_info': {
@@ -553,12 +549,6 @@ payment_method_edit_data = {
     "payment_method": "cod"
 }
 
-# /api/payment/method这个接口的激活数据
-payment_method_activation_data = {
-    "payment_method": "cod",
-    "method_is_enable": 0
-}
-
 payment_channel_data = {
     "client_id": "10000009446",
     "secret_key": "30820122300d06092a864886f70d01010105000382010f003082010a028201010098da23b3f3e679efb33e8171191"
@@ -568,12 +558,6 @@ payment_channel_data = {
                   "5e83aef1fa6416f3fba32cb45432f51a700f995ccee4d8a9dea66d31607f14a546011ec44807056f54330389e78b1"
                   "2d355527ab62e904f8918c8f417e0afaf154b772fc5dce7aac4a71426f9a623155484d8c7f73e2511f1866661b3a8"
                   "083ea087f3162cf3aa090203010001",
-    "payment_method": "credit_card",
-    "payment_channel": "ipaylinks"
-}
-
-payment_channel_change_channel_data = {
-    "channel_is_enable": "1",
     "payment_method": "credit_card",
     "payment_channel": "ipaylinks"
 }
@@ -763,7 +747,7 @@ popups_data = {
 }
 
 setting_checkout_data = {
-    "customer_authority":"all",
-    "checkout_page_type":"single",
-    "address_setting":{"email":"optional","name":"separate","phone":"optional","company":"optional"}
+    "customer_authority": "all",
+    "checkout_page_type": "single",
+    "address_setting": {"email": "optional", "name": "separate", "phone": "optional", "company": "optional"}
 }

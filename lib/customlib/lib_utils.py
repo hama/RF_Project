@@ -170,7 +170,10 @@ def dict_deepupdate(json_data, json_conf):
     if isinstance(json_conf, dict):
         for key, values in json_conf.items():
             if isinstance(values, dict):
-                dict_deepupdate(json_data[key], values)
+                if not json_data.has_key(key):
+                    json_data[key] = values
+                else:
+                    dict_deepupdate(json_data[key], values)
             elif isinstance(values, list):
                 # 1、json_data不包含key,直接赋值
                 # 2、values中都为str/unicode类型的数据,直接赋值

@@ -3,10 +3,11 @@ Resource          var_common.robot
 
 *** Variables ***
 # locator shipping
+${locatorB_shipping_tab_PriceSettings}    dom:document.querySelectorAll('[role="tab"]')[0]    # 物流 - 运费设置tab
+${locatorB_shipping_tab_shippingSettings}    dom:document.querySelectorAll('[role="tab"]')[1]    # 物流 - 物流设置tab
 
-${locatorB_shipping_btn_startSet}    dom:document.querySelectorAll("button")[1]    #.开始设置物流按钮
-${locatorB_shipping_items_listShippingItems}    dom:document.querySelectorAll('ul[id*="test_shipping_list"]')    #.list物流方案
-${locatorB_shipping_text_listShippingItemsName}    dom:document.querySelectorAll('[id*="test_shipping_list"] [class*="title"]')  # 物流方案名
+# locator settingShipping
+${locatorB_settingShipping_button_shippingSettings}
 
 ${locatorB_shipping_button_EidtShipping}    dom:document.querySelectorAll('[href*="/shipping"]')[0]    # 物流 - 编辑方案 按钮
 ${locatorB_priceSettings_icon_EidtShipping}    dom:document.querySelectorAll('[class*="icon_edit"]')[0]    # 运费设置 - 编辑 按钮
@@ -25,6 +26,7 @@ ${locatorB_priceSettings_select_continuousWeightUnit}    dom:document.querySelec
 ${locatorB_priceSettings_input_continuousWeightUnit}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[5]    # 运费设置 - 续重单位kg
 
 ${locatorB_priceSettings_button_popUpsave}    dom:document.querySelectorAll('[class*="ant-btn middle_btn"]')[1]    # 运费设置 -  保存 按钮
+
 
 # locator shippingNew
 ${locatorB_shippingNew_input_shippingName}    dom:document.querySelectorAll('input[data-robot="shipping_ph_name"]')[0]    #.输入物流名称框

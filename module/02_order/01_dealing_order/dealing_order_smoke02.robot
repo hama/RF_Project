@@ -48,7 +48,7 @@ order150
     Select All Dealing Order Tag
     Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
     Sleep    2    # 需要等待数据加载
-    ${order_num01}    Wait And Get Text    ${locatorB_orderDetail_text_orderNum}
+    ${order_num01}    Sleep And Get Text    ${locatorB_orderDetail_text_orderNum}
     ${order_num00}    kworder.get_latest_dealing_order_num_py
 	Should Be Equal    ${order_num00}    ${order_num01}
 
@@ -125,6 +125,140 @@ order181
     Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_tag_firstProduct_shipPartiallyFinished}    待发货
 
+order184
+    [Documentation]    验证订单详情页面，商品总价显示正确
+    [Tags]    P0    threshold
+    &{dict}=    Create Dictionary    name=物流费用    rate_amount=1
+    @{plans}=    Create List    ${dict}
+    &{conf}=    Create Dictionary    plans=${plans}
+    kwshipping.add_price_fee_shipping_py    ${conf}
+    kwtax.set_country_tax_price_py    10
+    kwpayment.activate_payment_cod_py
+    kwcheckout.set_single_page_checkout_process_py
+    kwrebate.add_doing_rebate_py
+    Reload Page And Start Ajax
+    Go To First Product C Interface
+    Sleep    1
+    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Add Address Common Step
+    ${subPrice01}=    Sleep And Get Text    ${locatorC_checkout_prices_shippingValue}[0]
+    ${subPrice}=    Evaluate    u"${subPrice01}".strip('USD')
+    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Go To    https://admin.shoplazza.com/order/_dealing
+    Focus On New Window
+    Go To Dealing Order Page
+    Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
+    Wait Until Page Contains Text   ${subPrice}
+
+order185
+    [Documentation]    验证订单详情页面，订单价格中折扣显示正确
+    [Tags]    P0    threshold
+    &{dict}=    Create Dictionary    name=物流费用    rate_amount=1
+    @{plans}=    Create List    ${dict}
+    &{conf}=    Create Dictionary    plans=${plans}
+    kwshipping.add_price_fee_shipping_py    ${conf}
+    kwtax.set_country_tax_price_py    10
+    kwpayment.activate_payment_cod_py
+    kwcheckout.set_single_page_checkout_process_py
+    kwrebate.add_doing_rebate_py
+    Reload Page And Start Ajax
+    Go To First Product C Interface
+    Sleep    1
+    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Add Address Common Step
+    ${disPrice}=    Sleep And Get Text    ${locatorC_checkout_prices_shippingValue}[1]
+    ${disPrice01}=    Evaluate    u"${disPrice}".strip('USD')
+    ${discountPrice}=    Evaluate    u"${disPrice01}".strip('- ')
+    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Go To    https://admin.shoplazza.com/order/_dealing
+    Focus On New Window
+    Go To Dealing Order Page
+    Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
+    Wait Until Page Contains Text   ${discountPrice}
+
+order186
+    [Documentation]    验证订单详情页面，订单价格中，物流费用显示正确
+    [Tags]    P0    threshold
+    &{dict}=    Create Dictionary    name=物流费用    rate_amount=1
+    @{plans}=    Create List    ${dict}
+    &{conf}=    Create Dictionary    plans=${plans}
+    kwshipping.add_price_fee_shipping_py    ${conf}
+    kwtax.set_country_tax_price_py    10
+    kwpayment.activate_payment_cod_py
+    kwcheckout.set_single_page_checkout_process_py
+    kwrebate.add_doing_rebate_py
+    Reload Page And Start Ajax
+    Go To First Product C Interface
+    Sleep    1
+    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Add Address Common Step
+    ${shipPrice}=    Sleep And Get Text    ${locatorC_checkout_prices_shippingValue}[2]
+    ${shipPrice01}=    Evaluate    u"${shipPrice}".strip('USD')
+    ${shippingPrice}=    Evaluate    u"${shipPrice01}".strip('+ ')
+    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Go To    https://admin.shoplazza.com/order/_dealing
+    Focus On New Window
+    Go To Dealing Order Page
+    Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
+    Wait Until Page Contains Text   ${shippingPrice}
+
+order187
+    [Documentation]    验证订单详情页面，订单价格中，税费显示正确
+    [Tags]    P0    threshold
+    &{dict}=    Create Dictionary    name=物流费用    rate_amount=1
+    @{plans}=    Create List    ${dict}
+    &{conf}=    Create Dictionary    plans=${plans}
+    kwshipping.add_price_fee_shipping_py    ${conf}
+    kwtax.set_country_tax_price_py    10
+    kwpayment.activate_payment_cod_py
+    kwcheckout.set_single_page_checkout_process_py
+    kwrebate.add_doing_rebate_py
+    Reload Page And Start Ajax
+    Go To First Product C Interface
+    Sleep    1
+    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Add Address Common Step
+    ${taxPrice01}=    Sleep And Get Text    ${locatorC_checkout_prices_shippingValue}[3]
+    ${taxPrice02}=    Evaluate    u"${taxPrice01}".strip('USD')
+    ${taxPrice}=    Evaluate    u"${taxPrice02}".strip('+ ')
+    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Go To    https://admin.shoplazza.com/order/_dealing
+    Focus On New Window
+    Go To Dealing Order Page
+    Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
+    Wait Until Page Contains Text   ${taxPrice}
+
+order188
+    [Documentation]    验证订单详情页面，订单价格中，订单总价显示正确
+    [Tags]    P0    threshold
+    &{dict}=    Create Dictionary    name=物流费用    rate_amount=1
+    @{plans}=    Create List    ${dict}
+    &{conf}=    Create Dictionary    plans=${plans}
+    kwshipping.add_price_fee_shipping_py    ${conf}
+    kwtax.set_country_tax_price_py    10
+    kwpayment.activate_payment_cod_py
+    kwcheckout.set_single_page_checkout_process_py
+    kwrebate.add_doing_rebate_py
+    Reload Page And Start Ajax
+    Go To First Product C Interface
+    Sleep    1
+    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Add Address Common Step
+    ${totalPrice01}=    Sleep And Get Text    ${locatorC_checkoutPayment_text_totalPrice}
+    ${totalPrice02}=    Evaluate    u"${totalPrice01}".strip('USD')
+    ${totalPrice}=    Evaluate    u"${totalPrice02}".strip('Total: ')
+    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Go To    https://admin.shoplazza.com/order/_dealing
+    Focus On New Window
+    Go To Dealing Order Page
+    Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
+    Wait Until Page Contains Text   ${totalPrice}
+
 order192
     [Documentation]     验证C端使用COD支付后，订单详情页面的支付方式显示为：COD
     [tags]    P0    threshold    smoke
@@ -167,7 +301,7 @@ order235
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationName}    名：firstname
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationPhone}    电话：18888888888
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationEmail}    邮箱：12345@autotest.com
-    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationCountry}    国家：China
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationCountry}    国家/地区：China
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationProvince}    省份：Beijing
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationCity}    城市：city
     Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_popUp_deliveryInformationStreet}    街道：address

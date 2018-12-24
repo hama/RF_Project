@@ -123,7 +123,7 @@ store022
     Text Of Element Should Contain With Wait    ${locatorB_store_select_currency}    USD
     Wait Until Page Contains    店铺正常运营之后，更改货币将影响您店铺的商品价格、订单和数据等信息，请谨慎操作
 
-store027
+store023
     [Documentation]    验证‘常规设置-店铺时区’UI展示正确
     [Tags]    P0
     Set Focus To Element    ${locatorB_store_select_timezone}
@@ -150,8 +150,8 @@ store025.1
 store027
     [Documentation]    选择货币之后，下拉框自动收起
     [Tags]    P0
-    Wait And Click Element    ${locatorB_store_select_currency_listIcon}
-    Wait And Click Element    ${locatorB_store_select_currency_listContent}[2]    #选择店铺货币下拉列表中的第四个
+    Sleep And Click Element    ${locatorB_store_select_currency_listIcon}
+    Sleep And Click Element    ${locatorB_store_select_currency_listContent}[2]    #选择店铺货币下拉列表中的第四个
     Set Focus To Element    dom:document.querySelectorAll('button[class*="middle_btn"]')[1]   #出现弹窗，下拉列表自动收起
 
 store029.1

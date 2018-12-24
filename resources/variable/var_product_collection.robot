@@ -26,6 +26,8 @@ ${locatorB_CollectionsNew_icon_CollectionPicture}    dom:document.querySelectorA
 ${locatorB_CollectionsNew_input_CollectionPicture}    dom:document.querySelectorAll('span [type="file"]')    #专辑图片上传
 ${locatorB_CollectionsNew_image_existPicture}    dom:document.querySelectorAll('[class*="image_wrap"]')    #图片上传存在元素
 
+${locatorB_CollectionsNew_image_uploadPicture}     dom:document.querySelectorAll('[type="file"]')[0]    #图片上传image
+
 ${locatorB_CollectionsNew_icon_CollectionEditSeo}    dom:document.querySelectorAll('[class*="icon_custom_left"]')[2]    #编辑seo
 ${locatorB_CollectionsNew_input_SeoTitle}    dom:document.querySelectorAll('[class="ant-input"]')[1]   #编辑seo - seo标题
 ${locatorB_CollectionsNew_texterea_SeoDesc}    dom:document.querySelectorAll('[class*="ant-input seo_form"]')[0]    #编辑seo - seo描述

@@ -233,6 +233,13 @@ collection114
     Reload Page And Start Ajax
     Text Of Element Should Be Equal With Wait    ${locatorB_CollectionsMgmt_text_firstCollectionDesc}    中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456
 
+collection116
+    [Documentation]    专辑封面格式JPG
+    [Tags]    P0    threshold
+    Wait And Click Element    ${locatorB_CollectionsMgmt_button_addOneCollection}
+    Wait Enabled And Choose File    ${locatorB_CollectionsNew_image_uploadPicture}    ${file_products_addImg}
+    Wait Until Page Contains Locator    ${locatorB_CollectionsNew_image_existPicture}
+
 collection134
     [Documentation]    删除商品
     [Tags]    P0    threshold

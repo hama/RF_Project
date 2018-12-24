@@ -20,6 +20,13 @@ order002
     ${text00}    Wait And Get Text    ${locatorB_orderDealing_button_toDeliver}
     Should Be Equal    ${text00}    待发货
 
+order004
+    [Documentation]     验证售后订单列表可正常进入
+    [tags]    P0    threshold
+    Sleep And Click Element    ${locatorB_order_postSale}
+    Wait Until Page Contains Text    售后订单
+    Wait Until Page Contains Text    售后时间
+
 order009
     [Documentation]     验证C端购买商品选择COD支付方式，并且提交成功后会在B端待处理订单中生成新订单
     [tags]    P0    threshold    smoke
@@ -73,7 +80,14 @@ order017
     ${text00} =    Sleep And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[0]
     Should Be Equal    ${text00}    全部完成
 
-
+order034
+    [Documentation]    验证待处理订单列表中，搜索按钮可点击
+    [Tags]    P0
+    kworder.add_deading_order_with_delivering_status_py
+    ${orderNum}=    kworder.get_latest_dealing_order_num_py
+    Wait And Input Text    ${locatorB_order_input_searchText}    ${orderNum}
+    Wait And Click Element    ${locatorB_order_button_searchBtn}
+    Text Of Element Should Be Equal With Wait    ${locatorB_orderDealing_text_firstOrder_orderNum}    ${orderNum}
 
 order039
     [Documentation]     验证待处理订单列表中，订单编号显示为checkout发起订单时的订单编号
@@ -147,12 +161,11 @@ order047
 
 order048
     [Documentation]     验证在订单详情将此订单部分商品发货时，订单列表中显示的物流状态为：部分发货
-    [tags]    P0    threshold
+    [tags]    P0
     kworder.add_deading_order_with_some_delivered_status_py
     Reload Page And Start Ajax
     ${text} =    Sleep And Get Text    ${locatorB_orderDealing_text_firstOrder_shippingStatus}
 	Should Be Equal    ${text}    部分发货
-
 
 order052
     [Documentation]     验证订单未确认收货前，待处理订单列表中订单住状态显示为：进行中
@@ -219,21 +232,6 @@ order087
 
 
 ##周莉编写
-#order004
-#    [Documentation]     验证售后订单列表可正常进入
-#    [tags]    P0    threshold
-#    Wait Until Page Contains Text    售后订单
-#    Wait Until Page Contains Text    售后时间
-#
-#order034
-#    [Documentation]    验证待处理订单列表中，搜索按钮可点击
-#    [Tags]    P0
-#    kworder.add_deading_order_with_delivering_status_py
-#    ${orderNum}=    kworder.get_latest_dealing_order_num_py
-#    Wait And Input Text    ${locatorB_order_input_searchText}    ${orderNum}
-#    Wait And Click Element    ${locatorB_order_button_searchBtn}
-#    Text Of Element Should Be Equal With Wait    ${locatorB_orderDealing_text_firstOrder_orderNum}    ${orderNum}
-#
 #order045
 #    [Documentation]    验证在C端使用线上支付支付成功的订单，待处理顶大列表中，支付状态显示为已支付
 #    [Tags]    P0
