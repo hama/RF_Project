@@ -66,7 +66,7 @@ Login With User
 
 Check ${caseLevel} Point From ${caseNum}
     [Documentation]    通过caseNum，检测级别为caseLevel的点（用例标号为caseNum）
-    Run Keyword If    '${caseLevel}' in '${checkLevel}'    ${caseNum}
+	Run Keyword If    '${caseLevel}' in '${checkLevel}'    ${caseNum}
 
 Wait And Input Text
     [Arguments]    ${element_locator}    ${text}    ${timeout}=3s    ${retry_time}=3x
