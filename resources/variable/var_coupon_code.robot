@@ -13,7 +13,7 @@ ${locatorB_couponCodeNew_span_chooseProduct}    dom:document.querySelectorAll('t
 
 ${locatorB_couponCodeNew_icon_continueToAdd}    dom:document.querySelectorAll('[class="anticon anticon-plus"]')    # 添加
 
-${locatorB_couponCodeNew_span_button_chooseProductSure}    dom:document.querySelectorAll('button[class="ant-btn middle_btn_e01e "]')[1]     # 选择部分商品-确定按钮
+${locatorB_couponCodeNew_span_button_chooseProductSure}    dom:document.querySelectorAll('button[class*="ant-btn middle_btn"]')[1]     # 选择部分商品-确定按钮
 ${locatorB_couponCodeNew_text_hadAdded}    dom:document.querySelectorAll('p[class*="product"]')[0]    #
 ${locatorB_couponCodeNew_input_couponCode}    id:code    #
 ${locatorB_couponCodeNew_select_couponStyle}    dom:document.querySelectorAll('[class="ant-select-selection__rendered"]')[0]    #折扣类型，折扣券

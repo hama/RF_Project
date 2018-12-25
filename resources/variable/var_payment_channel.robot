@@ -28,7 +28,7 @@ ${locatorB_pay_input_deliveryPayWay}    dom:document.querySelectorAll('[class*="
 ${locatorB_pay_button_save}    dom:document.querySelectorAll('[class*="form_container"] [class*="middle_btn"]')[0]     #.货到付款  保存按钮
 ${locatorB_pay_button_canecl}    dom:document.querySelectorAll('[class*="form_container"] [class*="default_btn"]')[0]     #.货到付款  取消按钮
 
-${locatorB_pay_button_changeNum}    dom:document.querySelectorAll('[class="ant-btn default_btn_4b2a "]')[1]    #信用卡收款-编辑-更换会员号按钮
+${locatorB_pay_button_changeNum}    dom:document.querySelectorAll('[class*="ant-btn default_btn"]')[1]    #信用卡收款-编辑-更换会员号按钮
 
 #.绑定ipaylinks会员号
 ${locatorB_pay_input_userCard}    dom:document.querySelectorAll('input[id="client_id"]')[0]     #.会员号
@@ -40,9 +40,9 @@ ${locatorB_pay_input_account}    dom:document.querySelectorAll('input[id="accoun
 ${locatorB_pay_input_terminal}    dom:document.querySelectorAll('input[id="client_id"]')[0]    #.客户端ID
 ${locatorB_pay_input_secureCode}    dom:document.querySelectorAll('input[id="secret_key"]')[0]      #.秘钥
 
-${locatorB_pay_creditCard_button_ipaylinks}    dom:document.querySelectorAll('[class="ant-btn middle_btn_e01e "]')[0]    #信用卡选择-ipaylinks收款
-${locatorB_pay_creditCard_button_oceanpayment}    dom:document.querySelectorAll('[class="ant-btn middle_btn_e01e "]')[1]    #信用卡选择-钱海收款
-${locatorB_pay_creditCard_button_stripe}    dom:document.querySelectorAll('[class="ant-btn middle_btn_e01e "]')[2]    #信用卡选择-stripe收款
+${locatorB_pay_creditCard_button_ipaylinks}    dom:document.querySelectorAll('[class*="ant-btn middle_btn"]')[0]    #信用卡选择-ipaylinks收款
+${locatorB_pay_creditCard_button_oceanpayment}    dom:document.querySelectorAll('[class*="ant-btn middle_btn"]')[1]    #信用卡选择-钱海收款
+${locatorB_pay_creditCard_button_stripe}    dom:document.querySelectorAll('[class*="ant-btn middle_btn"]')[2]    #信用卡选择-stripe收款
 
 
 

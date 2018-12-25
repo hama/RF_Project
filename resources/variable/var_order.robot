@@ -121,6 +121,8 @@ ${locatorB_orderDetail_button_toDelivery}    dom:document.querySelectorAll('[cla
 ${locatorB_orderDetail_arrow_toExpand}    dom:document.querySelectorAll('[class*="arrow_expand"]')    # 箭头to展开
 ${locatorB_orderDetail_arrow_toCollapse}    dom:document.querySelectorAll('[class*="arrow_collapse"]')    # 箭头to收起
 
+${locatorB_orderDetail_popUp_radio_autoGet}    dom:document.querySelectorAll('span[class*="ant-radio"]')[2]    #.去发货-》自动获取 单选项
+${locatorB_orderDetail_popUp_select_shippingWay}     dom:document.querySelectorAll('[class="ant-select-selection__rendered"]')[0]    #.去发货-》物流渠道下拉框
 ${locatorB_orderDetail_input_popUp_LogNum}    dom:document.querySelectorAll('[class="ant-input input_e5c2"]')    #.去发货-》添加运单-》运单号输入框
 ${locatorB_orderDetail_select_popUp_LogMag}    dom:document.querySelectorAll('[class="ant-select-selection__rendered"]')    #.去发货-》添加运单-》物流商
 ${locatorB_orderDetail_select_popUp_LogOther}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')    #.去发货-》添加运单-》物流商选择其他
@@ -143,7 +145,7 @@ ${locatorB_orderDetail_icon_Returnlist}    dom:document.querySelectorAll('[class
 ${locatorB_order_dateil_cencel_send}    dom:document.querySelectorAll('[data-robot="cancel_shipping"]')   #.订单详情-取消本次发货
 ${locatorB_order_button_search}    dom:document.querySelectorAll('[data-robot="order_search_btn"]')    #.订单列表搜索按钮
 ${locatorB_order_input_searchText}    dom:document.querySelectorAll('[id="keyword"]')    #. 订单搜索输入框
-${locatorB_order_button_searchBtn}    dom:document.querySelectorAll('[class="ant-btn confirm_btn_c2c3 "]')   #. 订单搜索按钮
+${locatorB_order_button_searchBtn}    dom:document.querySelectorAll('[class*="ant-btn confirm_btn"]')   #. 订单搜索按钮
 
 #${locatorB_order_list_api}    ${home_page}/api/order/list?start_create_time=1521561600&end_create_time=1529596799&page=0&size=20    #.订单列表api
 #${locatorB_order_list_export}    dom:document.querySelectorAll(".export___22t6f")[0]    #.订单列表 导出按钮
