@@ -616,7 +616,7 @@ def get_tokens_with_products_py(cookie=init_cookie):
     if count == 0:
         add_max_product_py(cookie=cookie)
         add_max_product_py(cookie=cookie)
-        time.sleep(0.5)
+        time.sleep(1)
     elif count == 1:
         add_max_product_py(cookie=cookie)
         time.sleep(0.5)
@@ -649,7 +649,7 @@ def add_undeal_order_with_product_py(cookie=init_cookie):
 
 
 if __name__ == '__main__':
-    # print add_undead_order_with_pay_fail_status_py()
+    print add_undead_order_with_pay_fail_status_py()
     # print add_undeal_order_with_product_py()
     # print add_undeal_order_with_products_py()
     # print add_dealing_order_with_product_py()
@@ -662,7 +662,7 @@ if __name__ == '__main__':
     # print add_deading_order_with_some_delivered_status_py()
     # print add_deading_order_with_all_delivered_status_py()
     # print add_deading_order_with_some_finished_status_py()
-    print add_deading_order_with_finished_status_py()
+    # print add_deading_order_with_finished_status_py()
 
     # print get_tokens_by_productid_py('602')
     # print get_tokens_by_productidlist_py(['602', '601'])
