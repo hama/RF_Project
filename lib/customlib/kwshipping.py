@@ -262,8 +262,66 @@ def num_of_exist_shipping_py(cookie=init_cookie):
     return len(data['content'])
 
 
+
+
+#物流商接口
+
+def shipping_merchant_get_py(query_str={}, cookie=init_cookie):
+    '''
+    获取物流商列表
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/carrier-service' % (home_page_url)
+    return do_get(url, query_str, cookie=cookie)
+
+#创建物流商
+def shipping_merchant_post_py(data, cookie=init_cookie):
+    '''
+    添加物流商
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/carrier-service' % (home_page_url)
+    return do_post(url, data, cookie=cookie)
+
+def add_shipping_merchant_with_conf_py(conf={}, cookie=init_cookie):
+    '''
+    通过conf添加物流商
+    :param conf:
+    :param cookie:
+    :return:
+    '''
+    data = copy.deepcopy(shipping_merchant_data)
+    dict_deepupdate(data, conf)
+
+    return shipping_merchant_post_py(data, cookie=cookie)['content']
+
+#删除物流商
+def shipping_merchant_delete_py(shipping_id, cookie=init_cookie):
+    '''
+    删除物流商
+    :param query_str:
+    :param cookie:
+    :return:
+    '''
+    url = '%s/api/carrier-service/%s' % (home_page_url, shipping_id)
+    return do_delete(url, cookie=cookie)
+
+def del_all_shipping_merchant_py(cookie=init_cookie):
+    """
+    删除全部物流商
+    :return: True | False
+    """
+    shippings_merchant_list = shipping_merchant_get_py(cookie=cookie)['content']['list']
+    for shippings_merchant in shippings_merchant_list:
+        shipping_merchant_delete_py(shippings_merchant['id'], cookie=cookie)
+
+
 if __name__ == '__main__':
-    add_quantity_fee_shipping_py()
+    del_all_shipping_merchant_py()
     # print del_all_shipping_py()
     # print add_price_fee_shipping_py({'plans': [{'rule_range_min': '5000.00'}]})
     # print add_quantity_fee_shipping_py()
