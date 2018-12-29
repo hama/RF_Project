@@ -15,7 +15,7 @@ customer006
     Go To First Product C Interface
     Wait And Mouse Over    ${locatorC_customerRegister_icon_userIcon}
     Wait And Click Element    ${locatorC_customerRegister_link_userRegister}
-    Customer Register C Interface    lily    jane    qazwsx123@qq.com    qazwsx123
+    Customer Register C Interface    lily    jane    qazwsx123@autotest.com    qazwsx123
     Wait And Click Element    ${locatorC_customerRegister_checkbox_checkboxRegister}
     Wait And Click Element    ${locatorC_customerRegister_button_RegisterBtn}
     Wait Until Page Contains Text    Congratulations! You have successfully registered
@@ -77,12 +77,12 @@ customer036
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_customerMes_button_addCustomer}
     Add Customer B Interface
-    Wait And Input Text    ${locatorB_customerNews_input_email}    ceshiemail001@qq.com
+    Wait And Input Text    ${locatorB_customerNews_input_email}    ceshiemail001@autotest.com
     Wait And Click Element    ${locatorB_customerNews_button_confirm}
     Wait Until Page Not Contains Locator    ${locatorB_customerNews_button_confirm}
-    Wait And Input Text    ${locatorB_customerMes_input_searchNameEailPhone}    ceshiemail001@qq.com
+    Wait And Input Text    ${locatorB_customerMes_input_searchNameEailPhone}    ceshiemail001@autotest.com
     Wait And Click Element    ${locatorB_customerMes_button_searchBth}
-    Text Of Element Should Contain With Wait    ${locatorB_customerMes_list_firstCustomerEmail}    ceshiemail001@qq.com
+    Text Of Element Should Contain With Wait    ${locatorB_customerMes_list_firstCustomerEmail}    ceshiemail001@autotest.com
 
 customer037
     [Documentation]    输入手机号搜索
@@ -145,7 +145,7 @@ customer045
     Wait And Click Element    ${locatorB_customerMes_select_Ifsubscribe}
     Wait And Click Element    ${locatorB_customerMes_select_Nosubscribe}
     Wait And Click Element    ${locatorB_customerMes_button_searchBth}
-    Text Of Element Should Be Equal With Wait    ${locatorB_customerMes_list_firstCustomerEmail}    ceshi001test@qq.com
+    Text Of Element Should Be Equal With Wait    ${locatorB_customerMes_list_firstCustomerEmail}    ceshi001test@autotest.com
 
 customer046
     [Documentation]    地区选择国家搜索
@@ -215,7 +215,7 @@ customer062
 #     Reload Page And Start Ajax
 #    :FOR    ${ONE}    IN RANGE    6
 #     \    Wait And Click Element    ${locatorB_customerMes_icon_fileExport}
-#     \    Wait And Input Text    ${locatorB_fileExport_input_email}    1424468248@qq.com
+#     \    Wait And Input Text    ${locatorB_fileExport_input_email}    1424468248@autotest.com
 #     \    Wait And Click Element    ${locatorB_fileExport_button_confirmBtn}
 #     \    Sleep    2
 #     Wait Until Page Contains Text    已有5个文件正在导出，请5分钟后再试

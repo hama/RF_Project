@@ -152,9 +152,9 @@ checkout_087
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
-    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    12345678@qq.com
+    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    12345678@autotest.com
     Wait And Click Element    ${locatorC_checkoutShipping_label_SamecontactEamil}
-    Wait Until Page Not Contains Text    12345678@qq.com
+    Wait Until Page Not Contains Text    12345678@autotest.com
 
 checkout_088
     [Documentation]    验证checkout页面contact email栏new email可勾选
@@ -172,8 +172,8 @@ checkout_088
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_checkoutShipping_label_SamecontactEamil}
     Wait And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
-    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    12345678@qq.com
-    Value Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_input_contactEmail}    12345678@qq.com
+    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    12345678@autotest.com
+    Value Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_input_contactEmail}    12345678@autotest.com
 
 checkout_092
     [Documentation]    验证checkout页面contact email栏勾选new email后，new email后的输入框输入正确的内容可提交成功
@@ -191,7 +191,7 @@ checkout_092
     Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
     Add Address Common Step
-    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@shoplazza.com
+    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@autotest.com
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
@@ -245,7 +245,7 @@ checkout_099
 #    Add Address Common Step
 #    Wait And Click Element    ${locatorC_checkoutPayment_icon_bankCard}
 #    Wait And Input Text    ${locatorC_checkout_paymentCard_fristName}    Javen fang
-#    Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    dianjiang@shoplazza.com
+#    Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    dianjiang@autotest.com
 #    Wait And Input Text    ${locatorC_checkout_paymentCard_phone}    18688886666
 #    Wait And Input Text    ${locatorC_checkout_paymentCard_cardPostcode}    518000
 #    Wait And Input Text    ${locatorC_checkout_paymentCard_cardNumber}    4111119987834534
@@ -266,7 +266,7 @@ checkout_127
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutPayment_icon_bankCard}
     Wait And Input Text    ${locatorC_checkout_paymentCard_fristName}    Javen fang
-    Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    dianjiang@shoplazza.com
+    Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    dianjiang@autotest.com
     Wait And Input Text    ${locatorC_checkout_paymentCard_phone}    18688886666
     Wait And Input Text    ${locatorC_checkout_paymentCard_cardPostcode}    518000
     Wait And Input Text    ${locatorC_checkout_paymentCard_cardNumber}    123456789

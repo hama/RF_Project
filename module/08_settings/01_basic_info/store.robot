@@ -68,17 +68,17 @@ store011
     [Documentation]    店主邮箱输入正确格式的邮箱可保存成功
     [Tags]    P0    threshold
     Clear Element Text    ${locatorB_store_input_storeEmail}
-    Wait And Input Text    ${locatorB_store_input_storeEmail}    zhouli@shoplazza.com
+    Wait And Input Text    ${locatorB_store_input_storeEmail}    zhouli@autotest.com
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Reload Page And Start Ajax
-    Value Of Element Should Be Equal With Wait    ${locatorB_store_input_storeEmail}    zhouli@shoplazza.com
+    Value Of Element Should Be Equal With Wait    ${locatorB_store_input_storeEmail}    zhouli@autotest.com
 
 store012
     [Documentation]    店主邮箱输入格式错误的邮箱，不可保存
     [Tags]    P1
     Clear Element Text    ${locatorB_store_input_storeEmail}
-    Wait And Input Text    ${locatorB_store_input_storeEmail}    @zhou@shop.com213
+    Wait And Input Text    ${locatorB_store_input_storeEmail}    @zhou@autotest.com213
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Contains Locator    ${locatorB_button_save00}
     Page Should Contain    请输入格式正确的邮箱
@@ -87,11 +87,11 @@ store015
     [Documentation]    输入正确格式的客服邮箱可保存成功
     [Tags]    P0
     Clear Element Text    ${locatorB_store_store_input_serviceEmail}
-    Wait And Input Text    ${locatorB_store_store_input_serviceEmail}    zhouliservice@shoplazza.com
+    Wait And Input Text    ${locatorB_store_store_input_serviceEmail}    zhouliservice@autotest.com
     Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Reload Page And Start Ajax
-    Value Of Element Should Be Equal With Wait    ${locatorB_store_store_input_serviceEmail}    zhouliservice@shoplazza.com
+    Value Of Element Should Be Equal With Wait    ${locatorB_store_store_input_serviceEmail}    zhouliservice@autotest.com
 
 store016
     [Documentation]    输入非法格式的邮箱，不可保存
