@@ -6,6 +6,48 @@ Resource          var_common.robot
 ${locatorB_shipping_tab_PriceSettings}    dom:document.querySelectorAll('[role="tab"]')[0]    # 物流 - 运费设置tab
 ${locatorB_shipping_tab_shippingSettings}    dom:document.querySelectorAll('[role="tab"]')[1]    # 物流 - 物流设置tab
 
+# locator PriceSettings
+${locatorB_priceSettings_button_addAreaPlan}    dom:document.querySelectorAll('[class*="ant-btn large_btn"]')    # 运费设置 - 添加区域方案 按钮
+${locatorB_shipping_button_EidtShipping}    dom:document.querySelectorAll('[href*="/shipping"]')[0]    # 物流 - 编辑方案 按钮
+${locatorB_priceSettings_icon_EidtShipping}    dom:document.querySelectorAll('[class*="icon_edit"]')[0]    # 运费设置 - 编辑 按钮
+${locatorB_priceSettings_checkbox_supportCOD}    dom:document.querySelectorAll('span[class*="ant-checkbox"]')[0]    # 运费设置 - 支持货到付款 复选框
+
+${locatorB_priceSettings_radio_firstWeight}    dom:document.querySelectorAll('span[class*="ant-radio"]')[2]    # 运费设置 - 首重+续重 单选项
+
+${locatorB_priceSettings_input_firstWeightPrice}    dom:document.querySelectorAll('[id="rate_amount"]')    # 运费设置 - 首重运费 输入框
+${locatorB_priceSettings_input_firstWeightRange}    dom:document.querySelectorAll('[id="rate_first_range"]')    # 运费设置 - 首重范围 输入框
+${locatorB_priceSettings_select_firstWeightUnit}    dom:document.querySelectorAll('[id="rate_first_unit"]')[0]    # 运费设置 - 首重单位选择框
+${locatorB_priceSettings_input_firstWeightUnit}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[1]    # 运费设置 - 首重单位kg
+
+${locatorB_priceSettings_input_continuousWeightPrice}    dom:document.querySelectorAll('[id="rate_additional_amount"]')    # 运费设置 - 续重运费 输入框
+${locatorB_priceSettings_input_continuousWeightRange}    dom:document.querySelectorAll('[id="rate_additional_range"]')    # 运费设置 - 续重范围 输入框
+${locatorB_priceSettings_select_continuousWeightUnit}    dom:document.querySelectorAll('[id="rate_additional_unit"]')[0]     # 运费设置 - 续重单位选择框
+${locatorB_priceSettings_input_continuousWeightUnit}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[5]    # 运费设置 - 续重单位kg
+
+${locatorB_priceSettings_button_popUpsave}    dom:document.querySelectorAll('[class="ant-drawer-body"] [class*="ant-btn middle_btn"]')[2]    # 运费设置 -  保存 按钮
+
+# locator NewPriceSettings
+${locatorB_NewPriceSettings_input_areaName}    dom:document.querySelectorAll('[id="shipping_name"]')    # 添加运费方案 - 区域方案名称 输入框
+
+${locatorB_NewPriceSettings_button_addCountry}    dom:document.querySelectorAll('[class*="operation"] [class*="ant-btn middle_btn"]')    # 添加运费方案 - 添加国家 按钮
+${locatorB_NewPriceSettings_input_countrySelect}    dom:document.querySelectorAll('[class="ant-drawer-body"] [class="ant-input"]')[0]    # 添加国家 - 搜索 输入框
+${locatorB_NewPriceSettings_button_countrySelect}    dom:document.querySelectorAll('[class="ant-drawer-body"] [class*="ant-btn middle_btn"]')[0]    # 添加国家 - 搜索 按钮
+${locatorB_NewPriceSettings_checkout_countrySelect}    dom:document.querySelectorAll('span[class*="ant-tree-checkbox"]')[0]    # 添加国家 - 第一个复选框
+${locatorB_NewPriceSettings_button_countrySave}     dom:document.querySelectorAll('[class="ant-drawer-body"] [class*="ant-btn middle_btn"]')[1]    # 添加国家 - 确定 按钮
+
+${locatorB_NewPriceSettings_button_addPricePlan}    dom:document.querySelectorAll('[class*="operation"] [class*="ant-btn large_btn"]')    # 添加运费方案 - 添加运费方案 按钮
+${locatorB_NewPriceSettings_input_PlanName}    dom:document.querySelectorAll('[id="name"]')[0]    # 添加运费方案 - 方案名称 输入框
+${locatorB_NewPriceSettings_input_PlanDesc}    dom:document.querySelectorAll('[id="desc"]')[0]    # 添加运费方案 - 方案说明 输入框
+${locatorB_NewPriceSettings_select_ruleSettings}    dom:document.querySelectorAll('[id="rule_type"]')[0]     # 添加运费方案 - 规则设置 - 订单类型下拉框
+${locatorB_NewPriceSettings_select_orderPrice}    dom:document.querySelectorAll('[id="rule_type"] + div li:nth-child(1)')[0]    # 添加运费方案 - 规则设置 - 订单价格
+${locatorB_NewPriceSettings_select_productNum}     dom:document.querySelectorAll('[id="rule_type"] + div li:nth-child(2)')[0]    # 添加运费方案 - 规则设置 - 商品数量
+${locatorB_NewPriceSettings_select_orderWeight}     dom:document.querySelectorAll('[id="rule_type"] + div li:nth-child(3)')[0]    # 添加运费方案 - 规则设置 - 订单重量
+
+${locatorB_NewPriceSettings_input_ruleSettingsMin}    dom:document.querySelectorAll('[id="rule_range_min"]')[0]    # 添加运费方案 - 规则设置 - 最小值
+${locatorB_NewPriceSettings_input_ruleSettingsMax}    dom:document.querySelectorAll('[id="rule_range_max"]')[0]    # 添加运费方案 - 规则设置 - 最大值
+
+${locatorB_NewPriceSettings_button_pricePlanSave}    ${locatorB_button_save00}    #运费设置 - 添加运费方案 - 保存 按钮
+
 # locator settingShipping
 ${locatorB_settingShipping_button_addressSet}    dom:document.querySelectorAll('[class*="shipping_address"] [type="button"]')[0]    # 物流设置 - 开始设置 按钮
 ${locatorB_settingShipping_button_merchantSet}    dom:document.querySelectorAll('[class*="shipping_address"] ~ div[class*="container"] [type="button"]')[0]    # 物流设置 - 物流商 开始设置 按钮
@@ -66,23 +108,7 @@ ${locatorB_merchantSettings_icon_deleteAccount}    dom:document.querySelectorAll
 
 
 
-${locatorB_shipping_button_EidtShipping}    dom:document.querySelectorAll('[href*="/shipping"]')[0]    # 物流 - 编辑方案 按钮
-${locatorB_priceSettings_icon_EidtShipping}    dom:document.querySelectorAll('[class*="icon_edit"]')[0]    # 运费设置 - 编辑 按钮
-${locatorB_priceSettings_checkbox_supportCOD}    dom:document.querySelectorAll('span[class*="ant-checkbox"]')[0]    # 运费设置 - 支持货到付款 复选框
 
-${locatorB_priceSettings_radio_firstWeight}    dom:document.querySelectorAll('span[class*="ant-radio"]')[2]    # 运费设置 - 首重+续重 单选项
-
-${locatorB_priceSettings_input_firstWeightPrice}    dom:document.querySelectorAll('[id="rate_amount"]')    # 运费设置 - 首重运费 输入框
-${locatorB_priceSettings_input_firstWeightRange}    dom:document.querySelectorAll('[id="rate_first_range"]')    # 运费设置 - 首重范围 输入框
-${locatorB_priceSettings_select_firstWeightUnit}    dom:document.querySelectorAll('[id="rate_first_unit"]')[0]    # 运费设置 - 首重单位选择框
-${locatorB_priceSettings_input_firstWeightUnit}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[1]    # 运费设置 - 首重单位kg
-
-${locatorB_priceSettings_input_continuousWeightPrice}    dom:document.querySelectorAll('[id="rate_additional_amount"]')    # 运费设置 - 续重运费 输入框
-${locatorB_priceSettings_input_continuousWeightRange}    dom:document.querySelectorAll('[id="rate_additional_range"]')    # 运费设置 - 续重范围 输入框
-${locatorB_priceSettings_select_continuousWeightUnit}    dom:document.querySelectorAll('[id="rate_additional_unit"]')[0]     # 运费设置 - 续重单位选择框
-${locatorB_priceSettings_input_continuousWeightUnit}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[5]    # 运费设置 - 续重单位kg
-
-${locatorB_priceSettings_button_popUpsave}    dom:document.querySelectorAll('[class*="ant-btn middle_btn"]')[1]    # 运费设置 -  保存 按钮
 
 
 ## locator shippingNew

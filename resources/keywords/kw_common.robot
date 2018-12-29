@@ -40,6 +40,7 @@ Resource          kw_uploadfile.robot
 Resource          kw_payment_channel.robot
 Resource          kw_subtraction.robot
 Resource          kw_customer.robot
+Resource          kw_floating.robot
 
 *** Keywords ***
 Login With Default User
@@ -444,4 +445,12 @@ Go To First Product C Interface
     Wait And Click Element    ${locatorB_productsMgmt_icon_firstpreview}
     Focus On New Window
     Start Ajax Listener
+    Sleep    2
+
+Wait And Clear Element Text
+    [Documentation]    清除输入框文本
+    [Arguments]    ${locator}    ${text}=Q    ${sleep_time}=3
+    Sleep    ${sleep_time}
+    Wait And Input Text    ${locator}    ${text}
+    Press Key    ${locator}    ${keybord_delete}
     Sleep    2
