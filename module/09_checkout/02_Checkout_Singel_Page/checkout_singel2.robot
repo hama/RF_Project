@@ -191,7 +191,7 @@ checkout_160
     Wait And Click Element    ${locatorB_shipping_button_EidtShipping}
     Wait And Click Element    ${locatorB_priceSettings_icon_EidtShipping}
     ${class}=    Wait And Get Element Attribute    ${locatorB_priceSettings_checkbox_supportCOD}    class
-    Run Keyword If    '${class}'=='ant-checkbox ant-checkbox-checked'    Run Keywords    Wait And Click Element    ${locatorB_priceSettings_checkbox_supportCOD}    AND    Wait And Click Element   ${locatorB_priceSettings_button_popUpsave}
+    Run Keyword If    '${class}'=='ant-checkbox ant-checkbox-checked'    Run Keywords    Wait And Click Element    ${locatorB_priceSettings_checkbox_supportCOD}    AND    Sleep And Click Element   ${locatorB_priceSettings_button_popUpsave}
     ...    AND    Sleep And Click Element     ${locatorB_button_save00}    AND    Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}

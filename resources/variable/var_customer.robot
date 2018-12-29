@@ -31,8 +31,8 @@ ${locatorB_customerMes_select_defaultSubscribe}     dom:document.querySelectorAl
 
 
 ${locatorB_customerMes_select_country}    dom:document.querySelectorAll('[id="country_province"]')[0]    # 所在地区 下拉框
-${locatorB_customerMes_select_selectChina}    dom:document.querySelectorAll('[class="ant-cascader-menu"] li[title="中国"]')[0]    # 所在地区 - 选择中国
-${locatorB_customerMes_select_selectBeiJing}    dom:document.querySelectorAll('[class="ant-cascader-menu"] li[title="北京市"]')[0]    # 所在地区 - 选择北京市
+${locatorB_customerMes_select_selectChina}    dom:document.querySelectorAll('[class="ant-cascader-menu"] li[title*="中国大陆"]')[0]    # 所在地区 - 选择中国
+${locatorB_customerMes_select_selectBeiJing}    dom:document.querySelectorAll('[class="ant-cascader-menu"] li[title*="北京市"]')[0]    # 所在地区 - 选择北京市
 ${locatorB_customerMes_icon_clearCountry}    dom:document.querySelectorAll('[id="country_province"] ~ [class*="anticon-close-circle"]')[0]    # 所在地区 - 'x' 图标
 
 ${locatorB_customerMes_input_minTotal}    dom:document.querySelectorAll('[id="min_finished_order_total"]')[0]    # 最低金额 搜索输入框

@@ -120,7 +120,6 @@ def get_exist_commentsid_py():
         comments_id.append(comment['id'])
     return comments_id
 
-
 if __name__ == '__main__':
     print add_unpublished_comment_py()
     # print add_published_comment_py()

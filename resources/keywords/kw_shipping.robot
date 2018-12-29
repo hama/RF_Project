@@ -78,7 +78,7 @@ shipping_137
     Sleep    1
     Wait And Input Text    ${locatorB_merchantSettings_input_secretKey}    cf73b069ff5349d19d9a40583d26283e
     Sleep And Click Element    ${locatorB_merchantSettings_button_addSave}
-    Wait Until Page Contains Text    账号绑定授权失败
+    Wait Until Page Contains Text    输入的账户ID或秘钥有误，请重新输入
 
 shipping_138
     [Documentation]    验证添加汉邮物流商弹窗中，账户秘钥输入框输入错误的内容不可添加
@@ -89,7 +89,7 @@ shipping_138
     Sleep    1
     Wait And Input Text    ${locatorB_merchantSettings_input_secretKey}    test
     Sleep And Click Element    ${locatorB_merchantSettings_button_addSave}
-    Wait Until Page Contains Text    账号绑定授权失败
+    Wait Until Page Contains Text    输入的账户ID或秘钥有误，请重新输入
 
 shipping_139
     [Documentation]    验证添加汉邮物流商弹窗中，查看官网了解更多 文本链接可点击
@@ -150,7 +150,7 @@ shipping_150
     Sleep    1
     Wait And Input Text    ${locatorB_merchantSettings_input_secretKey}    123456
     Sleep And Click Element    ${locatorB_merchantSettings_button_addSave}
-    Wait Until Page Contains Text    账号绑定授权失败
+    Wait Until Page Contains Text    输入的账户ID或秘钥有误，请重新输入
 
 shipping_151
     [Documentation]    验证添加鸿速达物流商弹窗中，账户秘钥输入框输入错误的内容不可添加
@@ -161,7 +161,7 @@ shipping_151
     Sleep    1
     Wait And Input Text    ${locatorB_merchantSettings_input_secretKey}    test
     Sleep And Click Element    ${locatorB_merchantSettings_button_addSave}
-    Wait Until Page Contains Text    账号绑定授权失败
+    Wait Until Page Contains Text    输入的账户ID或秘钥有误，请重新输入
 
 shipping_152
     [Documentation]    验证添加鸿速达物流商弹窗中，查看官网了解更多 文本链接可点击
@@ -202,7 +202,7 @@ shipping_156
     sleep    2
     @{checkoutList}=    Get WebElements    ${locatorB_merchantSettings_checkbox_waySelect}
     ${lengthList}=    Get Length    ${checkoutList}
-    Should Be Equal As Integers    ${lengthList}    ${164}
+    Should Be Equal As Integers    ${lengthList}    ${160}
 
 #shipping_157
 #    [Documentation]    验证鸿速达物流渠道弹窗中，物流渠道可勾选，添加后物流渠道会显示在订单详情发货弹窗中
@@ -251,7 +251,7 @@ shipping_167
     Sleep    1
     Wait And Input Text    ${locatorB_merchantSettings_input_secretKey}    b6d95276-f504-40e4-88f7-52ebca33190620006
     Sleep And Click Element    ${locatorB_merchantSettings_button_addSave}
-    Wait Until Page Contains Text    账号绑定授权失败
+    Wait Until Page Contains Text    输入的账户ID或秘钥有误，请重新输入
 
 shipping_168
     [Documentation]    验证添加youkesi物流商弹窗中，账户秘钥输入框输入错误的内容不可添加
@@ -262,7 +262,7 @@ shipping_168
     Sleep    1
     Wait And Input Text    ${locatorB_merchantSettings_input_secretKey}    test
     Sleep And Click Element    ${locatorB_merchantSettings_button_addSave}
-    Wait Until Page Contains Text    账号绑定授权失败
+    Wait Until Page Contains Text    输入的账户ID或秘钥有误，请重新输入
 
 shipping_169
     [Documentation]    验证添加youkesi物流商弹窗中，查看官网了解更多 文本链接可点击
@@ -345,7 +345,7 @@ shipping_185
     Sleep    1
     Wait And Input Text    ${locatorB_merchantSettings_input_secretKey}    test
     Sleep And Click Element    ${locatorB_merchantSettings_button_addSave}
-    Wait Until Page Contains Text    账号绑定授权失败
+    Wait Until Page Contains Text    输入的账户ID或秘钥有误，请重新输入
 
 shipping_186
     [Documentation]    验证添加皇家物流商弹窗中，查看官网了解更多 文本链接可点击
@@ -415,7 +415,7 @@ shipping_200
     Sleep    1
     Wait And Input Text    ${locatorB_merchantSettings_input_secretKey}    123456
     Sleep And Click Element    ${locatorB_merchantSettings_button_addSave}
-    Wait Until Page Contains Text    账号绑定授权失败
+    Wait Until Page Contains Text    输入的账户ID或秘钥有误，请重新输入
 
 shipping_201
     [Documentation]    验证添加润成通物流商弹窗中，账户秘钥输入框输入错误的内容不可添加
@@ -426,7 +426,7 @@ shipping_201
     Sleep    1
     Wait And Input Text    ${locatorB_merchantSettings_input_secretKey}    test
     Sleep And Click Element    ${locatorB_merchantSettings_button_addSave}
-    Wait Until Page Contains Text    账号绑定授权失败
+    Wait Until Page Contains Text    输入的账户ID或秘钥有误，请重新输入
 
 shipping_202
     [Documentation]    验证添加润成通物流商弹窗中，查看官网了解更多 文本链接可点击
@@ -467,7 +467,7 @@ shipping_226
     Sleep    1
     Wait And Input Text    ${locatorB_merchantSettings_input_secretKey}    123456
     Sleep And Click Element    ${locatorB_merchantSettings_button_addSave}
-    Wait Until Page Contains Text    龙讯是一家专注为东南亚市场的跨境进出口B2C卖家提供一站式解決方案，致立于打造特色跨境电商专线为客户提供优质稳定的服务。可提供相应的增值服务，诸如海外仓，一件代发，仓储中转集货等。
+#    Wait Until Page Contains Text    龙讯是一家专注为东南亚市场的跨境进出口B2C卖家提供一站式解決方案，致立于打造特色跨境电商专线为客户提供优质稳定的服务。可提供相应的增值服务，诸如海外仓，一件代发，仓储中转集货等。
     Wait Until Page Contains Text    货代名称：龙讯
     Wait Until Page Contains Locator    ${locatorB_merchantSettings_icon_shipiingWay}
 
@@ -496,7 +496,7 @@ shipping_233
     Sleep    1
     Wait And Input Text    ${locatorB_merchantSettings_input_secretKey}    123456
     Sleep And Click Element    ${locatorB_merchantSettings_button_addSave}
-    Wait Until Page Contains Text    账号绑定授权失败
+    Wait Until Page Contains Text    输入的账户ID或秘钥有误，请重新输入
 
 shipping_234
     [Documentation]    验证添加龙讯物流商弹窗中，账户秘钥输入框输入错误的内容不可添加
@@ -507,7 +507,7 @@ shipping_234
     Sleep    1
     Wait And Input Text    ${locatorB_merchantSettings_input_secretKey}    test
     Sleep And Click Element    ${locatorB_merchantSettings_button_addSave}
-    Wait Until Page Contains Text    账号绑定授权失败
+    Wait Until Page Contains Text    输入的账户ID或秘钥有误，请重新输入
 
 shipping_235
     [Documentation]    验证添加龙讯物流商弹窗中，查看官网了解更多 文本链接可点击
@@ -535,12 +535,12 @@ shipping_238
     sleep    2
     @{checkoutList}=    Get WebElements    ${locatorB_merchantSettings_checkbox_waySelect}
     ${lengthList}=    Get Length    ${checkoutList}
-    Should Be Equal As Integers    ${lengthList}    ${4}
+    Should Be Equal As Integers    ${lengthList}    ${70}
 
 shipping_242
     [Documentation]    验证添加物流商弹窗中，可添加buffalo物流商
     Sleep And Click Element    ${locatorB_settingShipping_button_addMerchant}
-    Sleep And Click Element    ${locatorB_merchantSettings_button_addBuffalo}
+    Sleep And Click Element    ${locatorB_merchantSettings_button_addBuffalo}[6]
     Sleep    2
     Wait And Input Text    ${locatorB_merchantSettings_input_channelName}    buffalo
     Wait And Input Text    ${locatorB_merchantSettings_input_clientID}    1131905668254061
@@ -608,46 +608,46 @@ shipping_254
     Should Be Equal As Integers    ${lengthList}    ${4}
 
 
-## 由于使用封装的Open New And Close Other Windows方法导致为止chrome错误，且只有shipping模块会报错
-## （只有在docker中跑会出错，无法截图，暂时找不到错误原因。）
-## 先使用每个用例重新登录的方法跑用例
-##Shipping Case Setup Tmp Fix
-##	[Documentation]
-##	Login With Default User
-##	kwshipping.del_all_shipping_py
-##    Go To Shipping Page
-##
-##Shipping Case Teardown Tmp Fix
-##	[Documentation]
-##    Close Browser
-#
-#Add Default Shipping Country
-#	[Documentation]    添加默认的物流国家（即第一个大洲的第一个国家），并保存
-#	Wait And Click Element    ${locatorB_shippingNew_btn_addCountry}
-#	Sleep    0.2
-#    Wait And Click Element    ${locatorB_shippingNew_popUp_arrow_listArrow}
-#	Sleep    0.2
-#    Wait And Click Element    ${locatorB_shippingNew_popUp_checkbox_firstCountry}
-#	Sleep    0.2
-#    Wait And Click Element    ${locatorB_shippingNew_btn_popUpConfirm}
-#
-#Add Default Price Shipping
-#	[Documentation]    添加默认的价格运费（即不除了运费名，其余不填写）
-#	Wait And Click Element    ${locatorB_shippingNew_btn_addPriceShipping}
-#    Wait And Input Text    ${locatorB_shippingNew_popUp_input_shippingName}    autotest_shipping_name
-#    Wait And Click Element    ${locatorB_shippingNew_popUp_btn_save}
-#
-#Edit Default Weight Shipping
-#    [Documentation]    修改重量物流的首重、续重、单位kg
-#    Wait And Click Element    ${locatorB_shipping_button_EidtShipping}
-#    Wait And Click Element    ${locatorB_priceSettings_icon_EidtShipping}
-#    Wait And Click Element    ${locatorB_priceSettings_radio_firstWeight}
-#    Wait And Input Text    ${locatorB_priceSettings_input_firstWeightPrice}    10
-#    Wait And Input Text    ${locatorB_priceSettings_input_firstWeightRange}    10
-#    Wait And Click Element    ${locatorB_priceSettings_select_firstWeightUnit}
-#    Wait And Click Element    ${locatorB_priceSettings_input_firstWeightUnit}
-#    Wait And Input Text    ${locatorB_priceSettings_input_continuousWeightPrice}    2
-#    Wait And Input Text    ${locatorB_priceSettings_input_continuousWeightRange}    1
-#    Wait And Click Element    ${locatorB_priceSettings_select_continuousWeightUnit}
-#    Wait And Click Element    ${locatorB_priceSettings_input_continuousWeightUnit}
-#    Sleep And Click Element    ${locatorB_priceSettings_button_popUpsave}
+# 由于使用封装的Open New And Close Other Windows方法导致为止chrome错误，且只有shipping模块会报错
+# （只有在docker中跑会出错，无法截图，暂时找不到错误原因。）
+# 先使用每个用例重新登录的方法跑用例
+Shipping Case Setup Tmp Fix
+	[Documentation]
+	Login With Default User
+	kwshipping.del_all_shipping_py
+    Go To Shipping Page
+
+Shipping Case Teardown Tmp Fix
+	[Documentation]
+    Close Browser
+
+Add Default Shipping Country
+	[Documentation]    添加默认的物流国家（即第一个大洲的第一个国家），并保存
+	Wait And Click Element    ${locatorB_shippingNew_btn_addCountry}
+	Sleep    0.2
+    Wait And Click Element    ${locatorB_shippingNew_popUp_arrow_listArrow}
+	Sleep    0.2
+    Wait And Click Element    ${locatorB_shippingNew_popUp_checkbox_firstCountry}
+	Sleep    0.2
+    Wait And Click Element    ${locatorB_shippingNew_btn_popUpConfirm}
+
+Add Default Price Shipping
+	[Documentation]    添加默认的价格运费（即不除了运费名，其余不填写）
+	Wait And Click Element    ${locatorB_shippingNew_btn_addPriceShipping}
+    Wait And Input Text    ${locatorB_shippingNew_popUp_input_shippingName}    autotest_shipping_name
+    Wait And Click Element    ${locatorB_shippingNew_popUp_btn_save}
+
+Edit Default Weight Shipping
+    [Documentation]    修改重量物流的首重、续重、单位kg
+    Wait And Click Element    ${locatorB_shipping_button_EidtShipping}
+    Wait And Click Element    ${locatorB_priceSettings_icon_EidtShipping}
+    Wait And Click Element    ${locatorB_priceSettings_radio_firstWeight}
+    Wait And Input Text    ${locatorB_priceSettings_input_firstWeightPrice}    10
+    Wait And Input Text    ${locatorB_priceSettings_input_firstWeightRange}    10
+    Wait And Click Element    ${locatorB_priceSettings_select_firstWeightUnit}
+    Wait And Click Element    ${locatorB_priceSettings_input_firstWeightUnit}
+    Wait And Input Text    ${locatorB_priceSettings_input_continuousWeightPrice}    2
+    Wait And Input Text    ${locatorB_priceSettings_input_continuousWeightRange}    1
+    Wait And Click Element    ${locatorB_priceSettings_select_continuousWeightUnit}
+    Wait And Click Element    ${locatorB_priceSettings_input_continuousWeightUnit}
+    Sleep And Click Element    ${locatorB_priceSettings_button_popUpsave}

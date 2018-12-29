@@ -315,7 +315,7 @@ def add_deading_order_with_some_finished_status_py(conf={}, cookie=init_cookie):
 
 def add_deading_order_with_finished_status_py(conf={}, cookie=init_cookie):
     '''
-    创建未完成订单的
+    创建待处理订单的
     发货状态：全部完成
     订单状态：已完成
     	COD支付	已支付	全部完成	已完成

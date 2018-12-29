@@ -26,11 +26,6 @@ Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
     Sleep    1
 
-Go To Information Table
-	Sleep    1
-    Wait And Click Element    ${locatorB_checkout_button_nav_information}
-    Sleep    1
-
 Go To ServiceTerms Table
 	Sleep    1
     Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
