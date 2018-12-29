@@ -19,6 +19,7 @@ Resource          var_payment_channel.robot
 Resource          var_subtraction.robot
 Resource          var_customer.robot
 Resource          var_floating.robot
+
 *** Variables ***
 ### 未分类，需要分类并清理
 ${error_msg}      出错啦！    #.自定义错误提示

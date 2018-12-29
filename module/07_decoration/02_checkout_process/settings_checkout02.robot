@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     结账页设置功能测试
+Documentation     交易设置页面功能测试
 Suite Setup       Checkout Page Suite Setup
 Suite Teardown    Checkout Page Suite Teardown
 Test Setup        Checkout Page Test Setup
