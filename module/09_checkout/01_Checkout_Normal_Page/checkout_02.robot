@@ -198,7 +198,7 @@ checkout_189
     Wait Until Page Contains Text    Payment successful!
 
 checkout_193
-    [Documentation]   验证payment successful页面，shipping information显示正常  >  1.购买商品进入checkout shipping页面 2.填写信息：first name：Javen last name：fang address：南山区 apartment：中山大学产学研基地 city：深圳 country：China province：广东 postal code：518000 email：dianjiang@shoplazza.com phone：18688886666 company：shoplazza 3.完成订单进入payment successful 页面查看shipping information
+    [Documentation]   验证payment successful页面，shipping information显示正常  >  1.购买商品进入checkout shipping页面 2.填写信息：first name：Javen last name：fang address：南山区 apartment：中山大学产学研基地 city：深圳 country：China province：广东 postal code：518000 email：dianjiang@autotest.com phone：18688886666 company：shoplazza 3.完成订单进入payment successful 页面查看shipping information
     [Tags]    P0    threshold
     kwcheckout.set_checkout_process_py
     Reload Page And Start Ajax

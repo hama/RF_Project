@@ -86,9 +86,9 @@ Add Address SepCommon Step
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    518000
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18688886666
     ${statusemail}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_email}
-    Run Keyword If    '${statusemail}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    dianjiang@shoplazza.com
+    Run Keyword If    '${statusemail}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    dianjiang@autotest.com
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_input_contactEmail}
-    Run Keyword If    '${status}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@shoplazza.com
+    Run Keyword If    '${status}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    shoplazza
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    中山大学产学研基地
     Sleep    2
