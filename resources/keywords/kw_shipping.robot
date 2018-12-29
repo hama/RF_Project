@@ -202,7 +202,7 @@ shipping_156
     sleep    2
     @{checkoutList}=    Get WebElements    ${locatorB_merchantSettings_checkbox_waySelect}
     ${lengthList}=    Get Length    ${checkoutList}
-    Should Be Equal As Integers    ${lengthList}    ${160}
+    Should Be Equal As Integers    ${lengthList}    ${156}
 
 #shipping_157
 #    [Documentation]    验证鸿速达物流渠道弹窗中，物流渠道可勾选，添加后物流渠道会显示在订单详情发货弹窗中
@@ -459,7 +459,7 @@ shipping_205
 shipping_226
     [Documentation]    验证添加物流商弹窗中，可添加龙讯物流商
     Sleep And Click Element    ${locatorB_settingShipping_button_addMerchant}
-    Sleep And Click Element    ${locatorB_merchantSettings_button_addLX}【5】
+    Sleep And Click Element    ${locatorB_merchantSettings_button_addLX}[5]
     Sleep    2
     Wait And Input Text    ${locatorB_merchantSettings_input_channelName}    龙讯
     Wait And Input Text    ${locatorB_merchantSettings_input_clientID}    DJ
