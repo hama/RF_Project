@@ -249,7 +249,7 @@ checkout_078
 ##    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
 ##    Wait And Click Element    ${locatorC_checkoutPayment_icon_bankCard}
 ##    Wait And Input Text    ${locatorC_checkout_paymentCard_fristName}    Ting jack
-##    Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    fan-da@zenmax.com
+##    Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    fan-da@autotest.com
 ##    Wait And Input Text    ${locatorC_checkout_paymentCard_phone}    18688886666
 ##    Wait And Input Text    ${locatorC_checkout_paymentCard_cardPostcode}    518000
 ##    Wait And Input Text    ${locatorC_checkout_paymentCard_cardNumber}    4111119987834534
@@ -273,7 +273,7 @@ checkout_078
 #    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
 #    Wait And Click Element    ${locatorC_checkoutPayment_icon_bankCard}
 #    Value Of Element Should Be Equal With Wait    ${locatorC_checkout_paymentCard_fristName}    Javen fang
-#    Value Of Element Should Be Equal With Wait    ${locatorC_checkout_paymentCard_cardEmail}    dianjiang@shoplazza.com
+#    Value Of Element Should Be Equal With Wait    ${locatorC_checkout_paymentCard_cardEmail}    dianjiang@autotest.com
 #    Value Of Element Should Be Equal With Wait    ${locatorC_checkout_paymentCard_phone}    18688886666
 #    Value Of Element Should Be Equal With Wait    ${locatorC_checkout_paymentCard_cardPostcode}    518000
 #
@@ -457,9 +457,9 @@ checkout_078
 #    Go To First Product C Interface
 #    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
 #    Wait And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
-#    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    12345678@qq.com
+#    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    12345678@autotest.com
 #    Wait And Click Element    ${locatorC_checkoutShipping_label_SamecontactEamil}
-#    Wait Until Page Not Contains Text    12345678@qq.com
+#    Wait Until Page Not Contains Text    12345678@autotest.com
 #
 #checkout_221
 #    [Documentation]    验证C端未登录个人中心，B端结账流程收货信息中邮箱为必填时，C端checkout shipping页面contact email栏new email可勾选
@@ -474,8 +474,8 @@ checkout_078
 #    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
 #    Wait And Click Element    ${locatorC_checkoutShipping_label_SamecontactEamil}
 #    Wait And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
-#    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    12345678@qq.com
-#    Value Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_input_contactEmail}    12345678@qq.com
+#    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    12345678@autotest.com
+#    Value Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_input_contactEmail}    12345678@autotest.com
 #
 #checkout_225
 #    [Documentation]    验证C端未登录个人中心，B端结账流程收货信息中邮箱为必填时，C端checkout shipping页面contact email栏勾选new email后，new email后的输入框输入正确的内容
@@ -490,7 +490,7 @@ checkout_078
 #    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
 #    Wait And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
 #    Add Address SepCommon Step
-#    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    12345678@qq.com
+#    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    12345678@autotest.com
 #    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
 #    Wait Until Page Contains Locator    ${locatorC_checkoutPayment_button_completeOrder}
 #
@@ -518,7 +518,7 @@ checkout_078
 #    Go To First Product C Interface
 #    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
 #    Add Address SepCommon Step
-#    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@shoplazza.com
+#    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@autotest.com
 #    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
 #    Wait Until Page Contains Locator    ${locatorC_checkoutPayment_button_completeOrder}
 
