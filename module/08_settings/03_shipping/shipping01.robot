@@ -210,7 +210,7 @@ shipping_group020
     Reload Page And Start Ajax
     Shipping Settings Page
     Sleep And Click Element    ${locatorB_settingShipping_button_addMerchant}
-    Sleep And Click Element    ${locatorB_merchantSettings_button_addLX}
+    Sleep And Click Element    ${locatorB_merchantSettings_button_addLX}[5]
     # 检查点
     Check P0 Point From shipping_233
     Check P0 Point From shipping_234
@@ -244,7 +244,7 @@ shipping_group023
     Reload Page And Start Ajax
     Shipping Settings Page
     Sleep And Click Element    ${locatorB_settingShipping_button_addMerchant}
-    Sleep And Click Element    ${locatorB_merchantSettings_button_addBuffalo}
+    Sleep And Click Element    ${locatorB_merchantSettings_button_addBuffalo}[6]
     # 检查点
     Check P0 Point From shipping_250
     Check P0 Point From shipping_251
