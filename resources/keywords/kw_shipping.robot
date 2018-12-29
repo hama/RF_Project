@@ -459,7 +459,7 @@ shipping_205
 shipping_226
     [Documentation]    验证添加物流商弹窗中，可添加龙讯物流商
     Sleep And Click Element    ${locatorB_settingShipping_button_addMerchant}
-    Sleep And Click Element    ${locatorB_merchantSettings_button_addLX}
+    Sleep And Click Element    ${locatorB_merchantSettings_button_addLX}【5】
     Sleep    2
     Wait And Input Text    ${locatorB_merchantSettings_input_channelName}    龙讯
     Wait And Input Text    ${locatorB_merchantSettings_input_clientID}    DJ
@@ -577,7 +577,7 @@ shipping_250
     Sleep    1
     Wait And Input Text    ${locatorB_merchantSettings_input_secretKey}    test
     Sleep And Click Element    ${locatorB_merchantSettings_button_addSave}
-    Wait Until Page Contains Text    账号绑定授权失败
+    Wait Until Page Contains Text    输入的账户ID或秘钥有误，请重新输入
 
 shipping_251
     [Documentation]    验证添加buffalo物流商弹窗中，查看官网了解更多 文本链接可点击

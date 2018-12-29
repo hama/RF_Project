@@ -81,9 +81,9 @@ ${locatorB_merchantSettings_link_PFCLink}    dom:document.querySelectorAll('[hre
 ${locatorB_merchantSettings_button_addRCT}    dom:document.querySelectorAll('[class*="ant-btn middle_btn_e01e btn_add"]')[4]    # 物流商 - 润成通国际 添加 按钮
 ${locatorB_merchantSettings_link_RCTLink}    dom:document.querySelectorAll('[href=" http://www.rct56.com/"]')[0]    # 润成通 - 查看官网了解更多 链接
 
-${locatorB_merchantSettings_button_addAN}    dom:document.querySelectorAll('[class*="ant-btn middle_btn_e01e btn_add"]')[5]    # 物流商 - 泛亚国际 添加 按钮
+#${locatorB_merchantSettings_button_addAN}    dom:document.querySelectorAll('[class*="ant-btn middle_btn_e01e btn_add"]')[5]    # 物流商 - 泛亚国际 添加 按钮
 
-${locatorB_merchantSettings_button_addLX}    dom:document.querySelectorAll('[class*="ant-btn middle_btn_e01e btn_add"]')[6]    # 物流商 - 龙讯国际 添加 按钮
+${locatorB_merchantSettings_button_addLX}    dom:document.querySelectorAll('[class*="ant-btn middle_btn_e01e btn_add"]')    # 物流商 - 龙讯国际 添加 按钮
 ${locatorB_merchantSettings_link_LXLink}    dom:document.querySelectorAll('[href="http://www.ldlog.com.cn/"]')[0]    # 龙讯 - 查看官网了解更多 链接
 
 ${locatorB_merchantSettings_button_addBuffalo}    dom:document.querySelectorAll('[class*="ant-btn middle_btn_e01e btn_add"]')    # 物流商 - BUFFALO 添加 按钮
