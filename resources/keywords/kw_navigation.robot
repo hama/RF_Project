@@ -63,17 +63,17 @@ Go To Product Collection Page
 #    Location Should Be    ${url_collection}
     Sleep    1
 
-#Go To Product Review Page
-#    [Documentation]    跳转到商品评论页面
-##    Go To Product Review Page By Url
-#    Wait Until Element Is Visible    ${locatorB_products}
-#    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_productMenus_expanded}    5
-#    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_products}
-#    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_product_reviews}
-#    ...    ELSE    Wait And Click Element    ${locatorB_product_reviews}
-#    Wait Until Page Contains    商品评论
-##    Location Should Be    ${url_reviews}
-#    Sleep    1
+Go To Product Review Page
+    [Documentation]    跳转到商品评论页面
+#    Go To Product Review Page By Url
+    Wait Until Element Is Visible    ${locatorB_products}
+    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_productMenus_expanded}    5
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_products}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_product_review}
+    ...    ELSE    Wait And Click Element    ${locatorB_product_review}
+    Wait Until Page Contains    商品评论
+#    Location Should Be    ${url_reviews}
+    Sleep    1
 
 Go To Customer Page
     [Documentation]    跳转到顾客管理页面
@@ -109,6 +109,18 @@ Go To Coupon Page
     Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_marketing_coupon_code}
     ...    ELSE    Wait And Click Element    ${locatorB_marketing_coupon_code}
     Wait Until Page Contains    ${locatorB_couponLst_couponText}
+#    Location Should Be    ${url_coupon_code}
+    Sleep    1
+
+Go To Floating Page
+    [Documentation]    跳转营销-浮窗通知页面
+    Wait Until Element Is Visible    ${locatorB_marketing}
+    # 若营销按钮没展开，则展开营销按钮
+    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_marketingMenus_expanded}    5
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_marketing}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_marketing_floating}
+    ...    ELSE    Wait And Click Element    ${locatorB_marketing_floating}
+    Wait Until Page Contains Locator    ${locatorB_floatingMgmt_button_floatingSettings}
 #    Location Should Be    ${url_coupon_code}
     Sleep    1
 

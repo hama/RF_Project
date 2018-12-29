@@ -18,6 +18,7 @@ Resource          var_navmenu.robot
 Resource          var_payment_channel.robot
 Resource          var_subtraction.robot
 Resource          var_customer.robot
+Resource          var_floating.robot
 *** Variables ***
 ### 未分类，需要分类并清理
 ${error_msg}      出错啦！    #.自定义错误提示
@@ -36,8 +37,7 @@ ${locatorB_order_postSale}    dom:document.querySelectorAll('[data-robot="order_
 ${locatorB_products}    dom:document.querySelectorAll('[data-robot="products"]')    # 导航栏-商品
 ${locatorB_product_management}    dom:document.querySelectorAll('[data-robot="products_mgmt"]')    # 导航栏-商品管理
 ${locatorB_product_collection}    dom:document.querySelectorAll('[data-robot="products_colletion"]')    # 导航栏-商品专辑
-
-#${locatorB_product_reviews}    dom:document.querySelectorAll('a[href="/reviews"]')[0]    # 导航栏-商品评论
+${locatorB_product_review}    dom:document.querySelectorAll('[data-robot="products_review"]')    # 导航栏-商品评论
 
 ### 菜单栏 - 顾客
 ${locatorB_customers}    dom:document.querySelectorAll('[data-robot="customer"]')[0]    # 导航栏-顾客
@@ -48,6 +48,8 @@ ${locatorB_marketing}    dom:document.querySelectorAll('[data-robot="marketing"]
 ${locatorB_marketing_subtraction}    dom:document.querySelectorAll('[data-robot="marketing_substraction"]')    # 导航栏-营销-满减活动
 ${locatorB_subtraction_header_text}    满减/满折活动是提升订单连带率和客单价最有效的方式之一
 ${locatorB_marketing_coupon_code}    dom:document.querySelectorAll('[data-robot="marketing_promo_code"]')    # 导航栏-营销-优惠券
+${locatorB_marketing_floating}    dom:document.querySelectorAll('[data-robot="marketing_sales_pop"]')[0]    # 导航栏-营销-浮窗通知
+
 ### 菜单栏 - 店铺装修
 ${locatorB_decoration}    dom:document.querySelectorAll('[data-robot="decoration"]')    #.导航栏-店铺装修
 ${locatorB_decoration_navigationMenu}    dom:document.querySelectorAll('[data-robot="menus"]')    # 导航栏-店铺装修-菜单导航
