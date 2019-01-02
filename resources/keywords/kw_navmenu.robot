@@ -7,12 +7,13 @@ Navigation Suite Setup
     [Documentation]    布置开始执行用例环境
     Login With Default User
 
-
 Navigation Suite Teardown
+    kwmenus.del_all_menus_py
     Close Test Suite Browser
 
 Navigation Test Setup
     [Documentation]    每个用例执行开始步骤
+    kwmenus.del_all_menus_py
     Go To Navigation Menu Page
 
 Navigation Test Teardown

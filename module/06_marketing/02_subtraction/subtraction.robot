@@ -150,10 +150,12 @@ activitie_053
     kwrebate.add_before_rebate_py
     Reload Page And Start Ajax
     Wait Until Page Contains Locator    ${locatorB_subtractionsMain_icon_firstActivityPreview}
-    ${beforeActivityID}=    Get Text    ${locatorB_subtractionsMain_text_firstActivityID}
+    Sleep    2
+    ${beforeActivityID}=    Wait And Get Text    ${locatorB_subtractionsMain_text_firstActivityID}
     Wait And Click Element Then Confirm    ${locatorB_subtractionsMain_icon_firstActivityDelete}
     Reload Page And Start Ajax
-    ${afterActivityID}=    Get Text    ${locatorB_subtractionsMain_text_firstActivityID}
+    Sleep    2
+    ${afterActivityID}=    Wait And Get Text    ${locatorB_subtractionsMain_text_firstActivityID}
     Should Be True    $beforeActivityID!=$afterActivityID
 
 activitie_066

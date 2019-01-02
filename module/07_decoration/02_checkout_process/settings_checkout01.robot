@@ -1,34 +1,48 @@
 *** Settings ***
-Documentation     结账页设置功能测试
+Documentation     交易设置页面功能测试
 Suite Setup       Checkout Page Suite Setup
 Suite Teardown    Checkout Page Suite Teardown
 Test Setup        Checkout Page Test Setup
 Test Teardown     Teardown Test Case
-Force Tags        checkoutPageSettings
+Force Tags        Trade setting_
 
 Resource        ../../../resources/keywords/kw_common.robot
 
-
 *** Test cases ***
-
-checkoutPageSettings001
+Trade setting_001
     [Documentation]    测试结账设置界面可正常进入
-    [Tags]    P0    threshold   smoke
+    [Tags]    P0    threshold
+    Go To TradingRules Table
     Wait Until Page Contains Locator    ${locatorB_checkout_button_nav_tradingRules}
+    Wait Until Page Contains Locator    ${locatorB_checkout_button_nav_serviceTerms}
 
-checkoutPageSettings003
-    [Documentation]    测试结账设置界面保存按钮
+Trade setting_003
+    [Documentation]    验证交易设置页面，交易规则tab可切换
+    [Tags]    P0    threshold
+    Go To ServiceTerms Table
+    Sleep And Click Element    ${locatorB_checkout_button_nav_tradingRules}
+    Wait Until Page Contains Locator    ${locatorB_checkout_button_nav_tradingRules}
+    Wait Until Page Contains Locator    ${locatorB_checkout_button_nav_serviceTerms}
+
+Trade setting_004
+    [Documentation]    验证交易设置页面，服务条款tab可切换
+    [Tags]    P0    threshold
+    Go To TradingRules Table
+    Sleep And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
+    Wait Until Page Contains Locator    ${locatorB_checkout_textarea_refundTreatyInputBox}
+    Wait Until Page Contains Locator    ${locatorB_checkout_button_generateRefundTreaty}
+
+Trade setting_005
+    [Documentation]    验证交易设置页面，修改内容后可保存
     [Tags]    P0    threshold   smoke
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_label_buyMembers}
-    Go To Information Table
-    #.点击收货信息元素
     Wait And Click Element    ${locatorB_checkout_radio_name}
     Sleep And Click Element    ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
 
-checkoutPageSettings005
+Trade setting_005
     [Documentation]    测试结账设置页面编辑保存  >  1.修改内容后不保存  2.离开结账设置页面
     [Tags]    P0    threshold
     Go To TradingRules Table
@@ -36,7 +50,7 @@ checkoutPageSettings005
     Sleep And Click Element    ${locatorB_overview}
     Wait Alert Should Be Present And Dismiss   页面上有未保存内容，是否确定退出?
 
-checkoutPageSettings006
+Trade setting_006
     [Documentation]    测试结账设置页面编辑保存  >  1.未保存内容退出提示框出现  2.点击确认退出
     [Tags]    P0    threshold
     Go To TradingRules Table
@@ -46,7 +60,7 @@ checkoutPageSettings006
     Go To Checkout Settings Page
     Element Attribute Should Contain With Wait     ${locatorB_checkout_label_registerMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
-checkoutPageSettings007
+Trade setting_007
     [Documentation]    测试结账设置页面编辑保存  >  1.未保存内容退出提示框出现 2.点击取消
     [Tags]    P1    threshold
     Go To TradingRules Table
@@ -57,7 +71,7 @@ checkoutPageSettings007
     Wait Until Page Contains Locator      ${locatorB_checkout_button_save}
 
 # 功能被屏蔽，暂时不测（10.31）
-#checkoutPageSettings008
+#Trade setting_008
 #    [Documentation]    测试结账设置顾客权限功能>1.点击不开启会员注册  2.点击保存
 #    [Tags]    P0    threshold   smoke
 #    Go To TradingRules Table
@@ -72,7 +86,7 @@ checkoutPageSettings007
 #    Go To TradingRules Table
 #    Element Attribute Should Contain With Wait     ${locatorB_checkout_label_notMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
 
-checkoutPageSettings009
+Trade setting_009
      [Documentation]    测试结账设置顾客权限功能>1.点击注册会员与非注册会员均可购买 2.点击保存
      [Tags]    P0    threshold
      Go To TradingRules Table
@@ -83,7 +97,7 @@ checkoutPageSettings009
      Wait And Click Element    ${locatorC_productDetail_button_buyNow}
      Wait Until Page Contains Text    Shipping Address
 
-checkoutPageSettings010
+Trade setting_010
      [Documentation]    测试结账设置顾客权限功能>1.点击会员购买  2.点击保存
      [Tags]    P0    threshold
      Go To TradingRules Table
@@ -97,7 +111,7 @@ checkoutPageSettings010
      Wait And Click Element    ${locatorC_productDetail_button_buyNow}
      Wait Until Page Contains Locator    ${locatorC_input_email}
 
-checkoutPageSettings011.1
+Trade setting_011.1
     [Documentation]       此用例未更新，新增模块--->手机必选
     [Tags]    P0    threshold   smoke
     Go To TradingRules Table
@@ -115,7 +129,7 @@ checkoutPageSettings011.1
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait Until Page Contains Text    Please enter your phone
 
-checkoutPageSettings012.1
+Trade setting_012.1
     [Documentation]     此用例未更新，新增模块--->手机选填
     [Tags]    P0    threshold   smoke
     Go To TradingRules Table
@@ -131,7 +145,7 @@ checkoutPageSettings012.1
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait Until Page Contains Locator    ${locatorC_checkout_button_completeOrder}
 
-checkoutPageSettings013.1
+Trade setting_013.1
     [Documentation]    此用例未更新，新增模块-->手机隐藏
     [Tags]    P0    threshold   smoke
     Go To TradingRules Table
@@ -147,7 +161,7 @@ checkoutPageSettings013.1
     Wait Until Page Not Contains Locator    ${locatorC_checkoutShipping_address_input_phone}
 
 #...
-# checkoutPageSettings018
+# Trade setting_018
 #    [Documentation]    测试顾客联系方式设置-手机和邮箱-必填项都取消
 #    [Tags]    P0    threshold   smoke
 #    Wait And Click Element  ${locatorB_checkout_label_notMembers}

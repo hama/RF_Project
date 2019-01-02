@@ -249,7 +249,7 @@ checkout_078
 ##    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
 ##    Wait And Click Element    ${locatorC_checkoutPayment_icon_bankCard}
 ##    Wait And Input Text    ${locatorC_checkout_paymentCard_fristName}    Ting jack
-##    Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    fan-da@zenmax.com
+##    Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    fan-da@autotest.com
 ##    Wait And Input Text    ${locatorC_checkout_paymentCard_phone}    18688886666
 ##    Wait And Input Text    ${locatorC_checkout_paymentCard_cardPostcode}    518000
 ##    Wait And Input Text    ${locatorC_checkout_paymentCard_cardNumber}    4111119987834534

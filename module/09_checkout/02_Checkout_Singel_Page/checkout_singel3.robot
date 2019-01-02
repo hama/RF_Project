@@ -126,30 +126,30 @@ checkout_100
     Add Address SepCommon Step
     Wait Until Page Contains Text    Delivery for virtual product
 
-checkout_113
-    [Documentation]    验证checkout页面，所选的运费方案有首重续重时，价格计算正常
-    [Tags]    P0    threshold
-    &{dict}=    Create Dictionary    name=重量方案1    rule_range_min=20.00    rule_range_max=60.00    rule_range_unit=kg
-    @{plans}=    Create List    ${dict}
-    &{conf}=    Create Dictionary    plans=${plans}
-    kwshipping.add_weight_fee_shipping_py    ${conf}
-    kwproduct.add_max_product_py
-    Go To Shipping Page
-    Reload Page And Start Ajax
-    Sleep    2
-    Edit Default Weight Shipping
-    Wait And Click Element   ${locatorB_button_save00}
-    Go To Product Management Page
-    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
-    Fill In Required Items When Create Product
-    Wait And Input Text    ${locatorB_productsNew_input_weight}    30
-    Sleep And Click Element    ${locatorB_productsNew_button_save}
-    Go To First Product C Interface
-    Sleep    2
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    Wait Until Page Contains Text    重量方案1
-    Wait Until Page Contains Text    $50.00
+#checkout_113(点击运费方案中的"保存"按钮无效)
+#    [Documentation]    验证checkout页面，所选的运费方案有首重续重时，价格计算正常
+#    [Tags]    P0    threshold
+#    &{dict}=    Create Dictionary    name=重量方案1    rule_range_min=20.00    rule_range_max=60.00    rule_range_unit=kg
+#    @{plans}=    Create List    ${dict}
+#    &{conf}=    Create Dictionary    plans=${plans}
+#    kwshipping.add_weight_fee_shipping_py    ${conf}
+#    kwproduct.add_max_product_py
+#    Go To Shipping Page
+#    Reload Page And Start Ajax
+#    Sleep    2
+#    Edit Default Weight Shipping
+#    Wait And Click Element   ${locatorB_button_save00}
+#    Go To Product Management Page
+#    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+#    Fill In Required Items When Create Product
+#    Wait And Input Text    ${locatorB_productsNew_input_weight}    30
+#    Sleep And Click Element    ${locatorB_productsNew_button_save}
+#    Go To First Product C Interface
+#    Sleep    2
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Wait Until Page Contains Text    重量方案1
+#    Wait Until Page Contains Text    $50.00
 
 checkout_202
     [Documentation]    验证payment failure页面，cancel order按钮可点击

@@ -3,11 +3,8 @@
 #结账页设置元素class="ant-btn
 
 #.新增元素  locator nav
-${locatorB_checkout_button_nav_tradingRules}     dom:document.querySelectorAll('[class="ant-tabs-nav ant-tabs-nav-animated"] [class*="ant-tabs-tab"]')[0]   #交易规则
-#${locatorB_checkout_button_nav_information}     dom:document.querySelectorAll('[class="ant-tabs-nav ant-tabs-nav-animated"] [class*="ant-tabs-tab"]')[1]   #收货信息
-${locatorB_checkout_button_nav_serviceTerms}     dom:document.querySelectorAll('[class="ant-tabs-nav ant-tabs-nav-animated"] [class*="ant-tabs-tab"]')[1]    #服务条款
-
-#.checkout_caef div.ant-tabs-bar div:nth-child(1) > div.ant-tabs-tab-active.ant-tabs-tab
+${locatorB_checkout_button_nav_tradingRules}     dom:document.querySelectorAll('[role="tab"]')[0]   #交易规则
+${locatorB_checkout_button_nav_serviceTerms}     dom:document.querySelectorAll('[role="tab"]')[1]   #服务条款
 
 #button
 ${locatorB_checkout_button_cancel}     dom:document.querySelectorAll('button[type="button"]')[0]  #.取消按钮
@@ -33,10 +30,12 @@ ${locatorB_checkout_radio_surnameAndName}    dom:document.querySelectorAll('[cla
 ${locatorB_checkout_radio_companyNameMandatory}    dom:document.querySelectorAll('[class*="radio_desc"]')[2]    #.必填
 ${locatorB_checkout_radio_companyNameOptional}    dom:document.querySelectorAll('[class*="radio_desc"]')[3]     #.选填
 ${locatorB_checkout_radio_companyNameHidden}    dom:document.querySelectorAll('[class*="radio_desc"]')[4]     #.隐藏
-#..邮箱地址
-${locatorB_checkout_radio_emailCodeMandatory}    dom:document.querySelectorAll('[class*="radio_desc"]')[5]     #.必填
-${locatorB_checkout_radio_emailCodeOptional}    dom:document.querySelectorAll('[class*="radio_desc"]')[6]     #.选填
-${locatorB_checkout_radio_emailCodeHidden}    dom:document.querySelectorAll('[class*="radio_desc"]')[7]     #.隐藏
+#..联系方式
+${locatorB_checkout_radio_contactMandatory}    dom:document.querySelectorAll('[class*="radio_desc"]')[5]     #.手机号和邮箱必填
+${locatorB_checkout_radio_contactPhoneOptional}    dom:document.querySelectorAll('[class*="radio_desc"]')[6]     #.选填手机号
+${locatorB_checkout_radio_contactEmailOptional}    dom:document.querySelectorAll('[class*="radio_desc"]')[7]     #.选填邮箱
+${locatorB_checkout_radio_contactPhoneHidden}    dom:document.querySelectorAll('[class*="radio_desc"]')[8]    #.隐藏手机号
+${locatorB_checkout_radio_contactEmailHidden}    dom:document.querySelectorAll('[class*="radio_desc"]')[9]    #.隐藏邮箱
 #..手机号码
 ${locatorB_checkout_radio_phoneCodeMandatory}    dom:document.querySelectorAll('[class*="radio_desc"]')[8]     #.必填
 ${locatorB_checkout_radio_phoneCodeOptional}    dom:document.querySelectorAll('[class*="radio_desc"]')[9]     #.选填

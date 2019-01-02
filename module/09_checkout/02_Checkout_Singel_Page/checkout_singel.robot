@@ -124,12 +124,12 @@ checkout_085
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Sleep    2
-    Sleep And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
-    Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
+    Sleep And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
+    Sleep And Click Element    ${locatorB_checkout_radio_contactMandatory}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
     Run Keyword If    '${status}'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
-    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
+    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_contactMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
     Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
@@ -142,11 +142,11 @@ checkout_087
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Sleep    2
-    Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
+    Sleep And Click Element    ${locatorB_checkout_radio_contactMandatory}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
     Run Keyword If    '${status}'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
-    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
+    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_contactMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
     Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
@@ -161,11 +161,11 @@ checkout_088
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Sleep    2
-    Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
+    Sleep And Click Element    ${locatorB_checkout_radio_contactMandatory}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
     Run Keyword If    '${status}'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
-    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
+    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_contactMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
     Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
@@ -180,11 +180,11 @@ checkout_092
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Sleep    2
-    Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
+    Sleep And Click Element    ${locatorB_checkout_radio_contactMandatory}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
     Run Keyword If    '${status}'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
-    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
+    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_contactMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
     Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
@@ -201,11 +201,11 @@ checkout_096
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
     Sleep    2
-    Sleep And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
+    Sleep And Click Element    ${locatorB_checkout_radio_contactMandatory}
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
     Run Keyword If    '${status}'=='True'    Run Keywords    Sleep And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Not Contains Locator    ${locatorB_checkout_button_save}
     Reload Page And Start Ajax
-    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
+    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_contactMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
     Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
