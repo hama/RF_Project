@@ -202,7 +202,7 @@ shipping_156
     sleep    2
     @{checkoutList}=    Get WebElements    ${locatorB_merchantSettings_checkbox_waySelect}
     ${lengthList}=    Get Length    ${checkoutList}
-    Should Be Equal As Integers    ${lengthList}    ${156}
+    Should Be Equal As Integers    ${lengthList}    ${158}
 
 #shipping_157
 #    [Documentation]    验证鸿速达物流渠道弹窗中，物流渠道可勾选，添加后物流渠道会显示在订单详情发货弹窗中
