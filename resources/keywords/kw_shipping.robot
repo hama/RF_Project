@@ -373,7 +373,7 @@ shipping_189
     sleep    2
     @{checkoutList}=    Get WebElements    ${locatorB_merchantSettings_checkbox_waySelect}
     ${lengthList}=    Get Length    ${checkoutList}
-    Should Be Equal As Integers    ${lengthList}    ${570}
+    Should Be Equal As Integers    ${lengthList}    ${574}
 
 shipping_193
     [Documentation]    验证添加物流商弹窗中，可添加润成通物流商
