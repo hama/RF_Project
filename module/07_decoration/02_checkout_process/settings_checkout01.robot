@@ -88,6 +88,7 @@ Trade setting_013
 
 Trade setting_017
     [Documentation]    验证B端交易设置中结账页形式选择单结账页时，C端进入checkout页面，checkout为单页面结账形式
+    kwcheckout.set_single_page_checkout_process_py
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_label_registerMembers}
     Sleep And Click Element    ${locatorB_checkout_label_singelPayment}
