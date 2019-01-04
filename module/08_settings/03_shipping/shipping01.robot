@@ -77,15 +77,15 @@ shipping_group005
     Check P0 Point From shipping_153
     Check P0 Point From shipping_154
 
-shipping_group006
-    [Tags]    group
-    # 前置条件
-    &{conf}=    Create Dictionary    channel_name=鸿速达    client_id=SZDJKJ    secret_key=123456    name=hongsuda
-    kwshipping.add_shipping_merchant_with_conf_py    ${conf}
-    Reload Page And Start Ajax
-    Shipping Settings Page
-    # 检查点
-    Check P0 Point From shipping_156
+#shipping_group006
+#    [Tags]    group
+#    # 前置条件
+#    &{conf}=    Create Dictionary    channel_name=鸿速达    client_id=SZDJKJ    secret_key=123456    name=hongsuda
+#    kwshipping.add_shipping_merchant_with_conf_py    ${conf}
+#    Reload Page And Start Ajax
+#    Shipping Settings Page
+#    # 检查点
+#    Check P0 Point From shipping_156
 
 shipping_group007
     [Tags]    group
@@ -147,15 +147,15 @@ shipping_group011
     Check P0 Point From shipping_186
     Check P0 Point From shipping_187
 
-shipping_group012
-    [Tags]    group
-    # 前置条件
-    &{conf}=    Create Dictionary    channel_name=皇家    client_id=80000    secret_key=92cdbbbf-e0a2-45d6-a527-7c3ec276aade80000    name=pfcexpress
-    kwshipping.add_shipping_merchant_with_conf_py    ${conf}
-    Reload Page And Start Ajax
-    Shipping Settings Page
-    # 检查点
-    Check P0 Point From shipping_189
+#shipping_group012
+#    [Tags]    group
+#    # 前置条件
+#    &{conf}=    Create Dictionary    channel_name=皇家    client_id=80000    secret_key=92cdbbbf-e0a2-45d6-a527-7c3ec276aade80000    name=pfcexpress
+#    kwshipping.add_shipping_merchant_with_conf_py    ${conf}
+#    Reload Page And Start Ajax
+#    Shipping Settings Page
+#    # 检查点
+#    Check P0 Point From shipping_189
 
 shipping_group013
     [Tags]    group
@@ -217,15 +217,15 @@ shipping_group020
     Check P0 Point From shipping_235
     Check P0 Point From shipping_236
 
-shipping_group021
-    [Tags]    group
-    # 前置条件
-    &{conf}=    Create Dictionary    channel_name=龙讯    client_id=DJ    secret_key=123456    name=longxun
-    kwshipping.add_shipping_merchant_with_conf_py    ${conf}
-    Reload Page And Start Ajax
-    Shipping Settings Page
-    # 检查点
-    Check P0 Point From shipping_238
+#shipping_group021
+#    [Tags]    group
+#    # 前置条件
+#    &{conf}=    Create Dictionary    channel_name=龙讯    client_id=DJ    secret_key=123456    name=longxun
+#    kwshipping.add_shipping_merchant_with_conf_py    ${conf}
+#    Reload Page And Start Ajax
+#    Shipping Settings Page
+#    # 检查点
+#    Check P0 Point From shipping_238
 
 shipping_group022
     # 前置条件
