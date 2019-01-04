@@ -147,7 +147,6 @@ def do_price_calculate_with_conf_py(conf={}, cookie=init_cookie):
 
     return checkout_price_calculate_py(data, cookie)
 
-
 def get_shipping_lines_with_conf_py(conf={}, cookie=init_cookie):
     '''
     获取shipping_lines

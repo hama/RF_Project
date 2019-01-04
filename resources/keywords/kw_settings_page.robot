@@ -22,11 +22,13 @@ Checkout Page Test Setup
     Go To Checkout Settings Page
 
 Go To TradingRules Table
+    [Documentation]    交易规则tab
 	Sleep    1
     Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
     Sleep    1
 
 Go To ServiceTerms Table
+    [Documentation]    服务条款tab
 	Sleep    1
     Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
     Sleep    1

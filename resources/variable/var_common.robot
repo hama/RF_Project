@@ -172,7 +172,7 @@ ${file_products_addImg5}    ${CURDIR}/../images/image05.png    # 添加商品图
 ${locatorC_icon_card}    dom:document.querySelectorAll('[class~="d-md-block"] [href="/cart"]')[0]    #.checkout购物车图标按钮
 ${locatorC_input_email}    id:userName    #会员登录-email输入框
 
-${locatorC_checkout_button_completeOrder}    dom:document.querySelectorAll('[class="btn btn-primary payment-footer__btn"]')    #payment-->complete order按钮
+${locatorC_checkout_button_completeOrder}    dom:document.querySelectorAll('[id="billing-form"] + div [type="submit"]')[0]    #payment-->complete order按钮
 ${locatorC_checkoutShipping_li_TextPolicy}    dom:document.querySelectorAll('[class="checkout-policy__grid-item"]')    #checkoutShipping-->条约按钮
 ${locatorC_checkoutShipping_label_preActis}    dom:document.querySelectorAll('[data-track-type="input"]')[0]    #checkoutShipping-->优惠活动通知勾选
 
