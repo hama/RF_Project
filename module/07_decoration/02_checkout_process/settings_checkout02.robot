@@ -4,168 +4,191 @@ Suite Setup       Checkout Page Suite Setup
 Suite Teardown    Checkout Page Suite Teardown
 Test Setup        Checkout Page Test Setup
 Test Teardown     Teardown Test Case
-Force Tags        checkoutPageSettings
+Force Tags        Trade setting_
 
 Resource        ../../../resources/keywords/kw_common.robot
 
 
 *** Test cases ***
-checkoutPageSettings021
-    [Documentation]    测试顾客信息设置-点击姓和名分开.1.姓名格式勾选姓名时 点击 姓、名分开填写  2.点击保存
-    [Tags]    P0    threshold   smoke
+Trade setting_024
+    [Documentation]    验证交易规则栏，联系方式选择为手机和邮箱必填时，checkout页面email和phone输入框为必填项
+    [Tags]    P0    threshold
+    kwcheckout.set_checkout_process_py
     Go To TradingRules Table
-    Go To Information Table
-    Wait And Click Element    ${locatorB_checkout_radio_surnameAndName}
+    Wait And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
+    Sleep And Click Element    ${locatorB_checkout_radio_contactMandatory}
+    Sleep    2
+    ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status}'=='True'    Run Keywords    Wait And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Contains Text    设置成功
     Reload Page And Start Ajax
-    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_surnameAndName}    class    ant-radio-wrapper ant-radio-wrapper-checked
-    #.进入C端checkout shipping界面验证
-    Go To First Product C Interface
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_firstName}
-    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_lastName}
-
-checkoutPageSettings022
-    [Documentation]    测试顾客信息设置-点击姓和名分开.1.姓名格式勾选姓、名分开填写时 点击 姓名  2.点击保存
-    [Tags]    P0    threshold
-    Go To Information Table
-    Wait And Click Element    ${locatorB_checkout_radio_name}
-    Sleep And Click Element  ${locatorB_checkout_button_save}
-    Wait Until Page Contains Text   设置成功
-    Reload Page And Start Ajax
-    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_name}    class    ant-radio-wrapper ant-radio-wrapper-checked
-    #.进入C端checkout shipping界面验证
-    Go To First Product C Interface
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_onlyName}
-
-checkoutPageSettings023
-    [Documentation]    测试顾客信息设置-.1.公司名点击 必填 2.点击保存
-    [Tags]    P0    threshold
-    Go To Information Table
-    Wait And Click Element    ${locatorB_checkout_radio_companyNameMandatory}
-    Sleep And Click Element    ${locatorB_checkout_button_save}
-    Wait Until Page Contains Text   设置成功
-    Reload Page And Start Ajax
-    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_companyNameMandatory}    class    ant-radio-wrapper ant-radio-wrapper-checked
-    #.进入C端checkout shipping界面验证
+    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_contactMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}     ${empty}
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    ${Empty}
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    ${Empty}
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait Until Page Contains Text    Please enter your company
+    Wait Until Page Contains Text    Please enter your email
+    Wait Until Page Contains Text    Please enter your phone
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_button_paymentMethod}
 
-checkoutPageSettings024
-    [Documentation]    测试顾客信息设置-.1.公司名点击 选填 2.点击保存
+Trade setting_025
+    [Documentation]    验证交易规则栏，联系方式选择为选填手机号时，checkout页面phone输入框为选填项， email输入框为必填项
     [Tags]    P0    threshold
-    Go To Information Table
-    Wait And Click Element    ${locatorB_checkout_radio_companyNameOptional}
+    kwcheckout.set_checkout_process_py
+    Go To TradingRules Table
+    Wait And Click Element    ${locatorB_checkout_radio_contactEmailOptional}
+    Sleep And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
+    Sleep    2
+    ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status}'=='True'    Run Keywords    Wait And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Contains Text    设置成功
     Reload Page And Start Ajax
-    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_companyNameOptional}    class    ant-radio-wrapper ant-radio-wrapper-checked
-    #.进入C端checkout shipping界面验证
-    Go To First Product C Interface
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}     ${empty}
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait Until Page Contains Locator    ${locatorC_checkout_button_completeOrder}
-
-checkoutPageSettings025
-    [Documentation]    测试顾客信息设置-点击姓和名分开.1.公司名点击 隐藏 2.点击保存
-    [Tags]    P0    threshold
-    Go To Information Table
-    Wait And Click Element    ${locatorB_checkout_radio_companyNameHidden}
-    Sleep And Click Element    ${locatorB_checkout_button_save}
-    Wait Until Page Contains Text   设置成功
-    Reload Page And Start Ajax
-    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_companyNameHidden}    class    ant-radio-wrapper ant-radio-wrapper-checked
-    Go To First Product C Interface
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait Until Page Not Contains Locator    ${locatorC_checkoutShipping_address_input_company}
-
-#checkoutPageSettings026.1
-#    [Documentation]    测试顾客信息设置-点击姓和名分开.1.邮箱必填 2.点击保存
-#    [Tags]    P0    threshold
-#    Go To Information Table
-#    Wait And Click Element    ${locatorB_checkout_radio_emailCodeMandatory}
-#    Sleep And Click Element    ${locatorB_checkout_button_save}
-#    Wait Until Page Contains Text   设置成功
-#    Reload Page And Start Ajax
-#    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
-#    Go To First Product C Interface
-#    sleep    10
-#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-#    Add Address Common Step
-#    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    ${Empty}
-#    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-#    Wait Until Page Contains Text    Please enter your email
-
-checkoutPageSettings027.1
-    [Documentation]    测试顾客信息设置-点击姓和名分开.1.y邮箱选填  2.点击保存
-    [Tags]    P0    threshold
-    Go To Information Table
-    Wait And Click Element    ${locatorB_checkout_radio_emailCodeOptional}
-    Reload Page And Start Ajax
-    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeOptional}   class    ant-radio-wrapper ant-radio-wrapper-checked
+    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_contactPhoneOptional}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    ${Empty}
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait Until Page Contains Locator    ${locatorC_checkout_button_completeOrder}
+    Wait Until Page Contains Text    Please enter your email
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_button_paymentMethod}
 
-checkoutPageSettings028.1
-    [Documentation]    测试顾客信息设置-点击姓和名分开.1.邮箱隐藏 2.点击保存
+Trade setting_026
+    [Documentation]    验证交易规则栏，联系方式选择为选填邮箱时，checkout页面email输入框为选填项， phone输入框为必填项
     [Tags]    P0    threshold
-    Go To Information Table
-    Wait And Click Element    ${locatorB_checkout_radio_emailCodeHidden}
-    Sleep And Click Element    ${locatorB_checkout_button_save}
-    Wait Until Page Contains Text   设置成功
+    kwcheckout.set_checkout_process_py
+    Go To TradingRules Table
+    Wait And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
+    Sleep And Click Element    ${locatorB_checkout_radio_contactEmailOptional}
+    Sleep    2
+    ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status}'=='True'    Run Keywords    Wait And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Contains Text    设置成功
     Reload Page And Start Ajax
-    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_emailCodeHidden}   class    ant-radio-wrapper ant-radio-wrapper-checked
+    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_contactEmailOptional}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait Until Page Not Contains Locator    ${locatorC_checkoutShipping_address_input_email}
+    Add Address Common Step
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    ${Empty}
+    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    Wait Until Page Contains Text    Please enter your phone
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_button_paymentMethod}
 
-checkoutPageSettings029
-    [Documentation]    测试顾客信息设置-输入退款条约
+Trade setting_027
+    [Documentation]    验证交易规则栏，联系方式选择为隐藏手机号时，checkout页面不显示phone输入框，email输入框为必填项
+    [Tags]    P0    threshold
+    kwcheckout.set_checkout_process_py
+    Go To TradingRules Table
+    Wait And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
+    Sleep And Click Element    ${locatorB_checkout_radio_contactPhoneHidden}
+    Sleep    2
+    ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status}'=='True'    Run Keywords    Wait And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Contains Text    设置成功
+    Reload Page And Start Ajax
+    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_contactPhoneHidden}   class    ant-radio-wrapper ant-radio-wrapper-checked
+    Go To First Product C Interface
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Add Address Common Step
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    ${Empty}
+    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    Wait Until Page Contains Text    Please enter your email
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_button_paymentMethod}
+
+Trade setting_028
+    [Documentation]    验证交易规则栏，联系方式选择为隐藏邮箱时，checkout页面不显示email输入框，phone输入框为必填项
+    [Tags]    P0    threshold
+    kwcheckout.set_checkout_process_py
+    Go To TradingRules Table
+    Wait And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
+    Sleep And Click Element    ${locatorB_checkout_radio_contactEmailHidden}
+    Sleep    2
+    ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status}'=='True'    Run Keywords    Wait And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Contains Text    设置成功
+    Reload Page And Start Ajax
+    Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_contactEmailHidden}   class    ant-radio-wrapper ant-radio-wrapper-checked
+    Go To First Product C Interface
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Add Address Common Step
+    Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    ${Empty}
+    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    Wait Until Page Contains Text    Please enter your phone
+    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_button_paymentMethod}
+
+Trade setting_032
+    [Documentation]    验证退款条约栏，生成系统默认模板按钮可点击
+    [Tags]    P0    threshold
+    Go To ServiceTerms Table
+    Sleep And Click Element    ${locatorB_checkout_button_generateRefundTreaty}
+    Sleep    2
+    ${RefundTreatyText}=    Wait And Get Text    ${locatorB_checkout_textarea_refundTreatyInputBox}
+    Should Not Be Empty    ${RefundTreatyText}
+
+Trade setting_034
+    [Documentation]    验证退款条约输入框中输入的内容，将展示在checkout页面
     [Tags]    P0    threshold   smoke
+    kwcheckout.set_checkout_process_py
     Go To ServiceTerms Table
-    Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     退款条约内容
-    Sleep And Click Element    ${locatorB_checkout_button_save}
-    Wait Until Page Contains Text   设置成功
+    Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     退款条约文本展示
+    Wait And Clear Element Text    ${locatorB_checkout_textarea_policyInputBox}
+    Wait And Clear Element Text    ${locatorB_checkout_textarea_refundServiceInputBox}
+    Sleep    2
+    ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status}'=='True'    Run Keywords    Wait And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Contains Text    设置成功
     Reload Page And Start Ajax
-    Wait Until Page Contains Text    退款条约内容
+    Wait Until Page Contains Text    退款条约文本展示
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
-    Wait Until Page Contains Text    退款条约内容
+    Wait Until Page Contains Text    退款条约文本展示
 
-
-checkoutPageSettings030
-    [Documentation]    测试顾客信息设置-输入隐私政策
+Trade setting_037
+    [Documentation]    验证隐私政策栏，生成系统默认模板按钮可点击
     [Tags]    P0    threshold
     Go To ServiceTerms Table
-    Wait And Input Text     ${locatorB_checkout_textarea_policyInputBox}     隐私政策内容
-    Sleep And Click Element    ${locatorB_checkout_button_save}
-    Wait Until Page Contains Text   设置成功
+    Sleep And Click Element    ${locatorBcheckout_button_generatePolicy}
+    Sleep    2
+    ${policyText}=    Wait And Get Text    ${locatorB_checkout_textarea_policyInputBox}
+    Should Not Be Empty    ${policyText}
+
+Trade setting_039
+    [Documentation]    验证隐私政策输入框中输入的内容，将展示在checkout页面
+    [Tags]    P0    threshold
+    kwcheckout.set_checkout_process_py
+    Go To ServiceTerms Table
+    Wait And Input Text     ${locatorB_checkout_textarea_policyInputBox}     隐私政策文本展示
+    Wait And Clear Element Text    ${locatorB_checkout_textarea_refundTreatyInputBox}
+    Wait And Clear Element Text    ${locatorB_checkout_textarea_refundServiceInputBox}
+    Sleep    2
+    ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status}'=='True'    Run Keywords    Wait And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Contains Text    设置成功
     Reload Page And Start Ajax
-    Wait Until Page Contains Text    隐私政策内容
+    Wait Until Page Contains Text    隐私政策文本展示
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
-    Wait Until Page Contains Text    隐私政策内容
+    Wait Until Page Contains Text    隐私政策文本展示
 
-checkoutPageSettings031
-    [Documentation]    测试顾客信息设置-输入服务条约
+Trade setting_042
+    [Documentation]    验证服务条约栏，生成系统默认模板按钮可点击
     [Tags]    P0    threshold
     Go To ServiceTerms Table
-    Wait And Input Text     ${locatorB_checkout_textarea_refundServiceInputBox}     服务条约内容
-    Sleep And Click Element    ${locatorB_checkout_button_save}
-    Wait Until Page Contains Text   设置成功
+    Sleep And Click Element    ${locatorB_checkout_button_generateServiceTreaty}
+    Sleep    2
+    ${ServiceTreatyText}=    Wait And Get Text    ${locatorB_checkout_textarea_refundServiceInputBox}
+    Should Not Be Empty    ${ServiceTreatyText}
+
+Trade setting_044
+    [Documentation]    验证服务条约输入框中输入的内容，将展示在checkout页面
+    [Tags]    P0    threshold
+    kwcheckout.set_checkout_process_py
+    Go To ServiceTerms Table
+    Wait And Input Text     ${locatorB_checkout_textarea_refundServiceInputBox}     服务条约文本展示
+    Wait And Clear Element Text    ${locatorB_checkout_textarea_refundTreatyInputBox}
+    Wait And Clear Element Text    ${locatorB_checkout_textarea_policyInputBox}
+    Sleep    2
+    ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
+    Run Keyword If    '${status}'=='True'    Run Keywords    Wait And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Contains Text    设置成功
     Reload Page And Start Ajax
-    Wait Until Page Contains Text    服务条约内容
+    Wait Until Page Contains Text    服务条约文本展示
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
-    Wait Until Page Contains Text    服务条约内容
+    Wait Until Page Contains Text    服务条约文本展示
