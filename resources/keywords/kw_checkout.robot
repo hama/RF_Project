@@ -58,14 +58,17 @@ Add Address Common Step
     Sleep    1
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_province}    Beijing
     Sleep    1
-    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_code}     (+86) China
+    ${statuscode}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_code}
+    Run Keyword If    '${statuscode}'=='True'    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_code}     (+86) China
     Sleep    1
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    123456
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18899999999
     ${statusemail}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_email}
     Run Keyword If    '${statusemail}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    7654321@autotest.com
-    ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_input_contactEmail}
-    Run Keyword If    '${status}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@autotest.com
+    ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_label_SamecontactEamil}
+    Run Keyword If    '${status}'=='False'    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@autotest.com
+#    ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_input_contactEmail}
+#    Run Keyword If    '${status}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    company
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    apartment
     Sleep    2
@@ -81,14 +84,17 @@ Add Address SepCommon Step
     Sleep    1
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_province}    Guangdong
     Sleep    1
-    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_code}     (+86) China
+    ${statuscode}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_code}
+    Run Keyword If    '${statuscode}'=='True'    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_code}     (+86) China
     Sleep    1
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    518000
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18688886666
     ${statusemail}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_email}
     Run Keyword If    '${statusemail}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    dianjiang@autotest.com
-    ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_input_contactEmail}
-    Run Keyword If    '${status}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@autotest.com
+    ${statusText}    Run Keyword And Return Status    Wait Until Page Contains Text    Same as shipping email above
+    Run Keyword If    '${statusText}'=='False'    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@autotest.com
+#    ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_input_contactEmail}
+#    Run Keyword If    '${status}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    shoplazza
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    中山大学产学研基地
     Sleep    2
