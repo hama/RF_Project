@@ -441,6 +441,7 @@ Long Press Element With Wait
 
 Go To First Product C Interface
     [Documentation]    从B端，点击第一个商品的预览按钮，进入C端商品详情页
+    Sleep    2
 	Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_icon_firstpreview}
     Focus On New Window
