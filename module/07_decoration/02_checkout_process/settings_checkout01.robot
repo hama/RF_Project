@@ -106,6 +106,8 @@ Trade setting_017
     Wait Until Page Contains Text    Payment method
     Wait Until Page Contains Text    Billing Address
     Wait Until Page Contains Text    Special Instruction
+    Execute Javascript     document.querySelectorAll('[id="billing-form"] + div [type="submit"]')[0].scrollIntoView()
+    Sleep    1
     Wait Until Page Contains Locator    ${locatorC_checkout_button_completeOrder}
 
 Trade setting_018

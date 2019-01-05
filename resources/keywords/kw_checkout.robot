@@ -62,7 +62,8 @@ Add Address Common Step
     Run Keyword If    '${statuscode}'=='True'    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_code}     (+86) China
     Sleep    1
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    123456
-    Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18899999999
+    ${statusPhone}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_phone}
+    Run Keyword If    '${statusPhone}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18899999999
     ${statusemail}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_email}
     Run Keyword If    '${statusemail}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    7654321@autotest.com
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_label_SamecontactEamil}
@@ -88,7 +89,8 @@ Add Address SepCommon Step
     Run Keyword If    '${statuscode}'=='True'    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_code}     (+86) China
     Sleep    1
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    518000
-    Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18688886666
+    ${statusPhone}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_phone}
+    Run Keyword If    '${statusPhone}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18688886666
     ${statusemail}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_email}
     Run Keyword If    '${statusemail}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_address_input_email}    dianjiang@autotest.com
     ${statusText}    Run Keyword And Return Status    Wait Until Page Contains Text    Same as shipping email above
