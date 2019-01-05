@@ -46,6 +46,15 @@ uploadFile004
 #    Wait Until Page Contains Locator     ${locatorB_uploadFile_img_shippingImg}
 #    Wait Until Page Contains Text     image01.jpg
 
+#uploadFile006
+#    [Documentation]    测试产品栏 -> 检查 是否打开本地文件选择窗口
+#    [Tags]    P0    threshold
+#    Sleep And Click Element    ${locatorB_uploadFile_upload_btn}
+#    Sleep And Click Element    ${locatorB_overview}
+#    Sleep    2
+#    Wait Until Page Contains Text    商品图
+#    Wait Until Page Contains Locator    ${locatorB_uploadFile_upload_btn}
+
 uploadFile011
     [Documentation]    测试素材链接及复制按钮 >  1.上传一个图片到素材库 2.点击复制按钮  3.新开窗口粘贴  4.进入网页
     [Tags]    P0    threshold
