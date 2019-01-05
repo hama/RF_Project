@@ -94,3 +94,4 @@ def add_upfiles_py(cookie=init_cookie):
 if __name__ == '__main__':
     print store_get_py()
     print set_store_info_with_conf_py()
+

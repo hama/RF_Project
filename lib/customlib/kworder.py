@@ -309,6 +309,7 @@ def add_deading_order_with_some_finished_status_py(conf={}, cookie=init_cookie):
         'id']
     fulfillment_id01 = shipment_with_conf_py(tokens['order_token'], conf01, cookie=cookie)['content']['fulfillment'][
         'id']
+    # orders_finish_py(tokens['order_token'], fulfillment_id00, cookie=cookie)
     orders_finish_py(tokens['order_token'], fulfillment_id01, cookie=cookie)
     return tokens['order_token']
 
@@ -692,3 +693,4 @@ if __name__ == '__main__':
     # conf = {'place_order_data': {'shipping_address': {'first_name': 'testedOject'}}}
     # print add_deading_order_with_conf_py(conf)
     # add_undead_order_with_pay_fail_status_py()
+
