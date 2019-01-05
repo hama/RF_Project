@@ -106,9 +106,9 @@ Trade setting_017
     Wait Until Page Contains Text    Payment method
     Wait Until Page Contains Text    Billing Address
     Wait Until Page Contains Text    Special Instruction
-    Execute Javascript     document.querySelectorAll('[id="billing-form"] + div [type="submit"]')[0].scrollIntoView()
-    Sleep    1
-    Wait Until Page Contains Locator    ${locatorC_checkout_button_completeOrder}
+#    Execute Javascript     document.querySelectorAll('[id="billing-form"] + div [type="submit"]')[0].scrollIntoView()
+#    Sleep    1
+#    Wait Until Page Contains Locator    ${locatorC_checkout_button_completeOrder}
 
 Trade setting_018
     [Documentation]    验证B端交易设置中结账页形式选择双结账页时，C端进入checkout页面，checkout为双页面结账形式
