@@ -25,8 +25,8 @@ to_addr = [
 cc_addr = [
     # 'yanfa@shoplazza.com'
 ]
-email_service = "smtp.mxhichina.com"
-default_port = 465
+email_service = "smtp.gmail.com"
+default_port = 25
 
 
 def send_email(msg):
@@ -35,7 +35,7 @@ def send_email(msg):
     :return:
     '''
     try:
-        smtp = smtplib.SMTP_SSL()
+        smtp = smtplib.SMTP()
         smtp.connect(email_service, default_port)
         smtp.set_debuglevel(0)
         smtp.login(username, password)
