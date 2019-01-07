@@ -35,7 +35,7 @@ def send_email(msg):
     :return:
     '''
     try:
-        smtp = smtplib.SMTP()
+        smtp = smtplib.SMTP_SSL()
         smtp.connect(email_service, default_port)
         smtp.set_debuglevel(0)
         smtp.login(username, password)
