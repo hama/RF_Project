@@ -14,7 +14,7 @@ from email.mime.text import MIMEText
 from selenium import webdriver
 
 username = "zhouli@shoplazza.com"  # .发件人
-password = "zhouli1019jiachun"  # .发件人密码
+password = "zeqnvyihpxcmlefy"  # .发件人密码
 # . 收件邮箱
 to_addr = [
     # 'qiansuixin@shoplazza.com',
