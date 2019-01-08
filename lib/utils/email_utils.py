@@ -13,8 +13,8 @@ from email.mime.text import MIMEText
 
 from selenium import webdriver
 
-username = "autotest@shoplazza.com"  # .发件人
-password = "AAAaaa111"  # .发件人密码
+username = "zhouli@shoplazza.com"  # .发件人
+password = "zhouli1019jiachun"  # .发件人密码
 # . 收件邮箱
 to_addr = [
     'qiansuixin@shoplazza.com',
@@ -26,7 +26,7 @@ cc_addr = [
     # 'yanfa@shoplazza.com'
 ]
 email_service = "smtp.gmail.com"
-default_port = 25
+default_port = 465
 
 
 def send_email(msg):
