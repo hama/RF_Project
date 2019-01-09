@@ -87,7 +87,7 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
         hosts = '!!!pre_release环境报告!!!\n已配/etc/hosts:' + hosts
     else:
         hosts = '!!!美服环境报告!!!'
-    result = lib_utilsCopy.upload_file_oss_py(os.path.join(log_path, 'robot_log_%s.tar.gz' %(timestamp)))
+    result = lib_utilsCopy.upload_file_oss_py('robot_log_%s',os.path.join(log_path, 'robot_log_%s.tar.gz' %(timestamp,timestamp)))
     # 文字
     html = """
     %s
