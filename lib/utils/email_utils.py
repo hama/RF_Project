@@ -10,9 +10,10 @@ from email.header import Header
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from lib.customlib import lib_utils
+import lib_utilsCopy
 
 from selenium import webdriver
+
 
 username = "zhouli@shoplazza.com"  # .发件人
 password = "zeqnvyihpxcmlefy"  # .发件人密码
@@ -95,7 +96,7 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
     """ % (hosts)
     msgText = MIMEText(html, 'html', 'utf-8')
     # msg.attach(msgText)
-    result = lib_utils.upload_file_oss_py()
+    result = lib_utilsCopy.upload_file_oss_py()
     print result
 
 
