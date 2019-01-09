@@ -87,17 +87,19 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
         hosts = '!!!pre_release环境报告!!!\n已配/etc/hosts:' + hosts
     else:
         hosts = '!!!美服环境报告!!!'
+    result = lib_utilsCopy.upload_file_oss_py(os.path.join(log_path, 'robot_log_%s.tar.gz' %(timestamp)))
     # 文字
     html = """
     %s
     <p>=====================截图=====================</p>
     <img src="cid:image1"/>
     <p>=============================================</p>
-    """ % (hosts)
+    %s
+    """ % (hosts, result)
     msgText = MIMEText(html, 'html', 'utf-8')
-    # msg.attach(msgText)
-    result = lib_utilsCopy.upload_file_oss_py(os.path.join(log_path, 'robot_log_%s.tar.gz' %(timestamp)))
-    print result
+    msg.attach(msgText)
+
+    # print result
 
     # 图片
     fp = open(log_path + '/screenshot_for_report.png', 'rb')
