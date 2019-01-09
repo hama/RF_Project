@@ -112,9 +112,9 @@ def upload_file_oss_py():
 
     auth = oss2.Auth(aliyun['accessKeyId'], aliyun['accessKeySecret'])
     bucket = oss2.Bucket(auth, aliyun['endPoint'], aliyun['bucket'])
-    bucket.put_object_from_file('AutoFile','LOG_PATH')
+    bucket.put_object_from_file('AutoFile','/var/log/uitest_log/' + datetime.date + "+%Y%m%d%H%M%S")
     # print('http status: {0}'.format(result.status))
-    file_url = bucket.sign_url('GET','someauto',365*24*60*60)
+    file_url = bucket.sign_url('GET','AutoFile',365*24*60*60)
     return file_url
 
 def upload_oss_py(urlex, name='', extension='', timeout_second=30):
