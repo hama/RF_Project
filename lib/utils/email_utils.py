@@ -96,7 +96,7 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
     """ % (hosts)
     msgText = MIMEText(html, 'html', 'utf-8')
     # msg.attach(msgText)
-    result = lib_utilsCopy.upload_file_oss_py('/var/log/uitest_log/%s' %(timestamp))
+    result = lib_utilsCopy.upload_file_oss_py('/var/log/uitest_log/%s/%s' %(timestamp,os.popen))
     print result
 
     # 图片
