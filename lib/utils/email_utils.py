@@ -10,7 +10,7 @@ from email.header import Header
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from lib.customlib.lib_utils import *
+from lib.customlib import lib_utils
 
 from selenium import webdriver
 
@@ -95,7 +95,7 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
     """ % (hosts)
     msgText = MIMEText(html, 'html', 'utf-8')
     # msg.attach(msgText)
-    result = upload_file_oss_py()
+    result = lib_utils.upload_file_oss_py()
     print result
 
 
