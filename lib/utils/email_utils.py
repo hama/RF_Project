@@ -87,6 +87,7 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
         hosts = '!!!pre_release环境报告!!!\n已配/etc/hosts:' + hosts
     else:
         hosts = '!!!美服环境报告!!!'
+    os.popen('cd %s; tar -zcvPf ./robot_log_%s.tar.gz ./*' % (log_path, timestamp))
     result = lib_utilsCopy.upload_file_oss_py('robot_log_%s',os.path.join(log_path, 'robot_log_%s.tar.gz' %(timestamp,timestamp)))
     # 文字
     html = """
@@ -109,7 +110,7 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
     msg.attach(msgImage)
 
     # 打包文件夹,并添加为附件
-    os.popen('cd %s; tar -zcvPf ./robot_log_%s.tar.gz ./*' % (log_path, timestamp))
+    # os.popen('cd %s; tar -zcvPf ./robot_log_%s.tar.gz ./*' % (log_path, timestamp))
     # att = MIMEText(open(log_path + '/robot_log_%s.tar.gz' % timestamp, 'rb').read(), 'base64', 'utf-8')
     # att["Content-Type"] = 'application/octet-stream'
     # att["Content-Disposition"] = 'attachment; filename="robot_log_%s.tar.gz"' % timestamp
