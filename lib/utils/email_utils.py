@@ -10,6 +10,7 @@ from email.header import Header
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from lib.customlib import upload_file_oss_py../customlib.lib_utils.py
 
 from selenium import webdriver
 
@@ -93,7 +94,10 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
     <p>=============================================</p>
     """ % (hosts)
     msgText = MIMEText(html, 'html', 'utf-8')
-    msg.attach(msgText)
+    # msg.attach(msgText)
+    result = upload_file_oss_py()
+    print result
+
 
     # 图片
     fp = open(log_path + '/screenshot_for_report.png', 'rb')
@@ -104,10 +108,11 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
 
     # 打包文件夹,并添加为附件
     os.popen('cd %s; tar -zcvPf ./robot_log_%s.tar.gz ./*' % (log_path, timestamp))
-    att = MIMEText(open(log_path + '/robot_log_%s.tar.gz' % timestamp, 'rb').read(), 'base64', 'utf-8')
-    att["Content-Type"] = 'application/octet-stream'
-    att["Content-Disposition"] = 'attachment; filename="robot_log_%s.tar.gz"' % timestamp
-    msg.attach(att)
+    # att = MIMEText(open(log_path + '/robot_log_%s.tar.gz' % timestamp, 'rb').read(), 'base64', 'utf-8')
+    # att["Content-Type"] = 'application/octet-stream'
+    # att["Content-Disposition"] = 'attachment; filename="robot_log_%s.tar.gz"' % timestamp
+    # msg.attach(att)
+
 
 
 def set_email_header_for_uireport(msg):

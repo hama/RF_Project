@@ -11,6 +11,7 @@ import uuid
 import oss2
 import requests
 
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -98,6 +99,23 @@ def compare_time_py(format_time1, format_time2):
     timestamp2 = time.mktime(time.strptime(format_time2, "%Y-%m-%d %H:%M:%S"))
     return timestamp1 - timestamp2
 
+def upload_file_oss_py():
+    '''
+    上传文件到阿里云
+    '''
+    aliyun = {
+        "accessKeyId": "LTAIpvmId6CBlCH8",
+        "accessKeySecret": "RkrFrAmixqlS5su065AgVzFa9OXb9w",
+        "bucket": "shoplazza",
+        "endPoint": "http://oss-cn-shenzhen.aliyuncs.com"
+    }
+
+    auth = oss2.Auth(aliyun['accessKeyId'], aliyun['accessKeySecret'])
+    bucket = oss2.Bucket(auth, aliyun['endPoint'], aliyun['bucket'])
+    bucket.put_object_from_file('AutoFile','LOG_PATH')
+    # print('http status: {0}'.format(result.status))
+    file_url = bucket.sign_url('GET','someauto',365*24*60*60)
+    return file_url
 
 def upload_oss_py(urlex, name='', extension='', timeout_second=30):
     """
@@ -112,11 +130,12 @@ def upload_oss_py(urlex, name='', extension='', timeout_second=30):
         "accessKeyId": "LTAIpvmId6CBlCH8",
         "accessKeySecret": "RkrFrAmixqlS5su065AgVzFa9OXb9w",
         "bucket": "shoplazza",
-        "endPoint": "oss-cn-shenzhen.aliyuncs.com"
+        "endPoint": "http://oss-cn-shenzhen.aliyuncs.com"
     }
 
     auth = oss2.Auth(aliyun['accessKeyId'], aliyun['accessKeySecret'])
     bucket = oss2.Bucket(auth, aliyun['endPoint'], aliyun['bucket'])
+
     if not urlex:
         return False
     tmp_file = '/tmp/' + str(uuid.uuid1())
@@ -204,12 +223,12 @@ if __name__ == '__main__':
     time1 = time.strftime("%Y%m%d%H%M%S", time.localtime())
     # time.sleep(3)
     # time2 = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    print time1
+    # print time1
     # print compare_time_py(time1, time2)
     # dict.update(dict2)
-    json_data = {'a': {'a1': 'a1', 'a2': 'a2'}, 'b': [123], 'c': {'c1': [456]}}
+    # json_data = {'a': {'a1': 'a1', 'a2': 'a2'}, 'b': [123], 'c': {'c1': [456]}}
     # json_conf = {'a': {'a1': 'b1'}, 'c': {'c1': 'nb'},'d':'ddd'}
     # json_conf = {}
     # dict_deepupdate(json_data, json_conf)
 
-    print get_certain_date_py()
+    # print get_certain_date_py()
