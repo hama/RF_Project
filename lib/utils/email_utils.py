@@ -25,7 +25,7 @@ to_addr = [
 ]
 # . 抄送邮箱
 cc_addr = [
-    # 'yanfa@shoplazza.com'
+     'yanfa@shoplazza.com'
 ]
 email_service = "smtp.gmail.com"
 default_port = 465
