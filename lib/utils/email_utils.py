@@ -10,7 +10,7 @@ from email.header import Header
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from lib.customlib import upload_file_oss_py
+from lib.customlib.lib_utils import upload_file_oss_py
 
 from selenium import webdriver
 
