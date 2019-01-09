@@ -10,7 +10,7 @@ from email.header import Header
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from lib.customlib.lib_utils import upload_file_oss_py
+from lib.customlib.lib_utils import *
 
 from selenium import webdriver
 
@@ -173,5 +173,6 @@ if __name__ == "__main__":
     # print log_timestamp_path
     # print file_path
     # print save_pic_path
+
 
 
