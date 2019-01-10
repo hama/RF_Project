@@ -19,13 +19,13 @@ username = "zhouli@shoplazza.com"  # .发件人
 password = "zeqnvyihpxcmlefy"  # .发件人密码
 # . 收件邮箱
 to_addr = [
-    'qiansuixin@shoplazza.com',
-    'zhouli@shoplazza.com'
+    #'qiansuixin@shoplazza.com',
+    #'zhouli@shoplazza.com'
     # 'zhiliangbu@shoplazza.com'
 ]
 # . 抄送邮箱
 cc_addr = [
-     'yanfa@shoplazza.com'
+     #'autotest@shoplazza.com'
 ]
 email_service = "smtp.gmail.com"
 default_port = 465
