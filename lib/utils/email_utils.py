@@ -87,6 +87,8 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
         hosts = '!!!pre_release环境报告!!!\n已配/etc/hosts:' + hosts
     else:
         hosts = '!!!美服环境报告!!!'
+    # os.popen('rm %s/*.tar.gz'% (log_path))
+    print 'rm %s/*.tar.gz'% (log_path)
     os.popen('cd %s; tar -zcvPf ./robot_log_%s.tar.gz ./*' % (log_path, timestamp))
     result = lib_utilsCopy.upload_file_oss_py('robot_log_%s' %(timestamp),os.path.join(log_path, 'robot_log_%s.tar.gz' %(timestamp)))
     # 文字
