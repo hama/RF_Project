@@ -25,7 +25,7 @@ to_addr = [
 cc_addr = [
     # 'yanfa@shoplazza.com'
 ]
-email_service = "smtp.mxhichina.com"
+email_service = "smtp.gmail.com"
 default_port = 465
 
 
