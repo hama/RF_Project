@@ -99,7 +99,7 @@ def compare_time_py(format_time1, format_time2):
     timestamp2 = time.mktime(time.strptime(format_time2, "%Y-%m-%d %H:%M:%S"))
     return timestamp1 - timestamp2
 
-def upload_file_oss_py():
+def upload_file_oss_py(AutoFile,LOG_PATH):
     '''
     上传文件到阿里云
     '''
@@ -112,9 +112,9 @@ def upload_file_oss_py():
 
     auth = oss2.Auth(aliyun['accessKeyId'], aliyun['accessKeySecret'])
     bucket = oss2.Bucket(auth, aliyun['endPoint'], aliyun['bucket'])
-    bucket.put_object_from_file('AutoFile','LOG_PATH')
+    bucket.put_object_from_file(AutoFile,LOG_PATH)
     # print('http status: {0}'.format(result.status))
-    file_url = bucket.sign_url('GET','someauto',365*24*60*60)
+    file_url = bucket.sign_url('GET',AutoFile,365*24*60*60)
     return file_url
 
 def upload_oss_py(urlex, name='', extension='', timeout_second=30):
