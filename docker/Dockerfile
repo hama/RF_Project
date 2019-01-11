@@ -13,7 +13,7 @@ RUN echo && cd /home  \
     && python2.7 get-pip.py \
     && pip install oss2 \
     && pip install robotframework \
-    && pip install pymysql requests PyExecJS \
+    && pip install pymysql requests PyExecJS PyChromeDevTools\
     && pip install  --pre --upgrade robotframework-selenium2library \
     && apt-get install -y wget curl libxss1 libappindicator1 libindicator7 fonts-liberation libasound2 libnspr4 libnss3 lsb-release xdg-utils \
     && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
@@ -26,6 +26,7 @@ RUN mkdir -p ~/.ssh && mkdir -p /usr/share/zoneinfo/Asia
 COPY /chromedriver /usr/local/bin
 COPY /run_develop_in_docker.sh /opt/
 COPY /run_master_in_docker.sh /opt/
+COPY /run_release_in_docker.sh /opt/
 COPY /id_rsa /root/.ssh/id_rsa
 COPY /known_hosts /root/.ssh/known_hosts
 COPY /Shanghai /usr/share/zoneinfo/Asia/Shanghai

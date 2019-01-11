@@ -18,7 +18,7 @@ while read line
 do
 	DOCKER_LOG_PATH=${LOG_PATH}/${NUM}
 	DOCKER_LOG_FILE=${TIMESTAMP}_${NUM}
-	docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log -v /opt:/opt --rm --name $DOCKER_LOG_FILE registry.shoplazza.com/library/uitest:v7 \
+	docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name $DOCKER_LOG_FILE registry.shoplazza.com/library/uitest:v8 \
 		bash -c "/opt/$RUN_SH_IN_DOCKER -M '$line' -U https://admin.shoplazza.com -R -A -D $DOCKER_LOG_PATH"
 	((NUM++))
 	REBOT_FILE=${REBOT_FILE}${DOCKER_LOG_PATH}/output.xml" "
@@ -42,7 +42,7 @@ do
         echo "send:"`date`
         echo "REBOT_FILE=${REBOT_FILE}"
         rebot -d "$LOG_PATH"/ ${REBOT_FILE}
-        docker run -d -v /var/log:/var/log -v /opt:/opt --rm registry.shoplazza.com/library/uitest:v7 \
+        docker run -d -v /var/log:/var/log --rm registry.shoplazza.com/library/uitest:v8 \
                 bash -c "/opt/$RUN_SH_IN_DOCKER -E -T $TIMESTAMP -D $LOG_PATH"
         exit 0
     fi
