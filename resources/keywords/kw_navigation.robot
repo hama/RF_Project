@@ -39,6 +39,16 @@ Go To Undeal Order Page
 #    Location Should Be    ${url_order_undeal}
     Sleep    1
 
+Go To Customer Service Order Page
+    [Documentation]    跳转到售后订单页面
+    Wait Until Element Is Visible    ${locatorB_products}
+    ${attr}    Run Keyword And Return Status    Wait Until Page Contains Locator     ${isExistB_setting_orderMenus_expanded}    5    #.获取导航栏订单的下拉按钮元素
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_order}
+    Run Keyword If    '${attr}'=='False'    Wait And Click Element    ${locatorB_order_postSale}
+    ...    ELSE    Wait And Click Element    ${locatorB_order_postSale}
+    Wait Until Page Contains    售后订单
+    Sleep    1
+
 Go To Product Management Page
     [Documentation]    跳转到商品管理页面
 #    Go To Product Management Page By Url

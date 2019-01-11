@@ -7,10 +7,6 @@ Test Teardown     Navigation Test Teardown
 Force Tags        navigation_menu
 Resource          ../../../resources/keywords/kw_common.robot
 
-
-
-
-
 *** Test Cases ***
 menu001
     [Documentation]      菜单导航入 口

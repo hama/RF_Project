@@ -65,8 +65,8 @@ checkout_109
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutPayment_text_taxPrice}    + 266.40USD
+    Sleep    2
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutPayment_text_taxPrice}[2]    + 266.40USD
 
 checkout_110
     [Documentation]      验证checkout 支付页面，商品不收取税费时，价格详情中的tax显示为：+ 0.00USD   >  1.C端购买商品women进入checkout 支付页面  2.查看价格详情中tax
@@ -82,8 +82,8 @@ checkout_110
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Text Of Element Should Be Equal With Wait     ${locatorC_checkoutPayment_text_taxPrice}    + 0.00USD
+    Sleep    2
+    Text Of Element Should Be Equal With Wait     ${locatorC_checkoutPayment_text_taxPrice}[2]    + 0.00USD
 
 checkout_119
     [Documentation]    验证购买不需要物流运输的商品进入支付页面时，shipping method显示为Delivery for virtual product  >  1.C端购买商品women进入checkout 支付页面  2.查看payment栏 shipping method

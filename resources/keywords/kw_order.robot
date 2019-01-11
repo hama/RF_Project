@@ -34,7 +34,6 @@ Undeal Order Case Setup
     [Documentation]
     Go To Undeal Order Page
 
-
 Select All Dealing Order Tag
     Wait And Click Element    ${locatorB_orderDealing_button_all}
     Sleep    2

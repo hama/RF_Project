@@ -19,6 +19,7 @@ Resource          var_payment_channel.robot
 Resource          var_subtraction.robot
 Resource          var_customer.robot
 Resource          var_floating.robot
+Resource          var_service_order.robot
 
 *** Variables ***
 ### 未分类，需要分类并清理
@@ -48,7 +49,7 @@ ${locatorB_customers_management}    dom:document.querySelectorAll('[data-robot="
 ${locatorB_marketing}    dom:document.querySelectorAll('[data-robot="marketing"]')    # 导航栏-营销
 ${locatorB_marketing_subtraction}    dom:document.querySelectorAll('[data-robot="marketing_substraction"]')    # 导航栏-营销-满减活动
 ${locatorB_subtraction_header_text}    满减/满折活动是提升订单连带率和客单价最有效的方式之一
-${locatorB_marketing_coupon_code}    dom:document.querySelectorAll('[data-robot="marketing_promo_code"]')    # 导航栏-营销-优惠券
+${locatorB_marketing_coupon_code}    dom:document.querySelectorAll('[data-robot="marketing_coupon"]')    # 导航栏-营销-优惠券
 ${locatorB_marketing_floating}    dom:document.querySelectorAll('[data-robot="marketing_sales_pop"]')[0]    # 导航栏-营销-浮窗通知
 
 ### 菜单栏 - 店铺装修

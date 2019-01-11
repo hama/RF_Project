@@ -41,6 +41,7 @@ Resource          kw_payment_channel.robot
 Resource          kw_subtraction.robot
 Resource          kw_customer.robot
 Resource          kw_floating.robot
+Resource          kw_service_order.robot
 
 *** Keywords ***
 Login With Default User
@@ -233,10 +234,12 @@ Wait And Select From List By Value
 Wait And Click Element Then Confirm
 	[Arguments]    ${element_locator}
     [Documentation]      全局 确认弹窗
+    Sleep    2
     Wait And Click Element    ${element_locator}
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_popUps_button_footermiddle}
     Run Keyword If    '${status}'!='False'    Wait And Click Element    ${locatorB_popUps_button_footermiddle}
 	...    ELSE    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
+	Sleep    1
 
 Wait And Click Element Then Cancel
 	[Arguments]    ${element_locator}

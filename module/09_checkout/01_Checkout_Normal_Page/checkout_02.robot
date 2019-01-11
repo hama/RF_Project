@@ -63,18 +63,20 @@ checkout_100
 checkout_101
     [Documentation]   验证checkout 支付页面，订单汇总商品栏，商品价格显示正常 > 1.C端购买商品women进入checkout 支付页面  2.查看订单汇总商品栏，商品价格显示
     [Tags]    P0    threshold    smoke
-    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    kwcheckout.set_checkout_process_py
+    Reload Page And Start Ajax
+    Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
+    Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_itemPrice}   444.00USD
 
 checkout_106
     [Documentation]   验证checkout 支付页面，subtotal显示正常 > 1.C端购买商品women两件进入checkout 支付页面  2.查看价格详情中subtotal
     [Tags]    P0    threshold    smoke
-    Wait And Input Text    ${locatorC_productDetail_input_qtyNum}    2
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    kwcheckout.set_checkout_process_py
+    Reload Page And Start Ajax
+    Sleep And Click Element    ${locatorC_productDetail_button_addQuaity}
+    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_subtotalPrice}     888.00USD
 
 # discount code不好定位，暂时放着

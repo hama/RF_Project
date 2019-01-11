@@ -3,7 +3,7 @@ Suite Setup       Dealing Order Suite Setup
 Suite Teardown    Dealing Order Suite Teardown
 Test Setup        Dealing Order Case Setup
 Test Teardown     Teardown Test Case
-Force Tags        Order
+Force Tags        Dealing Order
 Resource          ../../../resources/keywords/kw_common.robot
 
 *** Test Cases ***

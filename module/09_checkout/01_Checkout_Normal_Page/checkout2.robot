@@ -28,7 +28,7 @@ checkout_018
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_taxPrice}   + 266.40USD
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_taxPrice}[2]   + 266.40USD
 
 # 由于未埋点，因此元素不好定位，测试不全面。discount code出现于不出现，导致下标定位失败
 checkout_024
@@ -171,16 +171,18 @@ checkout_097
     Wait Until Page Contains Text   Payment method
 
 checkout_107
-    [Documentation]   验证checkout 支付页面，价格详情中，shipping显示正常  > 1.C端购买商品进入checkout shipping页面  2.填写购买人信息，国家选择：中国  3.选择运费：方案0  4.进入支付页面查看价格详情中shippinga
+    [Documentation]   验证checkout 支付页面，价格详情中，shipping显示正常  > 1.C端购买商品进入checkout shipping页面  2.填写购买人信息，国家选择：中国  3.选择运费：方案0  4.进入支付页面查看价格详情中shipping
     [Tags]    P0    threshold    smoke
     #.创建运费方案0  中国方案  运费价格10
     kwshipping.add_price_fee_shipping_py
+    kwcheckout.set_checkout_process_py
+
     #添加是shipping address
     Reload Page And Start Ajax
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutPayment_text_shippingPrice}    + 10.00USD
+    Sleep    2
+    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutPayment_text_shippingPrice}[1]    + 10.00USD
 
 checkout_113
     [Documentation]   验证checkout 支付页面，total显示正常
