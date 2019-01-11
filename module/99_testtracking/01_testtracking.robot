@@ -1,152 +1,43 @@
 *** Settings ***
-Suite Setup       Open Test Browser    ${home_page}
+Suite Setup       Tracking Suite Setup
 Suite Teardown    Close Test Suite Browser
-Test Setup        Login Testcase Setup
-Test Teardown     Teardown Test Case
-Force Tags        login
+Test Setup        Tracking Testcase Setup
+Test Teardown     Tracking Testcase Teardown
+Force Tags        tracking
 Resource          ../../resources/keywords/kw_common.robot
 
+*** Variables ***
+${url}    https://trackingtest.myshoplaza.com/
+#${url}    https://admin.shoplazza.com/
 
 *** Test Cases ***
-login001
-    [Documentation]    主账号登录成功
-    [Tags]    P0    threshold
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
-    Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
-    Wait And Click Element    ${locatorB_login_btn_login}
-    Wait Until Page Contains Locator    ${locatorB_logout_icon_individualAccount}
-    Logout
-    Wait Until Page Contains Locator    ${locatorB_login_input_account}
+tracking001
+    [Documentation]
+    [Tags]
+#    Sleep    10
+    Sleep    3
+    ${all_messages}    get_all_messages
+#    raw_data = {"ea": "view_item_list", "gtm": "2oubc0", "vp": "1440x720", "de": "UTF-8", "_v": "j72", "t": "event"}
+	&{data}=    Create Dictionary    ea=view_item_list    gtm=2oubc0    vp=1440x720    t=event
+    assert_contain_keys_process    ${all_messages}    www.google-analytics.com    ${data}
 
-login002
-    [Documentation]   主账号登录失败_未注册账号
-    [Tags]    P1
-    Wait And Input Text    ${locatorB_login_input_account}    ${contentB_login_unregisteredAccount}
-    Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
-    Wait And Click Element    ${locatorB_login_btn_login}
-    Wait Until Page Contains Text    店铺地址或者联系方式错误
+#    ${target_messages}    get_request_messages_by_url    ${all_messages}    www.google-analytics.com
+##    ${target_messages}    get_request_messages_by_url    ${all_messages}    shence.shoplazza
+#	@{request_data}    get_request_data_list    ${target_messages}
+#	get_decoded_request_data    @{request_data}[0]
 
-login003
-    [Documentation]    主账号登录失败_格式不正确
-    [Tags]    P2
-    Wait And Input Text    ${locatorB_login_input_account}    ${contentB_login_errorFormatAccount}
-    Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
-    Wait And Click Element    ${locatorB_login_btn_login}
-    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".ant-form-explain")[0]    请输入正确的邮箱／手机
+*** Keywords ***
+Tracking Suite Setup
+	[Documentation]
+	Open Test Browser    ${url}
+	Open New And Close Other Windows    ${url}
 
-login004
-    [Documentation]    主账号登录失败_账号为空
-    [Tags]    P2
-    Wait And Input Text    ${locatorB_login_input_account}    ${Empty}
-    Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
-    Wait And Click Element    ${locatorB_login_btn_login}
-    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".ant-form-explain")[0]    请输入正确的邮箱／手机
+Tracking Testcase Setup
+	[Documentation]
+	start_listener_on_new_tab
+	Reload Page
 
-login005
-    [Documentation]    主账号登录失败_错误密码
-    [Tags]    P0
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
-    Wait And Input Password    ${locatorB_login_input_password}    ${contentB_login_errorPwd}
-    Wait And Click Element    ${locatorB_login_btn_login}
-    Wait Until Page Contains Locator    dom:document.querySelectorAll(".anticon-exclamation-circle")[0]
-    Wait Until Page Contains    用户名或者密码错误
+Tracking Testcase Teardown
+	[Documentation]
+	Open New And Close Other Windows    ${url}
 
-login006
-    [Documentation]    主账号登录失败_密码为空
-    [Tags]    P2
-    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
-    Wait And Input Password    ${locatorB_login_input_password}    ${Empty}
-    Wait And Click Element    ${locatorB_login_btn_login}
-    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".ant-form-explain")[0]    请输入密码
-
-# 隐藏了员工账号的功能，下面用例暂时不执行
-#login007
-#    [Documentation]    员工账号登录_登录成功
-#    [Tags]    P0    threshold
-#    Wait And Click Element    ${locatorB_login_btn_employeeLogin}
-#    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
-#    Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
-#    Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
-#    Wait And Click Element    ${locatorB_login_btn_login}
-#    Wait Until Page Contains Locator    ${locatorB_logout_icon_individualAccount}
-#    Logout
-#    Wait Until Page Contains Locator    ${locatorB_login_input_account}
-#
-#login008
-#    [Documentation]    员工账号登录失败_未注册的域名
-#    [Tags]    P0
-#    Wait And Click Element    ${locatorB_login_btn_employeeLogin}
-#    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
-#    Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
-#    Wait And Input Text    ${locatorB_login_input_domain}    ${contentB_login_unregisteredDomain}
-#    Wait And Click Element    ${locatorB_login_btn_login}
-#    Wait Until Page Contains Text    店铺地址或者联系方式错误
-#
-#login009
-#    [Documentation]    员工账号登录失败_格式不正确的域名
-#    [Tags]    P2
-#    Wait And Click Element    ${locatorB_login_btn_employeeLogin}
-#    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
-#    Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
-#    Wait And Input Text    ${locatorB_login_input_domain}    ${contentB_login_errorFormatDomain}
-#    Wait And Click Element    ${locatorB_login_btn_login}
-#    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".ant-form-explain")[0]    请输入合法域名
-#
-#login010
-#    [Documentation]    员工账号登录失败_域名为空
-#    [Tags]    P2
-#    Wait And Click Element    ${locatorB_login_btn_employeeLogin}
-#    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
-#    Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
-#    Wait And Input Text    ${locatorB_login_input_domain}    ${Empty}
-#    Wait And Click Element    ${locatorB_login_btn_login}
-#    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".ant-form-explain")[0]    请输入店铺域名
-#
-#login011
-#    [Documentation]    员工账号登录失败_未注册的手机/邮箱
-#    [Tags]    P0
-#    Wait And Click Element    ${locatorB_login_btn_employeeLogin}
-#    Wait And Input Text    ${locatorB_login_input_account}    ${contentB_login_unregisteredAccount}
-#    Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
-#    Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
-#    Wait And Click Element    ${locatorB_login_btn_login}
-#    Wait Until Page Contains Text    店铺地址或者联系方式错误
-#
-#login012
-#    [Documentation]    员工账号登录失败_格式不正确的手机/邮箱
-#    [Tags]    P2
-#    Wait And Click Element    ${locatorB_login_btn_employeeLogin}
-#    Wait And Input Text    ${locatorB_login_input_account}    ${contentB_login_errorFormatAccount}
-#    Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
-#    Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
-#    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".ant-form-explain")[0]    请输入正确的邮箱／手机
-#
-#login013
-#    [Documentation]    员工账号登录失败_账号为空
-#    [Tags]    P2
-#    Wait And Click Element    ${locatorB_login_btn_employeeLogin}
-#    Wait And Input Text    ${locatorB_login_input_account}    ${Empty}
-#    Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
-#    Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
-#    Wait And Click Element    ${locatorB_login_btn_login}
-#    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".ant-form-explain")[0]    请输入正确的邮箱／手机
-#
-#login014
-#    [Documentation]    员工账号登录失败_错误密码
-#    [Tags]    P0
-#    Wait And Click Element    ${locatorB_login_btn_employeeLogin}
-#    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
-#    Wait And Input Password    ${locatorB_login_input_password}    ${contentB_login_errorPwd}
-#    Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
-#    Wait And Click Element    ${locatorB_login_btn_login}
-#    Wait Until Page Contains Text    用户名或者密码错误
-#
-#login015
-#    [Documentation]    员工账号登录失败_密码为空
-#    [Tags]    P2
-#    Wait And Click Element    ${locatorB_login_btn_employeeLogin}
-#    Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
-#    Wait And Input Password    ${locatorB_login_input_password}    ${Empty}
-#    Wait And Input Text    ${locatorB_login_input_domain}    ${user_default_domain}
-#    Wait And Click Element    ${locatorB_login_btn_login}
-#    Text Of Element Should Be Equal With Wait    dom:document.querySelectorAll(".ant-form-explain")[0]    请输入密码
