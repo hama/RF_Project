@@ -9,78 +9,78 @@ sys.setdefaultencoding('utf-8')
 
 
 def collections_delete_py(collection_id, cookie=init_cookie):
-    '''
+    """
     删除商品专辑
     :param query_str:
     :param cookie:
     :return:
-    '''
+    """
     url = '%s/api/admin/collections/%s' % (home_page_url, collection_id)
     return do_delete(url, cookie=cookie)
 
 
 def collections_post_py(data, cookie=init_cookie):
-    '''
+    """
     创建商品专辑
     :param data:
     :param cookie:
     :return:
-    '''
+    """
     url = home_page_url + "/api/admin/collections"
     return do_post(url, data, cookie=cookie)
 
 
 def collections_patch_py(data, collection_id, cookie=init_cookie):
-    '''
+    """
     修改商品专辑
     :param query_str:
     :param cookie:
     :return:
-    '''
+    """
     url = '%s/api/admin/collections/%s' % (home_page_url, collection_id)
     return do_patch(url, data, cookie=cookie)
 
 
 def collections_get_py(query_str={}, cookie=init_cookie):
-    '''
+    """
     商品专辑列表
     :param query_str:
     :param cookie:
     :return:
-    '''
+    """
     url = '%s/api/admin/collections' % (home_page_url)
     return do_get(url, query_str, cookie=cookie)
 
 
 def collections_id_get_py(collection_id, cookie=init_cookie):
-    '''
+    """
     商品专辑详情
     :param query_str:
     :param cookie:
     :return:
-    '''
+    """
     url = '%s/api/admin/collections/%s' % (home_page_url, collection_id)
     return do_get(url, {}, cookie=cookie)
 
 
 def collections_query_py(data, cookie=init_cookie):
-    '''
+    """
     检索商品专辑
     :param query_str:
     :param cookie:
     :return:
-    '''
+    """
     url = home_page_url + '/api/admin/collections/query'
     return do_post(url, data, cookie=cookie)
 
 
 def add_collection_with_conf_py(conf={}, cookie=init_cookie):
-    '''
+    """
     通过conf（dict数据类型）配置来添加专辑
     :param conf:
     :param cookie:
     :return:
-    '''
+    """
     data = copy.deepcopy(collecion_data)
     dict_deepupdate(data, conf)
     key_list = conf.keys()
@@ -93,21 +93,21 @@ def add_collection_with_conf_py(conf={}, cookie=init_cookie):
 
 
 def add_collection_with_pic_py(cookie=init_cookie):
-    '''
+    """
     添加含封面的专辑
     :param cookie:
     :return:
-    '''
+    """
 
     return add_collection_with_conf_py(cookie=cookie)
 
 
 def add_collection_without_pic_py(cookie=init_cookie):
-    '''
+    """
     添加不含封面的专辑
     :param cookie:
     :return:
-    '''
+    """
 
     return add_collection_with_conf_py({'image': {'src': '', 'alt': '', 'path': ''}}, cookie=cookie)
 

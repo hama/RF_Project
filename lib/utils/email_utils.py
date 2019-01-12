@@ -32,10 +32,10 @@ default_port = 465
 
 
 def send_email(msg):
-    '''
+    """
     发送邮件
     :return:
-    '''
+    """
     try:
         smtp = smtplib.SMTP_SSL()
         smtp.connect(email_service, default_port)
@@ -61,10 +61,10 @@ def send_email(msg):
 
 
 def get_report_screenshot(file_path, save_pic_path):
-    '''
+    """
     报告截屏,并保持至相应位置
     :return:
-    '''
+    """
     chrome_options = sys.modules['selenium.webdriver'].ChromeOptions()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--disable-gpu')
@@ -78,10 +78,10 @@ def get_report_screenshot(file_path, save_pic_path):
 
 
 def set_email_content_for_uireport(msg, timestamp, log_path):
-    '''
+    """
     设置邮件格式&内容
     :return:
-    '''
+    """
     hosts = os.popen('cat /etc/hosts | grep "shopla"').read()
     if hosts:
         hosts = '!!!pre_release环境报告!!!\n已配/etc/hosts:' + hosts
@@ -118,11 +118,11 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
     # msg.attach(att)
 
 def set_email_header_for_uireport(msg):
-    '''
+    """
     设置邮件头部信息
     :param msg:
     :return:
-    '''
+    """
     config = ConfigParser.ConfigParser()
     path = os.path.join(os.path.dirname(__file__), '../../config/common.ini')
     config.read(path)
@@ -139,12 +139,12 @@ def set_email_header_for_uireport(msg):
 
 
 def send_uireport_email_process(timestamp, log_path):
-    '''
+    """
     发送ui报告邮件流程
     :param timestamp:
     :param log_path:
     :return:
-    '''
+    """
     file_path = 'file:///' + log_path + '/report.html'
     save_pic_path = os.path.join(log_path, 'screenshot_for_report.png')
     get_report_screenshot(file_path, save_pic_path)

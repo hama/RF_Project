@@ -68,10 +68,10 @@ class Login():
         return cookie
 
     def login_c_py(self):
-        '''
+        """
         通过C对端接口，无登录状态，获取cookie值ADMIN1024SESSID
         :return:
-        '''
+        """
         url = 'https://' + self.datas_domain + self.shop_urn + "/cart/count"
         response_data = requests.get(url=url)
         cookie = '; '.join(['='.join(item) for item in response_data.cookies.items()])
@@ -79,10 +79,10 @@ class Login():
         return cookie
 
     def sign_up_py(self):
-        '''
+        """
         注册
         :return:
-        '''
+        """
         self.validate_signup_py()
 
         url = self.home_page_url + "/api/user/signup"
@@ -100,11 +100,11 @@ class Login():
             return response_data.content
 
     def validate_signup_py(self):
-        '''
+        """
         发送验证码
         :param datas:
         :return:
-        '''
+        """
 
         url = self.home_page_url + "/api/user/validate-signup"
         datas = {"contact": self.datas_contact, "username": self.datas_domain}
@@ -117,11 +117,11 @@ class Login():
             return response_data.content
 
     def get_latest_vcode_fromdb(self, contact):
-        '''
+        """
         从数据库获取最新一条验证码
         :param contact:
         :return:
-        '''
+        """
         try:
             db_config = eval(copy.deepcopy(self.db_service_config))
             print "db_config_data:" + str(db_config)
@@ -140,11 +140,11 @@ class Login():
 
     # 自动化不从数据库中删除数据
     # def del_user_fromdb(contact, **data_config):
-    #     '''
+    #     """
     #     删除用户（!!!!!!-----未删除与用户关联的商铺信息，表结构不清晰-----!!!!!!）
     #     :param contact: 电话号码/邮箱(模糊查询)
     #     :return:
-    #     '''
+    #     """
     #     if (data_config):
     #         db_service_config = data_config['db_service_config']
     #     else:

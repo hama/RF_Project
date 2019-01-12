@@ -8,72 +8,72 @@ sys.setdefaultencoding('utf-8')
 
 
 def tax_py(query_str={}, cookie=init_cookie):
-    '''
+    """
     获取税费列表
     :param query_str:
     :param cookie:
     :return:
-    '''
+    """
     url = home_page_url + '/api/tax'
     return do_get(url, query_str, cookie=cookie)
 
 
 def tax_patch_py(data, tax_id, cookie=init_cookie):
-    '''
+    """
     更新税费状态
     :param query_str:
     :param cookie:
     :return:
-    '''
+    """
     url = '%s/api/tax/%s' % (home_page_url, tax_id)
     return do_patch(url, data, cookie=cookie)
 
 
 def tax_batch_py(data, cookie=init_cookie):
-    '''
+    """
     批量更新税费
     :param data:
     :param cookie:
     :return:
-    '''
+    """
     url = home_page_url + '/api/tax/batch'
     return do_put(url, data, cookie=cookie)
 
 
 def add_default_tax_price_py(cookie=init_cookie):
-    '''
+    """
     添加默认税费（默认税率60%）
     :param cookie:
     :return:
-    '''
+    """
     return set_country_tax_price_py(60, cookie=cookie)
 
 
 def open_tax_price_by_id_py(tax_id, cookie=init_cookie):
-    '''
+    """
     开启指定税费
     :param cookie:
     :return:
-    '''
+    """
     return tax_patch_py({"status": "open"}, tax_id, cookie=cookie)
 
 
 def close_tax_price_by_id_py(tax_id, cookie=init_cookie):
-    '''
+    """
     关闭指定税费
     :param cookie:
     :return:
-    '''
+    """
     return tax_patch_py({"status": "close"}, tax_id, cookie=cookie)
 
 
 def set_country_tax_price_py(tax_price, cookie=init_cookie):
-    '''
+    """
     设置国家税费，百分比
     :param tax_price:
     :param cookie:
     :return:
-    '''
+    """
     create_only_one_shipping_py(cookie=cookie)
     tax_list_data = tax_py(cookie=cookie)['content']
     tax_rates = tax_list_data[0]['tax_rates']

@@ -17,11 +17,11 @@ sys.setdefaultencoding('utf-8')
 
 
 def salt_py(size=7):
-    '''
+    """
     构造一窜只有数字与字母的随机数，且首位不为数字
     :param size:
     :return:
-    '''
+    """
     seed = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     newstr = []
     for x in range(size):
@@ -100,9 +100,9 @@ def compare_time_py(format_time1, format_time2):
     return timestamp1 - timestamp2
 
 def upload_file_oss_py():
-    '''
+    """
     上传文件到阿里云
-    '''
+    """
     aliyun = {
         "accessKeyId": "LTAIpvmId6CBlCH8",
         "accessKeySecret": "RkrFrAmixqlS5su065AgVzFa9OXb9w",
@@ -179,13 +179,13 @@ def upload_oss_py(urlex, name='', extension='', timeout_second=30):
 # json_data = {'a':{'a1':'a1','a2':'a2'}}
 # json_conf = {'a':{'a1':'b1'}}
 def dict_deepupdate(json_data, json_conf):
-    '''
+    """
     深度更新
     通过遍历，把json_conf中的内容，更新至json_data中
     :param json_data:
     :param json_conf:
     :return:
-    '''
+    """
     if isinstance(json_conf, dict):
         for key, values in json_conf.items():
             if isinstance(values, dict):
