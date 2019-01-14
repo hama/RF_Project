@@ -160,14 +160,13 @@ def send_uireport_email_process(timestamp, log_path):
 
 
 if __name__ == "__main__":
-    print sys.path
-    # parser = argparse.ArgumentParser(description='email script')
-    # parser.add_argument('--timestamp', type=str, default=time.strftime("%Y%m%d%H%M%S", time.localtime()))
-    # parser.add_argument('--log_path', type=str)
-    # args = parser.parse_args()
-    # send_uireport_email_process(args.timestamp, args.log_path)
-    # lib_utils.upload_file_oss_py('','')
+    parser = argparse.ArgumentParser(description='email script')
+    parser.add_argument('--timestamp', type=str, default=time.strftime("%Y%m%d%H%M%S", time.localtime()))
+    parser.add_argument('--log_path', type=str)
+    args = parser.parse_args()
+    send_uireport_email_process(args.timestamp, args.log_path)
 
+    # lib_utils.upload_file_oss_py('','')
     # print os.path.join(os.path.dirname(__file__), '../..')
     # print os.getcwd()
     # print os.chdir('/var/log')
