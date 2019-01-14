@@ -41,53 +41,53 @@ checkout_017
     Add Address Common Step
     Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[2]    + 0.00USD
 
-checkout_021
-    [Documentation]    验证checkout页面，购买的商品参加了满减活动时，价格详情中会显示discount和优惠的价格
-    [Tags]    P0    threshold
-    kwrebate.end_all_rebates_py
-    kwshipping.add_price_fee_shipping_py
-    kwproduct.add_max_product_py
-    Go To Subtraction Page
-    Sleep    2
-    Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
-    Add Fill Rebate Activity
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
-    Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
-    Go To First Product C Interface
-    Reload Page And Start Ajax
-    Sleep    2
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[1]    - 20.00USD
+#checkout_021
+#    [Documentation]    验证checkout页面，购买的商品参加了满减活动时，价格详情中会显示discount和优惠的价格
+#    [Tags]    P0    threshold
+#    kwrebate.end_all_rebates_py
+#    kwshipping.add_price_fee_shipping_py
+#    kwproduct.add_max_product_py
+#    Go To Subtraction Page
+#    Sleep    2
+#    Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
+#    Add Fill Rebate Activity
+#    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
+#    Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
+#    Go To First Product C Interface
+#    Reload Page And Start Ajax
+#    Sleep    2
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[1]    - 20.00USD
 
-checkout_022
-    [Documentation]    验证checkout页面，total显示正常
-    [Tags]    P0    threshold
-    kwrebate.end_all_rebates_py
-    kwproduct.add_max_product_py
-    &{dict}=    Create Dictionary    name=方案0    rate_amount=2
-    @{plans}=    Create List    ${dict}
-    &{conf}=    Create Dictionary    plans=${plans}
-    kwshipping.add_price_fee_shipping_py    ${conf}
-    kwtax.set_country_tax_price_py    50
-    Go To Subtraction Page
-    Sleep    2
-    Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
-    Add Fill Rebate Activity
-    Wait And Input Text    ${locatorB_subtractionNew_input_cutPrice}     10
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
-    Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
-    Go To First Product C Interface
-    Sleep    2
-    ${price1}=    Wait And Get Text    ${locatorC_orderDetail_text_productPrice}
-    ${price}=    Evaluate    u"${price1}".strip('$')
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[0]    ${price}
-    Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[1]    - 10.00USD
-    Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[2]    + 2.00USD
-    Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[3]    + 217.00USD
-    Text Of Element Should Contain With Wait    ${locatorC_checkoutShipping_locator_total}    653.00USD
+#checkout_022
+#    [Documentation]    验证checkout页面，total显示正常
+#    [Tags]    P0    threshold
+#    kwrebate.end_all_rebates_py
+#    kwproduct.add_max_product_py
+#    &{dict}=    Create Dictionary    name=方案0    rate_amount=2
+#    @{plans}=    Create List    ${dict}
+#    &{conf}=    Create Dictionary    plans=${plans}
+#    kwshipping.add_price_fee_shipping_py    ${conf}
+#    kwtax.set_country_tax_price_py    50
+#    Go To Subtraction Page
+#    Sleep    2
+#    Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
+#    Add Fill Rebate Activity
+#    Wait And Input Text    ${locatorB_subtractionNew_input_cutPrice}     10
+#    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
+#    Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
+#    Go To First Product C Interface
+#    Sleep    2
+#    ${price1}=    Wait And Get Text    ${locatorC_orderDetail_text_productPrice}
+#    ${price}=    Evaluate    u"${price1}".strip('$')
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[0]    ${price}
+#    Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[1]    - 10.00USD
+#    Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[2]    + 2.00USD
+#    Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[3]    + 217.00USD
+#    Text Of Element Should Contain With Wait    ${locatorC_checkoutShipping_locator_total}    653.00USD
 
 checkout_039
     [Documentation]    验证checkout页面，shipping address栏输入正确的信息，可以提交成功
@@ -105,6 +105,8 @@ checkout_039
     Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
+    ${status}=    Run Keyword And Return Status    ${locatorC_checkoutShipping_label_SamecontactEamil}
+    Run Keyword If    '${status}'=='True'    Sleep And Click Element    ${locatorC_checkoutShipping_label_SamecontactEamil}
     Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
 

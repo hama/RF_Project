@@ -1,9 +1,11 @@
 # -*- coding:utf-8 -*-
+import simplejson as simplejson
 
 from do_request import *
 from kwproduct import add_max_product_py
 from raw_data import *
 from variable import *
+import json
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -16,7 +18,8 @@ def rebate_list_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url + "/api/rebate/list"
+
+    url = home_page_url + "/api/admin/discount-rebate"
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -27,7 +30,8 @@ def rebate_detail_py(rebate_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/rebate/detail/%s' % (home_page_url, rebate_id)
+
+    url = '%s/api/admin/discount-rebate/%s' % (home_page_url, rebate_id)
     return do_get(url, {}, cookie=cookie)
 
 
@@ -38,6 +42,7 @@ def rebate_select_product_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
+
     url = home_page_url + "/api/rebate/select-product"
     return do_get(url, query_str, cookie=cookie)
 
@@ -60,6 +65,7 @@ def rebate_end_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
+
     url = home_page_url + '/api/rebate/end'
     return do_post(url, data, cookie=cookie)
 
@@ -106,7 +112,7 @@ def get_select_product_list_py(conf={}, cookie=init_cookie):
     """
     data = copy.deepcopy(rebate_select_product_data)
     dict_deepupdate(data, conf)
-    return rebate_select_product_py(data, cookie=cookie)['content']['data']['products']
+    return rebate_select_product_py(data, cookie=cookie)['content']['list']
 
 
 def get_not_in_activities_product_list_py(conf={}, cookie=init_cookie):
@@ -121,9 +127,9 @@ def get_not_in_activities_product_list_py(conf={}, cookie=init_cookie):
         if product['other_activity'] == 0:
             product_id = product['product_id']
             sub_product_id = []
-            for sub_product in product['sub_product']:
-                sub_product_id.append(sub_product['sub_product_id'])
-            product_data = {"product_id": product_id, "sub_product_id": sub_product_id}
+            for sub_product in product['variants']:
+                sub_product_id = sub_product['variant_id']
+            product_data = {"product_id": product_id, "variant_id": sub_product_id}
             not_in_activities_product_list.append(product_data)
     return not_in_activities_product_list
 
@@ -141,11 +147,12 @@ def add_rebate_with_conf_py(conf={}, cookie=init_cookie):
         time.sleep(0.2)
         not_in_activities_product_list = get_not_in_activities_product_list_py()
     conf["product_list"] = json.dumps({"product": not_in_activities_product_list})
+    print not_in_activities_product_list
 
     data = copy.deepcopy(rebate_refresh_data)
     dict_deepupdate(data, conf)
 
-    return rebate_refresh_py(data, cookie=cookie)['content']['data']['id']
+    return rebate_refresh_py(data, cookie=cookie)
 
 
 def add_doing_rebate_py(conf={}, cookie=init_cookie):
@@ -244,6 +251,9 @@ def get_exist_doing_rebatesid_py(cookie=init_cookie):
 
 
 if __name__ == '__main__':
-    add_doing_rebate_py()
+    # add_doing_rebate_py()
     #print get_exist_doing_rebatesid_py()
     # print rebate_select_product_py()
+    # print add_doing_rebate_py()
+    # print add_before_rebate_py()
+    print add_rebate_with_conf_py()

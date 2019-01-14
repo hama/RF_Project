@@ -9,7 +9,6 @@ Resource          ../../../resources/keywords/kw_common.robot
 
 *** Test Cases ***
 #. 已激活用例
-
 pay_001
     [Documentation]    验证收款渠道页面可进入
     [Tags]    P0    threshold   smoke

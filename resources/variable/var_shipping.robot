@@ -94,11 +94,11 @@ ${locatorB_merchantSettings_input_channelName}    dom:document.querySelectorAll(
 ${locatorB_merchantSettings_input_clientID}    dom:document.querySelectorAll('[id="client_id"]')[0]    # 物流商 - 账户ID输入框
 ${locatorB_merchantSettings_input_secretKey}    dom:document.querySelectorAll('[id="secret_key"]')[0]    # 物流商 - 账户密钥输入框
 ${locatorB_merchantSettings_button_addSave}    dom:document.querySelectorAll('[class*="footer"] [type="button"]')[0]        # 物流商 - 确定添加 按钮
-${locatorB_merchantSettings_icon_uaiBestClose}    dom:document.querySelectorAll('[class="ant-drawer-close-x"]')[1]    # 添加物流商 - 关闭（x图标）
+${locatorB_merchantSettings_icon_uaiBestClose}    dom:document.querySelectorAll('[aria-label="Close"]')[1]    # 添加物流商 - 关闭（x图标）
 
 ${locatorB_merchantSettings_icon_shipiingWay}    dom:document.querySelectorAll('[class*="type"]')    # 物流商 - 物流渠道icon
 ${locatorB_merchantSettings_checkbox_waySelect}    dom:document.querySelectorAll('span[class*="ant-checkbox"]')    # 物流渠道 - 渠道选择
-${locatorB_merchantSettings_icon_shipiingWayClose}    dom:document.querySelectorAll('[class="ant-drawer-close-x"]')[2]    # 物流渠道 - 关闭（x图标）
+${locatorB_merchantSettings_icon_shipiingWayClose}    dom:document.querySelectorAll('[aria-label="Close"]')[2]    # 物流渠道 - 关闭（x图标）
 ${locatorB_merchantSettings_button_shipiingWaySave}    dom:document.querySelectorAll('[class*="footer"] [class*="ant-btn middle_btn"]')[1]    # 物流渠道 - 确定 按钮
 
 

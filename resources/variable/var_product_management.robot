@@ -116,3 +116,4 @@ ${locatorB_productsNew_button_save}    ${locatorB_button_save00}     # 保存按
 ${locatorC_productDetail_button_addToCart}    dom:document.querySelectorAll("[data-click='addToCart']")[0]     #.c端订单 - 添加到购物车 add to cart 按钮
 ${locatorC_productDetail_button_buyNow}    dom:document.querySelectorAll('[data-click="submit"]')[0]    #.by-now按钮
 ${locatorC_productDetail_input_qtyNum}    dom:document.querySelectorAll("[class*='form-control product-info__qty_num']")[0]    #商品购买数量输入框
+${locatorC_productDetail_button_addQuaity}    dom:document.querySelectorAll('[data-click="increase"]')[0]    #商品添加（+）按钮

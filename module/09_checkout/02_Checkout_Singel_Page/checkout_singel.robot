@@ -209,11 +209,11 @@ checkout_096
     Go To First Product C Interface
     Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
+    ${status}=    Run Keyword And Return Status    ${locatorC_checkoutShipping_label_SamecontactEamil}
+    Run Keyword If    '${status}'=='True'    Sleep And Click Element    ${locatorC_checkoutShipping_label_SamecontactEamil}
     Add Address Common Step
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
 
 checkout_098
@@ -411,6 +411,8 @@ checkout_197
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
+    ${status}=    Run Keyword And Return Status    ${locatorC_checkoutShipping_label_SamecontactEamil}
+    Run Keyword If    '${status}'=='True'    Sleep And Click Element    ${locatorC_checkoutShipping_label_SamecontactEamil}
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
@@ -430,6 +432,8 @@ checkout_199
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
+    ${status}=    Run Keyword And Return Status    ${locatorC_checkoutShipping_label_SamecontactEamil}
+    Run Keyword If    '${status}'=='True'    Sleep And Click Element    ${locatorC_checkoutShipping_label_SamecontactEamil}
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
@@ -442,6 +446,8 @@ checkout_200
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
+    ${status}=    Run Keyword And Return Status    ${locatorC_checkoutShipping_label_SamecontactEamil}
+    Run Keyword If    '${status}'=='True'    Sleep And Click Element    ${locatorC_checkoutShipping_label_SamecontactEamil}
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!

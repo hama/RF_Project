@@ -6,7 +6,7 @@ Resource          var_common.robot
 
 ${locatorB_couponCodeNew_input_activityName}    dom:document.querySelectorAll('[id="name"]')[0]   # 活动名称input
 ${locatorB_couponCodeNew_button_addActivity}    dom:document.querySelectorAll('[class*="large_btn"]')[0]     #.新建活动
-${locatorB_couponCodeNew_button_allProducts}    dom:document.querySelectorAll('[class*="ant-btn li_a96d"]')[0]  # 选择全部商品
+${locatorB_couponCodeNew_button_allProducts}    dom:document.querySelectorAll('[class*="ant-btn li"]')[0]  # 选择全部商品
 ${locatorB_couponCodeNew_button_chooseSomeProducts}    dom:document.querySelectorAll('[class*="btnselproduct"]')[0]    # 选择部分商品
 
 ${locatorB_couponCodeNew_span_chooseProduct}    dom:document.querySelectorAll('tbody[class="ant-table-tbody"] tr td span')[0]    # 选择部分商品-第一个商品
@@ -27,7 +27,7 @@ ${locatorB_couponCodeNew_selectTime_confirm}    dom:document.querySelectorAll('[
 ${locatorB_couponCodeNew_selectTime_notEndTime}    dom:document.querySelectorAll('[class="ant-checkbox-wrapper"] span[class*="ant-checkbox"]')[0]    #.不限制结束时间 id="state.date_end_unlimited"
 ${locatorB_couponCodeNew_selectTime_notEndTimeStart}    dom:document.querySelectorAll('[class="ant-form-item-children"] [class*="ant-checkbox"]')[1]     #判断按钮是否选中状态  ant-checkbox ant-checkbox-checked
 ${locatorB_couponCodeNew_text_input_promoCode}    dom:document.querySelectorAll('[id="code"]')[0]    #.优惠码输入框
-${locatorB_couponCodeNew_text_p_promoCrandom}    dom:document.querySelectorAll('p[class="random_89fd"]')[0]    #随机生成
+${locatorB_couponCodeNew_text_p_promoCrandom}    dom:document.querySelectorAll('p[class*="random"]')[0]    #随机生成
 ${locatorB_couponCodeNew_text_input_num}    dom:document.querySelectorAll('[id="state.total_num"]')[0]       #.优惠券 数量  state.total_num
 ${locatorB_couponCodeNew_text_input_Mannum}    dom:document.querySelectorAll('[id="state.limit_num"]')    #每人限用
 ${locatorB_couponCodeNew_input_noLimit}        dom:document.querySelectorAll('[id="state.total_num_unlimited"]')[0]  #.优惠券 数量 不限按钮
@@ -42,14 +42,6 @@ ${locatorB_couponCodeNew_text_icon_anticonDown}    dom:document.querySelectorAll
 ${locatorB_couponCodeNew_text_icon_anticonUp}    dom:document.querySelectorAll('[class*="anticon anticon-up"]')[0]    # 部分商品 - 选择商品 - 第一个商品 - 展开 箭头
 
 ${locatorB_couponCodeNew_items_listProduct}    ${locatorB_table_listItems}    # 商品列表
-
-${locatorB_couponCodeNew_img_firstProduct_picture}    ${locatorB_table_listItems}[0].querySelectorAll("td")[0]
-${locatorB_couponCodeNew_text_firstProduct_name}    ${locatorB_table_listItems}[0].querySelectorAll("td")[1]
-${locatorB_couponCodeNew_text_firstProduct_style}    ${locatorB_table_listItems}[0].querySelectorAll("td")[2]
-${locatorB_couponCodeNew_text_firstProduct_salePrice}    ${locatorB_table_listItems}[0].querySelectorAll("td")[3]
-${locatorB_couponCodeNew_text_firstProduct_stock}    ${locatorB_table_listItems}[0].querySelectorAll("td")[4]
-${locatorB_couponCodeNew_text_firstProduct_operation}    ${locatorB_table_listItems}[0].querySelectorAll("td")[5]
-
 
 #.locatorB_couponCode
 ${locatorB_couponCode_items_listCoupon}    ${locatorB_table_listItems}    # 列表中的优惠码集合

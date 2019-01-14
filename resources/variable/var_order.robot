@@ -64,6 +64,9 @@ ${locatorB_orderUndeal_items_listOrder}    dom:document.querySelectorAll('tr[cla
 
 # locatorB_orderDetail
 ${locatorB_orderDetail_text_orderNum}    dom:document.querySelectorAll('div[class*="order_id"]')[1]    # 订单详情的订单编号
+${locatorB_orderDetail_button_postSale}        dom:document.querySelectorAll('[data-robot="post_sale"]')[0]    # 订单详情 - 进行售后
+${locatorB_orderDetail_button_cancelOrder}    dom:document.querySelectorAll('[data-robot="cancel_order"]')[0]    # 订单详情 - 取消订单
+${locatorB_orderDetail_icon_popUpClose}    dom:document.querySelectorAll('[class="ant-modal-close-x"]')[0]    # 订单详情 - 弹窗关闭（x）
 
 ${locatorB_orderDetail_tag_undefined}    dom:document.querySelectorAll('div[class*="tag_0158 undefined"]')    # tag：已取消/无/支付失败
 ${locatorB_orderDetail_tag_doing}    dom:document.querySelectorAll('div[class*="tag_status_placed"]')    # tag：进行中

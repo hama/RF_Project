@@ -30,8 +30,8 @@ ${locatorC_checkoutShipping_text_itemProductTitle}    dom:document.querySelector
 ${locatorC_checkoutShipping_text_itemQtyNum}    dom:document.querySelectorAll("[class*='checkout-item__quantity']")[0]
 ${locatorC_checkoutShipping_text_itemPrice}    dom:document.querySelectorAll("[class='checkout-item__price']")[0]
 ${locatorC_checkoutShipping_text_subtotalPrice}    dom:document.querySelectorAll(".checkout__prices-table-value")[0]
-${locatorC_checkoutShipping_text_shippingPrice}   dom:document.querySelectorAll(".checkout__prices-table-value")[1]      #.运费shipping
-${locatorC_checkoutShipping_text_taxPrice}   dom:document.querySelectorAll(".checkout__prices-table-value")[2]      #.tax
+${locatorC_checkoutShipping_text_shippingPrice}   dom:document.querySelectorAll(".checkout__prices-table-value")      #.运费shipping
+${locatorC_checkoutShipping_text_taxPrice}   dom:document.querySelectorAll(".checkout__prices-table-value")      #.tax
 ${locatorC_checkoutShipping_text_totalPrice}    dom:document.querySelectorAll('[class*="checkout-prices"] tfoot td')[1]      #.总金额
 ${locatorC_checkout_prices_shippingValue}     dom:document.querySelectorAll('[class*="prices-table-value"]')      #.shipping 金额信息显示
 

@@ -7,7 +7,7 @@ Force Tags        store
 Resource          ../../../resources/keywords/kw_common.robot
 
 
-*** Testcases ***
+*** Test Cases ***
 store001
     [Documentation]    店铺信息-店铺名称里UI展示正确
     [Tags]    P1

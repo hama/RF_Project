@@ -38,7 +38,7 @@ ${locatorB_subtractionsMain_icon_pageinationNext}    dom:document.querySelectorA
 #.locatorB_subtractionNew
 ${locatorB_subtractionNew_icon_ReturnActivity}    dom:document.querySelectorAll('[class="djfont dj-back"]')[0]    #返回满减活动 图标
 
-${locatorB_subtractionNew_input_ActivityName}    dom:document.querySelectorAll('[id="name"]')   #活动名称
+${locatorB_subtractionNew_input_ActivityName}    dom:document.querySelectorAll('[id="title"]')   #活动名称
 
 ${locatorB_subtractionNew_icon_ActivityTimeStart}    dom:document.querySelectorAll('[class*="anticon anticon-calendar"]')[0]    #活动时间 - 开始时间选择
 ${locatorB_subtractionNew_input_ActivityTimeStart}    dom:document.querySelectorAll('[class="ant-calendar-input "]')    #活动时间 - 开始时间输入框
@@ -72,5 +72,8 @@ ${locatorB_subtractionNew_SelectProduct_checkbox_selectProductAll}     dom:docum
 ${locatorB_subtractionNew_SelectProduct_list_Product}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr')[0]    # 适用范围 - 选择部分商品 - 第一个商品第一行
 ${locatorB_subtractionNew_SelectProduct_text_ExitProduct}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(6) a')[0]    # 适用范围 - 选择部分商品 - 第一个商品 - 退出活动
 
+
+${locatorB_subtractionNew_button_addActivityNext}    dom:document.querySelectorAll('[class*="ant-btn middle_btn"]')    #添加满减活动 - 下一步 按钮
+${locatorB_subtractionNew_button_addActivityLast}    dom:document.querySelectorAll('[class*="ant-btn default_btn"]')[0]    #添加满减活动 - 上一步 按钮
 ${locatorB_subtractionNew_button_addActivitySave}    ${locatorB_button_save00}    #保存 按钮
 ${locatorB_subtractionNew_button_addActivityCancel}    ${locatorB_button_canecl00}    #取消 按钮

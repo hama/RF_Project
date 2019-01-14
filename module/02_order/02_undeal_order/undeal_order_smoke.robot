@@ -3,7 +3,7 @@ Suite Setup       Undeal Order Suite Setup
 Suite Teardown    Undeal Order Suite Teardown
 Test Setup        Undeal Order Case Setup
 Test Teardown     Teardown Test Case
-Force Tags        Order
+Force Tags        Undeal Order
 Resource          ../../../resources/keywords/kw_common.robot
 
 *** Test Cases ***
