@@ -9,45 +9,45 @@ sys.setdefaultencoding('utf-8')
 
 
 def store_post_py(data, cookie=init_cookie):
-    '''
+    """
     更新店铺信息
     :param data:
     :param cookie:
     :return:
-    '''
+    """
     url = home_page_url + "/api/store"
     return do_post(url, data, cookie=cookie)
 
 
 def store_get_py(cookie=init_cookie):
-    '''
+    """
     获取店铺信息
     :param cookie:
     :return:
-    '''
+    """
     url = home_page_url + "/api/store"
     query_str = {}
     return do_get(url, query_str, cookie=cookie)
 
 
 def store_guide_setting_py(cookie=init_cookie):
-    '''
+    """
     获取店铺教程配置信息
     :param cookie:
     :return:
-    '''
+    """
     url = home_page_url + "/api/store/guide-setting"
     query_str = {}
     return do_get(url, query_str, cookie=cookie)
 
 
 def set_store_info_with_conf_py(conf={}, cookie=init_cookie):
-    '''
+    """
     设置store_info通过conf
     :param conf:
     :param cookie:
     :return:
-    '''
+    """
     data = copy.deepcopy(store_data)
     dict_deepupdate(data, conf)
     data_store_info = store_get_py(cookie=cookie)

@@ -18,100 +18,100 @@ def payment_methods_post_py(data, cookie=init_cookie):
 
 
 def payment_methods_put_py(data, payment_methods_id, cookie=init_cookie):
-    '''
+    """
     更新支付方式
     :param query_str:
     :param cookie:
     :return:
-    '''
+    """
     url = '%s/api/payment/methods/%s' % (home_page_url, payment_methods_id)
     return do_put(url, data, cookie=cookie)
 
 
 def payment_methods_patch_py(data, payment_methods_id, cookie=init_cookie):
-    '''
+    """
     更新支付方式状态
     :param query_str:
     :param cookie:
     :return:
-    '''
+    """
     url = '%s/api/payment/methods/%s' % (home_page_url, payment_methods_id)
     return do_patch(url, data, cookie=cookie)
 
 
 def payment_channels_post_py(data, cookie=init_cookie):
-    '''
+    """
     创建支付渠道
     :param data:
     :param cookie:
     :return:
-    '''
+    """
     url = home_page_url + "/api/payment/channels"
     return do_post(url, data, cookie=cookie)
 
 
 def payment_channels_get_py(query_str={}, cookie=init_cookie):
-    '''
+    """
     获取支付渠道
     :param data:
     :param cookie:
     :return:
-    '''
+    """
     url = home_page_url + "/api/payment/channels"
     return do_get(url, query_str, cookie=cookie)
 
 
 def payment_channels_put_py(data, payment_channels_id, cookie=init_cookie):
-    '''
+    """
     更新支付渠道
     :param query_str:
     :param cookie:
     :return:
-    '''
+    """
     url = '%s/api/payment/channels/%s' % (home_page_url, payment_channels_id)
     return do_put(url, data, cookie=cookie)
 
 
 def payment_get_py(query_str={}, cookie=init_cookie):
-    '''
+    """
     获取支付列表
     :param data:
     :param cookie:
     :return:
-    '''
+    """
     url = home_page_url + "/api/payment"
     return do_get(url, query_str, cookie=cookie)
 
 
 def payment_auth_get_py(query_str={}, cookie=init_cookie):
-    '''
+    """
     获取支付渠道授权
     :param data:
     :param cookie:
     :return:
-    '''
+    """
     url = home_page_url + "/api/payment/auth"
     return do_get(url, query_str, cookie=cookie)
 
 
 def payment_pay_py(data, cookie=init_cookie):
-    '''
+    """
     付款-下订单
     :param data:
     :param cookie:
     :return:
-    '''
+    """
     url = myshoplaza_url + '/checkout/payment/pay'
     return do_post(url, data, cookie=cookie)
 
 
 def get_expected_payment_line_py(expected, cookie=init_cookie):
-    '''
+    """
     获取指定的payment_line数据
     :param expected:
     :param cookie:
     :return:
-    '''
+    """
     payment_data = get_exist_expected_payment_data_py(expected, cookie=cookie)
 
     if isinstance(payment_data, dict):
@@ -125,12 +125,12 @@ def get_expected_payment_line_py(expected, cookie=init_cookie):
 
 
 def get_exist_expected_payment_data_py(expected, cookie=init_cookie):
-    '''
+    """
     获取指定的已存在支付方式数据
     :param expected:
     :param cookie:
     :return:
-    '''
+    """
     for payment_data in payment_get_py(cookie=cookie)['content']:
         if expected['payment_method'] == payment_data['payment_method']:
             return payment_data
@@ -138,12 +138,12 @@ def get_exist_expected_payment_data_py(expected, cookie=init_cookie):
 
 
 def get_exist_expected_payment_method_id_py(expected, cookie=init_cookie):
-    '''
+    """
     获取指定的已存在支付方式的id
     :param expected:
     :param cookie:
     :return:
-    '''
+    """
     payment_data = get_exist_expected_payment_data_py(expected, cookie=cookie)
     if isinstance(payment_data, dict):
         return payment_data['id']
@@ -175,11 +175,11 @@ def inactivate_payment_cod_py(cookie=init_cookie):
 
 
 def is_binding_account(expect, cookie=init_cookie):
-    '''
+    """
     判断credit_card是否绑定了账号（目前只有credit_card）
     :param cookie:
     :return:
-    '''
+    """
     payment_data = get_exist_expected_payment_data_py(expect, cookie=cookie)
     if isinstance(payment_data, dict):
         for channel in payment_data['channel_list']:
@@ -219,12 +219,12 @@ def inactivate_payment_credit_card_py(cookie=init_cookie):
 
 
 def do_pay_with_conf_py(conf={}, cookie=init_cookie):
-    '''
+    """
     支付订单
     :param conf:
     :param cookie:
     :return:
-    '''
+    """
     data = copy.deepcopy(payment_pay_data)
     dict_deepupdate(data, conf)
 

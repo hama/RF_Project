@@ -25,13 +25,14 @@ Close Test Suite Browser
 
 Setup Test Case
     [Documentation]    测试用例初始化
-    Start Ajax Listener
+#    Start Ajax Listener
     #    log    *******************************************************************************************************
     #    log    ******************************************* Test Case Start *******************************************
     #    log    *******************************************************************************************************
 
 Teardown Test Case
     [Documentation]
+#    log_messages_with_conf
     #    测试用例执行失败进行截图
     Run Keyword If Test Failed    Capture Page Screenshot
 #    Run Keyword If Test Failed    Run Keyword And Ignore Error    Handle Alert
@@ -50,10 +51,11 @@ Open Test Browser
     Run Keyword If    ${status}==False    Set Global Variable    ${checkLevel}    P0P1P2P3
 	#    判断是否开启无头浏览器
     Run Keyword If    '${is_headless}'=='${true}'    Open Headless Chrome    ${url}
-    ...    ELSE    Open Browser    ${url}    chrome
+    ...    ELSE    Open Chrome    ${url}
     # 载入jquery，可使用jquery的selector去定位元素
     #    Execute Javascript    a = window.document.createElement('script');a.src='//code.jquery.com/jquery-1.9.1.min.js';window.document.body.appendChild(a);
     #    Sleep    2
+#    start_listener_on_new_tab
     Set Window Position    0    0
     Set Window Size    1440    1080
     Sleep    3
@@ -65,8 +67,18 @@ Open Headless Chrome
     Call Method    ${chrome_options}    add_argument    headless
     Call Method    ${chrome_options}    add_argument    disable-gpu
     Call Method    ${chrome_options}    add_argument    no-sandbox
+    Call Method    ${chrome_options}    add_argument    remote-debugging-port\=9222
 #    Call Method    ${chrome_options}    add_argument    disable-setuid-sandbox
     Create Webdriver    Chrome    chrome_options=${chrome_options}
+    Go To    ${url}
+
+Open Chrome
+    [Arguments]    ${url}
+    [Documentation]    打开浏览器
+	${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}    add_argument    remote-debugging-port\=9222
+#    Call Method    ${chrome_options}    add_argument    disable-setuid-sandbox
+    Create WebDriver    Chrome    chrome_options=${chrome_options}
     Go To    ${url}
 
 Start Ajax Listener

@@ -4,6 +4,7 @@ Library           OperatingSystem
 Library           Collections
 Library           DateTime
 Library           String
+Library           ${CURDIR}/../../listener/cdpkeywords.py
 Library           ${CURDIR}/../../lib/customlib/kwcart.py
 Library           ${CURDIR}/../../lib/customlib/kwcheckout.py
 Library           ${CURDIR}/../../lib/customlib/kwcollection.py
@@ -337,6 +338,7 @@ Open New And Close Other Windows
     @{new_window_handle}    Get Window Handles
     Select Window    ${new_window_handle[0]}
     Set Window Size    1440    1080
+#    start_listener_on_new_tab
 
 Focus On New Window
 	[Documentation]    聚焦到新窗口（紧跟开窗口动作之后）,并返回新窗口的handle
