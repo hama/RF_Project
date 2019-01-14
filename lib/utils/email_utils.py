@@ -13,7 +13,8 @@ from email.mime.text import MIMEText
 
 from selenium import webdriver
 
-sys.path.append(os.path.join(os.getcwd(),'../..'))
+sys.path.append(os.getcwd())
+sys.path.append(os.path.dirname(__file__))
 # from lib.customlib import lib_utils
 
 username = "zhouli@shoplazza.com"  # .发件人
