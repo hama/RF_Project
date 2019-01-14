@@ -12,8 +12,9 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 from selenium import webdriver
-sys.path.append('../..')
-# from lib.customlib import lib_utils
+
+sys.path.append(os.path.join(os.getcwd(),'../..'))
+from lib.customlib import lib_utils
 
 username = "zhouli@shoplazza.com"  # .发件人
 password = "zeqnvyihpxcmlefy"  # .发件人密码
