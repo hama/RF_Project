@@ -1,5 +1,4 @@
 # -*- coding:utf-8 -*-
-import simplejson as simplejson
 
 from do_request import *
 from kwproduct import add_max_product_py
@@ -43,7 +42,7 @@ def rebate_select_product_py(query_str={}, cookie=init_cookie):
     :return:
     """
 
-    url = home_page_url + "/api/rebate/select-product"
+    url = home_page_url + "/api/admin/discount-rebate/select-product"
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -54,30 +53,30 @@ def rebate_refresh_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url + '/api/rebate/refresh'
+    url = '%s/api/admin/discount-rebate/' % (home_page_url)
     return do_post(url, data, cookie=cookie)
 
 
-def rebate_end_py(data, cookie=init_cookie):
+def rebate_end_py(rebate_id, cookie=init_cookie):
     """
     提前结束满减活动
     :param query_str:
     :param cookie:
     :return:
     """
+    url = '%s/api/admin/discount-rebate/%s' % (home_page_url, rebate_id)
+    data = {"id": rebate_id, "status": "end"}
+    return do_patch(url, data, cookie=cookie)
 
-    url = home_page_url + '/api/rebate/end'
-    return do_post(url, data, cookie=cookie)
 
-
-def rebate_delete_py(data, cookie=init_cookie):
+def rebate_delete_py(data, rebate_id, cookie=init_cookie):
     """
     删除满减活动
     :param query_str:
     :param cookie:
     :return:
     """
-    url = home_page_url + '/api/rebate/delete'
+    url = '%s/api/admin/discount-rebate/%s' % (home_page_url, rebate_id)
     return do_post(url, data, cookie=cookie)
 
 
@@ -88,7 +87,7 @@ def rebate_selected_info_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url + '/api/rebate/selected-info'
+    url = home_page_url + '/api/admin/discount-rebate/selected-product'
     return do_post(url, data, cookie=cookie)
 
 
@@ -147,7 +146,6 @@ def add_rebate_with_conf_py(conf={}, cookie=init_cookie):
         time.sleep(0.2)
         not_in_activities_product_list = get_not_in_activities_product_list_py()
     conf["product_list"] = json.dumps({"product": not_in_activities_product_list})
-    print not_in_activities_product_list
 
     data = copy.deepcopy(rebate_refresh_data)
     dict_deepupdate(data, conf)
@@ -162,7 +160,10 @@ def add_doing_rebate_py(conf={}, cookie=init_cookie):
     :return:
     """
     certain_date = get_certain_date_py()
-    conf['date_start'] = certain_date['yesterday_date']
+    certain_date = certain_date['yesterday_date']
+    timeArray = time.strptime(certain_date, "%Y-%m-%d %H:%M:%S")
+    conf['starts_at'] = int(time.mktime(timeArray))
+
     return add_rebate_with_conf_py(conf, cookie=cookie)
 
 
@@ -173,7 +174,10 @@ def add_before_rebate_py(conf={}, cookie=init_cookie):
     :return:
     """
     certain_date = get_certain_date_py()
-    conf['date_start'] = certain_date['tomorrow_date']
+    certain_date = certain_date['tomorrow_date']
+    timeArray = time.strptime(certain_date, "%Y-%m-%d %H:%M:%S")
+    conf['starts_at'] = int(time.mktime(timeArray))
+
     return add_rebate_with_conf_py(conf, cookie=cookie)
 
 
@@ -184,8 +188,14 @@ def add_finish_rebate_py(conf={}, cookie=init_cookie):
     :return:
     """
     certain_date = get_certain_date_py()
-    conf['date_start'] = certain_date['todayBeforeYesterday_date']
-    conf['date_end'] = certain_date['yesterday_date']
+    start_certain_date = certain_date['todayBeforeYesterday_date']
+    start_timeArray = time.strptime(start_certain_date, "%Y-%m-%d %H:%M:%S")
+    conf['starts_at'] = int(time.mktime(start_timeArray))
+
+    end_certain_date = certain_date['yesterday_date']
+    end_timeArray = time.strptime(end_certain_date, "%Y-%m-%d %H:%M:%S")
+    conf['ends_at'] = int(time.mktime(end_timeArray))
+
     return add_rebate_with_conf_py(conf, cookie=cookie)
 
 
@@ -197,7 +207,8 @@ def end_all_rebates_py(cookie=init_cookie):
     """
     rebates_id = get_exist_doing_rebatesid_py(cookie=cookie)
     for rebate_id in rebates_id:
-        rebate_end_py({'rebate_id': rebate_id}, cookie=cookie)
+        rebate_end_py(rebate_id, cookie=cookie)
+
 
 
 def get_all_rebates_count_py(conf={}, cookie=init_cookie):
@@ -208,10 +219,10 @@ def get_all_rebates_count_py(conf={}, cookie=init_cookie):
     :return:
     """
     rebate_list = rebate_list_py(conf, cookie=cookie)['content']
-    if rebate_list['state'] == 0:
-        return rebate_list['total']
-    elif rebate_list['state'] == 2:
+    if rebate_list['data'] == []:
         return 0
+    else:
+        return rebate_list['total']
 
 
 def get_exist_rebatesid_py(progress, cookie=init_cookie):
@@ -247,13 +258,17 @@ def get_exist_doing_rebatesid_py(cookie=init_cookie):
     :param cookie:
     :return:
     """
-    return get_exist_rebatesid_py(2, cookie=cookie)
+    return get_exist_rebatesid_py("ongoing", cookie=cookie)
 
 
 if __name__ == '__main__':
-    # add_doing_rebate_py()
+    add_doing_rebate_py()
     #print get_exist_doing_rebatesid_py()
     # print rebate_select_product_py()
     # print add_doing_rebate_py()
     # print add_before_rebate_py()
-    print add_rebate_with_conf_py()
+    # print add_doing_rebate_py()
+
+
+
+

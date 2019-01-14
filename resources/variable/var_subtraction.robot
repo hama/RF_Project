@@ -21,12 +21,12 @@ ${locatorB_subtractionsMain_button_KeywordSearch}    dom:document.querySelectorA
 ${locatorB_subtractionsMain_button_ResetSearch}    dom:document.querySelectorAll('[class*="ant-btn small_btn"]')    # 满减活动 - 重置按钮
 
 ${locatorB_subtractionsMain_list_firstActivity}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr')[0]    # 满减活动 - 第一个活动第一行
-${locatorB_subtractionsMain_text_firstActivityID}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(1)')    # 满减活动 - 活动列表 - 活动编号
-${locatorB_subtractionsMain_text_firstActivityName}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(2)')    # 满减活动 - 活动列表 - 活动名称
-${locatorB_subtractionsMain_text_firstActivityTime}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(3)')    # 满减活动 - 活动列表 - 活动时间
-${locatorB_subtractionsMain_text_firstActivityCode}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(4)')    # 满减活动 - 活动列表 - 优惠项
-${locatorB_subtractionsMain_text_firstActivityRange}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(5)')    # 满减活动 - 活动列表 - 适用商品
-${locatorB_subtractionsMain_text_firstActivityStatus}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(6)')    # 满减活动 - 活动列表 - 活动状态
+#${locatorB_subtractionsMain_text_firstActivityID}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(1)')    # 满减活动 - 活动列表 - 活动编号
+${locatorB_subtractionsMain_text_firstActivityName}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(1)')    # 满减活动 - 活动列表 - 活动名称
+${locatorB_subtractionsMain_text_firstActivityTime}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(2)')    # 满减活动 - 活动列表 - 活动时间
+${locatorB_subtractionsMain_text_firstActivityCode}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(3)')    # 满减活动 - 活动列表 - 优惠项
+${locatorB_subtractionsMain_text_firstActivityRange}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(4)')    # 满减活动 - 活动列表 - 适用商品
+${locatorB_subtractionsMain_text_firstActivityStatus}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(5)')    # 满减活动 - 活动列表 - 活动状态
 ${locatorB_subtractionsMain_icon_firstActivityPreview}    dom:document.querySelectorAll('[class*="djfont dj-preview"]')[0]    # 满减活动 - 第一个活动 - 预览 图标
 ${locatorB_subtractionsMain_icon_firstActivityDelete}    dom:document.querySelectorAll('[class*="djfont delete"]')[0]    # 满减活动 - 活动列表 - 第一个 删除 图标
 ${locatorB_subtractionsMain_icon_firstActivityStop}    dom:document.querySelectorAll('[class*="djfont stop icon"]')[0]    # 满减活动 - 活动列表 -第一个 提前结束 图标

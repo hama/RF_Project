@@ -12,12 +12,12 @@ activitie_001
     [Documentation]    可查全部状态的活动
     [Tags]    P0    threshold
     kwrebate.add_before_rebate_py
-    kwrebate.add_doing_rebate_py
     kwrebate.add_finish_rebate_py
+    kwrebate.add_doing_rebate_py
     Reload Page And Start Ajax
     Sleep And Click Element    ${locatorB_subtractionsMain_tab_ActivityAll}
-    Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityStatus}[0]   已结束
-    Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityStatus}[1]    进行中
+    Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityStatus}[0]   进行中
+    Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityStatus}[1]    已结束
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityStatus}[2]    未开始
     ${rebateNum}=    kwrebate.get_all_rebates_count_py
     Text Of Element Should Contain With Wait    ${locatorB_subtractionsMain_text_pageinationTotal}    ${rebateNum}
