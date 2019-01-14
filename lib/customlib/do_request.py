@@ -29,11 +29,11 @@ def do_post(url, data, cookie):
         return e
 
 
-def do_put(url, query_str, cookie):
+def do_put(url, data, cookie):
     try:
-        response_data = requests.put(url=url, headers={"cookie": get_cookie(url, cookie)}, params=query_str)
+        response_data = requests.put(url=url, headers={"cookie": get_cookie(url, cookie)}, json=data)
         return_data = {}
-        logging.info(url + '\nrequest_data:' + str(query_str) + '\n\nresponse_data:' + response_data.content)
+        logging.info(url + '\nrequest_data:' + str(data) + '\n\nresponse_data:' + response_data.content)
         if response_data.content == '':
             return_data['content'] = response_data.content
         else:
@@ -67,11 +67,11 @@ def do_get(url, query_str, cookie):
         return e
 
 
-def do_patch(url, query_str, cookie):
+def do_patch(url, data, cookie):
     try:
-        response_data = requests.patch(url=url, headers={"cookie": get_cookie(url, cookie)}, params=query_str)
+        response_data = requests.patch(url=url, headers={"cookie": get_cookie(url, cookie)}, json=data)
         return_data = {}
-        logging.info(url + '\nrequest_data:' + str(query_str) + '\n\nresponse_data:' + response_data.content)
+        logging.info(url + '\nrequest_data:' + str(data) + '\n\nresponse_data:' + response_data.content)
         if response_data.content == '':
             return_data['content'] = response_data.content
         else:
@@ -85,11 +85,11 @@ def do_patch(url, query_str, cookie):
         return e
 
 
-def do_delete(url, query_str, cookie):
+def do_delete(url, cookie):
     try:
-        response_data = requests.delete(url=url, headers={"cookie": get_cookie(url, cookie)}, params=query_str)
+        response_data = requests.delete(url=url, headers={"cookie": get_cookie(url, cookie)})
         return_data = {}
-        logging.info(url + '\nresponse_data:' + str(query_str) + '\n\nresponse_data:' + response_data.content)
+        logging.info(url + '\nresponse_data:' + response_data.content)
         if response_data.content == '':
             return_data['content'] = response_data.content
         else:

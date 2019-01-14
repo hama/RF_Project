@@ -39,7 +39,7 @@ checkout_019
     Sleep    1
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_province}    Beijing
     Sleep    1
-    Text Of Element Should Be Equal With Wait     ${locatorC_checkoutPayment_text_taxPrice}    + 0.00USD
+    Text Of Element Should Be Equal With Wait     ${locatorC_checkoutPayment_text_taxPrice}[2]    + 0.00USD
 
 checkout_080
     [Documentation]    验证checkout shipping页面，购买的商品不需要物流运输时，选择国家后，shipping delivery栏会出现交付虚拟产品的运费方案  >  1.C端购买商品women进入checkout shipping页面  2.选择国家   3.查看shipping delivery栏
