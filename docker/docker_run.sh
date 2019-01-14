@@ -43,7 +43,7 @@ do
         echo "REBOT_FILE=${REBOT_FILE}"
         rebot -d "$LOG_PATH"/ ${REBOT_FILE}
         docker run -d -v /var/log:/var/log --rm registry.shoplazza.com/library/uitest:v7 \
-                bash -c "/opt/$RUN_SH_IN_DOCKER -E -T $TIMESTAMP -D $LOG_PATH"
+                bash -c "/opt/$RUN_SH_IN_DOCKER -T $TIMESTAMP -D $LOG_PATH"
         exit 0
     fi
 done
