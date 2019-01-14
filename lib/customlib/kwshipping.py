@@ -104,7 +104,7 @@ def shippings_delete_py(shipping_id, cookie=init_cookie):
     :return:
     '''
     url = '%s/api/shippings/%s' % (home_page_url, shipping_id)
-    return do_delete(url, cookie=cookie)
+    return do_delete(url, {}, cookie=cookie)
 
 
 def shippings_post_py(data, cookie=init_cookie):
