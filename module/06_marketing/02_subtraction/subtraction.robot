@@ -146,17 +146,19 @@ activitie_022
 activitie_053
     [Documentation]    未开始活动，可以删除
     [Tags]    P1    threshold
-    kwrebate.add_finish_rebate_py
-    kwrebate.add_before_rebate_py
+    &{conf_finish}=    Create Dictionary    title=auto_rebate_衣服装饰
+    &{conf_before}=    Create Dictionary    title=auto_rebate_化妆会场
+    kwrebate.add_finish_rebate_py    ${conf_finish}
+    kwrebate.add_before_rebate_py    ${conf_before}
     Reload Page And Start Ajax
     Wait Until Page Contains Locator    ${locatorB_subtractionsMain_icon_firstActivityPreview}
     Sleep    2
-    ${beforeActivityID}=    Wait And Get Text    ${locatorB_subtractionsMain_text_firstActivityID}
+    ${beforeActivityName}=    Wait And Get Text    ${locatorB_subtractionsMain_text_firstActivityName}
     Wait And Click Element Then Confirm    ${locatorB_subtractionsMain_icon_firstActivityDelete}
     Reload Page And Start Ajax
     Sleep    2
-    ${afterActivityID}=    Wait And Get Text    ${locatorB_subtractionsMain_text_firstActivityID}
-    Should Be True    $beforeActivityID!=$afterActivityID
+    ${afterActivityName}=    Wait And Get Text    ${locatorB_subtractionsMain_text_firstActivityName}
+    Should Be True    $beforeActivityName!=$afterActivityName
 
 activitie_066
     [Documentation]    同时间，商品已参加其他活动，不能重复
@@ -192,41 +194,37 @@ activitie_067
 activitie_080
     [Documentation]    验证活动名称可以为字母
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
-    Add Fill Rebate Activity
-    Wait And Input Text    ${locatorB_subtractionNew_input_ActivityName}    rebateActivity
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
-    Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
-    Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityName}    rebateActivity
+    &{conf}=    Create Dictionary    title=AutoRebateTest
+    kwrebate.add_finish_rebate_py    ${conf}
+    Reload Page And Start Ajax
+    Sleep    2
+    Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityName}    AutoRebateTest
 
 activitie_081
     [Documentation]    验证活动名称可以为数字
     [Tags]    P0    threshold
-    Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
-    Add Fill Rebate Activity
-    Wait And Input Text    ${locatorB_subtractionNew_input_ActivityName}    1234567890
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
-    Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
+    &{conf}=    Create Dictionary    title=1234567890
+    kwrebate.add_finish_rebate_py    ${conf}
+    Reload Page And Start Ajax
+    Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityName}    1234567890
 
 activitie_082
     [Documentation]    验证活动名称可以为中文
     [Tags]    P1    threshold
-    Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
-    Add Fill Rebate Activity
-    Wait And Input Text    ${locatorB_subtractionNew_input_ActivityName}    满减活动中文字符测试
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
-    Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
+    &{conf}=    Create Dictionary    title=满减活动中文字符测试
+    kwrebate.add_finish_rebate_py    ${conf}
+    Reload Page And Start Ajax
+    Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityName}    满减活动中文字符测试
 
 activitie_083
     [Documentation]    验证活动名称可以为字母加数字
     [Tags]    P1    threshold
-    Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
-    Add Fill Rebate Activity
-    Wait And Input Text    ${locatorB_subtractionNew_input_ActivityName}    activity123456
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
-    Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
+    &{conf}=    Create Dictionary    title=activity123456
+    kwrebate.add_finish_rebate_py    ${conf}
+    Reload Page And Start Ajax
+    Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityName}    activity123456
 
 activitie_090

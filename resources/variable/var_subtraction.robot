@@ -51,8 +51,8 @@ ${locatorB_subtractionNew_checkbox_ActivityTimeNoEnd}    dom:document.querySelec
 
 ${locatorB_subtractionNew_select_ActivityType}     dom:document.querySelectorAll('[class*="ant-select-selection"]')[0]    #优惠类型下拉框
 ${locatorB_subtractionNew_select_newReduce}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[0]   #优惠类型 - 满额减元
-${locatorB_subtractionNew_input_totalPrice}    dom:document.querySelectorAll('[id="totalPrice0"]')    #优惠层级1 - 满多少/#优惠层级1 - 满多少件
-${locatorB_subtractionNew_input_cutPrice}    dom:document.querySelectorAll('[id="cutPrice0"]')    #优惠层级1 - 减多少/#优惠层级1 - 多少 %off
+${locatorB_subtractionNew_input_totalPrice}    dom:document.querySelectorAll('[id="prerequisite_subtotal_range[0].greater_than_or_equal_to"]')[0]    #优惠层级1 - 满多少/#优惠层级1 - 满多少件
+${locatorB_subtractionNew_input_cutPrice}    dom:document.querySelectorAll('[id="prerequisite_subtotal_range[0].value"]')[0]    #优惠层级1 - 减多少/#优惠层级1 - 多少 %off
 ${locatorB_subtractionNew_checkbox_noPriceList}    dom:document.querySelectorAll('[class="ant-checkbox-inner"]')[1]    #上不封顶复选框
 ${locatorB_subtractionNew_select_newDiscount}    dom:document.querySelectorAll('[class*="ant-select-dropdown-menu-item"]')[1]    #优惠类型 - 满件打折
 ${locatorB_subtractionNew_button_addTopClass}    dom:document.querySelectorAll('[class*="ant-btn add"]')    #添加层级 按钮
@@ -73,7 +73,7 @@ ${locatorB_subtractionNew_SelectProduct_list_Product}    dom:document.querySelec
 ${locatorB_subtractionNew_SelectProduct_text_ExitProduct}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(6) a')[0]    # 适用范围 - 选择部分商品 - 第一个商品 - 退出活动
 
 
-${locatorB_subtractionNew_button_addActivityNext}    dom:document.querySelectorAll('[class*="ant-btn middle_btn"]')    #添加满减活动 - 下一步 按钮
+${locatorB_subtractionNew_button_addActivityNext}    dom:document.querySelectorAll('[class*="next_step"] [class*="ant-btn middle_btn"]')[0]    #添加满减活动 - 下一步 按钮
 ${locatorB_subtractionNew_button_addActivityLast}    dom:document.querySelectorAll('[class*="ant-btn default_btn"]')[0]    #添加满减活动 - 上一步 按钮
 ${locatorB_subtractionNew_button_addActivitySave}    ${locatorB_button_save00}    #保存 按钮
 ${locatorB_subtractionNew_button_addActivityCancel}    ${locatorB_button_canecl00}    #取消 按钮
