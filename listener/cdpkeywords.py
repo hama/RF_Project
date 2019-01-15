@@ -60,7 +60,6 @@ class cdpkeywords():
             获取请求返回body
         :return:
         """
-        # print 'request_id: ' + request_id
         response_body = self.chrome.Network.getResponseBody(requestId=request_id)
         if isinstance(response_body, dict):
             return json.loads(response_body['result']['body'])
@@ -72,7 +71,6 @@ class cdpkeywords():
             获取post请求data
         :return:
         """
-        # print 'request_id: ' + request_id
         post_data = self.chrome.Network.getRequestPostData(requestId=request_id)
         request_data_dict = request_data_str_to_dict(post_data['result']['postData'])
         return request_data_dict
@@ -96,20 +94,13 @@ class cdpkeywords():
         :param method:
         :return:
         """
-        # "Network.requestWillBeSent"
         taget_messages = []
         for m in messages:
             if "method" in m and m["method"] == method:
                 try:
-                    # url = m["params"]['request']['url']
-                    # request_id = m["params"]['requestId']
-                    # print ('method:\n' + m["method"], 'requestId:\n' + request_id, 'url:\n' + json.dumps(url))
                     taget_messages.append(m)
                 except:
                     pass
-
-        # print 'the count of all requests:\n' + str(len(taget_messages))
-        # print (json.dumps(taget_messages))
         return taget_messages
 
     def get_messages_filtering_by_url(self, messages, url):
@@ -128,9 +119,6 @@ class cdpkeywords():
                     taget_messages.append(m)
                 except:
                     pass
-
-        # print 'the count of all requests:\n' + str(len(taget_messages))
-        # print json.dumps(taget_messages)
         return taget_messages
 
     def get_request_messages_by_url(self, messages, url):
@@ -140,7 +128,6 @@ class cdpkeywords():
         :param url:
         :return:
         """
-        # messages = self.chrome.pop_messages()
         messages = self.get_messages_filtering_by_method(messages, 'Network.requestWillBeSent')
         return self.get_messages_filtering_by_url(messages, url)
 
@@ -280,6 +267,7 @@ class cdpkeywords():
         decoded_request_data_list = self.get_decoded_request_data_list(request_data)
         expected_data = self.assert_contain_keys(decoded_request_data_list, data)
         if expected_data['fulfill_num'] > 0:
+            print 'data:\n' + json.dumps(data)
             print 'expected_data:\n' + json.dumps(expected_data)
         else:
             print 'url:\n' + url
