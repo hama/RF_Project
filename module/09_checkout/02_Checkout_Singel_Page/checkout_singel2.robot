@@ -26,7 +26,10 @@ checkout_013
 checkout_036
     [Documentation]    验证checkout页面，国家选择印尼时，City输入框会变为选择框
     [Tags]    P0    threshold
-    kwshipping.add_ID_price_fee_shipping_py
+    &{dict}=    Create Dictionary    country_code=ID    country_name=印度尼西亚
+    @{areas}=    Create List    ${dict}
+    &{conf}=    Create Dictionary    areas=${areas}
+    kwshipping.add_price_fee_shipping_py    ${conf}
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    Indonesia
@@ -38,7 +41,10 @@ checkout_036
 checkout_037
     [Documentation]    验证checkout页面，国家选择印尼时，会多出一个地区输入框
     [Tags]    P0    threshold
-    kwshipping.add_ID_price_fee_shipping_py
+    &{dict}=    Create Dictionary    country_code=ID    country_name=印度尼西亚
+    @{areas}=    Create List    ${dict}
+    &{conf}=    Create Dictionary    areas=${areas}
+    kwshipping.add_price_fee_shipping_py    ${conf}
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    Indonesia

@@ -64,10 +64,10 @@ ${locatorB_subtractionNew_icon_addSomeProduct}    dom:document.querySelectorAll(
 ${locatorB_subtractionNew_SelectProduct_input_KeywordSelect}    dom:document.querySelectorAll('[id="title"]')[0]    #适用范围 - 选择部分商品 - 继续添加商品 按钮 - 选择商品 - 搜索输入框
 ${locatorB_subtractionNew_SelectProduct_button_KeywordSelect}    dom:document.querySelectorAll('[class*="ant-btn confirm_btn"]')[0]    #适用范围 - 选择部分商品 - 继续添加商品 按钮 - 选择商品 - 搜索按钮
 ${locatorB_subtractionNew_SelectProduct_button_KeywordReset}    dom:document.querySelectorAll('[class*="ant-btn small_btn"]')[0]    #适用范围 - 选择部分商品 - 继续添加商品 按钮 - 选择商品 - 重置按钮
-${locatorB_subtractionNew_SelectProduct_button_SelectProductSave}    dom:document.querySelectorAll('[class*="ant-btn middle_btn"]')[1]    #适用范围 - 选择部分商品 - 继续添加商品 按钮 - 选择商品 - 确定按钮
+${locatorB_subtractionNew_SelectProduct_button_SelectProductSave}    dom:document.querySelectorAll('[class*="customfooter"] [class*="ant-btn middle_btn"]')[0]    #适用范围 - 选择部分商品 - 继续添加商品 按钮 - 选择商品 - 确定按钮
 ${locatorB_subtractionNew_SelectProduct_button_ProductMore}    dom:document.querySelectorAll('[class*="ant-btn default_btn"]')[1]    #适用范围 - 选择部分商品 - 继续添加商品 按钮 - 选择商品 - 加载更多按钮
-${locatorB_subtractionNew_SelectProduct_checkbox_selectProductfist}    dom:document.querySelectorAll('[class="ant-table-tbody"] [class="ant-checkbox"]')[0]    #适用范围 - 选择部分商品 - 继续添加商品 按钮 - 选择商品 - 第一个复选框
-${locatorB_subtractionNew_SelectProduct_checkbox_selectProductAll}     dom:document.querySelectorAll('[class*="customfooter_a6ca footer"] [class="ant-checkbox"]')[0]    #适用范围 - 选择部分商品 - 继续添加商品 按钮 - 选择商品 - 全选复选框
+${locatorB_subtractionNew_SelectProduct_checkbox_selectProductfist}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(1)')[0]    #适用范围 - 选择部分商品 - 继续添加商品 按钮 - 选择商品 - 第一个复选框
+${locatorB_subtractionNew_SelectProduct_checkbox_selectProductAll}     dom:document.querySelectorAll('[class*="customfooter"] [class*="ant-checkbox"]')[0]    #适用范围 - 选择部分商品 - 继续添加商品 按钮 - 选择商品 - 全选复选框
 
 ${locatorB_subtractionNew_SelectProduct_list_Product}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr')[0]    # 适用范围 - 选择部分商品 - 第一个商品第一行
 ${locatorB_subtractionNew_SelectProduct_text_ExitProduct}    dom:document.querySelectorAll('[class="ant-table-tbody"] tr td:nth-child(6) a')[0]    # 适用范围 - 选择部分商品 - 第一个商品 - 退出活动
