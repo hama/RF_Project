@@ -136,7 +136,9 @@ order184
     kwpayment.activate_payment_cod_py
     kwcheckout.set_single_page_checkout_process_py
     ${product_id}=    kwproduct.add_max_product_py
-    kwrebate.add_doing_rebate_py
+    @{entitled_product_list}    Create List    ${product_id}
+    &{conf_entitled_product}=    Create Dictionary    entitled_product_ids=${entitled_product_list}
+    kwrebate.add_doing_rebate_py    ${conf_entitled_product}
     @{productidlist}=    Create List    ${product_id}
     &{conf_product}=    Create Dictionary    productidlist=${productidlist}
     kworder.add_deading_order_with_delivering_status_py    ${conf_product}
@@ -155,7 +157,9 @@ order185
     kwpayment.activate_payment_cod_py
     kwcheckout.set_single_page_checkout_process_py
     ${product_id}=    kwproduct.add_max_product_py
-    kwrebate.add_doing_rebate_py
+    @{entitled_product_list}    Create List    ${product_id}
+    &{conf_entitled_product}=    Create Dictionary    entitled_product_ids=${entitled_product_list}
+    kwrebate.add_doing_rebate_py    ${conf_entitled_product}
     @{productidlist}=    Create List    ${product_id}
     &{conf_product}=    Create Dictionary    productidlist=${productidlist}
     kworder.add_deading_order_with_delivering_status_py    ${conf_product}
@@ -174,7 +178,9 @@ order186
     kwpayment.activate_payment_cod_py
     kwcheckout.set_single_page_checkout_process_py
     ${product_id}=    kwproduct.add_max_product_py
-    kwrebate.add_doing_rebate_py
+    @{entitled_product_list}    Create List    ${product_id}
+    &{conf_entitled_product}=    Create Dictionary    entitled_product_ids=${entitled_product_list}
+    kwrebate.add_doing_rebate_py    ${conf_entitled_product}
     @{productidlist}=    Create List    ${product_id}
     &{conf_product}=    Create Dictionary    productidlist=${productidlist}
     kworder.add_deading_order_with_delivering_status_py    ${conf_product}
@@ -193,7 +199,9 @@ order187
     kwpayment.activate_payment_cod_py
     kwcheckout.set_single_page_checkout_process_py
     ${product_id}=    kwproduct.add_max_product_py
-    kwrebate.add_doing_rebate_py
+    @{entitled_product_list}    Create List    ${product_id}
+    &{conf_entitled_product}=    Create Dictionary    entitled_product_ids=${entitled_product_list}
+    kwrebate.add_doing_rebate_py    ${conf_entitled_product}
     @{productidlist}=    Create List    ${product_id}
     &{conf_product}=    Create Dictionary    productidlist=${productidlist}
     kworder.add_deading_order_with_delivering_status_py    ${conf_product}
@@ -212,7 +220,9 @@ order188
     kwpayment.activate_payment_cod_py
     kwcheckout.set_single_page_checkout_process_py
     ${product_id}=    kwproduct.add_max_product_py
-    kwrebate.add_doing_rebate_py
+    @{entitled_product_list}    Create List    ${product_id}
+    &{conf_entitled_product}=    Create Dictionary    entitled_product_ids=${entitled_product_list}
+    kwrebate.add_doing_rebate_py    ${conf_entitled_product}
     @{productidlist}=    Create List    ${product_id}
     &{conf_product}=    Create Dictionary    productidlist=${productidlist}
     kworder.add_deading_order_with_delivering_status_py    ${conf_product}
