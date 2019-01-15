@@ -32,7 +32,6 @@ Setup Test Case
 
 Teardown Test Case
     [Documentation]
-#    log_messages_with_conf
     #    测试用例执行失败进行截图
     Run Keyword If Test Failed    Capture Page Screenshot
 #    Run Keyword If Test Failed    Run Keyword And Ignore Error    Handle Alert
@@ -55,7 +54,6 @@ Open Test Browser
     # 载入jquery，可使用jquery的selector去定位元素
     #    Execute Javascript    a = window.document.createElement('script');a.src='//code.jquery.com/jquery-1.9.1.min.js';window.document.body.appendChild(a);
     #    Sleep    2
-#    start_listener_on_new_tab
     Set Window Position    0    0
     Set Window Size    1440    1080
     Sleep    3

@@ -12,9 +12,9 @@ RUN echo && cd /home  \
     && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
     && python2.7 get-pip.py \
     && pip install oss2 \
-    && pip install robotframework \
+    && pip install robotframework==3.0.4 \
     && pip install pymysql requests PyExecJS PyChromeDevTools\
-    && pip install  --pre --upgrade robotframework-selenium2library \
+    && pip install robotframework-selenium2library==3.0.0 robotframework-seleniumlibrary==3.2.0 \
     && apt-get install -y wget curl libxss1 libappindicator1 libindicator7 fonts-liberation libasound2 libnspr4 libnss3 lsb-release xdg-utils \
     && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
     && dpkg -i google-chrome*.deb \
