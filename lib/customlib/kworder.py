@@ -261,11 +261,30 @@ def add_deading_order_with_delivering_status_py(conf={}, cookie=init_cookie):
     """
     return add_deading_order_with_conf_py(conf, cookie=cookie)['order_token']
 
-def add_service_order_with_delivering():
-    '''COD支付 待支付 待发货 售后订单'''
-    tokens = add_deading_order_with_delivering_status_py()
-    orders_cancel_py(tokens)
+
+def add_service_order_with_delivering_status_py(conf={}, cookie=init_cookie):
+    """
+    COD支付 待支付 待发货 售后订单
+    :param conf:
+    :param cookie:
+    :return:
+    """
+    tokens = add_deading_order_with_delivering_status_py(conf, cookie=cookie)
+    orders_cancel_py(tokens, cookie=cookie)
     return tokens
+
+
+def add_service_order_with_conf_py(conf={}, cookie=init_cookie):
+    """
+    COD支付 待支付 待发货 售后订单
+    :param conf:
+    :param cookie:
+    :return:
+    """
+    tokens = add_deading_order_with_conf_py(conf, cookie=cookie)
+    orders_cancel_py(tokens, cookie=cookie)
+    return tokens
+
 
 def add_deading_order_with_some_delivered_status_py(conf={}, cookie=init_cookie):
     """
@@ -281,11 +300,18 @@ def add_deading_order_with_some_delivered_status_py(conf={}, cookie=init_cookie)
     shipment_with_conf_py(tokens['order_token'], conf, cookie=cookie)
     return tokens['order_token']
 
-def add_service_order_with_some_delivered():
-    '''COD支付 待支付 部分发货 售后订单'''
-    tokens = add_deading_order_with_some_delivered_status_py()
-    orders_cancel_py(tokens)
+
+def add_service_order_with_some_delivered_status_py(conf={}, cookie=init_cookie):
+    """
+    COD支付 待支付 部分发货 售后订单
+    :param conf:
+    :param cookie:
+    :return:
+    """
+    tokens = add_deading_order_with_some_delivered_status_py(conf, cookie=cookie)
+    orders_cancel_py(tokens, cookie=cookie)
     return tokens
+
 
 def add_deading_order_with_all_delivered_status_py(conf={}, cookie=init_cookie):
     """
@@ -301,11 +327,18 @@ def add_deading_order_with_all_delivered_status_py(conf={}, cookie=init_cookie):
     shipment_with_conf_py(tokens['order_token'], conf, cookie=cookie)
     return tokens['order_token']
 
-def add_service_order_with_all_delivered_status_py():
-    '''COD支付 待支付 全部发货 售后订单'''
-    tokens = add_deading_order_with_all_delivered_status_py()
-    orders_cancel_py(tokens)
+
+def add_service_order_with_all_delivered_status_py(conf={}, cookie=init_cookie):
+    """
+    COD支付 待支付 全部发货 售后订单
+    :param conf:
+    :param cookie:
+    :return:
+    """
+    tokens = add_deading_order_with_all_delivered_status_py(conf, cookie=cookie)
+    orders_cancel_py(tokens, cookie=cookie)
     return tokens
+
 
 def add_deading_order_with_some_finished_status_py(conf={}, cookie=init_cookie):
     """
@@ -328,11 +361,18 @@ def add_deading_order_with_some_finished_status_py(conf={}, cookie=init_cookie):
     orders_finish_py(tokens['order_token'], fulfillment_id01, cookie=cookie)
     return tokens['order_token']
 
-def add_service_order_with_some_finished_status_py():
-    '''COD支付 待支付 部分完成 售后订单'''
-    tokens = add_deading_order_with_some_finished_status_py()
-    orders_cancel_py(tokens)
+
+def add_service_order_with_some_finished_status_py(conf={}, cookie=init_cookie):
+    """
+    COD支付 待支付 部分完成 售后订单
+    :param conf:
+    :param cookie:
+    :return:
+    """
+    tokens = add_deading_order_with_some_finished_status_py(conf, cookie=cookie)
+    orders_cancel_py(tokens, cookie=cookie)
     return tokens
+
 
 def add_deading_order_with_finished_status_py(conf={}, cookie=init_cookie):
     """
@@ -351,11 +391,13 @@ def add_deading_order_with_finished_status_py(conf={}, cookie=init_cookie):
     orders_finish_py(tokens['order_token'], fulfillment_id, cookie=cookie)
     return tokens['order_token']
 
-def add_service_order_with_finished_status_py():
+
+def add_service_order_with_finished_status_py(conf={}, cookie=init_cookie):
     '''COD支付 待支付 全部完成 售后订单'''
-    tokens = add_deading_order_with_finished_status_py()
-    orders_cancel_py(tokens)
+    tokens = add_deading_order_with_finished_status_py(conf, cookie=cookie)
+    orders_cancel_py(tokens, cookie=cookie)
     return tokens
+
 
 def add_undead_order_with_to_pay_status_py(cookie=init_cookie):
     """
@@ -718,4 +760,3 @@ if __name__ == '__main__':
     # conf = {'place_order_data': {'shipping_address': {'first_name': 'testedOject'}}}
     # print add_deading_order_with_conf_py(conf)
     # add_undead_order_with_pay_fail_status_py()
-

@@ -129,6 +129,39 @@ def shippings_put_py(data, shipping_id, cookie=init_cookie):
     return do_put(url, data, cookie=cookie)
 
 
+def shipping_merchant_get_py(query_str={}, cookie=init_cookie):
+    """
+    获取物流商列表
+    :param query_str:
+    :param cookie:
+    :return:
+    """
+    url = '%s/api/carrier-service' % (home_page_url)
+    return do_get(url, query_str, cookie=cookie)
+
+
+def shipping_merchant_post_py(data, cookie=init_cookie):
+    """
+    添加物流商
+    :param query_str:
+    :param cookie:
+    :return:
+    """
+    url = '%s/api/carrier-service' % (home_page_url)
+    return do_post(url, data, cookie=cookie)
+
+
+def shipping_merchant_delete_py(shipping_id, cookie=init_cookie):
+    """
+    删除物流商
+    :param query_str:
+    :param cookie:
+    :return:
+    """
+    url = '%s/api/carrier-service/%s' % (home_page_url, shipping_id)
+    return do_delete(url, cookie=cookie)
+
+
 def add_shipping_with_conf_py(conf={}, cookie=init_cookie):
     """
     通过conf添加物流
@@ -141,17 +174,6 @@ def add_shipping_with_conf_py(conf={}, cookie=init_cookie):
 
     return shippings_post_py(data, cookie=cookie)['content']['id']
 
-def add_ID_price_fee_shipping_py(conf={}, cookie=init_cookie):
-    """
-    通过conf添加物流
-    :param conf:
-    :param cookie:
-    :return:
-    """
-    data = copy.deepcopy(ID_shipping_data)
-    dict_deepupdate(data, conf)
-
-    return shippings_post_py(data, cookie=cookie)['content']['id']
 
 def add_price_fee_shipping_py(conf={}, cookie=init_cookie):
     """
@@ -176,6 +198,7 @@ def add_price_fee_shipping_py(conf={}, cookie=init_cookie):
     ]
     dict_deepupdate(data, conf)
     return shippings_post_py(data, cookie=cookie)
+
 
 def add_weight_fee_shipping_py(conf={}, cookie=init_cookie):
     """
@@ -262,31 +285,6 @@ def num_of_exist_shipping_py(cookie=init_cookie):
     return len(data['content'])
 
 
-
-
-#物流商接口
-
-def shipping_merchant_get_py(query_str={}, cookie=init_cookie):
-    """
-    获取物流商列表
-    :param query_str:
-    :param cookie:
-    :return:
-    """
-    url = '%s/api/carrier-service' % (home_page_url)
-    return do_get(url, query_str, cookie=cookie)
-
-#创建物流商
-def shipping_merchant_post_py(data, cookie=init_cookie):
-    """
-    添加物流商
-    :param query_str:
-    :param cookie:
-    :return:
-    """
-    url = '%s/api/carrier-service' % (home_page_url)
-    return do_post(url, data, cookie=cookie)
-
 def add_shipping_merchant_with_conf_py(conf={}, cookie=init_cookie):
     """
     通过conf添加物流商
@@ -299,16 +297,6 @@ def add_shipping_merchant_with_conf_py(conf={}, cookie=init_cookie):
 
     return shipping_merchant_post_py(data, cookie=cookie)['content']
 
-#删除物流商
-def shipping_merchant_delete_py(shipping_id, cookie=init_cookie):
-    """
-    删除物流商
-    :param query_str:
-    :param cookie:
-    :return:
-    """
-    url = '%s/api/carrier-service/%s' % (home_page_url, shipping_id)
-    return do_delete(url, cookie=cookie)
 
 def del_all_shipping_merchant_py(cookie=init_cookie):
     """

@@ -73,7 +73,8 @@ def popups_delete_py(popups_id, cookie=init_cookie):
     url = '%s/api/admin/popups/%s' % (home_page_url, popups_id)
     return do_delete(url, cookie=cookie)
 
-def popups_delete_py(conf={}, cookie=init_cookie):
+
+def add_popups_with_conf_py(conf={}, cookie=init_cookie):
     """
     通过conf（dict数据类型）配置来添加弹窗活动
     :param conf:
@@ -84,6 +85,7 @@ def popups_delete_py(conf={}, cookie=init_cookie):
     dict_deepupdate(data, conf)
 
     return popups_post_py(data, cookie=cookie)['content']
+
 
 if __name__ == '__main__':
     pass
