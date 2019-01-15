@@ -380,33 +380,6 @@ shipping_data = {
     ]
 }
 
-ID_shipping_data = {
-    "name": "autotest_shipping",
-    "areas": [
-        {
-            "country_code": "ID",
-            "country_name": "印度尼西亚",
-            "province_codes": [
-                "ALL"
-            ]
-        }
-    ],
-    "plans": [
-        {
-            "name": "price_fee",
-            "desc": "price_fee_description",
-            "rule_type": "price",
-            "rule_range_min": 0,
-            "rule_range_max": 0,
-            "rule_range_infinite": True,
-            "rule_range_unit": "USD",
-            "support_cod": True,
-            "rate_type": "normal",
-            "rate_amount": "0"
-        }
-    ]
-}
-
 shipping_merchant_data = {
     "channel_name":"汉邮",
     "client_id":"SHOPLAZZA",

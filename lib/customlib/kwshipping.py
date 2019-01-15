@@ -128,7 +128,6 @@ def shippings_put_py(data, shipping_id, cookie=init_cookie):
     url = '%s/api/shippings/%s' % (home_page_url, shipping_id)
     return do_put(url, data, cookie=cookie)
 
-
 def add_shipping_with_conf_py(conf={}, cookie=init_cookie):
     """
     通过conf添加物流
@@ -137,18 +136,6 @@ def add_shipping_with_conf_py(conf={}, cookie=init_cookie):
     :return:
     """
     data = copy.deepcopy(shipping_data)
-    dict_deepupdate(data, conf)
-
-    return shippings_post_py(data, cookie=cookie)['content']['id']
-
-def add_ID_price_fee_shipping_py(conf={}, cookie=init_cookie):
-    """
-    通过conf添加物流
-    :param conf:
-    :param cookie:
-    :return:
-    """
-    data = copy.deepcopy(ID_shipping_data)
     dict_deepupdate(data, conf)
 
     return shippings_post_py(data, cookie=cookie)['content']['id']
