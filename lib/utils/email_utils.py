@@ -10,10 +10,12 @@ from email.header import Header
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import lib_utilsCopy
 
 from selenium import webdriver
 
+sys.path.append(os.getcwd())
+# sys.path.append(os.path.dirname(__file__))
+from lib.customlib import lib_utils
 
 username = "zhouli@shoplazza.com"  # .发件人
 password = "zeqnvyihpxcmlefy"  # .发件人密码
@@ -25,7 +27,7 @@ to_addr = [
 ]
 # . 抄送邮箱
 cc_addr = [
-    #'autotest@shoplazza.com'
+    # 'autotest@shoplazza.com'
 ]
 email_service = "smtp.gmail.com"
 default_port = 465
@@ -87,9 +89,10 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
         hosts = '!!!pre_release环境报告!!!\n已配/etc/hosts:' + hosts
     else:
         hosts = '!!!美服环境报告!!!'
-    os.popen('rm %s/*.tar.gz'% (log_path))
+    os.popen('rm %s/*.tar.gz' % (log_path))
     os.popen('cd %s; tar -zcvPf ./robot_log_%s.tar.gz ./*' % (log_path, timestamp))
-    result = lib_utilsCopy.upload_file_oss_py('robot_log_%s' %(timestamp),os.path.join(log_path, 'robot_log_%s.tar.gz' %(timestamp)))
+    result = lib_utils.upload_file_oss_py('robot_log_%s' % (timestamp),
+                                          os.path.join(log_path, 'robot_log_%s.tar.gz' % (timestamp)))
     # 文字
     html = """
     %s
@@ -116,6 +119,7 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
     # att["Content-Type"] = 'application/octet-stream'
     # att["Content-Disposition"] = 'attachment; filename="robot_log_%s.tar.gz"' % timestamp
     # msg.attach(att)
+
 
 def set_email_header_for_uireport(msg):
     """
@@ -162,6 +166,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     send_uireport_email_process(args.timestamp, args.log_path)
 
+    # lib_utils.upload_file_oss_py('','')
     # print os.path.join(os.path.dirname(__file__), '../..')
     # print os.getcwd()
     # print os.chdir('/var/log')
