@@ -193,7 +193,7 @@ checkout_092
     Add Address Common Step
     Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@autotest.com
     Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
 
 checkout_096
