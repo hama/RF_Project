@@ -51,6 +51,7 @@ checkout_021
     Sleep    2
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
+    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
     Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Go To First Product C Interface
@@ -75,6 +76,7 @@ checkout_022
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
     Wait And Input Text    ${locatorB_subtractionNew_input_cutPrice}     10
+    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
     Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Go To First Product C Interface

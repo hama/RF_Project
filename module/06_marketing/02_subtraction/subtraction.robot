@@ -58,6 +58,7 @@ activitie_005
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
     Wait And Input Text    ${locatorB_subtractionNew_input_ActivityName}    满减活动002
+    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
     Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Wait And Input Text    ${locatorB_subtractionsMain_input_KeywordSearch}    满减活动002
@@ -80,6 +81,7 @@ activitie_007
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
     Wait And Input Text    ${locatorB_subtractionNew_input_ActivityName}    满减活动_12345
+    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
     Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Wait And Input Text    ${locatorB_subtractionsMain_input_KeywordSearch}    满减活动
@@ -92,6 +94,7 @@ activitie_008
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
     Wait And Input Text    ${locatorB_subtractionNew_input_ActivityName}    满减活动特殊符号&*¥
+    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
     Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Wait And Input Text    ${locatorB_subtractionsMain_input_KeywordSearch}    &*
@@ -110,6 +113,7 @@ activitie_020
     Wait And Click Element    ${locatorB_subtractionNew_icon_addSomeProduct}
     Wait And Click Element    ${locatorB_subtractionNew_SelectProduct_checkbox_selectProductfist}
     Wait And Click Element     ${locatorB_subtractionNew_SelectProduct_button_SelectProductSave}
+    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
     Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Text Of Element Should Contain With Wait    ${locatorB_subtractionsMain_text_firstActivityName}[0]    新建-添加1件活动商品
@@ -139,6 +143,7 @@ activitie_022
     Wait And Click Element    ${locatorB_subtractionNew_SelectProduct_checkbox_selectProductfist}
     Wait And Click Element     ${locatorB_subtractionNew_SelectProduct_button_SelectProductSave}
     Wait Until Page Contains Text    未上架
+    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
     Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Text Of Element Should Contain With Wait    ${locatorB_subtractionsMain_text_firstActivityRange}[0]    部分商品
@@ -168,6 +173,7 @@ activitie_066
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
+    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
     Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
@@ -183,6 +189,7 @@ activitie_067
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
+    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
     Wait And Click Element    ${locatorB_subtractionNew_button_selectSomeProduct}
     Wait And Click Element    ${locatorB_subtractionNew_icon_addSomeProduct}
     Wait And Click Element    ${locatorB_subtractionNew_SelectProduct_checkbox_selectProductfist}
