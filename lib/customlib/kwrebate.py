@@ -4,7 +4,6 @@ from do_request import *
 from kwproduct import add_max_product_py
 from raw_data import *
 from variable import *
-import json
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -141,11 +140,12 @@ def add_rebate_with_conf_py(conf={}, cookie=init_cookie):
     :return:
     """
     not_in_activities_product_list = get_not_in_activities_product_list_py()
-    if not_in_activities_product_list == []:
+    if not not_in_activities_product_list:
         add_max_product_py(cookie=cookie)
         time.sleep(0.2)
         not_in_activities_product_list = get_not_in_activities_product_list_py()
-    conf["product_list"] = json.dumps({"product": not_in_activities_product_list})
+    if 'entitled_product_ids' not in conf:
+        conf["entitled_product_ids"] = [not_in_activities_product_list[0]['product_id']]
 
     data = copy.deepcopy(rebate_refresh_data)
     dict_deepupdate(data, conf)
@@ -210,7 +210,6 @@ def end_all_rebates_py(cookie=init_cookie):
         rebate_end_py(rebate_id, cookie=cookie)
 
 
-
 def get_all_rebates_count_py(conf={}, cookie=init_cookie):
     """
     获取rebates总数
@@ -263,12 +262,8 @@ def get_exist_doing_rebatesid_py(cookie=init_cookie):
 
 if __name__ == '__main__':
     add_doing_rebate_py()
-    #print get_exist_doing_rebatesid_py()
+    # print get_exist_doing_rebatesid_py()
     # print rebate_select_product_py()
     # print add_doing_rebate_py()
     # print add_before_rebate_py()
     # print add_doing_rebate_py()
-
-
-
-

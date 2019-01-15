@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import datetime
 import hashlib
+import json
 import os
 import random
 import re
@@ -218,6 +219,30 @@ def dict_deepupdate(json_data, json_conf):
                     dict_deepupdate(json_data[key][i], values[i])
             else:
                 json_data[key] = values
+
+
+def get_value_from_dict(dict_data, str_path):
+    """
+    深度更新
+    通过遍历，把json_conf中的内容，更新至json_data中
+    :param json_data:
+    :param json_conf:
+    :return:
+    """
+    value = dict_data
+    list_path = str_path.split('.')
+    for path in list_path:
+        value = value[path]
+    return value
+
+
+def convert_json_to_string(json_data):
+    """
+
+    :param json_data:
+    :return:
+    """
+    return json.dumps(json_data).replace(' ', '')
 
 
 if __name__ == '__main__':
