@@ -42,13 +42,13 @@ Add Fill Rebate Activity
 
 
 Add Activity Same Time
-    Wait And Click Element    ${locatorB_subtractionNew_icon_ActivityTimeStart}
+    Sleep And Click Element    ${locatorB_subtractionNew_icon_ActivityTimeStart}
     Wait And Input Text    ${locatorB_subtractionNew_input_ActivityTimeStart}    ${Empty}
     Wait And Input Text    ${locatorB_subtractionNew_input_ActivityTimeStart}    ${StartTime}
-    Wait And Click Element    ${locatorB_subtractionNew_button_ActivityTimeStart}
-    Wait And Click Element    ${locatorB_subtractionNew_icon_ActivityTimeEnd}
+    Sleep And Click Element    ${locatorB_subtractionNew_button_ActivityTimeStart}
+    Sleep And Click Element    ${locatorB_subtractionNew_icon_ActivityTimeEnd}
     Wait And Input Text    ${locatorB_subtractionNew_input_ActivityTimeEnd}    ${Empty}
     Wait And Input Text    ${locatorB_subtractionNew_input_ActivityTimeEnd}    ${EndTime}
-    Wait And Click Element    ${locatorB_subtractionNew_button_ActivityTimeEnd}
+    Sleep And Click Element    ${locatorB_subtractionNew_button_ActivityTimeEnd}
 
 
