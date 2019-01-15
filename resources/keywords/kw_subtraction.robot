@@ -38,8 +38,8 @@ Add Fill Rebate Activity
     Wait And Click Element    ${locatorB_subtractionNew_button_ActivityTimeEnd}
     Wait And Input Text    ${locatorB_subtractionNew_input_totalPrice}    50
     Wait And Input Text    ${locatorB_subtractionNew_input_cutPrice}     20
-    Wait And Click Element    ${locatorB_subtractionNew_button_selectAllProduct}
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
+    Sleep And Click Element    ${locatorB_subtractionNew_button_selectAllProduct}
+
 
 Add Activity Same Time
     Wait And Click Element    ${locatorB_subtractionNew_icon_ActivityTimeStart}
