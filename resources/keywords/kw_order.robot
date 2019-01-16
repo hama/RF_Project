@@ -7,16 +7,19 @@ Resource          kw_common.robot
 Dealing Order Suite Setup
     [Documentation]
     Login With Default User
+    kwrebate.end_all_rebates_py
     kwproduct.del_all_products_py
 
 Dealing Order Suite Teardown
     [Documentation]
     kwproduct.del_all_products_py
+    kwrebate.end_all_rebates_py
     Close Test Suite Browser
 
 Dealing Order Case Setup
     [Documentation]
     kwshipping.del_all_shipping_py
+    kwrebate.end_all_rebates_py
     Go To Dealing Order Page
     
 

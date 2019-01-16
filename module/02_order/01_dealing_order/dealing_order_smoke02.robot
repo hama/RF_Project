@@ -135,21 +135,16 @@ order184
     kwtax.set_country_tax_price_py    10
     kwpayment.activate_payment_cod_py
     kwcheckout.set_single_page_checkout_process_py
-    kwrebate.add_doing_rebate_py
+    ${product_id}=    kwproduct.add_max_product_py
+    @{entitled_product_list}    Create List    ${product_id}
+    &{conf_entitled_product}=    Create Dictionary    entitled_product_ids=${entitled_product_list}
+    kwrebate.add_doing_rebate_py    ${conf_entitled_product}
+    @{productidlist}=    Create List    ${product_id}
+    &{conf_product}=    Create Dictionary    productidlist=${productidlist}
+    kworder.add_deading_order_with_delivering_status_py    ${conf_product}
     Reload Page And Start Ajax
-    Go To First Product C Interface
-    Sleep    1
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    ${subPrice01}=    Sleep And Get Text    ${locatorC_checkout_prices_shippingValue}[0]
-    ${subPrice}=    Evaluate    u"${subPrice01}".strip('USD')
-    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
-    Go To    https://admin.shoplazza.com/order/_dealing
-    Focus On New Window
-    Go To Dealing Order Page
     Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
-    Wait Until Page Contains Text   ${subPrice}
+    Wait Until Page Contains Text   444.00 USD
 
 order185
     [Documentation]    验证订单详情页面，订单价格中折扣显示正确
@@ -161,22 +156,16 @@ order185
     kwtax.set_country_tax_price_py    10
     kwpayment.activate_payment_cod_py
     kwcheckout.set_single_page_checkout_process_py
-    kwrebate.add_doing_rebate_py
+    ${product_id}=    kwproduct.add_max_product_py
+    @{entitled_product_list}    Create List    ${product_id}
+    &{conf_entitled_product}=    Create Dictionary    entitled_product_ids=${entitled_product_list}
+    kwrebate.add_doing_rebate_py    ${conf_entitled_product}
+    @{productidlist}=    Create List    ${product_id}
+    &{conf_product}=    Create Dictionary    productidlist=${productidlist}
+    kworder.add_deading_order_with_delivering_status_py    ${conf_product}
     Reload Page And Start Ajax
-    Go To First Product C Interface
-    Sleep    1
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    ${disPrice}=    Sleep And Get Text    ${locatorC_checkout_prices_shippingValue}[1]
-    ${disPrice01}=    Evaluate    u"${disPrice}".strip('USD')
-    ${discountPrice}=    Evaluate    u"${disPrice01}".strip('- ')
-    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
-    Go To    https://admin.shoplazza.com/order/_dealing
-    Focus On New Window
-    Go To Dealing Order Page
     Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
-    Wait Until Page Contains Text   ${discountPrice}
+    Wait Until Page Contains Text   -50.00 USD
 
 order186
     [Documentation]    验证订单详情页面，订单价格中，物流费用显示正确
@@ -188,22 +177,16 @@ order186
     kwtax.set_country_tax_price_py    10
     kwpayment.activate_payment_cod_py
     kwcheckout.set_single_page_checkout_process_py
-    kwrebate.add_doing_rebate_py
+    ${product_id}=    kwproduct.add_max_product_py
+    @{entitled_product_list}    Create List    ${product_id}
+    &{conf_entitled_product}=    Create Dictionary    entitled_product_ids=${entitled_product_list}
+    kwrebate.add_doing_rebate_py    ${conf_entitled_product}
+    @{productidlist}=    Create List    ${product_id}
+    &{conf_product}=    Create Dictionary    productidlist=${productidlist}
+    kworder.add_deading_order_with_delivering_status_py    ${conf_product}
     Reload Page And Start Ajax
-    Go To First Product C Interface
-    Sleep    1
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    ${shipPrice}=    Sleep And Get Text    ${locatorC_checkout_prices_shippingValue}[2]
-    ${shipPrice01}=    Evaluate    u"${shipPrice}".strip('USD')
-    ${shippingPrice}=    Evaluate    u"${shipPrice01}".strip('+ ')
-    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
-    Go To    https://admin.shoplazza.com/order/_dealing
-    Focus On New Window
-    Go To Dealing Order Page
     Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
-    Wait Until Page Contains Text   ${shippingPrice}
+    Wait Until Page Contains Text   1.00 USD
 
 order187
     [Documentation]    验证订单详情页面，订单价格中，税费显示正确
@@ -215,22 +198,16 @@ order187
     kwtax.set_country_tax_price_py    10
     kwpayment.activate_payment_cod_py
     kwcheckout.set_single_page_checkout_process_py
-    kwrebate.add_doing_rebate_py
+    ${product_id}=    kwproduct.add_max_product_py
+    @{entitled_product_list}    Create List    ${product_id}
+    &{conf_entitled_product}=    Create Dictionary    entitled_product_ids=${entitled_product_list}
+    kwrebate.add_doing_rebate_py    ${conf_entitled_product}
+    @{productidlist}=    Create List    ${product_id}
+    &{conf_product}=    Create Dictionary    productidlist=${productidlist}
+    kworder.add_deading_order_with_delivering_status_py    ${conf_product}
     Reload Page And Start Ajax
-    Go To First Product C Interface
-    Sleep    1
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    ${taxPrice01}=    Sleep And Get Text    ${locatorC_checkout_prices_shippingValue}[3]
-    ${taxPrice02}=    Evaluate    u"${taxPrice01}".strip('USD')
-    ${taxPrice}=    Evaluate    u"${taxPrice02}".strip('+ ')
-    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
-    Go To    https://admin.shoplazza.com/order/_dealing
-    Focus On New Window
-    Go To Dealing Order Page
     Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
-    Wait Until Page Contains Text   ${taxPrice}
+    Wait Until Page Contains Text    39.40 USD
 
 order188
     [Documentation]    验证订单详情页面，订单价格中，订单总价显示正确
@@ -242,22 +219,16 @@ order188
     kwtax.set_country_tax_price_py    10
     kwpayment.activate_payment_cod_py
     kwcheckout.set_single_page_checkout_process_py
-    kwrebate.add_doing_rebate_py
+    ${product_id}=    kwproduct.add_max_product_py
+    @{entitled_product_list}    Create List    ${product_id}
+    &{conf_entitled_product}=    Create Dictionary    entitled_product_ids=${entitled_product_list}
+    kwrebate.add_doing_rebate_py    ${conf_entitled_product}
+    @{productidlist}=    Create List    ${product_id}
+    &{conf_product}=    Create Dictionary    productidlist=${productidlist}
+    kworder.add_deading_order_with_delivering_status_py    ${conf_product}
     Reload Page And Start Ajax
-    Go To First Product C Interface
-    Sleep    1
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    ${totalPrice01}=    Sleep And Get Text    ${locatorC_checkoutPayment_text_totalPrice}
-    ${totalPrice02}=    Evaluate    u"${totalPrice01}".strip('USD')
-    ${totalPrice}=    Evaluate    u"${totalPrice02}".strip('Total: ')
-    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
-    Go To    https://admin.shoplazza.com/order/_dealing
-    Focus On New Window
-    Go To Dealing Order Page
     Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
-    Wait Until Page Contains Text   ${totalPrice}
+    Wait Until Page Contains Text   434.40 USD
 
 order192
     [Documentation]     验证C端使用COD支付后，订单详情页面的支付方式显示为：COD

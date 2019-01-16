@@ -109,10 +109,10 @@ activitie_020
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
     Wait And Input Text    ${locatorB_subtractionNew_input_ActivityName}    新建-添加1件活动商品
-    Wait And Click Element    ${locatorB_subtractionNew_button_selectSomeProduct}
-    Wait And Click Element    ${locatorB_subtractionNew_icon_addSomeProduct}
-    Wait And Click Element    ${locatorB_subtractionNew_SelectProduct_checkbox_selectProductfist}
-    Wait And Click Element     ${locatorB_subtractionNew_SelectProduct_button_SelectProductSave}
+    Sleep And Click Element    ${locatorB_subtractionNew_button_selectSomeProduct}
+    Sleep And Click Element    ${locatorB_subtractionNew_icon_addSomeProduct}
+    Sleep And Click Element    ${locatorB_subtractionNew_SelectProduct_checkbox_selectProductfist}
+    Sleep And Click Element     ${locatorB_subtractionNew_SelectProduct_button_SelectProductSave}
     Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
     Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
@@ -127,6 +127,7 @@ activitie_021
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
+    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
     Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Text Of Element Should Contain With Wait    ${locatorB_subtractionsMain_text_firstActivityRange}[0]    全场
@@ -165,22 +166,23 @@ activitie_053
     ${afterActivityName}=    Wait And Get Text    ${locatorB_subtractionsMain_text_firstActivityName}
     Should Be True    $beforeActivityName!=$afterActivityName
 
-activitie_066
-    [Documentation]    同时间，商品已参加其他活动，不能重复
-    [Tags]    P1    threshold
-    kwproduct.add_max_product_py
-    kwproduct.add_min_product_py
-    Reload Page And Start Ajax
-    Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
-    Add Fill Rebate Activity
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
-    Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
-    Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
-    Add Fill Rebate Activity
-    Add Activity Same Time
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
-    Wait Until Page Contains Text   该时段已存在其他全部商品范围的活动，请选择其他时段
+#activitie_066
+#    [Documentation]    同时间，商品已参加其他活动，不能重复
+#    [Tags]    P1    threshold
+#    kwproduct.add_max_product_py
+#    kwproduct.add_min_product_py
+#    Reload Page And Start Ajax
+#    Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
+#    Add Fill Rebate Activity
+#    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
+#    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
+#    Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
+#    Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
+#    Add Fill Rebate Activity
+#    Add Activity Same Time
+#    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
+#    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
+#    Wait Until Page Contains Text   该时段已存在其他全部商品范围的活动，请选择其他时段
 
 activitie_067
     [Documentation]    不同时间，商品已参加其他活动，正常添加
@@ -189,11 +191,11 @@ activitie_067
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
-    Wait And Click Element    ${locatorB_subtractionNew_button_selectSomeProduct}
-    Wait And Click Element    ${locatorB_subtractionNew_icon_addSomeProduct}
-    Wait And Click Element    ${locatorB_subtractionNew_SelectProduct_checkbox_selectProductfist}
+    Sleep And Click Element    ${locatorB_subtractionNew_button_selectSomeProduct}
+    Sleep And Click Element    ${locatorB_subtractionNew_icon_addSomeProduct}
+    Sleep And Click Element    ${locatorB_subtractionNew_SelectProduct_checkbox_selectProductfist}
     Sleep And Click Element     ${locatorB_subtractionNew_SelectProduct_button_SelectProductSave}
+    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
     Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Text Of Element Should Contain With Wait    ${locatorB_subtractionsMain_text_firstActivityRange}[0]    部分商品
