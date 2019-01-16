@@ -6,7 +6,7 @@ Resource          kw_common.robot
 Taxprice Page Suite Setup
     [Documentation]    初始化物流信息
     Login With Default User
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     kwshipping.del_all_shipping_py
     kwproduct.add_product_with_conf_py
     kwshipping.add_shipping_with_conf_py

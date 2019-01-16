@@ -139,7 +139,7 @@ checkout_073
 checkout_077
     [Documentation]    验证checkout shipping页面，买家留言输入框输入的内容，会同步到B端订单详情 > "1.C端发起新订单AAA00111进入checkout shipping页面,2.买家留言输入框中输入内容：请尽快发货,3.完成订单进入B端订单AAA00111详情,4.查看订单详情页面买家留言" > 买家留言内容显示为：请尽快发货
     [Tags]    P0    threshold    smoke
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step

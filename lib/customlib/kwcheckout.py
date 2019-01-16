@@ -147,6 +147,7 @@ def do_price_calculate_with_conf_py(conf={}, cookie=init_cookie):
 
     return checkout_price_calculate_py(data, cookie)
 
+
 def get_shipping_lines_with_conf_py(conf={}, cookie=init_cookie):
     '''
     获取shipping_lines
@@ -160,7 +161,7 @@ def get_shipping_lines_with_conf_py(conf={}, cookie=init_cookie):
     return checkout_shipping_lines_py(data, cookie=cookie)
 
 
-def set_checkout_process_py(conf={}, cookie=init_cookie):
+def set_checkout_process_with_conf_py(conf={}, cookie=init_cookie):
     '''
     设置checkout流程
     :param conf:
@@ -174,8 +175,9 @@ def set_checkout_process_py(conf={}, cookie=init_cookie):
 
 
 def set_single_page_checkout_process_py(cookie=init_cookie):
-    return set_checkout_process_py({'checkout_page_type': 'single'}, cookie=cookie)
+    return set_checkout_process_with_conf_py({'checkout_page_type': 'single'}, cookie=cookie)
+
 
 if __name__ == '__main__':
     # print json.dumps(checkout_shipping_lines_py(shipping_lines_data))
-    print set_checkout_process_py()
+    print set_checkout_process_with_conf_py()

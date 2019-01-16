@@ -88,7 +88,7 @@ checkout_110
 checkout_119
     [Documentation]    验证购买不需要物流运输的商品进入支付页面时，shipping method显示为Delivery for virtual product  >  1.C端购买商品women进入checkout 支付页面  2.查看payment栏 shipping method
     [Tags]    P0    threshold
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     kwshipping.add_shipping_with_conf_py
     &{conf}=   Create Dictionary
     ...    requires_shipping=${False}

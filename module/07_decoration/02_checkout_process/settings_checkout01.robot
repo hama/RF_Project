@@ -163,7 +163,7 @@ Trade setting_020
 Trade setting_021
     [Documentation]    验证交易规则栏，公司名选择为 必填时，checkout shipping页面的company输入框为必填项
     [Tags]    P0    threshold
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_radio_companyNameMandatory}
     Sleep    2
@@ -182,7 +182,7 @@ Trade setting_021
 Trade setting_022
     [Documentation]    验证交易规则栏，公司名选择为 选填时，checkout shipping页面的company输入框为选填项
     [Tags]    P0    threshold
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_radio_companyNameOptional}
     Sleep    2
@@ -201,7 +201,7 @@ Trade setting_022
 Trade setting_023
     [Documentation]    验证交易规则栏，公司名选择为隐藏时，checkout shipping页面不显示company输入框
     [Tags]    P0    threshold
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_radio_companyNameHidden}
     Sleep    2

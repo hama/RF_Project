@@ -40,7 +40,7 @@ checkout_096
 checkout_098
     [Documentation]    验证checkout 支付页面，订单汇总，商品栏，商品标题显示正常 > 1.C端购买商品women进入checkout支付页面  2.查看订单汇总，商品栏，商品标题
     [Tags]    P0    threshold    smoke
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     ${productName}=    Wait And Get Text    ${locatorC_checkoutShipping_text_itemProductTitle}
@@ -63,7 +63,7 @@ checkout_100
 checkout_101
     [Documentation]   验证checkout 支付页面，订单汇总商品栏，商品价格显示正常 > 1.C端购买商品women进入checkout 支付页面  2.查看订单汇总商品栏，商品价格显示
     [Tags]    P0    threshold    smoke
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
     Sleep    2
@@ -72,7 +72,7 @@ checkout_101
 checkout_106
     [Documentation]   验证checkout 支付页面，subtotal显示正常 > 1.C端购买商品women两件进入checkout 支付页面  2.查看价格详情中subtotal
     [Tags]    P0    threshold    smoke
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_addQuaity}
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
@@ -94,7 +94,7 @@ checkout_106
 checkout_114
     [Documentation]    验证checkout 支付页面，Payment栏，shiP to信息显示正常
     [Tags]    P0    threshold    smoke
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     #添加是shipping address
@@ -114,7 +114,7 @@ checkout_114
 checkout_121
     [Documentation]         验证checkout支付页面，return按钮可返回到shipping页面  >  1.点击return按钮
     [Tags]    P0    threshold
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
@@ -142,7 +142,7 @@ checkout_125
 checkout_126
     [Documentation]   验证checkout 支付页面，使用COD支付方式可正常支付  >  1.购买商品进入checkout 支付页面  2.选择支付方式COD  3.点击place order按钮
     [Tags]    P0    threshold    smoke
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     #添加是shipping address
@@ -173,7 +173,7 @@ checkout_132
 checkout_170
     [Documentation]   验证checkout支付页面，billing address栏选择框可点击以及选择项展示  >   1.点击选择框
     [Tags]    P0    threshold    smoke
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
@@ -189,7 +189,7 @@ checkout_170
 checkout_189
     [Documentation]   验证checkout支付页面，place order按钮正常  >  1.购买商品进入checkout支付页面  2.选择COD支付   3.点击place order按钮
     [Tags]    P0    threshold    smoke
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     #添加是shipping address
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -202,7 +202,7 @@ checkout_189
 checkout_193
     [Documentation]   验证payment successful页面，shipping information显示正常  >  1.购买商品进入checkout shipping页面 2.填写信息：first name：Javen last name：fang address：南山区 apartment：中山大学产学研基地 city：深圳 country：China province：广东 postal code：518000 email：dianjiang@autotest.com phone：18688886666 company：shoplazza 3.完成订单进入payment successful 页面查看shipping information
     [Tags]    P0    threshold
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     #添加是shipping address
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -220,7 +220,7 @@ checkout_193
 checkout_195
     [Documentation]   验证payment successful页面，view order按钮可跳转到个人中心订单详情页面  >  1.购买商品进入checkout并完成支付进入payment successful页面  2.点击view order按钮
     [Tags]    P0    threshold    smoke
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     #添加是shipping address
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -235,7 +235,7 @@ checkout_195
 checkout_196
     [Documentation]   验证payment successful页面，continue shopping按钮可跳转到店铺首页  >  1.购买商品进入checkout并完成支付进入payment successful页面  2.点击continue shopping按钮
     [Tags]    P0    threshold    smoke
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step

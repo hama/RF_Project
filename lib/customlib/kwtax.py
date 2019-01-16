@@ -85,7 +85,25 @@ def set_country_tax_price_py(tax_price, cookie=init_cookie):
     return tax_batch_py(data, cookie=cookie)
 
 
+def set_tax_with_conf_py(conf=[], cookie=init_cookie):
+    """
+
+    :param conf:
+    :param cookie:
+    :return:
+    """
+    data = copy.deepcopy(tax_batch_data)
+    param_data = []
+    template_data = copy.deepcopy(data[0])
+    for item in conf:
+        dict_deepupdate(template_data, item)
+        param_data.append(template_data)
+        template_data = copy.deepcopy(data[0])
+
+    return tax_batch_py(param_data, cookie=cookie)
+
+
 if __name__ == '__main__':
-    print close_tax_price_by_id_py('235863')
-    # print add_default_tax_price_py()
+    # print close_tax_price_by_id_py('235863')
+    print add_default_tax_price_py()
     # add_shipping_with_conf_py()

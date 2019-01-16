@@ -381,10 +381,10 @@ shipping_data = {
 }
 
 shipping_merchant_data = {
-    "channel_name":"汉邮",
-    "client_id":"SHOPLAZZA",
-    "secret_key":"cf73b069ff5349d19d9a40583d26283e",
-    "name":"hanyou"
+    "channel_name": "汉邮",
+    "client_id": "SHOPLAZZA",
+    "secret_key": "cf73b069ff5349d19d9a40583d26283e",
+    "name": "hanyou"
 }
 
 checkout_create_data = {
@@ -590,6 +590,15 @@ checkout_settings_data = {
     }
 }
 
+tax_batch_data = [{
+    "status": "open",
+    "province_code": "ALL",
+    "tax_rate": 60,
+    "country_code": "CN",
+    "u'province_info": [],
+    "id": "298518"
+}]
+
 coupon_code_refresh_data = {
     "id": "0",
     "name": "autotest_activity_name",
@@ -679,10 +688,12 @@ rebate_refresh_data = {
     "target_selection": "entitled",
     "entitled_product_ids": [],
     "entitled_variant_ids": [],
-    "prerequisite_subtotal_range": [{"value":"50","greater_than_or_equal_to":"100"}],
+    "prerequisite_subtotal_range": [{"value": "50", "greater_than_or_equal_to": "100"}],
     "prerequisite_quantity_range": None,
     "progress": "",
-    "config": {"banner_url":"","count_down":{"background_color":"rgba(246,246,246,1)","color":"rgba(102,102,102,1)","highlight_color":"rgba(255,51,51,1)"}}
+    "config": {"banner_url": "",
+               "count_down": {"background_color": "rgba(246,246,246,1)", "color": "rgba(102,102,102,1)",
+                              "highlight_color": "rgba(255,51,51,1)"}}
 }
 
 customer_data = {

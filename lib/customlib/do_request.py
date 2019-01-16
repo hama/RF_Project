@@ -16,7 +16,7 @@ def do_post(url, data, cookie):
     try:
         response_data = requests.post(url=url, headers={"cookie": get_cookie(url, cookie)}, json=data)
         return_data = {}
-        logging.info(url + '\nstatus_code:\n' + response_data.status_code + '\nrequest_data:\n' + str(
+        logging.info(url + '\nstatus_code:\n' + str(response_data.status_code) + '\nrequest_data:\n' + str(
             data) + '\nresponse_data:\n' + response_data.content)
         if response_data.content == '':
             return_data['content'] = response_data.content
@@ -35,7 +35,7 @@ def do_put(url, data, cookie):
     try:
         response_data = requests.put(url=url, headers={"cookie": get_cookie(url, cookie)}, json=data)
         return_data = {}
-        logging.info(url + '\nstatus_code:\n' + response_data.status_code + '\nrequest_data:\n' + str(
+        logging.info(url + '\nstatus_code:\n' + str(response_data.status_code) + '\nrequest_data:\n' + str(
             data) + '\nresponse_data:\n' + response_data.content)
         if response_data.content == '':
             return_data['content'] = response_data.content
@@ -56,7 +56,7 @@ def do_get(url, query_str, cookie):
         time.sleep(0.2)
         response_data = requests.get(url=url, headers={"cookie": get_cookie(url, cookie)}, params=query_str)
         return_data = {}
-        logging.info(url + '\nstatus_code:\n' + response_data.status_code + '\nrequest_data:\n' + str(
+        logging.info(url + '\nstatus_code:\n' + str(response_data.status_code) + '\nrequest_data:\n' + str(
             query_str) + '\nresponse_data:\n' + response_data.content)
         if response_data.content == '':
             return_data['content'] = response_data.content
@@ -75,7 +75,7 @@ def do_patch(url, data, cookie):
     try:
         response_data = requests.patch(url=url, headers={"cookie": get_cookie(url, cookie)}, json=data)
         return_data = {}
-        logging.info(url + '\nstatus_code:\n' + response_data.status_code + '\nrequest_data:\n' + str(
+        logging.info(url + '\nstatus_code:\n' + str(response_data.status_code) + '\nrequest_data:\n' + str(
             data) + '\nresponse_data:\n' + response_data.content)
         if response_data.content == '':
             return_data['content'] = response_data.content
@@ -95,7 +95,7 @@ def do_delete(url, cookie):
         response_data = requests.delete(url=url, headers={"cookie": get_cookie(url, cookie)})
         return_data = {}
         logging.info(
-            url + '\nstatus_code:\n' + response_data.status_code + '\nresponse_data:\n' + response_data.content)
+            url + '\nstatus_code:\n' + str(response_data.status_code) + '\nresponse_data:\n' + response_data.content)
         if response_data.content == '':
             return_data['content'] = response_data.content
         else:

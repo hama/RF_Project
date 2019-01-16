@@ -13,7 +13,7 @@ Resource        ../../../resources/keywords/kw_common.robot
 Trade setting_024
     [Documentation]    验证交易规则栏，联系方式选择为手机和邮箱必填时，checkout页面email和phone输入框为必填项
     [Tags]    P0    threshold
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
     Sleep And Click Element    ${locatorB_checkout_radio_contactMandatory}
@@ -35,7 +35,7 @@ Trade setting_024
 Trade setting_025
     [Documentation]    验证交易规则栏，联系方式选择为选填手机号时，checkout页面phone输入框为选填项， email输入框为必填项
     [Tags]    P0    threshold
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_radio_contactEmailOptional}
     Sleep And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
@@ -55,7 +55,7 @@ Trade setting_025
 Trade setting_026
     [Documentation]    验证交易规则栏，联系方式选择为选填邮箱时，checkout页面email输入框为选填项， phone输入框为必填项
     [Tags]    P0    threshold
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
     Sleep And Click Element    ${locatorB_checkout_radio_contactEmailOptional}
@@ -75,7 +75,7 @@ Trade setting_026
 Trade setting_027
     [Documentation]    验证交易规则栏，联系方式选择为隐藏手机号时，checkout页面不显示phone输入框，email输入框为必填项
     [Tags]    P0    threshold
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
     Sleep And Click Element    ${locatorB_checkout_radio_contactPhoneHidden}
@@ -95,7 +95,7 @@ Trade setting_027
 Trade setting_028
     [Documentation]    验证交易规则栏，联系方式选择为隐藏邮箱时，checkout页面不显示email输入框，phone输入框为必填项
     [Tags]    P0    threshold
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
     Sleep And Click Element    ${locatorB_checkout_radio_contactEmailHidden}
@@ -124,7 +124,7 @@ Trade setting_032
 Trade setting_034
     [Documentation]    验证退款条约输入框中输入的内容，将展示在checkout页面
     [Tags]    P0    threshold   smoke
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Go To ServiceTerms Table
     Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     退款条约文本展示
     Wait And Clear Element Text    ${locatorB_checkout_textarea_policyInputBox}
@@ -151,7 +151,7 @@ Trade setting_037
 Trade setting_039
     [Documentation]    验证隐私政策输入框中输入的内容，将展示在checkout页面
     [Tags]    P0    threshold
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Go To ServiceTerms Table
     Wait And Input Text     ${locatorB_checkout_textarea_policyInputBox}     隐私政策文本展示
     Wait And Clear Element Text    ${locatorB_checkout_textarea_refundTreatyInputBox}
@@ -178,7 +178,7 @@ Trade setting_042
 Trade setting_044
     [Documentation]    验证服务条约输入框中输入的内容，将展示在checkout页面
     [Tags]    P0    threshold
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Go To ServiceTerms Table
     Wait And Input Text     ${locatorB_checkout_textarea_refundServiceInputBox}     服务条约文本展示
     Wait And Clear Element Text    ${locatorB_checkout_textarea_refundTreatyInputBox}
