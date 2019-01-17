@@ -60,7 +60,14 @@ class cdpkeywords():
             获取请求返回body
         :return:
         """
-        response_body = self.chrome.Network.getResponseBody(requestId=request_id)
+        time.sleep(0.2)
+        response_body = None
+        for i in range(5):
+            if not response_body:
+                response_body = self.chrome.Network.getResponseBody(requestId=request_id)
+            else:
+                break
+        # print json.dumps(response_body)
         if isinstance(response_body, dict):
             return json.loads(response_body['result']['body'])
         else:
@@ -71,7 +78,13 @@ class cdpkeywords():
             获取post请求data
         :return:
         """
-        post_data = self.chrome.Network.getRequestPostData(requestId=request_id)
+        time.sleep(0.2)
+        post_data = None
+        for i in range(5):
+            if not post_data:
+                post_data = self.chrome.Network.getRequestPostData(requestId=request_id)
+            else:
+                break
         request_data_dict = request_data_str_to_dict(post_data['result']['postData'])
         return request_data_dict
 
