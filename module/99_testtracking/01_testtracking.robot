@@ -14,9 +14,9 @@ ${referrer_host}    ${domain}.myshoplaza.com
 
 *** Test Cases ***
 tracking001
-    [Documentation]
+    [Documentation]    google、神策、facebook的pageview事件上报
     [Tags]
-    Sleep    3
+    Sleep    5
     ${all_messages}    get_all_messages
 	&{ga_pageview_data}=    Create Dictionary    t=pageview
 	&{properties}=    Create Dictionary    $is_first_time=${False}    $title=${domain}    $url=${url}
@@ -28,13 +28,12 @@ tracking001
     assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_pageview_data}
     assert_equal_values_process    ${all_messages}    www.facebook.com    ${fb_pageview_data}
 
-
 tracking002
-    [Documentation]
+    [Documentation]    google、神策、facebook的addtocart事件上报
     [Tags]
     Wait And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Wait And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
-    Sleep    3
+    Sleep    5
 	#    获得总数据
     ${all_messages}    get_all_messages
 	#    构造真实对比数据
@@ -70,20 +69,96 @@ tracking002
     assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_addtocard_data}
     assert_equal_values_process    ${all_messages}    facebook.com    ${fb_addtocard_data}
 
+tracking003
+    [Documentation]    facebook的"进入Cartcheckout次数"事件上报(购物车的结账)
+    [Tags]
+    Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
+    Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
+#    Sleep    5
+	#    获得总数据
+    ${all_messages_before}    get_all_messages
+	#    构造真实对比数据
+    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/cart/add
+	@{request_ids}    get_request_ids_from_messages    ${target_messages}
+    &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
+    &{response_body_data}    network_get_response_body    @{request_ids}[0]
+    ${variant_id} =    Set Variable    ${request_post_data.variant_id}
+    ${productPrice} =    lib_utils.get_value_from_dict    ${response_body_data}    data.line_items.${variant_id}.price
+    ${price}=    Evaluate    u"${productPrice}".strip('.00')
+    ${currency} =    Set Variable    USD
+    ${content_category}=    Set Variable    detail_buynow
+    ${product_id} =    Set Variable    ${request_post_data.product_id}
+    ${quantity} =    Set Variable    ${request_post_data.quantity}
+    &{list}=    Create Dictionary    id=${product_id}    number=${quantity}    item_price=${productPrice}
+    @{contents}=    Create List    ${list}
+	&{fb_Cartcheckout_data}=    Create Dictionary    ev=InitiateCheckout    cd[value]=${price}    cd[currency]=${currency}
+	...    cd[content_name]=${Empty}    cd[content_category]=${content_category}    cd[content_ids]=[]    cd[contents]=${contents}   cd[num_items]=${quantity}
+	@{fb_Cartcheckout_list}=    Create List    ${fb_Cartcheckout_data}
+	#进入cart页面
+	Sleep    3
+	Sleep And Click Element    dom:document.querySelectorAll('[href="/cart"]')[1]
+	Sleep And Click Element    dom:document.querySelectorAll('[data-track="checkout-submit"]')[0]
+#	Sleep    5
+	#检查facebook的cartcheckout上报事件
+	${all_messages_after}    get_all_messages
+	assert_contain_keys_process    ${all_messages_after}    www.facebook.com    ${fb_Cartcheckout_list}
+
+tracking004
+    [Documentation]    facebook的"进入detail_buynow次数"事件上报(详情页面的立即购买)
+    [Tags]
+    Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
+    Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
+#    Sleep    5
+	#    获得总数据
+    ${all_messages_before}    get_all_messages
+	#    构造真实对比数据
+    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/cart/add
+	@{request_ids}    get_request_ids_from_messages    ${target_messages}
+    &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
+    &{response_body_data}    network_get_response_body    @{request_ids}[0]
+    ${variant_id} =    Set Variable    ${request_post_data.variant_id}
+    ${productPrice} =    lib_utils.get_value_from_dict    ${response_body_data}    data.line_items.${variant_id}.price
+    ${price}=    Evaluate    u"${productPrice}".strip('.00')
+    ${currency} =    Set Variable    USD
+    ${content_category}=    Set Variable    Cart_checkout
+    ${product_id} =    Set Variable    ${request_post_data.product_id}
+    ${quantity} =    Set Variable    ${request_post_data.quantity}
+    &{list}=    Create Dictionary    id=${product_id}    number=${quantity}    item_price=${productPrice}
+    @{contents}=    Create List    ${list}
+	&{fb_Cartcheckout_data}=    Create Dictionary    ev=InitiateCheckout    cd[value]=${price}    cd[currency]=${currency}
+	...    cd[content_name]=${Empty}    cd[content_category]=${content_category}    cd[content_ids]=[]    cd[contents]=${contents}   cd[num_items]=${quantity}
+	@{fb_Cartcheckout_list}=    Create List    ${fb_Cartcheckout_data}
+	#进入buy now页面
+	Sleep    3
+	Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
+#	Sleep    5
+	#检查facebook的cartcheckout上报事件
+	${all_messages_after}    get_all_messages
+	assert_contain_keys_process    ${all_messages_after}    www.facebook.com    ${fb_Cartcheckout_list}
+
+tracking005
+    [Documentation]    sa的cart页面"checkout"上报事件
+    [Tags]
+    Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
+    Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
+
 
 *** Keywords ***
 Tracking Suite Setup
 	[Documentation]
+	kwproduct.del_all_products_py
 	Open Test Browser    ${url}
 	Open New And Close Other Windows    ${url}
 
 Tracking Testcase Setup
 	[Documentation]
+	kwproduct.add_max_product_py
 	start_listener_on_new_tab
 	Reload Page
 
 Tracking Testcase Teardown
 	[Documentation]
+	kwproduct.del_all_products_py
 	Run Keyword If Test Failed    Capture Page Screenshot
 	Open New And Close Other Windows    ${url}
 
