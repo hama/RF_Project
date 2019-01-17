@@ -13,12 +13,12 @@ Checkout Page Suite Setup
 
 
 Checkout Page Suite Teardown
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     kwshipping.del_all_shipping_py
     Close Test Suite Browser
 
 Checkout Page Test Setup
-    kwcheckout.set_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     Go To Checkout Settings Page
 
 Go To TradingRules Table

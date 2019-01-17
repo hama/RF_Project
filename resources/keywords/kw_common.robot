@@ -19,6 +19,7 @@ Library           ${CURDIR}/../../lib/customlib/kwshipping.py
 Library           ${CURDIR}/../../lib/customlib/kwstore.py
 Library           ${CURDIR}/../../lib/customlib/kwtax.py
 Library           ${CURDIR}/../../lib/customlib/lib_utils.py
+Library           ${CURDIR}/../../lib/customlib/public_method.py
 Library           ${CURDIR}/../../lib/customlib/kwrebate.py
 Library           ${CURDIR}/../../lib/customlib/kwcustomer.py
 Resource          ../variable/var_common.robot

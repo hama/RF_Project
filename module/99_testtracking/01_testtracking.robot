@@ -142,7 +142,6 @@ tracking005
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
 
-
 *** Keywords ***
 Tracking Suite Setup
 	[Documentation]
