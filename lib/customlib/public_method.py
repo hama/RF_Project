@@ -5,6 +5,8 @@ import kwcollection
 import kwcomment
 import kwcoupon
 import kwcustomer
+import kwfilemanagement
+import kwmenus
 import kworder
 import kwpayment
 import kwpopups
@@ -13,8 +15,6 @@ import kwrebate
 import kwshipping
 import kwstore
 import kwtax
-import kwmenus
-import kwfilemanagement
 from variable import *
 
 reload(sys)
@@ -29,6 +29,8 @@ def create(module_name, conf={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
+    if isinstance(conf, str):
+        conf = json.loads(conf)
     if 'product' in module_name:
         return kwproduct.add_product_with_conf_py(conf, cookie=cookie)
     elif 'collection' in module_name:
@@ -63,6 +65,8 @@ def setting(module_name, conf={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
+    if isinstance(conf, str):
+        conf = json.loads(conf)
     if 'checkout_process' in module_name:
         return kwcheckout.set_checkout_process_with_conf_py(conf, cookie=cookie)
     elif 'payment' in module_name:
@@ -79,7 +83,9 @@ def setting(module_name, conf={}, cookie=init_cookie):
     elif 'store' in module_name:
         return kwstore.set_store_info_with_conf_py(conf, cookie=cookie)
     elif 'tax' in module_name:
-        return kwtax.set_tax_with_conf_py(conf=[], cookie=cookie)
+        if isinstance(conf, dict):
+            conf = []
+        return kwtax.set_tax_with_conf_py(conf, cookie=cookie)
 
 
 def delete(module_name, conf={}, cookie=init_cookie):
@@ -90,6 +96,8 @@ def delete(module_name, conf={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
+    if isinstance(conf, str):
+        conf = json.loads(conf)
     if 'collection' in module_name:
         if conf['scope'] == 'all':
             return kwcollection.del_all_collections_py(cookie=cookie)

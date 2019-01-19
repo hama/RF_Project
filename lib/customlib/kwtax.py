@@ -95,10 +95,13 @@ def set_tax_with_conf_py(conf=[], cookie=init_cookie):
     data = copy.deepcopy(tax_batch_data)
     param_data = []
     template_data = copy.deepcopy(data[0])
-    for item in conf:
-        dict_deepupdate(template_data, item)
+    if not conf:
+        for item in conf:
+            dict_deepupdate(template_data, item)
+            param_data.append(template_data)
+            template_data = copy.deepcopy(data[0])
+    else:
         param_data.append(template_data)
-        template_data = copy.deepcopy(data[0])
 
     return tax_batch_py(param_data, cookie=cookie)
 
