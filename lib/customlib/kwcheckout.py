@@ -7,17 +7,17 @@ sys.setdefaultencoding('utf-8')
 
 
 def checkout_save_py(data, cookie=init_cookie):
-    url = home_page_url + "/api/checkout/save"
+    url = home_page_url_admin + "/api/checkout/save"
     return do_post(url, data, cookie=cookie)
 
 
 def checkout_settings_post_py(data, cookie=init_cookie):
-    url = home_page_url + "/api/checkout/settings"
+    url = home_page_url_admin + "/api/checkout/settings"
     return do_post(url, data, cookie=cookie)
 
 
 def checkout_settings_get_py(query_str={}, cookie=init_cookie):
-    url = home_page_url + "/api/checkout/settings"
+    url = home_page_url_admin + "/api/checkout/settings"
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -28,7 +28,7 @@ def checkout_create_py(data, cookie=init_cookie):
     :param cookie:
     :return: order_token
     '''
-    url = myshoplaza_url + "/checkout/create"
+    url = myshoplaza_url_admin + "/checkout/create"
     return do_post(url, data, cookie=cookie)
 
 
@@ -39,7 +39,7 @@ def checkout_price_calculate_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    url = myshoplaza_url + "/checkout/price/calculate"
+    url = myshoplaza_url_admin + "/checkout/price/calculate"
     return do_post(url, data, cookie=cookie)
 
 
@@ -50,7 +50,7 @@ def checkout_shipping_lines_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return: order_token
     '''
-    url = myshoplaza_url + "/checkout/shipping/lines"
+    url = myshoplaza_url_admin + "/checkout/shipping/lines"
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -61,7 +61,7 @@ def checkout_place_order_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     '''
-    url = myshoplaza_url + "/checkout/place-order"
+    url = myshoplaza_url_admin + "/checkout/place-order"
     return do_post(url, data, cookie=cookie)
 
 
