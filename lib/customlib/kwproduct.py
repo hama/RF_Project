@@ -15,7 +15,7 @@ def products_get_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/products' % (home_page_url)
+    url = '%s/api/admin/products' % (home_page_url_admin)
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -26,7 +26,7 @@ def products_id_get_py(product_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/products/%s' % (home_page_url, product_id)
+    url = '%s/api/admin/products/%s' % (home_page_url_admin, product_id)
     return do_get(url, {}, cookie=cookie)
 
 
@@ -37,7 +37,7 @@ def products_post_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url + '/api/admin/products'
+    url = home_page_url_admin + '/api/admin/products'
     return do_post(url, data, cookie=cookie)
 
 
@@ -48,7 +48,7 @@ def products_patch_py(data, product_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/products/%s' % (home_page_url, product_id)
+    url = '%s/api/admin/products/%s' % (home_page_url_admin, product_id)
     return do_patch(url, data, cookie=cookie)
 
 
@@ -59,7 +59,7 @@ def products_delete_py(product_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/products/%s' % (home_page_url, product_id)
+    url = '%s/api/admin/products/%s' % (home_page_url_admin, product_id)
     return do_delete(url, cookie=cookie)
 
 
@@ -70,7 +70,7 @@ def products_publish_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url + '/api/admin/products/:id/publish'
+    url = home_page_url_admin + '/api/admin/products/:id/publish'
     return do_post(url, data, cookie=cookie)
 
 
@@ -81,7 +81,7 @@ def products_unpublish_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url + '/api/admin/products/:id/unpublish'
+    url = home_page_url_admin + '/api/admin/products/:id/unpublish'
     return do_post(url, data, cookie=cookie)
 
 
@@ -92,7 +92,7 @@ def products_batch_delete_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url + '/api/admin/products/batch_delete'
+    url = home_page_url_admin + '/api/admin/products/batch_delete'
     return do_post(url, data, cookie=cookie)
 
 
@@ -103,7 +103,7 @@ def products_batch_publish_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url + '/api/admin/products/batch_publish'
+    url = home_page_url_admin + '/api/admin/products/batch_publish'
     return do_post(url, data, cookie=cookie)
 
 
@@ -114,7 +114,7 @@ def products_batch_unpublish_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url + '/api/admin/products/batch_unpublish'
+    url = home_page_url_admin + '/api/admin/products/batch_unpublish'
     return do_post(url, data, cookie=cookie)
 
 
@@ -125,7 +125,7 @@ def products_query_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url + '/api/admin/products/query'
+    url = home_page_url_admin + '/api/admin/products/query'
     return do_post(url, data, cookie=cookie)
 
 
