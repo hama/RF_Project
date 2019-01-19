@@ -14,7 +14,7 @@ def coupon_code_list_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url + "/api/coupon-code/list"
+    url = home_page_url_admin + "/api/coupon-code/list"
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -24,7 +24,7 @@ def coupon_code_detail_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url + "/api/coupon-code/detail"
+    url = home_page_url_admin + "/api/coupon-code/detail"
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -34,7 +34,7 @@ def coupon_code_random_code_py(cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url + "/api/coupon-code/random-code"
+    url = home_page_url_admin + "/api/coupon-code/random-code"
     query_str = {}
     return do_get(url, query_str, cookie=cookie)
 
@@ -45,7 +45,7 @@ def coupon_code_refresh_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url + "/api/coupon-code/refresh"
+    url = home_page_url_admin + "/api/coupon-code/refresh"
     return do_post(url, data, cookie=cookie)
 
 
