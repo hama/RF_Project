@@ -33,6 +33,7 @@ tracking002
     [Tags]
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
+    Sleep    5
 	#    获得总数据
     ${all_messages}    get_all_messages
 	#    构造真实对比数据
