@@ -170,7 +170,7 @@ ${locatorB_merchantSettings_icon_deleteAccount}    dom:document.querySelectorAll
 #${contentB_shipping_name}    物流1    # 物流名称
 #${contentB_shipping_setup}    设置你的物流方案    # 没有物流方案时，页面提示设置物流
 #
-#${locatorB_shipping_list_api}    ${home_page}/api/shipping/list
+#${locatorB_shipping_list_api}    ${url_home_page}/api/shipping/list
 #
 #${locatorB_shipping_description}    dom:document.querySelectorAll("#desc")[0]    #.添加运费- 说明框
 #${locatorB_shipping_price}    id:rate_amount    #.价格运费框

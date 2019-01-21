@@ -15,7 +15,7 @@ def popups_get_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + "/api/admin/popups"
+    url = home_page_url + "/api/admin/popups"
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -26,7 +26,7 @@ def popups_post_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + "/api/admin/popups"
+    url = home_page_url + "/api/admin/popups"
     return do_post(url, data, cookie=cookie)
 
 
@@ -37,7 +37,7 @@ def popups_id_py(popups_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/popups/%s' % (home_page_url_admin, popups_id)
+    url = '%s/api/admin/popups/%s' % (home_page_url, popups_id)
     return do_get(url, {}, cookie=cookie)
 
 
@@ -48,7 +48,7 @@ def popups_put_py(data, popups_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/popups/%s' % (home_page_url_admin, popups_id)
+    url = '%s/api/admin/popups/%s' % (home_page_url, popups_id)
     return do_put(url, data, cookie=cookie)
 
 
@@ -59,7 +59,7 @@ def popups_patch_py(data, popups_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/popups/%s' % (home_page_url_admin, popups_id)
+    url = '%s/api/admin/popups/%s' % (home_page_url, popups_id)
     return do_patch(url, data, cookie=cookie)
 
 
@@ -70,7 +70,7 @@ def popups_delete_py(popups_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/popups/%s' % (home_page_url_admin, popups_id)
+    url = '%s/api/admin/popups/%s' % (home_page_url, popups_id)
     return do_delete(url, cookie=cookie)
 
 

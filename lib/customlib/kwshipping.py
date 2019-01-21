@@ -15,7 +15,7 @@ def shippings_get_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/shippings' % (home_page_url_admin)
+    url = '%s/api/shippings' % (home_page_url)
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -26,7 +26,7 @@ def shippings_id_get_py(shipping_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/shippings/%s' % (home_page_url_admin, shipping_id)
+    url = '%s/api/shippings/%s' % (home_page_url, shipping_id)
     return do_get(url, {}, cookie=cookie)
 
 
@@ -37,7 +37,7 @@ def shippings_country_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/shippings/%s/country' % (home_page_url_admin, query_str)
+    url = '%s/api/shippings/%s/country' % (home_page_url, query_str)
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -48,7 +48,7 @@ def shippings_id_country_py(shipping_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/shippings/%s/country' % (home_page_url_admin, shipping_id)
+    url = '%s/api/shippings/%s/country' % (home_page_url, shipping_id)
     return do_get(url, {}, cookie=cookie)
 
 
@@ -59,7 +59,7 @@ def shippings_id_country_code_province_py(shipping_id, code, cookie=init_cookie)
     :param cookie:
     :return:
     """
-    url = '%s/api/shippings/%s/country/%s/province' % (home_page_url_admin, shipping_id, code)
+    url = '%s/api/shippings/%s/country/%s/province' % (home_page_url, shipping_id, code)
     return do_get(url, {}, cookie=cookie)
 
 
@@ -70,7 +70,7 @@ def shippings_country_code_province_py(code, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/shippings/country/%s/province' % (home_page_url_admin, code)
+    url = '%s/api/shippings/country/%s/province' % (home_page_url, code)
     return do_get(url, {}, cookie=cookie)
 
 
@@ -81,7 +81,7 @@ def shippings_country_selectable_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/shippings/country/selectable' % (home_page_url_admin)
+    url = '%s/api/shippings/country/selectable' % (home_page_url)
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -92,7 +92,7 @@ def shippings_id_country_selectable_py(shipping_id, query_str={}, cookie=init_co
     :param cookie:
     :return:
     """
-    url = '%s/api/shippings/%s/country/selectable' % (home_page_url_admin, shipping_id)
+    url = '%s/api/shippings/%s/country/selectable' % (home_page_url, shipping_id)
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -103,7 +103,7 @@ def shippings_delete_py(shipping_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/shippings/%s' % (home_page_url_admin, shipping_id)
+    url = '%s/api/shippings/%s' % (home_page_url, shipping_id)
     return do_delete(url, cookie=cookie)
 
 
@@ -114,7 +114,7 @@ def shippings_post_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/shippings' % (home_page_url_admin)
+    url = '%s/api/shippings' % (home_page_url)
     return do_post(url, data, cookie=cookie)
 
 
@@ -125,7 +125,7 @@ def shippings_put_py(data, shipping_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/shippings/%s' % (home_page_url_admin, shipping_id)
+    url = '%s/api/shippings/%s' % (home_page_url, shipping_id)
     return do_put(url, data, cookie=cookie)
 
 def shipping_merchant_get_py(query_str={}, cookie=init_cookie):
@@ -135,7 +135,7 @@ def shipping_merchant_get_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/carrier-service' % (home_page_url_admin)
+    url = '%s/api/carrier-service' % (home_page_url)
     return do_get(url, query_str, cookie=cookie)
 
 def shipping_merchant_post_py(data, cookie=init_cookie):
@@ -145,7 +145,7 @@ def shipping_merchant_post_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/carrier-service' % (home_page_url_admin)
+    url = '%s/api/carrier-service' % (home_page_url)
     return do_post(url, data, cookie=cookie)
 
 
@@ -156,7 +156,7 @@ def shipping_merchant_delete_py(shipping_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/carrier-service/%s' % (home_page_url_admin, shipping_id)
+    url = '%s/api/carrier-service/%s' % (home_page_url, shipping_id)
     return do_delete(url, cookie=cookie)
 
 

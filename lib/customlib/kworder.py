@@ -9,12 +9,12 @@ sys.setdefaultencoding('utf-8')
 
 
 def admin_orders_by_raw_data_py(query_str={}, cookie=init_cookie):
-    url = home_page_url_admin + '/api/admin/orders'
+    url = home_page_url + '/api/admin/orders'
     return do_get(url, query_str, cookie=cookie)
 
 
 def admin_orders_by_str_py(string, cookie=init_cookie):
-    url = '%s/api/admin/orders/%s' % (home_page_url_admin, string)
+    url = '%s/api/admin/orders/%s' % (home_page_url, string)
     query_str = {}
     return do_get(url, query_str, cookie=cookie)
 
@@ -26,7 +26,7 @@ def orders_fulfillments_via_post_py(order_token, data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/orders/%s/fulfillments' % (home_page_url_admin, order_token)
+    url = '%s/api/admin/orders/%s/fulfillments' % (home_page_url, order_token)
     return do_post(url, data, cookie=cookie)
 
 
@@ -37,7 +37,7 @@ def orders_fulfillments_via_get_py(order_token, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/orders/%s/fulfillments' % (home_page_url_admin, order_token)
+    url = '%s/api/admin/orders/%s/fulfillments' % (home_page_url, order_token)
     query_str = {}
     return do_get(url, query_str, cookie=cookie)
 
@@ -51,7 +51,7 @@ def orders_finish_py(order_token, fulfillment_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/orders/%s/fulfillments/%s/finish' % (home_page_url_admin, order_token, fulfillment_id)
+    url = '%s/api/admin/orders/%s/fulfillments/%s/finish' % (home_page_url, order_token, fulfillment_id)
     return do_patch(url, {}, cookie=cookie)
 
 
@@ -62,7 +62,7 @@ def orders_cancel_py(order_token, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/orders/%s/cancel' % (home_page_url_admin, order_token)
+    url = '%s/api/admin/orders/%s/cancel' % (home_page_url, order_token)
     return do_patch(url, {}, cookie=cookie)
 
 
@@ -73,7 +73,7 @@ def del_order_py(order_token, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/orders/%s.json' % (home_page_url_admin, order_token)
+    url = '%s/api/admin/orders/%s.json' % (home_page_url, order_token)
     return do_delete(url, cookie=cookie)
 
 

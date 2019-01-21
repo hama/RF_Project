@@ -14,7 +14,7 @@ def menus_detail_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + "/api/menus/detail"
+    url = home_page_url + "/api/menus/detail"
     return do_post(url, data, cookie=cookie)
 
 
@@ -24,7 +24,7 @@ def menus_url_list_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + "/api/menus/url-list"
+    url = home_page_url + "/api/menus/url-list"
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -34,7 +34,7 @@ def menus_delete_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + "/api/menus/delete"
+    url = home_page_url + "/api/menus/delete"
     return do_post(url, data, cookie=cookie)
 
 

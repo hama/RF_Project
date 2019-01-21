@@ -13,7 +13,7 @@ def payment_methods_post_py(data, cookie=init_cookie):
     """
     创建支付方式
     """
-    url = home_page_url_admin + "/api/payment/methods"
+    url = home_page_url + "/api/payment/methods"
     return do_post(url, data, cookie=cookie)
 
 
@@ -24,7 +24,7 @@ def payment_methods_put_py(data, payment_methods_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/payment/methods/%s' % (home_page_url_admin, payment_methods_id)
+    url = '%s/api/payment/methods/%s' % (home_page_url, payment_methods_id)
     return do_put(url, data, cookie=cookie)
 
 
@@ -35,7 +35,7 @@ def payment_methods_patch_py(data, payment_methods_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/payment/methods/%s' % (home_page_url_admin, payment_methods_id)
+    url = '%s/api/payment/methods/%s' % (home_page_url, payment_methods_id)
     return do_patch(url, data, cookie=cookie)
 
 
@@ -46,7 +46,7 @@ def payment_channels_post_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + "/api/payment/channels"
+    url = home_page_url + "/api/payment/channels"
     return do_post(url, data, cookie=cookie)
 
 
@@ -57,7 +57,7 @@ def payment_channels_get_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + "/api/payment/channels"
+    url = home_page_url + "/api/payment/channels"
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -68,7 +68,7 @@ def payment_channels_put_py(data, payment_channels_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/payment/channels/%s' % (home_page_url_admin, payment_channels_id)
+    url = '%s/api/payment/channels/%s' % (home_page_url, payment_channels_id)
     return do_put(url, data, cookie=cookie)
 
 
@@ -79,7 +79,7 @@ def payment_get_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + "/api/payment"
+    url = home_page_url + "/api/payment"
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -90,7 +90,7 @@ def payment_auth_get_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + "/api/payment/auth"
+    url = home_page_url + "/api/payment/auth"
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -101,7 +101,7 @@ def payment_pay_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = myshoplaza_url_admin + '/checkout/payment/pay'
+    url = myshoplaza_url + '/checkout/payment/pay'
     return do_post(url, data, cookie=cookie)
 
 

@@ -12,7 +12,7 @@ New Test Suite Browser And Login
     log    ===========================================================================================================================================================
     log    ===================================================== Test Suite Start, New Browser For Test Suite ========================================================
     log    ===========================================================================================================================================================
-    Open Test Browser    ${home_page}
+    Open Test Browser    ${login_url}
     Login With User    ${username}    ${password}    ${domain}
 
 Close Test Suite Browser
@@ -36,7 +36,7 @@ Teardown Test Case
     Run Keyword If Test Failed    Capture Page Screenshot
 #    Run Keyword If Test Failed    Run Keyword And Ignore Error    Handle Alert
     Run Keyword If Test Failed    Log Error Response Of Ajax Listener
-    Open New And Close Other Windows    ${home_page}
+    Open New And Close Other Windows    ${url_home_page}
     #    log    *******************************************************************************************************
     #    log    ******************************************** Test Case End ********************************************
     #    log    *******************************************************************************************************

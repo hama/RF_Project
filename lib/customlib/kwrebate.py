@@ -17,7 +17,7 @@ def rebate_list_py(query_str={}, cookie=init_cookie):
     :return:
     """
 
-    url = home_page_url_admin + "/api/admin/discount-rebate"
+    url = home_page_url + "/api/admin/discount-rebate"
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -29,7 +29,7 @@ def rebate_detail_py(rebate_id, cookie=init_cookie):
     :return:
     """
 
-    url = '%s/api/admin/discount-rebate/%s' % (home_page_url_admin, rebate_id)
+    url = '%s/api/admin/discount-rebate/%s' % (home_page_url, rebate_id)
     return do_get(url, {}, cookie=cookie)
 
 
@@ -41,7 +41,7 @@ def rebate_select_product_py(query_str={}, cookie=init_cookie):
     :return:
     """
 
-    url = home_page_url_admin + "/api/admin/discount-rebate/select-product"
+    url = home_page_url + "/api/admin/discount-rebate/select-product"
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -52,7 +52,7 @@ def rebate_refresh_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/discount-rebate/' % (home_page_url_admin)
+    url = '%s/api/admin/discount-rebate/' % (home_page_url)
     return do_post(url, data, cookie=cookie)
 
 
@@ -63,7 +63,7 @@ def rebate_end_py(rebate_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/discount-rebate/%s' % (home_page_url_admin, rebate_id)
+    url = '%s/api/admin/discount-rebate/%s' % (home_page_url, rebate_id)
     data = {"id": rebate_id, "status": "end"}
     return do_patch(url, data, cookie=cookie)
 
@@ -75,7 +75,7 @@ def rebate_delete_py(data, rebate_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/discount-rebate/%s' % (home_page_url_admin, rebate_id)
+    url = '%s/api/admin/discount-rebate/%s' % (home_page_url, rebate_id)
     return do_post(url, data, cookie=cookie)
 
 
@@ -86,7 +86,7 @@ def rebate_selected_info_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + '/api/admin/discount-rebate/selected-product'
+    url = home_page_url + '/api/admin/discount-rebate/selected-product'
     return do_post(url, data, cookie=cookie)
 
 
@@ -97,7 +97,7 @@ def rebate_preconfig_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + '/api/rebate/preconfig'
+    url = home_page_url + '/api/rebate/preconfig'
     return do_post(url, data, cookie=cookie)
 
 

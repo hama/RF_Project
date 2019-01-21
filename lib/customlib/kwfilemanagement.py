@@ -14,7 +14,7 @@ def file_remove_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + "/api/file/remove"
+    url = home_page_url + "/api/file/remove"
     return do_post(url, data, cookie=cookie)
 
 
@@ -24,7 +24,7 @@ def file_list_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + "/api/file/list"
+    url = home_page_url + "/api/file/list"
     return do_get(url, query_str, cookie=cookie)
 
 

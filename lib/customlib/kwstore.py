@@ -15,7 +15,7 @@ def store_post_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + "/api/store"
+    url = home_page_url + "/api/store"
     return do_post(url, data, cookie=cookie)
 
 
@@ -25,7 +25,7 @@ def store_get_py(cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + "/api/store"
+    url = home_page_url + "/api/store"
     query_str = {}
     return do_get(url, query_str, cookie=cookie)
 
@@ -36,7 +36,7 @@ def store_guide_setting_py(cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + "/api/store/guide-setting"
+    url = home_page_url + "/api/store/guide-setting"
     query_str = {}
     return do_get(url, query_str, cookie=cookie)
 

@@ -14,7 +14,7 @@ def tax_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + '/api/tax'
+    url = home_page_url + '/api/tax'
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -25,7 +25,7 @@ def tax_patch_py(data, tax_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/tax/%s' % (home_page_url_admin, tax_id)
+    url = '%s/api/tax/%s' % (home_page_url, tax_id)
     return do_patch(url, data, cookie=cookie)
 
 
@@ -36,7 +36,7 @@ def tax_batch_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url_admin + '/api/tax/batch'
+    url = home_page_url + '/api/tax/batch'
     return do_put(url, data, cookie=cookie)
 
 
