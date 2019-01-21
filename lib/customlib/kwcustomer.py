@@ -14,7 +14,7 @@ def admin_customers_address_settings_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url + "/api/admin/customers/address_settings"
+    url = home_page_url_admin + "/api/admin/customers/address_settings"
     return do_patch(url, data, cookie=cookie)
 
 
@@ -26,7 +26,7 @@ def customers_get_py(query_str={}, cookie=init_cookie):
     :return:
     """
 
-    url = '%s/api/admin/customers' % (home_page_url)
+    url = '%s/api/admin/customers' % (home_page_url_admin)
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -38,7 +38,7 @@ def customers_export_py(query_str={}, cookie=init_cookie):
     :return:
     """
 
-    url = '%s/api/admin/customers/export.json' % (home_page_url)
+    url = '%s/api/admin/customers/export.json' % (home_page_url_admin)
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -49,7 +49,7 @@ def customers_id_get_py(customer_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/customers/%s' % (home_page_url, customer_id)
+    url = '%s/api/admin/customers/%s' % (home_page_url_admin, customer_id)
     return do_get(url, {}, cookie=cookie)
 
 
@@ -60,7 +60,7 @@ def customers_post_py(data, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = home_page_url + '/api/admin/customers'
+    url = home_page_url_admin + '/api/admin/customers'
     return do_post(url, data, cookie=cookie)
 
 
@@ -71,7 +71,7 @@ def customers_patch_py(data, customer_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/customers/%s' % (home_page_url, customer_id)
+    url = '%s/api/admin/customers/%s' % (home_page_url_admin, customer_id)
     return do_patch(url, data, cookie=cookie)
 
 
@@ -82,7 +82,7 @@ def customers_delete_py(customer_id, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    url = '%s/api/admin/customers/%s' % (home_page_url, customer_id)
+    url = '%s/api/admin/customers/%s' % (home_page_url_admin, customer_id)
     return do_delete(url, cookie=cookie)
 
 
@@ -94,7 +94,7 @@ def customers_id_addresses_py(customer_id, cookie=init_cookie):
     :return:
     """
 
-    url = '%s/api/admin/customers/%s/addresses' % (home_page_url, customer_id)
+    url = '%s/api/admin/customers/%s/addresses' % (home_page_url_admin, customer_id)
     return do_get(url, {}, cookie=cookie)
 
 
@@ -106,7 +106,7 @@ def customers_id_addresses_id_py(customer_id, addresse_id, cookie=init_cookie):
     :return:
     """
 
-    url = '%s/api/admin/customers/%s/addresses/%s' % (home_page_url, customer_id, addresse_id)
+    url = '%s/api/admin/customers/%s/addresses/%s' % (home_page_url_admin, customer_id, addresse_id)
     return do_get(url, {}, cookie=cookie)
 
 
@@ -129,7 +129,7 @@ def customers_import_id_py(import_id, cookie=init_cookie):
     :return:
     """
 
-    url = '%s/api/admin/customer_imports/%s' % (home_page_url, import_id)
+    url = '%s/api/admin/customer_imports/%s' % (home_page_url_admin, import_id)
     return do_get(url, {}, cookie=cookie)
 
 
@@ -141,7 +141,7 @@ def customers_import_get_py(query_str={}, cookie=init_cookie):
     :return:
     """
 
-    url = '%s/api/admin/customer_imports' % (home_page_url)
+    url = '%s/api/admin/customer_imports' % (home_page_url_admin)
     return do_get(url, query_str, cookie=cookie)
 
 

@@ -55,7 +55,7 @@ if __name__ == '__main__':
                        '{"host": "rm-wz9x2w88ltj8c94cf.mysql.rds.aliyuncs.com","port": 3306,'
                        '"user": "readonly","password": "readonly@123","db": "service","charset": "utf8"}')
     # 测试服配置
-    elif 'admin1024.shoplazza.com' in args.url:
+    elif 'accounts1024.shoplazza.com' in args.url:
         # 过滤神策数据
         os.popen('echo "0.0.0.0 dev-shence.shoplazza.com" >> /etc/hosts')
         config.set("common_urn", "shop_urn", '.preview.shoplazza.com')

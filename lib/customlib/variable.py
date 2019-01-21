@@ -10,6 +10,7 @@ path = os.path.join(os.path.dirname(__file__), '../../config/common.ini')
 config.read(path)
 
 home_page_url = config.get("common_url", "home_page_url")
+home_page_url_admin = home_page_url + "/admin"
 shop_urn = config.get("common_urn", "shop_urn")
 datas_contact = config.get("common_account", "datas_contact")
 datas_password = config.get("common_account", "datas_password")
@@ -19,6 +20,7 @@ db_service_config = json.loads(config.get("common_db", "db_service_config"))
 db_shop_config = json.loads(config.get("common_db", "db_shop_config"))
 # myshoplaza_url = 'https://' + datas_domain + '.myshoplaza.com'
 myshoplaza_url = 'https://' + datas_domain + shop_urn
+myshoplaza_url_admin = 'https://' + datas_domain + shop_urn + "/admin"
 # myshoplaza_url = 'https://' + datas_domain + '.preview.shoplazza.com'
 
 
