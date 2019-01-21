@@ -162,34 +162,79 @@ tracking005
     #检查
     assert_equal_values_process    ${all_messages_after}    www.google-analytics.com    ${ga_Cartcheckout_list}
 
-#tracking006
-#    [Documentation]    sc的cart页面"checkout"上报事件
-#    [Tags]
-#    Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
-#    Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
-#    Sleep And Click Element    dom:document.querySelectorAll('[href="/cart"]')[1]
-#    Sleep And Click Element    dom:document.querySelectorAll('[data-track="checkout-submit"]')[0]
-#    #获得总数据
-#    ${all_messages}    get_all_messages
-#    #构造真实对比数据
-#
-##    ${status}=    Run Keyword And Return Status    Should Contain    @{request_ids}[0]    .
-##    ${request_status}=    Set Variable If
-##    ...    '${status}'=='True'    @{request_ids}[1]
-##    ...    '${status}'=='False'    @{request_ids}[0]
-##    &{request_post_data}    network_get_request_post_data    ${request_status}
-##    &{response_body_data}    network_get_response_body    ${request_status}
-##    ${response_url}=    Set Variable    ${response_body_data.url}
-##    ${deteledomain_url}=    Evaluate    u"${response_url}".strip('/')
-##    ${order_id}=    Evaluate    u"${deteledomain_url}".strip('?')
-#    ${referrer}=    Set Variable    ${url}/cart
-#    &{properties}=    Create Dictionary    referrer=${referrer}    order_id=${order_id}
-#    &{data}=    Create Dictionary    event=begin_checkout    properties=${properties}
-#    &{sc_Cartcheckout_data}=    Create Dictionary    data=${data}
-#    @{sc_Cartcheckout_list}=    Create List    ${sc_Cartcheckout_data}
-#    assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_Cartcheckout_list}
+tracking006
+    [Documentation]    sc的cart页面"checkout"上报事件
+    [Tags]
+    Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
+    Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
+    Sleep And Click Element    dom:document.querySelectorAll('[href="/cart"]')[1]
+    Sleep And Click Element    dom:document.querySelectorAll('[data-track="checkout-submit"]')[0]
+    #获得总数据
+    ${all_messages}    get_all_messages
+    #构造真实对比数据
+    ${current_url_one}=    Get Location
+    ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout/')
+    ${order_id}=    Evaluate    u"${current_url_two}".strip('?step=contact_information')
+    ${referrer}=    Set Variable    ${url}/cart
+    &{properties}=    Create Dictionary    referrer=${referrer}    order_id=${order_id}
+    &{data}=    Create Dictionary    event=begin_checkout    properties=${properties}
+    &{sc_Cartcheckout_data}=    Create Dictionary    data=${data}
+    @{sc_Cartcheckout_list}=    Create List    ${sc_Cartcheckout_data}
+    assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_Cartcheckout_list}
 
 tracking007
+    [Documentation]    google、神策、facebook的填写支付信息上报事件
+    [Tags]
+    Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
+    Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
+    Sleep    5
+	#    获得总数据
+    ${all_messages_one}    get_all_messages
+	#    构造真实对比数据
+    @{target_messages_one}    get_messages_filtering_by_url    ${all_messages_one}    myshoplaza.com/cart/add
+	@{request_ids_one}    get_request_ids_from_messages    ${target_messages_one}
+    &{request_post_data}    network_get_request_post_data    @{request_ids_one}[0]
+    &{response_body_data}    network_get_response_body    @{request_ids_one}[0]
+    ${product_id} =    Set Variable    ${request_post_data.product_id}
+    ${variant_id} =    Set Variable    ${request_post_data.variant_id}
+    ${product_title} =    lib_utils.get_value_from_dict    ${response_body_data}    data.line_items.${variant_id}.product_title
+    ${price} =    lib_utils.get_value_from_dict    ${response_body_data}    data.line_items.${variant_id}.price
+    ${quantity} =    Convert To Integer    ${request_post_data.quantity}
+    Sleep    2
+    Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
+    Add Address SepCommon Step
+    Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
+    Add Credit Card Info
+    Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
+    Sleep    2
+    ${all_messages_two}    get_all_messages
+    ${current_url_one}=    Get Location
+    ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout/')
+    ${order_id}=    Evaluate    u"${current_url_two}".strip('?step=checkout_result')
+    #ga上报数据
+    &{ga_payment_data}=    Create Dictionary    ea=checkout_progress    pr1id=${product_id}    pr1nm=${product_title}
+    @{ga_payment_list}=    Create List    ${ga_payment_data}
+    #sc上报数据
+    ${target_url}=    Set Variable    trackingtest.myshoplaza.com/api/checkout/payments/pay
+#    ${number}=    Set Variable
+    ${url_path_one}=        Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com')
+    ${url_path}=    Evaluate    u"${url_path_one}".strip('?step=checkout_result')
+	&{properties}=    Create Dictionary    order_id=${order_id}    target_url=${target_url}   number=${Empty}    $url=${current_url_one}
+	...    $title=${domain}    $url_path=${url_path}
+	&{data}=    Create Dictionary    event=add_payment_info    properties=${properties}
+	&{sc_payment_data}=    Create Dictionary    data=${data}
+	@{sc_payment_list}=    Create List    ${sc_payment_data}
+	#fb上报数据
+	&{contents}=    Create Dictionary    id=${product_id}    number=${quantity}    item_price=${price}
+	&{fb_payment_data}=    Create Dictionary    ev=AddPaymentInfo    value=${price}    currency=USD    content_category=[]
+	...    content_ids=[]    contents=${contents}
+	@{fb_payment_list}=    Create List    ${fb_payment_data}
+	#检查
+    assert_equal_values_process    ${all_messages_two}    www.google-analytics.com    ${ga_payment_list}
+    assert_equal_values_process    ${all_messages_two}    shence.shoplazza    ${sc_payment_list}
+    assert_equal_values_process    ${all_messages_two}    www.facebook.com    ${fb_payment_list}
+
+tracking008
     [Documentation]    facebook —》进入checkout_result 且是成功页面的次数 -》上报事件
     [Tags]
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
@@ -226,7 +271,7 @@ tracking007
     #检查
     assert_equal_values_process    ${all_messages_after}    www.facebook.com    ${fb_paymentsuccessful_list}
 
-tracking008
+tracking009
     [Documentation]    ga —》进入checkout_result 且是成功页面的次数 -》上报事件
     [Tags]
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
@@ -250,7 +295,7 @@ tracking008
     #检查
     assert_equal_values_process    ${all_messages_after}    www.google-analytics.com    ${ga_paymentsuccessful_data}
 
-tracking009
+tracking0010
     [Documentation]    sc —》进入checkout_result 且是成功页面的次数 -》上报事件
     [Tags]
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
@@ -265,7 +310,7 @@ tracking009
     @{sc_paymentsuccessful_list}=    Create List    ${sc_paymentsuccessful_data}
     assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_paymentsuccessful_list}
 
-tracking010
+tracking011
     [Documentation]    google、神策、facebook -》点击搜索的次数 -》上报事件
     [Tags]
     Sleep And Click Element    dom:document.querySelectorAll('[class*="sep-font sep-font-search-thin"]')[1]
