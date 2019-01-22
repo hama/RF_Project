@@ -51,7 +51,7 @@ ${locatorB_NewPriceSettings_button_pricePlanSave}    ${locatorB_button_save00}  
 # locator settingShipping
 ${locatorB_settingShipping_button_addressSet}    dom:document.querySelectorAll('[class*="shipping_address"] [type="button"]')[0]    # 物流设置 - 开始设置 按钮
 ${locatorB_settingShipping_button_merchantSet}    dom:document.querySelectorAll('[class*="shipping_address"] ~ div[class*="container"] [type="button"]')[0]    # 物流设置 - 物流商 开始设置 按钮
-${locatorB_settingShipping_button_addMerchant}    dom:document.querySelectorAll('[class*="shipping_address"] + div[class*="head_4cd8 common_title"] [type="button"]')[0]    # 物流设置 - 物流商 添加物流商 按钮
+${locatorB_settingShipping_button_addMerchant}   dom:document.querySelectorAll('[class*="enterprise_item"] [class*="ant-btn middle_btn"]')   # 物流设置 - 物流商 - 添加按钮
 
 # locator addressSettings
 ${locatorB_addressSettings_select_country}    dom:document.querySelectorAll('[id="country_code"]')[0]    # 发货地址 - 国家 选择框

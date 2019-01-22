@@ -24,7 +24,7 @@ login002
     Wait And Input Text    ${locatorB_login_input_account}    ${contentB_login_unregisteredAccount}
     Wait And Input Password    ${locatorB_login_input_password}    ${user_default_pwd}
     Wait And Click Element    ${locatorB_login_btn_login}
-    Wait Until Page Contains Text    店铺地址或者联系方式错误
+    Wait Until Page Contains Text    用户名或者密码错误
 
 login003
     [Documentation]    主账号登录失败_格式不正确
@@ -48,8 +48,8 @@ login005
     Wait And Input Text    ${locatorB_login_input_account}    ${user_default_contact}
     Wait And Input Password    ${locatorB_login_input_password}    ${contentB_login_errorPwd}
     Wait And Click Element    ${locatorB_login_btn_login}
-    Wait Until Page Contains Locator    dom:document.querySelectorAll(".anticon-exclamation-circle")[0]
-    Wait Until Page Contains    用户名或者密码错误
+#    Wait Until Page Contains Locator    dom:document.querySelectorAll(".anticon-exclamation-circle")[0]
+    Wait Until Page Contains Text    用户名或者密码错误
 
 login006
     [Documentation]    主账号登录失败_密码为空

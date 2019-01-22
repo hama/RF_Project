@@ -17,7 +17,7 @@ def checkout_settings_post_py(data, cookie=init_cookie):
 
 
 def checkout_settings_get_py(query_str={}, cookie=init_cookie):
-    url = home_page_url + "/api/checkout/settings"
+    url = home_page_url + "/checkout/settings"
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -50,7 +50,7 @@ def checkout_shipping_lines_py(query_str={}, cookie=init_cookie):
     :param cookie:
     :return: order_token
     '''
-    url = myshoplaza_url + "/checkout/shipping/lines"
+    url = myshoplaza_url + "/api/checkout/shipping-lines"
     return do_get(url, query_str, cookie=cookie)
 
 
@@ -180,4 +180,4 @@ def set_single_page_checkout_process_py(cookie=init_cookie):
 
 if __name__ == '__main__':
     # print json.dumps(checkout_shipping_lines_py(shipping_lines_data))
-    print set_checkout_process_with_conf_py()
+    print do_price_calculate_with_conf_py()

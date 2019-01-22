@@ -237,19 +237,19 @@ Wait And Click Element Then Confirm
 	[Arguments]    ${element_locator}
     [Documentation]      全局 确认弹窗
     Sleep    2
-    Wait And Click Element    ${element_locator}
+    Sleep And Click Element    ${element_locator}
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_popUps_button_footermiddle}
-    Run Keyword If    '${status}'!='False'    Wait And Click Element    ${locatorB_popUps_button_footermiddle}
-	...    ELSE    Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
+    Run Keyword If    '${status}'!='False'    Sleep And Click Element    ${locatorB_popUps_button_footermiddle}
+	...    ELSE    Sleep And Click Element    ${locatorB_popUps_button_bodymiddle}
 	Sleep    1
 
 Wait And Click Element Then Cancel
 	[Arguments]    ${element_locator}
     [Documentation]      全局 取消弹窗
-    Wait And Click Element    ${element_locator}
+    Sleep And Click Element    ${element_locator}
     ${status}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_popUps_button_footerdefault}
-    Run Keyword If    '${status}'!='False'    Wait And Click Element    ${locatorB_popUps_button_footerdefault}
-    ...    ELSE    Wait And Click Element    ${locatorB_popUps_button_bodydefault}
+    Run Keyword If    '${status}'!='False'    Sleep And Click Element    ${locatorB_popUps_button_footerdefault}
+    ...    ELSE    Sleep And Click Element    ${locatorB_popUps_button_bodydefault}
 
 Wait And Get Element Attribute
 	[Arguments]    ${element_locator}    ${attr}

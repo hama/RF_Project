@@ -484,41 +484,44 @@ place_order_data = {
 }
 
 price_calculate_data = {
-    "order_token": "be6cb44f-402a-4728-84a1-c974ead1e97e",
-    "shipping_line": {
-        "name": "price_fee",
-        "desc": "",
-        "range_min": "0.00",
-        "range_max": "-1.00",
-        "range_unit": "",
-        "rate_amount": "0.00",
-        "shipping_method": "price",
-        "payment_list": [
-            "cod",
-            "online",
-            "custom",
-            "credit_card"
-        ],
-        "id": "21"
-    },
-    "prices": {
-        "subtotal_price": "444.00",
-        "shipping_price": "0.00",
-        "tax_price": "0.00",
-        "discount_code_price": "0.00",
-        "discount_price": "0.00",
-        "total_price": "444.00",
-        "discount_line_item_price": "0.00"
-    },
-    "shipping_address": {
-        "country_code": "CN",
-        "province_code": "BJG"
-    },
     "discount_code": "",
-    "customer_info": {
-
+    "order_token": "6743fc83-812f-400c-96fc-d418b337ef44",
+    "shipping_address": {
+        "first_name": "auto",
+        "last_name": "test",
+        "address": "中国",
+        "address1": "jklj",
+        "city": "湖南",
+        "country_code": "CN",
+        "zip": "417000",
+        "phone": "18229476705",
+        "company": "asdas",
+        "province_code": "CN-BJ"
     },
-    "checkout_token": "PYwViKKDF9v0nOuMnuAtCtbOYzooA1J1DrnWh2NuLE4%3D"
+    "shipping_line": {
+        "id": "031cc1a6-29df-4921-b4f1-6f05d667a83f",
+        "shipping_id": "32d1e799-84da-4a6c-bc53-d40a4a1b61b6",
+        "name": "price_fee",
+        "desc": "price_fee_description",
+        "support_cod": 1,
+        "rule_type": "price",
+        "rule_range_min": "0.00",
+        "rule_range_max": "0.00",
+        "rule_range_infinite": 1,
+        "rule_range_unit": "USD",
+        "rate_type": "normal",
+        "rate_amount": "0.00",
+        "rate_first_range": "0.00",
+        "rate_first_unit": "g",
+        "rate_additional_amount": "0.00",
+        "rate_additional_range": "0.00",
+        "rate_additional_unit": "g",
+        "store_id": 13710,
+        "created_at": "2019-01-16 16:15:26",
+        "updated_at": "2019-01-16 16:15:26",
+        "shipping_price": 0
+    },
+    "use_discount_code": 0
 }
 
 # /api/payment/method这个接口的编辑数据

@@ -19,8 +19,14 @@ customer006
     Wait And Click Element    ${locatorC_customerRegister_checkbox_checkboxRegister}
     Wait And Click Element    ${locatorC_customerRegister_button_RegisterBtn}
     Wait Until Page Contains Text    Congratulations! You have successfully registered
-    Go To    https://admin.shoplazza.com/customers
+    Focus On New Window
+    ${titles}=    Get Window Titles
+    ${title1}=    Get From List    ${titles}    0
+    ${title2}=    Get From List    ${titles}    1
+    Sleep    2
+    Select Window    title=${title1}
     Reload Page And Start Ajax
+    Go To Customer Page
     Wait Until Page Contains Text    lily jane
 
 customer007
