@@ -278,3 +278,4 @@ if __name__ == '__main__':
     for i in range(20):
         conf = {'title': salt_py()}
         print add_product_with_conf_py(conf)
+

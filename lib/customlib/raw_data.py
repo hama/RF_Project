@@ -387,7 +387,7 @@ shipping_merchant_data = {
     "name": "hanyou"
 }
 
-checkout_create_data = {
+checkout_order_data = {
     'line_items': [
         {
             'quantity': 1,
@@ -400,34 +400,33 @@ checkout_create_data = {
     }
 }
 
-payment_pay_data = {
-    'order_token': 'be6cb44f-402a-4728-84a1-c974ead1e97e',
-    'payment_line': {
-        'id': '058693de-bd49-420d-a54c-e9b5825f77a9',
-        'name': 'Cash on Delivery',
-        'desc': '',
-        'tips': '',
-        'status': 'open',
-        'payment_method': 'cod',
-        'payment_channel': 'cod',
-        'public_key': None
-    },
-    'card_info': {
-
-    },
-    'need_billing_address': 0,
-    'billing_address_info': {
-        'first_name': '',
-        'last_name': '',
-        'address': '',
-        'address1': '',
-        'city': '',
-        'country_code': '',
-        'province_code': '',
-        'zip': ''
-    },
-    'checkout_token': 'PYwViKKDF9v0nOuMnuAtCtbOYzooA1J1DrnWh2NuLE4%3D'
-}
+# payment_pay_data = {
+#     'order_token': 'be6cb44f-402a-4728-84a1-c974ead1e97e',
+#     'payment_line': {
+#         'id': '058693de-bd49-420d-a54c-e9b5825f77a9',
+#         'name': 'Cash on Delivery',
+#         'desc': '',
+#         'tips': '',
+#         'status': 'open',
+#         'payment_method': 'cod',
+#         'payment_channel': 'cod',
+#         'public_key': None
+#     },
+#     'card_info': {
+#
+#     },
+#     'need_billing_address': 0,
+#     'billing_address_info': {
+#         'first_name': '',
+#         'last_name': '',
+#         'address': '',
+#         'address1': '',
+#         'city': '',
+#         'country_code': '',
+#         'province_code': '',
+#         'zip': ''
+#     },
+# }
 
 place_order_data = {
     "order_token": "be6cb44f-402a-4728-84a1-c974ead1e97e",
@@ -480,45 +479,135 @@ place_order_data = {
         "email": "12345@autotest.com"
     },
     "save_address": 1,
-    "checkout_token": "PYwViKKDF9v0nOuMnuAtCtbOYzooA1J1DrnWh2NuLE4%3D"
 }
 
-price_calculate_data = {
-    "order_token": "be6cb44f-402a-4728-84a1-c974ead1e97e",
-    "shipping_line": {
-        "name": "price_fee",
-        "desc": "",
-        "range_min": "0.00",
-        "range_max": "-1.00",
-        "range_unit": "",
-        "rate_amount": "0.00",
-        "shipping_method": "price",
-        "payment_list": [
-            "cod",
-            "online",
-            "custom",
-            "credit_card"
-        ],
-        "id": "21"
-    },
-    "prices": {
-        "subtotal_price": "444.00",
-        "shipping_price": "0.00",
-        "tax_price": "0.00",
-        "discount_code_price": "0.00",
-        "discount_price": "0.00",
-        "total_price": "444.00",
-        "discount_line_item_price": "0.00"
-    },
+complete_order_data = {
+    "order_token": "2b70993f-7030-4ac2-b254-5fa99f939749",
     "shipping_address": {
+        "id": "",
+        "first_name": "firstname",
+        "last_name": "lastname",
+        "phone_area_code": "86",
+        "phone": "18888888888",
+        "company": "company",
+        "email": "12345@autotest.com",
+        "country": "China",
         "country_code": "CN",
-        "province_code": "BJG"
+        "province": "Beijing",
+        "province_code": "CN-BJ",
+        "address": "address",
+        "address1": "address1",
+        "zip": "00000",
+        "city": "city"
     },
     "discount_code": "",
-    "customer_info": {
-
+    "prices": {
+        "total_price": "14.32",
+        "subtotal_price": 12,
+        "shipping_price": 1,
+        "tax_price": "1.32",
+        "discount_price": 0,
+        "discount_line_item_price": 0,
+        "discount_code_price": 0
     },
-    "checkout_token": "PYwViKKDF9v0nOuMnuAtCtbOYzooA1J1DrnWh2NuLE4%3D"
+    "customer_info": {
+        "note": "",
+        "newsletter": 1,
+        "email": "12345@autotest.com"
+    },
+    "payment_line": {
+        "id": "16cb2d29-a59c-4c1f-a5c6-b6132fadbff8",
+        "name": "Cash on Delivery",
+        "desc": "",
+        "tips": "",
+        "status": "open",
+        "payment_method": "cod",
+        "payment_channel": "cod",
+        "public_key": None
+    },
+    "save_address": 0,
+}
+
+payment_pay_data = {
+    "order_token": "08cd989d-a307-4b45-bc7d-03b592818580",
+    "payment_line": {
+        "id": "16cb2d29-a59c-4c1f-a5c6-b6132fadbff8",
+        "name": "Cash on Delivery",
+        "desc": "",
+        "tips": "",
+        "status": "open",
+        "payment_method": "cod",
+        "payment_channel": "cod",
+        "public_key": None
+    },
+    "card_info": {
+    },
+    "use_shipping_address": 0,
+    "billing_address": {
+        "area": None,
+        "id": "",
+        "first_name": "firstname",
+        "last_name": "lastname",
+        "phone_area_code": "86",
+        "phone": "18888888888",
+        "company": "company",
+        "email": "12345@autotest.com",
+        "country": "China",
+        "country_code": "CN",
+        "province": "Beijing",
+        "province_code": "CN-BJ",
+        "address": "address",
+        "address1": "address1",
+        "zip": "00000",
+        "city": "city"
+    }
+}
+
+price_data = {
+    "discount_code": "",
+    "order_token": "6743fc83-812f-400c-96fc-d418b337ef44",
+    "shipping_address": {
+        "area": None,
+        "id": "",
+        "first_name": "firstname",
+        "last_name": "lastname",
+        "phone_area_code": "86",
+        "phone": "18888888888",
+        "company": "company",
+        "email": "12345@autotest.com",
+        "country": "China",
+        "country_code": "CN",
+        "province": "Beijing",
+        "province_code": "CN-BJ",
+        "address": "address",
+        "address1": "address1",
+        "zip": "00000",
+        "city": "city"
+    },
+    "shipping_line": {
+        "id": "031cc1a6-29df-4921-b4f1-6f05d667a83f",
+        "shipping_id": "32d1e799-84da-4a6c-bc53-d40a4a1b61b6",
+        "name": "price_fee",
+        "desc": "price_fee_description",
+        "support_cod": 1,
+        "rule_type": "price",
+        "rule_range_min": "0.00",
+        "rule_range_max": "0.00",
+        "rule_range_infinite": 1,
+        "rule_range_unit": "USD",
+        "rate_type": "normal",
+        "rate_amount": "0.00",
+        "rate_first_range": "0.00",
+        "rate_first_unit": "g",
+        "rate_additional_amount": "0.00",
+        "rate_additional_range": "0.00",
+        "rate_additional_unit": "g",
+        "store_id": 13710,
+        "created_at": "2019-01-16 16:15:26",
+        "updated_at": "2019-01-16 16:15:26",
+        "shipping_price": 0
+    },
+    "use_discount_code": 0
 }
 
 # /api/payment/method这个接口的编辑数据

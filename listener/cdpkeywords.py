@@ -4,6 +4,8 @@ import json
 import time
 from urllib import unquote
 
+from urlunshort import resolve
+
 import PyChromeDevTools
 
 
@@ -32,6 +34,7 @@ class cdpkeywords():
             获取所有监听的信息
         :return:
         """
+        time.sleep(0.2)
         all_messages = self.chrome.pop_messages()
         print 'the count of all requests:\n' + str(len(all_messages))
         # print json.dumps(all_messages)
@@ -67,7 +70,6 @@ class cdpkeywords():
                 response_body = self.chrome.Network.getResponseBody(requestId=request_id)
             else:
                 break
-        # print json.dumps(response_body)
         if isinstance(response_body, dict):
             return json.loads(response_body['result']['body'])
         else:
@@ -311,7 +313,6 @@ class cdpkeywords():
             print '\ndecoded_request_data_list:\n' + json.dumps(decoded_request_data_list)
             raise Exception('there is no fulfill data')
 
-
 def request_data_str_to_dict(request_data):
     """
         请求数据str转dict
@@ -395,6 +396,8 @@ def decode_base64(data):
     if missing_padding:
         data += '=' * (4 - missing_padding)
     return base64.b64decode(data)
+
+
 
 
 if __name__ == '__main__':
