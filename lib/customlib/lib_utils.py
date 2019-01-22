@@ -116,7 +116,7 @@ def upload_file_oss_py(zip_file, log_path):
     bucket.put_object_from_file(zip_file, log_path)
     # print('http status: {0}'.format(result.status))
     file_url = bucket.sign_url('GET', zip_file, 365 * 24 * 60 * 60)
-    return file_url
+    print file_url
 
 
 def upload_oss_py(urlex, name='', extension='', timeout_second=30):
