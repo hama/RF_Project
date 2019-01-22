@@ -110,7 +110,6 @@ checkout_114
     Wait Until Page Contains Text    123456
     Wait Until Page Contains Text    company
 
-
 checkout_121
     [Documentation]         验证checkout支付页面，return按钮可返回到shipping页面  >  1.点击return按钮
     [Tags]    P0    threshold
@@ -121,7 +120,7 @@ checkout_121
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     #.点 payment menthod  return
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_button_paymentReturn}
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentReturn}
+    Sleep And Click Element    ${locatorC_checkoutShipping_button_paymentReturn}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_firstName}
 
 checkout_125
@@ -175,10 +174,10 @@ checkout_170
     [Tags]    P0    threshold    smoke
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
-    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
+    SLeep And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
+    SLeep And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    SLeep And Click Element    ${locatorC_checkoutPayment_icon_cash}
     #点击billing address栏选择框
     Wait And Select From List By Label     ${locatorC_checkoutPayment_select_billingAddress}    New billing address
     #添加Billing address

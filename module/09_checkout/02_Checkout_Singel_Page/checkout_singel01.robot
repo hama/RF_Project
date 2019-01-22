@@ -84,9 +84,9 @@ checkout_024
     [Tags]    P0    threshold
     ${getCode}=    Create Specific Coupon Code
     Reload Page And Start Ajax
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${getCode}
-    Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
+    Sleep And Click Element    ${locatorC_checkoutShipping_button_couponApply}
     Wait Until Page Contains Text    The ${getCode} has been applied
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}[1]    - 10.00USD
 
@@ -95,12 +95,12 @@ checkout_026
     [Tags]    P0    threshold
     ${getCode}=    Create Specific Coupon Code
     Reload Page And Start Ajax
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${getCode}
-    Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
+    Sleep And Click Element    ${locatorC_checkoutShipping_button_couponApply}
     Wait Until Page Contains Text    The ${getCode} has been applied
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}[1]    - 10.00USD
-    Wait And Click Element    ${locatorC_checkoutShipping_icon_couponClose}
+    Sleep And Click Element    ${locatorC_checkoutShipping_icon_couponClose}
     Value Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_input_couponCode}    ${Empty}
 
 checkout_033
