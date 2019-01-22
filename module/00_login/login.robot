@@ -1,5 +1,5 @@
 *** Settings ***
-Suite Setup       Open Test Browser    ${home_page}
+Suite Setup       Open Test Browser    ${login_page}
 Suite Teardown    Close Test Suite Browser
 Test Setup        Login Testcase Setup
 Test Teardown     Teardown Test Case

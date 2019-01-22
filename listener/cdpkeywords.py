@@ -4,7 +4,6 @@ import json
 import time
 from urllib import unquote
 
-from urlunshort import resolve
 
 import PyChromeDevTools
 
