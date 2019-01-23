@@ -280,7 +280,7 @@ Delete_First_Product
     Sleep    5
     #Wait And Click Element    id:test_delete_modal_sure_btn
     Wait And Click Element    ${locatorB_popUps_button_bodymiddle}
-    Go TO    ${home_page}
+    Go TO    ${url_home_page}
 
 Upload_Many_Products
     [Documentation]    批量上传多个商品，以供分页使用
@@ -296,7 +296,7 @@ Upload_Many_Products
     #等待上传提示
     Sleep    200
     Wait Until Element Is Visible    dom:document.querySelectorAll(".tip___2LkVX")[0]
-    Go TO    ${home_page}
+    Go TO    ${url_home_page}
 
 Delete All Collection
     [Documentation]    删除所有专辑
@@ -311,11 +311,11 @@ Delete All Collection
     Wait And Click Element    ${locatorB_productsCollection_button_delProducts}
     #点击确定按钮
     Wait And Click Element    ${locatorB_products_button_confirm}
-    Go TO    ${home_page}
+    Go TO    ${url_home_page}
 
 Add Order Products
     [Documentation]    添加订单和checkout所需商品
-    Go To    ${home_page}
+    Go To    ${url_home_page}
     Go To Product Management Page
     Add Product Required Content
     # add other content
@@ -338,7 +338,7 @@ Add TenPrice Products
 Add Custom Products
     [Documentation]    添加一个任意价格的商品
     [Arguments]    ${price}
-    Go To    ${home_page}
+    Go To    ${url_home_page}
     Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_button_addProduct}    # 点击添加商品按钮
     Wait Until Page Contains    ${contentB_products_new}

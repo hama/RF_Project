@@ -130,7 +130,7 @@ def set_email_header_for_uireport(msg):
     config = ConfigParser.ConfigParser()
     path = os.path.join(os.path.dirname(__file__), '../../config/common.ini')
     config.read(path)
-    env_detail = config.get("common_url", "home_page_url")
+    env_detail = config.get("common_url", "login_url")
     hostname = os.popen('hostname').readline().strip('\n')
 
     msg['Subject'] = '%s ( tested_env : %s  execute_env : %s )' % \

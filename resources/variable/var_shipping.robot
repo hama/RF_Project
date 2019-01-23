@@ -51,7 +51,7 @@ ${locatorB_NewPriceSettings_button_pricePlanSave}    ${locatorB_button_save00}  
 # locator settingShipping
 ${locatorB_settingShipping_button_addressSet}    dom:document.querySelectorAll('[class*="shipping_address"] [type="button"]')[0]    # 物流设置 - 开始设置 按钮
 ${locatorB_settingShipping_button_merchantSet}    dom:document.querySelectorAll('[class*="shipping_address"] ~ div[class*="container"] [type="button"]')[0]    # 物流设置 - 物流商 开始设置 按钮
-${locatorB_settingShipping_button_addMerchant}    dom:document.querySelectorAll('[class*="shipping_address"] + div[class*="head_4cd8 common_title"] [type="button"]')[0]    # 物流设置 - 物流商 添加物流商 按钮
+${locatorB_settingShipping_button_addMerchant}   dom:document.querySelectorAll('[class*="enterprise_item"] [class*="ant-btn middle_btn"]')   # 物流设置 - 物流商 - 添加按钮
 
 # locator addressSettings
 ${locatorB_addressSettings_select_country}    dom:document.querySelectorAll('[id="country_code"]')[0]    # 发货地址 - 国家 选择框
@@ -170,7 +170,7 @@ ${locatorB_merchantSettings_icon_deleteAccount}    dom:document.querySelectorAll
 #${contentB_shipping_name}    物流1    # 物流名称
 #${contentB_shipping_setup}    设置你的物流方案    # 没有物流方案时，页面提示设置物流
 #
-#${locatorB_shipping_list_api}    ${home_page}/api/shipping/list
+#${locatorB_shipping_list_api}    ${url_home_page}/api/shipping/list
 #
 #${locatorB_shipping_description}    dom:document.querySelectorAll("#desc")[0]    #.添加运费- 说明框
 #${locatorB_shipping_price}    id:rate_amount    #.价格运费框

@@ -152,7 +152,7 @@ checkout_097
     kwshipping.add_shipping_with_conf_py    ${conf}
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
-    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
+    Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
     #添加是shipping address
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_firstName}    firstName
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_lastName}    lastName
@@ -167,7 +167,7 @@ checkout_097
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    company
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    apartment
     Sleep    4
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    Sleep And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait Until Page Contains Text   Payment method
 
 checkout_107
@@ -220,7 +220,7 @@ checkout_120
     #添加是shipping address
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait And Click Element    ${locatorC_checkoutPayment_link_change}
+    #Wait And Click Element    ${locatorC_checkoutPayment_link_change}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_firstName}
 
 checkout_168

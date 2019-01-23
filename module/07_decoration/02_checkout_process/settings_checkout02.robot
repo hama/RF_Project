@@ -135,8 +135,8 @@ Trade setting_034
     Reload Page And Start Ajax
     Wait Until Page Contains Text    退款条约文本展示
     Go To First Product C Interface
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
+    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Sleep And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
     Wait Until Page Contains Text    退款条约文本展示
 
 Trade setting_037
@@ -162,8 +162,8 @@ Trade setting_039
     Reload Page And Start Ajax
     Wait Until Page Contains Text    隐私政策文本展示
     Go To First Product C Interface
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
+    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Sleep And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
     Wait Until Page Contains Text    隐私政策文本展示
 
 Trade setting_042
@@ -189,6 +189,6 @@ Trade setting_044
     Reload Page And Start Ajax
     Wait Until Page Contains Text    服务条约文本展示
     Go To First Product C Interface
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
+    Sleep And Click Element   ${locatorC_productDetail_button_buyNow}
+    Sleep And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
     Wait Until Page Contains Text    服务条约文本展示

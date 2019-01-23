@@ -94,17 +94,6 @@ def payment_auth_get_py(query_str={}, cookie=init_cookie):
     return do_get(url, query_str, cookie=cookie)
 
 
-def payment_pay_py(data, cookie=init_cookie):
-    """
-    付款-下订单
-    :param data:
-    :param cookie:
-    :return:
-    """
-    url = myshoplaza_url + '/checkout/payment/pay'
-    return do_post(url, data, cookie=cookie)
-
-
 def get_expected_payment_line_py(expected, cookie=init_cookie):
     """
     获取指定的payment_line数据
@@ -218,20 +207,7 @@ def inactivate_payment_credit_card_py(cookie=init_cookie):
     return payment_methods_patch_py({"status": "close"}, payment_methods_id, cookie=cookie)
 
 
-def do_pay_with_conf_py(conf={}, cookie=init_cookie):
-    """
-    支付订单
-    :param conf:
-    :param cookie:
-    :return:
-    """
-    data = copy.deepcopy(payment_pay_data)
-    dict_deepupdate(data, conf)
-
-    return payment_pay_py(data, cookie=cookie)
-
-
 if __name__ == '__main__':
-    # print activate_payment_cod_py()
+    # print activate_payment_credit_card_py()
     print activate_payment_cod_py()
     # print inactivate_payment_cod_py()

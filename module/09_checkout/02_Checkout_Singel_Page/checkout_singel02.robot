@@ -111,7 +111,13 @@ checkout_184
     Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Go To    https://admin.shoplazza.com/order/_dealing
     Focus On New Window
+    ${titles}=    Get Window Titles
+    ${title1}=    Get From List    ${titles}    0
+    ${title2}=    Get From List    ${titles}    1
+    Sleep    2
+    Select Window    title=${title2}
     Go To Dealing Order Page
+    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
     Wait Until Page Contains Text    请尽快发货
 
@@ -153,7 +159,7 @@ checkout_189
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_li_TextPolicy}
-    Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
+    Sleep And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
     Wait Until Page Contains Text    退款条约测试文本
 
 checkout_191
@@ -174,7 +180,7 @@ checkout_191
     Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
-    Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
+    Sleep And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
     Wait Until Page Contains Text    隐私政策测试文本
 
 checkout_193
@@ -195,7 +201,7 @@ checkout_193
     Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
-    Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
+    Sleep And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
     Wait Until Page Contains Text    服务条约测试文本
 
 checkout_197
