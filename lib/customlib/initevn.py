@@ -22,7 +22,7 @@ if __name__ == '__main__':
     config.read(path)
 
     config.set("common_account", "datas_invite_code", 'DJ2048')
-    config.set("common_url", "home_page_url", args.url)
+    config.set("common_url", "login_url", args.url)
 
     # 正式服配置
     if 'admin.shoplazza.com' in args.url:
