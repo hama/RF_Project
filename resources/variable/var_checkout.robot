@@ -71,7 +71,7 @@ ${locatorC_checkoutShipping_button_return}    dom:document.querySelectorAll('a[c
 ${locatorC_checkoutShipping_button_paymentReturn}    dom:document.querySelectorAll('a[class~="payment-footer__back"]')[0]    #payment return 返回
 
 #.locatorC_checkoutPayment
-${locatorC_checkoutPayment_text_itemProductTitle}    dom:document.querySelectorAll('[class*="payment-item__sku-title"]')[0]
+${locatorC_checkoutPayment_text_itemProductTitle}    dom:document.querySelectorAll('[class*="checkout-item__sku-title"]')[0]
 ${locatorC_checkoutPayment_text_itemQtyNum}    ${locatorC_checkoutShipping_text_itemQtyNum}
 ${locatorC_checkoutPayment_text_itemPrice}    ${locatorC_checkoutShipping_text_itemPrice}
 ${locatorC_checkoutPayment_text_subtotalPrice}    ${locatorC_checkoutShipping_text_subtotalPrice}
