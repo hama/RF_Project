@@ -387,7 +387,7 @@ shipping_merchant_data = {
     "name": "hanyou"
 }
 
-checkout_create_data = {
+checkout_order_data = {
     'line_items': [
         {
             'quantity': 1,
@@ -400,34 +400,33 @@ checkout_create_data = {
     }
 }
 
-payment_pay_data = {
-    'order_token': 'be6cb44f-402a-4728-84a1-c974ead1e97e',
-    'payment_line': {
-        'id': '058693de-bd49-420d-a54c-e9b5825f77a9',
-        'name': 'Cash on Delivery',
-        'desc': '',
-        'tips': '',
-        'status': 'open',
-        'payment_method': 'cod',
-        'payment_channel': 'cod',
-        'public_key': None
-    },
-    'card_info': {
-
-    },
-    'need_billing_address': 0,
-    'billing_address_info': {
-        'first_name': '',
-        'last_name': '',
-        'address': '',
-        'address1': '',
-        'city': '',
-        'country_code': '',
-        'province_code': '',
-        'zip': ''
-    },
-    'checkout_token': 'PYwViKKDF9v0nOuMnuAtCtbOYzooA1J1DrnWh2NuLE4%3D'
-}
+# payment_pay_data = {
+#     'order_token': 'be6cb44f-402a-4728-84a1-c974ead1e97e',
+#     'payment_line': {
+#         'id': '058693de-bd49-420d-a54c-e9b5825f77a9',
+#         'name': 'Cash on Delivery',
+#         'desc': '',
+#         'tips': '',
+#         'status': 'open',
+#         'payment_method': 'cod',
+#         'payment_channel': 'cod',
+#         'public_key': None
+#     },
+#     'card_info': {
+#
+#     },
+#     'need_billing_address': 0,
+#     'billing_address_info': {
+#         'first_name': '',
+#         'last_name': '',
+#         'address': '',
+#         'address1': '',
+#         'city': '',
+#         'country_code': '',
+#         'province_code': '',
+#         'zip': ''
+#     },
+# }
 
 place_order_data = {
     "order_token": "be6cb44f-402a-4728-84a1-c974ead1e97e",
@@ -480,23 +479,110 @@ place_order_data = {
         "email": "12345@autotest.com"
     },
     "save_address": 1,
-    "checkout_token": "PYwViKKDF9v0nOuMnuAtCtbOYzooA1J1DrnWh2NuLE4%3D"
 }
 
-price_calculate_data = {
+complete_order_data = {
+    "order_token": "2b70993f-7030-4ac2-b254-5fa99f939749",
+    "shipping_address": {
+        "id": "",
+        "first_name": "firstname",
+        "last_name": "lastname",
+        "phone_area_code": "86",
+        "phone": "18888888888",
+        "company": "company",
+        "email": "12345@autotest.com",
+        "country": "China",
+        "country_code": "CN",
+        "province": "Beijing",
+        "province_code": "CN-BJ",
+        "address": "address",
+        "address1": "address1",
+        "zip": "00000",
+        "city": "city"
+    },
+    "discount_code": "",
+    "prices": {
+        "total_price": "14.32",
+        "subtotal_price": 12,
+        "shipping_price": 1,
+        "tax_price": "1.32",
+        "discount_price": 0,
+        "discount_line_item_price": 0,
+        "discount_code_price": 0
+    },
+    "customer_info": {
+        "note": "",
+        "newsletter": 1,
+        "email": "12345@autotest.com"
+    },
+    "payment_line": {
+        "id": "16cb2d29-a59c-4c1f-a5c6-b6132fadbff8",
+        "name": "Cash on Delivery",
+        "desc": "",
+        "tips": "",
+        "status": "open",
+        "payment_method": "cod",
+        "payment_channel": "cod",
+        "public_key": None
+    },
+    "save_address": 0,
+}
+
+payment_pay_data = {
+    "order_token": "08cd989d-a307-4b45-bc7d-03b592818580",
+    "payment_line": {
+        "id": "16cb2d29-a59c-4c1f-a5c6-b6132fadbff8",
+        "name": "Cash on Delivery",
+        "desc": "",
+        "tips": "",
+        "status": "open",
+        "payment_method": "cod",
+        "payment_channel": "cod",
+        "public_key": None
+    },
+    "card_info": {
+    },
+    "use_shipping_address": 0,
+    "billing_address": {
+        "area": None,
+        "id": "",
+        "first_name": "firstname",
+        "last_name": "lastname",
+        "phone_area_code": "86",
+        "phone": "18888888888",
+        "company": "company",
+        "email": "12345@autotest.com",
+        "country": "China",
+        "country_code": "CN",
+        "province": "Beijing",
+        "province_code": "CN-BJ",
+        "address": "address",
+        "address1": "address1",
+        "zip": "00000",
+        "city": "city"
+    }
+}
+
+price_data = {
     "discount_code": "",
     "order_token": "6743fc83-812f-400c-96fc-d418b337ef44",
     "shipping_address": {
-        "first_name": "auto",
-        "last_name": "test",
-        "address": "中国",
-        "address1": "jklj",
-        "city": "湖南",
+        "area": None,
+        "id": "",
+        "first_name": "firstname",
+        "last_name": "lastname",
+        "phone_area_code": "86",
+        "phone": "18888888888",
+        "company": "company",
+        "email": "12345@autotest.com",
+        "country": "China",
         "country_code": "CN",
-        "zip": "417000",
-        "phone": "18229476705",
-        "company": "asdas",
-        "province_code": "CN-BJ"
+        "province": "Beijing",
+        "province_code": "CN-BJ",
+        "address": "address",
+        "address1": "address1",
+        "zip": "00000",
+        "city": "city"
     },
     "shipping_line": {
         "id": "031cc1a6-29df-4921-b4f1-6f05d667a83f",

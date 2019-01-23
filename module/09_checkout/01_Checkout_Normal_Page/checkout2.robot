@@ -219,8 +219,8 @@ checkout_120
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     #添加是shipping address
     Add Address Common Step
-    Sleep And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Sleep And Click Element    ${locatorC_checkoutPayment_link_change}
+    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    #Wait And Click Element    ${locatorC_checkoutPayment_link_change}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_firstName}
 
 checkout_168

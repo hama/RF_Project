@@ -4,7 +4,6 @@ import json
 import time
 from urllib import unquote
 
-
 import PyChromeDevTools
 
 
@@ -312,6 +311,7 @@ class cdpkeywords():
             print '\ndecoded_request_data_list:\n' + json.dumps(decoded_request_data_list)
             raise Exception('there is no fulfill data')
 
+
 def request_data_str_to_dict(request_data):
     """
         请求数据str转dict
@@ -395,8 +395,6 @@ def decode_base64(data):
     if missing_padding:
         data += '=' * (4 - missing_padding)
     return base64.b64decode(data)
-
-
 
 
 if __name__ == '__main__':
