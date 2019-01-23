@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from do_request import *
-from lib.customlib.kwproduct import add_max_product_py
+from kwproduct import add_max_product_py
 from raw_data import *
 from variable import *
 
@@ -81,6 +81,7 @@ def get_list_product_id_py(conf={}, cookie=init_cookie):
     data = copy.deepcopy(coupon_select_product_data)
     dict_deepupdate(data, conf)
     return coupon_select_product_py(data, cookie=cookie)['content']['list'][0]['product_id']
+
 
 def add_coupon_code_with_conf_py(conf={}, cookie=init_cookie):
     """
