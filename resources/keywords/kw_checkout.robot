@@ -137,7 +137,7 @@ Add Credit Card Info
 
 Create Specific Coupon Code
 	[Documentation]    添加一个 优惠规则为满50减10USD 优惠码
-	${code}    get_coupon_code_random_code_py
+	${code}    kwcoupon.get_coupon_code_random_code_py
     &{conf} =    Create Dictionary
     ...    code=${code}
     ...    discount_type=1
