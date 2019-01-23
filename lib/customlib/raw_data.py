@@ -604,26 +604,36 @@ tax_batch_data = [{
 
 coupon_code_refresh_data = {
     "id": "0",
-    "name": "autotest_activity_name",
-    "code": "U8GFH5L1",
-    "date_start": "2018-10-17 00:00:00",
-    "date_end": "-1",
-    "code_type": "",
-    "discount_type": "2",
-    "range_type": "1",
-    "range_value": "",
-    "code_value": "10",
-    "total_num": "-1",
-    "limit_num": "-1",
-    "product_scope": "1",
-    "is_enable": "",
-    "date_added": "",
+    "title": "autotest_activity_name",
+    "code": "YNVK4IR0",
+    "value": "",
+    "starts_at": "1548086400",
+    "ends_at": "-1",
+    "value_type": "percentage",
+    "prerequisite": "2",
+    "usage_limit": "100",
+    "once_per_customer": "2",
+    "target_selection": "entitled",
     "progress": "",
-    "timezone": "",
-    "product_list": "",
-    "used_num": "",
-    "product_num": "",
-    "stock_num": ""
+    "prerequisite_quantity_range":[
+        {
+            "value": "88",
+            "greater_than_or_equal_to": "3"
+        }
+    ],
+    "prerequisite_subtotal_range": None,
+    "entitled_product_ids": ["4cc51414-57c7-42d4-a3ee-d86f9f2a8d20"],
+    "entitled_variant_ids": [],
+    "times_used": "",
+    "stock": "",
+    "config": {
+        "banner_url": "",
+        "count_down": {
+            "background_color": "rgba(246,246,246,1)",
+            "color": "rgba(102,102,102,1)",
+            "highlight_color": "rgba(255,51,51,1)"
+        }
+    }
 }
 
 store_data = {
@@ -679,6 +689,17 @@ rebate_select_product_data = {
     "starts_at": 1547136000,
     "ends_at": -1,
     "discount_id": -1
+}
+
+coupon_select_product_data = {
+    "collection_id": -1,
+    "title": "",
+    "status": -1,
+    "page": 1,
+    "limit": 20,
+    "starts_at": 1548086400000,
+    "ends_at": -1,
+    "discount_id": 0
 }
 
 rebate_refresh_data = {
