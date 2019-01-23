@@ -220,7 +220,7 @@ checkout_120
     #添加是shipping address
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait And Click Element    ${locatorC_checkoutPayment_link_change}
+    #Wait And Click Element    ${locatorC_checkoutPayment_link_change}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_firstName}
 
 checkout_168
