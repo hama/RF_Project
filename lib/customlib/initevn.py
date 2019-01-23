@@ -24,10 +24,6 @@ if __name__ == '__main__':
     config.set("common_account", "datas_invite_code", 'DJ2048')
     config.set("common_url", "home_page_url", args.url)
 
-    # config.set("common_db", "db_shop_config",
-    #            '{"host": "rm-rj9f22zpw641v45g9.mysql.rds.aliyuncs.com","port": 3306,"user": "lansejiebo",'
-    #            '"password": "lansejiebo@123","db": "shop_","charset": "utf8"}')
-
     # 正式服配置
     if 'admin.shoplazza.com' in args.url:
         config.set("common_urn", "shop_urn", '.myshoplaza.com')
@@ -55,10 +51,11 @@ if __name__ == '__main__':
                        '{"host": "rm-wz9x2w88ltj8c94cf.mysql.rds.aliyuncs.com","port": 3306,'
                        '"user": "readonly","password": "readonly@123","db": "service","charset": "utf8"}')
     # 测试服配置
-    elif 'admin1024.shoplazza.com' in args.url:
+    elif 'accounts1024.shoplazza.com' in args.url:
         # 过滤神策数据
         os.popen('echo "0.0.0.0 dev-shence.shoplazza.com" >> /etc/hosts')
         config.set("common_urn", "shop_urn", '.preview.shoplazza.com')
+        config.set("common_urn", "home_urn", '.preview.shoplazza.com/admin')
         config.set("common_db", "db_service_config",
                    '{"host": "rm-wz90k3o28md7301p3.mysql.rds.aliyuncs.com","port": 3306,"user": "readonly",'
                    '"password": "readonly@123","db": "service","charset": "utf8"}')

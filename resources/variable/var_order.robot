@@ -150,7 +150,7 @@ ${locatorB_order_button_search}    dom:document.querySelectorAll('[data-robot="o
 ${locatorB_order_input_searchText}    dom:document.querySelectorAll('[id="keyword"]')    #. 订单搜索输入框
 ${locatorB_order_button_searchBtn}    dom:document.querySelectorAll('[class*="ant-btn confirm_btn"]')   #. 订单搜索按钮
 
-#${locatorB_order_list_api}    ${home_page}/api/order/list?start_create_time=1521561600&end_create_time=1529596799&page=0&size=20    #.订单列表api
+#${locatorB_order_list_api}    ${url_home_page}/api/order/list?start_create_time=1521561600&end_create_time=1529596799&page=0&size=20    #.订单列表api
 #${locatorB_order_list_export}    dom:document.querySelectorAll(".export___22t6f")[0]    #.订单列表 导出按钮
 #${locatorB_start_time}     1521561600    #.开始时间
 #${locatorB_end_time}       1529596799    #.结束时间

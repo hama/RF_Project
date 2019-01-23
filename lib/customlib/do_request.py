@@ -6,7 +6,7 @@ import time
 
 import requests
 
-from variable import home_page_url, shop_urn
+from variable import home_urn, shop_urn
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -110,7 +110,7 @@ def do_delete(url, cookie):
 
 
 def get_cookie(url, cookie):
-    if home_page_url in url:
+    if home_urn in url:
         return cookie['b_cookie']
     elif shop_urn in url:
         return cookie['c_cookie']

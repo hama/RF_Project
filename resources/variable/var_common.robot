@@ -123,28 +123,28 @@ ${locatorB_table_listItems}    dom:document.querySelectorAll(".ant-table-row")  
 ${locatorB_select_batchOperations}    dom:document.querySelectorAll(".ant-select-selection__placeholder")[0]    #批量操作下拉框
 ${locatorB_couponLst_couponText}    全部
 ### 页面模块 url
-${home_page}      ${home_page_url}
-${url_home_page}    ${home_page}/    # home page
-${url_order}      ${home_page}/order    # order page
-${url_order_dealing}      ${home_page}/order/_dealing
-${url_order_undeal}      ${home_page}/order/_undeal
-${url_products}    ${home_page}/products    # products page
-${url_marketing}    ${home_page}/subtraction    # marketing page
-${url_tax_price}    ${home_page}/tax    # tax price
-${url_shipping}    ${home_page}/shipping    # shipping
-${url_subtraction}    ${home_page}/subtraction    # subtraction
-${url_coupon_code}    ${home_page}/coupon_code    # coupon
-${url_store}    ${home_page}/store    # store
-${url_accounts}    ${home_page}/accounts   # accounts
-${url_collection}    ${home_page}/collections   # collection
-${url_reviews}    ${home_page}/reviews   # reviews
-${url_seoimage}    ${home_page}/seoImage    #. seoimage
-${url_files}    ${home_page}/files    #. uploadFile
-${url_checkoutSettings}    ${home_page}/checkout    #. checkout
-${url_pay}    ${home_page}/pay    #. pay
-${url_menus}    ${home_page}/menus    #.menus
-${url_page}     ${home_page}/page    #.page
-${url_img_seo}    ${home_page}/app_store/img_seo    #. img_seo
+${login_page}      ${login_url}
+${url_home_page}    ${home_page_url}    # home page
+${url_order}      ${url_home_page}/order    # order page
+${url_order_dealing}      ${url_home_page}/order/_dealing
+${url_order_undeal}      ${url_home_page}/order/_undeal
+${url_products}    ${url_home_page}/products    # products page
+${url_marketing}    ${url_home_page}/subtraction    # marketing page
+${url_tax_price}    ${url_home_page}/tax    # tax price
+${url_shipping}    ${url_home_page}/shipping    # shipping
+${url_subtraction}    ${url_home_page}/subtraction    # subtraction
+${url_coupon_code}    ${url_home_page}/coupon_code    # coupon
+${url_store}    ${url_home_page}/store    # store
+${url_accounts}    ${url_home_page}/accounts   # accounts
+${url_collection}    ${url_home_page}/collections   # collection
+${url_reviews}    ${url_home_page}/reviews   # reviews
+${url_seoimage}    ${url_home_page}/seoImage    #. seoimage
+${url_files}    ${url_home_page}/files    #. uploadFile
+${url_checkoutSettings}    ${url_home_page}/checkout    #. checkout
+${url_pay}    ${url_home_page}/pay    #. pay
+${url_menus}    ${url_home_page}/menus    #.menus
+${url_page}     ${url_home_page}/page    #.page
+${url_img_seo}    ${url_home_page}/app_store/img_seo    #. img_seo
 ### 测试用户
 
 ${user_default_contact}    ${datas_contact}    # 默认使用的用户信息，用于跑大部分用例

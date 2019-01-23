@@ -94,7 +94,7 @@ checkout_027
     Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ..0001
     #.点击应用
     Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
-    Wait Until Page Contains    This discount does not exist.
+    Wait Until Page Contains    Sorry, This discount code is invalid
 
 # 已实现，用例有标注
 checkout_028

@@ -9,6 +9,7 @@ import time
 
 import pymysql
 import requests
+from bs4 import BeautifulSoup
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -22,19 +23,28 @@ class Login():
         path = os.path.join(os.path.dirname(__file__), '../../config/common.ini')
         config.read(path)
 
-        self.home_page_url = config.get("common_url", "home_page_url")
+        self.login_url = config.get("common_url", "login_url")
         self.shop_urn = config.get("common_urn", "shop_urn")
+        self.home_urn = config.get("common_urn", "home_urn")
         self.datas_contact = config.get("common_account", "datas_contact")
         self.datas_password = config.get("common_account", "datas_password")
         self.datas_domain = config.get("common_account", "datas_domain")
         self.datas_invite_code = config.get("common_account", "datas_invite_code")
         self.db_service_config = config.get("common_db", "db_service_config")
+        self.home_page_url = 'https://' + self.datas_domain + self.home_urn
+        self.myshoplaza_url = 'https://' + self.datas_domain + self.shop_urn
 
         key_list = data_config.keys()
+        if 'login_url' in key_list:
+            self.login_url = data_config['login_url']
         if 'home_page_url' in key_list:
             self.home_page_url = data_config['home_page_url']
+        if 'myshoplaza_url' in key_list:
+            self.myshoplaza_url = data_config['myshoplaza_url']
         if 'shop_urn' in key_list:
             self.shop_urn = data_config['shop_urn']
+        if 'home_urn' in key_list:
+            self.home_urn = data_config['home_urn']
         if 'contact' in key_list:
             self.datas_contact = data_config['contact']
         if 'password' in key_list:
@@ -51,19 +61,28 @@ class Login():
         公共登陆方法
         :return: dict
         """
-        url = self.home_page_url + "/api/user/login"
+        url0 = self.login_url + "/api/user/actions/login"
 
-        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_domain}
-        response_data = requests.post(url=url, headers={}, data=datas)
+        datas = {"contact": self.datas_contact, "password": self.datas_password, "domain": self.datas_domain}
+        # "username": self.datas_domain,
+        headers = {"Content-Type": "application/json"}
+        response_data0 = requests.post(url=url0, headers=headers, data=json.dumps(datas))
+        redirect = response_data0.headers['x-redirect']
+        url1 = self.login_url + redirect
+        response_data1 = requests.get(url=url1, headers=headers)
+        code = BeautifulSoup(response_data1.text, "html.parser").img["src"].split("code=")[1]
+        url2 = '{}/api/servicelogin?code={}'.format(self.home_page_url, code)
+        response_data = requests.get(url=url2, headers=headers)
+
         if response_data is None or response_data.status_code != 200:
             return False
         # uid为店铺id
-        uid = json.loads(response_data.content)['data']['id']
+        # uid = json.loads(response_data.content)['data']['id']
         cookie = '; '.join(['='.join(item) for item in response_data.cookies.items()])
 
         print "login_data:" + str({"url": self.home_page_url, "contact": self.datas_contact,
                                    "password": self.datas_password,
-                                   "username": self.datas_domain, "uid": uid})
+                                   "username": self.datas_domain})
         print "login_b_cookie:" + str(cookie)
         return cookie
 
