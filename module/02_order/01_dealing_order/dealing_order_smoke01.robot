@@ -23,7 +23,7 @@ order002
 order004
     [Documentation]     验证售后订单列表可正常进入
     [tags]    P0    threshold
-    Sleep And Click Element    ${locatorB_order_postSale}
+    Wait And Click Element    ${locatorB_order_postSale}
     Wait Until Page Contains Text    售后订单
     Wait Until Page Contains Text    售后时间
 
@@ -52,8 +52,8 @@ order015
     kworder.add_deading_order_with_all_delivered_status_py
     Reload Page And Start Ajax
     Select To Deliver Dealing Order Tag
-    ${text00} =    Sleep And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[0]
-    ${text01} =    Sleep And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[1]
+    ${text00} =    Wait And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[0]
+    ${text01} =    Wait And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[1]
     Should Be Equal    ${text00}    部分发货
     Should Be Equal    ${text01}    待发货
 
@@ -65,8 +65,8 @@ order016
     kworder.add_deading_order_with_some_delivered_status_py
     Reload Page And Start Ajax
     Select Delivered Dealing Order Tag
-    ${text00} =    Sleep And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[0]
-    ${text01} =    Sleep And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[1]
+    ${text00} =    Wait And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[0]
+    ${text01} =    Wait And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[1]
     Should Be Equal    ${text00}    部分完成
     Should Be Equal    ${text01}    全部发货
 
@@ -77,7 +77,7 @@ order017
     kworder.add_deading_order_with_finished_status_py
     Reload Page And Start Ajax
     Select Finished Dealing Order Tag
-    ${text00} =    Sleep And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[0]
+    ${text00} =    Wait And Get Text    ${locatorB_orderDealing_text_listShippingStatus}[0]
     Should Be Equal    ${text00}    全部完成
 
 order034
@@ -123,13 +123,9 @@ order040
 order041
     [Documentation]     验证待处理订单列表中，订单栏顾客姓名显示为在checkout下单时填写的顾客姓名
     [tags]    P0    threshold    smoke
-    &{shipping_address} =    Create Dictionary
-    ...    first_name=auto
-    ...    last_name=test
-    &{place_order_data} =    Create Dictionary
-    ...    shipping_address=&{shipping_address}
-    &{conf} =    Create Dictionary
-    ...    place_order_data=&{place_order_data}
+    &{shipping_address} =    Create Dictionary    first_name=auto    last_name=test
+    &{place_order_data} =    Create Dictionary    shipping_address=&{shipping_address}
+    &{conf} =    Create Dictionary    place_order_data=&{place_order_data}
     kworder.add_deading_order_with_conf_py    ${conf}
     Reload Page And Start Ajax
     ${text} =    Sleep And Get Text    ${locatorB_orderDealing_text_firstOrder_receiverName}

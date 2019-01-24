@@ -275,25 +275,22 @@ tracking009
     [Documentation]    ga —》进入checkout_result 且是成功页面的次数 -》上报事件
     [Tags]
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
-    Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
+#    Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
     Add Address SepCommon Step
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
-    #获得总数据
-    ${all_messages_before}    get_all_messages
-    #构造真实对比数据
-    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/checkout/price/calculate
-	@{request_ids}    get_request_ids_from_messages    ${target_messages}
-    &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
-    ${order_id}=    Set Variable    ${request_post_data.order_token}
-    log to console    ${order_id}
-    Sleep    3
+    Sleep And Click Element    dom:document.querySelectorAll('[data-method="cod"]')[1]
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
-    &{ga_paymentsuccessful_data}=    Create Dictionary    ea=purchase    ti=${order_id}
     #获得总数据
-    ${all_messages_after}    get_all_messages
+    ${all_messages}    get_all_messages
+    #构造真实对比数据
+    ${current_url_one}=    Get Location
+    ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout/')
+    ${order_id}=    Evaluate    u"${current_url_two}".strip('?step=checkout_result')
+    &{ga_paymentsuccessful_data}=    Create Dictionary    ea=purchase    ti=${order_id}
+    @{ga_paymentsuccessful_list}=    Create List    ${ga_paymentsuccessful_data}
     #检查
-    assert_equal_values_process    ${all_messages_after}    www.google-analytics.com    ${ga_paymentsuccessful_data}
+    assert_equal_values_process    ${all_messages}    www.google-analytics.com    ${ga_paymentsuccessful_list}
 
 tracking0010
     [Documentation]    sc —》进入checkout_result 且是成功页面的次数 -》上报事件

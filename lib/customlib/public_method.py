@@ -29,7 +29,7 @@ def create(module_name, conf={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    if isinstance(conf, str):
+    if isinstance(conf, str) or isinstance(conf, unicode):
         conf = json.loads(conf)
     if 'product' in module_name:
         return kwproduct.add_product_with_conf_py(conf, cookie=cookie)
@@ -65,7 +65,7 @@ def setting(module_name, conf={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    if isinstance(conf, str):
+    if isinstance(conf, str) or isinstance(conf, unicode):
         conf = json.loads(conf)
     if 'checkout_process' in module_name:
         return kwcheckout.set_checkout_process_with_conf_py(conf, cookie=cookie)
@@ -96,7 +96,7 @@ def delete(module_name, conf={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    if isinstance(conf, str):
+    if isinstance(conf, str) or isinstance(conf, unicode):
         conf = json.loads(conf)
     if 'collection' in module_name:
         if conf['scope'] == 'all':
@@ -140,3 +140,7 @@ def delete(module_name, conf={}, cookie=init_cookie):
             return kwshipping.del_all_shipping_py(cookie=cookie)
         elif conf['scope'] == 'certain':
             return kwshipping.shippings_delete_py(conf['data'], cookie=cookie)
+
+
+# if __name__ == '__main__':
+#     create('shipping', '{"plans": [{"name": "price_fee", "rule_type": "price", "rate_amount": "10"}]}')
