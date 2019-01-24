@@ -22,6 +22,7 @@ Library           ${CURDIR}/../../lib/customlib/lib_utils.py
 Library           ${CURDIR}/../../lib/customlib/public_method.py
 Library           ${CURDIR}/../../lib/customlib/kwrebate.py
 Library           ${CURDIR}/../../lib/customlib/kwcustomer.py
+Library           ${CURDIR}/../../lib/customlib/kwthemes.py
 Resource          ../variable/var_common.robot
 Resource          kw_ajax.robot
 Resource          kw_browser.robot
