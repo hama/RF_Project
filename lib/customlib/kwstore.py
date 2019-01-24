@@ -53,7 +53,7 @@ def set_store_info_with_conf_py(conf={}, cookie=init_cookie):
     data_store_info = store_get_py(cookie=cookie)
     key_list = conf.keys()
     if 'name' not in key_list:
-        data['name'] = datas_domain
+        data['name'] = domain
     if 'store_id' not in key_list:
         data['store_id'] = data_store_info['content']['store_id']
     if 'id' not in key_list:

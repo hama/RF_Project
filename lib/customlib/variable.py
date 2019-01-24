@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-from kwlogin import *
+from Login import *
 from lib_utils import *
 
 reload(sys)
@@ -11,15 +11,15 @@ config.read(path)
 
 shop_urn = config.get("common_urn", "shop_urn")
 home_urn = config.get("common_urn", "home_urn")
-datas_contact = config.get("common_account", "datas_contact")
-datas_password = config.get("common_account", "datas_password")
-datas_domain = config.get("common_account", "datas_domain")
-datas_invite_code = config.get("common_account", "datas_invite_code")
+contact = config.get("common_account", "contact")
+password = config.get("common_account", "password")
+domain = config.get("common_account", "domain")
+invite_code = config.get("common_account", "invite_code")
 db_service_config = json.loads(config.get("common_db", "db_service_config"))
 db_shop_config = json.loads(config.get("common_db", "db_shop_config"))
 login_url = config.get("common_url", "login_url")
-home_page_url = 'https://' + datas_domain + home_urn
-myshoplaza_url = 'https://' + datas_domain + shop_urn
+home_page_url = 'https://' + domain + home_urn
+myshoplaza_url = 'https://' + domain + shop_urn
 
 
 img = "http://120.79.196.159:8000/RF/logs/module/result.png"

@@ -16,6 +16,7 @@ sys.setdefaultencoding('utf-8')
 
 
 class Login():
+    ROBOT_LIBRARY_SCOPE = 'Global'
 
     def __init__(self, **data_config):
 
@@ -26,13 +27,13 @@ class Login():
         self.login_url = config.get("common_url", "login_url")
         self.shop_urn = config.get("common_urn", "shop_urn")
         self.home_urn = config.get("common_urn", "home_urn")
-        self.datas_contact = config.get("common_account", "datas_contact")
-        self.datas_password = config.get("common_account", "datas_password")
-        self.datas_domain = config.get("common_account", "datas_domain")
-        self.datas_invite_code = config.get("common_account", "datas_invite_code")
+        self.contact = config.get("common_account", "contact")
+        self.password = config.get("common_account", "password")
+        self.domain = config.get("common_account", "domain")
+        self.invite_code = config.get("common_account", "invite_code")
         self.db_service_config = config.get("common_db", "db_service_config")
-        self.home_page_url = 'https://' + self.datas_domain + self.home_urn
-        self.myshoplaza_url = 'https://' + self.datas_domain + self.shop_urn
+        self.home_page_url = 'https://' + self.domain + self.home_urn
+        self.myshoplaza_url = 'https://' + self.domain + self.shop_urn
 
         key_list = data_config.keys()
         if 'login_url' in key_list:
@@ -46,32 +47,34 @@ class Login():
         if 'home_urn' in key_list:
             self.home_urn = data_config['home_urn']
         if 'contact' in key_list:
-            self.datas_contact = data_config['contact']
+            self.contact = data_config['contact']
         if 'password' in key_list:
-            self.datas_password = data_config['password']
+            self.password = data_config['password']
         if 'domain' in key_list:
-            self.datas_domain = data_config['domain']
-        if 'datas_invite_code' in key_list:
-            self.datas_invite_code = data_config['datas_invite_code']
+            self.domain = data_config['domain']
+        if 'invite_code' in key_list:
+            self.invite_code = data_config['invite_code']
         if 'db_service_config' in key_list:
             self.db_service_config = data_config['db_service_config']
 
-    def login_b_py(self):
+    def login_b_py(self, **data_config):
         """
         公共登陆方法
         :return: dict
         """
-        url0 = self.login_url + "/api/user/actions/login"
+        data = self.create_data(**data_config)
+        print data
+        url0 = data['login_url'] + "/api/user/actions/login"
 
-        datas = {"contact": self.datas_contact, "password": self.datas_password, "domain": self.datas_domain}
-        # "username": self.datas_domain,
+        datas = {"contact": data['contact'], "password": data['password'], "domain": data['domain']}
+        # "username": self.domain,
         headers = {"Content-Type": "application/json"}
         response_data0 = requests.post(url=url0, headers=headers, data=json.dumps(datas))
         redirect = response_data0.headers['x-redirect']
-        url1 = self.login_url + redirect
+        url1 = data['login_url'] + redirect
         response_data1 = requests.get(url=url1, headers=headers)
         code = BeautifulSoup(response_data1.text, "html.parser").img["src"].split("code=")[1]
-        url2 = '{}/api/servicelogin?code={}'.format(self.home_page_url, code)
+        url2 = '{}/api/servicelogin?code={}'.format(data['home_page_url'], code)
         response_data = requests.get(url=url2, headers=headers)
 
         if response_data is None or response_data.status_code != 200:
@@ -80,37 +83,39 @@ class Login():
         # uid = json.loads(response_data.content)['data']['id']
         cookie = '; '.join(['='.join(item) for item in response_data.cookies.items()])
 
-        print "login_data:" + str({"url": self.home_page_url, "contact": self.datas_contact,
-                                   "password": self.datas_password,
-                                   "username": self.datas_domain})
+        print "login_data:" + str({"url": data['home_page_url'], "contact": data['contact'],
+                                   "password": data['password'],
+                                   "username": data['domain']})
         print "login_b_cookie:" + str(cookie)
         return cookie
 
-    def login_c_py(self):
+    def login_c_py(self, **data_config):
         """
         通过C对端接口，无登录状态，获取cookie值ADMIN1024SESSID
         :return:
         """
-        url = 'https://' + self.datas_domain + self.shop_urn + "/cart/count"
+        data = self.create_data(**data_config)
+        url = 'https://' + data['domain'] + data['shop_urn'] + "/cart/count"
         response_data = requests.get(url=url)
         cookie = '; '.join(['='.join(item) for item in response_data.cookies.items()])
         print "login_c_cookie:" + str(cookie)
         return cookie
 
-    def sign_up_py(self):
+    def sign_up_py(self, **data_config):
         """
         注册
         :return:
         """
-        self.validate_signup_py()
+        data = self.create_data(**data_config)
+        self.validate_signup_py(**data_config)
 
-        url = self.home_page_url + "/api/user/signup"
+        url = data['home_page_url'] + "/api/user/signup"
 
         time.sleep(5)
-        datas_vcode = self.get_latest_vcode_fromdb(self.datas_contact)  # 获取验证码
+        datas_vcode = self.get_latest_vcode_fromdb(data['contact'])  # 获取验证码
         time.sleep(5)
-        datas = {"contact": self.datas_contact, "password": self.datas_password, "username": self.datas_domain,
-                 "vcode": datas_vcode, "invite_code": self.datas_invite_code}
+        datas = {"contact": data['contact'], "password": data['password'], "username": data['domain'],
+                 "vcode": datas_vcode, "invite_code": data['invite_code']}
         print "sign_up_data:" + str(datas)
         response_data = requests.post(url=url, headers={}, data=datas)
         if response_data is None or response_data.status_code != 200:
@@ -118,15 +123,15 @@ class Login():
         else:
             return response_data.content
 
-    def validate_signup_py(self):
+    def validate_signup_py(self, **data_config):
         """
         发送验证码
         :param datas:
         :return:
         """
-
-        url = self.home_page_url + "/api/user/validate-signup"
-        datas = {"contact": self.datas_contact, "username": self.datas_domain}
+        data = self.create_data(**data_config)
+        url = data['home_page_url'] + "/api/user/validate-signup"
+        datas = {"contact": data['contact'], "username": data['domain']}
         response_data = requests.post(url=url, headers={}, data=datas)
         # print "validate_signup_py:" + str(datas)
         # print "/api/user/validate-signup: "+response_data.content
@@ -135,14 +140,15 @@ class Login():
         else:
             return response_data.content
 
-    def get_latest_vcode_fromdb(self, contact):
+    def get_latest_vcode_fromdb(self, contact, **data_config):
         """
         从数据库获取最新一条验证码
         :param contact:
         :return:
         """
+        data = self.create_data(**data_config)
         try:
-            db_config = eval(copy.deepcopy(self.db_service_config))
+            db_config = eval(copy.deepcopy(data['db_service_config']))
             print "db_config_data:" + str(db_config)
             db_config['connect_timeout'] = 30
             conn = pymysql.connect(**db_config)
@@ -156,6 +162,51 @@ class Login():
             print e
         finally:
             conn.close()
+
+    def create_data(self, **data_config):
+        key_list = data_config.keys()
+        data = {}
+        if 'login_url' in key_list:
+            data['login_url'] = data_config['login_url']
+        else:
+            data['login_url'] = self.login_url
+        if 'home_page_url' in key_list:
+            data['home_page_url'] = data_config['home_page_url']
+        else:
+            data['home_page_url'] = self.home_page_url
+        if 'myshoplaza_url' in key_list:
+            data['myshoplaza_url'] = data_config['myshoplaza_url']
+        else:
+            data['myshoplaza_url'] = self.myshoplaza_url
+        if 'shop_urn' in key_list:
+            data['shop_urn'] = data_config['shop_urn']
+        else:
+            data['shop_urn'] = self.shop_urn
+        if 'home_urn' in key_list:
+            data['home_urn'] = data_config['home_urn']
+        else:
+            data['home_urn'] = self.home_urn
+        if 'contact' in key_list:
+            data['contact'] = data_config['contact']
+        else:
+            data['contact'] = self.contact
+        if 'password' in key_list:
+            data['password'] = data_config['password']
+        else:
+            data['password'] = self.password
+        if 'domain' in key_list:
+            data['domain'] = data_config['domain']
+        else:
+            data['domain'] = self.domain
+        if 'invite_code' in key_list:
+            data['invite_code'] = data_config['invite_code']
+        else:
+            data['invite_code'] = self.invite_code
+        if 'db_service_config' in key_list:
+            data['db_service_config'] = data_config['db_service_config']
+        else:
+            data['db_service_config'] = self.db_service_config
+        return data
 
     # 自动化不从数据库中删除数据
     # def del_user_fromdb(contact, **data_config):
@@ -204,3 +255,8 @@ class Login():
     #         print e
     #     finally:
     #         conn.close()
+
+if __name__ == '__main__':
+    # change_themes_by_index_py(1)
+    login = Login()
+    print login.login_b_py()

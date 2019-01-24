@@ -62,6 +62,7 @@ class cdpkeywords():
         :return:
         """
         time.sleep(0.2)
+        self.chrome.Network.loadingFinished(requestId=request_id)
         response_body = None
         for i in range(5):
             if not response_body:
@@ -79,6 +80,7 @@ class cdpkeywords():
         :return:
         """
         time.sleep(0.2)
+        self.chrome.Network.loadingFinished(requestId=request_id)
         post_data = None
         for i in range(5):
             if not post_data:
@@ -401,9 +403,15 @@ if __name__ == '__main__':
     cdp = cdpkeywords()
     cdp.start_listener_on_new_tab()
     cdp.chrome.Page.enable()
+    cdp.chrome.Page.navigate(url="https://trackingtest.myshoplaza.com/cart")
+    time.sleep(3)
     cdp.chrome.Page.navigate(url="https://trackingtest.myshoplaza.com/")
     time.sleep(3)
     all_messages = cdp.get_all_messages()
+    a = cdp.get_messages_filtering_by_url(all_messages,'trackingtest.myshoplaza.com/cart')
+    b = cdp.get_request_ids_from_messages(a)
+    c = cdp.network_get_request_post_data(b[0])
+    d = cdp.network_get_response_body(b[0])
     target_messages = cdp.get_request_messages_by_url(all_messages, "www.google-analytics.com")
     # target_messages = cdp.get_request_messages_by_url(all_messages, "shence.shoplazza")
     request_data = cdp.get_request_data_list(target_messages)

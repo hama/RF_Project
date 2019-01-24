@@ -147,10 +147,10 @@ ${url_page}     ${url_home_page}/page    #.page
 ${url_img_seo}    ${url_home_page}/app_store/img_seo    #. img_seo
 ### 测试用户
 
-${user_default_contact}    ${datas_contact}    # 默认使用的用户信息，用于跑大部分用例
-${user_default_pwd}    ${datas_password}
-${user_default_domain}    ${datas_domain}
-${user_default_inviteCode}    ${datas_invite_code}
+${user_default_contact}    ${contact}    # 默认使用的用户信息，用于跑大部分用例
+${user_default_pwd}    ${password}
+${user_default_domain}    ${domain}
+${user_default_inviteCode}    ${invite_code}
 ### keybord_key
 ${keybord_enter}    \\13
 ${keybord_delete}    \\8
@@ -159,7 +159,7 @@ ${keybord_space}    \\32
 ### 注册用户
 ${register_contact}    gt1zwkp@autotest.com
 ${register_domain}    gt1zwkp
-${register_pwd}    ${datas_password}
+${register_pwd}    ${password}
 
 ### 图片文件
 ${file_products_addImg}    ${CURDIR}/../images/image01.jpg    # 添加商品图片
