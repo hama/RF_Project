@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 import argparse
 
-from kwlogin import *
+from Login import *
 from lib_utils import *
 
 reload(sys)
@@ -21,7 +21,7 @@ if __name__ == '__main__':
     path = os.path.join(os.path.dirname(__file__), '../../config/common.ini')
     config.read(path)
 
-    config.set("common_account", "datas_invite_code", 'DJ2048')
+    config.set("common_account", "invite_code", 'DJ2048')
     config.set("common_url", "login_url", args.url)
 
     # 正式服配置
@@ -62,8 +62,8 @@ if __name__ == '__main__':
 
     if 'new' in args.user:
         # 使用新注册用户跑用例
-        config.set("common_account", "datas_contact", random_str + "@autotest.com")
-        config.set("common_account", "datas_domain", random_str)
+        config.set("common_account", "contact", random_str + "@autotest.com")
+        config.set("common_account", "domain", random_str)
         config.write(open(path, 'w'))
         # 注册用户
         Login().sign_up_py()
@@ -71,8 +71,8 @@ if __name__ == '__main__':
         time.sleep(10)
     else:
         # 使用指定账号跑用例
-        config.set("common_account", "datas_contact", args.user)
-        config.set("common_account", "datas_domain", args.domain)
+        config.set("common_account", "contact", args.user)
+        config.set("common_account", "domain", args.domain)
         config.write(open(path, 'w'))
 
     print "--------------------initevn.py has done--------------------"

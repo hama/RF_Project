@@ -65,7 +65,16 @@ tracking011
 *** Keywords ***
 Tracking Suite Setup
 	[Documentation]
-	kwthemes.change_themes_by_name_py    Black wind
+	&{conf}=   Create Dictionary
+	...    login_url=https://accounts1024.shoplazza.com
+	...    home_page_url=${b_url}
+	...    contact=18025494087
+	...    password=xth12345678
+	...    domain=xietinghui
+	${cookie}    Login.login_b_py    &{conf}
+
+	kwthemes.change_themes_by_name_py    Snow in Summer    ${cookie}
+#	kwthemes.change_themes_by_name_py    Black wind    ${cookie}
 	Sleep    3
-	Open Test Browser    ${url}
-	Open New And Close Other Windows    ${url}
+	Open Test Browser    ${c_url}
+	Open New And Close Other Windows    ${c_url}

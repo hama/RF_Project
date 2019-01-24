@@ -77,4 +77,10 @@ def change_themes_by_name_py(name, cookie=init_cookie):
 
 if __name__ == '__main__':
     # change_themes_by_index_py(1)
-    print change_themes_by_name_py('Think Different')
+    login = Login()
+    # login_url=https://accounts1024.shoplazza.com    home_page_url=${b_url}
+    # ...    contact=17665076519    password=123456    domain=homer
+    # dict_aa = {'login_url':'https://accounts1024.shoplazza.com','contact':'17665076519','password':'123456','domain':'homer'}
+    cookie = login.login_b_py(**{'home_page_url':'https://homer.preview.shoplazza.com/admin','login_url':'https://accounts1024.shoplazza.com','contact':'17665076519','password':'123456','domain':'homer'})
+    print change_themes_by_name_py('Think Different',cookie)
+    # print change_themes_by_name_py('Think Different')

@@ -3,11 +3,12 @@ Resource          ../../resources/keywords/kw_common.robot
 
 *** Variables ***
 #${domain}    trackingtest
-#${url}    https://${domain}.myshoplaza.com
+#${c_url}    https://${domain}.myshoplaza.com
 #${referrer_host}    ${domain}.myshoplaza.com
-${domain}    homer
-${url}    https://${domain}.preview.shoplazza.com
+${domain}    xietinghui
+${c_url}    https://${domain}.preview.shoplazza.com
 ${referrer_host}    ${domain}.preview.shoplazza.com
+${b_url}    https://${domain}.preview.shoplazza.com/admin
 
 *** Keywords ***
 tracking001
@@ -15,8 +16,8 @@ tracking001
     Sleep    5
     ${all_messages}    get_all_messages
 	&{ga_pageview_data}=    Create Dictionary    t=pageview
-	&{properties}=    Create Dictionary    $is_first_time=${False}    $title=${domain}    $url=${url}
-	...    $url_path=/    $referrer_host=${referrer_host}    $referrer=${url}
+	&{properties}=    Create Dictionary    $is_first_time=${False}    $title=${domain}    $url=${c_url}
+	...    $url_path=/    $referrer_host=${referrer_host}    $referrer=${c_url}
 	&{data}=    Create Dictionary    event=$pageview    properties=${properties}
 	&{sc_pageview_data}=    Create Dictionary    data=${data}
 	&{fb_pageview_data}=    Create Dictionary    ev=PageView
@@ -166,7 +167,7 @@ tracking006
     ${current_url_one}=    Get Location
     ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout/')
     ${order_id}=    Evaluate    u"${current_url_two}".strip('?step=contact_information')
-    ${referrer}=    Set Variable    ${url}/cart
+    ${referrer}=    Set Variable    ${c_url}/cart
     &{properties}=    Create Dictionary    referrer=${referrer}    order_id=${order_id}
     &{data}=    Create Dictionary    event=begin_checkout    properties=${properties}
     &{sc_Cartcheckout_data}=    Create Dictionary    data=${data}
@@ -325,8 +326,8 @@ tracking011
 
 #Tracking Suite Setup
 #	[Documentation]
-#	Open Test Browser    ${url}
-#	Open New And Close Other Windows    ${url}
+#	Open Test Browser    ${c_url}
+#	Open New And Close Other Windows    ${c_url}
 
 Tracking Testcase Setup
 	[Documentation]
@@ -336,5 +337,5 @@ Tracking Testcase Setup
 Tracking Testcase Teardown
 	[Documentation]
 	Run Keyword If Test Failed    Capture Page Screenshot
-	Open New And Close Other Windows    ${url}
+	Open New And Close Other Windows    ${c_url}
 
