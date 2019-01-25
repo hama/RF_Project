@@ -266,4 +266,4 @@ if __name__ == '__main__':
     # print rebate_select_product_py()
     # print add_doing_rebate_py()
     # print add_before_rebate_py()
-    # print add_doing_rebate_py()
+    # print add_finish_rebate_py()

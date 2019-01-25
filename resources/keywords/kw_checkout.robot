@@ -140,12 +140,10 @@ Create Specific Coupon Code
 	[Documentation]    添加一个 优惠规则为满50减10USD 优惠码
 	Sleep    2
 	${code}    get_coupon_code_random_code_py
-    &{conf} =    Create Dictionary
-    ...    code=${code}
-    ...    discount_type=1
-    ...    range_type=2
-    ...    range_value=50
-    ...    code_value=10
+	&{dict}=    Create Dictionary    value=10    greater_than_or_equal_to=50
+	@{list}=    Create List    ${dict}
+    &{conf} =    Create Dictionary    code=${code}    value_type=fixed_amount    prerequisite_quantity_range=${None}
+    ...    prerequisite_subtotal_range=${list}
     add_doing_coupon_code_py    ${conf}
     [Return]    ${code}
 

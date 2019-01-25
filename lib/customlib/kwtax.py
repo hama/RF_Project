@@ -87,7 +87,6 @@ def set_country_tax_price_py(tax_price, cookie=init_cookie):
 
 def set_tax_with_conf_py(conf=[], cookie=init_cookie):
     """
-
     :param conf:
     :param cookie:
     :return:
@@ -103,6 +102,7 @@ def set_tax_with_conf_py(conf=[], cookie=init_cookie):
     else:
         param_data.append(template_data)
 
+
     return tax_batch_py(param_data, cookie=cookie)
 
 
@@ -110,3 +110,4 @@ if __name__ == '__main__':
     # print close_tax_price_by_id_py('235863')
     print add_default_tax_price_py()
     # add_shipping_with_conf_py()
+    # print set_tax_with_conf_py()

@@ -679,13 +679,20 @@ checkout_settings_data = {
     }
 }
 
+# tax_batch_data = [{
+#     "status": "open",
+#     "province_code": "ALL",
+#     "tax_rate": "60",
+#     "country_code": "CN",
+#     "province_info": [],
+#     "id": "298518"
+# }]
+
 tax_batch_data = [{
-    "status": "open",
-    "province_code": "ALL",
-    "tax_rate": 60,
+    "id": "303488",
     "country_code": "CN",
-    "u'province_info": [],
-    "id": "298518"
+    "province_code": "ALL",
+    "tax_rate": "60"
 }]
 
 coupon_code_refresh_data = {

@@ -28,9 +28,9 @@ checkout_018
     #添加一个商品价格为$444,名称：autotest_title
     public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个免运费价格物流
-    public_method.create    shipping
+    public_method.create    shipping    {"plans": [{"name": "price_fee", "rule_type": "price"}]}
     #添加一个为60% 税金
-    public_method.setting    tax    [{"tax_rate": 60}]
+    public_method.setting    tax    [{"tax_rate": "60"}]
     Reload Page And Start Ajax
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
@@ -65,9 +65,7 @@ checkout_079
     [Documentation]    验证checkout shipping页面，选择国家后，shipping delivery栏会出现此国家对应的运费方案  >  1.C端购买商品women进入checkout shipping页面  2.选择国家中国  3.查看shipping delivery栏
     [Tags]    P0    threshold
     # 添加3个免运费物流信息
-    public_method.create    shipping    {"plans": [{"name": "price_fee", "rule_type": "price"}]}
-    public_method.create    shipping    {"plans": [{"name": "quantity_fee", "rule_type": "quantity"}]}
-    public_method.create    shipping    {"plans": [{"name": "weight_fee", "rule_type": "weight"}]}
+    public_method.create    shipping    {"plans": [{"name": "price_fee", "rule_type": "price"}, {"name": "quantity_fee", "rule_type": "quantity"}, {"name": "weight_fee", "rule_type": "weight"}]}
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
@@ -177,7 +175,7 @@ checkout_113
     [Documentation]   验证checkout 支付页面，total显示正常
     [Tags]    P0    threshold
     [Setup]    Go To Product Management Page
-    kwcheckout.set_single_page_checkout_process_py
+    kwcheckout.set_checkout_process_with_conf_py
     kwshipping.del_all_shipping_py
     #添加一个商品价格为$444,名称：autotest_title
     public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
@@ -199,8 +197,8 @@ checkout_118
     [Documentation]   验证checkout 支付页面，payment栏，shipping method显示正常  >  1.购买商品进入checkout shipping页面  2.选择运费方案：运费1   3.进入支付页面查看payment栏，shipping method
     [Tags]    P0    threshold    smoke
     kwcheckout.set_checkout_process_with_conf_py
-    #.创建 中国方案 免运费
-    public_method.create    shipping    {"plans": [{"name": "运费1", "rule_type": "price"}]}
+    #.创建 中国方案 价格为10 物流
+    public_method.create    shipping    {"plans": [{"name": "运费1", "rule_type": "price", "rate_amount": "10"}]}
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step

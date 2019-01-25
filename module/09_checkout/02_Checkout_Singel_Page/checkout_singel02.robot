@@ -20,8 +20,8 @@ checkout_099
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait Until Page Contains Text    price_fee
-    Wait Until Page Contains Text    quantity_fee
-    Wait Until Page Contains Text    weight_fee
+#    Wait Until Page Contains Text    quantity_fee
+#    Wait Until Page Contains Text    weight_fee
 
 #checkout_126
 #    [Documentation]    验证checkout页面，使用ipaylinks可正常支付
@@ -104,6 +104,7 @@ checkout_184
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_specialInstruction}
     Wait And Input Text    ${locatorC_checkoutShipping_input_specialInstruction}    请尽快发货
+    sleep    10
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Go To    https://admin.shoplazza.com/order/_dealing
@@ -112,7 +113,7 @@ checkout_184
     ${title1}=    Get From List    ${titles}    0
     ${title2}=    Get From List    ${titles}    1
     Sleep    2
-    Select Window    title=${title2}
+    Select Window    title=${title1}
     Go To Dealing Order Page
     Reload Page And Start Ajax
     Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}

@@ -37,7 +37,8 @@ Shipping Settings Page
 
 shipping_130
     [Documentation]    验证添加物流商弹窗中，可添加汉邮物流商
-    Sleep And Click Element    ${locatorB_settingShipping_button_merchantSet}
+    Sleep And Click Element    ${locatorB_settingShipping_icon_addMerchant}
+#    Sleep And Click Element    ${locatorB_settingShipping_button_merchantSet}
     Sleep And Click Element    ${locatorB_merchantSettings_button_addUaiBest}
     Sleep    2
     Wait And Input Text    ${locatorB_merchantSettings_input_channelName}    汉邮001
@@ -112,7 +113,7 @@ shipping_140
 
 shipping_143
     [Documentation]     验证添加物流商弹窗中，可添加鸿速达物流商
-    Sleep And Click Element    ${locatorB_settingShipping_button_merchantSet}
+    Sleep And Click Element    ${locatorB_settingShipping_icon_addMerchant}
     Sleep And Click Element    ${locatorB_merchantSettings_button_addHSD}
     Sleep    2
     Wait And Input Text    ${locatorB_merchantSettings_input_channelName}    鸿速达
@@ -213,7 +214,7 @@ shipping_156
 
 shipping_160
     [Documentation]    验证添加物流商弹窗中，可添加youkesi物流商
-    Sleep And Click Element    ${locatorB_settingShipping_button_merchantSet}
+    Sleep And Click Element    ${locatorB_settingShipping_icon_addMerchant}
     Sleep And Click Element    ${locatorB_merchantSettings_button_addYokesi}
     Sleep    2
     Wait And Input Text    ${locatorB_merchantSettings_input_channelName}    优客思
@@ -307,7 +308,7 @@ shipping_173
 
 shipping_177
     [Documentation]    验证添加物流商弹窗中，可添加皇家物流商
-    Sleep And Click Element    ${locatorB_settingShipping_button_merchantSet}
+    Sleep And Click Element    ${locatorB_settingShipping_icon_addMerchant}
     Sleep And Click Element    ${locatorB_merchantSettings_button_addPFC}
     Sleep    2
     Wait And Input Text    ${locatorB_merchantSettings_input_channelName}    皇家
@@ -377,7 +378,7 @@ shipping_189
 
 shipping_193
     [Documentation]    验证添加物流商弹窗中，可添加润成通物流商
-    Sleep And Click Element    ${locatorB_settingShipping_button_merchantSet}
+    Sleep And Click Element    ${locatorB_settingShipping_icon_addMerchant}
     Sleep And Click Element    ${locatorB_merchantSettings_button_addRCT}
     Sleep    2
     Wait And Input Text    ${locatorB_merchantSettings_input_channelName}    润成通
@@ -458,7 +459,7 @@ shipping_205
 
 shipping_226
     [Documentation]    验证添加物流商弹窗中，可添加龙讯物流商
-    Sleep And Click Element    ${locatorB_settingShipping_button_merchantSet}
+    Sleep And Click Element    ${locatorB_settingShipping_icon_addMerchant}
     Sleep And Click Element    ${locatorB_merchantSettings_button_addLX}[5]
     Sleep    2
     Wait And Input Text    ${locatorB_merchantSettings_input_channelName}    龙讯
@@ -539,7 +540,7 @@ shipping_238
 
 shipping_242
     [Documentation]    验证添加物流商弹窗中，可添加buffalo物流商
-    Sleep And Click Element    ${locatorB_settingShipping_button_merchantSet}
+    Sleep And Click Element    ${locatorB_settingShipping_icon_addMerchant}
     Sleep And Click Element    ${locatorB_merchantSettings_button_addBuffalo}[6]
     Sleep    2
     Wait And Input Text    ${locatorB_merchantSettings_input_channelName}    buffalo

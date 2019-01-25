@@ -88,7 +88,7 @@ checkout_022
 #    ${price}=    Evaluate    u"${price1}".strip('$')
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[0]    444USD
+    Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[0]    444.00USD
     Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[1]    - 10.00USD
     Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[2]    + 2.00USD
     Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[3]    + 217.00USD
@@ -251,7 +251,7 @@ checkout_206
     Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment failure
     Wait And Click Element    ${locatorC_checkout_button_payAgain}
-    Wait Until Page Contains Text    price_fee
+    Wait Until Page Contains Text    方案0
 
 checkout_211
     [Documentation]    验证B端交易设置中结账页形式选择单结账页时，C端进入checkout页面，checkout为单页面结账形式
