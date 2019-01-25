@@ -12,8 +12,6 @@ Resource          ../../../resources/keywords/kw_common.robot
 checkout_015
     [Documentation]    验证checkout shipping页面，价格详情中，shipping显示正常 >  shipping显示为：$10
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个价格10 物流
     public_method.create    shipping    {"plans": [{"name": "price_fee", "rule_type": "price", "rate_amount": "10"}]}
     Reload Page And Start Ajax
@@ -24,6 +22,9 @@ checkout_015
 checkout_018
     [Documentation]    验证checkout shipping页面，订单详情中tax显示正常
     [Tags]    P0    threshold    smoke
+    [Setup]    Go To Product Management Page
+    kwcheckout.set_single_page_checkout_process_py
+    kwshipping.del_all_shipping_py
     #添加一个商品价格为$444,名称：autotest_title
     public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个免运费价格物流
@@ -31,6 +32,7 @@ checkout_018
     #添加一个为60% 税金
     public_method.setting    tax    [{"tax_rate": 60}]
     Reload Page And Start Ajax
+    Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_taxPrice}[2]   + 266.40USD
@@ -39,6 +41,9 @@ checkout_018
 checkout_024
     [Documentation]    验证checkout shipping页面，total显示正常
     [Tags]    P0    threshold    smoke
+    [Setup]    Go To Product Management Page
+    kwcheckout.set_single_page_checkout_process_py
+    kwshipping.del_all_shipping_py
     #添加一个商品价格为$444,名称：autotest_title
     public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个价格10 物流
@@ -48,6 +53,7 @@ checkout_024
     #.添加一个优惠码为满50减10活动
     ${code}    Create Specific Coupon Code
     Reload Page And Start Ajax
+    Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${code}
@@ -58,8 +64,6 @@ checkout_024
 checkout_079
     [Documentation]    验证checkout shipping页面，选择国家后，shipping delivery栏会出现此国家对应的运费方案  >  1.C端购买商品women进入checkout shipping页面  2.选择国家中国  3.查看shipping delivery栏
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     # 添加3个免运费物流信息
     public_method.create    shipping    {"plans": [{"name": "price_fee", "rule_type": "price"}]}
     public_method.create    shipping    {"plans": [{"name": "quantity_fee", "rule_type": "quantity"}]}
@@ -72,8 +76,6 @@ checkout_079
 checkout_082
     [Documentation]    验证checkout shipping页面，没有可选择物流方案时，payment method 按钮无法点击 > payment method按钮置灰无法点击
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     #添加一个价格范围至少5000以上 物流
     public_method.create    shipping    {"plans": [{"name": "price_fee", "rule_type": "price", "rule_range_min": 5000}]}
@@ -87,8 +89,6 @@ checkout_082
 checkout_083
     [Documentation]    验证B端运费方案设置价格范围时，C端购买的商品价格满足此价格范围，checkout shipping页面将展示此运费方案 > 运费方案中显示：价格方案1
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个价格范围为50～5000 物流
     public_method.create    shipping    {"plans": [{"name": "价格方案1", "rule_type": "price", "rule_range_min": 50, "rule_range_max": 5000}]}
     Reload Page And Start Ajax
@@ -102,8 +102,6 @@ checkout_083
 checkout_085
     [Documentation]    验证B端运费方案设置重量范围时，C端购买的商品重量满足此重量范围，checkout shipping页面将展示此运费方案 > 运费方案中显示 重量方案1
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个重量范围为50～70 物流
     public_method.create    shipping    {"plans": [{"name": "重量方案1", "rule_type": "weight", "rule_range_min": 50, "rule_range_max": 70}]}
     Reload Page And Start Ajax
@@ -116,8 +114,6 @@ checkout_085
 checkout_087
     [Documentation]    验证B端运费方案设置数量范围时，C端购买的商品数量满足此数量范围，checkout shipping页面将展示此运费方案 > "1.C端购买5件商品进入checkout shipping页面,2.选择国家：中国,3.查看shipping delivery栏运费方案" >运费方案中显示 数量方案1
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个数量范围为5～7 物流
     public_method.create    shipping    {"plans": [{"name": "数量方案1", "rule_type": "quantity", "rule_range_min": 5, "rule_range_max": 7}]}
     Reload Page And Start Ajax
@@ -131,8 +127,6 @@ checkout_087
 checkout_090
     [Documentation]    验证B端运费方案中，勾选免运费时，checkout shipping页面，运费栏显示的运费价格为0.00USD >1.B端物流方案中添加物流物流，国家：中国，运费：运费1 不限价格 免运费2.C端购买任意商品进入checkout shipping页面 3.国家选择中国4.查看shipping delivery栏运费
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #.创建运费方案0  中国方案  运费价格0
     public_method.create    shipping    {"plans": [{"name": "运费方案0", "rule_type": "price"}]}
     Reload Page And Start Ajax
@@ -145,8 +139,6 @@ checkout_090
 checkout_097
     [Documentation]    验证checkout shipping页面，选择没有省份的国家后，点击payment method可以跳转到支付页面 > 1.shipping address中选择国家Bouvet Island  2.其他输入框输入合法内容 3.点击payment method按钮
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个布韦岛国家 免运费 物流
     public_method.create    shipping    {"areas": [{"country_code": "BV", "country_name": "布韦岛"}]}
     kwcheckout.set_checkout_process_with_conf_py
@@ -172,8 +164,6 @@ checkout_097
 checkout_107
     [Documentation]   验证checkout 支付页面，价格详情中，shipping显示正常  > 1.C端购买商品进入checkout shipping页面  2.填写购买人信息，国家选择：中国  3.选择运费：方案0  4.进入支付页面查看价格详情中shipping
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #.创建运费方案0  中国方案  运费价格10
     public_method.create    shipping    {"plans": [{"name": "运费方案0", "rule_type": "price", "rate_amount": "10"}]}
     kwcheckout.set_checkout_process_with_conf_py
@@ -186,6 +176,9 @@ checkout_107
 checkout_113
     [Documentation]   验证checkout 支付页面，total显示正常
     [Tags]    P0    threshold
+    [Setup]    Go To Product Management Page
+    kwcheckout.set_single_page_checkout_process_py
+    kwshipping.del_all_shipping_py
     #添加一个商品价格为$444,名称：autotest_title
     public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #.创建 中国方案 运费10
@@ -194,6 +187,7 @@ checkout_113
     #.添加一个物流为中国60% 税金
     public_method.setting    tax    [{"tax_rate": 60}]
     Reload Page And Start Ajax
+    Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Input Text     ${locatorC_checkoutShipping_input_discountCode}     ${code}
     Wait And Click Element   ${locatorC_checkoutShipping_button_apply}
@@ -204,8 +198,6 @@ checkout_113
 checkout_118
     [Documentation]   验证checkout 支付页面，payment栏，shipping method显示正常  >  1.购买商品进入checkout shipping页面  2.选择运费方案：运费1   3.进入支付页面查看payment栏，shipping method
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     #.创建 中国方案 免运费
     public_method.create    shipping    {"plans": [{"name": "运费1", "rule_type": "price"}]}
@@ -219,8 +211,6 @@ checkout_118
 checkout_120
     [Documentation]         验证checkout支付页面，payment栏，change按钮可返回到shipping页面  >  1.点击payment栏的change按钮
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     #.创建 中国方案 免运费
     public_method.create    shipping    {"plans": [{"name": "price_free", "rule_type": "price"}]}
@@ -235,8 +225,6 @@ checkout_120
 checkout_168
     [Documentation]   验证checkout支付页面，billing address栏选择框可点击以及选择项展示  >   1.点击选择框
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     #.创建 中国方案 免运费
     public_method.create    shipping    {"plans": [{"name": "price_free", "rule_type": "price"}]}
@@ -252,8 +240,6 @@ checkout_168
 checkout_169
     [Documentation]  验证checkout支付页面，选择new billing address之后，选择框下方会出现信息填写栏  >  1.点击选择框   2.选择new billing address
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     #.创建 中国方案 免运费
     public_method.create    shipping    {"plans": [{"name": "price_free", "rule_type": "price"}]}
@@ -276,8 +262,6 @@ checkout_169
 checkout_194
     [Documentation]   验证payment successful页面，物流方案显示正常  >  1.购买商品进入checkout shipping页面  2.国家选择中国，物流方案选择：方案1 3.完成订单进入payment successful页面  4.查看物流方案
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     #.创建 中国方案 免运费
     public_method.create    shipping    {"plans": [{"name": "方案1", "rule_type": "price"}]}

@@ -11,6 +11,8 @@ Checkout Suite Setup
     kwproduct.del_all_products_py
     kwshipping.create_only_one_shipping_py
     kwcheckout.set_checkout_process_with_conf_py
+    #添加一个商品价格为$444,名称：autotest_title
+    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #激活COD货到付款方式
     kwpayment.activate_payment_cod_py
     kwcheckout.set_single_page_checkout_process_py

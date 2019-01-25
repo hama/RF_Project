@@ -12,9 +12,6 @@ Resource          ../../../resources/keywords/kw_common.robot
 checkout_001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_addToCart}
     Wait And Click Element    ${locatorC_icon_card}
     Wait And Click Element    ${locatorC_cart_button_checkout}
@@ -27,10 +24,6 @@ checkout_001
 checkout_002
     [Documentation]    进入checkout界面 显示购买的商品，地址，
     [Tags]    P0    threshold    smoke
-    #点击商品预览
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_order}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_address}
@@ -38,18 +31,12 @@ checkout_002
 checkout_006
     [Documentation]    验证checkout shipping页面，订单汇总，商品栏，商品标题显示正常
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_itemProductTitle}   autotest_title
 
 checkout_008
     [Documentation]    验证checkout shipping页面，订单汇总商品栏，商品数量显示正常 > "1.C端够买商品women5件进入checkout shipping页面,2.查看订单汇总商品栏，商品数量显示" > 商品数量显示为：X5
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep    2
     Wait And Input Text    ${locatorC_productDetail_input_qtyNum}    5
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
@@ -58,28 +45,33 @@ checkout_008
 checkout_009
     [Documentation]    验证checkout shipping页面，订单汇总商品栏，商品价格显示正常 >"1.C端购买商品women进入checkout shipping页面,2.查看订单汇总商品栏，商品价格显示" > 商品价格显示为：444USD
     [Tags]    P0    threshold    smoke
+    [Setup]    Go To Product Management Page
+    kwcheckout.set_single_page_checkout_process_py
+    kwproduct.del_all_products_py
     #添加一个商品价格为$444,名称：autotest_title
     public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     Reload Page And Start Ajax
+    Go To First Product C Interface
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}   444.00USD
 
 checkout_014
     [Documentation]    验证checkout shipping页面，subtotal显示正常 > "1.C端购买商品women两件进入checkout shipping页面,2.查看价格详情中subtotal" > subtotal为：444.00USD
     [Tags]    P0    threshold    smoke
+    [Setup]    Go To Product Management Page
+    kwcheckout.set_single_page_checkout_process_py
+    kwproduct.del_all_products_py
     #添加一个商品价格为$444,名称：autotest_title
     public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     Reload Page And Start Ajax
+    Go To First Product C Interface
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_itemPrice}    444.00USD
 
 checkout_021
     [Documentation]    验证checkout shipping页面，使用优惠码后，价格详情中会出现discount code并显示优惠价格 > "1.C端购买商品women进入checkout shipping页面，2.使用优惠码AAA001，3.查看价格详情" > 价格详情显示优惠金额
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
 	${code}    Create Specific Coupon Code
     Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${code}
     Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
@@ -88,9 +80,6 @@ checkout_021
 checkout_025
     [Documentation]    验证checkout shipping页面，优惠码输入框中可输入内容 > "1.点击优惠码输入框,2.输入内容：AAA003" > 优惠码输入框中显示输入的内容：AAA003
     [Tags]    P1
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    AAA003
     Value Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_input_couponCode}    AAA003
@@ -98,9 +87,6 @@ checkout_025
 checkout_026
     [Documentation]    验证checkout shipping页面，优惠码输入框后apply按钮可点击>"1.C端购买任意商品进入checkout shipping页面,2.优惠码输入框中输入优惠码AAA006,3.点击apply按钮" > 点击后优惠码使用成功，价格详情中显示discount code： - 10.00USD
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     ${code}    Create Specific Coupon Code
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${code}
@@ -112,9 +98,6 @@ checkout_026
 checkout_027
     [Documentation]    验证checkout shipping页面输入错误的优惠码时，点击apply，会给出对应提示 > 2.优惠码输入框中输入任意内容：..0001,3.点击apply > 优惠码输入框下方出现错误提示
     [Tags]    P1
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ..0001
     Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
@@ -124,9 +107,6 @@ checkout_027
 checkout_028
     [Documentation]     验证checkout shipping页面，优惠码输入框中的取消使用优惠码按钮可清空输入框  >  1.输入框中输入本次购买商品可用的优惠码并且点击apply按钮使用   2.点击优惠码输入框中的取消使用按钮
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     ${code}    Create Specific Coupon Code
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Input Text     ${locatorC_checkoutShipping_input_discountCode}     ${code}
@@ -138,18 +118,12 @@ checkout_028
 checkout_034
     [Documentation]    验证checkout shipping页面，shipping address栏，国家选择框可点击以及国家选择展示 > 1.点击shipping address栏国家选择框 >点击后国家选择框下拉展开，显示所有可选择的国家
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Click Element    ${locatorC_checkoutShipping_address_select_country}
 
 checkout_035
     [Documentation]    验证checkout shipping页面，shipping address栏，省份选择框可点击以及省份选择展示  > "1.点击国家选择框选择中国,2.点击省份选择框" > 点击后城市选择框下拉展开，显示中国的所有省份
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
     Wait And Click Element    ${locatorC_checkoutShipping_address_select_province}
@@ -165,9 +139,6 @@ checkout_035
 checkout_073
     [Documentation]    验证checkout shipping页面，点击买家留言栏，可展开买家留言输入框 > 1.点击special instruction栏 > 点击后展开买家留言输入框
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Click Element    ${locatorC_checkoutShipping_button_specialInstruction}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_input_specialInstruction}
@@ -175,8 +146,6 @@ checkout_073
 checkout_077
     [Documentation]    验证checkout shipping页面，买家留言输入框输入的内容，会同步到B端订单详情 > "1.C端发起新订单AAA00111进入checkout shipping页面,2.买家留言输入框中输入内容：请尽快发货,3.完成订单进入B端订单AAA00111详情,4.查看订单详情页面买家留言" > 买家留言内容显示为：请尽快发货
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
@@ -193,9 +162,6 @@ checkout_077
 checkout_078
     [Documentation]    验证checkout shipping页面，未选择国家时，shipping delivery栏不显示运费方案  >  1.购买任意商品进入checkout shipping页面  2.不选择国家查看shipping delivery栏
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Text    Please enter address first
 

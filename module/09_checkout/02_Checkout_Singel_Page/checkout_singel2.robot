@@ -12,8 +12,6 @@ Resource          ../../../resources/keywords/kw_common.robot
 checkout_013
     [Documentation]    验证checkout页面，价格详情中，shipping显示正常
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个价格10 物流
     public_method.create    shipping    {"plans": [{"name": "方案0", "rule_type": "price", "rate_amount": "10"}]}
     kwrebate.end_all_rebates_py
@@ -26,8 +24,6 @@ checkout_013
 checkout_036
     [Documentation]    验证checkout页面，国家选择印尼时，City输入框会变为选择框
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个印度尼西亚 物流
     public_method.create    shipping    {"areas": [{"country_code": "ID", "country_name": "印度尼西亚"}]}
     Reload Page And Start Ajax
@@ -41,8 +37,6 @@ checkout_036
 checkout_037
     [Documentation]    验证checkout页面，国家选择印尼时，会多出一个地区输入框
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个印度尼西亚 物流
     public_method.create    shipping    {"areas": [{"country_code": "ID", "country_name": "印度尼西亚"}]}
     Reload Page And Start Ajax
@@ -55,8 +49,6 @@ checkout_102
     [Documentation]    验证checkout页面，没有可选择物流方案时，complete order 按钮无法点击
     [Tags]    P0
     [Setup]    Checkout2 Child Case Setup
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个价格范围为100～600 物流
     public_method.create    shipping    {"plans": [{"name": "方案3", "rule_type": "price", "rule_range_min": 100, "rule_range_max": 600, "rate_amount": "10"}]}
     kwrebate.end_all_rebates_py
@@ -78,8 +70,6 @@ checkout_103
     [Documentation]    验证B端运费方案设置价格范围时，C端购买的商品价格满足此价格范围，checkout页面将展示此运费方案
     [Tags]    P0    threshold
     [Setup]    Checkout2 Child Case Setup
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个价格范围为20～60 物流
     public_method.create    shipping    {"plans": [{"name": "价格方案1", "rule_type": "price", "rule_range_min": 20, "rule_range_max": 60, "rate_amount": "10"}]}
     Go To Product Management Page
@@ -97,8 +87,6 @@ checkout_105
     [DOcumentation]    验证B端运费方案设置重量范围时，C端购买的商品重量满足此重量范围，checkout页面将展示此运费方案
     [Tags]    P0    threshold
     [Setup]    Checkout2 Child Case Setup
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个重量范围为20～60 物流
     public_method.create    shipping    {"plans": [{"name": "重量方案1", "rule_type": "weight", "rule_range_min": 20, "rule_range_max": 60, "rate_amount": "10"}]}
     Reload Page And Start Ajax
@@ -116,8 +104,6 @@ checkout_105
 checkout_107
     [DOcumentation]    验证B端运费方案设置数量范围时，C端购买的商品数量满足此数量范围，checkout页面将展示此运费方案
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个数量范围为3～9 物流
     public_method.create    shipping    {"plans": [{"name": "数量方案1", "rule_type": "quantity", "rule_range_min": 3, "rule_range_max": 9, "rate_amount": "10"}]}
     Reload Page And Start Ajax
@@ -130,8 +116,6 @@ checkout_107
 checkout_110
     [Documentation]    验证B端运费方案中，勾选免运费时，checkout页面，运费栏显示的运费价格为$0.00
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个免运费 物流
     public_method.create    shipping    {"plans": [{"name": "运费1", "rule_type": "price", "rate_amount": "0"}]}
     Reload Page And Start Ajax
@@ -143,8 +127,6 @@ checkout_110
 checkout_111
     [Documentation]    验证B端运费方案中，设置运费价格时，checkout页面，运费栏运费价格显示对应的价格
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个免运费 物流
     public_method.create    shipping    {"plans": [{"name": "运费1", "rule_type": "price", "rate_amount": "6"}]}
     Reload Page And Start Ajax
@@ -156,8 +138,6 @@ checkout_111
 checkout_119
     [Documentation]    验证checkout页面，选择物流方案后，payment method栏支付方式显示正常
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个免运费 物流
     public_method.create    shipping    {"plans": [{"name": "运费1", "rule_type": "price", "rate_amount": "6"}]}
     kwpayment.activate_payment_cod_py
@@ -170,8 +150,6 @@ checkout_121
     [Documentation]    验证checkout页面，使用COD支付方式可正常支付
     [Tags]    P0    threshold
     [Setup]    Checkout2 Child Case Setup
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个免运费 物流
     public_method.create    shipping    {"plans": [{"name": "运费1", "rule_type": "price", "rate_amount": "6"}]}
     kwpayment.activate_payment_cod_py
@@ -213,8 +191,6 @@ checkout_121
 checkout_198
     [Documentation]    验证payment successful页面，物流方案显示正常
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #添加一个免运费 物流
     public_method.create    shipping    {"plans": [{"name": "方案1", "rule_type": "price", "rate_amount": "6"}]}
     Reload Page And Start Ajax

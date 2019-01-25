@@ -11,9 +11,6 @@ Resource          ../../../resources/keywords/kw_common.robot
 checkout_093
     [Documentation]    验证从商品详情页面buy now进入checkout shipping页面后，点击return可返回商品详情页面 > 1.C端进入任意一个商品详情页面 2.buy now进入checkout shipping页面 3.点击return
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Text   Order summary
     Wait And Click Element    ${locatorC_checkoutShipping_button_return}
@@ -22,9 +19,6 @@ checkout_093
 checkout_094
     [Documentation]    验证从购物车进入checkout shipping页面后，点击return可返回购物车 > 1.C端将任意商品加入购物车 2.进入购物车点击checkout按钮进入checkout shipping页面 3.点击return
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Wait And Click Element   ${locatorC_productDetail_button_addToCart}
     Sleep And Click Element    ${locatorC_icon_card}
     Wait And Click Element   ${locatorC_cart_button_checkout}
@@ -36,9 +30,6 @@ checkout_094
 checkout_096
     [Documentation]    验证checkout shipping页面，点击payment method按钮可进入支付页面 > 1.shipping address中输入合法内容  2.点击payment method按钮
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     #添加是shipping address
     Add Address Common Step
@@ -48,8 +39,6 @@ checkout_096
 checkout_098
     [Documentation]    验证checkout 支付页面，订单汇总，商品栏，商品标题显示正常 > 1.C端购买商品women进入checkout支付页面  2.查看订单汇总，商品栏，商品标题
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -64,9 +53,7 @@ checkout_098
 checkout_100
     [Documentation]   验证checkout 支付页面，订单汇总商品栏，商品数量显示正常 > 1.C端够买商品women5件进入checkout 支付页 2.查看订单汇总商品栏，商品数量显示
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
+    Sleep    2
     Wait And Input Text    ${locatorC_productDetail_input_qtyNum}    5
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
@@ -76,10 +63,13 @@ checkout_100
 checkout_101
     [Documentation]   验证checkout 支付页面，订单汇总商品栏，商品价格显示正常 > 1.C端购买商品women进入checkout 支付页面  2.查看订单汇总商品栏，商品价格显示
     [Tags]    P0    threshold    smoke
+    [Setup]    Go To Product Management Page
+    kwcheckout.set_single_page_checkout_process_py
+    kwproduct.del_all_products_py
     #添加一个商品价格为$444,名称：autotest_title
     public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
+    Go To First Product C Interface
     Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
     Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_itemPrice}   444.00USD
@@ -87,12 +77,15 @@ checkout_101
 checkout_106
     [Documentation]   验证checkout 支付页面，subtotal显示正常 > 1.C端购买商品women两件进入checkout 支付页面  2.查看价格详情中subtotal
     [Tags]    P0    threshold    smoke
+    [Setup]    Go To Product Management Page
+    kwcheckout.set_single_page_checkout_process_py
+    kwproduct.del_all_products_py
     #添加一个商品价格为$444,名称：autotest_title
     public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
+    Go To First Product C Interface
     Sleep And Click Element    ${locatorC_productDetail_button_addQuaity}
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_subtotalPrice}     888.00USD
 
@@ -111,8 +104,6 @@ checkout_106
 checkout_114
     [Documentation]    验证checkout 支付页面，Payment栏，shiP to信息显示正常
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -132,8 +123,6 @@ checkout_114
 checkout_121
     [Documentation]         验证checkout支付页面，return按钮可返回到shipping页面  >  1.点击return按钮
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -146,8 +135,6 @@ checkout_121
 checkout_125
     [Documentation]         验证B端收款渠道中没有开启任何支付方式时，checkout 支付页面payment method栏不显示支付方式，并显示提示文案  >  1.B端收款渠道中关闭所有支付方式  2.C端购买商品进入checkout 支付页面 3.查看payment method栏
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     #关闭cod支付方式
     kwpayment.inactivate_payment_cod_py
     #关闭credit_card  信用卡支付方式
@@ -163,8 +150,6 @@ checkout_125
 checkout_126
     [Documentation]   验证checkout 支付页面，使用COD支付方式可正常支付  >  1.购买商品进入checkout 支付页面  2.选择支付方式COD  3.点击place order按钮
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
@@ -177,8 +162,6 @@ checkout_126
 checkout_132
     [Documentation]   验证checkout支付页面，使用ipaylinks支付，填写错误的信用卡号时，页面会跳转到支付失败页面 >  1.stripe支付信息中填写信息： 卡号：4111119987834534 有效日期：11/23  安全码：123 邮编：518000 2.点击place order按钮
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwpayment.activate_payment_cod_py
     kwpayment.activate_payment_credit_card_py
     Reload Page And Start Ajax
@@ -195,8 +178,6 @@ checkout_132
 checkout_170
     [Documentation]   验证checkout支付页面，billing address栏选择框可点击以及选择项展示  >   1.点击选择框
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     SLeep And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -211,8 +192,6 @@ checkout_170
 checkout_189
     [Documentation]   验证checkout支付页面，place order按钮正常  >  1.购买商品进入checkout支付页面  2.选择COD支付   3.点击place order按钮
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -225,8 +204,6 @@ checkout_189
 checkout_193
     [Documentation]   验证payment successful页面，shipping information显示正常  >  1.购买商品进入checkout shipping页面 2.填写信息：first name：Javen last name：fang address：南山区 apartment：中山大学产学研基地 city：深圳 country：China province：广东 postal code：518000 email：dianjiang@autotest.com phone：18688886666 company：shoplazza 3.完成订单进入payment successful 页面查看shipping information
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -244,8 +221,6 @@ checkout_193
 checkout_195
     [Documentation]   验证payment successful页面，view order按钮可跳转到个人中心订单详情页面  >  1.购买商品进入checkout并完成支付进入payment successful页面  2.点击view order按钮
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -260,8 +235,6 @@ checkout_195
 checkout_196
     [Documentation]   验证payment successful页面，continue shopping按钮可跳转到店铺首页  >  1.购买商品进入checkout并完成支付进入payment successful页面  2.点击continue shopping按钮
     [Tags]    P0    threshold    smoke
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Sleep And Click Element  ${locatorC_productDetail_button_buyNow}

@@ -11,18 +11,12 @@ Resource          ../../../resources/keywords/kw_common.robot
 checkout_098
     [Documentation]    验证checkout页面，未选择国家时，shipping delivery栏不显示运费方案
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Text    Please enter address first
 
 checkout_099
     [Documentation]    验证checkout页面，选择国家后，shipping delivery栏会出现此国家对应的运费方案
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait Until Page Contains Text    price_fee
@@ -56,8 +50,6 @@ checkout_127
     [Documentation]    验证checkout页面，使用ipaylinks支付，填写错误的信用卡号时，页面会跳转到支付失败页面
     [Tags]    P0    threshold
     [Setup]    Go To Payment Channel
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwpayment.activate_payment_credit_card_py
     Reload Page And Start Ajax
     Go To First Product C Interface
@@ -77,9 +69,6 @@ checkout_127
 checkout_161
     [Documentation]    验证checkout页面，billing address栏选择框可点击以及选择项展示
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click ELement    ${locatorC_checkoutPayment_select_billingAddress}
@@ -89,9 +78,6 @@ checkout_161
 checkout_162
     [Documentation]    验证checkout页面，billing address栏选择框可点击以及选择项展示
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click ELement    ${locatorC_checkoutPayment_select_billingAddress}
@@ -102,9 +88,6 @@ checkout_162
 checkout_163
     [Documentation]    验证checkout页面，billing address填写正确的信息，可完成支付
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click ELement    ${locatorC_checkoutPayment_select_billingAddress}
@@ -117,9 +100,6 @@ checkout_163
 checkout_184
     [Documentation]    验证checkout页面，买家留言输入框输入的内容，会同步到B端订单详情
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_specialInstruction}
@@ -141,9 +121,6 @@ checkout_184
 checkout_185
     [Documentation]    验证从商品详情页面buy now进入checkout页面后，点击return可返回商品详情页面
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_return}
@@ -153,9 +130,6 @@ checkout_185
 checkout_186
     [Documentation]     验证从购物车进入checkout页面后，点击return可返回购物车
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_addToCart}
     Wait And Click Element    ${locatorC_icon_card}
     Wait And Click Element    ${locatorC_cart_button_checkout}
@@ -167,9 +141,6 @@ checkout_189
     [Documentation]    验证checkout页面底部refund policy按钮可点击以及内容展示
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Go To ServiceTerms Table
     Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     退款条约测试文本
     Wait And Input Text     ${locatorB_checkout_textarea_policyInputBox}     a
@@ -189,9 +160,6 @@ checkout_191
     [Documentation]    验证checkout页面底部privacy policy按钮可点击以及内容展示
     [Tags]    P0   threshold
     [Setup]    Go To Checkout Settings Page
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Go To ServiceTerms Table
     Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     a
     Press Key    ${locatorB_checkout_textarea_refundTreatyInputBox}    ${keybord_delete}
@@ -210,9 +178,6 @@ checkout_193
     [Documentation]    验证checkout页面底部terms of service按钮可点击以及内容展示
     [Tags]    P0    threshold
     [Setup]    Go To Checkout Settings Page
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Go To ServiceTerms Table
     Wait And Input Text     ${locatorB_checkout_textarea_refundTreatyInputBox}     a
     Press Key    ${locatorB_checkout_textarea_refundTreatyInputBox}    ${keybord_delete}
@@ -230,9 +195,6 @@ checkout_193
 checkout_197
     [Documentation]    验证payment successful页面，shipping information显示正常
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     ${status}=    Run Keyword And Return Status    ${locatorC_checkoutShipping_label_SamecontactEamil}
@@ -254,9 +216,6 @@ checkout_197
 checkout_199
     [Documentation]    验证payment successful页面，view order按钮可跳转到个人中心订单详情页面
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     ${status}=    Run Keyword And Return Status    ${locatorC_checkoutShipping_label_SamecontactEamil}
@@ -271,9 +230,6 @@ checkout_199
 checkout_200
     [Documentation]    验证payment successful页面，continue shopping按钮可跳转到店铺首页
     [Tags]    P0    threshold
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     ${status}=    Run Keyword And Return Status    ${locatorC_checkoutShipping_label_SamecontactEamil}
