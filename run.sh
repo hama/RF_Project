@@ -127,7 +127,11 @@ done
 #else
 #	echo 'not TEST_URL and TEST_ACCOUNT and TEST_HOST'
 #fi
-
+echo TEST_URL:"$TEST_URL"
+echo $TEST_ACCOUNT:"$TEST_ACCOUNT"
+echo $TEST_HOST:"$TEST_HOST"
+echo $TEST_PASSWORD:"$TEST_PASSWORD"
+echo $TEST_DOMAIN:"$TEST_DOMAIN"
 
 # 1、执行initevn.py
 if [ "$TEST_URL" -a "$TEST_ACCOUNT" -a "$TEST_HOST" -a "$TEST_PASSWORD" -a "$TEST_DOMAIN" ]
