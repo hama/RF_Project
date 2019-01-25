@@ -132,7 +132,7 @@ done
 # 1、执行initevn.py
 if [ "$TEST_URL" -a "$TEST_ACCOUNT" -a "$TEST_HOST" -a "$TEST_PASSWORD" -a "$TEST_DOMAIN" ]
 then
-	echo 'TEST_URL and TEST_ACCOUNT and TEST_HOST'
+	echo 'TEST_URL and TEST_ACCOUNT and TEST_HOST and TEST_PASSWORD and $TEST_DOMAIN'
     python2.7 lib/customlib/initevn.py --url="$TEST_URL" --user="$TEST_ACCOUNT" --host="$TEST_HOST" --domain="$TEST_DOMAIN" --password="$TEST_PASSWORD"
 elif [ "$TEST_URL" -a "$TEST_ACCOUNT" -a "$TEST_HOST" ]
 then
