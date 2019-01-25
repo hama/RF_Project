@@ -143,4 +143,4 @@ def delete(module_name, conf={}, cookie=init_cookie):
 
 
 # if __name__ == '__main__':
-#     create('shipping', '{"plans": [{"name": "price_fee", "rule_type": "price", "rate_amount": "10"}]}')
+#     create('product', '{"title": "autotest_title","variants": [{"price": "444"}]}')

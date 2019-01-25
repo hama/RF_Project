@@ -56,7 +56,7 @@ def get_coupon_code_random_code_py(cookie=init_cookie):
     :param cookie:
     :return:
     """
-    return coupon_code_random_code_py(cookie=cookie)['content']['data']['code']
+    return coupon_code_random_code_py(cookie=cookie)['content']['code']
 
 
 def coupon_select_product_py(query_str={}, cookie=init_cookie):

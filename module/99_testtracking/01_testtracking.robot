@@ -86,14 +86,13 @@ tracking003
     ${productPrice} =    lib_utils.get_value_from_dict    ${response_body_data}    data.line_items.${variant_id}.price
     ${price}=    Evaluate    u"${productPrice}".strip('.00')
     ${currency} =    Set Variable    USD
-    ${content_category}=    Set Variable    detail_buynow
+    ${content_category}=    Set Variable    Cart_checkout
     ${product_id} =    Set Variable    ${request_post_data.product_id}
     ${quantity} =    Set Variable    ${request_post_data.quantity}
     &{list}=    Create Dictionary    id=${product_id}    number=${quantity}    item_price=${productPrice}
     @{contents}=    Create List    ${list}
 	&{fb_Cartcheckout_data}=    Create Dictionary    ev=InitiateCheckout    cd[value]=${price}    cd[currency]=${currency}
 	...    cd[content_name]=${Empty}    cd[content_category]=${content_category}    cd[content_ids]=[]    cd[contents]=${contents}   cd[num_items]=${quantity}
-	@{fb_Cartcheckout_list}=    Create List    ${fb_Cartcheckout_data}
 	#进入cart页面
 	Sleep    3
 	Sleep And Click Element    dom:document.querySelectorAll('[href="/cart"]')[1]
@@ -101,7 +100,7 @@ tracking003
 	Sleep    5
 	#检查facebook的cartcheckout上报事件
 	${all_messages_after}    get_all_messages
-	assert_contain_keys_process    ${all_messages_after}    www.facebook.com    ${fb_Cartcheckout_list}
+	assert_equal_values_process    ${all_messages_after}    www.facebook.com    ${fb_Cartcheckout_data}
 
 tracking004
     [Documentation]    facebook的"进入detail_buynow次数"事件上报(详情页面的立即购买)
@@ -120,21 +119,20 @@ tracking004
     ${productPrice} =    lib_utils.get_value_from_dict    ${response_body_data}    data.line_items.${variant_id}.price
     ${price}=    Evaluate    u"${productPrice}".strip('.00')
     ${currency} =    Set Variable    USD
-    ${content_category}=    Set Variable    Cart_checkout
+    ${content_category}=    Set Variable    detail_buynow
     ${product_id} =    Set Variable    ${request_post_data.product_id}
     ${quantity} =    Set Variable    ${request_post_data.quantity}
     &{list}=    Create Dictionary    id=${product_id}    number=${quantity}    item_price=${productPrice}
     @{contents}=    Create List    ${list}
 	&{fb_Cartcheckout_data}=    Create Dictionary    ev=InitiateCheckout    cd[value]=${price}    cd[currency]=${currency}
 	...    cd[content_name]=${Empty}    cd[content_category]=${content_category}    cd[content_ids]=[]    cd[contents]=${contents}   cd[num_items]=${quantity}
-	@{fb_Cartcheckout_list}=    Create List    ${fb_Cartcheckout_data}
 	#进入buy now页面
 	Sleep    3
 	Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
 	Sleep    5
 	#检查facebook的cartcheckout上报事件
 	${all_messages_after}    get_all_messages
-	assert_contain_keys_process    ${all_messages_after}    www.facebook.com    ${fb_Cartcheckout_list}
+	assert_equal_values_process    ${all_messages_after}    www.facebook.com    ${fb_Cartcheckout_data}
 
 tracking005
     [Documentation]    ga的cart页面"checkout"上报事件
@@ -153,15 +151,15 @@ tracking005
     ${variant_id} =    Set Variable    ${request_post_data.variant_id}
     ${product_title} =    lib_utils.get_value_from_dict    ${response_body_data}    data.line_items.${variant_id}.product_title
     &{ga_Cartcheckout_data}=    Create Dictionary    ea=begin_checkout    pr1id=${product_id}    pr1nm=${product_title}
-    @{ga_Cartcheckout_list}=    Create List    ${ga_Cartcheckout_data}
     Sleep    3
     Sleep And Click Element    dom:document.querySelectorAll('[href="/cart"]')[1]
 	Sleep And Click Element    dom:document.querySelectorAll('[data-track="checkout-submit"]')[0]
 	#获得总数据
     ${all_messages_after}    get_all_messages
     #检查
-    assert_equal_values_process    ${all_messages_after}    www.google-analytics.com    ${ga_Cartcheckout_list}
+    assert_equal_values_process    ${all_messages_after}    www.google-analytics.com    ${ga_Cartcheckout_data}
 
+#order_id截取有问题
 tracking006
     [Documentation]    sc的cart页面"checkout"上报事件
     [Tags]
@@ -169,22 +167,25 @@ tracking006
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[href="/cart"]')[1]
     Sleep And Click Element    dom:document.querySelectorAll('[data-track="checkout-submit"]')[0]
+    Sleep    5
     #获得总数据
     ${all_messages}    get_all_messages
     #构造真实对比数据
     ${current_url_one}=    Get Location
     ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout/')
-    ${order_id}=    Evaluate    u"${current_url_two}".strip('?step=contact_information')
-    ${referrer}=    Set Variable    ${url}/cart
+    ${order_id}=    Strip String    ${current_url_two}    characters='?step=contact_information'
+#    ${order_id}=    Evaluate    u"${current_url_two}".strip('?step=contact_inf')
+    ${referrer}=    Set Variable    ${url}cart
     &{properties}=    Create Dictionary    referrer=${referrer}    order_id=${order_id}
     &{data}=    Create Dictionary    event=begin_checkout    properties=${properties}
     &{sc_Cartcheckout_data}=    Create Dictionary    data=${data}
-    @{sc_Cartcheckout_list}=    Create List    ${sc_Cartcheckout_data}
-    assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_Cartcheckout_list}
+    assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_Cartcheckout_data}
 
 tracking007
     [Documentation]    google、神策、facebook的填写支付信息上报事件
     [Tags]
+    kwpayment.activate_payment_credit_card_py
+    Reload Page And Start Ajax
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
@@ -200,43 +201,43 @@ tracking007
     ${product_title} =    lib_utils.get_value_from_dict    ${response_body_data}    data.line_items.${variant_id}.product_title
     ${price} =    lib_utils.get_value_from_dict    ${response_body_data}    data.line_items.${variant_id}.price
     ${quantity} =    Convert To Integer    ${request_post_data.quantity}
-    Sleep    2
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
     Add Address SepCommon Step
-    Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
-    Add Credit Card Info
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
     Sleep    2
     ${all_messages_two}    get_all_messages
     ${current_url_one}=    Get Location
     ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout/')
-    ${order_id}=    Evaluate    u"${current_url_two}".strip('?step=checkout_result')
+    ${order_id}=    Evaluate    u"${current_url_two}".strip('?step=payment_method')
+    Add Credit Card Info
+    Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
     #ga上报数据
     &{ga_payment_data}=    Create Dictionary    ea=checkout_progress    pr1id=${product_id}    pr1nm=${product_title}
-    @{ga_payment_list}=    Create List    ${ga_payment_data}
     #sc上报数据
     ${target_url}=    Set Variable    trackingtest.myshoplaza.com/api/checkout/payments/pay
 #    ${number}=    Set Variable
     ${url_path_one}=        Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com')
-    ${url_path}=    Evaluate    u"${url_path_one}".strip('?step=checkout_result')
+    ${url_path}=    Evaluate    u"${url_path_one}".strip('?step=payment_method')
 	&{properties}=    Create Dictionary    order_id=${order_id}    target_url=${target_url}   number=${Empty}    $url=${current_url_one}
 	...    $title=${domain}    $url_path=${url_path}
 	&{data}=    Create Dictionary    event=add_payment_info    properties=${properties}
 	&{sc_payment_data}=    Create Dictionary    data=${data}
-	@{sc_payment_list}=    Create List    ${sc_payment_data}
+#	@{sc_payment_list}=    Create List    ${sc_payment_data}
 	#fb上报数据
 	&{contents}=    Create Dictionary    id=${product_id}    number=${quantity}    item_price=${price}
 	&{fb_payment_data}=    Create Dictionary    ev=AddPaymentInfo    value=${price}    currency=USD    content_category=[]
 	...    content_ids=[]    contents=${contents}
-	@{fb_payment_list}=    Create List    ${fb_payment_data}
+#	@{fb_payment_list}=    Create List    ${fb_payment_data}
 	#检查
-    assert_equal_values_process    ${all_messages_two}    www.google-analytics.com    ${ga_payment_list}
-    assert_equal_values_process    ${all_messages_two}    shence.shoplazza    ${sc_payment_list}
-    assert_equal_values_process    ${all_messages_two}    www.facebook.com    ${fb_payment_list}
+    assert_equal_values_process    ${all_messages_two}    www.google-analytics.com    ${ga_payment_data}
+    assert_equal_values_process    ${all_messages_two}    shence.shoplazza    ${sc_payment_data}
+    assert_equal_values_process    ${all_messages_two}    www.facebook.com    ${fb_payment_data}
 
 tracking008
     [Documentation]    facebook —》进入checkout_result 且是成功页面的次数 -》上报事件
     [Tags]
+    kwpayment.inactivate_payment_credit_card_py
+    Reload Page And Start Ajax
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
@@ -259,27 +260,30 @@ tracking008
     @{contents}=    Create List    ${list}
     &{fb_paymentsuccessful_data}=    Create Dictionary    ev=Purchase    cd[content_type]=Purchase    cd[value]=${price}
     ...    cd[currency]=${currency}    cd[content_name]=${Empty}    content_ids=[]    cd[contents]=${contents}    num_items=${quantity}
-    @{fb_paymentsuccessful_list}=    Create List    ${fb_paymentsuccessful_data}
+#    @{fb_paymentsuccessful_list}=    Create List    ${fb_paymentsuccessful_data}
     #完成订单
     Sleep    5
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
     Add Address SepCommon Step
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
+#    Sleep And Click Element    dom:document.querySelectorAll('[data-method="cod"]')[1]
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
     #获得总数据
     ${all_messages_after}    get_all_messages
     #检查
-    assert_equal_values_process    ${all_messages_after}    www.facebook.com    ${fb_paymentsuccessful_list}
+    assert_equal_values_process    ${all_messages_after}    www.facebook.com    ${fb_paymentsuccessful_data}
 
 tracking009
     [Documentation]    ga —》进入checkout_result 且是成功页面的次数 -》上报事件
     [Tags]
+    kwpayment.inactivate_payment_credit_card_py
+    Reload Page And Start Ajax
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
 #    Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
     Add Address SepCommon Step
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
-    Sleep And Click Element    dom:document.querySelectorAll('[data-method="cod"]')[1]
+#    Sleep And Click Element    dom:document.querySelectorAll('[data-method="cod"]')[1]
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
     #获得总数据
     ${all_messages}    get_all_messages
@@ -288,24 +292,28 @@ tracking009
     ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout/')
     ${order_id}=    Evaluate    u"${current_url_two}".strip('?step=checkout_result')
     &{ga_paymentsuccessful_data}=    Create Dictionary    ea=purchase    ti=${order_id}
-    @{ga_paymentsuccessful_list}=    Create List    ${ga_paymentsuccessful_data}
+#    @{ga_paymentsuccessful_list}=    Create List    ${ga_paymentsuccessful_data}
     #检查
-    assert_equal_values_process    ${all_messages}    www.google-analytics.com    ${ga_paymentsuccessful_list}
+    assert_equal_values_process    ${all_messages}    www.google-analytics.com    ${ga_paymentsuccessful_data}
 
 tracking0010
     [Documentation]    sc —》进入checkout_result 且是成功页面的次数 -》上报事件
     [Tags]
+    kwpayment.inactivate_payment_credit_card_py
+    Reload Page And Start Ajax
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
-    Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
+#    Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
     Add Address SepCommon Step
+    Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
+#    Sleep And Click Element    dom:document.querySelectorAll('[data-method="cod"]')[1]
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
     #获得总数据
     ${all_messages}    get_all_messages
     #构造真实对比数据
     &{sc_paymentsuccessful_data}=    Create Dictionary    event=place_order
-    @{sc_paymentsuccessful_list}=    Create List    ${sc_paymentsuccessful_data}
-    assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_paymentsuccessful_list}
+#    @{sc_paymentsuccessful_list}=    Create List    ${sc_paymentsuccessful_data}
+    assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_paymentsuccessful_data}
 
 tracking011
     [Documentation]    google、神策、facebook -》点击搜索的次数 -》上报事件
@@ -324,15 +332,15 @@ tracking011
     &{properties}=    Create Dictionary    key_word=${search_word}    has_result=${has_result}
     &{data}=    Create Dictionary    event=product_search    properties=${properties}
     &{sc_scSearch_data}=    Create Dictionary    data=${data}
-    @{sc_scSearch_list}=    Create List    ${sc_scSearch_data}
+#    @{sc_scSearch_list}=    Create List    ${sc_scSearch_data}
     &{ga_gaSearch_data}=    Create Dictionary    ea=search
-    @{ga_gaSearch_list}=    Create List    ${ga_gaSearch_data}
+#    @{ga_gaSearch_list}=    Create List    ${ga_gaSearch_data}
     &{fb_fbSearch_data}=    Create Dictionary    ev=Search    cd[value]=${value}    cd[currency]=${currency}
     ...    cd[content_category]=${content_category}    cd[content_ids]=[]    cd[contents]=
-    @{fb_fbSearch_list}=    Create List    ${fb_fbSearch_data}
-    assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_scSearch_list}
-    assert_equal_values_process    ${all_messages}    www.google-analytics.com    ${ga_gaSearch_list}
-    assert_equal_values_process    ${all_messages}    www.facebook.com    ${fb_fbSearch_list}
+#    @{fb_fbSearch_list}=    Create List    ${fb_fbSearch_data}
+    assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_scSearch_data}
+    assert_equal_values_process    ${all_messages}    www.google-analytics.com    ${ga_gaSearch_data}
+    assert_equal_values_process    ${all_messages}    www.facebook.com    ${fb_fbSearch_data}
 
 *** Keywords ***
 Tracking Suite Setup
