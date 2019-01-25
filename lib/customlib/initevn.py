@@ -14,6 +14,7 @@ if __name__ == '__main__':
     parser.add_argument('--url', type=str, default='https://admin.shoplazza.com')
     parser.add_argument('--user', type=str, default='17665076519')
     parser.add_argument('--domain', type=str, default='homer')
+    parser.add_argument('--password', type=str, default='123456')
     parser.add_argument('--host', type=str, default='all_usa')
     args = parser.parse_args()
     # 设置用户信息
@@ -57,13 +58,14 @@ if __name__ == '__main__':
         config.set("common_urn", "shop_urn", '.preview.shoplazza.com')
         config.set("common_urn", "home_urn", '.preview.shoplazza.com/admin')
         config.set("common_db", "db_service_config",
-                   '{"host": "rm-wz90k3o28md7301p3.mysql.rds.aliyuncs.com","port": 3306,"user": "readonly",'
+                   '{"host": "39.108.94.30","port": 3306,"user": "readonly",'
                    '"password": "readonly@123","db": "service","charset": "utf8"}')
 
     if 'new' in args.user:
         # 使用新注册用户跑用例
         config.set("common_account", "contact", random_str + "@autotest.com")
         config.set("common_account", "domain", random_str)
+        config.set("common_account", "domain", args.password)
         config.write(open(path, 'w'))
         # 注册用户
         Login().sign_up_py()
@@ -73,6 +75,7 @@ if __name__ == '__main__':
         # 使用指定账号跑用例
         config.set("common_account", "contact", args.user)
         config.set("common_account", "domain", args.domain)
+        config.set("common_account", "domain", args.password)
         config.write(open(path, 'w'))
 
     print "--------------------initevn.py has done--------------------"

@@ -62,13 +62,12 @@ class Login():
         公共登陆方法
         :return: dict
         """
+        headers = {"Content-Type": "application/json"}
         data = self.create_data(**data_config)
         print data
         url0 = data['login_url'] + "/api/user/actions/login"
 
         datas = {"contact": data['contact'], "password": data['password'], "domain": data['domain']}
-        # "username": self.domain,
-        headers = {"Content-Type": "application/json"}
         response_data0 = requests.post(url=url0, headers=headers, data=json.dumps(datas))
         redirect = response_data0.headers['x-redirect']
         url1 = data['login_url'] + redirect
@@ -106,10 +105,11 @@ class Login():
         注册
         :return:
         """
+        headers = {"Content-Type": "application/json"}
         data = self.create_data(**data_config)
         self.validate_signup_py(**data_config)
 
-        url = data['home_page_url'] + "/api/user/signup"
+        url = data['login_url'] + "/api/user/signup"
 
         time.sleep(5)
         datas_vcode = self.get_latest_vcode_fromdb(data['contact'])  # 获取验证码
@@ -117,7 +117,7 @@ class Login():
         datas = {"contact": data['contact'], "password": data['password'], "username": data['domain'],
                  "vcode": datas_vcode, "invite_code": data['invite_code']}
         print "sign_up_data:" + str(datas)
-        response_data = requests.post(url=url, headers={}, data=datas)
+        response_data = requests.post(url=url, headers=headers, data=datas)
         if response_data is None or response_data.status_code != 200:
             return False
         else:
@@ -129,10 +129,11 @@ class Login():
         :param datas:
         :return:
         """
+        headers = {"Content-Type": "application/json"}
         data = self.create_data(**data_config)
-        url = data['home_page_url'] + "/api/user/validate-signup"
-        datas = {"contact": data['contact'], "username": data['domain']}
-        response_data = requests.post(url=url, headers={}, data=datas)
+        url = data['login_url'] + "/api/user/actions/validate-signup"
+        datas = {"contact": data['contact']}
+        response_data = requests.post(url=url, headers=headers, data=datas)
         # print "validate_signup_py:" + str(datas)
         # print "/api/user/validate-signup: "+response_data.content
         if response_data is None or response_data.status_code != 200:
@@ -259,4 +260,5 @@ class Login():
 if __name__ == '__main__':
     # change_themes_by_index_py(1)
     login = Login()
-    print login.login_b_py()
+    # print login.login_b_py()
+    print login.sign_up_py()
