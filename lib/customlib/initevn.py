@@ -26,7 +26,7 @@ if __name__ == '__main__':
     config.set("common_url", "login_url", args.url)
 
     # 正式服配置
-    if 'admin.shoplazza.com' in args.url:
+    if 'accounts.shoplazza.com' in args.url:
         config.set("common_urn", "shop_urn", '.myshoplaza.com')
         # 过滤神策数据
         os.popen('echo "0.0.0.0 shence.shoplazza.com" >> /etc/hosts')
@@ -46,8 +46,8 @@ if __name__ == '__main__':
                        '"user": "readonly","password": "readonly@123","db": "service","charset": "utf8"}')
         # pre_release环境配置
         elif 'pre_release' in args.host:
-            os.popen('echo "39.108.38.125 admin.shoplazza.com" >> /etc/hosts')
-            os.popen('echo "39.108.39.224 %s.myshoplaza.com" >> /etc/hosts' % (random_str))
+            os.popen('echo "39.108.38.125 accounts.shoplazza.com" >> /etc/hosts')
+            os.popen('echo "39.108.39.224 %s.myshoplaza.com" >> /etc/hosts' % (args.domain))
             config.set("common_db", "db_service_config",
                        '{"host": "rm-wz9x2w88ltj8c94cf.mysql.rds.aliyuncs.com","port": 3306,'
                        '"user": "readonly","password": "readonly@123","db": "service","charset": "utf8"}')
