@@ -65,7 +65,7 @@ if __name__ == '__main__':
         # 使用新注册用户跑用例
         config.set("common_account", "contact", random_str + "@autotest.com")
         config.set("common_account", "domain", random_str)
-        config.set("common_account", "domain", args.password)
+        config.set("common_account", "password", args.password)
         config.write(open(path, 'w'))
         # 注册用户
         Login().sign_up_py()
@@ -75,7 +75,7 @@ if __name__ == '__main__':
         # 使用指定账号跑用例
         config.set("common_account", "contact", args.user)
         config.set("common_account", "domain", args.domain)
-        config.set("common_account", "domain", args.password)
+        config.set("common_account", "password", args.password)
         config.write(open(path, 'w'))
 
     print "--------------------initevn.py has done--------------------"
