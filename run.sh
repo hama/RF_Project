@@ -14,7 +14,7 @@ export PATH=$PATH:/usr/local/bin/
 # $@ 从命令行取出参数列表(不能用用 $* 代替，因为 $* 将所有的参数解释成一个字符串
 #                         而 $@ 是一个参数数组)
 
-TEMP=`getopt -o REAM:U:D:T:H: -l rerun,email,account,module:,url:,dir:,timestamp:,host: -- "$@"`
+TEMP=`getopt -o REP:O:A:M:U:D:T:H: -l rerun,email,password:,domain:,account:,module:,url:,dir:,timestamp:,host: -- "$@"`
 
 #显示除选项外的参数(不包含选项的参数都会排到最后)
 # arg 是 getopt 内置的变量 , 里面的值，就是处理过之后的 $@(命令行传入的参数)
@@ -58,9 +58,17 @@ do
 			SEND_EMAIL='yes'
 			shift
 			;;
+		-P | --password)
+			TEST_PASSWORD="$2"
+			shift 2
+			;;
+		-O | --domain)
+			TEST_DOMAIN="$2"
+			shift 2
+			;;
 		-A | --account)
-			TEST_ACCOUNT='new'
-			shift
+			TEST_ACCOUNT="$2"
+			shift 2
 			;;
 		-R | --rerun)
 			TEST_RERUN='yes'
@@ -119,10 +127,22 @@ done
 #else
 #	echo 'not TEST_URL and TEST_ACCOUNT and TEST_HOST'
 #fi
-
+echo TEST_URL:"$TEST_URL"
+echo TEST_ACCOUNT:"$TEST_ACCOUNT"
+echo TEST_HOST:"$TEST_HOST"
+echo TEST_PASSWORD:"$TEST_PASSWORD"
+echo TEST_DOMAIN:"$TEST_DOMAIN"
 
 # 1、执行initevn.py
-if [ "$TEST_URL" -a "$TEST_ACCOUNT" -a "$TEST_HOST" ]
+if [ "$TEST_URL" -a "$TEST_ACCOUNT" -a "$TEST_HOST" -a "$TEST_PASSWORD" -a "$TEST_DOMAIN" ]
+then
+	echo 'TEST_URL and TEST_ACCOUNT and TEST_HOST and TEST_PASSWORD and $TEST_DOMAIN'
+    python2.7 lib/customlib/initevn.py --url="$TEST_URL" --user="$TEST_ACCOUNT" --host="$TEST_HOST" --domain="$TEST_DOMAIN" --password="$TEST_PASSWORD"
+elif [ "$TEST_URL" -a "$TEST_ACCOUNT" -a ! "$TEST_HOST" -a "$TEST_PASSWORD" -a "$TEST_DOMAIN" ]
+then
+	echo 'TEST_URL and TEST_ACCOUNT and not TEST_HOST and TEST_PASSWORD and $TEST_DOMAIN'
+    python2.7 lib/customlib/initevn.py --url="$TEST_URL" --user="$TEST_ACCOUNT" --domain="$TEST_DOMAIN" --password="$TEST_PASSWORD"
+elif [ "$TEST_URL" -a "$TEST_ACCOUNT" -a "$TEST_HOST" ]
 then
 	echo 'TEST_URL and TEST_ACCOUNT and TEST_HOST'
     python2.7 lib/customlib/initevn.py --url="$TEST_URL" --user="$TEST_ACCOUNT" --host="$TEST_HOST"
