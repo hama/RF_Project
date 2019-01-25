@@ -11,6 +11,9 @@ Resource          ../../../resources/keywords/kw_common.robot
 checkout_093
     [Documentation]    验证从商品详情页面buy now进入checkout shipping页面后，点击return可返回商品详情页面 > 1.C端进入任意一个商品详情页面 2.buy now进入checkout shipping页面 3.点击return
     [Tags]    P0    threshold    smoke
+    #添加一个商品价格为$444,名称：autotest_title
+    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
+    Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Text   Order summary
     Wait And Click Element    ${locatorC_checkoutShipping_button_return}
@@ -19,6 +22,9 @@ checkout_093
 checkout_094
     [Documentation]    验证从购物车进入checkout shipping页面后，点击return可返回购物车 > 1.C端将任意商品加入购物车 2.进入购物车点击checkout按钮进入checkout shipping页面 3.点击return
     [Tags]    P0    threshold    smoke
+    #添加一个商品价格为$444,名称：autotest_title
+    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
+    Reload Page And Start Ajax
     Wait And Click Element   ${locatorC_productDetail_button_addToCart}
     Sleep And Click Element    ${locatorC_icon_card}
     Wait And Click Element   ${locatorC_cart_button_checkout}
@@ -30,6 +36,9 @@ checkout_094
 checkout_096
     [Documentation]    验证checkout shipping页面，点击payment method按钮可进入支付页面 > 1.shipping address中输入合法内容  2.点击payment method按钮
     [Tags]    P0    threshold    smoke
+    #添加一个商品价格为$444,名称：autotest_title
+    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
+    Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     #添加是shipping address
     Add Address Common Step
@@ -39,6 +48,8 @@ checkout_096
 checkout_098
     [Documentation]    验证checkout 支付页面，订单汇总，商品栏，商品标题显示正常 > 1.C端购买商品women进入checkout支付页面  2.查看订单汇总，商品栏，商品标题
     [Tags]    P0    threshold    smoke
+    #添加一个商品价格为$444,名称：autotest_title
+    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -53,6 +64,9 @@ checkout_098
 checkout_100
     [Documentation]   验证checkout 支付页面，订单汇总商品栏，商品数量显示正常 > 1.C端够买商品women5件进入checkout 支付页 2.查看订单汇总商品栏，商品数量显示
     [Tags]    P0    threshold    smoke
+    #添加一个商品价格为$444,名称：autotest_title
+    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
+    Reload Page And Start Ajax
     Wait And Input Text    ${locatorC_productDetail_input_qtyNum}    5
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
@@ -62,6 +76,8 @@ checkout_100
 checkout_101
     [Documentation]   验证checkout 支付页面，订单汇总商品栏，商品价格显示正常 > 1.C端购买商品women进入checkout 支付页面  2.查看订单汇总商品栏，商品价格显示
     [Tags]    P0    threshold    smoke
+    #添加一个商品价格为$444,名称：autotest_title
+    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
@@ -71,6 +87,8 @@ checkout_101
 checkout_106
     [Documentation]   验证checkout 支付页面，subtotal显示正常 > 1.C端购买商品women两件进入checkout 支付页面  2.查看价格详情中subtotal
     [Tags]    P0    threshold    smoke
+    #添加一个商品价格为$444,名称：autotest_title
+    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Sleep And Click Element    ${locatorC_productDetail_button_addQuaity}
@@ -93,6 +111,8 @@ checkout_106
 checkout_114
     [Documentation]    验证checkout 支付页面，Payment栏，shiP to信息显示正常
     [Tags]    P0    threshold    smoke
+    #添加一个商品价格为$444,名称：autotest_title
+    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
