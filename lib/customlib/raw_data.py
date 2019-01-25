@@ -352,31 +352,31 @@ shipping_data = {
             "support_cod": True,
             "rate_type": "normal",
             "rate_amount": "0"
-        },
-        {
-            "name": "quantity_fee",
-            "desc": "quantity_fee_description",
-            "rule_type": "quantity",
-            "rule_range_min": 0,
-            "rule_range_max": 0,
-            "rule_range_infinite": True,
-            "rule_range_unit": "件",
-            "support_cod": True,
-            "rate_type": "normal",
-            "rate_amount": "0"
-        },
-        {
-            "name": "weight_fee",
-            "desc": "weight_fee_description",
-            "rule_type": "weight",
-            "rule_range_min": 0,
-            "rule_range_max": 0,
-            "rule_range_infinite": True,
-            "support_cod": True,
-            "rate_type": "normal",
-            "rate_amount": "0",
-            "rule_range_unit": "g"
-        }
+         }
+        # {
+        #     "name": "quantity_fee",
+        #     "desc": "quantity_fee_description",
+        #     "rule_type": "quantity",
+        #     "rule_range_min": 0,
+        #     "rule_range_max": 0,
+        #     "rule_range_infinite": True,
+        #     "rule_range_unit": "件",
+        #     "support_cod": True,
+        #     "rate_type": "normal",
+        #     "rate_amount": "0"
+        # },
+        # {
+        #     "name": "weight_fee",
+        #     "desc": "weight_fee_description",
+        #     "rule_type": "weight",
+        #     "rule_range_min": 0,
+        #     "rule_range_max": 0,
+        #     "rule_range_infinite": True,
+        #     "support_cod": True,
+        #     "rate_type": "normal",
+        #     "rate_amount": "0",
+        #     "rule_range_unit": "g"
+        #  }
     ]
 }
 

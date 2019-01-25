@@ -10,7 +10,6 @@ Checkout Suite Setup
     kwshipping.del_all_shipping_py
     kwproduct.del_all_products_py
     kwshipping.create_only_one_shipping_py
-    kwproduct.add_max_product_py
     kwcheckout.set_checkout_process_with_conf_py
     #激活COD货到付款方式
     kwpayment.activate_payment_cod_py
@@ -45,7 +44,7 @@ Checkout3 Case Setup
 Checkout2 Child Case Setup
     kwcheckout.set_single_page_checkout_process_py
     kwshipping.del_all_shipping_py
-    kwproduct.add_max_product_py
+#    kwproduct.add_max_product_py
 
 Add Address Common Step
     [Documentation]    添加地址公共部分
@@ -105,9 +104,9 @@ Add New Billing Address Step
     Wait And Input Text    ${locatorC_checkoutPayment_input_address1}    中山大学产学研基地
     Wait And Input Text    ${locatorC_checkoutPayment_input_city}    深圳
     Wait And Select From List By Label    ${locatorC_checkoutPayment_input_countyCode}    China
-    Sleep    2
+    Sleep    1
     Wait And Select From List By Label    ${locatorC_checkoutPayment_input_provinceCode}    Guangdong
-    Sleep    2
+    Sleep    1
     Wait And Input Text    ${locatorC_checkoutPayment_input_zip}    518000
 
 Add Singel New Billing Address Step
@@ -137,6 +136,7 @@ Add Credit Card Info
 
 Create Specific Coupon Code
 	[Documentation]    添加一个 优惠规则为满50减10USD 优惠码
+	Sleep    2
 	${code}    get_coupon_code_random_code_py
     &{conf} =    Create Dictionary
     ...    code=${code}

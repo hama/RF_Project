@@ -17,7 +17,7 @@ order088
     kworder.add_deading_order_with_finished_status_py
     Reload Page And Start Ajax
     Select Finished Dealing Order Tag
-    ${text00} =    Sleep And Get Text    ${locatorB_orderDealing_text_firstOrder_orderStatus}
+    ${text00} =    Wait And Get Text    ${locatorB_orderDealing_text_firstOrder_orderStatus}
     Should Be Equal    ${text00}    已完成
 
 order147
@@ -48,7 +48,7 @@ order150
     Select All Dealing Order Tag
     Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
     Sleep    2    # 需要等待数据加载
-    ${order_num01}    Sleep And Get Text    ${locatorB_orderDetail_text_orderNum}
+    ${order_num01}    Wait And Get Text    ${locatorB_orderDetail_text_orderNum}
     ${order_num00}    kworder.get_latest_dealing_order_num_py
 	Should Be Equal    ${order_num00}    ${order_num01}
 

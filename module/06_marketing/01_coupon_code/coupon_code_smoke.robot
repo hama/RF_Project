@@ -72,9 +72,9 @@ CouponCode_Group007
     [Tags]    group
     #前置条件
     &{conf_two}=    Create Dictionary    title=product
-    kwproduct.add_max_product_py    ${conf_two}
+    kwproduct.add_product_with_conf_py    ${conf_two}
     &{conf_one}=    Create Dictionary    title=women
-    kwproduct.add_max_product_py    ${conf_one}
+    kwproduct.add_product_with_conf_py    ${conf_one}
     Reload Page And Start Ajax
     Sleep    2
     Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
