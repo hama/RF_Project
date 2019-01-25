@@ -28,6 +28,7 @@ if __name__ == '__main__':
     # 正式服配置
     if 'accounts.shoplazza.com' in args.url:
         config.set("common_urn", "shop_urn", '.myshoplaza.com')
+        config.set("common_urn", "home_urn", '.myshoplaza.com/admin')
         # 过滤神策数据
         os.popen('echo "0.0.0.0 shence.shoplazza.com" >> /etc/hosts')
         # 国服配置
