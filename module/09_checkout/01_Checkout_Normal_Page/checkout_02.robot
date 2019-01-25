@@ -5,7 +5,6 @@ Suite Teardown    Checkout Suite Teardown
 Test Setup        Checkout Case Setup
 Test Teardown     Teardown Test Case
 Force Tags        Checkout
-
 Resource          ../../../resources/keywords/kw_common.robot
 
 *** Test Cases ***
