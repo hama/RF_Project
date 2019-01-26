@@ -66,14 +66,14 @@ tracking011
 Tracking Suite Setup
 	[Documentation]
 	&{conf}=   Create Dictionary
-	...    login_url=https://accounts1024.shoplazza.com
+	...    login_url=https://accounts.shoplazza.com
 	...    home_page_url=${b_url}
-	...    contact=18025494087
-	...    password=xth12345678
-	...    domain=xietinghui
+	...    contact=trackingtest@autotest.com
+	...    password=123456
+	...    domain=trackingtest
 	${cookie}    Login.login_b_py    &{conf}
 
-	kwthemes.change_themes_by_name_py    Snow in Summer    ${cookie}
+	kwthemes.change_themes_by_name_py    Life Style    ${cookie}
 #	kwthemes.change_themes_by_name_py    Black wind    ${cookie}
 	Sleep    3
 	Open Test Browser    ${c_url}

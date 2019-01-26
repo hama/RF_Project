@@ -345,6 +345,18 @@ tracking011
 *** Keywords ***
 Tracking Suite Setup
 	[Documentation]
+#	${b_url}=    Set Variable    https://${domain}.myshoplaza.com/admin
+#    &{conf}=   Create Dictionary
+#	...    login_url=https://accounts.shoplazza.com
+#	...    home_page_url=${b_url}
+#	...    contact=trackingtest@autotest.com
+#	...    password=123456
+#	...    domain=trackingtest
+	${cookie}    Login.login_b_py
+
+	kwthemes.change_themes_by_name_py    Life Style    ${cookie}
+
+    Sleep    3
 	Open Test Browser    ${url}
 	Open New And Close Other Windows    ${url}
 
