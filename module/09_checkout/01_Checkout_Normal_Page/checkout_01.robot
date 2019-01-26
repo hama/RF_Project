@@ -68,14 +68,14 @@ checkout_014
     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_itemPrice}    444.00USD
 
-checkout_021
-    [Documentation]    验证checkout shipping页面，使用优惠码后，价格详情中会出现discount code并显示优惠价格 > "1.C端购买商品women进入checkout shipping页面，2.使用优惠码AAA001，3.查看价格详情" > 价格详情显示优惠金额
-    [Tags]    P0    threshold    smoke
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
-	${code}    Create Specific Coupon Code
-    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${code}
-    Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
-    Wait Until Page Contains    Discount code
+#checkout_021
+#    [Documentation]    验证checkout shipping页面，使用优惠码后，价格详情中会出现discount code并显示优惠价格 > "1.C端购买商品women进入checkout shipping页面，2.使用优惠码AAA001，3.查看价格详情" > 价格详情显示优惠金额
+#    [Tags]    P0    threshold    smoke
+#    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+#	${code}    Create Specific Coupon Code
+#    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${code}
+#    Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
+#    Wait Until Page Contains    Discount code
 
 checkout_025
     [Documentation]    验证checkout shipping页面，优惠码输入框中可输入内容 > "1.点击优惠码输入框,2.输入内容：AAA003" > 优惠码输入框中显示输入的内容：AAA003
@@ -84,15 +84,15 @@ checkout_025
     Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    AAA003
     Value Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_input_couponCode}    AAA003
 
-checkout_026
-    [Documentation]    验证checkout shipping页面，优惠码输入框后apply按钮可点击>"1.C端购买任意商品进入checkout shipping页面,2.优惠码输入框中输入优惠码AAA006,3.点击apply按钮" > 点击后优惠码使用成功，价格详情中显示discount code： - 10.00USD
-    [Tags]    P0    threshold
-    ${code}    Create Specific Coupon Code
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${code}
-    Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
-    #.获取优惠那一栏的值
-    Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll("[class='checkout__prices-table-value']")[1]    - 10.00USD
+#checkout_026
+#    [Documentation]    验证checkout shipping页面，优惠码输入框后apply按钮可点击>"1.C端购买任意商品进入checkout shipping页面,2.优惠码输入框中输入优惠码AAA006,3.点击apply按钮" > 点击后优惠码使用成功，价格详情中显示discount code： - 10.00USD
+#    [Tags]    P0    threshold
+#    ${code}    Create Specific Coupon Code
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${code}
+#    Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
+#    #.获取优惠那一栏的值
+#    Text Of Element Should Be Equal With Wait   dom:document.querySelectorAll("[class='checkout__prices-table-value']")[1]    - 10.00USD
 
     #门槛无标注，
 checkout_027
@@ -104,16 +104,16 @@ checkout_027
     Wait Until Page Contains    Sorry, This discount code is invalid
 
 # 已实现，用例有标注
-checkout_028
-    [Documentation]     验证checkout shipping页面，优惠码输入框中的取消使用优惠码按钮可清空输入框  >  1.输入框中输入本次购买商品可用的优惠码并且点击apply按钮使用   2.点击优惠码输入框中的取消使用按钮
-    [Tags]    P0    threshold
-    ${code}    Create Specific Coupon Code
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait And Input Text     ${locatorC_checkoutShipping_input_discountCode}     ${code}
-    Wait And Click Element   ${locatorC_checkoutShipping_button_apply}
-    #取消优惠码输入框的优惠码
-    Wait And Click Element   ${locatorC_checkoutShipping_icon_couponClose}
-    Wait Until Page Not Contains Text      This discount does not exist.
+#checkout_028
+#    [Documentation]     验证checkout shipping页面，优惠码输入框中的取消使用优惠码按钮可清空输入框  >  1.输入框中输入本次购买商品可用的优惠码并且点击apply按钮使用   2.点击优惠码输入框中的取消使用按钮
+#    [Tags]    P0    threshold
+#    ${code}    Create Specific Coupon Code
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Wait And Input Text     ${locatorC_checkoutShipping_input_discountCode}     ${code}
+#    Wait And Click Element   ${locatorC_checkoutShipping_button_apply}
+#    #取消优惠码输入框的优惠码
+#    Wait And Click Element   ${locatorC_checkoutShipping_icon_couponClose}
+#    Wait Until Page Not Contains Text      This discount does not exist.
 
 checkout_034
     [Documentation]    验证checkout shipping页面，shipping address栏，国家选择框可点击以及国家选择展示 > 1.点击shipping address栏国家选择框 >点击后国家选择框下拉展开，显示所有可选择的国家

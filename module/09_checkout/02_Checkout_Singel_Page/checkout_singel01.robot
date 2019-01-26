@@ -69,40 +69,40 @@ checkout_012
     ${totalPrice}=    Evaluate    u"${totalPrice1}".strip('.0')
     Text Of Element Should Contain With Wait    ${locatorC_checkout_prices_shippingValue}[0]    ${totalPrice}
 
-checkout_019
-    [Documentation]    验证checkout页面，使用优惠码后，价格详情中会出现discount code并显示优惠价格
-    [Tags]    P0    threshold
-    ${getCode}=    Create Specific Coupon Code
-    Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${getCode}
-    Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}[1]    - 10.00USD
+#checkout_019
+#    [Documentation]    验证checkout页面，使用优惠码后，价格详情中会出现discount code并显示优惠价格
+#    [Tags]    P0    threshold
+#    ${getCode}=    Create Specific Coupon Code
+#    Reload Page And Start Ajax
+#    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${getCode}
+#    Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
+#    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}[1]    - 10.00USD
 
-checkout_024
-    [Documentation]    验证checkout页面，优惠码输入框后apply按钮可点击
-    [Tags]    P0    threshold
-    ${getCode}=    Create Specific Coupon Code
-    Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${getCode}
-    Sleep And Click Element    ${locatorC_checkoutShipping_button_couponApply}
-    Wait Until Page Contains Text    The ${getCode} has been applied
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}[1]    - 10.00USD
+#checkout_024
+#    [Documentation]    验证checkout页面，优惠码输入框后apply按钮可点击
+#    [Tags]    P0    threshold
+#    ${getCode}=    Create Specific Coupon Code
+#    Reload Page And Start Ajax
+#    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${getCode}
+#    Sleep And Click Element    ${locatorC_checkoutShipping_button_couponApply}
+#    Wait Until Page Contains Text    The ${getCode} has been applied
+#    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}[1]    - 10.00USD
 
-checkout_026
-    [Documentation]    验证checkout页面，优惠码输入框中的取消使用优惠码按钮可清空输入框
-    [Tags]    P0    threshold
-    ${getCode}=    Create Specific Coupon Code
-    Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${getCode}
-    Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
-    Wait Until Page Contains Text    The ${getCode} has been applied
-    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}[1]    - 10.00USD
-    Sleep And Click Element    ${locatorC_checkoutShipping_icon_couponClose}
-    Value Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_input_couponCode}    ${Empty}
+#checkout_026
+#    [Documentation]    验证checkout页面，优惠码输入框中的取消使用优惠码按钮可清空输入框
+#    [Tags]    P0    threshold
+#    ${getCode}=    Create Specific Coupon Code
+#    Reload Page And Start Ajax
+#    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${getCode}
+#    Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
+#    Wait Until Page Contains Text    The ${getCode} has been applied
+#    Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}[1]    - 10.00USD
+#    Sleep And Click Element    ${locatorC_checkoutShipping_icon_couponClose}
+#    Value Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_input_couponCode}    ${Empty}
 
 checkout_033
     [Documentation]    验证checkout页面，shipping address栏，国家选择框可点击以及国家选择展示
