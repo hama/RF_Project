@@ -50,6 +50,25 @@ def coupon_code_refresh_py(data, cookie=init_cookie):
     return do_post(url, data, cookie=cookie)
 
 
+def get_coupon_code_recent_py(cookie=init_cookie):
+    """
+    获取最新优惠码
+    :param cookie:
+    :return:
+    """
+    url = home_page_url + "/api/admin/discount-code"
+    return do_get(url, {}, cookie=cookie)
+
+
+def get_last_coupon_code_py(cookie=init_cookie):
+    """
+    获取最新优惠码
+    :param cookie:
+    :return:
+    """
+    return get_coupon_code_recent_py(cookie=cookie)['content']['data']['code']
+
+
 def get_coupon_code_random_code_py(cookie=init_cookie):
     """
     获取随机优惠码
@@ -78,6 +97,7 @@ def get_list_product_id_py(conf={}, cookie=init_cookie):
     :param cookie:
     :return: list
     """
+    add_max_product_py(cookie=cookie)
     data = copy.deepcopy(coupon_select_product_data)
     dict_deepupdate(data, conf)
     return coupon_select_product_py(data, cookie=cookie)['content']['list'][0]['product_id']
@@ -151,4 +171,5 @@ def add_finish_coupon_code_py(conf={}, cookie=init_cookie):
 if __name__ == '__main__':
     # print coupon_code_random_code_py()
     # print add_before_coupon_code_py()
-    print add_before_coupon_code_py()
+    # print add_before_coupon_code_py()
+    print get_last_coupon_code_py()

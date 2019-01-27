@@ -21,6 +21,8 @@ shipping_group001
 shipping_group002
     [Tags]    group
     # 前置条件
+    kwshipping.add_shipping_merchant_with_conf_py
+    Reload Page And Start Ajax
     Shipping Settings Page
     Sleep And Click Element    ${locatorB_settingShipping_icon_addMerchant}
     Sleep And Click Element    ${locatorB_merchantSettings_button_addUaiBest}

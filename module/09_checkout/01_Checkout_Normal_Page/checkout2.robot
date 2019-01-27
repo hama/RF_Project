@@ -61,15 +61,15 @@ checkout_018
 #    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_subtotalPrice}    444.00USD
 #    Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}    710.40USD
 
-checkout_079
-    [Documentation]    验证checkout shipping页面，选择国家后，shipping delivery栏会出现此国家对应的运费方案  >  1.C端购买商品women进入checkout shipping页面  2.选择国家中国  3.查看shipping delivery栏
-    [Tags]    P0    threshold
-    # 添加3个免运费物流信息
-    public_method.create    shipping    {"plans": [{"name": "price_fee", "rule_type": "price"}, {"name": "quantity_fee", "rule_type": "quantity"}, {"name": "weight_fee", "rule_type": "weight"}]}
-    Reload Page And Start Ajax
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    Count Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_items_listShippingAndDelivery}    ${3}
+#checkout_079
+#    [Documentation]    验证checkout shipping页面，选择国家后，shipping delivery栏会出现此国家对应的运费方案  >  1.C端购买商品women进入checkout shipping页面  2.选择国家中国  3.查看shipping delivery栏
+#    [Tags]    P0    threshold
+#    # 添加3个免运费物流信息
+#    public_method.create    shipping    {"plans": [{"name": "price_fee", "rule_type": "price"}, {"name": "quantity_fee", "rule_type": "quantity"}, {"name": "weight_fee", "rule_type": "weight"}]}
+#    Reload Page And Start Ajax
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Count Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_items_listShippingAndDelivery}    ${3}
 
 checkout_082
     [Documentation]    验证checkout shipping页面，没有可选择物流方案时，payment method 按钮无法点击 > payment method按钮置灰无法点击

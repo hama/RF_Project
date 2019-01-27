@@ -72,10 +72,14 @@ checkout_014
 #    [Documentation]    验证checkout shipping页面，使用优惠码后，价格详情中会出现discount code并显示优惠价格 > "1.C端购买商品women进入checkout shipping页面，2.使用优惠码AAA001，3.查看价格详情" > 价格详情显示优惠金额
 #    [Tags]    P0    threshold    smoke
 #    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
-#	${code}    Create Specific Coupon Code
+#	public_method.create    coupon    {"value_type": "fixed_amount", "prerequisite_quantity_range": ${None},
+#    ...    "prerequisite_subtotal_range": [{"value": "10", "greater_than_or_equal_to": "50"}]}
+#    Reload Page And Start Ajax
+#    ${code}=    kwcoupon.get_last_coupon_code_py
 #    Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ${code}
 #    Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
 #    Wait Until Page Contains    Discount code
+#    sleep    20
 
 checkout_025
     [Documentation]    验证checkout shipping页面，优惠码输入框中可输入内容 > "1.点击优惠码输入框,2.输入内容：AAA003" > 优惠码输入框中显示输入的内容：AAA003
