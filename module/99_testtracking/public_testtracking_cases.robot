@@ -2,10 +2,12 @@
 Resource          ../../resources/keywords/kw_common.robot
 
 *** Variables ***
+#美服配置
 ${domain}    trackingtest
 ${c_url}    https://${domain}.myshoplaza.com
 ${referrer_host}    ${domain}.myshoplaza.com
 ${b_url}    https://${domain}.myshoplaza.com/admin
+#测试服配置
 #${domain}    xietinghui
 #${c_url}    https://${domain}.preview.shoplazza.com
 #${referrer_host}    ${domain}.preview.shoplazza.com
@@ -18,8 +20,8 @@ tracking001
     Sleep    5
     ${all_messages}    get_all_messages
 	&{ga_pageview_data}=    Create Dictionary    t=pageview
-	&{properties}=    Create Dictionary    $is_first_time=${False}    $title=${domain}    $url=${url}
-	...    $url_path=/    $referrer_host=${referrer_host}    $referrer=${url}
+	&{properties}=    Create Dictionary    $is_first_time=${False}    $title=${domain}    $url=${c_url}
+	...    $url_path=/    $referrer_host=${referrer_host}    $referrer=${c_url}
 	&{data}=    Create Dictionary    event=$pageview    properties=${properties}
 	&{sc_pageview_data}=    Create Dictionary    data=${data}
 	&{fb_pageview_data}=    Create Dictionary    ev=PageView
@@ -158,7 +160,6 @@ tracking005
     #检查
     assert_equal_values_process    ${all_messages_after}    www.google-analytics.com    ${ga_Cartcheckout_data}
 
-#order_id截取有问题
 tracking006
     [Documentation]    sc的cart页面"checkout"上报事件
     [Tags]
@@ -170,11 +171,12 @@ tracking006
     #获得总数据
     ${all_messages}    get_all_messages
     #构造真实对比数据
-    ${current_url_one}=    Get Location
-    ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout/')
-    ${order_id}=    Strip String    ${current_url_two}    characters='?step=contact_information'
-#    ${order_id}=    Evaluate    u"${current_url_two}".strip('?step=contact_inf')
-    ${referrer}=    Set Variable    ${url}cart
+    ${current_url}=    Get Location
+    ${current_url_one}=    Set Variable    ${current_url}
+    ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout')
+    ${order_id_one}=    Evaluate    u"${current_url_two}".strip('step=contact_information')
+    ${order_id}=    Evaluate    u"${order_id_one}".strip('?')
+    ${referrer}=    Set Variable    ${c_url}/cart
     &{properties}=    Create Dictionary    referrer=${referrer}    order_id=${order_id}
     &{data}=    Create Dictionary    event=begin_checkout    properties=${properties}
     &{sc_Cartcheckout_data}=    Create Dictionary    data=${data}
@@ -205,9 +207,11 @@ tracking007
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
     Sleep    2
     ${all_messages_two}    get_all_messages
-    ${current_url_one}=    Get Location
-    ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout/')
-    ${order_id}=    Evaluate    u"${current_url_two}".strip('?step=payment_method')
+    ${current_url}=    Get Location
+    ${current_url_one}=    Set Variable    ${current_url}
+    ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout')
+    ${order_id_one}=    Evaluate    u"${current_url_two}".strip('step=payment_method')
+    ${order_id}=    Evaluate    u"${order_id_one}".strip('?')
     Add Credit Card Info
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
     #ga上报数据
@@ -221,12 +225,10 @@ tracking007
 	...    $title=${domain}    $url_path=${url_path}
 	&{data}=    Create Dictionary    event=add_payment_info    properties=${properties}
 	&{sc_payment_data}=    Create Dictionary    data=${data}
-#	@{sc_payment_list}=    Create List    ${sc_payment_data}
 	#fb上报数据
 	&{contents}=    Create Dictionary    id=${product_id}    number=${quantity}    item_price=${price}
 	&{fb_payment_data}=    Create Dictionary    ev=AddPaymentInfo    value=${price}    currency=USD    content_category=[]
 	...    content_ids=[]    contents=${contents}
-#	@{fb_payment_list}=    Create List    ${fb_payment_data}
 	#检查
     assert_equal_values_process    ${all_messages_two}    www.google-analytics.com    ${ga_payment_data}
     assert_equal_values_process    ${all_messages_two}    shence.shoplazza    ${sc_payment_data}
@@ -236,6 +238,7 @@ tracking008
     [Documentation]    facebook —》进入checkout_result 且是成功页面的次数 -》上报事件
     [Tags]
     kwpayment.inactivate_payment_credit_card_py
+    kwpayment.activate_payment_cod_py
     Reload Page And Start Ajax
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
@@ -276,42 +279,41 @@ tracking009
     [Documentation]    ga —》进入checkout_result 且是成功页面的次数 -》上报事件
     [Tags]
     kwpayment.inactivate_payment_credit_card_py
+    kwpayment.activate_payment_cod_py
     Reload Page And Start Ajax
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
-#    Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
     Add Address SepCommon Step
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
-#    Sleep And Click Element    dom:document.querySelectorAll('[data-method="cod"]')[1]
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
     #获得总数据
     ${all_messages}    get_all_messages
     #构造真实对比数据
-    ${current_url_one}=    Get Location
-    ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout/')
-    ${order_id}=    Evaluate    u"${current_url_two}".strip('?step=checkout_result')
+    ${current_url}=    Get Location
+    ${current_url_one}=    Set Variable    ${current_url}
+    ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout')
+    ${order_id_one}=    Evaluate    u"${current_url_two}".strip('step=checkout_result')
+    ${order_id}=    Evaluate    u"${order_id_one}".strip('?')
     &{ga_paymentsuccessful_data}=    Create Dictionary    ea=purchase    ti=${order_id}
-#    @{ga_paymentsuccessful_list}=    Create List    ${ga_paymentsuccessful_data}
     #检查
     assert_equal_values_process    ${all_messages}    www.google-analytics.com    ${ga_paymentsuccessful_data}
 
-tracking0010
+tracking010
     [Documentation]    sc —》进入checkout_result 且是成功页面的次数 -》上报事件
     [Tags]
     kwpayment.inactivate_payment_credit_card_py
+    kwpayment.activate_payment_cod_py
     Reload Page And Start Ajax
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
-#    Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
     Add Address SepCommon Step
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
-#    Sleep And Click Element    dom:document.querySelectorAll('[data-method="cod"]')[1]
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
     #获得总数据
     ${all_messages}    get_all_messages
     #构造真实对比数据
     &{sc_paymentsuccessful_data}=    Create Dictionary    event=place_order
-#    @{sc_paymentsuccessful_list}=    Create List    ${sc_paymentsuccessful_data}
+    #检查
     assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_paymentsuccessful_data}
 
 tracking011
@@ -331,21 +333,12 @@ tracking011
     &{properties}=    Create Dictionary    key_word=${search_word}    has_result=${has_result}
     &{data}=    Create Dictionary    event=product_search    properties=${properties}
     &{sc_scSearch_data}=    Create Dictionary    data=${data}
-#    @{sc_scSearch_list}=    Create List    ${sc_scSearch_data}
     &{ga_gaSearch_data}=    Create Dictionary    ea=search
-#    @{ga_gaSearch_list}=    Create List    ${ga_gaSearch_data}
     &{fb_fbSearch_data}=    Create Dictionary    ev=Search    cd[value]=${value}    cd[currency]=${currency}
     ...    cd[content_category]=${content_category}    cd[content_ids]=[]    cd[contents]=
-#    @{fb_fbSearch_list}=    Create List    ${fb_fbSearch_data}
     assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_scSearch_data}
     assert_equal_values_process    ${all_messages}    www.google-analytics.com    ${ga_gaSearch_data}
     assert_equal_values_process    ${all_messages}    www.facebook.com    ${fb_fbSearch_data}
-
-
-#Tracking Suite Setup
-#	[Documentation]
-#	Open Test Browser    ${c_url}
-#	Open New And Close Other Windows    ${c_url}
 
 Tracking Testcase Setup
 	[Documentation]
