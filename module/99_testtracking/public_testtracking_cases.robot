@@ -4,7 +4,7 @@ Resource          ../../resources/keywords/kw_common.robot
 *** Variables ***
 #美服配置
 ${domain}    trackingtest
-${c_url}    https://${domain}.myshoplaza.com
+${c_url}    https://${domain}.myshoplaza.com/
 ${referrer_host}    ${domain}.myshoplaza.com
 ${b_url}    https://${domain}.myshoplaza.com/admin
 #测试服配置
@@ -17,6 +17,7 @@ ${b_url}    https://${domain}.myshoplaza.com/admin
 tracking001
     [Documentation]    google、神策、facebook的pageview事件上报
     [Tags]
+    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep    5
     ${all_messages}    get_all_messages
 	&{ga_pageview_data}=    Create Dictionary    t=pageview
@@ -32,13 +33,14 @@ tracking001
 tracking002
     [Documentation]    google、神策、facebook的addtocart事件上报
     [Tags]
+    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
 	#    获得总数据
     ${all_messages}    get_all_messages
 	#    构造真实对比数据
-    @{target_messages}    get_messages_filtering_by_url    ${all_messages}    myshoplaza.com/cart/add
+    @{target_messages}    get_messages_filtering_by_url    ${all_messages}    myshoplaza.com/api/cart
 	@{request_ids}    get_request_ids_from_messages    ${target_messages}
     &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
     &{response_body_data}    network_get_response_body    @{request_ids}[0]
@@ -73,13 +75,14 @@ tracking002
 tracking003
     [Documentation]    facebook的"进入Cartcheckout次数"事件上报(购物车的结账)
     [Tags]
+    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
 	#    获得总数据
     ${all_messages_before}    get_all_messages
 	#    构造真实对比数据
-    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/cart/add
+    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
 	@{request_ids}    get_request_ids_from_messages    ${target_messages}
     &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
     &{response_body_data}    network_get_response_body    @{request_ids}[0]
@@ -106,13 +109,14 @@ tracking003
 tracking004
     [Documentation]    facebook的"进入detail_buynow次数"事件上报(详情页面的立即购买)
     [Tags]
+    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
 	#    获得总数据
     ${all_messages_before}    get_all_messages
 	#    构造真实对比数据
-    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/cart/add
+    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
 	@{request_ids}    get_request_ids_from_messages    ${target_messages}
     &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
     &{response_body_data}    network_get_response_body    @{request_ids}[0]
@@ -138,13 +142,14 @@ tracking004
 tracking005
     [Documentation]    ga的cart页面"checkout"上报事件
     [Tags]
+    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
     #获得总数据
     ${all_messages_before}    get_all_messages
     #构造真实对比数据
-    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/cart/add
+    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
 	@{request_ids}    get_request_ids_from_messages    ${target_messages}
     &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
     &{response_body_data}    network_get_response_body    @{request_ids}[0]
@@ -163,6 +168,7 @@ tracking005
 tracking006
     [Documentation]    sc的cart页面"checkout"上报事件
     [Tags]
+    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[href="/cart"]')[1]
@@ -176,7 +182,7 @@ tracking006
     ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout')
     ${order_id_one}=    Evaluate    u"${current_url_two}".strip('step=contact_information')
     ${order_id}=    Evaluate    u"${order_id_one}".strip('?')
-    ${referrer}=    Set Variable    ${c_url}/cart
+    ${referrer}=    Set Variable    ${c_url}cart
     &{properties}=    Create Dictionary    referrer=${referrer}    order_id=${order_id}
     &{data}=    Create Dictionary    event=begin_checkout    properties=${properties}
     &{sc_Cartcheckout_data}=    Create Dictionary    data=${data}
@@ -187,13 +193,14 @@ tracking007
     [Tags]
     kwpayment.activate_payment_credit_card_py
     Reload Page And Start Ajax
+    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
 	#    获得总数据
     ${all_messages_one}    get_all_messages
 	#    构造真实对比数据
-    @{target_messages_one}    get_messages_filtering_by_url    ${all_messages_one}    myshoplaza.com/cart/add
+    @{target_messages_one}    get_messages_filtering_by_url    ${all_messages_one}    myshoplaza.com/api/cart
 	@{request_ids_one}    get_request_ids_from_messages    ${target_messages_one}
     &{request_post_data}    network_get_request_post_data    @{request_ids_one}[0]
     &{response_body_data}    network_get_response_body    @{request_ids_one}[0]
@@ -240,13 +247,14 @@ tracking008
     kwpayment.inactivate_payment_credit_card_py
     kwpayment.activate_payment_cod_py
     Reload Page And Start Ajax
+    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
     #获得总数据
     ${all_messages_before}    get_all_messages
     #构造真实对比数据
-    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/cart/add
+    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
 	@{request_ids}    get_request_ids_from_messages    ${target_messages}
     &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
     &{response_body_data}    network_get_response_body    @{request_ids}[0]
@@ -281,6 +289,7 @@ tracking009
     kwpayment.inactivate_payment_credit_card_py
     kwpayment.activate_payment_cod_py
     Reload Page And Start Ajax
+    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
     Add Address SepCommon Step
@@ -304,6 +313,7 @@ tracking010
     kwpayment.inactivate_payment_credit_card_py
     kwpayment.activate_payment_cod_py
     Reload Page And Start Ajax
+    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
     Add Address SepCommon Step
@@ -319,6 +329,7 @@ tracking010
 tracking011
     [Documentation]    google、神策、facebook -》点击搜索的次数 -》上报事件
     [Tags]
+#    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('[class*="sep-font sep-font-search-thin"]')[1]
     Wait And Input Text    dom:document.querySelectorAll('[class*="form-control header__search-input "]')[0]    auto\n
     Sleep    3
@@ -344,6 +355,7 @@ Tracking Testcase Setup
 	[Documentation]
 	start_listener_on_new_tab
 	Reload Page
+	Sleep    2
 
 Tracking Testcase Teardown
 	[Documentation]

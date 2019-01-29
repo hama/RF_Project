@@ -7,57 +7,57 @@ Force Tags        tracking
 Resource          public_testtracking_cases.robot
 
 *** Test Cases ***
-Light_tracking001
+SnowInSummer_tracking001
     [Documentation]    google、神策、facebook的pageview事件上报
     [Tags]
     tracking001
 
-Light_tracking002
+SnowInSummer_tracking002
     [Documentation]    google、神策、facebook的addtocart事件上报
     [Tags]
     tracking002
 
-Light_tracking003
+SnowInSummer_tracking003
     [Documentation]    facebook的"进入Cartcheckout次数"事件上报(购物车的结账)
     [Tags]
     tracking003
 
-Light_tracking004
+SnowInSummer_tracking004
     [Documentation]    facebook的"进入detail_buynow次数"事件上报(详情页面的立即购买)
     [Tags]
     tracking004
 
-Light_tracking005
+SnowInSummer_tracking005
     [Documentation]    ga的cart页面"checkout"上报事件
     [Tags]
     tracking005
 
-Light_tracking006
+SnowInSummer_tracking006
     [Documentation]    sc的cart页面"checkout"上报事件
     [Tags]
     tracking006
 
-Light_tracking007
+SnowInSummer_tracking007
     [Documentation]    google、神策、facebook的填写支付信息上报事件
     [Tags]
     tracking007
 
-Light_tracking008
+SnowInSummer_tracking008
     [Documentation]    facebook —》进入checkout_result 且是成功页面的次数 -》上报事件
     [Tags]
     tracking008
 
-Light_tracking009
+SnowInSummer_tracking009
     [Documentation]    ga —》进入checkout_result 且是成功页面的次数 -》上报事件
     [Tags]
     tracking009
 
-Light_tracking010
+SnowInSummer_tracking010
     [Documentation]    sc —》进入checkout_result 且是成功页面的次数 -》上报事件
     [Tags]
     tracking010
 
-Light_tracking011
+SnowInSummer_tracking011
     [Documentation]    google、神策、facebook -》点击搜索的次数 -》上报事件
     [Tags]
     tracking011
