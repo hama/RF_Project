@@ -689,10 +689,10 @@ checkout_settings_data = {
 # }]
 
 tax_batch_data = [{
-    "id": "303488",
+    "id": "303766",
     "country_code": "CN",
     "province_code": "ALL",
-    "tax_rate": "60"
+    "tax_rate": 20
 }]
 
 coupon_code_refresh_data = {

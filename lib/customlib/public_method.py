@@ -65,7 +65,7 @@ def setting(module_name, conf={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
-    if isinstance(conf, str) or isinstance(conf, unicode) or isinstance(conf, list):
+    if isinstance(conf, str) or isinstance(conf, unicode):
         conf = json.loads(conf)
     if 'checkout_process' in module_name:
         return kwcheckout.set_checkout_process_with_conf_py(conf, cookie=cookie)
@@ -83,9 +83,8 @@ def setting(module_name, conf={}, cookie=init_cookie):
     elif 'store' in module_name:
         return kwstore.set_store_info_with_conf_py(conf, cookie=cookie)
     elif 'tax' in module_name:
-        if isinstance(conf, dict):
-            conf = []
-        return kwtax.set_tax_with_conf_py(conf, cookie=cookie)
+        if isinstance(conf, list):
+            return kwtax.set_tax_with_conf_py(conf, cookie=cookie)
 
 
 def delete(module_name, conf={}, cookie=init_cookie):
@@ -143,9 +142,5 @@ def delete(module_name, conf={}, cookie=init_cookie):
 
 
 # if __name__ == '__main__':
-#     create('shipping', '{"plans": [{"name": "price_fee", "rule_type": "price"}]}')
-#     setting('tax', '[{"tax_rate": "60"}]')
-#     code=kwcoupon.get_coupon_code_random_code_py
-#     create('coupon', {"code": code, "value_type": "fixed_amount", "prerequisite_subtotal_range": [{"value": "10", "greater_than_or_equal_to": "50"}]})
-#     create('product', {"title":"autotest_title", "requires_shipping":False, "variants":[{"price": "444"}]})
-#     setting('tax', [{"tax_rate": "10"}])
+    # create('shipping', '{"plans": [{"name": "price_fee", "rule_type": "price", "rate_amount": "10"}]}')
+    # setting('tax', [{"tax_rate": "35"}])

@@ -12,9 +12,13 @@ Resource          ../../../resources/keywords/kw_common.robot
 checkout_001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0    threshold    smoke
+    Capture Page Screenshot
     Wait And Click Element    ${locatorC_productDetail_button_addToCart}
+    Capture Page Screenshot
     Wait And Click Element    ${locatorC_icon_card}
+    Capture Page Screenshot
     Wait And Click Element    ${locatorC_cart_button_checkout}
+    Capture Page Screenshot
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_order}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_address}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_special}

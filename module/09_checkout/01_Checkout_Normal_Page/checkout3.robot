@@ -56,10 +56,10 @@ checkout_109
     [Tags]    P0    threshold    smoke
     #添加一个商品价格为$444,名称：autotest_title
     public_method.create    product    {"title": "autotest_title", "variants": [{"price": "444"}]}
-    #添加一个价格10 物流
-    public_method.create    shipping    {"plans": [{"name": "price_fee", "rule_type": "price", "rate_amount": "10"}]}
     #添加一个为60% 税金
     public_method.setting    tax    [{"tax_rate": 60}]
+    #添加一个价格10 物流
+    public_method.create    shipping    {"plans": [{"name": "price_fee", "rule_type": "price", "rate_amount": "10"}]}
     Reload Page And Start Ajax
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
@@ -70,7 +70,7 @@ checkout_110
     [Documentation]      验证checkout 支付页面，商品不收取税费时，价格详情中的tax显示为：+ 0.00USD   >  1.C端购买商品women进入checkout 支付页面  2.查看价格详情中tax
     [Tags]    P0    threshold
     #添加一个商品价格为$444,名称：autotest_title，不收税费
-    public_method.create    product    {"title": "autotest_title", "taxable":"False",  "variants": [{"price": "444"}]}
+    public_method.create    product    {"title": "autotest_title", "taxable":"False", "variants": [{"price": "444"}]}
     #添加一个重量运费为10 物流
     public_method.create    shipping    {"plans": [{"name": "weight_fee", "rule_type": "weight", "rate_amount": "10"}]}
     #添加一个为60% 税金
@@ -85,7 +85,7 @@ checkout_119
     [Documentation]    验证购买不需要物流运输的商品进入支付页面时，shipping method显示为Delivery for virtual product  >  1.C端购买商品women进入checkout 支付页面  2.查看payment栏 shipping method
     [Tags]    P0    threshold
     #添加一个商品价格为$444,名称：autotest_title,不需要物流
-    public_method.create    product    {"title": "autotest_title",  "requires_shipping":"False", "variants": [{"price": "444"}]}
+    public_method.create    product    {"title": "autotest_title", "requires_shipping":"False", "variants": [{"price": "444"}]}
     #添加一个价格10 物流
     public_method.create    shipping    {"plans": [{"name": "price_fee", "rule_type": "price", "rate_amount": "10"}]}
     Reload Page And Start Ajax

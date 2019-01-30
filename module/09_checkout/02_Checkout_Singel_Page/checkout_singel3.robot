@@ -14,10 +14,10 @@ checkout_016
     [Tags]    P0    threshold
     #添加一个商品价格为$444,名称：autotest_title
     public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    #添加一个价格10 物流
-    public_method.create    shipping    {"plans": [{"name": "price_fee", "rule_type": "price", "rate_amount": "10"}]}
     #添加一个为60% 税金
     public_method.setting    tax    [{"tax_rate": 60}]
+    #添加一个价格10 物流
+    public_method.create    shipping    {"plans": [{"name": "price_fee", "rule_type": "price", "rate_amount": "10"}]}
     kwrebate.end_all_rebates_py
     Reload Page And Start Ajax
     Go To First Product C Interface
@@ -71,10 +71,10 @@ checkout_022
     kwrebate.end_all_rebates_py
     #添加一个商品价格为$444,名称：autotest_title
     public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    #添加一个价格2 物流
-    public_method.create    shipping    {"plans": [{"name": "方案0", "rule_type": "price", "rate_amount": "2"}]}
     #添加一个为50% 税金
     public_method.setting    tax    [{"tax_rate": 50}]
+    #添加一个价格2 物流
+    public_method.create    shipping    {"plans": [{"name": "方案0", "rule_type": "price", "rate_amount": "2"}]}
     Reload Page And Start Ajax
     Go To Subtraction Page
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}

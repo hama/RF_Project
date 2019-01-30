@@ -27,10 +27,10 @@ checkout_018
     kwshipping.del_all_shipping_py
     #添加一个商品价格为$444,名称：autotest_title
     public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    #添加一个免运费价格物流
-    public_method.create    shipping    {"plans": [{"name": "price_fee", "rule_type": "price"}]}
     #添加一个为60% 税金
     public_method.setting    tax    [{"tax_rate": "60"}]
+    #添加一个免运费价格物流
+    public_method.create    shipping    {"plans": [{"name": "price_fee", "rule_type": "price"}]}
     Reload Page And Start Ajax
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}

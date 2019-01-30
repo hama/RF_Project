@@ -336,6 +336,3 @@ taxPrice021
     Wait And Input Text    ${locatorB_taxPrice_popUp_uniteInput}    10.00
     Wait And Click Element    ${locatorB_taxPrice_popUp_cancelBut}
     Text Of Element Should Be Equal With Wait    ${locatorB_taxPrice_list_countriesListAttribute}[1]    60 %
-
-
-

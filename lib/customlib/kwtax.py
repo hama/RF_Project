@@ -92,22 +92,18 @@ def set_tax_with_conf_py(conf=[], cookie=init_cookie):
     :return:
     """
     data = copy.deepcopy(tax_batch_data)
+    data = data[0]
+    if conf:
+        conf = conf[0]
+        dict_deepupdate(data, conf)
     param_data = []
-    template_data = copy.deepcopy(data[0])
-    if not conf:
-        for item in conf:
-            dict_deepupdate(template_data, item)
-            param_data.append(template_data)
-            template_data = copy.deepcopy(data[0])
-    else:
-        param_data.append(template_data)
-
-
+    param_data.append(data)
     return tax_batch_py(param_data, cookie=cookie)
 
 
 if __name__ == '__main__':
     # print close_tax_price_by_id_py('235863')
-    print add_default_tax_price_py()
+    # print add_default_tax_price_py()
     # add_shipping_with_conf_py()
     # print set_tax_with_conf_py()
+    print set_tax_with_conf_py()

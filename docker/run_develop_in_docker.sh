@@ -1,4 +1,4 @@
-#!/bin/bash
+cd#!/bin/bash
 
 git clone --depth=1 git@gitlab.sealmoo.com:shoplaza/shoplaza_robot.git
 #pip install --pre --upgrade pip robotframework-seleniumlibrary

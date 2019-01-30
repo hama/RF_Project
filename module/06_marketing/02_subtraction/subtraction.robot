@@ -204,6 +204,7 @@ activitie_080
     [Tags]    P0    threshold
     &{conf}=    Create Dictionary    title=AutoRebateTest
     kwrebate.add_finish_rebate_py    ${conf}
+    Reload Page And Start Ajax
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityName}    AutoRebateTest
 
 activitie_081
