@@ -70,8 +70,8 @@ shipping_group005
     kwshipping.add_shipping_merchant_with_conf_py
     Reload Page And Start Ajax
     Shipping Settings Page
-    Sleep And Click Element    ${locatorB_settingShipping_icon_addMerchant}
-    Sleep And Click Element    ${locatorB_merchantSettings_button_addHSD}
+    Wait And Click Element    ${locatorB_settingShipping_icon_addMerchant}
+    Wait And Click Element    ${locatorB_merchantSettings_button_addHSD}
     # 检查点
     Check P0 Point From shipping_150
     Check P0 Point From shipping_151
@@ -106,8 +106,8 @@ shipping_group008
     kwshipping.add_shipping_merchant_with_conf_py
     Reload Page And Start Ajax
     Shipping Settings Page
-    Sleep And Click Element    ${locatorB_settingShipping_icon_addMerchant}
-    Sleep And Click Element    ${locatorB_merchantSettings_button_addYokesi}
+    Wait And Click Element    ${locatorB_settingShipping_icon_addMerchant}
+    Wait And Click Element    ${locatorB_merchantSettings_button_addYokesi}
     # 检查点
 #    Check P0 Point From shipping_167
 #    Check P0 Point From shipping_168
@@ -142,8 +142,8 @@ shipping_group011
     kwshipping.add_shipping_merchant_with_conf_py
     Reload Page And Start Ajax
     Shipping Settings Page
-    Sleep And Click Element    ${locatorB_settingShipping_icon_addMerchant}
-    Sleep And Click Element    ${locatorB_merchantSettings_button_addPFC}
+    Wait And Click Element    ${locatorB_settingShipping_icon_addMerchant}
+    Wait And Click Element    ${locatorB_merchantSettings_button_addPFC}
     # 检查点
     Check P0 Point From shipping_185
     Check P0 Point From shipping_186
@@ -176,8 +176,8 @@ shipping_group014
     kwshipping.add_shipping_merchant_with_conf_py
     Reload Page And Start Ajax
     Shipping Settings Page
-    Sleep And Click Element    ${locatorB_settingShipping_icon_addMerchant}
-    Sleep And Click Element    ${locatorB_merchantSettings_button_addRCT}
+    Wait And Click Element    ${locatorB_settingShipping_icon_addMerchant}
+    Wait And Click Element    ${locatorB_merchantSettings_button_addRCT}
     # 检查点
     Check P0 Point From shipping_200
     Check P0 Point From shipping_201
@@ -211,8 +211,8 @@ shipping_group020
     kwshipping.add_shipping_merchant_with_conf_py
     Reload Page And Start Ajax
     Shipping Settings Page
-    Sleep And Click Element    ${locatorB_settingShipping_icon_addMerchant}
-    Sleep And Click Element    ${locatorB_merchantSettings_button_addLX}[5]
+    Wait And Click Element    ${locatorB_settingShipping_icon_addMerchant}
+    Wait And Click Element    ${locatorB_merchantSettings_button_addLX}[5]
     # 检查点
     Check P0 Point From shipping_233
     Check P0 Point From shipping_234
@@ -245,8 +245,8 @@ shipping_group023
     kwshipping.add_shipping_merchant_with_conf_py
     Reload Page And Start Ajax
     Shipping Settings Page
-    Sleep And Click Element    ${locatorB_settingShipping_icon_addMerchant}
-    Sleep And Click Element    ${locatorB_merchantSettings_button_addBuffalo}[6]
+    Wait And Click Element    ${locatorB_settingShipping_icon_addMerchant}
+    Wait And Click Element    ${locatorB_merchantSettings_button_addBuffalo}[6]
     # 检查点
     Check P0 Point From shipping_250
     Check P0 Point From shipping_251

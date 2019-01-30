@@ -12,7 +12,7 @@ Resource          ../../../resources/keywords/kw_common.robot
 checkout_001
     [Documentation]    C端将商品加入购入车再点击checkout 显示购买的商品，地址，买家留言，商品总价及提交按钮
     [Tags]    P0    threshold    smoke
-    Sleep And Click Element    ${locatorC_productDetail_button_addToCart}
+    Wait And Click Element    ${locatorC_productDetail_button_addToCart}
     Wait And Click Element    ${locatorC_icon_card}
     Wait And Click Element    ${locatorC_cart_button_checkout}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_order}
@@ -24,20 +24,19 @@ checkout_001
 checkout_002
     [Documentation]    进入checkout界面 显示购买的商品，地址，
     [Tags]    P0    threshold    smoke
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_order}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_locator_address}
 
 checkout_006
     [Documentation]    验证checkout shipping页面，订单汇总，商品栏，商品标题显示正常
     [Tags]    P0    threshold    smoke
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Text Of Element Should Be Equal With Wait   ${locatorC_checkoutShipping_text_itemProductTitle}   autotest_title
 
 checkout_008
     [Documentation]    验证checkout shipping页面，订单汇总商品栏，商品数量显示正常 > "1.C端够买商品women5件进入checkout shipping页面,2.查看订单汇总商品栏，商品数量显示" > 商品数量显示为：X5
     [Tags]    P0    threshold    smoke
-    Sleep    2
     Wait And Input Text    ${locatorC_productDetail_input_qtyNum}    5
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_itemQtyNum}     × 5
@@ -52,7 +51,7 @@ checkout_009
     public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     Reload Page And Start Ajax
     Go To First Product C Interface
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_totalPrice}   444.00USD
 
 checkout_014
@@ -65,7 +64,7 @@ checkout_014
     public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     Reload Page And Start Ajax
     Go To First Product C Interface
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_itemPrice}    444.00USD
 
 #checkout_021
@@ -84,7 +83,7 @@ checkout_014
 checkout_025
     [Documentation]    验证checkout shipping页面，优惠码输入框中可输入内容 > "1.点击优惠码输入框,2.输入内容：AAA003" > 优惠码输入框中显示输入的内容：AAA003
     [Tags]    P1
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    AAA003
     Value Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_input_couponCode}    AAA003
 
@@ -102,7 +101,7 @@ checkout_025
 checkout_027
     [Documentation]    验证checkout shipping页面输入错误的优惠码时，点击apply，会给出对应提示 > 2.优惠码输入框中输入任意内容：..0001,3.点击apply > 优惠码输入框下方出现错误提示
     [Tags]    P1
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Input Text    ${locatorC_checkoutShipping_input_couponCode}    ..0001
     Wait And Click Element    ${locatorC_checkoutShipping_button_couponApply}
     Wait Until Page Contains    Sorry, This discount code is invalid
@@ -122,13 +121,13 @@ checkout_027
 checkout_034
     [Documentation]    验证checkout shipping页面，shipping address栏，国家选择框可点击以及国家选择展示 > 1.点击shipping address栏国家选择框 >点击后国家选择框下拉展开，显示所有可选择的国家
     [Tags]    P0    threshold    smoke
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Click Element    ${locatorC_checkoutShipping_address_select_country}
 
 checkout_035
     [Documentation]    验证checkout shipping页面，shipping address栏，省份选择框可点击以及省份选择展示  > "1.点击国家选择框选择中国,2.点击省份选择框" > 点击后城市选择框下拉展开，显示中国的所有省份
     [Tags]    P0    threshold    smoke
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
     Wait And Click Element    ${locatorC_checkoutShipping_address_select_province}
 
@@ -143,7 +142,7 @@ checkout_035
 checkout_073
     [Documentation]    验证checkout shipping页面，点击买家留言栏，可展开买家留言输入框 > 1.点击special instruction栏 > 点击后展开买家留言输入框
     [Tags]    P0    threshold    smoke
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Click Element    ${locatorC_checkoutShipping_button_specialInstruction}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_input_specialInstruction}
 
@@ -152,7 +151,7 @@ checkout_077
     [Tags]    P0    threshold    smoke
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_specialInstruction}
     Wait And Input Text    ${locatorC_checkoutShipping_input_specialInstruction}    请尽快发货
@@ -166,7 +165,7 @@ checkout_077
 checkout_078
     [Documentation]    验证checkout shipping页面，未选择国家时，shipping delivery栏不显示运费方案  >  1.购买任意商品进入checkout shipping页面  2.不选择国家查看shipping delivery栏
     [Tags]    P0    threshold
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Text    Please enter address first
 
 

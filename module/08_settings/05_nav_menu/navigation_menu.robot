@@ -99,9 +99,7 @@ menu032
     Add Navigation Menu With Wait    小吃系列
     Wait And Click Element    ${locatorB_menus_list_menuList}[2]
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     修改后的小吃系列
-    Sleep    2
     Sleep And Click Element    ${locatorB_button_save00}
-    Sleep    2
     Wait Until Page Not Contains Locator     ${locatorB_button_save00}
     Go To Navigation Menu Page
     Text Of Element Should Be Equal With Wait    ${locatorB_menus_text_menuListName}    修改后的小吃系列
@@ -114,7 +112,6 @@ menu035
     Wait And Input Text    ${locatorB_menusAdd_input_menuName}     修改后的小吃系列
     Wait And Click Element    ${locatorB_menusAdd_icon_returnMenu}
     Wait Alert Should Be Present And Accept    页面上有未保存内容，是否确定退出?
-    Sleep    2
     Text Of Element Should Be Equal With Wait      ${locatorB_menus_text_menuListName}    小吃系列
 
 menu049
@@ -219,7 +216,7 @@ menu068
     Go To Custom Page By Url
     Wait And Click Element    ${locatorB_decoration_custom_button_NewPage}
     Wait And Input Text    ${locatorB_decoration_addPage_input_pageName}    新建页面名称
-    Sleep And Click Element    ${locatorB_button_save00}
+    Wait And Click Element    ${locatorB_button_save00}
     Wait Until Page Not Contains Locator    ${locatorB_button_save00}
     Go To Navigation Menu Page
     Wait And Click Element    ${locatorB_menus_button_addMenu}

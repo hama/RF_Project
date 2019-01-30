@@ -141,7 +141,7 @@ checkout_097
     public_method.create    shipping    {"areas": [{"country_code": "BV", "country_name": "布韦岛"}]}
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
-    Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     #添加是shipping address
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_firstName}    firstName
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_lastName}    lastName
@@ -155,8 +155,7 @@ checkout_097
     Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    1234567@autotest.com
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_company}    company
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_apartment}    apartment
-    Sleep    2
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    Sleep And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait Until Page Contains Text   Payment method
 
 checkout_107
@@ -167,7 +166,7 @@ checkout_107
     kwcheckout.set_checkout_process_with_conf_py
     #添加是shipping address
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutPayment_text_shippingPrice}[1]    + 10.00USD
 
@@ -269,7 +268,7 @@ checkout_194
 #    ${shipping_method_name}=    Wait And Get Text    ${locatorC_checkoutShipping_text_listShippingAndDeliveryName}
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[3]    方案1
 
 

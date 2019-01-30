@@ -47,7 +47,7 @@ order150
     Reload Page And Start Ajax
     Select All Dealing Order Tag
     Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
-    Sleep    2    # 需要等待数据加载
+    Sleep    2
     ${order_num01}    Wait And Get Text    ${locatorB_orderDetail_text_orderNum}
     ${order_num00}    kworder.get_latest_dealing_order_num_py
 	Should Be Equal    ${order_num00}    ${order_num01}
@@ -59,7 +59,7 @@ order160
     Reload Page And Start Ajax
     Select All Dealing Order Tag
     Wait And Click Element    ${locatorB_orderDealing_items_listOrder}[0]
-    Sleep    2    # 需要等待数据加载
+    Sleep    2
     Wait Until Page Contains Locator    ${locatorB_orderDetail_tag_payWaiting}
 
 order163
@@ -128,10 +128,7 @@ order181
 order184
     [Documentation]    验证订单详情页面，商品总价显示正确
     [Tags]    P0    threshold
-    &{dict}=    Create Dictionary    name=物流费用    rate_amount=1
-    @{plans}=    Create List    ${dict}
-    &{conf}=    Create Dictionary    plans=${plans}
-    kwshipping.add_price_fee_shipping_py    ${conf}
+    public_method.create    shipping    {"plans": [{"name": "物流费用", "rule_type": "price", "rate_amount": "1"}]}
     kwtax.set_country_tax_price_py    10
     kwpayment.activate_payment_cod_py
     kwcheckout.set_single_page_checkout_process_py
@@ -143,16 +140,13 @@ order184
     &{conf_product}=    Create Dictionary    productidlist=${productidlist}
     kworder.add_deading_order_with_delivering_status_py    ${conf_product}
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
+    Wait And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
     Wait Until Page Contains Text   444.00 USD
 
 order185
     [Documentation]    验证订单详情页面，订单价格中折扣显示正确
     [Tags]    P0    threshold
-    &{dict}=    Create Dictionary    name=物流费用    rate_amount=1
-    @{plans}=    Create List    ${dict}
-    &{conf}=    Create Dictionary    plans=${plans}
-    kwshipping.add_price_fee_shipping_py    ${conf}
+    public_method.create    shipping    {"plans": [{"name": "物流费用", "rule_type": "price", "rate_amount": "1"}]}
     kwtax.set_country_tax_price_py    10
     kwpayment.activate_payment_cod_py
     kwcheckout.set_single_page_checkout_process_py
@@ -164,16 +158,13 @@ order185
     &{conf_product}=    Create Dictionary    productidlist=${productidlist}
     kworder.add_deading_order_with_delivering_status_py    ${conf_product}
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
+    Wait And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
     Wait Until Page Contains Text   -50.00 USD
 
 order186
     [Documentation]    验证订单详情页面，订单价格中，物流费用显示正确
     [Tags]    P0    threshold
-    &{dict}=    Create Dictionary    name=物流费用    rate_amount=1
-    @{plans}=    Create List    ${dict}
-    &{conf}=    Create Dictionary    plans=${plans}
-    kwshipping.add_price_fee_shipping_py    ${conf}
+    public_method.create    shipping    {"plans": [{"name": "物流费用", "rule_type": "price", "rate_amount": "1"}]}
     kwtax.set_country_tax_price_py    10
     kwpayment.activate_payment_cod_py
     kwcheckout.set_single_page_checkout_process_py
@@ -185,16 +176,13 @@ order186
     &{conf_product}=    Create Dictionary    productidlist=${productidlist}
     kworder.add_deading_order_with_delivering_status_py    ${conf_product}
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
+    Wait And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
     Wait Until Page Contains Text   1.00 USD
 
 order187
     [Documentation]    验证订单详情页面，订单价格中，税费显示正确
     [Tags]    P0    threshold
-    &{dict}=    Create Dictionary    name=物流费用    rate_amount=1
-    @{plans}=    Create List    ${dict}
-    &{conf}=    Create Dictionary    plans=${plans}
-    kwshipping.add_price_fee_shipping_py    ${conf}
+    public_method.create    shipping    {"plans": [{"name": "物流费用", "rule_type": "price", "rate_amount": "1"}]}
     kwtax.set_country_tax_price_py    10
     kwpayment.activate_payment_cod_py
     kwcheckout.set_single_page_checkout_process_py
@@ -206,16 +194,13 @@ order187
     &{conf_product}=    Create Dictionary    productidlist=${productidlist}
     kworder.add_deading_order_with_delivering_status_py    ${conf_product}
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
+    Wait And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
     Wait Until Page Contains Text    39.40 USD
 
 order188
     [Documentation]    验证订单详情页面，订单价格中，订单总价显示正确
     [Tags]    P0    threshold
-    &{dict}=    Create Dictionary    name=物流费用    rate_amount=1
-    @{plans}=    Create List    ${dict}
-    &{conf}=    Create Dictionary    plans=${plans}
-    kwshipping.add_price_fee_shipping_py    ${conf}
+    public_method.create    shipping    {"plans": [{"name": "物流费用", "rule_type": "price", "rate_amount": "1"}]}
     kwtax.set_country_tax_price_py    10
     kwpayment.activate_payment_cod_py
     kwcheckout.set_single_page_checkout_process_py
@@ -227,7 +212,7 @@ order188
     &{conf_product}=    Create Dictionary    productidlist=${productidlist}
     kworder.add_deading_order_with_delivering_status_py    ${conf_product}
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
+    Wait And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
     Wait Until Page Contains Text   434.40 USD
 
 order192

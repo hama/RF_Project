@@ -15,7 +15,7 @@ activitie_001
     kwrebate.add_finish_rebate_py
     kwrebate.add_doing_rebate_py
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorB_subtractionsMain_tab_ActivityAll}
+    Wait And Click Element    ${locatorB_subtractionsMain_tab_ActivityAll}
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityStatus}[0]   进行中
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityStatus}[1]    已结束
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityStatus}[2]    未开始
@@ -81,11 +81,11 @@ activitie_007
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
     Wait And Input Text    ${locatorB_subtractionNew_input_ActivityName}    满减活动_12345
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
+    Wait And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
+    Wait And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Wait And Input Text    ${locatorB_subtractionsMain_input_KeywordSearch}    满减活动
-    Sleep And Click Element    ${locatorB_subtractionsMain_button_KeywordSearch}
+    Wait And Click Element    ${locatorB_subtractionsMain_button_KeywordSearch}
     Text Of Element Should Contain With Wait    ${locatorB_subtractionsMain_text_firstActivityName}    满减活动
 
 activitie_008
@@ -94,11 +94,11 @@ activitie_008
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
     Wait And Input Text    ${locatorB_subtractionNew_input_ActivityName}    满减活动特殊符号&*¥
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
+    Wait And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
+    Wait And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Wait And Input Text    ${locatorB_subtractionsMain_input_KeywordSearch}    &*
-    Sleep And Click Element    ${locatorB_subtractionsMain_button_KeywordSearch}
+    Wait And Click Element    ${locatorB_subtractionsMain_button_KeywordSearch}
     Text Of Element Should Contain With Wait    ${locatorB_subtractionsMain_text_firstActivityName}    &*
 
 activitie_020
@@ -109,12 +109,12 @@ activitie_020
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
     Wait And Input Text    ${locatorB_subtractionNew_input_ActivityName}    新建-添加1件活动商品
-    Sleep And Click Element    ${locatorB_subtractionNew_button_selectSomeProduct}
-    Sleep And Click Element    ${locatorB_subtractionNew_icon_addSomeProduct}
-    Sleep And Click Element    ${locatorB_subtractionNew_SelectProduct_checkbox_selectProductfist}
-    Sleep And Click Element     ${locatorB_subtractionNew_SelectProduct_button_SelectProductSave}
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
+    Wait And Click Element    ${locatorB_subtractionNew_button_selectSomeProduct}
+    Wait And Click Element    ${locatorB_subtractionNew_icon_addSomeProduct}
+    Wait And Click Element    ${locatorB_subtractionNew_SelectProduct_checkbox_selectProductfist}
+    Wait And Click Element     ${locatorB_subtractionNew_SelectProduct_button_SelectProductSave}
+    Wait And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
+    Wait And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Text Of Element Should Contain With Wait    ${locatorB_subtractionsMain_text_firstActivityName}[0]    新建-添加1件活动商品
     Text Of Element Should Contain With Wait    ${locatorB_subtractionsMain_text_firstActivityRange}[0]    部分商品
@@ -127,8 +127,8 @@ activitie_021
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
+    Wait And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
+    Wait And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Text Of Element Should Contain With Wait    ${locatorB_subtractionsMain_text_firstActivityRange}[0]    全场
 
@@ -144,8 +144,8 @@ activitie_022
     Wait And Click Element    ${locatorB_subtractionNew_SelectProduct_checkbox_selectProductfist}
     Wait And Click Element     ${locatorB_subtractionNew_SelectProduct_button_SelectProductSave}
     Wait Until Page Contains Text    未上架
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
+    Wait And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
+    Wait And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Text Of Element Should Contain With Wait    ${locatorB_subtractionsMain_text_firstActivityRange}[0]    部分商品
 
@@ -162,7 +162,6 @@ activitie_053
     ${beforeActivityName}=    Wait And Get Text    ${locatorB_subtractionsMain_text_firstActivityName}
     Wait And Click Element Then Confirm    ${locatorB_subtractionsMain_icon_firstActivityDelete}
     Reload Page And Start Ajax
-    Sleep    2
     ${afterActivityName}=    Wait And Get Text    ${locatorB_subtractionsMain_text_firstActivityName}
     Should Be True    $beforeActivityName!=$afterActivityName
 
@@ -191,12 +190,12 @@ activitie_067
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_subtractionsMain_button_addActivity}
     Add Fill Rebate Activity
-    Sleep And Click Element    ${locatorB_subtractionNew_button_selectSomeProduct}
-    Sleep And Click Element    ${locatorB_subtractionNew_icon_addSomeProduct}
-    Sleep And Click Element    ${locatorB_subtractionNew_SelectProduct_checkbox_selectProductfist}
-    Sleep And Click Element     ${locatorB_subtractionNew_SelectProduct_button_SelectProductSave}
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
-    Sleep And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
+    Wait And Click Element    ${locatorB_subtractionNew_button_selectSomeProduct}
+    Wait And Click Element    ${locatorB_subtractionNew_icon_addSomeProduct}
+    Wait And Click Element    ${locatorB_subtractionNew_SelectProduct_checkbox_selectProductfist}
+    Wait And Click Element     ${locatorB_subtractionNew_SelectProduct_button_SelectProductSave}
+    Wait And Click Element    ${locatorB_subtractionNew_button_addActivityNext}
+    Wait And Click Element    ${locatorB_subtractionNew_button_addActivitySave}
     Wait Until Page Not Contains Locator    ${locatorB_subtractionNew_button_addActivitySave}
     Text Of Element Should Contain With Wait    ${locatorB_subtractionsMain_text_firstActivityRange}[0]    部分商品
 
@@ -205,8 +204,6 @@ activitie_080
     [Tags]    P0    threshold
     &{conf}=    Create Dictionary    title=AutoRebateTest
     kwrebate.add_finish_rebate_py    ${conf}
-    Reload Page And Start Ajax
-    Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityName}    AutoRebateTest
 
 activitie_081
@@ -215,7 +212,6 @@ activitie_081
     &{conf}=    Create Dictionary    title=1234567890
     kwrebate.add_finish_rebate_py    ${conf}
     Reload Page And Start Ajax
-    Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityName}    1234567890
 
 activitie_082
@@ -224,7 +220,6 @@ activitie_082
     &{conf}=    Create Dictionary    title=满减活动中文字符测试
     kwrebate.add_finish_rebate_py    ${conf}
     Reload Page And Start Ajax
-    Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityName}    满减活动中文字符测试
 
 activitie_083
@@ -233,7 +228,6 @@ activitie_083
     &{conf}=    Create Dictionary    title=activity123456
     kwrebate.add_finish_rebate_py    ${conf}
     Reload Page And Start Ajax
-    Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorB_subtractionsMain_text_firstActivityName}    activity123456
 
 activitie_090

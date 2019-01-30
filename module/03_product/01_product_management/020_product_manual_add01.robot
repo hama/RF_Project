@@ -50,9 +50,8 @@ product007
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
     Fill In Required Items When Create Product
-    Sleep And Click Element    ${locatorB_productsNew_button_save}
-    Sleep    5
-    Wait And Click Element    ${locatorB_productsNew_button_productList}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
+    Sleep And Click Element    ${locatorB_productsNew_button_productList}
     Text Of Element Should Be Equal With Wait    ${locatorB_productsMgmt_text_firstProductName}    newproduct
 
 product014
@@ -83,8 +82,7 @@ product017
 product022
     [Documentation]    新建商品页面副标题输入少于255个字符的内容
     [Tags]    P1    threshold
-    Sleep    2
-    Sleep And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
     Wait And Input Text    ${locatorB_productsNew_input_subTitle}    newproductsubtitlenewproductsubtitle
     Value Of Element Should Be Equal With Wait    ${locatorB_productsNew_input_subTitle}    newproductsubtitlenewproductsubtitle
     Text Of Element Should Contain With Wait    ${locatorB_productsNew_span_subTitleNum}    36 /255
@@ -102,12 +100,12 @@ product024
 product026
     [Documentation]    富文本框输入内容点击下一步
     [Tags]    P1    threshold
-    Sleep And Click Element    ${locatorB_productsMgmt_button_addSomePro}
+    Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
     Wait And Input Text    ${locatorB_productsNew_input_title}    newproduct title
     Select Frame    ${locatorB_productsNew_iframe_desc}
     Wait And Input Text    ${locatorB_productsNew_input_desc}    富文本输入内容
     Unselect Frame
-    Sleep And Click Element    ${locatorB_productsNew_button_NextStep}
+    Wait And Click Element    ${locatorB_productsNew_button_NextStep}
     Wait Until Page Contains Text    图片
     Wait Until Page Contains Text    款式设置
 
@@ -140,8 +138,7 @@ product036
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
     Wait And Click Element    ${locatorB_productsNew_span_SelectCollection}
-    Sleep    5
-    ${collname}    Get Text    ${locatorB_productsNew_text_firstCollName}
+    ${collname}    Wait And Get Text    ${locatorB_productsNew_text_firstCollName}
     Wait And Click Element    ${locatorB_productsNew_textarea_firstCollCheckbox}
     Wait And Click Element    ${locatorB_productsNew_button_addCollectionSave}
     Wait Until Page Contains Text    ${collname}
@@ -153,8 +150,7 @@ products042
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
     Wait And Click Element    ${locatorB_productsNew_span_SelectCollection}
-    Sleep    5
-    ${collname}    Get Text    ${locatorB_productsNew_text_firstCollName}
+    ${collname}    Wait And Get Text    ${locatorB_productsNew_text_firstCollName}
     Wait And Input Text    ${locatorB_productsNew_input_selectCollName}    ${collname}
     Wait And Click Element    ${locatorB_productsNew_button_selectCollbtn}
     Text Of Element Should Be Equal With Wait    ${locatorB_productsNew_text_firstCollName}    ${collname}
@@ -164,7 +160,6 @@ product057
     [Tags]    P0    threshold
     Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
     Wait And Click Element    ${locatorB_productsNew_span_SelectCollection}
-    Sleep    5
     Wait And Click Element    ${locatorB_productsNew_button_newCollection}
     Wait And Input Text    ${locatorB_productsNew_input_newCollectionName}    测试专辑名称长度测试专辑名称长度测试专辑名称长度测试专辑名称长度测试专辑名称长度测试专辑名称长度测试
     Wait And Click Element    ${locatorB_productsNew_button_addCollectionSave}
@@ -256,7 +251,7 @@ product118
     Add Product Second Step    newproduct title
     Wait And Input Text    ${locatorB_productsNew_input_salePrice}    100
     Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    199
-    Sleep And Click Element    ${locatorB_productsNew_button_save}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
     Wait Until Page Contains Text    请上传图片
 
 product121

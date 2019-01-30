@@ -20,7 +20,7 @@ checkout_094
     [Documentation]    验证从购物车进入checkout shipping页面后，点击return可返回购物车 > 1.C端将任意商品加入购物车 2.进入购物车点击checkout按钮进入checkout shipping页面 3.点击return
     [Tags]    P0    threshold    smoke
     Wait And Click Element   ${locatorC_productDetail_button_addToCart}
-    Sleep And Click Element    ${locatorC_icon_card}
+    Wait And Click Element    ${locatorC_icon_card}
     Wait And Click Element   ${locatorC_cart_button_checkout}
     Wait Until Page Contains Text    Order summary
     #.返回
@@ -46,14 +46,13 @@ checkout_098
     ${tatalPrice}=    Wait And Get Text    ${locatorC_checkoutShipping_text_totalPrice}
     Add Address Common Step
 	Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-	sleep    5
+	sleep    2
     Text Of Element Should Be Equal With Wait   ${locatorC_checkoutPayment_text_itemProductTitle}    ${productName}
     Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_totalPrice}    ${tatalPrice}
 
 checkout_100
     [Documentation]   验证checkout 支付页面，订单汇总商品栏，商品数量显示正常 > 1.C端够买商品women5件进入checkout 支付页 2.查看订单汇总商品栏，商品数量显示
     [Tags]    P0    threshold    smoke
-    Sleep    2
     Wait And Input Text    ${locatorC_productDetail_input_qtyNum}    5
     Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
@@ -70,7 +69,7 @@ checkout_101
     public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     Reload Page And Start Ajax
     Go To First Product C Interface
-    Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_itemPrice}   444.00USD
 
@@ -84,7 +83,7 @@ checkout_106
     public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
     Reload Page And Start Ajax
     Go To First Product C Interface
-    Sleep And Click Element    ${locatorC_productDetail_button_addQuaity}
+    Wait And Click Element    ${locatorC_productDetail_button_addQuaity}
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Sleep    2
     Text Of Element Should Be Equal With Wait    ${locatorC_checkoutShipping_text_subtotalPrice}     888.00USD
@@ -125,11 +124,11 @@ checkout_121
     [Tags]    P0    threshold
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
-    Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_button_paymentReturn}
-    Sleep And Click Element    ${locatorC_checkoutShipping_button_paymentReturn}
+    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentReturn}
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_firstName}
 
 checkout_125
@@ -140,7 +139,7 @@ checkout_125
     #关闭credit_card  信用卡支付方式
     kwpayment.inactivate_payment_credit_card_py
     Reload Page And Start Ajax
-    Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait Until Page Contains Text    Payment method is not available
@@ -152,11 +151,11 @@ checkout_126
     [Tags]    P0    threshold    smoke
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text   Payment successful!
 
 checkout_132
@@ -180,13 +179,13 @@ checkout_170
     [Tags]    P0    threshold    smoke
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
-    SLeep And Click Element  ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    SLeep And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    SLeep And Click Element    ${locatorC_checkoutPayment_icon_cash}
+    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+    Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Select From List By Label     ${locatorC_checkoutPayment_select_billingAddress}    New billing address
     Add New Billing Address Step
-    Sleep And Click Element      ${locatorC_checkoutPayment_button_completeOrder}
+    Wait And Click Element      ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text      Payment successful!
 
 checkout_189
@@ -194,11 +193,11 @@ checkout_189
     [Tags]    P0    threshold    smoke
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
-    Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
 
 checkout_193
@@ -206,12 +205,12 @@ checkout_193
     [Tags]    P0    threshold
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
-    Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     ${shipping_method_name}=    Wait And Get Text    ${locatorC_checkoutShipping_text_listShippingAndDeliveryName}
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
     Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[0]    firstName${SPACE * 2}lastName${SPACE * 4}18899999999
     Text Of Element Should Contain With Wait    ${locatorC_checkout_text_shippingInformationDetail}[1]    addr${SPACE * 2}city${SPACE * 2}Beijing${SPACE * 2}China
@@ -227,7 +226,7 @@ checkout_195
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
     Wait And Click Element    ${locatorC_checkout_button_viewOrders}
     Wait Until Page Contains Text    Order Details
@@ -237,11 +236,11 @@ checkout_196
     [Tags]    P0    threshold    smoke
     kwcheckout.set_checkout_process_with_conf_py
     Reload Page And Start Ajax
-    Sleep And Click Element  ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
     Wait And Click Element    ${locatorC_checkout_button_continueShopping}
     Text Of Element Should Contain With Wait    ${locatorC_checkout_homeBanner}    ${user_default_domain}

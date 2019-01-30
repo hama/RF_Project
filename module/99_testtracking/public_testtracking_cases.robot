@@ -270,13 +270,11 @@ tracking008
     @{contents}=    Create List    ${list}
     &{fb_paymentsuccessful_data}=    Create Dictionary    ev=Purchase    cd[content_type]=Purchase    cd[value]=${price}
     ...    cd[currency]=${currency}    cd[content_name]=${Empty}    content_ids=[]    cd[contents]=${contents}    num_items=${quantity}
-#    @{fb_paymentsuccessful_list}=    Create List    ${fb_paymentsuccessful_data}
     #完成订单
     Sleep    5
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
     Add Address SepCommon Step
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
-#    Sleep And Click Element    dom:document.querySelectorAll('[data-method="cod"]')[1]
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
     #获得总数据
     ${all_messages_after}    get_all_messages
@@ -303,6 +301,7 @@ tracking009
     ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout')
     ${order_id_one}=    Evaluate    u"${current_url_two}".strip('step=checkout_result')
     ${order_id}=    Evaluate    u"${order_id_one}".strip('?')
+    Sleep    2
     &{ga_paymentsuccessful_data}=    Create Dictionary    ea=purchase    ti=${order_id}
     #检查
     assert_equal_values_process    ${all_messages}    www.google-analytics.com    ${ga_paymentsuccessful_data}
@@ -330,8 +329,8 @@ tracking011
     [Documentation]    google、神策、facebook -》点击搜索的次数 -》上报事件
     [Tags]
 #    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
-    Sleep And Click Element    dom:document.querySelectorAll('[class*="sep-font sep-font-search-thin"]')[1]
-    Wait And Input Text    dom:document.querySelectorAll('[class*="form-control header__search-input "]')[0]    auto\n
+    Sleep And Click Element    dom:document.querySelectorAll('a[href="/search"]')[1]
+    Wait And Input Text    dom:document.querySelectorAll('[class*="form-control search__input "]')[0]    auto\n
     Sleep    3
     ${search_word}=    Wait And Get Value    dom:document.querySelectorAll('[class*="form-control search__input "]')[0]
     #获得总数据
@@ -341,12 +340,13 @@ tracking011
     ${value}=    Set Variable    0.01
     ${currency}=    Set Variable    USD
     ${content_category}=    Set Variable    search
+#    ${contents}    暂时未获得    cd[contents]
     &{properties}=    Create Dictionary    key_word=${search_word}    has_result=${has_result}
     &{data}=    Create Dictionary    event=product_search    properties=${properties}
     &{sc_scSearch_data}=    Create Dictionary    data=${data}
     &{ga_gaSearch_data}=    Create Dictionary    ea=search
     &{fb_fbSearch_data}=    Create Dictionary    ev=Search    cd[value]=${value}    cd[currency]=${currency}
-    ...    cd[content_category]=${content_category}    cd[content_ids]=[]    cd[contents]=
+    ...    cd[content_category]=${content_category}    cd[content_ids]=[]
     assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_scSearch_data}
     assert_equal_values_process    ${all_messages}    www.google-analytics.com    ${ga_gaSearch_data}
     assert_equal_values_process    ${all_messages}    www.facebook.com    ${fb_fbSearch_data}
@@ -355,7 +355,6 @@ Tracking Testcase Setup
 	[Documentation]
 	start_listener_on_new_tab
 	Reload Page
-	Sleep    2
 
 Tracking Testcase Teardown
 	[Documentation]

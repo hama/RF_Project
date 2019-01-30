@@ -126,8 +126,8 @@ checkout_100
     Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
     Wait And Click Element    ${locatorB_productsNew_button_productShipping}
-    Sleep And Click Element    ${locatorB_productsNew_button_NextStep}
-    Sleep And Click Element    ${locatorB_productsNew_button_save}
+    Wait And Click Element    ${locatorB_productsNew_button_NextStep}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
@@ -174,7 +174,7 @@ checkout_202
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Add Credit Card Info
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment failure
     Wait And Click Element    ${locatorC_checkout_button_cancelOrder}
     Wait Until Page Contains Text    We Offer Free Shipping Worldwide
@@ -195,7 +195,7 @@ checkout_203
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Add Credit Card Info
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment failure
     Wait And Click Element    ${locatorC_checkout_button_payAgain}
     Wait Until Page Contains Text    Payment method
@@ -217,7 +217,7 @@ checkout_205
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Add Credit Card Info
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment failure
     Wait And Click Element    ${locatorC_checkout_button_payAgain}
     Wait Until Page Contains Text    Javen
@@ -248,7 +248,7 @@ checkout_206
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
     Add Credit Card Info
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment failure
     Wait And Click Element    ${locatorC_checkout_button_payAgain}
     Wait Until Page Contains Text    方案0
@@ -262,7 +262,6 @@ checkout_211
     public_method.create    shipping    {"plans": [{"name": "方案0", "rule_type": "price", "rate_amount": "10"}]}
     Go To Checkout Settings Page
     Reload Page And Start Ajax
-    Sleep    2
     ${class}=    Wait And Get Element Attribute    ${locatorB_checkout_label_singelPayment}    class
     Run Keyword If    '${class}'=='radio_btn_cddf ant-radio-button-wrapper'    Run Keywords    Wait And Click Element    ${locatorB_checkout_label_singelPayment}    And    Wait And Click Element    ${locatorB_checkout_button_save}
     Go To First Product C Interface
@@ -285,7 +284,6 @@ checkout_212
     public_method.create    shipping    {"plans": [{"name": "方案0", "rule_type": "price", "rate_amount": "10"}]}
     Go To Checkout Settings Page
     Reload Page And Start Ajax
-    Sleep    2
     ${class}=    Wait And Get Element Attribute    ${locatorB_checkout_label_doublePayment}    class
     Run Keyword If    '${class}'=='radio_btn_cddf ant-radio-button-wrapper'    Run Keywords    Wait And Click Element    ${locatorB_checkout_label_doublePayment}    AND    Wait And Click Element    ${locatorB_checkout_button_save}
     Go To First Product C Interface

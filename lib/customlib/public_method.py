@@ -148,3 +148,4 @@ def delete(module_name, conf={}, cookie=init_cookie):
 #     code=kwcoupon.get_coupon_code_random_code_py
 #     create('coupon', {"code": code, "value_type": "fixed_amount", "prerequisite_subtotal_range": [{"value": "10", "greater_than_or_equal_to": "50"}]})
 #     create('product', {"title":"autotest_title", "requires_shipping":False, "variants":[{"price": "444"}]})
+#     setting('tax', [{"tax_rate": "10"}])

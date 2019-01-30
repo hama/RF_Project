@@ -287,7 +287,6 @@ product222
     kwproduct.add_max_product_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseProducets}
-    Sleep    5
     Wait And Click Element Then Confirm    ${locatorB_productsMgmt_button_BatchDelete}
     Reload Page And Start Ajax
     Wait Until Page Contains Locator    ${locatorB_productsMgmt_button_addSomePro}
@@ -301,7 +300,6 @@ products0225
     kwproduct.add_max_product_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseProducets}
-    Sleep    5
     Wait And Click Element Then Confirm    ${locatorB_productsMgmt_button_BatchOn}
     Reload Page And Start Ajax
     Element Attribute Should Be Equal With Wait    ${locatorB_productsMgmt_button_ProductUpDown}    class    ant-switch ant-switch-checked
@@ -313,7 +311,6 @@ product229
     kwproduct.add_max_product_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsMgmt_checkbox_chooseProducets}
-    Sleep    5
 	Wait And Click Element Then Confirm    ${locatorB_productsMgmt_button_BatchDown}
 	Reload Page And Start Ajax
 	Element Attribute Should Be Equal With Wait    ${locatorB_productsMgmt_button_ProductUpDown}    class    ant-switch
@@ -367,7 +364,6 @@ product239
     [Tags]    P0    threshold
     kwproduct.add_min_product_py
     Reload Page And Start Ajax
-    Sleep    5
     Wait And Click Element Then Confirm    ${locatorB_productsMgmt_icon_firstdelete}
     Reload Page And Start Ajax
     Wait Until Page Contains Text    新建并上架你的商品
@@ -399,7 +395,6 @@ products269
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_productsMgmt_button_addSomePro}
     Wait And Click Element    ${locatorB_productsNew_span_SelectCollection}
-    Sleep    5
     Wait And Click Element    ${locatorB_productsNew_button_newCollection}
     Wait And Input Text    ${locatorB_productsNew_input_newCollectionName}    xinjianshanpinzhuanji
     Wait And Click Element    ${locatorB_productsNew_button_addCollectionSave}
@@ -490,7 +485,6 @@ product276
     Wait And Click Element    ${locatorB_productsNew_checkbox_AllStyle}
     Wait And Click Element    ${locatorB_productsNew_button_batchEdit}
     Wait And Input Text    ${locatorB_productsNew_input_styleEditQuantity}    124
-    sleep    5
     Wait And Click Element    ${locatorB_productsNew_button_styleSure}[2]
     Value Of Element Should Be Equal With Wait    ${locatorB_productsNew_input_stock}    124
 

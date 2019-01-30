@@ -28,7 +28,6 @@ collection008
     [Tags]    P1    threshold
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
-    Sleep    5
     ${collectionName}=    Wait And Get Text    ${locatorB_CollectionsMgmt_text_firstCollectionName}
     Wait And Click Element    ${locatorB_CollectionsMgmt_icon_firstPreview}
     Focus On New Window
@@ -65,7 +64,7 @@ collection017
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
-    Sleep    3
+    Sleep    2
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    中文english$%*&(123
     Value Of Element Should Be Equal With Wait    ${locatorB_CollectionsNew_inoput_CollectionName}    中文english$%*&(123
@@ -80,7 +79,7 @@ collection019
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
-    Sleep    3
+    Sleep    2
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    中文字符123456中文字符123456中文字符123456
     Value Of Element Should Be Equal With Wait    ${locatorB_CollectionsNew_inoput_CollectionName}    中文字符123456中文字符123456中文字符123456
@@ -95,7 +94,7 @@ collection025
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
-    Sleep    3
+    Sleep    2
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文english$%*&(123
     Text Of Element Should Be Equal With Wait    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文english$%*&(123
@@ -110,7 +109,7 @@ collection026
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
-    Sleep    3
+    Sleep    2
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456
     Text Of Element Should Be Equal With Wait    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456中文字符123456
@@ -145,7 +144,7 @@ collection079
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
-    Sleep    3
+    Sleep    2
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_textarea_CollectionDesc}    中文english$%*&(123
     Wait And Click Element    ${locatorB_CollectionsNew_icon_Collectionlist}
@@ -156,7 +155,6 @@ collection080
     [Tags]    P0    threshold
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
-    Sleep    5
     ${collectionName}=    Wait And Get Text    ${locatorB_CollectionsMgmt_text_firstCollectionName}
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    ${Empty}
@@ -171,7 +169,7 @@ collection081
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
-    Sleep    3
+    Sleep    2
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    ${Empty}
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    中文english$%*&(123
     Wait And Click Element    ${locatorB_CollectionsNew_icon_Collectionlist}
@@ -185,7 +183,7 @@ collection097
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_image_firstPicture}
-    Sleep    5
+    Sleep    2
     ${collectionName}=    Wait And Get Value    ${locatorB_CollectionsNew_inoput_CollectionName}
     Wait And Click Element    ${locatorB_CollectionsNew_icon_CollectionPreview}
     Focus On New Window
@@ -247,8 +245,7 @@ collection134
     \    kwproduct.add_max_product_py
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorB_CollectionsMgmt_button_addOneCollection}
-    Sleep    3
-    Wait And Click Element    ${locatorB_CollectionsNew_button_addProduct}
+    Sleep And Click Element    ${locatorB_CollectionsNew_button_addProduct}
     Wait And Click Element    ${locatorB_CollectionsNew_checkbox_firstProduct}
     Wait And Click Element    ${locatorB_CollectionsNew_button_Productaddfoot}
     Wait And Mouse Over    ${locatorB_CollectionsNew_image_ProductImage}
@@ -287,7 +284,6 @@ collection180
     [Tags]    P0    threshold
     kwcollection.add_collection_with_pic_py
     Reload Page And Start Ajax
-    Sleep    5
     ${collectionName}=    Wait And Get Text    ${locatorB_CollectionsMgmt_text_firstCollectionName}
     Wait And Click Element    ${locatorB_CollectionsMgmt_button_newCollection}
     Wait And Input Text    ${locatorB_CollectionsNew_inoput_CollectionName}    ${collectionName}

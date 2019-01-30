@@ -61,7 +61,6 @@ Add Address Common Step
     Sleep    1
     ${statuscode}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_select_code}
     Run Keyword If    '${statuscode}'=='True'    Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_code}     (+86) China
-    Sleep    1
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_postalCode}    123456
     ${statusPhone}    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_phone}
     Run Keyword If    '${statusPhone}'=='True'    Wait And Input Text    ${locatorC_checkoutShipping_address_input_phone}    18899999999

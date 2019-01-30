@@ -7,6 +7,8 @@ from urllib import unquote
 import PyChromeDevTools
 
 
+
+
 class cdpkeywords():
     ROBOT_LIBRARY_SCOPE = 'Global'
 
@@ -32,7 +34,7 @@ class cdpkeywords():
             获取所有监听的信息
         :return:
         """
-        time.sleep(0.2)
+        time.sleep(1)
         all_messages = self.chrome.pop_messages()
         print 'the count of all requests:\n' + str(len(all_messages))
         # print json.dumps(all_messages)

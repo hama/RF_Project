@@ -19,7 +19,6 @@ Product Management Common Suite Setup
     Login With Default User
     kwproduct.del_all_products_py
     kwcollection.del_all_collections_py
-    Go To Product Management Page
 
 Product Management Common Suite Teardown
     [Documentation]    product
@@ -65,13 +64,14 @@ Hide All Header
     Sleep    2
 
 Fill In Required Items When Create Product
+    Sleep    2
 	Wait And Input Text    ${locatorB_productsNew_input_title}    newproduct
 	Wait And Click Element    ${locatorB_productsNew_button_NextStep}
 	Wait Enabled And Choose File    ${locatorB_productsNew_input_imageUp}    ${file_products_addImg}
-	Sleep    5
+	Sleep    1
     Wait And Input Text    ${locatorB_productsNew_input_salePrice}    100
     Wait And Input Text    ${locatorB_productsNew_input_rawPrice}    199
-    Sleep    1
+    Sleep    2
 
 Add Product Second Step
     [Documentation]    商品管理 - 图片上传和款式设置页面

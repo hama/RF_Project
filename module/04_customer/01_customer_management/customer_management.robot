@@ -60,9 +60,9 @@ customer026
     :FOR    ${ONE}    IN RANGE    30
     \    kwcustomer.add_customer_with_conf_py
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorB_customerMes_icon_paginationNext}
+    Wait And Click Element    ${locatorB_customerMes_icon_paginationNext}
     Element Attribute Should Be Equal With Wait    ${locatorB_customerMes_text_paginationItem}    class    ant-pagination-item ant-pagination-item-1
-    Sleep And Click Element    ${locatorB_customerMes_icon_paginationprev}
+    Wait And Click Element    ${locatorB_customerMes_icon_paginationprev}
     Element Attribute Should Be Equal With Wait    ${locatorB_customerMes_text_paginationItem}    class    ant-pagination-item ant-pagination-item-1 ant-pagination-item-active
 
 customer035
@@ -194,7 +194,6 @@ customer062
     Wait And Click Element    ${locatorB_customerMes_select_Ifsubscribe}
     Wait And Click Element    ${locatorB_customerMes_select_Nosubscribe}
     Wait And Click Element    ${locatorB_customerMes_button_searchBth}
-    Sleep    2
     Wait And Click Element    ${locatorB_customerMes_button_resetBth}
     Text Of Element Should contain With Wait    ${locatorB_customerMes_list_firstCustomerEmail}[1]    已订阅
 
@@ -208,7 +207,6 @@ customer062
      Wait And Click Element    ${locatorB_customerMes_tab_subscribeCustomer}
      Wait And Input Text    ${locatorB_customerMes_input_searchNameEailPhone}    ceshi001
      Wait And Click Element    ${locatorB_customerMes_button_searchBth}
-     Sleep    2
      Wait And Click Element    ${locatorB_customerMes_button_resetBth}
      Text Of Element Should contain With Wait    ${locatorB_customerMes_list_firstCustomerName}[1]    firstname lastname
      Element Attribute Should Be Equal With Wait    ${locatorB_customerMes_select_defaultSubscribe}    title    是

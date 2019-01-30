@@ -33,12 +33,9 @@ order_group007
     kworder.add_deading_order_with_finished_status_py
     Go To Dealing Order Page
     Reload Page And Start Ajax
-    Sleep    2
-    Sleep And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
+    Wait And Click Element    ${locatorB_orderDealing_text_firstOrder_orderNum}
     Wait And Click Element Then Cancel    ${locatorB_orderDetail_button_postSale}
     Go To Customer Service Order Page
-    Reload Page And Start Ajax
-    Sleep    2
     #检查点
     Check P0 Point From order035
     Check P0 Point From order036

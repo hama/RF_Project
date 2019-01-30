@@ -16,7 +16,7 @@ checkout_013
     public_method.create    shipping    {"plans": [{"name": "方案0", "rule_type": "price", "rate_amount": "10"}]}
     kwrebate.end_all_rebates_py
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait Until Page Contains Text    方案0
     Text Of Element Should Be Equal With Wait    ${locatorC_checkout_prices_shippingValue}[1]    + 10.00USD
@@ -27,7 +27,7 @@ checkout_036
     #添加一个印度尼西亚 物流
     public_method.create    shipping    {"areas": [{"country_code": "ID", "country_name": "印度尼西亚"}]}
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    Indonesia
     Sleep    1
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_province}    Aceh
@@ -40,7 +40,7 @@ checkout_037
     #添加一个印度尼西亚 物流
     public_method.create    shipping    {"areas": [{"country_code": "ID", "country_name": "印度尼西亚"}]}
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    Indonesia
     Sleep    1
     Wait Until Page Contains Locator    ${locatorC_checkoutShipping_address_input_area}
@@ -54,10 +54,10 @@ checkout_102
     kwrebate.end_all_rebates_py
     Go To Product Management Page
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
     Fill In Required Items When Create Product
     Wait And Input Text    ${locatorB_productsNew_input_salePrice}    10
-    Sleep And Click Element    ${locatorB_productsNew_button_save}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
@@ -74,10 +74,10 @@ checkout_103
     public_method.create    shipping    {"plans": [{"name": "价格方案1", "rule_type": "price", "rule_range_min": 20, "rule_range_max": 60, "rate_amount": "10"}]}
     Go To Product Management Page
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
     Fill In Required Items When Create Product
     Wait And Input Text    ${locatorB_productsNew_input_salePrice}    30
-    Sleep And Click Element    ${locatorB_productsNew_button_save}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
@@ -92,10 +92,10 @@ checkout_105
     Reload Page And Start Ajax
     Go To Product Management Page
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorB_productsMgmt_text_firstProductName}
+    Wait And Click Element    ${locatorB_productsMgmt_text_firstProductName}
     Fill In Required Items When Create Product
     Wait And Input Text    ${locatorB_productsNew_input_weight}    30
-    Sleep And Click Element    ${locatorB_productsNew_button_save}
+    Wait And Click Element    ${locatorB_productsNew_button_save}
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
@@ -109,7 +109,7 @@ checkout_107
     Reload Page And Start Ajax
     :FOR    ${ONE}    IN RANGE    4
     \    Wait And Click Element    ${locatorC_orderDetail_icon_addProductNum}
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait Until Page Contains Text    数量方案1
 
@@ -119,7 +119,7 @@ checkout_110
     #添加一个免运费 物流
     public_method.create    shipping    {"plans": [{"name": "运费1", "rule_type": "price", "rate_amount": "0"}]}
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait Until Page Contains Text    运费1
     Wait Until Page Contains Text    $0.00
@@ -130,7 +130,7 @@ checkout_111
     #添加一个免运费 物流
     public_method.create    shipping    {"plans": [{"name": "运费1", "rule_type": "price", "rate_amount": "6"}]}
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait Until Page Contains Text    运费1
     Wait Until Page Contains Text    $6.00
@@ -142,7 +142,7 @@ checkout_119
     public_method.create    shipping    {"plans": [{"name": "运费1", "rule_type": "price", "rate_amount": "6"}]}
     kwpayment.activate_payment_cod_py
     Reload Page And Start Ajax
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
     Wait Until Page Contains Text    Cash on delivery
 
@@ -160,10 +160,9 @@ checkout_121
     Run Keyword If    $class=='ant-switch ant-switch-checked'    Wait And Click Element Then Confirm    ${locatorB_pay_switch_creditCardSwitch}
     Reload Page And Start Ajax
     Go To First Product C Interface
-    Sleep    2
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
 
 #checkout_160(点击运费方案中的"保存"按钮无效)
@@ -196,8 +195,8 @@ checkout_198
     Reload Page And Start Ajax
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address SepCommon Step
-    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
-    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+    Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
+    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
     Wait Until Page Contains Text    方案1
 

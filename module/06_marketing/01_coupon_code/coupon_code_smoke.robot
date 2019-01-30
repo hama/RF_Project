@@ -76,7 +76,6 @@ CouponCode_Group007
     &{conf_one}=    Create Dictionary    title=women
     kwproduct.add_product_with_conf_py    ${conf_one}
     Reload Page And Start Ajax
-    Sleep    2
     Wait And Click Element    ${locatorB_couponCodeNew_button_addActivity}
     #检查
     Check P0 Point From CouponCode038

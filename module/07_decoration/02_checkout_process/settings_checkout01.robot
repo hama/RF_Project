@@ -20,7 +20,7 @@ Trade setting_003
     [Documentation]    验证交易设置页面，交易规则tab可切换
     [Tags]    P0    threshold
     Go To ServiceTerms Table
-    Sleep And Click Element    ${locatorB_checkout_button_nav_tradingRules}
+    Wait And Click Element    ${locatorB_checkout_button_nav_tradingRules}
     Wait Until Page Contains Locator    ${locatorB_checkout_button_nav_tradingRules}
     Wait Until Page Contains Locator    ${locatorB_checkout_button_nav_serviceTerms}
 
@@ -28,7 +28,7 @@ Trade setting_004
     [Documentation]    验证交易设置页面，服务条款tab可切换
     [Tags]    P0    threshold
     Go To TradingRules Table
-    Sleep And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
+    Wait And Click Element    ${locatorB_checkout_button_nav_serviceTerms}
     Wait Until Page Contains Locator    ${locatorB_checkout_textarea_refundTreatyInputBox}
     Wait Until Page Contains Locator    ${locatorB_checkout_button_generateRefundTreaty}
 
@@ -38,7 +38,7 @@ Trade setting_005
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_label_buyMembers}
     Wait And Click Element    ${locatorB_checkout_radio_name}
-    Sleep And Click Element    ${locatorB_checkout_button_save}
+    Wait And Click Element    ${locatorB_checkout_button_save}
     Wait Until Page Contains Text   设置成功
     Wait Until Page Not Contains Locator      ${locatorB_checkout_button_save}
 
@@ -53,7 +53,7 @@ Trade setting_011
      Element Attribute Should Contain With Wait     ${locatorB_checkout_label_registerMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
      Reload Page And Start Ajax
      Go To First Product C Interface
-     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
      Wait Until Page Contains Text    Shipping Address
 
 Trade setting_012
@@ -67,7 +67,7 @@ Trade setting_012
      Element Attribute Should Contain With Wait     ${locatorB_checkout_label_buyMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
      Reload Page And Start Ajax
      Go To First Product C Interface
-     Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
      Wait Until Page Contains Locator    ${locatorC_input_email}
 
 Trade setting_013
@@ -81,8 +81,8 @@ Trade setting_013
      Element Attribute Should Contain With Wait     ${locatorB_checkout_label_buyMembers}    class    ant-radio-button-wrapper ant-radio-button-wrapper-checked
      Reload Page And Start Ajax
      Go To First Product C Interface
-     Sleep And Click Element    ${locatorC_productDetail_button_addToCart}
-     Sleep And Click Element    ${locatorC_icon_card}
+     Wait And Click Element    ${locatorC_productDetail_button_addToCart}
+     Wait And Click Element    ${locatorC_icon_card}
      Sleep And Click Element    ${locatorC_cart_button_checkout}
      Wait Until Page Contains Locator    ${locatorC_input_email}
 
@@ -91,14 +91,14 @@ Trade setting_017
     kwcheckout.set_single_page_checkout_process_py
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_label_registerMembers}
-    Sleep And Click Element    ${locatorB_checkout_label_singelPayment}
+    Wait And Click Element    ${locatorB_checkout_label_singelPayment}
     Sleep    2
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
     Run Keyword If    '${status}'=='True'    Run Keywords    Wait And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Contains Text    设置成功
     Element Attribute Should Contain With Wait     ${locatorB_checkout_label_singelPayment}    class    radio_btn_cddf ant-radio-button-wrapper ant-radio-button-wrapper-checked
     Reload Page And Start Ajax
     Go To First Product C Interface
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Text    Order summary
     Wait Until Page Contains Text    Shipping Address
     Wait Until Page Contains Text    Contact Email
@@ -114,14 +114,14 @@ Trade setting_018
     [Documentation]    验证B端交易设置中结账页形式选择双结账页时，C端进入checkout页面，checkout为双页面结账形式
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_label_registerMembers}
-    Sleep And Click Element    ${locatorB_checkout_label_doublePayment}
+    Wait And Click Element    ${locatorB_checkout_label_doublePayment}
     Sleep    2
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
     Run Keyword If    '${status}'=='True'    Run Keywords    Wait And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Contains Text    设置成功
     Element Attribute Should Contain With Wait     ${locatorB_checkout_label_doublePayment}    class    radio_btn_cddf ant-radio-button-wrapper ant-radio-button-wrapper-checked
     Reload Page And Start Ajax
     Go To First Product C Interface
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Wait Until Page Contains Text    Order summary
     Wait Until Page Contains Text    Shipping Address
     Wait Until Page Contains Text    Contact Email

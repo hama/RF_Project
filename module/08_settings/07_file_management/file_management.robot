@@ -58,7 +58,7 @@ uploadFile004
 uploadFile011
     [Documentation]    测试素材链接及复制按钮 >  1.上传一个图片到素材库 2.点击复制按钮  3.新开窗口粘贴  4.进入网页
     [Tags]    P0    threshold
-    Sleep    5
+    Sleep    2
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
     Wait And Click Element    ${locatorB_uploadFile_button_copy}
     Wait Until Page Contains Text    已复制到剪贴板
@@ -73,8 +73,7 @@ uploadFile012
     [Tags]    P0    threshold
     Wait And Click Element     ${locatorB_uploadFile_nav_upfile}
     Wait Enabled And Choose File    ${locatorB_uploadFile_upLoad_addFileBtn}    ${file_products_addImg2}
-    Sleep    2
-    Wait And Click Element    ${locatorB_uploadFile_icon_delImg}
+    Sleep And Click Element    ${locatorB_uploadFile_icon_delImg}
     Wait Until Page Contains Text    确定删除吗？
     Wait Until Page Contains Text    删除后将不能找回，请谨慎操作
 

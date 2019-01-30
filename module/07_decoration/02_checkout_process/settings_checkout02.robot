@@ -16,7 +16,7 @@ Trade setting_024
     kwcheckout.set_checkout_process_with_conf_py
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
-    Sleep And Click Element    ${locatorB_checkout_radio_contactMandatory}
+    Wait And Click Element    ${locatorB_checkout_radio_contactMandatory}
     Sleep    2
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
     Run Keyword If    '${status}'=='True'    Run Keywords    Wait And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Contains Text    设置成功
@@ -38,7 +38,7 @@ Trade setting_025
     kwcheckout.set_checkout_process_with_conf_py
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_radio_contactEmailOptional}
-    Sleep And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
+    Wait And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
     Sleep    2
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
     Run Keyword If    '${status}'=='True'    Run Keywords    Wait And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Contains Text    设置成功
@@ -58,7 +58,7 @@ Trade setting_026
     kwcheckout.set_checkout_process_with_conf_py
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
-    Sleep And Click Element    ${locatorB_checkout_radio_contactEmailOptional}
+    Wait And Click Element    ${locatorB_checkout_radio_contactEmailOptional}
     Sleep    2
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
     Run Keyword If    '${status}'=='True'    Run Keywords    Wait And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Contains Text    设置成功
@@ -78,7 +78,7 @@ Trade setting_027
     kwcheckout.set_checkout_process_with_conf_py
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
-    Sleep And Click Element    ${locatorB_checkout_radio_contactPhoneHidden}
+    Wait And Click Element    ${locatorB_checkout_radio_contactPhoneHidden}
     Sleep    2
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
     Run Keyword If    '${status}'=='True'    Run Keywords    Wait And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Contains Text    设置成功
@@ -98,7 +98,7 @@ Trade setting_028
     kwcheckout.set_checkout_process_with_conf_py
     Go To TradingRules Table
     Wait And Click Element    ${locatorB_checkout_radio_contactPhoneOptional}
-    Sleep And Click Element    ${locatorB_checkout_radio_contactEmailHidden}
+    Wait And Click Element    ${locatorB_checkout_radio_contactEmailHidden}
     Sleep    2
     ${status}=    Run Keyword And Return Status    Wait Until Page Contains Locator    ${locatorB_checkout_button_save}
     Run Keyword If    '${status}'=='True'    Run Keywords    Wait And Click Element    ${locatorB_checkout_button_save}    AND    Wait Until Page Contains Text    设置成功
@@ -116,7 +116,7 @@ Trade setting_032
     [Documentation]    验证退款条约栏，生成系统默认模板按钮可点击
     [Tags]    P0    threshold
     Go To ServiceTerms Table
-    Sleep And Click Element    ${locatorB_checkout_button_generateRefundTreaty}
+    Wait And Click Element    ${locatorB_checkout_button_generateRefundTreaty}
     Sleep    2
     ${RefundTreatyText}=    Wait And Get Text    ${locatorB_checkout_textarea_refundTreatyInputBox}
     Should Not Be Empty    ${RefundTreatyText}
@@ -135,15 +135,15 @@ Trade setting_034
     Reload Page And Start Ajax
     Wait Until Page Contains Text    退款条约文本展示
     Go To First Product C Interface
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
-    Sleep And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
     Wait Until Page Contains Text    退款条约文本展示
 
 Trade setting_037
     [Documentation]    验证隐私政策栏，生成系统默认模板按钮可点击
     [Tags]    P0    threshold
     Go To ServiceTerms Table
-    Sleep And Click Element    ${locatorBcheckout_button_generatePolicy}
+    Wait And Click Element    ${locatorBcheckout_button_generatePolicy}
     Sleep    2
     ${policyText}=    Wait And Get Text    ${locatorB_checkout_textarea_policyInputBox}
     Should Not Be Empty    ${policyText}
@@ -162,15 +162,15 @@ Trade setting_039
     Reload Page And Start Ajax
     Wait Until Page Contains Text    隐私政策文本展示
     Go To First Product C Interface
-    Sleep And Click Element    ${locatorC_productDetail_button_buyNow}
-    Sleep And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
+    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
     Wait Until Page Contains Text    隐私政策文本展示
 
 Trade setting_042
     [Documentation]    验证服务条约栏，生成系统默认模板按钮可点击
     [Tags]    P0    threshold
     Go To ServiceTerms Table
-    Sleep And Click Element    ${locatorB_checkout_button_generateServiceTreaty}
+    Wait And Click Element    ${locatorB_checkout_button_generateServiceTreaty}
     Sleep    2
     ${ServiceTreatyText}=    Wait And Get Text    ${locatorB_checkout_textarea_refundServiceInputBox}
     Should Not Be Empty    ${ServiceTreatyText}
@@ -189,6 +189,6 @@ Trade setting_044
     Reload Page And Start Ajax
     Wait Until Page Contains Text    服务条约文本展示
     Go To First Product C Interface
-    Sleep And Click Element   ${locatorC_productDetail_button_buyNow}
-    Sleep And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
+    Wait And Click Element   ${locatorC_productDetail_button_buyNow}
+    Wait And Click Element    ${locatorC_checkoutShipping_li_TextPolicy}
     Wait Until Page Contains Text    服务条约文本展示
