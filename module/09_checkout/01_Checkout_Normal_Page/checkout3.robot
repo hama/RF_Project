@@ -92,5 +92,5 @@ checkout_119
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
     Add Address Common Step
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+#    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
     Text Of Element Should Contain With Wait    ${locatorC_checkoutPayment_text_shippingMethod}    Delivery for virtual product

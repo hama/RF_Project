@@ -242,5 +242,5 @@ checkout_196
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
-    Wait And Click Element    ${locatorC_checkout_button_continueShopping}
+    Sleep And Click Element    ${locatorC_checkout_button_continueShopping}
     Text Of Element Should Contain With Wait    ${locatorC_checkout_homeBanner}    ${user_default_domain}

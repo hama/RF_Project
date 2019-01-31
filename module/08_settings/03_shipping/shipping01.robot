@@ -245,8 +245,8 @@ shipping_group023
     kwshipping.add_shipping_merchant_with_conf_py
     Reload Page And Start Ajax
     Shipping Settings Page
-    Wait And Click Element    ${locatorB_settingShipping_icon_addMerchant}
-    Wait And Click Element    ${locatorB_merchantSettings_button_addBuffalo}[6]
+    Sleep And Click Element    ${locatorB_settingShipping_icon_addMerchant}
+    Sleep And Click Element    ${locatorB_merchantSettings_button_addBuffalo}[6]
     # 检查点
     Check P0 Point From shipping_250
     Check P0 Point From shipping_251
