@@ -17,7 +17,6 @@ ${b_url}    https://${domain}.myshoplaza.com/admin
 tracking001
     [Documentation]    google、神策、facebook的pageview事件上报
     [Tags]
-    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep    5
     ${all_messages}    get_all_messages
 	&{ga_pageview_data}=    Create Dictionary    t=pageview
@@ -33,7 +32,6 @@ tracking001
 tracking002
     [Documentation]    google、神策、facebook的addtocart事件上报
     [Tags]
-    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
@@ -53,6 +51,7 @@ tracking002
     ${entrance} =    Set Variable    product
     ${currency} =    Set Variable    USD
     ${content_type} =    Set Variable    product
+    ${is_app_btn} =    Set Variable    Fasle
     @{product_ids} =    Create List    ${product_id}
     ${content_ids} =    Set Variable    ${product_ids}
     ${content_ids_str} =    lib_utils.convert_json_to_string    ${content_ids}
@@ -63,7 +62,7 @@ tracking002
     ${contents} =    Set Variable    ${contents_str}
 	&{ga_addtocard_data}=    Create Dictionary    t=event    ea=add_to_cart    pr1id=${product_id}    dt=${product_title}
     &{properties}=    Create Dictionary    product_id=${product_id}    product_title=${product_title}    price=${price}
-    ...    quantity=${quantity}    entrance=${entrance}
+    ...    quantity=${quantity}    entrance=${entrance}    is_app_btn=${is_app_btn}
 	&{data}=    Create Dictionary    event=add_to_cart    properties=${properties}
 	&{sc_addtocard_data}=    Create Dictionary    data=${data}
 	&{fb_addtocard_data}=    Create Dictionary    ev=AddToCart    cd[value]=444    cd[currency]=${currency}
@@ -76,15 +75,17 @@ tracking002
 tracking003
     [Documentation]    facebook的"进入Cartcheckout次数"事件上报(购物车的结账)
     [Tags]
-    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
 	#    获得总数据
     ${all_messages_before}    get_all_messages
 	#    构造真实对比数据
-    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
-	@{request_ids}    get_request_ids_from_messages    ${target_messages}
+    @{target_messages_url}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
+	@{target_messages_menthod}    get_messages_filtering_by_method    ${target_messages_url}    POST
+	@{request_ids}    get_request_ids_from_messages    ${target_messages_menthod}
+#    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
+#	@{request_ids}    get_request_ids_from_messages    ${target_messages}
     &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
     &{response_body_data}    network_get_response_body    @{request_ids}[0]
     ${variant_id} =    Set Variable    ${request_post_data.variant_id}
@@ -110,15 +111,17 @@ tracking003
 tracking004
     [Documentation]    facebook的"进入detail_buynow次数"事件上报(详情页面的立即购买)
     [Tags]
-    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
 	#    获得总数据
     ${all_messages_before}    get_all_messages
 	#    构造真实对比数据
-    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
-	@{request_ids}    get_request_ids_from_messages    ${target_messages}
+    @{target_messages_url}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
+	@{target_messages_menthod}    get_messages_filtering_by_method    ${target_messages_url}    POST
+	@{request_ids}    get_request_ids_from_messages    ${target_messages_menthod}
+#    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
+#	@{request_ids}    get_request_ids_from_messages    ${target_messages}
     &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
     &{response_body_data}    network_get_response_body    @{request_ids}[0]
     ${variant_id} =    Set Variable    ${request_post_data.variant_id}
@@ -143,15 +146,17 @@ tracking004
 tracking005
     [Documentation]    ga的cart页面"checkout"上报事件
     [Tags]
-    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
     #获得总数据
     ${all_messages_before}    get_all_messages
     #构造真实对比数据
-    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
-	@{request_ids}    get_request_ids_from_messages    ${target_messages}
+    @{target_messages_url}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
+	@{target_messages_menthod}    get_messages_filtering_by_method    ${target_messages_url}    POST
+	@{request_ids}    get_request_ids_from_messages    ${target_messages_menthod}
+#    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
+#	@{request_ids}    get_request_ids_from_messages    ${target_messages}
     &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
     &{response_body_data}    network_get_response_body    @{request_ids}[0]
     ${product_id} =    Set Variable    ${request_post_data.product_id}
@@ -169,7 +174,6 @@ tracking005
 tracking006
     [Documentation]    sc的cart页面"checkout"上报事件
     [Tags]
-    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[href="/cart"]')[1]
@@ -194,15 +198,17 @@ tracking007
     [Tags]
     kwpayment.activate_payment_credit_card_py
     Reload Page And Start Ajax
-    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
 	#    获得总数据
     ${all_messages_one}    get_all_messages
 	#    构造真实对比数据
-    @{target_messages_one}    get_messages_filtering_by_url    ${all_messages_one}    myshoplaza.com/api/cart
-	@{request_ids_one}    get_request_ids_from_messages    ${target_messages_one}
+    @{target_messages_url}    get_messages_filtering_by_url    ${all_messages_one}    myshoplaza.com/api/cart
+	@{target_messages_menthod}    get_messages_filtering_by_method    ${target_messages_url}    POST
+	@{request_ids_one}    get_request_ids_from_messages    ${target_messages_menthod}
+#    @{target_messages_one}    get_messages_filtering_by_url    ${all_messages_one}    myshoplaza.com/api/cart
+#	@{request_ids_one}    get_request_ids_from_messages    ${target_messages_one}
     &{request_post_data}    network_get_request_post_data    @{request_ids_one}[0]
     &{response_body_data}    network_get_response_body    @{request_ids_one}[0]
     ${product_id} =    Set Variable    ${request_post_data.product_id}
@@ -248,15 +254,17 @@ tracking008
     kwpayment.inactivate_payment_credit_card_py
     kwpayment.activate_payment_cod_py
     Reload Page And Start Ajax
-    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
     #获得总数据
     ${all_messages_before}    get_all_messages
     #构造真实对比数据
-    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
-	@{request_ids}    get_request_ids_from_messages    ${target_messages}
+    @{target_messages_url}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
+	@{target_messages_menthod}    get_messages_filtering_by_method    ${target_messages_url}    POST
+	@{request_ids}    get_request_ids_from_messages    ${target_messages_menthod}
+#    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
+#	@{request_ids}    get_request_ids_from_messages    ${target_messages}
     &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
     &{response_body_data}    network_get_response_body    @{request_ids}[0]
     ${product_id} =    Set Variable    ${request_post_data.product_id}
@@ -288,7 +296,6 @@ tracking009
     kwpayment.inactivate_payment_credit_card_py
     kwpayment.activate_payment_cod_py
     Reload Page And Start Ajax
-    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
     Add Address SepCommon Step
@@ -313,7 +320,6 @@ tracking010
     kwpayment.inactivate_payment_credit_card_py
     kwpayment.activate_payment_cod_py
     Reload Page And Start Ajax
-    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
     Add Address SepCommon Step

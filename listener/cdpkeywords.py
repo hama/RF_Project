@@ -32,7 +32,7 @@ class cdpkeywords():
             获取所有监听的信息
         :return:
         """
-        time.sleep(1)
+        time.sleep(0.2)
         all_messages = self.chrome.pop_messages()
         print 'the count of all requests:\n' + str(len(all_messages))
         print json.dumps(all_messages)
@@ -111,7 +111,7 @@ class cdpkeywords():
         """
         taget_messages = []
         for m in messages:
-            if "method" in m and m["method"] == method:
+            if "method" in m and m["method"] == "Network.requestWillBeSent" and method in m["params"]['request']['method']:
                 try:
                     taget_messages.append(m)
                 except:

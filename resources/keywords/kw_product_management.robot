@@ -78,6 +78,7 @@ Add Product Second Step
     [Arguments]    ${TitleName}
     Wait And Input Text    ${locatorB_productsNew_input_title}    ${TitleName}
     Wait And Click Element    ${locatorB_productsNew_button_NextStep}
+    Sleep    1
 
 Fill All Items When Create Product
     Wait And Input Text    ${locatorB_productsNew_input_title}    newproduct
@@ -119,21 +120,26 @@ Select Follow Stock
     [Documentation]   款式设置 - 勾选 跟踪库存
     ${class}=    Wait And Get Element Attribute    ${locatorB_productsNew_checkbox_followNumber}    class
     Run Keyword If    $class=='ant-checkbox'    Wait And Click Element    ${locatorB_productsNew_checkbox_followNumber}
+    Sleep    1
 
 Select Need Picture
     [Documentation]    款式设置 - 勾选 - 需要配图
     ${class}=    Wait And Get Element Attribute    ${locatorB_productsNew_input_needPicture}    class
     Run Keyword If    $class=='ant-checkbox'    Wait And Click Element    ${locatorB_productsNew_input_needPicture}
+    Sleep    1
 
 Select Add Some Style
     [Documentation]    款式设置 - 勾选 - 添加多个款式
     ${class}=    Wait And Get Element Attribute    ${locatorB_productsNew_radio_moreStyle}    class
     Run Keyword If    $class=='ant-radio'    Wait And Click Element    ${locatorB_productsNew_radio_moreStyle}
+    Sleep    1
 
 Select Add Single Style
     [Documentation]    款式设置 - 勾选 - 添加单一款式
     ${class}=    Wait And Get Element Attribute    ${locatorB_productsNew_radio_OneStyle}    class
     Run Keyword If    $class=='ant-radio'    Wait And Click Element    ${locatorB_productsNew_radio_OneStyle}
+    Sleep    1
+
 
 
 Add Product

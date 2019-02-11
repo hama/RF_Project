@@ -115,15 +115,15 @@ shipping_group008
     Check P0 Point From shipping_170
     Check P0 Point From shipping_171
 
-shipping_group009
-    [Tags]    group
-    # 前置条件
-    &{conf}=    Create Dictionary    channel_name=youkesi    client_id=20006    secret_key=b6d95276-f504-40e4-88f7-52ebca33190620006    name=yokesi
-    kwshipping.add_shipping_merchant_with_conf_py    ${conf}
-    Reload Page And Start Ajax
-    Shipping Settings Page
-    # 检查点
-    Check P0 Point From shipping_173
+#shipping_group009
+#    [Tags]    group
+#    # 前置条件
+#    &{conf}=    Create Dictionary    channel_name=youkesi    client_id=20006    secret_key=b6d95276-f504-40e4-88f7-52ebca33190620006    name=yokesi
+#    kwshipping.add_shipping_merchant_with_conf_py    ${conf}
+#    Reload Page And Start Ajax
+#    Shipping Settings Page
+#    # 检查点
+#    Check P0 Point From shipping_173
 
 shipping_group010
     [Tags]    group

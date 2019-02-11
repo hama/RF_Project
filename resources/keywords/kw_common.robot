@@ -216,6 +216,7 @@ Wait And Select From List By Index
 Wait And Select From List By Label
 	[Arguments]    ${element_selectbox}    ${label}    ${timeout}=10
     [Documentation]    通过文本选择元素
+    Sleep    1
     Wait Until Element Is Visible    ${element_selectbox}     10
     ${times}    Evaluate    ${timeout}-1
     :FOR    ${i}    IN RANGE    ${timeout}

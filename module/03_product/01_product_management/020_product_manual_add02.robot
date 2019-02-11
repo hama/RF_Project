@@ -485,6 +485,7 @@ product276
     Wait And Click Element    ${locatorB_productsNew_checkbox_AllStyle}
     Wait And Click Element    ${locatorB_productsNew_button_batchEdit}
     Wait And Input Text    ${locatorB_productsNew_input_styleEditQuantity}    124
+    Sleep    1
     Wait And Click Element    ${locatorB_productsNew_button_styleSure}[2]
     Value Of Element Should Be Equal With Wait    ${locatorB_productsNew_input_stock}    124
 
