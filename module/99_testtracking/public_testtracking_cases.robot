@@ -27,7 +27,7 @@ tracking001
 	&{fb_pageview_data}=    Create Dictionary    ev=PageView
     assert_equal_values_process    ${all_messages}    www.google-analytics.com    ${ga_pageview_data}
     assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_pageview_data}
-#    assert_equal_values_process    ${all_messages}    www.facebook.com    ${fb_pageview_data}
+    assert_equal_values_process    ${all_messages}    www.facebook.com    ${fb_pageview_data}
 
 tracking002
     [Documentation]    google、神策、facebook的addtocart事件上报
@@ -39,7 +39,7 @@ tracking002
     ${all_messages}    get_all_messages
 	#    构造真实对比数据
     @{target_messages_url}    get_messages_filtering_by_url    ${all_messages}    myshoplaza.com/api/cart
-	@{target_messages_menthod}    get_messages_filtering_by_method    ${target_messages_url}    POST
+	@{target_messages_menthod}    get_messages_filtering_by_request_method    ${target_messages_url}    POST
 	@{request_ids}    get_request_ids_from_messages    ${target_messages_menthod}
 #	@{target_messages}    get_messages_filtering_by_url    ${all_messages}    myshoplaza.com/api/cart
 #    @{request_ids}    get_request_ids_from_messages    ${target_messages}
@@ -84,7 +84,7 @@ tracking003
     ${all_messages_before}    get_all_messages
 	#    构造真实对比数据
     @{target_messages_url}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
-	@{target_messages_menthod}    get_messages_filtering_by_method    ${target_messages_url}    POST
+	@{target_messages_menthod}    get_messages_filtering_by_request_method    ${target_messages_url}    POST
 	@{request_ids}    get_request_ids_from_messages    ${target_messages_menthod}
 #    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
 #	@{request_ids}    get_request_ids_from_messages    ${target_messages}
@@ -120,7 +120,7 @@ tracking004
     ${all_messages_before}    get_all_messages
 	#    构造真实对比数据
     @{target_messages_url}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
-	@{target_messages_menthod}    get_messages_filtering_by_method    ${target_messages_url}    POST
+	@{target_messages_menthod}    get_messages_filtering_by_request_method    ${target_messages_url}    POST
 	@{request_ids}    get_request_ids_from_messages    ${target_messages_menthod}
 #    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
 #	@{request_ids}    get_request_ids_from_messages    ${target_messages}
@@ -155,7 +155,7 @@ tracking005
     ${all_messages_before}    get_all_messages
     #构造真实对比数据
     @{target_messages_url}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
-	@{target_messages_menthod}    get_messages_filtering_by_method    ${target_messages_url}    POST
+	@{target_messages_menthod}    get_messages_filtering_by_request_method    ${target_messages_url}    POST
 	@{request_ids}    get_request_ids_from_messages    ${target_messages_menthod}
 #    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
 #	@{request_ids}    get_request_ids_from_messages    ${target_messages}
@@ -207,7 +207,7 @@ tracking007
     ${all_messages_one}    get_all_messages
 	#    构造真实对比数据
     @{target_messages_url}    get_messages_filtering_by_url    ${all_messages_one}    myshoplaza.com/api/cart
-	@{target_messages_menthod}    get_messages_filtering_by_method    ${target_messages_url}    POST
+	@{target_messages_menthod}    get_messages_filtering_by_request_method    ${target_messages_url}    POST
 	@{request_ids_one}    get_request_ids_from_messages    ${target_messages_menthod}
 #    @{target_messages_one}    get_messages_filtering_by_url    ${all_messages_one}    myshoplaza.com/api/cart
 #	@{request_ids_one}    get_request_ids_from_messages    ${target_messages_one}
@@ -263,7 +263,7 @@ tracking008
     ${all_messages_before}    get_all_messages
     #构造真实对比数据
     @{target_messages_url}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
-	@{target_messages_menthod}    get_messages_filtering_by_method    ${target_messages_url}    POST
+	@{target_messages_menthod}    get_messages_filtering_by_request_method    ${target_messages_url}    POST
 	@{request_ids}    get_request_ids_from_messages    ${target_messages_menthod}
 #    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
 #	@{request_ids}    get_request_ids_from_messages    ${target_messages}

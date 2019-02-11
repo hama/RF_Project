@@ -34,7 +34,7 @@ class cdpkeywords():
             获取所有监听的信息
         :return:
         """
-        time.sleep(0.2)
+        time.sleep(1)
         all_messages = self.chrome.pop_messages()
         print 'the count of all requests:\n' + str(len(all_messages))
         print json.dumps(all_messages)
@@ -113,11 +113,29 @@ class cdpkeywords():
         """
         taget_messages = []
         for m in messages:
-            if "method" in m and m["method"] == "Network.requestWillBeSent" and method in m["params"]['request']['method']:
+            if "method" in m and m["method"] == method:
                 try:
                     taget_messages.append(m)
                 except:
                     pass
+        return taget_messages
+
+
+    def get_messages_filtering_by_request_method(self, messages, method):
+        """
+            通过method筛选信息
+        :param messages:
+        :param method:
+        :return:
+        """
+        taget_messages = []
+        for m in messages:
+            if method in m and m["method"] == ['params']['request']['method']:
+                try:
+                    taget_messages.append(m)
+                except:
+                    pass
+        print taget_messages
         return taget_messages
 
     def get_messages_filtering_by_url(self, messages, url):
@@ -136,6 +154,7 @@ class cdpkeywords():
                     taget_messages.append(m)
                 except:
                     pass
+        print json.dumps(taget_messages)
         return taget_messages
 
     def get_request_messages_by_url(self, messages, url):
@@ -411,13 +430,17 @@ if __name__ == '__main__':
     time.sleep(3)
     all_messages = cdp.get_all_messages()
     a = cdp.get_messages_filtering_by_url(all_messages,'trackingtest.myshoplaza.com/cart')
-    b = cdp.get_request_ids_from_messages(a)
-    c = cdp.network_get_request_post_data(b[0])
-    d = cdp.network_get_response_body(b[0])
-    target_messages = cdp.get_request_messages_by_url(all_messages, "www.google-analytics.com")
-    # target_messages = cdp.get_request_messages_by_url(all_messages, "shence.shoplazza")
-    request_data = cdp.get_request_data_list(target_messages)
-    decoded_request_data_list = cdp.get_decoded_request_data_list(request_data)
-    print json.dumps(decoded_request_data_list)
-    data00 = {"ea": "view_item_list", "gtm": "2oubc0", "vp": "1440x720", "de": "UTF-8", "_v": "j72", "t": "event"}
-    print json.dumps(cdp.assert_contain_keys(decoded_request_data_list, data00))
+
+    b = cdp.get_messages_filtering_by_request_method(a, "POST")
+    print b
+
+    # b = cdp.get_request_ids_from_messages(a)
+    # c = cdp.network_get_request_post_data(b[0])
+    # d = cdp.network_get_response_body(b[0])
+    # target_messages = cdp.get_request_messages_by_url(all_messages, "www.google-analytics.com")
+    # # target_messages = cdp.get_request_messages_by_url(all_messages, "shence.shoplazza")
+    # request_data = cdp.get_request_data_list(target_messages)
+    # decoded_request_data_list = cdp.get_decoded_request_data_list(request_data)
+    # print json.dumps(decoded_request_data_list)
+    # data00 = {"ea": "view_item_list", "gtm": "2oubc0", "vp": "1440x720", "de": "UTF-8", "_v": "j72", "t": "event"}
+    # print json.dumps(cdp.assert_contain_keys(decoded_request_data_list, data00))
