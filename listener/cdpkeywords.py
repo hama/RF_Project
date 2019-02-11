@@ -7,8 +7,6 @@ from urllib import unquote
 import PyChromeDevTools
 
 
-
-
 class cdpkeywords():
     ROBOT_LIBRARY_SCOPE = 'Global'
 
@@ -204,6 +202,25 @@ class cdpkeywords():
                 fulfill_num += 1
         return {'fulfill_num': fulfill_num, 'fulfill_data': fulfill_data}
 
+    def get_messages_filtering_by_keys(self, request_data_dict_list, keys):
+        """
+            通过keys过滤指定信息
+        :param request_data_dict_list:
+        :param keys: 为dict，关注于key
+        :return:
+            fulfill_data:满足条件的数据
+        """
+        if isinstance(keys, str) or isinstance(keys, unicode):
+            keys_dict = json.loads(keys)
+        else:
+            keys_dict = keys
+        fulfill_data = []
+        for request_data_dict in request_data_dict_list:
+            if dict_contain_keys(request_data_dict, keys_dict) != False:
+                fulfill_data.append(request_data_dict)
+        print json.dumps(fulfill_data)
+        return fulfill_data
+
     def assert_equal_values(self, request_data_dict_list, data):
         """
             断言request_data_dict_list中是否有元素包含data的所有key，且被包含key的值都相等
@@ -220,6 +237,25 @@ class cdpkeywords():
                 fulfill_data.append(request_data_dict)
                 fulfill_num += 1
         return {'fulfill_num': fulfill_num, 'fulfill_data': fulfill_data}
+
+    def get_messages_filtering_by_values(self, request_data_dict_list, values):
+        """
+            通过values过滤指定信息
+        :param request_data_dict_list:
+        :param values: 为dict，关注于value
+        :return:
+            fulfill_data:满足条件的数据
+        """
+        if isinstance(values, str) or isinstance(values, unicode):
+            values_dict = json.loads(values)
+        else:
+            values_dict = values
+        fulfill_data = []
+        for request_data_dict in request_data_dict_list:
+            if dict_equal_values(request_data_dict, values_dict) != False:
+                fulfill_data.append(request_data_dict)
+        print json.dumps(fulfill_data)
+        return fulfill_data
 
     # def assert_contain_keys(self, request_data_dict_list, data):
     #     """
@@ -410,7 +446,7 @@ if __name__ == '__main__':
     cdp.chrome.Page.navigate(url="https://trackingtest.myshoplaza.com/")
     time.sleep(3)
     all_messages = cdp.get_all_messages()
-    a = cdp.get_messages_filtering_by_url(all_messages,'trackingtest.myshoplaza.com/cart')
+    a = cdp.get_messages_filtering_by_url(all_messages, 'trackingtest.myshoplaza.com/cart')
     b = cdp.get_request_ids_from_messages(a)
     c = cdp.network_get_request_post_data(b[0])
     d = cdp.network_get_response_body(b[0])

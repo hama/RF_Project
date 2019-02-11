@@ -28,7 +28,7 @@ tracking001
 	&{fb_pageview_data}=    Create Dictionary    ev=PageView
     assert_equal_values_process    ${all_messages}    www.google-analytics.com    ${ga_pageview_data}
     assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_pageview_data}
-#    assert_equal_values_process    ${all_messages}    www.facebook.com    ${fb_pageview_data}
+    assert_equal_values_process    ${all_messages}    www.facebook.com    ${fb_pageview_data}
 
 tracking002
     [Documentation]    google、神策、facebook的addtocart事件上报
@@ -40,7 +40,8 @@ tracking002
 	#    获得总数据
     ${all_messages}    get_all_messages
 	#    构造真实对比数据
-    @{target_messages}    get_messages_filtering_by_url    ${all_messages}    myshoplaza.com/api/cart
+#    @{target_messages}    get_messages_filtering_by_url    ${all_messages}    myshoplaza.com/api/cart
+    @{target_messages}    get_messages_filtering_by_values    ${all_messages}    {"params":{"request":{"url":"https://trackingtest.myshoplaza.com/api/cart","method":"POST"}}}
 	@{request_ids}    get_request_ids_from_messages    ${target_messages}
     &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
     &{response_body_data}    network_get_response_body    @{request_ids}[0]
