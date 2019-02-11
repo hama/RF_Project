@@ -73,7 +73,7 @@ Tracking Suite Setup
 	...    domain=trackingtest
 	${cookie}    Login.login_b_py    &{conf}
 
-	kwthemes.change_themes_by_name_py    Light    ${cookie}
+	kwthemes.change_certain_themes_by_name_py    ${b_url}    Light    ${cookie}
 	Sleep    3
 	Open Test Browser    ${c_url}
 	Open New And Close Other Windows    ${c_url}
