@@ -17,7 +17,7 @@ ${b_url}    https://${domain}.myshoplaza.com/admin
 tracking001
     [Documentation]    google、神策、facebook的pageview事件上报
     [Tags]
-    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
+    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep    5
     ${all_messages}    get_all_messages
 	&{ga_pageview_data}=    Create Dictionary    t=pageview
@@ -28,12 +28,12 @@ tracking001
 	&{fb_pageview_data}=    Create Dictionary    ev=PageView
     assert_equal_values_process    ${all_messages}    www.google-analytics.com    ${ga_pageview_data}
     assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_pageview_data}
-    assert_equal_values_process    ${all_messages}    www.facebook.com    ${fb_pageview_data}
+#    assert_equal_values_process    ${all_messages}    www.facebook.com    ${fb_pageview_data}
 
 tracking002
     [Documentation]    google、神策、facebook的addtocart事件上报
     [Tags]
-    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
+    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
@@ -75,7 +75,7 @@ tracking002
 tracking003
     [Documentation]    facebook的"进入Cartcheckout次数"事件上报(购物车的结账)
     [Tags]
-    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
+    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
@@ -109,7 +109,7 @@ tracking003
 tracking004
     [Documentation]    facebook的"进入detail_buynow次数"事件上报(详情页面的立即购买)
     [Tags]
-    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
+    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
@@ -142,7 +142,7 @@ tracking004
 tracking005
     [Documentation]    ga的cart页面"checkout"上报事件
     [Tags]
-    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
+    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
@@ -168,7 +168,7 @@ tracking005
 tracking006
     [Documentation]    sc的cart页面"checkout"上报事件
     [Tags]
-    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
+    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[href="/cart"]')[1]
@@ -193,7 +193,7 @@ tracking007
     [Tags]
     kwpayment.activate_payment_credit_card_py
     Reload Page And Start Ajax
-    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
+    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
@@ -247,7 +247,7 @@ tracking008
     kwpayment.inactivate_payment_credit_card_py
     kwpayment.activate_payment_cod_py
     Reload Page And Start Ajax
-    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
+    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="addToCart"]')[0]
     Sleep    5
@@ -287,7 +287,7 @@ tracking009
     kwpayment.inactivate_payment_credit_card_py
     kwpayment.activate_payment_cod_py
     Reload Page And Start Ajax
-    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
+    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
     Add Address SepCommon Step
@@ -312,7 +312,7 @@ tracking010
     kwpayment.inactivate_payment_credit_card_py
     kwpayment.activate_payment_cod_py
     Reload Page And Start Ajax
-    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
+    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('.btn.btn-primary.featured-product__btn')[0]
     Sleep And Click Element    dom:document.querySelectorAll('[data-click="submit"]')[0]
     Add Address SepCommon Step
@@ -328,7 +328,7 @@ tracking010
 tracking011
     [Documentation]    google、神策、facebook -》点击搜索的次数 -》上报事件
     [Tags]
-#    Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
+#    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('a[href="/search"]')[1]
     Wait And Input Text    dom:document.querySelectorAll('[class*="form-control search__input "]')[0]    auto\n
     Sleep    3

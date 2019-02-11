@@ -37,7 +37,7 @@ class cdpkeywords():
         time.sleep(1)
         all_messages = self.chrome.pop_messages()
         print 'the count of all requests:\n' + str(len(all_messages))
-        # print json.dumps(all_messages)
+        print json.dumps(all_messages)
         return all_messages
 
     def start_listener_on_new_tab(self):
