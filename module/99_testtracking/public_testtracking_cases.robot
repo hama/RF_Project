@@ -25,7 +25,7 @@ tracking001
 	&{data}=    Create Dictionary    event=$pageview    properties=${properties}
 	&{sc_pageview_data}=    Create Dictionary    data=${data}
 	&{fb_pageview_data}=    Create Dictionary    ev=PageView
-#    assert_equal_values_process    ${all_messages}    www.google-analytics.com    ${ga_pageview_data}
+    assert_equal_values_process    ${all_messages}    www.google-analytics.com    ${ga_pageview_data}
     assert_equal_values_process    ${all_messages}    shence.shoplazza    ${sc_pageview_data}
 #    assert_equal_values_process    ${all_messages}    www.facebook.com    ${fb_pageview_data}
 
