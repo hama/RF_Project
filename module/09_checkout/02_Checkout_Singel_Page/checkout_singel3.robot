@@ -158,100 +158,100 @@ checkout_100
 #    Wait Until Page Contains Text    重量方案1
 #    Wait Until Page Contains Text    $50.00
 
-checkout_202
-    [Documentation]    验证payment failure页面，cancel order按钮可点击
-    [Tags]    P0    threshold
-    kwpayment.activate_payment_credit_card_py
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    #添加一个价格10 物流
-    public_method.create    shipping    {"plans": [{"name": "方案0", "rule_type": "price", "rate_amount": "10"}]}
-    Go To Payment Channel
-    Select Credit Card Of IpayLinks
-    kwpayment.activate_payment_credit_card_py
-    Reload Page And Start Ajax
-    Go To First Product C Interface
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address SepCommon Step
-    Add Credit Card Info
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
-    Wait Until Page Contains Text    Payment failure
-    Wait And Click Element    ${locatorC_checkout_button_cancelOrder}
-    Wait Until Page Contains Text    We Offer Free Shipping Worldwide
+#checkout_202
+#    [Documentation]    验证payment failure页面，cancel order按钮可点击
+#    [Tags]    P0    threshold
+#    kwpayment.activate_payment_credit_card_py
+#    #添加一个商品价格为$444,名称：autotest_title
+#    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
+#    #添加一个价格10 物流
+#    public_method.create    shipping    {"plans": [{"name": "方案0", "rule_type": "price", "rate_amount": "10"}]}
+#    Go To Payment Channel
+#    Select Credit Card Of IpayLinks
+#    kwpayment.activate_payment_credit_card_py
+#    Reload Page And Start Ajax
+#    Go To First Product C Interface
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address SepCommon Step
+#    Add Credit Card Info
+#    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+#    Wait Until Page Contains Text    Payment failure
+#    Wait And Click Element    ${locatorC_checkout_button_cancelOrder}
+#    Wait Until Page Contains Text    We Offer Free Shipping Worldwide
 
-checkout_203
-    [Documentation]    验证payment failure页面，pay again按钮可点击
-    [Tags]    P0    threshold
-    kwpayment.activate_payment_credit_card_py
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    #添加一个价格10 物流
-    public_method.create    shipping    {"plans": [{"name": "方案0", "rule_type": "price", "rate_amount": "10"}]}
-    Go To Payment Channel
-    Select Credit Card Of IpayLinks
-    kwpayment.activate_payment_credit_card_py
-    Reload Page And Start Ajax
-    Go To First Product C Interface
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address SepCommon Step
-    Add Credit Card Info
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
-    Wait Until Page Contains Text    Payment failure
-    Wait And Click Element    ${locatorC_checkout_button_payAgain}
-    Wait Until Page Contains Text    Payment method
-    Wait Until Page Contains Locator    ${locatorC_checkoutPayment_button_completeOrder}
+#checkout_203
+#    [Documentation]    验证payment failure页面，pay again按钮可点击
+#    [Tags]    P0    threshold
+#    kwpayment.activate_payment_credit_card_py
+#    #添加一个商品价格为$444,名称：autotest_title
+#    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
+#    #添加一个价格10 物流
+#    public_method.create    shipping    {"plans": [{"name": "方案0", "rule_type": "price", "rate_amount": "10"}]}
+#    Go To Payment Channel
+#    Select Credit Card Of IpayLinks
+#    kwpayment.activate_payment_credit_card_py
+#    Reload Page And Start Ajax
+#    Go To First Product C Interface
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address SepCommon Step
+#    Add Credit Card Info
+#    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+#    Wait Until Page Contains Text    Payment failure
+#    Wait And Click Element    ${locatorC_checkout_button_payAgain}
+#    Wait Until Page Contains Text    Payment method
+#    Wait Until Page Contains Locator    ${locatorC_checkoutPayment_button_completeOrder}
 
-checkout_205
-    [Documentation]    验证pay Again页面，shipping to显示正常
-    [Tags]    P0    threshold
-    kwpayment.activate_payment_credit_card_py
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    #添加一个价格10 物流
-    public_method.create    shipping    {"plans": [{"name": "方案0", "rule_type": "price", "rate_amount": "10"}]}
-    Go To Payment Channel
-    Select Credit Card Of IpayLinks
-    kwpayment.activate_payment_credit_card_py
-    Reload Page And Start Ajax
-    Go To First Product C Interface
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address SepCommon Step
-    Add Credit Card Info
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
-    Wait Until Page Contains Text    Payment failure
-    Wait And Click Element    ${locatorC_checkout_button_payAgain}
-    Wait Until Page Contains Text    Javen
-    Wait Until Page Contains Text    fang
-    Wait Until Page Contains Text    18688886666
-    Wait Until Page Contains Text    中山大学产学研基地
-    Wait Until Page Contains Text    南山区
-    Wait Until Page Contains Text    深圳
-    Wait Until Page Contains Text    Guangdong
-    Wait Until Page Contains Text    China
-    Wait Until Page Contains Text    518000
-    Wait Until Page Contains Text    shoplazza
+#checkout_205
+#    [Documentation]    验证pay Again页面，shipping to显示正常
+#    [Tags]    P0    threshold
+#    kwpayment.activate_payment_credit_card_py
+#    #添加一个商品价格为$444,名称：autotest_title
+#    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
+#    #添加一个价格10 物流
+#    public_method.create    shipping    {"plans": [{"name": "方案0", "rule_type": "price", "rate_amount": "10"}]}
+#    Go To Payment Channel
+#    Select Credit Card Of IpayLinks
+#    kwpayment.activate_payment_credit_card_py
+#    Reload Page And Start Ajax
+#    Go To First Product C Interface
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address SepCommon Step
+#    Add Credit Card Info
+#    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+#    Wait Until Page Contains Text    Payment failure
+#    Wait And Click Element    ${locatorC_checkout_button_payAgain}
+#    Wait Until Page Contains Text    Javen
+#    Wait Until Page Contains Text    fang
+#    Wait Until Page Contains Text    18688886666
+#    Wait Until Page Contains Text    中山大学产学研基地
+#    Wait Until Page Contains Text    南山区
+#    Wait Until Page Contains Text    深圳
+#    Wait Until Page Contains Text    Guangdong
+#    Wait Until Page Contains Text    China
+#    Wait Until Page Contains Text    518000
+#    Wait Until Page Contains Text    shoplazza
 
-checkout_206
-    [Documentation]    验证pay Again页面，shipping method显示正常
-    [Tags]    P0    threshold
-    kwpayment.activate_payment_credit_card_py
-    #添加一个商品价格为$444,名称：autotest_title
-    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
-    #添加一个价格10 物流
-    public_method.create    shipping    {"plans": [{"name": "方案0", "rule_type": "price", "rate_amount": "10"}]}
-    Reload Page And Start Ajax
-    Go To Payment Channel
-    Select Credit Card Of IpayLinks
-    kwpayment.activate_payment_credit_card_py
-    Reload Page And Start Ajax
-    Go To First Product C Interface
-    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Add Address SepCommon Step
-    Add Credit Card Info
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
-    Wait Until Page Contains Text    Payment failure
-    Wait And Click Element    ${locatorC_checkout_button_payAgain}
-    Wait Until Page Contains Text    方案0
+#checkout_206
+#    [Documentation]    验证pay Again页面，shipping method显示正常
+#    [Tags]    P0    threshold
+#    kwpayment.activate_payment_credit_card_py
+#    #添加一个商品价格为$444,名称：autotest_title
+#    public_method.create    product    {"title": "autotest_title","variants": [{"price": "444"}]}
+#    #添加一个价格10 物流
+#    public_method.create    shipping    {"plans": [{"name": "方案0", "rule_type": "price", "rate_amount": "10"}]}
+#    Reload Page And Start Ajax
+#    Go To Payment Channel
+#    Select Credit Card Of IpayLinks
+#    kwpayment.activate_payment_credit_card_py
+#    Reload Page And Start Ajax
+#    Go To First Product C Interface
+#    Wait And Click Element    ${locatorC_productDetail_button_buyNow}
+#    Add Address SepCommon Step
+#    Add Credit Card Info
+#    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+#    Wait Until Page Contains Text    Payment failure
+#    Wait And Click Element    ${locatorC_checkout_button_payAgain}
+#    Wait Until Page Contains Text    方案0
 
 checkout_211
     [Documentation]    验证B端交易设置中结账页形式选择单结账页时，C端进入checkout页面，checkout为单页面结账形式

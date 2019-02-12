@@ -46,25 +46,26 @@ checkout_099
 #    Sleep And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
 #    Wait Until Page Contains Text   Payment successful!
 
-checkout_127
-    [Documentation]    验证checkout页面，使用ipaylinks支付，填写错误的信用卡号时，页面会跳转到支付失败页面
-    [Tags]    P0    threshold
-    [Setup]    Go To Payment Channel
-    kwpayment.activate_payment_credit_card_py
-    Reload Page And Start Ajax
-    Go To First Product C Interface
-    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    Wait And Click Element    ${locatorC_checkoutPayment_icon_bankCard}
-    Wait And Input Text    ${locatorC_checkout_paymentCard_fristName}    Javen fang
-    Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    dianjiang@autotest.com
-    Wait And Input Text    ${locatorC_checkout_paymentCard_phone}    18688886666
-    Wait And Input Text    ${locatorC_checkout_paymentCard_cardPostcode}    518000
-    Wait And Input Text    ${locatorC_checkout_paymentCard_cardNumber}    123456789
-    Wait And Input Text    ${locatorC_checkout_paymentCard_cardDate}    1123
-    Wait And Input Text    ${locatorC_checkout_paymentCard_card_code}    123
-    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
-    Wait Until Page Contains Text   Payment failure
+#checkout_127
+#    [Documentation]    验证checkout页面，使用ipaylinks支付，填写错误的信用卡号时，页面会跳转到支付失败页面
+#    [Tags]    P0    threshold
+#    [Setup]    Go To Payment Channel
+#    kwpayment.activate_payment_credit_card_py
+#    kwpayment.inactivate_payment_cod_py
+#    Reload Page And Start Ajax
+#    Go To First Product C Interface
+#    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Wait And Click Element    ${locatorC_checkoutPayment_icon_bankCard}
+#    Wait And Input Text    ${locatorC_checkout_paymentCard_fristName}    Javen fang
+#    Wait And Input Text    ${locatorC_checkout_paymentCard_cardEmail}    dianjiang@autotest.com
+#    Wait And Input Text    ${locatorC_checkout_paymentCard_phone}    18688886666
+#    Wait And Input Text    ${locatorC_checkout_paymentCard_cardPostcode}    518000
+#    Wait And Input Text    ${locatorC_checkout_paymentCard_cardNumber}    123456789
+#    Wait And Input Text    ${locatorC_checkout_paymentCard_cardDate}    1123
+#    Wait And Input Text    ${locatorC_checkout_paymentCard_card_code}    123
+#    Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
+#    Wait Until Page Contains Text   Payment failure
 
 checkout_161
     [Documentation]    验证checkout页面，billing address栏选择框可点击以及选择项展示
@@ -104,11 +105,9 @@ checkout_184
     Add Address Common Step
     Wait And Click Element    ${locatorC_checkoutShipping_button_specialInstruction}
     Wait And Input Text    ${locatorC_checkoutShipping_input_specialInstruction}    请尽快发货
-    sleep    10
-    Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
+    Sleep And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
-    Go To    https://admin.shoplazza.com/order/_dealing
-    Focus On New Window
+    Sleep    2
     ${titles}=    Get Window Titles
     ${title1}=    Get From List    ${titles}    0
     ${title2}=    Get From List    ${titles}    1

@@ -32,7 +32,7 @@ class cdpkeywords():
             获取所有监听的信息
         :return:
         """
-        time.sleep(0.2)
+        time.sleep(1)
         all_messages = self.chrome.pop_messages()
         print 'the count of all requests:\n' + str(len(all_messages))
         print json.dumps(all_messages)
@@ -111,7 +111,24 @@ class cdpkeywords():
         """
         taget_messages = []
         for m in messages:
-            if "method" in m and m["method"] == "Network.requestWillBeSent" and method in m["params"]['request']['method']:
+            if "method" in m and m["method"] == method:
+                try:
+                    taget_messages.append(m)
+                except:
+                    pass
+        return taget_messages
+
+
+    def get_messages_filtering_by_request_method(self, messages, method):
+        """
+            通过method筛选信息
+        :param messages:
+        :param method:
+        :return:
+        """
+        taget_messages = []
+        for m in messages:
+            if method in m and m["method"] == ['params']['request']['method']:
                 try:
                     taget_messages.append(m)
                 except:
@@ -134,6 +151,7 @@ class cdpkeywords():
                     taget_messages.append(m)
                 except:
                     pass
+        print json.dumps(taget_messages)
         return taget_messages
 
     def get_request_messages_by_url(self, messages, url):
@@ -363,7 +381,7 @@ def request_data_str_to_dict(request_data):
     for item_str in items_str_list:
         map_str = item_str.split('=')
         request_data_dict[map_str[0]] = unquote(map_str[1])
-    # print json.dumps(request_data_dict)
+    print json.dumps(request_data_dict)
     return request_data_dict
 
 

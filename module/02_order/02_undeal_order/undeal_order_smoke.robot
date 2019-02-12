@@ -87,14 +87,14 @@ order152
     Wait And Click Element    ${locatorB_orderUndeal_items_listOrder}[0]
     Wait Until Page Contains Locator    ${locatorB_orderDetail_tag_unfinished}
 
-order193
-    [Documentation]     验证C端使用信用卡支付后，订单详情页面显示的支付方式为：credit card
-    [tags]    P0    threshold    smoke
-    kworder.add_undead_order_with_pay_fail_status_py
-    Reload Page And Start Ajax
-    Select All Undeal Order Tag
-    Wait And Click Element    ${locatorB_orderUndeal_items_listOrder}[0]
-    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_payway}    Credit Card
+#order193
+#    [Documentation]     验证C端使用信用卡支付后，订单详情页面显示的支付方式为：credit card
+#    [tags]    P0    threshold    smoke
+#    kworder.add_undead_order_with_pay_fail_status_py
+#    Reload Page And Start Ajax
+#    Select All Undeal Order Tag
+#    Wait And Click Element    ${locatorB_orderUndeal_items_listOrder}[0]
+#    Text Of Element Should Be Equal With Wait    ${locatorB_orderDetail_text_payway}    Credit Card
 
 order195
     [Documentation]     验证C端未选择支付方式的订单，订单详情页面显示的支付方式为：无
