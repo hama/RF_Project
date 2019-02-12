@@ -75,8 +75,11 @@ Add Address Common Step
 Add Address SepCommon Step
     [Documentation]    添加地址公共部分
     Sleep    2
+    Wait For Condition    return document.readyState=="complete"
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_firstName}    Javen
+    Sleep    1
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_lastName}    fang
+    Sleep    1
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_addr}    南山区
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_city}    深圳
     Wait And Select From List By Label    ${locatorC_checkoutShipping_address_select_country}    China
