@@ -35,17 +35,6 @@ def salt_py(size=7):
     return salt
 
 
-def searchStr_py(args):
-    """
-    正则匹配数字
-    :param args:
-    :return: String
-    """
-    str_ = str(args)
-    restr = re.search('\d', str_).group()
-    return restr
-
-
 def searchStrs_py(args):
     """
     正则匹配所有非符号字符
@@ -55,6 +44,17 @@ def searchStrs_py(args):
     str_ = str(args)
     restr = re.search('\d+', str_).group()
     return restr
+
+
+def get_id_from_str_py(string):
+    """
+    正则匹配获取id
+    :param string:
+    :return: String
+    """
+    # string = "fb038ca0-8634-4327-959b-bbff0fc344eb"
+    id = re.search('[0-9A-Za-z]{8}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{12}', string).group()
+    return id
 
 
 # . md5加密方法

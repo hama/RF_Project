@@ -454,7 +454,7 @@ Go To First Product C Interface
 	Go To Product Management Page
     Wait And Click Element    ${locatorB_productsMgmt_icon_firstpreview}
     Focus On New Window
-    Start Ajax Listener
+#    Start Ajax Listener
     Sleep    2
 
 Wait And Clear Element Text
