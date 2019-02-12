@@ -183,10 +183,11 @@ tracking006
     ${all_messages}    get_all_messages
     #构造真实对比数据
     ${current_url}=    Get Location
-    ${current_url_one}=    Set Variable    ${current_url}
-    ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout')
-    ${order_id_one}=    Evaluate    u"${current_url_two}".strip('step=contact_information')
-    ${order_id}=    Evaluate    u"${order_id_one}".strip('?')
+    ${order_id}=    lib_utils.get_id_from_str_py    ${current_url}
+#    ${current_url_one}=    Set Variable    ${current_url}
+#    ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout')
+#    ${order_id_one}=    Evaluate    u"${current_url_two}".strip('step=contact_information')
+#    ${order_id}=    Evaluate    u"${order_id_one}".strip('?')
     ${referrer}=    Set Variable    ${c_url}cart
     &{properties}=    Create Dictionary    referrer=${referrer}    order_id=${order_id}
     &{data}=    Create Dictionary    event=begin_checkout    properties=${properties}
@@ -222,10 +223,11 @@ tracking007
     Sleep    2
     ${all_messages_two}    get_all_messages
     ${current_url}=    Get Location
+    ${order_id}=    lib_utils.get_id_from_str_py    ${current_url}
     ${current_url_one}=    Set Variable    ${current_url}
-    ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout')
-    ${order_id_one}=    Evaluate    u"${current_url_two}".strip('step=payment_method')
-    ${order_id}=    Evaluate    u"${order_id_one}".strip('?')
+#    ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout')
+#    ${order_id_one}=    Evaluate    u"${current_url_two}".strip('step=payment_method')
+#    ${order_id}=    Evaluate    u"${order_id_one}".strip('?')
     Add Credit Card Info
     Sleep And Click Element    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]
     #ga上报数据
@@ -305,10 +307,11 @@ tracking009
     ${all_messages}    get_all_messages
     #构造真实对比数据
     ${current_url}=    Get Location
-    ${current_url_one}=    Set Variable    ${current_url}
-    ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout')
-    ${order_id_one}=    Evaluate    u"${current_url_two}".strip('step=checkout_result')
-    ${order_id}=    Evaluate    u"${order_id_one}".strip('?')
+    ${order_id}=    lib_utils.get_id_from_str_py    ${current_url}
+#    ${current_url_one}=    Set Variable    ${current_url}
+#    ${current_url_two}=    Evaluate    u"${current_url_one}".strip('https://trackingtest.myshoplaza.com/checkout')
+#    ${order_id_one}=    Evaluate    u"${current_url_two}".strip('step=checkout_result')
+#    ${order_id}=    Evaluate    u"${order_id_one}".strip('?')
     Sleep    2
     &{ga_paymentsuccessful_data}=    Create Dictionary    ea=purchase    ti=${order_id}
     #检查
