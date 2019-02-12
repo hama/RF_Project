@@ -158,21 +158,21 @@ checkout_126
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text   Payment successful!
 
-checkout_132
-    [Documentation]   验证checkout支付页面，使用ipaylinks支付，填写错误的信用卡号时，页面会跳转到支付失败页面 >  1.stripe支付信息中填写信息： 卡号：4111119987834534 有效日期：11/23  安全码：123 邮编：518000 2.点击place order按钮
-    [Tags]    P0    threshold    smoke
-    kwpayment.activate_payment_cod_py
-    kwpayment.activate_payment_credit_card_py
-    Reload Page And Start Ajax
-    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
-    Add Address Common Step
-    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
-    Wait And Click Element    ${locatorC_checkoutPayment_icon_bankCard}
-    Add Credit Card Info
-    Wait And Click Element      ${locatorC_checkoutPayment_button_completeOrder}
-    Wait Until Page Contains Text   Payment failure
-    #关闭credit_card  信用卡支付方式
-    kwpayment.inactivate_payment_credit_card_py
+#checkout_132
+#    [Documentation]   验证checkout支付页面，使用ipaylinks支付，填写错误的信用卡号时，页面会跳转到支付失败页面 >  1.stripe支付信息中填写信息： 卡号：4111119987834534 有效日期：11/23  安全码：123 邮编：518000 2.点击place order按钮
+#    [Tags]    P0    threshold    smoke
+#    kwpayment.activate_payment_cod_py
+#    kwpayment.activate_payment_credit_card_py
+#    Reload Page And Start Ajax
+#    Wait And Click Element  ${locatorC_productDetail_button_buyNow}
+#    Add Address Common Step
+#    Wait And Click Element    ${locatorC_checkoutShipping_button_paymentMethod}
+#    Wait And Click Element    ${locatorC_checkoutPayment_icon_bankCard}
+#    Add Credit Card Info
+#    Wait And Click Element      ${locatorC_checkoutPayment_button_completeOrder}
+#    Wait Until Page Contains Text   Payment failure
+#    #关闭credit_card  信用卡支付方式
+#    kwpayment.inactivate_payment_credit_card_py
 
 checkout_170
     [Documentation]   验证checkout支付页面，billing address栏选择框可点击以及选择项展示  >   1.点击选择框

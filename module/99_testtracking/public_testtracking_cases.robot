@@ -38,11 +38,8 @@ tracking002
 	#    获得总数据
     ${all_messages}    get_all_messages
 	#    构造真实对比数据
-    @{target_messages_url}    get_messages_filtering_by_url    ${all_messages}    myshoplaza.com/api/cart
-	@{target_messages_menthod}    get_messages_filtering_by_request_method    ${target_messages_url}    POST
-	@{request_ids}    get_request_ids_from_messages    ${target_messages_menthod}
-#	@{target_messages}    get_messages_filtering_by_url    ${all_messages}    myshoplaza.com/api/cart
-#    @{request_ids}    get_request_ids_from_messages    ${target_messages}
+    @{target_messages}    get_messages_filtering_by_values    ${all_messages}    {"params":{"request":{"url":"https://trackingtest.myshoplaza.com/api/cart","method":"POST"}}}
+	@{request_ids}    get_request_ids_from_messages    ${target_messages}
     &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
     &{response_body_data}    network_get_response_body    @{request_ids}[0]
     ${product_id} =    Set Variable    ${request_post_data.product_id}
@@ -53,7 +50,6 @@ tracking002
     ${entrance} =    Set Variable    product
     ${currency} =    Set Variable    USD
     ${content_type} =    Set Variable    product
-    ${is_app_btn} =    Set Variable    Fasle
     @{product_ids} =    Create List    ${product_id}
     ${content_ids} =    Set Variable    ${product_ids}
     ${content_ids_str} =    lib_utils.convert_json_to_string    ${content_ids}
@@ -64,7 +60,7 @@ tracking002
     ${contents} =    Set Variable    ${contents_str}
 	&{ga_addtocard_data}=    Create Dictionary    t=event    ea=add_to_cart    pr1id=${product_id}    dt=${product_title}
     &{properties}=    Create Dictionary    product_id=${product_id}    product_title=${product_title}    price=${price}
-    ...    quantity=${quantity}    entrance=${entrance}    is_app_btn=${is_app_btn}
+    ...    quantity=${quantity}    entrance=${entrance}    is_app_btn=${False}
 	&{data}=    Create Dictionary    event=add_to_cart    properties=${properties}
 	&{sc_addtocard_data}=    Create Dictionary    data=${data}
 	&{fb_addtocard_data}=    Create Dictionary    ev=AddToCart    cd[value]=444    cd[currency]=${currency}
@@ -83,11 +79,8 @@ tracking003
 	#    获得总数据
     ${all_messages_before}    get_all_messages
 	#    构造真实对比数据
-    @{target_messages_url}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
-	@{target_messages_menthod}    get_messages_filtering_by_request_method    ${target_messages_url}    POST
-	@{request_ids}    get_request_ids_from_messages    ${target_messages_menthod}
-#    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
-#	@{request_ids}    get_request_ids_from_messages    ${target_messages}
+    @{target_messages}    get_messages_filtering_by_values    ${all_messages_before}    {"params":{"request":{"url":"https://trackingtest.myshoplaza.com/api/cart","method":"POST"}}}
+	@{request_ids}    get_request_ids_from_messages    ${target_messages}
     &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
     &{response_body_data}    network_get_response_body    @{request_ids}[0]
     ${variant_id} =    Set Variable    ${request_post_data.variant_id}
@@ -119,11 +112,8 @@ tracking004
 	#    获得总数据
     ${all_messages_before}    get_all_messages
 	#    构造真实对比数据
-    @{target_messages_url}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
-	@{target_messages_menthod}    get_messages_filtering_by_request_method    ${target_messages_url}    POST
-	@{request_ids}    get_request_ids_from_messages    ${target_messages_menthod}
-#    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
-#	@{request_ids}    get_request_ids_from_messages    ${target_messages}
+    @{target_messages}    get_messages_filtering_by_values    ${all_messages_before}    {"params":{"request":{"url":"https://trackingtest.myshoplaza.com/api/cart","method":"POST"}}}
+    @{request_ids}    get_request_ids_from_messages    ${target_messages}
     &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
     &{response_body_data}    network_get_response_body    @{request_ids}[0]
     ${variant_id} =    Set Variable    ${request_post_data.variant_id}
@@ -154,11 +144,8 @@ tracking005
     #获得总数据
     ${all_messages_before}    get_all_messages
     #构造真实对比数据
-    @{target_messages_url}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
-	@{target_messages_menthod}    get_messages_filtering_by_request_method    ${target_messages_url}    POST
-	@{request_ids}    get_request_ids_from_messages    ${target_messages_menthod}
-#    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
-#	@{request_ids}    get_request_ids_from_messages    ${target_messages}
+    @{target_messages}    get_messages_filtering_by_values    ${all_messages_before}    {"params":{"request":{"url":"https://trackingtest.myshoplaza.com/api/cart","method":"POST"}}}
+    @{request_ids}    get_request_ids_from_messages    ${target_messages}
     &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
     &{response_body_data}    network_get_response_body    @{request_ids}[0]
     ${product_id} =    Set Variable    ${request_post_data.product_id}
@@ -206,11 +193,8 @@ tracking007
 	#    获得总数据
     ${all_messages_one}    get_all_messages
 	#    构造真实对比数据
-    @{target_messages_url}    get_messages_filtering_by_url    ${all_messages_one}    myshoplaza.com/api/cart
-	@{target_messages_menthod}    get_messages_filtering_by_request_method    ${target_messages_url}    POST
-	@{request_ids_one}    get_request_ids_from_messages    ${target_messages_menthod}
-#    @{target_messages_one}    get_messages_filtering_by_url    ${all_messages_one}    myshoplaza.com/api/cart
-#	@{request_ids_one}    get_request_ids_from_messages    ${target_messages_one}
+    @{target_messages}    get_messages_filtering_by_values    ${all_messages_one}    {"params":{"request":{"url":"https://trackingtest.myshoplaza.com/api/cart","method":"POST"}}}
+    @{request_ids_one}    get_request_ids_from_messages    ${target_messages}
     &{request_post_data}    network_get_request_post_data    @{request_ids_one}[0]
     &{response_body_data}    network_get_response_body    @{request_ids_one}[0]
     ${product_id} =    Set Variable    ${request_post_data.product_id}
@@ -262,11 +246,8 @@ tracking008
     #获得总数据
     ${all_messages_before}    get_all_messages
     #构造真实对比数据
-    @{target_messages_url}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
-	@{target_messages_menthod}    get_messages_filtering_by_request_method    ${target_messages_url}    POST
-	@{request_ids}    get_request_ids_from_messages    ${target_messages_menthod}
-#    @{target_messages}    get_messages_filtering_by_url    ${all_messages_before}    myshoplaza.com/api/cart
-#	@{request_ids}    get_request_ids_from_messages    ${target_messages}
+    @{target_messages}    get_messages_filtering_by_values    ${all_messages_before}    {"params":{"request":{"url":"https://trackingtest.myshoplaza.com/api/cart","method":"POST"}}}
+    @{request_ids}    get_request_ids_from_messages    ${target_messages}
     &{request_post_data}    network_get_request_post_data    @{request_ids}[0]
     &{response_body_data}    network_get_response_body    @{request_ids}[0]
     ${product_id} =    Set Variable    ${request_post_data.product_id}
@@ -337,7 +318,6 @@ tracking010
 tracking011
     [Documentation]    google、神策、facebook -》点击搜索的次数 -》上报事件
     [Tags]
-#    #Execute Javascript     document.querySelectorAll('[class*="row featured-product"]')[0].scrollIntoView()
     Sleep And Click Element    dom:document.querySelectorAll('a[href="/search"]')[1]
     Wait And Input Text    dom:document.querySelectorAll('[class*="form-control search__input "]')[0]    auto\n
     Sleep    3
@@ -349,7 +329,6 @@ tracking011
     ${value}=    Set Variable    0.01
     ${currency}=    Set Variable    USD
     ${content_category}=    Set Variable    search
-#    ${contents}    暂时未获得    cd[contents]
     &{properties}=    Create Dictionary    key_word=${search_word}    has_result=${has_result}
     &{data}=    Create Dictionary    event=product_search    properties=${properties}
     &{sc_scSearch_data}=    Create Dictionary    data=${data}

@@ -311,3 +311,4 @@ if __name__ == '__main__':
     # print add_price_fee_shipping_py({'plans': [{'rule_range_min': '5000.00'}]})
     # print add_quantity_fee_shipping_py()
     # print del_all_shipping_py()
+    # print add_shipping_with_conf_py()
