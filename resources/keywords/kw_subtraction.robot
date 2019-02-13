@@ -34,8 +34,10 @@ Add Fill Rebate Activity
     ${ETime}=    Add Time To Date    ${StartTime}    4hours
     Set Global Variable    ${EndTime}    ${ETime}
     Wait And Click Element    ${locatorB_subtractionNew_icon_ActivityTimeEnd}
+    Sleep    1
     Wait And Input Text    ${locatorB_subtractionNew_input_ActivityTimeEnd}    ${EndTime}
     Wait And Click Element    ${locatorB_subtractionNew_button_ActivityTimeEnd}
+    Sleep    1
     Wait And Input Text    ${locatorB_subtractionNew_input_totalPrice}    50
     Wait And Input Text    ${locatorB_subtractionNew_input_cutPrice}     20
     Sleep And Click Element    ${locatorB_subtractionNew_button_selectAllProduct}

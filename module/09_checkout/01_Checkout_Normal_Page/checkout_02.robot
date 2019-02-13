@@ -228,6 +228,7 @@ checkout_195
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
     Wait Until Page Contains Text    Payment successful!
+    Sleep    2
     Wait And Click Element    ${locatorC_checkout_button_viewOrders}
     Wait Until Page Contains Text    Order Details
 
