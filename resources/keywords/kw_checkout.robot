@@ -50,6 +50,7 @@ Checkout2 Child Case Setup
 
 Add Address Common Step
     [Documentation]    添加地址公共部分
+    Reload Page And Start Ajax
     Sleep    2
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_firstName}    firstName
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_lastName}    lastName
@@ -74,6 +75,7 @@ Add Address Common Step
 
 Add Address SepCommon Step
     [Documentation]    添加地址公共部分
+    Reload Page And Start Ajax
     Sleep    2
     Wait For Condition    return document.readyState=="complete"
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_firstName}    Javen
