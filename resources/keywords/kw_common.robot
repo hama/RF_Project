@@ -278,6 +278,7 @@ Wait And Make Switch Off
 Wait Enabled And Choose File
 	[Arguments]    ${element_locator}    ${file}    ${sleep_time}=5
     [Documentation]    上传文件
+    Sleep    2
     Wait Until Element Is Enabled    ${element_locator}    10
     ${NORMAL_PATH}    Normalize Path  ${file}
     Choose File    ${element_locator}    ${NORMAL_PATH}
