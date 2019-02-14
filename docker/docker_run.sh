@@ -43,13 +43,13 @@ do
         docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --add-host gitlab.shoplazza.site:172.18.55.254 \
             --rm --name $DOCKER_LOG_FILE \
 			registry.shoplazza.com/library/uitest:v12 bash -c \
-			"/opt/$RUN_SH_IN_DOCKER -M '$MODULES' -U https://admin.shoplazza.com -R \
+			"/opt/$RUN_SH_IN_DOCKER -M '$MODULES' -U https://accounts.shoplazza.com -R \
 			-A ${CONTACT} -D $DOCKER_LOG_PATH"
     else
 		docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --add-host gitlab.shoplazza.site:172.18.55.254 \
 			--rm --name $DOCKER_LOG_FILE \
 			registry.shoplazza.com/library/uitest:v12 bash -c \
-			"/opt/$RUN_SH_IN_DOCKER -M '$MODULES' -U https://admin.shoplazza.com -R \
+			"/opt/$RUN_SH_IN_DOCKER -M '$MODULES' -U https://accounts.shoplazza.com -R \
 			-A ${CONTACT} -P ${PASSWORD} -O ${DOMAIN} -D $DOCKER_LOG_PATH"
     fi
 
