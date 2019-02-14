@@ -1,8 +1,9 @@
 # -*- coding:utf-8 -*-
 import ConfigParser
-import argparse
 import email
+import json
 import os
+import re
 import smtplib
 import sys
 import time
@@ -11,6 +12,7 @@ from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+from bs4 import BeautifulSoup
 from selenium import webdriver
 
 sys.path.append(os.getcwd())
@@ -84,7 +86,7 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
     设置邮件格式&内容
     :return:
     """
-    hosts = os.popen('cat /etc/hosts | grep "shopla"').read()
+    hosts = os.popen('cat /etc/hosts | grep "39.108.3"').read()
     if hosts:
         hosts = '!!!pre_release环境报告!!!\n已配/etc/hosts:' + hosts
     else:
@@ -93,14 +95,16 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
     os.popen('cd %s; tar -zcvPf ./robot_log_%s.tar.gz ./*' % (log_path, timestamp))
     result = lib_utils.upload_file_oss_py('robot_log_%s' % (timestamp),
                                           os.path.join(log_path, 'robot_log_%s.tar.gz' % (timestamp)))
+    percentage = ""
     # 文字
     html = """
+    %s
     %s
     <p>=====================截图=====================</p>
     <img src="cid:image1"/>
     <p>=============================================</p>
     %s
-    """ % (hosts, result)
+    """ % (hosts, percentage, result)
     msgText = MIMEText(html, 'html', 'utf-8')
     msg.attach(msgText)
 
@@ -119,6 +123,22 @@ def set_email_content_for_uireport(msg, timestamp, log_path):
     # att["Content-Type"] = 'application/octet-stream'
     # att["Content-Disposition"] = 'attachment; filename="robot_log_%s.tar.gz"' % timestamp
     # msg.attach(att)
+
+
+def get_log_data(log_path):
+    """
+    暂时未完成，用于统计数据
+    :param log_path:
+    :return:
+    """
+    path = os.path.join(os.path.dirname(__file__), '../../log.html')
+    fo = open(path)
+    text = fo.read()
+    fo.close()
+    soup = BeautifulSoup(text, "html.parser")
+    output_stats_tag = soup.find('script', text=re.compile("window\.output\[\"stats\"\]")).contents[0]
+    output_stats = json.loads(output_stats_tag.split('=')[1].replace('\n', '').rstrip(';'))
+    print output_stats
 
 
 def set_email_header_for_uireport(msg):
@@ -160,11 +180,12 @@ def send_uireport_email_process(timestamp, log_path):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='email script')
-    parser.add_argument('--timestamp', type=str, default=time.strftime("%Y%m%d%H%M%S", time.localtime()))
-    parser.add_argument('--log_path', type=str)
-    args = parser.parse_args()
-    send_uireport_email_process(args.timestamp, args.log_path)
+    get_log_data("")
+    # parser = argparse.ArgumentParser(description='email script')
+    # parser.add_argument('--timestamp', type=str, default=time.strftime("%Y%m%d%H%M%S", time.localtime()))
+    # parser.add_argument('--log_path', type=str)
+    # args = parser.parse_args()
+    # send_uireport_email_process(args.timestamp, args.log_path)
 
     # lib_utils.upload_file_oss_py('','')
     # print os.path.join(os.path.dirname(__file__), '../..')
