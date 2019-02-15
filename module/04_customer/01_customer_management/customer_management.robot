@@ -52,6 +52,7 @@ customer012
     Wait And Click Element    ${locatorB_customerMes_button_addCustomer}
     Add Customer B Interface
     Wait And Click Element    ${locatorB_customerNews_button_confirm}
+    Sleep    2
     Text Of Element Should Contain With Wait    ${locatorB_customerMes_list_firstCustomerPhone}    +86 13098765432
 
 customer026

@@ -31,9 +31,11 @@ Customer Register C Interface
     Sleep    2
 
 Add Customer B Interface
+    Sleep    2
     Wait And Input Text    ${locatorB_customerNews_input_firstname}    ceshi001
     Wait And Input Text    ${locatorB_customerNews_input_lastname}    test
     Wait And Input Text    ${locatorB_customerNews_input_email}    ceshi001test@autotest.com
     Wait And Click Element    ${locatorB_customerNews_input_phoneAreaCode}
     Wait And Click Element    ${locatorB_customerNews_input_chinaAreaCode}
     Wait And Input Text    ${locatorB_customerNews_input_phone}    13098765432
+    Sleep    2

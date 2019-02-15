@@ -26,7 +26,8 @@ ${locatorC_checkoutShipping_button_apply}    dom:document.querySelectorAll('[id=
 ${locatorC_checkoutShipping_icon_couponClose}    dom:document.querySelectorAll('[class~="coupon__close"]')[0]
 
 
-${locatorC_checkoutShipping_text_itemProductTitle}    dom:document.querySelectorAll('[class*="checkout-item__sku-title"]')[0]
+${locatorC_checkoutShipping_text_itemProductTitle}    dom:document.querySelectorAll('[class*="checkout-item__sku-title"]')[0]    #商品标题
+${locatorC_checkoutShipping_text_itemProducttype}    dom:document.querySelectorAll('[class*="checkout-item__sku-type text-truncate"]')    #商品子产品
 ${locatorC_checkoutShipping_text_itemQtyNum}    dom:document.querySelectorAll("[class*='checkout-item__quantity']")[0]
 ${locatorC_checkoutShipping_text_itemPrice}    dom:document.querySelectorAll("[class='checkout-item__price']")[0]
 ${locatorC_checkoutShipping_text_subtotalPrice}    dom:document.querySelectorAll(".checkout__prices-table-value")[0]
@@ -58,6 +59,7 @@ ${locatorC_checkoutShipping_address_input_onlyName}    dom:document.querySelecto
 ${locatorC_checkoutShipping_input_contactEmail}    dom:document.querySelectorAll("input[name='contact_email']")[0]    #.添加地址后email框
 ${locatorC_checkoutShipping_button_specialInstruction}    dom:document.querySelectorAll('[class="checkout-instruction"]')[0]    #.留言信息
 ${locatorC_checkoutShipping_input_specialInstruction}    dom:document.querySelectorAll('[class="checkout-instruction__textarea"]')[0]    #.留言信息输入框
+${locatorC_checkoutShipping_button_shippingMethod}    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]    #.continue to shipping method  提交按钮
 ${locatorC_checkoutShipping_button_paymentMethod}    dom:document.querySelectorAll('[class*="btn btn-checkout-primary"]')[0]    #.payment method  提交按钮
 
 ${locatorC_checkoutShipping_input_couponCode}    dom:document.querySelectorAll("[id='coupon_code_input']")[0]    #.checkout 输入优惠券框
