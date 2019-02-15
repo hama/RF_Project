@@ -29,8 +29,12 @@ def create(module_name, conf={}, cookie=init_cookie):
     :param cookie:
     :return:
     """
+    print type(conf)
+    print conf
     if isinstance(conf, str) or isinstance(conf, unicode) or isinstance(conf, list):
+        print '789010'
         conf = json.loads(conf)
+    print '123456'
     if 'product' in module_name:
         return kwproduct.add_product_with_conf_py(conf, cookie=cookie)
     elif 'collection' in module_name:
@@ -141,6 +145,6 @@ def delete(module_name, conf={}, cookie=init_cookie):
             return kwshipping.shippings_delete_py(conf['data'], cookie=cookie)
 
 
-# if __name__ == '__main__':
-    # create('shipping', '{"plans": [{"name": "price_fee", "rule_type": "price", "rate_amount": "10"}]}')
+if __name__ == '__main__':
+    create('product', {"title": "women", "has_only_default_variant": False, "inventory_tracking": False, "options": [{"name": "color", "values": ["blue"]}, {"name": "size", "values": ["xxl"]}], "variants": [{"price": "444", "option1": "blue", "option2": "xxl", "_key": "{\"color\":\"blue\",\"size\":\"xxl\"}"}]})
     # setting('tax', [{"tax_rate": "35"}])

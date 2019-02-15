@@ -266,6 +266,10 @@ def set_single_page_checkout_process_py(cookie=init_cookie):
     return set_checkout_process_with_conf_py({'checkout_page_type': 'single'}, cookie=cookie)
 
 
+def set_multi_page_checkout_process_py(cookie=init_cookie):
+    return set_checkout_process_with_conf_py({'checkout_page_type': 'three_step'}, cookie=cookie)
+
+
 if __name__ == '__main__':
     # print json.dumps(checkout_shipping_lines_py(shipping_lines_data))
     print do_price_calculate_with_conf_py()
