@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git clone -b master --depth=1 git@gitlab.sealmoo.com:shoplaza/shoplaza_robot.git
+git clone -b master --depth=1 git@gitlab.shoplazza.site:shoplaza/shoplaza_robot.git
 #pip install --pre --upgrade pip robotframework-seleniumlibrary
 echo "执行的文件名：$0"
 cd /opt/shoplaza_robot/

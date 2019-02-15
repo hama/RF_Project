@@ -40,14 +40,16 @@ do
 	DOCKER_LOG_PATH=${LOG_PATH}/${NUM}
 	DOCKER_LOG_FILE=${TIMESTAMP}_${NUM}
 	if [[ "$CONTACT" == "new" ]]; then
-        docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name $DOCKER_LOG_FILE \
-			registry.shoplazza.com/library/uitest:v10 bash -c \
-			"/opt/$RUN_SH_IN_DOCKER -M '$MODULES' -U https://admin.shoplazza.com -R \
+        docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --add-host gitlab.shoplazza.site:172.18.55.254 \
+            --rm --name $DOCKER_LOG_FILE \
+			registry.shoplazza.com/library/uitest:v12 bash -c \
+			"/opt/$RUN_SH_IN_DOCKER -M '$MODULES' -U https://accounts.shoplazza.com -R \
 			-A ${CONTACT} -D $DOCKER_LOG_PATH"
     else
-		docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --rm --name $DOCKER_LOG_FILE \
-			registry.shoplazza.com/library/uitest:v10 bash -c \
-			"/opt/$RUN_SH_IN_DOCKER -M '$MODULES' -U https://admin.shoplazza.com -R \
+		docker run -d -v /dev/shm:/dev/shm -v /var/log:/var/log --add-host gitlab.shoplazza.site:172.18.55.254 \
+			--rm --name $DOCKER_LOG_FILE \
+			registry.shoplazza.com/library/uitest:v12 bash -c \
+			"/opt/$RUN_SH_IN_DOCKER -M '$MODULES' -U https://accounts.shoplazza.com -R \
 			-A ${CONTACT} -P ${PASSWORD} -O ${DOMAIN} -D $DOCKER_LOG_PATH"
     fi
 
@@ -78,7 +80,8 @@ do
         echo "send:"`date`
         echo "REBOT_FILE=${REBOT_FILE}"
         rebot -d "$LOG_PATH"/ ${REBOT_FILE}
-        docker run -d -v /var/log:/var/log --rm registry.shoplazza.com/library/uitest:v10 \
+        docker run -d -v /var/log:/var/log --add-host gitlab.shoplazza.site:172.18.55.254 \
+                --rm registry.shoplazza.com/library/uitest:v12 \
                 bash -c "/opt/$RUN_SH_IN_DOCKER -E -T $TIMESTAMP -D $LOG_PATH"
         exit 0
     fi
