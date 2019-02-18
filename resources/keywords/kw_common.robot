@@ -46,6 +46,7 @@ Resource          kw_subtraction.robot
 Resource          kw_customer.robot
 Resource          kw_floating.robot
 Resource          kw_service_order.robot
+Resource          kw_checkout_multi.robot
 
 *** Keywords ***
 Login With Default User

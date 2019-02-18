@@ -20,8 +20,8 @@ Checkout Suite Setup
 Checkout Suite Teardown
     [Documentation]    每个用例执行结束步骤
     #还原初始化环境
-    kwshipping.del_all_shipping_py
-    kwproduct.del_all_products_py
+#    kwshipping.del_all_shipping_py
+#    kwproduct.del_all_products_py
     Close Test Suite Browser
 
 Checkout Case Setup
@@ -75,6 +75,7 @@ Add Address Common Step
 
 Add Address SepCommon Step
     [Documentation]    添加地址公共部分
+    Reload Page And Start Ajax
     Sleep    2
     Wait For Condition    return document.readyState=="complete"
     Wait And Input Text    ${locatorC_checkoutShipping_address_input_firstName}    Javen

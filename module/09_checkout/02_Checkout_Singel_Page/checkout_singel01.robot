@@ -176,8 +176,8 @@ checkout_092
     Element Attribute Should Contain With Wait     ${locatorB_checkout_radio_contactMandatory}   class    ant-radio-wrapper ant-radio-wrapper-checked
     Go To First Product C Interface
     Wait And Click Element    ${locatorC_productDetail_button_buyNow}
-    Wait And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
     Add Address Common Step
+    Wait And Click Element    ${locatorC_checkoutShipping_label_NewcontactEamil}
     Wait And Input Text    ${locatorC_checkoutShipping_input_contactEmail}    dianjiang@autotest.com
     Wait And Click Element    ${locatorC_checkoutPayment_icon_cash}
     Wait And Click Element    ${locatorC_checkoutPayment_button_completeOrder}
