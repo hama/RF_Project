@@ -91,11 +91,23 @@ def set_tax_with_conf_py(conf=[], cookie=init_cookie):
     :param cookie:
     :return:
     """
+    create_only_one_shipping_py(cookie=cookie)
     data = copy.deepcopy(tax_batch_data)
     data = data[0]
-    if conf:
-        conf = conf[0]
-        dict_deepupdate(data, conf)
+    if any(conf) and isinstance(conf[0], dict):
+        if conf[0].has_key('id'):
+            conf = conf[0]
+            dict_deepupdate(data, conf)
+        else:
+            conf = conf[0]
+            tax_list_data = tax_py(cookie=cookie)['content']
+            conf['id'] = tax_list_data[0]['id']
+            dict_deepupdate(data, conf)
+    else:
+        tax_list_data = tax_py(cookie=cookie)['content']
+        # conf0 = {}
+        # conf0['id'] = tax_list_data[0]['id']
+        dict_deepupdate(data, {'id':tax_list_data[0]['id']})
     param_data = []
     param_data.append(data)
     return tax_batch_py(param_data, cookie=cookie)
@@ -103,7 +115,7 @@ def set_tax_with_conf_py(conf=[], cookie=init_cookie):
 
 if __name__ == '__main__':
     # print close_tax_price_by_id_py('235863')
+    set_tax_with_conf_py([{"tax_rate": "60"}])
     # print add_default_tax_price_py()
     # add_shipping_with_conf_py()
     # print set_tax_with_conf_py()
-    print set_tax_with_conf_py()
