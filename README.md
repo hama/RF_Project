@@ -316,3 +316,6 @@ robot --outputdir logs \
 - run_develop_in_docker.sh: 下载robot项目，并执行run.sh
 - run.sh:执行initevn.py脚本，执行指定的用例module，失败用例重跑，发送邮件
 - initevn.py: 初始化common.ini文件，登录指定（/新创建)用户获取cookie值
+
+## 10. 数据上报测试
+> 基于PyChromeDevTools做的数据上报测试
