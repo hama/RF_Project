@@ -14,6 +14,18 @@ export PATH=$PATH:/usr/local/bin/
 # $@ 从命令行取出参数列表(不能用用 $* 代替，因为 $* 将所有的参数解释成一个字符串
 #                         而 $@ 是一个参数数组)
 
+# R:rerun       是否需要重跑
+# E:email       是否需要发邮件
+# P:password    用户密码
+# O:domain      测试域名
+# A:account     测试账号
+# M:module      被测试用例模块
+# U:url         被测url
+# D:dir         报告存放位置
+# T:timestamp   用例执行时间搓
+# H:host        用例执行环境（美服，测试服，预发布）
+
+
 TEMP=`getopt -o REP:O:A:M:U:D:T:H: -l rerun,email,password:,domain:,account:,module:,url:,dir:,timestamp:,host: -- "$@"`
 
 #显示除选项外的参数(不包含选项的参数都会排到最后)

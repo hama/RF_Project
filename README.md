@@ -12,11 +12,13 @@
 
 ```shell
 ├── README.MD								# README
+├── config                                  # 存放配置文件（用户登录信息，被测环境信息）
 ├── docker		                            # 构建docker镜像所需要的资源
 ├── lib		                                # 第三方库
-│	├── customKeyWord
+│	├── customlib                           # api构造数据，登录等操作
 │	├── utils							
 │   └── ajaxListener.js
+├── listener                                # 数据监听（通过PyChromeDevTools实现的方法，目前用于上报测试）
 ├── logs									# 标准日志文件(可删除，此处仅作用例参考)
 │   ├── log.html
 │   ├── output.xml
@@ -39,8 +41,9 @@
 │   │   └── 01_discount
 │   ├── 06_store
 │   ├── 07_tools
-│   └── 08_settings
-│       └── 01_shipping
+│   ├── 08_settings
+│   │   └── 01_shipping
+│	└── 99_testtracking                     # 数据上报测试用例
 ├── smoke									# 冒烟用例，为最基本用例，必须全部过
 │   └── 001_product_list.robot
 └── run.sh                                  # 自动执行脚本的入口
@@ -127,6 +130,8 @@ defaults write com.apple.versioner.python Prefer-32-Bit -bool yes
 pip install pymysql
 pip install requests
 pip install oss2
+pip install PyChromeDevTools
+pip install bs4
 ```
 
 #### 3.4.1 VIM 语法高亮插件
@@ -244,7 +249,7 @@ ROBOT_INTERNAL_TRACES			# 非空时，错误堆栈将包含方法调用
 # 基本命令如下
 bash /opt/shoplaza_robot/run.sh -e -u http://admin.shoplazza.com -m 'module/03_login/* module/04_register/*'
 
-# 参数说明
+# 参数说明（参考run.sh文件中注释）
 -e --email                      # 是否开启email发送功能
 -u --url                        # 指定被测环境url
 -m --module                     # 指定被执行用例
@@ -284,3 +289,30 @@ robot --outputdir logs \
 - [RF API Reference](http://robot-framework.readthedocs.io/en/latest/)
 - [SeleniumLibrary API](http://robotframework.org/Selenium2Library/Selenium2Library.html)
 
+
+## 9. docker定时执行测试脚本流程
+
+### 9.1 设置定时任务
+
+> Step1: 将docker_run.sh复制到执行环境
+
+> Step2: 配置docker.config文件（依次配置，用户名，密码，域名，执行用例的模块，用$作为分隔符）
+
+> Step3: 定时任务中添加`bash docker_run.sh`
+
+### 9.2 执行顺序
+
+```shell
+
+1、调用脚本docker_run.sh读取docker.config中的内容，每一条数据启动一个对应容器执行用例
+2、容器中运行run_develop_in_docker.sh/run_master_in_docker.sh/run_release_in_docker.sh脚本，下载robot项目，并执行run.sh
+3、run.sh会执行initevn.py脚本，执行指定的用例module，失败用例重跑，发送邮件
+4、initevn.py，初始化common.ini文件，登录指定（/新创建)用户获取cookie值
+
+```
+### 9.3 相关脚本概要
+- docker_run.sh: 批量启动docker，执行用例
+- docker.config: 存储执行用例的用户，密码，域名等信息（用户名若为new，则创建新用户执行）
+- run_develop_in_docker.sh: 下载robot项目，并执行run.sh
+- run.sh:执行initevn.py脚本，执行指定的用例module，失败用例重跑，发送邮件
+- initevn.py: 初始化common.ini文件，登录指定（/新创建)用户获取cookie值

@@ -14,7 +14,7 @@ REBOT_FILE=""
 OUTFILE=`cat ./docker.config`
 
 # 开启docker容器跑对应用例,新创建用户
-while read line:
+while read line
 do
 	 #       过滤以#开头的注释
     if [[ "$line" =~ ^#.* ]]; then
