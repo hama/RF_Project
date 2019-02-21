@@ -15,8 +15,8 @@
 ├── config                                  # 存放配置文件（用户登录信息，被测环境信息）
 ├── docker		                            # 构建docker镜像所需要的资源
 ├── lib		                                # 第三方库
-│	├── customlib                           # api构造数据，登录等操作
-│	├── utils							
+│   ├── customlib                           # api构造数据，登录等操作
+│   ├── utils							
 │   └── ajaxListener.js
 ├── listener                                # 数据监听（通过PyChromeDevTools实现的方法，目前用于上报测试）
 ├── logs									# 标准日志文件(可删除，此处仅作用例参考)
@@ -43,7 +43,7 @@
 │   ├── 07_tools
 │   ├── 08_settings
 │   │   └── 01_shipping
-│	└── 99_testtracking                     # 数据上报测试用例
+│   └── 99_testtracking                     # 数据上报测试用例
 ├── smoke									# 冒烟用例，为最基本用例，必须全部过
 │   └── 001_product_list.robot
 └── run.sh                                  # 自动执行脚本的入口
